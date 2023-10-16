@@ -31,11 +31,6 @@
 #include "ev-utils.h"
 
 enum {
-	PROP_0,
-	PROP_WIDGET
-};
-
-enum {
 	COLUMN_MARKUP,
 	COLUMN_ICON,
 	COLUMN_ANNOT_MAPPING,
@@ -148,32 +143,11 @@ ev_sidebar_annotations_init (EvSidebarAnnotations *sidebar_annots)
 }
 
 static void
-ev_sidebar_annotations_get_property (GObject    *object,
-				     guint       prop_id,
-				     GValue     *value,
-				     GParamSpec *pspec)
-{
-	EvSidebarAnnotations *ev_sidebar_annots;
-
-	ev_sidebar_annots = EV_SIDEBAR_ANNOTATIONS (object);
-
-	switch (prop_id) {
-	        case PROP_WIDGET:
-			g_value_set_object (value, ev_sidebar_annots->priv->swindow);
-			break;
-	        default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
 ev_sidebar_annotations_class_init (EvSidebarAnnotationsClass *klass)
 {
 	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	g_object_class->get_property = ev_sidebar_annotations_get_property;
 	g_object_class->dispose = ev_sidebar_annotations_dispose;
 	widget_class->popup_menu = ev_sidebar_annotations_popup_menu;
 
@@ -183,8 +157,6 @@ ev_sidebar_annotations_class_init (EvSidebarAnnotationsClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_view);
 	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_model);
 	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, list_model);
-
-	g_object_class_override_property (g_object_class, PROP_WIDGET, "main-widget");
 
 	signals[ANNOT_ACTIVATED] =
 		g_signal_new ("annot-activated",

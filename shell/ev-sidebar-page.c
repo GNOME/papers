@@ -74,20 +74,11 @@ ev_sidebar_page_get_label (EvSidebarPage *sidebar_page)
 	return iface->get_label (sidebar_page);
 }
 
-
 static void
 ev_sidebar_page_default_init (EvSidebarPageInterface *iface)
 {
 	static gboolean initialized = FALSE;
 
-	if (!initialized) {
-		g_object_interface_install_property (iface,
-						     g_param_spec_object ("main-widget",
-									  "Main Widget",
-									  "Main page widget, used to handle focus",
-									  GTK_TYPE_WIDGET,
-									  G_PARAM_READABLE |
-                                                                          G_PARAM_STATIC_STRINGS));
+	if (!initialized)
 		initialized = TRUE;
-	}
 }

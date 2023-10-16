@@ -48,11 +48,6 @@ enum {
 };
 
 enum {
-	PROP_0,
-	PROP_WIDGET,
-};
-
-enum {
 	SIGNAL_POPUP_MENU,
 	SIGNAL_SAVE_ATTACHMENT,
 	N_SIGNALS
@@ -635,26 +630,6 @@ ev_sidebar_attachments_drag_data_get (GtkWidget            *widget,
 }
 
 static void
-ev_sidebar_attachments_get_property (GObject    *object,
-				     guint       prop_id,
-			    	     GValue     *value,
-		      	             GParamSpec *pspec)
-{
-	EvSidebarAttachments *ev_sidebar_attachments;
-
-	ev_sidebar_attachments = EV_SIDEBAR_ATTACHMENTS (object);
-
-	switch (prop_id) {
-	        case PROP_WIDGET:
-			g_value_set_object (value, ev_sidebar_attachments->priv->icon_view);
-			break;
-	        default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
 ev_sidebar_attachments_dispose (GObject *object)
 {
 	EvSidebarAttachments *ev_attachbar = EV_SIDEBAR_ATTACHMENTS (object);
@@ -682,7 +657,6 @@ ev_sidebar_attachments_class_init (EvSidebarAttachmentsClass *ev_attachbar_class
 	g_object_class = G_OBJECT_CLASS (ev_attachbar_class);
 	gtk_widget_class = GTK_WIDGET_CLASS (ev_attachbar_class);
 
-	g_object_class->get_property = ev_sidebar_attachments_get_property;
 	g_object_class->dispose = ev_sidebar_attachments_dispose;
 	gtk_widget_class->popup_menu = ev_sidebar_attachments_popup_menu;
 	gtk_widget_class->screen_changed = ev_sidebar_attachments_screen_changed;
@@ -708,10 +682,6 @@ ev_sidebar_attachments_class_init (EvSidebarAttachmentsClass *ev_attachbar_class
 			      G_TYPE_BOOLEAN, 2,
 			      G_TYPE_OBJECT,
 		              G_TYPE_STRING);
-
-	g_object_class_override_property (g_object_class,
-					  PROP_WIDGET,
-					  "main-widget");
 }
 
 static void

@@ -86,11 +86,6 @@ enum {
 	NUM_COLUMNS
 };
 
-enum {
-	PROP_0,
-	PROP_WIDGET,
-};
-
 static void         ev_sidebar_thumbnails_clear_model      (EvSidebarThumbnails     *sidebar);
 static gboolean     ev_sidebar_thumbnails_support_document (EvSidebarPage           *sidebar_page,
 							    EvDocument              *document);
@@ -265,24 +260,6 @@ ev_sidebar_thumbnails_dispose (GObject *object)
 }
 
 static void
-ev_sidebar_thumbnails_get_property (GObject    *object,
-				    guint       prop_id,
-				    GValue     *value,
-				    GParamSpec *pspec)
-{
-	EvSidebarThumbnails *sidebar = EV_SIDEBAR_THUMBNAILS (object);
-
-	switch (prop_id) {
-	case PROP_WIDGET:
-		g_value_set_object (value, sidebar->priv->icon_view);
-		break;
-	default:
-		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-		break;
-	}
-}
-
-static void
 ev_sidebar_thumbnails_map (GtkWidget *widget)
 {
 	EvSidebarThumbnails *sidebar;
@@ -350,15 +327,10 @@ ev_sidebar_thumbnails_class_init (EvSidebarThumbnailsClass *ev_sidebar_thumbnail
 	widget_class = GTK_WIDGET_CLASS (ev_sidebar_thumbnails_class);
 
 	g_object_class->dispose = ev_sidebar_thumbnails_dispose;
-	g_object_class->get_property = ev_sidebar_thumbnails_get_property;
 	widget_class->map = ev_sidebar_thumbnails_map;
         widget_class->size_allocate = ev_sidebar_thumbnails_size_allocate;
 
         gtk_widget_class_set_css_name (widget_class, "evsidebarthumbnails");
-
-	g_object_class_override_property (g_object_class,
-					  PROP_WIDGET,
-					  "main-widget");
 }
 
 GtkWidget *

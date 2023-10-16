@@ -37,11 +37,6 @@ struct _EvSidebarLayersPrivate {
 };
 
 enum {
-	PROP_0,
-	PROP_WIDGET
-};
-
-enum {
 	LAYERS_VISIBILITY_CHANGED,
 	N_SIGNALS
 };
@@ -76,26 +71,6 @@ ev_sidebar_layers_dispose (GObject *object)
 	g_clear_object (&sidebar->priv->document);
 
 	G_OBJECT_CLASS (ev_sidebar_layers_parent_class)->dispose (object);
-}
-
-static void
-ev_sidebar_layers_get_property (GObject    *object,
-				guint       prop_id,
-				GValue     *value,
-				GParamSpec *pspec)
-{
-	EvSidebarLayers *ev_sidebar_layers;
-
-	ev_sidebar_layers = EV_SIDEBAR_LAYERS (object);
-
-	switch (prop_id) {
-	        case PROP_WIDGET:
-			g_value_set_object (value, ev_sidebar_layers->priv->tree_view);
-			break;
-	        default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
 }
 
 static GtkTreeModel *
@@ -303,10 +278,7 @@ ev_sidebar_layers_class_init (EvSidebarLayersClass *ev_layers_class)
 {
 	GObjectClass *g_object_class = G_OBJECT_CLASS (ev_layers_class);
 
-	g_object_class->get_property = ev_sidebar_layers_get_property;
 	g_object_class->dispose = ev_sidebar_layers_dispose;
-
-	g_object_class_override_property (g_object_class, PROP_WIDGET, "main-widget");
 
 	signals[LAYERS_VISIBILITY_CHANGED] =
 		g_signal_new ("layers_visibility_changed",

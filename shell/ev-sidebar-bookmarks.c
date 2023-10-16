@@ -31,11 +31,6 @@
 #include "ev-utils.h"
 
 enum {
-        PROP_0,
-        PROP_WIDGET
-};
-
-enum {
         COLUMN_MARKUP,
         COLUMN_PAGE,
         N_COLUMNS
@@ -438,32 +433,11 @@ ev_sidebar_bookmarks_init (EvSidebarBookmarks *sidebar_bookmarks)
 }
 
 static void
-ev_sidebar_bookmarks_get_property (GObject    *object,
-                                   guint       prop_id,
-                                   GValue     *value,
-                                   GParamSpec *pspec)
-{
-        EvSidebarBookmarks *sidebar_bookmarks;
-
-        sidebar_bookmarks = EV_SIDEBAR_BOOKMARKS (object);
-
-        switch (prop_id) {
-        case PROP_WIDGET:
-                g_value_set_object (value, sidebar_bookmarks->priv->tree_view);
-                break;
-        default:
-                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-                break;
-        }
-}
-
-static void
 ev_sidebar_bookmarks_class_init (EvSidebarBookmarksClass *klass)
 {
         GObjectClass   *g_object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-        g_object_class->get_property = ev_sidebar_bookmarks_get_property;
         g_object_class->dispose = ev_sidebar_bookmarks_dispose;
 
         widget_class->popup_menu = ev_sidebar_bookmarks_popup_menu;
@@ -480,7 +454,6 @@ ev_sidebar_bookmarks_class_init (EvSidebarBookmarksClass *klass)
 	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_query_tooltip);
 	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_button_press_cb);
 
-        g_object_class_override_property (g_object_class, PROP_WIDGET, "main-widget");
 	/* Signals */
         signals[ACTIVATED] =
                 g_signal_new ("bookmark-activated",
