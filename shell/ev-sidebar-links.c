@@ -32,7 +32,6 @@
 #include "ev-document-links.h"
 #include "ev-job-scheduler.h"
 #include "ev-sidebar-links.h"
-#include "ev-sidebar-page.h"
 #include "ev-window.h"
 
 #define GSTRING_INIT_SIZE 4096
@@ -80,20 +79,15 @@ static void job_finished_callback 			(EvJobLinks     *job,
 static void ev_sidebar_links_set_current_page           (EvSidebarLinks *sidebar_links,
 							 gint            current_page);
 static void sidebar_collapse_recursive                  (EvSidebarLinks *sidebar_links);
-static void ev_sidebar_links_page_iface_init 		(EvSidebarPageInterface *iface);
 static gboolean ev_sidebar_links_support_document	(EvSidebarPage  *sidebar_page,
 						         EvDocument     *document);
 static const gchar* ev_sidebar_links_get_label 		(EvSidebarPage *sidebar_page);
 
 static guint signals[N_SIGNALS];
 
-G_DEFINE_TYPE_EXTENDED (EvSidebarLinks,
-                        ev_sidebar_links,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarLinks)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-					       ev_sidebar_links_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarLinks,
+			    ev_sidebar_links,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 
 static void
@@ -172,39 +166,6 @@ ev_sidebar_links_map (GtkWidget *widget)
 		ev_sidebar_links_set_current_page (links,
 						   ev_document_model_get_page (links->priv->doc_model));
 	}
-}
-
-static void
-ev_sidebar_links_class_init (EvSidebarLinksClass *ev_sidebar_links_class)
-{
-	GObjectClass   *g_object_class;
-	GtkWidgetClass *widget_class;
-
-	g_object_class = G_OBJECT_CLASS (ev_sidebar_links_class);
-	widget_class = GTK_WIDGET_CLASS (ev_sidebar_links_class);
-
-	g_object_class->set_property = ev_sidebar_links_set_property;
-	g_object_class->get_property = ev_sidebar_links_get_property;
-	g_object_class->dispose = ev_sidebar_links_dispose;
-
-	widget_class->map = ev_sidebar_links_map;
-
-	signals[LINK_ACTIVATED] = g_signal_new ("link-activated",
-			 G_TYPE_FROM_CLASS (g_object_class),
-		         G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		         G_STRUCT_OFFSET (EvSidebarLinksClass, link_activated),
-		         NULL, NULL,
-		         g_cclosure_marshal_VOID__OBJECT,
-		         G_TYPE_NONE, 1, G_TYPE_OBJECT);
-
-	g_object_class_install_property (g_object_class,
-					 PROP_MODEL,
-					 g_param_spec_object ("model",
-							      "Model",
-							      "Current Model",
-							      GTK_TYPE_TREE_MODEL,
-							      G_PARAM_READWRITE |
-                                                              G_PARAM_STATIC_STRINGS));
 }
 
 static void
@@ -1443,10 +1404,36 @@ ev_sidebar_links_get_label (EvSidebarPage *sidebar_page)
 	return _("Outline");
 }
 
+
 static void
-ev_sidebar_links_page_iface_init (EvSidebarPageInterface *iface)
+ev_sidebar_links_class_init (EvSidebarLinksClass *klass)
 {
-	iface->support_document = ev_sidebar_links_support_document;
-	iface->set_model = ev_sidebar_links_set_model;
-	iface->get_label = ev_sidebar_links_get_label;
+	GObjectClass   *g_object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);;
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+	g_object_class->set_property = ev_sidebar_links_set_property;
+	g_object_class->get_property = ev_sidebar_links_get_property;
+	g_object_class->dispose = ev_sidebar_links_dispose;
+	widget_class->map = ev_sidebar_links_map;
+	sidebar_page_class->support_document = ev_sidebar_links_support_document;
+	sidebar_page_class->set_model = ev_sidebar_links_set_model;
+	sidebar_page_class->get_label = ev_sidebar_links_get_label;
+
+	signals[LINK_ACTIVATED] = g_signal_new ("link-activated",
+			 G_TYPE_FROM_CLASS (g_object_class),
+		         G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		         G_STRUCT_OFFSET (EvSidebarLinksClass, link_activated),
+		         NULL, NULL,
+		         g_cclosure_marshal_VOID__OBJECT,
+		         G_TYPE_NONE, 1, G_TYPE_OBJECT);
+
+	g_object_class_install_property (g_object_class,
+					 PROP_MODEL,
+					 g_param_spec_object ("model",
+							      "Model",
+							      "Current Model",
+							      GTK_TYPE_TREE_MODEL,
+							      G_PARAM_READWRITE |
+                                                              G_PARAM_STATIC_STRINGS));
 }

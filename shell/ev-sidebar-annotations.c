@@ -23,7 +23,6 @@
 #include <glib/gi18n.h>
 
 #include "ev-document-annotations.h"
-#include "ev-sidebar-page.h"
 #include "ev-sidebar-annotations.h"
 #include "ev-jobs.h"
 #include "ev-job-scheduler.h"
@@ -60,7 +59,6 @@ struct _EvSidebarAnnotationsPrivate {
 
 #define GET_PRIVATE(o) ev_sidebar_annotations_get_instance_private (o)
 
-static void ev_sidebar_annotations_page_iface_init (EvSidebarPageInterface *iface);
 static void ev_sidebar_annotations_load            (EvSidebarAnnotations   *sidebar_annots);
 static gboolean ev_sidebar_annotations_popup_menu (GtkWidget *widget);
 static gboolean ev_sidebar_annotations_popup_menu_show (EvSidebarAnnotations *sidebar_annots,
@@ -72,13 +70,9 @@ static void job_finished_callback (EvJobAnnots          *job,
 				   EvSidebarAnnotations *sidebar_annots);
 static guint signals[N_SIGNALS];
 
-G_DEFINE_TYPE_EXTENDED (EvSidebarAnnotations,
-                        ev_sidebar_annotations,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarAnnotations)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-					       ev_sidebar_annotations_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarAnnotations,
+			    ev_sidebar_annotations,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 #define ANNOT_ICON_SIZE 16
 
@@ -121,52 +115,6 @@ ev_sidebar_annotations_set_simple_message (EvSidebarAnnotations *sidebar_annots,
 
 	gtk_tree_view_set_model (GTK_TREE_VIEW (priv->tree_view),
 				 GTK_TREE_MODEL (priv->list_model));
-}
-
-static void
-ev_sidebar_annotations_init (EvSidebarAnnotations *sidebar_annots)
-{
-	EvSidebarAnnotationsPrivate *priv = GET_PRIVATE (sidebar_annots);
-	GtkBuilder *builder;
-
-	gtk_widget_init_template (GTK_WIDGET (sidebar_annots));
-
-	ev_sidebar_annotations_set_simple_message (sidebar_annots, _("Loading…"));
-
-	/* Annotation pop-up */
-	builder = gtk_builder_new_from_resource ("/org/gnome/evince/gtk/menus.ui");
-	priv->popup_model = g_object_ref (G_MENU_MODEL (gtk_builder_get_object (builder, "annotation-popup")));
-	g_object_unref (builder);
-	priv->popup = gtk_menu_new_from_model (priv->popup_model);
-	gtk_menu_attach_to_widget (GTK_MENU (priv->popup),
-				   GTK_WIDGET (sidebar_annots), NULL);
-}
-
-static void
-ev_sidebar_annotations_class_init (EvSidebarAnnotationsClass *klass)
-{
-	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-	g_object_class->dispose = ev_sidebar_annotations_dispose;
-	widget_class->popup_menu = ev_sidebar_annotations_popup_menu;
-
-	gtk_widget_class_set_template_from_resource (widget_class,
-						     "/org/gnome/evince/ui/sidebar-annotations.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, swindow);
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_view);
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_model);
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, list_model);
-
-	signals[ANNOT_ACTIVATED] =
-		g_signal_new ("annot-activated",
-			      G_TYPE_FROM_CLASS (g_object_class),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (EvSidebarAnnotationsClass, annot_activated),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__POINTER,
-			      G_TYPE_NONE, 1,
-			      G_TYPE_POINTER);
 }
 
 GtkWidget *
@@ -512,7 +460,6 @@ ev_sidebar_annotations_popup_menu (GtkWidget *widget)
 						       &rect, annot_mapping, NULL);
 }
 
-/* EvSidebarPageIface */
 static void
 ev_sidebar_annotations_set_model (EvSidebarPage   *sidebar_page,
 				  EvDocumentModel *model)
@@ -535,10 +482,53 @@ ev_sidebar_annotations_get_label (EvSidebarPage *sidebar_page)
 	return _("Annotations");
 }
 
+
 static void
-ev_sidebar_annotations_page_iface_init (EvSidebarPageInterface *iface)
+ev_sidebar_annotations_init (EvSidebarAnnotations *sidebar_annots)
 {
-	iface->support_document = ev_sidebar_annotations_support_document;
-	iface->set_model = ev_sidebar_annotations_set_model;
-	iface->get_label = ev_sidebar_annotations_get_label;
+	EvSidebarAnnotationsPrivate *priv = GET_PRIVATE (sidebar_annots);
+	GtkBuilder *builder;
+
+	gtk_widget_init_template (GTK_WIDGET (sidebar_annots));
+
+	ev_sidebar_annotations_set_simple_message (sidebar_annots, _("Loading…"));
+
+	/* Annotation pop-up */
+	builder = gtk_builder_new_from_resource ("/org/gnome/evince/gtk/menus.ui");
+	priv->popup_model = g_object_ref (G_MENU_MODEL (gtk_builder_get_object (builder, "annotation-popup")));
+	g_object_unref (builder);
+	priv->popup = gtk_menu_new_from_model (priv->popup_model);
+	gtk_menu_attach_to_widget (GTK_MENU (priv->popup),
+				   GTK_WIDGET (sidebar_annots), NULL);
+}
+
+static void
+ev_sidebar_annotations_class_init (EvSidebarAnnotationsClass *klass)
+{
+	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+	g_object_class->dispose = ev_sidebar_annotations_dispose;
+	widget_class->popup_menu = ev_sidebar_annotations_popup_menu;
+	sidebar_page_class->support_document = ev_sidebar_annotations_support_document;
+	sidebar_page_class->set_model = ev_sidebar_annotations_set_model;
+	sidebar_page_class->get_label = ev_sidebar_annotations_get_label;
+
+	gtk_widget_class_set_template_from_resource (widget_class,
+						     "/org/gnome/evince/ui/sidebar-annotations.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, swindow);
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_view);
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, tree_model);
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarAnnotations, list_model);
+
+	signals[ANNOT_ACTIVATED] =
+		g_signal_new ("annot-activated",
+			      G_TYPE_FROM_CLASS (g_object_class),
+			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+			      G_STRUCT_OFFSET (EvSidebarAnnotationsClass, annot_activated),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__POINTER,
+			      G_TYPE_NONE, 1,
+			      G_TYPE_POINTER);
 }

@@ -37,7 +37,6 @@
 #include "ev-document-misc.h"
 #include "ev-job-scheduler.h"
 #include "ev-sidebar.h"
-#include "ev-sidebar-page.h"
 #include "ev-sidebar-thumbnails.h"
 #include "ev-utils.h"
 #include "ev-window.h"
@@ -89,7 +88,6 @@ enum {
 static void         ev_sidebar_thumbnails_clear_model      (EvSidebarThumbnails     *sidebar);
 static gboolean     ev_sidebar_thumbnails_support_document (EvSidebarPage           *sidebar_page,
 							    EvDocument              *document);
-static void         ev_sidebar_thumbnails_page_iface_init  (EvSidebarPageInterface  *iface);
 static const gchar* ev_sidebar_thumbnails_get_label        (EvSidebarPage           *sidebar_page);
 static void         ev_sidebar_thumbnails_set_current_page (EvSidebarThumbnails *sidebar,
 							    gint     page);
@@ -100,13 +98,9 @@ static void         adjustment_changed_cb                  (EvSidebarThumbnails 
 static void         check_toggle_blank_first_dual_mode     (EvSidebarThumbnails     *sidebar_thumbnails);
 static void         check_toggle_blank_first_dual_mode_when_resizing (EvSidebarThumbnails *sidebar_thumbnails);
 
-G_DEFINE_TYPE_EXTENDED (EvSidebarThumbnails,
-                        ev_sidebar_thumbnails,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarThumbnails)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-					       ev_sidebar_thumbnails_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarThumbnails,
+			    ev_sidebar_thumbnails,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 /* Thumbnails dimensions cache */
 #define EV_THUMBNAILS_SIZE_CACHE_KEY "ev-thumbnails-size-cache"
@@ -315,22 +309,6 @@ ev_sidebar_thumbnails_size_allocate (GtkWidget     *widget,
                 /* Might have a new number of columns, reset current page */
                 ev_sidebar_check_reset_current_page (sidebar);
         }
-}
-
-static void
-ev_sidebar_thumbnails_class_init (EvSidebarThumbnailsClass *ev_sidebar_thumbnails_class)
-{
-	GObjectClass *g_object_class;
-	GtkWidgetClass *widget_class;
-
-	g_object_class = G_OBJECT_CLASS (ev_sidebar_thumbnails_class);
-	widget_class = GTK_WIDGET_CLASS (ev_sidebar_thumbnails_class);
-
-	g_object_class->dispose = ev_sidebar_thumbnails_dispose;
-	widget_class->map = ev_sidebar_thumbnails_map;
-        widget_class->size_allocate = ev_sidebar_thumbnails_size_allocate;
-
-        gtk_widget_class_set_css_name (widget_class, "evsidebarthumbnails");
 }
 
 GtkWidget *
@@ -1010,14 +988,6 @@ ev_sidebar_thumbnails_get_label (EvSidebarPage *sidebar_page)
 	return _("Thumbnails");
 }
 
-static void
-ev_sidebar_thumbnails_page_iface_init (EvSidebarPageInterface *iface)
-{
-	iface->support_document = ev_sidebar_thumbnails_support_document;
-	iface->set_model = ev_sidebar_thumbnails_set_model;
-	iface->get_label = ev_sidebar_thumbnails_get_label;
-}
-
 static gboolean
 iter_is_blank_thumbnail (GtkTreeModel *tree_model,
 			 GtkTreeIter  *iter)
@@ -1344,4 +1314,22 @@ static void
 check_toggle_blank_first_dual_mode (EvSidebarThumbnails *sidebar_thumbnails)
 {
 	check_toggle_blank_first_dual_mode_real (sidebar_thumbnails, TRUE);
+}
+
+
+static void
+ev_sidebar_thumbnails_class_init (EvSidebarThumbnailsClass *klass)
+{
+	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+	g_object_class->dispose = ev_sidebar_thumbnails_dispose;
+	widget_class->map = ev_sidebar_thumbnails_map;
+        widget_class->size_allocate = ev_sidebar_thumbnails_size_allocate;
+	sidebar_page_class->support_document = ev_sidebar_thumbnails_support_document;
+	sidebar_page_class->set_model = ev_sidebar_thumbnails_set_model;
+	sidebar_page_class->get_label = ev_sidebar_thumbnails_get_label;
+
+        gtk_widget_class_set_css_name (widget_class, "evsidebarthumbnails");
 }

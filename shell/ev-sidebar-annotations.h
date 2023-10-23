@@ -23,6 +23,8 @@
 #include <gtk/gtk.h>
 #include <glib-object.h>
 
+#include "ev-sidebar-page.h"
+
 G_BEGIN_DECLS
 
 typedef struct _EvSidebarAnnotations        EvSidebarAnnotations;
@@ -37,13 +39,13 @@ typedef struct _EvSidebarAnnotationsPrivate EvSidebarAnnotationsPrivate;
 #define EV_SIDEBAR_ANNOTATIONS_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_ANNOTATIONS, EvSidebarAnnotationsClass))
 
 struct _EvSidebarAnnotations {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarAnnotationsPrivate *priv;
 };
 
 struct _EvSidebarAnnotationsClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 
 	void    (* annot_activated)     (EvSidebarAnnotations *sidebar_annots,
 					 EvMapping            *mapping);

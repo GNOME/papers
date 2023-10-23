@@ -25,6 +25,7 @@
 
 #include "ev-attachment.h"
 #include "ev-document.h"
+#include "ev-sidebar-page.h"
 
 G_BEGIN_DECLS
 
@@ -40,13 +41,13 @@ typedef struct _EvSidebarAttachmentsPrivate EvSidebarAttachmentsPrivate;
 #define EV_SIDEBAR_ATTACHMENTS_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_ATTACHMENTS, EvSidebarAttachmentsClass))
 
 struct _EvSidebarAttachments {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarAttachmentsPrivate *priv;
 };
 
 struct _EvSidebarAttachmentsClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 
 	/* Signals */
 	void (*popup_menu)      (EvSidebarAttachments *ev_attachbar,

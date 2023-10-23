@@ -27,6 +27,7 @@
 
 #include "ev-document.h"
 #include "ev-link.h"
+#include "ev-sidebar-page.h"
 #include "ev-utils.h"
 
 G_BEGIN_DECLS
@@ -43,13 +44,13 @@ typedef struct _EvSidebarLinksPrivate EvSidebarLinksPrivate;
 #define EV_SIDEBAR_LINKS_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_LINKS, EvSidebarLinksClass))
 
 struct _EvSidebarLinks {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarLinksPrivate *priv;
 };
 
 struct _EvSidebarLinksClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 
 	void    (* link_activated) (EvSidebarLinks *sidebar_links,
 				    EvLink         *link);

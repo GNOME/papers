@@ -27,7 +27,6 @@
 
 #include "ev-document.h"
 #include "ev-document-misc.h"
-#include "ev-sidebar-page.h"
 #include "ev-utils.h"
 
 enum {
@@ -55,20 +54,15 @@ struct _EvSidebarBookmarksPrivate {
         GtkWidget       *popup;
 };
 
-static void ev_sidebar_bookmarks_page_iface_init (EvSidebarPageInterface *iface);
 static void ev_sidebar_bookmarks_selection_changed (GtkTreeSelection   *selection,
 						    EvSidebarBookmarks *sidebar_bookmarks);
 static void ev_sidebar_bookmarks_page_changed (EvSidebarBookmarks *sidebar_bookmarks,
                                                gint                old_page,
                                                gint                new_page);
 
-G_DEFINE_TYPE_EXTENDED (EvSidebarBookmarks,
-                        ev_sidebar_bookmarks,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarBookmarks)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-                                               ev_sidebar_bookmarks_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarBookmarks,
+			    ev_sidebar_bookmarks,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 static gint
 ev_sidebar_bookmarks_get_selected_page (EvSidebarBookmarks *sidebar_bookmarks,
@@ -410,62 +404,6 @@ ev_sidebar_bookmarks_dispose (GObject *object)
         G_OBJECT_CLASS (ev_sidebar_bookmarks_parent_class)->dispose (object);
 }
 
-static void
-ev_sidebar_bookmarks_init (EvSidebarBookmarks *sidebar_bookmarks)
-{
-        EvSidebarBookmarksPrivate *priv;
-	GtkBuilder                *builder;
-	GMenuModel                *popup_model;
-
-	sidebar_bookmarks->priv = ev_sidebar_bookmarks_get_instance_private (sidebar_bookmarks);
-	priv = sidebar_bookmarks->priv;
-
-	gtk_widget_init_template (GTK_WIDGET (sidebar_bookmarks));
-
-        /* Popup menu */
-	builder = gtk_builder_new_from_resource ("/org/gnome/evince/gtk/menus.ui");
-	popup_model = g_object_ref (G_MENU_MODEL (gtk_builder_get_object (builder, "bookmarks-popup")));
-	priv->popup = gtk_menu_new_from_model (popup_model);
-	gtk_widget_insert_action_group (priv->popup,
-					"bookmarks",
-					create_action_group (sidebar_bookmarks));
-	g_object_unref (builder);
-}
-
-static void
-ev_sidebar_bookmarks_class_init (EvSidebarBookmarksClass *klass)
-{
-        GObjectClass   *g_object_class = G_OBJECT_CLASS (klass);
-        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-        g_object_class->dispose = ev_sidebar_bookmarks_dispose;
-
-        widget_class->popup_menu = ev_sidebar_bookmarks_popup_menu;
-	gtk_widget_class_set_template_from_resource (widget_class,
-			"/org/gnome/evince/ui/sidebar-bookmarks.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, tree_view);
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, del_button);
-	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, add_button);
-
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_del_clicked);
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_bookmark_renamed);
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_query_tooltip);
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_selection_changed);
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_query_tooltip);
-	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_button_press_cb);
-
-	/* Signals */
-        signals[ACTIVATED] =
-                g_signal_new ("bookmark-activated",
-                              EV_TYPE_SIDEBAR_BOOKMARKS,
-                              G_SIGNAL_RUN_LAST,
-                              G_STRUCT_OFFSET (EvSidebarBookmarksClass, activated),
-                              NULL, NULL,
-                              NULL,
-                              G_TYPE_NONE, 2,
-                              G_TYPE_INT, G_TYPE_INT);
-}
-
 GtkWidget *
 ev_sidebar_bookmarks_new (void)
 {
@@ -527,9 +465,62 @@ ev_sidebar_bookmarks_get_label (EvSidebarPage *sidebar_page)
 }
 
 static void
-ev_sidebar_bookmarks_page_iface_init (EvSidebarPageInterface *iface)
+ev_sidebar_bookmarks_init (EvSidebarBookmarks *sidebar_bookmarks)
 {
-        iface->support_document = ev_sidebar_bookmarks_support_document;
-        iface->set_model = ev_sidebar_bookmarks_set_model;
-        iface->get_label = ev_sidebar_bookmarks_get_label;
+        EvSidebarBookmarksPrivate *priv;
+	GtkBuilder                *builder;
+	GMenuModel                *popup_model;
+
+	sidebar_bookmarks->priv = ev_sidebar_bookmarks_get_instance_private (sidebar_bookmarks);
+	priv = sidebar_bookmarks->priv;
+
+	gtk_widget_init_template (GTK_WIDGET (sidebar_bookmarks));
+
+        /* Popup menu */
+	builder = gtk_builder_new_from_resource ("/org/gnome/evince/gtk/menus.ui");
+	popup_model = g_object_ref (G_MENU_MODEL (gtk_builder_get_object (builder, "bookmarks-popup")));
+	priv->popup = gtk_menu_new_from_model (popup_model);
+	gtk_widget_insert_action_group (priv->popup,
+					"bookmarks",
+					create_action_group (sidebar_bookmarks));
+	g_object_unref (builder);
+}
+
+static void
+ev_sidebar_bookmarks_class_init (EvSidebarBookmarksClass *klass)
+{
+        GObjectClass   *g_object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+        g_object_class->dispose = ev_sidebar_bookmarks_dispose;
+
+        widget_class->popup_menu = ev_sidebar_bookmarks_popup_menu;
+	sidebar_page_class->support_document = ev_sidebar_bookmarks_support_document;
+	sidebar_page_class->set_model = ev_sidebar_bookmarks_set_model;
+	sidebar_page_class->get_label = ev_sidebar_bookmarks_get_label;
+
+	gtk_widget_class_set_template_from_resource (widget_class,
+			"/org/gnome/evince/ui/sidebar-bookmarks.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, tree_view);
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, del_button);
+	gtk_widget_class_bind_template_child_private (widget_class, EvSidebarBookmarks, add_button);
+
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_del_clicked);
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_bookmark_renamed);
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_query_tooltip);
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_selection_changed);
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_query_tooltip);
+	gtk_widget_class_bind_template_callback (widget_class, ev_sidebar_bookmarks_button_press_cb);
+
+	/* Signals */
+        signals[ACTIVATED] =
+                g_signal_new ("bookmark-activated",
+                              EV_TYPE_SIDEBAR_BOOKMARKS,
+                              G_SIGNAL_RUN_LAST,
+                              G_STRUCT_OFFSET (EvSidebarBookmarksClass, activated),
+                              NULL, NULL,
+                              NULL,
+                              G_TYPE_NONE, 2,
+                              G_TYPE_INT, G_TYPE_INT);
 }

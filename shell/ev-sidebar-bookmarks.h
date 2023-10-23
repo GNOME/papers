@@ -24,6 +24,7 @@
 #include <glib-object.h>
 
 #include "ev-bookmarks.h"
+#include "ev-sidebar-page.h"
 
 G_BEGIN_DECLS
 
@@ -39,13 +40,13 @@ typedef struct _EvSidebarBookmarksPrivate EvSidebarBookmarksPrivate;
 #define EV_SIDEBAR_BOOKMARKS_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_BOOKMARKS, EvSidebarBookmarksClass))
 
 struct _EvSidebarBookmarks {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarBookmarksPrivate *priv;
 };
 
 struct _EvSidebarBookmarksClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 
         void (*add_bookmark) (EvSidebarBookmarks *sidebar_bookmarks);
         void (*activated)    (EvSidebarBookmarks *sidebar_bookmarks,

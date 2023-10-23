@@ -37,7 +37,6 @@
 #include "ev-job-scheduler.h"
 #include "ev-file-helpers.h"
 #include "ev-sidebar-attachments.h"
-#include "ev-sidebar-page.h"
 
 enum {
 	COLUMN_ICON,
@@ -75,15 +74,9 @@ struct _EvSidebarAttachmentsPrivate {
 	GHashTable     *icon_cache;
 };
 
-static void ev_sidebar_attachments_page_iface_init (EvSidebarPageInterface *iface);
-
-G_DEFINE_TYPE_EXTENDED (EvSidebarAttachments,
-                        ev_sidebar_attachments,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarAttachments)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-					       ev_sidebar_attachments_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarAttachments,
+			    ev_sidebar_attachments,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 /* Icon cache */
 static void
@@ -648,111 +641,6 @@ ev_sidebar_attachments_dispose (GObject *object)
 	G_OBJECT_CLASS (ev_sidebar_attachments_parent_class)->dispose (object);
 }
 
-static void
-ev_sidebar_attachments_class_init (EvSidebarAttachmentsClass *ev_attachbar_class)
-{
-	GObjectClass   *g_object_class;
-	GtkWidgetClass *gtk_widget_class;
-
-	g_object_class = G_OBJECT_CLASS (ev_attachbar_class);
-	gtk_widget_class = GTK_WIDGET_CLASS (ev_attachbar_class);
-
-	g_object_class->dispose = ev_sidebar_attachments_dispose;
-	gtk_widget_class->popup_menu = ev_sidebar_attachments_popup_menu;
-	gtk_widget_class->screen_changed = ev_sidebar_attachments_screen_changed;
-
-	/* Signals */
-	signals[SIGNAL_POPUP_MENU] =
-		g_signal_new ("popup",
-			      G_TYPE_FROM_CLASS (g_object_class),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (EvSidebarAttachmentsClass, popup_menu),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__POINTER,
-			      G_TYPE_NONE, 1,
-			      G_TYPE_POINTER);
-
-	signals[SIGNAL_SAVE_ATTACHMENT] =
-		g_signal_new ("save-attachment",
-			      G_TYPE_FROM_CLASS (g_object_class),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (EvSidebarAttachmentsClass, save_attachment),
-			      NULL, NULL,
-			      g_cclosure_marshal_generic,
-			      G_TYPE_BOOLEAN, 2,
-			      G_TYPE_OBJECT,
-		              G_TYPE_STRING);
-}
-
-static void
-ev_sidebar_attachments_init (EvSidebarAttachments *ev_attachbar)
-{
-	GtkWidget *swindow;
-
-	static const GtkTargetEntry targets[] = { {"text/uri-list", 0, EV_DND_TARGET_TEXT_URI_LIST},
-	                                          {"XdndDirectSave0", 0, EV_DND_TARGET_XDS}};
-
-	ev_attachbar->priv = ev_sidebar_attachments_get_instance_private (ev_attachbar);
-
-	swindow = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow),
-					GTK_POLICY_NEVER,
-					GTK_POLICY_AUTOMATIC);
-	/* Data Model */
-	ev_attachbar->priv->model = gtk_list_store_new (N_COLS,
-							GDK_TYPE_PIXBUF,
-							G_TYPE_STRING,
-							G_TYPE_STRING,
-							EV_TYPE_ATTACHMENT);
-
-	/* Icon View */
-	ev_attachbar->priv->icon_view =
-		gtk_icon_view_new_with_model (GTK_TREE_MODEL (ev_attachbar->priv->model));
-	gtk_icon_view_set_selection_mode (GTK_ICON_VIEW (ev_attachbar->priv->icon_view),
-					  GTK_SELECTION_MULTIPLE);
-	gtk_icon_view_set_columns (GTK_ICON_VIEW (ev_attachbar->priv->icon_view), -1);
-	g_object_set (G_OBJECT (ev_attachbar->priv->icon_view),
-		      "text-column", COLUMN_NAME,
-		      "pixbuf-column", COLUMN_ICON,
-		      "tooltip-column", COLUMN_DESCRIPTION,
-		      NULL);
-	g_signal_connect_swapped (ev_attachbar->priv->icon_view,
-				  "button-press-event",
-				  G_CALLBACK (ev_sidebar_attachments_button_press),
-				  (gpointer) ev_attachbar);
-
-	gtk_container_add (GTK_CONTAINER (swindow),
-			   ev_attachbar->priv->icon_view);
-
-        gtk_box_pack_start (GTK_BOX (ev_attachbar), swindow, TRUE, TRUE, 0);
-	gtk_widget_show_all (GTK_WIDGET (ev_attachbar));
-
-	/* Icon Theme */
-	ev_attachbar->priv->icon_theme = NULL;
-
-	/* Icon Cache */
-	ev_attachbar->priv->icon_cache = g_hash_table_new_full (g_str_hash,
-								g_str_equal,
-								g_free,
-								g_object_unref);
-
-	/* Drag and Drop */
-	gtk_icon_view_enable_model_drag_source (
-		GTK_ICON_VIEW (ev_attachbar->priv->icon_view),
-		GDK_BUTTON1_MASK,
-        	targets, G_N_ELEMENTS (targets),
-		GDK_ACTION_MOVE);
-
-	g_signal_connect (ev_attachbar->priv->icon_view,
-			  "drag-data-get",
-			  G_CALLBACK (ev_sidebar_attachments_drag_data_get),
-			  (gpointer) ev_attachbar);
-
-	g_signal_connect (ev_attachbar->priv->icon_view,
-	                  "drag-begin",
-	                  G_CALLBACK (ev_sidebar_attachments_drag_begin),
-	                  (gpointer) ev_attachbar);
-}
 
 GtkWidget *
 ev_sidebar_attachments_new (void)
@@ -863,9 +751,111 @@ ev_sidebar_attachments_get_label (EvSidebarPage *sidebar_page)
 }
 
 static void
-ev_sidebar_attachments_page_iface_init (EvSidebarPageInterface *iface)
+ev_sidebar_attachments_class_init (EvSidebarAttachmentsClass *klass)
 {
-	iface->support_document = ev_sidebar_attachments_support_document;
-	iface->set_model = ev_sidebar_attachments_set_model;
-	iface->get_label = ev_sidebar_attachments_get_label;
+	GObjectClass   *g_object_class;
+	GtkWidgetClass *gtk_widget_class;
+
+	g_object_class = G_OBJECT_CLASS (klass);
+	gtk_widget_class = GTK_WIDGET_CLASS (klass);
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+	g_object_class->dispose = ev_sidebar_attachments_dispose;
+	gtk_widget_class->popup_menu = ev_sidebar_attachments_popup_menu;
+	gtk_widget_class->screen_changed = ev_sidebar_attachments_screen_changed;
+	sidebar_page_class->support_document = ev_sidebar_attachments_support_document;
+	sidebar_page_class->set_model = ev_sidebar_attachments_set_model;
+	sidebar_page_class->get_label = ev_sidebar_attachments_get_label;
+
+	/* Signals */
+	signals[SIGNAL_POPUP_MENU] =
+		g_signal_new ("popup",
+			      G_TYPE_FROM_CLASS (g_object_class),
+			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+			      G_STRUCT_OFFSET (EvSidebarAttachmentsClass, popup_menu),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__POINTER,
+			      G_TYPE_NONE, 1,
+			      G_TYPE_POINTER);
+
+	signals[SIGNAL_SAVE_ATTACHMENT] =
+		g_signal_new ("save-attachment",
+			      G_TYPE_FROM_CLASS (g_object_class),
+			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+			      G_STRUCT_OFFSET (EvSidebarAttachmentsClass, save_attachment),
+			      NULL, NULL,
+			      g_cclosure_marshal_generic,
+			      G_TYPE_BOOLEAN, 2,
+			      G_TYPE_OBJECT,
+		              G_TYPE_STRING);
+}
+
+static void
+ev_sidebar_attachments_init (EvSidebarAttachments *ev_attachbar)
+{
+	GtkWidget *swindow;
+
+	static const GtkTargetEntry targets[] = { {"text/uri-list", 0, EV_DND_TARGET_TEXT_URI_LIST},
+	                                          {"XdndDirectSave0", 0, EV_DND_TARGET_XDS}};
+
+	ev_attachbar->priv = ev_sidebar_attachments_get_instance_private (ev_attachbar);
+
+	swindow = gtk_scrolled_window_new (NULL, NULL);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow),
+					GTK_POLICY_NEVER,
+					GTK_POLICY_AUTOMATIC);
+	/* Data Model */
+	ev_attachbar->priv->model = gtk_list_store_new (N_COLS,
+							GDK_TYPE_PIXBUF,
+							G_TYPE_STRING,
+							G_TYPE_STRING,
+							EV_TYPE_ATTACHMENT);
+
+	/* Icon View */
+	ev_attachbar->priv->icon_view =
+		gtk_icon_view_new_with_model (GTK_TREE_MODEL (ev_attachbar->priv->model));
+	gtk_icon_view_set_selection_mode (GTK_ICON_VIEW (ev_attachbar->priv->icon_view),
+					  GTK_SELECTION_MULTIPLE);
+	gtk_icon_view_set_columns (GTK_ICON_VIEW (ev_attachbar->priv->icon_view), -1);
+	g_object_set (G_OBJECT (ev_attachbar->priv->icon_view),
+		      "text-column", COLUMN_NAME,
+		      "pixbuf-column", COLUMN_ICON,
+		      "tooltip-column", COLUMN_DESCRIPTION,
+		      NULL);
+	g_signal_connect_swapped (ev_attachbar->priv->icon_view,
+				  "button-press-event",
+				  G_CALLBACK (ev_sidebar_attachments_button_press),
+				  (gpointer) ev_attachbar);
+
+	gtk_container_add (GTK_CONTAINER (swindow),
+			   ev_attachbar->priv->icon_view);
+
+        gtk_box_pack_start (GTK_BOX (ev_attachbar), swindow, TRUE, TRUE, 0);
+	gtk_widget_show_all (GTK_WIDGET (ev_attachbar));
+
+	/* Icon Theme */
+	ev_attachbar->priv->icon_theme = NULL;
+
+	/* Icon Cache */
+	ev_attachbar->priv->icon_cache = g_hash_table_new_full (g_str_hash,
+								g_str_equal,
+								g_free,
+								g_object_unref);
+
+	/* Drag and Drop */
+	gtk_icon_view_enable_model_drag_source (
+		GTK_ICON_VIEW (ev_attachbar->priv->icon_view),
+		GDK_BUTTON1_MASK,
+        	targets, G_N_ELEMENTS (targets),
+		GDK_ACTION_MOVE);
+
+	g_signal_connect (ev_attachbar->priv->icon_view,
+			  "drag-data-get",
+			  G_CALLBACK (ev_sidebar_attachments_drag_data_get),
+			  (gpointer) ev_attachbar);
+
+	g_signal_connect (ev_attachbar->priv->icon_view,
+	                  "drag-begin",
+	                  G_CALLBACK (ev_sidebar_attachments_drag_begin),
+	                  (gpointer) ev_attachbar);
 }

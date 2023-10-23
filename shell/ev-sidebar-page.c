@@ -26,59 +26,63 @@
 
 #include "ev-sidebar-page.h"
 
-G_DEFINE_INTERFACE (EvSidebarPage, ev_sidebar_page, 0)
+G_DEFINE_TYPE (EvSidebarPage, ev_sidebar_page, GTK_TYPE_BOX)
 
 gboolean
 ev_sidebar_page_support_document (EvSidebarPage *sidebar_page,
 				  EvDocument    *document)
 {
-        EvSidebarPageInterface *iface;
+	EvSidebarPageClass *klass;
 
 	g_return_val_if_fail (EV_IS_SIDEBAR_PAGE (sidebar_page), FALSE);
-        g_return_val_if_fail (EV_IS_DOCUMENT (document), FALSE);
+	g_return_val_if_fail (EV_IS_DOCUMENT (document), FALSE);
 
-	iface = EV_SIDEBAR_PAGE_GET_IFACE (sidebar_page);
+	klass = EV_SIDEBAR_PAGE_GET_CLASS (sidebar_page);
 
-        g_return_val_if_fail (iface->support_document, FALSE);
+	g_return_val_if_fail (klass->support_document, FALSE);
 
-        return iface->support_document (sidebar_page, document);
+	return klass->support_document (sidebar_page, document);
 }
 
 void
 ev_sidebar_page_set_model (EvSidebarPage   *sidebar_page,
 			   EvDocumentModel *model)
 {
-	EvSidebarPageInterface *iface;
+	EvSidebarPageClass *klass;
 
-        g_return_if_fail (EV_IS_SIDEBAR_PAGE (sidebar_page));
+	g_return_if_fail (EV_IS_SIDEBAR_PAGE (sidebar_page));
 	g_return_if_fail (EV_IS_DOCUMENT_MODEL (model));
 
-	iface = EV_SIDEBAR_PAGE_GET_IFACE (sidebar_page);
+	klass = EV_SIDEBAR_PAGE_GET_CLASS (sidebar_page);
 
-	g_assert (iface->set_model);
+	g_assert (klass->set_model);
 
-	iface->set_model (sidebar_page, model);
+	klass->set_model (sidebar_page, model);
 }
 
 const gchar *
 ev_sidebar_page_get_label (EvSidebarPage *sidebar_page)
 {
-	EvSidebarPageInterface *iface;
+	EvSidebarPageClass *klass;
 
-        g_return_val_if_fail (EV_IS_SIDEBAR_PAGE (sidebar_page), NULL);
+	g_return_val_if_fail (EV_IS_SIDEBAR_PAGE (sidebar_page), NULL);
 
-	iface = EV_SIDEBAR_PAGE_GET_IFACE (sidebar_page);
+	klass = EV_SIDEBAR_PAGE_GET_CLASS (sidebar_page);
 
-	g_assert (iface->get_label);
+	g_assert (klass->get_label);
 
-	return iface->get_label (sidebar_page);
+	return klass->get_label (sidebar_page);
 }
 
 static void
-ev_sidebar_page_default_init (EvSidebarPageInterface *iface)
+ev_sidebar_page_class_init (EvSidebarPageClass *klass)
 {
-	static gboolean initialized = FALSE;
 
-	if (!initialized)
-		initialized = TRUE;
+}
+
+static void
+ev_sidebar_page_init (EvSidebarPage *sidebar_page)
+{
+	gtk_orientable_set_orientation (GTK_ORIENTABLE (sidebar_page),
+					GTK_ORIENTATION_VERTICAL);
 }

@@ -25,6 +25,8 @@
 
 #include <gtk/gtk.h>
 
+#include "ev-sidebar-page.h"
+
 G_BEGIN_DECLS
 
 typedef struct _EvSidebarThumbnails EvSidebarThumbnails;
@@ -39,13 +41,13 @@ typedef struct _EvSidebarThumbnailsPrivate EvSidebarThumbnailsPrivate;
 #define EV_SIDEBAR_THUMBNAILS_GET_CLASS(object)	(G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_THUMBNAILS, EvSidebarThumbnailsClass))
 
 struct _EvSidebarThumbnails {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarThumbnailsPrivate *priv;
 };
 
 struct _EvSidebarThumbnailsClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 };
 
 GType      ev_sidebar_thumbnails_get_type     (void) G_GNUC_CONST;

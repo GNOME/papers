@@ -24,7 +24,6 @@
 #include "gimpcellrenderertoggle.h"
 
 #include "ev-document-layers.h"
-#include "ev-sidebar-page.h"
 #include "ev-jobs.h"
 #include "ev-job-scheduler.h"
 #include "ev-sidebar-layers.h"
@@ -41,19 +40,14 @@ enum {
 	N_SIGNALS
 };
 
-static void ev_sidebar_layers_page_iface_init (EvSidebarPageInterface *iface);
 static void job_finished_callback             (EvJobLayers            *job,
 					       EvSidebarLayers        *sidebar_layers);
 
 static guint signals[N_SIGNALS];
 
-G_DEFINE_TYPE_EXTENDED (EvSidebarLayers,
-                        ev_sidebar_layers,
-                        GTK_TYPE_BOX,
-                        0,
-                        G_ADD_PRIVATE (EvSidebarLayers)
-                        G_IMPLEMENT_INTERFACE (EV_TYPE_SIDEBAR_PAGE,
-					       ev_sidebar_layers_page_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (EvSidebarLayers,
+			    ev_sidebar_layers,
+			    EV_TYPE_SIDEBAR_PAGE)
 
 static void
 ev_sidebar_layers_dispose (GObject *object)
@@ -246,50 +240,6 @@ ev_sidebar_layers_create_tree_view (EvSidebarLayers *ev_layers)
 	return tree_view;
 }
 
-static void
-ev_sidebar_layers_init (EvSidebarLayers *ev_layers)
-{
-	GtkWidget    *swindow;
-	GtkTreeModel *model;
-
-	ev_layers->priv = ev_sidebar_layers_get_instance_private (ev_layers);
-
-	swindow = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow),
-					GTK_POLICY_NEVER,
-					GTK_POLICY_AUTOMATIC);
-	/* Data Model */
-	model = ev_sidebar_layers_create_loading_model ();
-
-	/* Layers list */
-	ev_layers->priv->tree_view = ev_sidebar_layers_create_tree_view (ev_layers);
-	gtk_tree_view_set_model (ev_layers->priv->tree_view, model);
-	g_object_unref (model);
-
-	gtk_container_add (GTK_CONTAINER (swindow),
-			   GTK_WIDGET (ev_layers->priv->tree_view));
-
-        gtk_box_pack_start (GTK_BOX (ev_layers), swindow, TRUE, TRUE, 0);
-	gtk_widget_show_all (GTK_WIDGET (ev_layers));
-}
-
-static void
-ev_sidebar_layers_class_init (EvSidebarLayersClass *ev_layers_class)
-{
-	GObjectClass *g_object_class = G_OBJECT_CLASS (ev_layers_class);
-
-	g_object_class->dispose = ev_sidebar_layers_dispose;
-
-	signals[LAYERS_VISIBILITY_CHANGED] =
-		g_signal_new ("layers_visibility_changed",
-			      G_TYPE_FROM_CLASS (g_object_class),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (EvSidebarLayersClass, layers_visibility_changed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
-			      G_TYPE_NONE, 0, G_TYPE_NONE);
-}
-
 GtkWidget *
 ev_sidebar_layers_new (void)
 {
@@ -411,9 +361,50 @@ ev_sidebar_layers_get_label (EvSidebarPage *sidebar_page)
 }
 
 static void
-ev_sidebar_layers_page_iface_init (EvSidebarPageInterface *iface)
+ev_sidebar_layers_init (EvSidebarLayers *ev_layers)
 {
-	iface->support_document = ev_sidebar_layers_support_document;
-	iface->set_model = ev_sidebar_layers_set_model;
-	iface->get_label = ev_sidebar_layers_get_label;
+	GtkWidget    *swindow;
+	GtkTreeModel *model;
+
+	ev_layers->priv = ev_sidebar_layers_get_instance_private (ev_layers);
+
+	swindow = gtk_scrolled_window_new (NULL, NULL);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swindow),
+					GTK_POLICY_NEVER,
+					GTK_POLICY_AUTOMATIC);
+	/* Data Model */
+	model = ev_sidebar_layers_create_loading_model ();
+
+	/* Layers list */
+	ev_layers->priv->tree_view = ev_sidebar_layers_create_tree_view (ev_layers);
+	gtk_tree_view_set_model (ev_layers->priv->tree_view, model);
+	g_object_unref (model);
+
+	gtk_container_add (GTK_CONTAINER (swindow),
+			   GTK_WIDGET (ev_layers->priv->tree_view));
+
+        gtk_box_pack_start (GTK_BOX (ev_layers), swindow, TRUE, TRUE, 0);
+	gtk_widget_show_all (GTK_WIDGET (ev_layers));
+}
+
+static void
+ev_sidebar_layers_class_init (EvSidebarLayersClass *klass)
+{
+	GObjectClass       *g_object_class = G_OBJECT_CLASS (klass);
+	EvSidebarPageClass *sidebar_page_class = EV_SIDEBAR_PAGE_CLASS (klass);
+
+	g_object_class->dispose = ev_sidebar_layers_dispose;
+
+	sidebar_page_class->support_document = ev_sidebar_layers_support_document;
+	sidebar_page_class->set_model = ev_sidebar_layers_set_model;
+	sidebar_page_class->get_label = ev_sidebar_layers_get_label;
+
+	signals[LAYERS_VISIBILITY_CHANGED] =
+		g_signal_new ("layers_visibility_changed",
+			      G_TYPE_FROM_CLASS (g_object_class),
+			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+			      G_STRUCT_OFFSET (EvSidebarLayersClass, layers_visibility_changed),
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__VOID,
+			      G_TYPE_NONE, 0, G_TYPE_NONE);
 }

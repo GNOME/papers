@@ -23,6 +23,8 @@
 #include <gtk/gtk.h>
 #include <glib-object.h>
 
+#include "ev-sidebar-page.h"
+
 G_BEGIN_DECLS
 
 typedef struct _EvSidebarLayers        EvSidebarLayers;
@@ -37,13 +39,13 @@ typedef struct _EvSidebarLayersPrivate EvSidebarLayersPrivate;
 #define EV_SIDEBAR_LAYERS_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), EV_TYPE_SIDEBAR_LAYERS, EvSidebarLayersClass))
 
 struct _EvSidebarLayers {
-	GtkBox base_instance;
+	EvSidebarPage base_instance;
 
 	EvSidebarLayersPrivate *priv;
 };
 
 struct _EvSidebarLayersClass {
-	GtkBoxClass base_class;
+	EvSidebarPageClass base_class;
 
 	/* Signals */
 	void (* layers_visibility_changed) (EvSidebarLayers *ev_layers);

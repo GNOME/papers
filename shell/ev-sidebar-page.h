@@ -28,33 +28,27 @@
 
 G_BEGIN_DECLS
 
-#define EV_TYPE_SIDEBAR_PAGE	    	(ev_sidebar_page_get_type ())
-#define EV_SIDEBAR_PAGE(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), EV_TYPE_SIDEBAR_PAGE, EvSidebarPage))
-#define EV_SIDEBAR_PAGE_IFACE(k)	(G_TYPE_CHECK_CLASS_CAST((k), EV_TYPE_SIDEBAR_PAGE, EvSidebarPageInterface))
-#define EV_IS_SIDEBAR_PAGE(o)	    	(G_TYPE_CHECK_INSTANCE_TYPE ((o), EV_TYPE_SIDEBAR_PAGE))
-#define EV_IS_SIDEBAR_PAGE_IFACE(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), EV_TYPE_SIDEBAR_PAGE))
-#define EV_SIDEBAR_PAGE_GET_IFACE(inst) (G_TYPE_INSTANCE_GET_INTERFACE ((inst), EV_TYPE_SIDEBAR_PAGE, EvSidebarPageInterface))
+#define EV_TYPE_SIDEBAR_PAGE (ev_sidebar_page_get_type ())
 
-typedef struct _EvSidebarPage	         EvSidebarPage;
-typedef struct _EvSidebarPageInterface   EvSidebarPageInterface;
+EV_PUBLIC
+G_DECLARE_DERIVABLE_TYPE (EvSidebarPage, ev_sidebar_page, EV, SIDEBAR_PAGE, GtkBox)
 
-struct _EvSidebarPageInterface
+struct _EvSidebarPageClass
 {
-	GTypeInterface base_iface;
+	GtkBoxClass base_class;
 
 	/* Methods  */
-	gboolean    (* support_document)  (EvSidebarPage   *sidebar_page,
-				           EvDocument *document);
-	void 	    (* set_model)	  (EvSidebarPage   *sidebar_page,
-					   EvDocumentModel *model);
-	const gchar*(* get_label)         (EvSidebarPage  *sidebar_page);
+	gboolean    (* support_document) (EvSidebarPage   *sidebar_page,
+					  EvDocument      *document);
+	void        (* set_model)        (EvSidebarPage   *sidebar_page,
+					  EvDocumentModel *model);
+	const gchar*(* get_label)        (EvSidebarPage   *sidebar_page);
 };
 
-GType         ev_sidebar_page_get_type          (void) G_GNUC_CONST;
 gboolean      ev_sidebar_page_support_document  (EvSidebarPage    *sidebar_page,
-	 			                 EvDocument *document);
+						 EvDocument *document);
 void          ev_sidebar_page_set_model         (EvSidebarPage    *sidebar_page,
-				                 EvDocumentModel *model);
+						 EvDocumentModel *model);
 const gchar*  ev_sidebar_page_get_label         (EvSidebarPage *page);
 
 
