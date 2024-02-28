@@ -3,21 +3,26 @@
 Papers is a document viewer capable of displaying multiple and single
 page document formats like PDF and DejaVu.  For more general
 information about Papers and how to get started, please visit
-https://welcome.gnome.org/app/Papers
+[https://welcome.gnome.org/app/Papers](https://welcome.gnome.org/app/Papers)
 
-If you are a developer, make sure to read the [contributing](CONTRIBUTING.md)
-guidelines before starting to work on any changes.
+## Installation
 
-This software is licensed under the [GPLv2][license].
+Papers is licensed under the [GPLv2][license], get it on Flathub!
 
 [![flatpak]](https://flathub.org/apps/details/org.gnome.Papers)
 
-## Papers Requirements
+## Reporting and Development
+
+If you experience issues with Papers, check out the [reporting tips](TESTING.md).
+Developers should make sure to read the [contributing](CONTRIBUTING.md)
+guidelines, before starting to work on any changes.
+
+### Papers Requirements
 
 * [GNOME Platform libraries][gnome]
 * [Poppler for PDF viewing][poppler]
 
-## Papers Optional Backend Libraries
+### Papers Optional Backend Libraries
 
 * [DjVuLibre for DjVu viewing][djvulibre]
 * [Archive library for Comic Book Resources (CBR) viewing][comics]
@@ -32,6 +37,6 @@ This software is licensed under the [GPLv2][license].
 [papers-logo]: data/icons/scalable/apps/org.gnome.Papers.svg
 [flatpak]: https://flathub.org/api/badge?svg&locale=en
 
-### Code of Conduct
+## Code of Conduct
 
 When interacting with the project, the [GNOME Code Of Conduct](https://conduct.gnome.org/) applies.

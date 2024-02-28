@@ -1,27 +1,88 @@
-<!--
-Thanks for using Papers and welcome to our issue tracker. Please carefully read the issue reporting guidelines before completing your issue report: https://handbook.gnome.org/issues/reporting.html
+<!-- DELETE ME: Thanks for using Papers and welcome to our issue tracker!
+Before describing your issue, please
 
-* Make sure to search to see if there is an existing report for your issue
-* Always makes sure to describe your personal experience of the issue, and to include specifics of what happened
-* Make sure to include any necessary supplementary information, such as a stack trace for crashes or screenshots of interface issues
+* search Gitlab's issue tracker, if there already exists a report for your issue
+* read the reporting guidelines, linked at the end of this template
+* describe your personal experience of the issue, including specifics of what happened
+* attach the document you were viewing or a link to this document
+* provide any necessary supplementary information, such as
+  a back trace for crashes or screenshots of interface issues
 
-Please complete the affected version information below, before describing your issue.
-
-In addition, when reporting bugs about Papers, it is most helpful to include the document you were viewing. If you can provide a link to this document please include that link so the Papers developers can test against that document as well.
-
-See also https://wiki.gnome.org/Apps/Evince/PopplerBugs#How_to_check_if_a_bug_belongs_to_Poppler_or_Evince to learn how to check if a bug belongs to Poppler or Papers.
+and make sure to complete the affected version information below.
 -->
 
-### Affected version
 
-* Distribution, including version (example: "Ubuntu 20.04"):
-* <insert module name> version (example: "45.1"):
-* Package format and distributor (example: "Flatpak from Flathub"):
+### Affected Version
+
+* Distribution and version: `REPLACE ME: example Ubuntu 20.04`
+* Package format and distributor: `REPLACE ME: examples flatpak from Flathub; deb from Debian`
+* Papers version: `REPLACE ME: example 48.1`
+
+
+<!-- DELETE ME: If you have installed Papers as a flatpak, e.g. from Flathub, please run in a terminal
+
+flatpak info org.gnome.Papers
+
+and insert the resulting VERSION INFO OUTPUT below
+
+-->
+
+
+
+<details><summary>flatpak info</summary>
+
+```
+REPLACE ME: insert VERSION INFO OUTPUT, keep the three tick above and below
+```
+
+</details>
+
+
+<!-- DELETE ME: Otherwise you may delete the `flatpak info` template just above,
+i.e.  in plain text editing mode all and incuding from <details> to <details>.
+-->
+
 
 ### Summary
 
-REPLACE-ME: Explain in short what is the problem, e.g: crashed while opening PDF document
+`REPLACE ME: explain in short what is the problem, for instance "Crash when opening a pdf"`
+
 
 ### Description
 
-REPLACE-ME: more detailed description of the problem. If the problem happens on a specific document, please add a link or attach the document. If Papers is crashing, a backtrace is always useful. A good example would be: "I clicked on a link from Epiphany which opened Papers for viewing a PDF document. Papers crashed before actually rendering anything at all. Attached you can find the document and the backtrace after the crash"
+<!-- DELETE ME: give here a more detailed description of the problem. In particular,
+
+* if you observe problems with a specific document, please attach or add a link to that document.
+* if Papers freezes or crashes, follow the relevant section of Papers specific reporting guidelines,
+  linked at the end of this template.
+
+A good example would be
+-->
+
+
+When I click on this link
+
+https://foundation.gnome.org/wp-content/uploads/sites/12/2022/06/bylaws.pdf
+
+from Epiphany, then Papers opens for viewing the pdf. But Papers crashes before actually rendering anything at all.
+
+Attached you can find the document and here is the
+
+
+
+<details><summary>backtrace</summary>
+
+```
+REPLACE ME: insert BACKTRACE OUTPUT here, keep the three ticks above and below
+```
+
+</details>
+
+---
+
+#### Reporting Guidelines
+
+* specific to Papers: https://gitlab.gnome.org/GNOME/Incubator/papers/-/blob/main/TESTING.md
+* generic for GNOME: https://handbook.gnome.org/issues/reporting.html
+
+
