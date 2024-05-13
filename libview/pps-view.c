@@ -2138,7 +2138,7 @@ tip_from_link (PpsView *view, PpsLink *link)
 }
 
 static void
-handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y, gboolean from_motion)
+handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GdkRectangle     link_area;
@@ -2164,10 +2164,6 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y, gboolean 
 
 	dest = pps_link_action_get_dest (action);
 	if (!dest)
-		return;
-
-	/* Show preview popups only for motion events - Issue #1666 */
-	if (!from_motion)
 		return;
 
 	type = pps_link_dest_get_dest_type (dest);
@@ -2237,7 +2233,7 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y, gboolean 
 }
 
 static void
-pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y, gboolean from_motion)
+pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsLink       *link;
@@ -2259,7 +2255,7 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y, gboolean from_mot
 
 	link = pps_view_get_link_at_location (view, x, y);
 	if (link) {
-		handle_cursor_over_link (view, link, x, y, from_motion);
+		handle_cursor_over_link (view, link, x, y);
 		return;
 	}
 
@@ -5298,10 +5294,15 @@ pps_view_button_press_event (GtkGestureClick	*self,
 					GdkPoint end_point;
 					end_point.x = x + priv->scroll_x;
 					end_point.y = y + priv->scroll_y;
-					compute_selections (view,
-							    PPS_SELECTION_STYLE_GLYPH,
-							    &(priv->selection_info.start),
-							    &end_point);
+					// Should do:
+					// * Similar to compute_new_selection,
+					//   but just having a stop point, and
+					//   using previous selections
+					// * Call merge_selection_region (if it
+					//   does what its name suggest)
+					extend_selection (view,
+							  PPS_SELECTION_STYLE_GLIPH,
+							  &end_point);
 				} else if (n_press > 1) {
 					GdkPoint point;
 					PpsSelectionStyle style;
@@ -5795,7 +5796,7 @@ pps_view_motion_notify_event (GtkEventControllerMotion	*self,
 	if (gtk_gesture_is_recognized (priv->drag_primary_gesture))
 		return;
 
-	pps_view_handle_cursor_over_xy (view, x, y, TRUE);
+	pps_view_handle_cursor_over_xy (view, x, y);
 }
 
 /**
@@ -7692,7 +7693,7 @@ pps_view_change_page (PpsView *view,
 	pps_view_set_loading (view, FALSE);
 
 	pps_document_misc_get_pointer_position (GTK_WIDGET (view), &x, &y);
-	pps_view_handle_cursor_over_xy (view, x, y, FALSE);
+	pps_view_handle_cursor_over_xy (view, x, y);
 
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
