@@ -5093,31 +5093,6 @@ pps_view_query_tooltip (GtkWidget  *widget,
 	return FALSE;
 }
 
-static void
-start_selection_for_event (PpsView	*view,
-			   gdouble	 x,
-			   gdouble	 y,
-			   gint		 n_press)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	priv->selection_info.in_select = TRUE;
-	priv->selection_info.start.x = x + priv->scroll_x;
-	priv->selection_info.start.y = y + priv->scroll_y;
-
-	switch (n_press % 3) {
-	case 0:
-		priv->selection_info.style = PPS_SELECTION_STYLE_LINE;
-		break;
-	case 1:
-		priv->selection_info.style = PPS_SELECTION_STYLE_GLYPH;
-		break;
-	case 2:
-		priv->selection_info.style = PPS_SELECTION_STYLE_WORD;
-		break;
-	}
-}
-
 gint
 _pps_view_get_caret_cursor_offset_at_doc_point (PpsView *view,
 					       gint    page,
@@ -5275,15 +5250,14 @@ position_caret_cursor_for_event (PpsView         *view,
 }
 
 static void
-pps_view_button_press_event (GtkGestureClick	*gesture,
+pps_view_button_press_event (GtkGestureClick	*self,
 			    int			 n_press,
 			    double		 x,
 			    double		 y,
 			    gpointer		 user_data)
 {
-	GtkEventController *controller = GTK_EVENT_CONTROLLER (gesture);
+	GtkEventController *controller = GTK_EVENT_CONTROLLER (self);
 	GtkWidget *widget = gtk_event_controller_get_widget (controller);
-	GdkEvent *event = gtk_event_controller_get_current_event (controller);
 	guint button;
 	GdkModifierType state = gtk_event_controller_get_current_event_state (controller);
 
@@ -5305,10 +5279,7 @@ pps_view_button_press_event (GtkGestureClick	*gesture,
 		gtk_widget_grab_focus (widget);
 	}
 
-	button = gdk_button_event_get_button (event);
-
-	priv->pressed_button = button;
-	priv->selection_info.in_select = FALSE;
+	button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (self));
 
 	/* Handled in release! */
 	if (priv->adding_text_annot)
@@ -5317,7 +5288,6 @@ pps_view_button_press_event (GtkGestureClick	*gesture,
 	switch (button) {
 	        case GDK_BUTTON_PRIMARY: {
 			PpsImage *image;
-			PpsAnnotation *annot;
 			PpsFormField *field;
 			PpsMapping *link;
 			PpsMedia *media;
@@ -5333,57 +5303,32 @@ pps_view_button_press_event (GtkGestureClick	*gesture,
 							    &(priv->selection_info.start),
 							    &end_point);
 				} else if (n_press > 1) {
-					start_selection_for_event (view, x, y, n_press);
+					GdkPoint point;
+					PpsSelectionStyle style;
+					switch (n_press % 3) {
+					case 0:
+						style = PPS_SELECTION_STYLE_LINE;
+						break;
+					case 1:
+						style = PPS_SELECTION_STYLE_GLYPH;
+						break;
+					case 2:
+						style = PPS_SELECTION_STYLE_WORD;
+						break;
+					}
 					/* In case of WORD or LINE, compute selections */
-					compute_selections (view,
-							    priv->selection_info.style,
-							    &(priv->selection_info.start),
-							    &(priv->selection_info.start));
+					point.x = x + priv->scroll_x;
+					point.y = y + priv->scroll_y;
+					compute_selections (view, style,
+							    &point,
+							    &point);
 				} else {
 					clear_selection (view);
-					start_selection_for_event (view, x, y, 1);
 				}
 			}
 
 			if ((media = pps_view_get_media_at_location (view, x, y))) {
 				pps_view_handle_media (view, media);
-			} else if ((annot = pps_view_get_annotation_at_location (view, x, y))) {
-				if (PPS_IS_ANNOTATION_TEXT (annot)) {
-					PpsRectangle  current_area;
-					GdkPoint     view_point;
-					PpsPoint      doc_point;
-					GdkRectangle page_area;
-					GtkBorder    border;
-					guint        annot_page;
-
-					/* annot_clicked remembers that we clicked
-					 * on an annotation. We need moving_annot
-					 * to distinguish moving an annotation from
-					 * showing its popup upon button release. */
-					priv->moving_annot_info.annot_clicked = TRUE;
-					priv->moving_annot_info.moving_annot = FALSE;
-					priv->moving_annot_info.annot = annot;
-					pps_annotation_get_area (annot, &current_area);
-
-					view_point.x = x + priv->scroll_x;
-					view_point.y = y + priv->scroll_y;
-
-					/* Remember the coordinates of the button press event
-					 * in order to implement a minimum threshold for moving
-					 * annotations. */
-					priv->moving_annot_info.start = view_point;
-					annot_page = pps_annotation_get_page_index (annot);
-					pps_view_get_page_extents (view, annot_page, &page_area, &border);
-					_pps_view_transform_view_point_to_doc_point (view, &view_point,
-										    &page_area, &border,
-										    &doc_point.x, &doc_point.y);
-
-					/* Remember the offset of the cursor with respect to
-					 * the annotation area in order to prevent the annotation from
-					 * jumping under the cursor while moving it. */
-					priv->moving_annot_info.cursor_offset.x = doc_point.x - current_area.x1;
-					priv->moving_annot_info.cursor_offset.y = doc_point.y - current_area.y1;
-				}
 			} else if ((field = pps_view_get_form_field_at_location (view, x, y))) {
 				pps_view_remove_all_form_fields (view);
 				pps_view_handle_form_field (view, field);
@@ -5601,11 +5546,71 @@ pps_view_remove_all (PpsView *view)
 }
 
 static void
+pps_view_start_move_annot (PpsView       *view,
+			   PpsAnnotation *annot,
+			   gdouble         x,
+			   gdouble         y)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	PpsRectangle  current_area;
+	GdkPoint     view_point;
+	PpsPoint      doc_point;
+	GdkRectangle page_area;
+	GtkBorder    border;
+	guint        annot_page;
+
+	priv->moving_annot_info.moved = FALSE;
+	priv->moving_annot_info.annot = annot;
+	pps_annotation_get_area (annot, &current_area);
+
+	/* Save the starting point, so we can later calculate offsets! */
+	priv->moving_annot_info.start.x = x;
+	priv->moving_annot_info.start.y = y;
+
+	/* Remember the offset of the cursor with respect to
+	 * the annotation area in order to prevent the annotation from
+	 * jumping under the cursor while moving it. */
+	view_point.x = x + priv->scroll_x;
+	view_point.y = y + priv->scroll_y;
+	annot_page = pps_annotation_get_page_index (annot);
+	pps_view_get_page_extents (view, annot_page, &page_area, &border);
+	_pps_view_transform_view_point_to_doc_point (view, &view_point,
+						     &page_area, &border,
+						     &doc_point.x, &doc_point.y);
+	priv->moving_annot_info.cursor_offset.x = doc_point.x - current_area.x1;
+	priv->moving_annot_info.cursor_offset.y = doc_point.y - current_area.y1;
+}
+
+static void
+primary_clicked_drag_begin_cb (GtkGestureDrag *self,
+			       gdouble         x,
+			       gdouble         y,
+			       PpsView        *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	PpsAnnotation  *annot;
+
+	annot = pps_view_get_annotation_at_location (view, x, y);
+	if (annot && PPS_IS_ANNOTATION_TEXT (annot)) {
+		pps_view_start_move_annot (view, annot, x, y);
+		// If we started dragging an annotation, don't select!
+		return;
+	}
+
+	if (PPS_IS_SELECTION (priv->document)) {
+		priv->selection_info.start.x = x + priv->scroll_x;
+		priv->selection_info.start.y = y + priv->scroll_y;
+		priv->selection_info.start_scroll.x = priv->scroll_x;
+		priv->selection_info.start_scroll.y = priv->scroll_y;
+	}
+}
+
+static void
 selection_update_idle_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	compute_selections (view,
-			    priv->selection_info.style,
+			    PPS_SELECTION_STYLE_GLYPH,
 			    &priv->selection_info.start,
 			    &priv->motion);
 	priv->selection_update_id = 0;
@@ -5652,13 +5657,133 @@ selection_scroll_timeout_cb (PpsView *view)
 }
 
 static void
+pps_view_move_annot_to_point (PpsView  *view,
+			      GdkPoint *view_point)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	PpsRectangle  rect;
+	PpsRectangle  current_area;
+	PpsPoint      doc_point;
+	GdkRectangle page_area;
+	GtkBorder    border;
+	guint        annot_page;
+	double       page_width;
+	double       page_height;
+
+	pps_annotation_get_area (priv->moving_annot_info.annot, &current_area);
+	annot_page = pps_annotation_get_page_index (priv->moving_annot_info.annot);
+	pps_view_get_page_extents (view, annot_page, &page_area, &border);
+	_pps_view_transform_view_point_to_doc_point (view, view_point, &page_area, &border,
+						     &doc_point.x, &doc_point.y);
+
+	pps_document_get_page_size (priv->document, annot_page, &page_width, &page_height);
+
+	rect.x1 = MAX (0, doc_point.x - priv->moving_annot_info.cursor_offset.x);
+	rect.y1 = MAX (0, doc_point.y - priv->moving_annot_info.cursor_offset.y);
+	rect.x2 = rect.x1 + current_area.x2 - current_area.x1;
+	rect.y2 = rect.y1 + current_area.y2 - current_area.y1;
+
+	/* Prevent the annotation from being moved off the page */
+	if (rect.x2 > page_width) {
+		rect.x2 = page_width;
+		rect.x1 = page_width - current_area.x2 + current_area.x1;
+	}
+	if (rect.y2 > page_height) {
+		rect.y2 = page_height;
+		rect.y1 = page_height - current_area.y2 + current_area.y1;
+	}
+
+	/* Take the mutex before set_area, because the notify signal
+	 * updates the mappings in the backend */
+	pps_document_doc_mutex_lock ();
+	if (pps_annotation_set_area (priv->moving_annot_info.annot, &rect)) {
+		pps_document_annotations_save_annotation (PPS_DOCUMENT_ANNOTATIONS (priv->document),
+							  priv->moving_annot_info.annot,
+							  PPS_ANNOTATIONS_SAVE_AREA);
+	}
+	pps_document_doc_mutex_unlock ();
+
+	/* FIXME: reload only annotation area */
+	pps_view_reload_page (view, annot_page, NULL);
+}
+
+static void
+primary_clicked_drag_update_cb (GtkGestureDrag *self,
+				gdouble         offset_x,
+				gdouble         offset_y,
+				PpsView        *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	/* Schedule timeout to scroll during drag, and scroll once to allow
+	   arbitrary speed. */
+	if (!priv->selection_scroll_id)
+		priv->selection_scroll_id = g_timeout_add (SCROLL_TIME,
+							   (GSourceFunc)selection_scroll_timeout_cb,
+							   view);
+	else
+		selection_scroll_timeout_cb (view);
+
+	if (priv->moving_annot_info.annot) {
+		gdouble  x, y;
+
+		x = priv->moving_annot_info.start.x;
+		y = priv->moving_annot_info.start.y;
+
+		if (priv->moving_annot_info.moved ||
+		    gtk_drag_check_threshold (GTK_WIDGET (view),
+					      x, y,
+					      x + offset_x, y + offset_y)) {
+			GdkPoint view_point;
+			view_point.x = x + offset_x + priv->scroll_x;
+			view_point.y = y + offset_y + priv->scroll_y;
+			pps_view_move_annot_to_point (view, &view_point);
+			priv->moving_annot_info.moved = TRUE;
+		}
+		// Only drag one thing at a time!
+		return;
+	}
+
+	/* Selection in rotated documents has never worked */
+	if (PPS_IS_SELECTION (priv->document) && priv->rotation == 0) {
+		priv->motion.x = priv->selection_info.start.x + offset_x;
+		priv->motion.y = priv->selection_info.start.y + offset_y;
+		/* Adjust scrolling position */
+		priv->motion.x += priv->scroll_x - priv->selection_info.start_scroll.x;
+		priv->motion.y += priv->scroll_y - priv->selection_info.start_scroll.y;
+
+		/* Queue an idle to handle the motion.  We do this because
+		 * handling any selection events in the motion could be slower
+		 * than new motion events reach us.  We always put it in the
+		 * idle to make sure we catch up and don't visibly lag the
+		 * mouse. */
+		if (!priv->selection_update_id)
+			priv->selection_update_id =
+				g_idle_add_once ((GSourceOnceFunc)selection_update_idle_cb,
+						 view);
+
+	}
+}
+
+static void
+primary_clicked_drag_end_cb (GtkGestureDrag *self,
+			     gdouble         offset_x,
+			     gdouble         offset_y,
+			     PpsView        *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	primary_clicked_drag_update_cb (self, offset_x, offset_y, view);
+	priv->moving_annot_info.annot = NULL;
+}
+
+static void
 pps_view_motion_notify_event (GtkEventControllerMotion	*self,
 			     gdouble			 x,
 			     gdouble			 y,
 			     gpointer			 user_data)
 {
 	PpsView    *view = PPS_VIEW (user_data);
-	GtkWidget *widget = GTK_WIDGET (view);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (!priv->document)
@@ -5667,107 +5792,10 @@ pps_view_motion_notify_event (GtkEventControllerMotion	*self,
 	if (gtk_gesture_is_recognized (priv->zoom_gesture))
 		return;
 
-	switch (priv->pressed_button) {
-	case GDK_BUTTON_PRIMARY:
-		/* For the Papers 0.4.x release, we limit selection to un-rotated
-		 * documents only.
-		 */
-		if (priv->rotation != 0)
-			return;
-
-		if (priv->moving_annot_info.annot_clicked) {
-			PpsRectangle  rect;
-			PpsRectangle  current_area;
-			GdkPoint     view_point;
-			PpsPoint      doc_point;
-			GdkRectangle page_area;
-			GtkBorder    border;
-			guint        annot_page;
-			double       page_width;
-			double       page_height;
-
-			if (!priv->moving_annot_info.annot)
-				return;
-
-			view_point.x = x + priv->scroll_x;
-			view_point.y = y + priv->scroll_y;
-
-			if (!priv->moving_annot_info.moving_annot) {
-				/* Only move the annotation if the threshold is exceeded */
-				if (!gtk_drag_check_threshold (widget,
-							       priv->moving_annot_info.start.x,
-							       priv->moving_annot_info.start.y,
-							       view_point.x,
-							       view_point.y))
-					return;
-				priv->moving_annot_info.moving_annot = TRUE;
-			}
-
-			pps_annotation_get_area (priv->moving_annot_info.annot, &current_area);
-			annot_page = pps_annotation_get_page_index (priv->moving_annot_info.annot);
-			pps_view_get_page_extents (view, annot_page, &page_area, &border);
-			_pps_view_transform_view_point_to_doc_point (view, &view_point, &page_area, &border,
-								    &doc_point.x, &doc_point.y);
-
-			pps_document_get_page_size (priv->document, annot_page, &page_width, &page_height);
-
-			rect.x1 = MAX (0, doc_point.x - priv->moving_annot_info.cursor_offset.x);
-			rect.y1 = MAX (0, doc_point.y - priv->moving_annot_info.cursor_offset.y);
-			rect.x2 = rect.x1 + current_area.x2 - current_area.x1;
-			rect.y2 = rect.y1 + current_area.y2 - current_area.y1;
-
-			/* Prevent the annotation from being moved off the page */
-			if (rect.x2 > page_width) {
-				rect.x2 = page_width;
-				rect.x1 = page_width - current_area.x2 + current_area.x1;
-			}
-			if (rect.y2 > page_height) {
-				rect.y2 = page_height;
-				rect.y1 = page_height - current_area.y2 + current_area.y1;
-			}
-
-			/* Take the mutex before set_area, because the notify signal
-			 * updates the mappings in the backend */
-			pps_document_doc_mutex_lock ();
-			if (pps_annotation_set_area (priv->moving_annot_info.annot, &rect)) {
-				pps_document_annotations_save_annotation (PPS_DOCUMENT_ANNOTATIONS (priv->document),
-									 priv->moving_annot_info.annot,
-									 PPS_ANNOTATIONS_SAVE_AREA);
-			}
-			pps_document_doc_mutex_unlock ();
-
-			/* FIXME: reload only annotation area */
-			pps_view_reload_page (view, annot_page, NULL);
-		} else {
-			/* Schedule timeout to scroll during selection and additionally
-			 * scroll once to allow arbitrary speed. */
-			if (!priv->selection_scroll_id)
-				priv->selection_scroll_id = g_timeout_add (SCROLL_TIME,
-									   (GSourceFunc)selection_scroll_timeout_cb,
-									   view);
-			else
-				selection_scroll_timeout_cb (view);
-
-			priv->motion.x = x + priv->scroll_x;
-			priv->motion.y = y + priv->scroll_y;
-
-			/* Queue an idle to handle the motion.  We do this because
-			 * handling any selection events in the motion could be slower
-			 * than new motion events reach us.  We always put it in the
-			 * idle to make sure we catch up and don't visibly lag the
-			 * mouse. */
-			if (priv->selection_info.in_select && !priv->selection_update_id)
-				priv->selection_update_id =
-					g_idle_add_once ((GSourceOnceFunc)selection_update_idle_cb,
-							 view);
-		}
-
+	if (gtk_gesture_is_recognized (priv->drag_primary_gesture))
 		return;
-	case GDK_BUTTON_MIDDLE:
-		break;
-	default:
-		pps_view_handle_cursor_over_xy (view, x, y, TRUE);
-	}
+
+	pps_view_handle_cursor_over_xy (view, x, y, TRUE);
 }
 
 /**
@@ -5878,14 +5906,12 @@ pps_view_button_release_event(GtkGestureClick		*self,
 {
 	PpsView *view = PPS_VIEW (user_data);
 	GtkEventController *controller = GTK_EVENT_CONTROLLER (self);
-	GdkEvent *event = gtk_event_controller_get_current_event (controller);
-	GdkModifierType state = gtk_event_controller_get_current_event_state (controller);
 	guint32 time = gtk_event_controller_get_current_event_time (controller);
 	PpsLink *link = NULL;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+	guint button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (self));
 
 	priv->image_dnd_info.in_drag = FALSE;
-	priv->selection_info.in_select = FALSE;
 
 	if (gtk_gesture_is_recognized (priv->zoom_gesture))
 		return;
@@ -5893,14 +5919,9 @@ pps_view_button_release_event(GtkGestureClick		*self,
 	if (gtk_gesture_is_recognized (priv->pan_gesture))
 		return;
 
-	if (priv->pressed_button == GDK_BUTTON_PRIMARY && state & GDK_CONTROL_MASK) {
-		priv->pressed_button = -1;
-		return;
-	}
-
 	if (priv->document && !priv->drag_info.in_drag &&
-	    (priv->pressed_button == GDK_BUTTON_PRIMARY ||
-	     priv->pressed_button == GDK_BUTTON_MIDDLE)) {
+	    (button == GDK_BUTTON_PRIMARY ||
+	     button == GDK_BUTTON_MIDDLE)) {
 		link = pps_view_get_link_at_location (view, x, y);
 	}
 
@@ -5910,7 +5931,7 @@ pps_view_button_release_event(GtkGestureClick		*self,
 		GdkPoint point;
 
 		/* We ignore right-click buttons while in annotation add mode */
-		if (priv->pressed_button != GDK_BUTTON_PRIMARY)
+		if (button != GDK_BUTTON_PRIMARY)
 			return;
 
 		point.x = x + priv->scroll_x;
@@ -5919,34 +5940,16 @@ pps_view_button_release_event(GtkGestureClick		*self,
 
 		priv->adding_text_annot = FALSE;
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
-		priv->pressed_button = -1;
 		g_clear_handle_id (&priv->selection_scroll_id, g_source_remove);
 
 		return;
 	}
 
-	if (priv->moving_annot_info.annot_clicked) {
-		if (priv->moving_annot_info.moving_annot)
-			pps_view_handle_cursor_over_xy (view, x, y, FALSE);
-		else
-			pps_view_handle_annotation (view, priv->moving_annot_info.annot, x, y, time);
-
-		priv->moving_annot_info.annot_clicked = FALSE;
-		priv->moving_annot_info.moving_annot = FALSE;
-		priv->moving_annot_info.annot = NULL;
-		priv->pressed_button = -1;
-
-		return;
-	}
-
-	if (priv->pressed_button == GDK_BUTTON_PRIMARY) {
+	if (button == GDK_BUTTON_PRIMARY && !priv->moving_annot_info.moved) {
 		PpsAnnotation *annot = pps_view_get_annotation_at_location (view, x, y);
-
 		if (annot)
 			pps_view_handle_annotation (view, annot, x, y, time);
 	}
-
-	priv->pressed_button = -1;
 
 	g_clear_handle_id (&priv->selection_scroll_id, g_source_remove);
 	g_clear_handle_id (&priv->selection_update_id, g_source_remove);
@@ -5956,7 +5959,7 @@ pps_view_button_release_event(GtkGestureClick		*self,
 
 		position_caret_cursor_for_event (view, x, y, FALSE);
 	} else if (link) {
-		if (gdk_button_event_get_button (event) == GDK_BUTTON_MIDDLE) {
+		if (button == GDK_BUTTON_MIDDLE) {
 			PpsLinkAction    *action;
 			PpsLinkActionType type;
 
@@ -7399,6 +7402,8 @@ pps_view_class_init (PpsViewClass *class)
 			"/org/gnome/papers/ui/view.ui");
 
 	gtk_widget_class_bind_template_child_private (widget_class, PpsView, zoom_gesture);
+	gtk_widget_class_bind_template_child_private (widget_class, PpsView,
+						      drag_primary_gesture);
 	gtk_widget_class_bind_template_child_private (widget_class, PpsView, pan_gesture);
 
 	gtk_widget_class_bind_template_callback (widget_class, pps_view_button_press_event);
@@ -7409,9 +7414,18 @@ pps_view_class_init (PpsViewClass *class)
 	gtk_widget_class_bind_template_callback (widget_class, notify_scale_factor_cb);
 	gtk_widget_class_bind_template_callback (widget_class, pps_view_focus_in);
 	gtk_widget_class_bind_template_callback (widget_class, pps_view_focus_out);
-	gtk_widget_class_bind_template_callback (widget_class, middle_clicked_drag_begin_cb);
-	gtk_widget_class_bind_template_callback (widget_class, middle_clicked_drag_end_cb);
-	gtk_widget_class_bind_template_callback (widget_class, middle_clicked_drag_update_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 primary_clicked_drag_begin_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 primary_clicked_drag_end_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 primary_clicked_drag_update_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 middle_clicked_drag_begin_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 middle_clicked_drag_end_cb);
+	gtk_widget_class_bind_template_callback (widget_class,
+						 middle_clicked_drag_update_cb);
 	gtk_widget_class_bind_template_callback (widget_class, pps_view_scroll_event);
 	gtk_widget_class_bind_template_callback (widget_class, pan_gesture_pan_cb);
 	gtk_widget_class_bind_template_callback (widget_class, pan_gesture_end_cb);
@@ -7640,7 +7654,6 @@ pps_view_init (PpsView *view)
 	priv->spacing = 14;
 	priv->scale = 1.0;
 	priv->current_page = -1;
-	priv->pressed_button = -1;
 	priv->cursor = PPS_VIEW_CURSOR_NORMAL;
 	priv->drag_info.in_drag = FALSE;
 	priv->selection_info.selections = NULL;

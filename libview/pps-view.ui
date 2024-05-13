@@ -41,6 +41,15 @@
       </object>
     </child>
     <child>
+      <object class="GtkGestureDrag" id="drag_primary_gesture">
+        <!-- GTK_BUTTON_PRIMARY -->
+        <property name="button">1</property>
+        <signal name="drag-begin" handler="primary_clicked_drag_begin_cb" />
+        <signal name="drag-end" handler="primary_clicked_drag_end_cb" />
+        <signal name="drag-update" handler="primary_clicked_drag_update_cb" />
+      </object>
+    </child>
+    <child>
       <object class="GtkGestureDrag">
         <!-- GTK_BUTTON_MIDDLE -->
         <property name="button">2</property>

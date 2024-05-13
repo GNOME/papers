@@ -58,10 +58,9 @@ typedef struct {
 
 /* Information for handling selection */
 typedef struct {
-	gboolean in_select;
 	GdkPoint start;
+	GdkPoint start_scroll;
 	GList *selections;
-	PpsSelectionStyle style;
 } SelectionInfo;
 
 /* Information for handling images DND */
@@ -101,10 +100,9 @@ typedef struct _PpsHeightToPageCache {
 
 /* Information for handling annotations */
 typedef struct {
-	GdkPoint      start;
+	GdkPoint       start;
 	PpsPoint       cursor_offset;
-	gboolean      annot_clicked;
-	gboolean      moving_annot;
+	gboolean       moved;
 	PpsAnnotation *annot;
 } MovingAnnotInfo;
 
@@ -179,9 +177,6 @@ typedef struct _PpsViewPrivate {
 	guint loading_timeout;
 	gboolean allow_links_change_zoom;
 
-	/* Common for button press handling */
-	int pressed_button;
-
 	/* Key bindings propagation */
 	gboolean key_binding_handled;
 
@@ -223,6 +218,7 @@ typedef struct _PpsViewPrivate {
 	guint    cursor_blink_time;
 
 	/* Gestures */
+	GtkGesture *drag_primary_gesture;
 	GtkGesture *pan_gesture;
 	GtkGesture *zoom_gesture;
 	gdouble prev_zoom_gesture_scale;
