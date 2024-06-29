@@ -183,6 +183,8 @@ typedef struct _PpsViewPrivate {
 	GtkGesture *middle_clicked_drag_gesture;
 	GtkGesture *middle_clicked_drag_swipe_gesture;
 	gdouble prev_zoom_gesture_scale;
+	gdouble page_scroll_delta_x;
+	gdouble page_scroll_delta_y;
 
 	/* Current zoom center */
 	gdouble zoom_center_x;

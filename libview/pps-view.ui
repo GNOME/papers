@@ -25,7 +25,7 @@
     <child>
       <object class="GtkEventControllerScroll">
         <property name="flags">vertical</property>
-        <signal name="scroll" handler="pps_view_scroll_event" />
+        <signal name="scroll" handler="scroll_to_zoom_cb" />
       </object>
     </child>
     <child>
@@ -91,6 +91,13 @@
         <property name="propagation-phase">capture</property>
         <property name="touch-only">True</property>
         <signal name="swipe" handler="page_swipe_cb" />
+      </object>
+    </child>
+    <child>
+      <object class="GtkEventControllerScroll">
+        <property name="propagation-phase">capture</property>
+        <property name="flags">kinetic | both-axes</property>
+        <signal name="scroll" handler="page_scroll_cb" />
       </object>
     </child>
      <child>
