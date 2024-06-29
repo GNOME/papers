@@ -74,6 +74,12 @@ template $PpsView: Widget {
     swipe => $page_swipe_cb();
   }
 
+  Gtk.EventControllerScroll {
+    propagation-phase: capture;
+    flags: kinetic | both_axes;
+    scroll => $page_scroll_cb();
+  }
+
   GestureLongPress {
     touch-only: true;
     exclusive: true;

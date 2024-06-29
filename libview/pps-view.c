@@ -5703,6 +5703,72 @@ page_swipe_cb (GtkGestureSwipe *gesture,
 	}
 }
 
+static gboolean
+page_scroll_cb (GtkEventControllerScroll *controller,
+                gdouble delta_x,
+                gdouble delta_y,
+                PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GdkInputSource input_source = gdk_device_get_source (gtk_event_controller_get_current_event_device (GTK_EVENT_CONTROLLER (controller)));
+	GtkTextDirection direction;
+	gdouble distance;
+	gboolean next;
+	GtkAdjustment *adjustment;
+	gdouble reached = FALSE;
+	gdouble should_reach = 0;
+
+	if (pps_document_model_get_continuous (priv->model) || input_source == GDK_SOURCE_TOUCHSCREEN || input_source == GDK_SOURCE_PEN)
+		return GDK_EVENT_PROPAGATE;
+
+	direction = gtk_widget_get_direction (GTK_WIDGET (view)) || gtk_widget_get_default_direction ();
+
+	priv->page_scroll_delta_x += delta_x;
+	priv->page_scroll_delta_y += delta_y;
+
+	distance = sqrt (pow (priv->page_scroll_delta_x, 2) + pow (priv->page_scroll_delta_y, 2));
+
+	if (gtk_event_controller_scroll_get_unit (controller) == GDK_SCROLL_UNIT_SURFACE)
+		distance /= 20.;
+
+	if (priv->page_scroll_delta_x < 0 && priv->page_scroll_delta_y < -priv->page_scroll_delta_x && priv->page_scroll_delta_y > priv->page_scroll_delta_x) { // UP
+		next = FALSE;
+		adjustment = priv->hadjustment;
+	} else if (priv->page_scroll_delta_x > 0 && priv->page_scroll_delta_y < priv->page_scroll_delta_x && priv->page_scroll_delta_y > -priv->page_scroll_delta_x) { // DOWN
+		next = TRUE;
+		adjustment = priv->hadjustment;
+	} else if (priv->page_scroll_delta_y < 0) { // LEFT
+		next = direction == GTK_TEXT_DIR_RTL;
+		adjustment = priv->vadjustment;
+	} else { // RIGHT
+		next = direction == GTK_TEXT_DIR_LTR;
+		adjustment = priv->vadjustment;
+	}
+
+	if (next)
+		should_reach = MAX (0, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+	reached = gtk_adjustment_get_value (adjustment) == should_reach;
+
+	if (reached && distance >= 1) {
+		priv->page_scroll_delta_x = 0;
+		priv->page_scroll_delta_y = 0;
+
+		if (next)
+			pps_view_next_page (view);
+		else
+			pps_view_previous_page (view);
+
+		return GDK_EVENT_STOP;
+	} else if (!reached) {
+		priv->page_scroll_delta_x = 0;
+		priv->page_scroll_delta_y = 0;
+
+		return GDK_EVENT_PROPAGATE;
+	} else {
+		return GDK_EVENT_PROPAGATE;
+	}
+}
+
 static void
 add_move_binding_keypad (GtkWidgetClass *widget_class,
                          guint keyval,
@@ -5925,6 +5991,7 @@ pps_view_class_init (PpsViewClass *class)
 	                                         middle_clicked_end_swipe_cb);
 	gtk_widget_class_bind_template_callback (widget_class, scroll_to_zoom_cb);
 	gtk_widget_class_bind_template_callback (widget_class, page_swipe_cb);
+	gtk_widget_class_bind_template_callback (widget_class, page_scroll_cb);
 	gtk_widget_class_bind_template_callback (widget_class,
 	                                         context_longpress_gesture_pressed_cb);
 
