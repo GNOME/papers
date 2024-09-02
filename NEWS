@@ -1,7 +1,29 @@
+Papers 47.rc
+--------------
+
+Papers has seen mostly maintenance work (fixing issues) and internal
+refactorings since 47.beta. Some changes we can highlight:
+
+meson:
+* Remove "platform" build option, as not needed
+
+libppsview:
+* Many of the helper classes for search, bookmarks, attachments, etc. have
+  been moved from shell to the view, so that integration logic can be further
+  cleaned up
+* Zooming with a mouse or touchpad now has a lot more room, and requires less
+  precision
+
+shell:
+* The sidebar a document is opened at is now set based on the last opened
+  document, and not on metadata stored on the file itself. This solves several
+  issues with document opening
+
+
 Papers 47.beta
 ---------------
 
-Papers has seem mostly changes in the libraries and refactorings since 47.alpha
+Papers has seen mostly changes in the libraries and refactorings since 47.alpha
 For packagers:
 
 * We now require libadwaita 1.6.beta and GTK 4.15.2
