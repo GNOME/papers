@@ -1125,11 +1125,12 @@ mod imp {
 
             for file in file_list.files() {
                 let uri = file.uri();
+                let current_uri = self.file.borrow().as_ref().map(|f| f.uri());
 
                 // Only open the file if we don't have an uri, or if it's
                 // different to our current one. Don't reload the current open
                 // document!
-                if let Some(current_uri) = self.file.borrow().as_ref().map(|f| f.uri()) {
+                if let Some(current_uri) = current_uri {
                     if current_uri != uri {
                         crate::application::spawn(Some(&uri), None, WindowRunMode::Normal);
                     }
