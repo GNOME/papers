@@ -882,6 +882,7 @@ mod imp {
                         .unwrap()
                         .list_row()
                         .unwrap();
+                    let has_children = row.is_expandable();
 
                     obj.selected_row.replace(Some(row));
 
@@ -892,6 +893,8 @@ mod imp {
                         )
                         .unwrap();
                     let rect = gdk::Rectangle::new(point.x() as i32, point.y() as i32, 0, 0);
+
+                    obj.set_action_enabled("expand-all-under", has_children);
 
                     obj.popup.set_pointing_to(Some(&rect));
                     obj.popup.popup();
