@@ -5,7 +5,7 @@ context_inc = include_directories('context')
 
 include_subdir = join_paths(pps_include_subdir, 'libview')
 
-headers = files(
+context_headers = files(
   'context/pps-attachment-context.h',
   'context/pps-bookmarks.h',
   'context/pps-document-model.h',
@@ -13,6 +13,9 @@ headers = files(
   'context/pps-metadata.h',
   'context/pps-search-context.h',
   'context/pps-search-result.h',
+)
+
+headers = files(
   'pps-job-scheduler.h',
   'pps-job.h',
   'pps-jobs.h',
@@ -25,6 +28,15 @@ install_headers(
   headers,
   subdir: include_subdir,
 )
+
+include_context_subdir = join_paths (include_subdir, 'context')
+
+install_headers(
+  context_headers,
+  subdir: include_context_subdir,
+)
+
+headers += context_headers
 
 sources = files(
   'context/pps-attachment-context.c',

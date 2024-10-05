@@ -21,16 +21,16 @@
 
 #pragma once
 
-#include "pps-macros.h"
+#include <libdocument/pps-macros.h>
 #if !defined (__PPS_PAPERS_VIEW_H_INSIDE__) && !defined (PAPERS_COMPILATION)
 #error "Only <papers-view.h> can be included directly."
 #endif
 
 #include <glib-object.h>
 
-#include "context/pps-document-model.h"
-#include "context/pps-metadata.h"
-#include "context/pps-search-result.h"
+#include "pps-document-model.h"
+#include "pps-metadata.h"
+#include "pps-search-result.h"
 
 G_BEGIN_DECLS
 

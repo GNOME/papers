@@ -40,7 +40,7 @@
 
 #include <glib-object.h>
 
-#include "pps-macros.h"
+#include <libdocument/pps-macros.h>
 
 G_BEGIN_DECLS
 

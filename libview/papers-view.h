@@ -24,7 +24,7 @@
 #error You have to define I_KNOW_THE_PAPERS_LIBS_ARE_UNSTABLE_AND_HAVE_TALKED_WITH_THE_AUTHORS. And please! Contact the authors
 #endif
 
-#include <context/pps-attachment-context.h>
+#include <libview/context/pps-attachment-context.h>
 #include <libview/context/pps-bookmarks.h>
 #include <libview/context/pps-document-model.h>
 #include <libview/context/pps-history.h>
