@@ -210,7 +210,7 @@ focus_out_cb (PpsPageSelector *page_selector)
 {
         pps_page_selector_set_current_page (page_selector,
                                                 pps_document_model_get_page (page_selector->doc_model));
-        g_object_set (page_selector->entry, "xalign", 1.0, NULL);
+        g_object_set (page_selector->entry, "xalign", 0.9, NULL);
         pps_page_selector_update_max_width (page_selector);
 
         return FALSE;
