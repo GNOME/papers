@@ -4331,17 +4331,13 @@ pps_view_scroll_event (GtkEventControllerScroll *self, gdouble dx, gdouble dy, G
 {
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkEvent *event;
 	guint state;
-	GdkScrollDirection direction;
 	gint x, y;
 
 	pps_view_link_preview_popover_cleanup (view);
 
-	event = gtk_event_controller_get_current_event (GTK_EVENT_CONTROLLER (self));
 	state = gtk_event_controller_get_current_event_state (GTK_EVENT_CONTROLLER (self))
 			 & gtk_accelerator_get_default_mod_mask ();
-	direction = gdk_scroll_event_get_direction (event);
 
 	if (state == GDK_CONTROL_MASK) {
 		pps_document_model_set_sizing_mode (priv->model, PPS_SIZING_FREE);
@@ -4351,30 +4347,15 @@ pps_view_scroll_event (GtkEventControllerScroll *self, gdouble dx, gdouble dy, G
 		priv->zoom_center_x = x;
 		priv->zoom_center_y = y;
 
-		switch (direction) {
-		case GDK_SCROLL_DOWN:
-		case GDK_SCROLL_RIGHT:
-			if (pps_view_can_zoom_out (view))
-				pps_view_zoom_out (view);
-			break;
-		case GDK_SCROLL_UP:
-		case GDK_SCROLL_LEFT:
-			if (pps_view_can_zoom_in (view))
-				pps_view_zoom_in (view);
-			break;
-		case GDK_SCROLL_SMOOTH: {
-			gdouble delta = dx + dy;
-			if (gtk_event_controller_scroll_get_unit (self) == GDK_SCROLL_UNIT_SURFACE) {
-				delta = delta/20.;
-			}
-			gdouble factor = pow (delta < 0 ? ZOOM_IN_FACTOR : ZOOM_OUT_FACTOR, fabs (delta));
+		gdouble delta = dx + dy;
 
-			if (pps_view_can_zoom (view, factor))
-				pps_view_zoom (view, factor);
-		}
-			break;
-		}
+		if (gtk_event_controller_scroll_get_unit (self) == GDK_SCROLL_UNIT_SURFACE)
+			delta = delta / 20.;
 
+		gdouble factor = pow (delta < 0 ? ZOOM_IN_FACTOR : ZOOM_OUT_FACTOR, fabs (delta));
+
+		if (pps_view_can_zoom (view, factor))
+			pps_view_zoom (view, factor);
 		return TRUE;
 	}
 
