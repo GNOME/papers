@@ -284,4 +284,11 @@ pps_document_misc_get_pointer_position (GtkWidget *widget,
 		*x -= point.x;
 	if (y)
 		*y -= point.y;
+
+	gtk_native_get_surface_transform (native, &dx, &dy);
+
+	if (x)
+		*x -= dx;
+	if (y)
+		*y -= dy;
 }
