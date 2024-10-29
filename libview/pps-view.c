@@ -272,6 +272,8 @@ static void       pps_view_check_cursor_blink                 (PpsView          
 
 void              pps_view_stop_signature_rect                (PpsView *view);
 
+static void       pps_view_update_primary_selection           (PpsView             *view);
+
 G_DEFINE_TYPE_WITH_CODE (PpsView, pps_view, GTK_TYPE_WIDGET,
 			 G_ADD_PRIVATE (PpsView)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_SCROLLABLE, NULL))
@@ -5717,6 +5719,11 @@ selection_end_cb (GtkGestureDrag *selection_gesture,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
+	if (priv->selection_info.selections) {
+		g_clear_object (&priv->link_selected);
+		pps_view_update_primary_selection (view);
+	}
+
 	g_clear_handle_id (&priv->selection_scroll_id, g_source_remove);
 	g_clear_handle_id (&priv->selection_update_id, g_source_remove);
 }
@@ -6014,6 +6021,7 @@ pps_view_button_release_event (GtkGestureClick *self,
 
 	if (priv->selection_info.selections) {
 		g_clear_object (&priv->link_selected);
+		pps_view_update_primary_selection (view);
 
 		position_caret_cursor_for_event (view, x, y, FALSE);
 	} else if (link) {
@@ -9304,6 +9312,29 @@ pps_view_clipboard_copy (PpsView      *view,
 	gdk_clipboard_set_text (clipboard, text);
 }
 
+static void
+pps_view_update_primary_selection (PpsView *view)
+{
+	char *text = NULL;
+	GdkClipboard *clipboard;
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	if (!PPS_IS_SELECTION (priv->document))
+		return;
+
+	if (priv->link_selected) {
+		text = g_strdup (pps_link_action_get_uri (priv->link_selected));
+	} else if (priv->selection_info.selections) {
+		text = get_selected_text (view);
+	}
+
+	if (text) {
+		clipboard = gtk_widget_get_primary_clipboard (GTK_WIDGET (view));
+		gdk_clipboard_set_text (clipboard, text);
+		g_free (text);
+	}
+}
+
 void
 pps_view_copy (PpsView *view)
 {
@@ -9327,6 +9358,7 @@ pps_view_copy_link_address (PpsView       *view,
 	g_set_object (&priv->link_selected, action);
 
 	pps_view_clipboard_copy (view, pps_link_action_get_uri (action));
+	pps_view_update_primary_selection (view);
 }
 
 /*** Cursor operations ***/
