@@ -101,7 +101,7 @@ mod imp {
                 }
             ));
 
-            self.model.set(Some(model));
+            self.model.replace(Some(model));
         }
 
         fn document(&self) -> Option<Document> {
