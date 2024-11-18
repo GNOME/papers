@@ -925,6 +925,7 @@ impl imp::PpsDocumentView {
 
         let toast = adw::Toast::builder().title(&msg).timeout(5).build();
 
+        self.toast_overlay.dismiss_all();
         self.toast_overlay.add_toast(toast);
     }
 
