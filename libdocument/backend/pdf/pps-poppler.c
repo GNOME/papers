@@ -134,6 +134,27 @@ static gboolean    attachment_save_to_buffer (PopplerAttachment *attachment,
 					      gsize             *buffer_size,
 					      GError           **error);
 
+static void
+gdk_rgba_to_poppler_color (GdkRGBA *rgba, PopplerColor *poppler)
+{
+	poppler->red = CLAMP ((guint) (rgba->red * 65535), 0, 65535);
+	poppler->green = CLAMP ((guint) (rgba->green * 65535), 0, 65535);
+	poppler->blue = CLAMP ((guint) (rgba->blue * 65535), 0, 65535);
+}
+
+static void
+poppler_color_to_gdk_rgba (PopplerColor *poppler_color, GdkRGBA *color)
+{
+	if (poppler_color) {
+		color->red = CLAMP ((double) poppler_color->red / 65535.0, 0.0, 1.0);
+		color->green = CLAMP ((double) poppler_color->green / 65535.0, 0.0, 1.0),
+		color->blue = CLAMP ((double) poppler_color->blue / 65535.0, 0.0, 1.0),
+		color->alpha = 1.0;
+	} else { /* default color */
+		*color = PPS_ANNOTATION_DEFAULT_COLOR;
+	}
+}
+
 G_DEFINE_TYPE_WITH_CODE (PdfDocument,
 			 pdf_document,
 			 PPS_TYPE_DOCUMENT,
@@ -1862,13 +1883,8 @@ pdf_selection_render_selection (PpsSelection      *selection,
 			       &width_points, &height_points);
 	pps_render_context_compute_scaled_size (rc, width_points, height_points, &width, &height);
 
-	text_color.red = CLAMP ((guint) (text->red * 65535), 0, 65535);
-	text_color.green = CLAMP ((guint) (text->green * 65535), 0, 65535);
-	text_color.blue = CLAMP ((guint) (text->blue * 65535), 0, 65535);
-
-	base_color.red = CLAMP ((guint) (base->red * 65535), 0, 65535);
-	base_color.green = CLAMP ((guint) (base->green * 65535), 0, 65535);
-	base_color.blue = CLAMP ((guint) (base->blue * 65535), 0, 65535);
+	gdk_rgba_to_poppler_color (text, &text_color);
+	gdk_rgba_to_poppler_color (base, &base_color);
 
 	if (*surface == NULL) {
 		*surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
@@ -2572,16 +2588,8 @@ poppler_annot_color_to_gdk_rgba (PopplerAnnot *poppler_annot,
 	PopplerColor *poppler_color;
 
 	poppler_color = poppler_annot_get_color (poppler_annot);
-	if (poppler_color) {
-		color->red = CLAMP ((double) poppler_color->red / 65535.0,   0.0, 1.0);
-		color->green = CLAMP ((double) poppler_color->green / 65535.0,   0.0, 1.0),
-		color->blue = CLAMP ((double) poppler_color->blue / 65535.0,   0.0, 1.0),
-		color->alpha = 1.0;
-
-		g_free (poppler_color);
-	} else { /* default color */
-		*color = PPS_ANNOTATION_DEFAULT_COLOR;
-	}
+	poppler_color_to_gdk_rgba (poppler_color, color);
+	g_free (poppler_color);
 }
 
 static PpsAnnotationTextIcon
@@ -3191,10 +3199,12 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	}
 
 	pps_annotation_get_rgba (annot, &color);
-	poppler_color.red = CLAMP ((guint) (color.red * 65535), 0, 65535);
-	poppler_color.green = CLAMP ((guint) (color.green * 65535), 0, 65535);
-	poppler_color.blue = CLAMP ((guint) (color.blue * 65535), 0, 65535);
-	poppler_annot_set_color (poppler_annot, &poppler_color);
+	if (color.alpha > 0.) {
+		gdk_rgba_to_poppler_color (&color, &poppler_color);
+		poppler_annot_set_color (poppler_annot, &poppler_color);
+	} else {
+		poppler_annot_set_color (poppler_annot, NULL);
+	}
 
 	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
 		PpsAnnotationMarkup *markup = PPS_ANNOTATION_MARKUP (annot);
@@ -3320,10 +3330,13 @@ pdf_document_annotations_save_annotation (PpsDocumentAnnotations *document_annot
 		GdkRGBA      pps_color;
 
 		pps_annotation_get_rgba (annot, &pps_color);
-		color.red = CLAMP ((guint) (pps_color.red * 65535), 0, 65535);
-		color.green = CLAMP ((guint) (pps_color.green * 65535), 0, 65535);
-		color.blue = CLAMP ((guint) (pps_color.blue * 65535), 0, 65535);
-		poppler_annot_set_color (poppler_annot, &color);
+		gdk_rgba_to_poppler_color (&pps_color, &color);
+
+		if (pps_color.alpha > 0.) {
+			poppler_annot_set_color (poppler_annot, &color);
+		} else {
+			poppler_annot_set_color (poppler_annot, NULL);
+		}
 	}
 
 	if (mask & PPS_ANNOTATIONS_SAVE_AREA && !PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
