@@ -404,8 +404,7 @@ search_changed_cb (PpsSearchContext *context)
 
         pps_search_context_clear_job (context);
         priv->pages_searched = 0;
-	if (priv->result_model != NULL)
-		g_list_store_remove_all (priv->result_model);
+	g_list_store_remove_all (priv->result_model);
 
         if (priv->search_term && priv->search_term[0]) {
                 PpsDocument *doc = pps_document_model_get_document (priv->model);
@@ -430,8 +429,10 @@ static void
 pps_search_context_dispose (GObject *object)
 {
         PpsSearchContext *context = PPS_SEARCH_CONTEXT (object);
+        PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
         pps_search_context_clear_job (context);
+        g_clear_object (&priv->result_model);
 
         G_OBJECT_CLASS (pps_search_context_parent_class)->dispose (object);
 }
@@ -440,6 +441,9 @@ pps_search_context_dispose (GObject *object)
 static void
 pps_search_context_init (PpsSearchContext *context)
 {
+        PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+        priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
 }
 
 static void
@@ -620,13 +624,9 @@ pps_search_context_get_options (PpsSearchContext *context)
 GListModel*
 pps_search_context_get_result_model (PpsSearchContext *context)
 {
-	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), 0);
+	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), NULL);
 
         PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-
-	if (priv->result_model == NULL) {
-		priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
-	}
 
 	return G_LIST_MODEL (priv->result_model);
 }
