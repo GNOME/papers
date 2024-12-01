@@ -36,6 +36,7 @@ typedef struct
 	GtkStack *results_stack;
 	GtkWidget *search_box;
 	GtkWidget *list_view;
+	GtkWidget *spinner;
 	GtkSingleSelection *selection;
 } PpsFindSidebarPrivate;
 
@@ -147,6 +148,9 @@ pps_find_sidebar_class_init (PpsFindSidebarClass *find_sidebar_class)
 	                                              PpsFindSidebar, list_view);
 
 	gtk_widget_class_bind_template_child_private (widget_class,
+	                                              PpsFindSidebar, spinner);
+
+	gtk_widget_class_bind_template_child_private (widget_class,
 	                                              PpsFindSidebar, selection);
 
 	gtk_widget_class_bind_template_callback (widget_class, factory_setup_cb);
@@ -215,9 +219,9 @@ find_job_finished_cb (PpsSearchContext *search_context,
 {
 	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
 
-	if (g_list_model_get_n_items (pps_search_context_get_result_model (search_context)) != 0) {
-		gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "results");
-	} else {
+	gtk_widget_set_visible (priv->spinner, FALSE);
+
+	if (g_list_model_get_n_items (pps_search_context_get_result_model (search_context)) == 0) {
 		gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "no-results");
 	}
 
@@ -230,7 +234,8 @@ pps_find_sidebar_start (PpsFindSidebar *sidebar)
 {
 	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
 
-	gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "loading");
+	gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "results");
+	gtk_widget_set_visible (priv->spinner, TRUE);
 }
 
 void
@@ -259,6 +264,7 @@ pps_find_sidebar_clear (PpsFindSidebar *sidebar)
 {
 	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
 
+	gtk_widget_set_visible (priv->spinner, FALSE);
 	gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "initial");
 }
 

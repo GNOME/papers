@@ -59,6 +59,9 @@ typedef struct
 
 	gchar *search_term;
 
+	gint first_match_page;
+
+	GtkSortListModel *sorted_model;
 	GListStore *result_model;
 } PpsSearchContextPrivate;
 
@@ -289,115 +292,110 @@ get_match_offset (PpsRectangle *areas,
 }
 
 static void
-process_matches_idle (PpsSearchContext *context)
+find_job_updated_cb (PpsJobFind *job,
+                     gint current_page,
+                     PpsSearchContext *context)
 {
+	GList *matches, *l;
+	PpsPage *page;
+	guint index;
+	gchar *page_label;
+	gchar *page_text;
+	PpsRectangle *areas = NULL;
+	guint n_areas;
+	PangoLogAttr *text_log_attrs;
+	gulong text_log_attrs_length;
+	gint offset;
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 	PpsDocument *document;
-	gint first_match_page = -1;
+
 	g_autoptr (GPtrArray) results_array = g_ptr_array_new ();
 	PpsSearchResult **results;
 	gsize n_results;
 
 	g_return_if_fail (PPS_IS_JOB (priv->job));
 
-	if (!pps_job_find_has_results (priv->job)) {
-		g_signal_emit (context, signals[FINISHED], 0, priv->job, first_match_page);
-		pps_search_context_clear_job (context);
-		return;
-	}
-
 	document = pps_job_get_document (PPS_JOB (priv->job));
 
-	for (guint current_page = 0; current_page < pps_document_get_n_pages (document); current_page++) {
-		GList *matches, *l;
-		PpsPage *page;
-		guint index;
-		gchar *page_label;
-		gchar *page_text;
-		PpsRectangle *areas = NULL;
-		guint n_areas;
-		PangoLogAttr *text_log_attrs;
-		gulong text_log_attrs_length;
-		gint offset;
+	matches = priv->job->pages[current_page];
+	if (!matches)
+		return;
 
-		matches = priv->job->pages[current_page];
-		if (!matches)
-			continue;
+	page = pps_document_get_page (document, current_page);
+	page_label = pps_document_get_page_label (document, current_page);
+	page_text = get_page_text (document, page, &areas, &n_areas);
+	g_object_unref (page);
+	if (!page_text)
+		return;
 
-		page = pps_document_get_page (document, current_page);
-		page_label = pps_document_get_page_label (document, current_page);
-		page_text = get_page_text (document, page, &areas, &n_areas);
-		g_object_unref (page);
-		if (!page_text)
-			continue;
+	text_log_attrs_length = g_utf8_strlen (page_text, -1);
+	text_log_attrs = g_new0 (PangoLogAttr, text_log_attrs_length + 1);
+	pango_get_log_attrs (page_text, -1, -1, NULL, text_log_attrs, text_log_attrs_length + 1);
 
-		text_log_attrs_length = g_utf8_strlen (page_text, -1);
-		text_log_attrs = g_new0 (PangoLogAttr, text_log_attrs_length + 1);
-		pango_get_log_attrs (page_text, -1, -1, NULL, text_log_attrs, text_log_attrs_length + 1);
+	if (priv->first_match_page == -1 && current_page >= priv->job->start_page)
+		priv->first_match_page = current_page;
 
-		if (first_match_page == -1 && current_page >= priv->job->start_page)
-			first_match_page = current_page;
+	offset = 0;
 
-		offset = 0;
+	for (l = matches, index = 0; l; l = g_list_next (l), index++) {
+		PpsFindRectangle *match = (PpsFindRectangle *) l->data;
+		PpsSearchResult *result;
+		gchar *markup;
+		gint new_offset;
 
-		for (l = matches, index = 0; l; l = g_list_next (l), index++) {
-			PpsFindRectangle *match = (PpsFindRectangle *) l->data;
-			PpsSearchResult *result;
-			gchar *markup;
-			gint new_offset;
+		if (l->prev && ((PpsFindRectangle *) l->prev->data)->next_line)
+			continue; /* Skip as this is second part of a multi-line match */
 
-			if (l->prev && ((PpsFindRectangle *) l->prev->data)->next_line)
-				continue; /* Skip as this is second part of a multi-line match */
-
-			new_offset = get_match_offset (areas, n_areas, match, offset);
-			if (new_offset == -1) {
-				/* It may happen that a text match has no corresponding text area available,
-				 * (due to limitations/bugs of Poppler's TextPage->getSelectionWords() used by
-				 * poppler-glib poppler_page_get_text_layout_for_area() function) so in that
-				 * case we just show matched text because we cannot retrieve surrounding text.
-				 * Issue #1943 and related #1545 */
-				markup = g_strdup_printf ("<b>%s</b>", priv->job->text);
-			} else {
-				offset = new_offset;
-				markup = get_surrounding_text_markup (page_text,
-				                                      priv->job->text,
-				                                      priv->job->options & PPS_FIND_CASE_SENSITIVE,
-				                                      text_log_attrs,
-				                                      text_log_attrs_length,
-				                                      offset,
-				                                      match->next_line,
-				                                      match->after_hyphen);
-			}
-
-			result = pps_search_result_new (g_strdup (markup),
-			                                g_strdup (page_label),
-			                                current_page,
-			                                index);
-			g_ptr_array_add (results_array, result);
-
-			g_free (markup);
+		new_offset = get_match_offset (areas, n_areas, match, offset);
+		if (new_offset == -1) {
+			/* It may happen that a text match has no corresponding text area available,
+			 * (due to limitations/bugs of Poppler's TextPage->getSelectionWords() used by
+			 * poppler-glib poppler_page_get_text_layout_for_area() function) so in that
+			 * case we just show matched text because we cannot retrieve surrounding text.
+			 * Issue #1943 and related #1545 */
+			markup = g_strdup_printf ("<b>%s</b>", priv->job->text);
+		} else {
+			offset = new_offset;
+			markup = get_surrounding_text_markup (page_text,
+			                                      priv->job->text,
+			                                      priv->job->options & PPS_FIND_CASE_SENSITIVE,
+			                                      text_log_attrs,
+			                                      text_log_attrs_length,
+			                                      offset,
+			                                      match->next_line,
+			                                      match->after_hyphen);
 		}
 
-		g_free (page_label);
-		g_free (page_text);
-		g_free (text_log_attrs);
-		g_free (areas);
+		result = pps_search_result_new (g_strdup (markup),
+		                                g_strdup (page_label),
+		                                current_page,
+		                                index);
+
+		g_ptr_array_add (results_array, result);
+
+		g_free (markup);
 	}
+
+	g_free (page_label);
+	g_free (page_text);
+	g_free (text_log_attrs);
+	g_free (areas);
 
 	results = (PpsSearchResult **) g_ptr_array_steal (results_array, &n_results);
 	if (n_results > 0)
 		g_list_store_splice (priv->result_model, 0, 0, (gpointer *) results, (guint) n_results);
 
-	g_signal_emit (context, signals[FINISHED], 0, priv->job, first_match_page);
-
-	pps_search_context_clear_job (context);
 }
 
 static void
 find_job_finished_cb (PpsJobFind *job,
                       PpsSearchContext *context)
 {
-	g_idle_add_once ((GSourceOnceFunc) process_matches_idle, context);
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	g_signal_emit (context, signals[FINISHED], 0, priv->job, priv->first_match_page);
+
+	pps_search_context_clear_job (context);
 }
 
 static void
@@ -418,6 +416,10 @@ search_changed_cb (PpsSearchContext *context)
 		                                            pps_document_get_n_pages (doc),
 		                                            priv->search_term,
 		                                            priv->options));
+		priv->first_match_page = -1;
+		g_signal_connect (priv->job, "updated",
+		                  G_CALLBACK (find_job_updated_cb),
+		                  context);
 		g_signal_connect (priv->job, "finished",
 		                  G_CALLBACK (find_job_finished_cb),
 		                  context);
@@ -614,6 +616,22 @@ pps_search_context_get_options (PpsSearchContext *context)
 	return priv->options;
 }
 
+static gint
+sort_func (gconstpointer a,
+           gconstpointer b,
+           gpointer      user_data)
+{
+	PpsSearchResult *result_a = (gpointer) a;
+	PpsSearchResult *result_b = (gpointer) b;
+	guint page_a = pps_search_result_get_page (result_a);
+	guint page_b = pps_search_result_get_page (result_b);
+
+	if (page_a == page_b)
+		return pps_search_result_get_index (result_a) - pps_search_result_get_index (result_b);
+	else
+		return page_a - page_b;
+}
+
 /**
  * pps_search_context_get_result_model:
  *
@@ -627,10 +645,13 @@ pps_search_context_get_result_model (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	if (priv->result_model == NULL) {
+		GtkCustomSorter *custom_sorter = gtk_custom_sorter_new (sort_func, NULL, NULL);
 		priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
+		priv->sorted_model = gtk_sort_list_model_new (G_LIST_MODEL (priv->result_model),
+							      GTK_SORTER (custom_sorter));
 	}
 
-	return G_LIST_MODEL (priv->result_model);
+	return G_LIST_MODEL (priv->sorted_model);
 }
 
 void
