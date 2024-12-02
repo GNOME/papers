@@ -59,8 +59,6 @@ typedef struct
 
 	gchar *search_term;
 
-	gint first_match_page;
-
 	GtkSortListModel *sorted_model;
 	GListStore *result_model;
 } PpsSearchContextPrivate;
@@ -332,9 +330,6 @@ find_job_updated_cb (PpsJobFind *job,
 	text_log_attrs = g_new0 (PangoLogAttr, text_log_attrs_length + 1);
 	pango_get_log_attrs (page_text, -1, -1, NULL, text_log_attrs, text_log_attrs_length + 1);
 
-	if (priv->first_match_page == -1 && current_page >= priv->job->start_page)
-		priv->first_match_page = current_page;
-
 	offset = 0;
 
 	for (l = matches, index = 0; l; l = g_list_next (l), index++) {
@@ -393,7 +388,7 @@ find_job_finished_cb (PpsJobFind *job,
 {
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
-	g_signal_emit (context, signals[FINISHED], 0, priv->job, priv->first_match_page);
+	g_signal_emit (context, signals[FINISHED], 0, priv->job);
 
 	pps_search_context_clear_job (context);
 }
@@ -416,7 +411,6 @@ search_changed_cb (PpsSearchContext *context)
 		                                            pps_document_get_n_pages (doc),
 		                                            priv->search_term,
 		                                            priv->options));
-		priv->first_match_page = -1;
 		g_signal_connect (priv->job, "updated",
 		                  G_CALLBACK (find_job_updated_cb),
 		                  context);
@@ -552,9 +546,8 @@ pps_search_context_class_init (PpsSearchContextClass *klass)
 	                  G_SIGNAL_RUN_LAST,
 	                  0, NULL, NULL,
 	                  g_cclosure_marshal_generic,
-	                  G_TYPE_NONE, 2,
-	                  PPS_TYPE_JOB_FIND,
-	                  G_TYPE_INT);
+	                  G_TYPE_NONE, 1,
+	                  PPS_TYPE_JOB_FIND);
 	signals[CLEARED] =
 	    g_signal_new ("cleared",
 	                  G_OBJECT_CLASS_TYPE (gobject_class),

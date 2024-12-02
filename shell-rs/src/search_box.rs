@@ -171,7 +171,7 @@ mod imp {
                 handlers.push(context.connect_finished(glib::clone!(
                     #[weak(rename_to = obj)]
                     self,
-                    move |context, _, _| {
+                    move |context, _| {
                         let has_result = context
                             .result_model()
                             .map(|m| m.n_items() != 0)

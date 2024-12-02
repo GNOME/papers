@@ -175,46 +175,8 @@ pps_find_sidebar_new (void)
 }
 
 static void
-pps_find_sidebar_highlight_first_match_of_page (PpsFindSidebar *sidebar,
-                                                gint page)
-{
-	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
-	GtkListView *list_view = GTK_LIST_VIEW (priv->list_view);
-	GListModel *result_model = pps_search_context_get_result_model (priv->context);
-	PpsSearchResult *result;
-	guint current_page, current_index_in_page;
-	guint lower_bound = 0;
-	guint index = 0;
-	guint upper_bound = g_list_model_get_n_items (result_model) - 1;
-
-	/*
-	 * Binary search is a fast algorithm, here. However, in the future
-	 * the search context should deal with this, and ideally handle this
-	 * with a map. Just, that would need to a few more changes on its end.
-	 */
-	while (lower_bound <= upper_bound) {
-		index = (lower_bound + upper_bound) / 2;
-
-		result = g_list_model_get_item (result_model, index);
-		current_page = pps_search_result_get_page (result);
-		current_index_in_page = pps_search_result_get_index (result);
-
-		if (current_page == page && current_index_in_page == 0) {
-			break;
-		} else if (current_page < page) {
-			lower_bound = index + 1;
-		} else {
-			upper_bound = index - 1;
-		}
-	}
-
-	gtk_list_view_scroll_to (list_view, index, GTK_LIST_SCROLL_SELECT, NULL);
-}
-
-static void
 find_job_finished_cb (PpsSearchContext *search_context,
                       PpsJobFind *job,
-                      gint first_match_page,
                       PpsFindSidebar *sidebar)
 {
 	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
@@ -225,8 +187,6 @@ find_job_finished_cb (PpsSearchContext *search_context,
 		gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "no-results");
 	}
 
-	if (first_match_page != -1)
-		pps_find_sidebar_highlight_first_match_of_page (sidebar, first_match_page);
 }
 
 static void
@@ -236,27 +196,6 @@ pps_find_sidebar_start (PpsFindSidebar *sidebar)
 
 	gtk_stack_set_visible_child_name (GTK_STACK (priv->results_stack), "results");
 	gtk_widget_set_visible (priv->spinner, TRUE);
-}
-
-void
-pps_find_sidebar_restart (PpsFindSidebar *sidebar,
-                          gint page)
-{
-	PpsFindSidebarPrivate *priv = GET_PRIVATE (sidebar);
-	gint first_match_page = -1;
-	GListModel *result_model = pps_search_context_get_result_model (priv->context);
-
-	for (guint i = 0; i < g_list_model_get_n_items (result_model); i++) {
-		PpsSearchResult *result = g_list_model_get_item (result_model, i);
-
-		if (pps_search_result_get_page (result) >= page) {
-			first_match_page = pps_search_result_get_page (result);
-			break;
-		}
-	}
-
-	if (first_match_page != -1)
-		pps_find_sidebar_highlight_first_match_of_page (sidebar, first_match_page);
 }
 
 void

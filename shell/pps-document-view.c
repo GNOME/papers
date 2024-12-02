@@ -2419,7 +2419,6 @@ pps_document_view_find_restart (PpsDocumentView *pps_doc_view)
 
 	page = pps_document_model_get_page (priv->model);
 	pps_view_find_restart (PPS_VIEW (priv->view), page);
-	pps_find_sidebar_restart (PPS_FIND_SIDEBAR (priv->find_sidebar), page);
 }
 
 static void
