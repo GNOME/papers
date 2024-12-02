@@ -324,7 +324,7 @@ a document.</doc>
         </return-value>
       </constructor>
       <method name="clear" c:identifier="pps_find_sidebar_clear">
-        <source-position filename="shell/pps-find-sidebar.h" line="55"/>
+        <source-position filename="shell/pps-find-sidebar.h" line="54"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -335,17 +335,6 @@ a document.</doc>
         </parameters>
       </method>
       <method name="next" c:identifier="pps_find_sidebar_next">
-        <source-position filename="shell/pps-find-sidebar.h" line="57"/>
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <instance-parameter name="find_sidebar" transfer-ownership="none">
-            <type name="FindSidebar" c:type="PpsFindSidebar*"/>
-          </instance-parameter>
-        </parameters>
-      </method>
-      <method name="previous" c:identifier="pps_find_sidebar_previous">
         <source-position filename="shell/pps-find-sidebar.h" line="56"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -356,8 +345,8 @@ a document.</doc>
           </instance-parameter>
         </parameters>
       </method>
-      <method name="restart" c:identifier="pps_find_sidebar_restart">
-        <source-position filename="shell/pps-find-sidebar.h" line="52"/>
+      <method name="previous" c:identifier="pps_find_sidebar_previous">
+        <source-position filename="shell/pps-find-sidebar.h" line="55"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -365,14 +354,11 @@ a document.</doc>
           <instance-parameter name="find_sidebar" transfer-ownership="none">
             <type name="FindSidebar" c:type="PpsFindSidebar*"/>
           </instance-parameter>
-          <parameter name="page" transfer-ownership="none">
-            <type name="gint" c:type="gint"/>
-          </parameter>
         </parameters>
       </method>
       <method name="set_search_context"
               c:identifier="pps_find_sidebar_set_search_context">
-        <source-position filename="shell/pps-find-sidebar.h" line="58"/>
+        <source-position filename="shell/pps-find-sidebar.h" line="57"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -386,7 +372,7 @@ a document.</doc>
         </parameters>
       </method>
       <method name="update" c:identifier="pps_find_sidebar_update">
-        <source-position filename="shell/pps-find-sidebar.h" line="54"/>
+        <source-position filename="shell/pps-find-sidebar.h" line="53"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>

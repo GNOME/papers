@@ -264,13 +264,6 @@ pub trait FindSidebarExt: IsA<FindSidebar> + sealed::Sealed + 'static {
         }
     }
 
-    #[doc(alias = "pps_find_sidebar_restart")]
-    fn restart(&self, page: i32) {
-        unsafe {
-            ffi::pps_find_sidebar_restart(self.as_ref().to_glib_none().0, page);
-        }
-    }
-
     #[doc(alias = "pps_find_sidebar_set_search_context")]
     fn set_search_context(&self, context: &impl IsA<papers_view::SearchContext>) {
         unsafe {

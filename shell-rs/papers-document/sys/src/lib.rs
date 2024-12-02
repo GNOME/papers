@@ -492,7 +492,6 @@ pub struct PpsDocumentClass {
             *mut PpsDocument,
             c_int,
             PpsDocumentLoadFlags,
-            *mut gio::GCancellable,
             *mut *mut glib::GError,
         ) -> gboolean,
     >,
@@ -2406,7 +2405,6 @@ extern "C" {
         fd: c_int,
         mime_type: *const c_char,
         flags: PpsDocumentLoadFlags,
-        cancellable: *mut gio::GCancellable,
         error: *mut *mut glib::GError,
     ) -> *mut PpsDocument;
     pub fn pps_document_factory_get_document_full(
@@ -2502,7 +2500,6 @@ extern "C" {
         document: *mut PpsDocument,
         fd: c_int,
         flags: PpsDocumentLoadFlags,
-        cancellable: *mut gio::GCancellable,
         error: *mut *mut glib::GError,
     ) -> gboolean;
     pub fn pps_document_load_full(
@@ -3231,7 +3228,6 @@ extern "C" {
         error: *mut *mut glib::GError,
     ) -> *mut c_char;
     pub fn pps_init() -> gboolean;
-    pub fn pps_mkdtemp(tmpl: *const c_char, error: *mut *mut glib::GError) -> *mut c_char;
     pub fn pps_mkstemp(
         tmpl: *const c_char,
         file_name: *mut *mut c_char,

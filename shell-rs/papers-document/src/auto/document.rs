@@ -51,7 +51,7 @@ impl Document {
     //#[cfg(feature = "v42")]
     //#[cfg_attr(docsrs, doc(cfg(feature = "v42")))]
     //#[doc(alias = "pps_document_factory_get_document_for_fd")]
-    //pub fn factory_get_document_for_fd(fd: i32, mime_type: &str, flags: /*Ignored*/DocumentLoadFlags, cancellable: /*Ignored*/Option<&gio::Cancellable>) -> Result<Document, glib::Error> {
+    //pub fn factory_get_document_for_fd(fd: i32, mime_type: &str, flags: /*Ignored*/DocumentLoadFlags) -> Result<Document, glib::Error> {
     //    unsafe { TODO: call ffi:pps_document_factory_get_document_for_fd() }
     //}
 
@@ -340,7 +340,7 @@ pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
     //#[cfg(feature = "v42")]
     //#[cfg_attr(docsrs, doc(cfg(feature = "v42")))]
     //#[doc(alias = "pps_document_load_fd")]
-    //fn load_fd(&self, fd: i32, flags: /*Ignored*/DocumentLoadFlags, cancellable: /*Ignored*/Option<&gio::Cancellable>) -> Result<(), glib::Error> {
+    //fn load_fd(&self, fd: i32, flags: /*Ignored*/DocumentLoadFlags) -> Result<(), glib::Error> {
     //    unsafe { TODO: call ffi:pps_document_load_fd() }
     //}
 

@@ -237,7 +237,6 @@ extern "C" {
     pub fn pps_find_sidebar_clear(find_sidebar: *mut PpsFindSidebar);
     pub fn pps_find_sidebar_next(find_sidebar: *mut PpsFindSidebar);
     pub fn pps_find_sidebar_previous(find_sidebar: *mut PpsFindSidebar);
-    pub fn pps_find_sidebar_restart(find_sidebar: *mut PpsFindSidebar, page: c_int);
     pub fn pps_find_sidebar_set_search_context(
         find_sidebar: *mut PpsFindSidebar,
         context: *mut papers_view::PpsSearchContext,

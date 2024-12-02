@@ -128,21 +128,19 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
     }
 
     #[doc(alias = "finished")]
-    fn connect_finished<F: Fn(&Self, &JobFind, i32) + 'static>(&self, f: F) -> SignalHandlerId {
+    fn connect_finished<F: Fn(&Self, &JobFind) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn finished_trampoline<
             P: IsA<SearchContext>,
-            F: Fn(&P, &JobFind, i32) + 'static,
+            F: Fn(&P, &JobFind) + 'static,
         >(
             this: *mut ffi::PpsSearchContext,
             object: *mut ffi::PpsJobFind,
-            p0: libc::c_int,
             f: glib::ffi::gpointer,
         ) {
             let f: &F = &*(f as *const F);
             f(
                 SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
                 &from_glib_borrow(object),
-                p0,
             )
         }
         unsafe {

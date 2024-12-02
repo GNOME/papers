@@ -96,20 +96,6 @@ pub fn init() -> bool {
     unsafe { from_glib(ffi::pps_init()) }
 }
 
-#[doc(alias = "pps_mkdtemp")]
-pub fn mkdtemp(tmpl: &str) -> Result<std::path::PathBuf, glib::Error> {
-    assert_initialized_main_thread!();
-    unsafe {
-        let mut error = std::ptr::null_mut();
-        let ret = ffi::pps_mkdtemp(tmpl.to_glib_none().0, &mut error);
-        if error.is_null() {
-            Ok(from_glib_full(ret))
-        } else {
-            Err(from_glib_full(error))
-        }
-    }
-}
-
 #[doc(alias = "pps_mkstemp")]
 pub fn mkstemp(tmpl: &str) -> Result<(i32, std::path::PathBuf), glib::Error> {
     assert_initialized_main_thread!();
