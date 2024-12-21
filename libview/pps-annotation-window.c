@@ -118,14 +118,6 @@ pps_annotation_window_set_color (PpsAnnotationWindow *window,
 }
 
 static void
-pps_annotation_window_set_opacity (PpsAnnotationWindow *window,
-		                  gdouble             opacity)
-{
-	gtk_widget_set_opacity (GTK_WIDGET (window), opacity);
-	gtk_widget_set_opacity (GTK_WIDGET (window->text_view), opacity);
-}
-
-static void
 pps_annotation_window_label_changed (PpsAnnotationMarkup *annot,
 				    GParamSpec         *pspec,
 				    PpsAnnotationWindow *window)
@@ -144,17 +136,6 @@ pps_annotation_window_color_changed (PpsAnnotation       *annot,
 
 	pps_annotation_get_rgba (annot, &rgba);
 	pps_annotation_window_set_color (window, &rgba);
-}
-
-static void
-pps_annotation_window_opacity_changed (PpsAnnotation       *annot,
-		                      GParamSpec         *pspec,
-				      PpsAnnotationWindow *window)
-{
-	gdouble opacity;
-
-	opacity = pps_annotation_markup_get_opacity (PPS_ANNOTATION_MARKUP (annot));
-	pps_annotation_window_set_opacity (window, opacity);
 }
 
 static void
@@ -250,7 +231,6 @@ pps_annotation_window_constructor (GType                  type,
 	GdkRGBA             color;
 	PpsRectangle        *rect;
 	gdouble             scale;
-	gdouble             opacity;
 
 	object = G_OBJECT_CLASS (pps_annotation_window_parent_class)->constructor (type,
 										  n_construct_properties,
@@ -277,9 +257,6 @@ pps_annotation_window_constructor (GType                  type,
 	pps_annotation_get_rgba (annot, &color);
 	pps_annotation_window_set_color (window, &color);
 
-	opacity = pps_annotation_markup_get_opacity (markup);
-	pps_annotation_window_set_opacity (window, opacity);
-
 	gtk_widget_set_name (GTK_WIDGET (window), pps_annotation_get_name (annot));
 	gtk_label_set_text (GTK_LABEL (window->title_label), label);
 
@@ -296,9 +273,6 @@ pps_annotation_window_constructor (GType                  type,
 			  window);
 	g_signal_connect (annot, "notify::rgba",
 			  G_CALLBACK (pps_annotation_window_color_changed),
-			  window);
-	g_signal_connect (annot, "notify::opacity",
-			  G_CALLBACK (pps_annotation_window_opacity_changed),
 			  window);
 
 	return object;
