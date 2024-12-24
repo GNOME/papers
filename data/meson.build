@@ -66,7 +66,7 @@ if get_option('tests')
   if (appstreamcli.found())
     test('validate-appdata',
          appstreamcli,
-         args: ['validate', '--strict', '--pedantic', '--explain', metainfo_file],
+         args: ['validate', '--no-net', '--strict', '--pedantic', '--explain', metainfo_file],
          workdir: meson.current_build_dir()
         )
   endif
