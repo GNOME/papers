@@ -226,11 +226,18 @@ mod imp {
         }
 
         fn show_help(&self) {
-            gtk::UriLauncher::new("help:papers").launch(
-                self.obj().active_window().as_ref(),
-                gio::Cancellable::NONE,
-                |_| {},
-            );
+            let context = self
+                .obj()
+                .active_window()
+                .map(|w| gtk::prelude::WidgetExt::display(&w).app_launch_context());
+            glib::spawn_future_local(async move {
+                if let Err(e) =
+                    gio::AppInfo::launch_default_for_uri_future("help:papers", context.as_ref())
+                        .await
+                {
+                    log::error!("Failed to launch help: {}", e.message());
+                }
+            });
         }
 
         fn setup_actions(&self) {
