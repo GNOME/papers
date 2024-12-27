@@ -28,6 +28,7 @@
 #include "pps-file-helpers.h"
 #include "pps-jobs.h"
 #include "pps-outlines.h"
+#include "pps-search-result.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -40,16 +41,8 @@
 #endif
 #define G_LOG_DOMAIN "PpsJobs"
 
-enum {
-	FIND_UPDATED,
-	FIND_LAST_SIGNAL
-};
-
-static guint job_find_signals[FIND_LAST_SIGNAL] = { 0 };
-
 G_DEFINE_TYPE (PpsJobRenderTexture, pps_job_render_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobPageData, pps_job_page_data, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
 typedef struct _PpsJobLinksPrivate {
@@ -1262,6 +1255,28 @@ pps_job_save_get_uri (PpsJobSave *job_save)
 }
 
 /* PpsJobFind */
+enum {
+	FIND_UPDATED,
+	FIND_LAST_SIGNAL
+};
+
+static guint job_find_signals[FIND_LAST_SIGNAL] = { 0 };
+
+typedef struct {
+	PpsJob parent;
+
+	gint start_page;
+	gint n_pages;
+	GList **pages;
+	gchar *text;
+	gboolean has_results;
+	PpsFindOptions options;
+} PpsJobFindPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
+
+#define JOB_FIND_GET_PRIVATE(o) pps_job_find_get_instance_private (o)
+
 static void
 pps_job_find_init (PpsJobFind *job)
 {
@@ -1270,54 +1285,297 @@ pps_job_find_init (PpsJobFind *job)
 static void
 pps_job_find_dispose (GObject *object)
 {
-	PpsJobFind *job = PPS_JOB_FIND (object);
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (PPS_JOB_FIND (object));
 
-	g_clear_pointer (&job->text, g_free);
+	g_clear_pointer (&priv->text, g_free);
 
-	if (job->pages) {
+	if (priv->pages) {
 		gint i;
 
-		for (i = 0; i < job->n_pages; i++) {
-			g_clear_list (&job->pages[i], (GDestroyNotify) pps_find_rectangle_free);
+		for (i = 0; i < priv->n_pages; i++) {
+			g_clear_list (&priv->pages[i], (GDestroyNotify) g_object_unref);
 		}
 
-		g_clear_pointer (&job->pages, g_free);
+		g_clear_pointer (&priv->pages, g_free);
 	}
 
-	(*G_OBJECT_CLASS (pps_job_find_parent_class)->dispose) (object);
+	G_OBJECT_CLASS (pps_job_find_parent_class)->dispose (object);
+}
+
+static gchar *
+sanitized_substring (const gchar *text,
+                     gint start,
+                     gint end)
+{
+	const gchar *p;
+	const gchar *start_ptr;
+	const gchar *end_ptr;
+	guint len = 0;
+	g_autofree gchar *retval = NULL;
+
+	if (end - start <= 0)
+		return NULL;
+
+	start_ptr = g_utf8_offset_to_pointer (text, start);
+	end_ptr = g_utf8_offset_to_pointer (start_ptr, end - start);
+
+	retval = g_malloc (end_ptr - start_ptr + 1);
+	p = start_ptr;
+
+	while (p != end_ptr) {
+		const gchar *next;
+
+		next = g_utf8_next_char (p);
+
+		if (next != end_ptr) {
+			GUnicodeBreakType break_type;
+
+			break_type = g_unichar_break_type (g_utf8_get_char (p));
+			if (break_type == G_UNICODE_BREAK_HYPHEN && *next == '\n') {
+				p = g_utf8_next_char (next);
+				continue;
+			}
+		}
+
+		if (*p != '\n') {
+			strncpy (retval + len, p, next - p);
+			len += next - p;
+		} else {
+			*(retval + len) = ' ';
+			len++;
+		}
+
+		p = next;
+	}
+
+	if (len == 0)
+		return NULL;
+
+	retval[len] = 0;
+
+	return g_steal_pointer (&retval);
+}
+
+static gchar *
+get_surrounding_text_markup (const gchar *text,
+                             const gchar *find_text,
+                             gboolean case_sensitive,
+                             PangoLogAttr *log_attrs,
+                             gint log_attrs_length,
+                             gint offset,
+                             gboolean has_nextline,
+                             gboolean hyphen_was_ignored)
+{
+	gint iter;
+	g_autofree gchar *prec = NULL;
+	g_autofree gchar *succ = NULL;
+	g_autofree gchar *match = NULL;
+	gchar *markup;
+	gint max_chars;
+
+	iter = MAX (0, offset - 1);
+	while (!log_attrs[iter].is_word_start && iter > 0)
+		iter--;
+
+	prec = sanitized_substring (text, iter, offset);
+
+	iter = offset;
+	offset += g_utf8_strlen (find_text, -1);
+
+	if (has_nextline || g_utf8_offset_to_pointer (text, offset - 1)[0] == '\n') {
+		if (has_nextline) {
+			offset += 1; /* for newline */
+			if (hyphen_was_ignored)
+				offset += 1; /* for hyphen */
+		}
+		match = sanitized_substring (text, iter, offset);
+	} else if (!case_sensitive)
+		match = g_utf8_substring (text, iter, offset);
+
+	iter = MIN (log_attrs_length, offset + 1);
+	max_chars = MIN (log_attrs_length - 1, iter + 100);
+	while (TRUE) {
+		gint word = iter;
+
+		while (!log_attrs[word].is_word_end && word < max_chars)
+			word++;
+
+		if (word > max_chars)
+			break;
+
+		iter = word + 1;
+	}
+
+	succ = sanitized_substring (text, offset, iter);
+
+	markup = g_markup_printf_escaped ("%s<span weight=\"bold\">%s</span>%s",
+	                                  prec ? prec : "", match ? match : find_text, succ ? succ : "");
+
+	return markup;
+}
+
+static gint
+get_match_offset (PpsRectangle *areas,
+                  guint n_areas,
+                  const PpsFindRectangle *match,
+                  gint offset)
+{
+	gdouble x, y;
+	gint i;
+
+	x = match->x1;
+	y = (match->y1 + match->y2) / 2;
+
+	i = offset;
+
+	do {
+		PpsRectangle *area = areas + i;
+		gdouble area_y = (area->y1 + area->y2) / 2;
+		gdouble area_x = (area->x1 + area->x2) / 2;
+
+		if (x >= area->x1 && x < area->x2 &&
+		    y >= area->y1 && y <= area->y2 &&
+		    area_x >= match->x1 && area_x <= match->x2 &&
+		    area_y >= match->y1 && area_y <= match->y2) {
+			return i;
+		}
+
+		i = (i + 1) % n_areas;
+	} while (i != offset);
+
+	return -1;
+}
+
+static GList *
+find_rects_to_search_results (PpsJobFind *job,
+                              gint current_page,
+                              const GList *rects,
+                              const gchar *page_label,
+                              const gchar *text,
+                              PpsRectangle *areas,
+                              guint n_areas)
+{
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (job);
+	PpsSearchResult *result = NULL;
+	guint index = 0;
+	PangoLogAttr *text_log_attrs;
+	gulong text_log_attrs_length;
+	gint offset = 0;
+	GList *results = NULL;
+
+	text_log_attrs_length = g_utf8_strlen (text, -1);
+	text_log_attrs = g_new0 (PangoLogAttr, text_log_attrs_length + 1);
+	pango_get_log_attrs (text, -1, -1, NULL, text_log_attrs,
+	                     text_log_attrs_length + 1);
+
+	for (const GList *l = rects; l; l = g_list_next (l)) {
+		PpsFindRectangle *rect = (PpsFindRectangle *) l->data;
+		g_autofree gchar *markup = NULL;
+		gint new_offset;
+
+		if (l->prev && ((PpsFindRectangle *) l->prev->data)->next_line) {
+			/* Multi-line match. We should delay creation
+			 * instead of appending rectangles, but that
+			 * requires a lot of refactoring in the
+			 * logic around this function. */
+			g_assert (result != NULL);
+			pps_search_result_append_rectangle (result, rect);
+			continue;
+		}
+
+		new_offset = get_match_offset (areas, n_areas, rect, offset);
+		if (new_offset == -1) {
+			/* It may happen that a text match has no corresponding text area available,
+			 * (due to limitations/bugs of Poppler's TextPage->getSelectionWords() used by
+			 * poppler-glib poppler_page_get_text_layout_for_area() function) so in that
+			 * case we just show matched text because we cannot retrieve surrounding text.
+			 * Issue #1943 and related #1545 */
+			markup = g_strdup_printf ("<b>%s</b>", priv->text);
+		} else {
+			offset = new_offset;
+			markup = get_surrounding_text_markup (text,
+			                                      priv->text,
+			                                      priv->options & PPS_FIND_CASE_SENSITIVE,
+			                                      text_log_attrs,
+			                                      text_log_attrs_length,
+			                                      offset,
+			                                      rect->next_line,
+			                                      rect->after_hyphen);
+		}
+
+		result = pps_search_result_new (g_steal_pointer (&markup),
+		                                g_strdup (page_label),
+		                                current_page,
+		                                index++,
+		                                0,
+		                                rect);
+		results = g_list_prepend (results, result);
+	}
+
+	g_free (text_log_attrs);
+	if (results)
+		results = g_list_reverse (results);
+
+	return results;
 }
 
 static void
 pps_job_find_run (PpsJob *job)
 {
-	PpsJobFind *job_find = PPS_JOB_FIND (job);
-	PpsDocumentFind *find = PPS_DOCUMENT_FIND (pps_job_get_document (job));
-	PpsPage *pps_page;
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (PPS_JOB_FIND (job));
+	PpsDocument *document = pps_job_get_document (job);
+	PpsDocumentFind *doc_find = PPS_DOCUMENT_FIND (document);
+	PpsDocumentText *doc_text = PPS_DOCUMENT_TEXT (document);
 	GList *matches;
-	gint n_pages, current_page;
 
 	g_debug ("running find job");
 
-	n_pages = job_find->n_pages;
-	current_page = job_find->start_page;
+	for (gint current_page = priv->start_page, n_pages = 0;
+	     n_pages < priv->n_pages;
+	     current_page = (current_page + 1) % priv->n_pages, n_pages++) {
+		g_autoptr (PpsPage) pps_page = NULL;
+		g_autofree char *text = NULL;
+		g_autofree char *page_label = NULL;
+		PpsRectangle *areas = NULL;
+		guint n_areas;
 
-	while (n_pages-- > 0) {
 		if (g_cancellable_is_cancelled (pps_job_get_cancellable (job)))
 			return;
 
-		pps_document_doc_mutex_lock (pps_job_get_document (job));
-		pps_page = pps_document_get_page (pps_job_get_document (job), current_page);
-		matches = pps_document_find_find_text (find, pps_page, job_find->text,
-		                                       job_find->options);
-		g_object_unref (pps_page);
+		pps_document_doc_mutex_lock (document);
+		pps_page = pps_document_get_page (document, current_page);
+		matches = pps_document_find_find_text (doc_find,
+		                                       pps_page,
+		                                       priv->text,
+		                                       priv->options);
+
+		text = pps_document_text_get_text (doc_text,
+		                                   pps_page);
+		if (!pps_document_text_get_text_layout (doc_text,
+		                                        pps_page,
+		                                        &areas,
+		                                        &n_areas)) {
+			pps_document_doc_mutex_unlock (pps_job_get_document (job));
+			continue;
+		}
+
 		pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
-		job_find->has_results |= (matches != NULL);
+		priv->has_results |= (matches != NULL);
 
-		job_find->pages[current_page] = matches;
-		g_signal_emit (job_find, job_find_signals[FIND_UPDATED], 0, current_page);
+		page_label = pps_document_get_page_label (document, current_page);
+		priv->pages[current_page] =
+		    find_rects_to_search_results (PPS_JOB_FIND (job),
+		                                  current_page,
+		                                  matches,
+		                                  page_label,
+		                                  text,
+		                                  areas,
+		                                  n_areas);
 
-		current_page = (current_page + 1) % job_find->n_pages;
+		g_signal_emit (PPS_JOB_FIND (job), job_find_signals[FIND_UPDATED], 0, current_page);
+
+		g_free (areas);
 	}
 
 	pps_job_succeeded (job);
@@ -1351,6 +1609,7 @@ pps_job_find_new (PpsDocument *document,
                   PpsFindOptions options)
 {
 	PpsJobFind *job;
+	PpsJobFindPrivate *priv;
 
 	g_debug ("new find job");
 
@@ -1358,12 +1617,14 @@ pps_job_find_new (PpsDocument *document,
 	                    "document", document,
 	                    NULL);
 
-	job->start_page = start_page;
-	job->n_pages = n_pages;
-	job->pages = g_new0 (GList *, n_pages);
-	job->text = g_strdup (text);
-	job->has_results = FALSE;
-	job->options = options;
+	priv = JOB_FIND_GET_PRIVATE (job);
+
+	priv->start_page = start_page;
+	priv->n_pages = n_pages;
+	priv->pages = g_new0 (GList *, n_pages);
+	priv->text = g_strdup (text);
+	priv->has_results = FALSE;
+	priv->options = options;
 
 	return PPS_JOB (job);
 }
@@ -1379,7 +1640,9 @@ pps_job_find_new (PpsDocument *document,
 PpsFindOptions
 pps_job_find_get_options (PpsJobFind *job)
 {
-	return job->options;
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (job);
+
+	return priv->options;
 }
 
 /**
@@ -1396,10 +1659,11 @@ gint
 pps_job_find_get_n_main_results (PpsJobFind *job,
                                  gint page)
 {
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (job);
 	GList *l;
 	int n = 0;
 
-	for (l = job->pages[page]; l; l = l->next) {
+	for (l = priv->pages[page]; l; l = l->next) {
 		if (!((PpsFindRectangle *) l->data)->next_line)
 			n++;
 	}
@@ -1410,7 +1674,9 @@ pps_job_find_get_n_main_results (PpsJobFind *job,
 gboolean
 pps_job_find_has_results (PpsJobFind *job)
 {
-	return job->has_results;
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (job);
+
+	return priv->has_results;
 }
 
 /**
@@ -1422,7 +1688,9 @@ pps_job_find_has_results (PpsJobFind *job)
 GList **
 pps_job_find_get_results (PpsJobFind *job)
 {
-	return job->pages;
+	PpsJobFindPrivate *priv = JOB_FIND_GET_PRIVATE (job);
+
+	return priv->pages;
 }
 
 /* PpsJobLayers */

@@ -30,9 +30,6 @@ typedef struct _PpsJobRenderTextureClass PpsJobRenderTextureClass;
 typedef struct _PpsJobPageData PpsJobPageData;
 typedef struct _PpsJobPageDataClass PpsJobPageDataClass;
 
-typedef struct _PpsJobFind PpsJobFind;
-typedef struct _PpsJobFindClass PpsJobFindClass;
-
 #define PPS_TYPE_JOB_RENDER_TEXTURE (pps_job_render_texture_get_type ())
 #define PPS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_RENDER_TEXTURE, PpsJobRenderTexture))
 #define PPS_IS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_RENDER_TEXTURE))
@@ -46,13 +43,6 @@ typedef struct _PpsJobFindClass PpsJobFindClass;
 #define PPS_JOB_PAGE_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_PAGE_DATA, PpsJobPageDataClass))
 #define PPS_IS_JOB_PAGE_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_PAGE_DATA))
 #define PPS_JOB_PAGE_DATA_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_PAGE_DATA, PpsJobPageDataClass))
-
-#define PPS_TYPE_JOB_FIND (pps_job_find_get_type ())
-#define PPS_JOB_FIND(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_FIND, PpsJobFind))
-#define PPS_IS_JOB_FIND(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_FIND))
-#define PPS_JOB_FIND_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_FIND, PpsJobFindClass))
-#define PPS_IS_JOB_FIND_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_FIND))
-#define PPS_JOB_FIND_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_FIND, PpsJobFindClass))
 
 struct _PpsJobLinks {
 	PpsJob parent;
@@ -144,25 +134,6 @@ struct _PpsJobLoad {
 
 struct _PpsJobSave {
 	PpsJob parent;
-};
-
-struct _PpsJobFind {
-	PpsJob parent;
-
-	gint start_page;
-	gint n_pages;
-	GList **pages;
-	gchar *text;
-	gboolean has_results;
-	PpsFindOptions options;
-};
-
-struct _PpsJobFindClass {
-	PpsJobClass parent_class;
-
-	/* Signals */
-	void (*updated) (PpsJobFind *job,
-	                 gint page);
 };
 
 struct _PpsJobLayers {
@@ -313,7 +284,18 @@ const gchar *pps_job_save_get_uri (PpsJobSave *job_save);
 
 /* PpsJobFind */
 PPS_PUBLIC
-GType pps_job_find_get_type (void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE (PpsJobFind, pps_job_find, PPS, JOB_FIND, PpsJob)
+#define PPS_TYPE_JOB_FIND (pps_job_find_get_type ())
+
+struct _PpsJobFindClass {
+	PpsJobClass parent_class;
+
+	/* Signals */
+	void (*updated) (PpsJobFind *job,
+	                 gint page);
+};
+
+
 PPS_PUBLIC
 PpsJob *pps_job_find_new (PpsDocument *document,
                           gint start_page,

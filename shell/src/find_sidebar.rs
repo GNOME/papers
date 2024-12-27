@@ -168,7 +168,7 @@ mod imp {
         }
 
         fn start(&self) {
-            self.results_stack.set_visible_child_name("loading");
+            self.results_stack.set_visible_child_name("results");
         }
 
         fn clear(&self) {
