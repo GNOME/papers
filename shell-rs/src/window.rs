@@ -318,6 +318,18 @@ mod imp {
                 return;
             };
 
+            if let Some(state) = self.obj().action_state("fullscreen") {
+                if state.get::<bool>().unwrap_or_default() {
+                    self.obj().change_action_state("fullscreen", &false.into());
+                }
+            }
+
+            self.obj()
+                .lookup_action("fullscreen")
+                .and_downcast::<gio::SimpleAction>()
+                .unwrap()
+                .set_enabled(false);
+
             let page = model.page();
             let rotation = model.rotation();
             let inverted_colors = model.is_inverted_colors();
@@ -345,6 +357,12 @@ mod imp {
                 model.set_page(page as i32);
                 model.set_rotation(rotation as i32);
             }
+
+            self.obj()
+                .lookup_action("fullscreen")
+                .and_downcast::<gio::SimpleAction>()
+                .unwrap()
+                .set_enabled(true);
 
             self.presentation
                 .set_document(papers_document::Document::NONE);
