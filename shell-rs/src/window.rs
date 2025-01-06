@@ -224,7 +224,7 @@ mod imp {
                 WindowRunMode::LoaderView => stack.set_visible_child_name("loader"),
                 WindowRunMode::ErrorView => stack.set_visible_child_name("error"),
                 WindowRunMode::Presentation => stack.set_visible_child_name("presentation"),
-                WindowRunMode::Fullscreen => unimplemented!(),
+                WindowRunMode::Fullscreen => stack.set_visible_child_name("document"),
             }
         }
 
@@ -920,6 +920,7 @@ mod imp {
                                         None,
                                     )
                                     .unwrap();
+                                    obj.set_mode(pending_mode);
                                 }
                                 _ => obj.set_mode(pending_mode),
                             }

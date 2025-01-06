@@ -72,10 +72,10 @@ mod imp {
             let options = command_line.options_dict();
             let mut mode = WindowRunMode::Normal;
 
-            if options.contains("fullscreen") {
-                mode = WindowRunMode::Fullscreen;
-            } else if options.contains("presentation") {
+            if options.contains("presentation") {
                 mode = WindowRunMode::Presentation;
+            } else if options.contains("fullscreen") {
+                mode = WindowRunMode::Fullscreen;
             }
 
             let page_index = options.lookup::<i32>("page-index").unwrap();
