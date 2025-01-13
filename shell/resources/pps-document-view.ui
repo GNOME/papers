@@ -703,6 +703,56 @@
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
+        <property name="spacing">18</property>
+        <child>
+          <object class="GtkToggleButton" id="annot-style-group">
+            <property name="name">text-highlight</property>
+            <property name="icon-name">text-highlight-symbolic</property>
+            <property name="action-name">doc.annot-style</property>
+            <property name="action-target">'highlight'</property>
+            <property name="tooltip-text" translatable="yes">Highlight</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleButton">
+            <property name="name">text-squiggly</property>
+            <property name="group">annot-style-group</property>
+            <property name="icon-name">text-squiggly-symbolic</property>
+            <property name="action-name">doc.annot-style</property>
+            <property name="action-target">'squiggly'</property>
+            <property name="tooltip-text" translatable="yes">Squiggly</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleButton">
+            <property name="name">text-strikethrough</property>
+            <property name="group">annot-style-group</property>
+            <property name="icon-name">text-strikethrough-symbolic</property>
+            <property name="action-name">doc.annot-style</property>
+            <property name="action-target">'strikethrough'</property>
+            <property name="tooltip-text" translatable="yes">Strikethrough</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleButton">
+            <property name="name">text-underline</property>
+            <property name="group">annot-style-group</property>
+            <property name="icon-name">text-underline-symbolic</property>
+            <property name="action-name">doc.annot-style</property>
+            <property name="action-target">'underline'</property>
+            <property name="tooltip-text" translatable="yes">Underline</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="halign">center</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="spacing">6</property>
         <child>
           <object class="GtkToggleButton">

@@ -1,7 +1,7 @@
 use super::*;
 
 use gtk::gdk::gdk_pixbuf;
-use papers_document::{DocumentImages, DocumentSignatures};
+use papers_document::{AnnotationTextMarkupType, DocumentImages, DocumentSignatures};
 use papers_view::annotations_context::AddAnnotationData;
 
 fn gdk_pixbuf_format_by_extension(uri: &str) -> Option<gdk_pixbuf::PixbufFormat> {
@@ -294,6 +294,17 @@ impl imp::PpsDocumentView {
             gio::ActionEntryBuilder::new("annot-color")
                 .parameter_type(Some(glib::VariantTy::STRING))
                 .state(glib::Variant::from("yellow"))
+                .change_state(glib::clone!(
+                    #[weak(rename_to = _obj)]
+                    self,
+                    move |_, action, state| {
+                        action.set_state(state.unwrap());
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("annot-style")
+                .parameter_type(Some(glib::VariantTy::STRING))
+                .state(glib::Variant::from("highlight"))
                 .change_state(glib::clone!(
                     #[weak(rename_to = _obj)]
                     self,
@@ -913,7 +924,7 @@ impl imp::PpsDocumentView {
         self.toast_overlay.add_toast(toast);
     }
 
-    fn get_annot_color_rgba(&self) -> gdk::RGBA {
+    fn annot_color_rgba(&self) -> gdk::RGBA {
         let binding = self
             .document_action_group
             .lookup_action("annot-color")
@@ -932,6 +943,26 @@ impl imp::PpsDocumentView {
         }
     }
 
+    fn annot_style(&self) -> AnnotationTextMarkupType {
+        use papers_document::AnnotationTextMarkupType::*;
+
+        let binding = self
+            .document_action_group
+            .lookup_action("annot-style")
+            .unwrap()
+            .state()
+            .unwrap();
+        let style = binding.str().unwrap();
+
+        match style {
+            "highlight" => Highlight,
+            "squiggly" => Squiggly,
+            "strikethrough" => StrikeOut,
+            "underline" => Underline,
+            _ => panic!("unknown style {}", style),
+        }
+    }
+
     fn cmd_add_highlight_annotation(&self) {
         let selections = self.view.selections();
         for sel in selections.iter() {
@@ -946,8 +977,8 @@ impl imp::PpsDocumentView {
                 papers_document::AnnotationType::TextMarkup,
                 &start_point,
                 &end_point,
-                &self.get_annot_color_rgba(),
-                AddAnnotationData::TextMarkup(papers_document::AnnotationTextMarkupType::Highlight),
+                &self.annot_color_rgba(),
+                AddAnnotationData::TextMarkup(self.annot_style()),
             );
         }
     }
@@ -971,7 +1002,7 @@ impl imp::PpsDocumentView {
                 papers_document::AnnotationType::Text,
                 &mark.doc_point(),
                 &mark.doc_point(),
-                &self.get_annot_color_rgba(),
+                &self.annot_color_rgba(),
                 AddAnnotationData::None,
             );
         };

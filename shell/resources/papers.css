@@ -189,3 +189,8 @@ window.pps-annotation-window textview {
 #color-button-green {
     --accent-bg-color: var(--green-3);
 }
+
+#text-highlight > image {
+    background-color: var(--accent-bg-color);
+    background-clip: content-box;
+}
