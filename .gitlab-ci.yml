@@ -136,6 +136,12 @@ meson-pot:
         APP_ID: "org.gnome.Papers.Devel"
         BUNDLE: "org.gnome.Papers.Devel.flatpak"
     retry: 2
+    before_script:
+        - "jq '. + { \"runtime-version\": \"master\" }' ${MANIFEST_PATH} > ${MANIFEST_PATH}.tmp"
+        - mv ${MANIFEST_PATH}.tmp ${MANIFEST_PATH}
+    rules:
+        - if: $CI_COMMIT_BRANCH =~ /gnome-\d+/
+          allow_failure: true
 
 flatpak@x86_64:
     extends:
