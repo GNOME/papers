@@ -4411,9 +4411,6 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	width = gtk_widget_get_width (widget);
 	height = gtk_widget_get_height (widget);
 
-	gtk_snapshot_render_background (snapshot, gtk_widget_get_style_context (widget),
-	                                0, 0, width, height);
-
 	clip_rect.x = 0;
 	clip_rect.y = 0;
 	clip_rect.width = width;
