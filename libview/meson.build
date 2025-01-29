@@ -62,6 +62,7 @@ sources = files(
   'pps-view.c',
   #'pps-view-accessible.c',
   'pps-view-cursor.c',
+  'pps-view-page.c',
   'pps-view-presentation.c',
 )
 

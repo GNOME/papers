@@ -41,12 +41,12 @@
 
 #include "pps-annotation-window.h"
 #include "pps-colors.h"
-#include "pps-debug.h"
 #include "pps-document-annotations.h"
 #include "pps-form-field-private.h"
 #include "pps-page-cache.h"
 #include "pps-pixbuf-cache.h"
 #include "pps-view-marshal.h"
+#include "pps-view-page.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
@@ -92,13 +92,13 @@ typedef struct
 #define ZOOM_IN_FACTOR 1.2
 #define ZOOM_OUT_FACTOR (1.0 / ZOOM_IN_FACTOR)
 
+#define PAGE_WIDGET_POOL_SIZE 25
+
 #define SCROLL_TIME 150
 #define SCROLL_PAGE_THRESHOLD 0.7
+#define SCROLL_THRESHOLD 5
 
 #define DEFAULT_PIXBUF_CACHE_SIZE 52428800 /* 50MB */
-
-#define PPS_STYLE_CLASS_DOCUMENT_PAGE "document-page"
-#define PPS_STYLE_CLASS_INVERTED "inverted"
 
 #define ANNOT_POPUP_WINDOW_DEFAULT_WIDTH 200
 #define ANNOT_POPUP_WINDOW_DEFAULT_HEIGHT 150
@@ -109,8 +109,6 @@ typedef struct
 #define LINK_PREVIEW_DELAY_MS 300            /* Delay before showing preview in milliseconds */
 
 #define BUTTON_MODIFIER_MASK (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK | GDK_BUTTON5_MASK)
-
-#define SCROLL_THRESHOLD 5
 
 /*** Geometry computations ***/
 static void get_page_y_offset (PpsView *view,
@@ -171,14 +169,6 @@ static void hide_annotation_windows (PpsView *view,
 static void pps_view_remove_all_form_fields (PpsView *view);
 
 /*** Drawing ***/
-static void highlight_find_results (PpsView *view,
-                                    GtkSnapshot *snapshot,
-                                    int page);
-static void draw_one_page (PpsView *view,
-                           gint page,
-                           GtkSnapshot *snapshot,
-                           GdkRectangle *page_area,
-                           GdkRectangle *expose_area);
 static void draw_surface (GtkSnapshot *snapshot,
                           GdkTexture *texture,
                           const graphene_point_t *point,
@@ -190,9 +180,6 @@ static void pps_view_reload_page (PpsView *view,
 /*** Callbacks ***/
 static void pps_view_change_page (PpsView *view,
                                   gint new_page);
-static void job_finished_cb (PpsPixbufCache *pixbuf_cache,
-                             int page,
-                             PpsView *view);
 static void pps_view_page_changed_cb (PpsDocumentModel *model,
                                       gint old_page,
                                       gint new_page,
@@ -729,15 +716,43 @@ view_update_range_and_current_page (PpsView *view)
 	                                 priv->start_page,
 	                                 priv->end_page,
 	                                 priv->selection_info.selections);
+
+	for (gint i = 0; i < (priv->end_page + 1 - priv->start_page) - (gint) priv->page_widgets->len; i++) {
+		PpsViewPage *page = pps_view_page_new ();
+
+		gtk_widget_set_parent (GTK_WIDGET (page), GTK_WIDGET (view));
+		pps_view_page_setup (page, priv->model, priv->search_context, priv->page_cache, priv->pixbuf_cache);
+
+		g_ptr_array_add (priv->page_widgets, page);
+	}
+
+	guint start_widget = priv->start_page % priv->page_widgets->len;
+	guint end_widget = priv->end_page % priv->page_widgets->len;
+
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
+		gint page_index = -1;
+
+		if (start_widget <= end_widget) {
+			if (start_widget <= i && i <= end_widget)
+				page_index = priv->start_page - start_widget + i;
+		} else {
+			if (i <= end_widget)
+				page_index = priv->end_page - end_widget + i;
+			else if (start_widget <= i)
+				page_index = priv->start_page - start_widget + i;
+		}
+
+		if (page_index != -1)
+			pps_view_page_set_page (page, page_index);
+	}
+
 #if 0
 	if (priv->accessible)
 		pps_view_accessible_set_page_range (PPS_VIEW_ACCESSIBLE (priv->accessible),
 						   priv->start_page,
 						   priv->end_page);
 #endif
-
-	if (pps_pixbuf_cache_get_texture (priv->pixbuf_cache, priv->current_page))
-		gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
 static void
@@ -3989,6 +4004,7 @@ pps_view_size_allocate (GtkWidget *widget,
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsSizingMode sizing_mode = pps_document_model_get_sizing_mode (priv->model);
+	GdkRectangle view_area;
 	guint scroll_x, scroll_y;
 
 	if (!pps_document_model_get_document (priv->model))
@@ -4012,6 +4028,36 @@ pps_view_size_allocate (GtkWidget *widget,
 	priv->pending_point.y = 0;
 
 	get_scroll_offset (view, &scroll_x, &scroll_y);
+
+	view_area.x = 0;
+	view_area.y = 0;
+	view_area.width = width;
+	view_area.height = height;
+
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		GdkRectangle page_area;
+		PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
+		gint page_index = pps_view_page_get_page (page);
+
+		if (page_index < 0) {
+			gtk_widget_set_child_visible (GTK_WIDGET (page), FALSE);
+			continue;
+		}
+
+		/* TODO: let pps_view_get_page_extents return empty area instead? */
+		if (!pps_document_model_get_continuous (priv->model) && !(priv->start_page <= page_index && page_index <= priv->end_page)) {
+			gtk_widget_set_child_visible (GTK_WIDGET (page), FALSE);
+			continue;
+		}
+
+		pps_view_get_page_extents (view, page_index, &page_area);
+		page_area.x -= scroll_x;
+		page_area.y -= scroll_y;
+
+		// TODO: should use CSS padding box
+		gtk_widget_set_child_visible (GTK_WIDGET (page), gdk_rectangle_intersect (&page_area, &view_area, NULL));
+		gtk_widget_size_allocate (GTK_WIDGET (page), &page_area, baseline);
+	}
 
 	for (GtkWidget *child = gtk_widget_get_first_child (widget);
 	     child != NULL;
@@ -4069,25 +4115,6 @@ pps_view_scroll_event (GtkEventControllerScroll *self, gdouble dx, gdouble dy, G
 	}
 
 	return FALSE;
-}
-
-static PpsViewSelection *
-find_selection_for_page (PpsView *view,
-                         gint page)
-{
-	GList *list;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	for (list = priv->selection_info.selections; list != NULL; list = list->next) {
-		PpsViewSelection *selection;
-
-		selection = (PpsViewSelection *) list->data;
-
-		if (selection->page == page)
-			return selection;
-	}
-
-	return NULL;
 }
 
 /* This is based on the deprecated function gtk_draw_insertion_cursor. */
@@ -4151,200 +4178,6 @@ draw_focus (PpsView *view,
 }
 
 static void
-stroke_view_rect (GtkSnapshot *snapshot,
-                  GdkRectangle *clip,
-                  GdkRGBA *color,
-                  GdkRectangle *view_rect)
-{
-	GdkRectangle intersect;
-	GdkRGBA border_color[4] = { *color, *color, *color, *color };
-	float border_width[4] = { 1, 1, 1, 1 };
-
-	if (gdk_rectangle_intersect (view_rect, clip, &intersect)) {
-		gtk_snapshot_append_border (snapshot,
-		                            &GSK_ROUNDED_RECT_INIT (intersect.x, intersect.y,
-		                                                    intersect.width, intersect.height),
-		                            border_width, border_color);
-	}
-}
-
-static void
-stroke_doc_rect (PpsView *view,
-                 GtkSnapshot *snapshot,
-                 GdkRGBA *color,
-                 gint page,
-                 GdkRectangle *clip,
-                 PpsRectangle *doc_rect)
-{
-	GdkRectangle view_rect;
-	guint scroll_x, scroll_y;
-
-	get_scroll_offset (view, &scroll_x, &scroll_y);
-	_pps_view_transform_doc_rect_to_view_rect (view, page, doc_rect, &view_rect);
-	view_rect.x -= scroll_x;
-	view_rect.y -= scroll_y;
-	stroke_view_rect (snapshot, clip, color, &view_rect);
-}
-
-static void
-show_chars_border (PpsView *view,
-                   GtkSnapshot *snapshot,
-                   gint page,
-                   GdkRectangle *clip)
-{
-	PpsRectangle *areas = NULL;
-	guint n_areas = 0;
-	guint i;
-	GdkRGBA color = { 1, 0, 0, 1 };
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	pps_page_cache_get_text_layout (priv->page_cache, page, &areas, &n_areas);
-	if (!areas)
-		return;
-
-	for (i = 0; i < n_areas; i++) {
-		PpsRectangle *doc_rect = areas + i;
-
-		stroke_doc_rect (view, snapshot, &color, page, clip, doc_rect);
-	}
-}
-
-static void
-show_mapping_list_border (PpsView *view,
-                          GtkSnapshot *snapshot,
-                          GdkRGBA *color,
-                          gint page,
-                          GdkRectangle *clip,
-                          PpsMappingList *mapping_list)
-{
-	GList *l;
-
-	for (l = pps_mapping_list_get_list (mapping_list); l; l = g_list_next (l)) {
-		PpsMapping *mapping = (PpsMapping *) l->data;
-
-		stroke_doc_rect (view, snapshot, color, page, clip, &mapping->area);
-	}
-}
-
-static void
-show_links_border (PpsView *view,
-                   GtkSnapshot *snapshot,
-                   gint page,
-                   GdkRectangle *clip)
-{
-	GdkRGBA color = { 0, 0, 1, 1 };
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	show_mapping_list_border (view, snapshot, &color, page, clip,
-	                          pps_page_cache_get_link_mapping (priv->page_cache, page));
-}
-
-static void
-show_forms_border (PpsView *view,
-                   GtkSnapshot *snapshot,
-                   gint page,
-                   GdkRectangle *clip)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRGBA color = { 0, 1, 0, 1 };
-	show_mapping_list_border (view, snapshot, &color, page, clip,
-	                          pps_page_cache_get_form_field_mapping (priv->page_cache, page));
-}
-
-static void
-show_annots_border (PpsView *view,
-                    GtkSnapshot *snapshot,
-                    gint page,
-                    GdkRectangle *clip)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRGBA color = { 0, 1, 1, 1 };
-	show_mapping_list_border (view, snapshot, &color, page, clip,
-	                          pps_page_cache_get_annot_mapping (priv->page_cache, page));
-}
-
-static void
-show_images_border (PpsView *view,
-                    GtkSnapshot *snapshot,
-                    gint page,
-                    GdkRectangle *clip)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRGBA color = { 1, 0, 1, 1 };
-	show_mapping_list_border (view, snapshot, &color, page, clip,
-	                          pps_page_cache_get_image_mapping (priv->page_cache, page));
-}
-
-static void
-show_media_border (PpsView *view,
-                   GtkSnapshot *snapshot,
-                   gint page,
-                   GdkRectangle *clip)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRGBA color = { 1, 1, 0, 1 };
-	show_mapping_list_border (view, snapshot, &color, page, clip,
-	                          pps_page_cache_get_media_mapping (priv->page_cache, page));
-}
-
-static void
-show_selections_border (PpsView *view,
-                        GtkSnapshot *snapshot,
-                        gint page,
-                        GdkRectangle *clip)
-{
-	cairo_region_t *region;
-	guint i, n_rects;
-	GdkRGBA color = { 0.75, 0.50, 0.25, 1 };
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	region = pps_page_cache_get_text_mapping (priv->page_cache, page);
-	if (!region)
-		return;
-
-	region = cairo_region_copy (region);
-	n_rects = cairo_region_num_rectangles (region);
-	for (i = 0; i < n_rects; i++) {
-		GdkRectangle doc_rect_int;
-		PpsRectangle doc_rect_float;
-
-		cairo_region_get_rectangle (region, i, &doc_rect_int);
-
-		/* Convert the doc rect to a PpsRectangle */
-		doc_rect_float.x1 = doc_rect_int.x;
-		doc_rect_float.y1 = doc_rect_int.y;
-		doc_rect_float.x2 = doc_rect_int.x + doc_rect_int.width;
-		doc_rect_float.y2 = doc_rect_int.y + doc_rect_int.height;
-
-		stroke_doc_rect (view, snapshot, &color, page, clip, &doc_rect_float);
-	}
-	cairo_region_destroy (region);
-}
-
-static void
-draw_debug_borders (PpsView *view,
-                    GtkSnapshot *snapshot,
-                    gint page,
-                    GdkRectangle *clip)
-{
-	PpsDebugBorders borders = pps_debug_get_debug_borders ();
-
-	if (borders & PPS_DEBUG_BORDER_CHARS)
-		show_chars_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_LINKS)
-		show_links_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_FORMS)
-		show_forms_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_ANNOTS)
-		show_annots_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_IMAGES)
-		show_images_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_MEDIA)
-		show_media_border (view, snapshot, page, clip);
-	if (borders & PPS_DEBUG_BORDER_SELECTIONS)
-		show_selections_border (view, snapshot, page, clip);
-}
-
-static void
 draw_signing_rect (PpsView *view,
                    GtkSnapshot *snapshot)
 {
@@ -4392,8 +4225,6 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 {
 	int width, height;
 	PpsView *view = PPS_VIEW (widget);
-	gint i;
-	GdkRectangle clip_rect;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	guint scroll_x, scroll_y;
 
@@ -4402,29 +4233,10 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	width = gtk_widget_get_width (widget);
 	height = gtk_widget_get_height (widget);
 
-	clip_rect.x = 0;
-	clip_rect.y = 0;
-	clip_rect.width = width;
-	clip_rect.height = height;
-
 	if (pps_document_model_get_document (priv->model) == NULL)
 		return;
 
 	gtk_snapshot_push_clip (snapshot, &GRAPHENE_RECT_INIT (0, 0, width, height));
-
-	for (i = priv->start_page; i >= 0 && i <= priv->end_page; i++) {
-		GdkRectangle page_area;
-
-		pps_view_get_page_extents (view, i, &page_area);
-
-		page_area.x -= scroll_x;
-		page_area.y -= scroll_y;
-
-		if (!gdk_rectangle_intersect (&page_area, &clip_rect, NULL))
-			continue;
-
-		draw_one_page (view, i, snapshot, &page_area, &clip_rect);
-	}
 
 	/* snapshot child widgets */
 	GTK_WIDGET_CLASS (pps_view_parent_class)->snapshot (widget, snapshot);
@@ -5113,7 +4925,8 @@ pps_view_remove_all (PpsView *view)
 	while (child != NULL) {
 		GtkWidget *next = gtk_widget_get_next_sibling (child);
 
-		gtk_widget_unparent (child);
+		if (g_object_get_data (G_OBJECT (child), "pps-child"))
+			gtk_widget_unparent (child);
 
 		child = next;
 	}
@@ -6268,25 +6081,6 @@ pps_view_focus_out (GtkEventControllerFocus *self,
 /*** Drawing ***/
 
 static void
-draw_rect (PpsView *view,
-           GtkSnapshot *snapshot,
-           const GdkRectangle *rect,
-           const GdkRGBA *color)
-{
-	guint scroll_x, scroll_y;
-	graphene_rect_t graphene_rect;
-
-	get_scroll_offset (view, &scroll_x, &scroll_y);
-
-	graphene_rect = GRAPHENE_RECT_INIT (rect->x - scroll_x,
-	                                    rect->y - scroll_y,
-	                                    rect->width,
-	                                    rect->height);
-
-	gtk_snapshot_append_color (snapshot, color, &graphene_rect);
-}
-
-static void
 accent_changed_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
@@ -6295,55 +6089,6 @@ accent_changed_cb (PpsView *view)
 		pps_pixbuf_cache_style_changed (priv->pixbuf_cache);
 
 	gtk_widget_queue_draw (GTK_WIDGET (view));
-}
-
-static void
-highlight_find_results (PpsView *view,
-                        GtkSnapshot *snapshot,
-                        int page)
-{
-	PpsRectangle pps_rect;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GtkSingleSelection *model = pps_search_context_get_result_model (priv->search_context);
-	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, page);
-	GdkRGBA color_selected, color_default;
-
-	get_accent_color (&color_selected, NULL);
-	color_selected.alpha *= 0.6;
-	get_accent_color (&color_default, NULL);
-	color_default.alpha *= 0.3;
-
-	for (gint i = 0; i < results->len; i++) {
-		PpsSearchResult *result = g_ptr_array_index (results, i);
-		PpsFindRectangle *find_rect;
-		GList *rectangles;
-		GdkRectangle view_rectangle;
-		GdkRGBA color = color_default;
-
-		rectangles = pps_search_result_get_rectangle_list (result);
-		find_rect = (PpsFindRectangle *) rectangles->data;
-		pps_rect.x1 = find_rect->x1;
-		pps_rect.x2 = find_rect->x2;
-		pps_rect.y1 = find_rect->y1;
-		pps_rect.y2 = find_rect->y2;
-
-		if (result == gtk_single_selection_get_selected_item (model))
-			color = color_selected;
-		_pps_view_transform_doc_rect_to_view_rect (view, page, &pps_rect,
-		                                           &view_rectangle);
-		draw_rect (view, snapshot, &view_rectangle, &color);
-
-		if (rectangles->next) {
-			/* Draw now next result (which is second part of multi-line match) */
-			find_rect = (PpsFindRectangle *) rectangles->next->data;
-			pps_rect.x1 = find_rect->x1;
-			pps_rect.x2 = find_rect->x2;
-			pps_rect.y1 = find_rect->y1;
-			pps_rect.y2 = find_rect->y2;
-			_pps_view_transform_doc_rect_to_view_rect (view, page, &pps_rect, &view_rectangle);
-			draw_rect (view, snapshot, &view_rectangle, &color);
-		}
-	}
 }
 
 static void
@@ -6371,110 +6116,6 @@ draw_surface (GtkSnapshot *snapshot,
 	}
 
 	gtk_snapshot_restore (snapshot);
-}
-
-static void
-draw_selection_region (GtkSnapshot *snapshot,
-                       PpsView *view,
-                       cairo_region_t *region,
-                       GdkRGBA *color,
-                       gint x,
-                       gint y)
-{
-	cairo_rectangle_int_t box;
-	gint n_boxes, i;
-
-	n_boxes = cairo_region_num_rectangles (region);
-
-	for (i = 0; i < n_boxes; i++) {
-		cairo_region_get_rectangle (region, i, &box);
-
-		box.x = box.x + x;
-		box.y = box.y + y;
-
-		draw_rect (view, snapshot, &box, color);
-	}
-}
-
-static void
-draw_one_page (PpsView *view,
-               gint page,
-               GtkSnapshot *snapshot,
-               GdkRectangle *page_area,
-               GdkRectangle *expose_area)
-{
-	GtkStyleContext *context;
-	GdkRectangle overlap;
-	gint current_page;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gdouble scale = pps_document_model_get_scale (priv->model);
-
-	context = gtk_widget_get_style_context (GTK_WIDGET (view));
-	current_page = pps_document_model_get_page (priv->model);
-
-	gtk_style_context_save (context);
-	gtk_style_context_add_class (context, PPS_STYLE_CLASS_DOCUMENT_PAGE);
-	gtk_style_context_add_class (context, "card");
-	if (pps_document_model_get_inverted_colors (priv->model))
-		gtk_style_context_add_class (context, PPS_STYLE_CLASS_INVERTED);
-
-	if (pps_document_model_get_continuous (priv->model) && page == current_page)
-		gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-
-	gtk_snapshot_render_background (snapshot, context, page_area->x, page_area->y, page_area->width, page_area->height);
-	gtk_snapshot_render_frame (snapshot, context, page_area->x, page_area->y, page_area->width, page_area->height);
-	gtk_style_context_restore (context);
-
-	/* Render the document itself */
-
-	gint width, height;
-	GdkTexture *page_texture = NULL, *selection_texture = NULL;
-	graphene_point_t point;
-	graphene_rect_t area;
-	cairo_region_t *region = NULL;
-	gboolean inverted = pps_document_model_get_inverted_colors (priv->model);
-
-	gdk_rectangle_intersect (page_area, expose_area, &overlap);
-
-	page_texture = pps_pixbuf_cache_get_texture (priv->pixbuf_cache, page);
-
-	if (!page_texture)
-		return;
-
-	pps_view_get_page_size (view, page, &width, &height);
-
-	area = GRAPHENE_RECT_INIT (page_area->x - overlap.x,
-	                           page_area->y - overlap.y,
-	                           width, height);
-	point = GRAPHENE_POINT_INIT (overlap.x, overlap.y);
-
-	draw_surface (snapshot, page_texture, &point, &area, inverted);
-
-	/* Get the selection pixbuf iff we have something to draw */
-	if (find_selection_for_page (view, page))
-		selection_texture = pps_pixbuf_cache_get_selection_texture (priv->pixbuf_cache,
-		                                                            page,
-		                                                            scale);
-
-	if (selection_texture) {
-		draw_surface (snapshot, selection_texture, &point, &area, false);
-	} else {
-		region = pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache,
-		                                                page,
-		                                                scale);
-		if (region) {
-			GdkRGBA color;
-
-			get_accent_color (&color, NULL);
-			draw_selection_region (snapshot, view, region, &color, page_area->x, page_area->y);
-		}
-	}
-
-	if (pps_search_context_get_active (priv->search_context))
-		highlight_find_results (view, snapshot, page);
-
-	if (pps_debug_get_debug_borders ())
-		draw_debug_borders (view, snapshot, page, expose_area);
 }
 
 /*** GObject functions ***/
@@ -6510,6 +6151,8 @@ pps_view_dispose (GObject *object)
 	g_clear_object (&priv->page_cache);
 	g_clear_object (&priv->scroll_animation_vertical);
 	g_clear_object (&priv->scroll_animation_horizontal);
+
+	g_clear_pointer (&priv->page_widgets, g_ptr_array_unref);
 
 	g_clear_handle_id (&priv->update_cursor_idle_id, g_source_remove);
 	g_clear_handle_id (&priv->selection_scroll_id, g_source_remove);
@@ -7104,6 +6747,15 @@ pps_view_init (PpsView *view)
 	adw_animation_pause (priv->scroll_animation_vertical);
 	adw_animation_pause (priv->scroll_animation_horizontal);
 
+	priv->page_widgets = g_ptr_array_new_full (PAGE_WIDGET_POOL_SIZE, (GDestroyNotify) gtk_widget_unparent);
+
+	for (guint i = 0; i < PAGE_WIDGET_POOL_SIZE; i++) {
+		PpsViewPage *page = pps_view_page_new ();
+
+		gtk_widget_set_parent (GTK_WIDGET (page), GTK_WIDGET (view));
+		g_ptr_array_add (priv->page_widgets, page);
+	}
+
 	gtk_widget_init_template (GTK_WIDGET (view));
 
 	gtk_gesture_group (priv->middle_clicked_drag_gesture,
@@ -7136,14 +6788,6 @@ pps_view_change_page (PpsView *view,
 }
 
 static void
-job_finished_cb (PpsPixbufCache *pixbuf_cache,
-                 int page,
-                 PpsView *view)
-{
-	gtk_widget_queue_draw (GTK_WIDGET (view));
-}
-
-static void
 pps_view_page_changed_cb (PpsDocumentModel *model,
                           gint old_page,
                           gint new_page,
@@ -7155,8 +6799,6 @@ pps_view_page_changed_cb (PpsDocumentModel *model,
 
 	if (priv->current_page != new_page) {
 		pps_view_change_page (view, new_page);
-	} else {
-		gtk_widget_queue_draw (GTK_WIDGET (view));
 	}
 }
 
@@ -7236,8 +6878,6 @@ setup_caches (PpsView *view)
 	                              PPS_PAGE_DATA_INCLUDE_TEXT |
 	                              PPS_PAGE_DATA_INCLUDE_TEXT_ATTRS |
 	                              PPS_PAGE_DATA_INCLUDE_TEXT_LOG_ATTRS);
-
-	g_signal_connect (priv->pixbuf_cache, "job-finished", G_CALLBACK (job_finished_cb), view);
 }
 
 static void
@@ -7300,6 +6940,12 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 	if (priv->caret_enabled)
 		preload_pages_for_caret_navigation (view);
 
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
+
+		pps_view_page_setup (page, priv->model, priv->search_context, priv->page_cache, priv->pixbuf_cache);
+	}
+
 	pps_view_change_page (view, pps_document_model_get_page (model));
 
 	view_update_scale_limits (view);
@@ -7327,14 +6973,6 @@ pps_view_rotation_changed_cb (PpsDocumentModel *model,
 
 	if (rotation != 0)
 		clear_selection (view);
-}
-
-static void
-pps_view_inverted_colors_changed_cb (PpsDocumentModel *model,
-                                     GParamSpec *pspec,
-                                     PpsView *view)
-{
-	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
 static void
@@ -7489,9 +7127,6 @@ pps_view_set_model (PpsView *view,
 	                  view);
 	g_signal_connect (priv->model, "notify::rotation",
 	                  G_CALLBACK (pps_view_rotation_changed_cb),
-	                  view);
-	g_signal_connect (priv->model, "notify::inverted-colors",
-	                  G_CALLBACK (pps_view_inverted_colors_changed_cb),
 	                  view);
 	g_signal_connect (priv->model, "notify::sizing-mode",
 	                  G_CALLBACK (pps_view_sizing_mode_changed_cb),
@@ -7935,12 +7570,6 @@ jump_to_find_result (PpsView *view, guint page, GList *rect_list)
 }
 
 static void
-pps_view_find_finished_cb (PpsView *view)
-{
-	gtk_widget_queue_draw (GTK_WIDGET (view));
-}
-
-static void
 pps_view_search_result_changed_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
@@ -7955,7 +7584,6 @@ pps_view_search_result_changed_cb (PpsView *view)
 	pps_document_model_set_page (priv->model, page);
 	jump_to_find_result (view, page,
 	                     pps_search_result_get_rectangle_list (result));
-	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
 void
@@ -7967,22 +7595,14 @@ pps_view_set_search_context (PpsView *view,
 	g_return_if_fail (PPS_IS_SEARCH_CONTEXT (context));
 
 	if (priv->search_context != NULL) {
-		g_signal_handlers_disconnect_by_func (priv->search_context, pps_view_find_finished_cb, view);
 		g_signal_handlers_disconnect_by_func (pps_search_context_get_result_model (priv->search_context), pps_view_search_result_changed_cb, view);
-		g_signal_handlers_disconnect_by_func (priv->search_context, gtk_widget_queue_draw, view);
 	}
 
 	g_set_object (&priv->search_context, context);
 
-	g_signal_connect_object (priv->search_context, "finished",
-	                         G_CALLBACK (pps_view_find_finished_cb),
-	                         view, G_CONNECT_SWAPPED);
 	g_signal_connect_object (pps_search_context_get_result_model (priv->search_context),
 	                         "notify::selected-item",
 	                         G_CALLBACK (pps_view_search_result_changed_cb),
-	                         view, G_CONNECT_SWAPPED);
-	g_signal_connect_object (priv->search_context, "notify::active",
-	                         G_CALLBACK (gtk_widget_queue_draw),
 	                         view, G_CONNECT_SWAPPED);
 }
 
@@ -8220,9 +7840,6 @@ merge_selection_region (PpsView *view,
 	}
 
 	pps_view_check_cursor_blink (view);
-
-	if (old_list || new_list)
-		gtk_widget_queue_draw (GTK_WIDGET (view));
 
 	/* Free the old list, now that we're done with it. */
 	g_clear_list (&old_list, (GDestroyNotify) pps_view_selection_free);
