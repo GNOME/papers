@@ -104,6 +104,7 @@ typedef struct _PpsViewPrivate {
 	PpsPageCache *page_cache;
 	PpsHeightToPageCache *height_to_page_cache;
 	PpsViewCursor cursor;
+	GPtrArray *page_widgets;
 
 	GtkRequisition requisition;
 
