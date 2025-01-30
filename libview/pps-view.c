@@ -4440,7 +4440,7 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 
 		if (should_draw_caret_cursor (view, i))
 			draw_caret_cursor (view, snapshot);
-		if (priv->highlight_find_results)
+		if (pps_search_context_get_active (priv->search_context))
 			highlight_find_results (view, snapshot, i);
 		if (priv->focused_element)
 			draw_focus (view, snapshot, i, &clip_rect);
@@ -7205,7 +7205,6 @@ pps_view_init (PpsView *view)
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
 	priv->pending_point.x = 0;
 	priv->pending_point.y = 0;
-	priv->highlight_find_results = FALSE;
 	priv->pixbuf_cache_size = DEFAULT_PIXBUF_CACHE_SIZE;
 	priv->caret_enabled = FALSE;
 	priv->cursor_page = 0;
@@ -8103,6 +8102,7 @@ pps_view_set_search_context (PpsView *view,
 	if (priv->search_context != NULL) {
 		g_signal_handlers_disconnect_by_func (priv->search_context, pps_view_find_finished_cb, view);
 		g_signal_handlers_disconnect_by_func (pps_search_context_get_result_model (priv->search_context), pps_view_search_result_changed_cb, view);
+		g_signal_handlers_disconnect_by_func (priv->search_context, gtk_widget_queue_draw, view);
 	}
 
 	g_set_object (&priv->search_context, context);
@@ -8114,6 +8114,9 @@ pps_view_set_search_context (PpsView *view,
 	                         "notify::selected-item",
 	                         G_CALLBACK (pps_view_search_result_changed_cb),
 	                         view, G_CONNECT_SWAPPED);
+	g_signal_connect_object (priv->search_context, "notify::active",
+	                         G_CALLBACK (gtk_widget_queue_draw),
+	                         view, G_CONNECT_SWAPPED);
 }
 
 void
@@ -8121,8 +8124,12 @@ pps_view_find_set_highlight_search (PpsView *view, gboolean value)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	priv->highlight_find_results = value;
-	gtk_widget_queue_draw (GTK_WIDGET (view));
+	if (pps_search_context_get_active (priv->search_context) && !value)
+		pps_search_context_release (priv->search_context);
+	else if (!pps_search_context_get_active (priv->search_context) && value)
+		pps_search_context_activate (priv->search_context);
+	else
+		g_critical ("PpsView does not support outside users of the search context");
 }
 
 /*** Selections ***/
