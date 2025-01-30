@@ -6322,12 +6322,12 @@ highlight_find_results (PpsView *view,
 	PpsRectangle pps_rect;
 	gint i = 0;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GListModel *model = pps_search_context_get_result_model (priv->search_context);
-	PpsSearchResult *result = g_list_model_get_item (model, i);
+	GtkSingleSelection *model = pps_search_context_get_result_model (priv->search_context);
+	PpsSearchResult *result = g_list_model_get_item (G_LIST_MODEL (model), i);
 
-	for (i = 0, result = g_list_model_get_item (model, i);
+	for (i = 0, result = g_list_model_get_item (G_LIST_MODEL (model), i);
 	     result != NULL;
-	     result = g_list_model_get_item (model, ++i)) {
+	     result = g_list_model_get_item (G_LIST_MODEL (model), ++i)) {
 		PpsFindRectangle *find_rect;
 		GList *rectangles;
 		GdkRectangle view_rectangle;

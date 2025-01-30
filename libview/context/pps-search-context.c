@@ -58,6 +58,7 @@ typedef struct
 	gchar *search_term;
 
 	GListStore *result_model;
+	GtkSingleSelection *selection_model;
 } PpsSearchContextPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (PpsSearchContext, pps_search_context, G_TYPE_OBJECT)
@@ -392,6 +393,16 @@ find_job_finished_cb (PpsJobFind *job,
 }
 
 static void
+selection_changed_cb (PpsSearchContext *context)
+{
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+	PpsSearchResult *result = PPS_SEARCH_RESULT (gtk_single_selection_get_selected_item (priv->selection_model));
+
+	if (result != NULL)
+		g_signal_emit (context, signals[RESULT_ACTIVATED], 0, result);
+}
+
+static void
 pps_search_context_dispose (GObject *object)
 {
 	PpsSearchContext *context = PPS_SEARCH_CONTEXT (object);
@@ -399,6 +410,7 @@ pps_search_context_dispose (GObject *object)
 
 	pps_search_context_clear_job (context);
 	g_clear_object (&priv->result_model);
+	g_clear_object (&priv->selection_model);
 
 	G_OBJECT_CLASS (pps_search_context_parent_class)->dispose (object);
 }
@@ -409,6 +421,8 @@ pps_search_context_init (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
+	priv->selection_model = gtk_single_selection_new (G_LIST_MODEL (priv->result_model));
+	gtk_single_selection_set_autoselect (priv->selection_model, FALSE);
 }
 
 static void
@@ -465,6 +479,10 @@ pps_search_context_constructed (GObject *object)
 	g_signal_connect_object (priv->model, "notify::document",
 	                         G_CALLBACK (document_changed_cb),
 	                         context, G_CONNECT_DEFAULT);
+
+	g_signal_connect_object (priv->selection_model, "selection-changed",
+	                         G_CALLBACK (selection_changed_cb), context,
+	                         G_CONNECT_SWAPPED);
 }
 
 static void
@@ -581,16 +599,16 @@ pps_search_context_get_options (PpsSearchContext *context)
 /**
  * pps_search_context_get_result_model:
  *
- * Returns: (not nullable) (transfer none): the returned #GListModel
+ * Returns: (not nullable) (transfer none): the returned #GtkSingleSelection
  */
-GListModel *
+GtkSingleSelection *
 pps_search_context_get_result_model (PpsSearchContext *context)
 {
 	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), NULL);
 
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
-	return G_LIST_MODEL (priv->result_model);
+	return priv->selection_model;
 }
 
 void
@@ -624,5 +642,9 @@ void
 pps_search_context_select_result (PpsSearchContext *context,
                                   PpsSearchResult *result)
 {
-	g_signal_emit (context, signals[RESULT_ACTIVATED], 0, result);
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+	guint position;
+
+	g_list_store_find (priv->result_model, result, &position);
+	gtk_single_selection_set_selected (priv->selection_model, position);
 }

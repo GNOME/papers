@@ -60,7 +60,7 @@ PPS_PUBLIC
 void pps_search_context_set_options (PpsSearchContext *context,
                                      PpsFindOptions options);
 PPS_PUBLIC
-GListModel *pps_search_context_get_result_model (PpsSearchContext *context);
+GtkSingleSelection *pps_search_context_get_result_model (PpsSearchContext *context);
 PPS_PUBLIC
 void pps_search_context_restart (PpsSearchContext *context);
 PPS_PUBLIC
