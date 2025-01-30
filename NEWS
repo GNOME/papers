@@ -1,3 +1,41 @@
+Papers 47.2
+--------------
+
+(re-release of 47.1 due to CI issues not affecting the actual application)
+
+* Fixes that might be noteworthy for downstreams (in main and picked for 47.2): 
+- Backwards compatible fix for supporting glib-macros >= 0.20.3 (#278 Fails to build with newer glib-macros)
+- Libadwaita dep relaxed from >=1.6.beta to >=1.6
+- Requirement for cargo-fmt dropped for build type release
+- Fix libview header paths
+- Disable validate URL availability of appstream metadata (no net)
+
+* Other bugs fixed in main and picked for 47.2:
+- #240 Crash with documents dragged and dropped onto Papers
+- #251 Crash clicking "Expand all under this element"
+- #254 Text marker in page number entry disappearing
+- #125 Excessive zooming with continously scrolling mice
+- #262 Text selection does not copy content for middle mouse button
+- Miscalculated pointer location
+- Fetching attachments leaked memory
+- Potential crash due to race condition in search context and attachment context
+- Critical on close due to ongoing timeout while scrolling
+- #306 annotation windows erroneously made transparent based on annotation's opacity
+- #263 help window not shown inside Flatpak's sandbox
+
+* Translation updates:
+- Slovenian (Martin S.)
+- Georgian (Ekaterine Papava)
+- Chinese (China) (lumingzh)
+- Hebrew (Yosef Or Boczko)
+- Persian (Danial Behzadi)
+- Swedish (Anders Jonsson)
+- Ukrainian (Yuri Chornoivan)
+- Hungarian (Balázs Úr)
+- Portuguese (Hugo Carvalho)
+- German (Jürgen Benvenuti)
+- Occitan (Quentin PAGÈS)
+
 Papers 47.1
 --------------
 
