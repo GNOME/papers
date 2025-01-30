@@ -34,6 +34,7 @@ enum {
 
 	PROP_DOCUMENT_MODEL,
 	PROP_SEARCH_TERM,
+	PROP_ACTIVE,
 
 	NUM_PROPERTIES
 };
@@ -56,6 +57,7 @@ typedef struct
 	PpsFindOptions supported_options;
 
 	gchar *search_term;
+	guint active_use_count;
 
 	GListStore *result_model;
 	GtkSingleSelection *selection_model;
@@ -459,6 +461,9 @@ pps_search_context_get_property (GObject *object,
 	case PROP_SEARCH_TERM:
 		g_value_set_string (value, priv->search_term);
 		break;
+	case PROP_ACTIVE:
+		g_value_set_boolean (value, pps_search_context_get_active (context));
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -508,6 +513,13 @@ pps_search_context_class_init (PpsSearchContextClass *klass)
 	                         "search term for the current context",
 	                         "",
 	                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	props[PROP_ACTIVE] =
+	    g_param_spec_boolean ("active",
+	                          NULL,
+	                          "search is actively ongoing",
+	                          FALSE,
+	                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
 	g_object_class_install_properties (gobject_class, NUM_PROPERTIES, props);
 
@@ -609,6 +621,61 @@ pps_search_context_get_result_model (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	return priv->selection_model;
+}
+
+/**
+ * pps_search_context_activate:
+ *
+ * Since: 48.0
+ */
+void
+pps_search_context_activate (PpsSearchContext *context)
+{
+	g_return_if_fail (PPS_IS_SEARCH_CONTEXT (context));
+
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	priv->active_use_count++;
+
+	if (priv->active_use_count == 1)
+		g_object_notify_by_pspec (G_OBJECT (context), props[PROP_ACTIVE]);
+}
+
+/**
+ * pps_search_context_release:
+ *
+ * Since: 48.0
+ */
+void
+pps_search_context_release (PpsSearchContext *context)
+{
+	g_return_if_fail (PPS_IS_SEARCH_CONTEXT (context));
+
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	g_return_if_fail (priv->active_use_count > 0);
+
+	priv->active_use_count--;
+
+	if (priv->active_use_count == 0)
+		g_object_notify_by_pspec (G_OBJECT (context), props[PROP_ACTIVE]);
+}
+
+/**
+ * pps_search_context_get_active:
+ *
+ * Returns: (not nullable): whether search is actively ongoing
+ *
+ * Since: 48.0
+ */
+gboolean
+pps_search_context_get_active (PpsSearchContext *context)
+{
+	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), FALSE);
+
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	return priv->active_use_count > 0;
 }
 
 void

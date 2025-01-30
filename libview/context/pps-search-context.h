@@ -62,6 +62,12 @@ void pps_search_context_set_options (PpsSearchContext *context,
 PPS_PUBLIC
 GtkSingleSelection *pps_search_context_get_result_model (PpsSearchContext *context);
 PPS_PUBLIC
+void pps_search_context_activate (PpsSearchContext *context);
+PPS_PUBLIC
+void pps_search_context_release (PpsSearchContext *context);
+PPS_PUBLIC
+gboolean pps_search_context_get_active (PpsSearchContext *context);
+PPS_PUBLIC
 void pps_search_context_restart (PpsSearchContext *context);
 PPS_PUBLIC
 void pps_search_context_select_result (PpsSearchContext *context,
