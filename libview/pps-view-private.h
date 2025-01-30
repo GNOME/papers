@@ -97,7 +97,6 @@ typedef struct
 typedef struct _PpsViewPrivate {
 	/* Find */
 	PpsSearchContext *search_context;
-	PpsSearchResult *find_result; /* The selected find_result */
 	gboolean highlight_find_results;
 
 	PpsDocumentModel *model;

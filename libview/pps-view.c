@@ -6343,7 +6343,7 @@ highlight_find_results (PpsView *view,
 		pps_rect.y1 = find_rect->y1;
 		pps_rect.y2 = find_rect->y2;
 
-		if (result == priv->find_result)
+		if (result == gtk_single_selection_get_selected_item (model))
 			active = TRUE;
 		_pps_view_transform_doc_rect_to_view_rect (view, page, &pps_rect,
 		                                           &view_rectangle);
@@ -8075,12 +8075,17 @@ pps_view_find_finished_cb (PpsView *view)
 }
 
 static void
-pps_view_find_set_result (PpsView *view, PpsSearchResult *result)
+pps_view_search_result_changed_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	guint page = pps_search_result_get_page (result);
+	PpsSearchResult *result = gtk_single_selection_get_selected_item (pps_search_context_get_result_model (priv->search_context));
+	guint page;
 
-	g_set_weak_pointer (&priv->find_result, result);
+	if (result == NULL)
+		return;
+
+	page = pps_search_result_get_page (result);
+
 	pps_document_model_set_page (priv->model, page);
 	jump_to_find_result (view, page,
 	                     pps_search_result_get_rectangle_list (result));
@@ -8097,7 +8102,7 @@ pps_view_set_search_context (PpsView *view,
 
 	if (priv->search_context != NULL) {
 		g_signal_handlers_disconnect_by_func (priv->search_context, pps_view_find_finished_cb, view);
-		g_signal_handlers_disconnect_by_func (priv->search_context, pps_view_find_set_result, view);
+		g_signal_handlers_disconnect_by_func (pps_search_context_get_result_model (priv->search_context), pps_view_search_result_changed_cb, view);
 	}
 
 	g_set_object (&priv->search_context, context);
@@ -8105,8 +8110,9 @@ pps_view_set_search_context (PpsView *view,
 	g_signal_connect_object (priv->search_context, "finished",
 	                         G_CALLBACK (pps_view_find_finished_cb),
 	                         view, G_CONNECT_SWAPPED);
-	g_signal_connect_object (priv->search_context, "result-activated",
-	                         G_CALLBACK (pps_view_find_set_result),
+	g_signal_connect_object (pps_search_context_get_result_model (priv->search_context),
+	                         "notify::selected-item",
+	                         G_CALLBACK (pps_view_search_result_changed_cb),
 	                         view, G_CONNECT_SWAPPED);
 }
 
