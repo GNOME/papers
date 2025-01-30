@@ -528,10 +528,8 @@ pps_view_scroll_to_page_position (PpsView *view, GtkOrientation orientation)
 }
 
 static void
-pps_view_set_adjustment_values (PpsView *view,
-                                GtkOrientation orientation,
-                                int width,
-                                int height)
+pps_view_update_adjustment_value (PpsView *view,
+                                  GtkOrientation orientation)
 {
 	GtkAdjustment *adjustment;
 	gint req_size, alloc_size, new_value;
@@ -549,9 +547,6 @@ pps_view_set_adjustment_values (PpsView *view,
 		adjustment = priv->vadjustment;
 		zoom_center = priv->zoom_center_y;
 	}
-
-	if (!adjustment)
-		return;
 
 	factor = 1.0;
 	value = gtk_adjustment_get_value (adjustment);
@@ -601,6 +596,13 @@ pps_view_set_adjustment_values (PpsView *view,
 		gtk_adjustment_set_value (adjustment, new_value);
 		break;
 	}
+}
+
+static void
+pps_view_update_adjustment_values (PpsView *view)
+{
+	pps_view_update_adjustment_value (view, GTK_ORIENTATION_HORIZONTAL);
+	pps_view_update_adjustment_value (view, GTK_ORIENTATION_VERTICAL);
 }
 
 static void
@@ -3995,8 +3997,8 @@ pps_view_size_allocate (GtkWidget *widget,
 		pps_view_size_request (widget, NULL);
 	}
 
-	pps_view_set_adjustment_values (view, GTK_ORIENTATION_HORIZONTAL, width, height);
-	pps_view_set_adjustment_values (view, GTK_ORIENTATION_VERTICAL, width, height);
+	if (priv->pending_resize)
+		pps_view_update_adjustment_values (view);
 
 	view_update_range_and_current_page (view);
 
@@ -6836,10 +6838,7 @@ static void
 notify_scale_factor_cb (PpsView *view,
                         GParamSpec *pspec)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	if (pps_document_model_get_document (priv->model))
-		view_update_range_and_current_page (view);
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 static void
@@ -7176,12 +7175,13 @@ pps_view_change_page (PpsView *view,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	priv->current_page = new_page;
+	priv->pending_resize = TRUE;
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
 
 	pps_document_misc_get_pointer_position (GTK_WIDGET (view), &x, &y);
 	pps_view_handle_cursor_over_xy (view, x, y);
 
-	gtk_widget_queue_resize (GTK_WIDGET (view));
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 static void
@@ -7241,24 +7241,11 @@ adjustment_value_changed_cb (GtkAdjustment *adjustment,
                              PpsView *view)
 {
 	GtkWidget *widget = GTK_WIDGET (view);
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (!gtk_widget_get_realized (widget))
 		return;
 
-	for (GtkWidget *child = gtk_widget_get_first_child (widget);
-	     child != NULL;
-	     child = gtk_widget_get_next_sibling (child)) {
-		if (!g_object_get_data (G_OBJECT (child), "pps-child"))
-			continue;
-
-		if (gtk_widget_get_visible (child) && gtk_widget_get_visible (widget))
-			gtk_widget_queue_resize (widget);
-	}
-
-	if (priv->pending_resize) {
-		gtk_widget_queue_draw (widget);
-	}
+	gtk_widget_queue_allocate (widget);
 
 #if 0
 	cursor_updated = FALSE;
@@ -7276,9 +7263,6 @@ adjustment_value_changed_cb (GtkAdjustment *adjustment,
 	if (!cursor_updated)
 		schedule_scroll_cursor_update (view);
 #endif
-
-	if (pps_document_model_get_document (priv->model))
-		view_update_range_and_current_page (view);
 }
 
 PpsView *
@@ -7447,6 +7431,7 @@ pps_view_page_layout_changed_cb (PpsDocumentModel *model,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	priv->pending_resize = TRUE;
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 
 	/* FIXME: if we're keeping the pixbuf cache around, we should extend the
@@ -7498,6 +7483,7 @@ pps_view_continuous_changed_cb (PpsDocumentModel *model,
 		                                     0, 0);
 	}
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	priv->pending_resize = TRUE;
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
 
@@ -7508,6 +7494,7 @@ pps_view_dual_odd_left_changed_cb (PpsDocumentModel *model,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	priv->pending_resize = TRUE;
 	if (pps_document_model_get_page_layout (model) == PPS_PAGE_LAYOUT_DUAL)
 		/* odd_left may be set when not in dual mode,
 		   queue_resize is not needed in that case */
@@ -7523,7 +7510,7 @@ pps_view_direction_changed_cb (PpsDocumentModel *model,
 	gboolean rtl = pps_document_model_get_rtl (model);
 	gtk_widget_set_direction (GTK_WIDGET (view), rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	gtk_widget_queue_resize (GTK_WIDGET (view));
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 void
@@ -7607,7 +7594,7 @@ pps_view_reload (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	pps_pixbuf_cache_clear (priv->pixbuf_cache);
-	view_update_range_and_current_page (view);
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 /*** Zoom and sizing mode ***/
