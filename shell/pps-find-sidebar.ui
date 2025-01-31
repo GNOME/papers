@@ -35,6 +35,7 @@
                         </property>
                         <property name="model">
                           <object class="GtkSingleSelection" id="selection">
+                            <property name="autoselect">False</property>
                             <signal name="selection-changed" handler="selection_changed_cb" />
                           </object>
                         </property>
