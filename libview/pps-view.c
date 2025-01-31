@@ -4112,32 +4112,25 @@ draw_caret_cursor (PpsView *view,
 }
 
 static gboolean
-should_draw_caret_cursor (PpsView *view,
-                          gint page)
+should_draw_caret_cursor (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
 
 	return (priv->caret_enabled &&
-	        priv->cursor_page == page &&
 	        priv->cursor_visible &&
 	        gtk_widget_has_focus (GTK_WIDGET (view)) &&
-	        !pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache, page, scale));
+	        !pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache, priv->cursor_page, scale));
 }
 
 static void
 draw_focus (PpsView *view,
             GtkSnapshot *snapshot,
-            gint page,
             GdkRectangle *clip)
 {
 	GtkWidget *widget = GTK_WIDGET (view);
 	GdkRectangle rect;
 	GdkRectangle intersect;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	if (priv->focused_element_page != page)
-		return;
 
 	if (!gtk_widget_has_focus (widget))
 		return;
@@ -4351,8 +4344,7 @@ draw_debug_borders (PpsView *view,
 
 static void
 draw_signing_rect (PpsView *view,
-                   GtkSnapshot *snapshot,
-                   gint page)
+                   GtkSnapshot *snapshot)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GskRoundedRect outline;
@@ -4432,13 +4424,8 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 		if (!draw_one_page (view, i, snapshot, &page_area, &clip_rect))
 			continue;
 
-		if (should_draw_caret_cursor (view, i))
-			draw_caret_cursor (view, snapshot);
 		if (pps_search_context_get_active (priv->search_context))
 			highlight_find_results (view, snapshot, i);
-		if (priv->focused_element)
-			draw_focus (view, snapshot, i, &clip_rect);
-		draw_signing_rect (view, snapshot, i);
 
 		if (pps_debug_get_debug_borders ())
 			draw_debug_borders (view, snapshot, i, &clip_rect);
@@ -4446,6 +4433,14 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 
 	/* snapshot child widgets */
 	GTK_WIDGET_CLASS (pps_view_parent_class)->snapshot (widget, snapshot);
+
+	if (priv->focused_element)
+		draw_focus (view, snapshot, &clip_rect);
+
+	if (should_draw_caret_cursor (view))
+		draw_caret_cursor (view, snapshot);
+
+	draw_signing_rect (view, snapshot);
 
 	gtk_snapshot_pop (snapshot);
 }
