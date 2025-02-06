@@ -75,6 +75,8 @@ sources = files(
   'pps-view-cursor.c',
   'pps-view-page.c',
   'pps-view-presentation.c',
+  'pps-css-utils.c',
+  'pps-annotation-overlay.c',
   'pps-annotation-layer.c',
 )
 
