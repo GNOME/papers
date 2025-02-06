@@ -98,7 +98,6 @@ typedef struct
 
 #define PPS_STYLE_CLASS_DOCUMENT_PAGE "document-page"
 #define PPS_STYLE_CLASS_INVERTED "inverted"
-#define PPS_STYLE_CLASS_FIND_RESULTS "find-results"
 
 #define ANNOT_POPUP_WINDOW_DEFAULT_WIDTH 200
 #define ANNOT_POPUP_WINDOW_DEFAULT_HEIGHT 150
@@ -6275,28 +6274,22 @@ pps_view_focus_out (GtkEventControllerFocus *self,
 /*** Drawing ***/
 
 static void
-draw_rubberband (PpsView *view,
-                 GtkSnapshot *snapshot,
-                 const GdkRectangle *rect,
-                 gboolean active)
+draw_rect (PpsView *view,
+           GtkSnapshot *snapshot,
+           const GdkRectangle *rect,
+           const GdkRGBA *color)
 {
-	GtkStyleContext *context;
 	guint scroll_x, scroll_y;
+	graphene_rect_t graphene_rect;
 
 	get_scroll_offset (view, &scroll_x, &scroll_y);
-	context = gtk_widget_get_style_context (GTK_WIDGET (view));
-	gtk_style_context_save (context);
-	gtk_style_context_add_class (context, PPS_STYLE_CLASS_FIND_RESULTS);
-	if (active)
-		gtk_style_context_set_state (context, GTK_STATE_FLAG_ACTIVE);
-	else
-		gtk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
 
-	gtk_snapshot_render_background (snapshot, context,
-	                                rect->x - scroll_x,
-	                                rect->y - scroll_y,
-	                                rect->width, rect->height);
-	gtk_style_context_restore (context);
+	graphene_rect = GRAPHENE_RECT_INIT (rect->x - scroll_x,
+	                                    rect->y - scroll_y,
+	                                    rect->width,
+	                                    rect->height);
+
+	gtk_snapshot_append_color (snapshot, color, &graphene_rect);
 }
 
 static void
@@ -6319,13 +6312,19 @@ highlight_find_results (PpsView *view,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GtkSingleSelection *model = pps_search_context_get_result_model (priv->search_context);
 	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, page);
+	GdkRGBA color_selected, color_default;
+
+	_pps_view_get_selection_colors (view, &color_selected, NULL);
+	color_selected.alpha *= 0.6;
+	_pps_view_get_selection_colors (view, &color_default, NULL);
+	color_default.alpha *= 0.3;
 
 	for (gint i = 0; i < results->len; i++) {
 		PpsSearchResult *result = g_ptr_array_index (results, i);
 		PpsFindRectangle *find_rect;
 		GList *rectangles;
 		GdkRectangle view_rectangle;
-		gboolean active = FALSE;
+		GdkRGBA color = color_default;
 
 		rectangles = pps_search_result_get_rectangle_list (result);
 		find_rect = (PpsFindRectangle *) rectangles->data;
@@ -6335,10 +6334,10 @@ highlight_find_results (PpsView *view,
 		pps_rect.y2 = find_rect->y2;
 
 		if (result == gtk_single_selection_get_selected_item (model))
-			active = TRUE;
+			color = color_selected;
 		_pps_view_transform_doc_rect_to_view_rect (view, page, &pps_rect,
 		                                           &view_rectangle);
-		draw_rubberband (view, snapshot, &view_rectangle, active);
+		draw_rect (view, snapshot, &view_rectangle, &color);
 
 		if (rectangles->next) {
 			/* Draw now next result (which is second part of multi-line match) */
@@ -6348,7 +6347,7 @@ highlight_find_results (PpsView *view,
 			pps_rect.y1 = find_rect->y1;
 			pps_rect.y2 = find_rect->y2;
 			_pps_view_transform_doc_rect_to_view_rect (view, page, &pps_rect, &view_rectangle);
-			draw_rubberband (view, snapshot, &view_rectangle, active);
+			draw_rect (view, snapshot, &view_rectangle, &color);
 		}
 	}
 }
@@ -6401,40 +6400,25 @@ _pps_view_get_selection_colors (PpsView *view,
 
 static void
 draw_selection_region (GtkSnapshot *snapshot,
-                       GtkWidget *widget,
+                       PpsView *view,
                        cairo_region_t *region,
                        GdkRGBA *color,
                        gint x,
-                       gint y,
-                       gdouble scale_x,
-                       gdouble scale_y)
+                       gint y)
 {
 	cairo_rectangle_int_t box;
 	gint n_boxes, i;
-	guint state;
-	GtkStyleContext *context;
-
-	context = gtk_widget_get_style_context (widget);
-	gtk_style_context_save (context);
-	gtk_style_context_add_class (context, PPS_STYLE_CLASS_FIND_RESULTS);
-	state = gtk_style_context_get_state (context) |
-	        (gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE);
-	gtk_style_context_set_state (context, state);
-
-	gtk_snapshot_save (snapshot);
-	gtk_snapshot_translate (snapshot, &GRAPHENE_POINT_INIT (x, y));
 
 	n_boxes = cairo_region_num_rectangles (region);
 
 	for (i = 0; i < n_boxes; i++) {
 		cairo_region_get_rectangle (region, i, &box);
 
-		gtk_snapshot_render_background (snapshot, context,
-		                                box.x, box.y, box.width, box.height);
-	}
+		box.x = box.x + x;
+		box.y = box.y + y;
 
-	gtk_snapshot_restore (snapshot);
-	gtk_style_context_restore (context);
+		draw_rect (view, snapshot, &box, color);
+	}
 }
 
 static gboolean
@@ -6512,15 +6496,10 @@ draw_one_page (PpsView *view,
 		                                                page,
 		                                                scale);
 		if (region) {
-			double scale_x, scale_y;
 			GdkRGBA color;
 
-			scale_x = (gdouble) width / gdk_texture_get_width (page_texture);
-			scale_y = (gdouble) height / gdk_texture_get_height (page_texture);
-
 			_pps_view_get_selection_colors (view, &color, NULL);
-			draw_selection_region (snapshot, widget, region, &color, real_page_area.x, real_page_area.y,
-			                       scale_x, scale_y);
+			draw_selection_region (snapshot, view, region, &color, real_page_area.x, real_page_area.y);
 		}
 	}
 	return TRUE;
