@@ -191,7 +191,7 @@ static void pps_view_reload_page (PpsView *view,
 static void pps_view_change_page (PpsView *view,
                                   gint new_page);
 static void job_finished_cb (PpsPixbufCache *pixbuf_cache,
-                             cairo_region_t *region,
+                             int page,
                              PpsView *view);
 static void pps_view_page_changed_cb (PpsDocumentModel *model,
                                       gint old_page,
@@ -7137,7 +7137,7 @@ pps_view_change_page (PpsView *view,
 
 static void
 job_finished_cb (PpsPixbufCache *pixbuf_cache,
-                 cairo_region_t *region,
+                 int page,
                  PpsView *view)
 {
 	gtk_widget_queue_draw (GTK_WIDGET (view));

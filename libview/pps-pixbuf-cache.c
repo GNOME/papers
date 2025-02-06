@@ -127,9 +127,9 @@ pps_pixbuf_cache_class_init (PpsPixbufCacheClass *class)
 	                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 	                  G_STRUCT_OFFSET (PpsPixbufCacheClass, job_finished),
 	                  NULL, NULL,
-	                  g_cclosure_marshal_VOID__POINTER,
+	                  g_cclosure_marshal_VOID__INT,
 	                  G_TYPE_NONE, 1,
-	                  G_TYPE_POINTER);
+	                  G_TYPE_INT);
 }
 
 static void
@@ -303,7 +303,7 @@ job_finished_cb (PpsJob *job,
 	}
 
 	copy_job_to_job_info (job_render, job_info, pixbuf_cache);
-	g_signal_emit (pixbuf_cache, signals[JOB_FINISHED], 0, job_info->region);
+	g_signal_emit (pixbuf_cache, signals[JOB_FINISHED], 0, job_render->page);
 
 	if (job_info->pending_job) {
 		job_info->job = job_info->pending_job;
