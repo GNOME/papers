@@ -648,6 +648,7 @@ add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
  * @color: the color to give to the annotation
  * @user_data: a pointer with auxiliary data that is annotation-dependent.
  * For text markup, this points to a #PpsAnnotationTextMarkupType.
+ * For stamps, this points to a #cairo_surface_t.
  * For free text, this points to a #PangoFontDescription.
  * For ink, this points to a #PpsAnnotationInkAddData.
  *
@@ -716,6 +717,17 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		pps_annotation_set_rgba (annot, &transparent);
 
 		pps_annotation_set_contents (annot, "");
+		break;
+	}
+	case PPS_ANNOTATION_TYPE_STAMP: {
+		const gdouble ratio = (double) cairo_image_surface_get_height ((cairo_surface_t *) user_data) / (double) cairo_image_surface_get_width ((cairo_surface_t *) user_data);
+		annot = pps_annotation_stamp_new (page);
+		pps_annotation_stamp_set_surface (PPS_ANNOTATION_STAMP (annot), (cairo_surface_t *) user_data);
+		doc_rect.x1 = start->x;
+		doc_rect.y1 = start->y;
+		// FIXME: this could depend on the actual image size
+		doc_rect.x2 = start->x + 100.;
+		doc_rect.y2 = start->y + ratio * (doc_rect.x2 - doc_rect.x1);
 		break;
 	}
 	case PPS_ANNOTATION_TYPE_INK: {
