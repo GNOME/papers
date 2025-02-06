@@ -3586,8 +3586,7 @@ get_caret_cursor_area (PpsView *view,
 	area->x -= scroll_x;
 	area->y -= scroll_y;
 
-	g_object_get (gtk_settings_get_for_display (
-			  gtk_style_context_get_display (gtk_widget_get_style_context (GTK_WIDGET (view)))),
+	g_object_get (gtk_settings_get_for_display (gtk_widget_get_display (GTK_WIDGET (view))),
 	              "gtk-cursor-aspect-ratio", &cursor_aspect_ratio,
 	              NULL);
 
