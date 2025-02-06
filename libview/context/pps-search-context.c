@@ -668,8 +668,27 @@ pps_search_context_activate (PpsSearchContext *context)
 
 	priv->active_use_count++;
 
-	if (priv->active_use_count == 1)
+	if (priv->active_use_count == 1) {
 		g_object_notify_by_pspec (G_OBJECT (context), props[PROP_ACTIVE]);
+
+		/*
+		 * If the list model was not filled for a search term that was
+		 * set before search was activated, it means we have cancelled
+		 * the search job and we need to restart it.
+		 *
+		 * Otherwise, we can pretend to run a search job, mocking it
+		 * with emitting the same signals, because the model is still
+		 * up-to-date.
+		 */
+		if (priv->search_term && priv->search_term[0]) {
+			if (g_list_model_get_n_items (G_LIST_MODEL (priv->result_model)) == 0) {
+				pps_search_context_restart (context);
+			} else {
+				g_signal_emit (context, signals[STARTED], 0);
+				g_signal_emit (context, signals[FINISHED], 0, -1);
+			}
+		}
+	}
 }
 
 /**
@@ -688,8 +707,11 @@ pps_search_context_release (PpsSearchContext *context)
 
 	priv->active_use_count--;
 
-	if (priv->active_use_count == 0)
+	if (priv->active_use_count == 0) {
 		g_object_notify_by_pspec (G_OBJECT (context), props[PROP_ACTIVE]);
+
+		pps_search_context_clear_job (context);
+	}
 }
 
 /**
