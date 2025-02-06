@@ -78,6 +78,20 @@ G_DEFINE_TYPE_WITH_CODE (PpsAnnotationStamp,
                          G_ADD_PRIVATE (PpsAnnotationStamp));
 #define GET_ANNOT_STAMP_PRIVATE(o) pps_annotation_stamp_get_instance_private (o)
 
+/* PpsAnnotationInk */
+typedef struct {
+	PpsInkList *ink_list;
+	GSList *time_list;
+	gboolean highlight;
+} PpsAnnotationInkPrivate;
+
+struct _PpsAnnotationInk {
+	PpsAnnotation parent;
+};
+
+G_DEFINE_TYPE_WITH_CODE (PpsAnnotationInk, pps_annotation_ink, PPS_TYPE_ANNOTATION, G_ADD_PRIVATE (PpsAnnotationInk))
+#define GET_ANNOT_INK_PRIVATE(o) pps_annotation_ink_get_instance_private (o)
+
 /* PpsAnnotationFreeText*/
 typedef struct {
 	PangoFontDescription *font_desc;
@@ -156,7 +170,17 @@ enum {
 	PROP_TEXT_IS_OPEN,
 	PROP_TEXT_LAST,
 };
+
 static GParamSpec *text_properties[PROP_TEXT_LAST];
+
+/* PpsAnnotationInk */
+enum {
+	PROP_ANNOT_INK_0,
+	PROP_INK_INK_LIST,
+	PROP_INK_HIGHLIGHT,
+	PROP_INK_LAST,
+};
+static GParamSpec *ink_properties[PROP_INK_LAST];
 
 /* PpsAnnotationFreeText */
 enum {
@@ -1428,6 +1452,322 @@ pps_annotation_stamp_new (PpsPage *page)
 	return PPS_ANNOTATION (g_object_new (PPS_TYPE_ANNOTATION_STAMP,
 	                                     "page", page,
 	                                     NULL));
+}
+
+/**
+ * pps_path_new_for_array:
+ * @points: (array length=n_points) (transfer none):
+ * @n_points:
+ *
+ * Returns: (transfer full):
+ */
+PpsPath *
+pps_path_new_for_array (const PpsPoint *points, guint n_points)
+{
+	PpsPath *path = g_new (PpsPath, 1);
+	path->n_points = n_points;
+	path->points = g_new (PpsPoint, n_points);
+	memcpy (path->points, points, sizeof (PpsPoint) * n_points);
+	return path;
+}
+/**
+ * pps_path_new_for_list:
+ * @points: (element-type PpsPoint) (transfer none): the points
+ *
+ * Returns: (transfer full): a new path
+ */
+PpsPath *
+pps_path_new_for_list (GSList *points)
+{
+	PpsPath *path = g_new (PpsPath, 1);
+	path->n_points = g_slist_length (points);
+	path->points = g_new (PpsPoint, path->n_points);
+
+	gsize i = 0;
+	for (GSList *p = points; p; p = p->next) {
+		PpsPoint *point = (PpsPoint *) p->data;
+		path->points[i] = *point;
+		i++;
+	}
+
+	return path;
+}
+
+PpsPath *
+pps_path_copy (const PpsPath *path)
+{
+	return pps_path_new_for_array (path->points, path->n_points);
+}
+
+void
+pps_path_free (PpsPath *path)
+{
+	g_free (path->points);
+	g_free (path);
+}
+
+/**
+ * pps_path_copy_array:
+ * @path: a #PpsPath
+ * @n_points: (out): the length of the path
+ *
+ * Returns: (transfer full) (array length=n_points): the list of points of the path
+ */
+PpsPoint *
+pps_path_copy_array (PpsPath *path, gsize *n_points)
+{
+	PpsPoint *points;
+	points = g_new (PpsPoint, path->n_points);
+	memcpy (points, path->points, sizeof (PpsPoint) * path->n_points);
+	*n_points = path->n_points;
+	return points;
+}
+
+/**
+ * pps_ink_list_new_for_array:
+ * @paths: (array length=n_paths) (transfer none): an array of paths
+ * @n_paths:
+ *
+ * Returns: (transfer full): a new #PpsInkList
+ */
+PpsInkList *
+pps_ink_list_new_for_array (const PpsPath **paths, guint n_paths)
+{
+	PpsInkList *ink_list = g_new (PpsInkList, 1);
+	ink_list->n_paths = n_paths;
+	ink_list->paths = g_new (PpsPath *, n_paths);
+	for (gsize i = 0; i < n_paths; i++) {
+		ink_list->paths[i] = pps_path_copy (paths[i]);
+	}
+	return ink_list;
+}
+
+/**
+ * pps_ink_list_new_for_list:
+ * @paths: (transfer none) (element-type PpsPath): an list of paths
+ *
+ * Returns: (transfer full): a new #PpsInkList
+ */
+PpsInkList *
+pps_ink_list_new_for_list (GSList *paths)
+{
+	PpsInkList *ink_list = g_new (PpsInkList, 1);
+	ink_list->n_paths = g_slist_length (paths);
+	ink_list->paths = g_new (PpsPath *, ink_list->n_paths);
+	gsize i = 0;
+	for (GSList *p = paths; p; p = p->next) {
+		PpsPath *path = (PpsPath *) p->data;
+		ink_list->paths[i] = pps_path_copy (path);
+		i++;
+	}
+	return ink_list;
+}
+
+/**
+ * pps_ink_list_copy:
+ * @ink_list: (transfer none): a #PpsInkList
+ *
+ * Creates a deep copy of the ink list.
+ *
+ * Returns: (transfer full): a newly created #PpsInkList containing copies of all paths
+ */
+PpsInkList *
+pps_ink_list_copy (const PpsInkList *ink_list)
+{
+	return pps_ink_list_new_for_array ((const PpsPath **) ink_list->paths, ink_list->n_paths);
+}
+
+/**
+ * pps_ink_list_get_array:
+ * @ink_list: a #PpsInkList
+ * @n_paths: (out): location to store the number of paths
+ *
+ * Gets the array of paths from the ink list.
+ *
+ * Returns: (array length=n_paths) (transfer none): array of paths in the ink list
+ */
+PpsPath **
+pps_ink_list_get_array (PpsInkList *ink_list, gsize *n_paths)
+{
+	*n_paths = ink_list->n_paths;
+	return ink_list->paths;
+}
+
+void
+pps_ink_list_free (PpsInkList *ink_list)
+{
+	for (gsize i = 0; i < ink_list->n_paths; i++) {
+		pps_path_free (ink_list->paths[i]);
+	}
+	g_free (ink_list->paths);
+	g_free (ink_list);
+}
+
+G_DEFINE_BOXED_TYPE (PpsPath, pps_path, pps_path_copy, pps_path_free)
+
+G_DEFINE_BOXED_TYPE (PpsInkList, pps_ink_list, pps_ink_list_copy, pps_ink_list_free)
+
+static void
+pps_annotation_ink_finalize (GObject *object)
+{
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (PPS_ANNOTATION_INK (object));
+
+	if (priv->ink_list) {
+		pps_ink_list_free (priv->ink_list);
+		priv->ink_list = NULL;
+	}
+
+	G_OBJECT_CLASS (pps_annotation_ink_parent_class)->finalize (object);
+}
+static void
+pps_annotation_ink_set_property (GObject *object,
+                                 guint prop_id,
+                                 const GValue *value,
+                                 GParamSpec *pspec)
+{
+	PpsAnnotationInk *annot = PPS_ANNOTATION_INK (object);
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (annot);
+
+	switch (prop_id) {
+	case PROP_INK_INK_LIST:
+		pps_annotation_ink_set_ink_list (annot, g_value_dup_boxed (value));
+		break;
+	case PROP_INK_HIGHLIGHT:
+		priv->highlight = g_value_get_boolean (value);
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+pps_annotation_ink_get_property (GObject *object,
+                                 guint prop_id,
+                                 GValue *value,
+                                 GParamSpec *pspec)
+{
+	PpsAnnotationInk *annot = PPS_ANNOTATION_INK (object);
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (annot);
+
+	switch (prop_id) {
+	case PROP_INK_INK_LIST:
+		g_value_set_boxed (value, pps_annotation_ink_get_ink_list (annot));
+		break;
+	case PROP_INK_HIGHLIGHT:
+		g_value_set_boolean (value, priv->highlight);
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+pps_annotation_ink_class_init (PpsAnnotationInkClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->finalize = pps_annotation_ink_finalize;
+	object_class->set_property = pps_annotation_ink_set_property;
+	object_class->get_property = pps_annotation_ink_get_property;
+
+	ink_properties[PROP_INK_INK_LIST] = g_param_spec_boxed ("ink-list",
+	                                                        "InkList",
+	                                                        "List of ink paths",
+	                                                        pps_ink_list_get_type (),
+	                                                        G_PARAM_READWRITE |
+	                                                            G_PARAM_STATIC_STRINGS);
+	ink_properties[PROP_INK_HIGHLIGHT] = g_param_spec_boolean ("highlight",
+	                                                           "Highlight",
+	                                                           "Whether the annot is of highlight type or not",
+	                                                           FALSE,
+	                                                           G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+	                                                               G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_property (object_class,
+	                                 PROP_INK_INK_LIST,
+	                                 ink_properties[PROP_INK_INK_LIST]);
+	g_object_class_install_property (object_class,
+	                                 PROP_INK_HIGHLIGHT,
+	                                 ink_properties[PROP_INK_HIGHLIGHT]);
+}
+
+static void
+pps_annotation_ink_init (PpsAnnotationInk *ink)
+{
+	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (PPS_ANNOTATION (ink));
+	priv->type = PPS_ANNOTATION_TYPE_INK;
+}
+
+PpsAnnotation *
+pps_annotation_ink_new (PpsPage *page)
+{
+	return PPS_ANNOTATION (g_object_new (PPS_TYPE_ANNOTATION_INK,
+	                                     "page", page,
+	                                     NULL));
+}
+
+PpsAnnotation *
+pps_annotation_ink_new_highlight (PpsPage *page)
+{
+	return PPS_ANNOTATION (g_object_new (PPS_TYPE_ANNOTATION_INK,
+	                                     "page", page,
+	                                     "highlight", TRUE,
+	                                     NULL));
+}
+
+/**
+ * pps_annotation_ink_set_ink_list:
+ * @ink: a #PpsAnnotationInk
+ * @ink_list: (transfer full): an array of arrays of #PpsPoint
+ *
+ * Sets the ink list for the annotation ink object. The ink list is an array
+ * of arrays of #PpsPoint, representing the ink strokes.
+ *
+ * If the ink object already has an ink list, it will be unreferenced and replaced
+ * with the new one.
+ */
+void
+pps_annotation_ink_set_ink_list (PpsAnnotationInk *ink, PpsInkList *ink_list)
+{
+	g_return_if_fail (PPS_IS_ANNOTATION_INK (ink));
+
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
+
+	SAVE_PROPERTY (ink, "ink-list", PPS_TYPE_INK_LIST, g_value_set_boxed, priv->ink_list)
+
+	if (priv->ink_list) {
+		pps_ink_list_free (priv->ink_list);
+	}
+
+	priv->ink_list = ink_list;
+
+	g_object_notify_by_pspec (G_OBJECT (ink), ink_properties[PROP_INK_INK_LIST]);
+}
+
+/**
+ * pps_annotation_ink_get_ink_list:
+ * @ink: a #PpsAnnotationInk
+ *
+ * Gets the ink list from the annotation ink object. The ink list is an array
+ * of arrays of #PpsPoint.
+ *
+ * Returns: (transfer none): a pointer to the ink list,
+ * or %NULL if there is no ink list.
+ */
+PpsInkList *
+pps_annotation_ink_get_ink_list (PpsAnnotationInk *ink)
+{
+	g_return_val_if_fail (PPS_IS_ANNOTATION_INK (ink), NULL);
+
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
+
+	return priv->ink_list;
+}
+
+gboolean
+pps_annotation_ink_get_highlight (PpsAnnotationInk *ink)
+{
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
+	return priv->highlight;
 }
 
 /* PpsAnnotationFreeText */

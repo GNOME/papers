@@ -40,6 +40,11 @@ struct _PpsAnnotationMarkupClass {
 	PpsAnnotationClass parent_class;
 };
 
+/* PpsAnnotationInk */
+#define PPS_TYPE_ANNOTATION_INK (pps_annotation_ink_get_type ())
+PPS_PUBLIC
+G_DECLARE_FINAL_TYPE (PpsAnnotationInk, pps_annotation_ink, PPS, ANNOTATION_INK, PpsAnnotation);
+
 /* PpsAnnotationText */
 #define PPS_TYPE_ANNOTATION_TEXT (pps_annotation_text_get_type ())
 PPS_PUBLIC
@@ -72,7 +77,8 @@ typedef enum {
 	PPS_ANNOTATION_TYPE_FREE_TEXT,
 	PPS_ANNOTATION_TYPE_ATTACHMENT,
 	PPS_ANNOTATION_TYPE_TEXT_MARKUP,
-	PPS_ANNOTATION_TYPE_STAMP
+	PPS_ANNOTATION_TYPE_STAMP,
+	PPS_ANNOTATION_TYPE_INK
 } PpsAnnotationType;
 
 typedef enum {
@@ -204,6 +210,61 @@ PPS_PUBLIC
 void pps_annotation_stamp_set_surface (PpsAnnotationStamp *stamp, cairo_surface_t *surface);
 PPS_PUBLIC
 cairo_surface_t *pps_annotation_stamp_get_surface (PpsAnnotationStamp *stamp);
+
+/* PpsAnnotationInk */
+
+typedef struct {
+	PpsPoint *points;
+	gsize n_points;
+} PpsPath;
+
+typedef struct {
+	PpsPath **paths;
+	gsize n_paths;
+} PpsInkList;
+
+PPS_PUBLIC
+GType pps_path_get_type (void) G_GNUC_CONST;
+PPS_PUBLIC
+PpsPath *pps_path_new_for_list (GSList *points);
+PPS_PUBLIC
+PpsPath *pps_path_copy (const PpsPath *path);
+PPS_PUBLIC
+void pps_path_free (PpsPath *path);
+PPS_PUBLIC
+PpsPath *
+pps_path_new_for_array (const PpsPoint *points, guint n_points);
+PPS_PUBLIC
+PpsPoint *
+pps_path_copy_array (PpsPath *path, gsize *n_points);
+
+#define PPS_TYPE_PATH (pps_path_get_type ())
+
+#define PPS_TYPE_INK_LIST (pps_ink_list_get_type ())
+PPS_PUBLIC
+GType pps_ink_list_get_type (void) G_GNUC_CONST;
+PPS_PUBLIC
+PpsInkList *pps_ink_list_new_for_list (GSList *paths);
+PPS_PUBLIC
+PpsInkList *
+pps_ink_list_new_for_array (const PpsPath **paths, guint n_paths);
+PPS_PUBLIC
+PpsInkList *pps_ink_list_copy (const PpsInkList *ink_list);
+PPS_PUBLIC
+void pps_ink_list_free (PpsInkList *ink_list);
+PPS_PUBLIC
+PpsPath **pps_ink_list_get_array (PpsInkList *ink_list, gsize *n_paths);
+
+PPS_PUBLIC
+PpsAnnotation *pps_annotation_ink_new (PpsPage *page);
+PPS_PUBLIC
+PpsAnnotation *pps_annotation_ink_new_highlight (PpsPage *page);
+PPS_PUBLIC
+void pps_annotation_ink_set_ink_list (PpsAnnotationInk *ink, PpsInkList *ink_list);
+PPS_PUBLIC
+PpsInkList *pps_annotation_ink_get_ink_list (PpsAnnotationInk *ink);
+PPS_PUBLIC
+gboolean pps_annotation_ink_get_highlight (PpsAnnotationInk *ink);
 
 /* PpsAnnotationFreeText */
 PPS_PUBLIC
