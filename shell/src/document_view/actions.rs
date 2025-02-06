@@ -563,14 +563,21 @@ impl imp::PpsDocumentView {
                     move |_, action, state| {
                         let state = state.unwrap();
                         let show = state.get::<bool>().unwrap();
+                        let is_shown = action.state().unwrap().get::<bool>().unwrap();
+                        let search_context = obj.search_context.borrow();
 
                         if show {
                             obj.show_find_bar();
+                            if !is_shown {
+                                search_context.as_ref().unwrap().activate();
+                            }
                         } else {
                             obj.close_find_bar();
+                            if is_shown {
+                                search_context.as_ref().unwrap().release();
+                            }
                         }
 
-                        obj.view.find_set_highlight_search(show);
                         action.set_state(state);
                     }
                 ))
