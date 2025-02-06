@@ -207,3 +207,35 @@ window.pps-annotation-window textview {
 #text-squiggly {
   -gtk-icon-palette: error var(--annot-textmarkup-color);
 }
+/* Inline annot editing */
+.annot-remove-button {
+    padding:0;
+    color:var(--accent-bg-color);
+    background-color: var(--accent-fg-color);
+    border-radius:1000px;
+}
+.overlay-annot-box {
+    --half-padding: 12px;
+    margin: var(--half-padding);
+    padding: var(--half-padding);
+    border-radius:4px;
+    border: 2px dashed alpha(var(--accent-bg-color), 0.5);
+}
+.annot-remove-button:hover {
+    color: lighter(var(--accent-bg-color));
+}
+.overlay-annot-box:focus-within {
+    border-color:var(--accent-bg-color);
+}
+.overlay-annot-box:disabled {
+    border-color: transparent;
+}
+.dotbox {
+    background-color:var(--accent-bg-color);
+    border-radius: 2px;
+    min-height:16px;
+    min-width: 16px;
+}
+.dotbox:disabled {
+    background-color: transparent;
+}
