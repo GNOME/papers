@@ -48,8 +48,6 @@
 #include "pps-view-marshal.h"
 #include "pps-view-page.h"
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 enum {
 	SIGNAL_SCROLL,
 	SIGNAL_HANDLE_LINK,
@@ -2432,6 +2430,8 @@ _pps_view_set_focused_element (PpsView *view,
 }
 
 /*** Forms ***/
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
 static PpsMapping *
 get_form_field_mapping_at_location (PpsView *view,
                                     gdouble x,
@@ -3050,6 +3050,8 @@ pps_view_handle_form_field (PpsView *view,
 	if (PPS_IS_FORM_FIELD_BUTTON (field))
 		pps_view_form_field_button_toggle (view, field);
 }
+
+G_GNUC_END_IGNORE_DEPRECATIONS
 
 /* Media */
 static PpsMapping *
@@ -4118,6 +4120,7 @@ pps_view_scroll_event (GtkEventControllerScroll *self, gdouble dx, gdouble dy, G
 }
 
 /* This is based on the deprecated function gtk_draw_insertion_cursor. */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 static void
 draw_caret_cursor (PpsView *view,
                    GtkSnapshot *snapshot)
@@ -4143,6 +4146,7 @@ draw_caret_cursor (PpsView *view,
 
 	gtk_snapshot_restore (snapshot);
 }
+G_GNUC_END_IGNORE_DEPRECATIONS
 
 static gboolean
 should_draw_caret_cursor (PpsView *view)
@@ -4169,12 +4173,14 @@ draw_focus (PpsView *view,
 	if (!pps_view_get_focused_area (view, &rect))
 		return;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	gtk_snapshot_render_focus (snapshot,
 	                           gtk_widget_get_style_context (widget),
 	                           rect.x,
 	                           rect.y,
 	                           rect.width,
 	                           rect.height);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -8232,5 +8238,3 @@ pps_view_stop_signature_rect (PpsView *view)
 	g_signal_emit (view, signals[SIGNAL_SIGNATURE_RECT], 0, start->page_index, &rect);
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
-
-G_GNUC_END_IGNORE_DEPRECATIONS
