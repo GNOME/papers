@@ -55,8 +55,6 @@ typedef struct
 	PpsFindOptions options;
 	PpsFindOptions supported_options;
 
-	guint pages_searched;
-
 	gchar *search_term;
 
 	GListStore *result_model;
@@ -414,7 +412,6 @@ search_changed_cb (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	pps_search_context_clear_job (context);
-	priv->pages_searched = 0;
 	g_list_store_remove_all (priv->result_model);
 
 	if (priv->search_term && priv->search_term[0]) {
