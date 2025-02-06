@@ -80,7 +80,8 @@ sources = files(
   'pps-css-utils.c',
   'pps-annotation-overlay.c',
   'pps-annotation-layer.c',
-  'pps-annotation-layer-objects.c'
+  'pps-annotation-layer-objects.c',
+  'pps-annotation-layer-ink.c'
 )
 
 marshal = 'pps-view-marshal'
