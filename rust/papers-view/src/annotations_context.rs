@@ -4,7 +4,6 @@ use glib::translate::*;
 use libc::c_void;
 use papers_document::{AnnotationType, Point};
 
-
 pub enum AddAnnotationData {
     None,
     TextMarkup(papers_document::AnnotationTextMarkupType),

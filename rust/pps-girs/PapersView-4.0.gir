@@ -650,7 +650,10 @@ and annotations not rendered by the backend.</doc>
                  line="680">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
-          <parameter name="draw" transfer-ownership="none">
+          <parameter name="state" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/context/pps-document-model.c"
+                 line="681">a #PpsAnnotationEditingState</doc>
             <type name="AnnotationEditingState"
                   c:type="PpsAnnotationEditingState"/>
           </parameter>
@@ -1490,23 +1493,44 @@ Remember that main loop is not running already probably.</doc>
         </parameters>
       </virtual-method>
       <virtual-method name="run" invoker="run">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="172">Starts or executes the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="44"/>
         <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="libview/pps-job.c"
+               line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="174">A #PpsJob object to run.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
       </virtual-method>
       <method name="cancel" c:identifier="pps_job_cancel">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="192">Cancels the specified job if it has not already been cancelled.
+
+This function updates the job's state to indicate it has been cancelled,
+cancels any associated cancellable object, and emits a CANCELLED signal.
+It does nothing if the job is already cancelled or finished.
+
+This function should not be called from a thread.</doc>
         <source-position filename="libview/pps-job.h" line="54"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="194">A #PpsJob object to cancel.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1515,21 +1539,40 @@ Remember that main loop is not running already probably.</doc>
               c:identifier="pps_job_failed"
               shadowed-by="failed_from_error"
               introspectable="0">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="224">Marks the specified job as failed and sets an error with the provided details.
+
+This function creates a new #GError using the provided domain, code, and message,
+and updates the job's state to indicate failure. It emits a finished signal when done.
+It does nothing if the job is already marked as failed or finished.</doc>
         <source-position filename="libview/pps-job.h" line="56"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="226">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
           <parameter name="domain" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="227">The error domain (a #GQuark).</doc>
             <type name="GLib.Quark" c:type="GQuark"/>
           </parameter>
           <parameter name="code" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="228">The error code (an integer).</doc>
             <type name="gint" c:type="gint"/>
           </parameter>
           <parameter name="format" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="229">A printf-style format string.</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="..." transfer-ownership="none">
@@ -1540,6 +1583,12 @@ Remember that main loop is not running already probably.</doc>
       <method name="failed_from_error"
               c:identifier="pps_job_failed_from_error"
               shadows="failed">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="265">Marks the specified job as failed and sets the error associated with the failure.
+
+This function updates the job's state to indicate it has failed, stores the error,
+and emits a finished signal. It does nothing if the job is already finished or marked as failed.</doc>
         <source-position filename="libview/pps-job.h" line="62"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -1548,58 +1597,75 @@ Remember that main loop is not running already probably.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="236">an #PpsJob</doc>
+                 line="267">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
           <parameter name="error" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="237">a #GError</doc>
+                 line="268">A #GError containing details about the failure.</doc>
             <type name="GLib.Error" c:type="GError*"/>
           </parameter>
         </parameters>
       </method>
       <method name="get_cancellable" c:identifier="pps_job_get_cancellable">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="371">Retrieves the #GCancellable object associated with the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="74"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="318">The #GCancellable of this job.</doc>
+               line="377">The #GCancellable object of the job,
+or NULL if the job is invalid or does not have an associated cancellable.</doc>
           <type name="Gio.Cancellable" c:type="GCancellable*"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="316">an #PpsJob</doc>
+                 line="373">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
       </method>
       <method name="get_document" c:identifier="pps_job_get_document">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="352">Retrieves the #PpsDocument associated with the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="72"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="302">The #PpsDocument of this job.</doc>
+               line="358">The #PpsDocument object associated with the job,
+or NULL if the job is invalid or does not have an associated document.</doc>
           <type name="PapersDocument.Document" c:type="PpsDocument*"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="300">an #PpsJob</doc>
+                 line="354">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
       </method>
       <method name="is_finished" c:identifier="pps_job_is_finished">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="314">Checks if the specified job has finished execution.</doc>
         <source-position filename="libview/pps-job.h" line="67"/>
         <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="libview/pps-job.c"
+               line="320">TRUE if the job is finished, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="316">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1607,40 +1673,61 @@ Remember that main loop is not running already probably.</doc>
       <method name="is_succeeded"
               c:identifier="pps_job_is_succeeded"
               throws="1">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="330">Determines the finish status of the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="69"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="283">whether the job succeed</doc>
+               line="337">TRUE if the job succeeded, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="280">a #PpsJob</doc>
+                 line="332">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
       </method>
       <method name="reset" c:identifier="pps_job_reset">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="390">Resets the state of the specified job to its initial state.
+
+This function clears any error, marks the job as not finished, and sets
+the job's failure status to FALSE, effectively resetting its progress.</doc>
         <source-position filename="libview/pps-job.h" line="77"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="392">A #PpsJob object to reset.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
       </method>
       <method name="run" c:identifier="pps_job_run">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="172">Starts or executes the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="52"/>
         <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="libview/pps-job.c"
+               line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="174">A #PpsJob object to run.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1676,12 +1763,20 @@ Remember that main loop is not running already probably.</doc>
         </parameters>
       </method>
       <method name="succeeded" c:identifier="pps_job_succeeded">
+        <doc xml:space="preserve"
+             filename="libview/pps-job.c"
+             line="292">Marks the specified job as succeeded.
+
+This function should be called when the job finishes successfully.</doc>
         <source-position filename="libview/pps-job.h" line="65"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="294">A #PpsJob object that has completed.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1816,10 +1911,16 @@ Remember that main loop is not running already probably.</doc>
         <callback name="run">
           <source-position filename="libview/pps-job.h" line="44"/>
           <return-value transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/pps-job.c"
+                 line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
             <type name="gboolean" c:type="gboolean"/>
           </return-value>
           <parameters>
             <parameter name="job" transfer-ownership="none">
+              <doc xml:space="preserve"
+                   filename="libview/pps-job.c"
+                   line="174">A #PpsJob object to run.</doc>
               <type name="Job" c:type="PpsJob*"/>
             </parameter>
           </parameters>
@@ -3595,6 +3696,58 @@ care to treat any multi-line matches as being only one result.</doc>
           </parameter>
         </parameters>
       </constructor>
+      <method name="activate"
+              c:identifier="pps_search_context_activate"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-context.h"
+                         line="68"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="context" transfer-ownership="none">
+            <type name="SearchContext" c:type="PpsSearchContext*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="autoselect_result"
+              c:identifier="pps_search_context_autoselect_result"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-context.h"
+                         line="79"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="context" transfer-ownership="none">
+            <type name="SearchContext" c:type="PpsSearchContext*"/>
+          </instance-parameter>
+          <parameter name="result" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/context/pps-search-context.c"
+                 line="746">a #PpsSearchResult to be the auto-selected one</doc>
+            <type name="SearchResult" c:type="PpsSearchResult*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_active"
+              c:identifier="pps_search_context_get_active"
+              glib:get-property="active"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-context.h"
+                         line="72"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="libview/context/pps-search-context.c"
+               line="702">whether search is actively ongoing</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="context" transfer-ownership="none">
+            <type name="SearchContext" c:type="PpsSearchContext*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
       <method name="get_options" c:identifier="pps_search_context_get_options">
         <source-position filename="libview/context/pps-search-context.h"
                          line="58"/>
@@ -3614,13 +3767,35 @@ care to treat any multi-line matches as being only one result.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-search-context.c"
-               line="629">the returned #GListModel</doc>
-          <type name="Gio.ListModel" c:type="GListModel*"/>
+               line="627">the returned #GtkSingleSelection</doc>
+          <type name="Gtk.SingleSelection" c:type="GtkSingleSelection*"/>
         </return-value>
         <parameters>
           <instance-parameter name="context" transfer-ownership="none">
             <type name="SearchContext" c:type="PpsSearchContext*"/>
           </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_results_on_page"
+              c:identifier="pps_search_context_get_results_on_page"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-context.h"
+                         line="65"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="libview/context/pps-search-context.c"
+               line="642">#GPtrArray of #PpsSearchResult on the current page</doc>
+          <array name="GLib.PtrArray" c:type="GPtrArray*">
+            <type name="SearchResult"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="context" transfer-ownership="none">
+            <type name="SearchContext" c:type="PpsSearchContext*"/>
+          </instance-parameter>
+          <parameter name="page" transfer-ownership="none">
+            <type name="guint" c:type="guint"/>
+          </parameter>
         </parameters>
       </method>
       <method name="get_search_term"
@@ -3637,9 +3812,23 @@ care to treat any multi-line matches as being only one result.</doc>
           </instance-parameter>
         </parameters>
       </method>
+      <method name="release"
+              c:identifier="pps_search_context_release"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-context.h"
+                         line="70"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="context" transfer-ownership="none">
+            <type name="SearchContext" c:type="PpsSearchContext*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
       <method name="restart" c:identifier="pps_search_context_restart">
         <source-position filename="libview/context/pps-search-context.h"
-                         line="65"/>
+                         line="74"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3652,7 +3841,7 @@ care to treat any multi-line matches as being only one result.</doc>
       <method name="select_result"
               c:identifier="pps_search_context_select_result">
         <source-position filename="libview/context/pps-search-context.h"
-                         line="67"/>
+                         line="76"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3697,6 +3886,12 @@ care to treat any multi-line matches as being only one result.</doc>
           </parameter>
         </parameters>
       </method>
+      <property name="active"
+                transfer-ownership="none"
+                getter="get_active"
+                default-value="FALSE">
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
       <property name="document-model"
                 readable="0"
                 writable="1"

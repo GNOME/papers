@@ -4,11 +4,20 @@ version = "0.0.1"
 build = "build.rs"
 license = "MIT"
 
-authors.workspace = true
-edition.workspace = true
-homepage.workspace = true
-repository.workspace = true
-rust-version.workspace = true
+[package.authors]
+workspace = true
+
+[package.edition]
+workspace = true
+
+[package.homepage]
+workspace = true
+
+[package.repository]
+workspace = true
+
+[package.rust-version]
+workspace = true
 
 [package.metadata.system-deps.papers_document_4_0]
 name = "papers-document-4.0"
@@ -33,14 +42,30 @@ name = "papers_document_sys"
 
 [dependencies]
 libc = "0.2"
-gio-sys.workspace = true
-glib-sys.workspace = true
-gobject-sys.workspace = true
-gdk-pixbuf-sys.workspace = true
-pango-sys.workspace = true
-cairo-sys-rs.workspace = true
-gtk-sys.workspace = true
-gdk-sys.workspace = true
+
+[dependencies.gio-sys]
+workspace = true
+
+[dependencies.glib-sys]
+workspace = true
+
+[dependencies.gobject-sys]
+workspace = true
+
+[dependencies.gdk-pixbuf-sys]
+workspace = true
+
+[dependencies.pango-sys]
+workspace = true
+
+[dependencies.cairo-sys-rs]
+workspace = true
+
+[dependencies.gtk-sys]
+workspace = true
+
+[dependencies.gdk-sys]
+workspace = true
 
 [build-dependencies]
 system-deps = "7"

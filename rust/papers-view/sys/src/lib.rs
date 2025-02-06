@@ -983,7 +983,7 @@ extern "C" {
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_document_model_set_annotation_editing_state(
         model: *mut PpsDocumentModel,
-        draw: PpsAnnotationEditingState,
+        state: PpsAnnotationEditingState,
     );
     pub fn pps_document_model_set_continuous(model: *mut PpsDocumentModel, continuous: gboolean);
     pub fn pps_document_model_set_document(
@@ -1313,13 +1313,34 @@ extern "C" {
     //=========================================================================
     pub fn pps_search_context_get_type() -> GType;
     pub fn pps_search_context_new(model: *mut PpsDocumentModel) -> *mut PpsSearchContext;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_context_activate(context: *mut PpsSearchContext);
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_context_autoselect_result(
+        context: *mut PpsSearchContext,
+        result: *mut PpsSearchResult,
+    );
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_context_get_active(context: *mut PpsSearchContext) -> gboolean;
     pub fn pps_search_context_get_options(
         context: *mut PpsSearchContext,
     ) -> papers_document::PpsFindOptions;
     pub fn pps_search_context_get_result_model(
         context: *mut PpsSearchContext,
-    ) -> *mut gio::GListModel;
+    ) -> *mut gtk::GtkSingleSelection;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_context_get_results_on_page(
+        context: *mut PpsSearchContext,
+        page: c_uint,
+    ) -> *mut glib::GPtrArray;
     pub fn pps_search_context_get_search_term(context: *mut PpsSearchContext) -> *const c_char;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_context_release(context: *mut PpsSearchContext);
     pub fn pps_search_context_restart(context: *mut PpsSearchContext);
     pub fn pps_search_context_select_result(
         context: *mut PpsSearchContext,

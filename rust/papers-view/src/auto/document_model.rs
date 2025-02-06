@@ -154,11 +154,11 @@ impl DocumentModel {
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     #[doc(alias = "pps_document_model_set_annotation_editing_state")]
     #[doc(alias = "annotation-editing-state")]
-    pub fn set_annotation_editing_state(&self, draw: AnnotationEditingState) {
+    pub fn set_annotation_editing_state(&self, state: AnnotationEditingState) {
         unsafe {
             ffi::pps_document_model_set_annotation_editing_state(
                 self.to_glib_none().0,
-                draw.into_glib(),
+                state.into_glib(),
             );
         }
     }
