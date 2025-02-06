@@ -35,7 +35,14 @@ struct _PpsOverlayAnnotationClass {
 	gboolean drag_only_on_border;
 };
 
+#define PPS_TYPE_OVERLAY_ANNOTATION_IMAGE (pps_overlay_annotation_image_get_type ())
+G_DECLARE_FINAL_TYPE (PpsOverlayAnnotationImage, pps_overlay_annotation_image, PPS, OVERLAY_ANNOTATION_IMAGE, PpsOverlayAnnotation)
+
 PpsAnnotation *pps_overlay_annotation_get_annotation (PpsOverlayAnnotation *overlay);
+
+GtkWidget *pps_overlay_annotation_image_new (PpsAnnotation *annot,
+                                             PpsAnnotationsContext *annots_context,
+                                             PpsDocumentModel *model);
 
 #define PPS_TYPE_OVERLAY_ANNOTATION_ENTRY (pps_overlay_annotation_entry_get_type ())
 G_DECLARE_FINAL_TYPE (PpsOverlayAnnotationEntry, pps_overlay_annotation_entry, PPS, OVERLAY_ANNOTATION_ENTRY, PpsOverlayAnnotation)

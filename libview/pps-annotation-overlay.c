@@ -45,6 +45,18 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (PpsOverlayAnnotation, pps_overlay_annotation, 
 #define OVERLAY_GET_PRIVATE(o) pps_overlay_annotation_get_instance_private (PPS_OVERLAY_ANNOTATION (o))
 
 typedef struct {
+	GtkPicture *image;
+} PpsOverlayAnnotationImagePrivate;
+
+struct _PpsOverlayAnnotationImage {
+	PpsOverlayAnnotation base_instance;
+};
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsOverlayAnnotationImage, pps_overlay_annotation_image, PPS_TYPE_OVERLAY_ANNOTATION)
+
+#define IMAGE_GET_PRIVATE(o) pps_overlay_annotation_image_get_instance_private (o)
+
+typedef struct {
 	GtkTextView *text_view;
 
 	gboolean ignore_content_changed;
@@ -504,6 +516,163 @@ pps_overlay_annotation_get_annotation (PpsOverlayAnnotation *overlay)
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
 
 	return priv->annotation;
+}
+
+/* Overlay image */
+
+/* The two following functions are copied from gdkcairoprivate.h and gdktexture.c */
+
+static GdkMemoryFormat
+gdk_cairo_format_to_memory_format (cairo_format_t format)
+{
+	switch (format) {
+	case CAIRO_FORMAT_ARGB32:
+		return GDK_MEMORY_DEFAULT;
+
+	case CAIRO_FORMAT_RGB24:
+#if G_BYTE_ORDER == G_LITTLE_ENDIAN
+		return GDK_MEMORY_B8G8R8X8;
+#elif G_BYTE_ORDER == G_BIG_ENDIAN
+		return GDK_MEMORY_X8R8G8B8;
+#else
+#error "Unknown byte order for Cairo format"
+#endif
+	case CAIRO_FORMAT_A8:
+		return GDK_MEMORY_A8;
+	case CAIRO_FORMAT_RGB96F:
+		return GDK_MEMORY_R32G32B32_FLOAT;
+	case CAIRO_FORMAT_RGBA128F:
+		return GDK_MEMORY_R32G32B32A32_FLOAT_PREMULTIPLIED;
+
+	case CAIRO_FORMAT_RGB16_565:
+	case CAIRO_FORMAT_RGB30:
+	case CAIRO_FORMAT_INVALID:
+	case CAIRO_FORMAT_A1:
+	default:
+		g_assert_not_reached ();
+		return GDK_MEMORY_DEFAULT;
+	}
+}
+
+static GdkTexture *
+gdk_texture_new_for_surface (cairo_surface_t *surface)
+{
+	GdkTexture *texture;
+	GBytes *bytes;
+
+	g_return_val_if_fail (cairo_surface_get_type (surface) == CAIRO_SURFACE_TYPE_IMAGE, NULL);
+	g_return_val_if_fail (cairo_image_surface_get_width (surface) > 0, NULL);
+	g_return_val_if_fail (cairo_image_surface_get_height (surface) > 0, NULL);
+
+	bytes = g_bytes_new_with_free_func (cairo_image_surface_get_data (surface),
+	                                    cairo_image_surface_get_height (surface) * cairo_image_surface_get_stride (surface),
+	                                    (GDestroyNotify) cairo_surface_destroy,
+	                                    cairo_surface_reference (surface));
+
+	texture = gdk_memory_texture_new (cairo_image_surface_get_width (surface),
+	                                  cairo_image_surface_get_height (surface),
+	                                  gdk_cairo_format_to_memory_format (cairo_image_surface_get_format (surface)),
+	                                  bytes,
+	                                  cairo_image_surface_get_stride (surface));
+
+	g_bytes_unref (bytes);
+
+	return texture;
+}
+
+static GObject *
+pps_overlay_annotation_image_constructor (GType type,
+                                          guint n_construct_properties,
+                                          GObjectConstructParam *construct_params)
+{
+	GObject *object;
+	PpsOverlayAnnotationPrivate *priv_overlay;
+	PpsOverlayAnnotationImagePrivate *priv_image;
+	PpsOverlayAnnotationImage *ov_image;
+	cairo_surface_t *surface;
+	GdkTexture *texture;
+
+	object = G_OBJECT_CLASS (pps_overlay_annotation_image_parent_class)
+	             ->constructor (type, n_construct_properties, construct_params);
+
+	priv_overlay = OVERLAY_GET_PRIVATE (object);
+
+	ov_image = PPS_OVERLAY_ANNOTATION_IMAGE (object);
+	priv_image = IMAGE_GET_PRIVATE (ov_image);
+
+	surface = pps_annotation_stamp_get_surface (PPS_ANNOTATION_STAMP (priv_overlay->annotation));
+
+	if (surface) {
+		texture = gdk_texture_new_for_surface (surface);
+		gtk_picture_set_paintable (GTK_PICTURE (priv_image->image), GDK_PAINTABLE (texture));
+	} else {
+		g_debug ("Annotation not editable, could not retrieve the texture.");
+		gtk_widget_set_sensitive (GTK_WIDGET (object), FALSE);
+	}
+
+	return object;
+}
+
+static void
+pps_overlay_annotation_image_init (PpsOverlayAnnotationImage *ov_image)
+{
+	PpsOverlayAnnotationImagePrivate *priv = IMAGE_GET_PRIVATE (ov_image);
+	PpsOverlayAnnotationPrivate *priv_overlay = OVERLAY_GET_PRIVATE (ov_image);
+	priv->image = GTK_PICTURE (gtk_picture_new ());
+	gtk_widget_set_focusable (GTK_WIDGET (priv->image), TRUE);
+	gtk_picture_set_content_fit (priv->image, GTK_CONTENT_FIT_CONTAIN);
+
+	gtk_widget_set_vexpand (GTK_WIDGET (priv->image), TRUE);
+	gtk_widget_set_hexpand (GTK_WIDGET (priv->image), TRUE);
+
+	gtk_widget_add_css_class (GTK_WIDGET (priv->image), "overlay-annot-content");
+
+	gtk_box_append (priv_overlay->box, GTK_WIDGET (priv->image));
+}
+
+static void
+pps_overlay_annotation_image_grab_focus (PpsOverlayAnnotation *overlay, int x, int y)
+{
+	PpsOverlayAnnotationImagePrivate *priv = IMAGE_GET_PRIVATE (PPS_OVERLAY_ANNOTATION_IMAGE (overlay));
+
+	gtk_widget_grab_focus (GTK_WIDGET (priv->image));
+}
+
+static void
+pps_overlay_annotation_image_class_init (PpsOverlayAnnotationImageClass *klass)
+{
+	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
+	PpsOverlayAnnotationClass *ov = PPS_OVERLAY_ANNOTATION_CLASS (klass);
+
+	g_object_class->constructor = pps_overlay_annotation_image_constructor;
+
+	ov->drag_only_on_border = FALSE;
+	ov->resize_handle = TRUE;
+	ov->grab_focus = pps_overlay_annotation_image_grab_focus;
+}
+
+GtkWidget *
+pps_overlay_annotation_image_new (PpsAnnotation *annot,
+                                  PpsAnnotationsContext *annots_context,
+                                  PpsDocumentModel *model)
+{
+	GtkWidget *overlay;
+
+	g_return_val_if_fail (PPS_IS_ANNOTATION_STAMP (annot), NULL);
+
+	if (!PPS_IS_ANNOTATION_STAMP (annot)) {
+		return NULL;
+	}
+
+	overlay = g_object_new (PPS_TYPE_OVERLAY_ANNOTATION_IMAGE,
+	                        "annotation",
+	                        annot,
+	                        "annots-context",
+	                        annots_context,
+	                        "model",
+	                        model,
+	                        NULL);
+	return overlay;
 }
 
 /* Overlay Entry */
