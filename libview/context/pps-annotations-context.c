@@ -712,6 +712,7 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		}
 
 		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (annot), add_data->ink_list);
+		pps_annotation_ink_set_time_list (PPS_ANNOTATION_INK (annot), add_data->times);
 		pps_annotation_set_border_width (annot, add_data->line_width);
 		break;
 	}

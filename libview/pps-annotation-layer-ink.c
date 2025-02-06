@@ -24,6 +24,7 @@ typedef struct {
 
 typedef struct {
 	GList *pending_draw;
+	GSList *pending_times;
 
 	GList *ink_paths;
 
@@ -282,6 +283,8 @@ drag_end (GtkGestureDrag *annotation_drag_gesture,
 
 		add_data.highlight = tool == TOOL_HIGHLIGHT;
 		add_data.ink_list = pps_ink_list_new_for_list (g_slist_append (NULL, pps_path_new_for_list (points_list)));
+		add_data.times = g_slist_reverse (priv->pending_times);
+		priv->pending_times = NULL;
 		add_data.line_width = 2 * radius;
 		pps_annotations_context_add_annotation_sync (GET_ANNOT_CONTEXT (draw),
 		                                             GET_PAGE_INDEX (draw),
@@ -403,6 +406,7 @@ drag_update (GtkGestureDrag *annotation_drag_gesture,
 	if (tool == TOOL_PENCIL || tool == TOOL_HIGHLIGHT) {
 		PpsPoint *p = g_malloc (sizeof (PpsPoint));
 		PpsPoint *init = priv->pending_draw->data;
+		PpsInkTime *t = g_new (PpsInkTime, 1);
 		p->x = init->x + offset_x;
 		p->y = init->y + offset_y;
 
@@ -410,6 +414,10 @@ drag_update (GtkGestureDrag *annotation_drag_gesture,
 			p->y = ((PpsPoint *) g_list_last (priv->pending_draw)->data)->y;
 		}
 		priv->pending_draw = g_list_append (priv->pending_draw, p);
+		t->time = gtk_event_controller_get_current_event_time (GTK_EVENT_CONTROLLER (annotation_drag_gesture));
+		t->x = TO_DOCX (offset_x);
+		t->y = TO_DOCY (offset_y);
+		priv->pending_times = g_slist_prepend (priv->pending_times, t);
 	} else if (tool == TOOL_ERASER) {
 		gdouble radius = pps_annotation_model_get_eraser_radius (pps_document_model_get_annotation_model (GET_DOC_MODEL (draw)));
 		gboolean erase_objects = pps_annotation_model_get_eraser_objects (GET_ANNOT_MODEL (draw));
@@ -491,14 +499,22 @@ drag_begin (GtkGestureDrag *annotation_drag_gesture,
 
 	PpsAnnotationLayerInkPrivate *priv = INK_GET_PRIVATE (overlay);
 	PpsPoint *first_point = g_malloc (sizeof (PpsPoint));
+	PpsInkTime *first_time_point = g_new (PpsInkTime, 1);
+	gdouble scale = pps_document_model_get_scale (GET_DOC_MODEL (overlay));
+	gdouble height;
+	pps_document_get_page_size (GET_DOC (overlay), GET_PAGE_INDEX (overlay), NULL, &height);
 
 	first_point->x = offset_x;
 	first_point->y = offset_y;
+	first_time_point->time = gtk_event_controller_get_current_event_time (GTK_EVENT_CONTROLLER (annotation_drag_gesture));
+	first_time_point->x = offset_x / scale;
+	first_time_point->y = height - offset_y / scale;
 
 	priv->pending_draw = g_list_alloc ();
 	priv->pending_draw->data = first_point;
 	priv->previous_drag_x = 0;
 	priv->previous_drag_y = 0;
+	priv->pending_times = g_slist_prepend (NULL, first_time_point);
 
 	gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
 	                       GTK_EVENT_SEQUENCE_CLAIMED);

@@ -50,6 +50,7 @@ pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_conte
 
 typedef struct {
 	PpsInkList *ink_list;
+	GSList *times;
 	gboolean highlight;
 	float line_width;
 } PpsAnnotationInkAddData;
