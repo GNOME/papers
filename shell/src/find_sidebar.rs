@@ -15,8 +15,6 @@ mod imp {
         pub(super) search_box: TemplateChild<PpsSearchBox>,
         #[template_child]
         pub(super) list_view: TemplateChild<gtk::ListView>,
-        #[template_child]
-        pub(super) selection: TemplateChild<gtk::SingleSelection>,
 
         #[property(name="search-context", nullable, set = Self::set_search_context)]
         pub(super) context: RefCell<Option<papers_view::SearchContext>>,
@@ -75,7 +73,7 @@ mod imp {
 
             self.clear_context();
 
-            self.selection
+            self.list_view
                 .set_model(context.as_ref().and_then(|c| c.result_model()).as_ref());
 
             if let Some(ref context) = context {
@@ -184,14 +182,16 @@ mod imp {
         }
 
         pub(super) fn previous(&self) {
-            let pos = self.selection.selected() - 1;
+            let result_model = self.context().and_then(|c| c.result_model()).unwrap();
+            let pos = result_model.selected() - 1;
 
             self.list_view
                 .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
         }
 
         pub(super) fn next(&self) {
-            let selected = self.selection.selected();
+            let result_model = self.context().and_then(|c| c.result_model()).unwrap();
+            let selected = result_model.selected();
 
             let pos = if selected != gtk::INVALID_LIST_POSITION {
                 selected + 1
@@ -244,17 +244,6 @@ mod imp {
 
             while let Some(child) = box_.first_child() {
                 box_.remove(&child);
-            }
-        }
-
-        #[template_callback]
-        fn selection_changed(&self) {
-            if let Some(result) = self
-                .selection
-                .selected_item()
-                .and_downcast::<papers_view::SearchResult>()
-            {
-                self.context().unwrap().select_result(&result);
             }
         }
     }
