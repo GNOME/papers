@@ -104,9 +104,6 @@ void pps_view_zoom_out (PpsView *view);
 PPS_PUBLIC
 void pps_view_set_search_context (PpsView *view,
                                   PpsSearchContext *context);
-PPS_PUBLIC
-void pps_view_find_set_highlight_search (PpsView *view,
-                                         gboolean value);
 
 /* Navigation */
 PPS_PUBLIC

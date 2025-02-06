@@ -8114,19 +8114,6 @@ pps_view_set_search_context (PpsView *view,
 	                         view, G_CONNECT_SWAPPED);
 }
 
-void
-pps_view_find_set_highlight_search (PpsView *view, gboolean value)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	if (pps_search_context_get_active (priv->search_context) && !value)
-		pps_search_context_release (priv->search_context);
-	else if (!pps_search_context_get_active (priv->search_context) && value)
-		pps_search_context_activate (priv->search_context);
-	else
-		g_critical ("PpsView does not support outside users of the search context");
-}
-
 /*** Selections ***/
 G_DEFINE_BOXED_TYPE (PpsViewSelection, pps_view_selection, pps_view_selection_copy, pps_view_selection_free)
 
