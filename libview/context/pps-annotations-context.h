@@ -47,6 +47,13 @@ struct _PpsAnnotationsContextClass {
 
 PPS_PUBLIC PpsAnnotationsContext *
 pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_context);
+
+typedef struct {
+	PpsInkList *ink_list;
+	gboolean highlight;
+	float line_width;
+} PpsAnnotationInkAddData;
+
 PPS_PUBLIC
 GListModel *pps_annotations_context_get_annots_model (PpsAnnotationsContext *self);
 PPS_PUBLIC

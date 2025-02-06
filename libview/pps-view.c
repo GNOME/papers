@@ -2796,7 +2796,20 @@ pps_view_connect_annot_signals (PpsView *view,
 		                         view,
 		                         G_CONNECT_DEFAULT);
 		g_signal_connect_object (annot,
+		                         "notify::contents",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+		g_signal_connect_object (annot,
 		                         "notify::font-rgba",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+	}
+
+	if (PPS_IS_ANNOTATION_INK (annot)) {
+		g_signal_connect_object (annot,
+		                         "notify::ink-list",
 		                         G_CALLBACK (pps_view_annot_changed_cb),
 		                         view,
 		                         G_CONNECT_DEFAULT);

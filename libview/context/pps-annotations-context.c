@@ -520,6 +520,13 @@ connect_notify_signals (PpsAnnotationsContext *self, PpsAnnotation *annot)
 		                       self, (GClosureNotify) NULL,
 		                       G_CONNECT_DEFAULT);
 	}
+	if (PPS_IS_ANNOTATION_INK (annot)) {
+		g_signal_connect_data (annot,
+		                       "notify::ink-list",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+	}
 }
 
 static void
@@ -552,11 +559,14 @@ add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
  * @self: a #PpsAnnotationsContext
  * @page_index: the index of the page where the annotation will be added
  * @type: the type of annotation to add
- * @start: point where to start creating an annotation
+ * @start: point where to start creating an annotation (ignored for ink annotations)
  * @end: point where to end creating the annotation. It is ignored for TEXT
- * annotations
+ * annotations and ink annotations.
  * @color: the color to give to the annotation
- * @user_data: a pointer with auxiliary data that is annotation-dependent
+ * @user_data: a pointer with auxiliary data that is annotation-dependent.
+ * For text markup, this points to a #PpsAnnotationTextMarkupType.
+ * For free text, this points to a #PangoFontDescription.
+ * For ink, this points to a #PpsAnnotationInkAddData.
  *
  * Add an annotation based on the provided information.
  *
@@ -599,19 +609,64 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		doc_rect.y2 = end->y;
 		annot = pps_annotation_text_markup_new (page, *(PpsAnnotationTextMarkupType *) user_data);
 		break;
+	case PPS_ANNOTATION_TYPE_FREE_TEXT: {
+		GdkRGBA transparent = { 0, 0, 0, 0. };
+		g_autoptr (PangoFontDescription) font;
+
+		doc_rect.x1 = start->x;
+		doc_rect.y1 = start->y;
+		doc_rect.x2 = start->x + 100;
+		doc_rect.y2 = start->y + 12 * 1.5;
+
+		annot = pps_annotation_free_text_new (page);
+
+		if (!user_data) {
+			font = pango_font_description_new ();
+			pango_font_description_set_family (font, "Liberation Sans");
+			pango_font_description_set_size (font, 12 * PANGO_SCALE);
+		} else {
+			font = pango_font_description_copy ((PangoFontDescription *) user_data);
+		}
+		pps_annotation_free_text_set_font_description (PPS_ANNOTATION_FREE_TEXT (annot), font);
+
+		pps_annotation_free_text_set_font_rgba (PPS_ANNOTATION_FREE_TEXT (annot), color);
+		pps_annotation_set_rgba (annot, &transparent);
+
+		pps_annotation_set_contents (annot, "");
+		break;
+	}
+	case PPS_ANNOTATION_TYPE_INK: {
+		PpsAnnotationInkAddData *add_data = (PpsAnnotationInkAddData *) user_data;
+
+		if (add_data->highlight) {
+			annot = pps_annotation_ink_new_highlight (page);
+		} else {
+			annot = pps_annotation_ink_new (page);
+		}
+
+		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (annot), add_data->ink_list);
+		pps_annotation_set_border_width (annot, add_data->line_width);
+		break;
+	}
 	default:
 		g_assert_not_reached ();
 		return NULL;
 	}
 
-	pps_annotation_set_area (annot, &doc_rect);
-	pps_annotation_set_rgba (annot, color);
+	/* By default, free text annotations have a transparent background, so color should not be set. */
+	if (type != PPS_ANNOTATION_TYPE_FREE_TEXT) {
+		pps_annotation_set_rgba (annot, color);
+	}
 
-	g_object_set (annot,
-	              "popup-is-open", FALSE,
-	              "label", g_get_real_name (),
-	              "opacity", 1.0,
-	              NULL);
+	if (type != PPS_ANNOTATION_TYPE_INK) {
+		/* Coordinates of an ink annotation are in its ink_list, setting the area results in a rescaling */
+		pps_annotation_set_area (annot, &doc_rect);
+		g_object_set (annot,
+		              "popup-is-open", FALSE,
+		              "opacity", 1.0,
+		              "label", g_get_real_name (),
+		              NULL);
+	}
 
 	add_annotation (self, annot);
 
