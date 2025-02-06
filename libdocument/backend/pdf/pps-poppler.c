@@ -2908,6 +2908,37 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 	case POPPLER_ANNOT_MOVIE:
 		/* Ignore link, widgets and movie annots since they are already handled */
 		break;
+	case POPPLER_ANNOT_INK: {
+		gdouble border_width;
+		gsize n_paths;
+		PopplerPath **paths;
+		PpsPath **pps_paths;
+		if (poppler_annot_ink_get_draw_below (POPPLER_ANNOT_INK (poppler_annot))) {
+			pps_annot = pps_annotation_ink_new_highlight (page);
+		} else {
+			pps_annot = pps_annotation_ink_new (page);
+		}
+		paths = poppler_annot_ink_get_ink_list (POPPLER_ANNOT_INK (poppler_annot), &n_paths);
+		pps_paths = g_new (PpsPath *, n_paths);
+		for (gsize i = 0; i < n_paths; i++) {
+			gsize n_points;
+			PopplerPoint *points = poppler_path_get_points (paths[i], &n_points);
+			pps_paths[i] = pps_path_new_for_array ((PpsPoint *) points, n_points);
+		}
+
+		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (pps_annot),
+		                                 pps_ink_list_new_for_array ((const PpsPath **) pps_paths, n_paths));
+		/* Border width. This should be generalized to other annotations in the future. */
+		poppler_annot_get_border_width (poppler_annot, &border_width);
+		pps_annotation_set_border_width (pps_annot, border_width);
+
+		for (gsize i = 0; i < n_paths; i++) {
+			poppler_path_free (paths[i]);
+			pps_path_free (pps_paths[i]);
+		}
+		g_free (paths);
+		break;
+	}
 	case POPPLER_ANNOT_FREE_TEXT: {
 		PopplerAnnotFreeText *poppler_ft = POPPLER_ANNOT_FREE_TEXT (poppler_annot);
 		PpsAnnotationFreeText *pps_annot_ft;
@@ -3025,6 +3056,11 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 		pps_annotation_set_modified (pps_annot, modified);
 
 	poppler_annot_color_to_gdk_rgba (poppler_annot, &color);
+
+	if (PPS_IS_ANNOTATION_INK (pps_annot)) {
+		gdouble opacity = poppler_annot_markup_get_opacity (POPPLER_ANNOT_MARKUP (poppler_annot));
+		color.alpha = opacity;
+	}
 	pps_annotation_set_rgba (pps_annot, &color);
 
 	PopplerAnnotFlag flag = poppler_annot_get_flags (poppler_annot);
@@ -3303,6 +3339,33 @@ annot_free_text_font_rgba_changed_cb (PpsAnnotationFreeText *annot, GParamSpec *
 	annot_change_data_finish (self);
 }
 
+static void
+annot_ink_ink_list_changed_cb (PpsAnnotationInk *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PpsInkList *ink_list = pps_annotation_ink_get_ink_list (annot);
+	gsize n_paths;
+	PpsPath **pps_paths = pps_ink_list_get_array (ink_list, &n_paths);
+	PopplerPath **paths = g_new (PopplerPath *, n_paths);
+
+	g_rw_lock_writer_lock (&self->rwlock);
+
+	for (gsize i = 0; i < n_paths; i++) {
+		gsize n;
+		PpsPoint *points = pps_path_copy_array (pps_paths[i], &n);
+		paths[i] = poppler_path_new_from_array ((PopplerPoint *) points, n);
+	}
+
+	poppler_annot_ink_set_ink_list (POPPLER_ANNOT_INK (poppler_annot), paths, n_paths);
+
+	for (gsize i = 0; i < n_paths; i++) {
+		poppler_path_free (paths[i]);
+	}
+	g_free (paths);
+
+	annot_change_data_finish (self);
+}
+
 /* FIXME: We could probably add this to poppler */
 static void
 copy_poppler_annot (PopplerAnnot *src_annot,
@@ -3445,6 +3508,10 @@ connect_annot_signals (PdfDocument *self, PpsAnnotation *annot)
 		                  self);
 		g_signal_connect (annot_ft, "notify::font-rgba",
 		                  G_CALLBACK (annot_free_text_font_rgba_changed_cb),
+		                  self);
+	}
+	if (PPS_IS_ANNOTATION_INK (annot)) {
+		g_signal_connect (annot, "notify::ink-list", G_CALLBACK (annot_ink_ink_list_changed_cb),
 		                  self);
 	}
 
@@ -3672,6 +3739,17 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
 	} break;
+	case PPS_ANNOTATION_TYPE_INK: {
+		GdkRGBA color;
+		poppler_annot = poppler_annot_ink_new (self->document, &poppler_rect);
+		if (pps_annotation_ink_get_highlight (PPS_ANNOTATION_INK (annot))) {
+			pps_annotation_get_rgba (annot, &color);
+			poppler_annot_markup_set_opacity (POPPLER_ANNOT_MARKUP (poppler_annot), color.alpha);
+			poppler_annot_ink_set_draw_below (POPPLER_ANNOT_INK (poppler_annot), TRUE);
+		}
+		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
+		break;
+	}
 	case PPS_ANNOTATION_TYPE_TEXT_MARKUP: {
 		GArray *quads;
 		PopplerRectangle bbox;
@@ -3746,7 +3824,24 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
+	if (pps_annotation_get_annotation_type (annot) == PPS_ANNOTATION_TYPE_INK) {
+		PpsInkList *ink_list = pps_annotation_ink_get_ink_list (PPS_ANNOTATION_INK (annot));
+		gsize n_paths;
+		PpsPath **pps_paths = pps_ink_list_get_array (ink_list, &n_paths);
+		PopplerPath **paths = g_new (PopplerPath *, n_paths);
+		for (gsize i = 0; i < n_paths; i++) {
+			gsize n;
+			PpsPoint *points = pps_path_copy_array (pps_paths[i], &n);
+			paths[i] = poppler_path_new_from_array ((PopplerPoint *) points, n);
+		}
 
+		poppler_annot_ink_set_ink_list (POPPLER_ANNOT_INK (poppler_annot), paths, n_paths);
+
+		for (gsize i = 0; i < n_paths; i++) {
+			poppler_path_free (paths[i]);
+		}
+		g_free (paths);
+	}
 	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
