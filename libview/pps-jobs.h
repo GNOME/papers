@@ -98,6 +98,8 @@ struct _PpsJobRenderTexture {
 	PpsSelectionStyle selection_style;
 	GdkRGBA base;
 	GdkRGBA text;
+
+	PpsRenderAnnotsFlags annot_flags;
 };
 
 struct _PpsJobRenderTextureClass {
@@ -233,7 +235,8 @@ PpsJob *pps_job_render_texture_new (PpsDocument *document,
                                     gint rotation,
                                     gdouble scale,
                                     gint width,
-                                    gint height);
+                                    gint height,
+                                    PpsRenderAnnotsFlags annot_flags);
 PPS_PUBLIC
 void pps_job_render_texture_set_selection_info (PpsJobRenderTexture *job,
                                                 PpsRectangle *selection_points,

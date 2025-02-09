@@ -57,7 +57,8 @@ pps_render_context_class_init (PpsRenderContextClass *class)
 PpsRenderContext *
 pps_render_context_new (PpsPage *page,
                         gint rotation,
-                        gdouble scale)
+                        gdouble scale,
+                        PpsRenderAnnotsFlags annot_flags)
 {
 	PpsRenderContext *rc;
 
@@ -68,6 +69,7 @@ pps_render_context_new (PpsPage *page,
 	rc->scale = scale;
 	rc->target_width = -1;
 	rc->target_height = -1;
+	rc->annot_flags = annot_flags;
 
 	return rc;
 }

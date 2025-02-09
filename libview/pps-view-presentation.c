@@ -379,7 +379,7 @@ pps_view_presentation_schedule_new_job (PpsViewPresentation *pview,
 	view_width *= device_scale;
 	view_height *= device_scale;
 	job = pps_job_render_texture_new (priv->document, page, priv->rotation, 0.,
-	                                  view_width, view_height);
+	                                  view_width, view_height, PPS_RENDER_ANNOTS_ALL);
 	g_signal_connect (job, "finished",
 	                  G_CALLBACK (job_finished_cb),
 	                  pview);

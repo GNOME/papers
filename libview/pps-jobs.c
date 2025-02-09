@@ -377,7 +377,8 @@ pps_job_render_texture_new (PpsDocument *document,
                             gint rotation,
                             gdouble scale,
                             gint width,
-                            gint height)
+                            gint height,
+                            PpsRenderAnnotsFlags annot_flags)
 {
 	PpsJobRenderTexture *job;
 
@@ -392,6 +393,7 @@ pps_job_render_texture_new (PpsDocument *document,
 	job->scale = scale;
 	job->target_width = width;
 	job->target_height = height;
+	job->annot_flags = annot_flags;
 
 	return PPS_JOB (job);
 }
@@ -411,7 +413,7 @@ pps_job_render_texture_run (PpsJob *job)
 	PPS_PROFILER_START (PPS_GET_TYPE_NAME (job), g_strdup_printf ("page: %d", job_render->page));
 
 	pps_page = pps_document_get_page (pps_job_get_document (job), job_render->page);
-	rc = pps_render_context_new (pps_page, job_render->rotation, job_render->scale);
+	rc = pps_render_context_new (pps_page, job_render->rotation, job_render->scale, job_render->annot_flags);
 	pps_render_context_set_target_size (rc,
 	                                    job_render->target_width, job_render->target_height);
 	g_object_unref (pps_page);
@@ -652,7 +654,7 @@ pps_job_thumbnail_texture_run (PpsJob *job)
 
 	PPS_PROFILER_START (PPS_GET_TYPE_NAME (job), g_strdup_printf ("page: %d", priv->page));
 	page = pps_document_get_page (pps_job_get_document (job), priv->page);
-	rc = pps_render_context_new (page, priv->rotation, priv->scale);
+	rc = pps_render_context_new (page, priv->rotation, priv->scale, PPS_RENDER_ANNOTS_ALL);
 	pps_render_context_set_target_size (rc,
 	                                    priv->target_width, priv->target_height);
 	g_object_unref (page);
@@ -1588,7 +1590,7 @@ pps_job_export_run (PpsJob *job)
 
 		pps_render_context_set_page (priv->rc, pps_page);
 	} else {
-		priv->rc = pps_render_context_new (pps_page, 0, 1.0);
+		priv->rc = pps_render_context_new (pps_page, 0, 1.0, PPS_RENDER_ANNOTS_ALL);
 	}
 	g_object_unref (pps_page);
 

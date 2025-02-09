@@ -469,7 +469,11 @@ pdf_page_render (PopplerPage *page,
 	pps_render_context_compute_scales (rc, page_width, page_height, &xscale, &yscale);
 	cairo_scale (cr, xscale, yscale);
 	cairo_rotate (cr, rc->rotation * G_PI / 180.0);
+#ifdef HAVE_FREE_TEXT
+	poppler_page_render_full (page, cr, FALSE, (PopplerRenderAnnotsFlags) rc->annot_flags);
+#else
 	poppler_page_render (page, cr);
+#endif
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
 	cairo_set_source_rgb (cr, 1., 1., 1.);

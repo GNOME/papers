@@ -845,7 +845,7 @@ compute_scroll_increment (PpsView *view,
 
 		cairo_region_get_rectangle (region, 0, &rect);
 		pps_page = pps_document_get_page (document, page);
-		rc = pps_render_context_new (pps_page, pps_document_model_get_rotation (priv->model), 0.);
+		rc = pps_render_context_new (pps_page, pps_document_model_get_rotation (priv->model), 0., PPS_RENDER_ANNOTS_ALL);
 		pps_render_context_set_target_size (rc,
 		                                    page_area.width,
 		                                    page_area.height);
@@ -5927,7 +5927,7 @@ cursor_clear_selection (PpsView *view,
 		pps_document_doc_mutex_lock (document);
 
 		page = pps_document_get_page (document, selection->page);
-		rc = pps_render_context_new (page, rotation, scale);
+		rc = pps_render_context_new (page, rotation, scale, PPS_RENDER_ANNOTS_ALL);
 		g_object_unref (page);
 
 		tmp_region = pps_selection_get_selection_region (PPS_SELECTION (document),

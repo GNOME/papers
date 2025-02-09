@@ -180,7 +180,7 @@ papers_thumbnail_pngenc_get (PpsDocument *document, const char *thumbnail, int s
 
 	pps_document_get_page_size (document, 0, &width, &height);
 
-	rc = pps_render_context_new (page, 0, size / MAX (height, width));
+	rc = pps_render_context_new (page, 0, size / MAX (height, width), PPS_RENDER_ANNOTS_ALL);
 	pixbuf = pps_document_get_thumbnail (document, rc);
 
 	if (pixbuf && gdk_pixbuf_save (pixbuf, thumbnail, "png", NULL, NULL))
