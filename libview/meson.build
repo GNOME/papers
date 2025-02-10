@@ -75,6 +75,7 @@ sources = files(
   'pps-view-cursor.c',
   'pps-view-page.c',
   'pps-view-presentation.c',
+  'pps-annotation-layer.c',
 )
 
 marshal = 'pps-view-marshal'

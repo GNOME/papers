@@ -2825,6 +2825,14 @@ pps_view_connect_annot_signals (PpsView *view,
 }
 
 static void
+pps_view_editing_state_changed (PpsDocumentModel *model,
+                                GParamSpec *pspec,
+                                PpsView *view)
+{
+	pps_view_reload (view);
+}
+
+static void
 pps_view_annot_added_cb (PpsView *view,
                          gpointer *user_data)
 {
@@ -6368,6 +6376,9 @@ pps_view_set_model (PpsView *view,
 
 	if (pps_document_model_get_inverted_colors (priv->model))
 		gtk_widget_add_css_class (GTK_WIDGET (view), PPS_STYLE_CLASS_INVERTED);
+	g_signal_connect (priv->model, "notify::annotation-editing-state",
+	                  G_CALLBACK (pps_view_editing_state_changed),
+	                  view);
 }
 
 static void

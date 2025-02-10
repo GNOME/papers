@@ -9,6 +9,7 @@
 #include "config.h"
 #endif
 
+#include "pps-annotation-layer.h"
 #include "pps-view-page.h"
 
 #include <string.h>
@@ -31,6 +32,10 @@ typedef struct
 	PpsAnnotation *annot;
 } MovingAnnotInfo;
 
+enum {
+	LAYER_COUNT
+};
+
 typedef struct
 {
 	gint index;
@@ -47,6 +52,7 @@ typedef struct
 
 	gint cursor_page;
 	gint cursor_offset;
+	PpsAnnotationLayer *layers[LAYER_COUNT];
 } PpsViewPagePrivate;
 
 G_DEFINE_TYPE_WITH_CODE (PpsViewPage, pps_view_page, GTK_TYPE_WIDGET, G_ADD_PRIVATE (PpsViewPage) G_IMPLEMENT_INTERFACE (GTK_TYPE_ACCESSIBLE_TEXT, pps_view_page_accessible_text_init))
@@ -1356,6 +1362,12 @@ pps_view_page_dispose (GObject *object)
 	g_clear_object (&priv->search_context);
 	g_clear_object (&priv->annots_context);
 
+	for (int i = 0; i < LAYER_COUNT; i++) {
+		if (priv->layers[i]) {
+			gtk_widget_unparent (GTK_WIDGET (priv->layers[i]));
+		}
+	}
+
 	G_OBJECT_CLASS (pps_view_page_parent_class)->dispose (object);
 }
 
@@ -1387,6 +1399,14 @@ pps_view_page_size_allocate (GtkWidget *widget,
 			gtk_widget_set_size_request (child, real_view_area.width, real_view_area.height);
 
 			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, real_view_area.height, NULL, NULL, NULL, NULL);
+			gtk_widget_size_allocate (child, &real_view_area, baseline);
+		} else if (PPS_IS_ANNOTATION_LAYER (child)) {
+			real_view_area.x = 0;
+			real_view_area.y = 0;
+			real_view_area.width = width;
+			real_view_area.height = height;
+			gtk_widget_set_size_request (child, width, height);
+			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, height, NULL, NULL, NULL, NULL);
 			gtk_widget_size_allocate (child, &real_view_area, baseline);
 		}
 	}
