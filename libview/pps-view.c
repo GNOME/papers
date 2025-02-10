@@ -3483,7 +3483,7 @@ pps_view_size_allocate (GtkWidget *widget,
 
 		gtk_widget_set_size_request (child, view_area.width, view_area.height);
 		// TODO: this is a temporary solution to eliminate the warning
-		gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, view_area.width, NULL, NULL, NULL, NULL);
+		gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, view_area.height, NULL, NULL, NULL, NULL);
 		gtk_widget_size_allocate (child, &view_area, baseline);
 	}
 
