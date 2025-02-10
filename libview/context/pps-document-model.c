@@ -42,6 +42,8 @@ struct _PpsDocumentModel {
 
 	gdouble max_scale;
 	gdouble min_scale;
+
+	PpsAnnotationEditingState annotation_editing;
 };
 
 enum {
@@ -57,7 +59,8 @@ enum {
 	PROP_RTL,
 	PROP_MIN_SCALE,
 	PROP_MAX_SCALE,
-	PROP_PAGE_LAYOUT
+	PROP_PAGE_LAYOUT,
+	PROP_ANNOTATION_EDITING_STATE
 };
 
 enum {
@@ -127,6 +130,9 @@ pps_document_model_set_property (GObject *object,
 	case PROP_RTL:
 		pps_document_model_set_rtl (model, g_value_get_boolean (value));
 		break;
+	case PROP_ANNOTATION_EDITING_STATE:
+		pps_document_model_set_annotation_editing_state (model, g_value_get_flags (value));
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -176,6 +182,9 @@ pps_document_model_get_property (GObject *object,
 		break;
 	case PROP_RTL:
 		g_value_set_boolean (value, pps_document_model_get_rtl (model));
+		break;
+	case PROP_ANNOTATION_EDITING_STATE:
+		g_value_set_flags (value, model->annotation_editing);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -290,6 +299,14 @@ pps_document_model_class_init (PpsDocumentModelClass *klass)
 	                                                       FALSE,
 	                                                       G_PARAM_READWRITE |
 	                                                           G_PARAM_STATIC_STRINGS));
+	g_object_class_install_property (g_object_class,
+	                                 PROP_ANNOTATION_EDITING_STATE,
+	                                 g_param_spec_flags ("annotation-editing-state",
+	                                                     "Annotation Editing State",
+	                                                     "Whether the document is being 'inked'",
+	                                                     PPS_TYPE_ANNOTATION_EDITING_STATE, PPS_ANNOTATION_EDITING_STATE_NONE,
+	                                                     G_PARAM_READWRITE |
+	                                                         G_PARAM_STATIC_STRINGS));
 
 	/* Signals */
 	signals[PAGE_CHANGED] =
@@ -656,6 +673,45 @@ pps_document_model_set_rtl (PpsDocumentModel *model,
 	model->rtl = rtl;
 
 	g_object_notify (G_OBJECT (model), "rtl");
+}
+
+/**
+ * pps_document_model_set_annotation_editing_state:
+ * @model: a #PpsDocumentModel
+ * @state: a #PpsAnnotationEditingState
+ *
+ * Sets the current editing state to @state. In a #PpsView,
+ * This implies that editing widgets for annotations may be shown
+ * and annotations not rendered by the backend.
+ *
+ * Since: 48.0
+ */
+void
+pps_document_model_set_annotation_editing_state (PpsDocumentModel *model,
+                                                 PpsAnnotationEditingState state)
+{
+	g_return_if_fail (PPS_IS_DOCUMENT_MODEL (model));
+
+	if (state == model->annotation_editing) {
+		return;
+	}
+	model->annotation_editing = state;
+
+	g_object_notify (G_OBJECT (model), "annotation-editing-state");
+}
+
+/**
+ * pps_document_model_get_annotation_editing_state:
+ * @model: a #PpsDocumentModel
+ *
+ * Returns the current editing state.
+ *
+ * Since: 48.0
+ */
+PpsAnnotationEditingState
+pps_document_model_get_annotation_editing_state (PpsDocumentModel *model)
+{
+	return model->annotation_editing;
 }
 
 gboolean

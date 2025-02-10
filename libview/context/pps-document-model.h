@@ -53,6 +53,12 @@ typedef enum {
 	PPS_PAGE_LAYOUT_AUTOMATIC
 } PpsPageLayout;
 
+typedef enum {
+	PPS_ANNOTATION_EDITING_STATE_NONE = 0,
+	PPS_ANNOTATION_EDITING_STATE_INK = 1 << 0,
+	PPS_ANNOTATION_EDITING_STATE_TEXT = 1 << 1
+} PpsAnnotationEditingState;
+
 PPS_PUBLIC
 PpsDocumentModel *pps_document_model_new (void);
 PPS_PUBLIC
@@ -121,5 +127,13 @@ void pps_document_model_set_rtl (PpsDocumentModel *model,
                                  gboolean rtl);
 PPS_PUBLIC
 gboolean pps_document_model_get_rtl (PpsDocumentModel *model);
+
+PPS_PUBLIC
+void
+pps_document_model_set_annotation_editing_state (PpsDocumentModel *model,
+                                                 PpsAnnotationEditingState draw);
+PPS_PUBLIC
+PpsAnnotationEditingState
+pps_document_model_get_annotation_editing_state (PpsDocumentModel *model);
 
 G_END_DECLS
