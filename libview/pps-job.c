@@ -171,6 +171,14 @@ pps_job_emit_finished (PpsJob *job)
 	                     (GDestroyNotify) g_object_unref);
 }
 
+/**
+ * pps_job_run:
+ * @job: A #PpsJob object to run.
+ *
+ * Starts or executes the specified job.
+ *
+ * Returns: TRUE if the job was successfully started, FALSE otherwise.
+ */
 gboolean
 pps_job_run (PpsJob *job)
 {
@@ -183,6 +191,18 @@ pps_job_run (PpsJob *job)
 	return ret;
 }
 
+/**
+ * pps_job_cancel:
+ * @job: A #PpsJob object to cancel.
+ *
+ * Cancels the specified job if it has not already been cancelled.
+ *
+ * This function updates the job's state to indicate it has been cancelled,
+ * cancels any associated cancellable object, and emits a CANCELLED signal.
+ * It does nothing if the job is already cancelled or finished.
+ *
+ * This function should not be called from a thread.
+ */
 void
 pps_job_cancel (PpsJob *job)
 {
@@ -203,6 +223,19 @@ pps_job_cancel (PpsJob *job)
 	g_signal_emit (job, job_signals[CANCELLED], 0);
 }
 
+/**
+ * pps_job_failed:
+ * @job: A #PpsJob object.
+ * @domain: The error domain (a #GQuark).
+ * @code: The error code (an integer).
+ * @format: A printf-style format string.
+ *
+ * Marks the specified job as failed and sets an error with the provided details.
+ *
+ * This function creates a new #GError using the provided domain, code, and message,
+ * and updates the job's state to indicate failure. It emits a finished signal when done.
+ * It does nothing if the job is already marked as failed or finished.
+ */
 void
 pps_job_failed (PpsJob *job,
                 GQuark domain,
@@ -233,8 +266,13 @@ pps_job_failed (PpsJob *job,
 
 /**
  * pps_job_failed_from_error: (rename-to pps_job_failed)
- * @job: an #PpsJob
- * @error: a #GError
+ * @job: A #PpsJob object.
+ * @error: A #GError containing details about the failure.
+ *
+ * Marks the specified job as failed and sets the error associated with the failure.
+ *
+ * This function updates the job's state to indicate it has failed, stores the error,
+ * and emits a finished signal. It does nothing if the job is already finished or marked as failed.
  */
 void
 pps_job_failed_from_error (PpsJob *job,
@@ -253,6 +291,14 @@ pps_job_failed_from_error (PpsJob *job,
 	pps_job_emit_finished (job);
 }
 
+/**
+ * pps_job_succeeded:
+ * @job: A #PpsJob object that has completed.
+ *
+ * Marks the specified job as succeeded.
+ *
+ * This function should be called when the job finishes successfully.
+ */
 void
 pps_job_succeeded (PpsJob *job)
 {
@@ -267,6 +313,14 @@ pps_job_succeeded (PpsJob *job)
 	pps_job_emit_finished (job);
 }
 
+/**
+ * pps_job_is_finished:
+ * @job: A #PpsJob object.
+ *
+ * Checks if the specified job has finished execution.
+ *
+ * Returns: TRUE if the job is finished, FALSE otherwise.
+ */
 gboolean
 pps_job_is_finished (PpsJob *job)
 {
@@ -277,10 +331,12 @@ pps_job_is_finished (PpsJob *job)
 
 /**
  * pps_job_is_succeeded:
- * @job: a #PpsJob
- * @error: (nullable): (transfer full): the error to set if the job failed
+ * @job: A #PpsJob object.
+ * @error: (nullable) (transfer full): the error to set if the job fails.
  *
- * Returns: whether the job succeed
+ * Determines the finish status of the specified job.
+ *
+ * Returns: TRUE if the job succeeded, FALSE otherwise.
  */
 gboolean
 pps_job_is_succeeded (PpsJob *job, GError **error)
@@ -297,9 +353,12 @@ pps_job_is_succeeded (PpsJob *job, GError **error)
 
 /**
  * pps_job_get_document:
- * @job: an #PpsJob
+ * @job: A #PpsJob object.
  *
- * Returns: (transfer none): The #PpsDocument of this job.
+ * Retrieves the #PpsDocument associated with the specified job.
+ *
+ * Returns: (transfer none): The #PpsDocument object associated with the job,
+ * or NULL if the job is invalid or does not have an associated document.
  */
 PpsDocument *
 pps_job_get_document (PpsJob *job)
@@ -313,9 +372,12 @@ pps_job_get_document (PpsJob *job)
 
 /**
  * pps_job_get_cancellable:
- * @job: an #PpsJob
+ * @job: A #PpsJob object.
  *
- * Returns: (transfer none): The #GCancellable of this job.
+ * Retrieves the #GCancellable object associated with the specified job.
+ *
+ * Returns: (transfer none): The #GCancellable object of the job,
+ * or NULL if the job is invalid or does not have an associated cancellable.
  */
 GCancellable *
 pps_job_get_cancellable (PpsJob *job)
@@ -327,6 +389,15 @@ pps_job_get_cancellable (PpsJob *job)
 	return priv->cancellable;
 }
 
+/**
+ * pps_job_reset:
+ * @job: A #PpsJob object to reset.
+ *
+ * Resets the state of the specified job to its initial state.
+ *
+ * This function clears any error, marks the job as not finished, and sets
+ * the job's failure status to FALSE, effectively resetting its progress.
+ */
 void
 pps_job_reset (PpsJob *job)
 {
