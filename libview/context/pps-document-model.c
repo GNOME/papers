@@ -44,6 +44,7 @@ struct _PpsDocumentModel {
 	gdouble min_scale;
 
 	PpsAnnotationEditingState annotation_editing;
+	PpsAnnotationModel *annotation_model;
 };
 
 enum {
@@ -60,7 +61,8 @@ enum {
 	PROP_MIN_SCALE,
 	PROP_MAX_SCALE,
 	PROP_PAGE_LAYOUT,
-	PROP_ANNOTATION_EDITING_STATE
+	PROP_ANNOTATION_EDITING_STATE,
+	PROP_ANNOTATION_MODEL
 };
 
 enum {
@@ -133,6 +135,9 @@ pps_document_model_set_property (GObject *object,
 	case PROP_ANNOTATION_EDITING_STATE:
 		pps_document_model_set_annotation_editing_state (model, g_value_get_flags (value));
 		break;
+	case PROP_ANNOTATION_MODEL:
+		model->annotation_model = g_object_ref (g_value_get_object (value));
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -186,9 +191,38 @@ pps_document_model_get_property (GObject *object,
 	case PROP_ANNOTATION_EDITING_STATE:
 		g_value_set_flags (value, model->annotation_editing);
 		break;
+	case PROP_ANNOTATION_MODEL:
+		g_value_set_object (value, model->annotation_model);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
+}
+
+static void
+pps_document_model_update_editing_state (GObject *annotation_model, GParamSpec *pspec, PpsDocumentModel *model)
+{
+	if (model->annotation_editing == PPS_ANNOTATION_EDITING_STATE_NONE) {
+		return;
+	}
+	switch (pps_annotation_model_get_tool (model->annotation_model)) {
+	case TOOL_TEXT:
+		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_TEXT);
+		break;
+	default:
+		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_INK);
+		break;
+	}
+}
+
+static void
+pps_document_model_constructed (GObject *object)
+{
+	PpsDocumentModel *model = PPS_DOCUMENT_MODEL (object);
+
+	G_OBJECT_CLASS (pps_document_model_parent_class)->constructed (object);
+
+	g_signal_connect_object (model->annotation_model, "notify::tool", G_CALLBACK (pps_document_model_update_editing_state), object, G_CONNECT_DEFAULT);
 }
 
 static void
@@ -199,6 +233,7 @@ pps_document_model_class_init (PpsDocumentModelClass *klass)
 	g_object_class->get_property = pps_document_model_get_property;
 	g_object_class->set_property = pps_document_model_set_property;
 	g_object_class->finalize = pps_document_model_finalize;
+	g_object_class->constructed = pps_document_model_constructed;
 
 	/* Properties */
 	g_object_class_install_property (g_object_class,
@@ -307,6 +342,14 @@ pps_document_model_class_init (PpsDocumentModelClass *klass)
 	                                                     PPS_TYPE_ANNOTATION_EDITING_STATE, PPS_ANNOTATION_EDITING_STATE_NONE,
 	                                                     G_PARAM_READWRITE |
 	                                                         G_PARAM_STATIC_STRINGS));
+	g_object_class_install_property (g_object_class,
+	                                 PROP_ANNOTATION_MODEL,
+	                                 g_param_spec_object ("annotation-model",
+	                                                      "Annotation Model",
+	                                                      "The current annotation model",
+	                                                      PPS_TYPE_ANNOTATION_MODEL,
+	                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
+	                                                          G_PARAM_STATIC_STRINGS));
 
 	/* Signals */
 	signals[PAGE_CHANGED] =
@@ -718,4 +761,18 @@ pps_document_model_get_rtl (PpsDocumentModel *model)
 	g_return_val_if_fail (PPS_IS_DOCUMENT_MODEL (model), FALSE);
 
 	return model->rtl;
+}
+
+/**
+ * pps_document_model_get_annotation_model:
+ * @model: a #PpsDocumentModel
+ *
+ * Gets the annotation model from the document model.
+ *
+ * Returns: (transfer none): a reference to the #PpsAnnotationModel
+ */
+PpsAnnotationModel *
+pps_document_model_get_annotation_model (PpsDocumentModel *model)
+{
+	return model->annotation_model;
 }

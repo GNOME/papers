@@ -23,6 +23,7 @@
 #error "Only <papers-view.h> can be included directly."
 #endif
 
+#include "pps-annotation-model.h"
 #include <glib-object.h>
 #include <papers-document.h>
 
@@ -127,6 +128,9 @@ void pps_document_model_set_rtl (PpsDocumentModel *model,
                                  gboolean rtl);
 PPS_PUBLIC
 gboolean pps_document_model_get_rtl (PpsDocumentModel *model);
+
+PPS_PUBLIC
+PpsAnnotationModel *pps_document_model_get_annotation_model (PpsDocumentModel *model);
 
 PPS_PUBLIC
 void
