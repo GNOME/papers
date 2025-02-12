@@ -74,8 +74,8 @@ pps_search_result_new (gchar *markup,
 	PpsSearchResult *result = g_object_new (PPS_TYPE_SEARCH_RESULT, NULL);
 	PpsSearchResultPrivate *priv = GET_PRIVATE (result);
 
-	priv->markup = markup;
-	priv->label = label;
+	priv->markup = g_strdup (markup);
+	priv->label = g_strdup (label);
 	priv->page = page;
 	priv->index = index;
 	priv->find_rectangles = g_list_append (priv->find_rectangles,

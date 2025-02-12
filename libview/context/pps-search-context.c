@@ -123,7 +123,7 @@ sanitized_substring (const gchar *text,
 	const gchar *start_ptr;
 	const gchar *end_ptr;
 	guint len = 0;
-	gchar *retval;
+	g_autofree gchar *retval = NULL;
 
 	if (end - start <= 0)
 		return NULL;
@@ -160,15 +160,12 @@ sanitized_substring (const gchar *text,
 		p = next;
 	}
 
-	if (len == 0) {
-		g_free (retval);
-
+	if (len == 0)
 		return NULL;
-	}
 
 	retval[len] = 0;
 
-	return retval;
+	return g_steal_pointer (&retval);
 }
 
 static gchar *
@@ -182,9 +179,9 @@ get_surrounding_text_markup (const gchar *text,
                              gboolean hyphen_was_ignored)
 {
 	gint iter;
-	gchar *prec = NULL;
-	gchar *succ = NULL;
-	gchar *match = NULL;
+	g_autofree gchar *prec = NULL;
+	g_autofree gchar *succ = NULL;
+	g_autofree gchar *match = NULL;
 	gchar *markup;
 	gint max_chars;
 
@@ -225,9 +222,6 @@ get_surrounding_text_markup (const gchar *text,
 
 	markup = g_markup_printf_escaped ("%s<span weight=\"bold\">%s</span>%s",
 	                                  prec ? prec : "", match ? match : find_text, succ ? succ : "");
-	g_free (prec);
-	g_free (succ);
-	g_free (match);
 
 	return markup;
 }
@@ -238,7 +232,7 @@ get_page_text (PpsDocument *document,
                PpsRectangle **areas,
                guint *n_areas)
 {
-	gchar *text;
+	g_autofree gchar *text = NULL;
 	gboolean success;
 
 	pps_document_doc_mutex_lock (document);
@@ -246,12 +240,10 @@ get_page_text (PpsDocument *document,
 	success = pps_document_text_get_text_layout (PPS_DOCUMENT_TEXT (document), page, areas, n_areas);
 	pps_document_doc_mutex_unlock (document);
 
-	if (!success) {
-		g_free (text);
+	if (!success)
 		return NULL;
-	}
 
-	return text;
+	return g_steal_pointer (&text);
 }
 
 static gint
@@ -310,12 +302,12 @@ process_matches_idle (PpsSearchContext *context)
 		GList *matches, *l;
 		PpsPage *page;
 		guint index = 0;
-		gchar *page_label;
-		gchar *page_text;
-		PpsRectangle *areas = NULL;
+		g_autofree gchar *page_label = NULL;
+		g_autofree gchar *page_text = NULL;
+		g_autofree PpsRectangle *areas = NULL;
 		PpsSearchResult *result = NULL;
 		guint n_areas;
-		PangoLogAttr *text_log_attrs;
+		g_autofree PangoLogAttr *text_log_attrs = NULL;
 		gulong text_log_attrs_length;
 		gint offset;
 
@@ -341,7 +333,7 @@ process_matches_idle (PpsSearchContext *context)
 
 		for (l = matches; l; l = g_list_next (l)) {
 			PpsFindRectangle *match = (PpsFindRectangle *) l->data;
-			gchar *markup;
+			g_autofree gchar *markup = NULL;
 			gint new_offset;
 
 			if (l->prev && ((PpsFindRectangle *) l->prev->data)->next_line) {
@@ -374,20 +366,13 @@ process_matches_idle (PpsSearchContext *context)
 				                                      match->after_hyphen);
 			}
 
-			result = pps_search_result_new (g_strdup (markup),
-			                                g_strdup (page_label),
+			result = pps_search_result_new (markup,
+			                                page_label,
 			                                current_page,
 			                                index++,
 			                                match);
 			g_ptr_array_add (results_array, result);
-
-			g_free (markup);
 		}
-
-		g_free (page_label);
-		g_free (page_text);
-		g_free (text_log_attrs);
-		g_free (areas);
 	}
 
 	results = (PpsSearchResult **) g_ptr_array_steal (results_array, &n_results);
