@@ -59,6 +59,7 @@ typedef struct
 	gchar *search_term;
 	guint active_use_count;
 
+	GHashTable *per_page_store;
 	GListStore *result_model;
 	GtkSingleSelection *selection_model;
 } PpsSearchContextPrivate;
@@ -313,6 +314,7 @@ process_matches_idle (PpsSearchContext *context)
 		g_autofree PangoLogAttr *text_log_attrs = NULL;
 		gulong text_log_attrs_length;
 		gint offset;
+		GPtrArray *per_page_results_array = g_ptr_array_new_null_terminated (0, g_object_unref, TRUE);
 
 		matches = priv->job->pages[current_page];
 		if (!matches)
@@ -374,8 +376,11 @@ process_matches_idle (PpsSearchContext *context)
 			                                current_page,
 			                                index++,
 			                                match);
+			g_ptr_array_add (per_page_results_array, g_object_ref (result));
 			g_ptr_array_add (results_array, result);
 		}
+
+		g_hash_table_insert (priv->per_page_store, GINT_TO_POINTER (current_page), per_page_results_array);
 	}
 
 	results = (PpsSearchResult **) g_ptr_array_steal (results_array, &n_results);
@@ -411,6 +416,7 @@ pps_search_context_dispose (GObject *object)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	pps_search_context_clear_job (context);
+	g_clear_object (&priv->per_page_store);
 	g_clear_object (&priv->result_model);
 	g_clear_object (&priv->selection_model);
 
@@ -422,6 +428,7 @@ pps_search_context_init (PpsSearchContext *context)
 {
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
+	priv->per_page_store = g_hash_table_new_full (g_direct_hash, g_direct_equal, NULL, (GDestroyNotify) g_ptr_array_unref);
 	priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
 	priv->selection_model = gtk_single_selection_new (G_LIST_MODEL (priv->result_model));
 	gtk_single_selection_set_autoselect (priv->selection_model, FALSE);
@@ -624,6 +631,28 @@ pps_search_context_get_result_model (PpsSearchContext *context)
 }
 
 /**
+ * pps_search_context_get_results_on_page:
+ *
+ * Returns: (not nullable) (transfer full) (element-type PpsSearchResult): #GPtrArray of #PpsSearchResult on the current page
+ *
+ * Since: 48.0
+ */
+GPtrArray *
+pps_search_context_get_results_on_page (PpsSearchContext *context,
+                                        guint page)
+{
+	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), NULL);
+
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+	GPtrArray *result_array = (GPtrArray *) g_hash_table_lookup (priv->per_page_store, GINT_TO_POINTER (page));
+
+	if (result_array == NULL)
+		return g_ptr_array_new_null_terminated (0, g_object_unref, TRUE);
+
+	return g_ptr_array_copy (result_array, (GCopyFunc) g_object_ref, NULL);
+}
+
+/**
  * pps_search_context_activate:
  *
  * Since: 48.0
@@ -684,6 +713,7 @@ pps_search_context_restart (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 
 	pps_search_context_clear_job (context);
+	g_hash_table_remove_all (priv->per_page_store);
 	g_list_store_remove_all (priv->result_model);
 
 	if (priv->search_term && priv->search_term[0]) {
