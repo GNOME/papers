@@ -6320,21 +6320,16 @@ highlight_find_results (PpsView *view,
                         int page)
 {
 	PpsRectangle pps_rect;
-	gint i = 0;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GtkSingleSelection *model = pps_search_context_get_result_model (priv->search_context);
-	PpsSearchResult *result = g_list_model_get_item (G_LIST_MODEL (model), i);
+	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, page);
 
-	for (i = 0, result = g_list_model_get_item (G_LIST_MODEL (model), i);
-	     result != NULL;
-	     result = g_list_model_get_item (G_LIST_MODEL (model), ++i)) {
+	for (gint i = 0; i < results->len; i++) {
+		PpsSearchResult *result = g_ptr_array_index (results, i);
 		PpsFindRectangle *find_rect;
 		GList *rectangles;
 		GdkRectangle view_rectangle;
 		gboolean active = FALSE;
-
-		if (pps_search_result_get_page (result) != page)
-			continue;
 
 		rectangles = pps_search_result_get_rectangle_list (result);
 		find_rect = (PpsFindRectangle *) rectangles->data;
