@@ -61,9 +61,6 @@ typedef struct _PpsJobExportClass PpsJobExportClass;
 typedef struct _PpsJobPrint PpsJobPrint;
 typedef struct _PpsJobPrintClass PpsJobPrintClass;
 
-typedef struct _PpsJobSignatures PpsJobSignatures;
-typedef struct _PpsJobSignaturesClass PpsJobSignaturesClass;
-
 #define PPS_TYPE_JOB_RENDER_TEXTURE (pps_job_render_texture_get_type ())
 #define PPS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_RENDER_TEXTURE, PpsJobRenderTexture))
 #define PPS_IS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_RENDER_TEXTURE))
@@ -120,13 +117,6 @@ typedef struct _PpsJobSignaturesClass PpsJobSignaturesClass;
 #define PPS_IS_JOB_PRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_PRINT))
 #define PPS_JOB_PRINT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_PRINT, PpsJobPrintClass))
 
-#define PPS_TYPE_JOB_SIGNATURES (pps_job_signatures_get_type ())
-#define PPS_JOB_SIGNATURES(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), PPS_TYPE_JOB_SIGNATURES, PpsJobSignatures))
-#define PPS_IS_JOB_SIGNATURES(object) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_SIGNATURES))
-#define PPS_JOB_SIGNATURES_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_SIGNATURES, PpsJobSignaturesClass))
-#define PPS_IS_JOB_SIGNATURES_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_SIGNATURES))
-#define PPS_JOB_SIGNATURES_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_SIGNATURES, PpsJobSignaturesClass))
-
 struct _PpsJobLinks {
 	PpsJob parent;
 };
@@ -161,10 +151,6 @@ struct _PpsJobRenderTexture {
 };
 
 struct _PpsJobRenderTextureClass {
-	PpsJobClass parent_class;
-};
-
-struct _PpsJobSignaturesClass {
 	PpsJobClass parent_class;
 };
 
@@ -288,6 +274,10 @@ struct _PpsJobPrint {
 
 struct _PpsJobPrintClass {
 	PpsJobClass parent_class;
+};
+
+struct _PpsJobSignatures {
+	PpsJob parent;
 };
 
 /* PpsJobLinks */
@@ -463,7 +453,9 @@ void pps_job_print_set_cairo (PpsJobPrint *job,
 
 /* PpsJobSignatures */
 PPS_PUBLIC
-GType pps_job_signatures_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobSignatures, pps_job_signatures, PPS, JOB_SIGNATURES, PpsJob)
+#define PPS_TYPE_JOB_SIGNATURES (pps_job_signatures_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_signatures_new (PpsDocument *document);
 PPS_PUBLIC

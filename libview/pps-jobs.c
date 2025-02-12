@@ -1696,13 +1696,13 @@ pps_job_print_set_cairo (PpsJobPrint *job,
 
 /* PpsJobSignatures */
 
-struct _PpsJobSignatures {
-	PpsJob parent;
-
+typedef struct {
 	GList *signatures;
-};
+} PpsJobSignaturesPrivate;
 
-G_DEFINE_TYPE (PpsJobSignatures, pps_job_signatures, PPS_TYPE_JOB)
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobSignatures, pps_job_signatures, PPS_TYPE_JOB)
+
+#define JOB_SIGNATURES_GET_PRIVATE(o) pps_job_signatures_get_instance_private (o)
 
 static void
 pps_job_signatures_init (PpsJobSignatures *job)
@@ -1712,22 +1712,22 @@ pps_job_signatures_init (PpsJobSignatures *job)
 static void
 pps_job_signatures_dispose (GObject *object)
 {
-	PpsJobSignatures *job;
+	PpsJobSignaturesPrivate *priv = JOB_SIGNATURES_GET_PRIVATE (PPS_JOB_SIGNATURES (object));
 
-	job = PPS_JOB_SIGNATURES (object);
+	g_clear_list (&priv->signatures, g_object_unref);
 
-	g_clear_list (&job->signatures, g_object_unref);
-
-	(*G_OBJECT_CLASS (pps_job_signatures_parent_class)->dispose) (object);
+	G_OBJECT_CLASS (pps_job_signatures_parent_class)->dispose (object);
 }
 
 static gboolean
 pps_job_signatures_run (PpsJob *job)
 {
-	PpsJobSignatures *job_signatures = PPS_JOB_SIGNATURES (job);
+	PpsJobSignaturesPrivate *priv = JOB_SIGNATURES_GET_PRIVATE (PPS_JOB_SIGNATURES (job));
+
+	g_debug ("running signatures job");
 
 	pps_document_doc_mutex_lock (pps_job_get_document (job));
-	job_signatures->signatures =
+	priv->signatures =
 	    pps_document_signatures_get_signatures (PPS_DOCUMENT_SIGNATURES ((pps_job_get_document (job))));
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
@@ -1751,6 +1751,8 @@ pps_job_signatures_new (PpsDocument *document)
 {
 	PpsJob *job;
 
+	g_debug ("new signatures job");
+
 	job = g_object_new (PPS_TYPE_JOB_SIGNATURES, "document", document, NULL);
 
 	return job;
@@ -1767,5 +1769,7 @@ pps_job_signatures_new (PpsDocument *document)
 GList *
 pps_job_signatures_get_signatures (PpsJobSignatures *self)
 {
-	return self->signatures;
+	PpsJobSignaturesPrivate *priv = JOB_SIGNATURES_GET_PRIVATE (self);
+
+	return priv->signatures;
 }
