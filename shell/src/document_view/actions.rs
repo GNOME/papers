@@ -581,11 +581,14 @@ impl imp::PpsDocumentView {
                                 .change_action_state("toggle-find", &true.into());
                             obj.find_restart();
                         } else {
-                            let _ = WidgetExt::activate_action(
-                                &obj.obj().clone(),
-                                "doc.toggle-find",
-                                None,
-                            );
+                            let active = obj
+                                .sidebar_stack
+                                .visible_child()
+                                .is_some_and(|w| w == *obj.find_sidebar)
+                                && obj.find_sidebar.focus_child().is_some();
+
+                            obj.document_action_group
+                                .change_action_state("toggle-find", &(!active).into());
                         }
                     }
                 ))
