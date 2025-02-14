@@ -135,7 +135,7 @@ pps_job_class_init (PpsJobClass *klass)
 	                                                          G_PARAM_STATIC_STRINGS));
 }
 
-static gboolean
+static void
 emit_finished (PpsJob *job)
 {
 	PpsJobPrivate *priv = GET_PRIVATE (job);
@@ -149,7 +149,7 @@ emit_finished (PpsJob *job)
 	else
 		g_signal_emit (job, job_signals[FINISHED], 0);
 
-	return G_SOURCE_REMOVE;
+	g_object_unref (job);
 }
 
 static void
@@ -165,10 +165,8 @@ pps_job_emit_finished (PpsJob *job)
 	priv->finished = TRUE;
 
 	priv->idle_finished_id =
-	    g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
-	                     (GSourceFunc) emit_finished,
-	                     g_object_ref (job),
-	                     (GDestroyNotify) g_object_unref);
+	    g_idle_add_once ((GSourceOnceFunc) emit_finished,
+	                     g_object_ref (job));
 }
 
 /**
