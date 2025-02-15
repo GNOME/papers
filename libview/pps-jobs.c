@@ -66,7 +66,6 @@ G_DEFINE_TYPE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFonts, pps_job_fonts, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobLayers, pps_job_layers, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobExport, pps_job_export, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
 typedef struct _PpsJobLinksPrivate {
@@ -1514,45 +1513,56 @@ pps_job_layers_new (PpsDocument *document)
 }
 
 /* PpsJobExport */
+typedef struct {
+	gint page;
+	PpsRenderContext *rc;
+} PpsJobExportPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobExport, pps_job_export, PPS_TYPE_JOB)
+
+#define JOB_EXPORT_GET_PRIVATE(o) pps_job_export_get_instance_private (o)
+
 static void
 pps_job_export_init (PpsJobExport *job)
 {
-	job->page = -1;
+	PpsJobExportPrivate *priv = JOB_EXPORT_GET_PRIVATE (job);
+
+	priv->page = -1;
 }
 
 static void
 pps_job_export_dispose (GObject *object)
 {
-	PpsJobExport *job = PPS_JOB_EXPORT (object);
+	PpsJobExportPrivate *priv = JOB_EXPORT_GET_PRIVATE (PPS_JOB_EXPORT (object));
 
-	g_clear_object (&job->rc);
+	g_clear_object (&priv->rc);
 
-	(*G_OBJECT_CLASS (pps_job_export_parent_class)->dispose) (object);
+	G_OBJECT_CLASS (pps_job_export_parent_class)->dispose (object);
 }
 
 static gboolean
 pps_job_export_run (PpsJob *job)
 {
-	PpsJobExport *job_export = PPS_JOB_EXPORT (job);
+	PpsJobExportPrivate *priv = JOB_EXPORT_GET_PRIVATE (PPS_JOB_EXPORT (job));
 	PpsPage *pps_page;
 
-	g_assert (job_export->page != -1);
+	g_assert (priv->page != -1);
 
 	g_debug ("running export job");
 
 	pps_document_doc_mutex_lock (pps_job_get_document (job));
 
-	pps_page = pps_document_get_page (pps_job_get_document (job), job_export->page);
-	if (job_export->rc) {
+	pps_page = pps_document_get_page (pps_job_get_document (job), priv->page);
+	if (priv->rc) {
 		pps_job_reset (job);
 
-		pps_render_context_set_page (job_export->rc, pps_page);
+		pps_render_context_set_page (priv->rc, pps_page);
 	} else {
-		job_export->rc = pps_render_context_new (pps_page, 0, 1.0);
+		priv->rc = pps_render_context_new (pps_page, 0, 1.0);
 	}
 	g_object_unref (pps_page);
 
-	pps_file_exporter_do_page (PPS_FILE_EXPORTER (pps_job_get_document (job)), job_export->rc);
+	pps_file_exporter_do_page (PPS_FILE_EXPORTER (pps_job_get_document (job)), priv->rc);
 
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
@@ -1589,7 +1599,9 @@ void
 pps_job_export_set_page (PpsJobExport *job,
                          gint page)
 {
-	job->page = page;
+	PpsJobExportPrivate *priv = JOB_EXPORT_GET_PRIVATE (job);
+
+	priv->page = page;
 }
 
 /* PpsJobPrint */

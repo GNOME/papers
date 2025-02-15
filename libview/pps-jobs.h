@@ -55,9 +55,6 @@ typedef struct _PpsJobFindClass PpsJobFindClass;
 typedef struct _PpsJobLayers PpsJobLayers;
 typedef struct _PpsJobLayersClass PpsJobLayersClass;
 
-typedef struct _PpsJobExport PpsJobExport;
-typedef struct _PpsJobExportClass PpsJobExportClass;
-
 #define PPS_TYPE_JOB_RENDER_TEXTURE (pps_job_render_texture_get_type ())
 #define PPS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_RENDER_TEXTURE, PpsJobRenderTexture))
 #define PPS_IS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_RENDER_TEXTURE))
@@ -99,13 +96,6 @@ typedef struct _PpsJobExportClass PpsJobExportClass;
 #define PPS_JOB_LAYERS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_LAYERS, PpsJobLayersClass))
 #define PPS_IS_JOB_LAYERS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_LAYERS))
 #define PPS_JOB_LAYERS_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_LAYERS, PpsJobLayersClass))
-
-#define PPS_TYPE_JOB_EXPORT (pps_job_export_get_type ())
-#define PPS_JOB_EXPORT(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_EXPORT, PpsJobExport))
-#define PPS_IS_JOB_EXPORT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_EXPORT))
-#define PPS_JOB_EXPORT_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_EXPORT, PpsJobExportClass))
-#define PPS_IS_JOB_EXPORT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_EXPORT))
-#define PPS_JOB_EXPORT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_EXPORT, PpsJobExportClass))
 
 struct _PpsJobLinks {
 	PpsJob parent;
@@ -246,13 +236,6 @@ struct _PpsJobLayersClass {
 
 struct _PpsJobExport {
 	PpsJob parent;
-
-	gint page;
-	PpsRenderContext *rc;
-};
-
-struct _PpsJobExportClass {
-	PpsJobClass parent_class;
 };
 
 struct _PpsJobPrint {
@@ -416,7 +399,9 @@ GListModel *pps_job_layers_get_model (PpsJobLayers *job_layers);
 
 /* PpsJobExport */
 PPS_PUBLIC
-GType pps_job_export_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobExport, pps_job_export, PPS, JOB_EXPORT, PpsJob)
+#define PPS_TYPE_JOB_EXPORT (pps_job_export_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_export_new (PpsDocument *document);
 PPS_PUBLIC
