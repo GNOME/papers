@@ -4095,21 +4095,33 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	poppler_signing_data_set_signature_text_left (signing_data, pps_signature_get_signature_left (signature));
 
 	pps_signature_get_font_color (signature, &rgba);
+#if POPPLER_CHECK_VERSION (24, 12, 0)
+	gdk_rgba_to_poppler_color (&rgba, &color);
+#else
 	color.red = rgba.red * 255;
 	color.green = rgba.green * 255;
 	color.blue = rgba.blue * 255;
+#endif
 	poppler_signing_data_set_font_color (signing_data, &color);
 
 	pps_signature_get_border_color (signature, &rgba);
+#if POPPLER_CHECK_VERSION (24, 12, 0)
+	gdk_rgba_to_poppler_color (&rgba, &color);
+#else
 	color.red = rgba.red * 255;
 	color.green = rgba.green * 255;
 	color.blue = rgba.blue * 255;
+#endif
 	poppler_signing_data_set_border_color (signing_data, &color);
 
 	pps_signature_get_background_color (signature, &rgba);
+#if POPPLER_CHECK_VERSION (24, 12, 0)
+	gdk_rgba_to_poppler_color (&rgba, &color);
+#else
 	color.red = rgba.red * 255;
 	color.green = rgba.green * 255;
 	color.blue = rgba.blue * 255;
+#endif
 	poppler_signing_data_set_background_color (signing_data, &color);
 
 	/* TODO: Add auto font calculation once poppler is ready */
