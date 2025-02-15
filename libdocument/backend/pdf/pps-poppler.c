@@ -4199,7 +4199,7 @@ pdf_document_set_password_callback (PpsDocumentSignatures *document,
 }
 
 static GList *
-pdf_document_get_available_signing_certifcates (PpsDocumentSignatures *document)
+pdf_document_get_available_signing_certificates (PpsDocumentSignatures *document)
 {
 	GList *signing_certs = poppler_get_available_signing_certificates ();
 	GList *ev_certs = NULL;
@@ -4229,7 +4229,7 @@ pdf_document_get_certificate_info (PpsDocumentSignatures *document,
 	if (!id || strlen (id) == 0)
 		return NULL;
 
-	for (list = pdf_document_get_available_signing_certifcates (document); list != NULL && list->data != NULL; list = list->next) {
+	for (list = pdf_document_get_available_signing_certificates (document); list != NULL && list->data != NULL; list = list->next) {
 		PpsCertificateInfo *cert_info = list->data;
 		g_autofree char *certificate_id = NULL;
 
@@ -4369,7 +4369,7 @@ static void
 pdf_document_document_signatures_iface_init (PpsDocumentSignaturesInterface *iface)
 {
 	iface->set_password_callback = pdf_document_set_password_callback;
-	iface->get_available_signing_certificates = pdf_document_get_available_signing_certifcates;
+	iface->get_available_signing_certificates = pdf_document_get_available_signing_certificates;
 	iface->get_certificate_info = pdf_document_get_certificate_info;
 	iface->sign = pdf_document_signatures_sign;
 	iface->sign_finish = pdf_document_signatures_sign_finish;
