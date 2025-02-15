@@ -58,9 +58,6 @@ typedef struct _PpsJobLayersClass PpsJobLayersClass;
 typedef struct _PpsJobExport PpsJobExport;
 typedef struct _PpsJobExportClass PpsJobExportClass;
 
-typedef struct _PpsJobPrint PpsJobPrint;
-typedef struct _PpsJobPrintClass PpsJobPrintClass;
-
 #define PPS_TYPE_JOB_RENDER_TEXTURE (pps_job_render_texture_get_type ())
 #define PPS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_RENDER_TEXTURE, PpsJobRenderTexture))
 #define PPS_IS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_RENDER_TEXTURE))
@@ -109,13 +106,6 @@ typedef struct _PpsJobPrintClass PpsJobPrintClass;
 #define PPS_JOB_EXPORT_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_EXPORT, PpsJobExportClass))
 #define PPS_IS_JOB_EXPORT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_EXPORT))
 #define PPS_JOB_EXPORT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_EXPORT, PpsJobExportClass))
-
-#define PPS_TYPE_JOB_PRINT (pps_job_print_get_type ())
-#define PPS_JOB_PRINT(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_PRINT, PpsJobPrint))
-#define PPS_IS_JOB_PRINT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_PRINT))
-#define PPS_JOB_PRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_PRINT, PpsJobPrintClass))
-#define PPS_IS_JOB_PRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_PRINT))
-#define PPS_JOB_PRINT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_PRINT, PpsJobPrintClass))
 
 struct _PpsJobLinks {
 	PpsJob parent;
@@ -267,13 +257,6 @@ struct _PpsJobExportClass {
 
 struct _PpsJobPrint {
 	PpsJob parent;
-
-	gint page;
-	cairo_t *cr;
-};
-
-struct _PpsJobPrintClass {
-	PpsJobClass parent_class;
 };
 
 struct _PpsJobSignatures {
@@ -439,9 +422,12 @@ PpsJob *pps_job_export_new (PpsDocument *document);
 PPS_PUBLIC
 void pps_job_export_set_page (PpsJobExport *job,
                               gint page);
+
 /* PpsJobPrint */
 PPS_PUBLIC
-GType pps_job_print_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobPrint, pps_job_print, PPS, JOB_PRINT, PpsJob)
+#define PPS_TYPE_JOB_PRINT (pps_job_print_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_print_new (PpsDocument *document);
 PPS_PUBLIC

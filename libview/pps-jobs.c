@@ -67,7 +67,6 @@ G_DEFINE_TYPE (PpsJobFonts, pps_job_fonts, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobLayers, pps_job_layers, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobExport, pps_job_export, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobPrint, pps_job_print, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
 typedef struct _PpsJobLinksPrivate {
@@ -1594,31 +1593,42 @@ pps_job_export_set_page (PpsJobExport *job,
 }
 
 /* PpsJobPrint */
+typedef struct _PpsJobPrintPrivate {
+	gint page;
+	cairo_t *cr;
+} PpsJobPrintPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobPrint, pps_job_print, PPS_TYPE_JOB)
+
+#define JOB_PRINT_GET_PRIVATE(o) pps_job_print_get_instance_private (o)
+
 static void
 pps_job_print_init (PpsJobPrint *job)
 {
-	job->page = -1;
+	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (job);
+
+	priv->page = -1;
 }
 
 static void
 pps_job_print_dispose (GObject *object)
 {
-	PpsJobPrint *job = PPS_JOB_PRINT (object);
+	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (PPS_JOB_PRINT (object));
 
-	g_clear_pointer (&job->cr, cairo_destroy);
+	g_clear_pointer (&priv->cr, cairo_destroy);
 
-	(*G_OBJECT_CLASS (pps_job_print_parent_class)->dispose) (object);
+	G_OBJECT_CLASS (pps_job_print_parent_class)->dispose (object);
 }
 
 static gboolean
 pps_job_print_run (PpsJob *job)
 {
-	PpsJobPrint *job_print = PPS_JOB_PRINT (job);
+	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (PPS_JOB_PRINT (job));
 	PpsPage *pps_page;
 	cairo_status_t cr_status;
 
-	g_assert (job_print->page != -1);
-	g_assert (job_print->cr != NULL);
+	g_assert (priv->page != -1);
+	g_assert (priv->cr != NULL);
 
 	g_debug ("running print job");
 
@@ -1626,9 +1636,9 @@ pps_job_print_run (PpsJob *job)
 
 	pps_document_doc_mutex_lock (pps_job_get_document (job));
 
-	pps_page = pps_document_get_page (pps_job_get_document (job), job_print->page);
+	pps_page = pps_document_get_page (pps_job_get_document (job), priv->page);
 	pps_document_print_print_page (PPS_DOCUMENT_PRINT (pps_job_get_document (job)),
-	                               pps_page, job_print->cr);
+	                               pps_page, priv->cr);
 	g_object_unref (pps_page);
 
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
@@ -1636,7 +1646,7 @@ pps_job_print_run (PpsJob *job)
 	if (g_cancellable_is_cancelled (pps_job_get_cancellable (job)))
 		return FALSE;
 
-	cr_status = cairo_status (job_print->cr);
+	cr_status = cairo_status (priv->cr);
 	if (cr_status == CAIRO_STATUS_SUCCESS) {
 		pps_job_succeeded (job);
 	} else {
@@ -1644,7 +1654,7 @@ pps_job_print_run (PpsJob *job)
 		                GTK_PRINT_ERROR,
 		                GTK_PRINT_ERROR_GENERAL,
 		                _ ("Failed to print page %d: %s"),
-		                job_print->page,
+		                priv->page,
 		                cairo_status_to_string (cr_status));
 	}
 
@@ -1679,23 +1689,26 @@ void
 pps_job_print_set_page (PpsJobPrint *job,
                         gint page)
 {
-	job->page = page;
+	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (job);
+
+	priv->page = page;
 }
 
 void
 pps_job_print_set_cairo (PpsJobPrint *job,
                          cairo_t *cr)
 {
-	if (job->cr == cr)
+	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (job);
+
+	if (priv->cr == cr)
 		return;
 
-	if (job->cr)
-		cairo_destroy (job->cr);
-	job->cr = cr ? cairo_reference (cr) : NULL;
+	if (priv->cr)
+		cairo_destroy (priv->cr);
+	priv->cr = cr ? cairo_reference (cr) : NULL;
 }
 
 /* PpsJobSignatures */
-
 typedef struct {
 	GList *signatures;
 } PpsJobSignaturesPrivate;
