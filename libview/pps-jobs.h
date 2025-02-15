@@ -52,9 +52,6 @@ typedef struct _PpsJobFontsClass PpsJobFontsClass;
 typedef struct _PpsJobFind PpsJobFind;
 typedef struct _PpsJobFindClass PpsJobFindClass;
 
-typedef struct _PpsJobLayers PpsJobLayers;
-typedef struct _PpsJobLayersClass PpsJobLayersClass;
-
 #define PPS_TYPE_JOB_RENDER_TEXTURE (pps_job_render_texture_get_type ())
 #define PPS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_RENDER_TEXTURE, PpsJobRenderTexture))
 #define PPS_IS_JOB_RENDER_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_RENDER_TEXTURE))
@@ -89,13 +86,6 @@ typedef struct _PpsJobLayersClass PpsJobLayersClass;
 #define PPS_JOB_FIND_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_FIND, PpsJobFindClass))
 #define PPS_IS_JOB_FIND_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_FIND))
 #define PPS_JOB_FIND_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_FIND, PpsJobFindClass))
-
-#define PPS_TYPE_JOB_LAYERS (pps_job_layers_get_type ())
-#define PPS_JOB_LAYERS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_LAYERS, PpsJobLayers))
-#define PPS_IS_JOB_LAYERS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_LAYERS))
-#define PPS_JOB_LAYERS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_LAYERS, PpsJobLayersClass))
-#define PPS_IS_JOB_LAYERS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_LAYERS))
-#define PPS_JOB_LAYERS_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_LAYERS, PpsJobLayersClass))
 
 struct _PpsJobLinks {
 	PpsJob parent;
@@ -226,12 +216,6 @@ struct _PpsJobFindClass {
 
 struct _PpsJobLayers {
 	PpsJob parent;
-
-	GListModel *model;
-};
-
-struct _PpsJobLayersClass {
-	PpsJobClass parent_class;
 };
 
 struct _PpsJobExport {
@@ -391,7 +375,9 @@ GList **pps_job_find_get_results (PpsJobFind *job);
 
 /* PpsJobLayers */
 PPS_PUBLIC
-GType pps_job_layers_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobLayers, pps_job_layers, PPS, JOB_LAYERS, PpsJob)
+#define PPS_TYPE_JOB_LAYERS (pps_job_layers_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_layers_new (PpsDocument *document);
 PPS_PUBLIC

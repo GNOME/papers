@@ -65,7 +65,6 @@ G_DEFINE_TYPE (PpsJobPageData, pps_job_page_data, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFonts, pps_job_fonts, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobLayers, pps_job_layers, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
 typedef struct _PpsJobLinksPrivate {
@@ -1445,6 +1444,14 @@ pps_job_find_get_results (PpsJobFind *job)
 }
 
 /* PpsJobLayers */
+typedef struct {
+	GListModel *model;
+} PpsJobLayersPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobLayers, pps_job_layers, PPS_TYPE_JOB)
+
+#define JOB_LAYERS_GET_PRIVATE(o) pps_job_layers_get_instance_private (o)
+
 static void
 pps_job_layers_init (PpsJobLayers *job)
 {
@@ -1453,22 +1460,22 @@ pps_job_layers_init (PpsJobLayers *job)
 static void
 pps_job_layers_dispose (GObject *object)
 {
-	PpsJobLayers *job = PPS_JOB_LAYERS (object);
+	PpsJobLayersPrivate *priv = JOB_LAYERS_GET_PRIVATE (PPS_JOB_LAYERS (object));
 
-	g_clear_object (&job->model);
+	g_clear_object (&priv->model);
 
-	(*G_OBJECT_CLASS (pps_job_layers_parent_class)->dispose) (object);
+	G_OBJECT_CLASS (pps_job_layers_parent_class)->dispose (object);
 }
 
 static gboolean
 pps_job_layers_run (PpsJob *job)
 {
-	PpsJobLayers *job_layers = PPS_JOB_LAYERS (job);
+	PpsJobLayersPrivate *priv = JOB_LAYERS_GET_PRIVATE (PPS_JOB_LAYERS (job));
 
 	g_debug ("running layers job");
 
 	pps_document_doc_mutex_lock (pps_job_get_document (job));
-	job_layers->model = pps_document_layers_get_layers (PPS_DOCUMENT_LAYERS (pps_job_get_document (job)));
+	priv->model = pps_document_layers_get_layers (PPS_DOCUMENT_LAYERS (pps_job_get_document (job)));
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
@@ -1493,9 +1500,11 @@ pps_job_layers_class_init (PpsJobLayersClass *class)
  * Returns: (transfer full): A #GListModel contains the result
  */
 GListModel *
-pps_job_layers_get_model (PpsJobLayers *job_layers)
+pps_job_layers_get_model (PpsJobLayers *job)
 {
-	return g_steal_pointer (&job_layers->model);
+	PpsJobLayersPrivate *priv = JOB_LAYERS_GET_PRIVATE (job);
+
+	return g_steal_pointer (&priv->model);
 }
 
 PpsJob *
