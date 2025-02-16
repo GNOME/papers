@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-04 21:09+0000\n"
-"PO-Revision-Date: 2025-02-06 18:55+0200\n"
+"POT-Creation-Date: 2025-02-13 04:46+0000\n"
+"PO-Revision-Date: 2025-02-16 10:52+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:299
+#: shell/src/application.rs:68 shell/src/application.rs:300
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Paperit"
@@ -45,7 +45,6 @@ msgstr "Katsele monisivuisia asiakirjoja"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:6
-#| msgid "pdf;ps;postscript;xps;djvu;tiff;document;presentation;viewer;papers;"
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr ""
 "pdf;djvu;tiff;document;presentation;viewer;papers;esitys;katselin;paperit;"
@@ -419,22 +418,22 @@ msgstr "Liitettä “%s” ei voi avata: %s"
 msgid "Couldn’t open attachment “%s”"
 msgstr "Liitettä “%s” ei voi avata"
 
-#: libdocument/pps-document-factory.c:104
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Tiedostotyyppi %s (%s) ei ole tuettu"
 
-#: libdocument/pps-document-factory.c:374 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Tuntematon MIME-tyyppi"
 
-#: libdocument/pps-document-factory.c:504
+#: libdocument/pps-document-factory.c:500
 msgid "All Documents"
 msgstr "Kaikki asiakirjat"
 
-#: libdocument/pps-document-factory.c:532
+#: libdocument/pps-document-factory.c:528
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
@@ -656,51 +655,51 @@ msgstr "Vieritä näkymää alas"
 msgid "Document View"
 msgstr "Asiakirjan näyttö"
 
-#: libview/pps-view.c:2091
+#: libview/pps-view.c:2108
 msgid "Go to first page"
 msgstr "Siirry ensimmäiselle sivulle"
 
-#: libview/pps-view.c:2093
+#: libview/pps-view.c:2110
 msgid "Go to previous page"
 msgstr "Siirry edelliselle sivulle"
 
-#: libview/pps-view.c:2095
+#: libview/pps-view.c:2112
 msgid "Go to next page"
 msgstr "Siirry seuraavalle sivulle"
 
-#: libview/pps-view.c:2097
+#: libview/pps-view.c:2114
 msgid "Go to last page"
 msgstr "Siirry viimeiselle sivulle"
 
-#: libview/pps-view.c:2099
+#: libview/pps-view.c:2116
 msgid "Go to page"
 msgstr "Siirry sivulle"
 
-#: libview/pps-view.c:2101
+#: libview/pps-view.c:2118
 msgid "Find"
 msgstr "Etsi"
 
-#: libview/pps-view.c:2130
+#: libview/pps-view.c:2147
 #, c-format
 msgid "Go to page %s"
 msgstr "Siirry sivulle %s"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Siirry kohtaan %s tiedostossa ”%s”"
 
-#: libview/pps-view.c:2139
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Siirry tiedostoon ”%s”"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Launch %s"
 msgstr "Käynnistä %s"
 
-#: libview/pps-view.c:2154
+#: libview/pps-view.c:2171
 #, c-format
 msgid "Reset form"
 msgstr "Tyhjennä lomake"
@@ -811,7 +810,7 @@ msgstr "Tavallinen koko"
 msgid "Zoom In"
 msgstr "Lähennä"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:98
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
 msgid "Failed to Print Document"
 msgstr "Asiakirjaa ei voitu tulostaa"
 
@@ -1283,6 +1282,7 @@ msgstr "Kiemurtelevasti"
 msgid "_Apply"
 msgstr "T_oteuta"
 
+#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.ui:71
 msgid "Search"
 msgstr "Etsi"
@@ -1674,8 +1674,8 @@ msgid "_Open Other File…"
 msgstr "_Avaa toinen tiedosto…"
 
 #: shell/src/application.rs:202
-msgid "© 1996–2024 The Papers authors"
-msgstr "© 1996–2024 Papers-kehittäjät"
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 Papers-kehittäjät"
 
 #: shell/src/application.rs:203
 msgid "translator-credits"
@@ -1692,43 +1692,43 @@ msgstr ""
 "  Jussi Aalto https://launchpad.net/~jtaalto-deactivatedaccount\n"
 "  Ville-Pekka Vainio https://launchpad.net/~vpvainio"
 
-#: shell/src/application.rs:306
+#: shell/src/application.rs:307
 msgid "The page label of the document to display."
 msgstr "Näytettävän asiakirjan sivun nimi."
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:308
 msgid "PAGE"
 msgstr "SIVU"
 
-#: shell/src/application.rs:315
+#: shell/src/application.rs:316
 msgid "The page number of the document to display."
 msgstr "Näytettävän asiakirjan sivunumero."
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:317
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:324
+#: shell/src/application.rs:325
 msgid "Named destination to display."
 msgstr "Näytettävän kohteen nimi."
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:326
 msgid "DEST"
 msgstr "KOHDE"
 
-#: shell/src/application.rs:333
+#: shell/src/application.rs:334
 msgid "Run papers in fullscreen mode."
 msgstr "Suorita papers koko näytön tilassa."
 
-#: shell/src/application.rs:342
+#: shell/src/application.rs:343
 msgid "Run papers in presentation mode."
 msgstr "Suorita papers esitystilassa."
 
-#: shell/src/application.rs:351
+#: shell/src/application.rs:352
 msgid "Show the version of the program."
 msgstr "Näytä ohjelman versio."
 
-#: shell/src/application.rs:361
+#: shell/src/application.rs:362
 msgid "[FILE…]"
 msgstr "[TIEDOSTO…]"
 
@@ -1857,31 +1857,39 @@ msgid "Printing job “{}”"
 msgstr "Tulostetaan työtä “{}”"
 
 #: shell/src/document_view/print.rs:78
-msgid "No pending job in queue"
+msgid "No pending jobs in queue"
 msgstr "Ei odottavia töitä jonossa"
 
-#: shell/src/document_view/print.rs:80
-msgid "{} pending jobs in queue"
-msgstr "{} odottavaa työtä jonossa"
+#: shell/src/document_view/print.rs:81
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} odottava työ jonossa"
+msgstr[1] "{} odottavaa työtä jonossa"
 
 #: shell/src/document_view/signals.rs:225
 msgid "Unable to open external link"
 msgstr "Ulkoista linkkiä ei voi avata"
 
-#: shell/src/document_view/signals.rs:254
-msgid "Security alert: this document has been prevented from opening the file"
-msgstr "Turvallisuusilmoitus: tätä asiakirjaa on estetty avaamasta tiedostoa"
+#: shell/src/document_view/signals.rs:253
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+"Turvallisuusilmoitus: tätä asiakirjaa on estetty avaamasta tiedostoa “{}”"
 
-#: shell/src/document_view/signals.rs:425 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Sivu {}"
 
-#: shell/src/page_selector.rs:226 shell/src/page_selector.rs:244
-msgid "({} of {})"
-msgstr "({}/{})"
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum}/{totalpages})"
 
-#: shell/src/page_selector.rs:228 shell/src/page_selector.rs:246
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
 msgid "of {}"
 msgstr "/{}"
 
@@ -1989,6 +1997,9 @@ msgstr "Varmenteen myöntämisaika"
 #: shell/src/properties_signatures.rs:321
 msgid "Certificate's Expiration Time"
 msgstr "Varmenteen vanhenemisaika"
+
+#~ msgid "({} of {})"
+#~ msgstr "({}/{})"
 
 #~ msgid "PostScript Documents"
 #~ msgstr "PostScript-asiakirjat"
