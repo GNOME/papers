@@ -46,9 +46,6 @@ typedef struct _PpsJobPageDataClass PpsJobPageDataClass;
 typedef struct _PpsJobThumbnailTexture PpsJobThumbnailTexture;
 typedef struct _PpsJobThumbnailTextureClass PpsJobThumbnailTextureClass;
 
-typedef struct _PpsJobFonts PpsJobFonts;
-typedef struct _PpsJobFontsClass PpsJobFontsClass;
-
 typedef struct _PpsJobFind PpsJobFind;
 typedef struct _PpsJobFindClass PpsJobFindClass;
 
@@ -72,13 +69,6 @@ typedef struct _PpsJobFindClass PpsJobFindClass;
 #define PPS_JOB_THUMBNAIL_TEXTURE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_THUMBNAIL_TEXTURE, PpsJobThumbnailTextureClass))
 #define PPS_IS_JOB_THUMBNAIL_TEXTURE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_THUMBNAIL_TEXTURE))
 #define PPS_JOB_THUMBNAIL_TEXTURE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_THUMBNAIL_TEXTURE, PpsJobThumbnailTextureClass))
-
-#define PPS_TYPE_JOB_FONTS (pps_job_fonts_get_type ())
-#define PPS_JOB_FONTS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_FONTS, PpsJobFonts))
-#define PPS_IS_JOB_FONTS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_FONTS))
-#define PPS_JOB_FONTS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_FONTS, PpsJobFontsClass))
-#define PPS_IS_JOB_FONTS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_FONTS))
-#define PPS_JOB_FONTS_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_FONTS, PpsJobFontsClass))
 
 #define PPS_TYPE_JOB_FIND (pps_job_find_get_type ())
 #define PPS_JOB_FIND(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_FIND, PpsJobFind))
@@ -181,10 +171,6 @@ struct _PpsJobThumbnailTextureClass {
 
 struct _PpsJobFonts {
 	PpsJob parent;
-};
-
-struct _PpsJobFontsClass {
-	PpsJobClass parent_class;
 };
 
 struct _PpsJobLoad {
@@ -303,7 +289,9 @@ GdkTexture *pps_job_thumbnail_texture_get_texture (PpsJobThumbnailTexture *job);
 
 /* PpsJobFonts */
 PPS_PUBLIC
-GType pps_job_fonts_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobFonts, pps_job_fonts, PPS, JOB_FONTS, PpsJob)
+#define PPS_TYPE_JOB_FONTS (pps_job_fonts_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_fonts_new (PpsDocument *document);
 

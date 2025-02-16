@@ -63,7 +63,6 @@ static guint job_find_signals[FIND_LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (PpsJobRenderTexture, pps_job_render_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobPageData, pps_job_page_data, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobFonts, pps_job_fonts, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
@@ -731,6 +730,8 @@ pps_job_thumbnail_texture_get_texture (PpsJobThumbnailTexture *job)
 }
 
 /* PpsJobFonts */
+G_DEFINE_TYPE (PpsJobFonts, pps_job_fonts, PPS_TYPE_JOB)
+
 static void
 pps_job_fonts_init (PpsJobFonts *job)
 {
