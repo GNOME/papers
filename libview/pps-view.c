@@ -4641,7 +4641,8 @@ link_preview_job_finished_cb (PpsJobThumbnailTexture *job,
 		return;
 	}
 
-	link_preview_set_thumbnail (job->thumbnail_texture, view);
+	link_preview_set_thumbnail (pps_job_thumbnail_texture_get_texture (job),
+	                            view);
 
 	g_clear_object (&priv->link_preview.job);
 }

@@ -62,7 +62,6 @@ static guint job_find_signals[FIND_LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (PpsJobRenderTexture, pps_job_render_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobPageData, pps_job_page_data, PPS_TYPE_JOB)
-G_DEFINE_TYPE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS_TYPE_JOB)
 G_DEFINE_TYPE (PpsJobFind, pps_job_find, PPS_TYPE_JOB)
 
 /* PpsJobLinks */
@@ -606,6 +605,20 @@ pps_job_page_data_new (PpsDocument *document,
 }
 
 /* PpsJobThumbnailTexture */
+typedef struct {
+	gint page;
+	gint rotation;
+	gdouble scale;
+	gint target_width;
+	gint target_height;
+
+	GdkTexture *thumbnail_texture;
+} PpsJobThumbnailTexturePrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS_TYPE_JOB)
+
+#define JOB_THUMBNAIL_TEXTURE_GET_PRIVATE(o) pps_job_thumbnail_texture_get_instance_private (o)
+
 static void
 pps_job_thumbnail_texture_init (PpsJobThumbnailTexture *job)
 {
@@ -614,11 +627,12 @@ pps_job_thumbnail_texture_init (PpsJobThumbnailTexture *job)
 static void
 pps_job_thumbnail_texture_dispose (GObject *object)
 {
-	PpsJobThumbnailTexture *job = PPS_JOB_THUMBNAIL_TEXTURE (object);
+	PpsJobThumbnailTexturePrivate *priv =
+	    JOB_THUMBNAIL_TEXTURE_GET_PRIVATE (PPS_JOB_THUMBNAIL_TEXTURE (object));
 
-	g_debug ("disposing job thumbnail: page: %d (%p)", job->page, job);
+	g_debug ("disposing job thumbnail: page: %d", priv->page);
 
-	g_clear_object (&job->thumbnail_texture);
+	g_clear_object (&priv->thumbnail_texture);
 
 	G_OBJECT_CLASS (pps_job_thumbnail_texture_parent_class)->dispose (object);
 }
@@ -626,36 +640,37 @@ pps_job_thumbnail_texture_dispose (GObject *object)
 static gboolean
 pps_job_thumbnail_texture_run (PpsJob *job)
 {
-	PpsJobThumbnailTexture *job_thumb = PPS_JOB_THUMBNAIL_TEXTURE (job);
+	PpsJobThumbnailTexturePrivate *priv =
+	    JOB_THUMBNAIL_TEXTURE_GET_PRIVATE (PPS_JOB_THUMBNAIL_TEXTURE (job));
 	PpsRenderContext *rc;
 	PpsPage *page;
 	cairo_surface_t *surface;
 
-	g_debug ("running thumbnail job: page: %d (%p)", job_thumb->page, job);
+	g_debug ("running thumbnail job: page: %d (%p)", priv->page, job);
 
 	pps_document_doc_mutex_lock (pps_job_get_document (job));
 
-	PPS_PROFILER_START (PPS_GET_TYPE_NAME (job), g_strdup_printf ("page: %d", job_thumb->page));
-	page = pps_document_get_page (pps_job_get_document (job), job_thumb->page);
-	rc = pps_render_context_new (page, job_thumb->rotation, job_thumb->scale);
+	PPS_PROFILER_START (PPS_GET_TYPE_NAME (job), g_strdup_printf ("page: %d", priv->page));
+	page = pps_document_get_page (pps_job_get_document (job), priv->page);
+	rc = pps_render_context_new (page, priv->rotation, priv->scale);
 	pps_render_context_set_target_size (rc,
-	                                    job_thumb->target_width, job_thumb->target_height);
+	                                    priv->target_width, priv->target_height);
 	g_object_unref (page);
 
 	surface = pps_document_get_thumbnail_surface (pps_job_get_document (job), rc);
 
-	job_thumb->thumbnail_texture = pps_document_misc_texture_from_surface (surface);
+	priv->thumbnail_texture = pps_document_misc_texture_from_surface (surface);
 	cairo_surface_destroy (surface);
 	g_object_unref (rc);
 	PPS_PROFILER_STOP ();
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
-	if (job_thumb->thumbnail_texture == NULL) {
+	if (priv->thumbnail_texture == NULL) {
 		pps_job_failed (job,
 		                PPS_DOCUMENT_ERROR,
 		                PPS_DOCUMENT_ERROR_INVALID,
 		                _ ("Failed to create thumbnail for page %d"),
-		                job_thumb->page);
+		                priv->page);
 	} else {
 		pps_job_succeeded (job);
 	}
@@ -680,6 +695,7 @@ pps_job_thumbnail_texture_new (PpsDocument *document,
                                gdouble scale)
 {
 	PpsJobThumbnailTexture *job;
+	PpsJobThumbnailTexturePrivate *priv;
 
 	g_debug ("new thumbnail job: page: %d", page);
 
@@ -687,11 +703,12 @@ pps_job_thumbnail_texture_new (PpsDocument *document,
 	                    "document", document,
 	                    NULL);
 
-	job->page = page;
-	job->rotation = rotation;
-	job->scale = scale;
-	job->target_width = -1;
-	job->target_height = -1;
+	priv = JOB_THUMBNAIL_TEXTURE_GET_PRIVATE (job);
+	priv->page = page;
+	priv->rotation = rotation;
+	priv->scale = scale;
+	priv->target_width = -1;
+	priv->target_height = -1;
 
 	return PPS_JOB (job);
 }
@@ -704,10 +721,11 @@ pps_job_thumbnail_texture_new_with_target_size (PpsDocument *document,
                                                 gint target_height)
 {
 	PpsJob *job = pps_job_thumbnail_texture_new (document, page, rotation, 1.);
-	PpsJobThumbnailTexture *job_thumb = PPS_JOB_THUMBNAIL_TEXTURE (job);
+	PpsJobThumbnailTexturePrivate *priv =
+	    JOB_THUMBNAIL_TEXTURE_GET_PRIVATE (PPS_JOB_THUMBNAIL_TEXTURE (job));
 
-	job_thumb->target_width = target_width;
-	job_thumb->target_height = target_height;
+	priv->target_width = target_width;
+	priv->target_height = target_height;
 
 	return job;
 }
@@ -724,9 +742,11 @@ pps_job_thumbnail_texture_new_with_target_size (PpsDocument *document,
 GdkTexture *
 pps_job_thumbnail_texture_get_texture (PpsJobThumbnailTexture *job)
 {
+	PpsJobThumbnailTexturePrivate *priv = JOB_THUMBNAIL_TEXTURE_GET_PRIVATE (job);
+
 	g_return_val_if_fail (PPS_IS_JOB_THUMBNAIL_TEXTURE (job), NULL);
 
-	return job->thumbnail_texture;
+	return priv->thumbnail_texture;
 }
 
 /* PpsJobFonts */

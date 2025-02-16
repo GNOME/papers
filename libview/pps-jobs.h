@@ -43,9 +43,6 @@ typedef struct _PpsJobRenderTextureClass PpsJobRenderTextureClass;
 typedef struct _PpsJobPageData PpsJobPageData;
 typedef struct _PpsJobPageDataClass PpsJobPageDataClass;
 
-typedef struct _PpsJobThumbnailTexture PpsJobThumbnailTexture;
-typedef struct _PpsJobThumbnailTextureClass PpsJobThumbnailTextureClass;
-
 typedef struct _PpsJobFind PpsJobFind;
 typedef struct _PpsJobFindClass PpsJobFindClass;
 
@@ -62,13 +59,6 @@ typedef struct _PpsJobFindClass PpsJobFindClass;
 #define PPS_JOB_PAGE_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_PAGE_DATA, PpsJobPageDataClass))
 #define PPS_IS_JOB_PAGE_DATA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_PAGE_DATA))
 #define PPS_JOB_PAGE_DATA_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_PAGE_DATA, PpsJobPageDataClass))
-
-#define PPS_TYPE_JOB_THUMBNAIL_TEXTURE (pps_job_thumbnail_texture_get_type ())
-#define PPS_JOB_THUMBNAIL_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_THUMBNAIL_TEXTURE, PpsJobThumbnailTexture))
-#define PPS_IS_JOB_THUMBNAIL_TEXTURE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PPS_TYPE_JOB_THUMBNAIL_TEXTURE))
-#define PPS_JOB_THUMBNAIL_TEXTURE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), PPS_TYPE_JOB_THUMBNAIL_TEXTURE, PpsJobThumbnailTextureClass))
-#define PPS_IS_JOB_THUMBNAIL_TEXTURE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PPS_TYPE_JOB_THUMBNAIL_TEXTURE))
-#define PPS_JOB_THUMBNAIL_TEXTURE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), PPS_TYPE_JOB_THUMBNAIL_TEXTURE, PpsJobThumbnailTextureClass))
 
 #define PPS_TYPE_JOB_FIND (pps_job_find_get_type ())
 #define PPS_JOB_FIND(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), PPS_TYPE_JOB_FIND, PpsJobFind))
@@ -155,18 +145,6 @@ struct _PpsJobPageDataClass {
 
 struct _PpsJobThumbnailTexture {
 	PpsJob parent;
-
-	gint page;
-	gint rotation;
-	gdouble scale;
-	gint target_width;
-	gint target_height;
-
-	GdkTexture *thumbnail_texture;
-};
-
-struct _PpsJobThumbnailTextureClass {
-	PpsJobClass parent_class;
 };
 
 struct _PpsJobFonts {
@@ -271,8 +249,11 @@ PpsJob *pps_job_page_data_new (PpsDocument *document,
                                gint page,
                                PpsJobPageDataFlags flags);
 
+/* PpsJobThumbnailTexture */
 PPS_PUBLIC
-GType pps_job_thumbnail_texture_get_type (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (PpsJobThumbnailTexture, pps_job_thumbnail_texture, PPS, JOB_THUMBNAIL_TEXTURE, PpsJob)
+#define PPS_TYPE_JOB_THUMBNAIL_TEXTURE (pps_job_thumbnail_texture_get_type ())
+
 PPS_PUBLIC
 PpsJob *pps_job_thumbnail_texture_new (PpsDocument *document,
                                        gint page,
