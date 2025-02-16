@@ -29,6 +29,8 @@ pub use glib::SignalHandlerId;
 
 pub use std::cell::RefCell;
 
+pub use std::cmp::min;
+
 pub use gettextrs::gettext;
 
 pub use std::sync::OnceLock;

@@ -122,54 +122,39 @@ mod imp {
         }
 
         fn highlight_first_match_of_page(&self, page: u32) {
-            let result_model = self.context().and_then(|c| c.result_model()).unwrap();
-            let mut lower_bound = 0;
-            let mut upper_bound = result_model.n_items();
-            let mut index = 0;
+            let context = self.context().unwrap();
+            let result_model = context.result_model().unwrap();
 
-            // Binary search is a fast algorithm, here. However, in the future
-            // the search context should deal with this, and ideally handle this
-            // with a map. Just, that would need to a few more changes on its end.
-
-            while lower_bound <= upper_bound {
-                index = (upper_bound + lower_bound) / 2;
-
-                let result = result_model
-                    .item(index)
-                    .and_downcast::<papers_view::SearchResult>()
-                    .unwrap();
-
-                let result_page = result.page();
-                let result_index_in_page = result.index();
-
-                if result_page == page && result_index_in_page == 0 {
-                    break;
-                } else if result_page < page {
-                    lower_bound = index + 1;
-                } else {
-                    upper_bound = index - 1;
-                }
+            if let Some(first_result) = context.results_on_page(page).first() {
+                context.select_result(first_result);
+                self.list_view.scroll_to(
+                    result_model.selected(),
+                    gtk::ListScrollFlags::SELECT,
+                    None,
+                );
             }
-
-            self.list_view
-                .scroll_to(index, gtk::ListScrollFlags::SELECT, None);
         }
 
         pub(super) fn restart(&self, page: u32) {
-            let mut first_match_page = None;
-            let model = self.context().and_then(|c| c.result_model()).unwrap();
+            let context = self.context().unwrap();
+            let result_model = context.result_model().unwrap();
+            let Some(last_page) = result_model
+                .item(result_model.n_items().saturating_sub(1))
+                .and_downcast::<papers_view::SearchResult>()
+                .map(|result| result.page())
+            else {
+                return;
+            };
+            let mut current_page = min(page, last_page);
 
-            for result in model.iter::<papers_view::SearchResult>() {
-                let result = result.unwrap();
-
-                if result.page() >= page {
-                    first_match_page = Some(result.page());
-                    break;
+            while current_page <= last_page {
+                match context.results_on_page(current_page).first() {
+                    Some(result) => {
+                        self.highlight_first_match_of_page(result.page());
+                        break;
+                    }
+                    None => current_page += 1,
                 }
-            }
-
-            if let Some(page) = first_match_page {
-                self.highlight_first_match_of_page(page);
             }
         }
 
