@@ -44,7 +44,6 @@ static guint job_signals[LAST_SIGNAL] = { 0 };
 typedef struct _PpsJobPrivate {
 	PpsDocument *document;
 
-	guint cancelled : 1;
 	guint finished : 1;
 	guint failed : 1;
 
@@ -144,7 +143,7 @@ emit_finished (PpsJob *job)
 
 	priv->idle_finished_id = 0;
 
-	if (priv->cancelled)
+	if (g_cancellable_is_cancelled (priv->cancellable))
 		g_debug ("%s (%p) job was cancelled, do not emit finished", PPS_GET_TYPE_NAME (job), job);
 	else
 		g_signal_emit (job, job_signals[FINISHED], 0);
@@ -206,13 +205,12 @@ pps_job_cancel (PpsJob *job)
 {
 	PpsJobPrivate *priv = GET_PRIVATE (job);
 
-	if (priv->cancelled)
+	if (g_cancellable_is_cancelled (priv->cancellable))
 		return;
 
 	g_debug ("job %s (%p) cancelled", PPS_GET_TYPE_NAME (job), job);
 
 	/* This should never be called from a thread */
-	priv->cancelled = TRUE;
 	g_cancellable_cancel (priv->cancellable);
 
 	if (priv->finished && priv->idle_finished_id == 0)
