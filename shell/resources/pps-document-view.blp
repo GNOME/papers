@@ -508,6 +508,16 @@ template $PpsDocumentView: Adw.BreakpointBin {
         trigger: "minus|<Ctrl>minus|KP_Subtract|<Ctrl>KP_Subtract";
         action: "action(doc.zoom-out)";
       }
+
+      Shortcut {
+        trigger: "<Ctrl>z";
+        action: "action(doc.undo)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl><Shift>z";
+        action: "action(doc.redo)";
+      }
     }
   };
 }

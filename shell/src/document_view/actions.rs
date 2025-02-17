@@ -403,6 +403,24 @@ impl imp::PpsDocumentView {
                     move |_, _, _| obj.view.copy()
                 ))
                 .build(),
+            gio::ActionEntryBuilder::new("undo")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        obj.undo_context.undo();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("redo")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        obj.undo_context.redo();
+                    }
+                ))
+                .build(),
             gio::ActionEntryBuilder::new("caret-navigation")
                 .activate(glib::clone!(
                     #[weak(rename_to = obj)]
