@@ -40,18 +40,55 @@ static guint signals[N_SIGNALS];
 enum {
 	PROP_0,
 	PROP_DOCUMENT_MODEL,
+	PROP_UNDO_CONTEXT,
 	NUM_PROPERTIES
 };
+
+typedef enum {
+	PPS_ANNOTATIONS_MODIFIED,
+	PPS_ANNOTATIONS_ADDED,
+	PPS_ANNOTATIONS_REMOVED
+} PpsAnnotationsContextUndoableAction;
+
+typedef struct {
+	PpsAnnotationsContextUndoableAction action;
+	/* a union whose value depends on @type. */
+	union {
+		struct {
+			/* list of changed properties, one for every item of @annots */
+			GList *changes;
+		} modified;
+		struct {
+			/* list of initial annots areas (as they may be modified by
+			poppler when added to the doc for instance), one for every
+			item of @annots */
+			GList *areas;
+		} added;
+	};
+	/* list of modified annotations */
+	GList *annots;
+
+	GDateTime *time;
+} PpsAnnotationsContextUndoable;
+
+typedef struct {
+	const gchar *property;
+	GValue value;
+} PpsAnnotationChangedProperty;
 
 typedef struct
 {
 	PpsDocumentModel *model;
 	PpsJobAnnots *job;
+	PpsUndoContext *undo_context;
 
 	GListStore *annots_model;
+	gboolean next_squash_forbidden;
 } PpsAnnotationsContextPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (PpsAnnotationsContext, pps_annotations_context, G_TYPE_OBJECT)
+static void
+pps_annotations_context_undo_handler_init (PpsUndoHandlerInterface *iface);
+G_DEFINE_TYPE_WITH_CODE (PpsAnnotationsContext, pps_annotations_context, G_TYPE_OBJECT, G_ADD_PRIVATE (PpsAnnotationsContext) G_IMPLEMENT_INTERFACE (PPS_TYPE_UNDO_HANDLER, pps_annotations_context_undo_handler_init))
 
 #define GET_PRIVATE(o) pps_annotations_context_get_instance_private (o)
 
@@ -165,6 +202,9 @@ pps_annotations_context_set_property (GObject *object,
 	case PROP_DOCUMENT_MODEL:
 		priv->model = g_value_get_object (value);
 		break;
+	case PROP_UNDO_CONTEXT:
+		priv->undo_context = g_value_get_object (value);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -202,6 +242,12 @@ pps_annotations_context_class_init (PpsAnnotationsContextClass *klass)
 	                         "The document model",
 	                         PPS_TYPE_DOCUMENT_MODEL,
 	                         G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+	props[PROP_UNDO_CONTEXT] =
+	    g_param_spec_object ("undo-context",
+	                         "UndoContext",
+	                         "The undo context",
+	                         PPS_TYPE_UNDO_CONTEXT,
+	                         G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
 	g_object_class_install_properties (gobject_class, NUM_PROPERTIES, props);
 
@@ -233,10 +279,11 @@ pps_annotations_context_class_init (PpsAnnotationsContextClass *klass)
 }
 
 PpsAnnotationsContext *
-pps_annotations_context_new (PpsDocumentModel *model)
+pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_context)
 {
 	return PPS_ANNOTATIONS_CONTEXT (g_object_new (PPS_TYPE_ANNOTATIONS_CONTEXT,
 	                                              "document-model", model,
+	                                              "undo-context", undo_context,
 	                                              NULL));
 }
 
@@ -270,6 +317,227 @@ compare_annot (const PpsAnnotation *a,
 		return 0;
 
 	return index_a > index_b ? 1 : -1;
+}
+
+static void
+pps_annotation_changed_property_free (PpsAnnotationChangedProperty *changed)
+{
+	/* `property` is not owned by the changed property struct, so no need to free it */
+	g_value_unset (&changed->value);
+	g_free (changed);
+}
+
+static void
+pps_annotations_context_free_action (gpointer data)
+{
+	PpsAnnotationsContextUndoable *undoable = data;
+	if (undoable->action == PPS_ANNOTATIONS_MODIFIED) {
+		g_list_free_full (undoable->modified.changes, (GDestroyNotify) pps_annotation_changed_property_free);
+	} else if (undoable->action == PPS_ANNOTATIONS_ADDED) {
+		g_list_free_full (undoable->added.areas, (GDestroyNotify) g_free);
+	}
+	g_list_free_full (undoable->annots, g_object_unref);
+	g_date_time_unref (undoable->time);
+	g_free (undoable);
+}
+
+static gboolean
+pps_annotations_context_try_squash (PpsAnnotationsContext *context, PpsAnnotationsContextUndoable *undoable1, PpsAnnotationsContextUndoable *undoable2)
+{
+	if (g_date_time_difference (undoable2->time, undoable1->time) > 1000000) {
+		return FALSE;
+	}
+
+	if (undoable1->action == PPS_ANNOTATIONS_MODIFIED && undoable2->action == PPS_ANNOTATIONS_MODIFIED) {
+		/* to squash undoable2 into undoable1, we iterate over all changes
+		   of undoable2 and add them to undoable1 if and only if there is no
+		   other related change in undoable1 */
+		GList *annots2 = undoable2->annots;
+		for (GList *c2 = undoable2->modified.changes; c2; c2 = g_list_next (c2)) {
+			PpsAnnotationChangedProperty *data2 = c2->data;
+			gboolean in_undoable1 = FALSE;
+			g_debug ("Squashing %s", data2->property);
+			GList *annots1 = undoable1->annots;
+			for (GList *c1 = undoable1->modified.changes; c1; c1 = g_list_next (c1)) {
+				PpsAnnotationChangedProperty *data1 = c1->data;
+				if (annots2->data == annots1->data && !g_strcmp0 (data1->property, data2->property)) {
+					in_undoable1 = TRUE;
+					break;
+				}
+				annots1 = g_list_next (annots1);
+			}
+			if (!in_undoable1) {
+				undoable1->modified.changes = g_list_prepend (undoable1->modified.changes, data2);
+				undoable1->annots = g_list_prepend (undoable1->annots, annots2->data);
+			} else {
+				pps_annotation_changed_property_free (data2);
+				g_object_unref (G_OBJECT (annots2->data));
+			}
+			annots2 = g_list_next (annots2);
+		}
+		/* we can't use pps_annotations_context_free_action here since
+		   contents of changes of undoable2 must not be freed since
+		   they were copied over to undoable1 */
+		g_list_free (undoable2->modified.changes);
+		g_list_free (undoable2->annots);
+		g_free (undoable2);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+static void
+save_annotation (PpsAnnotationsContext *self,
+                 PpsAnnotation *annot,
+                 GList *changes)
+{
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
+	PpsAnnotationsContextUndoable *undoable;
+	gboolean squashed = FALSE;
+
+	/* no change, we can stop here */
+	if (!changes) {
+		g_debug ("No change in annotation");
+		return;
+	}
+
+	undoable = g_new0 (PpsAnnotationsContextUndoable, 1);
+	undoable->time = g_date_time_new_now_local ();
+
+	for (GList *c = changes; c; c = g_list_next (c)) {
+		PpsAnnotationChangedProperty *data = (PpsAnnotationChangedProperty *) c->data;
+		g_debug ("Change in %s", data->property);
+		undoable->annots = g_list_prepend (undoable->annots, g_object_ref (annot));
+	}
+	undoable->action = PPS_ANNOTATIONS_MODIFIED;
+	undoable->modified.changes = changes;
+
+	if (!priv->next_squash_forbidden) {
+		if (pps_undo_context_get_last_handler (priv->undo_context) == PPS_UNDO_HANDLER (self)) {
+			PpsAnnotationsContextUndoable *last_undo = (PpsAnnotationsContextUndoable *) pps_undo_context_get_last_action (priv->undo_context);
+			if (pps_annotations_context_try_squash (self, last_undo, undoable)) {
+				squashed = TRUE;
+			}
+		}
+	}
+	priv->next_squash_forbidden = FALSE;
+	if (!squashed) {
+		pps_undo_context_add_action (priv->undo_context, PPS_UNDO_HANDLER (self), undoable);
+	}
+}
+
+static void
+annot_prop_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PpsAnnotationsContext *self)
+{
+	PpsAnnotationChangedProperty *changed = g_new0 (PpsAnnotationChangedProperty, 1);
+	changed->property = pspec->name;
+	g_value_init (&changed->value, pspec->value_type);
+	pps_annotation_get_value_last_property (annot, &changed->value);
+
+	save_annotation (self, annot, g_list_append (NULL, changed));
+}
+
+static void
+add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
+{
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
+	PpsDocument *document = pps_document_model_get_document (priv->model);
+	PpsAnnotationsContextUndoable *undoable = g_new0 (PpsAnnotationsContextUndoable, 1);
+
+	undoable->action = PPS_ANNOTATIONS_ADDED;
+	undoable->time = g_date_time_new_now_local ();
+	undoable->annots = g_list_append (NULL, g_object_ref (annot));
+	PpsRectangle rect;
+	pps_annotation_get_area (annot, &rect);
+	undoable->added.areas = g_list_append (NULL, pps_rectangle_copy (&rect));
+	pps_undo_context_add_action (priv->undo_context, PPS_UNDO_HANDLER (self), undoable);
+
+	pps_document_annotations_add_annotation (PPS_DOCUMENT_ANNOTATIONS (document), annot);
+
+	g_signal_emit (self, signals[SIGNAL_ANNOT_ADDED], 0, annot);
+
+	g_list_store_insert_sorted (priv->annots_model, annot,
+	                            (GCompareDataFunc) compare_annot, NULL);
+
+	g_signal_connect_data (annot,
+	                       "notify::area",
+	                       G_CALLBACK (annot_prop_changed_cb),
+	                       self, (GClosureNotify) NULL,
+	                       G_CONNECT_DEFAULT);
+	g_signal_connect_data (annot,
+	                       "notify::contents",
+	                       G_CALLBACK (annot_prop_changed_cb),
+	                       self, (GClosureNotify) NULL,
+	                       G_CONNECT_DEFAULT);
+	g_signal_connect_data (annot,
+	                       "notify::rgba",
+	                       G_CALLBACK (annot_prop_changed_cb),
+	                       self, (GClosureNotify) NULL,
+	                       G_CONNECT_DEFAULT);
+	g_signal_connect_data (annot,
+	                       "notify::hidden",
+	                       G_CALLBACK (annot_prop_changed_cb),
+	                       self, (GClosureNotify) NULL,
+	                       G_CONNECT_DEFAULT);
+
+	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
+		g_signal_connect_data (annot,
+		                       "notify::label",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+		g_signal_connect_data (annot,
+		                       "notify::opacity",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+		g_signal_connect_data (annot,
+		                       "notify::rectangle",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+		g_signal_connect_data (annot,
+		                       "notify::popup-is-open",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+	}
+
+	if (PPS_IS_ANNOTATION_TEXT (annot)) {
+		g_signal_connect_data (annot,
+		                       "notify::icon",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+		g_signal_connect_data (annot,
+		                       "notify::is-open",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+	}
+
+	if (PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
+		g_signal_connect_data (annot,
+		                       "notify::type",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+	}
+
+#ifdef HAVE_FREE_TEXT
+	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+		g_signal_connect_data (annot,
+		                       "notify::font-rgba",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+		g_signal_connect_data (annot,
+		                       "notify::font-desc",
+		                       G_CALLBACK (annot_prop_changed_cb),
+		                       self, (GClosureNotify) NULL,
+		                       G_CONNECT_DEFAULT);
+	}
+#endif
 }
 
 /**
@@ -338,12 +606,7 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 	              "opacity", 1.0,
 	              NULL);
 
-	pps_document_annotations_add_annotation (PPS_DOCUMENT_ANNOTATIONS (document), annot);
-
-	g_list_store_insert_sorted (priv->annots_model, annot,
-	                            (GCompareDataFunc) compare_annot, NULL);
-
-	g_signal_emit (self, signals[SIGNAL_ANNOT_ADDED], 0, annot);
+	add_annotation (self, annot);
 
 	return annot;
 }
@@ -355,9 +618,15 @@ pps_annotations_context_remove_annotation (PpsAnnotationsContext *self,
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 	guint position;
+	PpsAnnotationsContextUndoable *undoable;
 
 	g_return_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self));
 	g_return_if_fail (PPS_IS_ANNOTATION (annot));
+
+	undoable = g_new0 (PpsAnnotationsContextUndoable, 1);
+	undoable->time = g_date_time_new_now_local ();
+	undoable->action = PPS_ANNOTATIONS_REMOVED;
+	undoable->annots = g_list_append (NULL, g_object_ref (annot));
 
 	pps_document_annotations_remove_annotation (PPS_DOCUMENT_ANNOTATIONS (document),
 	                                            annot);
@@ -367,4 +636,53 @@ pps_annotations_context_remove_annotation (PpsAnnotationsContext *self,
 
 	g_list_store_remove (priv->annots_model, position);
 	g_signal_emit (self, signals[SIGNAL_ANNOT_REMOVED], 0, annot);
+
+	g_signal_handlers_disconnect_by_func (annot, annot_prop_changed_cb, self);
+
+	pps_undo_context_add_action (priv->undo_context, PPS_UNDO_HANDLER (self), undoable);
+}
+
+static void
+pps_annotations_context_undo (PpsUndoHandler *self, gpointer data)
+{
+	PpsAnnotationsContextUndoable *undoable = data;
+	PpsAnnotationsContext *context = PPS_ANNOTATIONS_CONTEXT (self);
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (context);
+
+	priv->next_squash_forbidden = TRUE;
+
+	switch (undoable->action) {
+	case PPS_ANNOTATIONS_MODIFIED:
+		GList *annots = undoable->annots;
+		for (GList *c = undoable->modified.changes; c; c = g_list_next (c)) {
+			PpsAnnotationChangedProperty *data = (PpsAnnotationChangedProperty *) c->data;
+			g_debug ("Undoing %s", data->property);
+			g_object_set_property (G_OBJECT (annots->data), data->property, &data->value);
+			annots = g_list_next (annots);
+		}
+		break;
+	case PPS_ANNOTATIONS_ADDED:
+		GList *areas = undoable->added.areas;
+		for (GList *a = undoable->annots; a; a = g_list_next (a)) {
+			pps_annotations_context_remove_annotation (context, g_object_ref (a->data));
+			/* the area may be changed by poppler when the annotation
+			   is added to the document, so we restore it now to its initial value */
+			pps_annotation_set_area (PPS_ANNOTATION (a->data), areas->data);
+			areas = g_list_next (areas);
+		}
+		break;
+	case PPS_ANNOTATIONS_REMOVED:
+		for (GList *a = undoable->annots; a; a = g_list_next (a)) {
+			add_annotation (context, g_object_ref (a->data));
+		}
+		break;
+	}
+	priv->next_squash_forbidden = FALSE;
+}
+
+static void
+pps_annotations_context_undo_handler_init (PpsUndoHandlerInterface *iface)
+{
+	iface->undo = pps_annotations_context_undo;
+	iface->free_action = pps_annotations_context_free_action;
 }

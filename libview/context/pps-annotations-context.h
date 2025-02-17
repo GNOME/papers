@@ -25,6 +25,7 @@
 #error "Only <papers-view.h> can be included directly."
 #endif
 
+#include "pps-undo-context.h"
 #include <glib-object.h>
 
 #include "pps-document-model.h"
@@ -44,8 +45,8 @@ struct _PpsAnnotationsContextClass {
 	GObjectClass parent_class;
 };
 
-PPS_PUBLIC
-PpsAnnotationsContext *pps_annotations_context_new (PpsDocumentModel *model);
+PPS_PUBLIC PpsAnnotationsContext *
+pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_context);
 PPS_PUBLIC
 GListModel *pps_annotations_context_get_annots_model (PpsAnnotationsContext *self);
 PPS_PUBLIC

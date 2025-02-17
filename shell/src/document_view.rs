@@ -147,6 +147,10 @@ mod imp {
         // Search
         pub(super) search_context: RefCell<Option<papers_view::SearchContext>>,
 
+        // Undo
+        #[template_child]
+        pub(super) undo_context: TemplateChild<papers_view::UndoContext>,
+
         // Annotations
         #[template_child]
         pub(super) annots_context: TemplateChild<papers_view::AnnotationsContext>,

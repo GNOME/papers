@@ -21,6 +21,10 @@ $PpsHistory history {
   changed => $history_changed() swapped;
 }
 
+$PpsUndoContext undo_context {
+  document-model: "model";
+}
+
 Gio.Settings default_settings {
   schema-id: "org.gnome.Papers.Default";
 }

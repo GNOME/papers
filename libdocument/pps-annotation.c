@@ -1824,7 +1824,6 @@ pps_annotation_text_markup_set_property (GObject *object,
                                          GParamSpec *pspec)
 {
 	PpsAnnotationTextMarkup *annot = PPS_ANNOTATION_TEXT_MARKUP (object);
-	PpsAnnotationTextMarkupPrivate *priv = GET_ANNOT_TEXT_MARKUP_PRIVATE (annot);
 
 	switch (prop_id) {
 	case PROP_TEXT_MARKUP_TYPE:

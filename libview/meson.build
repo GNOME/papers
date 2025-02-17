@@ -13,6 +13,8 @@ context_headers = files(
   'context/pps-metadata.h',
   'context/pps-search-context.h',
   'context/pps-search-result.h',
+  'context/pps-undo-context.h',
+  'context/pps-undo-handler.h'
 )
 
 headers = files(
@@ -46,6 +48,8 @@ sources = files(
   'context/pps-metadata.c',
   'context/pps-search-context.c',
   'context/pps-search-result.c',
+  'context/pps-undo-context.c',
+  'context/pps-undo-handler.c',
   'pps-annotation-window.c',
   'pps-colors.c',
   'pps-debug.c',
