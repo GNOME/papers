@@ -1,21 +1,14 @@
-# Persian translation of evince.
-# Copyright (C) 2010-2011 Iranian Free Software Users Group (IFSUG.org)translation team.
-# Copyright (C) 2003, 2004, 2005, 2006 Sharif FarsiWeb, Inc.
-# This file is distributed under the same license as the evince package.
-# Roozbeh Pournader <roozbeh@farsiweb.info>, 2003-2006.
-# Meelad Zakaria <meelad@farsiweb.info>, 2004-2006.
-# Elnaz Sarbar <elnaz@farsiweb.info>, 2006.
-# Mahyar Moghimi <mahyar.moqimi@gmail.com>, 2010.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2011-2016.
-# Salman Mohammadi <mohamadi.salman@gmail.com>, 2012.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2017-2025.
+# Persian translation of papers.
+# Copyright (C) 2005 Free Software Foundation ,Inc
+# This file is distributed under the same license as the papers package.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-02-13 04:46+0000\n"
-"PO-Revision-Date: 2025-02-15 11:33+0330\n"
+"POT-Creation-Date: 2025-02-17 05:04+0000\n"
+"PO-Revision-Date: 2025-02-17 12:39+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -467,7 +460,7 @@ msgid "This work is in the Public Domain"
 msgstr "این کار در دامنهٔ عمومی است"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1001
+#: shell/src/document_view/actions.rs:1035
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "ذخیرهٔ پیوست"
@@ -482,22 +475,22 @@ msgstr "صفحه %s"
 msgid "Edit Note"
 msgstr "ویرایش یاداشت"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:431
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "شکست در پرداخت صفحهٔ %Id: ‏%s"
 
-#: libview/pps-jobs.c:443
+#: libview/pps-jobs.c:438
 #, c-format
 msgid "Failed to render page %d"
 msgstr "شکست در پرداخت صفحهٔ %Id"
 
-#: libview/pps-jobs.c:661
+#: libview/pps-jobs.c:672
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "شکست در ایجاد بندانگشتی برای صفحهٔ %Id"
 
-#: libview/pps-jobs.c:1646
+#: libview/pps-jobs.c:1698
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "شکست در چاپ صفحهٔ %Id: ‏%s"
@@ -1243,6 +1236,7 @@ msgid "Markup Type"
 msgstr "گونهٔ نشانه‌گذاری"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:713
 msgid "Highlight"
 msgstr "پررنگ"
 
@@ -1251,10 +1245,12 @@ msgid "Strike out"
 msgstr "باطل کردن"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:743
 msgid "Underline"
 msgstr "زیر خط"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:723
 msgid "Squiggly"
 msgstr "پیچ و تاب"
 
@@ -1429,61 +1425,65 @@ msgstr "_چرخش ⤵"
 msgid "Document Prop_erties"
 msgstr "_ویژگی‌های سند"
 
-#: shell/resources/pps-document-view.ui:787
+#: shell/resources/pps-document-view.ui:733
+msgid "Strikethrough"
+msgstr "خط‌خورده"
+
+#: shell/resources/pps-document-view.ui:837
 msgid "_Open Link"
 msgstr "_گشودن پیوند"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.ui:842
 msgid "_Copy Link Address"
 msgstr "_رونوشت از نشانی پیوند"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.ui:847
 msgid "_Go To"
 msgstr "_رفتن به"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.ui:852
 msgid "Open in New _Window"
 msgstr "گشودن در یک پنجرهٔ _جدید"
 
-#: shell/resources/pps-document-view.ui:809
+#: shell/resources/pps-document-view.ui:859
 msgid "_Copy"
 msgstr "_رونوشت"
 
-#: shell/resources/pps-document-view.ui:813
+#: shell/resources/pps-document-view.ui:863
 msgid "Select _All"
 msgstr "انتخاب _همه"
 
-#: shell/resources/pps-document-view.ui:819
+#: shell/resources/pps-document-view.ui:869
 msgid "_Save Image As…"
 msgstr "_ذخیرهٔ تصویر به نام…"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.ui:874
 msgid "Copy _Image"
 msgstr "رونوشت _تصویر"
 
-#: shell/resources/pps-document-view.ui:831
+#: shell/resources/pps-document-view.ui:881
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_گشودن پیوست"
 
-#: shell/resources/pps-document-view.ui:836
+#: shell/resources/pps-document-view.ui:886
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_ذخیرهٔ پیوست به نام…"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.ui:894
 msgid "Annotation _Properties…"
 msgstr "_ویژگی‌های حاشیه‌نویسی…"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.ui:899
 msgid "R_emove Annotation"
 msgstr "_برداشتن حاشیه‌نویسی"
 
-#: shell/resources/pps-document-view.ui:856
+#: shell/resources/pps-document-view.ui:906
 msgid "_Add Text Annotation"
 msgstr "_افزودن حاشیه‌نویسی متنی"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.ui:911
 msgid "_Highlight Selected Text"
 msgstr "_نشانه‌گذاری متن گزیده"
 
@@ -1739,31 +1739,31 @@ msgstr "بستن _بدون ذخیره"
 msgid "_Save a Copy"
 msgstr "_ذخیرهٔ یک رونوشت"
 
-#: shell/src/document_view/actions.rs:741
+#: shell/src/document_view/actions.rs:755
 msgid "Save Image"
 msgstr "ذخیرهٔ تصویر"
 
-#: shell/src/document_view/actions.rs:777
+#: shell/src/document_view/actions.rs:791
 msgid "Couldn’t find appropriate format to save image"
 msgstr "قالب مناسب برای ذخیرهٔ عکس پیدا نشد"
 
-#: shell/src/document_view/actions.rs:800
+#: shell/src/document_view/actions.rs:814
 msgid "The image could not be saved."
 msgstr "تصویر ذخیره نشد."
 
-#: shell/src/document_view/actions.rs:903
+#: shell/src/document_view/actions.rs:917
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "حالت پیمایش مکان‌نما اکنون به کار افتاده. برای از کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:905
+#: shell/src/document_view/actions.rs:919
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "حالت پیمایش مکان‌نما اکنون از کار افتاده. برای به کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:985 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "ناتوان در گشودن پیوست"
 
-#: shell/src/document_view/actions.rs:1018
+#: shell/src/document_view/actions.rs:1052
 msgid "The attachment could not be saved."
 msgstr "پیوست ذخیره نشد."
 
