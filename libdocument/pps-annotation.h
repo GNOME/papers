@@ -149,6 +149,10 @@ PPS_PUBLIC
 gboolean pps_annotation_set_area (PpsAnnotation *annot,
                                   const PpsRectangle *area);
 
+/* Undo */
+PPS_PUBLIC
+void pps_annotation_get_value_last_property (PpsAnnotation *annot, GValue *value);
+
 /* PpsAnnotationMarkup */
 PPS_PUBLIC
 const gchar *pps_annotation_markup_get_label (PpsAnnotationMarkup *markup);

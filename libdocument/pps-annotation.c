@@ -25,6 +25,8 @@ typedef struct
 	gboolean hidden;
 	PpsRectangle area;
 	gdouble border_width;
+
+	GValue last_property_set;
 } PpsAnnotationPrivate;
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (PpsAnnotation, pps_annotation, G_TYPE_OBJECT);
@@ -204,6 +206,7 @@ pps_annotation_init (PpsAnnotation *annot)
 	priv->area.y1 = -1;
 	priv->area.x2 = -1;
 	priv->area.y2 = -1;
+	g_value_init (&priv->last_property_set, G_TYPE_INT);
 }
 
 static void
@@ -245,6 +248,13 @@ pps_annotation_set_property (GObject *object,
 	}
 }
 
+void
+pps_annotation_get_value_last_property (PpsAnnotation *annot, GValue *value)
+{
+	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
+	g_value_copy (&priv->last_property_set, value);
+}
+
 static void
 pps_annotation_get_property (GObject *object,
                              guint prop_id,
@@ -282,6 +292,16 @@ pps_annotation_get_property (GObject *object,
 }
 
 static void
+pps_annotation_dispose (GObject *object)
+{
+	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (PPS_ANNOTATION (object));
+
+	g_value_reset (&priv->last_property_set);
+
+	G_OBJECT_CLASS (pps_annotation_parent_class)->dispose (object);
+}
+
+static void
 pps_annotation_class_init (PpsAnnotationClass *klass)
 {
 	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
@@ -289,6 +309,7 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	g_object_class->finalize = pps_annotation_finalize;
 	g_object_class->set_property = pps_annotation_set_property;
 	g_object_class->get_property = pps_annotation_get_property;
+	g_object_class->dispose = pps_annotation_dispose;
 
 	properties[PROP_PAGE] =
 	    g_param_spec_object ("page",
@@ -473,6 +494,12 @@ pps_annotation_equal (PpsAnnotation *annot,
 	        g_strcmp0 (priv->name, pps_annotation_get_name (other)) == 0);
 }
 
+#define SAVE_PROPERTY(self, prop, type, value_set, val)                          \
+	PpsAnnotationPrivate *priv_ = GET_ANNOT_PRIVATE (PPS_ANNOTATION (self)); \
+	g_value_unset (&priv_->last_property_set);                               \
+	g_value_init (&priv_->last_property_set, type);                          \
+	value_set (&priv_->last_property_set, val);
+
 /**
  * pps_annotation_get_contents:
  * @annot: an #PpsAnnotation
@@ -514,6 +541,8 @@ pps_annotation_set_contents (PpsAnnotation *annot,
 
 	if (g_strcmp0 (priv->contents, contents) == 0)
 		return FALSE;
+
+	SAVE_PROPERTY (annot, "contents", G_TYPE_STRING, g_value_set_string, priv->contents)
 
 	if (priv->contents)
 		g_free (priv->contents);
@@ -707,6 +736,8 @@ pps_annotation_set_rgba (PpsAnnotation *annot,
 	if (gdk_rgba_equal (rgba, &priv->rgba))
 		return FALSE;
 
+	SAVE_PROPERTY (annot, "rgba", GDK_TYPE_RGBA, g_value_set_boxed, &priv->rgba)
+
 	priv->rgba = *rgba;
 	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_RGBA]);
 
@@ -757,6 +788,8 @@ pps_annotation_set_area (PpsAnnotation *annot,
 
 	if (pps_rect_cmp ((PpsRectangle *) area, &priv->area) == 0)
 		return FALSE;
+
+	SAVE_PROPERTY (annot, "area", PPS_TYPE_RECTANGLE, g_value_set_boxed, &priv->area)
 
 	was_initial = priv->area.x1 == -1 && priv->area.x2 == -1 && priv->area.y1 == -1 && priv->area.y2 == -1;
 	priv->area = *area;
@@ -1019,6 +1052,8 @@ pps_annotation_markup_set_label (PpsAnnotationMarkup *self,
 	if (g_strcmp0 (priv->label, label) == 0)
 		return FALSE;
 
+	SAVE_PROPERTY (self, "label", G_TYPE_STRING, g_value_set_string, priv->label)
+
 	g_free (priv->label);
 	priv->label = g_strdup (label);
 
@@ -1048,6 +1083,8 @@ pps_annotation_markup_set_opacity (PpsAnnotationMarkup *self,
 
 	if (priv->opacity == opacity)
 		return FALSE;
+
+	SAVE_PROPERTY (self, "opacity", G_TYPE_FLOAT, g_value_set_float, priv->opacity)
 
 	priv->opacity = opacity;
 
@@ -1151,6 +1188,8 @@ pps_annotation_markup_set_popup_is_open (PpsAnnotationMarkup *self,
 
 	if (priv->popup_is_open == is_open)
 		return FALSE;
+
+	SAVE_PROPERTY (self, "popup-is-open", G_TYPE_BOOLEAN, g_value_set_boolean, priv->popup_is_open)
 
 	priv->popup_is_open = is_open;
 
@@ -1266,11 +1305,14 @@ pps_annotation_text_set_icon (PpsAnnotationText *text,
                               PpsAnnotationTextIcon icon)
 {
 	PpsAnnotationTextPrivate *priv = GET_ANNOT_TEXT_PRIVATE (text);
+	PpsAnnotation *self = PPS_ANNOTATION (text);
 
 	g_return_val_if_fail (PPS_IS_ANNOTATION_TEXT (text), FALSE);
 
 	if (priv->icon == icon)
 		return FALSE;
+
+	SAVE_PROPERTY (self, "icon", G_TYPE_ENUM, g_value_set_enum, priv->icon)
 
 	priv->icon = icon;
 
@@ -1295,12 +1337,14 @@ pps_annotation_text_set_is_open (PpsAnnotationText *text,
                                  gboolean is_open)
 {
 	PpsAnnotationTextPrivate *priv = GET_ANNOT_TEXT_PRIVATE (text);
+	PpsAnnotation *self = PPS_ANNOTATION (text);
 
 	g_return_val_if_fail (PPS_IS_ANNOTATION_TEXT (text), FALSE);
 
 	if (priv->is_open == is_open)
 		return FALSE;
 
+	SAVE_PROPERTY (self, "is-open", G_TYPE_BOOLEAN, g_value_set_boolean, priv->is_open)
 	priv->is_open = is_open;
 
 	g_object_notify_by_pspec (G_OBJECT (text),
@@ -1508,6 +1552,7 @@ pps_annotation_free_text_set_font_description (PpsAnnotationFreeText *annot,
 	if (priv->font_desc && pango_font_description_equal (priv->font_desc, font_desc)) {
 		return FALSE;
 	}
+	SAVE_PROPERTY (annot, "font-desc", PANGO_TYPE_FONT_DESCRIPTION, g_value_set_boxed, priv->font_desc)
 	g_clear_pointer (&priv->font_desc, pango_font_description_free);
 	priv->font_desc = pango_font_description_copy (font_desc);
 
@@ -1553,6 +1598,8 @@ pps_annotation_free_text_set_font_rgba (PpsAnnotationFreeText *annot, const GdkR
 	if (gdk_rgba_equal (&(priv->font_rgba), rgba)) {
 		return FALSE;
 	}
+
+	SAVE_PROPERTY (annot, "font-rgba", GDK_TYPE_RGBA, g_value_set_boxed, &priv->font_rgba)
 
 	priv->font_rgba = *rgba;
 
@@ -1875,6 +1922,8 @@ pps_annotation_text_markup_set_markup_type (PpsAnnotationTextMarkup *annot,
 
 	if (priv->type == markup_type)
 		return FALSE;
+
+	SAVE_PROPERTY (annot, "type", PPS_TYPE_ANNOTATION_TEXT_MARKUP_TYPE, g_value_set_enum, priv->type)
 
 	priv->type = markup_type;
 	g_object_notify_by_pspec (G_OBJECT (annot),
