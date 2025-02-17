@@ -134,7 +134,7 @@ mod imp {
             let result_model = context.result_model().unwrap();
 
             if let Some(first_result) = context.results_on_page(page).first() {
-                context.select_result(first_result);
+                context.autoselect_result(first_result);
                 self.list_view.scroll_to(
                     result_model.selected(),
                     gtk::ListScrollFlags::SELECT,
