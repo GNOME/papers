@@ -766,23 +766,14 @@ pps_search_context_restart (PpsSearchContext *context)
  * Since: 48.0
  */
 void
-pps_search_context_select_result (PpsSearchContext *context,
-                                  PpsSearchResult *result)
-{
-	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-	guint position;
-
-	g_list_store_find (priv->result_model, result, &position);
-	gtk_single_selection_set_selected (priv->selection_model, position);
-}
-
-void
 pps_search_context_autoselect_result (PpsSearchContext *context,
                                       PpsSearchResult *result)
 {
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+	guint position;
 
 	priv->autoselecting = TRUE;
-	pps_search_context_select_result (context, result);
+	g_list_store_find (priv->result_model, result, &position);
+	gtk_single_selection_set_selected (priv->selection_model, position);
 	priv->autoselecting = FALSE;
 }
