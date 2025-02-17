@@ -60,6 +60,9 @@ pub use self::search_context::SearchContext;
 mod search_result;
 pub use self::search_result::SearchResult;
 
+mod undo_context;
+pub use self::undo_context::UndoContext;
+
 mod view;
 pub use self::view::View;
 

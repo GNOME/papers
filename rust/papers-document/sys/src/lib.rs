@@ -2389,6 +2389,10 @@ extern "C" {
     pub fn pps_annotation_get_page(annot: *mut PpsAnnotation) -> *mut PpsPage;
     pub fn pps_annotation_get_page_index(annot: *mut PpsAnnotation) -> c_uint;
     pub fn pps_annotation_get_rgba(annot: *mut PpsAnnotation, rgba: *mut gdk::GdkRGBA);
+    pub fn pps_annotation_get_value_last_property(
+        annot: *mut PpsAnnotation,
+        value: *mut gobject::GValue,
+    );
     pub fn pps_annotation_set_area(
         annot: *mut PpsAnnotation,
         area: *const PpsRectangle,

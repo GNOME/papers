@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel};
+use crate::{ffi, DocumentModel, UndoContext};
 use glib::{
     object::ObjectType as _,
     prelude::*,
@@ -25,9 +25,14 @@ impl AnnotationsContext {
     pub const NONE: Option<&'static AnnotationsContext> = None;
 
     #[doc(alias = "pps_annotations_context_new")]
-    pub fn new(model: &DocumentModel) -> AnnotationsContext {
+    pub fn new(model: &DocumentModel, undo_context: &UndoContext) -> AnnotationsContext {
         skip_assert_initialized!();
-        unsafe { from_glib_full(ffi::pps_annotations_context_new(model.to_glib_none().0)) }
+        unsafe {
+            from_glib_full(ffi::pps_annotations_context_new(
+                model.to_glib_none().0,
+                undo_context.to_glib_none().0,
+            ))
+        }
     }
 }
 

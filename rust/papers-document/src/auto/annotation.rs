@@ -125,6 +125,12 @@ pub trait AnnotationExt: IsA<Annotation> + 'static {
         }
     }
 
+    //#[doc(alias = "pps_annotation_get_value_last_property")]
+    //#[doc(alias = "get_value_last_property")]
+    //fn value_last_property(&self, value: /*Ignored*/&mut glib::Value) {
+    //    unsafe { TODO: call ffi:pps_annotation_get_value_last_property() }
+    //}
+
     #[doc(alias = "pps_annotation_set_area")]
     #[doc(alias = "area")]
     fn set_area(&self, area: &Rectangle) -> bool {

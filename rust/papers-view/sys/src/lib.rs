@@ -406,6 +406,38 @@ impl ::std::fmt::Debug for PpsSearchResultClass {
     }
 }
 
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsUndoContextClass {
+    pub parent_class: gobject::GObjectClass,
+}
+
+impl ::std::fmt::Debug for PpsUndoContextClass {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsUndoContextClass @ {self:p}"))
+            .field("parent_class", &self.parent_class)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsUndoHandlerInterface {
+    pub parent_iface: gobject::GTypeInterface,
+    pub undo: Option<unsafe extern "C" fn(*mut PpsUndoHandler, gpointer)>,
+    pub free_action: Option<unsafe extern "C" fn(gpointer)>,
+}
+
+impl ::std::fmt::Debug for PpsUndoHandlerInterface {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsUndoHandlerInterface @ {self:p}"))
+            .field("parent_iface", &self.parent_iface)
+            .field("undo", &self.undo)
+            .field("free_action", &self.free_action)
+            .finish()
+    }
+}
+
 #[repr(C)]
 #[allow(dead_code)]
 pub struct _PpsViewClass {
@@ -834,6 +866,20 @@ impl ::std::fmt::Debug for PpsSearchResult {
     }
 }
 
+#[repr(C)]
+#[allow(dead_code)]
+pub struct PpsUndoContext {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for PpsUndoContext {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsUndoContext @ {self:p}"))
+            .finish()
+    }
+}
+
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PpsView {
@@ -859,6 +905,20 @@ impl ::std::fmt::Debug for PpsViewPresentation {
         f.debug_struct(&format!("PpsViewPresentation @ {self:p}"))
             .field("parent_instance", &self.parent_instance)
             .finish()
+    }
+}
+
+// Interfaces
+#[repr(C)]
+#[allow(dead_code)]
+pub struct PpsUndoHandler {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for PpsUndoHandler {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        write!(f, "PpsUndoHandler @ {self:p}")
     }
 }
 
@@ -906,7 +966,10 @@ extern "C" {
     // PpsAnnotationsContext
     //=========================================================================
     pub fn pps_annotations_context_get_type() -> GType;
-    pub fn pps_annotations_context_new(model: *mut PpsDocumentModel) -> *mut PpsAnnotationsContext;
+    pub fn pps_annotations_context_new(
+        model: *mut PpsDocumentModel,
+        undo_context: *mut PpsUndoContext,
+    ) -> *mut PpsAnnotationsContext;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_annotations_context_add_annotation_sync(
@@ -1379,6 +1442,21 @@ extern "C" {
     pub fn pps_search_result_get_rectangle_list(self_: *mut PpsSearchResult) -> *mut glib::GList;
 
     //=========================================================================
+    // PpsUndoContext
+    //=========================================================================
+    pub fn pps_undo_context_get_type() -> GType;
+    pub fn pps_undo_context_new(document_model: *mut PpsDocumentModel) -> *mut PpsUndoContext;
+    pub fn pps_undo_context_add_action(
+        context: *mut PpsUndoContext,
+        handler: *mut PpsUndoHandler,
+        data: gpointer,
+    );
+    pub fn pps_undo_context_get_last_action(context: *mut PpsUndoContext) -> gpointer;
+    pub fn pps_undo_context_get_last_handler(context: *mut PpsUndoContext) -> *mut PpsUndoHandler;
+    pub fn pps_undo_context_redo(context: *mut PpsUndoContext);
+    pub fn pps_undo_context_undo(context: *mut PpsUndoContext);
+
+    //=========================================================================
     // PpsView
     //=========================================================================
     pub fn pps_view_get_type() -> GType;
@@ -1451,5 +1529,12 @@ extern "C" {
     pub fn pps_view_presentation_next_page(pview: *mut PpsViewPresentation);
     pub fn pps_view_presentation_previous_page(pview: *mut PpsViewPresentation);
     pub fn pps_view_presentation_set_rotation(pview: *mut PpsViewPresentation, rotation: c_int);
+
+    //=========================================================================
+    // PpsUndoHandler
+    //=========================================================================
+    pub fn pps_undo_handler_get_type() -> GType;
+    pub fn pps_undo_handler_free_action(self_: *mut PpsUndoHandler, data: gpointer);
+    pub fn pps_undo_handler_undo(self_: *mut PpsUndoHandler, data: gpointer);
 
 }

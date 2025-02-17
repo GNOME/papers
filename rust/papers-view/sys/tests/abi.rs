@@ -539,6 +539,20 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsUndoContextClass",
+        Layout {
+            size: size_of::<PpsUndoContextClass>(),
+            alignment: align_of::<PpsUndoContextClass>(),
+        },
+    ),
+    (
+        "PpsUndoHandlerInterface",
+        Layout {
+            size: size_of::<PpsUndoHandlerInterface>(),
+            alignment: align_of::<PpsUndoHandlerInterface>(),
+        },
+    ),
+    (
         "PpsView",
         Layout {
             size: size_of::<PpsView>(),

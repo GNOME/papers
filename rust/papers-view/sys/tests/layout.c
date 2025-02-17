@@ -56,6 +56,8 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsSearchResult", sizeof(PpsSearchResult), alignof(PpsSearchResult));
     printf("%s;%zu;%zu\n", "PpsSearchResultClass", sizeof(PpsSearchResultClass), alignof(PpsSearchResultClass));
     printf("%s;%zu;%zu\n", "PpsSizingMode", sizeof(PpsSizingMode), alignof(PpsSizingMode));
+    printf("%s;%zu;%zu\n", "PpsUndoContextClass", sizeof(PpsUndoContextClass), alignof(PpsUndoContextClass));
+    printf("%s;%zu;%zu\n", "PpsUndoHandlerInterface", sizeof(PpsUndoHandlerInterface), alignof(PpsUndoHandlerInterface));
     printf("%s;%zu;%zu\n", "PpsView", sizeof(PpsView), alignof(PpsView));
     printf("%s;%zu;%zu\n", "PpsViewPresentation", sizeof(PpsViewPresentation), alignof(PpsViewPresentation));
     printf("%s;%zu;%zu\n", "PpsViewSelection", sizeof(PpsViewSelection), alignof(PpsViewSelection));
