@@ -163,11 +163,11 @@ static void pps_view_remove_all_form_fields (PpsView *view);
 static void highlight_find_results (PpsView *view,
                                     GtkSnapshot *snapshot,
                                     int page);
-static gboolean draw_one_page (PpsView *view,
-                               gint page,
-                               GtkSnapshot *snapshot,
-                               GdkRectangle *page_area,
-                               GdkRectangle *expose_area);
+static void draw_one_page (PpsView *view,
+                           gint page,
+                           GtkSnapshot *snapshot,
+                           GdkRectangle *page_area,
+                           GdkRectangle *expose_area);
 static void draw_surface (GtkSnapshot *snapshot,
                           GdkTexture *texture,
                           const graphene_point_t *point,
@@ -4418,8 +4418,10 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 		page_area.x -= scroll_x;
 		page_area.y -= scroll_y;
 
-		if (!draw_one_page (view, i, snapshot, &page_area, &clip_rect))
+		if (!gdk_rectangle_intersect (&page_area, &clip_rect, NULL))
 			continue;
+
+		draw_one_page (view, i, snapshot, &page_area, &clip_rect);
 
 		if (pps_search_context_get_active (priv->search_context))
 			highlight_find_results (view, snapshot, i);
@@ -6417,7 +6419,7 @@ draw_selection_region (GtkSnapshot *snapshot,
 	}
 }
 
-static gboolean
+static void
 draw_one_page (PpsView *view,
                gint page,
                GtkSnapshot *snapshot,
@@ -6426,17 +6428,9 @@ draw_one_page (PpsView *view,
 {
 	GtkStyleContext *context;
 	GdkRectangle overlap;
-	GdkRectangle real_page_area;
 	gint current_page;
-	GtkWidget *widget = GTK_WIDGET (view);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
-
-	if (!gdk_rectangle_intersect (page_area, expose_area, &overlap))
-		return TRUE;
-
-	/* Render the document itself */
-	real_page_area = *page_area;
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (view));
 	current_page = pps_document_model_get_page (priv->model);
@@ -6454,40 +6448,40 @@ draw_one_page (PpsView *view,
 	gtk_snapshot_render_frame (snapshot, context, page_area->x, page_area->y, page_area->width, page_area->height);
 	gtk_style_context_restore (context);
 
-	if (gdk_rectangle_intersect (&real_page_area, expose_area, &overlap)) {
-		gint width, height;
-		GdkTexture *page_texture = NULL, *selection_texture = NULL;
-		graphene_point_t point;
-		graphene_rect_t area;
-		cairo_region_t *region = NULL;
-		gboolean inverted = pps_document_model_get_inverted_colors (priv->model);
+	/* Render the document itself */
 
-		page_texture = pps_pixbuf_cache_get_texture (priv->pixbuf_cache, page);
+	gint width, height;
+	GdkTexture *page_texture = NULL, *selection_texture = NULL;
+	graphene_point_t point;
+	graphene_rect_t area;
+	cairo_region_t *region = NULL;
+	gboolean inverted = pps_document_model_get_inverted_colors (priv->model);
 
-		if (!page_texture)
-			return FALSE;
+	gdk_rectangle_intersect (page_area, expose_area, &overlap);
 
-		pps_view_get_page_size (view, page, &width, &height);
+	page_texture = pps_pixbuf_cache_get_texture (priv->pixbuf_cache, page);
 
-		area = GRAPHENE_RECT_INIT (real_page_area.x - overlap.x,
-		                           real_page_area.y - overlap.y,
-		                           width, height);
-		point = GRAPHENE_POINT_INIT (overlap.x, overlap.y);
+	if (!page_texture)
+		return;
 
-		draw_surface (snapshot, page_texture, &point, &area, inverted);
+	pps_view_get_page_size (view, page, &width, &height);
 
-		/* Get the selection pixbuf iff we have something to draw */
-		if (!find_selection_for_page (view, page))
-			return TRUE;
+	area = GRAPHENE_RECT_INIT (page_area->x - overlap.x,
+	                           page_area->y - overlap.y,
+	                           width, height);
+	point = GRAPHENE_POINT_INIT (overlap.x, overlap.y);
 
+	draw_surface (snapshot, page_texture, &point, &area, inverted);
+
+	/* Get the selection pixbuf iff we have something to draw */
+	if (find_selection_for_page (view, page))
 		selection_texture = pps_pixbuf_cache_get_selection_texture (priv->pixbuf_cache,
 		                                                            page,
 		                                                            scale);
-		if (selection_texture) {
-			draw_surface (snapshot, selection_texture, &point, &area, false);
-			return TRUE;
-		}
 
+	if (selection_texture) {
+		draw_surface (snapshot, selection_texture, &point, &area, false);
+	} else {
 		region = pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache,
 		                                                page,
 		                                                scale);
@@ -6495,10 +6489,9 @@ draw_one_page (PpsView *view,
 			GdkRGBA color;
 
 			_pps_view_get_selection_colors (view, &color, NULL);
-			draw_selection_region (snapshot, view, region, &color, real_page_area.x, real_page_area.y);
+			draw_selection_region (snapshot, view, region, &color, page_area->x, page_area->y);
 		}
 	}
-	return TRUE;
 }
 
 /*** GObject functions ***/
