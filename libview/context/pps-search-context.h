@@ -75,5 +75,8 @@ void pps_search_context_restart (PpsSearchContext *context);
 PPS_PUBLIC
 void pps_search_context_select_result (PpsSearchContext *context,
                                        PpsSearchResult *result);
+PPS_PUBLIC
+void pps_search_context_autoselect_result (PpsSearchContext *context,
+                                           PpsSearchResult *result);
 
 G_END_DECLS

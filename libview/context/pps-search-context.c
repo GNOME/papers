@@ -59,6 +59,8 @@ typedef struct
 	gchar *search_term;
 	guint active_use_count;
 
+	gboolean autoselecting;
+
 	GHashTable *per_page_store;
 	GListStore *result_model;
 	GtkSingleSelection *selection_model;
@@ -405,7 +407,7 @@ selection_changed_cb (PpsSearchContext *context)
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
 	PpsSearchResult *result = PPS_SEARCH_RESULT (gtk_single_selection_get_selected_item (priv->selection_model));
 
-	if (result != NULL)
+	if (result != NULL && !priv->autoselecting)
 		g_signal_emit (context, signals[RESULT_ACTIVATED], 0, result);
 }
 
@@ -735,6 +737,12 @@ pps_search_context_restart (PpsSearchContext *context)
 	}
 }
 
+/**
+ * pps_search_context_autoselect_result:
+ * @result: a #PpsSearchResult to be the auto-selected one
+ *
+ * Since: 48.0
+ */
 void
 pps_search_context_select_result (PpsSearchContext *context,
                                   PpsSearchResult *result)
@@ -744,4 +752,15 @@ pps_search_context_select_result (PpsSearchContext *context,
 
 	g_list_store_find (priv->result_model, result, &position);
 	gtk_single_selection_set_selected (priv->selection_model, position);
+}
+
+void
+pps_search_context_autoselect_result (PpsSearchContext *context,
+                                      PpsSearchResult *result)
+{
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	priv->autoselecting = TRUE;
+	pps_search_context_select_result (context, result);
+	priv->autoselecting = FALSE;
 }
