@@ -392,33 +392,6 @@ find_job_finished_cb (PpsJobFind *job,
 }
 
 static void
-search_changed_cb (PpsSearchContext *context)
-{
-	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-
-	pps_search_context_clear_job (context);
-	g_list_store_remove_all (priv->result_model);
-
-	if (priv->search_term && priv->search_term[0]) {
-		PpsDocument *doc = pps_document_model_get_document (priv->model);
-
-		priv->job = PPS_JOB_FIND (pps_job_find_new (doc,
-		                                            pps_document_model_get_page (priv->model),
-		                                            pps_document_get_n_pages (doc),
-		                                            priv->search_term,
-		                                            priv->options));
-		g_signal_connect (priv->job, "finished",
-		                  G_CALLBACK (find_job_finished_cb),
-		                  context);
-
-		g_signal_emit (context, signals[STARTED], 0);
-		pps_job_scheduler_push_job (PPS_JOB (priv->job), PPS_JOB_PRIORITY_NONE);
-	} else {
-		g_signal_emit (context, signals[CLEARED], 0);
-	}
-}
-
-static void
 pps_search_context_dispose (GObject *object)
 {
 	PpsSearchContext *context = PPS_SEARCH_CONTEXT (object);
@@ -573,7 +546,7 @@ pps_search_context_set_search_term (PpsSearchContext *context,
 
 	priv->search_term = g_strdup (search_term);
 	g_object_notify_by_pspec (G_OBJECT (context), props[PROP_SEARCH_TERM]);
-	search_changed_cb (context);
+	pps_search_context_restart (context);
 }
 
 const gchar *
@@ -594,7 +567,7 @@ pps_search_context_set_options (PpsSearchContext *context,
 		return;
 
 	priv->options = options;
-	search_changed_cb (context);
+	pps_search_context_restart (context);
 }
 
 PpsFindOptions
@@ -623,7 +596,28 @@ pps_search_context_get_result_model (PpsSearchContext *context)
 void
 pps_search_context_restart (PpsSearchContext *context)
 {
-	search_changed_cb (context);
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+
+	pps_search_context_clear_job (context);
+	g_list_store_remove_all (priv->result_model);
+
+	if (priv->search_term && priv->search_term[0]) {
+		PpsDocument *doc = pps_document_model_get_document (priv->model);
+
+		priv->job = PPS_JOB_FIND (pps_job_find_new (doc,
+		                                            pps_document_model_get_page (priv->model),
+		                                            pps_document_get_n_pages (doc),
+		                                            priv->search_term,
+		                                            priv->options));
+		g_signal_connect (priv->job, "finished",
+		                  G_CALLBACK (find_job_finished_cb),
+		                  context);
+
+		g_signal_emit (context, signals[STARTED], 0);
+		pps_job_scheduler_push_job (PPS_JOB (priv->job), PPS_JOB_PRIORITY_NONE);
+	} else {
+		g_signal_emit (context, signals[CLEARED], 0);
+	}
 }
 
 void
