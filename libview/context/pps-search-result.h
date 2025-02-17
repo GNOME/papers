@@ -42,11 +42,11 @@ struct _PpsSearchResultClass {
 	GObjectClass parent_class;
 };
 
-PPS_PUBLIC
 PpsSearchResult *pps_search_result_new (gchar *markup,
                                         gchar *label,
                                         guint page,
                                         guint index,
+                                        guint global_index,
                                         PpsFindRectangle *rect);
 
 PPS_PUBLIC
@@ -57,6 +57,8 @@ PPS_PUBLIC
 guint pps_search_result_get_page (PpsSearchResult *self);
 PPS_PUBLIC
 guint pps_search_result_get_index (PpsSearchResult *self);
+PPS_PUBLIC
+guint pps_search_result_get_global_index (PpsSearchResult *self);
 PPS_PUBLIC
 GList *pps_search_result_get_rectangle_list (PpsSearchResult *self);
 PPS_PUBLIC

@@ -293,6 +293,7 @@ process_matches_idle (PpsSearchContext *context)
 	g_autoptr (GPtrArray) results_array = g_ptr_array_new ();
 	PpsSearchResult **results;
 	gsize n_results;
+	guint global_index = 0;
 
 	g_return_if_fail (PPS_IS_JOB (priv->job));
 
@@ -377,6 +378,7 @@ process_matches_idle (PpsSearchContext *context)
 			                                page_label,
 			                                current_page,
 			                                index++,
+			                                global_index++,
 			                                match);
 			g_ptr_array_add (per_page_results_array, g_object_ref (result));
 			g_ptr_array_add (results_array, result);
@@ -770,10 +772,9 @@ pps_search_context_autoselect_result (PpsSearchContext *context,
                                       PpsSearchResult *result)
 {
 	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-	guint position;
 
 	priv->autoselecting = TRUE;
-	g_list_store_find (priv->result_model, result, &position);
-	gtk_single_selection_set_selected (priv->selection_model, position);
+	gtk_single_selection_set_selected (priv->selection_model,
+	                                   pps_search_result_get_global_index (result));
 	priv->autoselecting = FALSE;
 }

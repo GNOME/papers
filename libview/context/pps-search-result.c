@@ -31,6 +31,7 @@ typedef struct
 	gchar *label;
 	guint page;
 	guint index;
+	guint global_index;
 	GList *find_rectangles;
 } PpsSearchResultPrivate;
 
@@ -69,6 +70,7 @@ pps_search_result_new (gchar *markup,
                        gchar *label,
                        guint page,
                        guint index,
+                       guint global_index,
                        PpsFindRectangle *rect)
 {
 	PpsSearchResult *result = g_object_new (PPS_TYPE_SEARCH_RESULT, NULL);
@@ -78,6 +80,7 @@ pps_search_result_new (gchar *markup,
 	priv->label = g_strdup (label);
 	priv->page = page;
 	priv->index = index;
+	priv->global_index = global_index;
 	priv->find_rectangles = g_list_append (priv->find_rectangles,
 	                                       pps_find_rectangle_copy (rect));
 
@@ -87,33 +90,49 @@ pps_search_result_new (gchar *markup,
 const gchar *
 pps_search_result_get_markup (PpsSearchResult *self)
 {
-	PpsSearchResultPrivate *private = GET_PRIVATE (self);
+	PpsSearchResultPrivate *priv = GET_PRIVATE (self);
 
-	return private->markup;
+	return priv->markup;
 }
 
 const gchar *
 pps_search_result_get_label (PpsSearchResult *self)
 {
-	PpsSearchResultPrivate *private = GET_PRIVATE (self);
+	PpsSearchResultPrivate *priv = GET_PRIVATE (self);
 
-	return private->label;
+	return priv->label;
 }
 
 guint
 pps_search_result_get_page (PpsSearchResult *self)
 {
-	PpsSearchResultPrivate *private = GET_PRIVATE (self);
+	PpsSearchResultPrivate *priv = GET_PRIVATE (self);
 
-	return private->page;
+	return priv->page;
 }
 
 guint
 pps_search_result_get_index (PpsSearchResult *self)
 {
-	PpsSearchResultPrivate *private = GET_PRIVATE (self);
+	PpsSearchResultPrivate *priv = GET_PRIVATE (self);
 
-	return private->index;
+	return priv->index;
+}
+
+/**
+ * pps_search_result_get_global_index:
+ * @self: the PpsSearchResult
+ *
+ * Returns: the index of this result relative the complete result model.
+ *
+ * Since: 48.0
+ */
+guint
+pps_search_result_get_global_index (PpsSearchResult *self)
+{
+	PpsSearchResultPrivate *priv = GET_PRIVATE (self);
+
+	return priv->global_index;
 }
 
 /**
