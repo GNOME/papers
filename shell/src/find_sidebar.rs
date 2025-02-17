@@ -18,6 +18,8 @@ mod imp {
 
         #[property(name="search-context", nullable, set = Self::set_search_context)]
         pub(super) context: RefCell<Option<papers_view::SearchContext>>,
+        #[property(name = "document-model", nullable, set)]
+        pub(super) document_model: RefCell<Option<papers_view::DocumentModel>>,
 
         pub(super) context_signal_handlers: RefCell<Vec<SignalHandlerId>>,
     }
@@ -54,6 +56,10 @@ mod imp {
     }
 
     impl PpsFindSidebar {
+        fn document_model(&self) -> Option<DocumentModel> {
+            self.document_model.borrow().clone()
+        }
+
         fn context(&self) -> Option<SearchContext> {
             self.context.borrow().clone()
         }
@@ -112,6 +118,8 @@ mod imp {
 
                         if page != -1 {
                             obj.highlight_first_match_of_page(page as u32);
+                        } else {
+                            obj.highlight_nearest_match_page();
                         }
                     }
                 )));
@@ -135,7 +143,8 @@ mod imp {
             }
         }
 
-        pub(super) fn restart(&self, page: u32) {
+        pub(super) fn highlight_nearest_match_page(&self) {
+            let page: u32 = self.document_model().unwrap().page() as u32;
             let context = self.context().unwrap();
             let result_model = context.result_model().unwrap();
             let Some(last_page) = result_model
@@ -252,8 +261,8 @@ impl PpsFindSidebar {
         self.imp().next()
     }
 
-    pub fn restart(&self, page: u32) {
-        self.imp().restart(page);
+    pub fn restart(&self) {
+        self.imp().highlight_nearest_match_page();
     }
 }
 

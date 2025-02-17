@@ -561,9 +561,7 @@ mod imp {
         }
 
         pub(super) fn find_restart(&self) {
-            let page = self.model.page();
-
-            self.find_sidebar.restart(page as u32);
+            self.find_sidebar.restart();
         }
 
         pub(super) fn close_find_bar(&self) {
