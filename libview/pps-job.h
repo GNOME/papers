@@ -48,20 +48,16 @@ struct _PpsJobClass {
 	void (*finished) (PpsJob *job);
 };
 
-PPS_PUBLIC
 gboolean pps_job_run (PpsJob *job);
 PPS_PUBLIC
 void pps_job_cancel (PpsJob *job);
-PPS_PUBLIC
 void pps_job_failed (PpsJob *job,
                      GQuark domain,
                      gint code,
                      const gchar *format,
                      ...) G_GNUC_PRINTF (4, 5);
-PPS_PUBLIC
 void pps_job_failed_from_error (PpsJob *job,
                                 GError *error);
-PPS_PUBLIC
 void pps_job_succeeded (PpsJob *job);
 PPS_PUBLIC
 gboolean pps_job_is_finished (PpsJob *job);
@@ -70,7 +66,6 @@ gboolean pps_job_is_succeeded (PpsJob *job,
                                GError **error);
 PPS_PUBLIC
 PpsDocument *pps_job_get_document (PpsJob *job);
-PPS_PUBLIC
 GCancellable *pps_job_get_cancellable (PpsJob *job);
 
 PPS_PUBLIC
