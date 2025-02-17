@@ -4422,12 +4422,6 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 			continue;
 
 		draw_one_page (view, i, snapshot, &page_area, &clip_rect);
-
-		if (pps_search_context_get_active (priv->search_context))
-			highlight_find_results (view, snapshot, i);
-
-		if (pps_debug_get_debug_borders ())
-			draw_debug_borders (view, snapshot, i, &clip_rect);
 	}
 
 	/* snapshot child widgets */
@@ -6492,6 +6486,12 @@ draw_one_page (PpsView *view,
 			draw_selection_region (snapshot, view, region, &color, page_area->x, page_area->y);
 		}
 	}
+
+	if (pps_search_context_get_active (priv->search_context))
+		highlight_find_results (view, snapshot, page);
+
+	if (pps_debug_get_debug_borders ())
+		draw_debug_borders (view, snapshot, page, expose_area);
 }
 
 /*** GObject functions ***/
