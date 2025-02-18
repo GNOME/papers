@@ -185,8 +185,7 @@ pub const PPS_TRANSITION_EFFECT_UNCOVER: PpsTransitionEffectType = 10;
 pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
-pub const PPS_MAJOR_VERSION: c_int = 47;
-pub const PPS_MINOR_VERSION: c_int = 0;
+pub const PPS_MAJOR_VERSION: c_int = 48;
 
 // Flags
 pub type PpsAnnotationsSaveMask = c_uint;
@@ -2641,7 +2640,6 @@ extern "C" {
     ) -> *mut gdk::GdkTexture;
     pub fn pps_document_check_dimensions(document: *mut PpsDocument) -> gboolean;
     pub fn pps_document_doc_mutex_lock(document: *mut PpsDocument);
-    pub fn pps_document_doc_mutex_trylock(document: *mut PpsDocument) -> gboolean;
     pub fn pps_document_doc_mutex_unlock(document: *mut PpsDocument);
     pub fn pps_document_find_page_by_label(
         document: *mut PpsDocument,

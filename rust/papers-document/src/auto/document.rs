@@ -164,15 +164,6 @@ pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
         }
     }
 
-    #[doc(alias = "pps_document_doc_mutex_trylock")]
-    fn doc_mutex_trylock(&self) -> bool {
-        unsafe {
-            from_glib(ffi::pps_document_doc_mutex_trylock(
-                self.as_ref().to_glib_none().0,
-            ))
-        }
-    }
-
     #[doc(alias = "pps_document_doc_mutex_unlock")]
     fn doc_mutex_unlock(&self) {
         unsafe {

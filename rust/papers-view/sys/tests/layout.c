@@ -44,6 +44,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsJobRenderTextureClass", sizeof(PpsJobRenderTextureClass), alignof(PpsJobRenderTextureClass));
     printf("%s;%zu;%zu\n", "PpsJobSave", sizeof(PpsJobSave), alignof(PpsJobSave));
     printf("%s;%zu;%zu\n", "PpsJobSaveClass", sizeof(PpsJobSaveClass), alignof(PpsJobSaveClass));
+    printf("%s;%zu;%zu\n", "PpsJobSignatures", sizeof(PpsJobSignatures), alignof(PpsJobSignatures));
     printf("%s;%zu;%zu\n", "PpsJobSignaturesClass", sizeof(PpsJobSignaturesClass), alignof(PpsJobSignaturesClass));
     printf("%s;%zu;%zu\n", "PpsJobThumbnailTexture", sizeof(PpsJobThumbnailTexture), alignof(PpsJobThumbnailTexture));
     printf("%s;%zu;%zu\n", "PpsJobThumbnailTextureClass", sizeof(PpsJobThumbnailTextureClass), alignof(PpsJobThumbnailTextureClass));

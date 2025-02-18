@@ -455,6 +455,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsJobSignatures",
+        Layout {
+            size: size_of::<PpsJobSignatures>(),
+            alignment: align_of::<PpsJobSignatures>(),
+        },
+    ),
+    (
         "PpsJobSignaturesClass",
         Layout {
             size: size_of::<PpsJobSignaturesClass>(),

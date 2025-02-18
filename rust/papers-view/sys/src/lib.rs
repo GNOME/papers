@@ -538,16 +538,12 @@ impl ::std::fmt::Debug for PpsJobAttachments {
 #[repr(C)]
 pub struct PpsJobExport {
     pub parent: PpsJob,
-    pub page: c_int,
-    pub rc: *mut papers_document::PpsRenderContext,
 }
 
 impl ::std::fmt::Debug for PpsJobExport {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsJobExport @ {self:p}"))
             .field("parent", &self.parent)
-            .field("page", &self.page)
-            .field("rc", &self.rc)
             .finish()
     }
 }
@@ -596,14 +592,12 @@ impl ::std::fmt::Debug for PpsJobFonts {
 #[repr(C)]
 pub struct PpsJobLayers {
     pub parent: PpsJob,
-    pub model: *mut gio::GListModel,
 }
 
 impl ::std::fmt::Debug for PpsJobLayers {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsJobLayers @ {self:p}"))
             .field("parent", &self.parent)
-            .field("model", &self.model)
             .finish()
     }
 }
@@ -682,16 +676,12 @@ impl ::std::fmt::Debug for PpsJobPageData {
 #[repr(C)]
 pub struct PpsJobPrint {
     pub parent: PpsJob,
-    pub page: c_int,
-    pub cr: *mut cairo::cairo_t,
 }
 
 impl ::std::fmt::Debug for PpsJobPrint {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsJobPrint @ {self:p}"))
             .field("parent", &self.parent)
-            .field("page", &self.page)
-            .field("cr", &self.cr)
             .finish()
     }
 }
@@ -752,15 +742,16 @@ impl ::std::fmt::Debug for PpsJobSave {
     }
 }
 
+#[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PpsJobSignatures {
-    _data: [u8; 0],
-    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+    pub parent: PpsJob,
 }
 
 impl ::std::fmt::Debug for PpsJobSignatures {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsJobSignatures @ {self:p}"))
+            .field("parent", &self.parent)
             .finish()
     }
 }
@@ -769,24 +760,12 @@ impl ::std::fmt::Debug for PpsJobSignatures {
 #[repr(C)]
 pub struct PpsJobThumbnailTexture {
     pub parent: PpsJob,
-    pub page: c_int,
-    pub rotation: c_int,
-    pub scale: c_double,
-    pub target_width: c_int,
-    pub target_height: c_int,
-    pub thumbnail_texture: *mut gdk::GdkTexture,
 }
 
 impl ::std::fmt::Debug for PpsJobThumbnailTexture {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsJobThumbnailTexture @ {self:p}"))
             .field("parent", &self.parent)
-            .field("page", &self.page)
-            .field("rotation", &self.rotation)
-            .field("scale", &self.scale)
-            .field("target_width", &self.target_width)
-            .field("target_height", &self.target_height)
-            .field("thumbnail_texture", &self.thumbnail_texture)
             .finish()
     }
 }

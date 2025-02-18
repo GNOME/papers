@@ -86,6 +86,7 @@ pub(crate) mod traits {
     pub use super::job_links::JobLinksExt;
     pub use super::job_load::JobLoadExt;
     pub use super::job_save::JobSaveExt;
+    pub use super::job_signatures::JobSignaturesExt;
     pub use super::job_thumbnail_texture::JobThumbnailTextureExt;
     pub use super::search_context::SearchContextExt;
     pub use super::search_result::SearchResultExt;

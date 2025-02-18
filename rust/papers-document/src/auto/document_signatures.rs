@@ -78,23 +78,23 @@ pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + sealed::Sealed + 'sta
     }
 
     #[doc(alias = "pps_document_signatures_set_password_callback")]
-    fn set_password_callback<P: FnMut(&str) -> String>(&self, cb: P) {
-        let cb_data: P = cb;
-        unsafe extern "C" fn cb_func<P: FnMut(&str) -> String>(
+    fn set_password_callback<P: Fn(&str) -> Option<String> + 'static>(&self, cb: P) {
+        let cb_data: Box_<P> = Box_::new(cb);
+        unsafe extern "C" fn cb_func<P: Fn(&str) -> Option<String> + 'static>(
             text: *const libc::c_char,
             user_data: glib::ffi::gpointer,
         ) -> *mut libc::c_char {
             let text: Borrowed<glib::GString> = from_glib_borrow(text);
-            let callback = user_data as *mut P;
+            let callback = &*(user_data as *mut P);
             (*callback)(text.as_str()).to_glib_full()
         }
         let cb = Some(cb_func::<P> as _);
-        let super_callback0: &P = &cb_data;
+        let super_callback0: Box_<P> = cb_data;
         unsafe {
             ffi::pps_document_signatures_set_password_callback(
                 self.as_ref().to_glib_none().0,
                 cb,
-                super_callback0 as *const _ as *mut _,
+                Box_::into_raw(super_callback0) as *mut _,
             );
         }
     }

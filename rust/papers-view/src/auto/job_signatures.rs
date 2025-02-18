@@ -16,6 +16,8 @@ glib::wrapper! {
 }
 
 impl JobSignatures {
+    pub const NONE: Option<&'static JobSignatures> = None;
+
     #[doc(alias = "pps_job_signatures_new")]
     pub fn new(document: &impl IsA<papers_document::Document>) -> JobSignatures {
         assert_initialized_main_thread!();
@@ -26,14 +28,23 @@ impl JobSignatures {
             .unsafe_cast()
         }
     }
+}
 
+mod sealed {
+    pub trait Sealed {}
+    impl<T: super::IsA<super::JobSignatures>> Sealed for T {}
+}
+
+pub trait JobSignaturesExt: IsA<JobSignatures> + sealed::Sealed + 'static {
     #[doc(alias = "pps_job_signatures_get_signatures")]
     #[doc(alias = "get_signatures")]
-    pub fn signatures(&self) -> Vec<papers_document::Signature> {
+    fn signatures(&self) -> Vec<papers_document::Signature> {
         unsafe {
             FromGlibPtrContainer::from_glib_none(ffi::pps_job_signatures_get_signatures(
-                self.to_glib_none().0,
+                self.as_ref().to_glib_none().0,
             ))
         }
     }
 }
+
+impl<O: IsA<JobSignatures>> JobSignaturesExt for O {}
