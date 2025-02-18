@@ -36,6 +36,13 @@ G_BEGIN_DECLS
 PPS_PUBLIC
 G_DECLARE_INTERFACE (PpsDocumentSignatures, pps_document_signatures, PPS, DOCUMENT_SIGNATURES, GObject)
 
+/**
+ * PpsSignaturePasswordCallback:
+ * @text:
+ * @user_data: (closure):
+ *
+ * Returns: (nullable): The password.
+ */
 typedef char *(*PpsSignaturePasswordCallback) (const gchar *text, gpointer user_data);
 
 struct _PpsDocumentSignaturesInterface {
