@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-13 04:46+0000\n"
-"PO-Revision-Date: 2025-02-15 20:26+0100\n"
+"POT-Creation-Date: 2025-02-17 20:06+0000\n"
+"PO-Revision-Date: 2025-02-18 20:52+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -247,52 +247,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Přidává podporu pro čtení dokumentů PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "Ano"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "Ne"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Typ 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Typ 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Typ 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Typ 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Typ 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Neznámý řez písma"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -303,11 +303,11 @@ msgstr ""
 "nebudou stejná jako ta, která byla použita při vytváření PDF, nemusí být "
 "dokument správně vykreslen."
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Všechna písma jsou buď standardní nebo přibalena."
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Žádný název"
 
@@ -315,20 +315,20 @@ msgstr "Žádný název"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
 #: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "Žádné"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Vložená podmnožina"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Vložené"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Nevložené"
 
@@ -337,7 +337,7 @@ msgstr "Nevložené"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (jedno ze 14 standardních písem)"
 
@@ -346,7 +346,7 @@ msgstr " (jedno ze 14 standardních písem)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (nepatřící mezi 14 standardních písem)"
 
@@ -360,7 +360,7 @@ msgstr " (nepatřící mezi 14 standardních písem)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -384,7 +384,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -486,7 +486,7 @@ msgid "This work is in the Public Domain"
 msgstr "Toto je volné dílo (Public Domain)"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1001
+#: shell/src/document_view/actions.rs:1035
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Uložit přílohu"
@@ -502,22 +502,22 @@ msgstr "Stránka %s"
 msgid "Edit Note"
 msgstr "Upravit poznámku"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:433
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Selhalo vykreslení stránky %d: %s"
 
-#: libview/pps-jobs.c:443
+#: libview/pps-jobs.c:440
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Selhalo vykreslení stránky %d"
 
-#: libview/pps-jobs.c:661
+#: libview/pps-jobs.c:674
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Selhalo vytvoření náhledu pro stránku %d"
 
-#: libview/pps-jobs.c:1646
+#: libview/pps-jobs.c:1700
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Selhal tisk stránky %d: %s"
@@ -1268,6 +1268,7 @@ msgid "Markup Type"
 msgstr "Typ označení"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:713
 msgid "Highlight"
 msgstr "zvýraznění"
 
@@ -1276,10 +1277,12 @@ msgid "Strike out"
 msgstr "přeškrtnutí"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:743
 msgid "Underline"
 msgstr "podtržení"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:723
 msgid "Squiggly"
 msgstr "vlnovka"
 
@@ -1456,61 +1459,65 @@ msgstr "O_točit ⤵"
 msgid "Document Prop_erties"
 msgstr "Vlastnosti dokum_entu"
 
-#: shell/resources/pps-document-view.ui:787
+#: shell/resources/pps-document-view.ui:733
+msgid "Strikethrough"
+msgstr "přeškrtnutí"
+
+#: shell/resources/pps-document-view.ui:837
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.ui:842
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.ui:847
 msgid "_Go To"
 msgstr "_Přejít na"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.ui:852
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: shell/resources/pps-document-view.ui:809
+#: shell/resources/pps-document-view.ui:859
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: shell/resources/pps-document-view.ui:813
+#: shell/resources/pps-document-view.ui:863
 msgid "Select _All"
 msgstr "Vy_brat vše"
 
-#: shell/resources/pps-document-view.ui:819
+#: shell/resources/pps-document-view.ui:869
 msgid "_Save Image As…"
 msgstr "_Uložit obrázek jako…"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.ui:874
 msgid "Copy _Image"
 msgstr "Kopí_rovat obrázek"
 
-#: shell/resources/pps-document-view.ui:831
+#: shell/resources/pps-document-view.ui:881
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Otevřít přílohu"
 
-#: shell/resources/pps-document-view.ui:836
+#: shell/resources/pps-document-view.ui:886
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Uložit přílohu jako…"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.ui:894
 msgid "Annotation _Properties…"
 msgstr "Vlastnosti _poznámky…"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.ui:899
 msgid "R_emove Annotation"
 msgstr "O_dstranit poznámku"
 
-#: shell/resources/pps-document-view.ui:856
+#: shell/resources/pps-document-view.ui:906
 msgid "_Add Text Annotation"
 msgstr "Op_atřit textovou poznámkou"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.ui:911
 msgid "_Highlight Selected Text"
 msgstr "Z_výraznit vybraný text"
 
@@ -1772,35 +1779,35 @@ msgstr "Zavřít _bez uložení"
 msgid "_Save a Copy"
 msgstr "Uložit _kopii"
 
-#: shell/src/document_view/actions.rs:741
+#: shell/src/document_view/actions.rs:755
 msgid "Save Image"
 msgstr "Uložit obrázek"
 
-#: shell/src/document_view/actions.rs:777
+#: shell/src/document_view/actions.rs:791
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Nepodařilo se najít vhodný formát pro uložení obrázku"
 
-#: shell/src/document_view/actions.rs:800
+#: shell/src/document_view/actions.rs:814
 msgid "The image could not be saved."
 msgstr "Nepodařilo se uložit obrázek."
 
-#: shell/src/document_view/actions.rs:903
+#: shell/src/document_view/actions.rs:917
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Režim kurzorové navigace je nyní povolen, stisknutím klávesy F7 jej "
 "deaktivujete."
 
-#: shell/src/document_view/actions.rs:905
+#: shell/src/document_view/actions.rs:919
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Režim kurzorové navigace je nyní deaktivován, stisknutím klávesy F7 jej "
 "povolíte."
 
-#: shell/src/document_view/actions.rs:985 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Nepodařilo se otevřít přílohu"
 
-#: shell/src/document_view/actions.rs:1018
+#: shell/src/document_view/actions.rs:1052
 msgid "The attachment could not be saved."
 msgstr "Nepodařilo se uložit přílohu."
 
