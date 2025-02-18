@@ -154,9 +154,7 @@ pps_document_factory_new_document_for_mime_type (const gchar *mime_type,
 
 	document = g_object_new (backend_type, NULL);
 
-	g_object_set_data_full (G_OBJECT (document), BACKEND_DATA_KEY,
-	                        info,
-	                        (GDestroyNotify) _pps_backend_info_free);
+	g_object_set_data (G_OBJECT (document), BACKEND_DATA_KEY, info);
 
 	return document;
 }
