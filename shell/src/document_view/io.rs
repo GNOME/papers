@@ -297,6 +297,16 @@ impl imp::PpsDocumentView {
         // having a document, we don't know which sidebars are supported
         self.setup_sidebar();
 
+        // Set password callback
+        if let Some(document) = document.dynamic_cast_ref::<DocumentSignatures>() {
+            document.set_password_callback(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                #[upgrade_or_default]
+                move |name| obj.on_signature_password(name)
+            ));
+        }
+
         self.view.grab_focus();
 
         self.update_title();
@@ -675,5 +685,64 @@ impl imp::PpsDocumentView {
                 }
             }
         ));
+    }
+
+    fn on_signature_password(&self, name: &str) -> Option<String> {
+        use std::sync::{Arc, Mutex};
+
+        let password: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
+
+        let body = gettext_f("Please enter password for {}", [name]);
+
+        let entry = gtk::Entry::builder()
+            .activates_default(true)
+            .visibility(false)
+            .build();
+
+        let dialog = adw::AlertDialog::builder()
+            .heading(gettext("Password Required"))
+            .body(body)
+            .default_response("login")
+            .extra_child(&entry)
+            .build();
+
+        dialog.add_responses(&[
+            ("cancel", &gettext("_Cancel")),
+            ("login", &gettext("_Login")),
+        ]);
+        dialog.set_response_appearance("login", adw::ResponseAppearance::Suggested);
+
+        // Note: Poppler (NSS) requires this function to return the requested value sync.
+        // There is no async API so we need a nested loop here -.-
+
+        let lp = Arc::new(glib::MainLoop::new(None, false));
+        let remote_password = password.clone();
+        let remote_lp = lp.clone();
+
+        dialog.connect_response(
+            None,
+            glib::clone!(
+                #[weak]
+                entry,
+                move |_, response| {
+                    if response == "login" {
+                        remote_password
+                            .lock()
+                            .unwrap()
+                            .replace(entry.text().to_string());
+                    }
+
+                    remote_lp.quit();
+                }
+            ),
+        );
+
+        dialog.present(Some(&self.parent_window()));
+        entry.grab_focus();
+        lp.run();
+
+        let password = password.lock().unwrap().take();
+
+        password
     }
 }
