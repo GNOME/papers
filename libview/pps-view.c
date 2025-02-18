@@ -111,6 +111,8 @@ typedef struct
 
 #define BUTTON_MODIFIER_MASK (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK | GDK_BUTTON5_MASK)
 
+#define SCROLL_THRESHOLD 5
+
 /*** Geometry computations ***/
 static void get_page_y_offset (PpsView *view,
                                int page,
@@ -5149,12 +5151,13 @@ selection_scroll_timeout_cb (PpsView *view)
 	int widget_width = gtk_widget_get_width (widget);
 	int widget_height = gtk_widget_get_height (widget);
 
-	pps_document_misc_get_pointer_position (widget, &x, &y);
+	if (!pps_document_misc_get_pointer_position (widget, &x, &y))
+		return G_SOURCE_CONTINUE;
 
-	if (y > widget_height) {
-		shift = (y - widget_height) / 2;
-	} else if (y < 0) {
-		shift = y / 2;
+	if (y + SCROLL_THRESHOLD > widget_height) {
+		shift = (y + SCROLL_THRESHOLD - widget_height) / 2;
+	} else if (y < SCROLL_THRESHOLD) {
+		shift = (y - SCROLL_THRESHOLD) / 2;
 	}
 
 	if (shift)
@@ -5164,10 +5167,10 @@ selection_scroll_timeout_cb (PpsView *view)
 		                                 gtk_adjustment_get_upper (priv->vadjustment) -
 		                                     gtk_adjustment_get_page_size (priv->vadjustment)));
 
-	if (x > widget_width) {
-		shift = (x - widget_width) / 2;
-	} else if (x < 0) {
-		shift = x / 2;
+	if (x + SCROLL_THRESHOLD > widget_width) {
+		shift = (x + SCROLL_THRESHOLD - widget_width) / 2;
+	} else if (x < SCROLL_THRESHOLD) {
+		shift = (x - SCROLL_THRESHOLD) / 2;
 	}
 
 	if (shift)
@@ -5177,7 +5180,7 @@ selection_scroll_timeout_cb (PpsView *view)
 		                                 gtk_adjustment_get_upper (priv->hadjustment) -
 		                                     gtk_adjustment_get_page_size (priv->hadjustment)));
 
-	return TRUE;
+	return G_SOURCE_CONTINUE;
 }
 
 static void

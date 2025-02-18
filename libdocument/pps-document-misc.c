@@ -236,7 +236,7 @@ pps_document_misc_format_datetime (GDateTime *dt)
  *
  * Get the pointer's x and y position relative to @widget.
  */
-void
+gboolean
 pps_document_misc_get_pointer_position (GtkWidget *widget,
                                         gint *x,
                                         gint *y)
@@ -254,7 +254,7 @@ pps_document_misc_get_pointer_position (GtkWidget *widget,
 		*y = -1;
 
 	if (!gtk_widget_get_realized (widget))
-		return;
+		return FALSE;
 
 	seat = gdk_display_get_default_seat (gtk_widget_get_display (widget));
 
@@ -262,16 +262,16 @@ pps_document_misc_get_pointer_position (GtkWidget *widget,
 	native = gtk_widget_get_native (widget);
 
 	if (!native)
-		return;
+		return FALSE;
 
 	surface = gtk_native_get_surface (native);
 	if (!surface)
-		return;
+		return FALSE;
 
 	if (!gdk_surface_get_device_position (surface,
 	                                      device_pointer,
 	                                      &dx, &dy, NULL))
-		return;
+		return FALSE;
 
 	if (x)
 		*x = dx;
@@ -293,4 +293,6 @@ pps_document_misc_get_pointer_position (GtkWidget *widget,
 		*x -= dx;
 	if (y)
 		*y -= dy;
+
+	return TRUE;
 }

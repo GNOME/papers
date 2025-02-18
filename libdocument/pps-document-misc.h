@@ -51,8 +51,8 @@ PPS_PUBLIC
 gchar *pps_document_misc_format_datetime (GDateTime *dt);
 
 PPS_PUBLIC
-void pps_document_misc_get_pointer_position (GtkWidget *widget,
-                                             gint *x,
-                                             gint *y);
+gboolean pps_document_misc_get_pointer_position (GtkWidget *widget,
+                                                 gint *x,
+                                                 gint *y);
 
 G_END_DECLS
