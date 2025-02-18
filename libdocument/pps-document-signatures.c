@@ -32,7 +32,7 @@ pps_document_signatures_default_init (PpsDocumentSignaturesInterface *klass)
 /**
  * pps_document_signatures_set_password_callback:
  * @document_signatures: an #PpsDocumentSignatures
- * @cb: (scope call): (closure user_data) an #PpsSignaturePasswordCallback
+ * @cb: (scope forever): (closure user_data) an #PpsSignaturePasswordCallback
  * @user_data: data to pass to @cb
  *
  * Popplers crypto backend asks for certificate password before access,
