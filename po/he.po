@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: evince.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2024-11-27 13:41+0000\n"
-"PO-Revision-Date: 2025-01-07 11:09+0200\n"
+"POT-Creation-Date: 2025-02-17 20:06+0000\n"
+"PO-Revision-Date: 2025-02-18 14:13+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -29,10 +29,10 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
-#: previewer/pps-previewer-window.c:488 shell/pps-document-view.c:1116
-#: shell/pps-document-view.ui:73 shell/pps-loader-view.ui:10
-#: shell-rs/src/application.rs:41 shell-rs/src/application.rs:64
-#: shell-rs/src/application.rs:288
+#: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
+#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
+#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "מסמכים"
 
@@ -51,11 +51,11 @@ msgstr "חלון חדש"
 
 #: data/org.gnome.Papers.gschema.xml:14
 msgid "Override document restrictions"
-msgstr "Override document restrictions"
+msgstr "דריסת מגבלות מסמכים"
 
 #: data/org.gnome.Papers.gschema.xml:15
 msgid "Override document restrictions, like restriction to copy or to print."
-msgstr "Override document restrictions, like restriction to copy or to print."
+msgstr "דריסת הגבלות קובץ, כגון הגבלה להעתיק או להדפיס."
 
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
@@ -67,7 +67,7 @@ msgstr "The URI of the directory last used to save a picture"
 
 #: data/org.gnome.Papers.gschema.xml:27
 msgid "Page cache size in MiB"
-msgstr "גודל מטמון הדפים ב־MiB"
+msgstr "גודל מטמון העמודים ב־MiB"
 
 #: data/org.gnome.Papers.gschema.xml:28
 msgid ""
@@ -81,15 +81,15 @@ msgstr ""
 msgid "Allow links to change the zoom level."
 msgstr "לאפשר לקישורים לשנות את המרחק מהתצוגה."
 
-#: data/org.gnome.Papers.gschema.xml:40
+#: data/org.gnome.Papers.gschema.xml:43
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr "לבדוק איות בעת כתיבת הערות פירוש או מילוי טופסי טקסט."
 
-#: data/org.gnome.Papers.gschema.xml:44
+#: data/org.gnome.Papers.gschema.xml:47
 msgid "Show a side bar next to the document to help navigate the document."
 msgstr "Show a side bar next to the document to help navigate the document."
 
-#: data/org.gnome.Papers.gschema.xml:57
+#: data/org.gnome.Papers.gschema.xml:60
 msgid "Set the default zoom level to display a document."
 msgstr "Set the default zoom level to display a document."
 
@@ -103,7 +103,7 @@ msgstr ""
 
 #: data/org.gnome.Papers.gschema.xml:68
 msgid "Show two pages side by side."
-msgstr "Show two pages side by side."
+msgstr "להציג שני עמודים זה לצד זה."
 
 #: data/org.gnome.Papers.gschema.xml:72
 msgid ""
@@ -232,52 +232,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "הוספת תמיכה לקריאת מסמכי PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:709
-#: libdocument/backend/pdf/pps-poppler.c:715
-#: nautilus/pps-nautilus-extension.c:119 shell-rs/src/properties_general.rs:170
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "כן"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:712
-#: libdocument/backend/pdf/pps-poppler.c:715
-#: nautilus/pps-nautilus-extension.c:121 shell-rs/src/properties_general.rs:171
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "לא"
 
-#: libdocument/backend/pdf/pps-poppler.c:822
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:824
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:826
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:828
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:830
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:832
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:834
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:836
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "סוג גופן לא ידוע"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -287,11 +287,11 @@ msgstr ""
 "גופני ההחלפה שנבחרו על ידי fontconfig אינם זהים לגופנים בהם נעשה שימוש "
 "ליצירת ה־PDF, העיבוד עשוי להיות שגוי."
 
-#: libdocument/backend/pdf/pps-poppler.c:885
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "כל הגופנים הם תקניים או מוטמעים."
 
-#: libdocument/backend/pdf/pps-poppler.c:916
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "ללא שם"
 
@@ -299,21 +299,20 @@ msgstr "ללא שם"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#: libdocument/backend/pdf/pps-poppler.c:925 libview/pps-print-operation.c:1901
-#: shell-rs/src/properties_general.rs:82 shell-rs/src/properties_general.rs:199
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
+#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "ללא"
 
-#: libdocument/backend/pdf/pps-poppler.c:933
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "תת־קבוצה מוטמעת"
 
-#: libdocument/backend/pdf/pps-poppler.c:935
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "מוטמע"
 
-#: libdocument/backend/pdf/pps-poppler.c:937
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "לא מוטמע"
 
@@ -322,7 +321,7 @@ msgstr "לא מוטמע"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:944
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (אחד מ־14 הגופנים הרגילים)"
 
@@ -331,7 +330,7 @@ msgstr " (אחד מ־14 הגופנים הרגילים)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:951
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (אף אחד מ־14 הגופנים הרגילים)"
 
@@ -345,7 +344,7 @@ msgstr " (אף אחד מ־14 הגופנים הרגילים)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:970
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -369,7 +368,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:988
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -408,22 +407,22 @@ msgstr "לא ניתן לפתוח את הצרופה „%s”:‏ %s"
 msgid "Couldn’t open attachment “%s”"
 msgstr "לא ניתן לפתוח את הצרופה „%s”"
 
-#: libdocument/pps-document-factory.c:104
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "סוג הקובץ %s ‏(%s) אינו נתמך"
 
-#: libdocument/pps-document-factory.c:374 libdocument/pps-file-helpers.c:373
-#: libdocument/pps-file-helpers.c:419 libdocument/pps-file-helpers.c:428
-#: libdocument/pps-file-helpers.c:509 libdocument/pps-file-helpers.c:518
+#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
+#: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "סוג MIME לא ידוע"
 
-#: libdocument/pps-document-factory.c:506
+#: libdocument/pps-document-factory.c:500
 msgid "All Documents"
 msgstr "כל המסמכים"
 
-#: libdocument/pps-document-factory.c:534
+#: libdocument/pps-document-factory.c:528
 msgid "All Files"
 msgstr "כל הקבצים"
 
@@ -466,59 +465,12 @@ msgstr "‏%s, נוף (%s)"
 msgid "Failed to create a temporary file: %s"
 msgstr "ארע כשל ביצירת הקובץ הזמני: %s"
 
-#: libdocument/pps-signature.c:566
-msgid "Trusted"
-msgstr "אמין"
-
-#: libdocument/pps-signature.c:568
-msgid "Untrusted issuer"
-msgstr "מנפיק מפוקפק"
-
-#: libdocument/pps-signature.c:570
-msgid "Unknown issuer"
-msgstr "מנפיק לא ידוע"
-
-#: libdocument/pps-signature.c:572
-msgid "Revoked"
-msgstr "נשלל"
-
-#: libdocument/pps-signature.c:574
-msgid "Expired"
-msgstr "פג תוקף"
-
-#: libdocument/pps-signature.c:576
-msgid "Not verified"
-msgstr "לא מאומת"
-
-#: libdocument/pps-signature.c:579 libdocument/pps-signature.c:607
-msgid "Generic error"
-msgstr "שגיאה כללית"
-
-#: libdocument/pps-signature.c:582 libdocument/pps-signature.c:610
-msgid "Unknown status"
-msgstr "מצב לא ידוע"
-
-#: libdocument/pps-signature.c:598
-msgid "Valid"
-msgstr "תקף"
-
-#: libdocument/pps-signature.c:600
-msgid "Invalid"
-msgstr "שגוי"
-
-#: libdocument/pps-signature.c:602
-msgid "Digest mismatch"
-msgstr "חוסר התאמת תקציר"
-
-#: libdocument/pps-signature.c:604
-msgid "Decoding error"
-msgstr "שגיאת פענוח"
-
 #: libdocument/pps-xmp.c:201
 msgid "This work is in the Public Domain"
 msgstr "יצירה זו היא לרשות הציבור"
 
-#: libview/context/pps-attachment-context.c:347
+#: libview/context/pps-attachment-context.c:348
+#: shell/src/document_view/actions.rs:1035
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "שמירת צרופה"
@@ -526,33 +478,31 @@ msgstr[1] "שמירת צרופות"
 msgstr[2] "שמירת צרופות"
 msgstr[3] "שמירת צרופות"
 
-#: libview/context/pps-history.c:493 previewer/pps-page-selector.c:194
-#: shell/pps-document-view.c:551 shell/pps-document-view.c:2673
-#: shell/pps-sidebar-bookmarks.c:339
+#: libview/context/pps-history.c:487 previewer/pps-page-selector.c:194
 #, c-format
 msgid "Page %s"
 msgstr "עמוד %s"
 
-#: libview/pps-annotation-window.c:275
+#: libview/pps-annotation-window.c:270
 msgid "Edit Note"
 msgstr "עריכת הערה"
 
-#: libview/pps-jobs.c:414
+#: libview/pps-jobs.c:433
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "עיבוד עמוד %d נכשל: %s"
 
-#: libview/pps-jobs.c:421
+#: libview/pps-jobs.c:440
 #, c-format
 msgid "Failed to render page %d"
 msgstr "עיבוד עמוד %d נכשל"
 
-#: libview/pps-jobs.c:639
+#: libview/pps-jobs.c:674
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "יצירת תמונה ממוזערת עבור עמוד %d נכשלה"
 
-#: libview/pps-jobs.c:1638
+#: libview/pps-jobs.c:1700
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "הדפסת עמוד %d נכשלה: ‏%s"
@@ -591,8 +541,9 @@ msgstr "בחירת טווח ההדפסה שלך אינו כולל עמודים �
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
-#: shell/pps-annotation-properties-dialog.ui:87 shell/pps-document-view.c:3628
-#: shell/pps-document-view.ui:609 shell/pps-window.ui:163
+#: shell/resources/pps-annotation-properties-dialog.ui:87
+#: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
+#: shell/src/document_view/io.rs:589
 msgid "_Close"
 msgstr "_סגירה"
 
@@ -605,15 +556,15 @@ msgstr "הדפס"
 msgid "Page Scaling:"
 msgstr "מידות העמוד:"
 
-#: libview/pps-print-operation.c:1902
+#: libview/pps-print-operation.c:1904
 msgid "Shrink to Printable Area"
 msgstr "כיווץ לאזור הניתן להדפסה"
 
-#: libview/pps-print-operation.c:1903
+#: libview/pps-print-operation.c:1905
 msgid "Fit to Printable Area"
 msgstr "התאמה לאזור הניתן להדפסה"
 
-#: libview/pps-print-operation.c:1906
+#: libview/pps-print-operation.c:1912
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of "
 "the following:\n"
@@ -636,11 +587,11 @@ msgstr ""
 "• „התאמה לאזור הניתן להדפסה”: עמודי המסמך מוגדלים או מוקטנים כדי להתאים "
 "לאזור הניתן להדפסה בדף המדפסת.\n"
 
-#: libview/pps-print-operation.c:1917
+#: libview/pps-print-operation.c:1923
 msgid "Auto Rotate and Center"
 msgstr "הטיה ומרכוז אוטומטיים"
 
-#: libview/pps-print-operation.c:1920
+#: libview/pps-print-operation.c:1926
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -648,25 +599,25 @@ msgstr ""
 "הטיית כיוון העמוד של כל עמוד בנפרד כך שיתאים להטיה של כל עמוד במסמך. עמודי "
 "המסמך ימורכזו בדף המדפסת."
 
-#: libview/pps-print-operation.c:1924
+#: libview/pps-print-operation.c:1930
 msgid "Select page size using document page size"
 msgstr "בחירת גודל העמוד באמצעות גודל עמוד המסמך"
 
-#: libview/pps-print-operation.c:1926
+#: libview/pps-print-operation.c:1932
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
 msgstr "כאשר פעיל, כל עמוד יודפס באותו גודל הדף כמו עמוד המסמך."
 
-#: libview/pps-print-operation.c:1930
+#: libview/pps-print-operation.c:1936
 msgid "Draw border around pages"
 msgstr "ציור גבולות מסביב לעמודים"
 
-#: libview/pps-print-operation.c:1932
+#: libview/pps-print-operation.c:1938
 msgid "When enabled, a border will be drawn around each page."
 msgstr "כאשר פעיל, יצוייר גבול מסביב לכל עמוד."
 
-#: libview/pps-print-operation.c:2025
+#: libview/pps-print-operation.c:2031
 msgid "Page Handling"
 msgstr "טיפול בעמודים"
 
@@ -690,60 +641,60 @@ msgstr "גלילת התצוגה למטה"
 msgid "Document View"
 msgstr "תצוגת מסמך"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2108
 msgid "Go to first page"
 msgstr "מעבר לעמוד הראשון"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2110
 msgid "Go to previous page"
 msgstr "מעבר לעמוד הקודם"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2112
 msgid "Go to next page"
 msgstr "מעבר לעמוד הבא"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2114
 msgid "Go to last page"
 msgstr "מעבר לעמוד האחרון"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2116
 msgid "Go to page"
 msgstr "מעבר לעמוד"
 
-#: libview/pps-view.c:2123
+#: libview/pps-view.c:2118
 msgid "Find"
 msgstr "חיפוש"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2147
 #, c-format
 msgid "Go to page %s"
 msgstr "מעבר לעמוד %s"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "מעבר ל־%s בקובץ „%s“"
 
-#: libview/pps-view.c:2161
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Go to file “%s”"
 msgstr "מעבר לקובץ „%s“"
 
-#: libview/pps-view.c:2169
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Launch %s"
 msgstr "שיגור %s"
 
-#: libview/pps-view.c:2176
+#: libview/pps-view.c:2171
 #, c-format
 msgid "Reset form"
 msgstr "איפוס טופס"
 
-#: libview/pps-view-presentation.c:831
+#: libview/pps-view-presentation.c:833
 msgid "Running in presentation mode"
 msgstr "מופעל מצב מצגת"
 
-#: libview/pps-view-presentation.c:882
+#: libview/pps-view-presentation.c:884
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "סוף המצגת. נא להקיש Esc או ללחוץ ליציאה."
 
@@ -761,7 +712,7 @@ msgstr "‏(%d מתוך %d)"
 msgid "of %d"
 msgstr "מתוך %d"
 
-#: previewer/pps-page-selector.ui:12 shell/pps-page-selector.ui:12
+#: previewer/pps-page-selector.ui:12 shell/resources/pps-page-selector.ui:12
 msgid "Select page"
 msgstr "בחירת עמוד"
 
@@ -818,7 +769,8 @@ msgstr "העמוד הקודם"
 msgid "Next Page"
 msgstr "העמוד הבא"
 
-#: previewer/pps-previewer-window.ui:36 shell/pps-document-view.ui:224
+#: previewer/pps-previewer-window.ui:36
+#: shell/resources/pps-document-view.ui:221
 msgid "Page Count"
 msgstr "מספר עמוד"
 
@@ -830,7 +782,8 @@ msgstr "_הדפסה"
 msgid "Print This Document"
 msgstr "הדפסת מסמך זה"
 
-#: previewer/pps-previewer-window.ui:53 shell/pps-document-view.ui:306
+#: previewer/pps-previewer-window.ui:53
+#: shell/resources/pps-document-view.ui:304
 msgid "Zoom Out"
 msgstr "הת_רחקות"
 
@@ -838,17 +791,18 @@ msgstr "הת_רחקות"
 msgid "Normal Size"
 msgstr "גודל _רגיל"
 
-#: previewer/pps-previewer-window.ui:67 shell/pps-document-view.ui:293
+#: previewer/pps-previewer-window.ui:67
+#: shell/resources/pps-document-view.ui:291
 msgid "Zoom In"
 msgstr "להתקרב"
 
-#: previewer/pps-previewer-window.ui:89 shell/pps-document-view.c:1891
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
 msgid "Failed to Print Document"
 msgstr "הדפסת המסמך נכשלה"
 
 #: nautilus/pps-nautilus-extension.c:123
-#: shell/pps-annotation-properties-dialog.ui:59
-#: shell-rs/src/properties_general.rs:172
+#: shell/resources/pps-annotation-properties-dialog.ui:59
+#: shell/src/properties_general.rs:185
 msgid "Unknown"
 msgstr "לא ידוע"
 
@@ -856,7 +810,7 @@ msgstr "לא ידוע"
 msgid "Document Properties"
 msgstr "מאפייני מסמך"
 
-#: nautilus/pps-nautilus-extension.h:60 shell-rs/src/properties_general.rs:142
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
 msgid "Title"
 msgstr "כותרת"
 
@@ -864,679 +818,514 @@ msgstr "כותרת"
 msgid "Location"
 msgstr "מיקום"
 
-#: nautilus/pps-nautilus-extension.h:62 shell-rs/src/properties_general.rs:143
+#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
 msgid "Subject"
 msgstr "נושא"
 
 #: nautilus/pps-nautilus-extension.h:63
-#: shell/pps-annotation-properties-dialog.ui:9
-#: shell-rs/src/properties_general.rs:144
+#: shell/resources/pps-annotation-properties-dialog.ui:9
+#: shell/src/properties_general.rs:149
 msgid "Author"
 msgstr "יוצר או יוצרת"
 
-#: nautilus/pps-nautilus-extension.h:64 shell-rs/src/properties_general.rs:145
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
 msgid "Keywords"
 msgstr "מילות מפתח"
 
-#: nautilus/pps-nautilus-extension.h:65 shell-rs/src/properties_general.rs:146
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
 msgid "Producer"
 msgstr "יצרן"
 
-#: nautilus/pps-nautilus-extension.h:66 shell-rs/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
 msgid "Creator"
 msgstr "יוצר"
 
-#: nautilus/pps-nautilus-extension.h:67 shell-rs/src/properties_general.rs:154
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
 msgid "Created"
 msgstr "נוצר"
 
-#: nautilus/pps-nautilus-extension.h:68 shell-rs/src/properties_general.rs:155
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
 msgid "Modified"
 msgstr "‏השתנה"
 
-#: nautilus/pps-nautilus-extension.h:69 shell-rs/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
 msgid "Number of Pages"
 msgstr "מספר עמודים"
 
-#: nautilus/pps-nautilus-extension.h:70 shell-rs/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
 msgid "Optimized"
 msgstr "‏הוטב"
 
-#: nautilus/pps-nautilus-extension.h:71 shell-rs/src/properties_general.rs:160
-#: shell-rs/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
+#: shell/src/properties_general.rs:175
 msgid "Format"
 msgstr "תבנית"
 
-#: nautilus/pps-nautilus-extension.h:72 shell-rs/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
 msgid "Security"
 msgstr "אבטחה"
 
-#: nautilus/pps-nautilus-extension.h:73 shell-rs/src/properties_general.rs:174
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
 msgid "Contains Javascript"
 msgstr "מכילים Javascript"
 
-#: nautilus/pps-nautilus-extension.h:74 shell-rs/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
 msgid "Paper Size"
 msgstr "‏גודל דף"
 
-#: nautilus/pps-nautilus-extension.h:75 shell-rs/src/properties_general.rs:132
+#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
 msgid "Size"
 msgstr "גודל"
 
-#: shell/help-overlay.ui:11
+#: shell/resources/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "Opening, Closing, Saving and Printing"
 msgstr "פתיחה, סגירה, שמירה והדפסה"
 
-#: shell/help-overlay.ui:14
+#: shell/resources/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Open Document"
 msgstr "פתיחת מסמך"
 
-#: shell/help-overlay.ui:20
+#: shell/resources/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Open Copy of Current Document"
 msgstr "פתיחת עותק של המסמך הנוכחי"
 
-#: shell/help-overlay.ui:26
+#: shell/resources/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Open With…"
 msgstr "פתיחה באמצעות…"
 
-#: shell/help-overlay.ui:32
+#: shell/resources/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Save Copy of Current Document"
 msgstr "שמירת עותק של המסמך הנוכחי"
 
-#: shell/help-overlay.ui:38
+#: shell/resources/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Print Current Document"
 msgstr "הדפסת המסמך הנוכחי"
 
-#: shell/help-overlay.ui:44
+#: shell/resources/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Close Current Document Window"
 msgstr "סגירת חלון המסמך הנוכחי"
 
-#: shell/help-overlay.ui:52
+#: shell/resources/help-overlay.ui:52
 msgctxt "shortcut window"
 msgid "Window"
 msgstr "חלון"
 
-#: shell/help-overlay.ui:55
+#: shell/resources/help-overlay.ui:55
 msgctxt "shortcut window"
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
-#: shell/help-overlay.ui:61
+#: shell/resources/help-overlay.ui:61
 msgctxt "shortcut window"
 msgid "Enter Presentation Mode"
 msgstr "כניסה למצב מצגת"
 
-#: shell/help-overlay.ui:67
+#: shell/resources/help-overlay.ui:67
 msgctxt "shortcut window"
 msgid "Side Pane"
 msgstr "סרגל צד"
 
-#: shell/help-overlay.ui:73
+#: shell/resources/help-overlay.ui:73
 msgctxt "shortcut window"
 msgid "Caret Navigation"
 msgstr "ניווט"
 
-#: shell/help-overlay.ui:81
+#: shell/resources/help-overlay.ui:81
 msgctxt "shortcut window"
 msgid "Selecting and Copying Text"
 msgstr "בחירה והעתקתה טקסט"
 
-#: shell/help-overlay.ui:84
+#: shell/resources/help-overlay.ui:84
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "העתקה"
 
-#: shell/help-overlay.ui:90
+#: shell/resources/help-overlay.ui:90
 msgctxt "shortcut window"
 msgid "Select All"
 msgstr "בחירת הכול"
 
-#: shell/help-overlay.ui:98
+#: shell/resources/help-overlay.ui:98
 msgctxt "shortcut window"
 msgid "Rotating and Zooming"
 msgstr "סיבוב ותקריב"
 
-#: shell/help-overlay.ui:101
+#: shell/resources/help-overlay.ui:101
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Counter-Clockwise"
 msgstr "סיבוב הדף ב־90° נגד כיוון השעון"
 
-#: shell/help-overlay.ui:107
+#: shell/resources/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "סיבוב הדף ב־90° עם כיוון השעון"
 
-#: shell/help-overlay.ui:113 shell/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: shell/help-overlay.ui:119 shell/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "התרחקות"
 
-#: shell/help-overlay.ui:125
+#: shell/resources/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "Normal Size"
 msgstr "גודל רגיל"
 
-#: shell/help-overlay.ui:131
+#: shell/resources/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Zoom In (Alternative)"
 msgstr "התקרבות (חלופי)"
 
-#: shell/help-overlay.ui:137
+#: shell/resources/help-overlay.ui:137
 msgctxt "shortcut window"
 msgid "Fit Page"
 msgstr "התאמה לעמוד"
 
-#: shell/help-overlay.ui:143
+#: shell/resources/help-overlay.ui:143
 msgctxt "shortcut window"
 msgid "Fit Width"
 msgstr "התאמה לרוחב"
 
-#: shell/help-overlay.ui:149
+#: shell/resources/help-overlay.ui:149
 msgctxt "shortcut window"
 msgid "Automatic Zoom"
 msgstr "תקריב אוטומטי"
 
-#: shell/help-overlay.ui:157
+#: shell/resources/help-overlay.ui:157
 msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "הזזת המסמך"
 
-#: shell/help-overlay.ui:160 shell/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "לנוע בדף"
 
-#: shell/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:172
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "מעבר מספר שורות מעלה/מטה בכל פעם"
 
-#: shell/help-overlay.ui:178 shell/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "העמוד הקודם"
 
-#: shell/help-overlay.ui:184 shell/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "העמוד הבא"
 
-#: shell/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "מעבר לעמוד מספר"
 
-#: shell/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "העמוד הקודם (מהיר)"
 
-#: shell/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "העמוד הבא (מהיר)"
 
-#: shell/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "העמוד הקודם שנצפה"
 
-#: shell/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "העמוד הבא שנצפה"
 
-#: shell/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "מעבר לתחילת/סוף דף"
 
-#: shell/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "מעבר לתחילת המסמך"
 
-#: shell/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:232
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "מעבר לסוף המסמך"
 
-#: shell/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:240
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "תצוגת מסמך וטיפולו"
 
-#: shell/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "הוספת סימנייה"
 
-#: shell/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "הסרת סימנייה"
 
-#: shell/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "מצב לילה"
 
-#: shell/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "המשך גלילה"
 
-#: shell/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "עמוד כפול"
 
-#: shell/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "אי־זוגיים משמאל"
 
-#: shell/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "מאפייני מסמך"
 
-#: shell/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "הוספת הערה לטקסט"
 
-#: shell/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:291
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "הדגשת מלל"
 
-#: shell/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:299
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "חיפוש טקסט"
 
-#: shell/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "חיפוש"
 
-#: shell/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "חיפוש הבא"
 
-#: shell/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:314
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "חיפוש הקודם"
 
-#: shell/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:322
 msgctxt "shortcut window"
 msgid "General"
 msgstr "כללי"
 
-#: shell/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "עזרה"
 
-#: shell/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "תפריט"
 
-#: shell/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "צירופי מקשים"
 
-#: shell/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "חלון חדש"
 
-#: shell/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:349
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "סגירת חלון"
 
-#: shell/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:357
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "מצב מצגת"
 
-#: shell/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "מסך שחור"
 
-#: shell/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:366
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "מסך לבן"
 
-#: shell/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:374
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "מחוות משטח מגע"
 
-#: shell/pps-annotation-properties-dialog.ui:4
-#: shell/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-annotation-properties-dialog.ui:4
+#: shell/resources/pps-sidebar-annotations.ui:69
 msgid "Annotation Properties"
 msgstr "מאפייני הפרשנות"
 
-#: shell/pps-annotation-properties-dialog.ui:14
+#: shell/resources/pps-annotation-properties-dialog.ui:14
 msgid "Color"
 msgstr "צבע"
 
-#: shell/pps-annotation-properties-dialog.ui:26
+#: shell/resources/pps-annotation-properties-dialog.ui:26
 msgid "Opacity"
 msgstr "אטימות"
 
-#: shell/pps-annotation-properties-dialog.ui:40
+#: shell/resources/pps-annotation-properties-dialog.ui:40
 msgid "Initially Opened"
 msgstr "נפתח לראשונה"
 
-#: shell/pps-annotation-properties-dialog.ui:46
+#: shell/resources/pps-annotation-properties-dialog.ui:46
 msgid "Icon"
 msgstr "סמל"
 
-#: shell/pps-annotation-properties-dialog.ui:50
+#: shell/resources/pps-annotation-properties-dialog.ui:50
 msgid "Note"
 msgstr "פתקית"
 
-#: shell/pps-annotation-properties-dialog.ui:51
+#: shell/resources/pps-annotation-properties-dialog.ui:51
 msgid "Comment"
 msgstr "הערה"
 
-#: shell/pps-annotation-properties-dialog.ui:52
+#: shell/resources/pps-annotation-properties-dialog.ui:52
 msgid "Key"
 msgstr "מפתח"
 
-#: shell/pps-annotation-properties-dialog.ui:53
+#: shell/resources/pps-annotation-properties-dialog.ui:53
 msgid "Help"
 msgstr "עזרה"
 
-#: shell/pps-annotation-properties-dialog.ui:54
+#: shell/resources/pps-annotation-properties-dialog.ui:54
 msgid "New Paragraph"
 msgstr "פסקה חדשה"
 
-#: shell/pps-annotation-properties-dialog.ui:55
+#: shell/resources/pps-annotation-properties-dialog.ui:55
 msgid "Paragraph"
 msgstr "פסקה"
 
-#: shell/pps-annotation-properties-dialog.ui:56
+#: shell/resources/pps-annotation-properties-dialog.ui:56
 msgid "Insert"
 msgstr "הוספה"
 
-#: shell/pps-annotation-properties-dialog.ui:57
+#: shell/resources/pps-annotation-properties-dialog.ui:57
 msgid "Cross"
 msgstr "צלב"
 
-#: shell/pps-annotation-properties-dialog.ui:58
+#: shell/resources/pps-annotation-properties-dialog.ui:58
 msgid "Circle"
 msgstr "עיגול"
 
-#: shell/pps-annotation-properties-dialog.ui:69
+#: shell/resources/pps-annotation-properties-dialog.ui:69
 msgid "Markup Type"
 msgstr "סוג סימון"
 
-#: shell/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:713
 msgid "Highlight"
 msgstr "הדגשה"
 
-#: shell/pps-annotation-properties-dialog.ui:74
+#: shell/resources/pps-annotation-properties-dialog.ui:74
 msgid "Strike out"
 msgstr "מחיקה"
 
-#: shell/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:743
 msgid "Underline"
 msgstr "קו תחתי"
 
-#: shell/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:723
 msgid "Squiggly"
 msgstr "משורבט"
 
-#: shell/pps-annotation-properties-dialog.ui:88
+#: shell/resources/pps-annotation-properties-dialog.ui:88
 msgid "_Apply"
 msgstr "ה_חלה"
 
-#: shell/pps-document-view.c:424 shell-rs/src/window.rs:466
-msgid "View Details"
-msgstr "הצגת פרטים"
-
-#: shell/pps-document-view.c:1156
-msgid "Digital Signature is invalid!"
-msgstr "החתימה הדיגיטלית שגויה!"
-
-#: shell/pps-document-view.c:1159 shell/pps-document-view.ui:239
-msgid "Document has been digitally signed."
-msgstr "המסמך נחתם דיגיטלית."
-
-#: shell/pps-document-view.c:1190
-msgid "The document contains no pages"
-msgstr "המסמך אינו מכיל עמודים"
-
-#: shell/pps-document-view.c:1193
-msgid "The document contains only empty pages"
-msgstr "המסמך מכיל עמודים ריקים בלבד"
-
-#: shell/pps-document-view.c:1424
-msgid "File Saved"
-msgstr "הקובץ נשמר"
-
-#: shell/pps-document-view.c:1434 shell/pps-document-view.c:1487
-#, c-format
-msgid "The file could not be saved as “%s”."
-msgstr "לא ניתן לשמור את הקובץ בשם „%s“."
-
-#: shell/pps-document-view.c:1549
-msgid "Save As…"
-msgstr "שמירה בשם…"
-
-#: shell/pps-document-view.c:1851
-#, c-format
-msgid "%d pending job in queue"
-msgid_plural "%d pending jobs in queue"
-msgstr[0] "משימה ממתינה בתור"
-msgstr[1] "שתי משימות ממתינות בתור"
-msgstr[2] "%d משימות ממתינות בתור"
-msgstr[3] "%d משימות ממתינות בתור"
-
-#: shell/pps-document-view.c:1944
-#, c-format
-msgid "Printing job “%s”"
-msgstr "המשימה „%s“ מודפסת"
-
-#: shell/pps-document-view.c:1947 shell/pps-loader-view.ui:60
-msgid "C_ancel"
-msgstr "_ביטול"
-
-#: shell/pps-document-view.c:2127 shell-rs/src/window.rs:267
-msgid "Document contains form fields that have been filled out."
-msgstr "המסמך מכיל שדות טופס שמולאו."
-
-#: shell/pps-document-view.c:2130 shell-rs/src/window.rs:268
-msgid "Document contains new or modified annotations."
-msgstr "המסמך מכיל פרשנויות חדשות או כאלה ששונו."
-
-#: shell/pps-document-view.c:2137
-msgid "Save Changes to a Copy?"
-msgstr "שמירת השינויים לעותק?"
-
-#: shell/pps-document-view.c:2138
-msgid "If you don’t save a copy, changes will be permanently lost."
-msgstr "ללא שמירת עותק למסמך, כלל השינויים יאבדו לצמיתות."
-
-#: shell/pps-document-view.c:2141
-msgid "Close _Without Saving"
-msgstr "סגירה _ללא שמירה"
-
-#: shell/pps-document-view.c:2142 shell/pps-document-view.c:3384
-#: shell/pps-document-view.c:3520 shell/pps-document-view.c:3590
-#: shell/pps-document-view.ui:601
-msgid "_Cancel"
-msgstr "_ביטול"
-
-#: shell/pps-document-view.c:2143
-msgid "_Save a Copy"
-msgstr "שמירת _עותק"
-
-#: shell/pps-document-view.c:3229
-#, c-format
-msgid "Caret navigation mode is now enabled, press F7 to disable."
-msgstr "מצב ניווט סמן פעיל מעכשיו, יש ללחוץ על F7 להשבתה."
-
-#: shell/pps-document-view.c:3231
-#, c-format
-msgid "Caret navigation mode is now disabled, press F7 to enable."
-msgstr "מצב ניווט סמן כבוי מעכשיו, יש ללחוץ על F7 להפעלה."
-
-#: shell/pps-document-view.c:3381
-#, c-format
-msgid "Please enter password for %s"
-msgstr "נא למלא ססמה עבור „%s”"
-
-#: shell/pps-document-view.c:3383 shell/pps-password-dialog.ui:4
-#: shell/pps-password-view.ui:10 shell/pps-password-view.ui:19
-msgid "Password Required"
-msgstr "נדרשת ססמה"
-
-#: shell/pps-document-view.c:3385
-msgid "_Login"
-msgstr "_כניסה"
-
-#: shell/pps-document-view.c:3484
-msgid "Save Signed File"
-msgstr "שמירת קובץ חתום"
-
-#: shell/pps-document-view.c:3519
-msgid "Draw a rectangle to insert a signature field"
-msgstr "ציור מלבן להכנסת שדה לחתימה"
-
-#: shell/pps-document-view.c:3545
-#, c-format
-msgid ""
-"Digitally signed by %s\n"
-"Date: %s"
-msgstr ""
-"נחתם דיגיטלית על ידי %s\n"
-"תאריך: %s"
-
-#: shell/pps-document-view.c:3581
-msgid "Certificate Required"
-msgstr "דרוש אישור"
-
-#: shell/pps-document-view.c:3586
-msgid "Select signing certificate"
-msgstr "בחירת אישור חתימה"
-
-# msgctxt "shortcut window"
-#: shell/pps-document-view.c:3587
-msgid "Select"
-msgstr "בחירה"
-
-#: shell/pps-document-view.c:3626
-msgid "A certificate is required to sign this document"
-msgstr "צריך אישור כדי לחתום על האישור הזה"
-
-#: shell/pps-document-view.c:3910
-#, c-format
-msgid ""
-"Security alert: this document has been prevented from opening the file “%s”"
-msgstr "התרעת אבטחה: מסמך זה נמנע מפתיחת הקובץ „%s”"
-
-#: shell/pps-document-view.c:3971 shell-rs/src/window.rs:1136
-msgid "Unable to open external link"
-msgstr "לא ניתן לפתוח קישור חיצוני"
-
-#: shell/pps-document-view.c:4195
-msgid "Couldn’t find appropriate format to save image"
-msgstr "לא נמצאה התבנית המתאימה לשמירת התמונה"
-
-#: shell/pps-document-view.c:4225
-msgid "The image could not be saved."
-msgstr "לא ניתן לשמור את התמונה."
-
-#: shell/pps-document-view.c:4261
-msgid "Save Image"
-msgstr "שמירת התמונה"
-
-#: shell/pps-document-view.c:4431
-msgid "Unable to open attachment"
-msgstr "לא ניתן לפתוח את הצרופה"
-
-#: shell/pps-document-view.c:4450
-msgid "The attachment could not be saved."
-msgstr "לא ניתן לשמור את הצרופה."
-
-#: shell/pps-document-view.ui:64
+#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.ui:71
 msgid "Search"
 msgstr "חיפוש"
 
-#: shell/pps-document-view.ui:79 shell/pps-window.ui:36
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: shell/pps-document-view.ui:99
+#: shell/resources/pps-document-view.ui:106
 msgid "Thumbnails"
 msgstr "תמונות ממוזערות"
 
-#: shell/pps-document-view.ui:112
+#: shell/resources/pps-document-view.ui:119
 msgid "Outline"
 msgstr "תוכן עניינים"
 
-#: shell/pps-document-view.ui:126
+#: shell/resources/pps-document-view.ui:133
 msgid "Annotations"
 msgstr "הערות"
 
-#: shell/pps-document-view.ui:141
-msgid "Bookmarks"
-msgstr "סימניות"
-
-#: shell/pps-document-view.ui:155
+#: shell/resources/pps-document-view.ui:153
 msgid "Attachments"
 msgstr "צרופות"
 
-#: shell/pps-document-view.ui:174
+#: shell/resources/pps-document-view.ui:171
 msgid "Layers"
 msgstr "שכבות"
 
-#: shell/pps-document-view.ui:211
+#: shell/resources/pps-document-view.ui:208
 msgid "Toggle Sidebar"
 msgstr "הצגת סרגל הצד"
 
-#: shell/pps-document-view.ui:217
+#: shell/resources/pps-document-view.ui:214
 msgid "Document Menu"
 msgstr "תפריט מסמך"
 
-#: shell/pps-document-view.ui:240
-msgid "View Details…"
-msgstr "הצגת פרטים…"
+#: shell/resources/pps-document-view.ui:237 shell/src/document_view/io.rs:266
+msgid "Document has been digitally signed."
+msgstr "המסמך נחתם דיגיטלית."
 
-#: shell/pps-document-view.ui:273
+#: shell/resources/pps-document-view.ui:238
+msgid "View Signature…"
+msgstr "הצגת חתימה…"
+
+#: shell/resources/pps-document-view.ui:271
 msgid "Fit Automatically"
 msgstr "התאמה אוטומטית"
 
 # msgctxt "shortcut window"
-#: shell/pps-document-view.ui:583
+#: shell/resources/pps-document-view.ui:563
 msgid "Selection too Small"
 msgstr "הבחירה קטנה מדי"
 
-#: shell/pps-document-view.ui:584
+#: shell/resources/pps-document-view.ui:564
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1545,19 +1334,19 @@ msgstr ""
 "ניכר שהחתימה קטנה מדי לקריאה. אם ברצונך ליצור חתימה מוכנה קריאה יותר, יש "
 "ללחוץ „התחלה מחדש” ולצייר מלבן גדול יותר."
 
-#: shell/pps-document-view.ui:589
+#: shell/resources/pps-document-view.ui:569
 msgid "Start _Over"
 msgstr "ה_תחלה מחדש"
 
-#: shell/pps-document-view.ui:590
+#: shell/resources/pps-document-view.ui:570
 msgid "_Sign"
 msgstr "_חתימה"
 
-#: shell/pps-document-view.ui:596
+#: shell/resources/pps-document-view.ui:576
 msgid "Abort Printing?"
 msgstr "לבטל את ההדפסה?"
 
-#: shell/pps-document-view.ui:597
+#: shell/resources/pps-document-view.ui:577
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1565,335 +1354,322 @@ msgstr ""
 "יש לפחות משימת הדפסה אחת פעילה. אם החלון ייסגר, משימות ההדפסה הממתינות לא "
 "יודפסו."
 
-#: shell/pps-document-view.ui:600
+#: shell/resources/pps-document-view.ui:580
 msgid "Abort _Print and Close"
 msgstr "ביטול הה_דפסה וסגירה"
 
-#: shell/pps-document-view.ui:602
+#: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
+#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: shell/resources/pps-document-view.ui:582
 msgid "Close _After Printing"
 msgstr "סגירה לא_חר ההדפסה"
 
-#: shell/pps-document-view.ui:616
+#: shell/resources/pps-document-view.ui:596
 msgid "Open…"
 msgstr "פתיחה…"
 
-#: shell/pps-document-view.ui:622
+#: shell/resources/pps-document-view.ui:602
 msgid "Ni_ght Mode"
 msgstr "מצב _לילה"
 
-#: shell/pps-document-view.ui:628 shell/pps-window.ui:170
+#: shell/resources/pps-document-view.ui:608 shell/resources/pps-window.ui:171
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: shell/pps-document-view.ui:632 shell/pps-window.ui:174
+#: shell/resources/pps-document-view.ui:612 shell/resources/pps-window.ui:175
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: shell/pps-document-view.ui:636 shell/pps-window.ui:178
+#: shell/resources/pps-document-view.ui:616 shell/resources/pps-window.ui:179
 msgid "_About Papers"
 msgstr "על _אודות מסמכים"
 
-#: shell/pps-document-view.ui:644
+#: shell/resources/pps-document-view.ui:624
 msgid "_Print…"
 msgstr "ה_דפסה…"
 
-#: shell/pps-document-view.ui:648
+#: shell/resources/pps-document-view.ui:628
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
-#: shell/pps-document-view.ui:652
+#: shell/resources/pps-document-view.ui:632
 msgid "Present as Slideshow"
 msgstr "הצגה כמצגת"
 
-#: shell/pps-document-view.ui:658
+#: shell/resources/pps-document-view.ui:638
 msgid "Sign D_igitally…"
 msgstr "חתימה _דיגיטלית…"
 
-#: shell/pps-document-view.ui:664
+#: shell/resources/pps-document-view.ui:644
 msgid "Open a C_opy"
 msgstr "_פתיחת העתק"
 
-#: shell/pps-document-view.ui:668
+#: shell/resources/pps-document-view.ui:648
 msgid "Open With…"
 msgstr "פתיחה באמצעות…"
 
-#: shell/pps-document-view.ui:672
+#: shell/resources/pps-document-view.ui:652
 msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
-#: shell/pps-document-view.ui:678
+#: shell/resources/pps-document-view.ui:658
 msgid "_Continuous"
 msgstr "_רציף"
 
-#: shell/pps-document-view.ui:682
+#: shell/resources/pps-document-view.ui:662
 msgid "_Dual"
 msgstr "_זוגי"
 
-#: shell/pps-document-view.ui:686
+#: shell/resources/pps-document-view.ui:666
 msgid "_Odd Pages Left"
 msgstr "אי־זוגיים מ_שמאל"
 
-#: shell/pps-document-view.ui:690
+#: shell/resources/pps-document-view.ui:670
 msgid "Right to Left Document"
 msgstr "סידור מימין לשמאל"
 
-#: shell/pps-document-view.ui:696
+#: shell/resources/pps-document-view.ui:676
 msgid "Ro_tate ⤵"
 msgstr "_סיבוב ⤵"
 
-#: shell/pps-document-view.ui:702
+#: shell/resources/pps-document-view.ui:682
 msgid "Document Prop_erties"
 msgstr "_מאפייני מסמך"
 
-#: shell/pps-document-view.ui:807
+#: shell/resources/pps-document-view.ui:733
+msgid "Strikethrough"
+msgstr "קו חוצה"
+
+#: shell/resources/pps-document-view.ui:837
 msgid "_Open Link"
 msgstr "פתיחת _קישור"
 
-#: shell/pps-document-view.ui:812
+#: shell/resources/pps-document-view.ui:842
 msgid "_Copy Link Address"
 msgstr "העתקת מיקום ה_קישור"
 
-#: shell/pps-document-view.ui:817
+#: shell/resources/pps-document-view.ui:847
 msgid "_Go To"
 msgstr "מ_עבר"
 
-#: shell/pps-document-view.ui:822
+#: shell/resources/pps-document-view.ui:852
 msgid "Open in New _Window"
 msgstr "פתיחה ב_חלון חדש"
 
-#: shell/pps-document-view.ui:829
+#: shell/resources/pps-document-view.ui:859
 msgid "_Copy"
 msgstr "ה_עתקה"
 
-#: shell/pps-document-view.ui:833
+#: shell/resources/pps-document-view.ui:863
 msgid "Select _All"
 msgstr "_בחירת הכול"
 
-#: shell/pps-document-view.ui:839
+#: shell/resources/pps-document-view.ui:869
 msgid "_Save Image As…"
 msgstr "שמירת תמונה _בשם…"
 
-#: shell/pps-document-view.ui:844
+#: shell/resources/pps-document-view.ui:874
 msgid "Copy _Image"
 msgstr "העתקת ת_מונה"
 
-#: shell/pps-document-view.ui:851 shell/pps-document-view.ui:889
-#: shell/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.ui:881
+#: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_פתיחת צרופה"
 
-#: shell/pps-document-view.ui:856 shell/pps-document-view.ui:893
-#: shell/pps-sidebar-annotations.ui:90
+#: shell/resources/pps-document-view.ui:886
+#: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_שמירת הקובץ המצורף בשם…"
 
-#: shell/pps-document-view.ui:864
+#: shell/resources/pps-document-view.ui:894
 msgid "Annotation _Properties…"
 msgstr "מאפייני ה_ערות…"
 
-#: shell/pps-document-view.ui:869
+#: shell/resources/pps-document-view.ui:899
 msgid "R_emove Annotation"
 msgstr "ה_סרת הערה"
 
-#: shell/pps-document-view.ui:876
+#: shell/resources/pps-document-view.ui:906
 msgid "_Add Text Annotation"
 msgstr "הו_ספת הערה לטקסט"
 
-#: shell/pps-document-view.ui:881
+#: shell/resources/pps-document-view.ui:911
 msgid "_Highlight Selected Text"
 msgstr "ה_דגשת הטקסט הנבחר"
 
-#: shell/pps-find-sidebar.ui:69
+#: shell/resources/pps-find-sidebar.ui:70
 msgid "No Results Found"
 msgstr "לא נמצאו תוצאות"
 
-#: shell/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.ui:71
 msgid "Try a different search"
 msgstr "יש לנסות חיפוש שונה"
 
-#: shell/pps-find-sidebar.ui:84
+#: shell/resources/pps-find-sidebar.ui:85
 msgid "Perform a Search"
 msgstr "חיפוש במסמך"
 
-#: shell/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.ui:86
 msgid "The search results will appear here"
 msgstr "תוצאות החיפוש תופענה כאן"
 
 # msgctxt "shortcut window"
-#: shell/pps-loader-view.ui:17
+#: shell/resources/pps-loader-view.ui:17
 msgid "Loading Document"
 msgstr "המסמך בטעינה"
 
-#: shell/pps-password-dialog.ui:7
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+msgid "C_ancel"
+msgstr "_ביטול"
+
+#: shell/resources/pps-password-dialog.ui:4
+#: shell/resources/pps-password-view.ui:10
+#: shell/resources/pps-password-view.ui:19
+msgid "Password Required"
+msgstr "נדרשת ססמה"
+
+#: shell/resources/pps-password-dialog.ui:7
 msgid "Cancel"
 msgstr "ביטול"
 
-#: shell/pps-password-dialog.ui:8
+#: shell/resources/pps-password-dialog.ui:8
 msgid "Unlock"
 msgstr "שחרור"
 
-#: shell/pps-password-dialog.ui:17
+#: shell/resources/pps-password-dialog.ui:17
 msgid "Password"
 msgstr "ססמה"
 
-#: shell/pps-password-dialog.ui:32
+#: shell/resources/pps-password-dialog.ui:32
 msgid "Invalid password"
 msgstr "ססמה שגויה"
 
-#: shell/pps-password-dialog.ui:48
+#: shell/resources/pps-password-dialog.ui:48
 msgid "Forget password _immediately"
 msgstr "ה_תעלמות מהססמה מיידית"
 
-#: shell/pps-password-dialog.ui:56
+#: shell/resources/pps-password-dialog.ui:56
 msgid "Remember _forever"
 msgstr "_שמירה לעד"
 
-#: shell/pps-password-view.ui:20
+#: shell/resources/pps-password-view.ui:20
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr "מסמך זה נעול, ויש צורך בססמה הנכונה כדי לקרוא אותו"
 
-#: shell/pps-password-view.ui:25
+#: shell/resources/pps-password-view.ui:25
 msgid "_Unlock Document"
 msgstr "_שחרור המסמך"
 
-#: shell/pps-properties-license.ui:21
+#: shell/resources/pps-properties-license.ui:21
 msgid "Usage Terms"
 msgstr "תנאי שימוש"
 
-#: shell/pps-properties-license.ui:56
+#: shell/resources/pps-properties-license.ui:56
 msgid "Text License"
 msgstr "רישיון הטקסט"
 
-#: shell/pps-properties-license.ui:84
+#: shell/resources/pps-properties-license.ui:84
 msgid "Further Information"
 msgstr "מידע נוסף"
 
-#: shell/pps-properties-signatures.ui:8
-msgid "Document Status"
-msgstr "מצב מסמך"
+#: shell/resources/pps-properties-signatures.ui:55
+msgid "View Details…"
+msgstr "הצגת פרטים…"
 
-#: shell/pps-properties-signatures.ui:13 shell/pps-signature-details.ui:13
-msgid "Signature Details"
-msgstr "פרטי חתימה"
-
-#: shell/pps-properties-window.ui:4
+#: shell/resources/pps-properties-window.ui:4
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: shell/pps-properties-window.ui:25
+#: shell/resources/pps-properties-window.ui:25
 msgid "_Document"
 msgstr "_מסמך"
 
-#: shell/pps-properties-window.ui:40
+#: shell/resources/pps-properties-window.ui:40
 msgid "_Fonts"
 msgstr "_גופנים"
 
-#: shell/pps-properties-window.ui:51
+#: shell/resources/pps-properties-window.ui:51
 msgid "License"
 msgstr "רישיון"
 
-#: shell/pps-search-box.ui:15
+#: shell/resources/pps-properties-window.ui:61
+msgid "_Signatures"
+msgstr "_חתימות"
+
+#: shell/resources/pps-search-box.ui:15
 msgid "Search in document"
 msgstr "חיפוש במסמך"
 
-#: shell/pps-search-box.ui:34
+#: shell/resources/pps-search-box.ui:34
 msgid "Search Options"
 msgstr "אפשרויות חיפוש"
 
-#: shell/pps-search-box.ui:43
+#: shell/resources/pps-search-box.ui:43
 msgid "_Whole Words Only"
 msgstr "מילים _שלמות בלבד"
 
-#: shell/pps-search-box.ui:47
+#: shell/resources/pps-search-box.ui:47
 msgid "C_ase Sensitive"
 msgstr "_תלוי רישיות"
 
-#: shell/pps-signature-details.c:82
-msgid "Date"
-msgstr "תאריך"
-
-#: shell/pps-signature-details.c:87
-msgid "Signature Status"
-msgstr "מצב חתימה"
-
-#: shell/pps-signature-details.c:97
-msgid "Certificate Status"
-msgstr "מצב אישור"
-
-#: shell/pps-sidebar-annotations.ui:16
+#: shell/resources/pps-sidebar-annotations.ui:16
 msgid "No Annotations"
 msgstr "אין הערות"
 
-#: shell/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-sidebar-annotations.ui:74
 msgid "Remove Annotation"
 msgstr "מחיקת הערה"
 
-#: shell/pps-sidebar-bookmarks.ui:63
-msgid "Add Bookmark"
-msgstr "הוספת סימנייה"
-
-#: shell/pps-sidebar-bookmarks.ui:72
-msgid "Remove Bookmark"
-msgstr "הסרת סימנייה"
-
-#: shell/pps-sidebar-bookmarks.ui:100
-msgid "_Open Bookmark"
-msgstr "_פתיחת הסימנייה"
-
-#: shell/pps-sidebar-bookmarks.ui:106
-msgid "_Rename Bookmark"
-msgstr "_שינוי שם הסימנייה"
-
-#: shell/pps-sidebar-bookmarks.ui:110
-msgid "_Delete Bookmark"
-msgstr "_מחיקת סמינייה"
-
-#: shell/pps-sidebar-links.ui:52
+#: shell/resources/pps-sidebar-links.ui:52
 msgid "Collapse all tree"
 msgstr "צמצום כל העץ"
 
-#: shell/pps-sidebar-links.ui:56
+#: shell/resources/pps-sidebar-links.ui:56
 msgid "Expand all tree"
 msgstr "הרחבת כל העץ"
 
-#: shell/pps-sidebar-links.ui:60
+#: shell/resources/pps-sidebar-links.ui:60
 msgid "Expand all under this element"
 msgstr "הרחבה של הכול תחת הרכיב הזה"
 
-#: shell/pps-sidebar-links.ui:66
+#: shell/resources/pps-sidebar-links.ui:66
 msgid "Print this section…"
 msgstr "הדפסת קטע זה…"
 
-#: shell/pps-sidebar-thumbnails.ui:46
+#: shell/resources/pps-sidebar-thumbnails.ui:46
 msgid "Previews"
 msgstr "תצוגה מקדימה"
 
-#: shell/pps-window.ui:46 shell/pps-window.ui:54
+#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
 msgid "Open a Document"
 msgstr "פתיחת מסמך"
 
-#: shell/pps-window.ui:47
+#: shell/resources/pps-window.ui:48
 msgid "Drag and drop documents here"
 msgstr "יש לגרור ולשחרר לכאן מסמכים"
 
-#: shell/pps-window.ui:52
+#: shell/resources/pps-window.ui:53
 msgid "_Open…"
 msgstr "_פתיחה…"
 
-#: shell/pps-window.ui:78
+#: shell/resources/pps-window.ui:79
 msgid "Unable to Open Document"
 msgstr "לא ניתן לפתוח את המסמך"
 
-#: shell/pps-window.ui:83
+#: shell/resources/pps-window.ui:84
 msgid "_Open Other File…"
 msgstr "_פתיחת קובץ אחר…"
 
-#: shell-rs/src/application.rs:199
-msgid "© 1996–2024 The Papers authors"
-msgstr "© 1996—2024 יוצרי מציג המסמכים"
+#: shell/src/application.rs:202
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996‏-2024 יוצרי „מסמכים”"
 
-#: shell-rs/src/application.rs:200
+#: shell/src/application.rs:203
 msgid "translator-credits"
 msgstr ""
 "יובל טנאי\n"
@@ -1902,108 +1678,398 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: shell-rs/src/application.rs:295
+#: shell/src/application.rs:307
 msgid "The page label of the document to display."
 msgstr "The page label of the document to display."
 
-#: shell-rs/src/application.rs:296
+#: shell/src/application.rs:308
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell-rs/src/application.rs:304
+#: shell/src/application.rs:316
 msgid "The page number of the document to display."
 msgstr "The page number of the document to display."
 
-#: shell-rs/src/application.rs:305
+#: shell/src/application.rs:317
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell-rs/src/application.rs:313
+#: shell/src/application.rs:325
 msgid "Named destination to display."
 msgstr "Named destination to display."
 
-#: shell-rs/src/application.rs:314
+#: shell/src/application.rs:326
 msgid "DEST"
 msgstr "DEST"
 
-#: shell-rs/src/application.rs:322
+#: shell/src/application.rs:334
 msgid "Run papers in fullscreen mode."
 msgstr "Run papers in fullscreen mode."
 
-#: shell-rs/src/application.rs:331
+#: shell/src/application.rs:343
 msgid "Run papers in presentation mode."
 msgstr "Run papers in presentation mode."
 
-#: shell-rs/src/application.rs:340
+#: shell/src/application.rs:352
 msgid "Show the version of the program."
 msgstr "Show the version of the program."
 
-#: shell-rs/src/application.rs:350
+#: shell/src/application.rs:362
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
-#: shell-rs/src/page_selector.rs:77 shell-rs/src/sidebar_annotations_row.rs:82
-msgid "Page {}"
-msgstr "עמוד {}"
+#: shell/src/document_view.rs:299
+msgid "View Details"
+msgstr "הצגת פרטים"
 
-#: shell-rs/src/page_selector.rs:226 shell-rs/src/page_selector.rs:244
-msgid "({} of {})"
-msgstr "({} מתוך {})"
-
-#: shell-rs/src/page_selector.rs:228 shell-rs/src/page_selector.rs:246
-msgid "of {}"
-msgstr "מתוך {}"
-
-#: shell-rs/src/password_view.rs:145
-msgid ""
-"The document “{}” is locked and requires a password before it can be opened"
-msgstr "המסמך „{}“ נעול ונדרשת ססמה כדי לפתוח אותו"
-
-#: shell-rs/src/properties_general.rs:73
-msgid "File"
-msgstr "קובץ"
-
-#: shell-rs/src/properties_general.rs:85
-msgid "Folder"
-msgstr "תיקייה"
-
-#: shell-rs/src/properties_general.rs:140
-msgid "Content"
-msgstr "תוכן"
-
-#: shell-rs/src/properties_general.rs:152
-msgid "Date &amp; Time"
-msgstr "תאריך ושעה"
-
-#: shell-rs/src/window.rs:266
+#: shell/src/document_view.rs:697
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr "המסמך מכיל הערות חדשות או כאלה ששונו ושדות טופס שמולאו."
 
-#: shell-rs/src/window.rs:278
-msgid "If you reload the document, changes will be permanently lost."
-msgstr "טעינה מחדש של המסמך תגרום לשינויים לאבד לצמיתות."
+#: shell/src/document_view.rs:698
+msgid "Document contains form fields that have been filled out."
+msgstr "המסמך מכיל שדות טופס שמולאו."
 
-#: shell-rs/src/window.rs:279
-msgid "File changed outside Papers. Reload document?"
-msgstr "המסמך שונה מחוץ ליישום. לטעון את המסמך מחדש?"
+#: shell/src/document_view.rs:699
+msgid "Document contains new or modified annotations."
+msgstr "המסמך מכיל פרשנויות חדשות או כאלה ששונו."
 
-#: shell-rs/src/window.rs:287
-msgid "_No"
-msgstr "_לא"
+#: shell/src/document_view.rs:707
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr "ללא שמירת עותק למסמך, כלל השינויים יאבדו לצמיתות."
 
-#: shell-rs/src/window.rs:287
-msgid "_Reload"
-msgstr "_טעינה מחדש"
+#: shell/src/document_view.rs:708
+msgid "Save Changes to a Copy?"
+msgstr "שמירת השינויים לעותק?"
 
-#: shell-rs/src/window.rs:568
-msgid "Failed to Load Remote File."
-msgstr "טעינת הקובץ המרוחק נכשלה."
+#: shell/src/document_view.rs:717
+msgid "Close _Without Saving"
+msgstr "סגירה _ללא שמירה"
 
-#: shell-rs/src/window.rs:731
-msgid "Failed to Reload Document."
-msgstr "טעינת המסמך מחדש נכשלה."
+#: shell/src/document_view.rs:719
+msgid "_Save a Copy"
+msgstr "שמירת _עותק"
+
+#: shell/src/document_view/actions.rs:755
+msgid "Save Image"
+msgstr "שמירת התמונה"
+
+#: shell/src/document_view/actions.rs:791
+msgid "Couldn’t find appropriate format to save image"
+msgstr "לא נמצאה התבנית המתאימה לשמירת התמונה"
+
+#: shell/src/document_view/actions.rs:814
+msgid "The image could not be saved."
+msgstr "לא ניתן לשמור את התמונה."
+
+#: shell/src/document_view/actions.rs:917
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr "מצב ניווט סמן פעיל מעכשיו, יש ללחוץ על F7 להשבתה."
+
+#: shell/src/document_view/actions.rs:919
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr "מצב ניווט סמן כבוי מעכשיו, יש ללחוץ על F7 להפעלה."
+
+#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
+msgid "Unable to Open Attachment"
+msgstr "לא ניתן לפתוח את הצרופה"
+
+#: shell/src/document_view/actions.rs:1052
+msgid "The attachment could not be saved."
+msgstr "לא ניתן לשמור את הצרופה."
+
+#: shell/src/document_view/io.rs:262
+msgid "Digital Signature is invalid!"
+msgstr "החתימה הדיגיטלית שגויה!"
+
+#: shell/src/document_view/io.rs:277
+msgid "The Document Contains No Pages"
+msgstr "המסמך אינו מכיל עמודים"
+
+#: shell/src/document_view/io.rs:279
+msgid "The Document Contains Only Empty Pages"
+msgstr "המסמך מכיל עמודים ריקים בלבד"
+
+#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+msgid "The file could not be saved as “{}”."
+msgstr "לא ניתן לשמור את הקובץ בשם „{}“."
+
+#: shell/src/document_view/io.rs:396
+msgid "Save As…"
+msgstr "שמירה בשם…"
+
+#: shell/src/document_view/io.rs:472
+msgid "Draw a rectangle to insert a signature field"
+msgstr "ציור מלבן להכנסת שדה לחתימה"
+
+#: shell/src/document_view/io.rs:494
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"נחתם דיגיטלית על ידי %s\n"
+"תאריך: %s"
+
+#: shell/src/document_view/io.rs:510
+msgid "Certificate Required"
+msgstr "דרוש אישור"
+
+#: shell/src/document_view/io.rs:513
+msgid "Select signing certificate"
+msgstr "בחירת אישור חתימה"
+
+# msgctxt "shortcut window"
+#: shell/src/document_view/io.rs:514
+msgid "Select"
+msgstr "בחירה"
+
+#: shell/src/document_view/io.rs:587
+msgid "A certificate is required to sign this document"
+msgstr "צריך אישור כדי לחתום על האישור הזה"
+
+#: shell/src/document_view/io.rs:656
+msgid "Save Signed File"
+msgstr "שמירת קובץ חתום"
+
+#: shell/src/document_view/print.rs:45
+msgid "Printing job “{}”"
+msgstr "המשימה „{}“ מודפסת"
+
+#: shell/src/document_view/print.rs:78
+msgid "No pending jobs in queue"
+msgstr "אין משימות שממתינות בתור"
+
+#: shell/src/document_view/print.rs:81
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "משימה ממתינה בתור"
+msgstr[1] "שתי משימות ממתינות בתור"
+msgstr[2] "{} משימות ממתינות בתור"
+msgstr[3] "{} משימות ממתינות בתור"
+
+#: shell/src/document_view/signals.rs:225
+msgid "Unable to open external link"
+msgstr "לא ניתן לפתוח קישור חיצוני"
+
+#: shell/src/document_view/signals.rs:253
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr "התרעת אבטחה: המסמך הזה נמנע מפתיחת הקובץ „{}”"
+
+#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/sidebar_annotations_row.rs:82
+msgid "Page {}"
+msgstr "עמוד {}"
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} מתוך {totalpages})"
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+msgid "of {}"
+msgstr "מתוך {}"
+
+#: shell/src/password_view.rs:145
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr "המסמך „{}“ נעול ונדרשת ססמה כדי לפתוח אותו"
+
+#: shell/src/properties_general.rs:77
+msgid "File"
+msgstr "קובץ"
+
+#: shell/src/properties_general.rs:89
+msgid "Folder"
+msgstr "תיקייה"
+
+#: shell/src/properties_general.rs:145
+msgid "Content"
+msgstr "תוכן"
+
+#: shell/src/properties_general.rs:161
+msgid "Date &amp; Time"
+msgstr "תאריך ושעה"
+
+#: shell/src/properties_signatures.rs:138
+#: shell/src/properties_signatures.rs:146
+msgid "Signed by"
+msgstr "נחתם על ידי"
+
+#: shell/src/properties_signatures.rs:187
+msgid "Signature is valid."
+msgstr "החתימה תקפה."
+
+#: shell/src/properties_signatures.rs:190
+msgid "Signature is invalid."
+msgstr "החתימה שגויה."
+
+#: shell/src/properties_signatures.rs:194
+msgid "Document has been changed after signing."
+msgstr "המסמך נערך לאחר החתימה."
+
+#: shell/src/properties_signatures.rs:198
+msgid "Signature could not be decoded."
+msgstr "לא ניתן לפענח את החתימה."
+
+#: shell/src/properties_signatures.rs:202
+msgid "Signature verification error."
+msgstr "שגיאת אימות חתימה."
+
+#: shell/src/properties_signatures.rs:214
+msgid "Signed with a certificate issued by trusted issuer."
+msgstr "נחתם עם אישור שהונפק על ידי מנפיק אמין."
+
+#: shell/src/properties_signatures.rs:220
+msgid "Signed with a certificate issued by untrusted issuer."
+msgstr "נחתם עם אישור שהונפק על ידי מנפיק לא אמין."
+
+#: shell/src/properties_signatures.rs:226
+msgid "Signed with a certificate issued by unknown issuer."
+msgstr "נחתם עם אישור שהונפק על ידי מנפיק לא ידוע."
+
+#: shell/src/properties_signatures.rs:231
+msgid "Signed with revoked certificate."
+msgstr "נחתם עם אישור שנשלל."
+
+#: shell/src/properties_signatures.rs:235
+msgid "Signed with expired certificate."
+msgstr "נחתם עם אישור שתוקפו פג."
+
+#: shell/src/properties_signatures.rs:239
+msgid "Certificate verification error."
+msgstr "שגיאת אימות אישור."
+
+#: shell/src/properties_signatures.rs:243
+msgid "Certificate has not been verified."
+msgstr "האישור לא אומת עדיין."
+
+#: shell/src/properties_signatures.rs:256
+msgid "Organization"
+msgstr "ארגון"
+
+#: shell/src/properties_signatures.rs:265
+msgid "Date and Time"
+msgstr "תאריך ושעה"
+
+#: shell/src/properties_signatures.rs:276
+msgid "Certificate Issuer"
+msgstr "מנפיק האישור"
+
+#: shell/src/properties_signatures.rs:287
+msgid "Certificate Issuer's Email"
+msgstr "כתובת דוא״ל מנפיק האישור"
+
+#: shell/src/properties_signatures.rs:298
+msgid "Certificate Issuer's Organization"
+msgstr "ארגון מנפיק האישור"
+
+#: shell/src/properties_signatures.rs:309
+msgid "Certificate's Issuance Time"
+msgstr "מועד הנפקת האישור"
+
+#: shell/src/properties_signatures.rs:321
+msgid "Certificate's Expiration Time"
+msgstr "מועד פקיעת תוקף האישור"
+
+#~ msgid "Trusted"
+#~ msgstr "אמין"
+
+#~ msgid "Untrusted issuer"
+#~ msgstr "מנפיק מפוקפק"
+
+#~ msgid "Unknown issuer"
+#~ msgstr "מנפיק לא ידוע"
+
+#~ msgid "Revoked"
+#~ msgstr "נשלל"
+
+#~ msgid "Expired"
+#~ msgstr "פג תוקף"
+
+#~ msgid "Not verified"
+#~ msgstr "לא מאומת"
+
+#~ msgid "Generic error"
+#~ msgstr "שגיאה כללית"
+
+#~ msgid "Unknown status"
+#~ msgstr "מצב לא ידוע"
+
+#~ msgid "Valid"
+#~ msgstr "תקף"
+
+#~ msgid "Invalid"
+#~ msgstr "שגוי"
+
+#~ msgid "Digest mismatch"
+#~ msgstr "חוסר התאמת תקציר"
+
+#~ msgid "Decoding error"
+#~ msgstr "שגיאת פענוח"
+
+#~ msgid "File Saved"
+#~ msgstr "הקובץ נשמר"
+
+#, c-format
+#~ msgid "Please enter password for %s"
+#~ msgstr "נא למלא ססמה עבור „%s”"
+
+#~ msgid "_Login"
+#~ msgstr "_כניסה"
+
+#~ msgid "Bookmarks"
+#~ msgstr "סימניות"
+
+#~ msgid "Document Status"
+#~ msgstr "מצב מסמך"
+
+#~ msgid "Signature Details"
+#~ msgstr "פרטי חתימה"
+
+#~ msgid "Date"
+#~ msgstr "תאריך"
+
+#~ msgid "Add Bookmark"
+#~ msgstr "הוספת סימנייה"
+
+#~ msgid "Remove Bookmark"
+#~ msgstr "הסרת סימנייה"
+
+#~ msgid "_Open Bookmark"
+#~ msgstr "_פתיחת הסימנייה"
+
+#~ msgid "_Rename Bookmark"
+#~ msgstr "_שינוי שם הסימנייה"
+
+#~ msgid "_Delete Bookmark"
+#~ msgstr "_מחיקת סמינייה"
+
+#~ msgid "({} of {})"
+#~ msgstr "({} מתוך {})"
+
+#~ msgid "If you reload the document, changes will be permanently lost."
+#~ msgstr "טעינה מחדש של המסמך תגרום לשינויים לאבד לצמיתות."
+
+#~ msgid "File changed outside Papers. Reload document?"
+#~ msgstr "המסמך שונה מחוץ ליישום. לטעון את המסמך מחדש?"
+
+#~ msgid "_No"
+#~ msgstr "_לא"
+
+#~ msgid "_Reload"
+#~ msgstr "_טעינה מחדש"
+
+#~ msgid "Failed to Load Remote File."
+#~ msgstr "טעינת הקובץ המרוחק נכשלה."
+
+#~ msgid "Failed to Reload Document."
+#~ msgstr "טעינת המסמך מחדש נכשלה."
 
 #~ msgid "PostScript Documents"
 #~ msgstr "מסמכי PostScript"
