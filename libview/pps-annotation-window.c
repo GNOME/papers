@@ -227,6 +227,7 @@ pps_annotation_window_init (PpsAnnotationWindow *window)
 	gtk_window_set_child (GTK_WINDOW (window), vbox);
 
 #ifdef GDK_WINDOWING_X11
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	{
 		GtkNative *native = gtk_widget_get_native (GTK_WIDGET (window));
 		GdkSurface *surface = gtk_native_get_surface (native);
@@ -236,6 +237,7 @@ pps_annotation_window_init (PpsAnnotationWindow *window)
 			gdk_x11_surface_set_skip_pager_hint (GDK_X11_SURFACE (surface), TRUE);
 		}
 	}
+	G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
 
 	gtk_window_set_decorated (GTK_WINDOW (window), TRUE);
