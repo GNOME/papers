@@ -984,9 +984,11 @@ impl imp::PpsDocumentView {
     }
 
     fn cmd_add_text_annotation(&self) {
-        let (mut x, mut y) = Document::misc_get_pointer_position(&self.view.clone());
-
-        if x == y && x == -1 {
+        let (x, y);
+        if let Some((px, py)) = Document::misc_get_pointer_position(&self.view.clone()) {
+            x = px;
+            y = py
+        } else {
             // Check if the pointer is not over the current surface, then
             // it should be in the popover, and we should get the point
             // from where the popover is pointing
@@ -994,7 +996,7 @@ impl imp::PpsDocumentView {
             let (_, rect) = self.view_popup.pointing_to();
             x = rect.x();
             y = rect.y();
-        }
+        };
 
         if let Some(mark) = self.view.mark_for_view_point(x.into(), y.into()) {
             _ = self.annots_context.add_annotation_sync(
