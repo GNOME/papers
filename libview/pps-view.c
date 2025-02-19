@@ -1967,25 +1967,19 @@ pps_view_goto_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsLinkDestType type;
+	g_autoptr (PpsLinkDest) final_dest = NULL;
 
 	type = pps_link_dest_get_dest_type (dest);
 
 	if (type == PPS_LINK_DEST_TYPE_NAMED) {
-		PpsLinkDest *dest2;
 		const gchar *named_dest;
 
 		named_dest = pps_link_dest_get_named_dest (dest);
-		dest2 = pps_document_links_find_link_dest (PPS_DOCUMENT_LINKS (pps_document_model_get_document (priv->model)),
-		                                           named_dest);
-		if (dest2) {
-			goto_dest (view, dest2);
-			g_object_unref (dest2);
-		}
-
-		return;
+		final_dest = pps_document_links_find_link_dest (PPS_DOCUMENT_LINKS (pps_document_model_get_document (priv->model)),
+		                                                named_dest);
 	}
 
-	goto_dest (view, dest);
+	goto_dest (view, final_dest ? final_dest : dest);
 }
 
 static void
