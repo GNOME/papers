@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-17 20:06+0000\n"
-"PO-Revision-Date: 2025-02-18 20:52+0100\n"
+"POT-Creation-Date: 2025-02-19 14:36+0000\n"
+"PO-Revision-Date: 2025-02-19 19:22+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -428,17 +428,17 @@ msgstr "Nepodařilo se otevřít přílohu „%s“"
 msgid "File type %s (%s) is not supported"
 msgstr "Typ souboru %s (%s) není podporován"
 
-#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Neznámý typ MIME"
 
-#: libdocument/pps-document-factory.c:500
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Všechny dokumenty"
 
-#: libdocument/pps-document-factory.c:528
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -486,7 +486,7 @@ msgid "This work is in the Public Domain"
 msgstr "Toto je volné dílo (Public Domain)"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Uložit přílohu"
@@ -498,7 +498,7 @@ msgstr[2] "Uložit přílohy"
 msgid "Page %s"
 msgstr "Stránka %s"
 
-#: libview/pps-annotation-window.c:270
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Upravit poznámku"
 
@@ -558,7 +558,7 @@ msgstr "Snažíte se vytisknout výběr, který nezahrnuje žádné stránky"
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
 #: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -660,51 +660,51 @@ msgstr "Posunout pohled dolů"
 msgid "Document View"
 msgstr "Pohled na dokument"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
@@ -1379,7 +1379,8 @@ msgid "Abort _Print and Close"
 msgstr "Přerušit _tisk a zavřít"
 
 #: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -1547,7 +1548,7 @@ msgstr "_Zrušit"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "Je vyžadováno heslo"
 
@@ -1803,11 +1804,11 @@ msgstr ""
 "Režim kurzorové navigace je nyní deaktivován, stisknutím klávesy F7 jej "
 "povolíte."
 
-#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Nepodařilo se otevřít přílohu"
 
-#: shell/src/document_view/actions.rs:1052
+#: shell/src/document_view/actions.rs:1054
 msgid "The attachment could not be saved."
 msgstr "Nepodařilo se uložit přílohu."
 
@@ -1823,19 +1824,19 @@ msgstr "Dokument neobsahuje žádné stránky"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokument obsahuje pouze prázdné stránky"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "Soubor nelze uložit jako „{}“."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "Uložení jako…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Nakreslete obdélník pro vložení pole podpisu"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1843,25 +1844,33 @@ msgstr ""
 "Digitální podpis od {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "Je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "Vyberte podpisový certifikát"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "Vybrat"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "K podepsání tohoto dokumentu je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:656
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "Uložit podepsaný soubor"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Zadejte prosím heslo pro {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "Přih_lásit"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
@@ -2049,13 +2058,6 @@ msgstr "Doba platnosti certifikátu"
 
 #~ msgid "File Saved"
 #~ msgstr "Soubor byl uložen"
-
-#, c-format
-#~ msgid "Please enter password for %s"
-#~ msgstr "Zadejte prosím heslo pro %s"
-
-#~ msgid "_Login"
-#~ msgstr "Přih_lásit"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Záložky"
