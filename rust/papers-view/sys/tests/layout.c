@@ -8,6 +8,7 @@
 #include <stdio.h>
 
 int main() {
+    printf("%s;%zu;%zu\n", "PpsAnnotationEditingState", sizeof(PpsAnnotationEditingState), alignof(PpsAnnotationEditingState));
     printf("%s;%zu;%zu\n", "PpsAnnotationsContext", sizeof(PpsAnnotationsContext), alignof(PpsAnnotationsContext));
     printf("%s;%zu;%zu\n", "PpsAnnotationsContextClass", sizeof(PpsAnnotationsContextClass), alignof(PpsAnnotationsContextClass));
     printf("%s;%zu;%zu\n", "PpsAttachmentContext", sizeof(PpsAttachmentContext), alignof(PpsAttachmentContext));

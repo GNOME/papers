@@ -503,3 +503,149 @@ impl From<FindOptions> for glib::Value {
         ToValue::to_value(&v)
     }
 }
+
+bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+    #[doc(alias = "PpsRenderAnnotsFlags")]
+    pub struct RenderAnnotsFlags: u32 {
+        #[doc(alias = "PPS_RENDER_ANNOTS_NONE")]
+        const NONE = ffi::PPS_RENDER_ANNOTS_NONE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_TEXT")]
+        const TEXT = ffi::PPS_RENDER_ANNOTS_TEXT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_LINK")]
+        const LINK = ffi::PPS_RENDER_ANNOTS_LINK as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_FREETEXT")]
+        const FREETEXT = ffi::PPS_RENDER_ANNOTS_FREETEXT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_LINE")]
+        const LINE = ffi::PPS_RENDER_ANNOTS_LINE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_SQUARE")]
+        const SQUARE = ffi::PPS_RENDER_ANNOTS_SQUARE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_CIRCLE")]
+        const CIRCLE = ffi::PPS_RENDER_ANNOTS_CIRCLE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_POLYGON")]
+        const POLYGON = ffi::PPS_RENDER_ANNOTS_POLYGON as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_POLYLINE")]
+        const POLYLINE = ffi::PPS_RENDER_ANNOTS_POLYLINE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_HIGHLIGHT")]
+        const HIGHLIGHT = ffi::PPS_RENDER_ANNOTS_HIGHLIGHT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_UNDERLINE")]
+        const UNDERLINE = ffi::PPS_RENDER_ANNOTS_UNDERLINE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_SQUIGGLY")]
+        const SQUIGGLY = ffi::PPS_RENDER_ANNOTS_SQUIGGLY as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_STRIKEOUT")]
+        const STRIKEOUT = ffi::PPS_RENDER_ANNOTS_STRIKEOUT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_STAMP")]
+        const STAMP = ffi::PPS_RENDER_ANNOTS_STAMP as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_CARET")]
+        const CARET = ffi::PPS_RENDER_ANNOTS_CARET as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_INK")]
+        const INK = ffi::PPS_RENDER_ANNOTS_INK as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_POPUP")]
+        const POPUP = ffi::PPS_RENDER_ANNOTS_POPUP as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_FILEATTACHMENT")]
+        const FILEATTACHMENT = ffi::PPS_RENDER_ANNOTS_FILEATTACHMENT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_SOUND")]
+        const SOUND = ffi::PPS_RENDER_ANNOTS_SOUND as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_MOVIE")]
+        const MOVIE = ffi::PPS_RENDER_ANNOTS_MOVIE as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_WIDGET")]
+        const WIDGET = ffi::PPS_RENDER_ANNOTS_WIDGET as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_SCREEN")]
+        const SCREEN = ffi::PPS_RENDER_ANNOTS_SCREEN as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_PRINTERMARK")]
+        const PRINTERMARK = ffi::PPS_RENDER_ANNOTS_PRINTERMARK as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_TRAPNET")]
+        const TRAPNET = ffi::PPS_RENDER_ANNOTS_TRAPNET as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_WATERMARK")]
+        const WATERMARK = ffi::PPS_RENDER_ANNOTS_WATERMARK as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_3D")]
+        const _3D = ffi::PPS_RENDER_ANNOTS_3D as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_RICHMEDIA")]
+        const RICHMEDIA = ffi::PPS_RENDER_ANNOTS_RICHMEDIA as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_PRINT_DOCUMENT")]
+        const PRINT_DOCUMENT = ffi::PPS_RENDER_ANNOTS_PRINT_DOCUMENT as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_PRINT_MARKUP")]
+        const PRINT_MARKUP = ffi::PPS_RENDER_ANNOTS_PRINT_MARKUP as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_PRINT_STAMP")]
+        const PRINT_STAMP = ffi::PPS_RENDER_ANNOTS_PRINT_STAMP as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_PRINT_ALL")]
+        const PRINT_ALL = ffi::PPS_RENDER_ANNOTS_PRINT_ALL as _;
+        #[doc(alias = "PPS_RENDER_ANNOTS_ALL")]
+        const ALL = ffi::PPS_RENDER_ANNOTS_ALL as _;
+    }
+}
+
+#[doc(hidden)]
+impl IntoGlib for RenderAnnotsFlags {
+    type GlibType = ffi::PpsRenderAnnotsFlags;
+
+    #[inline]
+    fn into_glib(self) -> ffi::PpsRenderAnnotsFlags {
+        self.bits()
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::PpsRenderAnnotsFlags> for RenderAnnotsFlags {
+    #[inline]
+    unsafe fn from_glib(value: ffi::PpsRenderAnnotsFlags) -> Self {
+        skip_assert_initialized!();
+        Self::from_bits_truncate(value)
+    }
+}
+
+impl StaticType for RenderAnnotsFlags {
+    #[inline]
+    #[doc(alias = "pps_render_annots_flags_get_type")]
+    fn static_type() -> glib::Type {
+        unsafe { from_glib(ffi::pps_render_annots_flags_get_type()) }
+    }
+}
+
+impl glib::HasParamSpec for RenderAnnotsFlags {
+    type ParamSpec = glib::ParamSpecFlags;
+    type SetValue = Self;
+    type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
+    fn param_spec_builder() -> Self::BuilderFn {
+        Self::ParamSpec::builder
+    }
+}
+
+impl glib::value::ValueType for RenderAnnotsFlags {
+    type Type = Self;
+}
+
+unsafe impl<'a> glib::value::FromValue<'a> for RenderAnnotsFlags {
+    type Checker = glib::value::GenericValueTypeChecker<Self>;
+
+    #[inline]
+    unsafe fn from_value(value: &'a glib::Value) -> Self {
+        skip_assert_initialized!();
+        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+    }
+}
+
+impl ToValue for RenderAnnotsFlags {
+    #[inline]
+    fn to_value(&self) -> glib::Value {
+        let mut value = glib::Value::for_value_type::<Self>();
+        unsafe {
+            glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
+        }
+        value
+    }
+
+    #[inline]
+    fn value_type(&self) -> glib::Type {
+        Self::static_type()
+    }
+}
+
+impl From<RenderAnnotsFlags> for glib::Value {
+    #[inline]
+    fn from(v: RenderAnnotsFlags) -> Self {
+        skip_assert_initialized!();
+        ToValue::to_value(&v)
+    }
+}

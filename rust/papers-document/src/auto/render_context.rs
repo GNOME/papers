@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Page};
+use crate::{ffi, Page, RenderAnnotsFlags};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
@@ -19,13 +19,19 @@ impl RenderContext {
     pub const NONE: Option<&'static RenderContext> = None;
 
     #[doc(alias = "pps_render_context_new")]
-    pub fn new(page: &impl IsA<Page>, rotation: i32, scale: f64) -> RenderContext {
+    pub fn new(
+        page: &impl IsA<Page>,
+        rotation: i32,
+        scale: f64,
+        annot_flags: RenderAnnotsFlags,
+    ) -> RenderContext {
         skip_assert_initialized!();
         unsafe {
             from_glib_full(ffi::pps_render_context_new(
                 page.as_ref().to_glib_none().0,
                 rotation,
                 scale,
+                annot_flags.into_glib(),
             ))
         }
     }

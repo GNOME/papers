@@ -262,6 +262,40 @@ pub const PPS_FIND_DEFAULT: PpsFindOptions = 0;
 pub const PPS_FIND_CASE_SENSITIVE: PpsFindOptions = 1;
 pub const PPS_FIND_WHOLE_WORDS_ONLY: PpsFindOptions = 2;
 
+pub type PpsRenderAnnotsFlags = c_uint;
+pub const PPS_RENDER_ANNOTS_NONE: PpsRenderAnnotsFlags = 0;
+pub const PPS_RENDER_ANNOTS_TEXT: PpsRenderAnnotsFlags = 1;
+pub const PPS_RENDER_ANNOTS_LINK: PpsRenderAnnotsFlags = 2;
+pub const PPS_RENDER_ANNOTS_FREETEXT: PpsRenderAnnotsFlags = 4;
+pub const PPS_RENDER_ANNOTS_LINE: PpsRenderAnnotsFlags = 8;
+pub const PPS_RENDER_ANNOTS_SQUARE: PpsRenderAnnotsFlags = 16;
+pub const PPS_RENDER_ANNOTS_CIRCLE: PpsRenderAnnotsFlags = 32;
+pub const PPS_RENDER_ANNOTS_POLYGON: PpsRenderAnnotsFlags = 64;
+pub const PPS_RENDER_ANNOTS_POLYLINE: PpsRenderAnnotsFlags = 128;
+pub const PPS_RENDER_ANNOTS_HIGHLIGHT: PpsRenderAnnotsFlags = 256;
+pub const PPS_RENDER_ANNOTS_UNDERLINE: PpsRenderAnnotsFlags = 512;
+pub const PPS_RENDER_ANNOTS_SQUIGGLY: PpsRenderAnnotsFlags = 1024;
+pub const PPS_RENDER_ANNOTS_STRIKEOUT: PpsRenderAnnotsFlags = 2048;
+pub const PPS_RENDER_ANNOTS_STAMP: PpsRenderAnnotsFlags = 4096;
+pub const PPS_RENDER_ANNOTS_CARET: PpsRenderAnnotsFlags = 8192;
+pub const PPS_RENDER_ANNOTS_INK: PpsRenderAnnotsFlags = 16384;
+pub const PPS_RENDER_ANNOTS_POPUP: PpsRenderAnnotsFlags = 32768;
+pub const PPS_RENDER_ANNOTS_FILEATTACHMENT: PpsRenderAnnotsFlags = 65536;
+pub const PPS_RENDER_ANNOTS_SOUND: PpsRenderAnnotsFlags = 131072;
+pub const PPS_RENDER_ANNOTS_MOVIE: PpsRenderAnnotsFlags = 262144;
+pub const PPS_RENDER_ANNOTS_WIDGET: PpsRenderAnnotsFlags = 524288;
+pub const PPS_RENDER_ANNOTS_SCREEN: PpsRenderAnnotsFlags = 1048576;
+pub const PPS_RENDER_ANNOTS_PRINTERMARK: PpsRenderAnnotsFlags = 2097152;
+pub const PPS_RENDER_ANNOTS_TRAPNET: PpsRenderAnnotsFlags = 4194304;
+pub const PPS_RENDER_ANNOTS_WATERMARK: PpsRenderAnnotsFlags = 8388608;
+pub const PPS_RENDER_ANNOTS_3D: PpsRenderAnnotsFlags = 16777216;
+pub const PPS_RENDER_ANNOTS_RICHMEDIA: PpsRenderAnnotsFlags = 33554432;
+pub const PPS_RENDER_ANNOTS_PRINT_DOCUMENT: PpsRenderAnnotsFlags = 524288;
+pub const PPS_RENDER_ANNOTS_PRINT_MARKUP: PpsRenderAnnotsFlags = 4262166525;
+pub const PPS_RENDER_ANNOTS_PRINT_STAMP: PpsRenderAnnotsFlags = 528384;
+pub const PPS_RENDER_ANNOTS_PRINT_ALL: PpsRenderAnnotsFlags = 4262166525;
+pub const PPS_RENDER_ANNOTS_ALL: PpsRenderAnnotsFlags = 67108863;
+
 // Callbacks
 pub type PpsSignaturePasswordCallback =
     Option<unsafe extern "C" fn(*const c_char, gpointer) -> *mut c_char>;
@@ -1812,6 +1846,7 @@ pub struct PpsRenderContext {
     pub scale: c_double,
     pub target_width: c_int,
     pub target_height: c_int,
+    pub annot_flags: PpsRenderAnnotsFlags,
 }
 
 impl ::std::fmt::Debug for PpsRenderContext {
@@ -1823,6 +1858,7 @@ impl ::std::fmt::Debug for PpsRenderContext {
             .field("scale", &self.scale)
             .field("target_width", &self.target_width)
             .field("target_height", &self.target_height)
+            .field("annot_flags", &self.annot_flags)
             .finish()
     }
 }
@@ -2191,6 +2227,11 @@ extern "C" {
     // PpsFindOptions
     //=========================================================================
     pub fn pps_find_options_get_type() -> GType;
+
+    //=========================================================================
+    // PpsRenderAnnotsFlags
+    //=========================================================================
+    pub fn pps_render_annots_flags_get_type() -> GType;
 
     //=========================================================================
     // PpsDocumentInfo
@@ -2621,7 +2662,7 @@ extern "C" {
         widget: *mut gtk::GtkWidget,
         x: *mut c_int,
         y: *mut c_int,
-    );
+    ) -> gboolean;
     pub fn pps_document_misc_get_widget_dpi(widget: *mut gtk::GtkWidget) -> c_double;
     pub fn pps_document_misc_pixbuf_from_surface(
         surface: *mut cairo::cairo_surface_t,
@@ -2910,6 +2951,7 @@ extern "C" {
         page: *mut PpsPage,
         rotation: c_int,
         scale: c_double,
+        annot_flags: PpsRenderAnnotsFlags,
     ) -> *mut PpsRenderContext;
     pub fn pps_render_context_compute_scaled_size(
         rc: *mut PpsRenderContext,

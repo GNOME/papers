@@ -154,6 +154,7 @@ pub use self::flags::DocumentInfoFields;
 pub use self::flags::DocumentLoadFlags;
 pub use self::flags::DocumentPermissions;
 pub use self::flags::FindOptions;
+pub use self::flags::RenderAnnotsFlags;
 
 pub(crate) mod functions;
 

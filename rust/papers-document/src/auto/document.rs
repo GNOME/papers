@@ -101,17 +101,21 @@ impl Document {
     }
 
     #[doc(alias = "pps_document_misc_get_pointer_position")]
-    pub fn misc_get_pointer_position(widget: &impl IsA<gtk::Widget>) -> (i32, i32) {
+    pub fn misc_get_pointer_position(widget: &impl IsA<gtk::Widget>) -> Option<(i32, i32)> {
         assert_initialized_main_thread!();
         unsafe {
             let mut x = std::mem::MaybeUninit::uninit();
             let mut y = std::mem::MaybeUninit::uninit();
-            ffi::pps_document_misc_get_pointer_position(
+            let ret = from_glib(ffi::pps_document_misc_get_pointer_position(
                 widget.as_ref().to_glib_none().0,
                 x.as_mut_ptr(),
                 y.as_mut_ptr(),
-            );
-            (x.assume_init(), y.assume_init())
+            ));
+            if ret {
+                Some((x.assume_init(), y.assume_init()))
+            } else {
+                None
+            }
         }
     }
 

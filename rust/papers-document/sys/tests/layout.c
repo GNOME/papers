@@ -95,6 +95,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsPageClass", sizeof(PpsPageClass), alignof(PpsPageClass));
     printf("%s;%zu;%zu\n", "PpsPoint", sizeof(PpsPoint), alignof(PpsPoint));
     printf("%s;%zu;%zu\n", "PpsRectangle", sizeof(PpsRectangle), alignof(PpsRectangle));
+    printf("%s;%zu;%zu\n", "PpsRenderAnnotsFlags", sizeof(PpsRenderAnnotsFlags), alignof(PpsRenderAnnotsFlags));
     printf("%s;%zu;%zu\n", "PpsRenderContext", sizeof(PpsRenderContext), alignof(PpsRenderContext));
     printf("%s;%zu;%zu\n", "PpsRenderContextClass", sizeof(PpsRenderContextClass), alignof(PpsRenderContextClass));
     printf("%s;%zu;%zu\n", "PpsSelectionInterface", sizeof(PpsSelectionInterface), alignof(PpsSelectionInterface));

@@ -57,6 +57,11 @@ pub const PPS_SIZING_FREE: PpsSizingMode = 2;
 pub const PPS_SIZING_AUTOMATIC: PpsSizingMode = 3;
 
 // Flags
+pub type PpsAnnotationEditingState = c_uint;
+pub const PPS_ANNOTATION_EDITING_STATE_NONE: PpsAnnotationEditingState = 0;
+pub const PPS_ANNOTATION_EDITING_STATE_INK: PpsAnnotationEditingState = 1;
+pub const PPS_ANNOTATION_EDITING_STATE_TEXT: PpsAnnotationEditingState = 2;
+
 pub type PpsJobPageDataFlags = c_uint;
 pub const PPS_PAGE_DATA_INCLUDE_NONE: PpsJobPageDataFlags = 0;
 pub const PPS_PAGE_DATA_INCLUDE_LINKS: PpsJobPageDataFlags = 1;
@@ -704,6 +709,7 @@ pub struct PpsJobRenderTexture {
     pub selection_style: papers_document::PpsSelectionStyle,
     pub base: gdk::GdkRGBA,
     pub text: gdk::GdkRGBA,
+    pub annot_flags: papers_document::PpsRenderAnnotsFlags,
 }
 
 impl ::std::fmt::Debug for PpsJobRenderTexture {
@@ -724,6 +730,7 @@ impl ::std::fmt::Debug for PpsJobRenderTexture {
             .field("selection_style", &self.selection_style)
             .field("base", &self.base)
             .field("text", &self.text)
+            .field("annot_flags", &self.annot_flags)
             .finish()
     }
 }
@@ -877,6 +884,11 @@ extern "C" {
     pub fn pps_sizing_mode_get_type() -> GType;
 
     //=========================================================================
+    // PpsAnnotationEditingState
+    //=========================================================================
+    pub fn pps_annotation_editing_state_get_type() -> GType;
+
+    //=========================================================================
     // PpsJobPageDataFlags
     //=========================================================================
     pub fn pps_job_page_data_flags_get_type() -> GType;
@@ -946,6 +958,11 @@ extern "C" {
     pub fn pps_document_model_new_with_document(
         document: *mut papers_document::PpsDocument,
     ) -> *mut PpsDocumentModel;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_document_model_get_annotation_editing_state(
+        model: *mut PpsDocumentModel,
+    ) -> PpsAnnotationEditingState;
     pub fn pps_document_model_get_continuous(model: *mut PpsDocumentModel) -> gboolean;
     pub fn pps_document_model_get_document(
         model: *mut PpsDocumentModel,
@@ -962,6 +979,12 @@ extern "C" {
     pub fn pps_document_model_get_rtl(model: *mut PpsDocumentModel) -> gboolean;
     pub fn pps_document_model_get_scale(model: *mut PpsDocumentModel) -> c_double;
     pub fn pps_document_model_get_sizing_mode(model: *mut PpsDocumentModel) -> PpsSizingMode;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_document_model_set_annotation_editing_state(
+        model: *mut PpsDocumentModel,
+        draw: PpsAnnotationEditingState,
+    );
     pub fn pps_document_model_set_continuous(model: *mut PpsDocumentModel, continuous: gboolean);
     pub fn pps_document_model_set_document(
         model: *mut PpsDocumentModel,
@@ -1152,6 +1175,7 @@ extern "C" {
         scale: c_double,
         width: c_int,
         height: c_int,
+        annot_flags: papers_document::PpsRenderAnnotsFlags,
     ) -> *mut PpsJob;
     pub fn pps_job_render_texture_set_selection_info(
         job: *mut PpsJobRenderTexture,

@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, PageLayout, SizingMode};
+use crate::{ffi, AnnotationEditingState, PageLayout, SizingMode};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -34,6 +34,19 @@ impl DocumentModel {
         unsafe {
             from_glib_full(ffi::pps_document_model_new_with_document(
                 document.as_ref().to_glib_none().0,
+            ))
+        }
+    }
+
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    #[doc(alias = "pps_document_model_get_annotation_editing_state")]
+    #[doc(alias = "get_annotation_editing_state")]
+    #[doc(alias = "annotation-editing-state")]
+    pub fn annotation_editing_state(&self) -> AnnotationEditingState {
+        unsafe {
+            from_glib(ffi::pps_document_model_get_annotation_editing_state(
+                self.to_glib_none().0,
             ))
         }
     }
@@ -134,6 +147,19 @@ impl DocumentModel {
             from_glib(ffi::pps_document_model_get_sizing_mode(
                 self.to_glib_none().0,
             ))
+        }
+    }
+
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    #[doc(alias = "pps_document_model_set_annotation_editing_state")]
+    #[doc(alias = "annotation-editing-state")]
+    pub fn set_annotation_editing_state(&self, draw: AnnotationEditingState) {
+        unsafe {
+            ffi::pps_document_model_set_annotation_editing_state(
+                self.to_glib_none().0,
+                draw.into_glib(),
+            );
         }
     }
 
@@ -251,6 +277,20 @@ impl DocumentModel {
         }
     }
 
+    #[cfg(not(feature = "v48"))]
+    #[cfg_attr(docsrs, doc(cfg(not(feature = "v48"))))]
+    #[doc(alias = "annotation-editing-state")]
+    pub fn annotation_editing_state(&self) -> AnnotationEditingState {
+        ObjectExt::property(self, "annotation-editing-state")
+    }
+
+    #[cfg(not(feature = "v48"))]
+    #[cfg_attr(docsrs, doc(cfg(not(feature = "v48"))))]
+    #[doc(alias = "annotation-editing-state")]
+    pub fn set_annotation_editing_state(&self, annotation_editing_state: AnnotationEditingState) {
+        ObjectExt::set_property(self, "annotation-editing-state", annotation_editing_state)
+    }
+
     #[doc(alias = "dual-odd-left")]
     pub fn is_dual_odd_left(&self) -> bool {
         ObjectExt::property(self, "dual-odd-left")
@@ -279,6 +319,34 @@ impl DocumentModel {
                 b"page-changed\0".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     page_changed_trampoline::<F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
+    }
+
+    #[doc(alias = "annotation-editing-state")]
+    pub fn connect_annotation_editing_state_notify<F: Fn(&Self) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        unsafe extern "C" fn notify_annotation_editing_state_trampoline<
+            F: Fn(&DocumentModel) + 'static,
+        >(
+            this: *mut ffi::PpsDocumentModel,
+            _param_spec: glib::ffi::gpointer,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(&from_glib_borrow(this))
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                b"notify::annotation-editing-state\0".as_ptr() as *const _,
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
+                    notify_annotation_editing_state_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )

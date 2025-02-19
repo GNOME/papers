@@ -2060,7 +2060,7 @@ equal to the required one, and &lt;literal&gt;0&lt;/literal&gt; otherwise.</doc>
                 c:identifier="pps_document_factory_add_filters">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-factory.c"
-             line="476">Adds some file filters to @dialog.
+             line="474">Adds some file filters to @dialog.
 
 Always add a "All documents" format.
 
@@ -2077,7 +2077,7 @@ can handle.</doc>
           <parameter name="dialog" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="478">a #GtkFileDialog</doc>
+                 line="476">a #GtkFileDialog</doc>
             <type name="Gtk.FileDialog" c:type="GtkFileDialog*"/>
           </parameter>
           <parameter name="document"
@@ -2086,7 +2086,7 @@ can handle.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="479">a #PpsDocument, or %NULL</doc>
+                 line="477">a #PpsDocument, or %NULL</doc>
             <type name="Document" c:type="PpsDocument*"/>
           </parameter>
         </parameters>
@@ -2096,7 +2096,7 @@ can handle.</doc>
                 throws="1">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-factory.c"
-             line="383">Creates a #PpsDocument for the document at @uri; or, if no backend handling
+             line="381">Creates a #PpsDocument for the document at @uri; or, if no backend handling
 the document's type is found, or an error occurred on opening the document,
 returns %NULL and fills in @error.
 If the document is encrypted, it is returned but also @error is set to
@@ -2106,14 +2106,14 @@ If the document is encrypted, it is returned but also @error is set to
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-factory.c"
-               line="394">a new #PpsDocument, or %NULL</doc>
+               line="392">a new #PpsDocument, or %NULL</doc>
           <type name="Document" c:type="PpsDocument*"/>
         </return-value>
         <parameters>
           <parameter name="uri" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="385">an URI</doc>
+                 line="383">an URI</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
         </parameters>
@@ -2124,7 +2124,7 @@ If the document is encrypted, it is returned but also @error is set to
                 throws="1">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-factory.c"
-             line="404">Synchronously creates a #PpsDocument for the document from @fd using the backend
+             line="402">Synchronously creates a #PpsDocument for the document from @fd using the backend
 for loading documents of type @mime_type; or, if the backend does not support
 loading from file descriptors, or an error occurred on opening the document,
 returns %NULL and fills in @error.
@@ -2142,26 +2142,26 @@ is destroyed, or if this function returns %NULL.</doc>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-factory.c"
-               line="425">a new #PpsDocument, or %NULL</doc>
+               line="423">a new #PpsDocument, or %NULL</doc>
           <type name="Document" c:type="PpsDocument*"/>
         </return-value>
         <parameters>
           <parameter name="fd" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="406">a file descriptor</doc>
+                 line="404">a file descriptor</doc>
             <type name="gint" c:type="int"/>
           </parameter>
           <parameter name="mime_type" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="407">the mime type</doc>
+                 line="405">the mime type</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="flags" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="408">flags from #PpsDocumentLoadFlags</doc>
+                 line="406">flags from #PpsDocumentLoadFlags</doc>
             <type name="DocumentLoadFlags" c:type="PpsDocumentLoadFlags"/>
           </parameter>
         </parameters>
@@ -2171,7 +2171,7 @@ is destroyed, or if this function returns %NULL.</doc>
                 throws="1">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-factory.c"
-             line="274">Creates a #PpsDocument for the document at @uri; or, if no backend handling
+             line="272">Creates a #PpsDocument for the document at @uri; or, if no backend handling
 the document's type is found, or an error occurred on opening the document,
 returns %NULL and fills in @error.
 If the document is encrypted, it is returned but also @error is set to
@@ -2181,20 +2181,20 @@ If the document is encrypted, it is returned but also @error is set to
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-factory.c"
-               line="286">a new #PpsDocument, or %NULL</doc>
+               line="284">a new #PpsDocument, or %NULL</doc>
           <type name="Document" c:type="PpsDocument*"/>
         </return-value>
         <parameters>
           <parameter name="uri" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="276">an URI</doc>
+                 line="274">an URI</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="flags" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-factory.c"
-                 line="277">flags from #PpsDocumentLoadFlags</doc>
+                 line="275">flags from #PpsDocumentLoadFlags</doc>
             <type name="DocumentLoadFlags" c:type="PpsDocumentLoadFlags"/>
           </parameter>
         </parameters>
@@ -2231,7 +2231,7 @@ in the current locale). The string should be freed with g_free().</doc>
              line="229">Get the pointer's x and y position relative to @widget.</doc>
         <source-position filename="libdocument/pps-document-misc.h" line="54"/>
         <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
+          <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <parameter name="widget" transfer-ownership="none">
@@ -11661,6 +11661,203 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
         </parameters>
       </method>
     </record>
+    <bitfield name="RenderAnnotsFlags"
+              glib:type-name="PpsRenderAnnotsFlags"
+              glib:get-type="pps_render_annots_flags_get_type"
+              c:type="PpsRenderAnnotsFlags">
+      <member name="none"
+              value="0"
+              c:identifier="PPS_RENDER_ANNOTS_NONE"
+              glib:nick="none"
+              glib:name="PPS_RENDER_ANNOTS_NONE">
+      </member>
+      <member name="text"
+              value="1"
+              c:identifier="PPS_RENDER_ANNOTS_TEXT"
+              glib:nick="text"
+              glib:name="PPS_RENDER_ANNOTS_TEXT">
+      </member>
+      <member name="link"
+              value="2"
+              c:identifier="PPS_RENDER_ANNOTS_LINK"
+              glib:nick="link"
+              glib:name="PPS_RENDER_ANNOTS_LINK">
+      </member>
+      <member name="freetext"
+              value="4"
+              c:identifier="PPS_RENDER_ANNOTS_FREETEXT"
+              glib:nick="freetext"
+              glib:name="PPS_RENDER_ANNOTS_FREETEXT">
+      </member>
+      <member name="line"
+              value="8"
+              c:identifier="PPS_RENDER_ANNOTS_LINE"
+              glib:nick="line"
+              glib:name="PPS_RENDER_ANNOTS_LINE">
+      </member>
+      <member name="square"
+              value="16"
+              c:identifier="PPS_RENDER_ANNOTS_SQUARE"
+              glib:nick="square"
+              glib:name="PPS_RENDER_ANNOTS_SQUARE">
+      </member>
+      <member name="circle"
+              value="32"
+              c:identifier="PPS_RENDER_ANNOTS_CIRCLE"
+              glib:nick="circle"
+              glib:name="PPS_RENDER_ANNOTS_CIRCLE">
+      </member>
+      <member name="polygon"
+              value="64"
+              c:identifier="PPS_RENDER_ANNOTS_POLYGON"
+              glib:nick="polygon"
+              glib:name="PPS_RENDER_ANNOTS_POLYGON">
+      </member>
+      <member name="polyline"
+              value="128"
+              c:identifier="PPS_RENDER_ANNOTS_POLYLINE"
+              glib:nick="polyline"
+              glib:name="PPS_RENDER_ANNOTS_POLYLINE">
+      </member>
+      <member name="highlight"
+              value="256"
+              c:identifier="PPS_RENDER_ANNOTS_HIGHLIGHT"
+              glib:nick="highlight"
+              glib:name="PPS_RENDER_ANNOTS_HIGHLIGHT">
+      </member>
+      <member name="underline"
+              value="512"
+              c:identifier="PPS_RENDER_ANNOTS_UNDERLINE"
+              glib:nick="underline"
+              glib:name="PPS_RENDER_ANNOTS_UNDERLINE">
+      </member>
+      <member name="squiggly"
+              value="1024"
+              c:identifier="PPS_RENDER_ANNOTS_SQUIGGLY"
+              glib:nick="squiggly"
+              glib:name="PPS_RENDER_ANNOTS_SQUIGGLY">
+      </member>
+      <member name="strikeout"
+              value="2048"
+              c:identifier="PPS_RENDER_ANNOTS_STRIKEOUT"
+              glib:nick="strikeout"
+              glib:name="PPS_RENDER_ANNOTS_STRIKEOUT">
+      </member>
+      <member name="stamp"
+              value="4096"
+              c:identifier="PPS_RENDER_ANNOTS_STAMP"
+              glib:nick="stamp"
+              glib:name="PPS_RENDER_ANNOTS_STAMP">
+      </member>
+      <member name="caret"
+              value="8192"
+              c:identifier="PPS_RENDER_ANNOTS_CARET"
+              glib:nick="caret"
+              glib:name="PPS_RENDER_ANNOTS_CARET">
+      </member>
+      <member name="ink"
+              value="16384"
+              c:identifier="PPS_RENDER_ANNOTS_INK"
+              glib:nick="ink"
+              glib:name="PPS_RENDER_ANNOTS_INK">
+      </member>
+      <member name="popup"
+              value="32768"
+              c:identifier="PPS_RENDER_ANNOTS_POPUP"
+              glib:nick="popup"
+              glib:name="PPS_RENDER_ANNOTS_POPUP">
+      </member>
+      <member name="fileattachment"
+              value="65536"
+              c:identifier="PPS_RENDER_ANNOTS_FILEATTACHMENT"
+              glib:nick="fileattachment"
+              glib:name="PPS_RENDER_ANNOTS_FILEATTACHMENT">
+      </member>
+      <member name="sound"
+              value="131072"
+              c:identifier="PPS_RENDER_ANNOTS_SOUND"
+              glib:nick="sound"
+              glib:name="PPS_RENDER_ANNOTS_SOUND">
+      </member>
+      <member name="movie"
+              value="262144"
+              c:identifier="PPS_RENDER_ANNOTS_MOVIE"
+              glib:nick="movie"
+              glib:name="PPS_RENDER_ANNOTS_MOVIE">
+      </member>
+      <member name="widget"
+              value="524288"
+              c:identifier="PPS_RENDER_ANNOTS_WIDGET"
+              glib:nick="widget"
+              glib:name="PPS_RENDER_ANNOTS_WIDGET">
+      </member>
+      <member name="screen"
+              value="1048576"
+              c:identifier="PPS_RENDER_ANNOTS_SCREEN"
+              glib:nick="screen"
+              glib:name="PPS_RENDER_ANNOTS_SCREEN">
+      </member>
+      <member name="printermark"
+              value="2097152"
+              c:identifier="PPS_RENDER_ANNOTS_PRINTERMARK"
+              glib:nick="printermark"
+              glib:name="PPS_RENDER_ANNOTS_PRINTERMARK">
+      </member>
+      <member name="trapnet"
+              value="4194304"
+              c:identifier="PPS_RENDER_ANNOTS_TRAPNET"
+              glib:nick="trapnet"
+              glib:name="PPS_RENDER_ANNOTS_TRAPNET">
+      </member>
+      <member name="watermark"
+              value="8388608"
+              c:identifier="PPS_RENDER_ANNOTS_WATERMARK"
+              glib:nick="watermark"
+              glib:name="PPS_RENDER_ANNOTS_WATERMARK">
+      </member>
+      <member name="3d"
+              value="16777216"
+              c:identifier="PPS_RENDER_ANNOTS_3D"
+              glib:nick="3d"
+              glib:name="PPS_RENDER_ANNOTS_3D">
+      </member>
+      <member name="richmedia"
+              value="33554432"
+              c:identifier="PPS_RENDER_ANNOTS_RICHMEDIA"
+              glib:nick="richmedia"
+              glib:name="PPS_RENDER_ANNOTS_RICHMEDIA">
+      </member>
+      <member name="print_document"
+              value="524288"
+              c:identifier="PPS_RENDER_ANNOTS_PRINT_DOCUMENT"
+              glib:nick="print-document"
+              glib:name="PPS_RENDER_ANNOTS_PRINT_DOCUMENT">
+      </member>
+      <member name="print_markup"
+              value="-32800771"
+              c:identifier="PPS_RENDER_ANNOTS_PRINT_MARKUP"
+              glib:nick="print-markup"
+              glib:name="PPS_RENDER_ANNOTS_PRINT_MARKUP">
+      </member>
+      <member name="print_stamp"
+              value="528384"
+              c:identifier="PPS_RENDER_ANNOTS_PRINT_STAMP"
+              glib:nick="print-stamp"
+              glib:name="PPS_RENDER_ANNOTS_PRINT_STAMP">
+      </member>
+      <member name="print_all"
+              value="-32800771"
+              c:identifier="PPS_RENDER_ANNOTS_PRINT_ALL"
+              glib:nick="print-all"
+              glib:name="PPS_RENDER_ANNOTS_PRINT_ALL">
+      </member>
+      <member name="all"
+              value="67108863"
+              c:identifier="PPS_RENDER_ANNOTS_ALL"
+              glib:nick="all"
+              glib:name="PPS_RENDER_ANNOTS_ALL">
+      </member>
+    </bitfield>
     <class name="RenderContext"
            c:symbol-prefix="render_context"
            c:type="PpsRenderContext"
@@ -11671,7 +11868,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       <source-position filename="libdocument/pps-render-context.h" line="36"/>
       <constructor name="new" c:identifier="pps_render_context_new">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="49"/>
+                         line="90"/>
         <return-value transfer-ownership="full">
           <type name="RenderContext" c:type="PpsRenderContext*"/>
         </return-value>
@@ -11685,12 +11882,15 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
           <parameter name="scale" transfer-ownership="none">
             <type name="gdouble" c:type="gdouble"/>
           </parameter>
+          <parameter name="annot_flags" transfer-ownership="none">
+            <type name="RenderAnnotsFlags" c:type="PpsRenderAnnotsFlags"/>
+          </parameter>
         </parameters>
       </constructor>
       <method name="compute_scaled_size"
               c:identifier="pps_render_context_compute_scaled_size">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="66"/>
+                         line="108"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11698,7 +11898,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
           <instance-parameter name="rc" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-render-context.c"
-                 line="116">an #PpsRenderContext</doc>
+                 line="118">an #PpsRenderContext</doc>
             <type name="RenderContext" c:type="PpsRenderContext*"/>
           </instance-parameter>
           <parameter name="width_points" transfer-ownership="none">
@@ -11724,7 +11924,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       <method name="compute_scales"
               c:identifier="pps_render_context_compute_scales">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="78"/>
+                         line="120"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11732,7 +11932,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
           <instance-parameter name="rc" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-render-context.c"
-                 line="181">an #PpsRenderContext</doc>
+                 line="183">an #PpsRenderContext</doc>
             <type name="RenderContext" c:type="PpsRenderContext*"/>
           </instance-parameter>
           <parameter name="width_points" transfer-ownership="none">
@@ -11758,7 +11958,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       <method name="compute_transformed_size"
               c:identifier="pps_render_context_compute_transformed_size">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="72"/>
+                         line="114"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11766,7 +11966,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
           <instance-parameter name="rc" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-render-context.c"
-                 line="151">an #PpsRenderContext</doc>
+                 line="153">an #PpsRenderContext</doc>
             <type name="RenderContext" c:type="PpsRenderContext*"/>
           </instance-parameter>
           <parameter name="width_points" transfer-ownership="none">
@@ -11791,7 +11991,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </method>
       <method name="set_page" c:identifier="pps_render_context_set_page">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="53"/>
+                         line="95"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11807,7 +12007,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       <method name="set_rotation"
               c:identifier="pps_render_context_set_rotation">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="56"/>
+                         line="98"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11822,7 +12022,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </method>
       <method name="set_scale" c:identifier="pps_render_context_set_scale">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="59"/>
+                         line="101"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11838,7 +12038,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       <method name="set_target_size"
               c:identifier="pps_render_context_set_target_size">
         <source-position filename="libdocument/pps-render-context.h"
-                         line="62"/>
+                         line="104"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -11871,6 +12071,9 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </field>
       <field name="target_height">
         <type name="gint" c:type="gint"/>
+      </field>
+      <field name="annot_flags">
+        <type name="RenderAnnotsFlags" c:type="PpsRenderAnnotsFlags"/>
       </field>
     </class>
     <record name="RenderContextClass"

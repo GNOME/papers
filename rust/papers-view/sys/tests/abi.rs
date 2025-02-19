@@ -203,6 +203,13 @@ fn get_c_output(name: &str) -> Result<String, Box<dyn Error>> {
 
 const RUST_LAYOUTS: &[(&str, Layout)] = &[
     (
+        "PpsAnnotationEditingState",
+        Layout {
+            size: size_of::<PpsAnnotationEditingState>(),
+            alignment: align_of::<PpsAnnotationEditingState>(),
+        },
+    ),
+    (
         "PpsAnnotationsContext",
         Layout {
             size: size_of::<PpsAnnotationsContext>(),
@@ -555,6 +562,9 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
 ];
 
 const RUST_CONSTANTS: &[(&str, &str)] = &[
+    ("(guint) PPS_ANNOTATION_EDITING_STATE_INK", "1"),
+    ("(guint) PPS_ANNOTATION_EDITING_STATE_NONE", "0"),
+    ("(guint) PPS_ANNOTATION_EDITING_STATE_TEXT", "2"),
     ("(gint) PPS_ATTACHMENT_CONTEXT_ERROR_EMPTY_INPUT", "1"),
     ("(gint) PPS_ATTACHMENT_CONTEXT_ERROR_NOT_IMPLEMENTED", "0"),
     ("(gint) PPS_JOB_N_PRIORITIES", "4"),
