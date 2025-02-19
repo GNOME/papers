@@ -131,7 +131,7 @@ gboolean pps_document_model_get_rtl (PpsDocumentModel *model);
 PPS_PUBLIC
 void
 pps_document_model_set_annotation_editing_state (PpsDocumentModel *model,
-                                                 PpsAnnotationEditingState draw);
+                                                 PpsAnnotationEditingState state);
 PPS_PUBLIC
 PpsAnnotationEditingState
 pps_document_model_get_annotation_editing_state (PpsDocumentModel *model);
