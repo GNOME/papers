@@ -97,8 +97,6 @@ pps_annotation_window_sync_contents (PpsAnnotationWindow *window)
 	g_free (contents);
 }
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 static void
 pps_annotation_window_set_color (PpsAnnotationWindow *window,
                                  GdkRGBA *color)
@@ -127,8 +125,6 @@ pps_annotation_window_set_color (PpsAnnotationWindow *window,
 	                                            GTK_STYLE_PROVIDER (css_provider),
 	                                            GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 pps_annotation_window_label_changed (PpsAnnotationMarkup *annot,
