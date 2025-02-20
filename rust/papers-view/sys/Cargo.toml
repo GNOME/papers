@@ -31,39 +31,16 @@ all-features = true
 name = "papers_view_sys"
 
 [dependencies]
+papers-document-sys.workspace = true
 libc = "0.2"
-
-[dependencies.gio-sys]
-version = "0.20"
-
-[dependencies.glib-sys]
-package = "glib-sys"
-version = "0.20"
-
-[dependencies.gobject-sys]
-version = "0.20"
-
-[dependencies.cairo-sys]
-package = "cairo-sys-rs"
-version = "0.20"
-
-[dependencies.gdk-pixbuf-sys]
-version = "0.20"
-
-[dependencies.pango-sys]
-package = "pango-sys"
-version = "0.20"
-
-[dependencies.gdk-sys]
-package = "gdk4-sys"
-version = "0.9"
-
-[dependencies.gtk-sys]
-package = "gtk4-sys"
-version = "0.9"
-
-[dependencies.papers-document-sys]
-path = "../../papers-document/sys"
+gio-sys.workspace = true
+glib-sys.workspace = true
+gobject-sys.workspace = true
+gdk-pixbuf-sys.workspace = true
+pango-sys.workspace = true
+cairo-sys-rs.workspace = true
+gtk-sys.workspace = true
+gdk-sys.workspace = true
 
 [build-dependencies]
 system-deps = "7"

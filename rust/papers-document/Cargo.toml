@@ -18,38 +18,18 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
 default = ["v48"]
-v42 = ["ffi/v42"]
-v47 = ["ffi/v47", "v42"]
-v48 = ["ffi/v48", "v47"]
+v42 = ["papers-document-sys/v42"]
+v47 = ["papers-document-sys/v47", "v42"]
+v48 = ["papers-document-sys/v48", "v47"]
 
 [dependencies]
+papers-document-sys.workspace = true
 libc = "0.2"
 bitflags = "2.2"
-
-[dependencies.ffi]
-package = "papers-document-sys"
-path = "./sys"
-
-[dependencies.cairo-rs]
-version = "0.20"
-
-[dependencies.glib]
-version = "0.20"
-
-[dependencies.gio]
-version = "0.20"
-
-[dependencies.gdk-pixbuf]
-version = "0.20"
-
-[dependencies.gtk]
-package = "gtk4"
-version = "0.9"
-
-[dependencies.gdk]
-package = "gdk4"
-version = "0.9"
-
-[dependencies.pango]
-package = "pango"
-version = "0.20"
+glib.workspace = true
+gio.workspace = true
+gdk-pixbuf.workspace = true
+gtk.workspace = true
+gdk.workspace = true
+cairo-rs.workspace = true
+pango.workspace = true

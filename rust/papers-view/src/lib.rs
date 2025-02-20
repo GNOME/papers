@@ -10,8 +10,9 @@ macro_rules! assert_initialized_main_thread {
     () => {};
 }
 
+pub use papers_view_sys as ffi;
+
 pub use auto::*;
-pub use ffi;
 pub mod annotations_context;
 mod attachment_context;
 mod auto;

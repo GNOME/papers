@@ -14,6 +14,8 @@ with-keyring = ["dep:oo7"]
 spell-check = []
 
 [dependencies]
+papers-view.workspace = true
+papers-document.workspace = true
 env_logger = "0.11"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 log = "0.4"
@@ -21,31 +23,9 @@ lru = "0.12"
 futures = "0.3"
 oo7 = { version = "0.3", optional = true }
 
-[dependencies.glib]
-version = "0.20"
-features = ["v2_68"]
-
-[dependencies.gio]
-version = "0.20"
-
-[dependencies.gtk]
-package = "gtk4"
-version = "0.9"
-features = ["v4_12"]
-
-[dependencies.gdk]
-package = "gdk4"
-version = "0.9"
+gtk = { workspace = true, features = ["gnome_45"]}
 
 [dependencies.adw]
 package = "libadwaita"
 version = "0.7"
 features = ["v1_6"]
-
-[dependencies.papers_view]
-package = "papers-view"
-path = "../rust/papers-view"
-
-[dependencies.papers_document]
-package = "papers-document"
-path = "../rust/papers-document"

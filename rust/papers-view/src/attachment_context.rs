@@ -1,3 +1,4 @@
+use crate::ffi;
 use crate::AttachmentContext;
 use glib::{prelude::*, translate::*};
 use std::boxed::Box as Box_;

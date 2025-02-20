@@ -17,6 +17,11 @@ pub use papers_view::JobThumbnailTexture;
 pub use gtk::CompositeTemplate;
 pub use gtk::TemplateChild;
 
+pub use gtk::gdk;
+pub use gtk::gio;
+pub use gtk::glib;
+pub use gtk::graphene;
+
 pub use glib::subclass::InitializingObject;
 pub use glib::subclass::Signal;
 pub use glib::Properties;
@@ -29,8 +34,6 @@ pub use gettextrs::gettext;
 pub use std::sync::OnceLock;
 
 pub use log::{debug, warn};
-
-pub use gtk::graphene;
 
 pub use crate::config::*;
 pub use crate::i18n::gettext_f;

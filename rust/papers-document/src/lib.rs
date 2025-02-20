@@ -21,4 +21,4 @@ mod rectangle;
 
 pub use auto::functions::*;
 pub use auto::*;
-pub use ffi;
+pub use papers_document_sys as ffi;
