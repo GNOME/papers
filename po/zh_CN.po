@@ -25,8 +25,8 @@ msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-17 05:04+0000\n"
-"PO-Revision-Date: 2025-02-17 18:57+0800\n"
+"POT-Creation-Date: 2025-02-19 14:36+0000\n"
+"PO-Revision-Date: 2025-02-22 07:55+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -235,52 +235,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "增加支持阅读 PDF 文档的功能"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "是"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "否"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "未知字体类型"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -289,11 +289,11 @@ msgstr ""
 "该文档包含了未嵌入的字体，且字体并不是 PDF 原生支持的 14 种标准字体。如果由 "
 "fontconfig 选择的替代字体与创建 PDF 时所用字体不一致，渲染可能不太正确。"
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "全部字体皆为标准字体或嵌入字体。"
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "无名称"
 
@@ -301,20 +301,20 @@ msgstr "无名称"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
 #: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "无"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "嵌入子集"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "嵌入"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "未嵌入"
 
@@ -323,7 +323,7 @@ msgstr "未嵌入"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr "（14 种标准字体之一）"
 
@@ -332,7 +332,7 @@ msgstr "（14 种标准字体之一）"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr "（14 种标准字体范围之外）"
 
@@ -346,7 +346,7 @@ msgstr "（14 种标准字体范围之外）"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -370,7 +370,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -414,17 +414,17 @@ msgstr "无法打开附件“%s”"
 msgid "File type %s (%s) is not supported"
 msgstr "不支持文件类型 %s (%s)"
 
-#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "未知的 MIME 类型"
 
-#: libdocument/pps-document-factory.c:500
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "全部文档"
 
-#: libdocument/pps-document-factory.c:528
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "全部文件"
 
@@ -472,7 +472,7 @@ msgid "This work is in the Public Domain"
 msgstr "该项目在公有领域发行"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "保存附件"
@@ -482,26 +482,26 @@ msgstr[0] "保存附件"
 msgid "Page %s"
 msgstr "第 %s 页"
 
-#: libview/pps-annotation-window.c:270
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "编辑笔记"
 
-#: libview/pps-jobs.c:431
+#: libview/pps-jobs.c:433
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "无法渲染第 %d 页：%s"
 
-#: libview/pps-jobs.c:438
+#: libview/pps-jobs.c:440
 #, c-format
 msgid "Failed to render page %d"
 msgstr "无法渲染第 %d 页"
 
-#: libview/pps-jobs.c:672
+#: libview/pps-jobs.c:674
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "无法为第 %d 页创建缩略图"
 
-#: libview/pps-jobs.c:1698
+#: libview/pps-jobs.c:1700
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "打印页面 %d 失败： %s"
@@ -542,7 +542,7 @@ msgstr "您选择的打印范围不包括任何页面"
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
 #: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -639,51 +639,51 @@ msgstr "向下滚动视图"
 msgid "Document View"
 msgstr "文档视图"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "转到第一页"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "转到上一页"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "转到下一页"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "转到最后一页"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "转到指定页"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "查找"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "转到第 %s 页"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "转到文件“%2$s”的 %1$s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "转到文件“%s”"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "调用 %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "重置表单"
@@ -1355,7 +1355,8 @@ msgid "Abort _Print and Close"
 msgstr "中止打印并关闭(_P)"
 
 #: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -1523,7 +1524,7 @@ msgstr "取消(_A)"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "需要密码"
 
@@ -1788,11 +1789,11 @@ msgstr "脱字符导航模式已启用，按 F7 可禁用。"
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "脱字符导航模式已禁用，按 F7 可启用。"
 
-#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "无法打开附件"
 
-#: shell/src/document_view/actions.rs:1052
+#: shell/src/document_view/actions.rs:1054
 msgid "The attachment could not be saved."
 msgstr "无法保存附件。"
 
@@ -1808,19 +1809,19 @@ msgstr "该文档不含页面"
 msgid "The Document Contains Only Empty Pages"
 msgstr "该文档只包含空页面"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "该文件无法另存为“{}”。"
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "另存为…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "绘制矩形以插入签名区域"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1828,25 +1829,33 @@ msgstr ""
 "由 {} 数字签署\n"
 "日期：{}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "需要证书"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "选择签署证书"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "选择"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "签署该文档需要证书"
 
-#: shell/src/document_view/io.rs:656
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "保存已签署文件"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "请输入 {} 的密码"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "登录(_L)"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
@@ -2030,13 +2039,6 @@ msgstr "证书到期时间"
 
 #~ msgid "File Saved"
 #~ msgstr "文件已保存"
-
-#, c-format
-#~ msgid "Please enter password for %s"
-#~ msgstr "请输入 %s 的密码"
-
-#~ msgid "_Login"
-#~ msgstr "登录(_L)"
 
 #~ msgid "Bookmarks"
 #~ msgstr "书签"
