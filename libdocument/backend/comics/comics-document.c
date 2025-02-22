@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8; c-indent-level: 8 -*- */
 /*
  * Copyright (C) 2009-2010 Juanjo Marín <juanj.marin@juntadeandalucia.es>
  * Copyright (C) 2005, Teemu Tervo <teemu.tervo@gmx.net>

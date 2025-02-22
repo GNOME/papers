@@ -1,4 +1,4 @@
-/* pps-search-context.c
+/* pps-annotations-context.c
  *  this file is part of papers, a gnome document viewer
  *
  * Copyright (C) 2024 Pablo Correa Gomez <ablocorrea@hotmail.com>

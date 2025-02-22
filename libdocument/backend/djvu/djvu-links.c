@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8; c-indent-level: 8 -*- */
 /*
  * Implements hyperlink functionality for Djvu files.
  * Copyright (C) 2006 Pauli Virtanen <pav@iki.fi>
