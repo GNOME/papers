@@ -889,9 +889,6 @@ impl imp::PpsDocumentView {
                     document.doc_mutex_unlock();
                 }
             }
-
-            // FIXME: update annot region only
-            self.view.reload();
         }
     }
 

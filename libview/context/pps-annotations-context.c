@@ -31,6 +31,7 @@
 enum {
 	SIGNAL_ANNOT_ADDED,
 	SIGNAL_ANNOT_REMOVED,
+	SIGNAL_ANNOTS_LOADED,
 	N_SIGNALS
 };
 
@@ -95,6 +96,8 @@ annotations_job_finished_cb (PpsJobAnnots *job,
 		g_list_store_splice (priv->annots_model, 0, 0, (gpointer *) annotations, (guint) n_annotations);
 
 	pps_annotations_context_clear_job (self);
+
+	g_signal_emit (self, signals[SIGNAL_ANNOTS_LOADED], 0);
 }
 
 static void
@@ -219,6 +222,14 @@ pps_annotations_context_class_init (PpsAnnotationsContextClass *klass)
 	                  g_cclosure_marshal_generic,
 	                  G_TYPE_NONE, 1,
 	                  PPS_TYPE_ANNOTATION);
+
+	signals[SIGNAL_ANNOTS_LOADED] =
+	    g_signal_new ("annots-loaded",
+	                  G_TYPE_FROM_CLASS (gobject_class),
+	                  G_SIGNAL_RUN_LAST,
+	                  0, NULL, NULL,
+	                  g_cclosure_marshal_generic,
+	                  G_TYPE_NONE, 0);
 }
 
 PpsAnnotationsContext *

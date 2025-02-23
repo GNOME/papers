@@ -3393,6 +3393,64 @@ pps_view_rerender_annotation (PpsView *view,
 }
 
 static void
+pps_view_annot_changed_cb (PpsAnnotation *annot,
+                           GParamSpec *pspec,
+                           PpsView *view)
+{
+	pps_view_rerender_annotation (view, annot);
+}
+
+static void
+pps_view_connect_annot_signals (PpsView *view,
+                                PpsAnnotation *annot)
+{
+	g_signal_connect_object (annot,
+	                         "notify::rgba",
+	                         G_CALLBACK (pps_view_annot_changed_cb),
+	                         view,
+	                         G_CONNECT_DEFAULT);
+	g_signal_connect_object (annot,
+	                         "notify::area",
+	                         G_CALLBACK (pps_view_annot_changed_cb),
+	                         view,
+	                         G_CONNECT_DEFAULT);
+	g_signal_connect_object (annot,
+	                         "notify::hidden",
+	                         G_CALLBACK (pps_view_annot_changed_cb),
+	                         view,
+	                         G_CONNECT_DEFAULT);
+
+	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
+		g_signal_connect_object (annot,
+		                         "notify::opacity",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+	}
+
+	if (PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
+		g_signal_connect_object (annot,
+		                         "notify::type",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+	}
+
+	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+		g_signal_connect_object (annot,
+		                         "notify::font-desc",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+		g_signal_connect_object (annot,
+		                         "notify::font-rgba",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+	}
+}
+
+static void
 pps_view_annot_added_cb (PpsView *view,
                          gpointer *user_data)
 {
@@ -3407,6 +3465,7 @@ pps_view_annot_added_cb (PpsView *view,
 		                           PPS_PAGE_DATA_INCLUDE_ANNOTS);
 
 	pps_view_rerender_annotation (view, annot);
+	pps_view_connect_annot_signals (view, annot);
 
 	if (PPS_IS_ANNOTATION_TEXT (annot)) {
 		GtkWidget *window = pps_view_create_annotation_window (view, PPS_ANNOTATION_MARKUP (annot));
@@ -3431,6 +3490,23 @@ pps_view_annot_removed_cb (PpsView *view,
 	                           PPS_PAGE_DATA_INCLUDE_ANNOTS);
 
 	pps_view_rerender_annotation (view, annot);
+}
+
+static void
+pps_view_annots_loaded_cb (PpsAnnotationsContext *annot_context,
+                           PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
+	gint i;
+	PpsAnnotation *annot;
+
+	for (i = 0, annot = g_list_model_get_item (model, i);
+	     annot != NULL;
+	     annot = g_list_model_get_item (model, ++i)) {
+		pps_view_connect_annot_signals (view, annot);
+	}
 }
 
 /**
@@ -3459,6 +3535,9 @@ pps_view_set_annotations_context (PpsView *view,
 	g_signal_connect_object (priv->annots_context, "annot-removed",
 	                         G_CALLBACK (pps_view_annot_removed_cb),
 	                         view, G_CONNECT_SWAPPED);
+	g_signal_connect_object (priv->annots_context, "annots-loaded",
+	                         G_CALLBACK (pps_view_annots_loaded_cb),
+	                         view, G_CONNECT_DEFAULT);
 }
 
 /* Caret navigation */
