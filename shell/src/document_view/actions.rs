@@ -309,10 +309,11 @@ impl imp::PpsDocumentView {
                 .parameter_type(Some(glib::VariantTy::STRING))
                 .state(glib::Variant::from("highlight"))
                 .change_state(glib::clone!(
-                    #[weak(rename_to = _obj)]
+                    #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
                         action.set_state(state.unwrap());
+                        obj.cmd_annot_style();
                     }
                 ))
                 .build(),
@@ -705,6 +706,18 @@ impl imp::PpsDocumentView {
                 .change_action_state("fullscreen", &false.into());
         } else if self.split_view.is_collapsed() && self.split_view.shows_sidebar() {
             self.split_view.set_show_sidebar(false);
+        }
+    }
+
+    fn cmd_annot_style(&self) {
+        let annot = self.annot.borrow().clone();
+        if let Some(annot) = annot {
+            if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
+                let markup_type = self.annot_style();
+                if annot.markup_type() != markup_type {
+                    annot.set_markup_type(markup_type);
+                }
+            }
         }
     }
 

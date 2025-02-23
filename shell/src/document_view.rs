@@ -205,6 +205,9 @@ mod imp {
                 obj.as_ref()
                     .imp()
                     .set_action_enabled("add-highlight-annotation", false);
+                obj.as_ref()
+                    .imp()
+                    .set_action_enabled("annot-style", false);
                 obj.as_ref().imp().set_action_enabled("copy", false);
             }
         }

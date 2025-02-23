@@ -1,6 +1,6 @@
 use super::*;
 
-use papers_document::DocumentPermissions;
+use papers_document::{AnnotationTextMarkupType, DocumentPermissions};
 
 #[gtk::template_callbacks]
 impl imp::PpsDocumentView {
@@ -477,10 +477,13 @@ impl imp::PpsDocumentView {
 
     pub(super) fn view_menu_annot_popup(&self, annot: Option<&papers_document::Annotation>) {
         let mut show_annot_props = false;
+        let mut is_annot_textmarkup = false;
         let mut show_attachment = false;
+        let has_selection = self.view.has_selection();
 
         if let Some(annot) = annot {
             show_annot_props = annot.is::<papers_document::AnnotationMarkup>();
+            is_annot_textmarkup = annot.is::<papers_document::AnnotationTextMarkup>();
 
             let attachment = annot
                 .dynamic_cast_ref::<papers_document::AnnotationAttachment>()
@@ -498,12 +501,30 @@ impl imp::PpsDocumentView {
             .unwrap_or_default()
             && annot.is_some();
 
-        self.annot.replace(annot.cloned());
-
         self.set_action_enabled("annot-properties", show_annot_props);
+        self.set_action_enabled("annot-style", is_annot_textmarkup || has_selection);
         self.set_action_enabled("remove-annot", can_remove_annots);
         self.set_action_enabled("open-attachment", show_attachment);
         self.set_action_enabled("save-attachment", show_attachment);
+
+        if is_annot_textmarkup {
+            let markup_type = match annot
+                .clone()
+                .unwrap()
+                .dynamic_cast_ref::<AnnotationTextMarkup>()
+                .unwrap()
+                .markup_type()
+            {
+                AnnotationTextMarkupType::Highlight => "highlight",
+                AnnotationTextMarkupType::Squiggly => "squiggly",
+                AnnotationTextMarkupType::StrikeOut => "strikethrough",
+                AnnotationTextMarkupType::Underline => "underline",
+                _ => panic!("unknown markup type"),
+            };
+            self.set_action_state("annot-style", &glib::Variant::from(markup_type));
+        }
+
+        self.annot.replace(annot.cloned());
     }
 
     #[template_callback]
@@ -581,6 +602,7 @@ impl imp::PpsDocumentView {
 
         self.set_action_enabled("copy", has_selection);
         self.set_action_enabled("add-highlight-annotation", has_selection && can_annotate);
+        self.set_action_enabled("annot-style", has_selection && can_annotate);
     }
 
     #[template_callback]
