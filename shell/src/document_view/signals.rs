@@ -546,6 +546,13 @@ impl imp::PpsDocumentView {
     }
 
     #[template_callback]
+    fn view_popup_closed(&self) {
+        self.annot.replace(None);
+        self.link.replace(None);
+        self.image.replace(None);
+    }
+
+    #[template_callback]
     fn view_selection_changed(&self) {
         let has_selection = self.view.has_selection();
         let can_annotate = self

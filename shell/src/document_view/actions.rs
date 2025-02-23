@@ -478,7 +478,6 @@ impl imp::PpsDocumentView {
                         if let Some(annot) = obj.annot.borrow().clone() {
                             obj.annots_context.remove_annotation(&annot);
                         };
-                        obj.annot.replace(None);
                     }
                 ))
                 .build(),

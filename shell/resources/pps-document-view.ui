@@ -328,7 +328,7 @@
                                   swapped="yes" />
                                 <signal name="cursor-moved" handler="view_caret_cursor_moved"
                                   swapped="yes" />
-				<signal name="signature-rect" handler="on_signature_rect" swapped="yes" />
+                                <signal name="signature-rect" handler="on_signature_rect" swapped="yes" />
                               </object>
                             </property>
                             <signal name="scroll-child" handler="scroll_child_history" swapped="yes" />
@@ -343,6 +343,7 @@
                     <property name="has-arrow">False</property>
                     <property name="menu-model">view-popup-menu</property>
                     <property name="halign">start</property>
+                    <signal name="closed" handler="view_popup_closed" swapped="yes" />
                   </object>
                 </child>
               </object>
