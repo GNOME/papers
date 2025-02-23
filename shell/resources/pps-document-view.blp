@@ -414,7 +414,8 @@ template $PpsDocumentView: Adw.BreakpointBin {
 
       Shortcut {
         trigger: "<Ctrl>H";
-        action: "action(doc.add-highlight-annotation)";
+        action: "action(doc.annot-style)";
+        arguments: "'highlight'";
       }
 
       Shortcut {
@@ -872,11 +873,6 @@ menu view-popup-menu {
       label: _("_Add Text Annotation");
       action: "doc.add-text-annotation";
       hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("_Highlight Selected Text");
-      action: "doc.add-highlight-annotation";
     }
   }
 }

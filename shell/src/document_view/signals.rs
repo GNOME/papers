@@ -601,8 +601,7 @@ impl imp::PpsDocumentView {
             .unwrap_or_default();
 
         self.set_action_enabled("copy", has_selection);
-        self.set_action_enabled("add-highlight-annotation", has_selection && can_annotate);
-        self.set_action_enabled("annot-style", has_selection && can_annotate);
+        self.set_action_enabled("annot-style", can_annotate);
     }
 
     #[template_callback]
