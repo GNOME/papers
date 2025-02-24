@@ -7408,8 +7408,6 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 	PpsDocument *document = pps_document_model_get_document (model);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	gint current_page;
-
 	pps_view_remove_all (view);
 	clear_caches (view);
 
@@ -7425,13 +7423,7 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 	if (priv->caret_enabled)
 		preload_pages_for_caret_navigation (view);
 
-	current_page = pps_document_model_get_page (model);
-	if (priv->current_page != current_page) {
-		pps_view_change_page (view, current_page);
-	} else {
-		priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
-		gtk_widget_queue_resize (GTK_WIDGET (view));
-	}
+	pps_view_change_page (view, pps_document_model_get_page (model));
 
 	view_update_scale_limits (view);
 }
@@ -7610,7 +7602,6 @@ pps_view_set_model (PpsView *view,
 
 	/* Initialize view from model */
 	gtk_widget_set_direction (GTK_WIDGET (view), pps_document_model_get_rtl (priv->model));
-	pps_view_document_changed_cb (priv->model, NULL, view);
 
 	g_signal_connect (priv->model, "notify::document",
 	                  G_CALLBACK (pps_view_document_changed_cb),
