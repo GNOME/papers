@@ -108,6 +108,21 @@ pps_annotation_window_label_changed (PpsAnnotationMarkup *annot,
 }
 
 static void
+pps_annotation_window_contents_changed (PpsAnnotationMarkup *annot,
+                                        GParamSpec *pspec,
+                                        PpsAnnotationWindow *window)
+{
+	const gchar *contents = pps_annotation_get_contents (window->annotation);
+
+	if (contents) {
+		GtkTextBuffer *buffer;
+
+		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->text_view));
+		gtk_text_buffer_set_text (buffer, contents, -1);
+	}
+}
+
+static void
 pps_annotation_window_color_changed (PpsAnnotation *annot,
                                      GParamSpec *pspec,
                                      PpsAnnotationWindow *window)
@@ -248,6 +263,9 @@ pps_annotation_window_constructor (GType type,
 	                  window);
 	g_signal_connect (annot, "notify::rgba",
 	                  G_CALLBACK (pps_annotation_window_color_changed),
+	                  window);
+	g_signal_connect (annot, "notify::contents",
+	                  G_CALLBACK (pps_annotation_window_contents_changed),
 	                  window);
 
 	return object;
