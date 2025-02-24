@@ -2719,14 +2719,6 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 	case POPPLER_ANNOT_MOVIE:
 		/* Ignore link, widgets and movie annots since they are already handled */
 		break;
-	case POPPLER_ANNOT_SCREEN: {
-		PopplerAction *action;
-
-		/* Ignore screen annots containing a rendition action */
-		action = poppler_annot_screen_get_action (POPPLER_ANNOT_SCREEN (poppler_annot));
-		if (action && action->type == POPPLER_ACTION_RENDITION)
-			break;
-	}
 #ifdef HAVE_FREE_TEXT
 	case POPPLER_ANNOT_FREE_TEXT: {
 		PopplerAnnotFreeText *poppler_ft = POPPLER_ANNOT_FREE_TEXT (poppler_annot);
@@ -2763,10 +2755,19 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 		poppler_annot_get_border_width (poppler_annot, &border_width);
 		pps_annotation_set_border_width (pps_annot, border_width);
 	} break;
-#else
+#endif
+	case POPPLER_ANNOT_SCREEN: {
+		PopplerAction *action;
+
+		/* Ignore screen annots containing a rendition action */
+		action = poppler_annot_screen_get_action (POPPLER_ANNOT_SCREEN (poppler_annot));
+		if (action && action->type == POPPLER_ACTION_RENDITION)
+			break;
+	}
+	/* Fall through */
+#ifndef HAVE_FREE_TEXT
 	case POPPLER_ANNOT_FREE_TEXT:
 #endif
-		/* Fall through */
 	case POPPLER_ANNOT_3D:
 	case POPPLER_ANNOT_CARET:
 	case POPPLER_ANNOT_LINE:
