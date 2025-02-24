@@ -313,6 +313,13 @@ pps_annotation_window_dispose (GObject *object)
 {
 	PpsAnnotationWindow *window = PPS_ANNOTATION_WINDOW (object);
 
+	g_signal_handlers_disconnect_by_func (window->annotation,
+	                                      G_CALLBACK (pps_annotation_window_label_changed),
+	                                      window);
+	g_signal_handlers_disconnect_by_func (window->annotation,
+	                                      G_CALLBACK (pps_annotation_window_color_changed),
+	                                      window);
+
 	g_clear_object (&window->document);
 
 	G_OBJECT_CLASS (pps_annotation_window_parent_class)->dispose (object);
