@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-17 20:06+0000\n"
-"PO-Revision-Date: 2025-02-18 11:57+1100\n"
+"POT-Creation-Date: 2025-02-23 05:31+0000\n"
+"PO-Revision-Date: 2025-02-24 21:08+1100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -166,29 +166,29 @@ msgstr "Apercebut abans impression"
 msgid "Preview before printing"
 msgstr "Apercebut abans impression"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Lo fichièr es corromput"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "L’archiu es chifrat"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Cap d’imatge pres en carga dins l’archiu"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Pas cap de fichièr dins l'archiu"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Marrit tipe MIME benda dessenhada : %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -196,7 +196,7 @@ msgstr ""
 "libarchive possedís pas la presa en carga del format de compression "
 "d’aquesta benda dessenhada, contactatz vòstre provesidor"
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Obtencion impossibla del camin local de l’archiu"
 
@@ -421,17 +421,17 @@ msgstr "Impossible de dobrir la pèça junta « %s »"
 msgid "File type %s (%s) is not supported"
 msgstr "Lo tipe de fichièr %s (%s) es pas pres en carga"
 
-#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Tipe MIME desconegut"
 
-#: libdocument/pps-document-factory.c:500
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Totes los documents"
 
-#: libdocument/pps-document-factory.c:528
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Totes los fichièrs"
 
@@ -479,7 +479,7 @@ msgid "This work is in the Public Domain"
 msgstr "Aquesta òbra es dins lo domeni public"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Enregistrar la pèça junta"
@@ -490,7 +490,7 @@ msgstr[1] "Enregistrar las pèças juntas"
 msgid "Page %s"
 msgstr "Pagina %s"
 
-#: libview/pps-annotation-window.c:270
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Modificar la nòta"
 
@@ -550,7 +550,7 @@ msgstr "Vòstre interval d'impression inclutz pas cap de pagina"
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
 #: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Tampar"
 
@@ -634,71 +634,71 @@ msgstr "S'es activat, un contorn serà present al torn de cada pagina."
 msgid "Page Handling"
 msgstr "Gestion de las paginas"
 
-#: libview/pps-view-accessible.c:42
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Defilar cap amont"
 
-#: libview/pps-view-accessible.c:43
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Defilar cap aval"
 
-#: libview/pps-view-accessible.c:48
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Far defilar la vista cap amont"
 
-#: libview/pps-view-accessible.c:49
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Far defilar la vista cap aval"
 
-#: libview/pps-view-accessible.c:126
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Vista del document"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2109
 msgid "Go to first page"
 msgstr "Anar a la primièra pagina"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2111
 msgid "Go to previous page"
 msgstr "Anar a la pagina precedenta"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2113
 msgid "Go to next page"
 msgstr "Anar a la pagina seguenta"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2115
 msgid "Go to last page"
 msgstr "Anar a la darrièra pagina"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2117
 msgid "Go to page"
 msgstr "Anar a la pagina"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2119
 msgid "Find"
 msgstr "Recercar"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2148
 #, c-format
 msgid "Go to page %s"
 msgstr "Anar a la pagina %s"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2154
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Anar a %s sul fichièr « %s »"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Anar a la pagina « %s »"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2165
 #, c-format
 msgid "Launch %s"
 msgstr "Aviar %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2172
 #, c-format
 msgid "Reset form"
 msgstr "Reïnicializar lo formulari"
@@ -823,70 +823,70 @@ msgstr "Desconegut"
 msgid "Document Properties"
 msgstr "Proprietats del document"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
 msgid "Title"
 msgstr "Títol"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Emplaçament"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
 msgid "Subject"
 msgstr "Subjècte"
 
-#: nautilus/pps-nautilus-extension.h:63
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
 #: shell/src/properties_general.rs:149
 msgid "Author"
 msgstr "Autor"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
 msgid "Keywords"
 msgstr "Mots clau"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
 msgid "Producer"
 msgstr "Productor"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
 msgid "Creator"
 msgstr "Creator"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
 msgid "Created"
 msgstr "Data de creacion"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
 msgid "Modified"
 msgstr "Darrièra modificacion"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
 msgid "Number of Pages"
 msgstr "Nombre de paginas"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
 msgid "Optimized"
 msgstr "Optimizat"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
 #: shell/src/properties_general.rs:175
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
 msgid "Security"
 msgstr "Seguretat"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
 msgid "Contains Javascript"
 msgstr "Conten de Javascript"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
 msgid "Paper Size"
 msgstr "Talha del papièr"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
 msgid "Size"
 msgstr "Talha"
 
@@ -1372,7 +1372,8 @@ msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
 #: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Anullar"
 
@@ -1540,7 +1541,7 @@ msgstr "An_ullar"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "Senhal requesit"
 
@@ -1685,9 +1686,7 @@ msgstr "© 1996-2025 Los autors del visionador de documents Papers"
 
 #: shell/src/application.rs:203
 msgid "translator-credits"
-msgstr ""
-"Cédric Valmary <cvalmary@yahoo.fr>\n"
-"Quentin PAGÈS"
+msgstr "Quentin PAGÈS"
 
 #: shell/src/application.rs:307
 msgid "The page label of the document to display."
@@ -1789,11 +1788,11 @@ msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Lo mòde navegacion al cursor es ara desactivat, quichatz F7 per l’activar."
 
-#: shell/src/document_view/actions.rs:1019 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Impossible de dobrir la pèça junta"
 
-#: shell/src/document_view/actions.rs:1052
+#: shell/src/document_view/actions.rs:1054
 msgid "The attachment could not be saved."
 msgstr "La pèça junta pòt pas èsser enregistrada."
 
@@ -1809,19 +1808,19 @@ msgstr "Lo document a pas cap de pagina"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Lo document conten pas que de paginas voidas"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "Lo fichièr pòt pas èsser enregistrat sous « {} »."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "Enregistrar jos…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Dessenhar un rectangle per inserir un camp de signatura"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1829,25 +1828,33 @@ msgstr ""
 "Signat electronicament per {}\n"
 "Data : {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "Certificat requerit"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "Seleccionar lo certificat de signatura"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "Seleccionar"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "Se requerís un certificat per signar aqueste document"
 
-#: shell/src/document_view/io.rs:656
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "Enregistrat fichièr signat"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Mercés de picar lo senhal per {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "_Connexion"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
@@ -2036,12 +2043,6 @@ msgstr "Data d’expiracion del certificat"
 
 #~ msgid "File Saved"
 #~ msgstr "Fichièr enregistrat"
-
-#~ msgid "Please enter password for %s"
-#~ msgstr "Mercés de picar lo senhal per %s"
-
-#~ msgid "_Login"
-#~ msgstr "_Connexion"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Signets"
