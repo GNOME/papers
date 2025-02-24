@@ -7437,12 +7437,13 @@ pps_view_rotation_changed_cb (PpsDocumentModel *model,
 	PpsDocument *document = pps_document_model_get_document (model);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	if (priv->pixbuf_cache) {
-		pps_pixbuf_cache_clear (priv->pixbuf_cache);
-		if (!pps_document_is_page_size_uniform (document))
-			priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-		gtk_widget_queue_resize (GTK_WIDGET (view));
-	}
+	if (!document)
+		return;
+
+	pps_pixbuf_cache_clear (priv->pixbuf_cache);
+	if (!pps_document_is_page_size_uniform (document))
+		priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	gtk_widget_queue_resize (GTK_WIDGET (view));
 
 	pps_view_remove_all (view);
 	view_update_scale_limits (view);
