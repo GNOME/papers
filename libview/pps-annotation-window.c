@@ -278,8 +278,14 @@ pps_annotation_window_dispose (GObject *object)
 	g_signal_handlers_disconnect_by_func (window->annotation,
 	                                      G_CALLBACK (pps_annotation_window_color_changed),
 	                                      window);
+	g_signal_handlers_disconnect_by_func (window->annotation,
+	                                      G_CALLBACK (pps_annotation_window_contents_changed),
+	                                      window);
 
 	g_clear_object (&window->document);
+
+	g_object_set_data (G_OBJECT (window->annotation), "popup",
+	                   NULL);
 
 	G_OBJECT_CLASS (pps_annotation_window_parent_class)->dispose (object);
 }
