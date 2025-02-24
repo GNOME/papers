@@ -1827,7 +1827,7 @@ pps_annotation_text_markup_set_property (GObject *object,
 
 	switch (prop_id) {
 	case PROP_TEXT_MARKUP_TYPE:
-		priv->type = g_value_get_enum (value);
+		pps_annotation_text_markup_set_markup_type (annot, g_value_get_enum (value));
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
