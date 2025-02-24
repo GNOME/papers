@@ -242,6 +242,7 @@ pps_annotation_set_property (GObject *object,
 		break;
 	case PROP_ANNOT_BORDER_WIDTH:
 		pps_annotation_set_border_width (annot, g_value_get_double (value));
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
@@ -277,6 +278,7 @@ pps_annotation_get_property (GObject *object,
 		break;
 	case PROP_ANNOT_BORDER_WIDTH:
 		g_value_set_double (value, priv->border_width);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
