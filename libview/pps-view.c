@@ -6787,63 +6787,31 @@ pps_view_get_sorted_mapping_list (PpsView *view,
 }
 
 static gboolean
-child_focus_forward_idle_cb (gpointer user_data)
-{
-	PpsView *view = PPS_VIEW (user_data);
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	priv->child_focus_idle_id = 0;
-	gtk_widget_child_focus (GTK_WIDGET (view), GTK_DIR_TAB_FORWARD);
-
-	return G_SOURCE_REMOVE;
-}
-
-static gboolean
-child_focus_backward_idle_cb (gpointer user_data)
-{
-	PpsView *view = PPS_VIEW (user_data);
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	priv->child_focus_idle_id = 0;
-	gtk_widget_child_focus (GTK_WIDGET (view), GTK_DIR_TAB_BACKWARD);
-
-	return G_SOURCE_REMOVE;
-}
-
-static void
-schedule_child_focus_in_idle (PpsView *view,
-                              GtkDirectionType direction)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	g_clear_handle_id (&priv->child_focus_idle_id, g_source_remove);
-	priv->child_focus_idle_id =
-	    g_idle_add (direction == GTK_DIR_TAB_FORWARD ? child_focus_forward_idle_cb : child_focus_backward_idle_cb,
-	                view);
-}
-
-static gboolean
 pps_view_focus_next (PpsView *view,
                      GtkDirectionType direction)
 {
 	PpsMapping *focus_element;
 	GList *elements;
-	gboolean had_focused_element;
+	gboolean had_focused_element = FALSE;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+	guint page = priv->current_page;
 
 	if (priv->focused_element) {
-		GList *l;
-
-		elements = pps_view_get_sorted_mapping_list (view, direction, priv->focused_element_page);
-		l = g_list_find (elements, priv->focused_element);
-		l = g_list_next (l);
-		focus_element = l ? l->data : NULL;
+		page = priv->focused_element_page;
 		had_focused_element = TRUE;
-	} else {
-		elements = pps_view_get_sorted_mapping_list (view, direction, priv->current_page);
-		focus_element = elements ? elements->data : NULL;
-		had_focused_element = FALSE;
 	}
+
+	do {
+		elements = pps_view_get_sorted_mapping_list (view, direction, page);
+
+		if (had_focused_element) {
+			elements = g_list_next (g_list_find (elements, priv->focused_element));
+			had_focused_element = FALSE;
+		}
+
+		focus_element = elements ? elements->data : NULL;
+		page = (direction == GTK_DIR_TAB_BACKWARD ? go_to_previous_page : go_to_next_page) (view, page);
+	} while (elements == NULL && page != -1);
 
 	g_list_free (elements);
 
@@ -6856,26 +6824,6 @@ pps_view_focus_next (PpsView *view,
 
 	pps_view_remove_all_form_fields (view);
 	_pps_view_set_focused_element (view, NULL, -1);
-
-	/* Only try to move the focus to next/previous pages when the current page had
-	 * a focused element. This prevents the view from jumping to the first/last page
-	 * when there are not focusable elements.
-	 */
-	if (!had_focused_element)
-		return FALSE;
-
-	/* FIXME: this doesn't work if the next/previous page doesn't have form fields */
-	if (direction == GTK_DIR_TAB_FORWARD) {
-		if (pps_view_next_page (view)) {
-			schedule_child_focus_in_idle (view, direction);
-			return TRUE;
-		}
-	} else if (direction == GTK_DIR_TAB_BACKWARD) {
-		if (pps_view_previous_page (view)) {
-			schedule_child_focus_in_idle (view, direction);
-			return TRUE;
-		}
-	}
 
 	return FALSE;
 }
@@ -6892,7 +6840,7 @@ pps_view_focus (GtkWidget *widget,
 			return pps_view_focus_next (view, direction);
 	}
 
-	return TRUE;
+	return FALSE;
 }
 
 static void
