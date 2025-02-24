@@ -2839,7 +2839,17 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 		}
 
 		if (PPS_IS_ANNOTATION_MARKUP (pps_annot) &&
-		    pps_annotation_markup_can_have_popup (PPS_ANNOTATION_MARKUP (pps_annot))) {
+		    pps_annotation_markup_can_have_popup (PPS_ANNOTATION_MARKUP (pps_annot)) &&
+		    /*
+		     * Per PDF 32000-1:2008 Table 169 stamp annotations are
+		     * markup annotations, but Poppler does not subclass
+		     * PopplerAnnotMarkup for PopplerAnnotStamp.
+		     *
+		     * This can be dropped once our minimum required version of
+		     * Poppler contains these or equivalent changes:
+		     * https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1760
+		     */
+		    POPPLER_IS_ANNOT_MARKUP (poppler_annot)) {
 			PopplerAnnotMarkup *markup;
 			gchar *label;
 			gdouble opacity;
