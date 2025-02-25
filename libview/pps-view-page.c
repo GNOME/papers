@@ -133,6 +133,51 @@ doc_rect_to_view_rect (PpsViewPage *page,
 	view_rect->height = (gint) (height + 0.5);
 }
 
+/*** Focus ***/
+/* TODO: code duplication? */
+static gboolean
+get_focused_area (PpsViewPage *page,
+                  GdkRectangle *area)
+{
+	PpsMapping *focused_element = NULL;
+
+	/* TODO: get focused element */
+
+	if (!focused_element)
+		return FALSE;
+
+	doc_rect_to_view_rect (page, &focused_element->area, area);
+	area->x -= 1;
+	area->y -= 1;
+	area->width += 1;
+	area->height += 1;
+
+	return TRUE;
+}
+
+static void
+draw_focus (GtkSnapshot *snapshot,
+            PpsViewPage *page)
+{
+	GtkWidget *widget = GTK_WIDGET (page);
+	GdkRectangle rect;
+
+	if (!gtk_widget_has_focus (widget))
+		return;
+
+	if (!get_focused_area (page, &rect))
+		return;
+
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+	gtk_snapshot_render_focus (snapshot,
+	                           gtk_widget_get_style_context (widget),
+	                           rect.x,
+	                           rect.y,
+	                           rect.width,
+	                           rect.height);
+	G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
 static PpsViewSelection *
 find_selection_for_page (PpsViewPage *page)
 {
@@ -488,9 +533,11 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	if (pps_search_context_get_active (priv->search_context))
 		highlight_find_results (snapshot, page);
 
+	// if (priv->focused_element) // TODO: get focus element
+	draw_focus (snapshot, page);
+
 	if (pps_debug_get_debug_borders ())
 		draw_debug_borders (snapshot, page, &area_rect);
-
 }
 
 static void

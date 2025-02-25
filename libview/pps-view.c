@@ -4161,29 +4161,6 @@ should_draw_caret_cursor (PpsView *view)
 }
 
 static void
-draw_focus (PpsView *view,
-            GtkSnapshot *snapshot)
-{
-	GtkWidget *widget = GTK_WIDGET (view);
-	GdkRectangle rect;
-
-	if (!gtk_widget_has_focus (widget))
-		return;
-
-	if (!pps_view_get_focused_area (view, &rect))
-		return;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	gtk_snapshot_render_focus (snapshot,
-	                           gtk_widget_get_style_context (widget),
-	                           rect.x,
-	                           rect.y,
-	                           rect.width,
-	                           rect.height);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-}
-
-static void
 draw_signing_rect (PpsView *view,
                    GtkSnapshot *snapshot)
 {
@@ -4246,9 +4223,6 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 
 	/* snapshot child widgets */
 	GTK_WIDGET_CLASS (pps_view_parent_class)->snapshot (widget, snapshot);
-
-	if (priv->focused_element)
-		draw_focus (view, snapshot);
 
 	if (should_draw_caret_cursor (view))
 		draw_caret_cursor (view, snapshot);
