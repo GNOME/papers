@@ -4521,7 +4521,6 @@ draw_focus (PpsView       *view,
 {
 	GtkWidget   *widget = GTK_WIDGET (view);
 	GdkRectangle rect;
-	GdkRectangle intersect;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (priv->focused_element_page != page)
@@ -4533,14 +4532,12 @@ draw_focus (PpsView       *view,
 	if (!pps_view_get_focused_area (view, &rect))
 		return;
 
-	if (gdk_rectangle_intersect (&rect, clip, &intersect)) {
-		gtk_snapshot_render_focus (snapshot,
-				gtk_widget_get_style_context (widget),
-				  intersect.x,
-				  intersect.y,
-				  intersect.width,
-				  intersect.height);
-	}
+	gtk_snapshot_render_focus (snapshot,
+	                           gtk_widget_get_style_context (widget),
+	                           rect.x,
+	                           rect.y,
+	                           rect.width,
+	                           rect.height);
 }
 
 #ifdef PPS_ENABLE_DEBUG
