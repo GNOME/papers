@@ -505,7 +505,12 @@ mod imp {
         }
 
         fn thumbnail_size_for_page(&self, doc_page: i32) -> Option<(i32, i32)> {
-            let scale = self.obj().scale_factor() as f64;
+            let scale = self
+                .obj()
+                .native()
+                .and_then(|native| native.surface())
+                .map(|surface| surface.scale())
+                .unwrap_or(1.0);
             let model = self.obj().document_model()?;
             let document = model.document()?;
             let (mut width, mut height) = document.page_size(doc_page);

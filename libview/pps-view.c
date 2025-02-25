@@ -2212,7 +2212,7 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
 	guint            link_dest_page;
 	PpsPoint          link_dest_doc;
 	GdkPoint         link_dest_view;
-	gint             device_scale = 1;
+	gdouble device_scale = 1;
 
 	pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
 
@@ -2257,7 +2257,7 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
 
 	/* Start thumbnailing job async */
 	link_dest_page = pps_link_dest_get_page (dest);
-	device_scale = gtk_widget_get_scale_factor (GTK_WIDGET (view));
+	device_scale = gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (GTK_WIDGET (view))));
 	priv->link_preview.job = pps_job_thumbnail_texture_new (priv->document,
 							     link_dest_page,
 							     priv->rotation,
@@ -4982,15 +4982,15 @@ link_preview_set_thumbnail (GdkTexture *page_texture,
 	gint             vwidth, vheight;  /* dimensions of main view */
 	gint             width, height;    /* dimensions of popup */
 	gint             left, top;
-	gint		 scale;
+	gdouble		 scale;
 
-	scale = gtk_widget_get_scale_factor (GTK_WIDGET (view));
+	scale = gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (GTK_WIDGET (view))));
 
 	x = priv->link_preview.left;
 	y = priv->link_preview.top;
 
-	pwidth = gdk_texture_get_width (page_texture) / scale;
-	pheight = gdk_texture_get_height (page_texture) / scale;
+	pwidth = (gint) gdk_texture_get_width (page_texture) / scale;
+	pheight = (gint) gdk_texture_get_height (page_texture) / scale;
 
 	vwidth = gtk_widget_get_width (GTK_WIDGET (view));
 	vheight = gtk_widget_get_height (GTK_WIDGET (view));
