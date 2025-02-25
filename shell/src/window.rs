@@ -603,10 +603,15 @@ mod imp {
             );
 
             let (display_name, edit_name) = match info {
-                Ok(info) => (
-                    info.display_name().to_string(),
-                    info.edit_name().to_string(),
-                ),
+                Ok(info) => {
+                    let display_name = info.display_name().to_string();
+                    let edit_name = if info.has_attribute(gio::FILE_ATTRIBUTE_STANDARD_EDIT_NAME) {
+                        info.edit_name().to_string()
+                    } else {
+                        display_name.clone()
+                    };
+                    (display_name, edit_name)
+                }
                 Err(e) => {
                     glib::g_warning!("", "Failed to query file info: {}", e.message());
 
