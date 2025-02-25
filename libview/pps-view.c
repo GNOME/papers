@@ -4126,12 +4126,10 @@ should_draw_caret_cursor (PpsView *view)
 
 static void
 draw_focus (PpsView *view,
-            GtkSnapshot *snapshot,
-            GdkRectangle *clip)
+            GtkSnapshot *snapshot)
 {
 	GtkWidget *widget = GTK_WIDGET (view);
 	GdkRectangle rect;
-	GdkRectangle intersect;
 
 	if (!gtk_widget_has_focus (widget))
 		return;
@@ -4139,14 +4137,12 @@ draw_focus (PpsView *view,
 	if (!pps_view_get_focused_area (view, &rect))
 		return;
 
-	if (gdk_rectangle_intersect (&rect, clip, &intersect)) {
-		gtk_snapshot_render_focus (snapshot,
-		                           gtk_widget_get_style_context (widget),
-		                           intersect.x,
-		                           intersect.y,
-		                           intersect.width,
-		                           intersect.height);
-	}
+	gtk_snapshot_render_focus (snapshot,
+	                           gtk_widget_get_style_context (widget),
+	                           rect.x,
+	                           rect.y,
+	                           rect.width,
+	                           rect.height);
 }
 
 static void
@@ -4436,7 +4432,7 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	GTK_WIDGET_CLASS (pps_view_parent_class)->snapshot (widget, snapshot);
 
 	if (priv->focused_element)
-		draw_focus (view, snapshot, &clip_rect);
+		draw_focus (view, snapshot);
 
 	if (should_draw_caret_cursor (view))
 		draw_caret_cursor (view, snapshot);
