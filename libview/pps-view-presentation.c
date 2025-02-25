@@ -375,9 +375,9 @@ pps_view_presentation_schedule_new_job (PpsViewPresentation *pview,
 		return NULL;
 
 	pps_view_presentation_get_view_size (pview, page, &view_width, &view_height);
-	gint device_scale = gtk_widget_get_scale_factor (GTK_WIDGET (pview));
-	view_width *= device_scale;
-	view_height *= device_scale;
+	gdouble device_scale = gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (GTK_WIDGET (pview))));
+	view_width = (gint) view_width * device_scale;
+	view_height = (gint) view_height * device_scale;
 	job = pps_job_render_texture_new (priv->document, page, priv->rotation, 0.,
 	                                  view_width, view_height, PPS_RENDER_ANNOTS_ALL);
 	g_signal_connect (job, "finished",
