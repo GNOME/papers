@@ -4939,25 +4939,30 @@ pps_view_button_press_event (GtkGestureClick *self,
 		gint page;
 
 		if (PPS_IS_SELECTION (document)) {
+			/*
+			 * Do not “simplify” by removing SelectionInfo->style.
+			 * It is required for the double/triple tap and drag
+			 * gesture that is not handled below, but in a separate
+			 * Gtk.GestureDrag. (see selection_{begin,update,end}_cb)
+			 */
+			switch (n_press % 3) {
+			case 1:
+				priv->selection_info.style = PPS_SELECTION_STYLE_GLYPH;
+				break;
+			case 2:
+				priv->selection_info.style = PPS_SELECTION_STYLE_WORD;
+				break;
+			case 0:
+				priv->selection_info.style = PPS_SELECTION_STYLE_LINE;
+				break;
+			}
 			if (n_press > 1) {
-				/* In case of WORD or LINE, compute selections */
 				double point_x, point_y;
-				PpsSelectionStyle style;
-				switch (n_press % 3) {
-				case 1:
-					style = PPS_SELECTION_STYLE_GLYPH;
-					break;
-				case 2:
-					style = PPS_SELECTION_STYLE_WORD;
-					break;
-				case 0:
-					style = PPS_SELECTION_STYLE_LINE;
-					break;
-				}
+				/* In case of WORD or LINE, compute selections */
 				point_x = x + gtk_adjustment_get_value (priv->hadjustment);
 				point_y = y + gtk_adjustment_get_value (priv->vadjustment);
 				compute_selections (view,
-				                    style,
+				                    priv->selection_info.style,
 				                    point_x, point_y,
 				                    point_x, point_y);
 			}
@@ -5135,7 +5140,7 @@ selection_update_idle_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	compute_selections (view,
-	                    PPS_SELECTION_STYLE_GLYPH,
+	                    priv->selection_info.style,
 	                    priv->selection_info.start_x, priv->selection_info.start_y,
 	                    priv->motion_x, priv->motion_y);
 	priv->selection_update_id = 0;
@@ -8217,7 +8222,8 @@ compute_new_selection (PpsView *view,
 		return list;
 
 	/* Now create a list of PpsViewSelection's for the affected
-	 * pages. This could be a list of just one page or a number of pages.*/
+	 * pages. This could be an empty list, a list of just one
+	 * page or a number of pages.*/
 	for (i = first; i <= last; i++) {
 		PpsViewSelection *selection;
 		GdkRectangle page_area;

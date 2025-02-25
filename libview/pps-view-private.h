@@ -50,6 +50,7 @@ typedef struct
 	gdouble start_x;
 	gdouble start_y;
 	GList *selections;
+	PpsSelectionStyle style;
 	gdouble motion_x;
 	gdouble motion_y;
 } SelectionInfo;
