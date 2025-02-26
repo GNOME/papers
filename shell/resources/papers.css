@@ -22,6 +22,11 @@ image.symbolic-circular {
     padding: 3px;
 }
 
+pps-view:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent-color) 50%, transparent);
+    outline-offset: 2px;
+}
+
 pps-view:selected {
     background-color: var(--accent-bg-color);
 }
