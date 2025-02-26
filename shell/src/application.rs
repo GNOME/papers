@@ -196,8 +196,18 @@ mod imp {
         }
 
         fn show_about(&self) {
-            let about =
-                adw::AboutDialog::from_appdata("/org/gnome/papers/metainfo.xml", Some(VERSION));
+            // Development releases with anything but digits need to use ~
+            // as the separator in AppStream for correct sorting:
+            // https://handbook.gnome.org/maintainers/making-a-release.html
+            let appstream_version = VERSION
+                .to_owned()
+                .replace(".alpha", "~alpha")
+                .replace(".beta", "~beta")
+                .replace(".rc", "~rc");
+            let about = adw::AboutDialog::from_appdata(
+                "/org/gnome/papers/metainfo.xml",
+                Some(&appstream_version),
+            );
 
             about.set_copyright(&gettext("© 1996–2025 The Papers authors"));
             about.set_translator_credits(&gettext("translator-credits"));
