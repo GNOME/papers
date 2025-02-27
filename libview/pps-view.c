@@ -40,6 +40,7 @@
 #include "pps-view.h"
 
 #include "pps-annotation-window.h"
+#include "pps-colors.h"
 #include "pps-debug.h"
 #include "pps-document-annotations.h"
 #include "pps-form-field-private.h"
@@ -4351,8 +4352,8 @@ draw_signing_rect (PpsView *view,
 	GskRoundedRect outline;
 	gint pos_x1, pos_x2, pos_y1, pos_y2;
 	gint x, y, w, h;
-	GdkRGBA fg_color;
 	GdkRGBA bg_color;
+	GdkRGBA border_color;
 	gdouble scroll_x, scroll_y;
 
 	if (!gtk_gesture_is_active (GTK_GESTURE (priv->signing_drag_gesture)))
@@ -4374,18 +4375,15 @@ draw_signing_rect (PpsView *view,
 	if (w <= 0 || h <= 0)
 		return;
 
-	_pps_view_get_selection_colors (view, &bg_color, NULL);
+	get_accent_color (&bg_color, NULL);
+	border_color.alpha = 0.2;
+	get_accent_color (&border_color, NULL);
 	bg_color.alpha = 0.35;
-
-	fg_color.red = bg_color.red;
-	fg_color.green = bg_color.green;
-	fg_color.blue = bg_color.blue;
-	fg_color.alpha = 0.2;
 
 	gtk_snapshot_save (snapshot);
 	gsk_rounded_rect_init_from_rect (&outline, &GRAPHENE_RECT_INIT (x, y, w, h), 1);
-	gtk_snapshot_append_color (snapshot, &fg_color, &GRAPHENE_RECT_INIT (x, y, w, h));
-	gtk_snapshot_append_border (snapshot, &outline, (float[4]) { 1, 1, 1, 1 }, (GdkRGBA[4]) { bg_color, bg_color, bg_color, bg_color });
+	gtk_snapshot_append_color (snapshot, &bg_color, &GRAPHENE_RECT_INIT (x, y, w, h));
+	gtk_snapshot_append_border (snapshot, &outline, (float[4]) { 1, 1, 1, 1 }, (GdkRGBA[4]) { border_color, border_color, border_color, border_color });
 	gtk_snapshot_restore (snapshot);
 }
 
@@ -6310,9 +6308,9 @@ highlight_find_results (PpsView *view,
 	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, page);
 	GdkRGBA color_selected, color_default;
 
-	_pps_view_get_selection_colors (view, &color_selected, NULL);
+	get_accent_color (&color_selected, NULL);
 	color_selected.alpha *= 0.6;
-	_pps_view_get_selection_colors (view, &color_default, NULL);
+	get_accent_color (&color_default, NULL);
 	color_default.alpha *= 0.3;
 
 	for (gint i = 0; i < results->len; i++) {
@@ -6373,25 +6371,6 @@ draw_surface (GtkSnapshot *snapshot,
 	}
 
 	gtk_snapshot_restore (snapshot);
-}
-
-void
-_pps_view_get_selection_colors (PpsView *view,
-                                GdkRGBA *bg_color,
-                                GdkRGBA *fg_color)
-{
-	if (bg_color) {
-		AdwStyleManager *style_manager = adw_style_manager_get_default ();
-		AdwAccentColor accent = adw_style_manager_get_accent_color (style_manager);
-		adw_accent_color_to_rgba (accent, bg_color);
-	}
-
-	if (fg_color) {
-		fg_color->red = 1.;
-		fg_color->green = 1.;
-		fg_color->blue = 1.;
-		fg_color->alpha = 1.;
-	}
 }
 
 static void
@@ -6486,7 +6465,7 @@ draw_one_page (PpsView *view,
 		if (region) {
 			GdkRGBA color;
 
-			_pps_view_get_selection_colors (view, &color, NULL);
+			get_accent_color (&color, NULL);
 			draw_selection_region (snapshot, view, region, &color, page_area->x, page_area->y);
 		}
 	}

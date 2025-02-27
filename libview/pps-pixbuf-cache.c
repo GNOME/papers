@@ -1,4 +1,5 @@
 #include "pps-pixbuf-cache.h"
+#include "pps-colors.h"
 #include "pps-job-scheduler.h"
 #include "pps-view-private.h"
 #include <config.h>
@@ -657,7 +658,7 @@ add_job (PpsPixbufCache *pixbuf_cache,
 	if (new_selection_surface_needed (pixbuf_cache, job_info, page, scale)) {
 		GdkRGBA text, base;
 
-		_pps_view_get_selection_colors (PPS_VIEW (pixbuf_cache->view), &base, &text);
+		get_accent_color (&base, &text);
 		pps_job_render_texture_set_selection_info (PPS_JOB_RENDER_TEXTURE (job),
 		                                           &(job_info->target_points),
 		                                           job_info->selection_style,
@@ -1030,7 +1031,7 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 		pps_render_context_set_target_size (rc, width, height);
 		g_object_unref (pps_page);
 
-		_pps_view_get_selection_colors (PPS_VIEW (pixbuf_cache->view), &base, &text);
+		get_accent_color (&base, &text);
 		pps_selection_render_selection (PPS_SELECTION (pixbuf_cache->document),
 		                                rc, &selection,
 		                                &(job_info->target_points),

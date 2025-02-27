@@ -47,6 +47,7 @@ sources = files(
   'context/pps-search-context.c',
   'context/pps-search-result.c',
   'pps-annotation-window.c',
+  'pps-colors.c',
   'pps-debug.c',
   #'pps-form-field-accessible.c',
   #'pps-image-accessible.c',

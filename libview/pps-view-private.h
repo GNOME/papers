@@ -241,9 +241,6 @@ void _pps_view_transform_doc_rect_to_view_rect (PpsView *view,
                                                 int page,
                                                 const PpsRectangle *doc_rect,
                                                 GdkRectangle *view_rect);
-void _pps_view_get_selection_colors (PpsView *view,
-                                     GdkRGBA *bg_color,
-                                     GdkRGBA *fg_color);
 gint _pps_view_get_caret_cursor_offset_at_doc_point (PpsView *view,
                                                      gint page,
                                                      gdouble doc_x,
