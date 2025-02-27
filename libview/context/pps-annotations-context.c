@@ -66,10 +66,13 @@ pps_annotations_context_clear_job (PpsAnnotationsContext *self)
 	if (!priv->job)
 		return;
 
+	/* this function may be a callback of the cancelled signal of priv->job,
+	so we have to make sure it is disconnected before continuing before continuing */
+	g_signal_handlers_disconnect_matched (priv->job, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, self);
+
 	if (!pps_job_is_finished (PPS_JOB (priv->job)))
 		pps_job_cancel (PPS_JOB (priv->job));
 
-	g_signal_handlers_disconnect_matched (priv->job, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, self);
 	g_clear_object (&priv->job);
 }
 
