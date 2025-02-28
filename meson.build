@@ -365,6 +365,7 @@ gnome.post_install(
 )
 
 summary({'Build type.................': get_option('buildtype'),
+         'Application ID.............': app_id,
          'Rust build mode............': rust_target,
         }, section: 'General', bool_yn: true)
 summary({'Viewer.....................': enable_viewer,
