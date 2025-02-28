@@ -140,11 +140,8 @@ deps = common_deps + [
   exempi_dep,
   m_dep,
   zlib_dep,
+  libsysprof_capture_dep,
 ]
-
-if pps_debug
-  deps += libsysprof_capture_dep
-endif
 
 cflags = [
   '-DG_LOG_DOMAIN="PapersDocument"',

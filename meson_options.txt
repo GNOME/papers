@@ -14,6 +14,7 @@ option('tests', type: 'boolean', value: true, description: 'whether to build tes
 option('documentation', type: 'boolean', value: true, description: 'whether developer documentation reference is requested. Requires gi-docgen')
 option('user_doc', type: 'boolean', value: true, description: 'whether User documentation is requested')
 option('introspection', type: 'feature', value: 'auto', description : 'Build introspection data (requires gobject-introspection)')
+option('sysprof', type: 'feature', value: 'auto', description : 'whether sysprof support is requested')
 option('keyring', type: 'feature', value: 'enabled', description: 'whether keyring support is requested')
 option('gtk_unix_print', type: 'feature', value: 'auto', description: 'whether gtk+-unix-print support is requested')
 option('spell_check', type: 'feature', value: 'auto', description: 'whether spell check support is requested')

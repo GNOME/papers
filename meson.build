@@ -117,10 +117,12 @@ if pps_debug
     '-Wreturn-type',
   ])
   werror = true
-  libsysprof_capture_dep = dependency('sysprof-capture-4', required: false)
-  if libsysprof_capture_dep.found()
-    common_flags += ['-DHAVE_SYSPROF']
-  endif
+endif
+
+libsysprof_capture_dep = dependency('sysprof-capture-4', required: get_option('sysprof'))
+
+if libsysprof_capture_dep.found()
+  common_flags += ['-DHAVE_SYSPROF']
 endif
 
 add_project_arguments(common_flags, language: 'c')
