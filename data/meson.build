@@ -30,11 +30,10 @@ install_data(
   gschema_file,
   install_dir: join_paths(pps_datadir, 'glib-2.0', 'schemas'),
 )
-if pps_debug
-  gnome.compile_schemas(
-    depend_files: gschema_file,
-  )
-endif
+
+gnome.compile_schemas(
+  depend_files: gschema_file,
+)
 
 # man file
 man_pages = ['papers.1', 'papers-previewer.1', 'papers-thumbnailer.1']
