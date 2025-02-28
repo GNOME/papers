@@ -362,11 +362,14 @@ pps_document_model_set_document (PpsDocumentModel *model,
 	if (!g_set_object (&model->document, document))
 		return;
 
+	g_object_freeze_notify (G_OBJECT (model));
+
 	model->n_pages = pps_document_get_n_pages (document);
 	pps_document_model_set_page (model, CLAMP (model->page, 0,
 	                                           model->n_pages - 1));
 
 	g_object_notify (G_OBJECT (model), "document");
+	g_object_thaw_notify (G_OBJECT (model));
 }
 
 /**
