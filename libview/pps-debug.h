@@ -44,8 +44,6 @@
 
 G_BEGIN_DECLS
 
-#ifdef PPS_ENABLE_DEBUG
-
 typedef enum {
 	PPS_DEBUG_BORDER_NONE = 0,
 	PPS_DEBUG_BORDER_CHARS = 1 << 0,
@@ -60,8 +58,6 @@ typedef enum {
 
 PPS_PRIVATE
 PpsDebugBorders pps_debug_get_debug_borders (void);
-
-#endif /* PPS_ENABLE_DEBUG */
 
 #ifdef HAVE_SYSPROF
 

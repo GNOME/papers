@@ -38,7 +38,6 @@
 
 #include "pps-debug.h"
 
-#ifdef PPS_ENABLE_DEBUG
 static gboolean pps_debug_borders_initialized = FALSE;
 static PpsDebugBorders pps_debug_borders = PPS_DEBUG_BORDER_NONE;
 
@@ -62,5 +61,3 @@ pps_debug_get_debug_borders (void)
 	}
 	return pps_debug_borders;
 }
-
-#endif /* PPS_ENABLE_DEBUG */

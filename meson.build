@@ -105,7 +105,7 @@ common_flags = ['-DHAVE_CONFIG_H']
 common_ldflags = []
 
 if pps_debug
-  common_flags += ['-DPPS_ENABLE_DEBUG'] + cc.get_supported_arguments([
+  common_flags += cc.get_supported_arguments([
     '-Wnested-externs',
     '-Wstrict-prototypes',
     '-Wformat=2',

@@ -4156,7 +4156,6 @@ draw_focus (PpsView *view,
 	}
 }
 
-#ifdef PPS_ENABLE_DEBUG
 static void
 stroke_view_rect (GtkSnapshot *snapshot,
                   GdkRectangle *clip,
@@ -4350,7 +4349,6 @@ draw_debug_borders (PpsView *view,
 	if (borders & PPS_DEBUG_BORDER_SELECTIONS)
 		show_selections_border (view, snapshot, page, clip);
 }
-#endif
 
 static void
 draw_signing_rect (PpsView *view,
@@ -4445,9 +4443,9 @@ pps_view_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 		if (priv->focused_element)
 			draw_focus (view, snapshot, i, &clip_rect);
 		draw_signing_rect (view, snapshot, i);
-#ifdef PPS_ENABLE_DEBUG
-		draw_debug_borders (view, snapshot, i, &clip_rect);
-#endif
+
+		if (pps_debug_get_debug_borders ())
+			draw_debug_borders (view, snapshot, i, &clip_rect);
 	}
 
 	/* snapshot child widgets */
