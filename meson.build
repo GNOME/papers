@@ -100,12 +100,7 @@ config_h.set('HAVE__NL_MEASUREMENT_MEASUREMENT', cc.compiles(langinfo_measuremen
              description: 'Define if _NL_MEASUREMENT_MEASUREMENT is available')
 
 # compiler flags
-common_flags = ['-DHAVE_CONFIG_H']
-
-common_ldflags = []
-
-if pps_debug
-  common_flags += cc.get_supported_arguments([
+common_flags = ['-DHAVE_CONFIG_H'] + cc.get_supported_arguments([
     '-Wnested-externs',
     '-Wstrict-prototypes',
     '-Wformat=2',
@@ -116,6 +111,10 @@ if pps_debug
     '-Wpointer-arith',
     '-Wreturn-type',
   ])
+
+common_ldflags = []
+
+if pps_debug
   werror = true
 endif
 
