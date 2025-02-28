@@ -70,8 +70,6 @@ pps_namespace = 'org.gnome.Papers'
 
 pps_code_prefix = 'Pps'
 
-pps_debug = get_option('buildtype').contains('debug')
-
 cc = meson.get_compiler('c')
 
 config_h = configuration_data()
@@ -366,7 +364,7 @@ gnome.post_install(
   update_desktop_database: true,
 )
 
-summary({'Debug mode.................': pps_debug,
+summary({'Build type.................': get_option('buildtype'),
          'Rust build mode............': rust_target,
         }, section: 'General', bool_yn: true)
 summary({'Viewer.....................': enable_viewer,
