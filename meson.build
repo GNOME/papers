@@ -102,12 +102,9 @@ common_flags = ['-DHAVE_CONFIG_H'] + cc.get_supported_arguments([
     '-Wnested-externs',
     '-Wstrict-prototypes',
     '-Wformat=2',
-    '-Wimplicit-function-declaration',
-    '-Winit-self',
     '-Wmissing-include-dirs',
     '-Wmissing-prototypes',
     '-Wpointer-arith',
-    '-Wreturn-type',
   ])
 
 common_ldflags = []
