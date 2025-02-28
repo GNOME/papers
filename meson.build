@@ -114,10 +114,6 @@ common_flags = ['-DHAVE_CONFIG_H'] + cc.get_supported_arguments([
 
 common_ldflags = []
 
-if pps_debug
-  werror = true
-endif
-
 libsysprof_capture_dep = dependency('sysprof-capture-4', required: get_option('sysprof'))
 
 if libsysprof_capture_dep.found()
