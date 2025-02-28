@@ -5109,7 +5109,13 @@ pps_view_remove_all_form_fields (PpsView *view)
 static void
 pps_view_remove_all (PpsView *view)
 {
-	GtkWidget *child = gtk_widget_get_first_child (GTK_WIDGET (view));
+	GtkWidget *child;
+
+	/* We start by removing the preview popover since the reference
+	   priv->link_preview.popover must be cleared */
+	pps_view_link_preview_popover_cleanup (view);
+
+	child = gtk_widget_get_first_child (GTK_WIDGET (view));
 
 	while (child != NULL) {
 		GtkWidget *next = gtk_widget_get_next_sibling (child);
