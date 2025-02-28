@@ -14,10 +14,15 @@ cargo_options += [ '--target-dir', meson.current_build_dir() ]
 
 if get_option('optimization') == '0'
   rust_target = 'debug'
+  rust_profile = 'dev'
 else
   cargo_options += [ '--release' ]
   rust_target = 'release'
+  rust_profile = 'release'
 endif
+
+# Setup the debuginfo option from the meson build system
+cargo_options += ['--config', 'profile.@0@.debug=@1@'.format(rust_profile, get_option('debug'))]
 
 if enable_keyring
   cargo_options += [ '--features', 'with-keyring' ]
