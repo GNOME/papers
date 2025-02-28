@@ -12,7 +12,7 @@ cargo = find_program('cargo', required: true)
 cargo_options = [ '--manifest-path', shell_rs_root / 'Cargo.toml' ]
 cargo_options += [ '--target-dir', meson.current_build_dir() ]
 
-if pps_debug or get_option('profile') == 'devel'
+if get_option('optimization') == '0'
   rust_target = 'debug'
 else
   cargo_options += [ '--release' ]
