@@ -8183,7 +8183,6 @@ merge_selection_region (PpsView *view,
 	while (new_list_ptr || old_list_ptr) {
 		PpsViewSelection *old_sel, *new_sel;
 		int cur_page;
-		gboolean need_redraw = FALSE;
 
 		new_sel = (new_list_ptr) ? (new_list_ptr->data) : NULL;
 		old_sel = (old_list_ptr) ? (old_list_ptr->data) : NULL;
@@ -8229,24 +8228,12 @@ merge_selection_region (PpsView *view,
 			if (tmp_region)
 				new_sel->covered_region = cairo_region_reference (tmp_region);
 		}
-
-		/* Now we figure out what needs redrawing */
-		if (old_sel && new_sel && (old_sel->covered_region || new_sel->covered_region))
-			need_redraw = TRUE;
-		else if (old_sel && !new_sel &&
-		         old_sel->covered_region &&
-		         !cairo_region_is_empty (old_sel->covered_region))
-			need_redraw = TRUE;
-		else if (!old_sel && new_sel &&
-		         new_sel->covered_region &&
-		         !cairo_region_is_empty (new_sel->covered_region))
-			need_redraw = TRUE;
-
-		if (need_redraw)
-			gtk_widget_queue_draw (GTK_WIDGET (view));
 	}
 
 	pps_view_check_cursor_blink (view);
+
+	if (old_list || new_list)
+		gtk_widget_queue_draw (GTK_WIDGET (view));
 
 	/* Free the old list, now that we're done with it. */
 	g_clear_list (&old_list, (GDestroyNotify) pps_view_selection_free);
