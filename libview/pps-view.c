@@ -121,6 +121,16 @@ static void find_page_at_location (PpsView *view,
                                    gint *page,
                                    gint *x_offset,
                                    gint *y_offset);
+static void transform_view_rect_to_doc_rect (PpsView *view,
+                                             GdkRectangle *view_rect,
+                                             GdkRectangle *page_area,
+                                             PpsRectangle *doc_rect);
+static void transform_doc_point_to_view_point (PpsView *view,
+                                               int page,
+                                               PpsPoint *doc_point,
+                                               gdouble *view_point_x,
+                                               gdouble *view_point_y);
+
 /*** Hyperrefs ***/
 static PpsLink *pps_view_get_link_at_location (PpsView *view,
                                                gdouble x,
@@ -515,10 +525,10 @@ pps_view_scroll_to_page_position (PpsView *view, GtkOrientation orientation)
 	} else {
 		gdouble view_point_x, view_point_y;
 
-		_pps_view_transform_doc_point_to_view_point (view, priv->current_page,
-		                                             &priv->pending_point,
-		                                             &view_point_x,
-		                                             &view_point_y);
+		transform_doc_point_to_view_point (view, priv->current_page,
+		                                   &priv->pending_point,
+		                                   &view_point_x,
+		                                   &view_point_y);
 		x = view_point_x;
 		y = view_point_y;
 	}
@@ -830,7 +840,7 @@ compute_scroll_increment (PpsView *view,
 	rect.y = scroll_y + (scroll == GTK_SCROLL_PAGE_BACKWARD ? 5 : gtk_widget_get_height (GTK_WIDGET (view)) - 5);
 	rect.width = page_area.width;
 	rect.height = 1;
-	_pps_view_transform_view_rect_to_doc_rect (view, &rect, &page_area, &doc_rect);
+	transform_view_rect_to_doc_rect (view, &rect, &page_area, &doc_rect);
 
 	/* Convert the doc rectangle into a GdkRectangle */
 	rect.x = doc_rect.x1;
@@ -1410,11 +1420,11 @@ pps_view_get_mark_for_view_point (PpsView *view,
 	return mark;
 }
 
-void
-_pps_view_transform_view_rect_to_doc_rect (PpsView *view,
-                                           GdkRectangle *view_rect,
-                                           GdkRectangle *page_area,
-                                           PpsRectangle *doc_rect)
+static void
+transform_view_rect_to_doc_rect (PpsView *view,
+                                 GdkRectangle *view_rect,
+                                 GdkRectangle *page_area,
+                                 PpsRectangle *doc_rect)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
@@ -1425,12 +1435,12 @@ _pps_view_transform_view_rect_to_doc_rect (PpsView *view,
 	doc_rect->y2 = doc_rect->y1 + (double) view_rect->height / scale;
 }
 
-void
-_pps_view_transform_doc_point_by_rotation_scale (PpsView *view,
-                                                 int page,
-                                                 PpsPoint *doc_point,
-                                                 gdouble *view_point_x,
-                                                 gdouble *view_point_y)
+static void
+transform_doc_point_by_rotation_scale (PpsView *view,
+                                       int page,
+                                       PpsPoint *doc_point,
+                                       gdouble *view_point_x,
+                                       gdouble *view_point_y)
 {
 	GdkRectangle page_area;
 	double x, y, view_x, view_y, scale;
@@ -1477,15 +1487,15 @@ _pps_view_transform_doc_point_by_rotation_scale (PpsView *view,
 	*view_point_y = view_y;
 }
 
-void
-_pps_view_transform_doc_point_to_view_point (PpsView *view,
-                                             int page,
-                                             PpsPoint *doc_point,
-                                             gdouble *view_point_x,
-                                             gdouble *view_point_y)
+static void
+transform_doc_point_to_view_point (PpsView *view,
+                                   int page,
+                                   PpsPoint *doc_point,
+                                   gdouble *view_point_x,
+                                   gdouble *view_point_y)
 {
 	GdkRectangle page_area;
-	_pps_view_transform_doc_point_by_rotation_scale (view, page, doc_point, view_point_x, view_point_y);
+	transform_doc_point_by_rotation_scale (view, page, doc_point, view_point_x, view_point_y);
 
 	pps_view_get_page_extents (view, page, &page_area);
 
@@ -2242,8 +2252,8 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
 
 	link_dest_doc.x = pps_link_dest_get_left (dest, NULL);
 	link_dest_doc.y = pps_link_dest_get_top (dest, NULL);
-	_pps_view_transform_doc_point_by_rotation_scale (view, link_dest_page,
-	                                                 &link_dest_doc, &link_dest_x, &link_dest_y);
+	transform_doc_point_by_rotation_scale (view, link_dest_page,
+	                                       &link_dest_doc, &link_dest_x, &link_dest_y);
 	priv->link_preview.left = link_dest_x;
 	priv->link_preview.top = link_dest_y;
 	priv->link_preview.link = link;
