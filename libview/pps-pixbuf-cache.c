@@ -1115,15 +1115,6 @@ pps_pixbuf_cache_get_selection_region (PpsPixbufCache *pixbuf_cache,
 }
 
 static void
-update_job_selection (CacheJobInfo *job_info,
-                      PpsViewSelection *selection)
-{
-	job_info->points_set = TRUE;
-	job_info->target_points = selection->rect;
-	job_info->selection_style = selection->style;
-}
-
-static void
 clear_job_selection (CacheJobInfo *job_info)
 {
 	job_info->points_set = FALSE;
@@ -1131,6 +1122,17 @@ clear_job_selection (CacheJobInfo *job_info)
 
 	g_clear_object (&job_info->selection_texture);
 	g_clear_pointer (&job_info->selection_region, cairo_region_destroy);
+}
+
+static void
+update_job_selection (CacheJobInfo *job_info,
+                      PpsViewSelection *selection)
+{
+	clear_job_selection (job_info);
+
+	job_info->points_set = TRUE;
+	job_info->target_points = selection->rect;
+	job_info->selection_style = selection->style;
 }
 
 /* This function will reset the selection on pages that no longer have them, and
