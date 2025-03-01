@@ -1,3 +1,70 @@
+Papers 48.rc
+----------------
+
+* Potentially of interest to packaging and other downstreams might be:
+  - Update minimum poppler requirement to 25.01.0. This should not be an issue
+    to most, since due to a CVE most people already updated
+  - Given the lack of downstream users, there were several API and ABI breaking
+    changes in the libraries, but sonames were not updated
+  - rust: Raise MSRV to 1.75
+  - Add sysprof build feature
+
+* Some changes we can highlight:
+  - Multiple improvements to focus handling
+  - Improve Search UX deciding when does the sidebar and its selection should
+    activate
+  - Fix signing that broke in 48.beta
+
+* Bugs fixed:
+  - #94 When searchbar's searchentry has an existing query but is deselected,
+    Ctrl+F should refocus and select-all instead of clearing the search (Roberto
+    Vidal)
+  - #156 Search does not get cleared nor cancelled when pressing `Esc`, keeps
+    eating CPU in the background (Markus Göllnitz)
+  - #180 Triple Click to select the line does not work (Markus Göllnitz)
+  - #348 Digital signature broken in 47.3 (Lucas Baudin)
+  - #349 "Search" needs a comment (Pablo Correa Gómez)
+  - #350 Variables needed in string (Pablo Correa Gómez)
+  - #355 Digital signatures cannot find certificate (Qiu Wenbo)
+  - #359 sidebar automatically collapses while searching (Markus Göllnitz)
+  - #360 Selecting Text Downwards With The Mouse Doesn't Auto Scroll Down
+    (Roberto Vidal)
+  - #361 Enable system-wide PDF thumbnail generation (Markus Göllnitz)
+  - #363 PDF metadata title does not seem to be prioritized over filename in
+    window manager title (Pablo Correa Gómez)
+  - #364 Crash when opening files on MTP devices (Markus Göllnitz)
+  - #366 Crash when opening MoFo's 2014 IRS 990 form Public Disclosure Copy
+    (Markus Göllnitz)
+  - #367 New (unopened before) documents open to the last page instead of the
+    first page (Markus Göllnitz)
+  - #368 Opening About Papers crashes the application due to a CRITICAL (Markus
+    Göllnitz)
+  - #369 Double-click and drag doesn't select by word as it should (Markus
+    Göllnitz)
+  - #374 Highlighting text that was selected via triple click does not work
+    (Markus Göllnitz)
+
+* Translation updates:
+  - Bulgarian (twlvnn kraftwerk)
+  - Catalan (poc senderi)
+  - Chinese (China) (Luming Zh)
+  - Czech (Daniel Rusek)
+  - Danish (Alan Mortensen)
+  - Finnish (Jiri Grönroos)
+  - Georgian (Ekaterine Papava)
+  - Hebrew (Yosef Or Boczko, Yaron Shahrabani)
+  - Hindi (Scrambled 777)
+  - Nepali (Pawan Chitrakar)
+  - Occitan (post 1500) (Quentin PAGÈS)
+  - Persian (Danial Behzadi)
+  - Portuguese (Hugo Carvalho)
+  - Portuguese (Brazil) (Daniel Dias Rodrigues, Álvaro Burns, Rafael Fontenelle)
+  - Russian (Artur S0)
+  - Slovenian (Martin)
+  - Spanish (Nahue Mantuani, Daniel Mustieles)
+  - Turkish (Sabri Ünal)
+  - Ukrainian (Yuri Chornoivan)
+
 Papers 48.beta
 ----------------
 
