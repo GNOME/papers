@@ -3990,6 +3990,7 @@ pps_view_size_allocate (GtkWidget *widget,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsSizingMode sizing_mode = pps_document_model_get_sizing_mode (priv->model);
 	guint scroll_x, scroll_y;
+	gint x, y;
 
 	if (!pps_document_model_get_document (priv->model))
 		return;
@@ -4031,6 +4032,9 @@ pps_view_size_allocate (GtkWidget *widget,
 		gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, view_area.width, NULL, NULL, NULL, NULL);
 		gtk_widget_size_allocate (child, &view_area, baseline);
 	}
+
+	if (pps_document_misc_get_pointer_position (GTK_WIDGET (view), &x, &y))
+		pps_view_handle_cursor_over_xy (view, x, y);
 
 	if (priv->link_preview.popover)
 		gtk_popover_present (GTK_POPOVER (priv->link_preview.popover));
@@ -7122,15 +7126,11 @@ static void
 pps_view_change_page (PpsView *view,
                       gint new_page)
 {
-	gint x, y;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	priv->current_page = new_page;
 	priv->pending_resize = TRUE;
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-
-	pps_document_misc_get_pointer_position (GTK_WIDGET (view), &x, &y);
-	pps_view_handle_cursor_over_xy (view, x, y);
 
 	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
