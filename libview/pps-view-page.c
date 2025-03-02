@@ -519,17 +519,17 @@ static void
 search_results_changed_cb (PpsViewPage *page)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
-	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, priv->index);
+	gboolean has_search_results = pps_search_context_has_results_on_page (priv->search_context, priv->index);
 
 	/*
-	 * If there are currently no search results shown (results->len > 0) nor
+	 * If there are currently no search results shown (has_search_results) nor
 	 * there are any to be shown in the next round (has_search_results), there
 	 * is no reason to redraw. If either is true, we might have changes.
 	 */
-	if (results->len > 0 || priv->had_search_results)
+	if (has_search_results || priv->had_search_results)
 		gtk_widget_queue_draw (GTK_WIDGET (page));
 
-	priv->had_search_results = results->len > 0;
+	priv->had_search_results = has_search_results;
 }
 
 static void
