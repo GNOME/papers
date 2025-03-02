@@ -4625,6 +4625,9 @@ link_preview_job_finished_cb (PpsJobThumbnailTexture *job,
                               PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	g_clear_object (&priv->link_preview.job);
+
 	if (!pps_job_is_succeeded (PPS_JOB (job), NULL)) {
 		pps_view_link_preview_popover_cleanup (view);
 		return;
@@ -4632,20 +4635,19 @@ link_preview_job_finished_cb (PpsJobThumbnailTexture *job,
 
 	link_preview_set_thumbnail (pps_job_thumbnail_texture_get_texture (job),
 	                            view);
-
-	g_clear_object (&priv->link_preview.job);
 }
 
 static void
 pps_view_link_preview_popover_cleanup (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	g_clear_handle_id (&priv->link_preview.delay_timeout_id, g_source_remove);
+
 	if (priv->link_preview.job) {
 		pps_job_cancel (priv->link_preview.job);
 		g_clear_object (&priv->link_preview.job);
 	}
-
-	g_clear_handle_id (&priv->link_preview.delay_timeout_id, g_source_remove);
 
 	if (priv->link_preview.popover) {
 		gtk_popover_popdown (GTK_POPOVER (priv->link_preview.popover));
