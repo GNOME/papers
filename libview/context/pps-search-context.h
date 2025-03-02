@@ -64,6 +64,8 @@ GtkSingleSelection *pps_search_context_get_result_model (PpsSearchContext *conte
 PPS_PUBLIC
 GPtrArray *pps_search_context_get_results_on_page (PpsSearchContext *context,
                                                    guint page);
+gboolean pps_search_context_has_results_on_page (PpsSearchContext *context,
+                                                 guint page);
 PPS_PUBLIC
 void pps_search_context_activate (PpsSearchContext *context);
 PPS_PUBLIC

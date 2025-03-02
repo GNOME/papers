@@ -520,12 +520,12 @@ static void
 search_results_changed_cb (PpsViewPage *page)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
-	g_autoptr (GPtrArray) results = pps_search_context_get_results_on_page (priv->search_context, priv->index);
+	gboolean has_search_results = pps_search_context_has_results_on_page (priv->search_context, priv->index);
 
-	if (results->len > 0 || priv->had_search_results)
+	if (has_search_results || priv->had_search_results)
 		gtk_widget_queue_draw (GTK_WIDGET (page));
 
-	priv->had_search_results = results->len > 0;
+	priv->had_search_results = has_search_results;
 }
 
 static void

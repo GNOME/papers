@@ -656,6 +656,18 @@ pps_search_context_get_results_on_page (PpsSearchContext *context,
 	return g_ptr_array_copy (result_array, (GCopyFunc) g_object_ref, NULL);
 }
 
+gboolean
+pps_search_context_has_results_on_page (PpsSearchContext *context,
+                                        guint page)
+{
+	g_return_val_if_fail (PPS_IS_SEARCH_CONTEXT (context), false);
+
+	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
+	GPtrArray *result_array = (GPtrArray *) g_hash_table_lookup (priv->per_page_store, GINT_TO_POINTER (page));
+
+	return result_array != NULL && result_array->len > 0;
+}
+
 /**
  * pps_search_context_activate:
  *
