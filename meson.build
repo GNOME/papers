@@ -25,14 +25,11 @@ pps_major_version = version_array[0].to_int()
 pps_minor_version = version_array[1]
 
 pps_prefix = get_option('prefix')
-pps_bindir = join_paths(pps_prefix, get_option('bindir'))
 pps_datadir = join_paths(pps_prefix, get_option('datadir'))
 pps_includedir = join_paths(pps_prefix, get_option('includedir'))
 pps_libdir = join_paths(pps_prefix, get_option('libdir'))
 pps_localedir = join_paths(pps_prefix, get_option('localedir'))
 pps_mandir = join_paths(pps_prefix, get_option('mandir'))
-
-pps_pkgdatadir = join_paths(pps_datadir, pps_name)
 
 # Libtool versioning. The backend and view libraries have separate versions.
 # Before making a release, the libtool version should be modified.
@@ -193,12 +190,6 @@ enable_keyring = get_option('keyring').enabled()
 gtk_unix_print_dep = dependency('gtk4-unix-print', version: gtk_req_version, required: get_option('gtk_unix_print'))
 enable_gtk_unix_print = gtk_unix_print_dep.found()
 config_h.set10('GTKUNIXPRINT_ENABLED', enable_gtk_unix_print)
-
-if enable_gtk_unix_print
-  gio_unix_dep = dependency('gio-unix-2.0', version: glib_req_version)
-else
-  gio_unix_dep = dependency('', required: false)
-endif
 
 # *** GObject Introspection ***
 enable_user_doc = get_option('user_doc')

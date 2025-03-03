@@ -16,7 +16,7 @@ thumbnailer_deps = [
   libppsdocument_dep,
 ]
 
-thumbnailer = executable(
+executable(
   'papers-thumbnailer',
   sources: thumbnailer_sources,
   include_directories: top_inc,

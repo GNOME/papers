@@ -23,7 +23,7 @@ if enable_gtk_unix_print
   previewer_deps += gtk_unix_print_dep
 endif
 
-previewer = executable(
+executable(
   'papers-previewer',
   previewer_sources,
   include_directories: top_inc,
