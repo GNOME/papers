@@ -76,7 +76,7 @@
   <translation type="gettext">papers</translation>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="48~beta" type="development" date="2025-02-06">
+    <release version="48~rc" type="development" date="2025-03-01">
       <description>
         <p>Papers has seen numerous improvements over the course of the last six months:</p>
         <ul>
@@ -88,8 +88,14 @@
         </ul>
         <p>And there were equally many fixes for pre-existing issues:</p>
         <ul>
+          <li>The document will scroll down while selecting text beyond the visible area even in fullscreen.</li>
+          <li>Digital signatures are no longer completely black boxes.</li>
+          <li>On mobile, the sidebar will not randomly collapse anymore.</li>
           <li>Opening a document via drag and drop works again.</li>
           <li>The document will scroll to the nearest search result, which it previously sometimes failed to.</li>
+          <li>When closing the search sidebar used to continue running, but now will be stopped.</li>
+          <li>In forms, focused checkboxes have a visible outline.</li>
+          <li>Triple clicking onto text correctly selects the complete row in all cases. This used to break subsequently adding an annotation to the text, as well.</li>
           <li>Annotation's windows will no longer be transparent, when the annotations themselves are.</li>
           <li>Switching between fullscreen and presentation mode works correctly.</li>
           <li>Zooming with mice is slower for some devices that had issues before.</li>
@@ -99,6 +105,7 @@
         </ul>
       </description>
     </release>
+    <release version="48~beta" type="development" date="2025-02-06" />
     <release version="47.0" type="stable" date="2024-09-14">
       <description>
         <p>This is the second major release of Papers, and the first one following the standard GNOME release schedule. This release marks a very exciting milestone, since it is the first one where a GNOME Document Viewer works in mobile as-well-as in desktop mode. Both in terms of window size, as in functionality-wise. Since the last stable release, we can highlight the following changes:</p>
