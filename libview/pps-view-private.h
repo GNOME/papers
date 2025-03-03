@@ -121,7 +121,6 @@ typedef struct _PpsViewPrivate {
 	/* Delta sum for emulating normal scrolling */
 	gdouble total_delta;
 	PendingScroll pending_scroll;
-	gboolean pending_resize;
 	PpsPoint pending_point;
 
 	/* Animation for scrolling with keys */

@@ -1194,7 +1194,6 @@ get_page_y_offset (PpsView *view, int page, int *y_offset)
 	}
 
 	*y_offset = offset;
-	return;
 }
 
 void
@@ -4002,13 +4001,9 @@ pps_view_size_allocate (GtkWidget *widget,
 		pps_view_size_request (widget, NULL);
 	}
 
-	if (priv->pending_resize)
-		pps_view_update_adjustment_values (view);
-
+	pps_view_update_adjustment_values (view);
 	view_update_range_and_current_page (view);
-
 	priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
-	priv->pending_resize = FALSE;
 	priv->pending_point.x = 0;
 	priv->pending_point.y = 0;
 
@@ -7131,7 +7126,6 @@ pps_view_change_page (PpsView *view,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	priv->current_page = new_page;
-	priv->pending_resize = TRUE;
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
 
 	gtk_widget_queue_allocate (GTK_WIDGET (view));
@@ -7344,8 +7338,7 @@ pps_view_sizing_mode_changed_cb (PpsDocumentModel *model,
                                  GParamSpec *pspec,
                                  PpsView *view)
 {
-	if (pps_document_model_get_sizing_mode (model) != PPS_SIZING_FREE)
-		gtk_widget_queue_resize (GTK_WIDGET (view));
+	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
 
 static void
@@ -7384,7 +7377,6 @@ pps_view_page_layout_changed_cb (PpsDocumentModel *model,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	priv->pending_resize = TRUE;
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 
 	/* FIXME: if we're keeping the pixbuf cache around, we should extend the
@@ -7399,7 +7391,6 @@ pps_view_scale_changed_cb (PpsDocumentModel *model,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	priv->pending_resize = TRUE;
 	if (pps_document_model_get_sizing_mode (priv->model) == PPS_SIZING_FREE)
 		gtk_widget_queue_resize (GTK_WIDGET (view));
 
@@ -7436,7 +7427,6 @@ pps_view_continuous_changed_cb (PpsDocumentModel *model,
 		                                     0, 0);
 	}
 	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	priv->pending_resize = TRUE;
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
 
@@ -7446,12 +7436,12 @@ pps_view_dual_odd_left_changed_cb (PpsDocumentModel *model,
                                    PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	priv->pending_resize = TRUE;
-	if (pps_document_model_get_page_layout (model) == PPS_PAGE_LAYOUT_DUAL)
+	if (pps_document_model_get_page_layout (model) == PPS_PAGE_LAYOUT_DUAL) {
 		/* odd_left may be set when not in dual mode,
 		   queue_resize is not needed in that case */
+		priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
 		gtk_widget_queue_resize (GTK_WIDGET (view));
+	}
 }
 
 static void
