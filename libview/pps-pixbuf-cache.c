@@ -29,6 +29,7 @@ typedef struct _CacheJobInfo {
 	PpsRectangle target_points;
 	PpsSelectionStyle selection_style;
 	gboolean points_set;
+	gboolean selection_stale;
 
 	GdkTexture *selection_texture;
 	gdouble selection_scale;
@@ -664,6 +665,7 @@ add_job (PpsPixbufCache *pixbuf_cache,
 		                                           job_info->selection_style,
 		                                           &text, &base);
 	}
+	job_info->selection_stale = FALSE;
 
 	g_signal_connect (job, "finished",
 	                  G_CALLBACK (job_finished_cb),
@@ -707,7 +709,8 @@ add_job_if_needed (PpsPixbufCache *pixbuf_cache,
 	if (job_info->texture &&
 	    job_info->device_scale == device_scale &&
 	    gdk_texture_get_width (job_info->texture) == width * device_scale &&
-	    gdk_texture_get_height (job_info->texture) == height * device_scale)
+	    gdk_texture_get_height (job_info->texture) == height * device_scale &&
+	    (!job_info->points_set || !job_info->selection_stale))
 		return;
 
 	/* Free old surfaces for non visible pages */
@@ -872,6 +875,8 @@ new_selection_surface_needed (PpsPixbufCache *pixbuf_cache,
                               gint page,
                               gfloat scale)
 {
+	if (job_info->selection_stale)
+		return TRUE;
 	if (job_info->selection_texture)
 		return job_info->selection_scale != scale;
 	return job_info->points_set;
@@ -883,6 +888,8 @@ new_selection_region_needed (PpsPixbufCache *pixbuf_cache,
                              gint page,
                              gfloat scale)
 {
+	if (job_info->selection_stale)
+		return TRUE;
 	if (job_info->selection_region)
 		return job_info->selection_region_scale != scale;
 	return job_info->points_set;
@@ -1118,6 +1125,7 @@ pps_pixbuf_cache_get_selection_region (PpsPixbufCache *pixbuf_cache,
 static void
 clear_job_selection (CacheJobInfo *job_info)
 {
+	job_info->selection_stale = FALSE;
 	job_info->points_set = FALSE;
 	job_info->selection_points.x1 = -1;
 
@@ -1129,8 +1137,7 @@ static void
 update_job_selection (CacheJobInfo *job_info,
                       PpsViewSelection *selection)
 {
-	clear_job_selection (job_info);
-
+	job_info->selection_stale = TRUE;
 	job_info->points_set = TRUE;
 	job_info->target_points = selection->rect;
 	job_info->selection_style = selection->style;
@@ -1144,6 +1151,9 @@ void
 pps_pixbuf_cache_set_selection_list (PpsPixbufCache *pixbuf_cache,
                                      GList *selection_list)
 {
+	gdouble scale = pps_document_model_get_scale (pixbuf_cache->model);
+	gint rotation = pps_document_model_get_rotation (pixbuf_cache->model);
+	PpsRenderAnnotsFlags annot_flags = pps_pixbuf_cache_get_annot_flags (pixbuf_cache);
 	PpsViewSelection *selection;
 	GList *list = selection_list;
 	int page;
@@ -1221,6 +1231,8 @@ pps_pixbuf_cache_set_selection_list (PpsPixbufCache *pixbuf_cache,
 			clear_job_selection (pixbuf_cache->next_job + i);
 		page++;
 	}
+
+	pps_pixbuf_cache_add_jobs_if_needed (pixbuf_cache, rotation, scale, annot_flags);
 }
 
 /* Returns what the pixbuf cache thinks is */
