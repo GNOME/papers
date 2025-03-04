@@ -1145,8 +1145,8 @@ mod imp {
             let uri = if file.uri_scheme().is_some() {
                 uri.to_string()
             } else if uri.starts_with("www.") {
-                // Not a valid uri, assume http if it starts with www
-                format!("http://{}", uri)
+                // Not a valid uri, assume https if it starts with www
+                format!("https://{}", uri)
             } else {
                 return;
             };
