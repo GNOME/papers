@@ -7302,9 +7302,14 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 	if (priv->caret_enabled)
 		preload_pages_for_caret_navigation (view);
 
+	priv->start_page = -1;
+	priv->end_page = -1;
 	pps_view_change_page (view, pps_document_model_get_page (model));
 
 	view_update_scale_limits (view);
+
+	/* in case the number/size of pages changed */
+	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
 
 static void
