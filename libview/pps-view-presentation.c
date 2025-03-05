@@ -1507,14 +1507,6 @@ pps_view_presentation_class_init (PpsViewPresentationClass *klass)
 	                                     "change_page", "(i)", GTK_SCROLL_PAGE_FORWARD);
 	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_Page_Up, 0,
 	                                     "change_page", "(i)", GTK_SCROLL_PAGE_BACKWARD);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_J, 0,
-	                                     "change_page", "(i)", GTK_SCROLL_PAGE_FORWARD);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_H, 0,
-	                                     "change_page", "(i)", GTK_SCROLL_PAGE_BACKWARD);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_L, 0,
-	                                     "change_page", "(i)", GTK_SCROLL_PAGE_FORWARD);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_K, 0,
-	                                     "change_page", "(i)", GTK_SCROLL_PAGE_BACKWARD);
 	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_space, 0,
 	                                     "change_page", "(i)", GTK_SCROLL_PAGE_FORWARD);
 }

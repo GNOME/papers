@@ -7048,14 +7048,6 @@ pps_view_class_init (PpsViewClass *class)
 	                                     "(ii)", GTK_SCROLL_PAGE_FORWARD, GTK_ORIENTATION_VERTICAL);
 	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_Return, GDK_SHIFT_MASK, "scroll",
 	                                     "(ii)", GTK_SCROLL_PAGE_BACKWARD, GTK_ORIENTATION_VERTICAL);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_H, 0, "scroll",
-	                                     "(ii)", GTK_SCROLL_STEP_BACKWARD, GTK_ORIENTATION_HORIZONTAL);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_J, 0, "scroll",
-	                                     "(ii)", GTK_SCROLL_STEP_FORWARD, GTK_ORIENTATION_VERTICAL);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_K, 0, "scroll",
-	                                     "(ii)", GTK_SCROLL_STEP_BACKWARD, GTK_ORIENTATION_VERTICAL);
-	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_L, 0, "scroll",
-	                                     "(ii)", GTK_SCROLL_STEP_FORWARD, GTK_ORIENTATION_HORIZONTAL);
 	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_space, 0, "scroll",
 	                                     "(ii)", GTK_SCROLL_PAGE_FORWARD, GTK_ORIENTATION_VERTICAL);
 	gtk_widget_class_add_binding_signal (widget_class, GDK_KEY_space, GDK_SHIFT_MASK, "scroll",
