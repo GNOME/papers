@@ -84,6 +84,7 @@ typedef struct
 	gdouble top;
 	GtkWidget *popover;
 	PpsLink *link;
+	gint source_page;
 	guint delay_timeout_id;
 } PpsLinkPreview;
 

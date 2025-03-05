@@ -140,8 +140,7 @@ static char *tip_from_link (PpsView *view,
                             PpsLink *link);
 static void pps_view_link_preview_popover_cleanup (PpsView *view);
 static void get_link_area (PpsView *view,
-                           gint x,
-                           gint y,
+                           gint page,
                            PpsLink *link,
                            GdkRectangle *area);
 static void link_preview_set_thumbnail (GdkTexture *page_surface,
@@ -2186,7 +2185,7 @@ tip_from_link (PpsView *view, PpsLink *link)
 }
 
 static void
-handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
+handle_cursor_over_link (PpsView *view, PpsLink *link)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GdkRectangle link_area;
@@ -2234,7 +2233,7 @@ handle_cursor_over_link (PpsView *view, PpsLink *link, gint x, gint y)
 	priv->link_preview.popover = popover = gtk_popover_new ();
 	gtk_popover_set_position (GTK_POPOVER (popover), GTK_POS_TOP);
 	gtk_widget_set_parent (popover, GTK_WIDGET (view));
-	get_link_area (view, x, y, link, &link_area);
+	get_link_area (view, priv->link_preview.source_page, link, &link_area);
 	gtk_popover_set_pointing_to (GTK_POPOVER (popover), &link_area);
 	gtk_popover_set_autohide (GTK_POPOVER (popover), FALSE);
 
@@ -2294,7 +2293,8 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 
 	link = pps_view_get_link_at_location (view, x, y);
 	if (link) {
-		handle_cursor_over_link (view, link, x, y);
+		find_page_at_location (view, x, y, &priv->link_preview.source_page, NULL, NULL);
+		handle_cursor_over_link (view, link);
 		return;
 	}
 
@@ -4501,17 +4501,12 @@ pps_view_do_popup_menu (PpsView *view,
 
 static void
 get_link_area (PpsView *view,
-               gint x,
-               gint y,
+               gint page,
                PpsLink *link,
                GdkRectangle *area)
 {
 	PpsMappingList *link_mapping;
-	gint page;
-	gint x_offset = 0, y_offset = 0;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	find_page_at_location (view, x, y, &page, &x_offset, &y_offset);
 
 	link_mapping = pps_page_cache_get_link_mapping (priv->page_cache, page);
 	pps_view_get_area_from_mapping (view, page,
@@ -4715,8 +4710,10 @@ pps_view_query_tooltip (GtkWidget *widget,
 	text = tip_from_link (view, link);
 	if (text && g_utf8_validate (text, -1, NULL)) {
 		GdkRectangle link_area;
+		gint page;
 
-		get_link_area (view, x, y, link, &link_area);
+		find_page_at_location (view, x, y, &page, NULL, NULL);
+		get_link_area (view, page, link, &link_area);
 		gtk_tooltip_set_text (tooltip, text);
 		gtk_tooltip_set_tip_area (tooltip, &link_area);
 		g_free (text);
