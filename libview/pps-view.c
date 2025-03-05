@@ -7959,6 +7959,8 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 
 		priv->find_page = -1;
 		priv->find_result = 0;
+		priv->start_page = -1;
+		priv->end_page = -1;
 
 		if (priv->document) {
 			if (pps_document_get_n_pages (priv->document) <= 0 ||
