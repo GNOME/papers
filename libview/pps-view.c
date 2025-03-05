@@ -2184,8 +2184,8 @@ tip_from_link (PpsView *view, PpsLink *link)
 	return msg;
 }
 
-static void
-handle_cursor_over_link (PpsView *view, PpsLink *link)
+static gboolean
+handle_link_preview (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GdkRectangle link_area;
@@ -2199,20 +2199,20 @@ handle_cursor_over_link (PpsView *view, PpsLink *link)
 	gdouble link_dest_x, link_dest_y;
 	gdouble scale;
 	gdouble device_scale = 1;
+	PpsLink *link = priv->link_preview.link;
 
-	pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
+	pps_view_link_preview_popover_cleanup (view);
 
-	if (link == priv->link_preview.link)
-		return;
+	if (!link)
+		return G_SOURCE_REMOVE;
 
-	/* Display thumbnail, if applicable */
 	action = pps_link_get_action (link);
 	if (!action)
-		return;
+		return G_SOURCE_REMOVE;
 
 	dest = pps_link_action_get_dest (action);
 	if (!dest)
-		return;
+		return G_SOURCE_REMOVE;
 
 	type = pps_link_dest_get_dest_type (dest);
 	if (type == PPS_LINK_DEST_TYPE_NAMED) {
@@ -2224,10 +2224,8 @@ handle_cursor_over_link (PpsView *view, PpsLink *link)
 	if (pps_link_dest_get_page (dest) == -1) {
 		if (type == PPS_LINK_DEST_TYPE_NAMED)
 			g_object_unref (dest);
-		return;
+		return G_SOURCE_REMOVE;
 	}
-
-	pps_view_link_preview_popover_cleanup (view);
 
 	/* Init popover */
 	priv->link_preview.popover = popover = gtk_popover_new ();
@@ -2255,7 +2253,6 @@ handle_cursor_over_link (PpsView *view, PpsLink *link)
 	                                       &link_dest_doc, &link_dest_x, &link_dest_y);
 	priv->link_preview.left = link_dest_x;
 	priv->link_preview.top = link_dest_y;
-	priv->link_preview.link = link;
 
 	page_texture = pps_pixbuf_cache_get_texture (priv->pixbuf_cache, link_dest_page);
 
@@ -2277,6 +2274,8 @@ handle_cursor_over_link (PpsView *view, PpsLink *link)
 	                        view);
 	g_source_set_name_by_id (priv->link_preview.delay_timeout_id,
 	                         "[papers] link_preview_timeout");
+
+	return G_SOURCE_REMOVE;
 }
 
 static void
@@ -2292,15 +2291,16 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 		return;
 
 	link = pps_view_get_link_at_location (view, x, y);
-	if (link) {
+
+	if (priv->link_preview.link != link) {
+		priv->link_preview.link = link;
 		find_page_at_location (view, x, y, &priv->link_preview.source_page, NULL, NULL);
-		handle_cursor_over_link (view, link);
-		return;
+		gtk_widget_add_tick_callback (GTK_WIDGET (view), (GtkTickCallback) handle_link_preview, NULL, NULL);
 	}
 
-	pps_view_link_preview_popover_cleanup (view);
-
-	if ((field = pps_view_get_form_field_at_location (view, x, y))) {
+	if (link) {
+		pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
+	} else if ((field = pps_view_get_form_field_at_location (view, x, y))) {
 		if (field->is_read_only) {
 			if (priv->cursor == PPS_VIEW_CURSOR_LINK ||
 			    priv->cursor == PPS_VIEW_CURSOR_IBEAM ||
@@ -4643,8 +4643,6 @@ pps_view_link_preview_popover_cleanup (PpsView *view)
 		gtk_popover_popdown (GTK_POPOVER (priv->link_preview.popover));
 		g_clear_pointer (&priv->link_preview.popover, gtk_widget_unparent);
 	}
-
-	priv->link_preview.link = NULL;
 }
 
 static gboolean
