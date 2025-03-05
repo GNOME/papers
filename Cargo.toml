@@ -10,6 +10,7 @@ members = [
   './rust/papers-document',
   './rust/papers-document/sys',
   './shell',
+  './thumbnailer',
 ]
 
 exclude = [
@@ -29,7 +30,7 @@ papers-document-sys = { path = "rust/papers-document/sys" }
 papers-view = { path = "rust/papers-view" }
 papers-view-sys = { path = "rust/papers-view/sys" }
 
-gtk = { package = "gtk4", version = "0.9" }
+gtk = { package = "gtk4", version = "0.9", features = ["gnome_45"] }
 gtk-sys = { package = "gtk4-sys", version = "0.9" }
 gdk = { package = "gdk4", version = "0.9" }
 gdk-sys = { package = "gdk4-sys", version = "0.9" }
@@ -44,3 +45,5 @@ pango = "0.20"
 pango-sys = "0.20"
 cairo-rs = "0.20"
 cairo-sys-rs = "0.20"
+env_logger = "0.11"
+log = "0.4"
