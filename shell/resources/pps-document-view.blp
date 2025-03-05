@@ -413,9 +413,27 @@ template $PpsDocumentView: Adw.BreakpointBin {
       }
 
       Shortcut {
-        trigger: "<Ctrl>H";
+        trigger: "h";
         action: "action(doc.annot-style)";
         arguments: "'highlight'";
+      }
+
+      Shortcut {
+        trigger: "k";
+        action: "action(doc.annot-style)";
+        arguments: "'strikethrough'";
+      }
+
+      Shortcut {
+        trigger: "w";
+        action: "action(doc.annot-style)";
+        arguments: "'squiggly'";
+      }
+
+      Shortcut {
+        trigger: "u";
+        action: "action(doc.annot-style)";
+        arguments: "'underline'";
       }
 
       Shortcut {
@@ -663,7 +681,7 @@ Box annot_menu_child {
       action-name: "doc.annot-style";
       action-target: "'highlight'";
 
-      /* Translators: Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. */
+      /* Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
       tooltip-text: _("Highlight");
     }
 
@@ -674,7 +692,7 @@ Box annot_menu_child {
       action-name: "doc.annot-style";
       action-target: "'squiggly'";
 
-      /* Translators: Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. */
+      /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
       tooltip-text: _("Squiggly");
     }
 
@@ -685,7 +703,7 @@ Box annot_menu_child {
       action-name: "doc.annot-style";
       action-target: "'strikethrough'";
 
-      /* Translators: Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. */
+      /* Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
       tooltip-text: _("Strikethrough");
     }
 
@@ -696,7 +714,7 @@ Box annot_menu_child {
       action-name: "doc.annot-style";
       action-target: "'underline'";
 
-      /* Translators: Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. */
+      /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
       tooltip-text: _("Underline");
     }
   }
