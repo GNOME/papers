@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: evince.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-25 18:45+0000\n"
-"PO-Revision-Date: 2025-02-27 23:12-0300\n"
+"POT-Creation-Date: 2025-03-05 13:47+0000\n"
+"PO-Revision-Date: 2025-03-03 18:09-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -38,7 +38,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Papeles"
@@ -664,51 +664,51 @@ msgstr "Desplazar la vista hacia abajo"
 msgid "Document View"
 msgstr "Vista de documento"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2114
 msgid "Go to first page"
 msgstr "Ir a la primera página"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2116
 msgid "Go to previous page"
 msgstr "Ir a la página anterior"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2118
 msgid "Go to next page"
 msgstr "Ir a la página siguiente"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2120
 msgid "Go to last page"
 msgstr "Ir a la última página"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2122
 msgid "Go to page"
 msgstr "Ir a la página"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2124
 msgid "Find"
 msgstr "Buscar"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to page %s"
 msgstr "Ir a la página %s"
 
-#: libview/pps-view.c:2154
+#: libview/pps-view.c:2159
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ir a %s en el archivo «%s»"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2162
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ir al archivo «%s»"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Launch %s"
 msgstr "Lanzar %s"
 
-#: libview/pps-view.c:2172
+#: libview/pps-view.c:2177
 #, c-format
 msgid "Reset form"
 msgstr "Reiniciar formulario"
@@ -1371,23 +1371,18 @@ msgid "_Sign"
 msgstr "_Firmar"
 
 #: shell/resources/pps-document-view.ui:577
-#, fuzzy
-#| msgid "Close _after Printing"
 msgid "Abort Printing?"
-msgstr "Cerrar _después de imprimir"
+msgstr "¿Cancelar la impresión?"
 
 #: shell/resources/pps-document-view.ui:578
-#, fuzzy
-#| msgid "If you close the window, pending print jobs will not be printed."
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
 msgstr ""
-"Si cierra la ventana, los trabajos de impresión pendientes no se imprimirán."
+"Hay uno o mas trabajos de impresión activos. Si cierra la ventana, los "
+"trabajos de impresión pendientes no se imprimirán."
 
 #: shell/resources/pps-document-view.ui:581
-#, fuzzy
-#| msgid "Cancel _print and Close"
 msgid "Abort _Print and Close"
 msgstr "Cancelar la _impresión y cerrar"
 
@@ -1536,22 +1531,20 @@ msgid "_Highlight Selected Text"
 msgstr "_Resaltar el texto seleccionado"
 
 #: shell/resources/pps-find-sidebar.ui:64
-#, fuzzy
-#| msgid "Not found"
 msgid "No Results Found"
-msgstr "No encontrado"
+msgstr "No se encontraron resultados"
 
 #: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
-msgstr ""
+msgstr "Prueba una búsqueda diferente"
 
 #: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
-msgstr ""
+msgstr "Realiza una búsqueda"
 
 #: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
-msgstr ""
+msgstr "Los resultados de la búsqueda aparecerán aquí"
 
 #: shell/resources/pps-loader-view.ui:17
 msgid "Loading Document"
@@ -1704,11 +1697,11 @@ msgstr "No se pudo abrir el documento"
 msgid "_Open Other File…"
 msgstr "_Abrir otro archivo…"
 
-#: shell/src/application.rs:202
+#: shell/src/application.rs:212
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 Los autores de Papeles"
 
-#: shell/src/application.rs:203
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2010-2012\n"
@@ -1717,47 +1710,47 @@ msgstr ""
 "Daniel Fernández <dfdez@ya.com>, 2005\n"
 "Antonio Ognio <gnrfan@gnrfan.org>, 2004-2005"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "La etiqueta de página del documento que mostrar."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "PÁGINA"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "El número de página del documento que mostrar."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "NÚMERO"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Nombre del destino que mostrar."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "DESTINO"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:344
 #, fuzzy
 #| msgid "Run evince in fullscreen mode"
 msgid "Run papers in fullscreen mode."
 msgstr "Ejecutar Evince en modo pantalla completa"
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:353
 #, fuzzy
 #| msgid "Run evince in presentation mode"
 msgid "Run papers in presentation mode."
 msgstr "Ejecutar Evince en modo presentación"
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr ""
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[ARCHIVO…]"
 
@@ -1786,14 +1779,10 @@ msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Los cambios se perderán permanentemente si no guarda una copia."
 
 #: shell/src/document_view.rs:706
-#, fuzzy
-#| msgid "Save a Copy"
 msgid "Save Changes to a Copy?"
-msgstr "Guardar una copia"
+msgstr "¿Guardar cambios en una copia?"
 
 #: shell/src/document_view.rs:715
-#, fuzzy
-#| msgid "Close _without Saving"
 msgid "Close _Without Saving"
 msgstr "Cerrar _sin guardar"
 
@@ -1961,7 +1950,7 @@ msgstr "Contenido"
 
 #: shell/src/properties_general.rs:161
 msgid "Date &amp; Time"
-msgstr ""
+msgstr "Fecha y hora"
 
 #: shell/src/properties_signatures.rs:138
 #: shell/src/properties_signatures.rs:146
@@ -1970,24 +1959,19 @@ msgstr "Firmado por"
 
 #: shell/src/properties_signatures.rs:187
 msgid "Signature is valid."
-msgstr ""
+msgstr "La firma es válida."
 
 #: shell/src/properties_signatures.rs:190
 msgid "Signature is invalid."
-msgstr ""
+msgstr "La firma no es válida."
 
 #: shell/src/properties_signatures.rs:194
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Document view and handling"
 msgid "Document has been changed after signing."
-msgstr "Vista y manejo del documento"
+msgstr "El documento cambió después de firmarlo."
 
 #: shell/src/properties_signatures.rs:198
-#, fuzzy
-#| msgid "The image could not be saved."
 msgid "Signature could not be decoded."
-msgstr "La imagen no se pudo guardar."
+msgstr "No se pudo decodificar la firma."
 
 #: shell/src/properties_signatures.rs:202
 msgid "Signature verification error."
@@ -1995,23 +1979,23 @@ msgstr ""
 
 #: shell/src/properties_signatures.rs:214
 msgid "Signed with a certificate issued by trusted issuer."
-msgstr ""
+msgstr "Firmado con un certificado emitido por un emisor confiado."
 
 #: shell/src/properties_signatures.rs:220
 msgid "Signed with a certificate issued by untrusted issuer."
-msgstr ""
+msgstr "Firmado con un certificado emitido por un emisor no confiado."
 
 #: shell/src/properties_signatures.rs:226
 msgid "Signed with a certificate issued by unknown issuer."
-msgstr ""
+msgstr "Firmado con un certificado emitido por un emisor desconocido."
 
 #: shell/src/properties_signatures.rs:231
 msgid "Signed with revoked certificate."
-msgstr ""
+msgstr "Firmado con certificados revocados."
 
 #: shell/src/properties_signatures.rs:235
 msgid "Signed with expired certificate."
-msgstr ""
+msgstr "Firmado con certificados expirados."
 
 #: shell/src/properties_signatures.rs:239
 msgid "Certificate verification error."
@@ -2019,7 +2003,7 @@ msgstr ""
 
 #: shell/src/properties_signatures.rs:243
 msgid "Certificate has not been verified."
-msgstr ""
+msgstr "El certificado se ha validado."
 
 #: shell/src/properties_signatures.rs:256
 msgid "Organization"
