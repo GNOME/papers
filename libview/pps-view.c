@@ -3388,20 +3388,20 @@ pps_view_handle_annotation (PpsView *view,
 
 void
 pps_view_focus_annotation (PpsView *view,
-                           const PpsMapping *annot_mapping)
+                           PpsAnnotation *annot)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsMapping *dup_mapping = NULL;
+	PpsMapping mapping;
 
 	if (!PPS_IS_DOCUMENT_ANNOTATIONS (pps_document_model_get_document (priv->model)))
 		return;
 
-	if (annot_mapping) {
-		dup_mapping = pps_mapping_copy (annot_mapping);
-	}
+	mapping.data = g_object_ref (annot);
+	pps_annotation_get_area (annot, &mapping.area);
 
-	_pps_view_set_focused_element (view, dup_mapping,
-	                               pps_annotation_get_page_index (PPS_ANNOTATION (annot_mapping->data)));
+	_pps_view_set_focused_element (view, &mapping,
+	                               pps_annotation_get_page_index (annot));
+	g_object_unref (annot);
 }
 
 static void

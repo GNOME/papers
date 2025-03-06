@@ -75,9 +75,9 @@ impl View {
     }
 
     #[doc(alias = "pps_view_focus_annotation")]
-    pub fn focus_annotation(&self, annot_mapping: &papers_document::Mapping) {
+    pub fn focus_annotation(&self, annot: &impl IsA<papers_document::Annotation>) {
         unsafe {
-            ffi::pps_view_focus_annotation(self.to_glib_none().0, annot_mapping.to_glib_none().0);
+            ffi::pps_view_focus_annotation(self.to_glib_none().0, annot.as_ref().to_glib_none().0);
         }
     }
 

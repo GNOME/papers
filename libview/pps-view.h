@@ -110,7 +110,7 @@ void pps_view_set_annotations_context (PpsView *view,
                                        PpsAnnotationsContext *context);
 PPS_PUBLIC
 void pps_view_focus_annotation (PpsView *view,
-                                const PpsMapping *annot_mapping);
+                                PpsAnnotation *annot);
 PPS_PUBLIC
 void pps_view_set_enable_spellchecking (PpsView *view,
                                         gboolean spellcheck);

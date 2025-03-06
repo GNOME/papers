@@ -1396,7 +1396,7 @@ extern "C" {
         -> gboolean;
     pub fn pps_view_focus_annotation(
         view: *mut PpsView,
-        annot_mapping: *const papers_document::PpsMapping,
+        annot: *mut papers_document::PpsAnnotation,
     );
     pub fn pps_view_get_allow_links_change_zoom(view: *mut PpsView) -> gboolean;
     #[cfg(feature = "v48")]
