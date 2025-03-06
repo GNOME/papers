@@ -1,5 +1,6 @@
 use super::*;
 
+use crate::document_view::enums::AnnotationColor;
 use papers_document::{AnnotationTextMarkupType, DocumentPermissions};
 
 #[gtk::template_callbacks]
@@ -523,6 +524,11 @@ impl imp::PpsDocumentView {
             };
             self.set_action_state("annot-style", &glib::Variant::from(markup_type));
         }
+
+        if let Some(annot) = annot.cloned() {
+            let color = AnnotationColor::from(annot.rgba()).to_string();
+            self.set_action_state("annot-color", &glib::Variant::from(color.as_str()));
+        };
 
         self.annot.replace(annot.cloned());
     }

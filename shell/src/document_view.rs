@@ -18,6 +18,7 @@ use crate::application;
 
 /// Action handling of this widget
 mod actions;
+mod enums;
 mod io;
 mod print;
 /// Signal handling callbacks of this widget

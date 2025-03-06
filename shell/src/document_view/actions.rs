@@ -1,5 +1,6 @@
 use super::*;
 
+use crate::document_view::enums::AnnotationColor;
 use gtk::gdk::gdk_pixbuf;
 use papers_document::{DocumentImages, DocumentSignatures};
 use papers_view::annotations_context::AddAnnotationData;
@@ -297,11 +298,12 @@ impl imp::PpsDocumentView {
                 .build(),
             gio::ActionEntryBuilder::new("annot-color")
                 .parameter_type(Some(glib::VariantTy::STRING))
-                .state(glib::Variant::from("yellow"))
+                .state(glib::Variant::from(&AnnotationColor::Yellow.to_string()))
                 .change_state(glib::clone!(
-                    #[weak(rename_to = _obj)]
+                    #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
+                        obj.cmd_annot_color(state.unwrap().str().unwrap());
                         action.set_state(state.unwrap());
                     }
                 ))
@@ -701,6 +703,16 @@ impl imp::PpsDocumentView {
         }
     }
 
+    fn cmd_annot_color(&self, color: &str) {
+        let annot = self.annot.borrow().clone();
+        if let Some(annot) = annot {
+            let rgba = AnnotationColor::from(color).to_rgba();
+            if annot.rgba() != rgba {
+                annot.set_rgba(&rgba);
+            }
+        }
+    }
+
     fn cmd_annot_style(&self, markup_type: &str) {
         use papers_document::AnnotationTextMarkupType::*;
         let markup_type = match markup_type {
@@ -731,7 +743,7 @@ impl imp::PpsDocumentView {
                     papers_document::AnnotationType::TextMarkup,
                     &start_point,
                     &end_point,
-                    &self.annot_color_rgba(),
+                    &self.rgba_from_annot_color(),
                     AddAnnotationData::TextMarkup(markup_type),
                 );
             }
@@ -918,7 +930,7 @@ impl imp::PpsDocumentView {
         self.toast_overlay.add_toast(toast);
     }
 
-    fn annot_color_rgba(&self) -> gdk::RGBA {
+    fn rgba_from_annot_color(&self) -> gdk::RGBA {
         let binding = self
             .document_action_group
             .lookup_action("annot-color")
@@ -926,15 +938,7 @@ impl imp::PpsDocumentView {
             .state()
             .unwrap();
         let color = binding.str().unwrap();
-        match color {
-            "yellow" => gdk::RGBA::parse("#f5c211").unwrap(),
-            "orange" => gdk::RGBA::parse("#ff7800").unwrap(),
-            "red" => gdk::RGBA::parse("#ed333b").unwrap(),
-            "purple" => gdk::RGBA::parse("#c061cb").unwrap(),
-            "blue" => gdk::RGBA::parse("#3584e4").unwrap(),
-            "green" => gdk::RGBA::parse("#33d17a").unwrap(),
-            _ => panic!("unknown color {color}"),
-        }
+        AnnotationColor::from(color).to_rgba()
     }
 
     fn cmd_add_text_annotation(&self) {
@@ -958,7 +962,7 @@ impl imp::PpsDocumentView {
                 papers_document::AnnotationType::Text,
                 &doc_point.point_on_page(),
                 &doc_point.point_on_page(),
-                &self.annot_color_rgba(),
+                &self.rgba_from_annot_color(),
                 AddAnnotationData::None,
             );
         };
