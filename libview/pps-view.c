@@ -712,7 +712,9 @@ view_update_range_and_current_page (PpsView *view)
 		PpsViewPage *page = pps_view_page_new ();
 
 		gtk_widget_set_parent (GTK_WIDGET (page), GTK_WIDGET (view));
-		pps_view_page_setup (page, priv->model, priv->search_context, priv->page_cache, priv->pixbuf_cache);
+		pps_view_page_setup (page, priv->model, priv->annots_context,
+		                     priv->search_context, priv->page_cache,
+		                     priv->pixbuf_cache);
 
 		g_ptr_array_add (priv->page_widgets, page);
 	}
@@ -3468,15 +3470,7 @@ static void
 pps_view_annot_added_cb (PpsView *view,
                          gpointer *user_data)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsAnnotation *annot = PPS_ANNOTATION (user_data);
-	gint page_index = pps_annotation_get_page_index (annot);
-
-	/* If the page didn't have annots, mark the cache as dirty */
-	if (!pps_page_cache_get_annot_mapping (priv->page_cache, page_index))
-		pps_page_cache_mark_dirty (priv->page_cache,
-		                           page_index,
-		                           PPS_PAGE_DATA_INCLUDE_ANNOTS);
 
 	pps_view_rerender_annotation (view, annot);
 	pps_view_connect_annot_signals (view, annot);
@@ -3494,7 +3488,6 @@ static void
 pps_view_annot_removed_cb (PpsView *view,
                            gpointer *user_data)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsAnnotation *annot = PPS_ANNOTATION (user_data);
 	GtkWindow *window = g_object_get_data (G_OBJECT (annot), "popup");
 
@@ -3505,10 +3498,6 @@ pps_view_annot_removed_cb (PpsView *view,
 		gtk_window_destroy (window);
 
 	_pps_view_set_focused_element (view, NULL, -1);
-
-	pps_page_cache_mark_dirty (priv->page_cache,
-	                           pps_annotation_get_page_index (annot),
-	                           PPS_PAGE_DATA_INCLUDE_ANNOTS);
 
 	pps_view_rerender_annotation (view, annot);
 }
@@ -5331,37 +5320,24 @@ void
 pps_view_set_enable_spellchecking (PpsView *view,
                                    gboolean enabled)
 {
-	PpsMappingList *annots;
-	GList *l;
-	gint n_pages = 0;
-	gint current_page;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
+	GListModel *model =
+	    pps_annotations_context_get_annots_model (priv->annots_context);
 
 	g_return_if_fail (PPS_IS_VIEW (view));
 
 	priv->enable_spellchecking = enabled;
 
-	if (document)
-		n_pages = pps_document_get_n_pages (document);
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
+		PpsAnnotationWindow *window;
 
-	for (current_page = 0; current_page < n_pages; current_page++) {
-		annots = pps_page_cache_get_annot_mapping (priv->page_cache, current_page);
+		if (!PPS_IS_ANNOTATION_MARKUP (annot))
+			continue;
 
-		for (l = pps_mapping_list_get_list (annots); l && l->data; l = g_list_next (l)) {
-			PpsAnnotation *annot;
-			PpsAnnotationWindow *window;
-
-			annot = ((PpsMapping *) (l->data))->data;
-
-			if (!PPS_IS_ANNOTATION_MARKUP (annot))
-				continue;
-
-			window = g_object_get_data (G_OBJECT (annot), "popup");
-
-			if (window) {
-				pps_annotation_window_set_enable_spellchecking (window, priv->enable_spellchecking);
-			}
+		window = g_object_get_data (G_OBJECT (annot), "popup");
+		if (window) {
+			pps_annotation_window_set_enable_spellchecking (window, priv->enable_spellchecking);
 		}
 	}
 }
@@ -6963,7 +6939,9 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 	for (guint i = 0; i < priv->page_widgets->len; i++) {
 		PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
 
-		pps_view_page_setup (page, priv->model, priv->search_context, priv->page_cache, priv->pixbuf_cache);
+		pps_view_page_setup (page, priv->model, priv->annots_context,
+		                     priv->search_context, priv->page_cache,
+		                     priv->pixbuf_cache);
 	}
 
 	pps_view_scroll_to_page (view, pps_document_model_get_page (model));

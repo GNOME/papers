@@ -236,6 +236,8 @@ mod imp {
                 .set_allow_links_change_zoom(allow_links_change_zoom);
 
             self.view.set_model(&self.model);
+            self.view
+                .set_annotations_context(&self.annots_context.get());
 
             self.default_settings.delay();
             self.setup_default();
@@ -267,8 +269,6 @@ mod imp {
 
             self.find_sidebar.set_search_context(Some(&search_context));
             self.view.set_search_context(&search_context);
-            self.view
-                .set_annotations_context(&self.annots_context.get());
             self.search_context.replace(Some(search_context));
         }
     }

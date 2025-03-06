@@ -33,6 +33,7 @@ PpsViewPage *pps_view_page_new (void);
 
 void pps_view_page_setup (PpsViewPage *page,
                           PpsDocumentModel *model,
+                          PpsAnnotationsContext *annots_context,
                           PpsSearchContext *search_context,
                           PpsPageCache *page_cache,
                           PpsPixbufCache *pixbuf_cache);

@@ -24,6 +24,7 @@ typedef struct
 	gint index;
 
 	PpsDocumentModel *model;
+	PpsAnnotationsContext *annots_context;
 	PpsSearchContext *search_context;
 
 	PpsPageCache *page_cache;
@@ -236,8 +237,19 @@ show_annots_border (GtkSnapshot *snapshot,
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 	GdkRGBA color = { 0, 1, 1, 1 };
-	show_mapping_list_border (snapshot, page, &color, clip,
-	                          pps_page_cache_get_annot_mapping (priv->page_cache, priv->index));
+	GListModel *model =
+	    pps_annotations_context_get_annots_model (priv->annots_context);
+
+	// To make this generic, in the future we should have an interface
+	// to get areas, instead of the Mapping. See #382
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
+		PpsRectangle area;
+		if (priv->index != pps_annotation_get_page_index (annot))
+			continue;
+		pps_annotation_get_area (annot, &area);
+		stroke_doc_rect (snapshot, page, &color, clip, &area);
+	}
 }
 
 static void
@@ -535,6 +547,7 @@ pps_view_page_dispose (GObject *object)
 	g_clear_object (&priv->model);
 	g_clear_object (&priv->pixbuf_cache);
 	g_clear_object (&priv->page_cache);
+	g_clear_object (&priv->annots_context);
 	g_clear_object (&priv->search_context);
 
 	G_OBJECT_CLASS (pps_view_page_parent_class)->dispose (object);
@@ -554,6 +567,7 @@ pps_view_page_class_init (PpsViewPageClass *page_class)
 void
 pps_view_page_setup (PpsViewPage *page,
                      PpsDocumentModel *model,
+                     PpsAnnotationsContext *annots_context,
                      PpsSearchContext *search_context,
                      PpsPageCache *page_cache,
                      PpsPixbufCache *pixbuf_cache)
@@ -570,6 +584,7 @@ pps_view_page_setup (PpsViewPage *page,
 		g_signal_handlers_disconnect_by_data (priv->search_context, page);
 
 	g_set_object (&priv->model, model);
+	g_set_object (&priv->annots_context, annots_context);
 	g_set_object (&priv->search_context, search_context);
 	g_set_object (&priv->page_cache, page_cache);
 	g_set_object (&priv->pixbuf_cache, pixbuf_cache);
