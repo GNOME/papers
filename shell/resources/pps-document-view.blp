@@ -414,25 +414,25 @@ template $PpsDocumentView: Adw.BreakpointBin {
 
       Shortcut {
         trigger: "h";
-        action: "action(doc.annot-style)";
+        action: "action(doc.annot-textmarkup-type)";
         arguments: "'highlight'";
       }
 
       Shortcut {
         trigger: "k";
-        action: "action(doc.annot-style)";
+        action: "action(doc.annot-textmarkup-type)";
         arguments: "'strikethrough'";
       }
 
       Shortcut {
         trigger: "w";
-        action: "action(doc.annot-style)";
+        action: "action(doc.annot-textmarkup-type)";
         arguments: "'squiggly'";
       }
 
       Shortcut {
         trigger: "u";
-        action: "action(doc.annot-style)";
+        action: "action(doc.annot-textmarkup-type)";
         arguments: "'underline'";
       }
 
@@ -675,10 +675,10 @@ Box annot_menu_child {
     margin-bottom: 6;
     spacing: 18;
 
-    ToggleButton annot-style-group {
+    ToggleButton annot-textmarkup-type-group {
       name: "text-highlight";
       icon-name: "text-highlight-symbolic";
-      action-name: "doc.annot-style";
+      action-name: "doc.annot-textmarkup-type";
       action-target: "'highlight'";
 
       /* Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
@@ -687,9 +687,9 @@ Box annot_menu_child {
 
     ToggleButton {
       name: "text-squiggly";
-      group: annot-style-group;
+      group: annot-textmarkup-type-group;
       icon-name: "text-squiggly-symbolic";
-      action-name: "doc.annot-style";
+      action-name: "doc.annot-textmarkup-type";
       action-target: "'squiggly'";
 
       /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
@@ -698,9 +698,9 @@ Box annot_menu_child {
 
     ToggleButton {
       name: "text-strikethrough";
-      group: annot-style-group;
+      group: annot-textmarkup-type-group;
       icon-name: "text-strikethrough-symbolic";
-      action-name: "doc.annot-style";
+      action-name: "doc.annot-textmarkup-type";
       action-target: "'strikethrough'";
 
       /* Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
@@ -709,9 +709,9 @@ Box annot_menu_child {
 
     ToggleButton {
       name: "text-underline";
-      group: annot-style-group;
+      group: annot-textmarkup-type-group;
       icon-name: "text-underline-symbolic";
-      action-name: "doc.annot-style";
+      action-name: "doc.annot-textmarkup-type";
       action-target: "'underline'";
 
       /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */

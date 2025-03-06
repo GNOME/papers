@@ -66,7 +66,7 @@ impl imp::PpsDocumentView {
                 .add_child(&self.annot_menu_child.get(), "palette");
         } else {
             self.set_action_enabled("add-text-annotation", false);
-            self.set_action_enabled("annot-style", false);
+            self.set_action_enabled("annot-textmarkup-type", false);
         }
 
         let can_sign = document
@@ -308,14 +308,14 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
-            gio::ActionEntryBuilder::new("annot-style")
+            gio::ActionEntryBuilder::new("annot-textmarkup-type")
                 .parameter_type(Some(glib::VariantTy::STRING))
                 .state(glib::Variant::from("highlight"))
                 .change_state(glib::clone!(
                     #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
-                        obj.cmd_annot_style(state.unwrap().str().unwrap());
+                        obj.cmd_annot_textmarkup_type(state.unwrap().str().unwrap());
                         action.set_state(state.unwrap());
                     }
                 ))
@@ -713,7 +713,7 @@ impl imp::PpsDocumentView {
         }
     }
 
-    fn cmd_annot_style(&self, markup_type: &str) {
+    fn cmd_annot_textmarkup_type(&self, markup_type: &str) {
         use papers_document::AnnotationTextMarkupType::*;
         let markup_type = match markup_type {
             "highlight" => Highlight,
