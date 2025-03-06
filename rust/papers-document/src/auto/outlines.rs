@@ -36,12 +36,7 @@ impl Default for Outlines {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Outlines>> Sealed for T {}
-}
-
-pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
+pub trait OutlinesExt: IsA<Outlines> + 'static {
     #[doc(alias = "pps_outlines_get_children")]
     #[doc(alias = "get_children")]
     fn children(&self) -> Option<gio::ListModel> {
@@ -130,7 +125,7 @@ pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::children\0".as_ptr() as *const _,
+                c"notify::children".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_children_trampoline::<Self, F> as *const (),
                 )),
@@ -153,7 +148,7 @@ pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::expand\0".as_ptr() as *const _,
+                c"notify::expand".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_expand_trampoline::<Self, F> as *const (),
                 )),
@@ -176,7 +171,7 @@ pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::label\0".as_ptr() as *const _,
+                c"notify::label".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_label_trampoline::<Self, F> as *const (),
                 )),
@@ -199,7 +194,7 @@ pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::link\0".as_ptr() as *const _,
+                c"notify::link".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_link_trampoline::<Self, F> as *const (),
                 )),
@@ -222,7 +217,7 @@ pub trait OutlinesExt: IsA<Outlines> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::markup\0".as_ptr() as *const _,
+                c"notify::markup".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_markup_trampoline::<Self, F> as *const (),
                 )),

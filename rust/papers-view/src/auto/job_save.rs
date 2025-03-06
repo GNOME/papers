@@ -36,12 +36,7 @@ impl JobSave {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobSave>> Sealed for T {}
-}
-
-pub trait JobSaveExt: IsA<JobSave> + sealed::Sealed + 'static {
+pub trait JobSaveExt: IsA<JobSave> + 'static {
     #[doc(alias = "pps_job_save_get_uri")]
     #[doc(alias = "get_uri")]
     fn uri(&self) -> Option<glib::GString> {

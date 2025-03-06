@@ -20,12 +20,7 @@ impl DocumentSignatures {
     pub const NONE: Option<&'static DocumentSignatures> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentSignatures>> Sealed for T {}
-}
-
-pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + sealed::Sealed + 'static {
+pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + 'static {
     #[doc(alias = "pps_document_signatures_can_sign")]
     fn can_sign(&self) -> bool {
         unsafe {
@@ -81,9 +76,9 @@ pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + sealed::Sealed + 'sta
     fn set_password_callback<P: Fn(&str) -> Option<String> + 'static>(&self, cb: P) {
         let cb_data: Box_<P> = Box_::new(cb);
         unsafe extern "C" fn cb_func<P: Fn(&str) -> Option<String> + 'static>(
-            text: *const libc::c_char,
+            text: *const std::ffi::c_char,
             user_data: glib::ffi::gpointer,
-        ) -> *mut libc::c_char {
+        ) -> *mut std::ffi::c_char {
             let text: Borrowed<glib::GString> = from_glib_borrow(text);
             let callback = &*(user_data as *mut P);
             (*callback)(text.as_str()).to_glib_full()
@@ -124,8 +119,7 @@ pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + sealed::Sealed + 'sta
             user_data: glib::ffi::gpointer,
         ) {
             let mut error = std::ptr::null_mut();
-            let _ =
-                ffi::pps_document_signatures_sign_finish(_source_object as *mut _, res, &mut error);
+            ffi::pps_document_signatures_sign_finish(_source_object as *mut _, res, &mut error);
             let result = if error.is_null() {
                 Ok(())
             } else {

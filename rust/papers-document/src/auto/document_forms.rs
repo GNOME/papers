@@ -19,12 +19,7 @@ impl DocumentForms {
     pub const NONE: Option<&'static DocumentForms> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentForms>> Sealed for T {}
-}
-
-pub trait DocumentFormsExt: IsA<DocumentForms> + sealed::Sealed + 'static {
+pub trait DocumentFormsExt: IsA<DocumentForms> + 'static {
     #[doc(alias = "pps_document_forms_document_is_modified")]
     fn document_is_modified(&self) -> bool {
         unsafe {

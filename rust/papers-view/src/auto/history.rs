@@ -5,6 +5,7 @@
 
 use crate::{ffi, DocumentModel};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -30,12 +31,7 @@ impl History {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::History>> Sealed for T {}
-}
-
-pub trait HistoryExt: IsA<History> + sealed::Sealed + 'static {
+pub trait HistoryExt: IsA<History> + 'static {
     #[doc(alias = "pps_history_add_link")]
     fn add_link(&self, link: &papers_document::Link) {
         unsafe {
@@ -150,7 +146,7 @@ pub trait HistoryExt: IsA<History> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"activate-link\0".as_ptr() as *const _,
+                c"activate-link".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     activate_link_trampoline::<Self, F> as *const (),
                 )),
@@ -176,7 +172,7 @@ pub trait HistoryExt: IsA<History> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"changed\0".as_ptr() as *const _,
+                c"changed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     changed_trampoline::<Self, F> as *const (),
                 )),

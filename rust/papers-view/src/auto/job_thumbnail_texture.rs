@@ -60,12 +60,7 @@ impl JobThumbnailTexture {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobThumbnailTexture>> Sealed for T {}
-}
-
-pub trait JobThumbnailTextureExt: IsA<JobThumbnailTexture> + sealed::Sealed + 'static {
+pub trait JobThumbnailTextureExt: IsA<JobThumbnailTexture> + 'static {
     #[doc(alias = "pps_job_thumbnail_texture_get_texture")]
     #[doc(alias = "get_texture")]
     fn texture(&self) -> Option<gdk::Texture> {

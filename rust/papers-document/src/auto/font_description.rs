@@ -31,12 +31,7 @@ impl Default for FontDescription {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::FontDescription>> Sealed for T {}
-}
-
-pub trait FontDescriptionExt: IsA<FontDescription> + sealed::Sealed + 'static {
+pub trait FontDescriptionExt: IsA<FontDescription> + 'static {
     fn details(&self) -> Option<glib::GString> {
         ObjectExt::property(self.as_ref(), "details")
     }

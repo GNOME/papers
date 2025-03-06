@@ -79,7 +79,7 @@ impl AnnotationText {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::icon\0".as_ptr() as *const _,
+                c"notify::icon".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_icon_trampoline::<F> as *const (),
                 )),
@@ -102,7 +102,7 @@ impl AnnotationText {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::is-open\0".as_ptr() as *const _,
+                c"notify::is-open".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_is_open_trampoline::<F> as *const (),
                 )),

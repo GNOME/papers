@@ -934,7 +934,7 @@ pps_page_accessible_get_offset_at_point (AtkText *text,
 	gint x_widget, y_widget;
 	gint offset = -1;
 	gdouble view_x, view_y;
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 
 	if (!view->page_cache)
 		return -1;
@@ -958,13 +958,13 @@ pps_page_accessible_get_offset_at_point (AtkText *text,
 		view_y -= y_window;
 	}
 
-	doc_point = pps_view_get_doc_point_for_page (view, self->priv->page,
-	                                             view_x, view_y);
+	point_on_page = pps_view_get_point_on_page (view, self->priv->page,
+	                                            view_x, view_y);
 
 	for (i = 0; i < n_areas; i++) {
 		rect = areas + i;
-		if (doc_point.x >= rect->x1 && doc_point.x <= rect->x2 &&
-		    doc_point.y >= rect->y1 && doc_point.y <= rect->y2)
+		if (point_on_page.x >= rect->x1 && point_on_page.x <= rect->x2 &&
+		    point_on_page.y >= rect->y1 && point_on_page.y <= rect->y2)
 			offset = i;
 	}
 
@@ -1106,7 +1106,7 @@ pps_page_accessible_scroll_substring_to_point (AtkText *text,
 	guint n_areas = 0;
 	GtkWidget *toplevel;
 	gint x_widget, y_widget;
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 
 	if (end_pos < start_pos)
 		return FALSE;
@@ -1138,12 +1138,12 @@ pps_page_accessible_scroll_substring_to_point (AtkText *text,
 		view_y -= y_window;
 	}
 
-	doc_point = pps_view_get_doc_point_for_page (view, self->priv->page,
-	                                             view_x, view_y);
+	point_on_page = pps_view_get_point_on_page (view, self->priv->page,
+	                                            view_x, view_y);
 
 	/* Calculate scrolling difference */
-	start_x -= doc_point.x;
-	start_y -= doc_point.y;
+	start_x -= point_on_page.x;
+	start_y -= point_on_page.y;
 
 	gtk_adjustment_clamp_page (view->hadjustment, start_x, start_x + hpage_size);
 	gtk_adjustment_clamp_page (view->vadjustment, start_y, start_y + vpage_size);

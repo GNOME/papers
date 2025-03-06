@@ -5,6 +5,7 @@
 
 use crate::{ffi, JobPriority};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -32,12 +33,7 @@ impl Job {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Job>> Sealed for T {}
-}
-
-pub trait JobExt: IsA<Job> + sealed::Sealed + 'static {
+pub trait JobExt: IsA<Job> + 'static {
     #[doc(alias = "pps_job_cancel")]
     fn cancel(&self) {
         unsafe {
@@ -99,8 +95,10 @@ pub trait JobExt: IsA<Job> + sealed::Sealed + 'static {
     }
 
     #[doc(alias = "pps_job_run")]
-    fn run(&self) -> bool {
-        unsafe { from_glib(ffi::pps_job_run(self.as_ref().to_glib_none().0)) }
+    fn run(&self) {
+        unsafe {
+            ffi::pps_job_run(self.as_ref().to_glib_none().0);
+        }
     }
 
     #[doc(alias = "pps_job_scheduler_push_job")]
@@ -137,7 +135,7 @@ pub trait JobExt: IsA<Job> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"cancelled\0".as_ptr() as *const _,
+                c"cancelled".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cancelled_trampoline::<Self, F> as *const (),
                 )),
@@ -159,7 +157,7 @@ pub trait JobExt: IsA<Job> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"finished\0".as_ptr() as *const _,
+                c"finished".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<Self, F> as *const (),
                 )),

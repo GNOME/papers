@@ -8,6 +8,7 @@ use crate::{ffi, DocumentModel, SearchContext};
 #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
 use crate::{AnnotationsContext, ViewSelection};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -90,30 +91,30 @@ impl View {
         }
     }
 
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    #[doc(alias = "pps_view_get_document_point_for_view_point")]
+    #[doc(alias = "get_document_point_for_view_point")]
+    pub fn document_point_for_view_point(
+        &self,
+        view_point_x: f64,
+        view_point_y: f64,
+    ) -> Option<papers_document::DocumentPoint> {
+        unsafe {
+            from_glib_full(ffi::pps_view_get_document_point_for_view_point(
+                self.to_glib_none().0,
+                view_point_x,
+                view_point_y,
+            ))
+        }
+    }
+
     #[doc(alias = "pps_view_get_enable_spellchecking")]
     #[doc(alias = "get_enable_spellchecking")]
     pub fn enables_spellchecking(&self) -> bool {
         unsafe {
             from_glib(ffi::pps_view_get_enable_spellchecking(
                 self.to_glib_none().0,
-            ))
-        }
-    }
-
-    #[cfg(feature = "v48")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    #[doc(alias = "pps_view_get_mark_for_view_point")]
-    #[doc(alias = "get_mark_for_view_point")]
-    pub fn mark_for_view_point(
-        &self,
-        view_point_x: f64,
-        view_point_y: f64,
-    ) -> Option<papers_document::Mark> {
-        unsafe {
-            from_glib_full(ffi::pps_view_get_mark_for_view_point(
-                self.to_glib_none().0,
-                view_point_x,
-                view_point_y,
             ))
         }
     }
@@ -155,11 +156,6 @@ impl View {
                 self.to_glib_none().0,
             ))
         }
-    }
-
-    #[doc(alias = "pps_view_is_loading")]
-    pub fn is_loading(&self) -> bool {
-        unsafe { from_glib(ffi::pps_view_is_loading(self.to_glib_none().0)) }
     }
 
     #[doc(alias = "pps_view_next_page")]
@@ -300,7 +296,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"activate\0".as_ptr() as *const _,
+                c"activate".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     activate_trampoline::<F> as *const (),
                 )),
@@ -317,8 +313,8 @@ impl View {
     pub fn connect_cursor_moved<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn cursor_moved_trampoline<F: Fn(&View, i32, i32) + 'static>(
             this: *mut ffi::PpsView,
-            object: libc::c_int,
-            p0: libc::c_int,
+            object: std::ffi::c_int,
+            p0: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
             let f: &F = &*(f as *const F);
@@ -328,7 +324,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"cursor-moved\0".as_ptr() as *const _,
+                c"cursor-moved".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cursor_moved_trampoline::<F> as *const (),
                 )),
@@ -356,7 +352,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"external-link\0".as_ptr() as *const _,
+                c"external-link".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     external_link_trampoline::<F> as *const (),
                 )),
@@ -393,7 +389,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"handle-link\0".as_ptr() as *const _,
+                c"handle-link".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     handle_link_trampoline::<F> as *const (),
                 )),
@@ -419,7 +415,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"layers-changed\0".as_ptr() as *const _,
+                c"layers-changed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     layers_changed_trampoline::<F> as *const (),
                 )),
@@ -442,7 +438,7 @@ impl View {
         >(
             this: *mut ffi::PpsView,
             object: gtk::ffi::GtkMovementStep,
-            p0: libc::c_int,
+            p0: std::ffi::c_int,
             p1: glib::ffi::gboolean,
             f: glib::ffi::gpointer,
         ) -> glib::ffi::gboolean {
@@ -459,7 +455,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"move-cursor\0".as_ptr() as *const _,
+                c"move-cursor".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     move_cursor_trampoline::<F> as *const (),
                 )),
@@ -492,7 +488,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"scroll\0".as_ptr() as *const _,
+                c"scroll".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     scroll_trampoline::<F> as *const (),
                 )),
@@ -518,7 +514,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"selection-changed\0".as_ptr() as *const _,
+                c"selection-changed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     selection_changed_trampoline::<F> as *const (),
                 )),
@@ -550,7 +546,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::can-zoom-in\0".as_ptr() as *const _,
+                c"notify::can-zoom-in".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_can_zoom_in_trampoline::<F> as *const (),
                 )),
@@ -573,7 +569,7 @@ impl View {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::can-zoom-out\0".as_ptr() as *const _,
+                c"notify::can-zoom-out".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_can_zoom_out_trampoline::<F> as *const (),
                 )),

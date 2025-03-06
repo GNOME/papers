@@ -30,12 +30,7 @@ impl JobSignatures {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobSignatures>> Sealed for T {}
-}
-
-pub trait JobSignaturesExt: IsA<JobSignatures> + sealed::Sealed + 'static {
+pub trait JobSignaturesExt: IsA<JobSignatures> + 'static {
     #[doc(alias = "pps_job_signatures_get_signatures")]
     #[doc(alias = "get_signatures")]
     fn signatures(&self) -> Vec<papers_document::Signature> {

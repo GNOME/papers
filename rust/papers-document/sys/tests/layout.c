@@ -51,6 +51,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsDocumentMediaInterface", sizeof(PpsDocumentMediaInterface), alignof(PpsDocumentMediaInterface));
     printf("%s;%zu;%zu\n", "PpsDocumentMode", sizeof(PpsDocumentMode), alignof(PpsDocumentMode));
     printf("%s;%zu;%zu\n", "PpsDocumentPermissions", sizeof(PpsDocumentPermissions), alignof(PpsDocumentPermissions));
+    printf("%s;%zu;%zu\n", "PpsDocumentPoint", sizeof(PpsDocumentPoint), alignof(PpsDocumentPoint));
     printf("%s;%zu;%zu\n", "PpsDocumentPrintInterface", sizeof(PpsDocumentPrintInterface), alignof(PpsDocumentPrintInterface));
     printf("%s;%zu;%zu\n", "PpsDocumentSecurityInterface", sizeof(PpsDocumentSecurityInterface), alignof(PpsDocumentSecurityInterface));
     printf("%s;%zu;%zu\n", "PpsDocumentSignaturesInterface", sizeof(PpsDocumentSignaturesInterface), alignof(PpsDocumentSignaturesInterface));
@@ -86,7 +87,6 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsLinkDestClass", sizeof(PpsLinkDestClass), alignof(PpsLinkDestClass));
     printf("%s;%zu;%zu\n", "PpsLinkDestType", sizeof(PpsLinkDestType), alignof(PpsLinkDestType));
     printf("%s;%zu;%zu\n", "PpsMapping", sizeof(PpsMapping), alignof(PpsMapping));
-    printf("%s;%zu;%zu\n", "PpsMark", sizeof(PpsMark), alignof(PpsMark));
     printf("%s;%zu;%zu\n", "PpsMedia", sizeof(PpsMedia), alignof(PpsMedia));
     printf("%s;%zu;%zu\n", "PpsMediaClass", sizeof(PpsMediaClass), alignof(PpsMediaClass));
     printf("%s;%zu;%zu\n", "PpsOutlines", sizeof(PpsOutlines), alignof(PpsOutlines));

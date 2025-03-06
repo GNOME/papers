@@ -19,12 +19,7 @@ impl DocumentText {
     pub const NONE: Option<&'static DocumentText> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentText>> Sealed for T {}
-}
-
-pub trait DocumentTextExt: IsA<DocumentText> + sealed::Sealed + 'static {
+pub trait DocumentTextExt: IsA<DocumentText> + 'static {
     #[doc(alias = "pps_document_text_get_text")]
     #[doc(alias = "get_text")]
     fn text(&self, page: &impl IsA<Page>) -> Option<glib::GString> {

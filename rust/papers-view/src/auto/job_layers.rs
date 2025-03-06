@@ -28,12 +28,7 @@ impl JobLayers {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobLayers>> Sealed for T {}
-}
-
-pub trait JobLayersExt: IsA<JobLayers> + sealed::Sealed + 'static {
+pub trait JobLayersExt: IsA<JobLayers> + 'static {
     #[doc(alias = "pps_job_layers_get_model")]
     #[doc(alias = "get_model")]
     fn model(&self) -> Option<gio::ListModel> {

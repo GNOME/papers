@@ -5,6 +5,7 @@
 
 use crate::{ffi, DocumentModel};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -30,12 +31,7 @@ impl AnnotationsContext {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::AnnotationsContext>> Sealed for T {}
-}
-
-pub trait AnnotationsContextExt: IsA<AnnotationsContext> + sealed::Sealed + 'static {
+pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
     //#[cfg(feature = "v48")]
     //#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     //#[doc(alias = "pps_annotations_context_add_annotation_sync")]
@@ -96,7 +92,7 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + sealed::Sealed + 'sta
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"annot-added\0".as_ptr() as *const _,
+                c"annot-added".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annot_added_trampoline::<Self, F> as *const (),
                 )),
@@ -128,7 +124,7 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + sealed::Sealed + 'sta
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"annot-removed\0".as_ptr() as *const _,
+                c"annot-removed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annot_removed_trampoline::<Self, F> as *const (),
                 )),
@@ -153,7 +149,7 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + sealed::Sealed + 'sta
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"annots-loaded\0".as_ptr() as *const _,
+                c"annots-loaded".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annots_loaded_trampoline::<Self, F> as *const (),
                 )),

@@ -19,12 +19,7 @@ impl DocumentFind {
     pub const NONE: Option<&'static DocumentFind> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentFind>> Sealed for T {}
-}
-
-pub trait DocumentFindExt: IsA<DocumentFind> + sealed::Sealed + 'static {
+pub trait DocumentFindExt: IsA<DocumentFind> + 'static {
     #[doc(alias = "pps_document_find_find_text")]
     fn find_text(
         &self,

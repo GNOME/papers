@@ -28,12 +28,7 @@ impl JobAnnots {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobAnnots>> Sealed for T {}
-}
-
-pub trait JobAnnotsExt: IsA<JobAnnots> + sealed::Sealed + 'static {
+pub trait JobAnnotsExt: IsA<JobAnnots> + 'static {
     #[doc(alias = "pps_job_annots_get_annots")]
     #[doc(alias = "get_annots")]
     fn annots(&self) -> Vec<papers_document::Annotation> {

@@ -5,6 +5,7 @@
 
 use crate::ffi;
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -107,7 +108,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"change-page\0".as_ptr() as *const _,
+                c"change-page".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     change_page_trampoline::<F> as *const (),
                 )),
@@ -139,7 +140,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"external-link\0".as_ptr() as *const _,
+                c"external-link".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     external_link_trampoline::<F> as *const (),
                 )),
@@ -165,7 +166,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"finished\0".as_ptr() as *const _,
+                c"finished".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
@@ -192,7 +193,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::current-page\0".as_ptr() as *const _,
+                c"notify::current-page".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_current_page_trampoline::<F> as *const (),
                 )),
@@ -215,7 +216,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::document\0".as_ptr() as *const _,
+                c"notify::document".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_document_trampoline::<F> as *const (),
                 )),
@@ -240,7 +241,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::inverted-colors\0".as_ptr() as *const _,
+                c"notify::inverted-colors".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_inverted_colors_trampoline::<F> as *const (),
                 )),
@@ -263,7 +264,7 @@ impl ViewPresentation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::rotation\0".as_ptr() as *const _,
+                c"notify::rotation".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rotation_trampoline::<F> as *const (),
                 )),

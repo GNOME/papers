@@ -5,6 +5,7 @@
 
 use crate::{ffi, Job};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -45,12 +46,7 @@ impl JobFind {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobFind>> Sealed for T {}
-}
-
-pub trait JobFindExt: IsA<JobFind> + sealed::Sealed + 'static {
+pub trait JobFindExt: IsA<JobFind> + 'static {
     #[doc(alias = "pps_job_find_get_n_main_results")]
     #[doc(alias = "get_n_main_results")]
     fn n_main_results(&self, page: i32) -> i32 {
@@ -86,7 +82,7 @@ pub trait JobFindExt: IsA<JobFind> + sealed::Sealed + 'static {
     fn connect_updated<F: Fn(&Self, i32) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn updated_trampoline<P: IsA<JobFind>, F: Fn(&P, i32) + 'static>(
             this: *mut ffi::PpsJobFind,
-            object: libc::c_int,
+            object: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
             let f: &F = &*(f as *const F);
@@ -96,7 +92,7 @@ pub trait JobFindExt: IsA<JobFind> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"updated\0".as_ptr() as *const _,
+                c"updated".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     updated_trampoline::<Self, F> as *const (),
                 )),

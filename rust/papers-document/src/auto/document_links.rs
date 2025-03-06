@@ -19,12 +19,7 @@ impl DocumentLinks {
     pub const NONE: Option<&'static DocumentLinks> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentLinks>> Sealed for T {}
-}
-
-pub trait DocumentLinksExt: IsA<DocumentLinks> + sealed::Sealed + 'static {
+pub trait DocumentLinksExt: IsA<DocumentLinks> + 'static {
     #[doc(alias = "pps_document_links_find_link_dest")]
     fn find_link_dest(&self, link_name: &str) -> Option<LinkDest> {
         unsafe {

@@ -19,12 +19,7 @@ impl DocumentAttachments {
     pub const NONE: Option<&'static DocumentAttachments> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentAttachments>> Sealed for T {}
-}
-
-pub trait DocumentAttachmentsExt: IsA<DocumentAttachments> + sealed::Sealed + 'static {
+pub trait DocumentAttachmentsExt: IsA<DocumentAttachments> + 'static {
     #[doc(alias = "pps_document_attachments_get_attachments")]
     #[doc(alias = "get_attachments")]
     fn attachments(&self) -> Vec<Attachment> {

@@ -19,12 +19,7 @@ impl DocumentImages {
     pub const NONE: Option<&'static DocumentImages> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentImages>> Sealed for T {}
-}
-
-pub trait DocumentImagesExt: IsA<DocumentImages> + sealed::Sealed + 'static {
+pub trait DocumentImagesExt: IsA<DocumentImages> + 'static {
     #[doc(alias = "pps_document_images_get_image")]
     #[doc(alias = "get_image")]
     fn image(&self, image: &impl IsA<Image>) -> Option<gdk_pixbuf::Pixbuf> {

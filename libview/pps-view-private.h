@@ -211,10 +211,10 @@ struct _PpsViewClass {
 void pps_view_get_page_extents (PpsView *view,
                                 gint page,
                                 GdkRectangle *page_area);
-PpsPoint pps_view_get_doc_point_for_page (PpsView *view,
-                                          gint page_index,
-                                          gdouble view_point_x,
-                                          gdouble view_point_y);
+PpsPoint pps_view_get_point_on_page (PpsView *view,
+                                     gint page_index,
+                                     gdouble view_point_x,
+                                     gdouble view_point_y);
 void _get_page_size_for_scale_and_rotation (PpsDocument *document,
                                             gint page,
                                             gdouble scale,

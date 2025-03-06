@@ -25,12 +25,7 @@ impl AttachmentContext {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::AttachmentContext>> Sealed for T {}
-}
-
-pub trait AttachmentContextExt: IsA<AttachmentContext> + sealed::Sealed + 'static {
+pub trait AttachmentContextExt: IsA<AttachmentContext> + 'static {
     #[doc(alias = "pps_attachment_context_get_model")]
     #[doc(alias = "get_model")]
     fn model(&self) -> Option<gio::ListModel> {

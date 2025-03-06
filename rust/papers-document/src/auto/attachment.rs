@@ -30,12 +30,7 @@ impl Attachment {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Attachment>> Sealed for T {}
-}
-
-pub trait AttachmentExt: IsA<Attachment> + sealed::Sealed + 'static {
+pub trait AttachmentExt: IsA<Attachment> + 'static {
     #[doc(alias = "pps_attachment_get_creation_datetime")]
     #[doc(alias = "get_creation_datetime")]
     fn creation_datetime(&self) -> Option<glib::DateTime> {

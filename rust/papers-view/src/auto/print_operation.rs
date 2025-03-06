@@ -5,6 +5,7 @@
 
 use crate::ffi;
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -171,7 +172,7 @@ impl PrintOperation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"begin-print\0".as_ptr() as *const _,
+                c"begin-print".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     begin_print_trampoline::<F> as *const (),
                 )),
@@ -199,7 +200,7 @@ impl PrintOperation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"done\0".as_ptr() as *const _,
+                c"done".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     done_trampoline::<F> as *const (),
                 )),
@@ -221,7 +222,7 @@ impl PrintOperation {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"status-changed\0".as_ptr() as *const _,
+                c"status-changed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     status_changed_trampoline::<F> as *const (),
                 )),

@@ -30,12 +30,7 @@ impl Layer {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Layer>> Sealed for T {}
-}
-
-pub trait LayerExt: IsA<Layer> + sealed::Sealed + 'static {
+pub trait LayerExt: IsA<Layer> + 'static {
     #[doc(alias = "pps_layer_get_children")]
     #[doc(alias = "get_children")]
     fn children(&self) -> Option<gio::ListModel> {
@@ -99,7 +94,7 @@ pub trait LayerExt: IsA<Layer> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::children\0".as_ptr() as *const _,
+                c"notify::children".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_children_trampoline::<Self, F> as *const (),
                 )),
@@ -122,7 +117,7 @@ pub trait LayerExt: IsA<Layer> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::enabled\0".as_ptr() as *const _,
+                c"notify::enabled".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enabled_trampoline::<Self, F> as *const (),
                 )),
@@ -145,7 +140,7 @@ pub trait LayerExt: IsA<Layer> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::title\0".as_ptr() as *const _,
+                c"notify::title".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_title_trampoline::<Self, F> as *const (),
                 )),
@@ -168,7 +163,7 @@ pub trait LayerExt: IsA<Layer> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::title-only\0".as_ptr() as *const _,
+                c"notify::title-only".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_title_only_trampoline::<Self, F> as *const (),
                 )),

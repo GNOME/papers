@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentInfo, DocumentLoadFlags, Page, RenderContext};
+use crate::{ffi, DocumentInfo, Page, RenderContext};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -51,39 +51,13 @@ impl Document {
     #[cfg(feature = "v42")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v42")))]
     #[doc(alias = "pps_document_factory_get_document_for_fd")]
-    pub fn factory_get_document_for_fd(
-        fd: i32,
-        mime_type: &str,
-        flags: DocumentLoadFlags,
-    ) -> Result<Document, glib::Error> {
+    pub fn factory_get_document_for_fd(fd: i32, mime_type: &str) -> Result<Document, glib::Error> {
         assert_initialized_main_thread!();
         unsafe {
             let mut error = std::ptr::null_mut();
             let ret = ffi::pps_document_factory_get_document_for_fd(
                 fd,
                 mime_type.to_glib_none().0,
-                flags.into_glib(),
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
-        }
-    }
-
-    #[doc(alias = "pps_document_factory_get_document_full")]
-    pub fn factory_get_document_full(
-        uri: &str,
-        flags: DocumentLoadFlags,
-    ) -> Result<Document, glib::Error> {
-        assert_initialized_main_thread!();
-        unsafe {
-            let mut error = std::ptr::null_mut();
-            let ret = ffi::pps_document_factory_get_document_full(
-                uri.to_glib_none().0,
-                flags.into_glib(),
                 &mut error,
             );
             if error.is_null() {
@@ -146,12 +120,7 @@ impl Document {
     //}
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Document>> Sealed for T {}
-}
-
-pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
+pub trait DocumentExt: IsA<Document> + 'static {
     #[doc(alias = "pps_document_check_dimensions")]
     fn check_dimensions(&self) -> bool {
         unsafe {
@@ -369,34 +338,10 @@ pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
     #[cfg(feature = "v42")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v42")))]
     #[doc(alias = "pps_document_load_fd")]
-    fn load_fd(&self, fd: i32, flags: DocumentLoadFlags) -> Result<(), glib::Error> {
+    fn load_fd(&self, fd: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = std::ptr::null_mut();
-            let is_ok = ffi::pps_document_load_fd(
-                self.as_ref().to_glib_none().0,
-                fd,
-                flags.into_glib(),
-                &mut error,
-            );
-            debug_assert_eq!(is_ok == glib::ffi::GFALSE, !error.is_null());
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
-        }
-    }
-
-    #[doc(alias = "pps_document_load_full")]
-    fn load_full(&self, uri: &str, flags: DocumentLoadFlags) -> Result<(), glib::Error> {
-        unsafe {
-            let mut error = std::ptr::null_mut();
-            let is_ok = ffi::pps_document_load_full(
-                self.as_ref().to_glib_none().0,
-                uri.to_glib_none().0,
-                flags.into_glib(),
-                &mut error,
-            );
+            let is_ok = ffi::pps_document_load_fd(self.as_ref().to_glib_none().0, fd, &mut error);
             debug_assert_eq!(is_ok == glib::ffi::GFALSE, !error.is_null());
             if error.is_null() {
                 Ok(())
@@ -437,6 +382,13 @@ pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
         }
     }
 
+    #[doc(alias = "pps_document_setup_cache")]
+    fn setup_cache(&self) {
+        unsafe {
+            ffi::pps_document_setup_cache(self.as_ref().to_glib_none().0);
+        }
+    }
+
     #[doc(alias = "modified")]
     fn connect_modified_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_modified_trampoline<P: IsA<Document>, F: Fn(&P) + 'static>(
@@ -451,7 +403,7 @@ pub trait DocumentExt: IsA<Document> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::modified\0".as_ptr() as *const _,
+                c"notify::modified".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_modified_trampoline::<Self, F> as *const (),
                 )),

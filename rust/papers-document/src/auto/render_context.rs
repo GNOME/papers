@@ -37,12 +37,7 @@ impl RenderContext {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::RenderContext>> Sealed for T {}
-}
-
-pub trait RenderContextExt: IsA<RenderContext> + sealed::Sealed + 'static {
+pub trait RenderContextExt: IsA<RenderContext> + 'static {
     #[doc(alias = "pps_render_context_compute_scaled_size")]
     fn compute_scaled_size(&self, width_points: f64, height_points: f64) -> (i32, i32) {
         unsafe {

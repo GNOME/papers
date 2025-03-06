@@ -21,14 +21,15 @@ use gtk_sys as gtk;
 use pango_sys as pango;
 use papers_document_sys as papers_document;
 
-#[allow(unused_imports)]
-use libc::{
-    c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
-    intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE,
-};
 #[cfg(unix)]
 #[allow(unused_imports)]
 use libc::{dev_t, gid_t, pid_t, socklen_t, uid_t};
+#[allow(unused_imports)]
+use libc::{intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE};
+#[allow(unused_imports)]
+use std::ffi::{
+    c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
+};
 
 #[allow(unused_imports)]
 use glib::{gboolean, gconstpointer, gpointer, GType};
@@ -72,9 +73,8 @@ pub const PPS_PAGE_DATA_INCLUDE_TEXT_ATTRS: PpsJobPageDataFlags = 16;
 pub const PPS_PAGE_DATA_INCLUDE_TEXT_LOG_ATTRS: PpsJobPageDataFlags = 32;
 pub const PPS_PAGE_DATA_INCLUDE_IMAGES: PpsJobPageDataFlags = 64;
 pub const PPS_PAGE_DATA_INCLUDE_FORMS: PpsJobPageDataFlags = 128;
-pub const PPS_PAGE_DATA_INCLUDE_ANNOTS: PpsJobPageDataFlags = 256;
-pub const PPS_PAGE_DATA_INCLUDE_MEDIA: PpsJobPageDataFlags = 512;
-pub const PPS_PAGE_DATA_INCLUDE_ALL: PpsJobPageDataFlags = 1023;
+pub const PPS_PAGE_DATA_INCLUDE_MEDIA: PpsJobPageDataFlags = 256;
+pub const PPS_PAGE_DATA_INCLUDE_ALL: PpsJobPageDataFlags = 511;
 
 // Records
 #[derive(Copy, Clone)]
@@ -169,7 +169,7 @@ impl ::std::fmt::Debug for PpsJobAttachmentsClass {
 #[repr(C)]
 pub struct PpsJobClass {
     pub parent_class: gobject::GObjectClass,
-    pub run: Option<unsafe extern "C" fn(*mut PpsJob) -> gboolean>,
+    pub run: Option<unsafe extern "C" fn(*mut PpsJob)>,
     pub cancelled: Option<unsafe extern "C" fn(*mut PpsJob)>,
     pub finished: Option<unsafe extern "C" fn(*mut PpsJob)>,
 }
@@ -370,6 +370,7 @@ impl ::std::fmt::Debug for PpsMetadataClass {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct _PpsPrintOperationClass {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -406,6 +407,7 @@ impl ::std::fmt::Debug for PpsSearchResultClass {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct _PpsViewClass {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -414,6 +416,7 @@ pub struct _PpsViewClass {
 pub type PpsViewClass = _PpsViewClass;
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct _PpsViewPresentationClass {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -471,6 +474,7 @@ impl ::std::fmt::Debug for PpsAttachmentContext {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentModel {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -644,7 +648,6 @@ pub struct PpsJobPageData {
     pub link_mapping: *mut papers_document::PpsMappingList,
     pub image_mapping: *mut papers_document::PpsMappingList,
     pub form_field_mapping: *mut papers_document::PpsMappingList,
-    pub annot_mapping: *mut papers_document::PpsMappingList,
     pub media_mapping: *mut papers_document::PpsMappingList,
     pub text_mapping: *mut cairo::cairo_region_t,
     pub text: *mut c_char,
@@ -664,7 +667,6 @@ impl ::std::fmt::Debug for PpsJobPageData {
             .field("link_mapping", &self.link_mapping)
             .field("image_mapping", &self.image_mapping)
             .field("form_field_mapping", &self.form_field_mapping)
-            .field("annot_mapping", &self.annot_mapping)
             .field("media_mapping", &self.media_mapping)
             .field("text_mapping", &self.text_mapping)
             .field("text", &self.text)
@@ -778,6 +780,7 @@ impl ::std::fmt::Debug for PpsJobThumbnailTexture {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsMetadata {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -790,6 +793,7 @@ impl ::std::fmt::Debug for PpsMetadata {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsPrintOperation {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -858,8 +862,6 @@ impl ::std::fmt::Debug for PpsViewPresentation {
     }
 }
 
-#[link(name = "ppsview-4.0")]
-#[link(name = "ppsdocument-4.0")]
 extern "C" {
 
     //=========================================================================
@@ -1051,7 +1053,7 @@ extern "C" {
     pub fn pps_job_is_finished(job: *mut PpsJob) -> gboolean;
     pub fn pps_job_is_succeeded(job: *mut PpsJob, error: *mut *mut glib::GError) -> gboolean;
     pub fn pps_job_reset(job: *mut PpsJob);
-    pub fn pps_job_run(job: *mut PpsJob) -> gboolean;
+    pub fn pps_job_run(job: *mut PpsJob);
     pub fn pps_job_scheduler_push_job(job: *mut PpsJob, priority: PpsJobPriority);
     pub fn pps_job_scheduler_update_job(job: *mut PpsJob, priority: PpsJobPriority);
     pub fn pps_job_succeeded(job: *mut PpsJob);
@@ -1135,10 +1137,6 @@ extern "C" {
         mime_type: *const c_char,
         error: *mut *mut glib::GError,
     ) -> gboolean;
-    pub fn pps_job_load_set_load_flags(
-        job: *mut PpsJobLoad,
-        flags: papers_document::PpsDocumentLoadFlags,
-    );
     pub fn pps_job_load_set_password(job: *mut PpsJobLoad, password: *const c_char);
     pub fn pps_job_load_set_password_save(job: *mut PpsJobLoad, save: gio::GPasswordSave);
     pub fn pps_job_load_set_uri(job: *mut PpsJobLoad, uri: *const c_char);
@@ -1338,6 +1336,10 @@ extern "C" {
         page: c_uint,
     ) -> *mut glib::GPtrArray;
     pub fn pps_search_context_get_search_term(context: *mut PpsSearchContext) -> *const c_char;
+    pub fn pps_search_context_has_results_on_page(
+        context: *mut PpsSearchContext,
+        page: c_uint,
+    ) -> gboolean;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_search_context_release(context: *mut PpsSearchContext);
@@ -1397,14 +1399,14 @@ extern "C" {
         annot_mapping: *const papers_document::PpsMapping,
     );
     pub fn pps_view_get_allow_links_change_zoom(view: *mut PpsView) -> gboolean;
-    pub fn pps_view_get_enable_spellchecking(view: *mut PpsView) -> gboolean;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    pub fn pps_view_get_mark_for_view_point(
+    pub fn pps_view_get_document_point_for_view_point(
         view: *mut PpsView,
         view_point_x: c_double,
         view_point_y: c_double,
-    ) -> *mut papers_document::PpsMark;
+    ) -> *mut papers_document::PpsDocumentPoint;
+    pub fn pps_view_get_enable_spellchecking(view: *mut PpsView) -> gboolean;
     pub fn pps_view_get_selected_text(view: *mut PpsView) -> *mut c_char;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
@@ -1412,7 +1414,6 @@ extern "C" {
     pub fn pps_view_handle_link(view: *mut PpsView, link: *mut papers_document::PpsLink);
     pub fn pps_view_has_selection(view: *mut PpsView) -> gboolean;
     pub fn pps_view_is_caret_navigation_enabled(view: *mut PpsView) -> gboolean;
-    pub fn pps_view_is_loading(view: *mut PpsView) -> gboolean;
     pub fn pps_view_next_page(view: *mut PpsView) -> gboolean;
     pub fn pps_view_previous_page(view: *mut PpsView) -> gboolean;
     pub fn pps_view_reload(view: *mut PpsView);

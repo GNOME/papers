@@ -19,12 +19,7 @@ impl DocumentFonts {
     pub const NONE: Option<&'static DocumentFonts> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentFonts>> Sealed for T {}
-}
-
-pub trait DocumentFontsExt: IsA<DocumentFonts> + sealed::Sealed + 'static {
+pub trait DocumentFontsExt: IsA<DocumentFonts> + 'static {
     #[doc(alias = "pps_document_fonts_get_fonts_summary")]
     #[doc(alias = "get_fonts_summary")]
     fn fonts_summary(&self) -> Option<glib::GString> {

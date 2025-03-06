@@ -5,6 +5,7 @@
 
 use crate::{ffi, AnnotationEditingState, PageLayout, SizingMode};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -305,8 +306,8 @@ impl DocumentModel {
     pub fn connect_page_changed<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn page_changed_trampoline<F: Fn(&DocumentModel, i32, i32) + 'static>(
             this: *mut ffi::PpsDocumentModel,
-            object: libc::c_int,
-            p0: libc::c_int,
+            object: std::ffi::c_int,
+            p0: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
             let f: &F = &*(f as *const F);
@@ -316,7 +317,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"page-changed\0".as_ptr() as *const _,
+                c"page-changed".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     page_changed_trampoline::<F> as *const (),
                 )),
@@ -344,7 +345,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::annotation-editing-state\0".as_ptr() as *const _,
+                c"notify::annotation-editing-state".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_annotation_editing_state_trampoline::<F> as *const (),
                 )),
@@ -367,7 +368,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::continuous\0".as_ptr() as *const _,
+                c"notify::continuous".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_continuous_trampoline::<F> as *const (),
                 )),
@@ -390,7 +391,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::document\0".as_ptr() as *const _,
+                c"notify::document".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_document_trampoline::<F> as *const (),
                 )),
@@ -413,7 +414,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::dual-odd-left\0".as_ptr() as *const _,
+                c"notify::dual-odd-left".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_dual_odd_left_trampoline::<F> as *const (),
                 )),
@@ -436,7 +437,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::inverted-colors\0".as_ptr() as *const _,
+                c"notify::inverted-colors".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_inverted_colors_trampoline::<F> as *const (),
                 )),
@@ -459,7 +460,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::max-scale\0".as_ptr() as *const _,
+                c"notify::max-scale".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_max_scale_trampoline::<F> as *const (),
                 )),
@@ -482,7 +483,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::min-scale\0".as_ptr() as *const _,
+                c"notify::min-scale".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_min_scale_trampoline::<F> as *const (),
                 )),
@@ -505,7 +506,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::page\0".as_ptr() as *const _,
+                c"notify::page".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_page_trampoline::<F> as *const (),
                 )),
@@ -528,7 +529,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::page-layout\0".as_ptr() as *const _,
+                c"notify::page-layout".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_page_layout_trampoline::<F> as *const (),
                 )),
@@ -551,7 +552,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::rotation\0".as_ptr() as *const _,
+                c"notify::rotation".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rotation_trampoline::<F> as *const (),
                 )),
@@ -574,7 +575,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::rtl\0".as_ptr() as *const _,
+                c"notify::rtl".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rtl_trampoline::<F> as *const (),
                 )),
@@ -597,7 +598,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::scale\0".as_ptr() as *const _,
+                c"notify::scale".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_scale_trampoline::<F> as *const (),
                 )),
@@ -620,7 +621,7 @@ impl DocumentModel {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::sizing-mode\0".as_ptr() as *const _,
+                c"notify::sizing-mode".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_sizing_mode_trampoline::<F> as *const (),
                 )),

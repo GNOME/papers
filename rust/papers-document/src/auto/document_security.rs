@@ -19,12 +19,7 @@ impl DocumentSecurity {
     pub const NONE: Option<&'static DocumentSecurity> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentSecurity>> Sealed for T {}
-}
-
-pub trait DocumentSecurityExt: IsA<DocumentSecurity> + sealed::Sealed + 'static {
+pub trait DocumentSecurityExt: IsA<DocumentSecurity> + 'static {
     #[doc(alias = "pps_document_security_has_document_security")]
     fn has_document_security(&self) -> bool {
         unsafe {

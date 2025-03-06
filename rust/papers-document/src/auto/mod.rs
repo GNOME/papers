@@ -108,6 +108,13 @@ pub use self::document_info::DocumentInfo;
 mod document_license;
 pub use self::document_license::DocumentLicense;
 
+#[cfg(feature = "v48")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+mod document_point;
+#[cfg(feature = "v48")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+pub use self::document_point::DocumentPoint;
+
 mod find_rectangle;
 pub use self::find_rectangle::FindRectangle;
 
@@ -116,13 +123,6 @@ pub use self::mapping::Mapping;
 
 mod mapping_list;
 pub use self::mapping_list::MappingList;
-
-#[cfg(feature = "v48")]
-#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-mod mark;
-#[cfg(feature = "v48")]
-#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-pub use self::mark::Mark;
 
 mod point;
 pub use self::point::Point;

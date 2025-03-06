@@ -134,7 +134,7 @@ impl AnnotationFreeText {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::font-desc\0".as_ptr() as *const _,
+                c"notify::font-desc".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_font_desc_trampoline::<F> as *const (),
                 )),
@@ -157,7 +157,7 @@ impl AnnotationFreeText {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::font-rgba\0".as_ptr() as *const _,
+                c"notify::font-rgba".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_font_rgba_trampoline::<F> as *const (),
                 )),

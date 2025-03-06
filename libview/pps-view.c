@@ -113,11 +113,11 @@ static void transform_view_rect_to_doc_rect (PpsView *view,
                                              GdkRectangle *view_rect,
                                              GdkRectangle *page_area,
                                              PpsRectangle *doc_rect);
-static void transform_doc_point_to_view_point (PpsView *view,
-                                               int page,
-                                               PpsPoint *doc_point,
-                                               gdouble *view_point_x,
-                                               gdouble *view_point_y);
+static void transform_page_point_to_view_point (PpsView *view,
+                                                int page,
+                                                PpsPoint *doc_point,
+                                                gdouble *view_point_x,
+                                                gdouble *view_point_y);
 
 /*** Hyperrefs ***/
 static PpsLink *pps_view_get_link_at_location (PpsView *view,
@@ -506,7 +506,7 @@ pps_view_scroll_to_doc_point (PpsView *view, gint page, PpsPoint *point)
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble x, y;
 
-	transform_doc_point_to_view_point (view, page, point, &x, &y);
+	transform_page_point_to_view_point (view, page, point, &x, &y);
 	priv->current_page = page;
 	scroll_to_view_point (view, x, y);
 
@@ -1320,7 +1320,7 @@ get_doc_page_size (PpsView *view,
 }
 
 /**
- * pps_view_get_doc_point_for_page:
+ * pps_view_get_point_on_page:
  * @view: a #PpsView
  * @page_index: the index of the page where view_point_x and view_point_y
  * are located. Passing a different page is considered a programmers error
@@ -1336,13 +1336,13 @@ get_doc_page_size (PpsView *view,
  * Since: 48.0
  */
 PpsPoint
-pps_view_get_doc_point_for_page (PpsView *view,
-                                 gint page_index,
-                                 gdouble view_point_x,
-                                 gdouble view_point_y)
+pps_view_get_point_on_page (PpsView *view,
+                            gint page_index,
+                            gdouble view_point_x,
+                            gdouble view_point_y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	GdkRectangle page_area;
 	double x, y, width, height, scale;
 	PpsDocument *document = pps_document_model_get_document (priv->model);
@@ -1364,62 +1364,62 @@ pps_view_get_doc_point_for_page (PpsView *view,
 
 	switch (pps_document_model_get_rotation (priv->model)) {
 	case 0:
-		doc_point.x = x;
-		doc_point.y = y;
+		point_on_page.x = x;
+		point_on_page.y = y;
 		break;
 	case 90:
-		doc_point.x = y;
-		doc_point.y = height - x;
+		point_on_page.x = y;
+		point_on_page.y = height - x;
 		break;
 	case 180:
-		doc_point.x = width - x;
-		doc_point.y = height - y;
+		point_on_page.x = width - x;
+		point_on_page.y = height - y;
 		break;
 	case 270:
-		doc_point.x = width - y;
-		doc_point.y = x;
+		point_on_page.x = width - y;
+		point_on_page.y = x;
 		break;
 	default:
 		g_assert_not_reached ();
 	}
 
-	return doc_point;
+	return point_on_page;
 }
 
 /**
- * pps_view_get_mark_for_view_point:
+ * pps_view_get_document_point_for_view_point:
  * @view: a #PpsView
  * @view_point_x: the x coordinate over the view
  * @view_point_y: the y coordinate over the view
  *
- * Returns: (nullable) (transfer full): a pointer to a #PpsMark that represents
- * the location in the document for @view_point_x and @view_point_y. If the
- * location is not in a page in the document, it returns NULL.
+ * Returns: (nullable) (transfer full): a pointer to a #PpsDocumentPoint that
+ * represents the location in the document for @view_point_x and @view_point_y.
+ * If the location is not in a page in the document, it returns NULL.
  *
  * Since: 48.0
  */
-PpsMark *
-pps_view_get_mark_for_view_point (PpsView *view,
-                                  gdouble view_point_x,
-                                  gdouble view_point_y)
+PpsDocumentPoint *
+pps_view_get_document_point_for_view_point (PpsView *view,
+                                            gdouble view_point_x,
+                                            gdouble view_point_y)
 {
-	PpsMark *mark;
+	PpsDocumentPoint *document_point;
 	gint page_index;
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 
 	find_page_at_location (view, view_point_x, view_point_y,
 	                       &page_index, NULL, NULL);
 	if (page_index == -1)
 		return NULL;
 
-	doc_point = pps_view_get_doc_point_for_page (view, page_index,
-	                                             view_point_x,
-	                                             view_point_y);
+	point_on_page = pps_view_get_point_on_page (view, page_index,
+	                                            view_point_x,
+	                                            view_point_y);
 
-	mark = g_new (PpsMark, 1);
-	mark->page_index = page_index;
-	mark->doc_point = doc_point;
-	return mark;
+	document_point = g_new (PpsDocumentPoint, 1);
+	document_point->page_index = page_index;
+	document_point->point_on_page = point_on_page;
+	return document_point;
 }
 
 static void
@@ -1438,11 +1438,11 @@ transform_view_rect_to_doc_rect (PpsView *view,
 }
 
 static void
-transform_doc_point_by_rotation_scale (PpsView *view,
-                                       int page,
-                                       PpsPoint *doc_point,
-                                       gdouble *view_point_x,
-                                       gdouble *view_point_y)
+transform_page_point_by_rotation_scale (PpsView *view,
+                                        int page,
+                                        PpsPoint *point_on_page,
+                                        gdouble *view_point_x,
+                                        gdouble *view_point_y)
 {
 	GdkRectangle page_area;
 	double x, y, view_x, view_y, scale;
@@ -1450,30 +1450,30 @@ transform_doc_point_by_rotation_scale (PpsView *view,
 
 	switch (pps_document_model_get_rotation (priv->model)) {
 	case 0:
-		x = doc_point->x;
-		y = doc_point->y;
+		x = point_on_page->x;
+		y = point_on_page->y;
 
 		break;
 	case 90: {
 		gdouble width;
 
 		get_doc_page_size (view, page, &width, NULL);
-		x = width - doc_point->y;
-		y = doc_point->x;
+		x = width - point_on_page->y;
+		y = point_on_page->x;
 	} break;
 	case 180: {
 		gdouble width, height;
 
 		get_doc_page_size (view, page, &width, &height);
-		x = width - doc_point->x;
-		y = height - doc_point->y;
+		x = width - point_on_page->x;
+		y = height - point_on_page->y;
 	} break;
 	case 270: {
 		gdouble height;
 
 		get_doc_page_size (view, page, NULL, &height);
-		x = doc_point->y;
-		y = height - doc_point->x;
+		x = point_on_page->y;
+		y = height - point_on_page->x;
 	} break;
 	default:
 		g_assert_not_reached ();
@@ -1490,14 +1490,14 @@ transform_doc_point_by_rotation_scale (PpsView *view,
 }
 
 static void
-transform_doc_point_to_view_point (PpsView *view,
-                                   int page,
-                                   PpsPoint *doc_point,
-                                   gdouble *view_point_x,
-                                   gdouble *view_point_y)
+transform_page_point_to_view_point (PpsView *view,
+                                    int page,
+                                    PpsPoint *point_on_page,
+                                    gdouble *view_point_x,
+                                    gdouble *view_point_y)
 {
 	GdkRectangle page_area;
-	transform_doc_point_by_rotation_scale (view, page, doc_point, view_point_x, view_point_y);
+	transform_page_point_by_rotation_scale (view, page, point_on_page, view_point_x, view_point_y);
 
 	pps_view_get_page_extents (view, page, &page_area);
 
@@ -1628,12 +1628,12 @@ location_in_text (PpsView *view,
 }
 
 static void
-get_doc_point_from_offset (PpsView *view,
-                           gint page,
-                           gint x_offset,
-                           gint y_offset,
-                           gdouble *x_new,
-                           gdouble *y_new)
+get_page_point_from_offset (PpsView *view,
+                            gint page,
+                            gint x_offset,
+                            gint y_offset,
+                            gdouble *x_new,
+                            gdouble *y_new)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble width, height, scale;
@@ -1680,7 +1680,7 @@ get_doc_point_from_location (PpsView *view,
 	find_page_at_location (view, x, y, page, &x_offset, &y_offset);
 	if (*page == -1)
 		return FALSE;
-	get_doc_point_from_offset (view, *page, x_offset, y_offset, x_new, y_new);
+	get_page_point_from_offset (view, *page, x_offset, y_offset, x_new, y_new);
 
 	return TRUE;
 }
@@ -1768,7 +1768,7 @@ static void
 goto_fitr_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	gdouble left, top;
 	gboolean change_left, change_top;
 	int widget_width = gtk_widget_get_width (GTK_WIDGET (view));
@@ -1797,10 +1797,10 @@ goto_fitr_dest (PpsView *view, PpsLinkDest *dest)
 		top -= (widget_height / zoom - doc_height) / 2;
 	}
 
-	doc_point.x = change_left ? left : 0;
-	doc_point.y = change_top ? top : 0;
+	point_on_page.x = change_left ? left : 0;
+	point_on_page.y = change_top ? top : 0;
 
-	pps_view_scroll_to_doc_point (view, pps_link_dest_get_page (dest), &doc_point);
+	pps_view_scroll_to_doc_point (view, pps_link_dest_get_page (dest), &point_on_page);
 }
 
 static void
@@ -1808,7 +1808,7 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	gint page;
 	double left;
 	gboolean change_left;
@@ -1816,8 +1816,8 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 	page = pps_link_dest_get_page (dest);
 
 	left = pps_link_dest_get_left (dest, &change_left);
-	doc_point.x = change_left ? left : 0;
-	doc_point.y = 0;
+	point_on_page.x = change_left ? left : 0;
+	point_on_page.y = 0;
 
 	if (priv->allow_links_change_zoom) {
 		gdouble doc_width, doc_height;
@@ -1825,7 +1825,7 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 
 		pps_document_get_page_size (document, page, &doc_width, &doc_height);
 
-		zoom = zoom_for_size_fit_height (doc_width - doc_point.x, doc_height,
+		zoom = zoom_for_size_fit_height (doc_width - point_on_page.x, doc_height,
 		                                 gtk_widget_get_width (GTK_WIDGET (view)),
 		                                 gtk_widget_get_height (GTK_WIDGET (view)));
 
@@ -1833,7 +1833,7 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	pps_view_scroll_to_doc_point (view, page, &doc_point);
+	pps_view_scroll_to_doc_point (view, page, &point_on_page);
 }
 
 static void
@@ -1841,7 +1841,7 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	gint page;
 	gdouble top;
 	gboolean change_top;
@@ -1849,8 +1849,8 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 	page = pps_link_dest_get_page (dest);
 
 	top = pps_link_dest_get_top (dest, &change_top);
-	doc_point.x = 0;
-	doc_point.y = change_top ? top : 0;
+	point_on_page.x = 0;
+	point_on_page.y = change_top ? top : 0;
 
 	if (priv->allow_links_change_zoom) {
 		gdouble doc_width;
@@ -1866,7 +1866,7 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	pps_view_scroll_to_doc_point (view, page, &doc_point);
+	pps_view_scroll_to_doc_point (view, page, &point_on_page);
 }
 
 static void
@@ -1899,7 +1899,7 @@ static void
 goto_xyz_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	gint page;
 	gdouble zoom, left, top;
 	gboolean change_zoom, change_left, change_top;
@@ -1915,10 +1915,10 @@ goto_xyz_dest (PpsView *view, PpsLinkDest *dest)
 	left = pps_link_dest_get_left (dest, &change_left);
 	top = pps_link_dest_get_top (dest, &change_top);
 
-	doc_point.x = change_left ? left : 0;
-	doc_point.y = change_top ? top : 0;
+	point_on_page.x = change_left ? left : 0;
+	point_on_page.y = change_top ? top : 0;
 
-	pps_view_scroll_to_doc_point (view, page, &doc_point);
+	pps_view_scroll_to_doc_point (view, page, &point_on_page);
 }
 
 static void
@@ -2256,8 +2256,8 @@ handle_link_preview (PpsView *view)
 
 	link_dest_doc.x = pps_link_dest_get_left (dest, NULL);
 	link_dest_doc.y = pps_link_dest_get_top (dest, NULL);
-	transform_doc_point_by_rotation_scale (view, link_dest_page,
-	                                       &link_dest_doc, &link_dest_x, &link_dest_y);
+	transform_page_point_by_rotation_scale (view, link_dest_page,
+	                                        &link_dest_doc, &link_dest_x, &link_dest_y);
 	priv->link_preview.left = link_dest_x;
 	priv->link_preview.top = link_dest_y;
 
@@ -5096,7 +5096,7 @@ pps_view_move_annot_to_point (PpsView *view,
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 	PpsRectangle rect;
 	PpsRectangle current_area;
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	guint page_index;
 	double page_width;
 	double page_height;
@@ -5104,11 +5104,11 @@ pps_view_move_annot_to_point (PpsView *view,
 	pps_annotation_get_area (priv->moving_annot_info.annot, &current_area);
 	page_index = pps_annotation_get_page_index (priv->moving_annot_info.annot);
 	pps_document_get_page_size (document, page_index, &page_width, &page_height);
-	doc_point = pps_view_get_doc_point_for_page (view, page_index,
-	                                             view_point_x, view_point_y);
+	point_on_page = pps_view_get_point_on_page (view, page_index,
+	                                            view_point_x, view_point_y);
 
-	rect.x1 = MAX (0, doc_point.x - priv->moving_annot_info.cursor_offset.x);
-	rect.y1 = MAX (0, doc_point.y - priv->moving_annot_info.cursor_offset.y);
+	rect.x1 = MAX (0, point_on_page.x - priv->moving_annot_info.cursor_offset.x);
+	rect.y1 = MAX (0, point_on_page.y - priv->moving_annot_info.cursor_offset.y);
 	rect.x2 = rect.x1 + current_area.x2 - current_area.x1;
 	rect.y2 = rect.y1 + current_area.y2 - current_area.y1;
 
@@ -5300,7 +5300,7 @@ annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsAnnotation *annot = get_annotation_at_location (view, x, y);
 	PpsRectangle annot_area;
-	PpsPoint doc_point;
+	PpsPoint point_on_page;
 	gint page_index;
 
 	if (!PPS_IS_ANNOTATION_TEXT (annot)) {
@@ -5313,12 +5313,12 @@ annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
 
 	pps_annotation_get_area (annot, &annot_area);
 	page_index = pps_annotation_get_page_index (annot);
-	doc_point = pps_view_get_doc_point_for_page (view, page_index, x, y);
+	point_on_page = pps_view_get_point_on_page (view, page_index, x, y);
 	/* Remember the offset of the cursor with respect to
 	 * the annotation area in order to prevent the annotation from
 	 * jumping under the cursor while moving it. */
-	priv->moving_annot_info.cursor_offset.x = doc_point.x - annot_area.x1;
-	priv->moving_annot_info.cursor_offset.y = doc_point.y - annot_area.y1;
+	priv->moving_annot_info.cursor_offset.x = point_on_page.x - annot_area.x1;
+	priv->moving_annot_info.cursor_offset.y = point_on_page.y - annot_area.y1;
 }
 
 static void
@@ -5847,9 +5847,9 @@ cursor_clear_selection (PpsView *view,
 		region = NULL;
 	}
 
-	get_doc_point_from_offset (view, selection->page,
-	                           forward ? rect.x + rect.width : rect.x,
-	                           rect.y + (rect.height / 2), &doc_x, &doc_y);
+	get_page_point_from_offset (view, selection->page,
+	                            forward ? rect.x + rect.width : rect.x,
+	                            rect.y + (rect.height / 2), &doc_x, &doc_y);
 
 	position_caret_cursor_at_doc_point (view, selection->page, doc_x, doc_y);
 
@@ -7985,10 +7985,10 @@ pps_view_get_selected_text (PpsView *view)
 }
 
 static gboolean
-pps_view_get_doc_points_from_selection_region (PpsView *view,
-                                               gint page,
-                                               PpsPoint *begin,
-                                               PpsPoint *end)
+pps_view_get_page_points_from_selection_region (PpsView *view,
+                                                gint page,
+                                                PpsPoint *begin,
+                                                PpsPoint *end)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
@@ -8007,11 +8007,11 @@ pps_view_get_doc_points_from_selection_region (PpsView *view,
 	cairo_region_get_rectangle (region, 0, &first);
 	cairo_region_get_rectangle (region, cairo_region_num_rectangles (region) - 1, &last);
 
-	get_doc_point_from_offset (view, page, first.x, first.y + (first.height / 2),
-	                           &start_x, &start_y);
+	get_page_point_from_offset (view, page, first.x, first.y + (first.height / 2),
+	                            &start_x, &start_y);
 
-	get_doc_point_from_offset (view, page, last.x + last.width, last.y + (last.height / 2),
-	                           &stop_x, &stop_y);
+	get_page_point_from_offset (view, page, last.x + last.width, last.y + (last.height / 2),
+	                            &stop_x, &stop_y);
 
 	begin->x = start_x;
 	begin->y = start_y;
@@ -8051,15 +8051,15 @@ pps_view_get_selections (PpsView *view)
 		 * creating the selections, instead of at get time */
 		if (selection->style == PPS_SELECTION_STYLE_WORD ||
 		    selection->style == PPS_SELECTION_STYLE_LINE) {
-			PpsPoint doc_point_start;
-			PpsPoint doc_point_end;
-			if (!pps_view_get_doc_points_from_selection_region (view, selection->page,
-			                                                    &doc_point_start, &doc_point_end))
+			PpsPoint page_point_start;
+			PpsPoint page_point_end;
+			if (!pps_view_get_page_points_from_selection_region (view, selection->page,
+			                                                     &page_point_start, &page_point_end))
 				continue;
-			selection->rect.x1 = doc_point_start.x;
-			selection->rect.y1 = doc_point_start.y;
-			selection->rect.x2 = doc_point_end.x;
-			selection->rect.y2 = doc_point_end.y;
+			selection->rect.x1 = page_point_start.x;
+			selection->rect.y1 = page_point_start.y;
+			selection->rect.x2 = page_point_end.x;
+			selection->rect.y2 = page_point_end.y;
 		}
 		selections = g_list_prepend (selections, selection);
 	}
@@ -8222,8 +8222,8 @@ pps_view_stop_signature_rect (PpsView *view)
 	PpsRectangle rect = { 0 };
 	PpsRectangle r;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	g_autofree PpsMark *start;
-	g_autofree PpsMark *end;
+	g_autofree PpsDocumentPoint *start;
+	g_autofree PpsDocumentPoint *end;
 	gint selection_page = -1;
 
 	pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
@@ -8233,8 +8233,8 @@ pps_view_stop_signature_rect (PpsView *view)
 	r.x2 = MAX (priv->signing_info.start_x, priv->signing_info.stop_x);
 	r.y2 = MAX (priv->signing_info.start_y, priv->signing_info.stop_y);
 
-	start = pps_view_get_mark_for_view_point (view, r.x1, r.y1);
-	end = pps_view_get_mark_for_view_point (view, r.x2, r.y2);
+	start = pps_view_get_document_point_for_view_point (view, r.x1, r.y1);
+	end = pps_view_get_document_point_for_view_point (view, r.x2, r.y2);
 
 	if (!start || !end) {
 		/* if start or end are outside the page extents, let's try to clamp them */
@@ -8262,25 +8262,25 @@ pps_view_stop_signature_rect (PpsView *view)
 			pps_view_get_page_extents (view, page, &page_area);
 
 			if (!start) {
-				start = pps_view_get_mark_for_view_point (view,
-				                                          MAX (page_area.x, r.x1),
-				                                          MAX (page_area.y, r.y1));
+				start = pps_view_get_document_point_for_view_point (view,
+				                                                    MAX (page_area.x, r.x1),
+				                                                    MAX (page_area.y, r.y1));
 			}
 
 			if (!end) {
-				end = pps_view_get_mark_for_view_point (view,
-				                                        MIN (page_area.x + page_area.width - 1, r.x2),
-				                                        MIN (page_area.y + page_area.height - 1, r.y2));
+				end = pps_view_get_document_point_for_view_point (view,
+				                                                  MIN (page_area.x + page_area.width - 1, r.x2),
+				                                                  MIN (page_area.y + page_area.height - 1, r.y2));
 			}
 		}
 	}
 
 	if (start && end) {
 		selection_page = start->page_index;
-		rect.x1 = start->doc_point.x;
-		rect.y1 = start->doc_point.y;
-		rect.x2 = end->doc_point.x;
-		rect.y2 = end->doc_point.y;
+		rect.x1 = start->point_on_page.x;
+		rect.y1 = start->point_on_page.y;
+		rect.x2 = end->point_on_page.x;
+		rect.y2 = end->point_on_page.y;
 	}
 
 	gtk_event_controller_set_propagation_phase (priv->signing_drag_gesture,

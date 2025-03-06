@@ -29,12 +29,7 @@ impl TransitionEffect {
     //}
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::TransitionEffect>> Sealed for T {}
-}
-
-pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static {
+pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
     fn alignment(&self) -> TransitionEffectAlignment {
         ObjectExt::property(self.as_ref(), "alignment")
     }
@@ -120,7 +115,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::alignment\0".as_ptr() as *const _,
+                c"notify::alignment".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_alignment_trampoline::<Self, F> as *const (),
                 )),
@@ -146,7 +141,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::angle\0".as_ptr() as *const _,
+                c"notify::angle".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_angle_trampoline::<Self, F> as *const (),
                 )),
@@ -172,7 +167,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::direction\0".as_ptr() as *const _,
+                c"notify::direction".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_direction_trampoline::<Self, F> as *const (),
                 )),
@@ -198,7 +193,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::duration\0".as_ptr() as *const _,
+                c"notify::duration".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_duration_trampoline::<Self, F> as *const (),
                 )),
@@ -224,7 +219,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::duration-real\0".as_ptr() as *const _,
+                c"notify::duration-real".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_duration_real_trampoline::<Self, F> as *const (),
                 )),
@@ -250,7 +245,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::rectangular\0".as_ptr() as *const _,
+                c"notify::rectangular".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rectangular_trampoline::<Self, F> as *const (),
                 )),
@@ -276,7 +271,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::scale\0".as_ptr() as *const _,
+                c"notify::scale".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_scale_trampoline::<Self, F> as *const (),
                 )),
@@ -302,7 +297,7 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + sealed::Sealed + 'static 
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::type\0".as_ptr() as *const _,
+                c"notify::type".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_type_trampoline::<Self, F> as *const (),
                 )),

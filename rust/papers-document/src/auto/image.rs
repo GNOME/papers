@@ -32,12 +32,7 @@ impl Image {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Image>> Sealed for T {}
-}
-
-pub trait ImageExt: IsA<Image> + sealed::Sealed + 'static {
+pub trait ImageExt: IsA<Image> + 'static {
     #[doc(alias = "pps_image_get_id")]
     #[doc(alias = "get_id")]
     fn id(&self) -> i32 {

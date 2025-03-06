@@ -31,12 +31,7 @@ impl Default for JobLoad {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobLoad>> Sealed for T {}
-}
-
-pub trait JobLoadExt: IsA<JobLoad> + sealed::Sealed + 'static {
+pub trait JobLoadExt: IsA<JobLoad> + 'static {
     #[cfg(feature = "v46")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v46")))]
     #[doc(alias = "pps_job_load_get_loaded_document")]
@@ -89,11 +84,6 @@ pub trait JobLoadExt: IsA<JobLoad> + sealed::Sealed + 'static {
             }
         }
     }
-
-    //#[doc(alias = "pps_job_load_set_load_flags")]
-    //fn set_load_flags(&self, flags: /*Ignored*/papers_document::DocumentLoadFlags) {
-    //    unsafe { TODO: call ffi:pps_job_load_set_load_flags() }
-    //}
 
     #[doc(alias = "pps_job_load_set_password")]
     fn set_password(&self, password: Option<&str>) {

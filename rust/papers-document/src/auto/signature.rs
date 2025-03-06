@@ -30,12 +30,7 @@ impl Signature {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Signature>> Sealed for T {}
-}
-
-pub trait SignatureExt: IsA<Signature> + sealed::Sealed + 'static {
+pub trait SignatureExt: IsA<Signature> + 'static {
     #[doc(alias = "pps_signature_get_background_color")]
     #[doc(alias = "get_background_color")]
     fn background_color(&self, color: &mut gdk::RGBA) {

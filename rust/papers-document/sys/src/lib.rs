@@ -21,14 +21,15 @@ use gobject_sys as gobject;
 use gtk_sys as gtk;
 use pango_sys as pango;
 
-#[allow(unused_imports)]
-use libc::{
-    c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
-    intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE,
-};
 #[cfg(unix)]
 #[allow(unused_imports)]
 use libc::{dev_t, gid_t, pid_t, socklen_t, uid_t};
+#[allow(unused_imports)]
+use libc::{intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE};
+#[allow(unused_imports)]
+use std::ffi::{
+    c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
+};
 
 #[allow(unused_imports)]
 use glib::{gboolean, gconstpointer, gpointer, GType};
@@ -186,6 +187,7 @@ pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
 pub const PPS_MAJOR_VERSION: c_int = 48;
+pub const PPS_MINOR_VERSION: c_int = 0;
 
 // Flags
 pub type PpsAnnotationsSaveMask = c_uint;
@@ -433,9 +435,6 @@ pub struct PpsDocumentAnnotationsInterface {
     pub base_iface: gobject::GTypeInterface,
     pub get_annotations:
         Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations, *mut PpsPage) -> *mut glib::GList>,
-    pub get_annotations_mapping: Option<
-        unsafe extern "C" fn(*mut PpsDocumentAnnotations, *mut PpsPage) -> *mut PpsMappingList,
-    >,
     pub document_is_modified: Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations) -> gboolean>,
     pub add_annotation:
         Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations, *mut PpsAnnotation)>,
@@ -463,7 +462,6 @@ impl ::std::fmt::Debug for PpsDocumentAnnotationsInterface {
         f.debug_struct(&format!("PpsDocumentAnnotationsInterface @ {self:p}"))
             .field("base_iface", &self.base_iface)
             .field("get_annotations", &self.get_annotations)
-            .field("get_annotations_mapping", &self.get_annotations_mapping)
             .field("document_is_modified", &self.document_is_modified)
             .field("add_annotation", &self.add_annotation)
             .field("save_annotation", &self.save_annotation)
@@ -515,6 +513,8 @@ pub struct PpsDocumentClass {
     pub load: Option<
         unsafe extern "C" fn(*mut PpsDocument, *const c_char, *mut *mut glib::GError) -> gboolean,
     >,
+    pub load_fd:
+        Option<unsafe extern "C" fn(*mut PpsDocument, c_int, *mut *mut glib::GError) -> gboolean>,
     pub save: Option<
         unsafe extern "C" fn(*mut PpsDocument, *const c_char, *mut *mut glib::GError) -> gboolean,
     >,
@@ -532,41 +532,15 @@ pub struct PpsDocumentClass {
     pub get_thumbnail: Option<
         unsafe extern "C" fn(*mut PpsDocument, *mut PpsRenderContext) -> *mut gdk_pixbuf::GdkPixbuf,
     >,
-    pub get_info: Option<unsafe extern "C" fn(*mut PpsDocument) -> *mut PpsDocumentInfo>,
-    pub get_backend_info:
-        Option<unsafe extern "C" fn(*mut PpsDocument, *mut PpsDocumentBackendInfo) -> gboolean>,
-    pub load_stream: Option<
-        unsafe extern "C" fn(
-            *mut PpsDocument,
-            *mut gio::GInputStream,
-            PpsDocumentLoadFlags,
-            *mut gio::GCancellable,
-            *mut *mut glib::GError,
-        ) -> gboolean,
-    >,
-    pub load_gfile: Option<
-        unsafe extern "C" fn(
-            *mut PpsDocument,
-            *mut gio::GFile,
-            PpsDocumentLoadFlags,
-            *mut gio::GCancellable,
-            *mut *mut glib::GError,
-        ) -> gboolean,
-    >,
     pub get_thumbnail_surface: Option<
         unsafe extern "C" fn(
             *mut PpsDocument,
             *mut PpsRenderContext,
         ) -> *mut cairo::cairo_surface_t,
     >,
-    pub load_fd: Option<
-        unsafe extern "C" fn(
-            *mut PpsDocument,
-            c_int,
-            PpsDocumentLoadFlags,
-            *mut *mut glib::GError,
-        ) -> gboolean,
-    >,
+    pub get_info: Option<unsafe extern "C" fn(*mut PpsDocument) -> *mut PpsDocumentInfo>,
+    pub get_backend_info:
+        Option<unsafe extern "C" fn(*mut PpsDocument, *mut PpsDocumentBackendInfo) -> gboolean>,
 }
 
 impl ::std::fmt::Debug for PpsDocumentClass {
@@ -574,6 +548,7 @@ impl ::std::fmt::Debug for PpsDocumentClass {
         f.debug_struct(&format!("PpsDocumentClass @ {self:p}"))
             .field("base_class", &self.base_class)
             .field("load", &self.load)
+            .field("load_fd", &self.load_fd)
             .field("save", &self.save)
             .field("get_n_pages", &self.get_n_pages)
             .field("get_page", &self.get_page)
@@ -581,12 +556,9 @@ impl ::std::fmt::Debug for PpsDocumentClass {
             .field("get_page_label", &self.get_page_label)
             .field("render", &self.render)
             .field("get_thumbnail", &self.get_thumbnail)
+            .field("get_thumbnail_surface", &self.get_thumbnail_surface)
             .field("get_info", &self.get_info)
             .field("get_backend_info", &self.get_backend_info)
-            .field("load_stream", &self.load_stream)
-            .field("load_gfile", &self.load_gfile)
-            .field("get_thumbnail_surface", &self.get_thumbnail_surface)
-            .field("load_fd", &self.load_fd)
             .finish()
     }
 }
@@ -882,6 +854,22 @@ impl ::std::fmt::Debug for PpsDocumentMediaInterface {
         f.debug_struct(&format!("PpsDocumentMediaInterface @ {self:p}"))
             .field("base_iface", &self.base_iface)
             .field("get_media_mapping", &self.get_media_mapping)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsDocumentPoint {
+    pub page_index: c_int,
+    pub point_on_page: PpsPoint,
+}
+
+impl ::std::fmt::Debug for PpsDocumentPoint {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsDocumentPoint @ {self:p}"))
+            .field("page_index", &self.page_index)
+            .field("point_on_page", &self.point_on_page)
             .finish()
     }
 }
@@ -1285,6 +1273,7 @@ impl ::std::fmt::Debug for PpsMapping {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsMappingList {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1293,22 +1282,6 @@ pub struct PpsMappingList {
 impl ::std::fmt::Debug for PpsMappingList {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsMappingList @ {self:p}"))
-            .finish()
-    }
-}
-
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct PpsMark {
-    pub page_index: c_int,
-    pub doc_point: PpsPoint,
-}
-
-impl ::std::fmt::Debug for PpsMark {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
-        f.debug_struct(&format!("PpsMark @ {self:p}"))
-            .field("page_index", &self.page_index)
-            .field("doc_point", &self.doc_point)
             .finish()
     }
 }
@@ -1494,6 +1467,7 @@ impl ::std::fmt::Debug for PpsAnnotation {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsAnnotationAttachment {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1507,6 +1481,7 @@ impl ::std::fmt::Debug for PpsAnnotationAttachment {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsAnnotationFreeText {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1534,6 +1509,7 @@ impl ::std::fmt::Debug for PpsAnnotationMarkup {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsAnnotationStamp {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1547,6 +1523,7 @@ impl ::std::fmt::Debug for PpsAnnotationStamp {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsAnnotationText {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1560,6 +1537,7 @@ impl ::std::fmt::Debug for PpsAnnotationText {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsAnnotationTextMarkup {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1673,6 +1651,7 @@ impl ::std::fmt::Debug for PpsFormFieldButton {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsFormFieldChoice {
     pub parent: PpsFormField,
     pub type_: PpsFormFieldChoiceType,
@@ -1706,6 +1685,7 @@ impl ::std::fmt::Debug for PpsFormFieldSignature {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsFormFieldText {
     pub parent: PpsFormField,
     pub type_: PpsFormFieldTextType,
@@ -1753,6 +1733,7 @@ impl ::std::fmt::Debug for PpsLayer {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsLink {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1765,6 +1746,7 @@ impl ::std::fmt::Debug for PpsLink {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsLinkAction {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1778,6 +1760,7 @@ impl ::std::fmt::Debug for PpsLinkAction {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsLinkDest {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1893,6 +1876,7 @@ impl ::std::fmt::Debug for PpsTransitionEffect {
 
 // Interfaces
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentAnnotations {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1905,6 +1889,7 @@ impl ::std::fmt::Debug for PpsDocumentAnnotations {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentAttachments {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1917,6 +1902,7 @@ impl ::std::fmt::Debug for PpsDocumentAttachments {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentFind {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1929,6 +1915,7 @@ impl ::std::fmt::Debug for PpsDocumentFind {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentFonts {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1941,6 +1928,7 @@ impl ::std::fmt::Debug for PpsDocumentFonts {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentForms {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1953,6 +1941,7 @@ impl ::std::fmt::Debug for PpsDocumentForms {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentImages {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1965,6 +1954,7 @@ impl ::std::fmt::Debug for PpsDocumentImages {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentLayers {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1977,6 +1967,7 @@ impl ::std::fmt::Debug for PpsDocumentLayers {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentLinks {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -1989,6 +1980,7 @@ impl ::std::fmt::Debug for PpsDocumentLinks {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentMedia {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2001,6 +1993,7 @@ impl ::std::fmt::Debug for PpsDocumentMedia {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentPrint {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2013,6 +2006,7 @@ impl ::std::fmt::Debug for PpsDocumentPrint {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentSecurity {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2025,6 +2019,7 @@ impl ::std::fmt::Debug for PpsDocumentSecurity {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentSignatures {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2037,6 +2032,7 @@ impl ::std::fmt::Debug for PpsDocumentSignatures {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentText {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2049,6 +2045,7 @@ impl ::std::fmt::Debug for PpsDocumentText {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsDocumentTransition {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2061,6 +2058,7 @@ impl ::std::fmt::Debug for PpsDocumentTransition {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsFileExporter {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2073,6 +2071,7 @@ impl ::std::fmt::Debug for PpsFileExporter {
 }
 
 #[repr(C)]
+#[allow(dead_code)]
 pub struct PpsSelection {
     _data: [u8; 0],
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
@@ -2084,7 +2083,6 @@ impl ::std::fmt::Debug for PpsSelection {
     }
 }
 
-#[link(name = "ppsdocument-4.0")]
 extern "C" {
 
     //=========================================================================
@@ -2328,6 +2326,16 @@ extern "C" {
     ) -> *const c_char;
 
     //=========================================================================
+    // PpsDocumentPoint
+    //=========================================================================
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_document_point_get_type() -> GType;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_document_point_copy(mark: *mut PpsDocumentPoint) -> *mut PpsDocumentPoint;
+
+    //=========================================================================
     // PpsFindRectangle
     //=========================================================================
     pub fn pps_find_rectangle_get_type() -> GType;
@@ -2377,16 +2385,6 @@ extern "C" {
     pub fn pps_mapping_list_ref(mapping_list: *mut PpsMappingList) -> *mut PpsMappingList;
     pub fn pps_mapping_list_remove(mapping_list: *mut PpsMappingList, mapping: *mut PpsMapping);
     pub fn pps_mapping_list_unref(mapping_list: *mut PpsMappingList);
-
-    //=========================================================================
-    // PpsMark
-    //=========================================================================
-    #[cfg(feature = "v48")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    pub fn pps_mark_get_type() -> GType;
-    #[cfg(feature = "v48")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    pub fn pps_mark_copy(mark: *mut PpsMark) -> *mut PpsMark;
 
     //=========================================================================
     // PpsPoint
@@ -2649,12 +2647,6 @@ extern "C" {
     pub fn pps_document_factory_get_document_for_fd(
         fd: c_int,
         mime_type: *const c_char,
-        flags: PpsDocumentLoadFlags,
-        error: *mut *mut glib::GError,
-    ) -> *mut PpsDocument;
-    pub fn pps_document_factory_get_document_full(
-        uri: *const c_char,
-        flags: PpsDocumentLoadFlags,
         error: *mut *mut glib::GError,
     ) -> *mut PpsDocument;
     pub fn pps_document_misc_format_datetime(dt: *mut glib::GDateTime) -> *mut c_char;
@@ -2739,13 +2731,6 @@ extern "C" {
     pub fn pps_document_load_fd(
         document: *mut PpsDocument,
         fd: c_int,
-        flags: PpsDocumentLoadFlags,
-        error: *mut *mut glib::GError,
-    ) -> gboolean;
-    pub fn pps_document_load_full(
-        document: *mut PpsDocument,
-        uri: *const c_char,
-        flags: PpsDocumentLoadFlags,
         error: *mut *mut glib::GError,
     ) -> gboolean;
     pub fn pps_document_render(
@@ -2758,6 +2743,7 @@ extern "C" {
         error: *mut *mut glib::GError,
     ) -> gboolean;
     pub fn pps_document_set_modified(document: *mut PpsDocument, modified: gboolean);
+    pub fn pps_document_setup_cache(document: *mut PpsDocument);
 
     //=========================================================================
     // PpsFontDescription
@@ -3055,10 +3041,6 @@ extern "C" {
         document_annots: *mut PpsDocumentAnnotations,
         page: *mut PpsPage,
     ) -> *mut glib::GList;
-    pub fn pps_document_annotations_get_annotations_mapping(
-        document_annots: *mut PpsDocumentAnnotations,
-        page: *mut PpsPage,
-    ) -> *mut PpsMappingList;
     pub fn pps_document_annotations_over_markup(
         document_annots: *mut PpsDocumentAnnotations,
         annot: *mut PpsAnnotation,

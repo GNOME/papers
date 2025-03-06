@@ -19,12 +19,7 @@ impl DocumentLayers {
     pub const NONE: Option<&'static DocumentLayers> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentLayers>> Sealed for T {}
-}
-
-pub trait DocumentLayersExt: IsA<DocumentLayers> + sealed::Sealed + 'static {
+pub trait DocumentLayersExt: IsA<DocumentLayers> + 'static {
     #[doc(alias = "pps_document_layers_get_layers")]
     #[doc(alias = "get_layers")]
     fn layers(&self) -> Option<gio::ListModel> {

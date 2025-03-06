@@ -15,7 +15,7 @@ pub mod prelude;
 #[allow(unused_imports)]
 mod auto;
 
-mod mark;
+mod document_point;
 mod point;
 mod rectangle;
 

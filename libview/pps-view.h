@@ -100,9 +100,9 @@ PPS_PUBLIC
 gboolean pps_view_previous_page (PpsView *view);
 
 PPS_PUBLIC
-PpsMark *pps_view_get_mark_for_view_point (PpsView *view,
-                                           gdouble view_point_x,
-                                           gdouble view_point_y);
+PpsDocumentPoint *pps_view_get_document_point_for_view_point (PpsView *view,
+                                                              gdouble view_point_x,
+                                                              gdouble view_point_y);
 
 /* Annotations */
 PPS_PUBLIC

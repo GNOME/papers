@@ -30,12 +30,7 @@ impl JobAttachments {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::JobAttachments>> Sealed for T {}
-}
-
-pub trait JobAttachmentsExt: IsA<JobAttachments> + sealed::Sealed + 'static {
+pub trait JobAttachmentsExt: IsA<JobAttachments> + 'static {
     #[doc(alias = "pps_job_attachments_get_attachments")]
     #[doc(alias = "get_attachments")]
     fn attachments(&self) -> Vec<papers_document::Attachment> {

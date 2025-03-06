@@ -504,6 +504,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsDocumentPoint",
+        Layout {
+            size: size_of::<PpsDocumentPoint>(),
+            alignment: align_of::<PpsDocumentPoint>(),
+        },
+    ),
+    (
         "PpsDocumentPrintInterface",
         Layout {
             size: size_of::<PpsDocumentPrintInterface>(),
@@ -746,13 +753,6 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         Layout {
             size: size_of::<PpsMapping>(),
             alignment: align_of::<PpsMapping>(),
-        },
-    ),
-    (
-        "PpsMark",
-        Layout {
-            size: size_of::<PpsMark>(),
-            alignment: align_of::<PpsMark>(),
         },
     ),
     (
@@ -1046,6 +1046,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) PPS_LINK_DEST_TYPE_UNKNOWN", "8"),
     ("(gint) PPS_LINK_DEST_TYPE_XYZ", "1"),
     ("PPS_MAJOR_VERSION", "48"),
+    ("PPS_MINOR_VERSION", "0"),
     ("(guint) PPS_RENDER_ANNOTS_3D", "16777216"),
     ("(guint) PPS_RENDER_ANNOTS_ALL", "67108863"),
     ("(guint) PPS_RENDER_ANNOTS_CARET", "8192"),

@@ -19,12 +19,7 @@ impl Selection {
     pub const NONE: Option<&'static Selection> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Selection>> Sealed for T {}
-}
-
-pub trait SelectionExt: IsA<Selection> + sealed::Sealed + 'static {
+pub trait SelectionExt: IsA<Selection> + 'static {
     #[doc(alias = "pps_selection_get_selected_text")]
     #[doc(alias = "get_selected_text")]
     fn selected_text(

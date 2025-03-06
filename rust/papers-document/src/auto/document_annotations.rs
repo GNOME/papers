@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Annotation, AnnotationsOverMarkup, AnnotationsSaveMask, MappingList, Page};
+use crate::{ffi, Annotation, AnnotationsOverMarkup, AnnotationsSaveMask, Page};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
@@ -19,12 +19,7 @@ impl DocumentAnnotations {
     pub const NONE: Option<&'static DocumentAnnotations> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::DocumentAnnotations>> Sealed for T {}
-}
-
-pub trait DocumentAnnotationsExt: IsA<DocumentAnnotations> + sealed::Sealed + 'static {
+pub trait DocumentAnnotationsExt: IsA<DocumentAnnotations> + 'static {
     #[doc(alias = "pps_document_annotations_add_annotation")]
     fn add_annotation(&self, annot: &impl IsA<Annotation>) {
         unsafe {
@@ -67,17 +62,6 @@ pub trait DocumentAnnotationsExt: IsA<DocumentAnnotations> + sealed::Sealed + 's
     fn annotations(&self, page: &impl IsA<Page>) -> Vec<Annotation> {
         unsafe {
             FromGlibPtrContainer::from_glib_none(ffi::pps_document_annotations_get_annotations(
-                self.as_ref().to_glib_none().0,
-                page.as_ref().to_glib_none().0,
-            ))
-        }
-    }
-
-    #[doc(alias = "pps_document_annotations_get_annotations_mapping")]
-    #[doc(alias = "get_annotations_mapping")]
-    fn annotations_mapping(&self, page: &impl IsA<Page>) -> Option<MappingList> {
-        unsafe {
-            from_glib_full(ffi::pps_document_annotations_get_annotations_mapping(
                 self.as_ref().to_glib_none().0,
                 page.as_ref().to_glib_none().0,
             ))

@@ -845,20 +845,20 @@ pps_point_copy (PpsPoint *point)
 	return new_point;
 }
 
-/* PpsMark */
-G_DEFINE_BOXED_TYPE (PpsMark, pps_mark, pps_mark_copy, g_free)
+/* PpsDocumentPoint */
+G_DEFINE_BOXED_TYPE (PpsDocumentPoint, pps_document_point, pps_document_point_copy, g_free)
 
-PpsMark *
-pps_mark_copy (PpsMark *mark)
+PpsDocumentPoint *
+pps_document_point_copy (PpsDocumentPoint *document_point)
 {
-	PpsMark *new_mark;
+	PpsDocumentPoint *new_document_point;
 
-	g_return_val_if_fail (mark != NULL, NULL);
+	g_return_val_if_fail (document_point != NULL, NULL);
 
-	new_mark = g_new (PpsMark, 1);
-	*new_mark = *mark;
+	new_document_point = g_new (PpsDocumentPoint, 1);
+	*new_document_point = *document_point;
 
-	return new_mark;
+	return new_document_point;
 }
 
 /* PpsRectangle */

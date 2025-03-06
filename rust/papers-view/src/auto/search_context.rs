@@ -5,6 +5,7 @@
 
 use crate::{ffi, DocumentModel, SearchResult};
 use glib::{
+    object::ObjectType as _,
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
@@ -30,12 +31,7 @@ impl SearchContext {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::SearchContext>> Sealed for T {}
-}
-
-pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
+pub trait SearchContextExt: IsA<SearchContext> + 'static {
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     #[doc(alias = "pps_search_context_activate")]
@@ -114,6 +110,16 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
         }
     }
 
+    #[doc(alias = "pps_search_context_has_results_on_page")]
+    fn has_results_on_page(&self, page: u32) -> bool {
+        unsafe {
+            from_glib(ffi::pps_search_context_has_results_on_page(
+                self.as_ref().to_glib_none().0,
+                page,
+            ))
+        }
+    }
+
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     #[doc(alias = "pps_search_context_release")]
@@ -170,7 +176,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"cleared\0".as_ptr() as *const _,
+                c"cleared".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cleared_trampoline::<Self, F> as *const (),
                 )),
@@ -186,7 +192,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             F: Fn(&P, i32) + 'static,
         >(
             this: *mut ffi::PpsSearchContext,
-            object: libc::c_int,
+            object: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
             let f: &F = &*(f as *const F);
@@ -199,7 +205,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"finished\0".as_ptr() as *const _,
+                c"finished".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<Self, F> as *const (),
                 )),
@@ -231,7 +237,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"result-activated\0".as_ptr() as *const _,
+                c"result-activated".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     result_activated_trampoline::<Self, F> as *const (),
                 )),
@@ -253,7 +259,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"started\0".as_ptr() as *const _,
+                c"started".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     started_trampoline::<Self, F> as *const (),
                 )),
@@ -279,7 +285,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::active\0".as_ptr() as *const _,
+                c"notify::active".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_active_trampoline::<Self, F> as *const (),
                 )),
@@ -305,7 +311,7 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::search-term\0".as_ptr() as *const _,
+                c"notify::search-term".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_search_term_trampoline::<Self, F> as *const (),
                 )),

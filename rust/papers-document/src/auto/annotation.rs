@@ -24,12 +24,7 @@ impl Annotation {
     pub const NONE: Option<&'static Annotation> = None;
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::Annotation>> Sealed for T {}
-}
-
-pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
+pub trait AnnotationExt: IsA<Annotation> + 'static {
     #[doc(alias = "pps_annotation_equal")]
     fn equal(&self, other: &impl IsA<Annotation>) -> bool {
         unsafe {
@@ -189,10 +184,15 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
         }
     }
 
-    //#[doc(alias = "pps_annotation_set_modified_from_time_t")]
-    //fn set_modified_from_time_t(&self, utime: /*Unimplemented*/Basic: TimeT) -> bool {
-    //    unsafe { TODO: call ffi:pps_annotation_set_modified_from_time_t() }
-    //}
+    #[doc(alias = "pps_annotation_set_modified_from_time_t")]
+    fn set_modified_from_time_t(&self, utime: libc::time_t) -> bool {
+        unsafe {
+            from_glib(ffi::pps_annotation_set_modified_from_time_t(
+                self.as_ref().to_glib_none().0,
+                utime,
+            ))
+        }
+    }
 
     #[doc(alias = "pps_annotation_set_name")]
     #[doc(alias = "name")]
@@ -230,7 +230,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::area\0".as_ptr() as *const _,
+                c"notify::area".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_area_trampoline::<Self, F> as *const (),
                 )),
@@ -258,7 +258,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::border-width\0".as_ptr() as *const _,
+                c"notify::border-width".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_border_width_trampoline::<Self, F> as *const (),
                 )),
@@ -281,7 +281,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::contents\0".as_ptr() as *const _,
+                c"notify::contents".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_contents_trampoline::<Self, F> as *const (),
                 )),
@@ -306,7 +306,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::hidden\0".as_ptr() as *const _,
+                c"notify::hidden".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_hidden_trampoline::<Self, F> as *const (),
                 )),
@@ -329,7 +329,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::modified\0".as_ptr() as *const _,
+                c"notify::modified".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_modified_trampoline::<Self, F> as *const (),
                 )),
@@ -352,7 +352,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::name\0".as_ptr() as *const _,
+                c"notify::name".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_name_trampoline::<Self, F> as *const (),
                 )),
@@ -375,7 +375,7 @@ pub trait AnnotationExt: IsA<Annotation> + sealed::Sealed + 'static {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                b"notify::rgba\0".as_ptr() as *const _,
+                c"notify::rgba".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rgba_trampoline::<Self, F> as *const (),
                 )),

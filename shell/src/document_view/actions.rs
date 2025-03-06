@@ -993,12 +993,12 @@ impl imp::PpsDocumentView {
             y = rect.y();
         };
 
-        if let Some(mark) = self.view.mark_for_view_point(x.into(), y.into()) {
+        if let Some(doc_point) = self.view.document_point_for_view_point(x.into(), y.into()) {
             _ = self.annots_context.add_annotation_sync(
-                mark.page_index(),
+                doc_point.page_index(),
                 papers_document::AnnotationType::Text,
-                &mark.doc_point(),
-                &mark.doc_point(),
+                &doc_point.point_on_page(),
+                &doc_point.point_on_page(),
                 &self.annot_color_rgba(),
                 AddAnnotationData::None,
             );

@@ -30,12 +30,7 @@ impl CertificateInfo {
     }
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::CertificateInfo>> Sealed for T {}
-}
-
-pub trait CertificateInfoExt: IsA<CertificateInfo> + sealed::Sealed + 'static {
+pub trait CertificateInfoExt: IsA<CertificateInfo> + 'static {
     #[doc(alias = "expiration-time")]
     fn expiration_time(&self) -> Option<glib::DateTime> {
         ObjectExt::property(self.as_ref(), "expiration-time")

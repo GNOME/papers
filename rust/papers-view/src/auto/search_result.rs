@@ -24,12 +24,7 @@ impl SearchResult {
     //}
 }
 
-mod sealed {
-    pub trait Sealed {}
-    impl<T: super::IsA<super::SearchResult>> Sealed for T {}
-}
-
-pub trait SearchResultExt: IsA<SearchResult> + sealed::Sealed + 'static {
+pub trait SearchResultExt: IsA<SearchResult> + 'static {
     //#[doc(alias = "pps_search_result_append_rectangle")]
     //fn append_rectangle(&self, rect: /*Ignored*/&mut papers_document::FindRectangle) {
     //    unsafe { TODO: call ffi:pps_search_result_append_rectangle() }
