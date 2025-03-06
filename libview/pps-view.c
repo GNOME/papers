@@ -2398,7 +2398,9 @@ _pps_view_set_focused_element (PpsView *view,
 	if (pps_view_get_focused_area (view, &view_rect))
 		region = cairo_region_create_rectangle (&view_rect);
 
-	priv->focused_element = element_mapping;
+	g_clear_pointer (&priv->focused_element, pps_mapping_free);
+	if (element_mapping)
+		priv->focused_element = pps_mapping_copy (element_mapping);
 	priv->focused_element_page = page;
 
 	get_scroll_offset (view, &scroll_x, &scroll_y);
@@ -6236,6 +6238,7 @@ pps_view_dispose (GObject *object)
 	g_clear_object (&priv->scroll_animation_horizontal);
 
 	g_clear_pointer (&priv->page_widgets, g_ptr_array_unref);
+	g_clear_pointer (&priv->focused_element, pps_mapping_free);
 
 	g_clear_handle_id (&priv->update_cursor_idle_id, g_source_remove);
 	g_clear_handle_id (&priv->selection_scroll_id, g_source_remove);
