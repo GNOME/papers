@@ -196,8 +196,6 @@ static void pps_view_page_changed_cb (PpsDocumentModel *model,
                                       gint old_page,
                                       gint new_page,
                                       PpsView *view);
-static void adjustment_value_changed_cb (GtkAdjustment *adjustment,
-                                         PpsView *view);
 static void pps_interrupt_scroll_animation_cb (GtkAdjustment *adjustment,
                                                PpsView *view);
 /*** Zoom and sizing ***/
@@ -760,21 +758,20 @@ pps_view_set_scroll_adjustment (PpsView *view,
 		return;
 
 	if (*to_set) {
-		g_signal_handlers_disconnect_by_func (*to_set,
-		                                      (gpointer) adjustment_value_changed_cb,
-		                                      view);
-
+		g_signal_handlers_disconnect_by_data (*to_set, view);
 		g_object_unref (*to_set);
 	}
 
 	if (!adjustment)
 		adjustment = gtk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-	g_signal_connect (adjustment, "value-changed",
-	                  G_CALLBACK (adjustment_value_changed_cb),
-	                  view);
+
+	g_signal_connect_swapped (adjustment, "value-changed",
+	                          G_CALLBACK (gtk_widget_queue_allocate),
+	                          view);
 	g_signal_connect (adjustment, "value-changed",
 	                  G_CALLBACK (pps_interrupt_scroll_animation_cb),
 	                  view);
+
 	*to_set = g_object_ref_sink (adjustment);
 
 	g_object_notify (G_OBJECT (view), prop_name);
@@ -7155,62 +7152,6 @@ pps_view_page_changed_cb (PpsDocumentModel *model,
 	} else {
 		gtk_widget_queue_draw (GTK_WIDGET (view));
 	}
-}
-
-#if 0
-static gboolean
-cursor_scroll_update (gpointer data)
-{
-	PpsView *view = data;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gint x, y;
-
-	priv->update_cursor_idle_id = 0;
-	pps_document_misc_get_pointer_position (GTK_WIDGET (view), &x, &y);
-	pps_view_handle_cursor_over_xy (view, x, y, FALSE);
-
-	return FALSE;
-}
-
-static void
-schedule_scroll_cursor_update (PpsView *view)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	if (priv->update_cursor_idle_id)
-		return;
-
-	priv->update_cursor_idle_id =
-		g_idle_add (cursor_scroll_update, view);
-}
-#endif
-
-static void
-adjustment_value_changed_cb (GtkAdjustment *adjustment,
-                             PpsView *view)
-{
-	GtkWidget *widget = GTK_WIDGET (view);
-
-	if (!gtk_widget_get_realized (widget))
-		return;
-
-	gtk_widget_queue_allocate (widget);
-
-#if 0
-	cursor_updated = FALSE;
-	event = gtk_get_current_event ();
-	if (event) {
-		if (event->type == GDK_SCROLL &&
-		    gdk_event_get_window (event) == gtk_widget_get_window (widget)) {
-			gdk_event_get_coords (event, &x, &y);
-			pps_view_handle_cursor_over_xy (view, (gint) x, (gint) y);
-			cursor_updated = TRUE;
-		}
-		gdk_event_free (event);
-	}
-
-	if (!cursor_updated)
-		schedule_scroll_cursor_update (view);
-#endif
 }
 
 PpsView *
