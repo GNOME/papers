@@ -16,7 +16,6 @@
 #include "pps-annotation.h"
 #include "pps-document.h"
 #include "pps-macros.h"
-#include "pps-mapping-list.h"
 
 G_BEGIN_DECLS
 
@@ -68,8 +67,6 @@ struct _PpsDocumentAnnotationsInterface {
 	/* Methods  */
 	GList *(*get_annotations) (PpsDocumentAnnotations *document_annots,
 	                           PpsPage *page);
-	PpsMappingList *(*get_annotations_mapping) (PpsDocumentAnnotations *document_annots,
-	                                            PpsPage *page);
 	gboolean (*document_is_modified) (PpsDocumentAnnotations *document_annots);
 	void (*add_annotation) (PpsDocumentAnnotations *document_annots,
 	                        PpsAnnotation *annot);
@@ -87,9 +84,6 @@ struct _PpsDocumentAnnotationsInterface {
 PPS_PUBLIC
 GList *pps_document_annotations_get_annotations (PpsDocumentAnnotations *document_annots,
                                                  PpsPage *page);
-PPS_PUBLIC
-PpsMappingList *pps_document_annotations_get_annotations_mapping (PpsDocumentAnnotations *document_annots,
-                                                                  PpsPage *page);
 PPS_PUBLIC
 gboolean pps_document_annotations_document_is_modified (PpsDocumentAnnotations *document_annots);
 PPS_PUBLIC

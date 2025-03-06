@@ -37,8 +37,6 @@ PpsMappingList *pps_page_cache_get_image_mapping (PpsPageCache *cache,
                                                   gint page);
 PpsMappingList *pps_page_cache_get_form_field_mapping (PpsPageCache *cache,
                                                        gint page);
-PpsMappingList *pps_page_cache_get_annot_mapping (PpsPageCache *cache,
-                                                  gint page);
 PpsMappingList *pps_page_cache_get_media_mapping (PpsPageCache *cache,
                                                   gint page);
 cairo_region_t *pps_page_cache_get_text_mapping (PpsPageCache *cache,

@@ -27,7 +27,6 @@ typedef struct _PpsPageCacheData {
 	PpsMappingList *link_mapping;
 	PpsMappingList *image_mapping;
 	PpsMappingList *form_field_mapping;
-	PpsMappingList *annot_mapping;
 	PpsMappingList *media_mapping;
 	cairo_region_t *text_mapping;
 	PpsRectangle *text_layout;
@@ -57,7 +56,6 @@ struct _PpsPageCache {
     PPS_PAGE_DATA_INCLUDE_TEXT_MAPPING | \
     PPS_PAGE_DATA_INCLUDE_IMAGES |       \
     PPS_PAGE_DATA_INCLUDE_FORMS |        \
-    PPS_PAGE_DATA_INCLUDE_ANNOTS |       \
     PPS_PAGE_DATA_INCLUDE_MEDIA)
 
 #define PRE_CACHE_SIZE 1
@@ -77,7 +75,6 @@ pps_page_cache_data_free (PpsPageCacheData *data)
 	g_clear_pointer (&data->link_mapping, pps_mapping_list_unref);
 	g_clear_pointer (&data->image_mapping, pps_mapping_list_unref);
 	g_clear_pointer (&data->form_field_mapping, pps_mapping_list_unref);
-	g_clear_pointer (&data->annot_mapping, pps_mapping_list_unref);
 	g_clear_pointer (&data->media_mapping, pps_mapping_list_unref);
 	g_clear_pointer (&data->text_mapping, cairo_region_destroy);
 
@@ -169,10 +166,6 @@ pps_page_cache_get_flags_for_data (PpsPageCache *cache,
 		flags = (data->form_field_mapping) ? flags & ~PPS_PAGE_DATA_INCLUDE_FORMS : flags | PPS_PAGE_DATA_INCLUDE_FORMS;
 	}
 
-	if (cache->flags & PPS_PAGE_DATA_INCLUDE_ANNOTS) {
-		flags = (data->annot_mapping) ? flags & ~PPS_PAGE_DATA_INCLUDE_ANNOTS : flags | PPS_PAGE_DATA_INCLUDE_ANNOTS;
-	}
-
 	if (cache->flags & PPS_PAGE_DATA_INCLUDE_MEDIA) {
 		flags = (data->media_mapping) ? flags & ~PPS_PAGE_DATA_INCLUDE_MEDIA : flags | PPS_PAGE_DATA_INCLUDE_MEDIA;
 	}
@@ -231,8 +224,6 @@ job_page_data_finished_cb (PpsJob *job,
 		data->image_mapping = job_data->image_mapping;
 	if (job_data->flags & PPS_PAGE_DATA_INCLUDE_FORMS)
 		data->form_field_mapping = job_data->form_field_mapping;
-	if (job_data->flags & PPS_PAGE_DATA_INCLUDE_ANNOTS)
-		data->annot_mapping = job_data->annot_mapping;
 	if (job_data->flags & PPS_PAGE_DATA_INCLUDE_MEDIA)
 		data->media_mapping = job_data->media_mapping;
 	if (job_data->flags & PPS_PAGE_DATA_INCLUDE_TEXT_MAPPING)
@@ -366,9 +357,6 @@ pps_page_cache_mark_dirty (PpsPageCache *cache,
 	if (flags & PPS_PAGE_DATA_INCLUDE_FORMS)
 		g_clear_pointer (&data->form_field_mapping, pps_mapping_list_unref);
 
-	if (flags & PPS_PAGE_DATA_INCLUDE_ANNOTS)
-		g_clear_pointer (&data->annot_mapping, pps_mapping_list_unref);
-
 	if (flags & PPS_PAGE_DATA_INCLUDE_MEDIA)
 		g_clear_pointer (&data->media_mapping, pps_mapping_list_unref);
 
@@ -459,28 +447,6 @@ pps_page_cache_get_form_field_mapping (PpsPageCache *cache,
 		return PPS_JOB_PAGE_DATA (data->job)->form_field_mapping;
 
 	return data->form_field_mapping;
-}
-
-PpsMappingList *
-pps_page_cache_get_annot_mapping (PpsPageCache *cache,
-                                  gint page)
-{
-	PpsPageCacheData *data;
-
-	g_return_val_if_fail (PPS_IS_PAGE_CACHE (cache), NULL);
-	g_return_val_if_fail (page >= 0 && page < cache->n_pages, NULL);
-
-	if (!(cache->flags & PPS_PAGE_DATA_INCLUDE_ANNOTS))
-		return NULL;
-
-	data = &cache->page_list[page];
-	if (data->done)
-		return data->annot_mapping;
-
-	if (data->job)
-		return PPS_JOB_PAGE_DATA (data->job)->annot_mapping;
-
-	return data->annot_mapping;
 }
 
 PpsMappingList *

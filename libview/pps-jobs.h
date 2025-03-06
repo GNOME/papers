@@ -103,9 +103,8 @@ typedef enum {
 	PPS_PAGE_DATA_INCLUDE_TEXT_LOG_ATTRS = 1 << 5,
 	PPS_PAGE_DATA_INCLUDE_IMAGES = 1 << 6,
 	PPS_PAGE_DATA_INCLUDE_FORMS = 1 << 7,
-	PPS_PAGE_DATA_INCLUDE_ANNOTS = 1 << 8,
-	PPS_PAGE_DATA_INCLUDE_MEDIA = 1 << 9,
-	PPS_PAGE_DATA_INCLUDE_ALL = (1 << 10) - 1
+	PPS_PAGE_DATA_INCLUDE_MEDIA = 1 << 8,
+	PPS_PAGE_DATA_INCLUDE_ALL = (1 << 9) - 1
 } PpsJobPageDataFlags;
 
 struct _PpsJobPageData {
@@ -117,7 +116,6 @@ struct _PpsJobPageData {
 	PpsMappingList *link_mapping;
 	PpsMappingList *image_mapping;
 	PpsMappingList *form_field_mapping;
-	PpsMappingList *annot_mapping;
 	PpsMappingList *media_mapping;
 	cairo_region_t *text_mapping;
 	gchar *text;

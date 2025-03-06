@@ -195,7 +195,7 @@ pdf_document_init (PdfDocument *self)
 	self->annots = g_hash_table_new_full (g_direct_hash,
 	                                      g_direct_equal,
 	                                      (GDestroyNotify) NULL,
-	                                      (GDestroyNotify) pps_mapping_list_unref);
+	                                      (GDestroyNotify) g_list_free);
 }
 
 static void
@@ -2889,103 +2889,59 @@ annot_set_unique_name (PpsAnnotation *annot)
 	g_free (name);
 }
 
-static void
-annot_area_changed_cb (PpsAnnotation *annot,
-                       GParamSpec *spec,
-                       PpsMapping *mapping)
-{
-	pps_annotation_get_area (annot, &mapping->area);
-}
-
-static PpsMappingList *
-pdf_document_annotations_get_annotations_mapping (PpsDocumentAnnotations *document_annotations,
-                                                  PpsPage *page)
-{
-	GList *retval = NULL;
-	PdfDocument *self = PDF_DOCUMENT (document_annotations);
-	PpsMappingList *mapping_list;
-	GList *annots;
-	GList *list;
-
-	mapping_list = (PpsMappingList *) g_hash_table_lookup (self->annots,
-	                                                       GINT_TO_POINTER (page->index));
-	if (mapping_list)
-		return pps_mapping_list_ref (mapping_list);
-
-	annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
-
-	for (list = annots; list; list = list->next) {
-		PopplerAnnotMapping *mapping;
-		PpsMapping *annot_mapping;
-		PpsAnnotation *pps_annot;
-
-		mapping = (PopplerAnnotMapping *) list->data;
-
-		pps_annot = pps_annot_from_poppler_annot (mapping->annot, page);
-		if (!pps_annot)
-			continue;
-
-		/* Make sure annot has a unique name */
-		if (!pps_annotation_get_name (pps_annot))
-			annot_set_unique_name (pps_annot);
-
-		annot_mapping = g_new (PpsMapping, 1);
-		annot_mapping->area = poppler_rect_to_pps (page, &mapping->area);
-		if (PPS_IS_ANNOTATION_TEXT (pps_annot)) {
-			/* Force 24x24 rectangle */
-			annot_mapping->area.x2 = annot_mapping->area.x1 + 24;
-			annot_mapping->area.y2 = annot_mapping->area.y1 + 24;
-		}
-		annot_mapping->data = pps_annot;
-		pps_annotation_set_area (pps_annot, &annot_mapping->area);
-		g_signal_connect (pps_annot, "notify::area",
-		                  G_CALLBACK (annot_area_changed_cb),
-		                  annot_mapping);
-
-		g_object_set_data_full (G_OBJECT (pps_annot),
-		                        "poppler-annot",
-		                        g_object_ref (mapping->annot),
-		                        (GDestroyNotify) g_object_unref);
-
-		retval = g_list_prepend (retval, annot_mapping);
-	}
-
-	poppler_page_free_annot_mapping (annots);
-
-	if (!retval)
-		return NULL;
-
-	mapping_list = pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
-	g_hash_table_insert (self->annots,
-	                     GINT_TO_POINTER (page->index),
-	                     pps_mapping_list_ref (mapping_list));
-
-	return mapping_list;
-}
-
 static GList *
 pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annotations,
                                           PpsPage *page)
 {
-	PpsMappingList *mapping_list;
-	GList *annots = NULL;
+	PdfDocument *self = PDF_DOCUMENT (document_annotations);
+	GList *annots =
+	    (GList *) g_hash_table_lookup (self->annots,
+	                                   GINT_TO_POINTER (page->index));
+	GList *poppler_annots;
 
-	mapping_list = pdf_document_annotations_get_annotations_mapping (document_annotations,
+	if (annots)
+		return annots;
 
-	                                                                 page);
+	poppler_annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
+	for (GList *list = poppler_annots; list; list = list->next) {
+		PopplerAnnotMapping *mapping;
+		PpsAnnotation *annot;
+		PpsRectangle area;
 
-	if (!mapping_list)
-		return NULL;
+		mapping = (PopplerAnnotMapping *) list->data;
 
-	for (GList *l = pps_mapping_list_get_list (mapping_list); l; l = l->next) {
-		PpsMapping *mapping = l->data;
-		PpsAnnotation *annot = mapping->data;
+		annot = pps_annot_from_poppler_annot (mapping->annot, page);
+		if (!annot)
+			continue;
+
+		/* Make sure annot has a unique name */
+		if (!pps_annotation_get_name (annot))
+			annot_set_unique_name (annot);
+
+		area = poppler_rect_to_pps (page, &mapping->area);
+		if (PPS_IS_ANNOTATION_TEXT (annot)) {
+			/* Force 24x24 rectangle */
+			area.x2 = area.x1 + 24;
+			area.y2 = area.y1 + 24;
+		}
+		pps_annotation_set_area (annot, &area);
+		g_object_set_data_full (G_OBJECT (annot),
+		                        "poppler-annot",
+		                        g_object_ref (mapping->annot),
+		                        (GDestroyNotify) g_object_unref);
 
 		annots = g_list_prepend (annots, annot);
 	}
 
-	pps_mapping_list_unref (mapping_list);
+	poppler_page_free_annot_mapping (poppler_annots);
+
+	if (!annots)
+		return NULL;
+
 	annots = g_list_reverse (annots);
+	g_hash_table_insert (self->annots,
+	                     GINT_TO_POINTER (page->index),
+	                     g_list_copy (annots));
 
 	return annots;
 }
@@ -3004,20 +2960,18 @@ pdf_document_annotations_remove_annotation (PpsDocumentAnnotations *document_ann
 	PpsPage *page = pps_annotation_get_page (annot);
 	PopplerPage *poppler_page = POPPLER_PAGE (page->backend_page);
 	PopplerAnnot *poppler_annot;
-	PpsMappingList *mapping_list;
-	PpsMapping *annot_mapping;
+	GList *annot_list;
 
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
 
 	poppler_page_remove_annot (poppler_page, poppler_annot);
 
 	/* We don't check for self->annots, if it were NULL then something is really wrong */
-	mapping_list = (PpsMappingList *) g_hash_table_lookup (self->annots,
-	                                                       GINT_TO_POINTER (page->index));
-	if (mapping_list) {
-		annot_mapping = pps_mapping_list_find (mapping_list, annot);
-		pps_mapping_list_remove (mapping_list, annot_mapping);
-		if (pps_mapping_list_length (mapping_list) == 0)
+	annot_list = (GList *) g_hash_table_lookup (self->annots,
+	                                            GINT_TO_POINTER (page->index));
+	if (annot_list) {
+		annot_list = g_list_remove (annot_list, annot);
+		if (g_list_length (annot_list) == 0)
 			g_hash_table_remove (self->annots, GINT_TO_POINTER (page->index));
 	}
 
@@ -3131,8 +3085,6 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	PpsPage *page = pps_annotation_get_page (annot);
 	PopplerAnnot *poppler_annot;
 	GList *list = NULL;
-	PpsMappingList *mapping_list;
-	PpsMapping *annot_mapping;
 	PopplerRectangle poppler_rect;
 	PopplerColor poppler_color;
 	GdkRGBA color;
@@ -3243,31 +3195,23 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 	poppler_page_add_annot (POPPLER_PAGE (page->backend_page), poppler_annot);
 
-	annot_mapping = g_new (PpsMapping, 1);
-	annot_mapping->area = rect;
-	annot_mapping->data = annot;
-	g_signal_connect (annot, "notify::area",
-	                  G_CALLBACK (annot_area_changed_cb),
-	                  annot_mapping);
 	g_object_set_data_full (G_OBJECT (annot),
 	                        "poppler-annot",
 	                        poppler_annot,
 	                        (GDestroyNotify) g_object_unref);
 
-	mapping_list = (PpsMappingList *) g_hash_table_lookup (self->annots,
-	                                                       GINT_TO_POINTER (page->index));
+	list = (GList *) g_hash_table_lookup (self->annots,
+	                                      GINT_TO_POINTER (page->index));
 
 	annot_set_unique_name (annot);
 
-	if (mapping_list) {
-		list = pps_mapping_list_get_list (mapping_list);
-		list = g_list_append (list, annot_mapping);
+	if (list) {
+		list = g_list_append (list, annot);
 	} else {
-		list = g_list_append (list, annot_mapping);
-		mapping_list = pps_mapping_list_new (page->index, list, (GDestroyNotify) g_object_unref);
+		list = g_list_append (list, annot);
 		g_hash_table_insert (self->annots,
 		                     GINT_TO_POINTER (page->index),
-		                     pps_mapping_list_ref (mapping_list));
+		                     g_list_copy (list));
 	}
 
 	self->annots_modified = TRUE;
@@ -3595,7 +3539,6 @@ static void
 pdf_document_document_annotations_iface_init (PpsDocumentAnnotationsInterface *iface)
 {
 	iface->get_annotations = pdf_document_annotations_get_annotations;
-	iface->get_annotations_mapping = pdf_document_annotations_get_annotations_mapping;
 	iface->document_is_modified = pdf_document_annotations_document_is_modified;
 	iface->add_annotation = pdf_document_annotations_add_annotation;
 	iface->save_annotation = pdf_document_annotations_save_annotation;
