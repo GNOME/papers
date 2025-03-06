@@ -539,8 +539,8 @@ pps_view_update_adjustment_value (PpsView *view,
                                   GtkOrientation orientation)
 {
 	GtkAdjustment *adjustment;
-	gint req_size, alloc_size, new_value;
-	gdouble page_size, value, upper, factor, zoom_center;
+	gint req_size, alloc_size;
+	gdouble page_size, value, new_value, upper, factor, zoom_center;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (orientation == GTK_ORIENTATION_HORIZONTAL) {
@@ -582,20 +582,19 @@ pps_view_update_adjustment_value (PpsView *view,
 	gtk_adjustment_configure (adjustment, value, 0, upper,
 	                          alloc_size * 0.1, alloc_size * 0.9, page_size);
 
-	/*
-	 * We add 0.5 to the values before to average out our rounding errors.
-	 */
 	switch (priv->pending_scroll) {
 	case SCROLL_TO_KEEP_POSITION:
 	case SCROLL_TO_FIND_LOCATION:
-		new_value = CLAMP (upper * factor + 0.5, 0, upper - page_size);
-		gtk_adjustment_set_value (adjustment, new_value);
+		if (adw_animation_get_state (priv->scroll_animation_vertical) != ADW_ANIMATION_PLAYING && adw_animation_get_state (priv->scroll_animation_horizontal) != ADW_ANIMATION_PLAYING) {
+			new_value = CLAMP (upper * factor, 0, upper - page_size);
+			gtk_adjustment_set_value (adjustment, new_value);
+		}
 		break;
 	case SCROLL_TO_PAGE_POSITION:
 		pps_view_scroll_to_page_position (view, orientation);
 		break;
 	case SCROLL_TO_CENTER:
-		new_value = CLAMP (upper * factor - zoom_center + 0.5, 0, upper - page_size);
+		new_value = CLAMP (upper * factor - zoom_center, 0, upper - page_size);
 		if (orientation == GTK_ORIENTATION_HORIZONTAL)
 			priv->zoom_center_x = -1.0;
 		else
