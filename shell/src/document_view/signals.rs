@@ -188,8 +188,8 @@ impl imp::PpsDocumentView {
     }
 
     #[template_callback]
-    fn sidebar_annots_annot_activated(&self, annot_mapping: &papers_document::Mapping) {
-        self.view.focus_annotation(annot_mapping)
+    fn sidebar_annots_annot_activated(&self, annot: &papers_document::Annotation) {
+        self.view.focus_annotation(annot)
     }
 
     // view

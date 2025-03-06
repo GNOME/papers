@@ -1,5 +1,5 @@
 use crate::deps::*;
-use papers_document::{AnnotationMarkup, DocumentAnnotations, Mapping};
+use papers_document::{Annotation, AnnotationMarkup, DocumentAnnotations};
 use papers_view::AnnotationsContext;
 
 use gtk::graphene;
@@ -48,7 +48,7 @@ mod imp {
                 vec![Signal::builder("annot-activated")
                     .run_last()
                     .action()
-                    .param_types([Mapping::static_type()])
+                    .param_types([Annotation::static_type()])
                     .build()]
             })
         }
@@ -57,7 +57,7 @@ mod imp {
             self.obj().connect_closure(
                 "annot-activated",
                 true,
-                glib::closure_local!(move |obj: super::PpsSidebarAnnotations, _: Mapping| {
+                glib::closure_local!(move |obj: super::PpsSidebarAnnotations, _: Annotation| {
                     obj.navigate_to_view();
                 }),
             );
@@ -118,14 +118,10 @@ mod imp {
                 item,
                 move |gesture, _, x, y| {
                     let annot = item.item().and_downcast::<AnnotationMarkup>().unwrap();
-                    let mut mapping = Mapping::new();
-
-                    mapping.set_data(annot.clone());
-                    mapping.set_area(annot.area());
 
                     match gesture.current_button() {
                         gdk::BUTTON_PRIMARY => {
-                            obj.obj().emit_by_name::<()>("annot-activated", &[&mapping])
+                            obj.obj().emit_by_name::<()>("annot-activated", &[&annot])
                         }
                         gdk::BUTTON_SECONDARY => {
                             let document_view = obj
