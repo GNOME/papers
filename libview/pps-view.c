@@ -187,8 +187,8 @@ static void pps_view_reload_page (PpsView *view,
                                   gint page,
                                   cairo_region_t *region);
 /*** Callbacks ***/
-static void pps_view_change_page (PpsView *view,
-                                  gint new_page);
+static void pps_view_scroll_to_page (PpsView *view,
+                                     gint page);
 static void job_finished_cb (PpsPixbufCache *pixbuf_cache,
                              int page,
                              PpsView *view);
@@ -468,70 +468,69 @@ is_dual_page (PpsView *view,
 }
 
 static void
-scroll_to_point (PpsView *view,
-                 gdouble x,
-                 gdouble y,
-                 GtkOrientation orientation)
+scroll_to_view_point (PpsView *view,
+                      gdouble x,
+                      gdouble y)
 {
 	gdouble page_size;
 	gdouble upper, lower;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	if (orientation == GTK_ORIENTATION_VERTICAL) {
-		page_size = gtk_adjustment_get_page_size (priv->vadjustment);
-		upper = gtk_adjustment_get_upper (priv->vadjustment);
-		lower = gtk_adjustment_get_lower (priv->vadjustment);
+	page_size = gtk_adjustment_get_page_size (priv->vadjustment);
+	upper = gtk_adjustment_get_upper (priv->vadjustment);
+	lower = gtk_adjustment_get_lower (priv->vadjustment);
 
-		if (pps_document_model_get_continuous (priv->model)) {
-			gtk_adjustment_clamp_page (priv->vadjustment,
-			                           y, y + page_size);
-		} else {
-			gtk_adjustment_set_value (priv->vadjustment,
-			                          CLAMP (y, lower, upper - page_size));
-		}
+	if (pps_document_model_get_continuous (priv->model)) {
+		gtk_adjustment_clamp_page (priv->vadjustment,
+		                           y, y + page_size);
 	} else {
-		page_size = gtk_adjustment_get_page_size (priv->hadjustment);
-		upper = gtk_adjustment_get_upper (priv->hadjustment);
-		lower = gtk_adjustment_get_lower (priv->hadjustment);
+		gtk_adjustment_set_value (priv->vadjustment,
+		                          CLAMP (y, lower, upper - page_size));
+	}
 
-		if (is_dual_page (view, NULL)) {
-			gtk_adjustment_clamp_page (priv->hadjustment, x,
-			                           x + page_size);
-		} else {
-			gtk_adjustment_set_value (priv->hadjustment,
-			                          CLAMP (x, lower, upper - page_size));
-		}
+	page_size = gtk_adjustment_get_page_size (priv->hadjustment);
+	upper = gtk_adjustment_get_upper (priv->hadjustment);
+	lower = gtk_adjustment_get_lower (priv->hadjustment);
+
+	if (is_dual_page (view, NULL)) {
+		gtk_adjustment_clamp_page (priv->hadjustment, x,
+		                           x + page_size);
+	} else {
+		gtk_adjustment_set_value (priv->hadjustment,
+		                          CLAMP (x, lower, upper - page_size));
 	}
 }
 
 static void
-pps_view_scroll_to_page_position (PpsView *view, GtkOrientation orientation)
+pps_view_queue_rescroll_to_current_page (PpsView *view)
 {
-	gdouble x, y;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	if (!pps_document_model_get_document (priv->model))
-		return;
+	priv->needs_scrolling_to_current_page = TRUE;
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
+}
 
-	if ((orientation == GTK_ORIENTATION_VERTICAL && priv->pending_point.y == 0) ||
-	    (orientation == GTK_ORIENTATION_HORIZONTAL && priv->pending_point.x == 0)) {
-		GdkRectangle page_area;
+static void
+pps_view_adjustment_to_page_position (PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GdkRectangle page_area;
+	gdouble x, y;
 
-		pps_view_get_page_extents (view, priv->current_page, &page_area);
-		x = MAX (0, page_area.x - priv->spacing);
-		y = MAX (0, page_area.y - priv->spacing);
-	} else {
-		gdouble view_point_x, view_point_y;
+	pps_view_get_page_extents (view, priv->current_page, &page_area);
+	x = MAX (0, page_area.x - priv->spacing);
+	y = MAX (0, page_area.y - priv->spacing);
 
-		transform_doc_point_to_view_point (view, priv->current_page,
-		                                   &priv->pending_point,
-		                                   &view_point_x,
-		                                   &view_point_y);
-		x = view_point_x;
-		y = view_point_y;
-	}
+	scroll_to_view_point (view, x, y);
+}
 
-	scroll_to_point (view, x, y, orientation);
+static void
+pps_view_scroll_to_doc_point (PpsView *view, gint page, PpsPoint *point)
+{
+	gdouble x, y;
+
+	transform_doc_point_to_view_point (view, page, point, &x, &y);
+	scroll_to_view_point (view, x, y);
 }
 
 static void
@@ -565,10 +564,7 @@ pps_view_update_adjustment_value (PpsView *view,
 	if (upper != .0) {
 		switch (priv->pending_scroll) {
 		case SCROLL_TO_KEEP_POSITION:
-		case SCROLL_TO_FIND_LOCATION:
 			factor = value / upper;
-			break;
-		case SCROLL_TO_PAGE_POSITION:
 			break;
 		case SCROLL_TO_CENTER:
 			factor = (value + zoom_center) / upper;
@@ -579,19 +575,13 @@ pps_view_update_adjustment_value (PpsView *view,
 	upper = MAX (alloc_size, req_size);
 	page_size = alloc_size;
 
-	gtk_adjustment_configure (adjustment, value, 0, upper,
-	                          alloc_size * 0.1, alloc_size * 0.9, page_size);
-
 	switch (priv->pending_scroll) {
 	case SCROLL_TO_KEEP_POSITION:
-	case SCROLL_TO_FIND_LOCATION:
 		if (adw_animation_get_state (priv->scroll_animation_vertical) != ADW_ANIMATION_PLAYING && adw_animation_get_state (priv->scroll_animation_horizontal) != ADW_ANIMATION_PLAYING) {
 			new_value = CLAMP (upper * factor, 0, upper - page_size);
-			gtk_adjustment_set_value (adjustment, new_value);
+		} else {
+			new_value = value;
 		}
-		break;
-	case SCROLL_TO_PAGE_POSITION:
-		pps_view_scroll_to_page_position (view, orientation);
 		break;
 	case SCROLL_TO_CENTER:
 		new_value = CLAMP (upper * factor - zoom_center, 0, upper - page_size);
@@ -599,16 +589,28 @@ pps_view_update_adjustment_value (PpsView *view,
 			priv->zoom_center_x = -1.0;
 		else
 			priv->zoom_center_y = -1.0;
-		gtk_adjustment_set_value (adjustment, new_value);
+		break;
+	default:
+		g_assert_not_reached ();
 		break;
 	}
+
+	gtk_adjustment_configure (adjustment, new_value, 0, upper,
+	                          alloc_size * 0.1, alloc_size * 0.9, page_size);
 }
 
 static void
 pps_view_update_adjustment_values (PpsView *view)
 {
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
 	pps_view_update_adjustment_value (view, GTK_ORIENTATION_HORIZONTAL);
 	pps_view_update_adjustment_value (view, GTK_ORIENTATION_VERTICAL);
+
+	if (priv->needs_scrolling_to_current_page) {
+		pps_view_adjustment_to_page_position (view);
+		priv->needs_scrolling_to_current_page = FALSE;
+	}
 }
 
 static void
@@ -673,8 +675,7 @@ view_update_range_and_current_page (PpsView *view)
 			}
 		}
 
-		if (priv->pending_scroll == SCROLL_TO_KEEP_POSITION ||
-		    priv->pending_scroll == SCROLL_TO_FIND_LOCATION) {
+		if (priv->pending_scroll == SCROLL_TO_KEEP_POSITION) {
 			best_current_page = MAX (best_current_page, priv->start_page);
 
 			if (best_current_page >= 0 && priv->current_page != best_current_page) {
@@ -1040,8 +1041,6 @@ pps_view_scroll (PpsView *view,
 		value = upper - page_size;
 		if (!last_page)
 			pps_view_last_page (view);
-		/* Changing pages causes the top to be shown. Here we want the bottom shown. */
-		priv->pending_point.y = value;
 		break;
 	default:
 		break;
@@ -1082,7 +1081,7 @@ _pps_view_ensure_rectangle_is_visible (PpsView *view, GdkRectangle *rect)
 	int widget_width = gtk_widget_get_width (GTK_WIDGET (view));
 	int widget_height = gtk_widget_get_height (GTK_WIDGET (view));
 
-	priv->pending_scroll = SCROLL_TO_FIND_LOCATION;
+	priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
 
 	adjustment = priv->vadjustment;
 	adj_value = gtk_adjustment_get_value (adjustment);
@@ -1792,9 +1791,8 @@ goto_fitr_dest (PpsView *view, PpsLinkDest *dest)
 
 	doc_point.x = change_left ? left : 0;
 	doc_point.y = change_top ? top : 0;
-	priv->pending_point = doc_point;
 
-	pps_view_change_page (view, pps_link_dest_get_page (dest));
+	pps_view_scroll_to_doc_point (view, pps_link_dest_get_page (dest), &doc_point);
 }
 
 static void
@@ -1827,9 +1825,7 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	priv->pending_point = doc_point;
-
-	pps_view_change_page (view, page);
+	pps_view_scroll_to_doc_point (view, page, &doc_point);
 }
 
 static void
@@ -1862,9 +1858,7 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	priv->pending_point = doc_point;
-
-	pps_view_change_page (view, page);
+	pps_view_scroll_to_doc_point (view, page, &doc_point);
 }
 
 static void
@@ -1890,7 +1884,7 @@ goto_fit_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	pps_view_change_page (view, page);
+	pps_view_scroll_to_page (view, page);
 }
 
 static void
@@ -1915,9 +1909,8 @@ goto_xyz_dest (PpsView *view, PpsLinkDest *dest)
 
 	doc_point.x = change_left ? left : 0;
 	doc_point.y = change_top ? top : 0;
-	priv->pending_point = doc_point;
 
-	pps_view_change_page (view, page);
+	pps_view_scroll_to_doc_point (view, page, &doc_point);
 }
 
 static void
@@ -4000,8 +3993,6 @@ pps_view_size_allocate (GtkWidget *widget,
 	pps_view_update_adjustment_values (view);
 	view_update_range_and_current_page (view);
 	priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
-	priv->pending_point.x = 0;
-	priv->pending_point.y = 0;
 
 	get_scroll_offset (view, &scroll_x, &scroll_y);
 
@@ -7087,9 +7078,7 @@ pps_view_init (PpsView *view)
 	priv->current_page = -1;
 	priv->cursor = PPS_VIEW_CURSOR_NORMAL;
 	priv->selection_info.selections = NULL;
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	priv->pending_point.x = 0;
-	priv->pending_point.y = 0;
+	priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
 	priv->pixbuf_cache_size = DEFAULT_PIXBUF_CACHE_SIZE;
 	priv->caret_enabled = FALSE;
 	priv->cursor_page = 0;
@@ -7117,15 +7106,12 @@ pps_view_init (PpsView *view)
 /*** Callbacks ***/
 
 static void
-pps_view_change_page (PpsView *view,
-                      gint new_page)
+pps_view_scroll_to_page (PpsView *view, gint page)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	priv->current_page = new_page;
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-
-	gtk_widget_queue_allocate (GTK_WIDGET (view));
+	priv->current_page = page;
+	pps_view_queue_rescroll_to_current_page (view);
 }
 
 static void
@@ -7147,7 +7133,7 @@ pps_view_page_changed_cb (PpsDocumentModel *model,
 		return;
 
 	if (priv->current_page != new_page) {
-		pps_view_change_page (view, new_page);
+		pps_view_scroll_to_page (view, new_page);
 	} else {
 		gtk_widget_queue_draw (GTK_WIDGET (view));
 	}
@@ -7239,7 +7225,8 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 
 	priv->start_page = -1;
 	priv->end_page = -1;
-	pps_view_change_page (view, pps_document_model_get_page (model));
+
+	pps_view_scroll_to_page (view, pps_document_model_get_page (model));
 
 	view_update_scale_limits (view);
 
@@ -7261,7 +7248,7 @@ pps_view_rotation_changed_cb (PpsDocumentModel *model,
 
 	pps_pixbuf_cache_clear (priv->pixbuf_cache);
 	if (!pps_document_is_page_size_uniform (document))
-		priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+		pps_view_queue_rescroll_to_current_page (view);
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 
 	pps_view_remove_all (view);
@@ -7320,9 +7307,7 @@ pps_view_page_layout_changed_cb (PpsDocumentModel *model,
                                  GParamSpec *pspec,
                                  PpsView *view)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	pps_view_queue_rescroll_to_current_page (view);
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 
 	/* FIXME: if we're keeping the pixbuf cache around, we should extend the
@@ -7364,15 +7349,7 @@ pps_view_continuous_changed_cb (PpsDocumentModel *model,
                                 GParamSpec *pspec,
                                 PpsView *view)
 {
-	PpsDocument *document = pps_document_model_get_document (model);
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	if (document) {
-		priv->pending_point =
-		    pps_view_get_doc_point_for_page (view, priv->start_page,
-		                                     0, 0);
-	}
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+	pps_view_queue_rescroll_to_current_page (view);
 	gtk_widget_queue_resize (GTK_WIDGET (view));
 }
 
@@ -7381,11 +7358,10 @@ pps_view_dual_odd_left_changed_cb (PpsDocumentModel *model,
                                    GParamSpec *pspec,
                                    PpsView *view)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 	if (pps_document_model_get_page_layout (model) == PPS_PAGE_LAYOUT_DUAL) {
 		/* odd_left may be set when not in dual mode,
 		   queue_resize is not needed in that case */
-		priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
+		pps_view_queue_rescroll_to_current_page (view);
 		gtk_widget_queue_resize (GTK_WIDGET (view));
 	}
 }
@@ -7395,11 +7371,9 @@ pps_view_direction_changed_cb (PpsDocumentModel *model,
                                GParamSpec *pspec,
                                PpsView *view)
 {
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gboolean rtl = pps_document_model_get_rtl (model);
 	gtk_widget_set_direction (GTK_WIDGET (view), rtl ? GTK_TEXT_DIR_RTL : GTK_TEXT_DIR_LTR);
-	priv->pending_scroll = SCROLL_TO_PAGE_POSITION;
-	gtk_widget_queue_allocate (GTK_WIDGET (view));
+	pps_view_queue_rescroll_to_current_page (view);
 }
 
 void

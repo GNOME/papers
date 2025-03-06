@@ -57,9 +57,7 @@ typedef struct
 
 typedef enum {
 	SCROLL_TO_KEEP_POSITION,
-	SCROLL_TO_PAGE_POSITION,
 	SCROLL_TO_CENTER,
-	SCROLL_TO_FIND_LOCATION,
 } PendingScroll;
 
 typedef struct _PpsHeightToPageCache {
@@ -119,10 +117,8 @@ typedef struct _PpsViewPrivate {
 
 	guint update_cursor_idle_id;
 
-	/* Delta sum for emulating normal scrolling */
-	gdouble total_delta;
 	PendingScroll pending_scroll;
-	PpsPoint pending_point;
+	gboolean needs_scrolling_to_current_page;
 
 	/* Animation for scrolling with keys */
 	AdwAnimation *scroll_animation_vertical;
