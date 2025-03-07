@@ -2,7 +2,7 @@ use super::*;
 
 use crate::document_view::enums::AnnotationColor;
 use gtk::gdk::gdk_pixbuf;
-use papers_document::{DocumentImages, DocumentSignatures};
+use papers_document::{AnnotationTextMarkupType, DocumentImages, DocumentSignatures};
 use papers_view::annotations_context::AddAnnotationData;
 
 fn gdk_pixbuf_format_by_extension(uri: &str) -> Option<gdk_pixbuf::PixbufFormat> {
@@ -714,12 +714,11 @@ impl imp::PpsDocumentView {
     }
 
     fn cmd_annot_textmarkup_type(&self, markup_type: &str) {
-        use papers_document::AnnotationTextMarkupType::*;
         let markup_type = match markup_type {
-            "highlight" => Highlight,
-            "squiggly" => Squiggly,
-            "strikethrough" => StrikeOut,
-            "underline" => Underline,
+            "highlight" => AnnotationTextMarkupType::Highlight,
+            "squiggly" => AnnotationTextMarkupType::Squiggly,
+            "strikethrough" => AnnotationTextMarkupType::StrikeOut,
+            "underline" => AnnotationTextMarkupType::Underline,
             _ => panic!("unknown markup_type {markup_type}"),
         };
         let annot = self.annot.borrow().clone();
