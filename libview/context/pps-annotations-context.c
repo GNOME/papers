@@ -83,7 +83,7 @@ annotations_job_finished_cb (PpsJobAnnots *job,
 {
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
 	g_autoptr (GPtrArray) annotations_array = g_ptr_array_new ();
-	PpsAnnotation **annotations;
+	gpointer *annotations;
 	GList *annotations_list = pps_job_annots_get_annots (job);
 	gsize n_annotations;
 
@@ -91,9 +91,9 @@ annotations_job_finished_cb (PpsJobAnnots *job,
 		g_ptr_array_add (annotations_array, l->data);
 	}
 
-	annotations = (PpsAnnotation **) g_ptr_array_steal (annotations_array, &n_annotations);
+	annotations = g_ptr_array_steal (annotations_array, &n_annotations);
 	if (n_annotations > 0)
-		g_list_store_splice (priv->annots_model, 0, 0, (gpointer *) annotations, (guint) n_annotations);
+		g_list_store_splice (priv->annots_model, 0, 0, annotations, (guint) n_annotations);
 
 	pps_annotations_context_clear_job (self);
 
