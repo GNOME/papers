@@ -284,8 +284,9 @@ attachments_save_dialog_response_cb (GtkFileDialog *dialog,
 		target_file = gtk_file_dialog_save_finish (dialog, result, &error);
 
 	for (i = 0; !error && i < g_list_model_get_n_items (save_data->attachments); i++) {
-		save_attachment_to_target_file (g_list_model_get_item (save_data->attachments, i),
-		                                target_file, is_dir, &error);
+		g_autoptr (PpsAttachment) attachment =
+		    g_list_model_get_item (save_data->attachments, i);
+		save_attachment_to_target_file (attachment, target_file, is_dir, &error);
 	}
 
 	if (error)

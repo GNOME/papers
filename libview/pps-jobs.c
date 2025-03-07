@@ -92,19 +92,18 @@ static void
 fill_page_labels (GListModel *model, PpsJob *job)
 {
 	PpsDocumentLinks *document_links;
-	PpsLink *link;
-	gchar *page_label;
 	GListModel *children;
 	guint items = g_list_model_get_n_items (model);
 
 	for (int i = 0; i < items; i++) {
-		PpsOutlines *outlines = g_list_model_get_item (model, i);
+		g_autoptr (PpsLink) link = NULL;
+		g_autofree gchar *page_label = NULL;
+		g_autoptr (PpsOutlines) outlines = g_list_model_get_item (model, i);
 
 		g_object_get (outlines, "link", &link, "children", &children, NULL);
 
 		if (!link)
 			continue;
-		;
 
 		document_links = PPS_DOCUMENT_LINKS (pps_job_get_document (job));
 		page_label = pps_document_links_get_link_page_label (document_links, link);
@@ -112,9 +111,6 @@ fill_page_labels (GListModel *model, PpsJob *job)
 			continue;
 
 		g_object_set (outlines, "label", page_label, NULL);
-
-		g_free (page_label);
-		g_object_unref (link);
 
 		if (children) {
 			g_assert (G_IS_LIST_MODEL (children));

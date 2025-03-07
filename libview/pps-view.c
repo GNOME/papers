@@ -3145,12 +3145,9 @@ show_annotation_windows (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
-	gint i;
-	PpsAnnotation *annot;
 
-	for (i = 0, annot = g_list_model_get_item (model, i);
-	     annot != NULL;
-	     annot = g_list_model_get_item (model, ++i)) {
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
 		PpsAnnotationWindow *window;
 		PpsAnnotationMarkup *annot_markup;
 
@@ -3180,12 +3177,9 @@ hide_annotation_windows (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
-	PpsAnnotation *annot;
-	gint i;
 
-	for (i = 0, annot = g_list_model_get_item (model, i);
-	     annot != NULL;
-	     annot = g_list_model_get_item (model, ++i)) {
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
 		GtkWidget *window;
 
 		if (pps_annotation_get_page_index (annot) != page)
@@ -3233,9 +3227,9 @@ get_annotation_at_location (PpsView *view,
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 	gdouble x_new = 0, y_new = 0;
 	PpsDocumentAnnotations *doc_annots;
-	PpsAnnotation *annot, *best;
+	PpsAnnotation *best;
 	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
-	gint i, page;
+	gint page;
 
 	if (!PPS_IS_DOCUMENT_ANNOTATIONS (document))
 		return NULL;
@@ -3249,10 +3243,9 @@ get_annotation_at_location (PpsView *view,
 		return NULL;
 
 	best = NULL;
-	for (i = 0, annot = g_list_model_get_item (model, i);
-	     annot != NULL;
-	     annot = g_list_model_get_item (model, ++i)) {
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
 		PpsRectangle area;
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
 
 		if (pps_annotation_get_page_index (annot) != page)
 			continue;
