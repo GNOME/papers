@@ -163,10 +163,6 @@ mod imp {
             self.document.borrow().clone()
         }
 
-        fn annot(&self) -> Option<AnnotationMarkup> {
-            self.annotation.borrow().clone()
-        }
-
         fn clear_annotation(&self) {
             if let Some(annot) = self.annotation.take() {
                 for id in self.annot_signal_handlers.take() {
@@ -176,7 +172,7 @@ mod imp {
         }
 
         fn set_annotation(&self, annot: Option<&AnnotationMarkup>) {
-            if self.annot().as_ref() == annot {
+            if self.annotation.borrow().as_ref() == annot {
                 return;
             }
 

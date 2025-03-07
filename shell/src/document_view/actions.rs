@@ -475,8 +475,8 @@ impl imp::PpsDocumentView {
                     #[weak(rename_to = obj)]
                     self,
                     move |_, _, _| {
-                        if let Some(annot) = obj.annot.borrow().clone() {
-                            obj.annots_context.remove_annotation(&annot);
+                        if let Some(annot) = obj.annot.borrow().as_ref() {
+                            obj.annots_context.remove_annotation(annot);
                         };
                     }
                 ))

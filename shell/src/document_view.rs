@@ -795,8 +795,7 @@ impl PpsDocumentView {
     }
 
     pub fn handle_annot_popup(&self, annot: &impl IsA<Annotation>) {
-        self.imp()
-            .view_menu_annot_popup(Some(annot.as_ref().clone()));
+        self.imp().view_menu_annot_popup(Some(annot.as_ref()));
     }
 
     pub fn model(&self) -> DocumentModel {

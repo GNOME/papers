@@ -464,11 +464,11 @@ impl imp::PpsDocumentView {
         self.set_action_enabled("copy-image", show_image);
     }
 
-    pub(super) fn view_menu_annot_popup(&self, annot: Option<papers_document::Annotation>) {
+    pub(super) fn view_menu_annot_popup(&self, annot: Option<&papers_document::Annotation>) {
         let mut show_annot_props = false;
         let mut show_attachment = false;
 
-        if let Some(ref annot) = annot {
+        if let Some(annot) = annot {
             show_annot_props = annot.is::<papers_document::AnnotationMarkup>();
 
             let attachment = annot
@@ -487,7 +487,7 @@ impl imp::PpsDocumentView {
             .unwrap_or_default()
             && annot.is_some();
 
-        self.annot.replace(annot);
+        self.annot.replace(annot.cloned());
 
         self.set_action_enabled("annot-properties", show_annot_props);
         self.set_action_enabled("remove-annot", can_remove_annots);
@@ -512,7 +512,7 @@ impl imp::PpsDocumentView {
                 self.view_menu_image_popup(Some(image.clone()));
                 has_image = true;
             } else if let Some(annot) = o.downcast_ref::<papers_document::Annotation>() {
-                self.view_menu_annot_popup(Some(annot.clone()));
+                self.view_menu_annot_popup(Some(annot));
                 has_annot = true;
             }
         }
