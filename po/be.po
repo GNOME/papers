@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: papers main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-01-11 11:39+0000\n"
-"PO-Revision-Date: 2025-01-11 22:25+0300\n"
+"POT-Creation-Date: 2025-03-07 09:56+0000\n"
+"PO-Revision-Date: 2025-03-07 21:24+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Papers"
@@ -160,29 +160,29 @@ msgstr "Папярэдні прагляд друку"
 msgid "Preview before printing"
 msgstr "Папярэдні прагляд перад друкам"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Файл пашкоджаны"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Архіў зашыфраваны"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "У архіве няма выяў, якія падтрымліваюцца"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "У архіве няма файлаў"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Гэта не MIME-тып коміксаў: %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -190,7 +190,7 @@ msgstr ""
 "libarchive не падтрымлівае гэты фармат сціскання коміксаў, звяжыцеся з сваім "
 "пастаўшчыком"
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Немагчыма атрымаць лакальны шлях да архіва"
 
@@ -234,52 +234,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Дадае падтрымку прагляду дакументаў у фармаце PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "Так"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "Не"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Невядомы тып шрыфту"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -290,11 +290,11 @@ msgstr ""
 "ад шрыфтоў, выкарыстаных пры стварэнні PDF, дакумент можа мець няправільны "
 "выгляд."
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Усе шрыфты або стандартныя, або ўбудаваныя."
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Без назвы"
 
@@ -302,20 +302,20 @@ msgstr "Без назвы"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
 #: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "Няма"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Убудаванае падмноства"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Убудаваны"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Не ўбудаваны"
 
@@ -324,7 +324,7 @@ msgstr "Не ўбудаваны"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (адзін з 14 стандартных шрыфтоў)"
 
@@ -333,7 +333,7 @@ msgstr " (адзін з 14 стандартных шрыфтоў)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (не з 14 стандартных шрыфтоў)"
 
@@ -347,7 +347,7 @@ msgstr " (не з 14 стандартных шрыфтоў)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -371,7 +371,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -410,22 +410,22 @@ msgstr "Не ўдалося адкрыць далучаны файл «%s»: %s"
 msgid "Couldn’t open attachment “%s”"
 msgstr "Не ўдалося адкрыць далучаны файл «%s»"
 
-#: libdocument/pps-document-factory.c:104
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Тып файлаў %s (%s) не падтрымліваецца"
 
-#: libdocument/pps-document-factory.c:374 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Невядомы MIME-тып"
 
-#: libdocument/pps-document-factory.c:504
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Усе дакументы"
 
-#: libdocument/pps-document-factory.c:532
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Усе файлы"
 
@@ -473,7 +473,7 @@ msgid "This work is in the Public Domain"
 msgstr "Гэтая праца з'яўляецца грамадскім набыткам"
 
 #: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:963
+#: shell/src/document_view/actions.rs:1044
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Захаваць далучаны файл"
@@ -485,26 +485,26 @@ msgstr[2] "Захаваць далучаныя файлы"
 msgid "Page %s"
 msgstr "Старонка %s"
 
-#: libview/pps-annotation-window.c:281
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Рэдагаваць нататку"
 
-#: libview/pps-jobs.c:438
+#: libview/pps-jobs.c:433
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Не ўдалося апрацаваць старонку %d: %s"
 
-#: libview/pps-jobs.c:445
+#: libview/pps-jobs.c:440
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Не ўдалося апрацаваць старонку %d"
 
-#: libview/pps-jobs.c:663
+#: libview/pps-jobs.c:674
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Не ўдалося стварыць мініяцюру старонкі %d"
 
-#: libview/pps-jobs.c:1648
+#: libview/pps-jobs.c:1700
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Не ўдалося надрукаваць старонку %d: %s"
@@ -544,8 +544,8 @@ msgstr "Вызначаны вамі дыяпазон старонак не ўл�
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:594 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/resources/pps-document-view.ui:590 shell/resources/pps-window.ui:164
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Закрыць"
 
@@ -627,71 +627,71 @@ msgstr "Калі ўключана, навакол кожнай старонкі 
 msgid "Page Handling"
 msgstr "Праца са старонкамі"
 
-#: libview/pps-view-accessible.c:42
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Прагартаць уверх"
 
-#: libview/pps-view-accessible.c:43
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Прагартаць уніз"
 
-#: libview/pps-view-accessible.c:48
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Прагартаць вобласць прагляду ўверх"
 
-#: libview/pps-view-accessible.c:49
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Прагартаць вобласць прагляду ўніз"
 
-#: libview/pps-view-accessible.c:126
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Прагляд дакумента"
 
-#: libview/pps-view.c:2104
+#: libview/pps-view.c:2102
 msgid "Go to first page"
 msgstr "Перайсці да першай старонкі"
 
-#: libview/pps-view.c:2106
+#: libview/pps-view.c:2104
 msgid "Go to previous page"
 msgstr "Перайсці да папярэдняй старонкі"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2106
 msgid "Go to next page"
 msgstr "Перайсці да наступнай старонкі"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2108
 msgid "Go to last page"
 msgstr "Перайсці да апошняй старонкі"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2110
 msgid "Go to page"
 msgstr "Перайсці да старонкі"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2112
 msgid "Find"
 msgstr "Пошук"
 
-#: libview/pps-view.c:2143
+#: libview/pps-view.c:2141
 #, c-format
 msgid "Go to page %s"
 msgstr "Перайсці да старонкі %s"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2147
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Перайсці да %s у файле «%s»"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Перайсці да файла «%s»"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Launch %s"
 msgstr "Запусціць %s"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2165
 #, c-format
 msgid "Reset form"
 msgstr "Ачысціць форму"
@@ -777,7 +777,7 @@ msgid "Next Page"
 msgstr "Да наступнай старонкі"
 
 #: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:217
+#: shell/resources/pps-document-view.ui:222
 msgid "Page Count"
 msgstr "Колькасць старонак"
 
@@ -790,7 +790,7 @@ msgid "Print This Document"
 msgstr "Надрукаваць гэты дакумент"
 
 #: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:300
+#: shell/resources/pps-document-view.ui:305
 msgid "Zoom Out"
 msgstr "Паменшыць"
 
@@ -799,11 +799,11 @@ msgid "Normal Size"
 msgstr "Звычайны памер"
 
 #: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:287
+#: shell/resources/pps-document-view.ui:292
 msgid "Zoom In"
 msgstr "Павялічыць"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:98
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
 msgid "Failed to Print Document"
 msgstr "Не ўдалося надрукаваць дакумент"
 
@@ -817,70 +817,70 @@ msgstr "Невядома"
 msgid "Document Properties"
 msgstr "Уласцівасці дакумента"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
 msgid "Title"
 msgstr "Загаловак"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Размяшчэнне"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
 msgid "Subject"
 msgstr "Тэма"
 
-#: nautilus/pps-nautilus-extension.h:63
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
 #: shell/src/properties_general.rs:149
 msgid "Author"
 msgstr "Аўтар"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
 msgid "Keywords"
 msgstr "Ключавыя словы"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
 msgid "Producer"
 msgstr "Вытворца"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
 msgid "Creator"
 msgstr "Стваральнік"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
 msgid "Created"
 msgstr "Створаны"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
 msgid "Modified"
 msgstr "Зменены"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
 msgid "Number of Pages"
 msgstr "Колькасць старонак"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
 msgid "Optimized"
 msgstr "Аптымізаваны"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
 #: shell/src/properties_general.rs:175
 msgid "Format"
 msgstr "Фармат"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
 msgid "Security"
 msgstr "Бяспека"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
 msgid "Contains Javascript"
 msgstr "Змяшчае JavaScript"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
 msgid "Paper Size"
 msgstr "Памер паперы"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
 msgid "Size"
 msgstr "Памер"
 
@@ -1195,7 +1195,7 @@ msgid "Touchpad Gestures"
 msgstr "Жэсты сэнсарнай панэлі"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-sidebar-annotations.ui:69
 msgid "Annotation Properties"
 msgstr "Уласцівасці нататкі"
 
@@ -1256,6 +1256,7 @@ msgid "Markup Type"
 msgstr "Рэжым разметкі"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:714
 msgid "Highlight"
 msgstr "Маркіраваць"
 
@@ -1264,10 +1265,12 @@ msgid "Strike out"
 msgstr "Закрэсліць"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:744
 msgid "Underline"
 msgstr "Падкрэсліць"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:724
 msgid "Squiggly"
 msgstr "Хвалістая лінія"
 
@@ -1275,6 +1278,7 @@ msgstr "Хвалістая лінія"
 msgid "_Apply"
 msgstr "_Ужыць"
 
+#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.ui:71
 msgid "Search"
 msgstr "Пошук"
@@ -1295,39 +1299,39 @@ msgstr "Змест"
 msgid "Annotations"
 msgstr "Нататкі"
 
-#: shell/resources/pps-document-view.ui:148
+#: shell/resources/pps-document-view.ui:153
 msgid "Attachments"
 msgstr "Далучаныя файлы"
 
-#: shell/resources/pps-document-view.ui:167
+#: shell/resources/pps-document-view.ui:171
 msgid "Layers"
 msgstr "Слаі"
 
-#: shell/resources/pps-document-view.ui:204
+#: shell/resources/pps-document-view.ui:209
 msgid "Toggle Sidebar"
 msgstr "Пераключыць бачнасць бакавой панэлі"
 
-#: shell/resources/pps-document-view.ui:210
+#: shell/resources/pps-document-view.ui:215
 msgid "Document Menu"
 msgstr "Меню дакумента"
 
-#: shell/resources/pps-document-view.ui:233 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
 msgid "Document has been digitally signed."
 msgstr "У дакумент дададзены лічбавы подпіс."
 
-#: shell/resources/pps-document-view.ui:234
+#: shell/resources/pps-document-view.ui:239
 msgid "View Signature…"
 msgstr "Праглядзець подпіс…"
 
-#: shell/resources/pps-document-view.ui:267
+#: shell/resources/pps-document-view.ui:272
 msgid "Fit Automatically"
 msgstr "Дапасаваць аўтаматычна"
 
-#: shell/resources/pps-document-view.ui:568
+#: shell/resources/pps-document-view.ui:564
 msgid "Selection too Small"
 msgstr "Выбраная вобласць занадта малая"
 
-#: shell/resources/pps-document-view.ui:569
+#: shell/resources/pps-document-view.ui:565
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1337,19 +1341,19 @@ msgstr ""
 "стварыць больш чытэльны подпіс, націсніце «Пачаць зноў» і намалюйце "
 "прамавугольнік большага памеру."
 
-#: shell/resources/pps-document-view.ui:574
+#: shell/resources/pps-document-view.ui:570
 msgid "Start _Over"
 msgstr "Пачаць _зноў"
 
-#: shell/resources/pps-document-view.ui:575
+#: shell/resources/pps-document-view.ui:571
 msgid "_Sign"
 msgstr "_Падпісаць"
 
-#: shell/resources/pps-document-view.ui:581
+#: shell/resources/pps-document-view.ui:577
 msgid "Abort Printing?"
 msgstr "Перапыніць друк?"
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.ui:578
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1357,164 +1361,167 @@ msgstr ""
 "Маецца адно ці некалькі актыўных заданняў друку. Калі закрыць гэта акно, "
 "заданні друку з чаргі не будуць выкананы."
 
-#: shell/resources/pps-document-view.ui:585
+#: shell/resources/pps-document-view.ui:581
 msgid "Abort _Print and Close"
 msgstr "_Перапыніць друк і закрыць"
 
-#: shell/resources/pps-document-view.ui:586 shell/src/document_view.rs:714
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/resources/pps-document-view.ui:582 shell/src/document_view.rs:716
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Скасаваць"
 
-#: shell/resources/pps-document-view.ui:587
+#: shell/resources/pps-document-view.ui:583
 msgid "Close _After Printing"
 msgstr "Закрыць _пасля друку"
 
-#: shell/resources/pps-document-view.ui:601
+#: shell/resources/pps-document-view.ui:597
 msgid "Open…"
 msgstr "Адкрыць…"
 
-#: shell/resources/pps-document-view.ui:607
+#: shell/resources/pps-document-view.ui:603
 msgid "Ni_ght Mode"
 msgstr "_Начны рэжым"
 
-#: shell/resources/pps-document-view.ui:613 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:609 shell/resources/pps-window.ui:171
 msgid "_Keyboard Shortcuts"
 msgstr "_Спалучэнні клавіш"
 
-#: shell/resources/pps-document-view.ui:617 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:613 shell/resources/pps-window.ui:175
 msgid "_Help"
 msgstr "Да_ведка"
 
-#: shell/resources/pps-document-view.ui:621 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:617 shell/resources/pps-window.ui:179
 msgid "_About Papers"
 msgstr "_Аб праграме"
 
-#: shell/resources/pps-document-view.ui:629
+#: shell/resources/pps-document-view.ui:625
 msgid "_Print…"
 msgstr "_Друк…"
 
-#: shell/resources/pps-document-view.ui:633
+#: shell/resources/pps-document-view.ui:629
 msgid "Fullscreen"
 msgstr "На ўвесь экран"
 
-#: shell/resources/pps-document-view.ui:637
+#: shell/resources/pps-document-view.ui:633
 msgid "Present as Slideshow"
 msgstr "Паказаць як слайдшоу"
 
-#: shell/resources/pps-document-view.ui:643
+#: shell/resources/pps-document-view.ui:639
 msgid "Sign D_igitally…"
 msgstr "Паставіць _лічбавы подпіс…"
 
-#: shell/resources/pps-document-view.ui:649
+#: shell/resources/pps-document-view.ui:645
 msgid "Open a C_opy"
 msgstr "Адкрыць _копію"
 
-#: shell/resources/pps-document-view.ui:653
+#: shell/resources/pps-document-view.ui:649
 msgid "Open With…"
 msgstr "Адкрыць праз…"
 
-#: shell/resources/pps-document-view.ui:657
+#: shell/resources/pps-document-view.ui:653
 msgid "_Save As…"
 msgstr "_Захаваць як…"
 
-#: shell/resources/pps-document-view.ui:663
+#: shell/resources/pps-document-view.ui:659
 msgid "_Continuous"
 msgstr "_Бесперапынная прагортка"
 
-#: shell/resources/pps-document-view.ui:667
+#: shell/resources/pps-document-view.ui:663
 msgid "_Dual"
 msgstr "_Дзве старонкі"
 
-#: shell/resources/pps-document-view.ui:671
+#: shell/resources/pps-document-view.ui:667
 msgid "_Odd Pages Left"
 msgstr "_Няцотныя старонкі злева"
 
-#: shell/resources/pps-document-view.ui:675
+#: shell/resources/pps-document-view.ui:671
 msgid "Right to Left Document"
 msgstr "Дакумент справа налева"
 
-#: shell/resources/pps-document-view.ui:681
+#: shell/resources/pps-document-view.ui:677
 msgid "Ro_tate ⤵"
 msgstr "Па_вярнуць ⤵"
 
-#: shell/resources/pps-document-view.ui:687
+#: shell/resources/pps-document-view.ui:683
 msgid "Document Prop_erties"
 msgstr "_Уласцівасці дакумента"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.ui:734
+msgid "Strikethrough"
+msgstr "Закрэсліванне"
+
+#: shell/resources/pps-document-view.ui:838
 msgid "_Open Link"
 msgstr "_Адкрыць спасылку"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.ui:843
 msgid "_Copy Link Address"
 msgstr "_Скапіяваць адрас спасылкі"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.ui:848
 msgid "_Go To"
 msgstr "_Перайсці"
 
-#: shell/resources/pps-document-view.ui:807
+#: shell/resources/pps-document-view.ui:853
 msgid "Open in New _Window"
 msgstr "Адкрыць у _новым акне"
 
-#: shell/resources/pps-document-view.ui:814
+#: shell/resources/pps-document-view.ui:860
 msgid "_Copy"
 msgstr "_Скапіяваць"
 
-#: shell/resources/pps-document-view.ui:818
+#: shell/resources/pps-document-view.ui:864
 msgid "Select _All"
 msgstr "Вылучыць _усе"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.ui:870
 msgid "_Save Image As…"
 msgstr "_Захаваць выяву як…"
 
-#: shell/resources/pps-document-view.ui:829
+#: shell/resources/pps-document-view.ui:875
 msgid "Copy _Image"
 msgstr "Скапіяваць _выяву"
 
-#: shell/resources/pps-document-view.ui:836
-#: shell/resources/pps-document-view.ui:874
-#: shell/resources/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.ui:882
+#: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Адкрыць далучаны файл"
 
-#: shell/resources/pps-document-view.ui:841
-#: shell/resources/pps-document-view.ui:878
-#: shell/resources/pps-sidebar-annotations.ui:90
+#: shell/resources/pps-document-view.ui:887
+#: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Захаваць далучаны файл як…"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.ui:895
 msgid "Annotation _Properties…"
 msgstr "Уласцівасці _нататкі…"
 
-#: shell/resources/pps-document-view.ui:854
+#: shell/resources/pps-document-view.ui:900
 msgid "R_emove Annotation"
 msgstr "_Выдаліць нататку"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.ui:907
 msgid "_Add Text Annotation"
 msgstr "Дадаць тэкставую _нататку"
 
-#: shell/resources/pps-document-view.ui:866
+#: shell/resources/pps-document-view.ui:912
 msgid "_Highlight Selected Text"
 msgstr "Маркіраваць вылучаны тэкст"
 
-#: shell/resources/pps-find-sidebar.ui:69
+#: shell/resources/pps-find-sidebar.ui:64
 msgid "No Results Found"
 msgstr "Нічога не знойдзена"
 
-#: shell/resources/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
 msgstr "Паспрабуйце змяніць пошукавы запыт"
 
-#: shell/resources/pps-find-sidebar.ui:84
+#: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
 msgstr "Выканаць пошук"
 
-#: shell/resources/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
 msgstr "Тут з'явяцца вынікі пошуку"
 
@@ -1528,7 +1535,7 @@ msgstr "_Скасаваць"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "Патрабуецца пароль"
 
@@ -1621,7 +1628,7 @@ msgstr "_Улічваць рэгістр літар"
 msgid "No Annotations"
 msgstr "Няма нататак"
 
-#: shell/resources/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-sidebar-annotations.ui:74
 msgid "Remove Annotation"
 msgstr "Выдаліць нататку"
 
@@ -1665,11 +1672,11 @@ msgstr "Не ўдалося адкрыць дакумент"
 msgid "_Open Other File…"
 msgstr "_Адкрыць іншы файл…"
 
-#: shell/src/application.rs:203
-msgid "© 1996–2024 The Papers authors"
-msgstr "© 1996–2023 аўтары Papers"
+#: shell/src/application.rs:212
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 аўтары Papers"
 
-#: shell/src/application.rs:204
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "breate https://launchpad.net/~breate-by\n"
@@ -1685,105 +1692,105 @@ msgstr ""
 "  Yuras https://launchpad.net/~shumovichy\n"
 "  Клюеў Аляксандр https://launchpad.net/~plaga-medicum"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Надпіс на старонцы дакумента."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "СТАРОНКА"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Нумар старонкі дакумента."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "НУМАР"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Месца з назвай, якое трэба паказаць."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "НАЗВА_МЕСЦА"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:344
 msgid "Run papers in fullscreen mode."
 msgstr "Запусціць papers у поўнаэкранным рэжыме."
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:353
 msgid "Run papers in presentation mode."
 msgstr "Запусціць papers у рэжыме прэзентацыі."
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr "Паказаць нумар версіі праграмы."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[ФАЙЛ...]"
 
-#: shell/src/document_view.rs:297
+#: shell/src/document_view.rs:299
 msgid "View Details"
 msgstr "Паказаць падрабязнасці"
 
-#: shell/src/document_view.rs:693
+#: shell/src/document_view.rs:695
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr "Дакумент змяшчае новыя або змененыя нататкі і запоўненыя графы формы."
 
-#: shell/src/document_view.rs:694
+#: shell/src/document_view.rs:696
 msgid "Document contains form fields that have been filled out."
 msgstr "Дакумент змяшчае запоўненыя графы формы."
 
-#: shell/src/document_view.rs:695
+#: shell/src/document_view.rs:697
 msgid "Document contains new or modified annotations."
 msgstr "Дакумент змяшчае новыя або змененыя нататкі."
 
-#: shell/src/document_view.rs:703
+#: shell/src/document_view.rs:705
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Калі не захаваць копію, усе змены будуць незваротна страчаны."
 
-#: shell/src/document_view.rs:704
+#: shell/src/document_view.rs:706
 msgid "Save Changes to a Copy?"
 msgstr "Захаваць змены ў копію?"
 
-#: shell/src/document_view.rs:713
+#: shell/src/document_view.rs:715
 msgid "Close _Without Saving"
 msgstr "Закрыць _без захавання"
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:717
 msgid "_Save a Copy"
 msgstr "Захаваць _копію"
 
-#: shell/src/document_view/actions.rs:750
+#: shell/src/document_view/actions.rs:762
 msgid "Save Image"
 msgstr "Захаваць выяву"
 
-#: shell/src/document_view/actions.rs:786
+#: shell/src/document_view/actions.rs:798
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Не ўдалося знайсці адпаведны фармат, каб захаваць выяву"
 
-#: shell/src/document_view/actions.rs:809
+#: shell/src/document_view/actions.rs:821
 msgid "The image could not be saved."
 msgstr "Не ўдалося захаваць выяву."
 
-#: shell/src/document_view/actions.rs:912
+#: shell/src/document_view/actions.rs:924
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Рэжым навігацыі карэткай уключаны, каб адключыць – націсніце F7."
 
-#: shell/src/document_view/actions.rs:914
+#: shell/src/document_view/actions.rs:926
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Рэжым навігацыі карэткай адключаны, каб уключыць – націсніце F7."
 
-#: shell/src/document_view/actions.rs:950
+#: shell/src/document_view/actions.rs:1028 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Не ўдалося адкрыць далучаны файл"
 
-#: shell/src/document_view/actions.rs:980
+#: shell/src/document_view/actions.rs:1061
 msgid "The attachment could not be saved."
 msgstr "Не ўдалося захаваць далучаны файл."
 
@@ -1799,19 +1806,19 @@ msgstr "Дакумент не змяшчае старонак"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Дакумент змяшчае толькі пустыя старонкі"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "Не ўдалося захаваць файл як «{}»."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "Захаваць як…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Намалюйце прамавугольнік, каб уставіць поле подпісу"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1819,57 +1826,74 @@ msgstr ""
 "Лічбавы подпіс {}\n"
 "Дата: {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "Патрабуецца сертыфікат"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "Выберыце сертыфікат подпісу"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "Выбраць"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "Каб падпісаць дакумент, патрабуецца сертыфікат"
 
-#: shell/src/document_view/io.rs:652
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "Захаваць падпісаны файл"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Увядзіце пароль для {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "_Уваход"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
 msgstr "Заданне друку «{}»"
 
 #: shell/src/document_view/print.rs:78
-msgid "No pending job in queue"
+msgid "No pending jobs in queue"
 msgstr "У чарзе няма заданняў"
 
-#: shell/src/document_view/print.rs:80
-msgid "{} pending jobs in queue"
-msgstr "{} заданняў у чарзе"
+#: shell/src/document_view/print.rs:81
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "У чарзе {} заданне"
+msgstr[1] "У чарзе {} заданні"
+msgstr[2] "У чарзе {} заданняў"
 
-#: shell/src/document_view/signals.rs:250
+#: shell/src/document_view/signals.rs:225
 msgid "Unable to open external link"
 msgstr "Не ўдалося адкрыць знешнюю спасылку"
 
-#: shell/src/document_view/signals.rs:279
-msgid "Security alert: this document has been prevented from opening the file"
+#: shell/src/document_view/signals.rs:253
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
-"Папярэджанне сістэмы бяспекі: гэтаму дакументу было забаронена адкрыць файл"
+"Папярэджанне сістэмы бяспекі: гэтаму дакументу было забаронена адкрыць файл "
+"«{}»"
 
-#: shell/src/document_view/signals.rs:449 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Старонка {}"
 
-#: shell/src/page_selector.rs:226 shell/src/page_selector.rs:244
-msgid "({} of {})"
-msgstr "({} з {})"
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} з {totalpages})"
 
-#: shell/src/page_selector.rs:228 shell/src/page_selector.rs:246
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
 msgid "of {}"
 msgstr "з {}"
 
@@ -1975,6 +1999,9 @@ msgstr "Час выдання сертыфіката"
 msgid "Certificate's Expiration Time"
 msgstr "Час заканчэння сертыфіката"
 
+#~ msgid "({} of {})"
+#~ msgstr "({} з {})"
+
 #~ msgid "Trusted"
 #~ msgstr "Надзейны"
 
@@ -2013,13 +2040,6 @@ msgstr "Час заканчэння сертыфіката"
 
 #~ msgid "File Saved"
 #~ msgstr "Файл захаваны"
-
-#, c-format
-#~ msgid "Please enter password for %s"
-#~ msgstr "Увядзіце пароль для %s"
-
-#~ msgid "_Login"
-#~ msgstr "_Уваход"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Закладкі"
