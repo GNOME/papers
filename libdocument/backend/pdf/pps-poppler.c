@@ -86,8 +86,6 @@ struct _PdfDocument {
 	gboolean missing_fonts;
 
 	PdfPrintContext *print_ctx;
-
-	GHashTable *annots;
 };
 
 static void pdf_document_security_iface_init (PpsDocumentSecurityInterface *iface);
@@ -181,7 +179,6 @@ pdf_document_dispose (GObject *object)
 	PdfDocument *self = PDF_DOCUMENT (object);
 
 	g_clear_pointer (&self->print_ctx, pdf_print_context_free);
-	g_clear_pointer (&self->annots, g_hash_table_destroy);
 	g_clear_object (&self->document);
 	g_clear_pointer (&self->fonts_iter, poppler_fonts_iter_free);
 
@@ -192,10 +189,6 @@ static void
 pdf_document_init (PdfDocument *self)
 {
 	self->password = NULL;
-	self->annots = g_hash_table_new_full (g_direct_hash,
-	                                      g_direct_equal,
-	                                      (GDestroyNotify) NULL,
-	                                      (GDestroyNotify) g_list_free);
 }
 
 static void
@@ -2893,14 +2886,8 @@ static GList *
 pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annotations,
                                           PpsPage *page)
 {
-	PdfDocument *self = PDF_DOCUMENT (document_annotations);
-	GList *annots =
-	    (GList *) g_hash_table_lookup (self->annots,
-	                                   GINT_TO_POINTER (page->index));
+	GList *annots = NULL;
 	GList *poppler_annots;
-
-	if (annots)
-		return annots;
 
 	poppler_annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
 	for (GList *list = poppler_annots; list; list = list->next) {
@@ -2935,15 +2922,7 @@ pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annot
 
 	poppler_page_free_annot_mapping (poppler_annots);
 
-	if (!annots)
-		return NULL;
-
-	annots = g_list_reverse (annots);
-	g_hash_table_insert (self->annots,
-	                     GINT_TO_POINTER (page->index),
-	                     g_list_copy (annots));
-
-	return annots;
+	return g_list_reverse (annots);
 }
 
 static gboolean
@@ -2960,20 +2939,10 @@ pdf_document_annotations_remove_annotation (PpsDocumentAnnotations *document_ann
 	PpsPage *page = pps_annotation_get_page (annot);
 	PopplerPage *poppler_page = POPPLER_PAGE (page->backend_page);
 	PopplerAnnot *poppler_annot;
-	GList *annot_list;
 
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
 
 	poppler_page_remove_annot (poppler_page, poppler_annot);
-
-	/* We don't check for self->annots, if it were NULL then something is really wrong */
-	annot_list = (GList *) g_hash_table_lookup (self->annots,
-	                                            GINT_TO_POINTER (page->index));
-	if (annot_list) {
-		annot_list = g_list_remove (annot_list, annot);
-		if (g_list_length (annot_list) == 0)
-			g_hash_table_remove (self->annots, GINT_TO_POINTER (page->index));
-	}
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
@@ -3084,7 +3053,6 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	PdfDocument *self = PDF_DOCUMENT (document_annotations);
 	PpsPage *page = pps_annotation_get_page (annot);
 	PopplerAnnot *poppler_annot;
-	GList *list = NULL;
 	PopplerRectangle poppler_rect;
 	PopplerColor poppler_color;
 	GdkRGBA color;
@@ -3200,19 +3168,7 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	                        poppler_annot,
 	                        (GDestroyNotify) g_object_unref);
 
-	list = (GList *) g_hash_table_lookup (self->annots,
-	                                      GINT_TO_POINTER (page->index));
-
 	annot_set_unique_name (annot);
-
-	if (list) {
-		list = g_list_append (list, annot);
-	} else {
-		list = g_list_append (list, annot);
-		g_hash_table_insert (self->annots,
-		                     GINT_TO_POINTER (page->index),
-		                     g_list_copy (list));
-	}
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
