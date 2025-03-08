@@ -1,3 +1,19 @@
+Papers 47.4
+--------------
+
+* Papers 47.4 includes a fix for Poppler 24.12 and newer, where previously an
+incorrect colour depth was used, whose fix resulted in a breaking change:
+1cc534e47 ("libdocument, pdf: use the color conversion function to specify colors for signing data")
+
+* Other fixes:
+- #353 Application crashes on PDF refresh (at least partially, due to conflation of similar crashes)
+- missing focus outline
+- stalled print preview
+ #388 Blurry pdf rendering using fractional scaling
+
+* Translation updates:
+- Fix escaping issue in Hindi (Jeremy Bícha)
+
 Papers 47.3
 --------------
 
