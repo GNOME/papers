@@ -3290,7 +3290,7 @@ get_annotation_mapping_at_location (PpsView *view,
 	if (!annot)
 		return NULL;
 
-	annotation_mapping->data = annot;
+	annotation_mapping->data = g_object_ref (annot);
 	pps_annotation_get_area (annot, &annotation_mapping->area);
 
 	return annotation_mapping;
