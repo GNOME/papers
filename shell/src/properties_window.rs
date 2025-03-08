@@ -104,7 +104,7 @@ mod imp {
                 || self.signatures_page.is_visible()
             {
                 self.header_bar
-                    .set_title_widget(Some(&self.view_switcher.clone()));
+                    .set_title_widget(Some(&self.view_switcher.get()));
             } else {
                 self.header_bar.set_title_widget(gtk::Widget::NONE);
             }

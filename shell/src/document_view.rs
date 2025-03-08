@@ -249,7 +249,7 @@ mod imp {
             self.document_action_group
                 .lookup_action("find")
                 .unwrap()
-                .bind_property("enabled", &self.find_sidebar.clone(), "visible")
+                .bind_property("enabled", &self.find_sidebar.get(), "visible")
                 .sync_create()
                 .build();
 
@@ -268,7 +268,7 @@ mod imp {
             self.find_sidebar.set_search_context(Some(&search_context));
             self.view.set_search_context(&search_context);
             self.view
-                .set_annotations_context(&self.annots_context.clone());
+                .set_annotations_context(&self.annots_context.get());
             self.search_context.replace(Some(search_context));
         }
     }
@@ -301,7 +301,7 @@ mod imp {
                 toast.connect_button_clicked(glib::clone!(
                     #[weak(rename_to = obj)]
                     self,
-                    move |_| obj.error_alert.present(Some(&obj.obj().clone()))
+                    move |_| obj.error_alert.present(Some(obj.obj().as_ref()))
                 ));
 
                 self.error_alert.set_heading(Some(msg));
@@ -350,7 +350,7 @@ mod imp {
                 .set_enum("sizing-mode", sizing_mode.into_glib());
             if sizing_mode == SizingMode::Free {
                 let zoom = self.model.scale();
-                let dpi = Document::misc_get_widget_dpi(&self.obj().clone());
+                let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
                 let _ = self.default_settings.set_double("zoom", zoom * 72. / dpi);
             }
 
@@ -398,7 +398,7 @@ mod imp {
             // the settings
 
             self.default_settings
-                .bind("sidebar-page", &self.sidebar.clone(), "visible-child-name")
+                .bind("sidebar-page", &self.sidebar.get(), "visible-child-name")
                 .get_no_changes()
                 .build();
         }
@@ -466,7 +466,7 @@ mod imp {
             // Zoom
             if self.model.sizing_mode() == SizingMode::Free {
                 if let Some(zoom) = metadata.double("zoom") {
-                    let dpi = Document::misc_get_widget_dpi(&self.obj().clone());
+                    let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
                     let zoom = zoom * dpi / 72.;
                     self.model.set_scale(zoom);
                 }
@@ -552,7 +552,7 @@ mod imp {
             self.history.freeze();
 
             self.sidebar_stack
-                .set_visible_child(&self.find_sidebar.clone());
+                .set_visible_child(&self.find_sidebar.get());
             self.find_sidebar.grab_focus();
             self.document_action_group
                 .change_action_state("show-sidebar", &true.into());
@@ -580,7 +580,7 @@ mod imp {
 
             self.sidebar_was_open_before_find.set(true);
 
-            self.sidebar_stack.set_visible_child(&self.sidebar.clone());
+            self.sidebar_stack.set_visible_child(&self.sidebar.get());
 
             self.set_action_enabled("find-next", false);
             self.set_action_enabled("find-previous", false);
@@ -650,11 +650,10 @@ mod imp {
             dialog: &gtk::FileDialog,
             dir: UserDirectory,
         ) {
-            let settings = self.settings.clone();
+            let settings = self.settings.get();
             let key = Self::settings_key_for_directory(dir);
 
-            let folder =
-                SettingsExtManual::get::<Option<String>>(&settings, &key).map(PathBuf::from);
+            let folder = settings.get::<Option<String>>(&key).map(PathBuf::from);
             let folder = folder
                 .or_else(|| glib::user_special_dir(dir))
                 .unwrap_or_else(glib::home_dir);
@@ -671,10 +670,12 @@ mod imp {
                 .and_then(|f| f.path())
                 .and_then(|path| path.into_os_string().into_string().ok());
 
-            let settings = self.settings.clone();
+            let settings = self.settings.get();
             let key = Self::settings_key_for_directory(dir);
 
-            SettingsExtManual::set(&settings, &key, path).expect("Failed to save folder path");
+            settings
+                .set(&key, path)
+                .expect("Failed to save folder path");
         }
 
         pub(super) fn check_document_modified(&self) -> bool {
@@ -739,7 +740,7 @@ mod imp {
                 ),
             );
 
-            dialog.present(Some(&self.obj().clone()));
+            dialog.present(Some(self.obj().as_ref()));
 
             true
         }

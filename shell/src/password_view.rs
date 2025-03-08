@@ -139,7 +139,7 @@ mod imp {
 
             dialog
                 .main
-                .insert_action_group("password", Some(&self.action_group.clone()));
+                .insert_action_group("password", Some(&self.action_group.get()));
 
             let body = gettext_f(
                 "The document “{}” is locked and requires a password before it can be opened",
@@ -153,7 +153,7 @@ mod imp {
             self.dialog.replace(Some(dialog));
 
             main.choose(
-                &self.obj().clone(),
+                self.obj().as_ref(),
                 gio::Cancellable::NONE,
                 glib::clone![
                     #[weak(rename_to = obj)]

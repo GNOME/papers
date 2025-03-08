@@ -600,7 +600,7 @@ impl imp::PpsDocumentView {
             dialog.set_close_response("close");
         }
 
-        dialog.present(Some(&self.obj().clone()));
+        dialog.present(Some(self.obj().as_ref()));
     }
 
     fn certificate_save_file(&self, path: impl AsRef<std::path::Path>) {

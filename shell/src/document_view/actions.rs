@@ -62,7 +62,7 @@ impl imp::PpsDocumentView {
             self.annot_menu.insert_item(0, &item);
 
             self.view_popup
-                .add_child(&self.annot_menu_child.clone(), "palette");
+                .add_child(&self.annot_menu_child.get(), "palette");
         } else {
             self.set_action_enabled("add-text-annotation", false);
         }
@@ -694,7 +694,7 @@ impl imp::PpsDocumentView {
         let properties = PpsPropertiesWindow::new();
 
         properties.set_document(self.model.document());
-        properties.present(Some(&self.obj().clone()));
+        properties.present(Some(self.obj().as_ref()));
     }
 
     fn cmd_escape(&self) {
@@ -704,7 +704,7 @@ impl imp::PpsDocumentView {
             .is_some_and(|w| w == *self.find_sidebar)
             && self.find_sidebar.focus_child().is_some()
         {
-            WidgetExt::activate_action(&self.obj().clone(), "doc.toggle-find", None).unwrap();
+            WidgetExt::activate_action(self.obj().as_ref(), "doc.toggle-find", None).unwrap();
         } else if self.parent_window().is_fullscreen() {
             self.parent_window()
                 .dynamic_cast::<gio::ActionGroup>()
@@ -909,7 +909,7 @@ impl imp::PpsDocumentView {
             ),
         );
 
-        dialog.present(Some(&self.obj().clone()));
+        dialog.present(Some(self.obj().as_ref()));
     }
 
     fn cmd_view_toggle_caret_navigation(&self) {
@@ -989,7 +989,7 @@ impl imp::PpsDocumentView {
 
     fn cmd_add_text_annotation(&self) {
         let (x, y);
-        if let Some((px, py)) = Document::misc_get_pointer_position(&self.view.clone()) {
+        if let Some((px, py)) = Document::misc_get_pointer_position(&self.view.get()) {
             x = px;
             y = py
         } else {

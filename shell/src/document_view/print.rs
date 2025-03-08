@@ -28,7 +28,7 @@ impl imp::PpsDocumentView {
             return false;
         }
 
-        self.print_cancel_alert.present(Some(&self.obj().clone()));
+        self.print_cancel_alert.present(Some(self.obj().as_ref()));
         true
     }
 

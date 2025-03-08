@@ -413,7 +413,7 @@ mod imp {
             ];
 
             self.action_group.add_action_entries(action_entries);
-            obj.insert_action_group("links", Some(&self.action_group.clone()));
+            obj.insert_action_group("links", Some(&self.action_group.get()));
 
             if let Some(model) = self.obj().document_model() {
                 model.connect_document_notify(glib::clone!(
@@ -887,7 +887,7 @@ mod imp {
 
                     let point = box_
                         .compute_point(
-                            &obj.obj().clone(),
+                            obj.obj().as_ref(),
                             &gtk::graphene::Point::new(x as f32, y as f32),
                         )
                         .unwrap();

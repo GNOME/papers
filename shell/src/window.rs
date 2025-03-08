@@ -271,7 +271,7 @@ mod imp {
                 ),
             );
 
-            dialog.present(Some(&self.obj().clone()));
+            dialog.present(Some(self.obj().as_ref()));
 
             true
         }
@@ -453,7 +453,7 @@ mod imp {
                 toast.connect_button_clicked(glib::clone!(
                     #[weak(rename_to = obj)]
                     self,
-                    move |_| obj.error_alert.present(Some(&obj.obj().clone()))
+                    move |_| obj.error_alert.present(Some(obj.obj().as_ref()))
                 ));
 
                 self.error_alert.set_heading(Some(msg));
@@ -511,7 +511,7 @@ mod imp {
             };
 
             if e.matches(gio::IOErrorEnum::NotMounted) {
-                let operation = gtk::MountOperation::new(Some(&self.obj().clone()));
+                let operation = gtk::MountOperation::new(Some(self.obj().as_ref()));
 
                 if let Err(e) = source
                     .mount_enclosing_volume_future(gio::MountMountFlags::NONE, Some(&operation))
@@ -888,7 +888,7 @@ mod imp {
                                 WindowRunMode::Presentation => obj.run_presentation(),
                                 WindowRunMode::Fullscreen => {
                                     WidgetExt::activate_action(
-                                        &obj.obj().clone(),
+                                        obj.obj().as_ref(),
                                         "win.fullscreen",
                                         None,
                                     )
@@ -1031,11 +1031,10 @@ mod imp {
         }
 
         fn file_dialog_restore_folder(&self, dialog: &gtk::FileDialog, dir: UserDirectory) {
-            let settings = self.settings.clone();
+            let settings = self.settings.get();
             let key = Self::settings_key_for_directory(dir);
 
-            let folder =
-                SettingsExtManual::get::<Option<String>>(&settings, &key).map(PathBuf::from);
+            let folder = settings.get::<Option<String>>(&key).map(PathBuf::from);
             let folder = folder
                 .or_else(|| glib::user_special_dir(dir))
                 .unwrap_or_else(glib::home_dir);
@@ -1052,10 +1051,12 @@ mod imp {
                 .and_then(|f| f.path())
                 .and_then(|path| path.into_os_string().into_string().ok());
 
-            let settings = self.settings.clone();
+            let settings = self.settings.get();
             let key = Self::settings_key_for_directory(dir);
 
-            SettingsExtManual::set(&settings, &key, path).expect("Failed to save folder path");
+            settings
+                .set(&key, path)
+                .expect("Failed to save folder path");
         }
 
         fn cmd_file_open(&self) {
@@ -1069,7 +1070,7 @@ mod imp {
                 #[weak(rename_to = obj)]
                 self,
                 async move {
-                    let Ok(files) = dialog.open_multiple_future(Some(&obj.obj().clone())).await
+                    let Ok(files) = dialog.open_multiple_future(Some(obj.obj().as_ref())).await
                     else {
                         return;
                     };
@@ -1176,7 +1177,7 @@ mod imp {
 
         #[template_callback]
         fn presentation_finished(&self) {
-            WidgetExt::activate_action(&self.obj().clone(), "win.escape", None)
+            WidgetExt::activate_action(self.obj().as_ref(), "win.escape", None)
                 .expect("Can't activate action win.escape");
         }
 

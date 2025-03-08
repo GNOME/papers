@@ -288,7 +288,7 @@ impl imp::PpsDocumentView {
 
     fn do_action_named(&self, action: &papers_document::LinkAction) {
         let Some(name) = action.name() else { return };
-        let obj = self.obj().clone();
+        let obj = self.obj();
 
         match name.as_str() {
             _ if name.eq_ignore_ascii_case("FirstPage") => {
@@ -308,7 +308,7 @@ impl imp::PpsDocumentView {
                 .document_action_group
                 .activate_action("select-page", None),
             _ if name.eq_ignore_ascii_case("Find") => {
-                let _ = WidgetExt::activate_action(&obj, "doc.find", None);
+                let _ = WidgetExt::activate_action(obj.as_ref(), "doc.find", None);
             }
             _ if name.eq_ignore_ascii_case("Close") => {
                 obj.native().and_downcast::<gtk::Window>().unwrap().close()
@@ -532,7 +532,7 @@ impl imp::PpsDocumentView {
         if self
             .view
             .compute_point(
-                &self.view_popup.clone(),
+                &self.view_popup.get(),
                 &graphene::Point::new(x as f32, y as f32),
             )
             .is_none()
@@ -618,7 +618,7 @@ impl imp::PpsDocumentView {
         if let Some(metadata) = self.metadata() {
             if is_free && !self.is_empty() {
                 let zoom = model.scale();
-                let dpi = Document::misc_get_widget_dpi(&self.obj().clone());
+                let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
 
                 metadata.set_double("zoom", zoom * 72. / dpi);
             }
@@ -728,7 +728,7 @@ impl imp::PpsDocumentView {
         properties.set_visible_page_name(Some("signatures"));
         properties.set_document(self.document());
 
-        properties.present(Some(&self.obj().clone()));
+        properties.present(Some(self.obj().as_ref()));
     }
 
     #[template_callback]
@@ -743,7 +743,7 @@ impl imp::PpsDocumentView {
     }
 
     fn show_signature_rect_too_small_warning(&self) {
-        self.rect_small_alert.present(Some(&self.obj().clone()));
+        self.rect_small_alert.present(Some(self.obj().as_ref()));
     }
 
     fn calculate_font_size(
