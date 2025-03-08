@@ -7216,6 +7216,8 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 
 	pps_view_remove_all (view);
 	clear_caches (view);
+	if (pps_view_has_selection (view))
+		clear_selection (view);
 
 	if (document == NULL)
 		return;
