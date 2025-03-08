@@ -945,12 +945,12 @@ pps_view_scroll (PpsView *view,
                  GtkScrollType scroll,
                  GtkOrientation orientation)
 {
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GtkWidget *parent_window = gtk_widget_get_parent (GTK_WIDGET (view));
 	GtkAdjustment *adjustment;
-	gdouble value, increment, upper, lower, page_size, step_increment, prev_value;
+	gdouble increment, upper, lower, page_size, step_increment, prev_value, new_value;
 	gboolean first_page = FALSE, last_page = FALSE;
 	AdwAnimation *animation;
-
-	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (priv->key_binding_handled || priv->caret_enabled)
 		return;
@@ -980,8 +980,8 @@ pps_view_scroll (PpsView *view,
 	/* Assign values for increment and vertical adjustment */
 	adjustment = orientation == GTK_ORIENTATION_HORIZONTAL ? priv->hadjustment : priv->vadjustment;
 	animation = orientation == GTK_ORIENTATION_HORIZONTAL ? priv->scroll_animation_horizontal : priv->scroll_animation_vertical;
-	value = gtk_adjustment_get_value (adjustment);
-	prev_value = value;
+	new_value = gtk_adjustment_get_value (adjustment);
+	prev_value = new_value;
 	upper = gtk_adjustment_get_upper (adjustment);
 	lower = gtk_adjustment_get_lower (adjustment);
 	page_size = gtk_adjustment_get_page_size (adjustment);
@@ -996,51 +996,51 @@ pps_view_scroll (PpsView *view,
 	switch (scroll) {
 	case GTK_SCROLL_PAGE_BACKWARD:
 		/* Do not jump backwards if at the first page */
-		if (value == lower && first_page) {
+		if (new_value == lower && first_page) {
 			/* Do nothing */
 			/* At the top of a page, assign the upper bound limit of previous page */
-		} else if (value == lower) {
-			value = upper - page_size;
+		} else if (new_value == lower) {
+			new_value = upper - page_size;
 			pps_view_previous_page (view);
 			/* Jump to the top */
 		} else {
 			increment = compute_scroll_increment (view, GTK_SCROLL_PAGE_BACKWARD);
-			value = MAX (value - increment, lower);
+			new_value = MAX (new_value - increment, lower);
 		}
 		break;
 	case GTK_SCROLL_PAGE_FORWARD:
 		/* Do not jump forward if at the last page */
-		if (value == (upper - page_size) && last_page) {
+		if (new_value == (upper - page_size) && last_page) {
 			/* Do nothing */
 			/* At the bottom of a page, assign the lower bound limit of next page */
-		} else if (value == (upper - page_size)) {
-			value = 0;
+		} else if (new_value == (upper - page_size)) {
+			new_value = 0;
 			pps_view_next_page (view);
 			/* Jump to the bottom */
 		} else {
 			increment = compute_scroll_increment (view, GTK_SCROLL_PAGE_FORWARD);
-			value = MIN (value + increment, upper - page_size);
+			new_value = MIN (new_value + increment, upper - page_size);
 		}
 		break;
 	case GTK_SCROLL_STEP_BACKWARD:
-		value -= step_increment;
+		new_value -= step_increment;
 		break;
 	case GTK_SCROLL_STEP_FORWARD:
-		value += step_increment;
+		new_value += step_increment;
 		break;
 	case GTK_SCROLL_STEP_DOWN:
-		value -= step_increment / 10;
+		new_value -= step_increment / 10;
 		break;
 	case GTK_SCROLL_STEP_UP:
-		value += step_increment / 10;
+		new_value += step_increment / 10;
 		break;
 	case GTK_SCROLL_START:
-		value = lower;
+		new_value = lower;
 		if (!first_page)
 			pps_view_first_page (view);
 		break;
 	case GTK_SCROLL_END:
-		value = upper - page_size;
+		new_value = upper - page_size;
 		if (!last_page)
 			pps_view_last_page (view);
 		break;
@@ -1048,27 +1048,20 @@ pps_view_scroll (PpsView *view,
 		break;
 	}
 
-	value = CLAMP (value, lower, upper - page_size);
-
-	GtkWidget *parent_window = gtk_widget_get_parent (GTK_WIDGET (view));
+	new_value = CLAMP (new_value, lower, upper - page_size);
 
 	if (GTK_IS_SCROLLED_WINDOW (parent_window)) {
 		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), FALSE);
 		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), TRUE);
 	}
 
-	if (adw_animation_get_state (animation) != ADW_ANIMATION_PLAYING) {
-		adw_timed_animation_set_value_to (ADW_TIMED_ANIMATION (animation), value);
-		adw_timed_animation_set_value_from (ADW_TIMED_ANIMATION (animation), prev_value);
-		adw_animation_play (animation);
-	} else {
-		adw_animation_pause (animation);
-		adw_timed_animation_set_value_from (ADW_TIMED_ANIMATION (animation), prev_value);
-		gdouble end_value = adw_timed_animation_get_value_to (ADW_TIMED_ANIMATION (animation));
-		adw_timed_animation_set_value_to (ADW_TIMED_ANIMATION (animation), end_value + (value - prev_value));
-		adw_animation_reset (animation);
-		adw_animation_play (animation);
+	if (adw_animation_get_state (animation) == ADW_ANIMATION_PLAYING) {
+		new_value += adw_timed_animation_get_value_to (ADW_TIMED_ANIMATION (animation)) - prev_value;
 	}
+	adw_animation_reset (animation);
+	adw_timed_animation_set_value_from (ADW_TIMED_ANIMATION (animation), prev_value);
+	adw_timed_animation_set_value_to (ADW_TIMED_ANIMATION (animation), new_value);
+	adw_animation_play (animation);
 }
 
 #define MARGIN 5
