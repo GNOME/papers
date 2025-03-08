@@ -345,6 +345,7 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 
 	g_list_store_insert_sorted (priv->annots_model, annot,
 	                            (GCompareDataFunc) compare_annot, NULL);
+	g_object_unref (annot);
 
 	g_signal_emit (self, signals[SIGNAL_ANNOT_ADDED], 0, annot);
 
