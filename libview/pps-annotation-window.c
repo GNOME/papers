@@ -157,7 +157,9 @@ pps_annotation_window_set_property (GObject *object,
 
 	switch (prop_id) {
 	case PROP_ANNOTATION:
-		window->annotation = g_value_dup_object (value);
+		// The window doesn't own the annotation, the annotation
+		// owns the window!
+		g_set_weak_pointer (&window->annotation, g_value_get_object (value));
 		break;
 	case PROP_PARENT:
 		window->parent = g_value_get_object (value);
@@ -313,12 +315,17 @@ pps_annotation_window_dispose (GObject *object)
 {
 	PpsAnnotationWindow *window = PPS_ANNOTATION_WINDOW (object);
 
+	// window->annotation is a weak pointer. But must remain available
+	// for the whole life of the window
+	g_assert (window->annotation);
 	g_signal_handlers_disconnect_by_func (window->annotation,
 	                                      G_CALLBACK (pps_annotation_window_label_changed),
 	                                      window);
 	g_signal_handlers_disconnect_by_func (window->annotation,
 	                                      G_CALLBACK (pps_annotation_window_color_changed),
 	                                      window);
+	g_assert (window->annotation);
+	g_clear_weak_pointer (&window->annotation);
 
 	g_clear_object (&window->document);
 
