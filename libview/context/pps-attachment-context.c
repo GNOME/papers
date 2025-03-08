@@ -319,8 +319,9 @@ pps_attachment_context_save_attachments_async (PpsAttachmentContext *context,
                                                gpointer user_data)
 {
 	GtkFileDialog *dialog;
-	GTask *task;
+	g_autoptr (GTask) task = NULL;
 	PpsAttachmentContextSaveData *save_data;
+	g_autoptr (PpsAttachment) first_attachment = NULL;
 
 	g_assert (g_type_is_a (g_list_model_get_item_type (attachments), PPS_TYPE_ATTACHMENT));
 
@@ -339,7 +340,6 @@ pps_attachment_context_save_attachments_async (PpsAttachmentContext *context,
 		                     g_error_new (PPS_ATTACHMENT_CONTEXT_ERROR,
 		                                  PPS_ATTACHMENT_CONTEXT_ERROR_EMPTY_INPUT,
 		                                  "No attachment was selected"));
-		g_object_unref (task);
 		return;
 	}
 
@@ -349,15 +349,16 @@ pps_attachment_context_save_attachments_async (PpsAttachmentContext *context,
 	gtk_file_dialog_set_modal (dialog, TRUE);
 
 	if (g_list_model_get_n_items (attachments) == 1) {
-		gtk_file_dialog_set_initial_name (dialog, pps_attachment_get_name (g_list_model_get_item (attachments, 0)));
+		first_attachment = g_list_model_get_item (attachments, 0);
+		gtk_file_dialog_set_initial_name (dialog, pps_attachment_get_name (first_attachment));
 
 		gtk_file_dialog_save (dialog, parent, cancellable,
 		                      (GAsyncReadyCallback) attachments_save_dialog_response_cb,
-		                      task);
+		                      g_steal_pointer (&task));
 	} else {
 		gtk_file_dialog_select_folder (dialog, parent, cancellable,
 		                               (GAsyncReadyCallback) attachments_save_dialog_response_cb,
-		                               task);
+		                               g_steal_pointer (&task));
 	}
 }
 
