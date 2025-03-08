@@ -277,7 +277,7 @@ pps_job_annots_dispose (GObject *object)
 {
 	PpsJobAnnotsPrivate *priv = JOB_ANNOTS_GET_PRIVATE (PPS_JOB_ANNOTS (object));
 
-	g_clear_pointer (&priv->annots, g_list_free);
+	g_list_free_full (g_steal_pointer (&priv->annots), g_object_unref);
 
 	G_OBJECT_CLASS (pps_job_annots_parent_class)->dispose (object);
 }
