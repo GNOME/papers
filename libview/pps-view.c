@@ -4121,10 +4121,14 @@ static void
 draw_focus (PpsView *view,
             GtkSnapshot *snapshot)
 {
+	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GtkWidget *widget = GTK_WIDGET (view);
 	GdkRectangle rect;
 
 	if (!gtk_widget_has_focus (widget))
+		return;
+
+	if (priv->start_page > priv->focused_element_page || priv->focused_element_page < priv->end_page)
 		return;
 
 	if (!pps_view_get_focused_area (view, &rect))
