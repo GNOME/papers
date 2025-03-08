@@ -527,9 +527,11 @@ pps_view_adjustment_to_page_position (PpsView *view)
 static void
 pps_view_scroll_to_doc_point (PpsView *view, gint page, PpsPoint *point)
 {
+	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble x, y;
 
 	transform_doc_point_to_view_point (view, page, point, &x, &y);
+	priv->current_page = page;
 	scroll_to_view_point (view, x, y);
 }
 
