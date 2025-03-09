@@ -2531,7 +2531,7 @@ show_annotation_windows (PpsView *view,
 	if (priv->annots_context == NULL)
 		return;
 
-	model = pps_annotations_context_get_annots_model (priv->annots_context);
+	model = G_LIST_MODEL (pps_annotations_context_get_annots_model (priv->annots_context));
 
 	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
 		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
@@ -2563,7 +2563,7 @@ hide_annotation_windows (PpsView *view,
                          gint page)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
+	GListModel *model = G_LIST_MODEL (pps_annotations_context_get_annots_model (priv->annots_context));
 
 	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
 		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
@@ -2825,7 +2825,7 @@ pps_view_annots_loaded_cb (PpsAnnotationsContext *annot_context,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
+	GListModel *model = G_LIST_MODEL (pps_annotations_context_get_annots_model (priv->annots_context));
 	gint i;
 	PpsAnnotation *annot;
 
@@ -2834,6 +2834,18 @@ pps_view_annots_loaded_cb (PpsAnnotationsContext *annot_context,
 	     annot = g_list_model_get_item (model, ++i)) {
 		pps_view_connect_annot_signals (view, annot);
 	}
+}
+
+static void
+pps_view_selected_annotation_changed_cb (PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	PpsAnnotation *annotation = gtk_single_selection_get_selected_item (pps_annotations_context_get_annots_model (priv->annots_context));
+
+	if (annotation == NULL)
+		return;
+
+	pps_view_focus_annotation (view, annotation);
 }
 
 /**
@@ -2854,6 +2866,7 @@ pps_view_set_annotations_context (PpsView *view,
 
 	if (priv->annots_context) {
 		g_signal_handlers_disconnect_by_data (priv->annots_context, view);
+		g_signal_handlers_disconnect_by_data (pps_annotations_context_get_annots_model (priv->annots_context), view);
 	}
 	g_set_object (&priv->annots_context, context);
 	g_signal_connect_object (priv->annots_context, "annot-added",
@@ -2865,6 +2878,10 @@ pps_view_set_annotations_context (PpsView *view,
 	g_signal_connect_object (priv->annots_context, "annots-loaded",
 	                         G_CALLBACK (pps_view_annots_loaded_cb),
 	                         view, G_CONNECT_DEFAULT);
+	g_signal_connect_object (pps_annotations_context_get_annots_model (priv->annots_context),
+	                         "notify::selected-item",
+	                         G_CALLBACK (pps_view_selected_annotation_changed_cb),
+	                         view, G_CONNECT_SWAPPED);
 }
 
 /* Caret navigation */
@@ -3646,10 +3663,14 @@ pps_view_do_popup_menu (PpsView *view,
                         gdouble x,
                         gdouble y)
 {
+	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GList *items = NULL;
 	PpsLink *link;
 	PpsImage *image;
 	PpsAnnotation *annot;
+	GtkSingleSelection *annotation_selection_model;
+	GListStore *annotation_model;
+	guint position;
 
 	image = pps_view_get_image_at_location (view, x, y);
 	if (image)
@@ -3660,12 +3681,20 @@ pps_view_do_popup_menu (PpsView *view,
 		items = g_list_prepend (items, link);
 
 	annot = get_annotation_at_location (view, x, y);
-	if (annot)
+	if (annot) {
 		items = g_list_prepend (items, annot);
+		annotation_selection_model = pps_annotations_context_get_annots_model (priv->annots_context);
+		annotation_model = G_LIST_STORE (gtk_single_selection_get_model (annotation_selection_model));
+		if (g_list_store_find (annotation_model, annot, &position))
+			gtk_single_selection_set_selected (annotation_selection_model, position);
+		else
+			gtk_single_selection_set_selected (annotation_selection_model, GTK_INVALID_LIST_POSITION);
+	}
 
 	if (g_list_length (items) > 0 && pps_view_has_selection (view)) {
 		clear_selection (view);
 	}
+
 	g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, items, x, y);
 
 	g_list_free (items);
@@ -4470,7 +4499,7 @@ pps_view_set_enable_spellchecking (PpsView *view,
 #ifdef HAVE_LIBSPELLING
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GListModel *model =
-	    pps_annotations_context_get_annots_model (priv->annots_context);
+	    G_LIST_MODEL (pps_annotations_context_get_annots_model (priv->annots_context));
 
 	g_return_if_fail (PPS_IS_VIEW (view));
 

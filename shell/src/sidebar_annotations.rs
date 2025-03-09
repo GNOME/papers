@@ -1,5 +1,5 @@
 use crate::deps::*;
-use papers_document::{Annotation, AnnotationMarkup, DocumentAnnotations};
+use papers_document::{AnnotationMarkup, DocumentAnnotations};
 use papers_view::AnnotationsContext;
 
 mod imp {
@@ -16,8 +16,6 @@ mod imp {
         list_view: TemplateChild<gtk::ListView>,
         #[template_child]
         stack: TemplateChild<adw::ViewStack>,
-        #[template_child]
-        selection_model: TemplateChild<gtk::SingleSelection>,
     }
 
     #[glib::object_subclass]
@@ -37,18 +35,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for PpsSidebarAnnotations {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
-            SIGNALS.get_or_init(|| {
-                vec![Signal::builder("annot-activated")
-                    .run_last()
-                    .action()
-                    .param_types([Annotation::static_type()])
-                    .build()]
-            })
-        }
-    }
+    impl ObjectImpl for PpsSidebarAnnotations {}
 
     impl WidgetImpl for PpsSidebarAnnotations {}
 
@@ -71,8 +58,11 @@ mod imp {
                 return;
             }
 
-            let binding = context.as_ref().and_then(|context| context.annots_model());
-            let model = binding.as_ref().unwrap();
+            let model = context
+                .as_ref()
+                .and_then(|context| context.annots_model())
+                .and_downcast::<gtk::SingleSelection>()
+                .unwrap();
 
             model.connect_items_changed(glib::clone!(
                 #[weak(rename_to = obj)]
@@ -86,7 +76,25 @@ mod imp {
                 }
             ));
 
-            self.selection_model.set_model(Some(model));
+            model.connect_selected_item_notify(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                #[weak]
+                model,
+                move |_| {
+                    let position = model.selected();
+                    if position != gtk::INVALID_LIST_POSITION {
+                        obj.list_view
+                            .scroll_to(
+                                position,
+                                gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                                None,
+                            );
+                    }
+                }
+            ));
+
+            self.list_view.set_model(Some(&model));
 
             self.annotations_context.replace(context);
         }
@@ -119,13 +127,19 @@ mod imp {
             let model = self
                 .annotations_context()
                 .and_then(|context| context.annots_model())
-                .unwrap();
-            let annot = model
-                .item(position)
-                .and_downcast::<AnnotationMarkup>()
+                .and_downcast::<gtk::SingleSelection>()
                 .unwrap();
 
-            self.obj().emit_by_name::<()>("annot-activated", &[&annot]);
+            // HACK: re-select item to let the view scroll after activation
+            let freeze_guard = model.freeze_notify();
+            model.set_selected(gtk::INVALID_LIST_POSITION);
+            self.list_view.scroll_to(
+                position,
+                gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                None,
+            );
+            drop(freeze_guard);
+
             self.obj().navigate_to_view();
         }
     }

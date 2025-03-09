@@ -307,7 +307,7 @@ show_annots_border (GtkSnapshot *snapshot,
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 	GdkRGBA color = { 0, 1, 1, 1 };
 	GListModel *model =
-	    pps_annotations_context_get_annots_model (priv->annots_context);
+	    G_LIST_MODEL (pps_annotations_context_get_annots_model (priv->annots_context));
 
 	// To make this generic, in the future we should have an interface
 	// to get areas, instead of the Mapping. See #382

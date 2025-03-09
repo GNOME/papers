@@ -83,6 +83,8 @@ typedef struct
 	PpsUndoContext *undo_context;
 
 	GListStore *annots_model;
+	GtkSingleSelection *selection_model;
+
 	gboolean next_squash_forbidden;
 } PpsAnnotationsContextPrivate;
 
@@ -178,6 +180,9 @@ pps_annotations_context_init (PpsAnnotationsContext *self)
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
 
 	priv->annots_model = g_list_store_new (PPS_TYPE_ANNOTATION);
+	priv->selection_model = gtk_single_selection_new (G_LIST_MODEL (priv->annots_model));
+	gtk_single_selection_set_autoselect (priv->selection_model, FALSE);
+	gtk_single_selection_set_can_unselect (priv->selection_model, TRUE);
 }
 
 static void
@@ -188,6 +193,7 @@ pps_annotations_context_dispose (GObject *object)
 
 	pps_annotations_context_clear_job (self);
 	g_clear_object (&priv->annots_model);
+	g_clear_object (&priv->selection_model);
 
 	G_OBJECT_CLASS (pps_annotations_context_parent_class)->dispose (object);
 }
@@ -294,18 +300,20 @@ pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_conte
  * pps_annotations_context_get_annots_model:
  * @self: a #PpsAnnotationsContext
  *
- * Returns: (not nullable) (transfer none): the returned #GListModel. The model
- * is owned but the `PpsAnnotationsContext` and shall not be modified outside
- * of it.
+ * Returns: (not nullable) (transfer none): the returned #GtkSelectionModel. The
+ * model is owned but the `PpsAnnotationsContext` and shall not be modified
+ * outside of it.
+ *
+ * Since: 48.0
  */
-GListModel *
+GtkSingleSelection *
 pps_annotations_context_get_annots_model (PpsAnnotationsContext *self)
 {
 	g_return_val_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self), NULL);
 
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
 
-	return G_LIST_MODEL (priv->annots_model);
+	return priv->selection_model;
 }
 
 static int

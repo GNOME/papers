@@ -41,8 +41,6 @@ template $PpsSidebarAnnotations: $PpsSidebarPage {
               bind => $list_view_factory_bind() swapped;
             };
 
-            model: SingleSelection selection_model {};
-
             activate => $list_view_row_activated() swapped;
           };
         };
