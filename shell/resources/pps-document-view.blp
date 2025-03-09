@@ -668,15 +668,18 @@ Box annot_menu_child {
 
   Box {
     orientation: horizontal;
-    halign: center;
+    hexpand: true;
     margin-start: 6;
     margin-end: 6;
     margin-top: 6;
     margin-bottom: 6;
-    spacing: 18;
+    spacing: 12;
 
     ToggleButton annot-textmarkup-type-group {
+      styles ["flat"]
+
       name: "text-highlight";
+      hexpand: true;
       icon-name: "text-highlight-symbolic";
       action-name: "doc.annot-textmarkup-type";
       action-target: "'highlight'";
@@ -686,7 +689,10 @@ Box annot_menu_child {
     }
 
     ToggleButton {
+      styles ["flat"]
+
       name: "text-squiggly";
+      hexpand: true;
       group: annot-textmarkup-type-group;
       icon-name: "text-squiggly-symbolic";
       action-name: "doc.annot-textmarkup-type";
@@ -697,7 +703,10 @@ Box annot_menu_child {
     }
 
     ToggleButton {
+      styles ["flat"]
+
       name: "text-strikethrough";
+      hexpand: true;
       group: annot-textmarkup-type-group;
       icon-name: "text-strikethrough-symbolic";
       action-name: "doc.annot-textmarkup-type";
@@ -708,7 +717,10 @@ Box annot_menu_child {
     }
 
     ToggleButton {
+      styles ["flat"]
+
       name: "text-underline";
+      hexpand: true;
       group: annot-textmarkup-type-group;
       icon-name: "text-underline-symbolic";
       action-name: "doc.annot-textmarkup-type";
