@@ -188,11 +188,6 @@ impl imp::PpsDocumentView {
         self.view.reload();
     }
 
-    #[template_callback]
-    fn sidebar_annots_annot_activated(&self, annot: &papers_document::Annotation) {
-        self.view.focus_annotation(annot)
-    }
-
     // view
     fn launch_external_uri(&self, action: &LinkAction) {
         let context = self.obj().display().app_launch_context();

@@ -48,7 +48,7 @@ struct _PpsAnnotationsContextClass {
 PPS_PUBLIC PpsAnnotationsContext *
 pps_annotations_context_new (PpsDocumentModel *model, PpsUndoContext *undo_context);
 PPS_PUBLIC
-GListModel *pps_annotations_context_get_annots_model (PpsAnnotationsContext *self);
+GtkSingleSelection *pps_annotations_context_get_annots_model (PpsAnnotationsContext *self);
 PPS_PUBLIC
 PpsAnnotation *pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
                                                             gint page_index,

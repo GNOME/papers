@@ -1,5 +1,5 @@
 use crate::deps::*;
-use papers_document::{Annotation, AnnotationMarkup, DocumentAnnotations};
+use papers_document::{AnnotationMarkup, DocumentAnnotations};
 use papers_view::AnnotationsContext;
 
 use gtk::graphene;
@@ -20,8 +20,6 @@ mod imp {
         stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         popup: TemplateChild<gtk::PopoverMenu>,
-        #[template_child]
-        selection_model: TemplateChild<gtk::SingleSelection>,
     }
 
     #[glib::object_subclass]
@@ -41,28 +39,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for PpsSidebarAnnotations {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
-            SIGNALS.get_or_init(|| {
-                vec![Signal::builder("annot-activated")
-                    .run_last()
-                    .action()
-                    .param_types([Annotation::static_type()])
-                    .build()]
-            })
-        }
-
-        fn constructed(&self) {
-            self.obj().connect_closure(
-                "annot-activated",
-                true,
-                glib::closure_local!(move |obj: super::PpsSidebarAnnotations, _: Annotation| {
-                    obj.navigate_to_view();
-                }),
-            );
-        }
-    }
+    impl ObjectImpl for PpsSidebarAnnotations {}
 
     impl WidgetImpl for PpsSidebarAnnotations {}
 
@@ -85,8 +62,11 @@ mod imp {
                 return;
             }
 
-            let binding = context.as_ref().and_then(|context| context.annots_model());
-            let model = binding.as_ref().unwrap();
+            let model = context
+                .as_ref()
+                .and_then(|context| context.annots_model())
+                .and_downcast::<gtk::SingleSelection>()
+                .unwrap();
 
             model.connect_items_changed(glib::clone!(
                 #[weak(rename_to = obj)]
@@ -100,7 +80,19 @@ mod imp {
                 }
             ));
 
-            self.selection_model.set_model(Some(model));
+            model.connect_selected_item_notify(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                #[weak]
+                model,
+                move |_| {
+                    let position = model.selected();
+                    obj.list_view
+                        .scroll_to(position, gtk::ListScrollFlags::SELECT, None);
+                }
+            ));
+
+            self.list_view.set_model(Some(&model));
 
             self.annotations_context.replace(context);
         }
@@ -121,7 +113,7 @@ mod imp {
 
                     match gesture.current_button() {
                         gdk::BUTTON_PRIMARY => {
-                            obj.obj().emit_by_name::<()>("annot-activated", &[&annot])
+                            obj.obj().navigate_to_view();
                         }
                         gdk::BUTTON_SECONDARY => {
                             let document_view = obj
