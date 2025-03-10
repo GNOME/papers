@@ -86,6 +86,7 @@ custom_target(
   build_always_stale: true,
   output: 'doc',
   console: true,
+  env: cargo_env,
   command: [
     cargo, 'doc',
     cargo_options + ['--document-private-items', '--all-features', '--workspace'],
