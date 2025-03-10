@@ -15,13 +15,14 @@ mod imp {
     /// A Data structure to represent the expand status of outlines tree
     ///
     /// A [TreePath] can be in two state:
-    ///     * Expand
-    ///     * Collapse
+    /// * Expand
+    /// * Collapse
     ///
     /// The final goal of this data structure is allow user to set the expand
     /// status and serialize/deserialize the state into/from two string in special
     /// format:
-    ///         |<path1>|<path2>|<path3>|
+    ///
+    ///     |<path1>|<path2>|<path3>|
     ///
     /// Document producer may mark a path to be expanded explicitly so we accept
     /// this data through `expand_by_producer` interface. And we will produce
