@@ -547,9 +547,16 @@ impl imp::PpsDocumentView {
 
     #[template_callback]
     fn view_popup_closed(&self) {
-        self.annot.replace(None);
-        self.link.replace(None);
-        self.image.replace(None);
+        /* clear these during next tick as these values may be used for the actions of the popup menu */
+        glib::idle_add_local_once(glib::clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move || {
+                obj.annot.replace(None);
+                obj.link.replace(None);
+                obj.image.replace(None);
+            }
+        ));
     }
 
     #[template_callback]
