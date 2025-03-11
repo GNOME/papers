@@ -844,7 +844,7 @@ impl imp::PpsDocumentView {
     }
 
     fn annot_properties_dialog_response(&self, dialog: &PpsAnnotationPropertiesDialog) {
-        let annot = self.annot.borrow().clone().unwrap();
+        let annot = dialog.annotation();
         let author = dialog.author();
         let rgba = dialog.rgba();
         let opacity = dialog.opacity();
