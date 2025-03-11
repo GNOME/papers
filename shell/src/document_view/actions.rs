@@ -850,6 +850,7 @@ impl imp::PpsDocumentView {
         let opacity = dialog.opacity();
         let popup_is_open = dialog.popup_open();
         let mut mask = AnnotationsSaveMask::NONE;
+        let _notify = annot.freeze_notify();
 
         // Set annotations changes
         if let Some(annot) = annot.dynamic_cast_ref::<AnnotationMarkup>() {
