@@ -88,10 +88,6 @@ GQuark pps_document_error_quark (void);
 
 /* Document usage functions */
 PPS_PUBLIC
-void pps_document_doc_mutex_lock (PpsDocument *document);
-PPS_PUBLIC
-void pps_document_doc_mutex_unlock (PpsDocument *document);
-PPS_PUBLIC
 void pps_document_setup_cache (PpsDocument *document);
 
 PPS_PUBLIC

@@ -361,16 +361,21 @@ djvu_links_has_document_links (PpsDocumentLinks *document_links)
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document_links);
 	miniexp_t outline;
+	gboolean has_links;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	while ((outline = ddjvu_document_get_outline (djvu_document->d_document)) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
+	has_links = outline != NULL;
 	if (outline) {
 		ddjvu_miniexp_release (djvu_document->d_document, outline);
-		return TRUE;
 	}
 
-	return FALSE;
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
+	return has_links;
 }
 
 PpsMappingList *
@@ -384,6 +389,8 @@ djvu_links_get_links (PpsDocumentLinks *document_links,
 	miniexp_t *hyperlinks = NULL, *iter = NULL;
 	PpsMapping *pps_link_mapping;
 	ddjvu_pageinfo_t page_info;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	while ((page_annotations = ddjvu_document_get_pageanno (djvu_document->d_document, page)) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
@@ -409,6 +416,8 @@ djvu_links_get_links (PpsDocumentLinks *document_links,
 		ddjvu_miniexp_release (djvu_document->d_document, page_annotations);
 	}
 
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	return pps_mapping_list_new (page, retval, (GDestroyNotify) g_object_unref);
 }
 
@@ -419,11 +428,15 @@ djvu_links_find_link_dest (PpsDocumentLinks *document_links,
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document_links);
 	PpsLinkDest *pps_dest = NULL;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	pps_dest = get_djvu_link_dest (djvu_document, link_name, -1);
 
 	if (!pps_dest) {
 		g_warning ("DjvuLibre error: unknown link destination %s", link_name);
 	}
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
 	return pps_dest;
 }
@@ -435,11 +448,15 @@ djvu_links_find_link_page (PpsDocumentLinks *document_links,
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document_links);
 	gint page;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	page = get_djvu_link_page (djvu_document, link_name, -1);
 
 	if (page == -1) {
 		g_warning ("DjvuLibre error: unknown link destination %s", link_name);
 	}
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
 	return page;
 }
@@ -451,6 +468,8 @@ djvu_links_get_links_model (PpsDocumentLinks *document_links)
 	GListStore *model = NULL;
 	miniexp_t outline = miniexp_nil;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	while ((outline = ddjvu_document_get_outline (djvu_document->d_document)) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
@@ -460,8 +479,10 @@ djvu_links_get_links_model (PpsDocumentLinks *document_links)
 
 		ddjvu_miniexp_release (djvu_document->d_document, outline);
 
+		g_rw_lock_reader_unlock (&djvu_document->rwlock);
 		return G_LIST_MODEL (model);
 	}
 
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 	return NULL;
 }

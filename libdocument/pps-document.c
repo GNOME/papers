@@ -45,7 +45,6 @@ struct _PpsDocumentPrivate {
 
 	gchar **page_labels;
 	PpsPageSize *page_sizes;
-	GMutex mutex;
 };
 
 static guint64 _pps_document_get_size (const char *uri);
@@ -135,8 +134,6 @@ pps_document_init (PpsDocument *document)
 
 	/* Assume all pages are the same size until proven otherwise */
 	priv->uniform = TRUE;
-
-	g_mutex_init (&priv->mutex);
 }
 
 static void
@@ -205,22 +202,6 @@ pps_document_set_modified (PpsDocument *document,
 }
 
 void
-pps_document_doc_mutex_lock (PpsDocument *document)
-{
-	PpsDocumentPrivate *priv = GET_PRIVATE (document);
-
-	g_mutex_lock (&priv->mutex);
-}
-
-void
-pps_document_doc_mutex_unlock (PpsDocument *document)
-{
-	PpsDocumentPrivate *priv = GET_PRIVATE (document);
-
-	g_mutex_unlock (&priv->mutex);
-}
-
-void
 pps_document_setup_cache (PpsDocument *document)
 {
 	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
@@ -241,9 +222,7 @@ pps_document_setup_cache (PpsDocument *document)
 		PpsPageSize *page_size;
 		gchar *page_label = NULL;
 
-		g_mutex_lock (&priv->mutex);
 		klass->get_page_size (document, page, &page_width, &page_height);
-		g_mutex_unlock (&priv->mutex);
 
 		if (i == 0) {
 			priv->uniform_width = page_width;
@@ -284,11 +263,9 @@ pps_document_setup_cache (PpsDocument *document)
 				priv->min_height = page_height;
 		}
 
-		if (klass->get_page_label) {
-			g_mutex_lock (&priv->mutex);
+		if (klass->get_page_label)
 			page_label = klass->get_page_label (document, page);
-			g_mutex_unlock (&priv->mutex);
-		}
+
 		if (page_label) {
 			if (!priv->page_labels)
 				priv->page_labels = g_new0 (gchar *, n_pages + 1);

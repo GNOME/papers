@@ -37,6 +37,7 @@ struct _ComicsDocument {
 	gchar *archive_uri;
 	GPtrArray *page_names;      /* elem: char * */
 	GHashTable *page_positions; /* key: char *, value: uint + 1 */
+	GRWLock rwlock;
 };
 
 G_DEFINE_TYPE (ComicsDocument, comics_document, PPS_TYPE_DOCUMENT)
@@ -337,34 +338,45 @@ comics_document_load (PpsDocument *document,
 	g_autofree gchar *mime_type = NULL;
 	g_autoptr (GFile) file = g_file_new_for_uri (uri);
 
+	g_rw_lock_writer_lock (&comics_document->rwlock);
+
 	comics_document->archive_path = g_file_get_path (file);
 	if (!comics_document->archive_path) {
 		g_set_error_literal (error,
 		                     PPS_DOCUMENT_ERROR,
 		                     PPS_DOCUMENT_ERROR_INVALID,
 		                     _ ("Can not get local path for archive"));
+		g_rw_lock_writer_unlock (&comics_document->rwlock);
 		return FALSE;
 	}
 
 	comics_document->archive_uri = g_strdup (uri);
 
 	mime_type = pps_file_get_mime_type (uri, FALSE, error);
-	if (mime_type == NULL)
+	if (mime_type == NULL) {
+		g_rw_lock_writer_unlock (&comics_document->rwlock);
 		return FALSE;
+	}
 
-	if (!comics_check_decompress_support (mime_type, comics_document, error))
+	if (!comics_check_decompress_support (mime_type, comics_document, error)) {
+		g_rw_lock_writer_unlock (&comics_document->rwlock);
 		return FALSE;
+	}
 
 	/* Get list of files in archive */
 	comics_document->page_names = comics_document_list (comics_document, error);
-	if (!comics_document->page_names)
+	if (!comics_document->page_names) {
+		g_rw_lock_writer_unlock (&comics_document->rwlock);
 		return FALSE;
+	}
 
 	/* Keep an index */
 	comics_document->page_positions = save_positions (comics_document->page_names);
 
 	/* Now sort the pages */
 	g_ptr_array_sort (comics_document->page_names, sort_page_names);
+
+	g_rw_lock_writer_unlock (&comics_document->rwlock);
 
 	return TRUE;
 }
@@ -375,19 +387,35 @@ comics_document_save (PpsDocument *document,
                       GError **error)
 {
 	ComicsDocument *comics_document = COMICS_DOCUMENT (document);
+	gboolean transfer_success;
 
-	return pps_xfer_uri_simple (comics_document->archive_uri, uri, error);
+	g_rw_lock_reader_lock (&comics_document->rwlock);
+
+	transfer_success = pps_xfer_uri_simple (comics_document->archive_uri, uri, error);
+
+	g_rw_lock_reader_unlock (&comics_document->rwlock);
+
+	return transfer_success;
 }
 
 static int
 comics_document_get_n_pages (PpsDocument *document)
 {
 	ComicsDocument *comics_document = COMICS_DOCUMENT (document);
+	int n_pages;
 
-	if (comics_document->page_names == NULL)
+	g_rw_lock_reader_lock (&comics_document->rwlock);
+
+	if (comics_document->page_names == NULL) {
+		g_rw_lock_reader_unlock (&comics_document->rwlock);
 		return 0;
+	}
 
-	return comics_document->page_names->len;
+	n_pages = comics_document->page_names->len;
+
+	g_rw_lock_reader_unlock (&comics_document->rwlock);
+
+	return n_pages;
 }
 
 typedef struct
@@ -420,11 +448,14 @@ comics_document_get_page_size (PpsDocument *document,
 	PixbufInfo info;
 	GError *error = NULL;
 
+	g_rw_lock_reader_lock (&comics_document->rwlock);
+
 	page_path = g_ptr_array_index (comics_document->page_names, page->index);
 
 	if (!archive_reopen_if_needed (comics_document, page_path, &error)) {
 		g_warning ("Fatal error opening archive: %s", error->message);
 		g_error_free (error);
+		g_rw_lock_reader_unlock (&comics_document->rwlock);
 		return;
 	}
 
@@ -481,6 +512,8 @@ comics_document_get_page_size (PpsDocument *document,
 		if (height)
 			*height = info.height;
 	}
+
+	g_rw_lock_reader_unlock (&comics_document->rwlock);
 }
 
 static void
@@ -495,6 +528,9 @@ render_pixbuf_size_prepared_cb (GdkPixbufLoader *loader,
 	gdk_pixbuf_loader_set_size (loader, scaled_width, scaled_height);
 }
 
+/* This function assumes that the caller has already acquired the necessary lock.
+ * If called independently, ensure proper synchronization before invoking it.
+ */
 static GdkPixbuf *
 comics_document_render_pixbuf (PpsDocument *document,
                                PpsRenderContext *rc)
@@ -571,14 +607,22 @@ static cairo_surface_t *
 comics_document_render (PpsDocument *document,
                         PpsRenderContext *rc)
 {
+	ComicsDocument *comics_document = COMICS_DOCUMENT (document);
 	GdkPixbuf *pixbuf;
 	cairo_surface_t *surface;
 
+	g_rw_lock_reader_lock (&comics_document->rwlock);
+
 	pixbuf = comics_document_render_pixbuf (document, rc);
-	if (!pixbuf)
+	if (!pixbuf) {
+		g_rw_lock_reader_unlock (&comics_document->rwlock);
 		return NULL;
+	}
+
 	surface = pps_document_misc_surface_from_pixbuf (pixbuf);
 	g_clear_object (&pixbuf);
+
+	g_rw_lock_reader_unlock (&comics_document->rwlock);
 
 	return surface;
 }
@@ -595,6 +639,7 @@ comics_document_finalize (GObject *object)
 	g_clear_object (&comics_document->archive);
 	g_free (comics_document->archive_path);
 	g_free (comics_document->archive_uri);
+	g_rw_lock_clear (&comics_document->rwlock);
 
 	G_OBJECT_CLASS (comics_document_parent_class)->finalize (object);
 }
@@ -618,6 +663,7 @@ static void
 comics_document_init (ComicsDocument *comics_document)
 {
 	comics_document->archive = pps_archive_new ();
+	g_rw_lock_init (&comics_document->rwlock);
 }
 
 GType

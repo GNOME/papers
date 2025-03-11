@@ -148,11 +148,16 @@ djvu_document_load (PpsDocument *document,
 	gint n_files;
 	gint i;
 	gchar *base;
+	gboolean success = TRUE;
+
+	g_rw_lock_writer_lock (&djvu_document->rwlock);
 
 	/* FIXME: We could actually load uris  */
 	filename = g_filename_from_uri (uri, NULL, error);
-	if (!filename)
+	if (!filename) {
+		g_rw_lock_writer_unlock (&djvu_document->rwlock);
 		return FALSE;
+	}
 
 #ifdef __APPLE__
 	doc = ddjvu_document_create_by_filename_utf8 (djvu_document->d_context, filename, TRUE);
@@ -166,6 +171,7 @@ djvu_document_load (PpsDocument *document,
 		                     PPS_DOCUMENT_ERROR,
 		                     PPS_DOCUMENT_ERROR_INVALID,
 		                     _ ("DjVu document has incorrect format"));
+		g_rw_lock_writer_unlock (&djvu_document->rwlock);
 		return FALSE;
 	}
 
@@ -185,6 +191,7 @@ djvu_document_load (PpsDocument *document,
 		ddjvu_document_release (djvu_document->d_document);
 		djvu_document->d_document = NULL;
 
+		g_rw_lock_writer_unlock (&djvu_document->rwlock);
 		return FALSE;
 	}
 
@@ -201,6 +208,7 @@ djvu_document_load (PpsDocument *document,
 		ddjvu_document_release (djvu_document->d_document);
 		djvu_document->d_document = NULL;
 
+		g_rw_lock_writer_unlock (&djvu_document->rwlock);
 		return FALSE;
 	}
 
@@ -255,10 +263,11 @@ djvu_document_load (PpsDocument *document,
 		                     _ ("The document is composed of several files. "
 		                        "One or more of these files cannot be accessed."));
 
-		return FALSE;
+		success = FALSE;
 	}
 
-	return TRUE;
+	g_rw_lock_writer_unlock (&djvu_document->rwlock);
+	return success;
 }
 
 static gboolean
@@ -267,18 +276,30 @@ djvu_document_save (PpsDocument *document,
                     GError **error)
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document);
+	gboolean result;
 
-	return pps_xfer_uri_simple (djvu_document->uri, uri, error);
+	g_rw_lock_writer_lock (&djvu_document->rwlock);
+	result = pps_xfer_uri_simple (djvu_document->uri, uri, error);
+	g_rw_lock_writer_unlock (&djvu_document->rwlock);
+
+	return result;
 }
 
 int
 djvu_document_get_n_pages (PpsDocument *document)
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document);
+	int n_pages;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	g_return_val_if_fail (djvu_document->d_document, 0);
 
-	return ddjvu_document_get_pagenum (djvu_document->d_document);
+	n_pages = ddjvu_document_get_pagenum (djvu_document->d_document);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
+	return n_pages;
 }
 
 static void
@@ -313,10 +334,14 @@ djvu_document_get_page_size (PpsDocument *document,
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document);
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	g_return_if_fail (djvu_document->d_document);
 
 	document_get_page_size (djvu_document, page->index,
 	                        width, height, NULL);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 }
 
 static cairo_surface_t *
@@ -334,6 +359,8 @@ djvu_document_render (PpsDocument *document,
 	gint buffer_modified;
 	double page_width, page_height;
 	gint transformed_width, transformed_height;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	d_page = ddjvu_page_create_by_pageno (djvu_document->d_document, rc->page->index);
 
@@ -399,6 +426,8 @@ djvu_document_render (PpsDocument *document,
 		cairo_surface_mark_dirty (surface);
 	}
 
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	return surface;
 }
 
@@ -410,15 +439,21 @@ djvu_document_get_page_label (PpsDocument *document,
 	const gchar *title = NULL;
 	gchar *label = NULL;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	g_assert (page->index >= 0 && page->index < djvu_document->n_pages);
 
-	if (djvu_document->fileinfo_pages == NULL)
+	if (djvu_document->fileinfo_pages == NULL) {
+		g_rw_lock_reader_unlock (&djvu_document->rwlock);
 		return NULL;
+	}
 
 	title = djvu_document->fileinfo_pages[page->index].title;
 
 	if (!g_str_has_suffix (title, ".djvu"))
 		label = g_strdup (title);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
 	return label;
 }
@@ -432,6 +467,8 @@ djvu_document_get_thumbnail (PpsDocument *document,
 	gdouble page_width, page_height;
 	gint thumb_width, thumb_height;
 	guchar *pixels;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	g_return_val_if_fail (djvu_document->d_document, NULL);
 
@@ -458,6 +495,8 @@ djvu_document_get_thumbnail (PpsDocument *document,
 	rotated_pixbuf = gdk_pixbuf_rotate_simple (pixbuf, 360 - rc->rotation);
 	g_object_unref (pixbuf);
 
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	return rotated_pixbuf;
 }
 
@@ -471,6 +510,8 @@ djvu_document_get_thumbnail_surface (PpsDocument *document,
 	gint thumb_width, thumb_height;
 	gchar *pixels;
 	gint thumbnail_rendered;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	g_return_val_if_fail (djvu_document->d_document, NULL);
 
@@ -493,6 +534,7 @@ djvu_document_get_thumbnail_surface (PpsDocument *document,
 	                                             djvu_document->d_format,
 	                                             cairo_image_surface_get_stride (surface),
 	                                             pixels);
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
 	if (!thumbnail_rendered) {
 		cairo_surface_destroy (surface);
@@ -518,11 +560,14 @@ djvu_document_get_info (PpsDocument *document)
 	miniexp_t anno;
 	PpsDocumentInfo *info;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	info = pps_document_info_new ();
 
 	anno = ddjvu_document_get_anno (djvu_document->d_document, 1);
 	if (anno == miniexp_nil) {
 		ddjvu_miniexp_release (djvu_document->d_document, anno);
+		g_rw_lock_reader_unlock (&djvu_document->rwlock);
 		return info;
 	}
 
@@ -532,6 +577,9 @@ djvu_document_get_info (PpsDocument *document)
 	}
 
 	ddjvu_miniexp_release (djvu_document->d_document, anno);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	return info;
 }
 
@@ -559,6 +607,7 @@ djvu_document_finalize (GObject *object)
 	ddjvu_format_release (djvu_document->d_format);
 	ddjvu_format_release (djvu_document->thumbs_format);
 	g_free (djvu_document->uri);
+	g_rw_lock_clear (&djvu_document->rwlock);
 
 	G_OBJECT_CLASS (djvu_document_parent_class)->finalize (object);
 }
@@ -692,12 +741,19 @@ djvu_selection_get_selection_region (PpsSelection *selection,
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (selection);
 	gdouble page_width, page_height;
 	gdouble scale_x, scale_y;
+	cairo_region_t *region;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	document_get_page_size (djvu_document, rc->page->index, &page_width, &page_height, NULL);
 	pps_render_context_compute_scales (rc, page_width, page_height, &scale_x, &scale_y);
 
-	return djvu_get_selection_region (djvu_document, rc->page->index,
-	                                  scale_x, scale_y, points);
+	region = djvu_get_selection_region (djvu_document, rc->page->index,
+	                                    scale_x, scale_y, points);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
+	return region;
 }
 
 static gchar *
@@ -711,9 +767,13 @@ djvu_selection_get_selected_text (PpsSelection *selection,
 	PpsRectangle rectangle;
 	gchar *text;
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	document_get_page_size (djvu_document, page->index, NULL, &height, &dpi);
 	djvu_convert_to_doc_rect (&rectangle, points, height, dpi);
 	text = djvu_text_copy (djvu_document, page->index, &rectangle);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
 	if (text == NULL)
 		text = g_strdup ("");
@@ -734,6 +794,9 @@ djvu_document_text_get_text_mapping (PpsDocumentText *document_text,
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document_text);
 	PpsRectangle points;
+	cairo_region_t *region;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	points.x1 = 0;
 	points.y1 = 0;
@@ -741,8 +804,12 @@ djvu_document_text_get_text_mapping (PpsDocumentText *document_text,
 	document_get_page_size (djvu_document, page->index,
 	                        &points.x2, &points.y2, NULL);
 
-	return djvu_get_selection_region (djvu_document, page->index,
-	                                  1.0, 1.0, &points);
+	region = djvu_get_selection_region (djvu_document, page->index,
+	                                    1.0, 1.0, &points);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
+	return region;
 }
 
 static gchar *
@@ -752,6 +819,8 @@ djvu_document_text_get_text (PpsDocumentText *selection,
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (selection);
 	miniexp_t page_text;
 	gchar *text = NULL;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	while ((page_text = ddjvu_document_get_pagetext (djvu_document->d_document,
 	                                                 page->index,
@@ -767,6 +836,9 @@ djvu_document_text_get_text (PpsDocumentText *selection,
 		djvu_text_page_free (tpage);
 		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	return text;
 }
 
@@ -809,9 +881,12 @@ djvu_document_file_exporter_end (PpsFileExporter *exporter)
 
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (exporter);
 
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
 	FILE *fn = fopen (djvu_document->ps_filename, "w");
 	if (fn == NULL) {
 		g_warning ("Cannot open file “%s”.", djvu_document->ps_filename);
+		g_rw_lock_reader_unlock (&djvu_document->rwlock);
 		return;
 	}
 
@@ -823,6 +898,7 @@ djvu_document_file_exporter_end (PpsFileExporter *exporter)
 	}
 
 	fclose (fn);
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 }
 
 static PpsFileExporterCapabilities
@@ -860,6 +936,7 @@ djvu_document_init (DjvuDocument *djvu_document)
 	djvu_document->opts = g_string_new ("");
 
 	djvu_document->d_document = NULL;
+	g_rw_lock_init (&djvu_document->rwlock);
 }
 
 static GList *
@@ -876,6 +953,8 @@ djvu_document_find_find_text (PpsDocumentFind *document,
 	gboolean case_sensitive = (options & PPS_FIND_CASE_SENSITIVE);
 
 	g_return_val_if_fail (text != NULL, NULL);
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
 
 	while ((page_text = ddjvu_document_get_pagetext (djvu_document->d_document,
 	                                                 page->index,
@@ -899,6 +978,9 @@ djvu_document_find_find_text (PpsDocumentFind *document,
 		djvu_text_page_free (tpage);
 		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
 	if (!matches)
 		return NULL;
 

@@ -34,6 +34,7 @@ struct _TiffDocument {
 	TIFF2PSContext *ps_export_ctx;
 
 	gchar *uri;
+	GRWLock rwlock;
 };
 
 typedef struct _TiffDocumentClass TiffDocumentClass;
@@ -68,9 +69,13 @@ tiff_document_load (PpsDocument *document,
 	gchar *filename;
 	TIFF *tiff;
 
+	g_rw_lock_writer_lock (&tiff_document->rwlock);
+
 	filename = g_filename_from_uri (uri, NULL, error);
-	if (!filename)
+	if (!filename) {
+		g_rw_lock_writer_unlock (&tiff_document->rwlock);
 		return FALSE;
+	}
 
 	push_handlers ();
 
@@ -92,6 +97,7 @@ tiff_document_load (PpsDocument *document,
 		                     _ ("Invalid document"));
 
 		g_free (filename);
+		g_rw_lock_writer_unlock (&tiff_document->rwlock);
 		return FALSE;
 	}
 
@@ -101,6 +107,7 @@ tiff_document_load (PpsDocument *document,
 	tiff_document->uri = g_strdup (uri);
 
 	pop_handlers ();
+	g_rw_lock_writer_unlock (&tiff_document->rwlock);
 	return TRUE;
 }
 
@@ -110,14 +117,24 @@ tiff_document_save (PpsDocument *document,
                     GError **error)
 {
 	TiffDocument *tiff_document = TIFF_DOCUMENT (document);
+	gboolean success;
 
-	return pps_xfer_uri_simple (tiff_document->uri, uri, error);
+	g_rw_lock_writer_lock (&tiff_document->rwlock);
+
+	success = pps_xfer_uri_simple (tiff_document->uri, uri, error);
+
+	g_rw_lock_writer_unlock (&tiff_document->rwlock);
+
+	return success;
 }
 
 static int
 tiff_document_get_n_pages (PpsDocument *document)
 {
 	TiffDocument *tiff_document = TIFF_DOCUMENT (document);
+	int n_pages;
+
+	g_rw_lock_writer_lock (&tiff_document->rwlock);
 
 	g_return_val_if_fail (TIFF_IS_DOCUMENT (document), 0);
 	g_return_val_if_fail (tiff_document->tiff != NULL, 0);
@@ -132,7 +149,11 @@ tiff_document_get_n_pages (PpsDocument *document)
 		pop_handlers ();
 	}
 
-	return tiff_document->n_pages;
+	n_pages = tiff_document->n_pages;
+
+	g_rw_lock_writer_unlock (&tiff_document->rwlock);
+
+	return n_pages;
 }
 
 static void
@@ -169,12 +190,15 @@ tiff_document_get_page_size (PpsDocument *document,
 	gfloat x_res, y_res;
 	TiffDocument *tiff_document = TIFF_DOCUMENT (document);
 
+	g_rw_lock_reader_lock (&tiff_document->rwlock);
+
 	g_return_if_fail (TIFF_IS_DOCUMENT (document));
 	g_return_if_fail (tiff_document->tiff != NULL);
 
 	push_handlers ();
 	if (TIFFSetDirectory (tiff_document->tiff, page->index) != 1) {
 		pop_handlers ();
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return;
 	}
 
@@ -187,6 +211,7 @@ tiff_document_get_page_size (PpsDocument *document,
 	*height = h;
 
 	pop_handlers ();
+	g_rw_lock_reader_unlock (&tiff_document->rwlock);
 }
 
 static cairo_surface_t *
@@ -205,6 +230,8 @@ tiff_document_render (PpsDocument *document,
 	cairo_surface_t *rotated_surface;
 	static const cairo_user_data_key_t key;
 
+	g_rw_lock_reader_lock (&tiff_document->rwlock);
+
 	g_return_val_if_fail (TIFF_IS_DOCUMENT (document), NULL);
 	g_return_val_if_fail (tiff_document->tiff != NULL, NULL);
 
@@ -212,18 +239,21 @@ tiff_document_render (PpsDocument *document,
 	if (TIFFSetDirectory (tiff_document->tiff, rc->page->index) != 1) {
 		pop_handlers ();
 		g_warning ("Failed to select page %d", rc->page->index);
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
 	if (!TIFFGetField (tiff_document->tiff, TIFFTAG_IMAGEWIDTH, &width)) {
 		pop_handlers ();
 		g_warning ("Failed to read image width");
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
 	if (!TIFFGetField (tiff_document->tiff, TIFFTAG_IMAGELENGTH, &height)) {
 		pop_handlers ();
 		g_warning ("Failed to read image height");
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -238,6 +268,7 @@ tiff_document_render (PpsDocument *document,
 	/* Sanity check the doc */
 	if (width <= 0 || height <= 0) {
 		g_warning ("Invalid width or height.");
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -245,12 +276,14 @@ tiff_document_render (PpsDocument *document,
 	if (rowstride / 4 != width) {
 		g_warning ("Overflow while rendering document.");
 		/* overflow, or cairo was changed in an unsupported way */
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
 	if (height >= INT_MAX / rowstride) {
 		g_warning ("Overflow while rendering document.");
 		/* overflow */
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 	bytes = height * rowstride;
@@ -258,6 +291,7 @@ tiff_document_render (PpsDocument *document,
 	pixels = g_try_malloc (bytes);
 	if (!pixels) {
 		g_warning ("Failed to allocate memory for rendering.");
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -267,6 +301,7 @@ tiff_document_render (PpsDocument *document,
 	                                orientation, 0)) {
 		g_warning ("Failed to read TIFF image.");
 		g_free (pixels);
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -277,6 +312,8 @@ tiff_document_render (PpsDocument *document,
 	cairo_surface_set_user_data (surface, &key,
 	                             pixels, (cairo_destroy_func_t) g_free);
 	pop_handlers ();
+
+	g_rw_lock_reader_unlock (&tiff_document->rwlock);
 
 	/* Convert the format returned by libtiff to
 	 * what cairo expects
@@ -324,19 +361,24 @@ tiff_document_get_thumbnail (PpsDocument *document,
 	GdkPixbuf *scaled_pixbuf;
 	GdkPixbuf *rotated_pixbuf;
 
+	g_rw_lock_reader_lock (&tiff_document->rwlock);
+
 	push_handlers ();
 	if (TIFFSetDirectory (tiff_document->tiff, rc->page->index) != 1) {
 		pop_handlers ();
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
 	if (!TIFFGetField (tiff_document->tiff, TIFFTAG_IMAGEWIDTH, &width)) {
 		pop_handlers ();
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
 	if (!TIFFGetField (tiff_document->tiff, TIFFTAG_IMAGELENGTH, &height)) {
 		pop_handlers ();
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -345,28 +387,37 @@ tiff_document_get_thumbnail (PpsDocument *document,
 	pop_handlers ();
 
 	/* Sanity check the doc */
-	if (width <= 0 || height <= 0)
+	if (width <= 0 || height <= 0) {
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
+	}
 
-	if (width >= INT_MAX / 4)
+	if (width >= INT_MAX / 4) {
 		/* overflow */
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
+	}
 	rowstride = width * 4;
 
-	if (height >= INT_MAX / rowstride)
+	if (height >= INT_MAX / rowstride) {
 		/* overflow */
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
+	}
 	bytes = height * rowstride;
 
 	pixels = g_try_malloc (bytes);
-	if (!pixels)
+	if (!pixels) {
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
+	}
 
 	if (!TIFFReadRGBAImageOriented (tiff_document->tiff,
 	                                width, height,
 	                                (uint32_t *) pixels,
 	                                ORIENTATION_TOPLEFT, 0)) {
 		g_free (pixels);
+		g_rw_lock_reader_unlock (&tiff_document->rwlock);
 		return NULL;
 	}
 
@@ -374,6 +425,8 @@ tiff_document_get_thumbnail (PpsDocument *document,
 	                                   width, height, rowstride,
 	                                   free_buffer, NULL);
 	pop_handlers ();
+
+	g_rw_lock_reader_unlock (&tiff_document->rwlock);
 
 	pps_render_context_compute_scaled_size (rc, width, height * (x_res / y_res),
 	                                        &scaled_width, &scaled_height);
@@ -394,13 +447,20 @@ tiff_document_get_page_label (PpsDocument *document,
 {
 	TiffDocument *tiff_document = TIFF_DOCUMENT (document);
 	static gchar *label;
+	gchar *result;
+
+	g_rw_lock_reader_lock (&tiff_document->rwlock);
 
 	if (TIFFGetField (tiff_document->tiff, TIFFTAG_PAGENAME, &label) &&
 	    g_utf8_validate (label, -1, NULL)) {
-		return g_strdup (label);
+		result = g_strdup (label);
+	} else {
+		result = NULL;
 	}
 
-	return NULL;
+	g_rw_lock_reader_unlock (&tiff_document->rwlock);
+
+	return result;
 }
 
 static PpsDocumentInfo *
@@ -413,9 +473,13 @@ tiff_document_get_info (PpsDocument *document)
 
 	info = pps_document_info_new ();
 
+	g_rw_lock_reader_lock (&tiff_document->rwlock);
+
 	if (TIFFGetField (tiff_document->tiff, TIFFTAG_XMLPACKET, &size, &data) == 1) {
 		pps_document_info_set_from_xmp (info, (const char *) data, size);
 	}
+
+	g_rw_lock_reader_unlock (&tiff_document->rwlock);
 
 	return info;
 }
@@ -429,6 +493,8 @@ tiff_document_finalize (GObject *object)
 		TIFFClose (tiff_document->tiff);
 	if (tiff_document->uri)
 		g_free (tiff_document->uri);
+
+	g_rw_lock_clear (&tiff_document->rwlock);
 
 	G_OBJECT_CLASS (tiff_document_parent_class)->finalize (object);
 }
@@ -507,6 +573,7 @@ static void
 tiff_document_init (TiffDocument *tiff_document)
 {
 	tiff_document->n_pages = -1;
+	g_rw_lock_init (&tiff_document->rwlock);
 }
 
 GType

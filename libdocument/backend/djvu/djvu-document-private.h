@@ -27,6 +27,8 @@ struct _DjvuDocument {
 	ddjvu_fileinfo_t *fileinfo_pages;
 	gint n_pages;
 	GHashTable *file_ids;
+
+	GRWLock rwlock;
 };
 
 int djvu_document_get_n_pages (PpsDocument *document);

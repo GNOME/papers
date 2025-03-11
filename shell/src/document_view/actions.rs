@@ -791,18 +791,12 @@ impl imp::PpsDocumentView {
 
                 let target_file = Self::create_file_from_uri_for_format(&uri, &format);
 
-                let document = obj.document().unwrap();
-
-                document.doc_mutex_lock();
-
                 let pixbuf = obj
                     .document()
                     .and_dynamic_cast::<DocumentImages>()
                     .ok()
                     .and_then(|d| d.image(&image))
                     .unwrap();
-
-                document.doc_mutex_unlock();
 
                 if let Err(e) = obj.save_file(&target_file, |target| {
                     pixbuf.savev(target.path().unwrap(), &format.name().unwrap(), &[])
@@ -819,16 +813,12 @@ impl imp::PpsDocumentView {
             return;
         };
         let clipboard = self.obj().clipboard();
-        let document = self.document().unwrap();
 
-        document.doc_mutex_lock();
-
-        let pixbuf = document
-            .dynamic_cast_ref::<papers_document::DocumentImages>()
+        let pixbuf = self
+            .document()
+            .and_dynamic_cast::<papers_document::DocumentImages>()
             .unwrap()
             .image(&image);
-
-        document.doc_mutex_unlock();
 
         clipboard.set_texture(&gdk::Texture::for_pixbuf(&pixbuf.unwrap()))
     }
@@ -875,9 +865,7 @@ impl imp::PpsDocumentView {
         if !mask.is_empty() {
             if let Some(document) = self.document() {
                 if let Some(doc_annot) = document.dynamic_cast_ref::<DocumentAnnotations>() {
-                    document.doc_mutex_lock();
                     doc_annot.save_annotation(&annot, mask);
-                    document.doc_mutex_unlock();
                 }
             }
         }

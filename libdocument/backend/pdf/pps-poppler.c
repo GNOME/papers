@@ -81,6 +81,7 @@ struct _PdfDocument {
 	gchar *password;
 	gboolean forms_modified;
 	gboolean annots_modified;
+	GRWLock rwlock;
 
 	PopplerFontsIter *fonts_iter;
 	gboolean missing_fonts;
@@ -181,6 +182,7 @@ pdf_document_dispose (GObject *object)
 	g_clear_pointer (&self->print_ctx, pdf_print_context_free);
 	g_clear_object (&self->document);
 	g_clear_pointer (&self->fonts_iter, poppler_fonts_iter_free);
+	g_rw_lock_clear (&self->rwlock);
 
 	G_OBJECT_CLASS (pdf_document_parent_class)->dispose (object);
 }
@@ -189,6 +191,7 @@ static void
 pdf_document_init (PdfDocument *self)
 {
 	self->password = NULL;
+	g_rw_lock_init (&self->rwlock);
 }
 
 static void
@@ -263,6 +266,8 @@ pdf_document_save (PpsDocument *document,
 	gboolean retval;
 	GError *poppler_error = NULL;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	retval = poppler_document_save (self->document,
 	                                uri, &poppler_error);
 	if (retval) {
@@ -272,6 +277,8 @@ pdf_document_save (PpsDocument *document,
 	} else {
 		convert_error (poppler_error, error);
 	}
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 
 	return retval;
 }
@@ -284,8 +291,10 @@ pdf_document_load (PpsDocument *document,
 	GError *poppler_error = NULL;
 	PdfDocument *self = PDF_DOCUMENT (document);
 
+	g_rw_lock_writer_lock (&self->rwlock);
 	self->document =
 	    poppler_document_new_from_file (uri, self->password, &poppler_error);
+	g_rw_lock_writer_unlock (&self->rwlock);
 
 	if (self->document == NULL) {
 		convert_error (poppler_error, error);
@@ -302,6 +311,9 @@ pdf_document_load_fd (PpsDocument *document,
 {
 	GError *err = NULL;
 	PdfDocument *self = PDF_DOCUMENT (document);
+	gboolean success;
+
+	g_rw_lock_writer_lock (&self->rwlock);
 
 	/* Note: this consumes @fd */
 	self->document =
@@ -311,16 +323,24 @@ pdf_document_load_fd (PpsDocument *document,
 
 	if (self->document == NULL) {
 		convert_error (err, error);
-		return FALSE;
+		success = FALSE;
+	} else {
+		success = TRUE;
 	}
 
-	return TRUE;
+	g_rw_lock_writer_unlock (&self->rwlock);
+
+	return success;
 }
 
 static int
 pdf_document_get_n_pages (PpsDocument *document)
 {
-	return poppler_document_get_n_pages (PDF_DOCUMENT (document)->document);
+	int n_pages;
+
+	n_pages = poppler_document_get_n_pages (PDF_DOCUMENT (document)->document);
+
+	return n_pages;
 }
 
 static PpsPage *
@@ -331,11 +351,15 @@ pdf_document_get_page (PpsDocument *document,
 	PopplerPage *poppler_page;
 	PpsPage *page;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page = poppler_document_get_page (self->document, index);
 	page = pps_page_new (index);
 	page->backend_page = (PpsBackendPage) g_object_ref (poppler_page);
 	page->backend_destroy_func = (PpsBackendPageDestroyFunc) g_object_unref;
 	g_object_unref (poppler_page);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return page;
 }
@@ -346,9 +370,13 @@ pdf_document_get_page_size (PpsDocument *document,
                             double *width,
                             double *height)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
+
 	g_return_if_fail (POPPLER_IS_PAGE (page->backend_page));
 
+	g_rw_lock_reader_lock (&self->rwlock);
 	poppler_page_get_size (POPPLER_PAGE (page->backend_page), width, height);
+	g_rw_lock_reader_unlock (&self->rwlock);
 }
 
 static char *
@@ -419,9 +447,13 @@ static cairo_surface_t *
 pdf_document_render (PpsDocument *document,
                      PpsRenderContext *rc)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerPage *poppler_page;
 	double width_points, height_points;
 	gint width, height;
+	cairo_surface_t *surface;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 
@@ -430,8 +462,12 @@ pdf_document_render (PpsDocument *document,
 
 	pps_render_context_compute_transformed_size (rc, width_points, height_points,
 	                                             &width, &height);
-	return pdf_page_render (poppler_page,
-	                        width, height, rc);
+	surface = pdf_page_render (poppler_page,
+	                           width, height, rc);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return surface;
 }
 
 static GdkPixbuf *
@@ -455,21 +491,23 @@ static GdkPixbuf *
 pdf_document_get_thumbnail (PpsDocument *document,
                             PpsRenderContext *rc)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerPage *poppler_page;
 	cairo_surface_t *surface;
 	GdkPixbuf *pixbuf = NULL;
 	double page_width, page_height;
 	gint width, height;
 
+	g_rw_lock_reader_lock (&self->rwlock);
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
-
 	poppler_page_get_size (poppler_page,
 	                       &page_width, &page_height);
+	surface = poppler_page_get_thumbnail (poppler_page);
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	pps_render_context_compute_transformed_size (rc, page_width, page_height,
 	                                             &width, &height);
 
-	surface = poppler_page_get_thumbnail (poppler_page);
 	if (surface) {
 		pixbuf = pps_document_misc_pixbuf_from_surface (surface);
 		cairo_surface_destroy (surface);
@@ -503,20 +541,24 @@ pdf_document_get_thumbnail_surface (PpsDocument *document,
                                     PpsRenderContext *rc)
 {
 
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerPage *poppler_page;
 	cairo_surface_t *surface;
 	double page_width, page_height;
 	gint width, height;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 
 	poppler_page_get_size (poppler_page,
 	                       &page_width, &page_height);
 
+	surface = poppler_page_get_thumbnail (poppler_page);
+
 	pps_render_context_compute_transformed_size (rc, page_width, page_height,
 	                                             &width, &height);
 
-	surface = poppler_page_get_thumbnail (poppler_page);
 	if (surface) {
 		int surface_width = (rc->rotation == 90 || rc->rotation == 270) ? cairo_image_surface_get_height (surface) : cairo_image_surface_get_width (surface);
 
@@ -534,6 +576,8 @@ pdf_document_get_thumbnail_surface (PpsDocument *document,
 
 	surface = pdf_page_render (poppler_page, width, height, rc);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return surface;
 }
 
@@ -545,22 +589,17 @@ pdf_document_get_info (PpsDocument *document)
 	PopplerPageMode mode;
 	PopplerViewerPreferences view_prefs;
 	PopplerPermissions permissions;
-	char *metadata;
+	char *metadata = NULL;
 	gboolean linearized;
 	GDateTime *created_datetime = NULL;
 	GDateTime *modified_datetime = NULL;
+	gboolean has_javascript;
+	gint n_pages;
+	double paper_width = 0, paper_height = 0;
 
 	info = pps_document_info_new ();
 
-	info->fields_mask |= PPS_DOCUMENT_INFO_LAYOUT |
-	                     PPS_DOCUMENT_INFO_START_MODE |
-	                     PPS_DOCUMENT_INFO_PERMISSIONS |
-	                     PPS_DOCUMENT_INFO_UI_HINTS |
-	                     PPS_DOCUMENT_INFO_LINEARIZED |
-	                     PPS_DOCUMENT_INFO_N_PAGES |
-	                     PPS_DOCUMENT_INFO_SECURITY |
-	                     PPS_DOCUMENT_INFO_PAPER_SIZE;
-
+	// Get all Poppler document data under the lock
 	g_object_get (PDF_DOCUMENT (document)->document,
 	              "title", &(info->title),
 	              "format", &(info->format),
@@ -578,6 +617,25 @@ pdf_document_get_info (PpsDocument *document)
 	              "linearized", &linearized,
 	              "metadata", &metadata,
 	              NULL);
+
+	n_pages = poppler_document_get_n_pages (PDF_DOCUMENT (document)->document);
+	has_javascript = poppler_document_has_javascript (PDF_DOCUMENT (document)->document);
+
+	if (n_pages > 0) {
+		PopplerPage *poppler_page = poppler_document_get_page (PDF_DOCUMENT (document)->document, 0);
+		poppler_page_get_size (poppler_page, &paper_width, &paper_height);
+		g_object_unref (poppler_page);
+	}
+
+	// Process all the data outside the lock
+	info->fields_mask |= PPS_DOCUMENT_INFO_LAYOUT |
+	                     PPS_DOCUMENT_INFO_START_MODE |
+	                     PPS_DOCUMENT_INFO_PERMISSIONS |
+	                     PPS_DOCUMENT_INFO_UI_HINTS |
+	                     PPS_DOCUMENT_INFO_LINEARIZED |
+	                     PPS_DOCUMENT_INFO_N_PAGES |
+	                     PPS_DOCUMENT_INFO_SECURITY |
+	                     PPS_DOCUMENT_INFO_PAPER_SIZE;
 
 	if (info->title)
 		info->fields_mask |= PPS_DOCUMENT_INFO_TITLE;
@@ -602,18 +660,12 @@ pdf_document_get_info (PpsDocument *document)
 		g_free (metadata);
 	}
 
-	info->n_pages = poppler_document_get_n_pages (PDF_DOCUMENT (document)->document);
+	info->n_pages = n_pages;
 
-	if (info->n_pages > 0) {
-		PopplerPage *poppler_page;
-
-		poppler_page = poppler_document_get_page (PDF_DOCUMENT (document)->document, 0);
-		poppler_page_get_size (poppler_page, &(info->paper_width), &(info->paper_height));
-		g_object_unref (poppler_page);
-
+	if (n_pages > 0) {
 		// Convert to mm.
-		info->paper_width = info->paper_width / 72.0f * 25.4f;
-		info->paper_height = info->paper_height / 72.0f * 25.4f;
+		info->paper_width = paper_width / 72.0f * 25.4f;
+		info->paper_height = paper_height / 72.0f * 25.4f;
 	}
 
 	switch (layout) {
@@ -659,41 +711,30 @@ pdf_document_get_info (PpsDocument *document)
 	}
 
 	info->ui_hints = 0;
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_HIDE_TOOLBAR;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_HIDE_MENUBAR;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_HIDE_WINDOWUI;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_FIT_WINDOW) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_FIT_WINDOW)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_FIT_WINDOW;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_CENTER_WINDOW;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_DISPLAY_DOC_TITLE;
-	}
-	if (view_prefs & POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL) {
+	if (view_prefs & POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL)
 		info->ui_hints |= PPS_DOCUMENT_UI_HINT_DIRECTION_RTL;
-	}
 
 	info->permissions = 0;
-	if (permissions & POPPLER_PERMISSIONS_OK_TO_PRINT) {
+	if (permissions & POPPLER_PERMISSIONS_OK_TO_PRINT)
 		info->permissions |= PPS_DOCUMENT_PERMISSIONS_OK_TO_PRINT;
-	}
-	if (permissions & POPPLER_PERMISSIONS_OK_TO_MODIFY) {
+	if (permissions & POPPLER_PERMISSIONS_OK_TO_MODIFY)
 		info->permissions |= PPS_DOCUMENT_PERMISSIONS_OK_TO_MODIFY;
-	}
-	if (permissions & POPPLER_PERMISSIONS_OK_TO_COPY) {
+	if (permissions & POPPLER_PERMISSIONS_OK_TO_COPY)
 		info->permissions |= PPS_DOCUMENT_PERMISSIONS_OK_TO_COPY;
-	}
-	if (permissions & POPPLER_PERMISSIONS_OK_TO_ADD_NOTES) {
+	if (permissions & POPPLER_PERMISSIONS_OK_TO_ADD_NOTES)
 		info->permissions |= PPS_DOCUMENT_PERMISSIONS_OK_TO_ADD_NOTES;
-	}
 
 	if (pps_document_security_has_document_security (PPS_DOCUMENT_SECURITY (document))) {
 		/* translators: this is the document security state */
@@ -705,7 +746,7 @@ pdf_document_get_info (PpsDocument *document)
 
 	info->linearized = linearized ? g_strdup (_ ("Yes")) : g_strdup (_ ("No"));
 
-	info->contains_js = poppler_document_has_javascript (PDF_DOCUMENT (document)->document) ? PPS_DOCUMENT_CONTAINS_JS_YES : PPS_DOCUMENT_CONTAINS_JS_NO;
+	info->contains_js = has_javascript ? PPS_DOCUMENT_CONTAINS_JS_YES : PPS_DOCUMENT_CONTAINS_JS_NO;
 	info->fields_mask |= PPS_DOCUMENT_INFO_CONTAINS_JS;
 
 	return info;
@@ -793,14 +834,19 @@ pdf_document_fonts_scan (PpsDocumentFonts *document_fonts)
 
 	g_return_if_fail (PDF_IS_DOCUMENT (document_fonts));
 
-	font_info = poppler_font_info_new (self->document);
 	n_pages = pps_document_get_n_pages (PPS_DOCUMENT (document_fonts));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+
+	font_info = poppler_font_info_new (self->document);
 	poppler_font_info_scan (font_info, n_pages, &fonts_iter);
 
 	g_clear_pointer (&self->fonts_iter, poppler_fonts_iter_free);
 	self->fonts_iter = fonts_iter;
 
 	poppler_font_info_free (font_info);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static const char *
@@ -878,13 +924,18 @@ static GListModel *
 pdf_document_fonts_get_model (PpsDocumentFonts *document_fonts)
 {
 	PdfDocument *self = PDF_DOCUMENT (document_fonts);
-	PopplerFontsIter *iter = self->fonts_iter;
+	PopplerFontsIter *iter;
 	GListStore *model = NULL;
 
 	g_return_val_if_fail (PDF_IS_DOCUMENT (document_fonts), NULL);
 
-	if (!iter)
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	iter = self->fonts_iter;
+	if (!iter) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
 	model = g_list_store_new (PPS_TYPE_FONT_DESCRIPTION);
 
@@ -989,6 +1040,8 @@ pdf_document_fonts_get_model (PpsDocumentFonts *document_fonts)
 		g_free (details);
 	} while (poppler_fonts_iter_next (iter));
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return G_LIST_MODEL (model);
 }
 
@@ -1005,15 +1058,19 @@ pdf_document_links_has_document_links (PpsDocumentLinks *document_links)
 {
 	PdfDocument *self = PDF_DOCUMENT (document_links);
 	PopplerIndexIter *iter;
+	gboolean has_links;
 
 	g_return_val_if_fail (PDF_IS_DOCUMENT (document_links), FALSE);
 
 	iter = poppler_index_iter_new (self->document);
-	if (iter == NULL)
-		return FALSE;
-	poppler_index_iter_free (iter);
+	if (iter == NULL) {
+		has_links = FALSE;
+	} else {
+		poppler_index_iter_free (iter);
+		has_links = TRUE;
+	}
 
-	return TRUE;
+	return has_links;
 }
 
 static PpsLinkDest *
@@ -1278,18 +1335,19 @@ pdf_document_links_get_links_model (PpsDocumentLinks *document_links)
 
 	g_return_val_if_fail (PDF_IS_DOCUMENT (document_links), NULL);
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	iter = poppler_index_iter_new (self->document);
 	/* Create the model if we have items*/
 	if (iter != NULL) {
 		model = g_list_store_new (PPS_TYPE_OUTLINES);
-
 		build_tree (self, model, iter);
 		poppler_index_iter_free (iter);
-
-		return G_LIST_MODEL (model);
 	}
 
-	return NULL;
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return model ? G_LIST_MODEL (model) : NULL;
 }
 
 static PpsMappingList *
@@ -1297,9 +1355,14 @@ pdf_document_links_get_links (PpsDocumentLinks *document_links,
                               PpsPage *page)
 {
 	PdfDocument *self = PDF_DOCUMENT (document_links);
-	GList *mapping_list = poppler_page_get_link_mapping (POPPLER_PAGE (page->backend_page));
+	GList *mapping_list;
 	GList *retval = NULL;
 	GList *list;
+	PpsMappingList *links_mapping;
+
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	mapping_list = poppler_page_get_link_mapping (POPPLER_PAGE (page->backend_page));
 
 	for (list = mapping_list; list; list = list->next) {
 		PopplerLinkMapping *link_mapping;
@@ -1316,7 +1379,11 @@ pdf_document_links_get_links (PpsDocumentLinks *document_links,
 
 	poppler_page_free_link_mapping (mapping_list);
 
-	return pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+	links_mapping = pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return links_mapping;
 }
 
 static PpsLinkDest *
@@ -1327,12 +1394,16 @@ pdf_document_links_find_link_dest (PpsDocumentLinks *document_links,
 	PopplerDest *dest;
 	PpsLinkDest *pps_dest = NULL;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	dest = poppler_document_find_dest (self->document,
 	                                   link_name);
 	if (dest) {
 		pps_dest = pps_link_dest_from_dest (self, dest);
 		poppler_dest_free (dest);
 	}
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return pps_dest;
 }
@@ -1345,12 +1416,16 @@ pdf_document_links_find_link_page (PpsDocumentLinks *document_links,
 	PopplerDest *dest;
 	gint retval = -1;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	dest = poppler_document_find_dest (self->document,
 	                                   link_name);
 	if (dest) {
 		retval = dest->page_num - 1;
 		poppler_dest_free (dest);
 	}
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return retval;
 }
@@ -1369,10 +1444,14 @@ static PpsMappingList *
 pdf_document_images_get_image_mapping (PpsDocumentImages *document_images,
                                        PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_images);
 	GList *retval = NULL;
 	PopplerPage *poppler_page;
 	GList *mapping_list;
 	GList *list;
+	PpsMappingList *mapping_list_result;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (page->backend_page);
 	mapping_list = poppler_page_get_image_mapping (poppler_page);
@@ -1396,7 +1475,11 @@ pdf_document_images_get_image_mapping (PpsDocumentImages *document_images,
 
 	poppler_page_free_image_mapping (mapping_list);
 
-	return pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+	mapping_list_result = pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return mapping_list_result;
 }
 
 static GdkPixbuf *
@@ -1408,6 +1491,8 @@ pdf_document_images_get_image (PpsDocumentImages *document_images,
 	PopplerPage *poppler_page;
 	cairo_surface_t *surface;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page = poppler_document_get_page (self->document,
 	                                          pps_image_get_page (image));
 
@@ -1418,6 +1503,8 @@ pdf_document_images_get_image (PpsDocumentImages *document_images,
 	}
 
 	g_object_unref (poppler_page);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return retval;
 }
@@ -1435,6 +1522,7 @@ pdf_document_find_find_text (PpsDocumentFind *document_find,
                              const gchar *text,
                              PpsFindOptions options)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_find);
 	GList *matches, *l;
 	PopplerPage *poppler_page;
 	GList *retval = NULL;
@@ -1456,7 +1544,13 @@ pdf_document_find_find_text (PpsDocumentFind *document_find,
 
 	/* Allow to match on text spanning from one line to the next */
 	find_flags |= POPPLER_FIND_MULTILINE;
+
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	matches = poppler_page_find_text_with_options (poppler_page, text, (PopplerFindFlags) find_flags);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	if (!matches)
 		return NULL;
 
@@ -1636,6 +1730,8 @@ pdf_document_file_exporter_do_page (PpsFileExporter *exporter,
 
 	g_return_if_fail (self->print_ctx != NULL);
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 
 #ifdef HAVE_CAIRO_PRINT
@@ -1733,6 +1829,8 @@ pdf_document_file_exporter_end_page (PpsFileExporter *exporter)
 #ifdef HAVE_CAIRO_PRINT
 	cairo_show_page (self->print_ctx->cr);
 #endif
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 }
 
 static void
@@ -1779,7 +1877,13 @@ pdf_document_print_print_page (PpsDocumentPrint *document,
                                PpsPage *page,
                                cairo_t *cr)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
+
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page_render_for_printing (POPPLER_PAGE (page->backend_page), cr);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 }
 
 static void
@@ -1798,12 +1902,15 @@ pdf_selection_render_selection (PpsSelection *selection,
                                 GdkRGBA *text,
                                 GdkRGBA *base)
 {
+	PdfDocument *self = PDF_DOCUMENT (selection);
 	PopplerPage *poppler_page;
 	cairo_t *cr;
 	PopplerColor text_color, base_color;
 	double width_points, height_points;
 	gint width, height;
 	double xscale, yscale;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 
@@ -1835,6 +1942,8 @@ pdf_selection_render_selection (PpsSelection *selection,
 	                               &text_color,
 	                               &base_color);
 	cairo_destroy (cr);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 }
 
 static gchar *
@@ -1843,11 +1952,20 @@ pdf_selection_get_selected_text (PpsSelection *selection,
                                  PpsSelectionStyle style,
                                  PpsRectangle *points)
 {
+	PdfDocument *self = PDF_DOCUMENT (selection);
+	gchar *text;
+
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
 
-	return poppler_page_get_selected_text (POPPLER_PAGE (page->backend_page),
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	text = poppler_page_get_selected_text (POPPLER_PAGE (page->backend_page),
 	                                       (PopplerSelectionStyle) style,
 	                                       (PopplerRectangle *) points);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return text;
 }
 
 static cairo_region_t *
@@ -1881,10 +1999,13 @@ pdf_selection_get_selection_region (PpsSelection *selection,
                                     PpsSelectionStyle style,
                                     PpsRectangle *points)
 {
+	PdfDocument *self = PDF_DOCUMENT (selection);
 	PopplerPage *poppler_page;
 	cairo_region_t *retval, *region;
 	double page_width, page_height;
 	double xscale, yscale;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 	region = poppler_page_get_selected_region (poppler_page,
@@ -1897,6 +2018,8 @@ pdf_selection_get_selection_region (PpsSelection *selection,
 	pps_render_context_compute_scales (rc, page_width, page_height, &xscale, &yscale);
 	retval = create_region_from_poppler_region (region, xscale, yscale);
 	cairo_region_destroy (region);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return retval;
 }
@@ -1914,9 +2037,12 @@ static cairo_region_t *
 pdf_document_text_get_text_mapping (PpsDocumentText *document_text,
                                     PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_text);
 	PopplerPage *poppler_page;
 	PopplerRectangle points;
 	cairo_region_t *retval;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
 
@@ -1930,6 +2056,8 @@ pdf_document_text_get_text_mapping (PpsDocumentText *document_text,
 	                                           POPPLER_SELECTION_GLYPH,
 	                                           &points);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return retval;
 }
 
@@ -1937,9 +2065,17 @@ static gchar *
 pdf_document_text_get_text (PpsDocumentText *selection,
                             PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (selection);
+
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
 
-	return poppler_page_get_text (POPPLER_PAGE (page->backend_page));
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	gchar *text = poppler_page_get_text (POPPLER_PAGE (page->backend_page));
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return text;
 }
 
 static gboolean
@@ -1948,10 +2084,19 @@ pdf_document_text_get_text_layout (PpsDocumentText *selection,
                                    PpsRectangle **areas,
                                    guint *n_areas)
 {
+	PdfDocument *self = PDF_DOCUMENT (selection);
+	gboolean result;
+
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), FALSE);
 
-	return poppler_page_get_text_layout (POPPLER_PAGE (page->backend_page),
-	                                     (PopplerRectangle **) areas, n_areas);
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	result = poppler_page_get_text_layout (POPPLER_PAGE (page->backend_page),
+	                                       (PopplerRectangle **) areas, n_areas);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return result;
 }
 
 static gchar *
@@ -1959,24 +2104,36 @@ pdf_document_text_get_text_in_area (PpsDocumentText *document_text,
                                     PpsPage *page,
                                     PpsRectangle *area)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_text);
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
 
-	return poppler_page_get_text_for_area (POPPLER_PAGE (page->backend_page),
-	                                       (PopplerRectangle *) area);
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	gchar *text = poppler_page_get_text_for_area (POPPLER_PAGE (page->backend_page),
+	                                              (PopplerRectangle *) area);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return text;
 }
 
 static PangoAttrList *
 pdf_document_text_get_text_attrs (PpsDocumentText *document_text,
                                   PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_text);
 	GList *backend_attrs_list, *l;
 	PangoAttrList *attrs_list;
 
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	backend_attrs_list = poppler_page_get_text_attributes (POPPLER_PAGE (page->backend_page));
-	if (!backend_attrs_list)
+	if (!backend_attrs_list) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
 	attrs_list = pango_attr_list_new ();
 	for (l = backend_attrs_list; l; l = g_list_next (l)) {
@@ -2014,6 +2171,8 @@ pdf_document_text_get_text_attrs (PpsDocumentText *document_text,
 
 	poppler_page_free_text_attributes (backend_attrs_list);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return attrs_list;
 }
 
@@ -2036,12 +2195,18 @@ pdf_document_get_page_duration (PpsDocumentTransition *trans,
 	PopplerPage *poppler_page;
 	gdouble duration = -1;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page = poppler_document_get_page (self->document, page);
-	if (!poppler_page)
+	if (!poppler_page) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return -1;
+	}
 
 	duration = poppler_page_get_duration (poppler_page);
 	g_object_unref (poppler_page);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return duration;
 }
@@ -2055,15 +2220,20 @@ pdf_document_get_effect (PpsDocumentTransition *trans,
 	PopplerPageTransition *page_transition;
 	PpsTransitionEffect *effect;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_page = poppler_document_get_page (self->document, page);
 
-	if (!poppler_page)
+	if (!poppler_page) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
 	page_transition = poppler_page_get_transition (poppler_page);
 
 	if (!page_transition) {
 		g_object_unref (poppler_page);
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
 	}
 
@@ -2080,6 +2250,8 @@ pdf_document_get_effect (PpsDocumentTransition *trans,
 
 	poppler_page_transition_free (page_transition);
 	g_object_unref (poppler_page);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return effect;
 }
@@ -2224,11 +2396,14 @@ static PpsMappingList *
 pdf_document_forms_get_form_fields (PpsDocumentForms *document,
                                     PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	GList *retval = NULL;
 	GList *fields;
 	GList *list;
 
 	g_return_val_if_fail (POPPLER_IS_PAGE (page->backend_page), NULL);
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	fields = poppler_page_get_form_field_mapping (POPPLER_PAGE (page->backend_page));
 
@@ -2258,6 +2433,8 @@ pdf_document_forms_get_form_fields (PpsDocumentForms *document,
 
 	poppler_page_free_form_field_mapping (fields);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return retval ? pps_mapping_list_new (page->index,
 	                                      g_list_reverse (retval),
 	                                      (GDestroyNotify) g_object_unref)
@@ -2274,9 +2451,15 @@ static void
 pdf_document_forms_reset_form (PpsDocumentForms *document,
                                PpsLinkAction *action)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
+
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_document_reset_form (PDF_DOCUMENT (document)->document,
 	                             pps_link_action_get_reset_fields (action),
 	                             pps_link_action_get_exclude_reset_fields (action));
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gchar *
@@ -2284,14 +2467,21 @@ pdf_document_forms_form_field_text_get_text (PpsDocumentForms *document,
                                              PpsFormField *field)
 
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 	gchar *text;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
 	text = poppler_form_field_text_get_text (poppler_field);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return text;
 }
@@ -2301,15 +2491,22 @@ pdf_document_forms_form_field_text_set_text (PpsDocumentForms *document,
                                              PpsFormField *field,
                                              const gchar *text)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_text_set_text (poppler_field, text);
-	PDF_DOCUMENT (document)->forms_modified = TRUE;
+	self->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static void
@@ -2317,29 +2514,43 @@ pdf_document_forms_form_field_button_set_state (PpsDocumentForms *document,
                                                 PpsFormField *field,
                                                 gboolean state)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_button_set_state (poppler_field, state);
 	PDF_DOCUMENT (document)->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gboolean
 pdf_document_forms_form_field_button_get_state (PpsDocumentForms *document,
                                                 PpsFormField *field)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 	gboolean state;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return FALSE;
+	}
 
 	state = poppler_form_field_button_get_state (poppler_field);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return state;
 }
@@ -2399,15 +2610,22 @@ pdf_document_forms_form_field_choice_select_item (PpsDocumentForms *document,
                                                   PpsFormField *field,
                                                   gint index)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_choice_select_item (poppler_field, index);
 	PDF_DOCUMENT (document)->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static void
@@ -2415,30 +2633,44 @@ pdf_document_forms_form_field_choice_toggle_item (PpsDocumentForms *document,
                                                   PpsFormField *field,
                                                   gint index)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_choice_toggle_item (poppler_field, index);
-	PDF_DOCUMENT (document)->forms_modified = TRUE;
+	self->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static void
 pdf_document_forms_form_field_choice_unselect_all (PpsDocumentForms *document,
                                                    PpsFormField *field)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_choice_unselect_all (poppler_field);
-	PDF_DOCUMENT (document)->forms_modified = TRUE;
+	self->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static void
@@ -2446,29 +2678,43 @@ pdf_document_forms_form_field_choice_set_text (PpsDocumentForms *document,
                                                PpsFormField *field,
                                                const gchar *text)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	poppler_form_field_choice_set_text (poppler_field, text);
-	PDF_DOCUMENT (document)->forms_modified = TRUE;
+	self->forms_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gchar *
 pdf_document_forms_form_field_choice_get_text (PpsDocumentForms *document,
                                                PpsFormField *field)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerFormField *poppler_field;
 	gchar *text;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_field = POPPLER_FORM_FIELD (g_object_get_data (G_OBJECT (field), "poppler-field"));
-	if (!poppler_field)
+	if (!poppler_field) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
 	text = poppler_form_field_choice_get_text (poppler_field);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return text;
 }
@@ -2835,10 +3081,14 @@ static GList *
 pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annotations,
                                           PpsPage *page)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_annotations);
 	GList *annots = NULL;
 	GList *poppler_annots;
 
+	g_rw_lock_reader_lock (&self->rwlock);
 	poppler_annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	for (GList *list = poppler_annots; list; list = list->next) {
 		PopplerAnnotMapping *mapping;
 		PpsAnnotation *annot;
@@ -2889,12 +3139,16 @@ pdf_document_annotations_remove_annotation (PpsDocumentAnnotations *document_ann
 	PopplerPage *poppler_page = POPPLER_PAGE (page->backend_page);
 	PopplerAnnot *poppler_annot;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
 
 	poppler_page_remove_annot (poppler_page, poppler_annot);
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static GArray *
@@ -3007,6 +3261,8 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	GdkRGBA color;
 	PpsRectangle rect;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	pps_annotation_get_area (annot, &rect);
 	poppler_rect = pps_rect_to_poppler (page, &rect);
 
@@ -3049,8 +3305,10 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		quads = get_quads_for_area (POPPLER_PAGE (page->backend_page),
 		                            &poppler_rect, &bbox);
 
-		if (!quads)
+		if (!quads) {
+			g_rw_lock_writer_unlock (&self->rwlock);
 			return;
+		}
 
 		rect = poppler_rect_to_pps (page, &bbox);
 
@@ -3121,6 +3379,8 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 /* FIXME: We could probably add this to poppler */
@@ -3168,11 +3428,16 @@ pdf_document_annotations_save_annotation (PpsDocumentAnnotations *document_annot
                                           PpsAnnotation *annot,
                                           PpsAnnotationsSaveMask mask)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_annotations);
 	PopplerAnnot *poppler_annot;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
-	if (!poppler_annot)
+	if (!poppler_annot) {
+		g_rw_lock_writer_unlock (&self->rwlock);
 		return;
+	}
 
 	if (mask & PPS_ANNOTATIONS_SAVE_CONTENTS)
 		poppler_annot_set_contents (poppler_annot,
@@ -3340,8 +3605,10 @@ pdf_document_annotations_save_annotation (PpsDocumentAnnotations *document_annot
 			g_assert_not_reached ();
 	}
 
-	PDF_DOCUMENT (document_annotations)->annots_modified = TRUE;
+	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 /* Creates a vector from points @p1 and @p2 and stores it on @vector */
@@ -3393,6 +3660,7 @@ pdf_document_annotations_over_markup (PpsDocumentAnnotations *document_annotatio
                                       gdouble x,
                                       gdouble y)
 {
+	PdfDocument *self = PDF_DOCUMENT (document_annotations);
 	PpsPage *page;
 	PopplerAnnot *poppler_annot;
 	GArray *quads;
@@ -3400,10 +3668,14 @@ pdf_document_annotations_over_markup (PpsDocumentAnnotations *document_annotatio
 	guint quads_len;
 	gdouble height;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
 
-	if (!poppler_annot || !POPPLER_IS_ANNOT_TEXT_MARKUP (poppler_annot))
+	if (!poppler_annot || !POPPLER_IS_ANNOT_TEXT_MARKUP (poppler_annot)) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return PPS_ANNOTATION_OVER_MARKUP_UNKNOWN;
+	}
 
 	quads = poppler_annot_text_markup_get_quadrilaterals (POPPLER_ANNOT_TEXT_MARKUP (poppler_annot));
 	quads_len = quads->len;
@@ -3418,10 +3690,13 @@ pdf_document_annotations_over_markup (PpsDocumentAnnotations *document_annotatio
 
 		if (point_over_poppler_quadrilateral (quadrilateral, &M)) {
 			g_array_unref (quads);
+			g_rw_lock_reader_unlock (&self->rwlock);
 			return PPS_ANNOTATION_OVER_MARKUP_YES;
 		}
 	}
 	g_array_unref (quads);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return PPS_ANNOTATION_OVER_MARKUP_NOT;
 }
@@ -3559,9 +3834,14 @@ pdf_document_media_get_media_mapping (PpsDocumentMedia *document_media,
                                       PpsPage *page)
 {
 	PdfDocument *self = PDF_DOCUMENT (document_media);
-	GList *annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
+	GList *annots;
 	GList *retval = NULL;
 	GList *list;
+	PpsMappingList *mapping_list_result;
+
+	g_rw_lock_reader_lock (&self->rwlock);
+
+	annots = poppler_page_get_annot_mapping (POPPLER_PAGE (page->backend_page));
 
 	for (list = annots; list; list = list->next) {
 		PopplerAnnotMapping *mapping;
@@ -3604,10 +3884,16 @@ pdf_document_media_get_media_mapping (PpsDocumentMedia *document_media,
 
 	poppler_page_free_annot_mapping (annots);
 
-	if (!retval)
+	if (!retval) {
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return NULL;
+	}
 
-	return pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+	mapping_list_result = pps_mapping_list_new (page->index, g_list_reverse (retval), (GDestroyNotify) g_object_unref);
+
+	g_rw_lock_reader_unlock (&self->rwlock);
+
+	return mapping_list_result;
 }
 
 static void
@@ -3683,6 +3969,8 @@ pdf_document_attachments_get_attachments (PpsDocumentAttachments *document)
 	GList *list;
 	GList *retval = NULL;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	list = poppler_document_get_attachments (self->document);
 
 	while (list) {
@@ -3718,6 +4006,8 @@ pdf_document_attachments_get_attachments (PpsDocumentAttachments *document)
 
 	g_clear_list (&list, g_object_unref);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return g_list_reverse (retval);
 }
 
@@ -3725,8 +4015,11 @@ static gboolean
 pdf_document_attachments_has_attachments (PpsDocumentAttachments *document)
 {
 	PdfDocument *self = PDF_DOCUMENT (document);
+	gboolean result;
 
-	return poppler_document_has_attachments (self->document);
+	result = poppler_document_has_attachments (self->document);
+
+	return result;
 }
 
 static void
@@ -3744,8 +4037,9 @@ pdf_document_layers_has_layers (PpsDocumentLayers *document)
 	PopplerLayersIter *iter;
 
 	iter = poppler_layers_iter_new (self->document);
-	if (!iter)
+	if (!iter) {
 		return FALSE;
+	}
 	poppler_layers_iter_free (iter);
 
 	return TRUE;
@@ -3817,13 +4111,19 @@ pdf_document_layers_get_layers (PpsDocumentLayers *document)
 	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerLayersIter *iter;
 
+	g_rw_lock_reader_lock (&self->rwlock);
+
 	iter = poppler_layers_iter_new (self->document);
 	if (iter) {
 		model = g_list_store_new (PPS_TYPE_LAYER);
 		build_layers_tree (self, model, iter);
 		poppler_layers_iter_free (iter);
+
+		g_rw_lock_reader_unlock (&self->rwlock);
 		return G_LIST_MODEL (model);
 	}
+
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return NULL;
 }
@@ -3832,20 +4132,30 @@ static void
 pdf_document_layers_show_layer (PpsDocumentLayers *document,
                                 PpsLayer *layer)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerLayer *poppler_layer;
+
+	g_rw_lock_writer_lock (&self->rwlock);
 
 	poppler_layer = POPPLER_LAYER (g_object_get_data (G_OBJECT (layer), "poppler-layer"));
 	poppler_layer_show (poppler_layer);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static void
 pdf_document_layers_hide_layer (PpsDocumentLayers *document,
                                 PpsLayer *layer)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerLayer *poppler_layer;
+
+	g_rw_lock_writer_lock (&self->rwlock);
 
 	poppler_layer = POPPLER_LAYER (g_object_get_data (G_OBJECT (layer), "poppler-layer"));
 	poppler_layer_hide (poppler_layer);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gboolean
@@ -3929,6 +4239,8 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	PopplerColor color;
 	GdkRGBA rgba;
 
+	g_rw_lock_writer_lock (&self->rwlock);
+
 	g_object_get (signature, "certificate-info", &cinfo, NULL);
 	cert_info = find_poppler_certificate_info (cinfo);
 	g_assert (cert_info);
@@ -3991,6 +4303,8 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 
 	/* Remove this when the task data workaround above is removed too */
 	g_steal_pointer (&signing_data);
+
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gboolean
@@ -4053,11 +4367,14 @@ static PpsCertificateInfo *
 pdf_document_get_certificate_info (PpsDocumentSignatures *document,
                                    const char *id)
 {
+	PdfDocument *self = PDF_DOCUMENT (document);
 	g_autolist (PpsCertificateInfo) list = NULL;
 	PpsCertificateInfo *info = NULL;
 
 	if (!id || strlen (id) == 0)
 		return NULL;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	for (list = pdf_document_get_available_signing_certificates (document); list != NULL && list->data != NULL; list = list->next) {
 		PpsCertificateInfo *cert_info = list->data;
@@ -4071,6 +4388,8 @@ pdf_document_get_certificate_info (PpsDocumentSignatures *document,
 		}
 	}
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return info;
 }
 
@@ -4081,6 +4400,8 @@ pdf_document_signatures_get_signatures (PpsDocumentSignatures *document)
 	GList *ret_list = NULL;
 	GList *signature_fields = NULL;
 	GList *iter;
+
+	g_rw_lock_reader_lock (&self->rwlock);
 
 	signature_fields = poppler_document_get_signature_fields (self->document);
 
@@ -4184,6 +4505,8 @@ pdf_document_signatures_get_signatures (PpsDocumentSignatures *document)
 
 	g_clear_list (&signature_fields, g_object_unref);
 
+	g_rw_lock_reader_unlock (&self->rwlock);
+
 	return ret_list;
 }
 
@@ -4191,8 +4514,11 @@ static gboolean
 pdf_document_signatures_has_signatures (PpsDocumentSignatures *document)
 {
 	PdfDocument *pdf_document = PDF_DOCUMENT (document);
+	gboolean has_signatures;
 
-	return (poppler_document_get_n_signatures (pdf_document->document) > 0);
+	has_signatures = (poppler_document_get_n_signatures (pdf_document->document) > 0);
+
+	return has_signatures;
 }
 
 static void

@@ -307,9 +307,8 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 
 	g_return_val_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self), NULL);
 
-	pps_document_doc_mutex_lock (document);
 	page = pps_document_get_page (document, page_index);
-	pps_document_doc_mutex_unlock (document);
+
 	switch (type) {
 	case PPS_ANNOTATION_TYPE_TEXT:
 		doc_rect.x1 = start->x - ANNOTATION_ICON_SIZE / 2;
@@ -339,9 +338,7 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 	              "opacity", 1.0,
 	              NULL);
 
-	pps_document_doc_mutex_lock (document);
 	pps_document_annotations_add_annotation (PPS_DOCUMENT_ANNOTATIONS (document), annot);
-	pps_document_doc_mutex_unlock (document);
 
 	g_list_store_insert_sorted (priv->annots_model, annot,
 	                            (GCompareDataFunc) compare_annot, NULL);
@@ -362,10 +359,8 @@ pps_annotations_context_remove_annotation (PpsAnnotationsContext *self,
 	g_return_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self));
 	g_return_if_fail (PPS_IS_ANNOTATION (annot));
 
-	pps_document_doc_mutex_lock (document);
 	pps_document_annotations_remove_annotation (PPS_DOCUMENT_ANNOTATIONS (document),
 	                                            annot);
-	pps_document_doc_mutex_unlock (document);
 
 	if (!g_list_store_find (priv->annots_model, annot, &position))
 		g_assert_not_reached ();
