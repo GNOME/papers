@@ -874,11 +874,9 @@ compute_scroll_increment (PpsView *view,
 		doc_rect.x1 = doc_rect.x2 = rect.x + 0.5;
 		doc_rect.y1 = doc_rect.y2 = rect.y + 0.5;
 
-		pps_document_doc_mutex_lock (document);
 		sel_region = pps_selection_get_selection_region (PPS_SELECTION (document),
 		                                                 rc, PPS_SELECTION_STYLE_LINE,
 		                                                 &doc_rect);
-		pps_document_doc_mutex_unlock (document);
 
 		g_object_unref (rc);
 
@@ -5099,15 +5097,11 @@ pps_view_move_annot_to_point (PpsView *view,
 		rect.y1 = page_height - current_area.y2 + current_area.y1;
 	}
 
-	/* Take the mutex before set_area, because the notify signal
-	 * updates the mappings in the backend */
-	pps_document_doc_mutex_lock (document);
 	if (pps_annotation_set_area (priv->moving_annot_info.annot, &rect)) {
 		pps_document_annotations_save_annotation (PPS_DOCUMENT_ANNOTATIONS (document),
 		                                          priv->moving_annot_info.annot,
 		                                          PPS_ANNOTATIONS_SAVE_AREA);
 	}
-	pps_document_doc_mutex_unlock (document);
 
 	/* FIXME: reload only annotation area */
 	pps_view_reload_page (view, page_index, NULL);
@@ -5795,8 +5789,6 @@ cursor_clear_selection (PpsView *view,
 		gint rotation = pps_document_model_get_rotation (priv->model);
 		PpsDocument *document = pps_document_model_get_document (priv->model);
 
-		pps_document_doc_mutex_lock (document);
-
 		page = pps_document_get_page (document, selection->page);
 		rc = pps_render_context_new (page, rotation, scale, PPS_RENDER_ANNOTS_ALL);
 		g_object_unref (page);
@@ -5806,8 +5798,6 @@ cursor_clear_selection (PpsView *view,
 		                                                 PPS_SELECTION_STYLE_GLYPH,
 		                                                 &(selection->rect));
 		g_object_unref (rc);
-
-		pps_document_doc_mutex_unlock (document);
 
 		if (!tmp_region || cairo_region_is_empty (tmp_region)) {
 			cairo_region_destroy (tmp_region);
@@ -7938,8 +7928,6 @@ pps_view_get_selected_text (PpsView *view)
 
 	text = g_string_new (NULL);
 
-	pps_document_doc_mutex_lock (document);
-
 	for (l = priv->selection_info.selections; l != NULL; l = l->next) {
 		PpsViewSelection *selection = (PpsViewSelection *) l->data;
 		PpsPage *page;
@@ -7953,8 +7941,6 @@ pps_view_get_selected_text (PpsView *view)
 		g_string_append (text, tmp);
 		g_free (tmp);
 	}
-
-	pps_document_doc_mutex_unlock (document);
 
 	/* For copying text from the document to the clipboard, we want a normalization
 	 * that preserves 'canonical equivalence' i.e. that text after normalization

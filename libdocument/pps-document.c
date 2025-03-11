@@ -228,6 +228,7 @@ pps_document_setup_cache (PpsDocument *document)
 	gboolean custom_page_labels = FALSE;
 	gint n_pages = pps_document_get_n_pages (document);
 	gint i;
+	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
 
 	/* ensure that no component relies on a loaded
 	 * cache while it is (re-)generated
@@ -241,9 +242,9 @@ pps_document_setup_cache (PpsDocument *document)
 		PpsPageSize *page_size;
 		gchar *page_label = NULL;
 
-		g_mutex_lock (&priv->mutex);
+		/* Call directly into the backend's get_page_size instead of going through
+		 * pps_document_get_page_size which would try to lock the mutex again */
 		klass->get_page_size (document, page, &page_width, &page_height);
-		g_mutex_unlock (&priv->mutex);
 
 		if (i == 0) {
 			priv->uniform_width = page_width;

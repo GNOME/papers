@@ -67,9 +67,7 @@ pps_document_links_find_link_dest (PpsDocumentLinks *document_links,
 	PpsDocumentLinksInterface *iface = PPS_DOCUMENT_LINKS_GET_IFACE (document_links);
 	PpsLinkDest *retval;
 
-	pps_document_doc_mutex_lock (PPS_DOCUMENT (document_links));
 	retval = iface->find_link_dest (document_links, link_name);
-	pps_document_doc_mutex_unlock (PPS_DOCUMENT (document_links));
 
 	return retval;
 }
@@ -81,9 +79,7 @@ pps_document_links_find_link_page (PpsDocumentLinks *document_links,
 	PpsDocumentLinksInterface *iface = PPS_DOCUMENT_LINKS_GET_IFACE (document_links);
 	gint retval;
 
-	pps_document_doc_mutex_lock (PPS_DOCUMENT (document_links));
 	retval = iface->find_link_page (document_links, link_name);
-	pps_document_doc_mutex_unlock (PPS_DOCUMENT (document_links));
 
 	return retval;
 }

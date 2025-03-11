@@ -719,13 +719,10 @@ pps_page_accessible_get_selection (AtkText *text,
 
 			page = pps_document_get_page (view->document, selection->page);
 
-			pps_document_doc_mutex_lock (priv->document);
 			selected_text = pps_selection_get_selected_text (PPS_SELECTION (view->document),
 			                                                 page,
 			                                                 selection->style,
 			                                                 &(selection->rect));
-
-			pps_document_doc_mutex_unlock (priv->document);
 
 			g_object_unref (page);
 

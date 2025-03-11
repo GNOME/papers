@@ -337,34 +337,45 @@ comics_document_load (PpsDocument *document,
 	g_autofree gchar *mime_type = NULL;
 	g_autoptr (GFile) file = g_file_new_for_uri (uri);
 
+	pps_document_doc_mutex_lock (document);
+
 	comics_document->archive_path = g_file_get_path (file);
 	if (!comics_document->archive_path) {
 		g_set_error_literal (error,
 		                     PPS_DOCUMENT_ERROR,
 		                     PPS_DOCUMENT_ERROR_INVALID,
 		                     _ ("Can not get local path for archive"));
+		pps_document_doc_mutex_unlock (document);
 		return FALSE;
 	}
 
 	comics_document->archive_uri = g_strdup (uri);
 
 	mime_type = pps_file_get_mime_type (uri, FALSE, error);
-	if (mime_type == NULL)
+	if (mime_type == NULL) {
+		pps_document_doc_mutex_unlock (document);
 		return FALSE;
+	}
 
-	if (!comics_check_decompress_support (mime_type, comics_document, error))
+	if (!comics_check_decompress_support (mime_type, comics_document, error)) {
+		pps_document_doc_mutex_unlock (document);
 		return FALSE;
+	}
 
 	/* Get list of files in archive */
 	comics_document->page_names = comics_document_list (comics_document, error);
-	if (!comics_document->page_names)
+	if (!comics_document->page_names) {
+		pps_document_doc_mutex_unlock (document);
 		return FALSE;
+	}
 
 	/* Keep an index */
 	comics_document->page_positions = save_positions (comics_document->page_names);
 
 	/* Now sort the pages */
 	g_ptr_array_sort (comics_document->page_names, sort_page_names);
+
+	pps_document_doc_mutex_unlock (document);
 
 	return TRUE;
 }
@@ -375,19 +386,35 @@ comics_document_save (PpsDocument *document,
                       GError **error)
 {
 	ComicsDocument *comics_document = COMICS_DOCUMENT (document);
+	gboolean transfer_success;
 
-	return pps_xfer_uri_simple (comics_document->archive_uri, uri, error);
+	pps_document_doc_mutex_lock (document);
+
+	transfer_success = pps_xfer_uri_simple (comics_document->archive_uri, uri, error);
+
+	pps_document_doc_mutex_unlock (document);
+
+	return transfer_success;
 }
 
 static int
 comics_document_get_n_pages (PpsDocument *document)
 {
 	ComicsDocument *comics_document = COMICS_DOCUMENT (document);
+	int n_pages;
 
-	if (comics_document->page_names == NULL)
+	pps_document_doc_mutex_lock (document);
+
+	if (comics_document->page_names == NULL) {
+		pps_document_doc_mutex_unlock (document);
 		return 0;
+	}
 
-	return comics_document->page_names->len;
+	n_pages = comics_document->page_names->len;
+
+	pps_document_doc_mutex_unlock (document);
+
+	return n_pages;
 }
 
 typedef struct
@@ -420,11 +447,14 @@ comics_document_get_page_size (PpsDocument *document,
 	PixbufInfo info;
 	GError *error = NULL;
 
+	pps_document_doc_mutex_lock (document);
+
 	page_path = g_ptr_array_index (comics_document->page_names, page->index);
 
 	if (!archive_reopen_if_needed (comics_document, page_path, &error)) {
 		g_warning ("Fatal error opening archive: %s", error->message);
 		g_error_free (error);
+		pps_document_doc_mutex_unlock (document);
 		return;
 	}
 
@@ -481,6 +511,8 @@ comics_document_get_page_size (PpsDocument *document,
 		if (height)
 			*height = info.height;
 	}
+
+	pps_document_doc_mutex_unlock (document);
 }
 
 static void
@@ -495,6 +527,9 @@ render_pixbuf_size_prepared_cb (GdkPixbufLoader *loader,
 	gdk_pixbuf_loader_set_size (loader, scaled_width, scaled_height);
 }
 
+/* This function assumes that the caller has already acquired the necessary lock.
+ * If called independently, ensure proper synchronization before invoking it.
+ */
 static GdkPixbuf *
 comics_document_render_pixbuf (PpsDocument *document,
                                PpsRenderContext *rc)
@@ -574,11 +609,18 @@ comics_document_render (PpsDocument *document,
 	GdkPixbuf *pixbuf;
 	cairo_surface_t *surface;
 
+	pps_document_doc_mutex_lock (document);
+
 	pixbuf = comics_document_render_pixbuf (document, rc);
-	if (!pixbuf)
+	if (!pixbuf) {
+		pps_document_doc_mutex_unlock (document);
 		return NULL;
+	}
+
 	surface = pps_document_misc_surface_from_pixbuf (pixbuf);
 	g_clear_object (&pixbuf);
+
+	pps_document_doc_mutex_unlock (document);
 
 	return surface;
 }
