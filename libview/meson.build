@@ -94,7 +94,7 @@ enum_sources = gnome.mkenums_simple(
   install_dir: join_paths(pps_includedir, include_subdir),
 )
 
-deps = [
+libview_deps = [
   gthread_dep,
   libppsdocument_dep,
   libaw_dep,
@@ -120,7 +120,7 @@ libppsview = shared_library(
   version: pps_view_version,
   sources: sources + marshal_sources + enum_sources,
   include_directories: [top_inc, context_inc],
-  dependencies: deps,
+  dependencies: libview_deps,
   c_args: cflags,
   install: true,
   gnu_symbol_visibility: 'hidden',
@@ -129,7 +129,7 @@ libppsview = shared_library(
 libppsview_dep = declare_dependency(
   sources: headers + [enum_sources[1]],
   include_directories: libview_inc,
-  dependencies: deps,
+  dependencies: libview_deps,
   link_with: libppsview,
 )
 

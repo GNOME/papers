@@ -35,6 +35,7 @@ struct _PpsJobClass {
 	void (*finished) (PpsJob *job);
 };
 
+PPS_PUBLIC
 void pps_job_run (PpsJob *job);
 PPS_PUBLIC
 void pps_job_cancel (PpsJob *job);

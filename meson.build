@@ -351,6 +351,13 @@ gnome.post_install(
   update_desktop_database: true,
 )
 
+# *** File Tests ***
+enable_file_tests = get_option('file_tests')
+if enable_file_tests
+  subdir('libview/tests')
+endif
+
+
 summary({'Build type'                 : get_option('buildtype'),
          'Application ID'             : app_id,
          'Rust build mode'            : rust_target,
@@ -372,4 +379,5 @@ summary({'tests'                      : get_option('tests'),
          'Keyring integration'        : enable_keyring,
          'GTK+ Unix print'            : enable_gtk_unix_print,
          'Spell checker'              : enable_spellcheck,
+         'File Tests'                 : enable_file_tests,
         }, section: 'Features', bool_yn: true)

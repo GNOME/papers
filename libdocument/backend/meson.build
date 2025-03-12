@@ -67,6 +67,6 @@ foreach backend, backend_mime_types: backends
   )
 endforeach
 
-devenv = environment()
-devenv.set('PPS_BACKENDS_DIR', meson.current_build_dir())
-meson.add_devenv(devenv)
+backend_env = environment()
+backend_env.set('PPS_BACKENDS_DIR', meson.current_build_dir())
+meson.add_devenv(backend_env)
