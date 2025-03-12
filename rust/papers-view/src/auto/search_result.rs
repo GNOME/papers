@@ -19,7 +19,7 @@ impl SearchResult {
     pub const NONE: Option<&'static SearchResult> = None;
 
     //#[doc(alias = "pps_search_result_new")]
-    //pub fn new(markup: &str, label: &str, page: u32, index: u32, rect: /*Ignored*/&mut papers_document::FindRectangle) -> SearchResult {
+    //pub fn new(markup: &str, label: &str, page: u32, index: u32, global_index: u32, rect: /*Ignored*/&mut papers_document::FindRectangle) -> SearchResult {
     //    unsafe { TODO: call ffi:pps_search_result_new() }
     //}
 }
@@ -34,6 +34,14 @@ pub trait SearchResultExt: IsA<SearchResult> + sealed::Sealed + 'static {
     //fn append_rectangle(&self, rect: /*Ignored*/&mut papers_document::FindRectangle) {
     //    unsafe { TODO: call ffi:pps_search_result_append_rectangle() }
     //}
+
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    #[doc(alias = "pps_search_result_get_global_index")]
+    #[doc(alias = "get_global_index")]
+    fn global_index(&self) -> u32 {
+        unsafe { ffi::pps_search_result_get_global_index(self.as_ref().to_glib_none().0) }
+    }
 
     #[doc(alias = "pps_search_result_get_index")]
     #[doc(alias = "get_index")]

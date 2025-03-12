@@ -1342,10 +1342,6 @@ extern "C" {
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_search_context_release(context: *mut PpsSearchContext);
     pub fn pps_search_context_restart(context: *mut PpsSearchContext);
-    pub fn pps_search_context_select_result(
-        context: *mut PpsSearchContext,
-        result: *mut PpsSearchResult,
-    );
     pub fn pps_search_context_set_options(
         context: *mut PpsSearchContext,
         options: papers_document::PpsFindOptions,
@@ -1364,12 +1360,16 @@ extern "C" {
         label: *mut c_char,
         page: c_uint,
         index: c_uint,
+        global_index: c_uint,
         rect: *mut papers_document::PpsFindRectangle,
     ) -> *mut PpsSearchResult;
     pub fn pps_search_result_append_rectangle(
         self_: *mut PpsSearchResult,
         rect: *mut papers_document::PpsFindRectangle,
     );
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_search_result_get_global_index(self_: *mut PpsSearchResult) -> c_uint;
     pub fn pps_search_result_get_index(self_: *mut PpsSearchResult) -> c_uint;
     pub fn pps_search_result_get_label(self_: *mut PpsSearchResult) -> *const c_char;
     pub fn pps_search_result_get_markup(self_: *mut PpsSearchResult) -> *const c_char;
@@ -1392,7 +1392,6 @@ extern "C" {
     );
     pub fn pps_view_current_event_is_type(view: *mut PpsView, type_: gdk::GdkEventType)
         -> gboolean;
-    pub fn pps_view_find_set_highlight_search(view: *mut PpsView, value: gboolean);
     pub fn pps_view_focus_annotation(
         view: *mut PpsView,
         annot_mapping: *const papers_document::PpsMapping,

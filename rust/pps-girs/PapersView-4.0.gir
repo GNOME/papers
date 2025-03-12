@@ -5,6 +5,7 @@ and/or use gtk-doc annotations.  -->
 <repository version="1.2"
             xmlns="http://www.gtk.org/introspection/core/1.0"
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:doc="http://www.gtk.org/introspection/doc/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
   <include name="GLib" version="2.0"/>
   <include name="GObject" version="2.0"/>
@@ -68,52 +69,52 @@ and/or use gtk-doc annotations.  -->
               version="48.0">
         <doc xml:space="preserve"
              filename="libview/context/pps-annotations-context.c"
-             line="261">Add an annotation based on the provided information.</doc>
+             line="275">Add an annotation based on the provided information.</doc>
         <source-position filename="libview/context/pps-annotations-context.h"
                          line="52"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-annotations-context.c"
-               line="274">the newly created annotation</doc>
+               line="288">the newly created annotation</doc>
           <type name="PapersDocument.Annotation" c:type="PpsAnnotation*"/>
         </return-value>
         <parameters>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="263">a #PpsAnnotationsContext</doc>
+                 line="277">a #PpsAnnotationsContext</doc>
             <type name="AnnotationsContext" c:type="PpsAnnotationsContext*"/>
           </instance-parameter>
           <parameter name="page_index" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="264">the index of the page where the annotation will be added</doc>
+                 line="278">the index of the page where the annotation will be added</doc>
             <type name="gint" c:type="gint"/>
           </parameter>
           <parameter name="type" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="265">the type of annotation to add</doc>
+                 line="279">the type of annotation to add</doc>
             <type name="PapersDocument.AnnotationType"
                   c:type="PpsAnnotationType"/>
           </parameter>
           <parameter name="start" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="266">point where to start creating an annotation</doc>
+                 line="280">point where to start creating an annotation</doc>
             <type name="PapersDocument.Point" c:type="const PpsPoint*"/>
           </parameter>
           <parameter name="end" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="267">point where to end creating the annotation. It is ignored for TEXT
+                 line="281">point where to end creating the annotation. It is ignored for TEXT
 annotations</doc>
             <type name="PapersDocument.Point" c:type="const PpsPoint*"/>
           </parameter>
           <parameter name="color" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="269">the color to give to the annotation</doc>
+                 line="283">the color to give to the annotation</doc>
             <type name="Gdk.RGBA" c:type="const GdkRGBA*"/>
           </parameter>
           <parameter name="user_data"
@@ -122,7 +123,7 @@ annotations</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="270">a pointer with auxiliary data that is annotation-dependent</doc>
+                 line="284">a pointer with auxiliary data that is annotation-dependent</doc>
             <type name="gpointer" c:type="const gpointer"/>
           </parameter>
         </parameters>
@@ -134,7 +135,7 @@ annotations</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-annotations-context.c"
-               line="233">the returned #GListModel. The model
+               line="247">the returned #GListModel. The model
 is owned but the `PpsAnnotationsContext` and shall not be modified outside
 of it.</doc>
           <type name="Gio.ListModel" c:type="GListModel*"/>
@@ -143,7 +144,7 @@ of it.</doc>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-annotations-context.c"
-                 line="231">a #PpsAnnotationsContext</doc>
+                 line="245">a #PpsAnnotationsContext</doc>
             <type name="AnnotationsContext" c:type="PpsAnnotationsContext*"/>
           </instance-parameter>
         </parameters>
@@ -209,6 +210,11 @@ of it.</doc>
             <type name="PapersDocument.Annotation"/>
           </parameter>
         </parameters>
+      </glib:signal>
+      <glib:signal name="annots-loaded" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
       </glib:signal>
     </class>
     <record name="AnnotationsContextClass"
@@ -328,26 +334,26 @@ The @callback will be called when the dialog is dismissed.</doc>
               throws="1">
         <doc xml:space="preserve"
              filename="libview/context/pps-attachment-context.c"
-             line="364">Finishes the [method@Pps.AttachmentContext.save_attachments_async] call</doc>
+             line="365">Finishes the [method@Pps.AttachmentContext.save_attachments_async] call</doc>
         <source-position filename="libview/context/pps-attachment-context.h"
                          line="69"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-attachment-context.c"
-               line="372">whether a files were stored</doc>
+               line="373">whether a files were stored</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="context" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-attachment-context.c"
-                 line="366">a #PpsAttachmentContext</doc>
+                 line="367">a #PpsAttachmentContext</doc>
             <type name="AttachmentContext" c:type="PpsAttachmentContext*"/>
           </instance-parameter>
           <parameter name="result" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-attachment-context.c"
-                 line="367">a `GAsyncResult`</doc>
+                 line="368">a `GAsyncResult`</doc>
             <type name="Gio.AsyncResult" c:type="GAsyncResult*"/>
           </parameter>
         </parameters>
@@ -430,7 +436,7 @@ The @callback will be called when the dialog is dismissed.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libview/context/pps-document-model.c"
-             line="703">Returns the current editing state.</doc>
+             line="706">Returns the current editing state.</doc>
         <source-position filename="libview/context/pps-document-model.h"
                          line="137"/>
         <return-value transfer-ownership="none">
@@ -441,7 +447,7 @@ The @callback will be called when the dialog is dismissed.</doc>
           <instance-parameter name="model" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="705">a #PpsDocumentModel</doc>
+                 line="708">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
         </parameters>
@@ -465,20 +471,20 @@ The @callback will be called when the dialog is dismissed.</doc>
               glib:get-property="document">
         <doc xml:space="preserve"
              filename="libview/context/pps-document-model.c"
-             line="372">Returns the #PpsDocument referenced by the model.</doc>
+             line="375">Returns the #PpsDocument referenced by the model.</doc>
         <source-position filename="libview/context/pps-document-model.h"
                          line="71"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-document-model.c"
-               line="378">a #PpsDocument</doc>
+               line="381">a #PpsDocument</doc>
           <type name="PapersDocument.Document" c:type="PpsDocument*"/>
         </return-value>
         <parameters>
           <instance-parameter name="model" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="374">a #PpsDocumentModel</doc>
+                 line="377">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
         </parameters>
@@ -561,14 +567,14 @@ The @callback will be called when the dialog is dismissed.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-document-model.c"
-               line="553">the document model's page layout</doc>
+               line="556">the document model's page layout</doc>
           <type name="PageLayout" c:type="PpsPageLayout"/>
         </return-value>
         <parameters>
           <instance-parameter name="model" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="551">a #PpsDocumentModel</doc>
+                 line="554">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
         </parameters>
@@ -635,7 +641,7 @@ The @callback will be called when the dialog is dismissed.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libview/context/pps-document-model.c"
-             line="678">Sets the current editing state to @state. In a #PpsView,
+             line="681">Sets the current editing state to @state. In a #PpsView,
 This implies that editing widgets for annotations may be shown
 and annotations not rendered by the backend.</doc>
         <source-position filename="libview/context/pps-document-model.h"
@@ -647,13 +653,13 @@ and annotations not rendered by the backend.</doc>
           <instance-parameter name="model" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="680">a #PpsDocumentModel</doc>
+                 line="683">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
           <parameter name="state" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="681">a #PpsAnnotationEditingState</doc>
+                 line="684">a #PpsAnnotationEditingState</doc>
             <type name="AnnotationEditingState"
                   c:type="PpsAnnotationEditingState"/>
           </parameter>
@@ -811,7 +817,7 @@ and annotations not rendered by the backend.</doc>
               version="3.8">
         <doc xml:space="preserve"
              filename="libview/context/pps-document-model.c"
-             line="526">Sets the document model's page layout to @layout.</doc>
+             line="529">Sets the document model's page layout to @layout.</doc>
         <source-position filename="libview/context/pps-document-model.h"
                          line="101"/>
         <return-value transfer-ownership="none">
@@ -821,13 +827,13 @@ and annotations not rendered by the backend.</doc>
           <instance-parameter name="model" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="528">a #PpsDocumentModel</doc>
+                 line="531">a #PpsDocumentModel</doc>
             <type name="DocumentModel" c:type="PpsDocumentModel*"/>
           </instance-parameter>
           <parameter name="layout" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-document-model.c"
-                 line="529">a #PpsPageLayout</doc>
+                 line="532">a #PpsPageLayout</doc>
             <type name="PageLayout" c:type="PpsPageLayout"/>
           </parameter>
         </parameters>
@@ -1495,19 +1501,19 @@ Remember that main loop is not running already probably.</doc>
       <virtual-method name="run" invoker="run">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="172">Starts or executes the specified job.</doc>
+             line="171">Starts or executes the specified job.</doc>
         <source-position filename="libview/pps-job.h" line="44"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
+               line="177">TRUE if the job was successfully started, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="174">A #PpsJob object to run.</doc>
+                 line="173">A #PpsJob object to run.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1515,14 +1521,14 @@ Remember that main loop is not running already probably.</doc>
       <method name="cancel" c:identifier="pps_job_cancel">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="192">Cancels the specified job if it has not already been cancelled.
+             line="191">Cancels the specified job if it has not already been cancelled.
 
 This function updates the job's state to indicate it has been cancelled,
 cancels any associated cancellable object, and emits a CANCELLED signal.
 It does nothing if the job is already cancelled or finished.
 
 This function should not be called from a thread.</doc>
-        <source-position filename="libview/pps-job.h" line="54"/>
+        <source-position filename="libview/pps-job.h" line="53"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1530,7 +1536,7 @@ This function should not be called from a thread.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="194">A #PpsJob object to cancel.</doc>
+                 line="193">A #PpsJob object to cancel.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1541,12 +1547,12 @@ This function should not be called from a thread.</doc>
               introspectable="0">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="224">Marks the specified job as failed and sets an error with the provided details.
+             line="222">Marks the specified job as failed and sets an error with the provided details.
 
 This function creates a new #GError using the provided domain, code, and message,
 and updates the job's state to indicate failure. It emits a finished signal when done.
 It does nothing if the job is already marked as failed or finished.</doc>
-        <source-position filename="libview/pps-job.h" line="56"/>
+        <source-position filename="libview/pps-job.h" line="54"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1554,25 +1560,25 @@ It does nothing if the job is already marked as failed or finished.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="226">A #PpsJob object.</doc>
+                 line="224">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
           <parameter name="domain" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="227">The error domain (a #GQuark).</doc>
+                 line="225">The error domain (a #GQuark).</doc>
             <type name="GLib.Quark" c:type="GQuark"/>
           </parameter>
           <parameter name="code" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="228">The error code (an integer).</doc>
+                 line="226">The error code (an integer).</doc>
             <type name="gint" c:type="gint"/>
           </parameter>
           <parameter name="format" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="229">A printf-style format string.</doc>
+                 line="227">A printf-style format string.</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="..." transfer-ownership="none">
@@ -1585,11 +1591,11 @@ It does nothing if the job is already marked as failed or finished.</doc>
               shadows="failed">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="265">Marks the specified job as failed and sets the error associated with the failure.
+             line="263">Marks the specified job as failed and sets the error associated with the failure.
 
 This function updates the job's state to indicate it has failed, stores the error,
 and emits a finished signal. It does nothing if the job is already finished or marked as failed.</doc>
-        <source-position filename="libview/pps-job.h" line="62"/>
+        <source-position filename="libview/pps-job.h" line="59"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1597,13 +1603,13 @@ and emits a finished signal. It does nothing if the job is already finished or m
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="267">A #PpsJob object.</doc>
+                 line="265">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
           <parameter name="error" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="268">A #GError containing details about the failure.</doc>
+                 line="266">A #GError containing details about the failure.</doc>
             <type name="GLib.Error" c:type="GError*"/>
           </parameter>
         </parameters>
@@ -1611,12 +1617,12 @@ and emits a finished signal. It does nothing if the job is already finished or m
       <method name="get_cancellable" c:identifier="pps_job_get_cancellable">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="371">Retrieves the #GCancellable object associated with the specified job.</doc>
-        <source-position filename="libview/pps-job.h" line="74"/>
+             line="369">Retrieves the #GCancellable object associated with the specified job.</doc>
+        <source-position filename="libview/pps-job.h" line="69"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="377">The #GCancellable object of the job,
+               line="375">The #GCancellable object of the job,
 or NULL if the job is invalid or does not have an associated cancellable.</doc>
           <type name="Gio.Cancellable" c:type="GCancellable*"/>
         </return-value>
@@ -1624,7 +1630,7 @@ or NULL if the job is invalid or does not have an associated cancellable.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="373">A #PpsJob object.</doc>
+                 line="371">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1632,12 +1638,12 @@ or NULL if the job is invalid or does not have an associated cancellable.</doc>
       <method name="get_document" c:identifier="pps_job_get_document">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="352">Retrieves the #PpsDocument associated with the specified job.</doc>
-        <source-position filename="libview/pps-job.h" line="72"/>
+             line="350">Retrieves the #PpsDocument associated with the specified job.</doc>
+        <source-position filename="libview/pps-job.h" line="68"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="358">The #PpsDocument object associated with the job,
+               line="356">The #PpsDocument object associated with the job,
 or NULL if the job is invalid or does not have an associated document.</doc>
           <type name="PapersDocument.Document" c:type="PpsDocument*"/>
         </return-value>
@@ -1645,7 +1651,7 @@ or NULL if the job is invalid or does not have an associated document.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="354">A #PpsJob object.</doc>
+                 line="352">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1653,19 +1659,19 @@ or NULL if the job is invalid or does not have an associated document.</doc>
       <method name="is_finished" c:identifier="pps_job_is_finished">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="314">Checks if the specified job has finished execution.</doc>
-        <source-position filename="libview/pps-job.h" line="67"/>
+             line="312">Checks if the specified job has finished execution.</doc>
+        <source-position filename="libview/pps-job.h" line="63"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="320">TRUE if the job is finished, FALSE otherwise.</doc>
+               line="318">TRUE if the job is finished, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="316">A #PpsJob object.</doc>
+                 line="314">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1675,19 +1681,19 @@ or NULL if the job is invalid or does not have an associated document.</doc>
               throws="1">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="330">Determines the finish status of the specified job.</doc>
-        <source-position filename="libview/pps-job.h" line="69"/>
+             line="328">Determines the finish status of the specified job.</doc>
+        <source-position filename="libview/pps-job.h" line="65"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="337">TRUE if the job succeeded, FALSE otherwise.</doc>
+               line="335">TRUE if the job succeeded, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="332">A #PpsJob object.</doc>
+                 line="330">A #PpsJob object.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1695,11 +1701,11 @@ or NULL if the job is invalid or does not have an associated document.</doc>
       <method name="reset" c:identifier="pps_job_reset">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="390">Resets the state of the specified job to its initial state.
+             line="388">Resets the state of the specified job to its initial state.
 
 This function clears any error, marks the job as not finished, and sets
 the job's failure status to FALSE, effectively resetting its progress.</doc>
-        <source-position filename="libview/pps-job.h" line="77"/>
+        <source-position filename="libview/pps-job.h" line="72"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1707,7 +1713,7 @@ the job's failure status to FALSE, effectively resetting its progress.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="392">A #PpsJob object to reset.</doc>
+                 line="390">A #PpsJob object to reset.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1715,19 +1721,19 @@ the job's failure status to FALSE, effectively resetting its progress.</doc>
       <method name="run" c:identifier="pps_job_run">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="172">Starts or executes the specified job.</doc>
-        <source-position filename="libview/pps-job.h" line="52"/>
+             line="171">Starts or executes the specified job.</doc>
+        <source-position filename="libview/pps-job.h" line="51"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-job.c"
-               line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
+               line="177">TRUE if the job was successfully started, FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="174">A #PpsJob object to run.</doc>
+                 line="173">A #PpsJob object to run.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1765,10 +1771,10 @@ the job's failure status to FALSE, effectively resetting its progress.</doc>
       <method name="succeeded" c:identifier="pps_job_succeeded">
         <doc xml:space="preserve"
              filename="libview/pps-job.c"
-             line="292">Marks the specified job as succeeded.
+             line="290">Marks the specified job as succeeded.
 
 This function should be called when the job finishes successfully.</doc>
-        <source-position filename="libview/pps-job.h" line="65"/>
+        <source-position filename="libview/pps-job.h" line="61"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1776,7 +1782,7 @@ This function should be called when the job finishes successfully.</doc>
           <instance-parameter name="job" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="294">A #PpsJob object that has completed.</doc>
+                 line="292">A #PpsJob object that has completed.</doc>
             <type name="Job" c:type="PpsJob*"/>
           </instance-parameter>
         </parameters>
@@ -1913,14 +1919,14 @@ This function should be called when the job finishes successfully.</doc>
           <return-value transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-job.c"
-                 line="178">TRUE if the job was successfully started, FALSE otherwise.</doc>
+                 line="177">TRUE if the job was successfully started, FALSE otherwise.</doc>
             <type name="gboolean" c:type="gboolean"/>
           </return-value>
           <parameters>
             <parameter name="job" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libview/pps-job.c"
-                   line="174">A #PpsJob object to run.</doc>
+                   line="173">A #PpsJob object to run.</doc>
               <type name="Job" c:type="PpsJob*"/>
             </parameter>
           </parameters>
@@ -3714,7 +3720,7 @@ care to treat any multi-line matches as being only one result.</doc>
               c:identifier="pps_search_context_autoselect_result"
               version="48.0">
         <source-position filename="libview/context/pps-search-context.h"
-                         line="79"/>
+                         line="76"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3725,7 +3731,7 @@ care to treat any multi-line matches as being only one result.</doc>
           <parameter name="result" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-search-context.c"
-                 line="746">a #PpsSearchResult to be the auto-selected one</doc>
+                 line="766">a #PpsSearchResult to be the auto-selected one</doc>
             <type name="SearchResult" c:type="PpsSearchResult*"/>
           </parameter>
         </parameters>
@@ -3739,7 +3745,7 @@ care to treat any multi-line matches as being only one result.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-search-context.c"
-               line="702">whether search is actively ongoing</doc>
+               line="722">whether search is actively ongoing</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
@@ -3767,7 +3773,7 @@ care to treat any multi-line matches as being only one result.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/context/pps-search-context.c"
-               line="627">the returned #GtkSingleSelection</doc>
+               line="625">the returned #GtkSingleSelection</doc>
           <type name="Gtk.SingleSelection" c:type="GtkSingleSelection*"/>
         </return-value>
         <parameters>
@@ -3784,7 +3790,7 @@ care to treat any multi-line matches as being only one result.</doc>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libview/context/pps-search-context.c"
-               line="642">#GPtrArray of #PpsSearchResult on the current page</doc>
+               line="640">#GPtrArray of #PpsSearchResult on the current page</doc>
           <array name="GLib.PtrArray" c:type="GPtrArray*">
             <type name="SearchResult"/>
           </array>
@@ -3836,22 +3842,6 @@ care to treat any multi-line matches as being only one result.</doc>
           <instance-parameter name="context" transfer-ownership="none">
             <type name="SearchContext" c:type="PpsSearchContext*"/>
           </instance-parameter>
-        </parameters>
-      </method>
-      <method name="select_result"
-              c:identifier="pps_search_context_select_result">
-        <source-position filename="libview/context/pps-search-context.h"
-                         line="76"/>
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <instance-parameter name="context" transfer-ownership="none">
-            <type name="SearchContext" c:type="PpsSearchContext*"/>
-          </instance-parameter>
-          <parameter name="result" transfer-ownership="none">
-            <type name="SearchResult" c:type="PpsSearchResult*"/>
-          </parameter>
         </parameters>
       </method>
       <method name="set_options" c:identifier="pps_search_context_set_options">
@@ -3960,7 +3950,7 @@ care to treat any multi-line matches as being only one result.</doc>
                        line="35"/>
       <constructor name="new" c:identifier="pps_search_result_new">
         <source-position filename="libview/context/pps-search-result.h"
-                         line="46"/>
+                         line="45"/>
         <return-value transfer-ownership="full">
           <type name="SearchResult" c:type="PpsSearchResult*"/>
         </return-value>
@@ -3977,6 +3967,9 @@ care to treat any multi-line matches as being only one result.</doc>
           <parameter name="index" transfer-ownership="none">
             <type name="guint" c:type="guint"/>
           </parameter>
+          <parameter name="global_index" transfer-ownership="none">
+            <type name="guint" c:type="guint"/>
+          </parameter>
           <parameter name="rect" transfer-ownership="none">
             <type name="PapersDocument.FindRectangle"
                   c:type="PpsFindRectangle*"/>
@@ -3987,10 +3980,10 @@ care to treat any multi-line matches as being only one result.</doc>
               c:identifier="pps_search_result_append_rectangle">
         <doc xml:space="preserve"
              filename="libview/context/pps-search-result.c"
-             line="134">Appends a rectangle to the search result. This should not be used outside the
+             line="153">Appends a rectangle to the search result. This should not be used outside the
 creation of the search result.</doc>
         <source-position filename="libview/context/pps-search-result.h"
-                         line="63"/>
+                         line="65"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3998,16 +3991,36 @@ creation of the search result.</doc>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-search-result.c"
-                 line="136">the PpsSearchResult</doc>
+                 line="155">the PpsSearchResult</doc>
             <type name="SearchResult" c:type="PpsSearchResult*"/>
           </instance-parameter>
           <parameter name="rect" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-search-result.c"
-                 line="137">the #PpsFindRectangle to append</doc>
+                 line="156">the #PpsFindRectangle to append</doc>
             <type name="PapersDocument.FindRectangle"
                   c:type="PpsFindRectangle*"/>
           </parameter>
+        </parameters>
+      </method>
+      <method name="get_global_index"
+              c:identifier="pps_search_result_get_global_index"
+              version="48.0">
+        <source-position filename="libview/context/pps-search-result.h"
+                         line="61"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="libview/context/pps-search-result.c"
+               line="126">the index of this result relative the complete result model.</doc>
+          <type name="guint" c:type="guint"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="self" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="libview/context/pps-search-result.c"
+                 line="124">the PpsSearchResult</doc>
+            <type name="SearchResult" c:type="PpsSearchResult*"/>
+          </instance-parameter>
         </parameters>
       </method>
       <method name="get_index" c:identifier="pps_search_result_get_index">
@@ -4061,11 +4074,11 @@ creation of the search result.</doc>
       <method name="get_rectangle_list"
               c:identifier="pps_search_result_get_rectangle_list">
         <source-position filename="libview/context/pps-search-result.h"
-                         line="61"/>
+                         line="63"/>
         <return-value transfer-ownership="none" nullable="1">
           <doc xml:space="preserve"
                filename="libview/context/pps-search-result.c"
-               line="123">the
+               line="142">the
 list of rectangles for this result.</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="PapersDocument.FindRectangle"/>
@@ -4075,7 +4088,7 @@ list of rectangles for this result.</doc>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/context/pps-search-result.c"
-                 line="121">the PpsSearchResult</doc>
+                 line="140">the PpsSearchResult</doc>
             <type name="SearchResult" c:type="PpsSearchResult*"/>
           </instance-parameter>
         </parameters>
@@ -4180,7 +4193,7 @@ list of rectangles for this result.</doc>
       </method>
       <method name="cancel_signature_rect"
               c:identifier="pps_view_cancel_signature_rect">
-        <source-position filename="libview/pps-view.h" line="158"/>
+        <source-position filename="libview/pps-view.h" line="155"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4218,7 +4231,7 @@ list of rectangles for this result.</doc>
       </method>
       <method name="current_event_is_type"
               c:identifier="pps_view_current_event_is_type">
-        <source-position filename="libview/pps-view.h" line="151"/>
+        <source-position filename="libview/pps-view.h" line="148"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -4231,23 +4244,8 @@ list of rectangles for this result.</doc>
           </parameter>
         </parameters>
       </method>
-      <method name="find_set_highlight_search"
-              c:identifier="pps_view_find_set_highlight_search">
-        <source-position filename="libview/pps-view.h" line="108"/>
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <instance-parameter name="view" transfer-ownership="none">
-            <type name="View" c:type="PpsView*"/>
-          </instance-parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="gboolean" c:type="gboolean"/>
-          </parameter>
-        </parameters>
-      </method>
       <method name="focus_annotation" c:identifier="pps_view_focus_annotation">
-        <source-position filename="libview/pps-view.h" line="130"/>
+        <source-position filename="libview/pps-view.h" line="127"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4274,7 +4272,7 @@ list of rectangles for this result.</doc>
       </method>
       <method name="get_enable_spellchecking"
               c:identifier="pps_view_get_enable_spellchecking">
-        <source-position filename="libview/pps-view.h" line="136"/>
+        <source-position filename="libview/pps-view.h" line="133"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -4287,11 +4285,11 @@ list of rectangles for this result.</doc>
       <method name="get_mark_for_view_point"
               c:identifier="pps_view_get_mark_for_view_point"
               version="48.0">
-        <source-position filename="libview/pps-view.h" line="121"/>
+        <source-position filename="libview/pps-view.h" line="118"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libview/pps-view.c"
-               line="1383">a pointer to a #PpsMark that represents
+               line="1382">a pointer to a #PpsMark that represents
 the location in the document for @view_point_x and @view_point_y. If the
 location is not in a page in the document, it returns NULL.</doc>
           <type name="PapersDocument.Mark" c:type="PpsMark*"/>
@@ -4300,19 +4298,19 @@ location is not in a page in the document, it returns NULL.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="1379">a #PpsView</doc>
+                 line="1378">a #PpsView</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
           <parameter name="view_point_x" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="1380">the x coordinate over the view</doc>
+                 line="1379">the x coordinate over the view</doc>
             <type name="gdouble" c:type="gdouble"/>
           </parameter>
           <parameter name="view_point_y" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="1381">the y coordinate over the view</doc>
+                 line="1380">the y coordinate over the view</doc>
             <type name="gdouble" c:type="gdouble"/>
           </parameter>
         </parameters>
@@ -4322,7 +4320,7 @@ location is not in a page in the document, it returns NULL.</doc>
               version="3.30">
         <doc xml:space="preserve"
              filename="libview/pps-view.c"
-             line="8454">Returns a pointer to a constant string containing the selected
+             line="8293">Returns a pointer to a constant string containing the selected
 text in the view.
 
 The value returned may be NULL if there is no selected text.</doc>
@@ -4330,14 +4328,14 @@ The value returned may be NULL if there is no selected text.</doc>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libview/pps-view.c"
-               line="8463">The string representing selected text.</doc>
+               line="8302">The string representing selected text.</doc>
           <type name="utf8" c:type="char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="8456">#PpsView instance</doc>
+                 line="8295">#PpsView instance</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
         </parameters>
@@ -4349,7 +4347,7 @@ The value returned may be NULL if there is no selected text.</doc>
         <return-value transfer-ownership="container">
           <doc xml:space="preserve"
                filename="libview/pps-view.c"
-               line="8545">a list with the
+               line="8384">a list with the
 current selections.</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="ViewSelection"/>
@@ -4359,13 +4357,13 @@ current selections.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="8543">#PpsView instance</doc>
+                 line="8382">#PpsView instance</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
         </parameters>
       </method>
       <method name="handle_link" c:identifier="pps_view_handle_link">
-        <source-position filename="libview/pps-view.h" line="113"/>
+        <source-position filename="libview/pps-view.h" line="110"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4391,7 +4389,7 @@ current selections.</doc>
       </method>
       <method name="is_caret_navigation_enabled"
               c:identifier="pps_view_is_caret_navigation_enabled">
-        <source-position filename="libview/pps-view.h" line="142"/>
+        <source-position filename="libview/pps-view.h" line="139"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -4413,7 +4411,7 @@ current selections.</doc>
         </parameters>
       </method>
       <method name="next_page" c:identifier="pps_view_next_page">
-        <source-position filename="libview/pps-view.h" line="116"/>
+        <source-position filename="libview/pps-view.h" line="113"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -4424,7 +4422,7 @@ current selections.</doc>
         </parameters>
       </method>
       <method name="previous_page" c:identifier="pps_view_previous_page">
-        <source-position filename="libview/pps-view.h" line="118"/>
+        <source-position filename="libview/pps-view.h" line="115"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -4474,7 +4472,7 @@ current selections.</doc>
       <method name="set_annotations_context"
               c:identifier="pps_view_set_annotations_context"
               version="48.0">
-        <source-position filename="libview/pps-view.h" line="127"/>
+        <source-position filename="libview/pps-view.h" line="124"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4482,13 +4480,13 @@ current selections.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3450">a #PpsView</doc>
+                 line="3514">a #PpsView</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
           <parameter name="context" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3451">the #PpsAnnotationsContext to set</doc>
+                 line="3515">the #PpsAnnotationsContext to set</doc>
             <type name="AnnotationsContext" c:type="PpsAnnotationsContext*"/>
           </parameter>
         </parameters>
@@ -4496,7 +4494,7 @@ current selections.</doc>
       <method name="set_caret_cursor_position"
               c:identifier="pps_view_set_caret_cursor_position"
               version="3.10">
-        <source-position filename="libview/pps-view.h" line="147"/>
+        <source-position filename="libview/pps-view.h" line="144"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4504,7 +4502,7 @@ current selections.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3800">a #PpsView</doc>
+                 line="3866">a #PpsView</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
@@ -4520,8 +4518,8 @@ current selections.</doc>
               version="3.10">
         <doc xml:space="preserve"
              filename="libview/pps-view.c"
-             line="3753">Enables or disables caret navigation mode for the document.</doc>
-        <source-position filename="libview/pps-view.h" line="144"/>
+             line="3819">Enables or disables caret navigation mode for the document.</doc>
+        <source-position filename="libview/pps-view.h" line="141"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4529,20 +4527,20 @@ current selections.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3755">a #PpsView</doc>
+                 line="3821">a #PpsView</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
           <parameter name="enabled" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3756">whether to enable caret navigation mode</doc>
+                 line="3822">whether to enable caret navigation mode</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
       </method>
       <method name="set_enable_spellchecking"
               c:identifier="pps_view_set_enable_spellchecking">
-        <source-position filename="libview/pps-view.h" line="133"/>
+        <source-position filename="libview/pps-view.h" line="130"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4573,7 +4571,7 @@ current selections.</doc>
               c:identifier="pps_view_set_page_cache_size">
         <doc xml:space="preserve"
              filename="libview/pps-view.c"
-             line="7381">Sets the maximum size in bytes that will be used to cache
+             line="7244">Sets the maximum size in bytes that will be used to cache
 rendered pages. Use 0 to disable caching rendered pages.
 
 Note that this limit doesn't affect the current visible page range,
@@ -4587,13 +4585,13 @@ you have to use pps_document_model_set_max_scale() too.</doc>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="7383">#PpsView instance</doc>
+                 line="7246">#PpsView instance</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
           <parameter name="cache_size" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="7384">size in bytes</doc>
+                 line="7247">size in bytes</doc>
             <type name="gsize" c:type="gsize"/>
           </parameter>
         </parameters>
@@ -4615,7 +4613,7 @@ you have to use pps_document_model_set_max_scale() too.</doc>
       </method>
       <method name="start_signature_rect"
               c:identifier="pps_view_start_signature_rect">
-        <source-position filename="libview/pps-view.h" line="156"/>
+        <source-position filename="libview/pps-view.h" line="153"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -4628,18 +4626,18 @@ you have to use pps_document_model_set_max_scale() too.</doc>
       <method name="supports_caret_navigation"
               c:identifier="pps_view_supports_caret_navigation"
               version="3.10">
-        <source-position filename="libview/pps-view.h" line="140"/>
+        <source-position filename="libview/pps-view.h" line="137"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libview/pps-view.c"
-               line="3732">whether the document supports caret navigation</doc>
+               line="3798">whether the document supports caret navigation</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="view" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libview/pps-view.c"
-                 line="3730">a #PpsView</doc>
+                 line="3796">a #PpsView</doc>
             <type name="View" c:type="PpsView*"/>
           </instance-parameter>
         </parameters>

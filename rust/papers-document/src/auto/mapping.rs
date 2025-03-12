@@ -7,7 +7,8 @@ use crate::{ffi, Rectangle};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
-    pub struct Mapping(BoxedInline<ffi::PpsMapping>);
+    #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    pub struct Mapping(Boxed<ffi::PpsMapping>);
 
     match fn {
         copy => |ptr| ffi::pps_mapping_copy(ptr),

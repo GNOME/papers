@@ -5,6 +5,7 @@ and/or use gtk-doc annotations.  -->
 <repository version="1.2"
             xmlns="http://www.gtk.org/introspection/core/1.0"
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:doc="http://www.gtk.org/introspection/doc/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
   <include name="GLib" version="2.0"/>
   <include name="Gdk" version="4.0"/>
@@ -38,25 +39,25 @@ and/or use gtk-doc annotations.  -->
       <method name="equal" c:identifier="pps_annotation_equal">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="438">Compare @annot and @other.</doc>
+             line="440">Compare @annot and @other.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="122"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="445">%TRUE if @annot is equal to @other, %FALSE otherwise</doc>
+               line="447">%TRUE if @annot is equal to @other, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="440">an #PpsAnnotation</doc>
+                 line="442">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="other" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="441">another #PpsAnnotation</doc>
+                 line="443">another #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </parameter>
         </parameters>
@@ -79,7 +80,7 @@ and/or use gtk-doc annotations.  -->
               version="3.18">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="700">Gets the area of @annot.</doc>
+             line="702">Gets the area of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="159"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -88,7 +89,7 @@ and/or use gtk-doc annotations.  -->
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="702">an #PpsAnnotation</doc>
+                 line="704">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="area"
@@ -97,7 +98,7 @@ and/or use gtk-doc annotations.  -->
                      transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="703">a #PpsRectangle to be filled with the annotation area</doc>
+                 line="705">a #PpsRectangle to be filled with the annotation area</doc>
             <type name="Rectangle" c:type="PpsRectangle*"/>
           </parameter>
         </parameters>
@@ -108,7 +109,7 @@ and/or use gtk-doc annotations.  -->
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="814">Gets the border width of @annot.</doc>
+             line="816">Gets the border width of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="148"/>
         <return-value transfer-ownership="none">
           <type name="gdouble" c:type="gdouble"/>
@@ -117,7 +118,7 @@ and/or use gtk-doc annotations.  -->
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="816">a #PpsAnnotation</doc>
+                 line="818">a #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -127,14 +128,14 @@ and/or use gtk-doc annotations.  -->
               glib:get-property="contents">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="460">Get the contents of @annot. The contents of
+             line="462">Get the contents of @annot. The contents of
 @annot is the text that is displayed in the annotation, or an
 alternate description of the annotation's content for non-text annotations</doc>
         <source-position filename="libdocument/pps-annotation.h" line="125"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="468">a string with the contents of the annotation or
+               line="470">a string with the contents of the annotation or
 %NULL if @annot has no contents.</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
@@ -142,7 +143,7 @@ alternate description of the annotation's content for non-text annotations</doc>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="462">an #PpsAnnotation</doc>
+                 line="464">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -153,7 +154,7 @@ alternate description of the annotation's content for non-text annotations</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="776">Gets the hidden flag of @annot, i.e. whether it is hidden or not.</doc>
+             line="778">Gets the hidden flag of @annot, i.e. whether it is hidden or not.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="143"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
@@ -162,7 +163,7 @@ alternate description of the annotation's content for non-text annotations</doc>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="778">a #PpsAnnotation</doc>
+                 line="780">a #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -172,19 +173,19 @@ alternate description of the annotation's content for non-text annotations</doc>
               glib:get-property="modified">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="561">Get the last modification date of @annot.</doc>
+             line="563">Get the last modification date of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="135"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="567">A string containing the last modification date.</doc>
+               line="569">A string containing the last modification date.</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="563">an #PpsAnnotation</doc>
+                 line="565">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -194,21 +195,21 @@ alternate description of the annotation's content for non-text annotations</doc>
               glib:get-property="name">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="511">Get the name of @annot. The name of the annotation is a string
+             line="513">Get the name of @annot. The name of the annotation is a string
 that uniquely indenftifies @annot amongs all the annotations
 in the same page.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="130"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="519">the string with the annotation's name.</doc>
+               line="521">the string with the annotation's name.</doc>
           <type name="utf8" c:type="const gchar*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="513">an #PpsAnnotation</doc>
+                 line="515">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -216,19 +217,19 @@ in the same page.</doc>
       <method name="get_page" c:identifier="pps_annotation_get_page">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="401">Get the page where @annot appears.</doc>
+             line="403">Get the page where @annot appears.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="118"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="407">the #PpsPage where @annot appears</doc>
+               line="409">the #PpsPage where @annot appears</doc>
           <type name="Page" c:type="PpsPage*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="403">an #PpsAnnotation</doc>
+                 line="405">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -237,20 +238,20 @@ in the same page.</doc>
               c:identifier="pps_annotation_get_page_index">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="419">Get the index of the page where @annot appears. Note that the index
+             line="421">Get the index of the page where @annot appears. Note that the index
 is 0 based.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="120"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="426">the page index.</doc>
+               line="428">the page index.</doc>
           <type name="guint" c:type="guint"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="421">an #PpsAnnotation</doc>
+                 line="423">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
         </parameters>
@@ -261,7 +262,7 @@ is 0 based.</doc>
               version="3.6">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="650">Gets the color of @annot.</doc>
+             line="652">Gets the color of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="153"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -270,7 +271,7 @@ is 0 based.</doc>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="652">an #PpsAnnotation</doc>
+                 line="654">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="rgba"
@@ -279,7 +280,7 @@ is 0 based.</doc>
                      transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="653">a #GdkRGBA to be filled with the annotation color</doc>
+                 line="655">a #GdkRGBA to be filled with the annotation color</doc>
             <type name="Gdk.RGBA" c:type="GdkRGBA*"/>
           </parameter>
         </parameters>
@@ -290,25 +291,25 @@ is 0 based.</doc>
               version="3.18">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="721">Set the area of the annotation to @area.</doc>
+             line="723">Set the area of the annotation to @area.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="162"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="728">%TRUE if the area has been changed, %FALSE otherwise</doc>
+               line="730">%TRUE if the area has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="723">an #Ppsannotation</doc>
+                 line="725">an #Ppsannotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="area" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="724">a #PpsRectangle</doc>
+                 line="726">a #PpsRectangle</doc>
             <type name="Rectangle" c:type="const PpsRectangle*"/>
           </parameter>
         </parameters>
@@ -319,25 +320,25 @@ is 0 based.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="791">Set the area of the annotation to @area.</doc>
+             line="793">Set the area of the annotation to @area.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="145"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="798">%TRUE if the border width has been changed, %FALSE otherwise</doc>
+               line="800">%TRUE if the border width has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="793">a #PpsAnnotation</doc>
+                 line="795">a #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="width" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="794">double</doc>
+                 line="796">double</doc>
             <type name="gdouble" c:type="const gdouble"/>
           </parameter>
         </parameters>
@@ -347,21 +348,21 @@ is 0 based.</doc>
               glib:set-property="contents">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="481">Set the contents of @annot. You can monitor
+             line="483">Set the contents of @annot. You can monitor
 changes in the annotation's  contents by connecting to
 notify::contents signal of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="127"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="489">%TRUE if the contents have been changed, %FALSE otherwise.</doc>
+               line="491">%TRUE if the contents have been changed, %FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="483">an #PpsAnnotation</doc>
+                 line="485">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="contents" transfer-ownership="none">
@@ -375,25 +376,25 @@ notify::contents signal of @annot.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="753">Set whether the annotation is hidden or not.</doc>
+             line="755">Set whether the annotation is hidden or not.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="140"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="760">%TRUE if the visibility of the annotation has been changed, %FALSE otherwise</doc>
+               line="762">%TRUE if the visibility of the annotation has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="755">a #PpsAnnotation</doc>
+                 line="757">a #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="hidden" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="756">a boolean</doc>
+                 line="758">a boolean</doc>
             <type name="gboolean" c:type="const gboolean"/>
           </parameter>
         </parameters>
@@ -403,7 +404,7 @@ notify::contents signal of @annot.</doc>
               glib:set-property="modified">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="579">Set the last modification date of @annot to @modified. To
+             line="581">Set the last modification date of @annot to @modified. To
 set the last modification date using a #time_t, use
 pps_annotation_set_modified_from_time_t() instead. You can monitor
 changes to the last modification date by connecting to the
@@ -412,20 +413,20 @@ notify::modified signal on @annot.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="590">%TRUE if the last modification date has been updated, %FALSE otherwise.</doc>
+               line="592">%TRUE if the last modification date has been updated, %FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="581">an #PpsAnnotation</doc>
+                 line="583">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="modified" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="582">string with the last modification date.</doc>
+                 line="584">string with the last modification date.</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -434,7 +435,7 @@ notify::modified signal on @annot.</doc>
               c:identifier="pps_annotation_set_modified_from_time_t">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="612">Set the last modification date of @annot to @utime.  You can
+             line="614">Set the last modification date of @annot to @utime.  You can
 monitor changes to the last modification date by connecting to the
 notify::modified sinal on @annot.
 For the time-format used, see pps_document_misc_format_datetime().</doc>
@@ -442,20 +443,20 @@ For the time-format used, see pps_document_misc_format_datetime().</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="622">%TRUE if the last modified date has been updated, %FALSE otherwise.</doc>
+               line="624">%TRUE if the last modified date has been updated, %FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="614">an #PpsAnnotation</doc>
+                 line="616">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="utime" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="615">a #time_t</doc>
+                 line="617">a #time_t</doc>
             <type name="time_t" c:type="time_t"/>
           </parameter>
         </parameters>
@@ -465,21 +466,21 @@ For the time-format used, see pps_document_misc_format_datetime().</doc>
               glib:set-property="name">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="531">Set the name of @annot.
+             line="533">Set the name of @annot.
 You can monitor changes of the annotation name by connecting
 to the notify::name signal on @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="132"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="539">%TRUE when the name has been changed, %FALSE otherwise.</doc>
+               line="541">%TRUE when the name has been changed, %FALSE otherwise.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="533">an #PpsAnnotation</doc>
+                 line="535">an #PpsAnnotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="name" transfer-ownership="none">
@@ -493,25 +494,25 @@ to the notify::name signal on @annot.</doc>
               version="3.6">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="671">Set the color of the annotation to @rgba.</doc>
+             line="673">Set the color of the annotation to @rgba.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="156"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="678">%TRUE if the color has been changed, %FALSE otherwise</doc>
+               line="680">%TRUE if the color has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="673">an #Ppsannotation</doc>
+                 line="675">an #Ppsannotation</doc>
             <type name="Annotation" c:type="PpsAnnotation*"/>
           </instance-parameter>
           <parameter name="rgba" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="674">a #GdkRGBA</doc>
+                 line="676">a #GdkRGBA</doc>
             <type name="Gdk.RGBA" c:type="const GdkRGBA*"/>
           </parameter>
         </parameters>
@@ -523,7 +524,7 @@ to the notify::name signal on @annot.</doc>
                 getter="get_area">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="341">The area of the page where the annotation is placed.
+             line="343">The area of the page where the annotation is placed.
 
 Since 3.18</doc>
         <type name="Rectangle"/>
@@ -537,7 +538,7 @@ Since 3.18</doc>
                 default-value="0.000000">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="357">The border width of the annotation. This is only partially implemented, as there is no way
+             line="359">The border width of the annotation. This is only partially implemented, as there is no way
 to set the color. Thus, it may only be used for padding at this moment.</doc>
         <type name="gdouble" c:type="gdouble"/>
       </property>
@@ -558,7 +559,7 @@ to set the color. Thus, it may only be used for padding at this moment.</doc>
                 default-value="FALSE">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="374">A flag to hide an annotation from the view.</doc>
+             line="376">A flag to hide an annotation from the view.</doc>
         <type name="gboolean" c:type="gboolean"/>
       </property>
       <property name="modified"
@@ -592,7 +593,7 @@ to set the color. Thus, it may only be used for padding at this moment.</doc>
                 getter="get_rgba">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="327">The colour of the annotation as a #GdkRGBA.</doc>
+             line="329">The colour of the annotation as a #GdkRGBA.</doc>
         <type name="Gdk.RGBA"/>
       </property>
       <field name="parent_instance">
@@ -628,14 +629,14 @@ to set the color. Thus, it may only be used for padding at this moment.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1677">an #PpsAttachment</doc>
+               line="1679">an #PpsAttachment</doc>
           <type name="Attachment" c:type="PpsAttachment*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1675">an #PpsAnnotationAttachment</doc>
+                 line="1677">an #PpsAnnotationAttachment</doc>
             <type name="AnnotationAttachment"
                   c:type="PpsAnnotationAttachment*"/>
           </instance-parameter>
@@ -696,19 +697,19 @@ to set the color. Thus, it may only be used for padding at this moment.</doc>
                    version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1432">Creates a new free text annotation in the page. Font shall be set afterwards.</doc>
+             line="1434">Creates a new free text annotation in the page. Font shall be set afterwards.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="219"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1438">a new free text annotation</doc>
+               line="1440">a new free text annotation</doc>
           <type name="Annotation" c:type="PpsAnnotation*"/>
         </return-value>
         <parameters>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1434">a #PpsPage</doc>
+                 line="1436">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
         </parameters>
@@ -718,7 +719,7 @@ to set the color. Thus, it may only be used for padding at this moment.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1537">Resize the annotation so as all the text fits in its rect, according to Pango metrics.
+             line="1539">Resize the annotation so as all the text fits in its rect, according to Pango metrics.
 This should typically be called every time the content is changed unless the free text
 annotation is supposed to be fixed width for instance.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="231"/>
@@ -729,13 +730,13 @@ annotation is supposed to be fixed width for instance.</doc>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1539">an #PpsAnnotationFreeText</doc>
+                 line="1541">an #PpsAnnotationFreeText</doc>
             <type name="AnnotationFreeText" c:type="PpsAnnotationFreeText*"/>
           </instance-parameter>
           <parameter name="ctx" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1540">a valid #PangoContext</doc>
+                 line="1542">a valid #PangoContext</doc>
             <type name="Pango.Context" c:type="PangoContext*"/>
           </parameter>
         </parameters>
@@ -745,19 +746,19 @@ annotation is supposed to be fixed width for instance.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1474">Returns a copy of the font descption used by the annotation.</doc>
+             line="1476">Returns a copy of the font descption used by the annotation.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="224"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1480">the font description used to display the annotation.</doc>
+               line="1482">the font description used to display the annotation.</doc>
           <type name="Pango.FontDescription" c:type="PangoFontDescription*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1476">an #PpsAnnotationFreeText</doc>
+                 line="1478">an #PpsAnnotationFreeText</doc>
             <type name="AnnotationFreeText" c:type="PpsAnnotationFreeText*"/>
           </instance-parameter>
         </parameters>
@@ -768,19 +769,19 @@ annotation is supposed to be fixed width for instance.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1519">Gets the text color of @annot.</doc>
+             line="1521">Gets the text color of @annot.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="229"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1525">the font RGBA, must be freed by the caller</doc>
+               line="1527">the font RGBA, must be freed by the caller</doc>
           <type name="Gdk.RGBA" c:type="GdkRGBA*"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1521">an #PpsAnnotationFreeText</doc>
+                 line="1523">an #PpsAnnotationFreeText</doc>
             <type name="AnnotationFreeText" c:type="PpsAnnotationFreeText*"/>
           </instance-parameter>
         </parameters>
@@ -790,25 +791,25 @@ annotation is supposed to be fixed width for instance.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1448">Set the font of the free text annotation to annotation to @font_desc.</doc>
+             line="1450">Set the font of the free text annotation to annotation to @font_desc.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="221"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1455">%TRUE if the font description has been changed, %FALSE otherwise</doc>
+               line="1457">%TRUE if the font description has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1450">an #PpsAnnotationFreeText</doc>
+                 line="1452">an #PpsAnnotationFreeText</doc>
             <type name="AnnotationFreeText" c:type="PpsAnnotationFreeText*"/>
           </instance-parameter>
           <parameter name="font_desc" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1451">a #PangoFontDescription</doc>
+                 line="1453">a #PangoFontDescription</doc>
             <type name="Pango.FontDescription"
                   c:type="const PangoFontDescription*"/>
           </parameter>
@@ -820,25 +821,25 @@ annotation is supposed to be fixed width for instance.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1492">Set the text color of the annotation to @rgba.</doc>
+             line="1494">Set the text color of the annotation to @rgba.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="226"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1499">%TRUE if the color has been changed, %FALSE otherwise</doc>
+               line="1501">%TRUE if the color has been changed, %FALSE otherwise</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="annot" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1494">an #PpsAnnotationFreeText</doc>
+                 line="1496">an #PpsAnnotationFreeText</doc>
             <type name="AnnotationFreeText" c:type="PpsAnnotationFreeText*"/>
           </instance-parameter>
           <parameter name="rgba" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1495">a #GdkRGBA</doc>
+                 line="1497">a #GdkRGBA</doc>
             <type name="Gdk.RGBA" c:type="const GdkRGBA*"/>
           </parameter>
         </parameters>
@@ -1099,7 +1100,7 @@ annotation is supposed to be fixed width for instance.</doc>
                    version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1330">Creates a new stamp annotation. ATM only the custom image type via
+             line="1332">Creates a new stamp annotation. ATM only the custom image type via
 #pps_annotation_stamp_set_surface is implemented, other stamps (draft, etc.)
 are not.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="211"/>
@@ -1110,7 +1111,7 @@ are not.</doc>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1332">a #PpsPage</doc>
+                 line="1334">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
         </parameters>
@@ -1120,19 +1121,19 @@ are not.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1314">Set the custom cairo surface of the stamp.</doc>
+             line="1316">Set the custom cairo surface of the stamp.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="215"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-annotation.c"
-               line="1320">the custom cairo surface of the stamp, if it exists.</doc>
+               line="1322">the custom cairo surface of the stamp, if it exists.</doc>
           <type name="cairo.Surface" c:type="cairo_surface_t*"/>
         </return-value>
         <parameters>
           <instance-parameter name="stamp" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1316">an #PpsAnnotationStamp</doc>
+                 line="1318">an #PpsAnnotationStamp</doc>
             <type name="AnnotationStamp" c:type="PpsAnnotationStamp*"/>
           </instance-parameter>
         </parameters>
@@ -1142,7 +1143,7 @@ are not.</doc>
               version="48.0">
         <doc xml:space="preserve"
              filename="libdocument/pps-annotation.c"
-             line="1298">Set the custom cairo surface of the stamp.</doc>
+             line="1300">Set the custom cairo surface of the stamp.</doc>
         <source-position filename="libdocument/pps-annotation.h" line="213"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -1151,13 +1152,13 @@ are not.</doc>
           <instance-parameter name="stamp" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1300">an #PpsAnnotationStamp</doc>
+                 line="1302">an #PpsAnnotationStamp</doc>
             <type name="AnnotationStamp" c:type="PpsAnnotationStamp*"/>
           </instance-parameter>
           <parameter name="surface" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-annotation.c"
-                 line="1301">a #cairo_surface_t</doc>
+                 line="1303">a #cairo_surface_t</doc>
             <type name="cairo.Surface" c:type="cairo_surface_t*"/>
           </parameter>
         </parameters>
@@ -2206,7 +2207,7 @@ If the document is encrypted, it is returned but also @error is set to
              filename="libdocument/pps-document-misc.c"
              line="210">Determine the preferred date and time representation for the current locale
 for @dt.</doc>
-        <source-position filename="libdocument/pps-document-misc.h" line="51"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="50"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-misc.c"
@@ -2229,7 +2230,7 @@ in the current locale). The string should be freed with g_free().</doc>
         <doc xml:space="preserve"
              filename="libdocument/pps-document-misc.c"
              line="229">Get the pointer's x and y position relative to @widget.</doc>
-        <source-position filename="libdocument/pps-document-misc.h" line="54"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="53"/>
         <return-value transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
@@ -2269,7 +2270,7 @@ in the current locale). The string should be freed with g_free().</doc>
              line="162">Returns sensible guess for DPI of monitor on which given widget has been
 realized. If HiDPI display, use 192, else 96.
 Returns 96 as fallback value.</doc>
-        <source-position filename="libdocument/pps-document-misc.h" line="48"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="47"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-misc.c"
@@ -2287,7 +2288,7 @@ Returns 96 as fallback value.</doc>
       </function>
       <function name="misc_pixbuf_from_surface"
                 c:identifier="pps_document_misc_pixbuf_from_surface">
-        <source-position filename="libdocument/pps-document-misc.h" line="38"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="37"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-misc.c"
@@ -2305,7 +2306,7 @@ Returns 96 as fallback value.</doc>
       </function>
       <function name="misc_surface_from_pixbuf"
                 c:identifier="pps_document_misc_surface_from_pixbuf">
-        <source-position filename="libdocument/pps-document-misc.h" line="36"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="35"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Surface" c:type="cairo_surface_t*"/>
         </return-value>
@@ -2317,7 +2318,7 @@ Returns 96 as fallback value.</doc>
       </function>
       <function name="misc_surface_rotate_and_scale"
                 c:identifier="pps_document_misc_surface_rotate_and_scale">
-        <source-position filename="libdocument/pps-document-misc.h" line="42"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="41"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Surface" c:type="cairo_surface_t*"/>
         </return-value>
@@ -2341,7 +2342,7 @@ Returns 96 as fallback value.</doc>
         <doc xml:space="preserve"
              filename="libdocument/pps-document-misc.c"
              line="67">Convert a cairo_surface_t to #GdkTexture object.</doc>
-        <source-position filename="libdocument/pps-document-misc.h" line="40"/>
+        <source-position filename="libdocument/pps-document-misc.h" line="39"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-misc.c"
@@ -4252,13 +4253,13 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
                glib:type-name="PpsDocumentFind"
                glib:get-type="pps_document_find_get_type"
                glib:type-struct="DocumentFindInterface">
-      <source-position filename="libdocument/pps-document-find.h" line="77"/>
+      <source-position filename="libdocument/pps-document-find.h" line="76"/>
       <virtual-method name="find_text" invoker="find_text">
-        <source-position filename="libdocument/pps-document-find.h" line="73"/>
+        <source-position filename="libdocument/pps-document-find.h" line="72"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-find.c"
-               line="39">a list of results</doc>
+               line="38">a list of results</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="FindRectangle"/>
           </type>
@@ -4267,32 +4268,32 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
           <instance-parameter name="document_find" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="34">an #PpsDocumentFind</doc>
+                 line="33">an #PpsDocumentFind</doc>
             <type name="DocumentFind" c:type="PpsDocumentFind*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="35">an #PpsPage</doc>
+                 line="34">an #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="36">text to find</doc>
+                 line="35">text to find</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="options" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="37">a set of #PpsFindOptions</doc>
+                 line="36">a set of #PpsFindOptions</doc>
             <type name="FindOptions" c:type="PpsFindOptions"/>
           </parameter>
         </parameters>
       </virtual-method>
       <virtual-method name="get_supported_options"
                       invoker="get_supported_options">
-        <source-position filename="libdocument/pps-document-find.h" line="72"/>
+        <source-position filename="libdocument/pps-document-find.h" line="71"/>
         <return-value transfer-ownership="none">
           <type name="FindOptions" c:type="PpsFindOptions"/>
         </return-value>
@@ -4303,11 +4304,11 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
         </parameters>
       </virtual-method>
       <method name="find_text" c:identifier="pps_document_find_find_text">
-        <source-position filename="libdocument/pps-document-find.h" line="82"/>
+        <source-position filename="libdocument/pps-document-find.h" line="81"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-find.c"
-               line="39">a list of results</doc>
+               line="38">a list of results</doc>
           <type name="GLib.List" c:type="GList*">
             <type name="FindRectangle"/>
           </type>
@@ -4316,32 +4317,32 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
           <instance-parameter name="document_find" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="34">an #PpsDocumentFind</doc>
+                 line="33">an #PpsDocumentFind</doc>
             <type name="DocumentFind" c:type="PpsDocumentFind*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="35">an #PpsPage</doc>
+                 line="34">an #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="36">text to find</doc>
+                 line="35">text to find</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="options" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="37">a set of #PpsFindOptions</doc>
+                 line="36">a set of #PpsFindOptions</doc>
             <type name="FindOptions" c:type="PpsFindOptions"/>
           </parameter>
         </parameters>
       </method>
       <method name="get_supported_options"
               c:identifier="pps_document_find_get_supported_options">
-        <source-position filename="libdocument/pps-document-find.h" line="80"/>
+        <source-position filename="libdocument/pps-document-find.h" line="79"/>
         <return-value transfer-ownership="none">
           <type name="FindOptions" c:type="PpsFindOptions"/>
         </return-value>
@@ -4355,14 +4356,14 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
     <record name="DocumentFindInterface"
             c:type="PpsDocumentFindInterface"
             glib:is-gtype-struct-for="DocumentFind">
-      <source-position filename="libdocument/pps-document-find.h" line="77"/>
+      <source-position filename="libdocument/pps-document-find.h" line="76"/>
       <field name="base_iface">
         <type name="GObject.TypeInterface" c:type="GTypeInterface"/>
       </field>
       <field name="get_supported_options">
         <callback name="get_supported_options">
           <source-position filename="libdocument/pps-document-find.h"
-                           line="72"/>
+                           line="71"/>
           <return-value transfer-ownership="none">
             <type name="FindOptions" c:type="PpsFindOptions"/>
           </return-value>
@@ -4376,11 +4377,11 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
       <field name="find_text">
         <callback name="find_text">
           <source-position filename="libdocument/pps-document-find.h"
-                           line="73"/>
+                           line="72"/>
           <return-value transfer-ownership="full">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-find.c"
-                 line="39">a list of results</doc>
+                 line="38">a list of results</doc>
             <type name="GLib.List" c:type="GList*">
               <type name="FindRectangle"/>
             </type>
@@ -4389,25 +4390,25 @@ used to load the document and the URI, e.g. #GIOError, #GFileError, and
             <parameter name="document_find" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-find.c"
-                   line="34">an #PpsDocumentFind</doc>
+                   line="33">an #PpsDocumentFind</doc>
               <type name="DocumentFind" c:type="PpsDocumentFind*"/>
             </parameter>
             <parameter name="page" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-find.c"
-                   line="35">an #PpsPage</doc>
+                   line="34">an #PpsPage</doc>
               <type name="Page" c:type="PpsPage*"/>
             </parameter>
             <parameter name="text" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-find.c"
-                   line="36">text to find</doc>
+                   line="35">text to find</doc>
               <type name="utf8" c:type="const gchar*"/>
             </parameter>
             <parameter name="options" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-find.c"
-                   line="37">a set of #PpsFindOptions</doc>
+                   line="36">a set of #PpsFindOptions</doc>
               <type name="FindOptions" c:type="PpsFindOptions"/>
             </parameter>
           </parameters>
@@ -8020,9 +8021,9 @@ so set a helper function to actually allow the user to enter his password.</doc>
                glib:type-name="PpsDocumentText"
                glib:get-type="pps_document_text_get_type"
                glib:type-struct="DocumentTextInterface">
-      <source-position filename="libdocument/pps-document-text.h" line="57"/>
+      <source-position filename="libdocument/pps-document-text.h" line="56"/>
       <virtual-method name="get_text" invoker="get_text">
-        <source-position filename="libdocument/pps-document-text.h" line="46"/>
+        <source-position filename="libdocument/pps-document-text.h" line="45"/>
         <return-value transfer-ownership="full">
           <type name="utf8" c:type="gchar*"/>
         </return-value>
@@ -8040,25 +8041,25 @@ so set a helper function to actually allow the user to enter his password.</doc>
                       version="3.10">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-text.c"
-             line="103">FIXME</doc>
-        <source-position filename="libdocument/pps-document-text.h" line="55"/>
+             line="102">FIXME</doc>
+        <source-position filename="libdocument/pps-document-text.h" line="54"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="110">a newly created #PangoAttrList</doc>
+               line="109">a newly created #PangoAttrList</doc>
           <type name="Pango.AttrList" c:type="PangoAttrList*"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="105">a #PpsDocumentText</doc>
+                 line="104">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="106">a #PpsPage</doc>
+                 line="105">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
         </parameters>
@@ -8066,53 +8067,53 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <virtual-method name="get_text_in_area"
                       invoker="get_text_in_area"
                       version="47">
-        <source-position filename="libdocument/pps-document-text.h" line="52"/>
+        <source-position filename="libdocument/pps-document-text.h" line="51"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="74">the text inside the area of the specified page or %NULL</doc>
+               line="73">the text inside the area of the specified page or %NULL</doc>
           <type name="utf8" c:type="gchar*"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="70">a #PpsDocumentText</doc>
+                 line="69">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="71">a #PpsPage of that document</doc>
+                 line="70">a #PpsPage of that document</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="area" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="72">a #PpsRectangle on that page</doc>
+                 line="71">a #PpsRectangle on that page</doc>
             <type name="Rectangle" c:type="PpsRectangle*"/>
           </parameter>
         </parameters>
       </virtual-method>
       <virtual-method name="get_text_layout" invoker="get_text_layout">
-        <source-position filename="libdocument/pps-document-text.h" line="48"/>
+        <source-position filename="libdocument/pps-document-text.h" line="47"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="52">whether the text layout is empty, i.e. there is text on the page</doc>
+               line="51">whether the text layout is empty, i.e. there is text on the page</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="47">a #PpsDocumentText</doc>
+                 line="46">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="48">a #PpsPage</doc>
+                 line="47">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="areas"
@@ -8123,7 +8124,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="49">the text areas of the layout</doc>
+                 line="48">the text areas of the layout</doc>
             <array length="2" zero-terminated="0" c:type="PpsRectangle**">
               <type name="Rectangle" c:type="PpsRectangle*"/>
             </array>
@@ -8134,13 +8135,13 @@ so set a helper function to actually allow the user to enter his password.</doc>
                      transfer-ownership="full">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="50">the number of text areas in the layout</doc>
+                 line="49">the number of text areas in the layout</doc>
             <type name="guint" c:type="guint*"/>
           </parameter>
         </parameters>
       </virtual-method>
       <virtual-method name="get_text_mapping" invoker="get_text_mapping">
-        <source-position filename="libdocument/pps-document-text.h" line="44"/>
+        <source-position filename="libdocument/pps-document-text.h" line="43"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Region" c:type="cairo_region_t*"/>
         </return-value>
@@ -8154,7 +8155,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
         </parameters>
       </virtual-method>
       <method name="get_text" c:identifier="pps_document_text_get_text">
-        <source-position filename="libdocument/pps-document-text.h" line="60"/>
+        <source-position filename="libdocument/pps-document-text.h" line="59"/>
         <return-value transfer-ownership="full">
           <type name="utf8" c:type="gchar*"/>
         </return-value>
@@ -8172,25 +8173,25 @@ so set a helper function to actually allow the user to enter his password.</doc>
               version="3.10">
         <doc xml:space="preserve"
              filename="libdocument/pps-document-text.c"
-             line="103">FIXME</doc>
-        <source-position filename="libdocument/pps-document-text.h" line="75"/>
+             line="102">FIXME</doc>
+        <source-position filename="libdocument/pps-document-text.h" line="74"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="110">a newly created #PangoAttrList</doc>
+               line="109">a newly created #PangoAttrList</doc>
           <type name="Pango.AttrList" c:type="PangoAttrList*"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="105">a #PpsDocumentText</doc>
+                 line="104">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="106">a #PpsPage</doc>
+                 line="105">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
         </parameters>
@@ -8198,54 +8199,54 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <method name="get_text_in_area"
               c:identifier="pps_document_text_get_text_in_area"
               version="47">
-        <source-position filename="libdocument/pps-document-text.h" line="68"/>
+        <source-position filename="libdocument/pps-document-text.h" line="67"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="74">the text inside the area of the specified page or %NULL</doc>
+               line="73">the text inside the area of the specified page or %NULL</doc>
           <type name="utf8" c:type="gchar*"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="70">a #PpsDocumentText</doc>
+                 line="69">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="71">a #PpsPage of that document</doc>
+                 line="70">a #PpsPage of that document</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="area" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="72">a #PpsRectangle on that page</doc>
+                 line="71">a #PpsRectangle on that page</doc>
             <type name="Rectangle" c:type="PpsRectangle*"/>
           </parameter>
         </parameters>
       </method>
       <method name="get_text_layout"
               c:identifier="pps_document_text_get_text_layout">
-        <source-position filename="libdocument/pps-document-text.h" line="63"/>
+        <source-position filename="libdocument/pps-document-text.h" line="62"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-document-text.c"
-               line="52">whether the text layout is empty, i.e. there is text on the page</doc>
+               line="51">whether the text layout is empty, i.e. there is text on the page</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="document_text" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="47">a #PpsDocumentText</doc>
+                 line="46">a #PpsDocumentText</doc>
             <type name="DocumentText" c:type="PpsDocumentText*"/>
           </instance-parameter>
           <parameter name="page" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="48">a #PpsPage</doc>
+                 line="47">a #PpsPage</doc>
             <type name="Page" c:type="PpsPage*"/>
           </parameter>
           <parameter name="areas"
@@ -8256,7 +8257,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="49">the text areas of the layout</doc>
+                 line="48">the text areas of the layout</doc>
             <array length="2" zero-terminated="0" c:type="PpsRectangle**">
               <type name="Rectangle" c:type="PpsRectangle*"/>
             </array>
@@ -8267,14 +8268,14 @@ so set a helper function to actually allow the user to enter his password.</doc>
                      transfer-ownership="full">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="50">the number of text areas in the layout</doc>
+                 line="49">the number of text areas in the layout</doc>
             <type name="guint" c:type="guint*"/>
           </parameter>
         </parameters>
       </method>
       <method name="get_text_mapping"
               c:identifier="pps_document_text_get_text_mapping">
-        <source-position filename="libdocument/pps-document-text.h" line="72"/>
+        <source-position filename="libdocument/pps-document-text.h" line="71"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Region" c:type="cairo_region_t*"/>
         </return-value>
@@ -8291,14 +8292,14 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="DocumentTextInterface"
             c:type="PpsDocumentTextInterface"
             glib:is-gtype-struct-for="DocumentText">
-      <source-position filename="libdocument/pps-document-text.h" line="57"/>
+      <source-position filename="libdocument/pps-document-text.h" line="56"/>
       <field name="base_iface">
         <type name="GObject.TypeInterface" c:type="GTypeInterface"/>
       </field>
       <field name="get_text_mapping">
         <callback name="get_text_mapping">
           <source-position filename="libdocument/pps-document-text.h"
-                           line="44"/>
+                           line="43"/>
           <return-value transfer-ownership="full">
             <type name="cairo.Region" c:type="cairo_region_t*"/>
           </return-value>
@@ -8315,7 +8316,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="get_text">
         <callback name="get_text">
           <source-position filename="libdocument/pps-document-text.h"
-                           line="46"/>
+                           line="45"/>
           <return-value transfer-ownership="full">
             <type name="utf8" c:type="gchar*"/>
           </return-value>
@@ -8332,24 +8333,24 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="get_text_layout">
         <callback name="get_text_layout">
           <source-position filename="libdocument/pps-document-text.h"
-                           line="48"/>
+                           line="47"/>
           <return-value transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="52">whether the text layout is empty, i.e. there is text on the page</doc>
+                 line="51">whether the text layout is empty, i.e. there is text on the page</doc>
             <type name="gboolean" c:type="gboolean"/>
           </return-value>
           <parameters>
             <parameter name="document_text" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="47">a #PpsDocumentText</doc>
+                   line="46">a #PpsDocumentText</doc>
               <type name="DocumentText" c:type="PpsDocumentText*"/>
             </parameter>
             <parameter name="page" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="48">a #PpsPage</doc>
+                   line="47">a #PpsPage</doc>
               <type name="Page" c:type="PpsPage*"/>
             </parameter>
             <parameter name="areas"
@@ -8360,7 +8361,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
                        allow-none="1">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="49">the text areas of the layout</doc>
+                   line="48">the text areas of the layout</doc>
               <array length="3" zero-terminated="0" c:type="PpsRectangle**">
                 <type name="Rectangle" c:type="PpsRectangle*"/>
               </array>
@@ -8371,7 +8372,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
                        transfer-ownership="full">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="50">the number of text areas in the layout</doc>
+                   line="49">the number of text areas in the layout</doc>
               <type name="guint" c:type="guint*"/>
             </parameter>
           </parameters>
@@ -8380,30 +8381,30 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="get_text_in_area">
         <callback name="get_text_in_area">
           <source-position filename="libdocument/pps-document-text.h"
-                           line="52"/>
+                           line="51"/>
           <return-value transfer-ownership="full" nullable="1">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="74">the text inside the area of the specified page or %NULL</doc>
+                 line="73">the text inside the area of the specified page or %NULL</doc>
             <type name="utf8" c:type="gchar*"/>
           </return-value>
           <parameters>
             <parameter name="document_text" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="70">a #PpsDocumentText</doc>
+                   line="69">a #PpsDocumentText</doc>
               <type name="DocumentText" c:type="PpsDocumentText*"/>
             </parameter>
             <parameter name="page" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="71">a #PpsPage of that document</doc>
+                   line="70">a #PpsPage of that document</doc>
               <type name="Page" c:type="PpsPage*"/>
             </parameter>
             <parameter name="area" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="72">a #PpsRectangle on that page</doc>
+                   line="71">a #PpsRectangle on that page</doc>
               <type name="Rectangle" c:type="PpsRectangle*"/>
             </parameter>
           </parameters>
@@ -8412,24 +8413,24 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="get_text_attrs">
         <callback name="get_text_attrs">
           <source-position filename="libdocument/pps-document-text.h"
-                           line="55"/>
+                           line="54"/>
           <return-value transfer-ownership="full">
             <doc xml:space="preserve"
                  filename="libdocument/pps-document-text.c"
-                 line="110">a newly created #PangoAttrList</doc>
+                 line="109">a newly created #PangoAttrList</doc>
             <type name="Pango.AttrList" c:type="PangoAttrList*"/>
           </return-value>
           <parameters>
             <parameter name="document_text" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="105">a #PpsDocumentText</doc>
+                   line="104">a #PpsDocumentText</doc>
               <type name="DocumentText" c:type="PpsDocumentText*"/>
             </parameter>
             <parameter name="page" transfer-ownership="none">
               <doc xml:space="preserve"
                    filename="libdocument/pps-document-text.c"
-                   line="106">a #PpsPage</doc>
+                   line="105">a #PpsPage</doc>
               <type name="Page" c:type="PpsPage*"/>
             </parameter>
           </parameters>
@@ -8627,7 +8628,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD"
                     c:identifier="PPS_FORM_FIELD"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="36"/>
+      <source-position filename="libdocument/pps-form-field.h" line="35"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8636,7 +8637,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_BUTTON"
                     c:identifier="PPS_FORM_FIELD_BUTTON"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="50"/>
+      <source-position filename="libdocument/pps-form-field.h" line="49"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8645,7 +8646,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_BUTTON_CLASS"
                     c:identifier="PPS_FORM_FIELD_BUTTON_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="51"/>
+      <source-position filename="libdocument/pps-form-field.h" line="50"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -8654,7 +8655,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_BUTTON_GET_CLASS"
                     c:identifier="PPS_FORM_FIELD_BUTTON_GET_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="54"/>
+      <source-position filename="libdocument/pps-form-field.h" line="53"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8663,7 +8664,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_CHOICE"
                     c:identifier="PPS_FORM_FIELD_CHOICE"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="57"/>
+      <source-position filename="libdocument/pps-form-field.h" line="56"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8672,7 +8673,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_CHOICE_CLASS"
                     c:identifier="PPS_FORM_FIELD_CHOICE_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="58"/>
+      <source-position filename="libdocument/pps-form-field.h" line="57"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -8681,7 +8682,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_CHOICE_GET_CLASS"
                     c:identifier="PPS_FORM_FIELD_CHOICE_GET_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="61"/>
+      <source-position filename="libdocument/pps-form-field.h" line="60"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8690,7 +8691,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_CLASS"
                     c:identifier="PPS_FORM_FIELD_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="37"/>
+      <source-position filename="libdocument/pps-form-field.h" line="36"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -8699,7 +8700,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_GET_CLASS"
                     c:identifier="PPS_FORM_FIELD_GET_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="40"/>
+      <source-position filename="libdocument/pps-form-field.h" line="39"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8708,7 +8709,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_SIGNATURE"
                     c:identifier="PPS_FORM_FIELD_SIGNATURE"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="64"/>
+      <source-position filename="libdocument/pps-form-field.h" line="63"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8717,7 +8718,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_SIGNATURE_CLASS"
                     c:identifier="PPS_FORM_FIELD_SIGNATURE_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="65"/>
+      <source-position filename="libdocument/pps-form-field.h" line="64"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -8726,7 +8727,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_SIGNATURE_GET_CLASS"
                     c:identifier="PPS_FORM_FIELD_SIGNATURE_GET_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="68"/>
+      <source-position filename="libdocument/pps-form-field.h" line="67"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8735,7 +8736,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_TEXT"
                     c:identifier="PPS_FORM_FIELD_TEXT"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="43"/>
+      <source-position filename="libdocument/pps-form-field.h" line="42"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -8744,7 +8745,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_TEXT_CLASS"
                     c:identifier="PPS_FORM_FIELD_TEXT_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="44"/>
+      <source-position filename="libdocument/pps-form-field.h" line="43"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -8753,7 +8754,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="FORM_FIELD_TEXT_GET_CLASS"
                     c:identifier="PPS_FORM_FIELD_TEXT_GET_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="47"/>
+      <source-position filename="libdocument/pps-form-field.h" line="46"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9151,7 +9152,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
             glib:type-name="PpsFindRectangle"
             glib:get-type="pps_find_rectangle_get_type"
             c:symbol-prefix="find_rectangle">
-      <source-position filename="libdocument/pps-document-find.h" line="51"/>
+      <source-position filename="libdocument/pps-document-find.h" line="50"/>
       <field name="x1" writable="1">
         <type name="gdouble" c:type="gdouble"/>
       </field>
@@ -9173,7 +9174,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="_pps_reserved1" introspectable="0">
         <callback name="_pps_reserved1">
           <source-position filename="libdocument/pps-document-find.h"
-                           line="49"/>
+                           line="48"/>
           <return-value transfer-ownership="none">
             <type name="none" c:type="void"/>
           </return-value>
@@ -9182,20 +9183,20 @@ so set a helper function to actually allow the user to enter his password.</doc>
       <field name="_pps_reserved2" introspectable="0">
         <callback name="_pps_reserved2">
           <source-position filename="libdocument/pps-document-find.h"
-                           line="50"/>
+                           line="49"/>
           <return-value transfer-ownership="none">
             <type name="none" c:type="void"/>
           </return-value>
         </callback>
       </field>
       <constructor name="new" c:identifier="pps_find_rectangle_new">
-        <source-position filename="libdocument/pps-document-find.h" line="56"/>
+        <source-position filename="libdocument/pps-document-find.h" line="55"/>
         <return-value transfer-ownership="full">
           <type name="FindRectangle" c:type="PpsFindRectangle*"/>
         </return-value>
       </constructor>
       <method name="copy" c:identifier="pps_find_rectangle_copy">
-        <source-position filename="libdocument/pps-document-find.h" line="58"/>
+        <source-position filename="libdocument/pps-document-find.h" line="57"/>
         <return-value transfer-ownership="full">
           <type name="FindRectangle" c:type="PpsFindRectangle*"/>
         </return-value>
@@ -9206,7 +9207,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
         </parameters>
       </method>
       <method name="free" c:identifier="pps_find_rectangle_free">
-        <source-position filename="libdocument/pps-document-find.h" line="60"/>
+        <source-position filename="libdocument/pps-document-find.h" line="59"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -9268,7 +9269,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
            glib:type-name="PpsFormField"
            glib:get-type="pps_form_field_get_type"
            glib:type-struct="FormFieldClass">
-      <source-position filename="libdocument/pps-form-field.h" line="116"/>
+      <source-position filename="libdocument/pps-form-field.h" line="115"/>
       <field name="parent">
         <type name="GObject.Object" c:type="GObject"/>
       </field>
@@ -9298,9 +9299,9 @@ so set a helper function to actually allow the user to enter his password.</doc>
            glib:type-name="PpsFormFieldButton"
            glib:get-type="pps_form_field_button_get_type"
            glib:type-struct="FormFieldButtonClass">
-      <source-position filename="libdocument/pps-form-field.h" line="147"/>
+      <source-position filename="libdocument/pps-form-field.h" line="146"/>
       <constructor name="new" c:identifier="pps_form_field_button_new">
-        <source-position filename="libdocument/pps-form-field.h" line="192"/>
+        <source-position filename="libdocument/pps-form-field.h" line="191"/>
         <return-value transfer-ownership="full">
           <type name="FormField" c:type="PpsFormField*"/>
         </return-value>
@@ -9326,7 +9327,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="FormFieldButtonClass"
             c:type="PpsFormFieldButtonClass"
             glib:is-gtype-struct-for="FormFieldButton">
-      <source-position filename="libdocument/pps-form-field.h" line="147"/>
+      <source-position filename="libdocument/pps-form-field.h" line="146"/>
       <field name="parent_class">
         <type name="FormFieldClass" c:type="PpsFormFieldClass"/>
       </field>
@@ -9361,9 +9362,9 @@ so set a helper function to actually allow the user to enter his password.</doc>
            glib:type-name="PpsFormFieldChoice"
            glib:get-type="pps_form_field_choice_get_type"
            glib:type-struct="FormFieldChoiceClass">
-      <source-position filename="libdocument/pps-form-field.h" line="165"/>
+      <source-position filename="libdocument/pps-form-field.h" line="164"/>
       <constructor name="new" c:identifier="pps_form_field_choice_new">
-        <source-position filename="libdocument/pps-form-field.h" line="199"/>
+        <source-position filename="libdocument/pps-form-field.h" line="198"/>
         <return-value transfer-ownership="full">
           <type name="FormField" c:type="PpsFormField*"/>
         </return-value>
@@ -9406,7 +9407,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="FormFieldChoiceClass"
             c:type="PpsFormFieldChoiceClass"
             glib:is-gtype-struct-for="FormFieldChoice">
-      <source-position filename="libdocument/pps-form-field.h" line="165"/>
+      <source-position filename="libdocument/pps-form-field.h" line="164"/>
       <field name="parent_class">
         <type name="FormFieldClass" c:type="PpsFormFieldClass"/>
       </field>
@@ -9431,7 +9432,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="FormFieldClass"
             c:type="PpsFormFieldClass"
             glib:is-gtype-struct-for="FormField">
-      <source-position filename="libdocument/pps-form-field.h" line="116"/>
+      <source-position filename="libdocument/pps-form-field.h" line="115"/>
       <field name="parent_class">
         <type name="GObject.ObjectClass" c:type="GObjectClass"/>
       </field>
@@ -9443,9 +9444,9 @@ so set a helper function to actually allow the user to enter his password.</doc>
            glib:type-name="PpsFormFieldSignature"
            glib:get-type="pps_form_field_signature_get_type"
            glib:type-struct="FormFieldSignatureClass">
-      <source-position filename="libdocument/pps-form-field.h" line="175"/>
+      <source-position filename="libdocument/pps-form-field.h" line="174"/>
       <constructor name="new" c:identifier="pps_form_field_signature_new">
-        <source-position filename="libdocument/pps-form-field.h" line="206"/>
+        <source-position filename="libdocument/pps-form-field.h" line="205"/>
         <return-value transfer-ownership="full">
           <type name="FormField" c:type="PpsFormField*"/>
         </return-value>
@@ -9462,7 +9463,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="FormFieldSignatureClass"
             c:type="PpsFormFieldSignatureClass"
             glib:is-gtype-struct-for="FormFieldSignature">
-      <source-position filename="libdocument/pps-form-field.h" line="175"/>
+      <source-position filename="libdocument/pps-form-field.h" line="174"/>
       <field name="parent_class">
         <type name="FormFieldClass" c:type="PpsFormFieldClass"/>
       </field>
@@ -9474,9 +9475,9 @@ so set a helper function to actually allow the user to enter his password.</doc>
            glib:type-name="PpsFormFieldText"
            glib:get-type="pps_form_field_text_get_type"
            glib:type-struct="FormFieldTextClass">
-      <source-position filename="libdocument/pps-form-field.h" line="135"/>
+      <source-position filename="libdocument/pps-form-field.h" line="134"/>
       <constructor name="new" c:identifier="pps_form_field_text_new">
-        <source-position filename="libdocument/pps-form-field.h" line="185"/>
+        <source-position filename="libdocument/pps-form-field.h" line="184"/>
         <return-value transfer-ownership="full">
           <type name="FormField" c:type="PpsFormField*"/>
         </return-value>
@@ -9520,7 +9521,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <record name="FormFieldTextClass"
             c:type="PpsFormFieldTextClass"
             glib:is-gtype-struct-for="FormFieldText">
-      <source-position filename="libdocument/pps-form-field.h" line="135"/>
+      <source-position filename="libdocument/pps-form-field.h" line="134"/>
       <field name="parent_class">
         <type name="FormFieldClass" c:type="PpsFormFieldClass"/>
       </field>
@@ -9551,7 +9552,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD"
                     c:identifier="PPS_IS_FORM_FIELD"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="38"/>
+      <source-position filename="libdocument/pps-form-field.h" line="37"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9560,7 +9561,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_BUTTON"
                     c:identifier="PPS_IS_FORM_FIELD_BUTTON"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="52"/>
+      <source-position filename="libdocument/pps-form-field.h" line="51"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9569,7 +9570,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_BUTTON_CLASS"
                     c:identifier="PPS_IS_FORM_FIELD_BUTTON_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="53"/>
+      <source-position filename="libdocument/pps-form-field.h" line="52"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -9578,7 +9579,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_CHOICE"
                     c:identifier="PPS_IS_FORM_FIELD_CHOICE"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="59"/>
+      <source-position filename="libdocument/pps-form-field.h" line="58"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9587,7 +9588,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_CHOICE_CLASS"
                     c:identifier="PPS_IS_FORM_FIELD_CHOICE_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="60"/>
+      <source-position filename="libdocument/pps-form-field.h" line="59"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -9596,7 +9597,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_CLASS"
                     c:identifier="PPS_IS_FORM_FIELD_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="39"/>
+      <source-position filename="libdocument/pps-form-field.h" line="38"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -9605,7 +9606,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_SIGNATURE"
                     c:identifier="PPS_IS_FORM_FIELD_SIGNATURE"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="66"/>
+      <source-position filename="libdocument/pps-form-field.h" line="65"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9614,7 +9615,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_SIGNATURE_CLASS"
                     c:identifier="PPS_IS_FORM_FIELD_SIGNATURE_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="67"/>
+      <source-position filename="libdocument/pps-form-field.h" line="66"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -9623,7 +9624,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_TEXT"
                     c:identifier="PPS_IS_FORM_FIELD_TEXT"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="45"/>
+      <source-position filename="libdocument/pps-form-field.h" line="44"/>
       <parameters>
         <parameter name="object">
         </parameter>
@@ -9632,7 +9633,7 @@ so set a helper function to actually allow the user to enter his password.</doc>
     <function-macro name="IS_FORM_FIELD_TEXT_CLASS"
                     c:identifier="PPS_IS_FORM_FIELD_TEXT_CLASS"
                     introspectable="0">
-      <source-position filename="libdocument/pps-form-field.h" line="46"/>
+      <source-position filename="libdocument/pps-form-field.h" line="45"/>
       <parameters>
         <parameter name="klass">
         </parameter>
@@ -9879,13 +9880,13 @@ so set a helper function to actually allow the user to enter his password.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libdocument/pps-link.c"
-                 line="168">the title</doc>
+                 line="167">the title</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="action" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-link.c"
-                 line="169">a #PpsLinkAction</doc>
+                 line="168">a #PpsLinkAction</doc>
             <type name="LinkAction" c:type="PpsLinkAction*"/>
           </parameter>
         </parameters>
@@ -9897,14 +9898,14 @@ so set a helper function to actually allow the user to enter his password.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libdocument/pps-link.c"
-               line="57">an #PpsLinkAction</doc>
+               line="56">an #PpsLinkAction</doc>
           <type name="LinkAction" c:type="PpsLinkAction*"/>
         </return-value>
         <parameters>
           <instance-parameter name="self" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libdocument/pps-link.c"
-                 line="55">an #PpsLink</doc>
+                 line="54">an #PpsLink</doc>
             <type name="Link" c:type="PpsLink*"/>
           </instance-parameter>
         </parameters>
@@ -12090,9 +12091,9 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
                glib:type-name="PpsSelection"
                glib:get-type="pps_selection_get_type"
                glib:type-struct="SelectionInterface">
-      <source-position filename="libdocument/pps-selection.h" line="66"/>
+      <source-position filename="libdocument/pps-selection.h" line="65"/>
       <virtual-method name="get_selected_text" invoker="get_selected_text">
-        <source-position filename="libdocument/pps-selection.h" line="58"/>
+        <source-position filename="libdocument/pps-selection.h" line="57"/>
         <return-value transfer-ownership="full">
           <type name="utf8" c:type="gchar*"/>
         </return-value>
@@ -12113,7 +12114,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </virtual-method>
       <virtual-method name="get_selection_region"
                       invoker="get_selection_region">
-        <source-position filename="libdocument/pps-selection.h" line="62"/>
+        <source-position filename="libdocument/pps-selection.h" line="61"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Region" c:type="cairo_region_t*"/>
         </return-value>
@@ -12133,7 +12134,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
         </parameters>
       </virtual-method>
       <virtual-method name="render_selection" invoker="render_selection">
-        <source-position filename="libdocument/pps-selection.h" line="50"/>
+        <source-position filename="libdocument/pps-selection.h" line="49"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -12166,7 +12167,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </virtual-method>
       <method name="get_selected_text"
               c:identifier="pps_selection_get_selected_text">
-        <source-position filename="libdocument/pps-selection.h" line="78"/>
+        <source-position filename="libdocument/pps-selection.h" line="77"/>
         <return-value transfer-ownership="full">
           <type name="utf8" c:type="gchar*"/>
         </return-value>
@@ -12187,7 +12188,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </method>
       <method name="get_selection_region"
               c:identifier="pps_selection_get_selection_region">
-        <source-position filename="libdocument/pps-selection.h" line="83"/>
+        <source-position filename="libdocument/pps-selection.h" line="82"/>
         <return-value transfer-ownership="full">
           <type name="cairo.Region" c:type="cairo_region_t*"/>
         </return-value>
@@ -12208,7 +12209,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </method>
       <method name="render_selection"
               c:identifier="pps_selection_render_selection">
-        <source-position filename="libdocument/pps-selection.h" line="69"/>
+        <source-position filename="libdocument/pps-selection.h" line="68"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -12243,13 +12244,13 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
     <record name="SelectionInterface"
             c:type="PpsSelectionInterface"
             glib:is-gtype-struct-for="Selection">
-      <source-position filename="libdocument/pps-selection.h" line="66"/>
+      <source-position filename="libdocument/pps-selection.h" line="65"/>
       <field name="base_iface">
         <type name="GObject.TypeInterface" c:type="GTypeInterface"/>
       </field>
       <field name="render_selection">
         <callback name="render_selection">
-          <source-position filename="libdocument/pps-selection.h" line="50"/>
+          <source-position filename="libdocument/pps-selection.h" line="49"/>
           <return-value transfer-ownership="none">
             <type name="none" c:type="void"/>
           </return-value>
@@ -12283,7 +12284,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </field>
       <field name="get_selected_text">
         <callback name="get_selected_text">
-          <source-position filename="libdocument/pps-selection.h" line="58"/>
+          <source-position filename="libdocument/pps-selection.h" line="57"/>
           <return-value transfer-ownership="full">
             <type name="utf8" c:type="gchar*"/>
           </return-value>
@@ -12305,7 +12306,7 @@ This structure and its fields `page_index` and `doc_point` are public.</doc>
       </field>
       <field name="get_selection_region">
         <callback name="get_selection_region">
-          <source-position filename="libdocument/pps-selection.h" line="62"/>
+          <source-position filename="libdocument/pps-selection.h" line="61"/>
           <return-value transfer-ownership="full">
             <type name="cairo.Region" c:type="cairo_region_t*"/>
           </return-value>

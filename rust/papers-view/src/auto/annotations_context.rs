@@ -136,6 +136,31 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + sealed::Sealed + 'sta
             )
         }
     }
+
+    #[doc(alias = "annots-loaded")]
+    fn connect_annots_loaded<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+        unsafe extern "C" fn annots_loaded_trampoline<
+            P: IsA<AnnotationsContext>,
+            F: Fn(&P) + 'static,
+        >(
+            this: *mut ffi::PpsAnnotationsContext,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref())
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                b"annots-loaded\0".as_ptr() as *const _,
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
+                    annots_loaded_trampoline::<Self, F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
+    }
 }
 
 impl<O: IsA<AnnotationsContext>> AnnotationsContextExt for O {}

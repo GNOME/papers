@@ -73,13 +73,6 @@ impl View {
         }
     }
 
-    #[doc(alias = "pps_view_find_set_highlight_search")]
-    pub fn find_set_highlight_search(&self, value: bool) {
-        unsafe {
-            ffi::pps_view_find_set_highlight_search(self.to_glib_none().0, value.into_glib());
-        }
-    }
-
     #[doc(alias = "pps_view_focus_annotation")]
     pub fn focus_annotation(&self, annot_mapping: &papers_document::Mapping) {
         unsafe {

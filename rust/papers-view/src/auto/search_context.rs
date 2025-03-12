@@ -130,16 +130,6 @@ pub trait SearchContextExt: IsA<SearchContext> + sealed::Sealed + 'static {
         }
     }
 
-    #[doc(alias = "pps_search_context_select_result")]
-    fn select_result(&self, result: &impl IsA<SearchResult>) {
-        unsafe {
-            ffi::pps_search_context_select_result(
-                self.as_ref().to_glib_none().0,
-                result.as_ref().to_glib_none().0,
-            );
-        }
-    }
-
     #[doc(alias = "pps_search_context_set_options")]
     fn set_options(&self, options: papers_document::FindOptions) {
         unsafe {
