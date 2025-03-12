@@ -76,7 +76,7 @@
   <translation type="gettext">papers</translation>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="48~rc" type="development" date="2025-03-01">
+    <release version="48.0" type="stable" date="2025-03-12">
       <description>
         <p>Papers has seen numerous improvements over the course of the last six months:</p>
         <ul>
@@ -85,12 +85,15 @@
             The night mode also propagates to other open windows and is retained across different documents.</li>
           <li>The attachment sidebar has seen a complete overhaul granting a better overview for longer lists.</li>
           <li>Since last version, you can sign documents digitally. With this release, you can also verify them.</li>
+          <li>Vim-like shortcuts under the h, j, k, l keys have been removed to make space to introduce annotation-related shortcuts in the future.</li>
+          <li>It is now possible to add different types of annotations (underline, strikethrough, wavy) directly from the context menu. Greater improvements in the UX are planned for 49.</li>
+          <li>Translation updates for over 30 languages! We greatly thank the translation team in GNOME for this feat.</li>
         </ul>
         <p>And there were equally many fixes for pre-existing issues:</p>
         <ul>
           <li>The document will scroll down while selecting text beyond the visible area even in fullscreen.</li>
           <li>Digital signatures are no longer completely black boxes.</li>
-          <li>On mobile, the sidebar will not randomly collapse anymore.</li>
+          <li>On mobile, the sidebar will not collapse at unexpected times anymore.</li>
           <li>Opening a document via drag and drop works again.</li>
           <li>The document will scroll to the nearest search result, which it previously sometimes failed to.</li>
           <li>When closing the search sidebar used to continue running, but now will be stopped.</li>
@@ -102,9 +105,11 @@
           <li>Copying text with the middle mouse button is possible.</li>
           <li>Opening the user manual from the menu item <em>Help</em> works now also with Flatpak.</li>
           <li>“Expand all under this element” does no longer crash Papers.</li>
+          <li>Reloading the document has seen many fixes, making it a lot more stable.</li>
         </ul>
       </description>
     </release>
+    <release version="48~rc" type="development" date="2025-03-01" />
     <release version="48~beta" type="development" date="2025-02-06" />
     <release version="47.0" type="stable" date="2024-09-14">
       <description>
