@@ -3131,7 +3131,7 @@ pps_view_create_annotation_window (PpsView *view,
 	window = pps_annotation_window_new (annot, parent, pps_document_model_get_document (priv->model));
 	g_object_set_data_full (G_OBJECT (annot), "popup",
 	                        g_object_ref_sink (window),
-	                        (GDestroyNotify) gtk_window_destroy);
+	                        NULL);
 
 	pps_annotation_window_set_enable_spellchecking (PPS_ANNOTATION_WINDOW (window),
 	                                                pps_view_get_enable_spellchecking (view));
@@ -3475,6 +3475,13 @@ pps_view_annot_removed_cb (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsAnnotation *annot = PPS_ANNOTATION (user_data);
+	GtkWindow *window = g_object_get_data (G_OBJECT (annot), "popup");
+
+	// This is a hack to fix
+	// https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/383
+	// in stable
+	if (window)
+		gtk_window_destroy (window);
 
 	_pps_view_set_focused_element (view, NULL, -1);
 
