@@ -7101,10 +7101,7 @@ zoom_for_size_automatic (GtkWidget *widget,
 		fit_height_scale = zoom_for_size_fit_height (doc_width, doc_height, target_width, target_height);
 		scale = MIN (fit_width_scale, fit_height_scale);
 	} else {
-		double actual_scale;
-
-		actual_scale = pps_document_misc_get_widget_dpi (widget) / 72.0;
-		scale = MIN (fit_width_scale, actual_scale);
+		scale = fit_width_scale;
 	}
 
 	return scale;
