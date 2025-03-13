@@ -4,19 +4,13 @@ configure_file(
   configuration: config_h,
 )
 
-build_root = meson.project_build_root()
-source_root = meson.current_source_dir()
-
 cargo = find_program('cargo', required: true)
 
 cargo_options = [ '--manifest-path', shell_rs_root / 'Cargo.toml' ]
 cargo_options += [ '--target-dir', meson.current_build_dir() ]
 
-if get_option('optimization') == '0'
-  rust_target = 'debug'
-else
+if rust_target == 'release'
   cargo_options += [ '--release' ]
-  rust_target = 'release'
 endif
 
 if enable_keyring
@@ -27,34 +21,8 @@ if enable_spellcheck
   cargo_options += ['--features', 'spell-check']
 endif
 
-cargo_env = environment()
-# it seems that flatpak can't access network during install stage.
-cargo_env.set('CARGO_HOME', build_root / 'cargo-home')
+cargo_env = cargo_common_env
 cargo_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
-# override library lookup, we should not use the system library.
-cargo_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_NO_PKG_CONFIG', '1')
-cargo_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_SEARCH_NATIVE', build_root / 'libview')
-cargo_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_LIB', 'ppsview-4.0')
-cargo_env.set('SYSTEM_DEPS_PAPERS_DOCUMENT_4_0_NO_PKG_CONFIG', '1')
-cargo_env.set('SYSTEM_DEPS_PAPERS_DOCUMENT_4_0_SEARCH_NATIVE', build_root / 'libdocument')
-cargo_env.set('SYSTEM_DEPS_PAPERS_DOCUMENT_4_0_LIB', 'ppsdocument-4.0')
-
-# If the typename is internal, then we have built libadwaita from the subproject and we nee to tell cargo to look into that
-if libaw_dep.type_name() == 'internal'
-  cargo_env.set('SYSTEM_DEPS_LIBADWAITA_1_NO_PKG_CONFIG', '1')
-  cargo_env.set('SYSTEM_DEPS_LIBADWAITA_1_SEARCH_NATIVE', build_root / 'subprojects/adwaita/src')
-  cargo_env.set('SYSTEM_DEPS_LIBADWAITA_1_LIB', 'adwaita-1')
-endif
-
-if gtk_dep.type_name() == 'internal'
-  cargo_env.set('SYSTEM_DEPS_GTK4_NO_PKG_CONFIG', '1')
-  cargo_env.set('SYSTEM_DEPS_GTK4_SEARCH_NATIVE', build_root / 'subprojects/gtk/gtk')
-  cargo_env.set('SYSTEM_DEPS_GTK4_LIB', 'gtk-4')
-endif
-
-# Setup the debuginfo option from the meson build system
-cargo_env.set('CARGO_PROFILE_RELEASE_DEBUG', get_option('debug').to_string())
-cargo_env.set('CARGO_PROFILE_DEV_DEBUG', get_option('debug').to_string())
 
 cargo_build = custom_target(
   'cargo-build',

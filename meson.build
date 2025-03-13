@@ -120,6 +120,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 pkg = import('pkgconfig')
 
+build_root = meson.project_build_root()
 source_root = meson.current_source_dir()
 
 data_dir = join_paths(source_root, 'data')
@@ -328,8 +329,6 @@ subdir('data')
 enable_viewer = get_option('viewer')
 if enable_viewer
   subdir('shell')
-else
-  rust_target = 'n/a'
 endif
 
 subdir('po')
