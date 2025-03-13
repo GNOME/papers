@@ -14,15 +14,10 @@ cargo_options += [ '--target-dir', meson.current_build_dir() ]
 
 if get_option('optimization') == '0'
   rust_target = 'debug'
-  rust_profile = 'dev'
 else
   cargo_options += [ '--release' ]
   rust_target = 'release'
-  rust_profile = 'release'
 endif
-
-# Setup the debuginfo option from the meson build system
-cargo_options += ['--config', 'profile.@0@.debug=@1@'.format(rust_profile, get_option('debug'))]
 
 if enable_keyring
   cargo_options += [ '--features', 'with-keyring' ]
@@ -56,6 +51,10 @@ if gtk_dep.type_name() == 'internal'
   cargo_env.set('SYSTEM_DEPS_GTK4_SEARCH_NATIVE', build_root / 'subprojects/gtk/gtk')
   cargo_env.set('SYSTEM_DEPS_GTK4_LIB', 'gtk-4')
 endif
+
+# Setup the debuginfo option from the meson build system
+cargo_env.set('CARGO_PROFILE_RELEASE_DEBUG', get_option('debug').to_string())
+cargo_env.set('CARGO_PROFILE_DEV_DEBUG', get_option('debug').to_string())
 
 cargo_build = custom_target(
   'cargo-build',
