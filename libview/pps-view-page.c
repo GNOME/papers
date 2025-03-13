@@ -435,6 +435,7 @@ draw_surface (GtkSnapshot *snapshot,
               const graphene_rect_t *area,
               gboolean inverted)
 {
+	gboolean snap_texture = gdk_texture_get_height (texture) == floor (area->size.height);
 	gtk_snapshot_save (snapshot);
 
 	if (inverted) {
@@ -442,13 +443,25 @@ draw_surface (GtkSnapshot *snapshot,
 		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_DIFFERENCE);
 		gtk_snapshot_append_color (snapshot, &(GdkRGBA) { 1., 1., 1., 1. }, area);
 		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 		gtk_snapshot_pop (snapshot);
 		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 		gtk_snapshot_pop (snapshot);
 	} else {
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 	}
 
 	gtk_snapshot_restore (snapshot);
@@ -467,6 +480,8 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	cairo_region_t *region = NULL;
 	gboolean inverted;
 	gdouble scale;
+	GtkNative *native = gtk_widget_get_native (widget);
+	gdouble fractional_scale = gdk_surface_get_scale (gtk_native_get_surface (native));
 
 	if (priv->model == NULL || priv->index < 0)
 		return;
@@ -482,7 +497,11 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	area_rect.y = 0;
 	area_rect.width = width;
 	area_rect.height = height;
-	area = GRAPHENE_RECT_INIT (0, 0, width, height);
+
+	/* snap the texture to a physical pixel so it is not blurred */
+	area = GRAPHENE_RECT_INIT (0, 0, ceil (width * fractional_scale), ceil (height * fractional_scale));
+	gtk_snapshot_save (snapshot);
+	gtk_snapshot_scale (snapshot, 1 / fractional_scale, 1 / fractional_scale);
 
 	draw_surface (snapshot, page_texture, &area, inverted);
 
@@ -493,7 +512,11 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 
 	if (selection_texture) {
 		draw_surface (snapshot, selection_texture, &area, false);
+		// Restore fractional scaling
+		gtk_snapshot_restore (snapshot);
 	} else {
+		// Restore fractional scaling
+		gtk_snapshot_restore (snapshot);
 		region = pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache,
 		                                                priv->index,
 		                                                scale);

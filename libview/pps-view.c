@@ -4381,6 +4381,8 @@ link_preview_set_thumbnail (GdkTexture *page_texture,
 	gint width, height;   /* dimensions of popup */
 	gint left, top;
 	gdouble scale;
+	GtkNative *native = gtk_widget_get_native (GTK_WIDGET (view));
+	gdouble fractional_scale = gdk_surface_get_scale (gtk_native_get_surface (native));
 
 	scale = gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (GTK_WIDGET (view))));
 
@@ -4423,11 +4425,17 @@ link_preview_set_thumbnail (GdkTexture *page_texture,
 
 	snapshot = gtk_snapshot_new ();
 	gtk_snapshot_push_clip (snapshot, &GRAPHENE_RECT_INIT (0, 0, width, height));
+
+	/* snap the texture to a physical pixel so it is not blurred */
+	gtk_snapshot_save (snapshot);
+	gtk_snapshot_scale (snapshot, 1 / fractional_scale, 1 / fractional_scale);
 	draw_surface (snapshot,
 	              page_texture,
-	              &GRAPHENE_POINT_INIT (-left, -top),
-	              &GRAPHENE_RECT_INIT (0, 0, pwidth, pheight),
+	              &GRAPHENE_POINT_INIT (-left * fractional_scale, -top * fractional_scale),
+	              &GRAPHENE_RECT_INIT (0, 0, ceil (pwidth * fractional_scale), ceil (pheight * fractional_scale)),
 	              pps_document_model_get_inverted_colors (priv->model));
+	gtk_snapshot_restore (snapshot);
+
 	gtk_snapshot_pop (snapshot);
 
 	picture = gtk_picture_new_for_paintable (gtk_snapshot_free_to_paintable (snapshot, NULL));
@@ -5991,6 +5999,8 @@ draw_surface (GtkSnapshot *snapshot,
               const graphene_rect_t *area,
               gboolean inverted)
 {
+	gboolean snap_texture = gdk_texture_get_height (texture) == floor (area->size.height);
+
 	gtk_snapshot_save (snapshot);
 	gtk_snapshot_translate (snapshot, point);
 
@@ -5999,13 +6009,25 @@ draw_surface (GtkSnapshot *snapshot,
 		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_DIFFERENCE);
 		gtk_snapshot_append_color (snapshot, &(GdkRGBA) { 1., 1., 1., 1. }, area);
 		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 		gtk_snapshot_pop (snapshot);
 		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 		gtk_snapshot_pop (snapshot);
 	} else {
-		gtk_snapshot_append_texture (snapshot, texture, area);
+		if (snap_texture) {
+			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
+		} else {
+			gtk_snapshot_append_texture (snapshot, texture, area);
+		}
 	}
 
 	gtk_snapshot_restore (snapshot);
