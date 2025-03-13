@@ -1,50 +1,190 @@
-# translation of evince to Indonesian
+# translation of evince/papers to Indonesian
 # Copyright (C) 2005 THE Evince'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Evince package.
 #
 # Ahmad Riza H Nst <rizahnst@gnome.org>, 2006.
 # Mdamt <mdamt@gnome.org>, 2005.
-# Andika Triwidada <andika@gmail.com>, 2009-2015.
+# Andika Triwidada <andika@gmail.com>, 2009-2015, 2023, 2025.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2016.
 # Zamani Karmana <zamani.karmana@gmail.com>, 2015.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: evince master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/evince/issues\n"
-"POT-Creation-Date: 2023-10-23 19:15+0000\n"
-"PO-Revision-Date: 2023-11-26 23:05+0700\n"
-"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Project-Id-Version: papers main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
+"issues/\n"
+"POT-Creation-Date: 2025-03-12 06:37+0000\n"
+"PO-Revision-Date: 2025-03-13 18:22+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.5\n"
 
-#: backend/comics/comics-document.c:190 backend/comics/comics-document.c:261
+#. Manually set name and icon
+#: data/org.gnome.Papers.desktop.in.in:3
+#: data/org.gnome.Papers.metainfo.xml.in.in:23
+#: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
+#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
+#: shell/src/application.rs:68 shell/src/application.rs:310
+#: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
+msgid "Papers"
+msgstr "Papers"
+
+#: data/org.gnome.Papers.desktop.in.in:4
+msgid "View multi-page documents"
+msgstr "Lihat dokumen halaman banyak"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Papers.desktop.in.in:6
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;dokumen;presentasi;penampil;evince;papers;"
+
+#: data/org.gnome.Papers.desktop.in.in:21
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#: data/org.gnome.Papers.gschema.xml:14
+msgid "Override document restrictions"
+msgstr "Timpa restriksi dokumen"
+
+#: data/org.gnome.Papers.gschema.xml:15
+msgid "Override document restrictions, like restriction to copy or to print."
+msgstr ""
+"Timpa restriksi dokumen, seperti larangan untuk menyalin atau mencetak."
+
+#: data/org.gnome.Papers.gschema.xml:19
+msgid "The URI of the directory last used to open or save a document"
+msgstr ""
+"URI dari direktori yang terakhir dipakai untuk membuka atau menyimpan dokumen"
+
+#: data/org.gnome.Papers.gschema.xml:23
+msgid "The URI of the directory last used to save a picture"
+msgstr "URI dari direktori yang terakhir dipakai untuk menyimpan gambar"
+
+#: data/org.gnome.Papers.gschema.xml:27
+msgid "Page cache size in MiB"
+msgstr "Ukuran tembolok halaman dalam MiB"
+
+#: data/org.gnome.Papers.gschema.xml:28
+msgid ""
+"The maximum size that will be used to cache rendered pages, limits maximum "
+"zoom level."
+msgstr ""
+"Ukuran maksimum yang akan dipakai untuk tembolok halaman yang dirender, "
+"membatasi level zum maksimum."
+
+#: data/org.gnome.Papers.gschema.xml:32
+msgid "Allow links to change the zoom level."
+msgstr "Izinkan tautan mengubah level zum."
+
+#: data/org.gnome.Papers.gschema.xml:43
+msgid "Check spelling when writing annotation notes or filling text forms."
+msgstr "Periksa ejaan saat menulis catatan anotasi atau mengisi formulir teks."
+
+#: data/org.gnome.Papers.gschema.xml:47
+msgid "Show a side bar next to the document to help navigate the document."
+msgstr ""
+"Menampilkan bilah sisi di sebelah dokumen untuk membantu menavigasi dokumen."
+
+#: data/org.gnome.Papers.gschema.xml:60
+msgid "Set the default zoom level to display a document."
+msgstr "Memilih tingkat zum baku untuk menampilkan suatu dokumen."
+
+#: data/org.gnome.Papers.gschema.xml:64
+msgid ""
+"Display the document as a continuous stream of pages instead of page at a "
+"time."
+msgstr ""
+"Menampilkan dokumen secara halaman-halaman berkesinambungan bukan satu "
+"halaman setiap saat."
+
+#: data/org.gnome.Papers.gschema.xml:68
+msgid "Show two pages side by side."
+msgstr "Menampilkan dua halaman bersisian."
+
+#: data/org.gnome.Papers.gschema.xml:72
+msgid ""
+"Show the first page (odd page) on the left (when displaying two pages side "
+"by side)"
+msgstr ""
+"Tampilkan halaman pertama (halama ganjil) di kiri (ketika menampilkan dua "
+"halaman bersisian)"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:24
+msgid "Read documents"
+msgstr "Baca dokumen"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:26
+msgid ""
+"A document viewer for the GNOME desktop. You can view, search or annotate "
+"documents in many different formats."
+msgstr ""
+"Penampil dokumen untuk destop GNOME. Anda dapat melihat, mencari atau "
+"membubuhi keterangan dokumen dalam berbagai format."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:27
+msgid ""
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
+msgstr ""
+"Papers mendukung dokumen dalam: PDF, DjVu, TIFF, dan arsip-arsip Comic Books "
+"(CBR, CBT, CBZ, CB7)."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:43
+msgid "A clear, simple, and modern UI"
+msgstr "UI yang jelas, sederhana, dan modern"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:47
+msgid "A mobile-friendly UI"
+msgstr "UI yang ramah seluler"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:51
+msgid "A modern and colorful annotation list"
+msgstr "Daftar anotasi yang modern dan berwarna-warni"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:55
+msgid "Big thumbnails in the sidebar"
+msgstr "Gambar mini besar di bilah sisi"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:59
+msgid "All search actions are contained in the sidebar"
+msgstr "Semua aksi pencarian ditampung dalam bilah sisi"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
+msgid "Print Preview"
+msgstr "Pratinjau Cetak"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:4
+msgid "Preview before printing"
+msgstr "Pratinjau sebelum mencetak"
+
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Berkas rusak"
 
-#: backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Arsip dienkripsi"
 
-#: backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Tidak ada gambar yang didukung dalam arsip"
 
-#: backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Tidak ada berkas dalam arsip"
 
-#: backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Bukan jenis MIME buku komik: %s"
 
-#: backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -52,24 +192,24 @@ msgstr ""
 "libarchive tidak mendukung kompresi buku komik ini, silakan hubungi "
 "distributor Anda"
 
-#: backend/comics/comics-document.c:362
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Tidak dapat mendapatkan path lokal untuk arsip"
 
-#: backend/comics/comicsdocument.evince-backend.desktop.in.in:4
-#: backend/comics/evince-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Buku Komik"
 
-#: backend/comics/evince-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Menambahkan dukungan untuk membaca buku komik"
 
-#: backend/djvu/djvu-document.c:179
+#: libdocument/backend/djvu/djvu-document.c:181
 msgid "DjVu document has incorrect format"
 msgstr "Format dokumen DjVu salah"
 
-#: backend/djvu/djvu-document.c:266
+#: libdocument/backend/djvu/djvu-document.c:268
 msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
@@ -77,82 +217,71 @@ msgstr ""
 "Dokumen ini terdiri dari sejumlah berkas. Satu atau lebih berkas tersebut "
 "tidak dapat diakses."
 
-#: backend/djvu/djvudocument.evince-backend.desktop.in.in:4
-#: backend/djvu/evince-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "Dokumen DjVu"
 
-#: backend/djvu/evince-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Menambahkan dukungan untuk membaca dokumen DjVu"
 
-#: backend/dvi/dvi-document.c:110
-msgid "DVI document has incorrect format"
-msgstr "Format dokumen DVI salah"
-
-#: backend/dvi/dvidocument.evince-backend.desktop.in.in:4
-#: backend/dvi/evince-dvidocument.metainfo.xml.in.in:5
-msgid "DVI Documents"
-msgstr "Dokumen DVI"
-
-#: backend/dvi/evince-dvidocument.metainfo.xml.in.in:6
-msgid "Adds support for reading DVI documents"
-msgstr "Menambahkan dukungan untuk membaca dokumen DVI"
-
-#: backend/pdf/evince-pdfdocument.metainfo.xml.in.in:5
-#: backend/pdf/pdfdocument.evince-backend.desktop.in.in:5
+#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
 msgid "PDF Documents"
 msgstr "Dokumen PDF"
 
-#: backend/pdf/evince-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Menambahkan dukungan untuk membaca dokumen PDF"
 
 #. translators: this is the document security state
-#: backend/pdf/ev-poppler.c:726 backend/pdf/ev-poppler.c:732
-#: properties/ev-properties-view.c:429
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "Ya"
 
 #. translators: this is the document security state
-#: backend/pdf/ev-poppler.c:729 backend/pdf/ev-poppler.c:732
-#: properties/ev-properties-view.c:431
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "Tidak"
 
-#: backend/pdf/ev-poppler.c:868
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Jenis 1"
 
-#: backend/pdf/ev-poppler.c:870
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Jenis 1C"
 
-#: backend/pdf/ev-poppler.c:872
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Jenis 3"
 
-#: backend/pdf/ev-poppler.c:874
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: backend/pdf/ev-poppler.c:876
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Jenis 1 (CID)"
 
-#: backend/pdf/ev-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Jenis 1C (CID)"
 
-#: backend/pdf/ev-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: backend/pdf/ev-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Jenis fonta tidak dikenal"
 
-#: backend/pdf/ev-poppler.c:926
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -162,11 +291,11 @@ msgstr ""
 "Jika fonta pengganti yang dipilih oleh fontconfig tidak sama dengan fonta "
 "yang dipakai untuk membuat PDF, perenderan mungkin jadi tak benar."
 
-#: backend/pdf/ev-poppler.c:931
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Semua fonta standar atau tertanam."
 
-#: backend/pdf/ev-poppler.c:961
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Tidak ada nama"
 
@@ -174,26 +303,20 @@ msgstr "Tidak ada nama"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#. translators: This is used when a document property does
-#. not have a value.  Examples:
-#. Author: None
-#. Keywords: None
-#.
-#: backend/pdf/ev-poppler.c:970 libview/ev-print-operation.c:2691
-#: properties/ev-properties-view.c:230
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
+#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "Nihil"
 
-#: backend/pdf/ev-poppler.c:978
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Subset yang tertanam"
 
-#: backend/pdf/ev-poppler.c:980
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Tertanam"
 
-#: backend/pdf/ev-poppler.c:982
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Tidak tertanam"
 
@@ -202,7 +325,7 @@ msgstr "Tidak tertanam"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: backend/pdf/ev-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Satu dari Standar 14 Fonta)"
 
@@ -211,7 +334,7 @@ msgstr " (Satu dari Standar 14 Fonta)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: backend/pdf/ev-poppler.c:996
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Bukan satu dari Standar 14 Fonta)"
 
@@ -225,7 +348,7 @@ msgstr " (Bukan satu dari Standar 14 Fonta)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: backend/pdf/ev-poppler.c:1015
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -249,7 +372,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: backend/pdf/ev-poppler.c:1033
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -260,356 +383,189 @@ msgstr ""
 "Enkoding: %s\n"
 "%s"
 
-#: backend/ps/evince-psdocument.metainfo.xml.in.in:5
-#: backend/ps/psdocument.evince-backend.desktop.in.in:5
-msgid "PostScript Documents"
-msgstr "Dokumen PostScript"
-
-#: backend/ps/evince-psdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading PostScript documents"
-msgstr "Menambahkan dukungan untuk membaca dokumen PostScript"
-
-#: backend/ps/ev-spectre.c:98
-#, c-format
-msgid "Failed to load document “%s”"
-msgstr "Gagal memuat dokumen “%s”"
-
-#: backend/ps/ev-spectre.c:131
-#, c-format
-msgid "Failed to save document “%s”"
-msgstr "Gagal menyimpan dokumen “%s”"
-
-#: backend/tiff/evince-tiffdocument.metainfo.xml.in.in:5
-#: backend/tiff/tiffdocument.evince-backend.desktop.in.in:4
+#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
 msgid "TIFF Documents"
 msgstr "Dokumen TIFF"
 
-#: backend/tiff/evince-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Menambahkan dukungan untuk membaca dokumen TIFF"
 
-#: backend/tiff/tiff-document.c:124
+#: libdocument/backend/tiff/tiff-document.c:105
 msgid "Invalid document"
 msgstr "Dokumen tidak valid"
 
-#: backend/xps/evince-xpsdocument.metainfo.xml.in.in:5
-#: backend/xps/xpsdocument.evince-backend.desktop.in.in:5
-msgid "XPS Documents"
-msgstr "Dokumen XPS"
-
-#: backend/xps/evince-xpsdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading XPS documents"
-msgstr "Menambahkan dukungan untuk membaca dokumen XPS"
-
-#. Manually set name and icon
-#: data/org.gnome.Evince.desktop.in.in:3
-#: data/org.gnome.Evince.metainfo.xml.in:23 shell/ev-window-title.c:131
-#: shell/main.c:300
-msgid "Document Viewer"
-msgstr "Penampil Dokumen"
-
-#: data/org.gnome.Evince.desktop.in.in:4
-msgid "View multi-page documents"
-msgstr "Lihat dokumen halaman banyak"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Evince.desktop.in.in:6
-msgid ""
-"pdf;ps;postscript;dvi;xps;djvu;tiff;document;presentation;viewer;evince;"
-msgstr ""
-"pdf;ps;postscript;dvi;xps;djvu;tiff;dokumen;presentasi;peninjau;evince;"
-
-#: data/org.gnome.Evince.desktop.in.in:19
-msgid "New Window"
-msgstr "Jendela Baru"
-
-#: data/org.gnome.Evince.gschema.xml:14
-msgid "Override document restrictions"
-msgstr "Timpa restriksi dokumen"
-
-#: data/org.gnome.Evince.gschema.xml:15
-msgid "Override document restrictions, like restriction to copy or to print."
-msgstr ""
-"Timpa restriksi dokumen, seperti larangan untuk menyalin atau mencetak."
-
-#: data/org.gnome.Evince.gschema.xml:19
-msgid "Automatically reload the document"
-msgstr "Otomatis memuat ulang dokumen"
-
-#: data/org.gnome.Evince.gschema.xml:20
-msgid "The document is automatically reloaded on file change."
-msgstr "Dokumen otomatis dimuat ulang ketika berkas berubah."
-
-#: data/org.gnome.Evince.gschema.xml:24
-msgid "The URI of the directory last used to open or save a document"
-msgstr ""
-"URI dari direktori yang terakhir dipakai untuk membuka atau menyimpan dokumen"
-
-#: data/org.gnome.Evince.gschema.xml:28
-msgid "The URI of the directory last used to save a picture"
-msgstr "URI dari direktori yang terakhir dipakai untuk menyimpan gambar"
-
-#: data/org.gnome.Evince.gschema.xml:32
-msgid "Page cache size in MiB"
-msgstr "Ukuran tembolok halaman dalam MiB"
-
-#: data/org.gnome.Evince.gschema.xml:33
-msgid ""
-"The maximum size that will be used to cache rendered pages, limits maximum "
-"zoom level."
-msgstr ""
-"Ukuran maksimum yang akan dipakai untuk tembolok halaman yang dirender, "
-"membatasi level zum maksimum."
-
-#: data/org.gnome.Evince.gschema.xml:37
-msgid ""
-"Show a dialog to confirm that the user wants to activate the caret "
-"navigation."
-msgstr ""
-"Tampilkan dialog untuk mengkonfirmasi bahwa pengguna ingin mengaktifkan "
-"navigasi \"caret\"."
-
-#: data/org.gnome.Evince.gschema.xml:41
-msgid "Allow links to change the zoom level."
-msgstr "Izinkan tautan mengubah level zum."
-
-#: data/org.gnome.Evince.gschema.xml:49
-msgid "Check spelling when writing annotation notes or filling text forms."
-msgstr "Periksa ejaan saat menulis catatan anotasi atau mengisi formulir teks."
-
-#: data/org.gnome.Evince.gschema.xml:53
-msgid "Show a side bar next to the document to help navigate the document."
-msgstr ""
-"Menampilkan bilah sisi di sebelah dokumen untuk membantu menavigasi dokumen."
-
-#: data/org.gnome.Evince.gschema.xml:63
-msgid "Set the default zoom level to display a document."
-msgstr "Memilih tingkat zum baku untuk menampilkan suatu dokumen."
-
-#: data/org.gnome.Evince.gschema.xml:70
-msgid ""
-"Display the document as a continuous stream of pages instead of page at a "
-"time."
-msgstr ""
-"Menampilkan dokumen secara halaman-halaman berkesinambungan bukan satu "
-"halaman setiap saat."
-
-#: data/org.gnome.Evince.gschema.xml:74
-msgid "Show two pages side by side."
-msgstr "Menampilkan dua halaman bersisian."
-
-#: data/org.gnome.Evince.gschema.xml:78
-msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side "
-"by side)"
-msgstr ""
-"Tampilkan halaman pertama (halama ganjil) di kiri (ketika menampilkan dua "
-"halaman bersisian)"
-
-#: data/org.gnome.Evince.metainfo.xml.in:24
-msgid "Document viewer for popular document formats"
-msgstr "Penampil dokumen bagi format-format dokumen populer"
-
-#: data/org.gnome.Evince.metainfo.xml.in:26
-msgid ""
-"A document viewer for the GNOME desktop. You can view, search or annotate "
-"documents in many different formats."
-msgstr ""
-"Penampil dokumen untuk destop GNOME. Anda dapat melihat, mencari atau "
-"membubuhi keterangan dokumen dalam berbagai format."
-
-#: data/org.gnome.Evince.metainfo.xml.in:27
-msgid ""
-"Evince supports documents in: PDF, PS, EPS, XPS, DjVu, TIFF, DVI (with "
-"SyncTeX), and Comic Books archives (CBR, CBT, CBZ, CB7)."
-msgstr ""
-"Evince mendukung dokumen dalam: PDF, PS, EPS, XPS, DjVu, TIFF, DVI (dengan "
-"SyncTeX), dan arsip-arsip Comic Books (CBR, CBT, CBZ, CB7)."
-
-#: data/org.gnome.Evince.metainfo.xml.in:35
-msgid "A clear, simple UI"
-msgstr "Antarmuka (UI) yang jelas dan sederhana"
-
-#: data/org.gnome.Evince.metainfo.xml.in:39
-msgid "Advanced highlighting and annotation"
-msgstr "Sorotan dan anotasi lanjutan"
-
-#: data/org.gnome.Evince-previewer.desktop.in.in:3
-msgid "Print Preview"
-msgstr "Pratinjau Cetak"
-
-#: data/org.gnome.Evince-previewer.desktop.in.in:4
-msgid "Preview before printing"
-msgstr "Pratinjau sebelum mencetak"
-
-#: libdocument/ev-attachment.c:310 libdocument/ev-attachment.c:331
+#: libdocument/pps-attachment.c:304 libdocument/pps-attachment.c:325
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Tidak dapat menyimpan lampiran “%s”: %s"
 
-#: libdocument/ev-attachment.c:378
+#: libdocument/pps-attachment.c:362
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Tidak dapat membuka lampiran “%s”: %s"
 
-#: libdocument/ev-attachment.c:417
+#: libdocument/pps-attachment.c:399
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Tidak dapat membuka lampiran “%s”"
 
-#: libdocument/ev-document-factory.c:105
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Jenis berkas %s (%s) tidak didukung"
 
-#: libdocument/ev-document-factory.c:370 libdocument/ev-file-helpers.c:417
-#: libdocument/ev-file-helpers.c:463 libdocument/ev-file-helpers.c:482
-#: libdocument/ev-file-helpers.c:563 libdocument/ev-file-helpers.c:572
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
+#: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Jenis MIME Tidak Dikenal"
 
-#: libdocument/ev-document-factory.c:637
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Semua Dokumen"
 
-#: libdocument/ev-document-factory.c:664 shell/ev-utils.c:272
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: libdocument/ev-file-helpers.c:157
+#. Translate to the default units to use for presenting
+#. * lengths to the user. Translate to default:inch if you
+#. * want inches, otherwise translate to default:mm.
+#. * Do *not* translate it to "predefinito:mm", if it
+#. * it isn't default:mm or default:inch it will not work
+#.
+#: libdocument/pps-document-info.c:212
+msgid "default:mm"
+msgstr "default:mm"
+
+#: libdocument/pps-document-info.c:264
+#, c-format
+msgid "%.0f × %.0f mm"
+msgstr "%.0f × %.0f mm"
+
+#: libdocument/pps-document-info.c:268
+#, c-format
+msgid "%.2f × %.2f inch"
+msgstr "%.2f × %.2f inci"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:292
+#, c-format
+msgid "%s, Portrait (%s)"
+msgstr "%s, Tegak (%s)"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:299
+#, c-format
+msgid "%s, Landscape (%s)"
+msgstr "%s, Tumbang (%s)"
+
+#: libdocument/pps-file-helpers.c:148
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Gagal membuat berkas sementara: %s"
 
-#: libdocument/ev-file-helpers.c:234
-#, c-format
-msgid "Failed to create a temporary directory: %s"
-msgstr "Gagal membuat direktori sementara: %s"
-
-#: libdocument/ev-xmp.c:350
+#: libdocument/pps-xmp.c:201
 msgid "This work is in the Public Domain"
 msgstr "Karya ini berada di Ranah Publik"
 
-#: libmisc/ev-page-action-widget.c:90 libmisc/ev-page-action-widget.c:129
-#, c-format
-msgid "(%d of %d)"
-msgstr "(%d dari %d)"
+#: libview/context/pps-attachment-context.c:348
+#: shell/src/document_view/actions.rs:1041
+msgid "Save Attachment"
+msgid_plural "Save Attachments"
+msgstr[0] "Simpan Lampiran"
 
-#: libmisc/ev-page-action-widget.c:92 libmisc/ev-page-action-widget.c:133
-#, c-format
-msgid "of %d"
-msgstr "dari %d"
-
-#: libmisc/ev-page-action-widget.c:201 shell/ev-history.c:454
-#: shell/ev-sidebar-bookmarks.c:343 shell/ev-window.c:954
-#: shell/ev-window.c:5155
+#: libview/context/pps-history.c:487 previewer/pps-page-selector.c:194
 #, c-format
 msgid "Page %s"
 msgstr "Halaman %s"
 
-#: libmisc/ev-search-box.c:112
-msgid "Not found, click to change search options"
-msgstr "Tidak ditemukan, klik untuk mengubah opsi pencarian"
+#: libview/pps-annotation-window.c:268
+msgid "Edit Note"
+msgstr "Sunting Catatan"
 
-#: libmisc/ev-search-box.c:186 libmisc/ev-search-box.c:242
-msgid "Search options"
-msgstr "Opsi pencarian"
-
-#: libmisc/ev-search-box.c:318
-msgid "_Whole Words Only"
-msgstr "Hanya _Seluruh Kata"
-
-#: libmisc/ev-search-box.c:331
-msgid "C_ase Sensitive"
-msgstr "Sesuai Bes_ar/Kecil Huruf"
-
-#: libmisc/ev-search-box.c:600
-msgid "Find previous occurrence of the search string"
-msgstr "Menuju kata yang ditemukan sebelumnya"
-
-#: libmisc/ev-search-box.c:607
-msgid "Find next occurrence of the search string"
-msgstr "Menuju kata yang ditemukan berikutnya"
-
-#: libview/ev-jobs.c:625
+#: libview/pps-jobs.c:433
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Gagal merender halaman %d: %s"
 
-#: libview/ev-jobs.c:632
+#: libview/pps-jobs.c:440
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Gagal merender halaman %d"
 
-#: libview/ev-jobs.c:878
+#: libview/pps-jobs.c:674
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Gagal membuat gambar mini untuk halaman %d"
 
-#: libview/ev-jobs.c:2288
+#: libview/pps-jobs.c:1700
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Gagal mencetak halaman %d: %s"
 
 #. Initial state
-#: libview/ev-print-operation.c:346
+#: libview/pps-print-operation.c:344
 msgid "Preparing preview…"
 msgstr "Menyiapkan pratinjau…"
 
-#: libview/ev-print-operation.c:348 libview/ev-print-operation.c:358
+#: libview/pps-print-operation.c:346 libview/pps-print-operation.c:356
 msgid "Finishing…"
 msgstr "Menyelesaikan…"
 
-#: libview/ev-print-operation.c:350
+#: libview/pps-print-operation.c:348
 #, c-format
 msgid "Generating preview: page %d of %d"
 msgstr "Membuat pratinjau: halaman %d dari %d"
 
 #. Initial state
-#: libview/ev-print-operation.c:356
+#: libview/pps-print-operation.c:354
 msgid "Preparing to print…"
 msgstr "Bersiap mencetak…"
 
-#: libview/ev-print-operation.c:360
+#: libview/pps-print-operation.c:358
 #, c-format
 msgid "Printing page %d of %d…"
 msgstr "Mencetak halaman %d dari %d…"
 
-#: libview/ev-print-operation.c:1561 libview/ev-print-operation.c:2028
+#: libview/pps-print-operation.c:1359
+msgid "Invalid Page Selection"
+msgstr "Pemilihan Halaman Tidak Valid"
+
+#: libview/pps-print-operation.c:1360
 msgid "Your print range selection does not include any pages"
 msgstr "Pemilihan jangkauan cetak Anda tidak menyertakan halaman apapun"
 
+#. show close if the certificate is null, or if no cert is found
+#: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
+#: shell/resources/pps-annotation-properties-dialog.ui:87
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
+#: shell/src/document_view/io.rs:599
+msgid "_Close"
+msgstr "_Tutup"
+
 #. translators: Title of the print dialog
-#: libview/ev-print-operation.c:1702 libview/ev-print-operation.c:1800
-#: libview/ev-print-operation.c:2079
+#: libview/pps-print-operation.c:1438
 msgid "Print"
 msgstr "Cetak"
 
-#: libview/ev-print-operation.c:2002
-msgid "Requested format is not supported by this printer."
-msgstr "Format yang diminta tidak didukung oleh pencetak ini."
-
-#: libview/ev-print-operation.c:2025
-msgid "Invalid page selection"
-msgstr "Pemilihan halaman tidak sah"
-
-#: libview/ev-print-operation.c:2026
-msgid "Warning"
-msgstr "Peringatan"
-
-#: libview/ev-print-operation.c:2685
+#: libview/pps-print-operation.c:1896
 msgid "Page Scaling:"
 msgstr "Skala Halaman:"
 
-#: libview/ev-print-operation.c:2692
+#: libview/pps-print-operation.c:1904
 msgid "Shrink to Printable Area"
 msgstr "Perkecil ke Area yang Dapat Dicetak"
 
-#: libview/ev-print-operation.c:2693
+#: libview/pps-print-operation.c:1905
 msgid "Fit to Printable Area"
 msgstr "Paskan ke Area yang Dapat Dicetak"
 
-#: libview/ev-print-operation.c:2696
+#: libview/pps-print-operation.c:1912
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of "
 "the following:\n"
@@ -635,11 +591,11 @@ msgstr ""
 "diperkecil seperlunya agar pas dengan area yang dapat dicetak dari halaman "
 "pencetak.\n"
 
-#: libview/ev-print-operation.c:2708
+#: libview/pps-print-operation.c:1923
 msgid "Auto Rotate and Center"
 msgstr "Otomatis Putar dan ke Tengah"
 
-#: libview/ev-print-operation.c:2711
+#: libview/pps-print-operation.c:1926
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -648,11 +604,11 @@ msgstr ""
 "orientasi setiap halaman dokumen. Halaman dokumen akan diletakkan di tengah "
 "halaman pencetak."
 
-#: libview/ev-print-operation.c:2716
+#: libview/pps-print-operation.c:1930
 msgid "Select page size using document page size"
 msgstr "Pilih ukuran halaman sesuai ukuran halaman dokumen"
 
-#: libview/ev-print-operation.c:2718
+#: libview/pps-print-operation.c:1932
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
@@ -660,1489 +616,1388 @@ msgstr ""
 "Bila diaktifkan, setiap halaman akan dicetak dengan ukuran kertas yang sama "
 "dengan halaman dokumen."
 
-#: libview/ev-print-operation.c:2723
+#: libview/pps-print-operation.c:1936
 msgid "Draw border around pages"
 msgstr "Menggambar batas di sekitar halaman"
 
-#: libview/ev-print-operation.c:2725
+#: libview/pps-print-operation.c:1938
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Saat diaktifkan, batas akan digambar di sekitar setiap halaman."
 
-#: libview/ev-print-operation.c:2819
+#: libview/pps-print-operation.c:2031
 msgid "Page Handling"
 msgstr "Penanganan Halaman"
 
-#: libview/ev-view-accessible.c:43
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Gulir Naik"
 
-#: libview/ev-view-accessible.c:44
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Gulir Turun"
 
-#: libview/ev-view-accessible.c:50
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Gulir Tampilan Naik"
 
-#: libview/ev-view-accessible.c:51
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Gulir Tampilan Turun"
 
-#: libview/ev-view-accessible.c:131
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Tampilan Dokumen"
 
-#: libview/ev-view.c:2138
+#: libview/pps-view.c:2097
 msgid "Go to first page"
 msgstr "Pergi ke halaman pertama"
 
-#: libview/ev-view.c:2140
+#: libview/pps-view.c:2099
 msgid "Go to previous page"
 msgstr "Pergi ke halaman sebelumnya"
 
-#: libview/ev-view.c:2142
+#: libview/pps-view.c:2101
 msgid "Go to next page"
 msgstr "Pergi ke halaman selanjutnya"
 
-#: libview/ev-view.c:2144
+#: libview/pps-view.c:2103
 msgid "Go to last page"
 msgstr "Pergi ke halaman terakhir"
 
-#: libview/ev-view.c:2146
+#: libview/pps-view.c:2105
 msgid "Go to page"
 msgstr "Pergi ke halaman"
 
-#: libview/ev-view.c:2148
+#: libview/pps-view.c:2107
 msgid "Find"
 msgstr "Cari"
 
-#: libview/ev-view.c:2176
+#: libview/pps-view.c:2136
 #, c-format
 msgid "Go to page %s"
 msgstr "Pergi ke halaman %s"
 
-#: libview/ev-view.c:2182
+#: libview/pps-view.c:2142
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Pergi ke %s pada berkas “%s”"
 
-#: libview/ev-view.c:2185
+#: libview/pps-view.c:2145
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Pergi ke berkas “%s”"
 
-#: libview/ev-view.c:2193
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Launch %s"
 msgstr "Luncurkan %s"
 
-#: libview/ev-view.c:2200
+#: libview/pps-view.c:2160
+#, c-format
 msgid "Reset form"
 msgstr "Reset formulir"
 
-#: libview/ev-view-presentation.c:726
-msgid "Jump to page:"
-msgstr "Lompat ke halaman:"
+#: libview/pps-view-presentation.c:833
+msgid "Running in presentation mode"
+msgstr "Berjalan dalam mode presentasi"
 
-#: libview/ev-view-presentation.c:1010
+#: libview/pps-view-presentation.c:884
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Akhir dari presentasi. Tekan Esc atau klik untuk keluar."
 
-#: previewer/ev-previewer.c:57
-msgid "Delete the temporary file"
-msgstr "Hapus berkas sementara"
+#: libview/pps-view-presentation.ui:57
+msgid "Jump to page:"
+msgstr "Lompat ke halaman:"
 
-#: previewer/ev-previewer.c:59
-msgid "File specifying print settings"
-msgstr "Berkas yang menyatakan pengaturan cetak"
+#: previewer/pps-page-selector.c:80 previewer/pps-page-selector.c:119
+#, c-format
+msgid "(%d of %d)"
+msgstr "(%d dari %d)"
 
-#: previewer/ev-previewer.c:59
-msgid "FILE"
-msgstr "BERKAS"
+#: previewer/pps-page-selector.c:82 previewer/pps-page-selector.c:123
+#, c-format
+msgid "of %d"
+msgstr "dari %d"
 
-#: previewer/ev-previewer.c:61
-msgid "File descriptor of input file"
-msgstr "Deskriptor berkas dari berkas masukan"
-
-#: previewer/ev-previewer.c:61 previewer/ev-previewer.c:65
-msgid "FD"
-msgstr "FD"
-
-#: previewer/ev-previewer.c:63
-msgid "MIME type of input file"
-msgstr "Jenis berkas masukan MIME"
-
-#: previewer/ev-previewer.c:63
-msgid "TYPE"
-msgstr "TIPE"
-
-#: previewer/ev-previewer.c:65
-msgid "File descriptor of print settings file"
-msgstr "Deskriptor berkas dari berkas pengaturan cetak"
-
-#: previewer/ev-previewer.c:295 previewer/ev-previewer.c:315
-msgid "GNOME Document Previewer"
-msgstr "Peninjau Dokumen GNOME"
-
-#: previewer/ev-previewer-toolbar.c:112 shell/evince-toolbar.ui:35
-msgid "Select page or search in the outline"
-msgstr "Pilih halaman atau cari dalam kerangka"
-
-#: previewer/ev-previewer-toolbar.c:114 shell/evince-toolbar.ui:38
+#: previewer/pps-page-selector.ui:12 shell/resources/pps-page-selector.ui:12
 msgid "Select page"
 msgstr "Pilih halaman"
 
-#: previewer/ev-previewer-window.c:78 shell/ev-window.c:3636
-msgid "Failed to print document"
-msgstr "Gagal mencetak dokumen"
+#: previewer/pps-previewer.c:48
+msgid "Delete the temporary file"
+msgstr "Hapus berkas sementara"
 
-#: previewer/ev-previewer-window.c:193 previewer/ev-previewer-window.c:558
-msgid "Evince Document Viewer"
-msgstr "Penampil Dokumen Evince"
+#: previewer/pps-previewer.c:50
+msgid "File specifying print settings"
+msgstr "Berkas yang menyatakan pengaturan cetak"
 
-#: previewer/ev-previewer-window.c:229
+#: previewer/pps-previewer.c:50
+msgid "FILE"
+msgstr "BERKAS"
+
+#: previewer/pps-previewer.c:52
+msgid "File descriptor of input file"
+msgstr "Deskriptor berkas dari berkas masukan"
+
+#: previewer/pps-previewer.c:52 previewer/pps-previewer.c:56
+msgid "FD"
+msgstr "FD"
+
+#: previewer/pps-previewer.c:54
+msgid "MIME type of input file"
+msgstr "Jenis berkas masukan MIME"
+
+#: previewer/pps-previewer.c:54
+msgid "TYPE"
+msgstr "TIPE"
+
+#: previewer/pps-previewer.c:56
+msgid "File descriptor of print settings file"
+msgstr "Deskriptor berkas dari berkas pengaturan cetak"
+
+#: previewer/pps-previewer.c:280 previewer/pps-previewer.c:296
+msgid "GNOME Document Previewer"
+msgstr "Peninjau Dokumen GNOME"
+
+#: previewer/pps-previewer-window.c:187 previewer/pps-previewer-window.c:510
+msgid "Papers Document Viewer"
+msgstr "Penampil Dokumen Papers"
+
+#: previewer/pps-previewer-window.c:225
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Pencetak '%s' yang dipilih tidak ditemukan"
 
-#: previewer/ev-previewer-window.c:536 shell/ev-window.c:4227
-msgid "Evince"
-msgstr "Evince"
-
-#: previewer/previewer.ui:7
-msgid "_Print"
-msgstr "C_etak"
-
-#: previewer/previewer.ui:10
-msgid "Print this document"
-msgstr "Cetak dokumen ini"
-
-#: previewer/previewer.ui:20 shell/evince-menus.ui:129
+#: previewer/pps-previewer-window.ui:22
 msgid "Previous Page"
 msgstr "Halaman Sebelumnya"
 
-#: previewer/previewer.ui:27 shell/evince-menus.ui:133
+#: previewer/pps-previewer-window.ui:29
 msgid "Next Page"
 msgstr "Halaman Selanjutnya"
 
-#: previewer/previewer.ui:34
-msgid "Enlarge the document"
-msgstr "Perbesar tampilan dokumen"
+#: previewer/pps-previewer-window.ui:36
+#: shell/resources/pps-document-view.ui:222
+msgid "Page Count"
+msgstr "Cacah Halaman"
 
-#: previewer/previewer.ui:42
-msgid "Shrink the document"
-msgstr "Perkecil tampilan dokumen"
+#: previewer/pps-previewer-window.ui:42
+msgid "_Print"
+msgstr "C_etak"
 
-#: previewer/previewer.ui:49
-msgid "Reset zoom and make the page fit in the window"
-msgstr "Atur ulang zum dan buat halaman pas di jendela"
+#: previewer/pps-previewer-window.ui:43
+msgid "Print This Document"
+msgstr "Cetak Dokumen Ini"
 
-#: properties/ev-properties-main.c:116
-msgid "Document"
-msgstr "Dokumen"
+#: previewer/pps-previewer-window.ui:53
+#: shell/resources/pps-document-view.ui:305
+msgid "Zoom Out"
+msgstr "Perkecil"
 
-#: properties/ev-properties-view.c:62
-msgid "Title:"
-msgstr "Judul:"
+#: previewer/pps-previewer-window.ui:60
+msgid "Normal Size"
+msgstr "Ukuran Normal"
 
-#: properties/ev-properties-view.c:63
-msgid "Location:"
-msgstr "Lokasi:"
+#: previewer/pps-previewer-window.ui:67
+#: shell/resources/pps-document-view.ui:292
+msgid "Zoom In"
+msgstr "Perbesar"
 
-#: properties/ev-properties-view.c:64
-msgid "Subject:"
-msgstr "Subjek:"
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+msgid "Failed to Print Document"
+msgstr "Gagal Mencetak Dokumen"
 
-#: properties/ev-properties-view.c:65
-#: shell/ev-annotation-properties-dialog.c:169
-msgid "Author:"
-msgstr "Penulis:"
-
-#: properties/ev-properties-view.c:66
-msgid "Keywords:"
-msgstr "Kata Kunci:"
-
-#: properties/ev-properties-view.c:67
-msgid "Producer:"
-msgstr "Produsen:"
-
-#: properties/ev-properties-view.c:68
-msgid "Creator:"
-msgstr "Pembuat:"
-
-#: properties/ev-properties-view.c:69
-msgid "Created:"
-msgstr "Dibuat:"
-
-#: properties/ev-properties-view.c:70
-msgid "Modified:"
-msgstr "Diubah:"
-
-#: properties/ev-properties-view.c:71
-msgid "Number of Pages:"
-msgstr "Jumlah Halaman:"
-
-#: properties/ev-properties-view.c:72
-msgid "Optimized:"
-msgstr "Dioptimalkan:"
-
-#: properties/ev-properties-view.c:73
-msgid "Format:"
-msgstr "Format:"
-
-#: properties/ev-properties-view.c:74
-msgid "Security:"
-msgstr "Keamanan:"
-
-#: properties/ev-properties-view.c:75
-msgid "Contains Javascript:"
-msgstr "Berisi Javascript:"
-
-#: properties/ev-properties-view.c:76
-msgid "Paper Size:"
-msgstr "Ukuran Kertas:"
-
-#: properties/ev-properties-view.c:77
-msgid "Size:"
-msgstr "Ukuran:"
-
-#. Translate to the default units to use for presenting
-#. * lengths to the user. Translate to default:inch if you
-#. * want inches, otherwise translate to default:mm.
-#. * Do *not* translate it to "predefinito:mm", if it
-#. * it isn't default:mm or default:inch it will not work
-#.
-#: properties/ev-properties-view.c:267
-msgid "default:mm"
-msgstr "default:mm"
-
-#: properties/ev-properties-view.c:311
-#, c-format
-msgid "%.0f × %.0f mm"
-msgstr "%.0f × %.0f mm"
-
-#: properties/ev-properties-view.c:315
-#, c-format
-msgid "%.2f × %.2f inch"
-msgstr "%.2f × %.2f inci"
-
-#. Note to translators: first placeholder is the paper name (eg.
-#. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: properties/ev-properties-view.c:339
-#, c-format
-msgid "%s, Portrait (%s)"
-msgstr "%s, Tegak (%s)"
-
-#. Note to translators: first placeholder is the paper name (eg.
-#. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: properties/ev-properties-view.c:346
-#, c-format
-msgid "%s, Landscape (%s)"
-msgstr "%s, Tumbang (%s)"
-
-#: properties/ev-properties-view.c:433
-#: shell/ev-annotation-properties-dialog.c:109
+#: nautilus/pps-nautilus-extension.c:123
+#: shell/resources/pps-annotation-properties-dialog.ui:59
+#: shell/src/properties_general.rs:185
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: shell/ev-annotation-properties-dialog.c:94
-msgid "Icon:"
-msgstr "Ikon:"
-
-#: shell/ev-annotation-properties-dialog.c:100
-msgid "Note"
-msgstr "Catatan"
-
-#: shell/ev-annotation-properties-dialog.c:101
-msgid "Comment"
-msgstr "Komentar"
-
-#: shell/ev-annotation-properties-dialog.c:102
-msgid "Key"
-msgstr "Kunci"
-
-#: shell/ev-annotation-properties-dialog.c:103
-msgid "Help"
-msgstr "Bantuan"
-
-#: shell/ev-annotation-properties-dialog.c:104
-msgid "New Paragraph"
-msgstr "Paragraf Baru"
-
-#: shell/ev-annotation-properties-dialog.c:105
-msgid "Paragraph"
-msgstr "Paragraf"
-
-#: shell/ev-annotation-properties-dialog.c:106
-msgid "Insert"
-msgstr "Sisip"
-
-#: shell/ev-annotation-properties-dialog.c:107
-msgid "Cross"
-msgstr "Silang"
-
-#: shell/ev-annotation-properties-dialog.c:108
-msgid "Circle"
-msgstr "Lingkaran"
-
-#: shell/ev-annotation-properties-dialog.c:120
-msgid "Markup type:"
-msgstr "Tipe penanda:"
-
-#: shell/ev-annotation-properties-dialog.c:126
-msgid "Highlight"
-msgstr "Sorot"
-
-#: shell/ev-annotation-properties-dialog.c:127
-msgid "Strike out"
-msgstr "Coret"
-
-#: shell/ev-annotation-properties-dialog.c:128
-msgid "Underline"
-msgstr "Garis bawah"
-
-#: shell/ev-annotation-properties-dialog.c:129
-msgid "Squiggly"
-msgstr "Berlekuk-lekuk"
-
-#: shell/ev-annotation-properties-dialog.c:150 shell/evince-menus.ui:170
-msgid "Annotation Properties"
-msgstr "Properti Anotasi"
-
-#: shell/ev-annotation-properties-dialog.c:154
-msgid "_Close"
-msgstr "_Tutup"
-
-#: shell/ev-annotation-properties-dialog.c:155
-msgid "_Apply"
-msgstr "Ter_apkan"
-
-#: shell/ev-annotation-properties-dialog.c:180
-msgid "Color:"
-msgstr "Warna:"
-
-#: shell/ev-annotation-properties-dialog.c:190
-msgid "Opacity:"
-msgstr "Kelegapan:"
-
-#: shell/ev-annotation-properties-dialog.c:202
-msgid "Initial window state:"
-msgstr "Kondisi awal jendela:"
-
-#: shell/ev-annotation-properties-dialog.c:208
-msgid "Open"
-msgstr "Buka"
-
-#: shell/ev-annotation-properties-dialog.c:209
-msgid "Close"
-msgstr "Tutup"
-
-#. Translators: an annotation that looks like a "sticky note"
-#: shell/ev-annotations-toolbar.c:132
-msgid "Note text"
-msgstr "Catatan teks"
-
-#: shell/ev-annotations-toolbar.c:134
-msgid "Add text annotation"
-msgstr "Menambahkan teks anotasi"
-
-#: shell/ev-annotations-toolbar.c:139
-msgid "Highlight text"
-msgstr "Sorot teks"
-
-#: shell/ev-annotations-toolbar.c:141
-msgid "Add highlight annotation"
-msgstr "Tambahkan anotasi penyorotan"
-
-#: shell/evince-menus.ui:24
-msgid "_Open Link"
-msgstr "_Buka Taut"
-
-#: shell/evince-menus.ui:29
-msgid "_Copy Link Address"
-msgstr "_Salin Alamat Taut"
-
-#: shell/evince-menus.ui:34
-msgid "_Go To"
-msgstr "_Ke"
-
-#: shell/evince-menus.ui:39
-msgid "Open in New _Window"
-msgstr "Buka di _Jendela Baru"
-
-#: shell/evince-menus.ui:46
-msgid "_Previous Page"
-msgstr "Halaman _Sebelumnya"
-
-#: shell/evince-menus.ui:50
-msgid "_Next Page"
-msgstr "Halaman Sela_njutnya"
-
-#: shell/evince-menus.ui:54 shell/ev-window.c:3935
-msgid "_Reload"
-msgstr "_Muat Ulang"
-
-#: shell/evince-menus.ui:58
-msgid "Auto_scroll"
-msgstr "Menggulung Otomati_s"
-
-#: shell/evince-menus.ui:64
-msgid "_Copy"
-msgstr "_Salin"
-
-#: shell/evince-menus.ui:68
-msgid "Select _All"
-msgstr "Pilih Semu_a"
-
-#: shell/evince-menus.ui:74
-msgid "_Save Image As…"
-msgstr "_Simpan Gambar Sebagai…"
-
-#: shell/evince-menus.ui:79
-msgid "Copy _Image"
-msgstr "Salin _Gambar"
-
-#: shell/evince-menus.ui:86 shell/evince-menus.ui:157 shell/evince-menus.ui:180
-msgid "_Open Attachment"
-msgstr "_Buka Lampiran"
-
-#: shell/evince-menus.ui:91 shell/evince-menus.ui:161 shell/evince-menus.ui:185
-msgid "_Save Attachment As…"
-msgstr "_Simpan Lampiran Sebagai…"
-
-#: shell/evince-menus.ui:98
-msgid "Annotation _Properties"
-msgstr "_Properti Anotasi"
-
-#: shell/evince-menus.ui:103
-msgid "R_emove Annotation"
-msgstr "Bu_ang Anotasi"
-
-#: shell/evince-menus.ui:110
-msgid "_Highlight Selected Text"
-msgstr "Sorot Teks yang Dipili_h"
-
-#: shell/evince-menus.ui:115 shell/evince-toolbar.ui:153
-msgid "Open Containing _Folder"
-msgstr "Buka _Folder Pemuat"
-
-#: shell/evince-menus.ui:123
-msgid "Navigation"
-msgstr "Navigasi"
-
-#: shell/evince-menus.ui:125
-msgid "First Page"
-msgstr "Halaman Pertama"
-
-#: shell/evince-menus.ui:137
-msgid "Last Page"
-msgstr "Halaman Terakhir"
-
-#: shell/evince-menus.ui:142
-msgid "History"
-msgstr "Riwayat"
-
-#: shell/evince-menus.ui:144
-msgid "Back"
-msgstr "Kembali"
-
-#: shell/evince-menus.ui:148
-msgid "Forward"
-msgstr "Maju"
-
-#: shell/evince-menus.ui:175
-msgid "Remove Annotation"
-msgstr "Buang Anotasi"
-
-#: shell/evince-menus.ui:195
-msgid "_Open Bookmark"
-msgstr "_Buka Markah"
-
-#: shell/evince-menus.ui:201
-msgid "_Rename Bookmark"
-msgstr "_Ubah Nama Markah"
-
-#: shell/evince-menus.ui:205
-msgid "_Delete Bookmark"
-msgstr "_Hapus Markah"
-
-#: shell/evince-menus.ui:214
-msgid "Search in the outline…"
-msgstr "Cari dalam kerangka…"
-
-#: shell/evince-menus.ui:218
-msgid "Print this section…"
-msgstr "Cetak bagian ini…"
-
-#: shell/evince-menus.ui:222
-msgid "Collapse all tree"
-msgstr "Ciutkan semua pohon"
-
-#: shell/evince-menus.ui:226
-msgid "Expand all tree"
-msgstr "Perluas semua pohon"
-
-#: shell/evince-menus.ui:230
-msgid "Expand all under this element"
-msgstr "Perluas semua di bawah elemen ini"
-
-#: shell/evince-password-view.ui:22
-msgid ""
-"This document is locked and can only be read by entering the correct "
-"password."
-msgstr "Dokumen ini dalam keadaan terkunci dan harus dibuka dengan sandi."
-
-#: shell/evince-password-view.ui:37
-msgid "_Unlock Document"
-msgstr "B_uka Kunci Dokumen"
-
-#: shell/evince-properties-fonts.ui:40
-msgid "Font"
-msgstr "Fonta"
-
-#: shell/evince-sidebar-bookmarks.ui:55
-msgid "Add bookmark"
-msgstr "Tambah markah"
-
-#: shell/evince-sidebar-bookmarks.ui:64
-msgid "Remove bookmark"
-msgstr "Buang markah"
-
-#: shell/evince-toolbar.ui:10
-msgid "Open…"
-msgstr "Buka…"
-
-#: shell/evince-toolbar.ui:11
-msgid "Open an existing document"
-msgstr "Buka dokumen yang ada"
-
-#: shell/evince-toolbar.ui:20
-msgid "Side pane"
-msgstr "Panel samping"
-
-#: shell/evince-toolbar.ui:49
-msgid "Annotate the document"
-msgstr "Anotasikan dokumen"
-
-#: shell/evince-toolbar.ui:59
-msgid "Annotate document"
-msgstr "Anotasikan dokumen"
-
-#: shell/evince-toolbar.ui:70 shell/evince-toolbar.ui:81
-msgid "File options"
-msgstr "Opsi berkas"
-
-#: shell/evince-toolbar.ui:110
-msgid "Set zoom level"
-msgstr "Mengatur tingkat zum"
-
-#: shell/evince-toolbar.ui:126
-msgid "Print…"
-msgstr "Cetak…"
-
-#: shell/evince-toolbar.ui:131
-msgid "Fullscreen"
-msgstr "Layar Penuh"
-
-#: shell/evince-toolbar.ui:136
-msgid "Send To…"
-msgstr "Kirim Ke…"
-
-#: shell/evince-toolbar.ui:143
-msgid "New _Window"
-msgstr "Jendela _Baru"
-
-#: shell/evince-toolbar.ui:149
-msgid "Open a C_opy"
-msgstr "Bu_ka Salinan"
-
-#: shell/evince-toolbar.ui:159
-msgid "_Save As…"
-msgstr "_Simpan Sebagai…"
-
-#: shell/evince-toolbar.ui:165
-msgid "Present as _Slideshow"
-msgstr "Tampilkan sebagai _Salindia"
-
-#: shell/evince-toolbar.ui:171
-msgid "_Continuous"
-msgstr "_Berkelanjutan"
-
-#: shell/evince-toolbar.ui:175
-msgid "_Dual"
-msgstr "Gan_da"
-
-#: shell/evince-toolbar.ui:179
-msgid "_Odd Pages Left"
-msgstr "Halaman _Ganjil Kiri"
-
-#: shell/evince-toolbar.ui:183
-msgid "Right to Left Document"
-msgstr "Dokumen Kanan ke Kiri"
-
-#: shell/evince-toolbar.ui:189
-msgid "Ro_tate ⤵"
-msgstr "Pu_tar ⤵"
-
-#: shell/evince-toolbar.ui:195
-msgid "Ni_ght Mode"
-msgstr "Mode ma_lam"
-
-#: shell/evince-toolbar.ui:201
-msgid "Prop_erties"
-msgstr "Prop_erti"
-
-#: shell/evince-toolbar.ui:207
-msgid "_Keyboard Shortcuts"
-msgstr "_Tombol Pintas"
-
-#: shell/evince-toolbar.ui:211
-msgid "_Help"
-msgstr "_Bantuan"
-
-#: shell/evince-toolbar.ui:215
-msgid "_About Document Viewer"
-msgstr "Tent_ang Penampil Dokumen"
-
-#: shell/evince-zoom-action.ui:5
-msgid "Select or set the zoom level of the document"
-msgstr "Memilih tingkat zum dokumen"
-
-#: shell/evince-zoom-action.ui:30
-msgid "Fit Pa_ge"
-msgstr "Pas Hala_man"
-
-#: shell/evince-zoom-action.ui:35
-msgid "Fit _Width"
-msgstr "Pas _Lebar"
-
-#: shell/evince-zoom-action.ui:40
-msgid "_Automatic"
-msgstr "Otom_atis"
-
-#: shell/ev-keyring.c:86
-#, c-format
-msgid "Password for document %s"
-msgstr "Sandi untuk dokumen %s"
-
-#: shell/ev-loading-message.c:50 shell/ev-sidebar-annotations.c:140
-#: shell/ev-sidebar-layers.c:119 shell/ev-sidebar-links.c:274
-msgid "Loading…"
-msgstr "Memuat…"
-
-#: shell/ev-password-view.c:224
-#, c-format
-msgid ""
-"The document “%s” is locked and requires a password before it can be opened."
-msgstr "Dokumen  “%s” dalam keadaan terkunci dan harus dibuka dengan sandi."
-
-#: shell/ev-password-view.c:231
-msgid "Password required"
-msgstr "Memerlukan sandi"
-
-#: shell/ev-password-view.c:238 shell/ev-sidebar-attachments.c:493
-#: shell/ev-window.c:2877 shell/ev-window.c:3174 shell/ev-window.c:4059
-#: shell/ev-window.c:6983 shell/ev-window.c:7209
-msgid "_Cancel"
-msgstr "_Batal"
-
-#: shell/ev-password-view.c:239
-msgid "_Unlock"
-msgstr "B_uka Kunci"
-
-#: shell/ev-password-view.c:251
-msgid "_Password:"
-msgstr "_Sandi:"
-
-#: shell/ev-password-view.c:285
-msgid "Forget password _immediately"
-msgstr "Lupakan sandi seket_ika"
-
-#: shell/ev-password-view.c:296
-msgid "Remember password until you _log out"
-msgstr "Ingat sandi sampai Anda _log keluar"
-
-#: shell/ev-password-view.c:307
-msgid "Remember _forever"
-msgstr "Ingat _selamanya"
-
-#: shell/ev-properties-dialog.c:63
-msgid "Properties"
-msgstr "Properti"
-
-#: shell/ev-properties-dialog.c:85
-msgid "General"
-msgstr "Umum"
-
-#: shell/ev-properties-dialog.c:95
-msgid "Fonts"
-msgstr "Fonta"
-
-#: shell/ev-properties-dialog.c:108
-msgid "Document License"
-msgstr "Lisensi Dokumen"
-
-#: shell/ev-properties-fonts.c:136
-#, c-format
-msgid "Gathering font information… %3d%%"
-msgstr "Mengumpulkan informasi fonta… %3d%%"
-
-#: shell/ev-properties-license.c:146
-msgid "Usage terms"
-msgstr "Persyaratan penggunaan"
-
-#: shell/ev-properties-license.c:158
-msgid "Text License"
-msgstr "Lisensi Teks"
-
-#: shell/ev-properties-license.c:169
-msgid "Further Information"
-msgstr "Informasi Lebih Lanjut"
-
-#: shell/ev-sidebar-annotations.c:341
-msgid "Document contains no annotations"
-msgstr "Dokumen tidak memiliki anotasi"
-
-#: shell/ev-sidebar-annotations.c:369
-#, c-format
-msgid "Page %d"
-msgstr "Halaman %d"
-
-#: shell/ev-sidebar-annotations.c:403
-msgid "No Comment"
-msgstr "Tidak Ada Komentar"
-
-#: shell/ev-sidebar-annotations.c:564 shell/ev-window.c:7592
-msgid "Annotations"
-msgstr "Anotasi"
-
-#: shell/ev-sidebar-attachments.c:485
-#, c-format
-msgid "A file named “%s” already exists. Do you want to replace it?"
-msgstr "Berkas bernama \"%s\" sudah ada. Apakah Anda ingin menggantinya?"
-
-#: shell/ev-sidebar-attachments.c:489
-#, c-format
-msgid "The file “%s” already exists. Replacing it will overwrite its contents."
-msgstr "Berkas \"%s\" sudah ada. Menggantinya itu akan menimpa isinya."
-
-#: shell/ev-sidebar-attachments.c:494
-msgid "_Replace"
-msgstr "_Ganti"
-
-#: shell/ev-sidebar-attachments.c:892 shell/ev-window.c:7616
-msgid "Attachments"
-msgstr "Lampiran"
-
-#: shell/ev-sidebar-bookmarks.c:553 shell/ev-window.c:7600
-msgid "Bookmarks"
-msgstr "Penanda Taut"
-
-#: shell/ev-sidebar-layers.c:439 shell/ev-window.c:7628
-msgid "Layers"
-msgstr "Lapisan"
-
-#. Translators: This is the title for the sidebar pane that
-#. * shows the Outline or Table of Contents of the document.
-#.
-#: shell/ev-sidebar-links.c:1450 shell/ev-window.c:7580
-msgid "Outline"
-msgstr "Garis Besar"
-
-#: shell/ev-sidebar-thumbnails.c:1038 shell/ev-window.c:7563
-msgid "Thumbnails"
-msgstr "Gambar Mini"
-
-#: shell/ev-toolbar.c:98
-msgid "Find a word or phrase in the document"
-msgstr "Temukan kata atau frasa dalam dokumen"
-
-#: shell/ev-toolbar.c:104
-msgid "Search not available for this document"
-msgstr "Pencarian tidak tersedia untuk dokumen ini"
-
-#: shell/ev-utils.c:268
-msgid "Supported Image Files"
-msgstr "Berkas Gambar Yang Didukung"
-
-#: shell/ev-window.c:1753
-msgid "The document contains no pages"
-msgstr "Dokumen tidak memiliki halaman"
-
-#: shell/ev-window.c:1756
-msgid "The document contains only empty pages"
-msgstr "Dokumen hanya memiliki halaman kosong"
-
-#: shell/ev-window.c:1997 shell/ev-window.c:2171
-#, c-format
-msgid "Unable to open document “%s”."
-msgstr "Tidak dapat membuka dokumen “%s”."
-
-#: shell/ev-window.c:2136
-#, c-format
-msgid "Loading document from “%s”"
-msgstr "Memuat dokumen dari “%s”"
-
-#: shell/ev-window.c:2141 shell/ev-window.c:2599 shell/ev-window.c:2965
-#: shell/ev-window.c:3700 shell/ev-window.c:3948
-msgid "C_ancel"
-msgstr "B_atal"
-
-#: shell/ev-window.c:2293 shell/ev-window.c:2650
-#, c-format
-msgid "Downloading document (%d%%)"
-msgstr "Mengunduh dokumen (%d%%)"
-
-#: shell/ev-window.c:2326
-msgid "Failed to load remote file."
-msgstr "Gagal memuat berkas jauh."
-
-#: shell/ev-window.c:2595
-#, c-format
-msgid "Reloading document from %s"
-msgstr "Memuat ulang dokumen dari %s"
-
-#: shell/ev-window.c:2625
-msgid "Failed to reload document."
-msgstr "Gagal memuat ulang dokumen."
-
-#: shell/ev-window.c:2873
+#: nautilus/pps-nautilus-extension.c:168
+msgid "Document Properties"
+msgstr "Properti Dokumen"
+
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
+msgid "Title"
+msgstr "Judul"
+
+#: nautilus/pps-nautilus-extension.h:60
+msgid "Location"
+msgstr "Lokasi"
+
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
+msgid "Subject"
+msgstr "Subjek"
+
+#: nautilus/pps-nautilus-extension.h:62
+#: shell/resources/pps-annotation-properties-dialog.ui:9
+#: shell/src/properties_general.rs:149
+msgid "Author"
+msgstr "Penulis"
+
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
+msgid "Keywords"
+msgstr "Kata Kunci"
+
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
+msgid "Producer"
+msgstr "Produsen"
+
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
+msgid "Creator"
+msgstr "Pembuat"
+
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
+msgid "Created"
+msgstr "Dibuat"
+
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
+msgid "Modified"
+msgstr "Diubah"
+
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
+msgid "Number of Pages"
+msgstr "Cacah Halaman"
+
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
+msgid "Optimized"
+msgstr "Dioptimalkan"
+
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
+#: shell/src/properties_general.rs:175
+msgid "Format"
+msgstr "Format"
+
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
+msgid "Security"
+msgstr "Keamanan"
+
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
+msgid "Contains Javascript"
+msgstr "Berisi Javascript"
+
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
+msgid "Paper Size"
+msgstr "Ukuran Kertas"
+
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
+msgid "Size"
+msgstr "Ukuran"
+
+#: shell/resources/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Opening, Closing, Saving and Printing"
+msgstr "Membuka, Menutup, Menyimpan, dan Mencetak"
+
+#: shell/resources/help-overlay.ui:14
+msgctxt "shortcut window"
 msgid "Open Document"
 msgstr "Buka Dokumen"
 
-#: shell/ev-window.c:2876
-msgid "_Open"
-msgstr "Bu_ka"
+#: shell/resources/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Buka Salinan Dokumen Saat Ini"
 
-#: shell/ev-window.c:2951
-#, c-format
-msgid "Saving document to %s"
-msgstr "Menyimpan dokumen ke %s"
+#: shell/resources/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Buka Dengan…"
 
-#: shell/ev-window.c:2954
-#, c-format
-msgid "Saving attachment to %s"
-msgstr "Menyimpan lampiran ke %s"
+#: shell/resources/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Simpan Salinan Dokumen Saat Ini"
 
-#: shell/ev-window.c:2957
-#, c-format
-msgid "Saving image to %s"
-msgstr "Menyimpan gambar ke %s"
+#: shell/resources/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Cetak Dokumen Saat Ini"
 
-#: shell/ev-window.c:2999 shell/ev-window.c:3113
-#, c-format
-msgid "The file could not be saved as “%s”."
-msgstr "Berkas tidak dapat disimpan sebagai “%s”."
+#: shell/resources/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Tutup Jendela Dokumen Saat Ini"
 
-#: shell/ev-window.c:3031
-#, c-format
-msgid "Uploading document (%d%%)"
-msgstr "Mengunggah dokumen (%d%%)"
+#: shell/resources/help-overlay.ui:52
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Jendela"
 
-#: shell/ev-window.c:3035
-#, c-format
-msgid "Uploading attachment (%d%%)"
-msgstr "Mengunggah lampiran (%d%%)"
+#: shell/resources/help-overlay.ui:55
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Layar Penuh"
 
-#: shell/ev-window.c:3039
-#, c-format
-msgid "Uploading image (%d%%)"
-msgstr "Mengunggah gambar (%d%%)"
+#: shell/resources/help-overlay.ui:61
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Masuk ke Mode Presentasi"
 
-#: shell/ev-window.c:3171
-msgid "Save As…"
-msgstr "Simpan Sebagai…"
+#: shell/resources/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Panel Sisi"
 
-#: shell/ev-window.c:3173 shell/ev-window.c:6982 shell/ev-window.c:7208
-msgid "_Save"
-msgstr "_Simpan"
+#: shell/resources/help-overlay.ui:73
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Navigasi Caret"
 
-#: shell/ev-window.c:3260
-msgid "Could not send current document"
-msgstr "Tidak bisa mengirim dokumen kini"
+#: shell/resources/help-overlay.ui:81
+msgctxt "shortcut window"
+msgid "Selecting and Copying Text"
+msgstr "Memilih dan Menyalin Teks"
 
-#: shell/ev-window.c:3587
-#, c-format
-msgid "%d pending job in queue"
-msgid_plural "%d pending jobs in queue"
-msgstr[0] "%d tugas tertunda di antrian"
+#: shell/resources/help-overlay.ui:84
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Salin"
 
-#: shell/ev-window.c:3696
-#, c-format
-msgid "Printing job “%s”"
-msgstr "Tugas mencetak “%s”"
+#: shell/resources/help-overlay.ui:90
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Pilih Semua"
 
-#: shell/ev-window.c:3914
-msgid "Document contains form fields that have been filled out."
-msgstr "Dokumen mengandung ruas formulir yang telah diisi."
+#: shell/resources/help-overlay.ui:98
+msgctxt "shortcut window"
+msgid "Rotating and Zooming"
+msgstr "Memutar dan Zum"
 
-#: shell/ev-window.c:3917
-msgid "Document contains new or modified annotations."
-msgstr "Dokumen mengandung anotasi baru atau anotasi yang dimodifikasi."
+#: shell/resources/help-overlay.ui:101
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Putar Halaman 90 Derajat Berlawan Arah Jarum Jam"
 
-#: shell/ev-window.c:3929
-#, c-format
-msgid "Reload document “%s”?"
-msgstr "Muat ulang dokumen “%s”?"
+#: shell/resources/help-overlay.ui:107
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Putar Halaman 90 Derajat Searah Jarum Jam"
 
-#: shell/ev-window.c:3931
-msgid "If you reload the document, changes will be permanently lost."
-msgstr "Jika Anda memuat ulang dokumen, perubahan akan hilang secara permanen."
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Perbesar"
 
-#: shell/ev-window.c:3933
-msgid "_No"
-msgstr "_Tidak"
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Perkecil"
 
-#: shell/ev-window.c:3942
-#, c-format
-msgid "Save a copy of document “%s” before closing?"
-msgstr "Simpan salinan dokumen “%s” sebelum ditutup?"
+#: shell/resources/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Ukuran Normal"
 
-#: shell/ev-window.c:3944
-msgid "If you don’t save a copy, changes will be permanently lost."
+#: shell/resources/help-overlay.ui:131
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Perbesar (Alternatif)"
+
+#: shell/resources/help-overlay.ui:137
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Pas Halaman"
+
+#: shell/resources/help-overlay.ui:143
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Pas Lebar"
+
+#: shell/resources/help-overlay.ui:149
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Zum Otomatis"
+
+#: shell/resources/help-overlay.ui:157
+msgctxt "shortcut window"
+msgid "Moving Around Document"
+msgstr "Berpindah Dalam Dokumen"
+
+#: shell/resources/help-overlay.ui:160
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Berpindah Pada Halaman"
+
+#: shell/resources/help-overlay.ui:166
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Naik/Turun Beberapa Baris dalam Halaman"
+
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Halaman Sebelumnya"
+
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Halaman Selanjutnya"
+
+#: shell/resources/help-overlay.ui:184
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Pergi ke Nomor Halaman"
+
+#: shell/resources/help-overlay.ui:190
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Halaman Sebelumnya (Cepat)"
+
+#: shell/resources/help-overlay.ui:196
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Halaman Berikutnya (Cepat)"
+
+#: shell/resources/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Halaman yang Dikunjungi Sebelumnya"
+
+#: shell/resources/help-overlay.ui:208
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Halaman yang Dikunjungi Berikutnya"
+
+#: shell/resources/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Ke Awal/Akhir Halaman"
+
+#: shell/resources/help-overlay.ui:220
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Ke Awal Dokumen"
+
+#: shell/resources/help-overlay.ui:226
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Ke Akhir Dokumen"
+
+#: shell/resources/help-overlay.ui:234
+msgctxt "shortcut window"
+msgid "Document View and Handling"
+msgstr "Tampilan dan Penanganan Dokumen"
+
+#: shell/resources/help-overlay.ui:237
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Tambah Markah"
+
+#: shell/resources/help-overlay.ui:243
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Buang Markah"
+
+#: shell/resources/help-overlay.ui:249
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Mode malam"
+
+#: shell/resources/help-overlay.ui:255
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Pengguliran Berkelanjutan"
+
+#: shell/resources/help-overlay.ui:261
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Halaman Ganda"
+
+#: shell/resources/help-overlay.ui:267
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Halaman Ganjil Kiri"
+
+#: shell/resources/help-overlay.ui:273
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Properti Dokumen"
+
+#: shell/resources/help-overlay.ui:279
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Tambahkan Anotasi Teks"
+
+#: shell/resources/help-overlay.ui:285
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Sorot Teks"
+
+#: shell/resources/help-overlay.ui:293
+msgctxt "shortcut window"
+msgid "Finding Text"
+msgstr "Mencari Teks"
+
+#: shell/resources/help-overlay.ui:296
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Cari"
+
+#: shell/resources/help-overlay.ui:302
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Cari Selanjutnya"
+
+#: shell/resources/help-overlay.ui:308
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Cari Sebelumnya"
+
+#: shell/resources/help-overlay.ui:316
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: shell/resources/help-overlay.ui:319
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Bantuan"
+
+#: shell/resources/help-overlay.ui:325
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menu"
+
+#: shell/resources/help-overlay.ui:331
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Pintasan Papan Tik"
+
+#: shell/resources/help-overlay.ui:337
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#: shell/resources/help-overlay.ui:343
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tutup Jendela"
+
+#: shell/resources/help-overlay.ui:351
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Mode Presentasi"
+
+#: shell/resources/help-overlay.ui:354
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Layar Hitam"
+
+#: shell/resources/help-overlay.ui:360
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Layar Putih"
+
+#: shell/resources/help-overlay.ui:368
+msgctxt "shortcut window"
+msgid "Touchpad Gestures"
+msgstr "Gestur Papan Sentuh"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:4
+#: shell/resources/pps-sidebar-annotations.ui:69
+msgid "Annotation Properties"
+msgstr "Properti Anotasi"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:14
+msgid "Color"
+msgstr "Warna"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:26
+msgid "Opacity"
+msgstr "Kelegapan"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:40
+msgid "Initially Opened"
+msgstr "Awalnya Dibuka"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:46
+msgid "Icon"
+msgstr "Ikon"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:50
+msgid "Note"
+msgstr "Catatan"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:51
+msgid "Comment"
+msgstr "Komentar"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:52
+msgid "Key"
+msgstr "Kunci"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:53
+msgid "Help"
+msgstr "Bantuan"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:54
+msgid "New Paragraph"
+msgstr "Paragraf Baru"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:55
+msgid "Paragraph"
+msgstr "Paragraf"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:56
+msgid "Insert"
+msgstr "Sisip"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:57
+msgid "Cross"
+msgstr "Silang"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:58
+msgid "Circle"
+msgstr "Lingkaran"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:69
+msgid "Markup Type"
+msgstr "Tipe Markup"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:715
+msgid "Highlight"
+msgstr "Sorot"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:74
+msgid "Strike out"
+msgstr "Coret"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:745
+msgid "Underline"
+msgstr "Garis bawah"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:725
+msgid "Squiggly"
+msgstr "Berlekuk-lekuk"
+
+#: shell/resources/pps-annotation-properties-dialog.ui:88
+msgid "_Apply"
+msgstr "Ter_apkan"
+
+#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.ui:71
+msgid "Search"
+msgstr "Cari"
+
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#: shell/resources/pps-document-view.ui:106
+msgid "Thumbnails"
+msgstr "Gambar Mini"
+
+#: shell/resources/pps-document-view.ui:119
+msgid "Outline"
+msgstr "Garis Besar"
+
+#: shell/resources/pps-document-view.ui:133
+msgid "Annotations"
+msgstr "Anotasi"
+
+#: shell/resources/pps-document-view.ui:153
+msgid "Attachments"
+msgstr "Lampiran"
+
+#: shell/resources/pps-document-view.ui:171
+msgid "Layers"
+msgstr "Lapisan"
+
+#: shell/resources/pps-document-view.ui:209
+msgid "Toggle Sidebar"
+msgstr "Jungkitkan Bilah Sisi"
+
+#: shell/resources/pps-document-view.ui:215
+msgid "Document Menu"
+msgstr "Menu Dokumen"
+
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
+msgid "Document has been digitally signed."
+msgstr "Dokumen telah ditandatangani secara digital."
+
+#: shell/resources/pps-document-view.ui:239
+msgid "View Signature…"
+msgstr "Lihat Tanda Tangan…"
+
+#: shell/resources/pps-document-view.ui:272
+msgid "Fit Automatically"
+msgstr "Pas Secara Otomatis"
+
+#: shell/resources/pps-document-view.ui:565
+msgid "Selection too Small"
+msgstr "Pilihan Terlalu Kecil"
+
+#: shell/resources/pps-document-view.ui:566
+msgid ""
+"A signature of this size may be too small to read. If you would like to "
+"create a potentially more readable signature, press `Start over` and draw a "
+"bigger rectangle."
 msgstr ""
-"Jika Anda tidak menyimpan salinan, perubahan akan hilang secara permanen."
+"Tanda tangan dengan ukuran ini mungkin terlalu kecil untuk dibaca. Jika Anda "
+"ingin membuat tanda tangan yang lebih mudah dibaca, tekan `Mulai dari awal` "
+"dan gambar persegi panjang yang lebih besar."
 
-#: shell/ev-window.c:3946
-msgid "Close _without Saving"
-msgstr "Tutup _tanpa menyimpan"
+#: shell/resources/pps-document-view.ui:571
+msgid "Start _Over"
+msgstr "Mulai Dari _Awal"
 
-#: shell/ev-window.c:3950
-msgid "Save a _Copy"
-msgstr "Simpan _Salinan"
+#: shell/resources/pps-document-view.ui:572
+msgid "_Sign"
+msgstr "_Tandatangani"
 
-#: shell/ev-window.c:4032
-#, c-format
-msgid "Wait until print job “%s” finishes before closing?"
-msgstr "Tunggu sampai tugas pencetakan “%s” selesai sebelum menutup?"
+#: shell/resources/pps-document-view.ui:578
+msgid "Abort Printing?"
+msgstr "Batalkan Pencetakan?"
 
-#. TRANS: the singular form is not really used as n_print_jobs > 1
-#. but some languages distinguish between different plurals forms,
-#. so the ngettext is needed.
-#: shell/ev-window.c:4038
-#, c-format
-msgid "There is %d print job active. Wait until print finishes before closing?"
-msgid_plural ""
-"There are %d print jobs active. Wait until print finishes before closing?"
-msgstr[0] ""
-"Ada %d tugas pencetakan aktif. Tunggu sampai pencetakan selesai sebelum "
-"menutup?"
-
-#: shell/ev-window.c:4053
-msgid "If you close the window, pending print jobs will not be printed."
+#: shell/resources/pps-document-view.ui:579
+msgid ""
+"There is one or more active print jobs. If the window is closed, pending "
+"print jobs will not be printed."
 msgstr ""
-"Bila Anda menutup jendela, tugas pencetakan yang ditunda tidak akan dicetak."
+"Ada satu atau beberapa pekerjaan cetak yang aktif. Jika jendela ditutup, "
+"pekerjaan cetak yang tertunda tidak akan dicetak."
 
-#: shell/ev-window.c:4057
-msgid "Cancel _print and Close"
+#: shell/resources/pps-document-view.ui:582
+msgid "Abort _Print and Close"
 msgstr "Batal _Mencetak dan Keluar"
 
-#: shell/ev-window.c:4061
-msgid "Close _after Printing"
-msgstr "Tutup _setelah Mencetak"
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
+msgid "_Cancel"
+msgstr "_Batal"
 
-#: shell/ev-window.c:4229
-msgid "© 1996–2023 The Evince document viewer authors"
-msgstr "© 1996–2023 Penulis penampil dokumen Evince"
+#: shell/resources/pps-document-view.ui:584
+msgid "Close _After Printing"
+msgstr "Tutup Setel_ah Mencetak"
 
-#: shell/ev-window.c:4232
-msgid "Evince is a simple document viewer for GNOME"
-msgstr "Evince adalah penampil dokumen bagi destop GNOME"
+#: shell/resources/pps-document-view.ui:598
+msgid "Open…"
+msgstr "Buka…"
 
-#: shell/ev-window.c:4235
+#: shell/resources/pps-document-view.ui:604
+msgid "Ni_ght Mode"
+msgstr "Mode ma_lam"
+
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
+msgid "_Keyboard Shortcuts"
+msgstr "_Tombol Pintas"
+
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
+msgid "_About Papers"
+msgstr "Tent_ang Papers"
+
+#: shell/resources/pps-document-view.ui:626
+msgid "_Print…"
+msgstr "_Cetak…"
+
+#: shell/resources/pps-document-view.ui:630
+msgid "Fullscreen"
+msgstr "Layar Penuh"
+
+#: shell/resources/pps-document-view.ui:634
+msgid "Present as Slideshow"
+msgstr "Tampilkan sebagai Salindia"
+
+#: shell/resources/pps-document-view.ui:640
+msgid "Sign D_igitally…"
+msgstr "Tanda Tangani Secara D_igital…"
+
+#: shell/resources/pps-document-view.ui:646
+msgid "Open a C_opy"
+msgstr "Bu_ka Salinan"
+
+#: shell/resources/pps-document-view.ui:650
+msgid "Open With…"
+msgstr "Buka Dengan…"
+
+#: shell/resources/pps-document-view.ui:654
+msgid "_Save As…"
+msgstr "_Simpan Sebagai…"
+
+#: shell/resources/pps-document-view.ui:660
+msgid "_Continuous"
+msgstr "_Berkelanjutan"
+
+#: shell/resources/pps-document-view.ui:664
+msgid "_Dual"
+msgstr "Gan_da"
+
+#: shell/resources/pps-document-view.ui:668
+msgid "_Odd Pages Left"
+msgstr "Halaman _Ganjil Kiri"
+
+#: shell/resources/pps-document-view.ui:672
+msgid "Right to Left Document"
+msgstr "Dokumen Kanan ke Kiri"
+
+#: shell/resources/pps-document-view.ui:678
+msgid "Ro_tate ⤵"
+msgstr "Pu_tar ⤵"
+
+#: shell/resources/pps-document-view.ui:684
+msgid "Document Prop_erties"
+msgstr "Prop_erti Dokumen"
+
+#: shell/resources/pps-document-view.ui:735
+msgid "Strikethrough"
+msgstr "Coret"
+
+#: shell/resources/pps-document-view.ui:839
+msgid "_Open Link"
+msgstr "_Buka Taut"
+
+#: shell/resources/pps-document-view.ui:844
+msgid "_Copy Link Address"
+msgstr "_Salin Alamat Taut"
+
+#: shell/resources/pps-document-view.ui:849
+msgid "_Go To"
+msgstr "_Ke"
+
+#: shell/resources/pps-document-view.ui:854
+msgid "Open in New _Window"
+msgstr "Buka di _Jendela Baru"
+
+#: shell/resources/pps-document-view.ui:861
+msgid "_Copy"
+msgstr "_Salin"
+
+#: shell/resources/pps-document-view.ui:865
+msgid "Select _All"
+msgstr "Pilih Semu_a"
+
+#: shell/resources/pps-document-view.ui:871
+msgid "_Save Image As…"
+msgstr "_Simpan Gambar Sebagai…"
+
+#: shell/resources/pps-document-view.ui:876
+msgid "Copy _Image"
+msgstr "Salin _Gambar"
+
+#: shell/resources/pps-document-view.ui:883
+#: shell/resources/pps-sidebar-annotations.ui:79
+msgid "_Open Attachment"
+msgstr "_Buka Lampiran"
+
+#: shell/resources/pps-document-view.ui:888
+#: shell/resources/pps-sidebar-annotations.ui:84
+msgid "_Save Attachment As…"
+msgstr "_Simpan Lampiran Sebagai…"
+
+#: shell/resources/pps-document-view.ui:896
+msgid "Annotation _Properties…"
+msgstr "_Properti Anotasi…"
+
+#: shell/resources/pps-document-view.ui:901
+msgid "R_emove Annotation"
+msgstr "Bu_ang Anotasi"
+
+#: shell/resources/pps-document-view.ui:908
+msgid "_Add Text Annotation"
+msgstr "T_ambahkan Anotasi Teks"
+
+#: shell/resources/pps-document-view.ui:913
+msgid "_Highlight Selected Text"
+msgstr "Sorot Teks yang Dipili_h"
+
+#: shell/resources/pps-find-sidebar.ui:64
+msgid "No Results Found"
+msgstr "Tak Ada Hasil yang Ditemukan"
+
+#: shell/resources/pps-find-sidebar.ui:65
+msgid "Try a different search"
+msgstr "Cobalah pencarian lain"
+
+#: shell/resources/pps-find-sidebar.ui:79
+msgid "Perform a Search"
+msgstr "Lakukan Pencarian"
+
+#: shell/resources/pps-find-sidebar.ui:80
+msgid "The search results will appear here"
+msgstr "Hasil pencarian akan muncul di sini"
+
+#: shell/resources/pps-loader-view.ui:17
+msgid "Loading Document"
+msgstr "Memuat Dokumen"
+
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+msgid "C_ancel"
+msgstr "B_atal"
+
+#: shell/resources/pps-password-dialog.ui:4
+#: shell/resources/pps-password-view.ui:10
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
+msgid "Password Required"
+msgstr "Perlu Sandi"
+
+#: shell/resources/pps-password-dialog.ui:7
+msgid "Cancel"
+msgstr "Batal"
+
+#: shell/resources/pps-password-dialog.ui:8
+msgid "Unlock"
+msgstr "Buka Kunci"
+
+#: shell/resources/pps-password-dialog.ui:17
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: shell/resources/pps-password-dialog.ui:32
+msgid "Invalid password"
+msgstr "Kata sandi tidak valid"
+
+#: shell/resources/pps-password-dialog.ui:48
+msgid "Forget password _immediately"
+msgstr "Lupakan sandi seket_ika"
+
+#: shell/resources/pps-password-dialog.ui:56
+msgid "Remember _forever"
+msgstr "Ingat _selamanya"
+
+#: shell/resources/pps-password-view.ui:20
+msgid ""
+"This document is locked and can only be read by entering the correct password"
+msgstr ""
+"Dokumen ini terkunci dan hanya dapat dibaca dengan memasukkan kata sandi "
+"yang benar"
+
+#: shell/resources/pps-password-view.ui:25
+msgid "_Unlock Document"
+msgstr "B_uka Kunci Dokumen"
+
+#: shell/resources/pps-properties-license.ui:21
+msgid "Usage Terms"
+msgstr "Ketentuan Penggunaan"
+
+#: shell/resources/pps-properties-license.ui:56
+msgid "Text License"
+msgstr "Lisensi Teks"
+
+#: shell/resources/pps-properties-license.ui:84
+msgid "Further Information"
+msgstr "Informasi Lebih Lanjut"
+
+#: shell/resources/pps-properties-signatures.ui:55
+msgid "View Details…"
+msgstr "Lihat Detail…"
+
+#: shell/resources/pps-properties-window.ui:4
+msgid "Properties"
+msgstr "Properti"
+
+#: shell/resources/pps-properties-window.ui:25
+msgid "_Document"
+msgstr "_Dokumen"
+
+#: shell/resources/pps-properties-window.ui:40
+msgid "_Fonts"
+msgstr "_Fonta"
+
+#: shell/resources/pps-properties-window.ui:51
+msgid "License"
+msgstr "Lisensi"
+
+#: shell/resources/pps-properties-window.ui:61
+msgid "_Signatures"
+msgstr "_Tanda Tangan"
+
+#: shell/resources/pps-search-box.ui:15
+msgid "Search in document"
+msgstr "Mencari di dokumen"
+
+#: shell/resources/pps-search-box.ui:34
+msgid "Search Options"
+msgstr "Opsi Pencarian"
+
+#: shell/resources/pps-search-box.ui:43
+msgid "_Whole Words Only"
+msgstr "Hanya _Seluruh Kata"
+
+#: shell/resources/pps-search-box.ui:47
+msgid "C_ase Sensitive"
+msgstr "Sesuai Bes_ar/Kecil Huruf"
+
+#: shell/resources/pps-sidebar-annotations.ui:16
+msgid "No Annotations"
+msgstr "Tidak Ada Anotasi"
+
+#: shell/resources/pps-sidebar-annotations.ui:74
+msgid "Remove Annotation"
+msgstr "Buang Anotasi"
+
+#: shell/resources/pps-sidebar-links.ui:52
+msgid "Collapse all tree"
+msgstr "Ciutkan semua pohon"
+
+#: shell/resources/pps-sidebar-links.ui:56
+msgid "Expand all tree"
+msgstr "Perluas semua pohon"
+
+#: shell/resources/pps-sidebar-links.ui:60
+msgid "Expand all under this element"
+msgstr "Perluas semua di bawah elemen ini"
+
+#: shell/resources/pps-sidebar-links.ui:66
+msgid "Print this section…"
+msgstr "Cetak bagian ini…"
+
+#: shell/resources/pps-sidebar-thumbnails.ui:46
+msgid "Previews"
+msgstr "Pratinjau"
+
+#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+msgid "Open a Document"
+msgstr "Buka Dokumen"
+
+#: shell/resources/pps-window.ui:48
+msgid "Drag and drop documents here"
+msgstr "Seret dan jatuhkan dokumen di sini"
+
+#: shell/resources/pps-window.ui:53
+msgid "_Open…"
+msgstr "_Buka…"
+
+#: shell/resources/pps-window.ui:79
+msgid "Unable to Open Document"
+msgstr "Tidak Bisa Membuka Dokumen"
+
+#: shell/resources/pps-window.ui:84
+msgid "_Open Other File…"
+msgstr "_Buka Berkas Lain…"
+
+#: shell/src/application.rs:212
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 para penulis Papers"
+
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@gnome.org>, 2005.\n"
 "Ahmad Riza H Nst <rizahnst@gnome.org>, 2006.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2016.\n"
-"Andika Triwidada <andika@gmail.com>, 2009-2015, 2023.\n"
+"Andika Triwidada <andika@gmail.com>, 2009-2015, 2023, 2025.\n"
 "Zamani Karmana <zamani.karmana@gmail.com>, 2015.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2022."
 
-#: shell/ev-window.c:4713
-msgid "Running in presentation mode"
-msgstr "Berjalan dalam mode presentasi"
-
-#: shell/ev-window.c:5700
-msgid "The attachment could not be saved."
-msgstr "Lampiran tidak dapat disimpan."
-
-#: shell/ev-window.c:6022
-msgid "Enable caret navigation?"
-msgstr "Fungsikan navigasi caret?"
-
-#: shell/ev-window.c:6023
-msgid "_Enable"
-msgstr "_Fungsikan"
-
-#: shell/ev-window.c:6026
-msgid ""
-"Pressing F7 turns the caret navigation on or off. This feature places a "
-"moveable cursor in text pages, allowing you to move around and select text "
-"with your keyboard. Do you want to enable the caret navigation?"
-msgstr ""
-"Menekan F7 menyalakan atau mematikan navigasi caret. Fitur ini menempatkan "
-"kursor yang dapat digerakkan pada teks halaman, memungkinkan Anda berpindah "
-"dan memilih teks dengan papan ketik Anda. Apakah Anda ingin menyalakan "
-"navigasi caret?"
-
-#: shell/ev-window.c:6031
-msgid "Don’t show this message again"
-msgstr "Jangan tampilkan pesan ini lagi"
-
-#: shell/ev-window.c:6620
-#, c-format
-msgid ""
-"Security alert: this document has been prevented from opening the file “%s”"
-msgstr ""
-"Peringatan keamanan: dokumen ini telah dicegah untuk membuka berkas \"%s\""
-
-#: shell/ev-window.c:6685
-msgid "Unable to open external link"
-msgstr "Tidak dapat membuka tautan eksternal"
-
-#: shell/ev-window.c:6911
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Tidak dapat menemukan format yang cocok tepat menyimpan gambar"
-
-#: shell/ev-window.c:6943
-msgid "The image could not be saved."
-msgstr "Gambar tidak dapat disimpan."
-
-#: shell/ev-window.c:6979
-msgid "Save Image"
-msgstr "Simpan Gambar"
-
-#: shell/ev-window.c:7137
-msgid "Unable to open attachment"
-msgstr "Tidak dapat membuka lampiran"
-
-#: shell/ev-window.c:7205
-msgid "Save Attachment"
-msgstr "Simpan Lampiran"
-
-#: shell/ev-window-title.c:108
-msgid "Recent Documents"
-msgstr "Dokumen Baru-baru Ini"
-
-#: shell/ev-window-title.c:151 shell/ev-window-title.c:153
-#: shell/ev-window-title.c:158
-msgid "Password Required"
-msgstr "Perlu Sandi"
-
-#: shell/ev-zoom-action.c:41
-msgid "50%"
-msgstr "50%"
-
-#: shell/ev-zoom-action.c:42
-msgid "70%"
-msgstr "70%"
-
-#: shell/ev-zoom-action.c:43
-msgid "85%"
-msgstr "85%"
-
-#: shell/ev-zoom-action.c:44
-msgid "100%"
-msgstr "100%"
-
-#: shell/ev-zoom-action.c:45
-msgid "125%"
-msgstr "125%"
-
-#: shell/ev-zoom-action.c:46
-msgid "150%"
-msgstr "150%"
-
-#: shell/ev-zoom-action.c:47
-msgid "175%"
-msgstr "175%"
-
-#: shell/ev-zoom-action.c:48
-msgid "200%"
-msgstr "200%"
-
-#: shell/ev-zoom-action.c:49
-msgid "300%"
-msgstr "300%"
-
-#: shell/ev-zoom-action.c:50
-msgid "400%"
-msgstr "400%"
-
-#: shell/ev-zoom-action.c:51
-msgid "800%"
-msgstr "800%"
-
-#: shell/ev-zoom-action.c:52
-msgid "1600%"
-msgstr "1600%"
-
-#: shell/ev-zoom-action.c:53
-msgid "3200%"
-msgstr "3200%"
-
-#: shell/ev-zoom-action.c:54
-msgid "6400%"
-msgstr "6400%"
-
-#: shell/help-overlay.ui:13
-msgctxt "shortcut window"
-msgid "Opening, closing, saving and printing"
-msgstr "Membuka, menutup, menyimpan dan mencetak"
-
-#: shell/help-overlay.ui:17
-msgctxt "shortcut window"
-msgid "Open a document"
-msgstr "Membuka dokumen"
-
-#: shell/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Open a copy of the current document"
-msgstr "Membuka salinan dokumen saat ini"
-
-#: shell/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Save a copy of the current document"
-msgstr "Menyimpan salinan dokumen saat ini"
-
-#: shell/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Print the current document"
-msgstr "Mencetak dokumen saat ini"
-
-#: shell/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Close the current document window"
-msgstr "Menutup dokumen saat ini"
-
-#: shell/help-overlay.ui:52
-msgctxt "shortcut window"
-msgid "Reload the document"
-msgstr "Memuat ulang dokumen"
-
-#: shell/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "Jendela"
-
-#: shell/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Toggle fullscreen"
-msgstr "Jungkitkan layar penuh"
-
-#: shell/help-overlay.ui:72
-msgctxt "shortcut window"
-msgid "Enter presentation mode"
-msgstr "Masuk mode presentasi"
-
-#: shell/help-overlay.ui:79
-msgctxt "shortcut window"
-msgid "Toggle sidebar"
-msgstr "Jungkitkan bilah sisi"
-
-#: shell/help-overlay.ui:86
-msgctxt "shortcut window"
-msgid "Toggle caret navigation"
-msgstr "Jungkitkan navigasi caret"
-
-#: shell/help-overlay.ui:95
-msgctxt "shortcut window"
-msgid "Selecting and copying text"
-msgstr "Memilih dan menyalin teks"
-
-#: shell/help-overlay.ui:99
-msgctxt "shortcut window"
-msgid "Copy highlighted text"
-msgstr "Menyalin teks yang disorot"
-
-#: shell/help-overlay.ui:106
-msgctxt "shortcut window"
-msgid "Select all the text in a document"
-msgstr "Memilih semua teks pada dokumen"
-
-#: shell/help-overlay.ui:115
-msgctxt "shortcut window"
-msgid "Rotating and zooming"
-msgstr "Memutar dan memperbesar"
-
-#: shell/help-overlay.ui:119
-msgctxt "shortcut window"
-msgid "Rotate the page 90 degrees counter-clockwise"
-msgstr "Memutar halaman 90 derajat berlawan arah jam"
-
-#: shell/help-overlay.ui:126
-msgctxt "shortcut window"
-msgid "Rotate the page 90 degrees clockwise"
-msgstr "Memutar halaman 90 derajat searah jam"
-
-#: shell/help-overlay.ui:133 shell/help-overlay.ui:435
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Memperbesar"
-
-#: shell/help-overlay.ui:140 shell/help-overlay.ui:442
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Memperkecil"
-
-#: shell/help-overlay.ui:147
-msgctxt "shortcut window"
-msgid "Zoom 1∶1"
-msgstr "Sesuaikan 1:1"
-
-#: shell/help-overlay.ui:154
-msgctxt "shortcut window"
-msgid "Zoom in (alternative)"
-msgstr "Memperbesar (alternatif)"
-
-#: shell/help-overlay.ui:161
-msgctxt "shortcut window"
-msgid "Fit page"
-msgstr "Pas halaman"
-
-#: shell/help-overlay.ui:168
-msgctxt "shortcut window"
-msgid "Fit width"
-msgstr "Pas lebar"
-
-#: shell/help-overlay.ui:175
-msgctxt "shortcut window"
-msgid "Automatic zoom"
-msgstr "Zum otomatis"
-
-#: shell/help-overlay.ui:184
-msgctxt "shortcut window"
-msgid "Moving around the document"
-msgstr "Berpindah pada dokumen"
-
-#: shell/help-overlay.ui:188 shell/help-overlay.ui:195
-msgctxt "shortcut window"
-msgid "Move around a page"
-msgstr "Berpindah pada halaman"
-
-#: shell/help-overlay.ui:202
-msgctxt "shortcut window"
-msgid "Move up/down a page several lines at a time"
-msgstr "Naik/turun halaman beberapa baris sekaligus"
-
-#: shell/help-overlay.ui:209 shell/help-overlay.ui:456
-msgctxt "shortcut window"
-msgid "Go to previous page"
-msgstr "Menuju halaman sebelumnya"
-
-#: shell/help-overlay.ui:216 shell/help-overlay.ui:449
-msgctxt "shortcut window"
-msgid "Go to next page"
-msgstr "Menuju halaman selanjutnya"
-
-#: shell/help-overlay.ui:223
-msgctxt "shortcut window"
-msgid "Go to page number"
-msgstr "Menuju nomor halaman"
-
-#: shell/help-overlay.ui:230
-msgctxt "shortcut window"
-msgid "Go to previous page (fast)"
-msgstr "Pergi ke halaman sebelumnya (cepat)"
-
-#: shell/help-overlay.ui:237
-msgctxt "shortcut window"
-msgid "Go to next page (fast)"
-msgstr "Pergi ke halaman selanjutnya (cepat)"
-
-#: shell/help-overlay.ui:244
-msgctxt "shortcut window"
-msgid "Go to previous page visited"
-msgstr "Pergi ke halaman sebelumnya yang dikunjungi"
-
-#: shell/help-overlay.ui:251
-msgctxt "shortcut window"
-msgid "Go to next page visited"
-msgstr "Pergi ke halaman selanjutnya yang dikunjungi"
-
-#: shell/help-overlay.ui:258
-msgctxt "shortcut window"
-msgid "Go to the beginning/end of a page"
-msgstr "Menuju awal/akhir halaman"
-
-#: shell/help-overlay.ui:265
-msgctxt "shortcut window"
-msgid "Go to the beginning of the document"
-msgstr "Menuju awal dokumen"
-
-#: shell/help-overlay.ui:272
-msgctxt "shortcut window"
-msgid "Go to the end of the document"
-msgstr "Menuju akhir dokumen"
-
-#: shell/help-overlay.ui:281
-msgctxt "shortcut window"
-msgid "Document view and handling"
-msgstr "Tampilan dan penanganan dokumen"
-
-#: shell/help-overlay.ui:285
-msgctxt "shortcut window"
-msgid "Add bookmark"
-msgstr "Tambah markah"
-
-#: shell/help-overlay.ui:292
-msgctxt "shortcut window"
-msgid "Remove bookmark"
-msgstr "Buang markah"
-
-#: shell/help-overlay.ui:299
-msgctxt "shortcut window"
-msgid "Toggle night mode"
-msgstr "Jungkitkan mode malam"
-
-#: shell/help-overlay.ui:306
-msgctxt "shortcut window"
-msgid "Toggle continuous scrolling"
-msgstr "Jungkitkan gulir berkelanjutan"
-
-#: shell/help-overlay.ui:313
-msgctxt "shortcut window"
-msgid "Toggle dual page"
-msgstr "Jungkitkan layar ganda"
-
-#: shell/help-overlay.ui:320
-msgctxt "shortcut window"
-msgid "Toggle odd pages left"
-msgstr "Jungkitkan halaman ganjil ke kiri"
-
-#: shell/help-overlay.ui:327
-msgctxt "shortcut window"
-msgid "Document properties"
-msgstr "Properti dokumen"
-
-#: shell/help-overlay.ui:334
-msgctxt "shortcut window"
-msgid "Add a post-it like note"
-msgstr "Tambahkan post-it seperti catatan"
-
-#: shell/help-overlay.ui:341
-msgctxt "shortcut window"
-msgid "Highlight text"
-msgstr "Sorot teks"
-
-#: shell/help-overlay.ui:350
-msgctxt "shortcut window"
-msgid "Finding text"
-msgstr "Mencari teks"
-
-#: shell/help-overlay.ui:354
-msgctxt "shortcut window"
-msgid "Show the search bar"
-msgstr "Menampilkan bilah cari"
-
-#: shell/help-overlay.ui:361
-msgctxt "shortcut window"
-msgid "Go to the next search result"
-msgstr "Menuju pencarian selanjutnya"
-
-#: shell/help-overlay.ui:368
-msgctxt "shortcut window"
-msgid "Go to the previous search result"
-msgstr "Menuju pencarian sebelumnya"
-
-#: shell/help-overlay.ui:377
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Umum"
-
-#: shell/help-overlay.ui:381
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Tampilkan bantuan"
-
-#: shell/help-overlay.ui:388
-msgctxt "shortcut window"
-msgid "Toggle primary menu"
-msgstr "Jungkitkan menu primer"
-
-#: shell/help-overlay.ui:395
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Tombol Pintas"
-
-#: shell/help-overlay.ui:402
-msgctxt "shortcut window"
-msgid "Close window"
-msgstr "Tutup jendela"
-
-#: shell/help-overlay.ui:411
-msgctxt "shortcut window"
-msgid "Presentation mode"
-msgstr "Mode presentasi"
-
-#: shell/help-overlay.ui:415
-msgctxt "shortcut window"
-msgid "Toggle black screen"
-msgstr "Jungkitkan layar hitam"
-
-#: shell/help-overlay.ui:422
-msgctxt "shortcut window"
-msgid "Toggle white screen"
-msgstr "Jungkitkan layar putih"
-
-#: shell/help-overlay.ui:431
-msgctxt "shortcut window"
-msgid "Touchpad gestures"
-msgstr "Gestur papan sentuh"
-
-#: shell/main.c:64 shell/main.c:271
-msgid "GNOME Document Viewer"
-msgstr "Penampil Dokumen GNOME"
-
-#: shell/main.c:72
-msgid "Open a new window."
-msgstr "Buka jendela baru."
-
-#: shell/main.c:73
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Label halaman dari dokumen yang ingin ditampilkan."
 
-#: shell/main.c:73
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "HALAMAN"
 
-#: shell/main.c:74
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Nomor halaman dari dokumen yang ingin ditampilkan."
 
-#: shell/main.c:74
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "NOMOR"
 
-#: shell/main.c:75
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Tujuan yang dinamai untuk ditampilkan."
 
-#: shell/main.c:75
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "TUJUAN"
 
-#: shell/main.c:76
-msgid "Run evince in fullscreen mode"
-msgstr "Menjalankan evince dalam mode layar penuh"
+#: shell/src/application.rs:344
+msgid "Run papers in fullscreen mode."
+msgstr "Menjalankan papers dalam mode layar penuh."
 
-#: shell/main.c:77
-msgid "Run evince in presentation mode"
-msgstr "Menjalankan evince dalam mode presentasi"
+#: shell/src/application.rs:353
+msgid "Run papers in presentation mode."
+msgstr "Menjalankan papers dalam mode presentasi."
 
-#: shell/main.c:78
-msgid "Run evince as a previewer"
-msgstr "Menjalankan evince sebagai pemratinjau"
+#: shell/src/application.rs:362
+msgid "Show the version of the program."
+msgstr "Menampilkan versi program."
 
-#: shell/main.c:79
-msgid "The word or phrase to find in the document"
-msgstr "Kata atau frasa yang akan dicari dalam dokumen"
-
-#: shell/main.c:79
-msgid "STRING"
-msgstr "STRING"
-
-#: shell/main.c:83
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[BERKAS…]"
+
+#: shell/src/document_view.rs:299
+msgid "View Details"
+msgstr "Lihat Detail"
+
+#: shell/src/document_view.rs:696
+msgid ""
+"Document contains new or modified annotations and form fields that have been "
+"filled out."
+msgstr ""
+"Dokumen tidak mengandung anotasi dan ruas formulir yang telah diisi yang "
+"baru atau diubah."
+
+#: shell/src/document_view.rs:697
+msgid "Document contains form fields that have been filled out."
+msgstr "Dokumen mengandung ruas formulir yang telah diisi."
+
+#: shell/src/document_view.rs:698
+msgid "Document contains new or modified annotations."
+msgstr "Dokumen mengandung anotasi baru atau anotasi yang dimodifikasi."
+
+#: shell/src/document_view.rs:706
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr ""
+"Jika Anda tidak menyimpan salinan, perubahan akan hilang secara permanen."
+
+#: shell/src/document_view.rs:707
+msgid "Save Changes to a Copy?"
+msgstr "Simpan Perubahan ke Salinan?"
+
+#: shell/src/document_view.rs:716
+msgid "Close _Without Saving"
+msgstr "Tutup _Tanpa Menyimpan"
+
+#: shell/src/document_view.rs:718
+msgid "_Save a Copy"
+msgstr "Simpan _Salinan"
+
+#: shell/src/document_view/actions.rs:761
+msgid "Save Image"
+msgstr "Simpan Gambar"
+
+#: shell/src/document_view/actions.rs:797
+msgid "Couldn’t find appropriate format to save image"
+msgstr "Tidak dapat menemukan format yang cocok tepat menyimpan gambar"
+
+#: shell/src/document_view/actions.rs:820
+msgid "The image could not be saved."
+msgstr "Gambar tidak dapat disimpan."
+
+#: shell/src/document_view/actions.rs:921
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr "Mode navigasi caret sekarang diaktifkan, tekan F7 untuk menonaktifkan."
+
+#: shell/src/document_view/actions.rs:923
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+"Mode navigasi caret sekarang dinonaktifkan, tekan F7 untuk mengaktifkan."
+
+#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
+msgid "Unable to Open Attachment"
+msgstr "Tidak Bisa Membuka Lampiran"
+
+#: shell/src/document_view/actions.rs:1058
+msgid "The attachment could not be saved."
+msgstr "Lampiran tidak dapat disimpan."
+
+#: shell/src/document_view/io.rs:262
+msgid "Digital Signature is invalid!"
+msgstr "Tanda Tangan Digital tidak valid!"
+
+#: shell/src/document_view/io.rs:277
+msgid "The Document Contains No Pages"
+msgstr "Dokumen Tidak Memuat Halaman"
+
+#: shell/src/document_view/io.rs:279
+msgid "The Document Contains Only Empty Pages"
+msgstr "Dokumen Hanya Memuat Halaman Kosong"
+
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
+msgid "The file could not be saved as “{}”."
+msgstr "Berkas tidak dapat disimpan sebagai \"{}\"."
+
+#: shell/src/document_view/io.rs:406
+msgid "Save As…"
+msgstr "Simpan Sebagai…"
+
+#: shell/src/document_view/io.rs:482
+msgid "Draw a rectangle to insert a signature field"
+msgstr "Gambarlah sebuah persegi panjang untuk menyisipkan bidang tanda tangan"
+
+#: shell/src/document_view/io.rs:504
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"Ditandatangani secara digital oleh {}\n"
+"Tanggal: {}"
+
+#: shell/src/document_view/io.rs:520
+msgid "Certificate Required"
+msgstr "Diperlukan Sertifikat"
+
+#: shell/src/document_view/io.rs:523
+msgid "Select signing certificate"
+msgstr "Pilih sertifikat penandatanganan"
+
+#: shell/src/document_view/io.rs:524
+msgid "Select"
+msgstr "Pilih"
+
+#: shell/src/document_view/io.rs:597
+msgid "A certificate is required to sign this document"
+msgstr "Sertifikat diperlukan untuk menandatangani dokumen ini"
+
+#: shell/src/document_view/io.rs:666
+msgid "Save Signed File"
+msgstr "Simpan Berkas yang Ditandatangani"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Masukkan kata sandi untuk {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "_Log masuk"
+
+#: shell/src/document_view/print.rs:45
+msgid "Printing job “{}”"
+msgstr "Pekerjaan pencetakan \"{}\""
+
+#: shell/src/document_view/print.rs:78
+msgid "No pending jobs in queue"
+msgstr "Tidak ada pekerjaan yang tertunda dalam antrian"
+
+#: shell/src/document_view/print.rs:81
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} pekerjaan yang tertunda dalam antrian"
+
+#: shell/src/document_view/signals.rs:225
+msgid "Unable to open external link"
+msgstr "Tidak dapat membuka tautan eksternal"
+
+#: shell/src/document_view/signals.rs:253
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+"Peringatan keamanan: dokumen ini telah dicegah untuk membuka berkas \"{}\""
+
+#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/sidebar_annotations_row.rs:82
+msgid "Page {}"
+msgstr "Halaman {}"
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} dari {totalpages})"
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+msgid "of {}"
+msgstr "dari {}"
+
+#: shell/src/password_view.rs:145
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr ""
+"Dokumen \"{}\" terkunci dan memerlukan suatu kata sandi sebelum dapat dibuka"
+
+#: shell/src/properties_general.rs:77
+msgid "File"
+msgstr "Berkas"
+
+#: shell/src/properties_general.rs:89
+msgid "Folder"
+msgstr "Folder"
+
+#: shell/src/properties_general.rs:145
+msgid "Content"
+msgstr "Isi"
+
+#: shell/src/properties_general.rs:161
+msgid "Date &amp; Time"
+msgstr "Tanggal &amp; Waktu"
+
+#: shell/src/properties_signatures.rs:138
+#: shell/src/properties_signatures.rs:146
+msgid "Signed by"
+msgstr "Ditandatangani oleh"
+
+#: shell/src/properties_signatures.rs:187
+msgid "Signature is valid."
+msgstr "Tanda tangan valid."
+
+#: shell/src/properties_signatures.rs:190
+msgid "Signature is invalid."
+msgstr "Tanda tangan tidak valid."
+
+#: shell/src/properties_signatures.rs:194
+msgid "Document has been changed after signing."
+msgstr "Dokumen telah diubah setelah ditandatangani."
+
+#: shell/src/properties_signatures.rs:198
+msgid "Signature could not be decoded."
+msgstr "Tanda tangan tidak dapat diterjemahkan."
+
+#: shell/src/properties_signatures.rs:202
+msgid "Signature verification error."
+msgstr "Kesalahan verifikasi tanda tangan."
+
+#: shell/src/properties_signatures.rs:214
+msgid "Signed with a certificate issued by trusted issuer."
+msgstr ""
+"Ditandatangani dengan sertifikat yang dikeluarkan oleh penerbit tepercaya."
+
+#: shell/src/properties_signatures.rs:220
+msgid "Signed with a certificate issued by untrusted issuer."
+msgstr ""
+"Ditandatangani dengan sertifikat yang dikeluarkan oleh penerbit yang tidak "
+"terpercaya."
+
+#: shell/src/properties_signatures.rs:226
+msgid "Signed with a certificate issued by unknown issuer."
+msgstr ""
+"Ditandatangani dengan sertifikat yang dikeluarkan oleh penerbit yang tidak "
+"dikenal."
+
+#: shell/src/properties_signatures.rs:231
+msgid "Signed with revoked certificate."
+msgstr "Ditandatangani dengan sertifikat yang telah dicabut."
+
+#: shell/src/properties_signatures.rs:235
+msgid "Signed with expired certificate."
+msgstr "Ditandatangani dengan sertifikat yang sudah kedaluwarsa."
+
+#: shell/src/properties_signatures.rs:239
+msgid "Certificate verification error."
+msgstr "Kesalahan verifikasi sertifikat."
+
+#: shell/src/properties_signatures.rs:243
+msgid "Certificate has not been verified."
+msgstr "Sertifikat belum diverifikasi."
+
+#: shell/src/properties_signatures.rs:256
+msgid "Organization"
+msgstr "Organisasi"
+
+#: shell/src/properties_signatures.rs:265
+msgid "Date and Time"
+msgstr "Tanggal dan Waktu"
+
+#: shell/src/properties_signatures.rs:276
+msgid "Certificate Issuer"
+msgstr "Penerbit Sertifikat"
+
+#: shell/src/properties_signatures.rs:287
+msgid "Certificate Issuer's Email"
+msgstr "Surel Penerbit Sertifikat"
+
+#: shell/src/properties_signatures.rs:298
+msgid "Certificate Issuer's Organization"
+msgstr "Organisasi Penerbit Sertifikat"
+
+#: shell/src/properties_signatures.rs:309
+msgid "Certificate's Issuance Time"
+msgstr "Waktu Penerbitan Sertifikat"
+
+#: shell/src/properties_signatures.rs:321
+msgid "Certificate's Expiration Time"
+msgstr "Waktu Kedaluwarsa Sertifikat"
