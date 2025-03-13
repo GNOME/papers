@@ -19,7 +19,7 @@ typedef struct _CacheJobInfo {
 	GdkTexture *texture;
 
 	/* Device scale factor of target widget */
-	int device_scale;
+	double device_scale;
 
 	/* Selection data.
 	 * Selection_points are the coordinates encapsulated in selection.
@@ -240,10 +240,10 @@ pps_pixbuf_cache_set_max_size (PpsPixbufCache *pixbuf_cache,
 	pixbuf_cache->max_size = max_size;
 }
 
-static int
+static double
 get_device_scale (PpsPixbufCache *pixbuf_cache)
 {
-	return gtk_widget_get_scale_factor (pixbuf_cache->view);
+	return gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (pixbuf_cache->view)));
 }
 
 static void
@@ -316,7 +316,7 @@ check_job_size_and_unref (PpsPixbufCache *pixbuf_cache,
                           gfloat scale)
 {
 	gint width, height;
-	gint device_scale;
+	gdouble device_scale;
 
 	g_assert (job_info);
 
@@ -646,8 +646,8 @@ add_job (PpsPixbufCache *pixbuf_cache,
 	                                  page,
 	                                  rotation,
 	                                  scale * job_info->device_scale,
-	                                  width * job_info->device_scale,
-	                                  height * job_info->device_scale,
+	                                  ceil (width * job_info->device_scale),
+	                                  ceil (height * job_info->device_scale),
 	                                  annot_flags);
 
 	if (new_selection_surface_needed (pixbuf_cache, job_info, page, scale)) {
@@ -690,7 +690,7 @@ add_job_if_needed (PpsPixbufCache *pixbuf_cache,
                    PpsJobPriority priority,
                    PpsRenderAnnotsFlags annot_flags)
 {
-	gint device_scale = get_device_scale (pixbuf_cache);
+	gdouble device_scale = get_device_scale (pixbuf_cache);
 	gint width, height;
 
 	if (job_info->job)
@@ -1026,11 +1026,11 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 		pps_page = pps_document_get_page (pixbuf_cache->document, page);
 		_get_page_size_for_scale_and_rotation (pixbuf_cache->document,
 		                                       page,
-		                                       scale * job_info->device_scale,
+		                                       scale,
 		                                       0, &width, &height);
 
 		rc = pps_render_context_new (pps_page, 0, scale * job_info->device_scale, pps_pixbuf_cache_get_annot_flags (pixbuf_cache));
-		pps_render_context_set_target_size (rc, width, height);
+		pps_render_context_set_target_size (rc, ceil (width * job_info->device_scale), ceil (height * job_info->device_scale));
 		g_object_unref (pps_page);
 
 		get_accent_color (&base, &text);
