@@ -49,8 +49,6 @@ struct _PpsDocumentPrivate {
 };
 
 static guint64 _pps_document_get_size (const char *uri);
-static gchar *_pps_document_get_page_label (PpsDocument *document,
-                                            PpsPage *page);
 
 typedef struct _PpsDocumentPrivate PpsDocumentPrivate;
 
@@ -225,6 +223,7 @@ pps_document_doc_mutex_unlock (PpsDocument *document)
 static void
 pps_document_setup_cache (PpsDocument *document)
 {
+	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 	gboolean custom_page_labels = FALSE;
 	gint n_pages = pps_document_get_n_pages (document);
@@ -240,7 +239,7 @@ pps_document_setup_cache (PpsDocument *document)
 		gdouble page_width = 0;
 		gdouble page_height = 0;
 		PpsPageSize *page_size;
-		gchar *page_label;
+		gchar *page_label = NULL;
 
 		pps_document_get_page_size (document, i, &page_width, &page_height);
 
@@ -283,7 +282,11 @@ pps_document_setup_cache (PpsDocument *document)
 				priv->min_height = page_height;
 		}
 
-		page_label = _pps_document_get_page_label (document, page);
+		if (klass->get_page_label) {
+			g_mutex_lock (&priv->mutex);
+			page_label = klass->get_page_label (document, page);
+			g_mutex_unlock (&priv->mutex);
+		}
 		if (page_label) {
 			if (!priv->page_labels)
 				priv->page_labels = g_new0 (gchar *, n_pages + 1);
@@ -586,15 +589,6 @@ pps_document_get_page_size (PpsDocument *document,
 	}
 }
 
-static gchar *
-_pps_document_get_page_label (PpsDocument *document,
-                              PpsPage *page)
-{
-	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
-
-	return klass->get_page_label ? klass->get_page_label (document, page) : NULL;
-}
-
 gchar *
 pps_document_get_page_label (PpsDocument *document,
                              gint page_index)
@@ -604,18 +598,7 @@ pps_document_get_page_label (PpsDocument *document,
 	priv = GET_PRIVATE (document);
 	g_return_val_if_fail (0 <= page_index && page_index < pps_document_get_n_pages (document), NULL);
 
-	if (!priv->cache_loaded) {
-		PpsPage *page;
-		gchar *page_label;
-
-		g_mutex_lock (&priv->mutex);
-		page = pps_document_get_page (document, page_index);
-		page_label = _pps_document_get_page_label (document, page);
-		g_object_unref (page);
-		g_mutex_unlock (&priv->mutex);
-
-		return page_label ? page_label : g_strdup_printf ("%d", page_index + 1);
-	}
+	pps_document_ensure_cache (document);
 
 	return (priv->page_labels && priv->page_labels[page_index]) ? g_strdup (priv->page_labels[page_index]) : g_strdup_printf ("%d", page_index + 1);
 }
