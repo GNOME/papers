@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-13 04:46+0000\n"
-"PO-Revision-Date: 2025-02-16 10:52+0200\n"
+"POT-Creation-Date: 2025-03-13 11:46+0000\n"
+"PO-Revision-Date: 2025-03-15 20:08+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Paperit"
@@ -168,29 +168,29 @@ msgstr "Tulostuksen esikatselu"
 msgid "Preview before printing"
 msgstr "Esikatsele ennen tulostamista"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Tiedosto on viallinen"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Arkisto on salattu"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Arkistossa ei ole tuettuja kuvia"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Arkistossa ei ole tiedostoja"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Ei ole sarjakuvakirjan MIME-tyyppi: %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -198,7 +198,7 @@ msgstr ""
 "libarchive ei sisällä tukea tämän sarjakuvan pakkaukselle, ole yhteydessä "
 "jakeluusi"
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Ei saatu arkiston paikallista polkua"
 
@@ -242,52 +242,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Lisää tuen PDF-asiakirjojen lukemiselle"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
 msgid "Yes"
 msgstr "Kyllä"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
 #: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
 msgid "No"
 msgstr "Ei"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Tyyppi 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Tyyppi 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Tyyppi 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Tyyppi 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Tyyppi 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Tuntematon fonttityyppi"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -298,11 +298,11 @@ msgstr ""
 "eivät ole samat kuin pdf:ää luodessa valitut, asiakirjan renderöinti ei "
 "välttämättä onnistu kunnolla."
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Kaikki fontit ovat joko vakioita tai upotettuja."
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Ei nimeä"
 
@@ -310,20 +310,20 @@ msgstr "Ei nimeä"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
 #: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
 msgid "None"
 msgstr "Ei mitään"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Upotettu osajoukko"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Upotettu"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Ei upotettu"
 
@@ -332,7 +332,7 @@ msgstr "Ei upotettu"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Yksi 14:stä vakiofontista)"
 
@@ -341,7 +341,7 @@ msgstr " (Yksi 14:stä vakiofontista)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ei yksi 14:stä vakiofontista)"
 
@@ -355,7 +355,7 @@ msgstr " (Ei yksi 14:stä vakiofontista)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -379,7 +379,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -423,17 +423,17 @@ msgstr "Liitettä “%s” ei voi avata"
 msgid "File type %s (%s) is not supported"
 msgstr "Tiedostotyyppi %s (%s) ei ole tuettu"
 
-#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "Tuntematon MIME-tyyppi"
 
-#: libdocument/pps-document-factory.c:500
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Kaikki asiakirjat"
 
-#: libdocument/pps-document-factory.c:528
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
@@ -480,8 +480,8 @@ msgstr "Tilapäishakemiston luominen epäonnistui: %s"
 msgid "This work is in the Public Domain"
 msgstr "Tämä teos on vapaasti käytettävissä (public domain)"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1001
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1041
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Tallenna liite"
@@ -492,26 +492,26 @@ msgstr[1] "Tallenna liite"
 msgid "Page %s"
 msgstr "Sivu %s"
 
-#: libview/pps-annotation-window.c:270
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Muokkaa huomautusta"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Sivun %d renderöinti epäonnistui: %s"
 
-#: libview/pps-jobs.c:443
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Sivun %d renderöinti epäonnistui"
 
-#: libview/pps-jobs.c:661
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Pikkukuvan luominen sivusta %d epäonnistui"
 
-#: libview/pps-jobs.c:1646
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Sivun %d tulostus epäonnistui: %s"
@@ -551,8 +551,8 @@ msgstr "Tulostuksen sivualuevalinta ei sisällä yhtään sivua"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Sulje"
 
@@ -635,71 +635,71 @@ msgstr "Kun käytössä, jokaisen sivun ympärille piirretään reunus."
 msgid "Page Handling"
 msgstr "Sivunkäsittely"
 
-#: libview/pps-view-accessible.c:42
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Vieritä ylös"
 
-#: libview/pps-view-accessible.c:43
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Vieritä alas"
 
-#: libview/pps-view-accessible.c:48
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Vieritä näkymää ylös"
 
-#: libview/pps-view-accessible.c:49
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Vieritä näkymää alas"
 
-#: libview/pps-view-accessible.c:126
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Asiakirjan näyttö"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2097
 msgid "Go to first page"
 msgstr "Siirry ensimmäiselle sivulle"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2099
 msgid "Go to previous page"
 msgstr "Siirry edelliselle sivulle"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2101
 msgid "Go to next page"
 msgstr "Siirry seuraavalle sivulle"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2103
 msgid "Go to last page"
 msgstr "Siirry viimeiselle sivulle"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2105
 msgid "Go to page"
 msgstr "Siirry sivulle"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2107
 msgid "Find"
 msgstr "Etsi"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2136
 #, c-format
 msgid "Go to page %s"
 msgstr "Siirry sivulle %s"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2142
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Siirry kohtaan %s tiedostossa ”%s”"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2145
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Siirry tiedostoon ”%s”"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Launch %s"
 msgstr "Käynnistä %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Reset form"
 msgstr "Tyhjennä lomake"
@@ -784,7 +784,7 @@ msgid "Next Page"
 msgstr "Seuraava sivu"
 
 #: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:221
+#: shell/resources/pps-document-view.ui:222
 msgid "Page Count"
 msgstr "Sivumäärä"
 
@@ -797,7 +797,7 @@ msgid "Print This Document"
 msgstr "Tulosta tämä asiakirja"
 
 #: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:304
+#: shell/resources/pps-document-view.ui:305
 msgid "Zoom Out"
 msgstr "Loitonna"
 
@@ -806,7 +806,7 @@ msgid "Normal Size"
 msgstr "Tavallinen koko"
 
 #: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:291
+#: shell/resources/pps-document-view.ui:292
 msgid "Zoom In"
 msgstr "Lähennä"
 
@@ -824,70 +824,70 @@ msgstr "Tuntematon"
 msgid "Document Properties"
 msgstr "Asiakirjan ominaisuudet"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
 msgid "Title"
 msgstr "Otsikko"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Sijainti"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
 msgid "Subject"
 msgstr "Aihe"
 
-#: nautilus/pps-nautilus-extension.h:63
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
 #: shell/src/properties_general.rs:149
 msgid "Author"
 msgstr "Tekijä"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
 msgid "Keywords"
 msgstr "Avainsanat"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
 msgid "Producer"
 msgstr "Tuottaja"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
 msgid "Creator"
 msgstr "Luoja"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
 msgid "Created"
 msgstr "Luotu"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
 msgid "Modified"
 msgstr "Muokattu"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
 msgid "Number of Pages"
 msgstr "Sivujen määrä"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
 msgid "Optimized"
 msgstr "Optimoitu"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
 #: shell/src/properties_general.rs:175
 msgid "Format"
 msgstr "Muoto"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
 msgid "Security"
 msgstr "Turvallisuus"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
 msgid "Contains Javascript"
 msgstr "Sisältää Javascript-koodia"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
 msgid "Paper Size"
 msgstr "Paperin koko"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
 msgid "Size"
 msgstr "Koko"
 
@@ -981,12 +981,12 @@ msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Kierrä sivua 90 astetta myötäpäivään"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Lähennä"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Loitonna"
@@ -1021,182 +1021,182 @@ msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Asiakirjan sisällä liikkuminen"
 
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Sivulla liikkuminen"
 
-#: shell/resources/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Siirry ylös/alas useita rivejä samanaikaisesti sivulla"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Edellinen sivu"
 
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Seuraava sivu"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Siirry sivulle numero"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Siirry edelliselle sivulle (nopea)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Siirry seuraavalle sivulle (nopea)"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Edellinen vierailtu sivu"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Seuraava vierailtu sivu"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Siirry sivun alkuun/loppuun"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Siirry asiakirjan alkuun"
 
-#: shell/resources/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Siirry asiakirjan loppuun"
 
-#: shell/resources/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:234
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Asiakirjan näkymä ja käsittely"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:237
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Lisää kirjanmerkki"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Poista kirjanmerkki"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Yötila"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Jatkuva vieritys"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Kaksoissivu"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Parittomat sivut vasemmalla"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Asiakirjan ominaisuudet"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Lisää tekstihuomautus"
 
-#: shell/resources/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Korosta teksti"
 
-#: shell/resources/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:293
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Tekstin etsiminen"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Etsi"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Etsi seuraava"
 
-#: shell/resources/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Etsi edellinen"
 
-#: shell/resources/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Yleiset"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:319
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Ohje"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Valikko"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Pikanäppäimet"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
-#: shell/resources/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
-#: shell/resources/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Esitystila"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Musta näyttö"
 
-#: shell/resources/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Valkoinen näyttö"
 
-#: shell/resources/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Kosketuslevyn eleet"
@@ -1263,6 +1263,7 @@ msgid "Markup Type"
 msgstr "Merkkaustyyppi"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
 msgstr "Korosta"
 
@@ -1271,10 +1272,12 @@ msgid "Strike out"
 msgstr "Yliviivaa"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Alleviivaa"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
 msgstr "Kiemurtelevasti"
 
@@ -1311,31 +1314,31 @@ msgstr "Liitteet"
 msgid "Layers"
 msgstr "Tasot"
 
-#: shell/resources/pps-document-view.ui:208
+#: shell/resources/pps-document-view.ui:209
 msgid "Toggle Sidebar"
 msgstr "Sivupalkki päälle/pois"
 
-#: shell/resources/pps-document-view.ui:214
+#: shell/resources/pps-document-view.ui:215
 msgid "Document Menu"
 msgstr "Asiakirjavalikko"
 
-#: shell/resources/pps-document-view.ui:237 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
 msgid "Document has been digitally signed."
 msgstr "Asiakirja on allekirjoitettu digitaalisesti."
 
-#: shell/resources/pps-document-view.ui:238
+#: shell/resources/pps-document-view.ui:239
 msgid "View Signature…"
 msgstr "Näytä allekirjoitus…"
 
-#: shell/resources/pps-document-view.ui:271
+#: shell/resources/pps-document-view.ui:272
 msgid "Fit Automatically"
 msgstr "Sovita automaattisesti"
 
-#: shell/resources/pps-document-view.ui:563
+#: shell/resources/pps-document-view.ui:565
 msgid "Selection too Small"
 msgstr "Liian pieni valinta"
 
-#: shell/resources/pps-document-view.ui:564
+#: shell/resources/pps-document-view.ui:566
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1345,19 +1348,19 @@ msgstr ""
 "haluat luoda paremmin luettavissa olevan allekirjoituksen, napsauta \"Aloita "
 "alusta\" ja piirrä suurempi suorakulmio."
 
-#: shell/resources/pps-document-view.ui:569
+#: shell/resources/pps-document-view.ui:571
 msgid "Start _Over"
 msgstr "_Aloita alusta"
 
-#: shell/resources/pps-document-view.ui:570
+#: shell/resources/pps-document-view.ui:572
 msgid "_Sign"
 msgstr "_Allekirjoita"
 
-#: shell/resources/pps-document-view.ui:576
+#: shell/resources/pps-document-view.ui:578
 msgid "Abort Printing?"
 msgstr "Perutaanko tulostus?"
 
-#: shell/resources/pps-document-view.ui:577
+#: shell/resources/pps-document-view.ui:579
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1365,162 +1368,167 @@ msgstr ""
 "Aktiivisia tulostustöitä on vähintään yksi. Jos suljet ikkunat, odottavia "
 "tulostustöitä ei tulosteta."
 
-#: shell/resources/pps-document-view.ui:580
+#: shell/resources/pps-document-view.ui:582
 msgid "Abort _Print and Close"
 msgstr "Peru _tulostus ja sulje"
 
-#: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.ui:584
 msgid "Close _After Printing"
 msgstr "Sulje tulostuksen _jälkeen"
 
-#: shell/resources/pps-document-view.ui:596
+#: shell/resources/pps-document-view.ui:598
 msgid "Open…"
 msgstr "Avaa…"
 
-#: shell/resources/pps-document-view.ui:602
+#: shell/resources/pps-document-view.ui:604
 msgid "Ni_ght Mode"
 msgstr "_Yötila"
 
-#: shell/resources/pps-document-view.ui:608 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: shell/resources/pps-document-view.ui:612 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
 msgid "_Help"
 msgstr "O_hje"
 
-#: shell/resources/pps-document-view.ui:616 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
 msgid "_About Papers"
 msgstr "_Tietoja - Paperit"
 
-#: shell/resources/pps-document-view.ui:624
+#: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
 msgstr "_Tulosta…"
 
-#: shell/resources/pps-document-view.ui:628
+#: shell/resources/pps-document-view.ui:630
 msgid "Fullscreen"
 msgstr "Koko näyttö"
 
-#: shell/resources/pps-document-view.ui:632
+#: shell/resources/pps-document-view.ui:634
 msgid "Present as Slideshow"
 msgstr "Esitä diaesityksenä"
 
-#: shell/resources/pps-document-view.ui:638
+#: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
 msgstr "Allekirjoita d_igitaalisesti…"
 
-#: shell/resources/pps-document-view.ui:644
+#: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
 msgstr "Avaa _kopio"
 
-#: shell/resources/pps-document-view.ui:648
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Avaa sovelluksella…"
 
-#: shell/resources/pps-document-view.ui:652
+#: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
 msgstr "_Tallenna nimellä…"
 
-#: shell/resources/pps-document-view.ui:658
+#: shell/resources/pps-document-view.ui:660
 msgid "_Continuous"
 msgstr "_Jatkuva"
 
-#: shell/resources/pps-document-view.ui:662
+#: shell/resources/pps-document-view.ui:664
 msgid "_Dual"
 msgstr "_Aukeama"
 
-#: shell/resources/pps-document-view.ui:666
+#: shell/resources/pps-document-view.ui:668
 msgid "_Odd Pages Left"
 msgstr "_Parittomat sivut vasemmalla"
 
-#: shell/resources/pps-document-view.ui:670
+#: shell/resources/pps-document-view.ui:672
 msgid "Right to Left Document"
 msgstr "Oikealta vasemmalle -asiakirja"
 
-#: shell/resources/pps-document-view.ui:676
+#: shell/resources/pps-document-view.ui:678
 msgid "Ro_tate ⤵"
 msgstr "K_ierrä ⤵"
 
-#: shell/resources/pps-document-view.ui:682
+#: shell/resources/pps-document-view.ui:684
 msgid "Document Prop_erties"
 msgstr "Asiakirjan _ominaisuudet"
 
-#: shell/resources/pps-document-view.ui:787
+#: shell/resources/pps-document-view.ui:735
+msgid "Strikethrough"
+msgstr "Yliviivaus"
+
+#: shell/resources/pps-document-view.ui:839
 msgid "_Open Link"
 msgstr "_Avaa linkki"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.ui:844
 msgid "_Copy Link Address"
 msgstr "_Kopioi linkin osoite"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.ui:849
 msgid "_Go To"
 msgstr "_Siirry"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.ui:854
 msgid "Open in New _Window"
 msgstr "Avaa uudessa _ikkunassa"
 
-#: shell/resources/pps-document-view.ui:809
+#: shell/resources/pps-document-view.ui:861
 msgid "_Copy"
 msgstr "_Kopioi"
 
-#: shell/resources/pps-document-view.ui:813
+#: shell/resources/pps-document-view.ui:865
 msgid "Select _All"
 msgstr "Valitse k_aikki"
 
-#: shell/resources/pps-document-view.ui:819
+#: shell/resources/pps-document-view.ui:871
 msgid "_Save Image As…"
 msgstr "_Tallenna kuva nimellä…"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.ui:876
 msgid "Copy _Image"
 msgstr "Kopioi _kuva"
 
-#: shell/resources/pps-document-view.ui:831
+#: shell/resources/pps-document-view.ui:883
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Avaa liite"
 
-#: shell/resources/pps-document-view.ui:836
+#: shell/resources/pps-document-view.ui:888
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Tallenna liite nimellä…"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.ui:896
 msgid "Annotation _Properties…"
 msgstr "_Huomautuksen ominaisuudet…"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.ui:901
 msgid "R_emove Annotation"
 msgstr "_Poista huomautus"
 
-#: shell/resources/pps-document-view.ui:856
+#: shell/resources/pps-document-view.ui:908
 msgid "_Add Text Annotation"
 msgstr "Lisää _tekstihuomautus"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.ui:913
 msgid "_Highlight Selected Text"
 msgstr "_Korosta valittu teksti"
 
-#: shell/resources/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.ui:64
 msgid "No Results Found"
 msgstr "Tuloksia ei löytynyt"
 
-#: shell/resources/pps-find-sidebar.ui:71
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
 msgstr "Kokeile eri hakuehtoja"
 
-#: shell/resources/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
 msgstr "Suorita haku"
 
-#: shell/resources/pps-find-sidebar.ui:86
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
 msgstr "Hakutulokset ilmestyvät tähän"
 
@@ -1534,7 +1542,7 @@ msgstr "Pe_ru"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "Salasana vaaditaan"
 
@@ -1673,11 +1681,11 @@ msgstr "Asiakirjaa ei voitu avata"
 msgid "_Open Other File…"
 msgstr "_Avaa toinen tiedosto…"
 
-#: shell/src/application.rs:202
+#: shell/src/application.rs:212
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 Papers-kehittäjät"
 
-#: shell/src/application.rs:203
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos, 2012-2025\n"
@@ -1692,43 +1700,43 @@ msgstr ""
 "  Jussi Aalto https://launchpad.net/~jtaalto-deactivatedaccount\n"
 "  Ville-Pekka Vainio https://launchpad.net/~vpvainio"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Näytettävän asiakirjan sivun nimi."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "SIVU"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Näytettävän asiakirjan sivunumero."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Näytettävän kohteen nimi."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "KOHDE"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:344
 msgid "Run papers in fullscreen mode."
 msgstr "Suorita papers koko näytön tilassa."
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:353
 msgid "Run papers in presentation mode."
 msgstr "Suorita papers esitystilassa."
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr "Näytä ohjelman versio."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[TIEDOSTO…]"
 
@@ -1736,7 +1744,7 @@ msgstr "[TIEDOSTO…]"
 msgid "View Details"
 msgstr "Näytä tiedot"
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:696
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1744,59 +1752,59 @@ msgstr ""
 "Asiakirja sisältää uusia tai muokattuja huomautuksia sekä täytettyjä "
 "lomakekenttiä."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:697
 msgid "Document contains form fields that have been filled out."
 msgstr "Asiakirja sisältää täytettyjä lomakekenttiä."
 
-#: shell/src/document_view.rs:699
+#: shell/src/document_view.rs:698
 msgid "Document contains new or modified annotations."
 msgstr "Asiakirja sisältää uusia tai muokattuja huomautuksia."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:706
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Jos et tallenna kopiota, muutokset häviävät pysyvästi."
 
-#: shell/src/document_view.rs:708
+#: shell/src/document_view.rs:707
 msgid "Save Changes to a Copy?"
 msgstr "Tallennetaanko muutokset kopioon?"
 
-#: shell/src/document_view.rs:717
+#: shell/src/document_view.rs:716
 msgid "Close _Without Saving"
 msgstr "Sulje _tallentamatta"
 
-#: shell/src/document_view.rs:719
+#: shell/src/document_view.rs:718
 msgid "_Save a Copy"
 msgstr "_Tallenna kopio"
 
-#: shell/src/document_view/actions.rs:741
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Tallenna kuva"
 
-#: shell/src/document_view/actions.rs:777
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Sopivaa tallennusmuotoa kuvalle ei löytynyt"
 
-#: shell/src/document_view/actions.rs:800
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "Kuvaa ei voi tallentaa."
 
-#: shell/src/document_view/actions.rs:903
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Liikkuminen kohdistimella -tila on nyt käytössä. Paina F7 poistaaksesi "
 "käytöstä."
 
-#: shell/src/document_view/actions.rs:905
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Liikkuminen kohdistimella -tila on nyt pois käytöstä. Paina F7 ottaaksesi "
 "käyttöön."
 
-#: shell/src/document_view/actions.rs:985 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Liitettä ei voi avata"
 
-#: shell/src/document_view/actions.rs:1018
+#: shell/src/document_view/actions.rs:1058
 msgid "The attachment could not be saved."
 msgstr "Liitettä ei voi tallentaa."
 
@@ -1812,19 +1820,19 @@ msgstr "Asiakirja ei sisällä sivuja"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Asiakirja sisältää vain tyhjiä sivuja"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "Tiedostoa ei voitu tallentaa nimellä “{}”."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "Tallenna nimellä…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Piirrä suorakulmio lisätäksesi allekirjoituskentän"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1832,25 +1840,33 @@ msgstr ""
 "Digitaalisesti allekirjoittanut {}\n"
 "Päiväys: {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "Varmenne vaaditaan"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "Valitse allekirjoitusvarmenne"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "Valitse"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "Tämän asiakirjan allekirjoitus vaatii varmenteen"
 
-#: shell/src/document_view/io.rs:656
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "Tallenna allekirjoitettu tiedosto"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Anna salasana kohteelle {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "_Kirjaudu"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
@@ -2063,13 +2079,6 @@ msgstr "Varmenteen vanhenemisaika"
 
 #~ msgid "File Saved"
 #~ msgstr "Tiedosto tallennettu"
-
-#, c-format
-#~ msgid "Please enter password for %s"
-#~ msgstr "Syötä salasana kohteelle ”%s”"
-
-#~ msgid "_Login"
-#~ msgstr "_Kirjaudu"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Kirjanmerkit"
