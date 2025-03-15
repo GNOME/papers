@@ -101,7 +101,6 @@ startup_cb (GApplication *application,
 		}
 
 		pps_job_load_take_fd (job, input_fd, input_mime_type);
-		pps_job_load_set_load_flags (job, PPS_DOCUMENT_LOAD_FLAG_NO_CACHE);
 
 		input_fd = -1;
 	} else {
