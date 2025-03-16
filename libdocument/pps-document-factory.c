@@ -285,16 +285,16 @@ pps_document_factory_get_document_full (const char *uri,
 
 	if (document != NULL) {
 		uri_unc = pps_file_uncompress (uri, compression, &err);
-		if (uri_unc) {
-			g_object_set_data_full (G_OBJECT (document),
-			                        "uri-uncompressed",
-			                        uri_unc,
-			                        (GDestroyNotify) free_uncompressed_uri);
-		} else if (err != NULL) {
+		if (err != NULL) {
 			/* Error uncompressing file */
 			g_propagate_error (error, err);
 			return NULL;
 		}
+		if (uri_unc)
+			g_object_set_data_full (G_OBJECT (document),
+			                        "uri-uncompressed",
+			                        uri_unc,
+			                        (GDestroyNotify) free_uncompressed_uri);
 
 		result = pps_document_load_full (document, uri_unc ? uri_unc : uri, flags, &err);
 		if (result == FALSE) {
@@ -315,37 +315,36 @@ pps_document_factory_get_document_full (const char *uri,
 	uri_unc = NULL;
 
 	document = new_document_for_uri (uri, FALSE, &compression, &err);
-	if (document == NULL) {
-		g_assert (err != NULL);
-		g_propagate_error (error, err);
-		return NULL;
-	}
-
-	uri_unc = pps_file_uncompress (uri, compression, &err);
-	if (uri_unc) {
-		g_object_set_data_full (G_OBJECT (document),
-		                        "uri-uncompressed",
-		                        uri_unc,
-		                        (GDestroyNotify) free_uncompressed_uri);
-	} else if (err != NULL) {
-		/* Error uncompressing file */
-		g_propagate_error (error, err);
-		return NULL;
-	}
-
-	result = pps_document_load_full (document, uri_unc ? uri_unc : uri,
-	                                 PPS_DOCUMENT_LOAD_FLAG_NONE, &err);
-	if (result == FALSE) {
-		g_assert (err != NULL);
-		if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED)) {
+	if (document != NULL) {
+		uri_unc = pps_file_uncompress (uri, compression, &err);
+		if (err != NULL) {
+			/* Error uncompressing file */
 			g_propagate_error (error, err);
+			return NULL;
+		}
+		if (uri_unc)
+			g_object_set_data_full (G_OBJECT (document),
+						"uri-uncompressed",
+						uri_unc,
+						(GDestroyNotify) free_uncompressed_uri);
+
+		result = pps_document_load_full (document, uri_unc ? uri_unc : uri,
+						 flags, &err);
+		if (result == FALSE) {
+			g_assert (err);
+			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
+			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
+				g_propagate_error (error, err);
+				return g_steal_pointer (&document);
+			}
+		} else {
 			return g_steal_pointer (&document);
 		}
-
-		g_propagate_error (error, err);
 	}
 
-	return g_steal_pointer (&document);
+	g_assert (err != NULL);
+	g_propagate_error (error, err);
+	return NULL;
 }
 
 /**
