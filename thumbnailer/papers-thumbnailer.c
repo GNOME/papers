@@ -168,7 +168,7 @@ papers_thumbnail_pngenc_get (PpsDocument *document, const char *thumbnail, int s
 	g_autoptr (GdkPixbuf) pixbuf = NULL;
 	g_autoptr (PpsPage) page = pps_document_get_page (document, 0);
 
-	pps_document_get_page_size (document, 0, &width, &height);
+	PPS_DOCUMENT_GET_CLASS (document)->get_page_size (document, page, &width, &height);
 
 	rc = pps_render_context_new (page, 0, size / MAX (height, width), PPS_RENDER_ANNOTS_ALL);
 	pixbuf = pps_document_get_thumbnail (document, rc);
