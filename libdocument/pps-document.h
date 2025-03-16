@@ -59,7 +59,6 @@ struct _PpsDocumentClass {
 	                  GError **error);
 	gboolean (*load_fd) (PpsDocument *document,
 	                     int fd,
-	                     PpsDocumentLoadFlags flags,
 	                     GError **error);
 	gboolean (*save) (PpsDocument *document,
 	                  const char *uri,

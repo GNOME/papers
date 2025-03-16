@@ -482,7 +482,7 @@ pps_document_load_fd (PpsDocument *document,
 		return FALSE;
 	}
 
-	if (!klass->load_fd (document, fd, flags, error))
+	if (!klass->load_fd (document, fd, error))
 		return FALSE;
 
 	if (!(flags & PPS_DOCUMENT_LOAD_FLAG_NO_CACHE))

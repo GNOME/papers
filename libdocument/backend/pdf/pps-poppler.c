@@ -298,7 +298,6 @@ pdf_document_load (PpsDocument *document,
 static gboolean
 pdf_document_load_fd (PpsDocument *document,
                       int fd,
-                      PpsDocumentLoadFlags flags,
                       GError **error)
 {
 	GError *err = NULL;
