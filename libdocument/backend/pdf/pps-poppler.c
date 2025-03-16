@@ -296,54 +296,6 @@ pdf_document_load (PpsDocument *document,
 }
 
 static gboolean
-pdf_document_load_stream (PpsDocument *document,
-                          GInputStream *stream,
-                          PpsDocumentLoadFlags flags,
-                          GCancellable *cancellable,
-                          GError **error)
-{
-	GError *err = NULL;
-	PdfDocument *self = PDF_DOCUMENT (document);
-
-	self->document =
-	    poppler_document_new_from_stream (stream, -1,
-	                                      self->password,
-	                                      cancellable,
-	                                      &err);
-
-	if (self->document == NULL) {
-		convert_error (err, error);
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-static gboolean
-pdf_document_load_gfile (PpsDocument *document,
-                         GFile *file,
-                         PpsDocumentLoadFlags flags,
-                         GCancellable *cancellable,
-                         GError **error)
-{
-	GError *err = NULL;
-	PdfDocument *self = PDF_DOCUMENT (document);
-
-	self->document =
-	    poppler_document_new_from_gfile (file,
-	                                     self->password,
-	                                     cancellable,
-	                                     &err);
-
-	if (self->document == NULL) {
-		convert_error (err, error);
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
-static gboolean
 pdf_document_load_fd (PpsDocument *document,
                       int fd,
                       PpsDocumentLoadFlags flags,
@@ -793,8 +745,6 @@ pdf_document_class_init (PdfDocumentClass *klass)
 
 	pps_document_class->save = pdf_document_save;
 	pps_document_class->load = pdf_document_load;
-	pps_document_class->load_stream = pdf_document_load_stream;
-	pps_document_class->load_gfile = pdf_document_load_gfile;
 	pps_document_class->get_n_pages = pdf_document_get_n_pages;
 	pps_document_class->get_page = pdf_document_get_page;
 	pps_document_class->get_page_size = pdf_document_get_page_size;

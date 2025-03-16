@@ -57,6 +57,10 @@ struct _PpsDocumentClass {
 	gboolean (*load) (PpsDocument *document,
 	                  const char *uri,
 	                  GError **error);
+	gboolean (*load_fd) (PpsDocument *document,
+	                     int fd,
+	                     PpsDocumentLoadFlags flags,
+	                     GError **error);
 	gboolean (*save) (PpsDocument *document,
 	                  const char *uri,
 	                  GError **error);
@@ -73,27 +77,11 @@ struct _PpsDocumentClass {
 	                            PpsRenderContext *rc);
 	GdkPixbuf *(*get_thumbnail) (PpsDocument *document,
 	                             PpsRenderContext *rc);
+	cairo_surface_t *(*get_thumbnail_surface) (PpsDocument *document,
+	                                           PpsRenderContext *rc);
 	PpsDocumentInfo *(*get_info) (PpsDocument *document);
 	gboolean (*get_backend_info) (PpsDocument *document,
 	                              PpsDocumentBackendInfo *info);
-
-	/* GIO streams */
-	gboolean (*load_stream) (PpsDocument *document,
-	                         GInputStream *stream,
-	                         PpsDocumentLoadFlags flags,
-	                         GCancellable *cancellable,
-	                         GError **error);
-	gboolean (*load_gfile) (PpsDocument *document,
-	                        GFile *file,
-	                        PpsDocumentLoadFlags flags,
-	                        GCancellable *cancellable,
-	                        GError **error);
-	cairo_surface_t *(*get_thumbnail_surface) (PpsDocument *document,
-	                                           PpsRenderContext *rc);
-	gboolean (*load_fd) (PpsDocument *document,
-	                     int fd,
-	                     PpsDocumentLoadFlags flags,
-	                     GError **error);
 };
 
 PPS_PUBLIC
