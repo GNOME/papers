@@ -187,7 +187,7 @@ new_document_for_uri (const char *uri,
                       GError **error)
 {
 	PpsDocument *document = NULL;
-	gchar *mime_type = NULL;
+	g_autofree gchar *mime_type;
 
 	*compression = PPS_COMPRESSION_NONE;
 
@@ -200,8 +200,6 @@ new_document_for_uri (const char *uri,
 		return NULL;
 
 	*compression = get_compression_from_mime_type (mime_type);
-
-	g_free (mime_type);
 
 	return document;
 }
@@ -274,7 +272,7 @@ pps_document_factory_get_document_full (const char *uri,
                                         PpsDocumentLoadFlags flags,
                                         GError **error)
 {
-	PpsDocument *document;
+	g_autoptr (PpsDocument) document;
 	int result;
 	PpsCompressionType compression;
 	gchar *uri_unc = NULL;
@@ -294,7 +292,6 @@ pps_document_factory_get_document_full (const char *uri,
 			                        (GDestroyNotify) free_uncompressed_uri);
 		} else if (err != NULL) {
 			/* Error uncompressing file */
-			g_object_unref (document);
 			g_propagate_error (error, err);
 			return NULL;
 		}
@@ -306,14 +303,12 @@ pps_document_factory_get_document_full (const char *uri,
 			    (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
 			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT))) {
 				g_propagate_error (error, err);
-				return document;
+				return g_steal_pointer (&document);
 			}
 			/* else fall through to slow mime code section below */
 		} else {
-			return document;
+			return g_steal_pointer (&document);
 		}
-
-		g_clear_object (&document);
 	}
 
 	/* Try again with slow mime detection */
@@ -336,8 +331,6 @@ pps_document_factory_get_document_full (const char *uri,
 	} else if (err != NULL) {
 		/* Error uncompressing file */
 		g_propagate_error (error, err);
-
-		g_object_unref (document);
 		return NULL;
 	}
 
@@ -354,14 +347,13 @@ pps_document_factory_get_document_full (const char *uri,
 			                     _ ("Unknown MIME Type"));
 		} else if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED)) {
 			g_propagate_error (error, err);
-			return document;
+			return g_steal_pointer (&document);
 		}
 
-		g_clear_object (&document);
 		g_propagate_error (error, err);
 	}
 
-	return document;
+	return g_steal_pointer (&document);
 }
 
 /**
@@ -416,7 +408,7 @@ pps_document_factory_get_document_for_fd (int fd,
                                           PpsDocumentLoadFlags flags,
                                           GError **error)
 {
-	PpsDocument *document;
+	g_autoptr (PpsDocument) document = NULL;
 
 	g_return_val_if_fail (fd != -1, NULL);
 	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
@@ -436,11 +428,10 @@ pps_document_factory_get_document_for_fd (int fd,
 
 	if (!pps_document_load_fd (document, fd, flags, error)) {
 		/* fd is now consumed */
-		g_object_unref (document);
 		return NULL;
 	}
 
-	return document;
+	return g_steal_pointer (&document);
 }
 
 static void
