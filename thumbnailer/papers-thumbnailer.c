@@ -134,9 +134,7 @@ papers_thumbnailer_get_document (GFile *file)
 
 	document = pps_document_factory_get_document (uri, &error);
 	if (document != NULL)
-		pps_document_load_full (document, uri,
-		                        PPS_DOCUMENT_LOAD_FLAG_NO_CACHE,
-		                        &error);
+		pps_document_load (document, uri, &error);
 
 	if (tmp_file) {
 		if (document) {

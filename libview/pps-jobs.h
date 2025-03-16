@@ -294,9 +294,6 @@ void pps_job_load_set_password_save (PpsJobLoad *job,
 PPS_PUBLIC
 GPasswordSave pps_job_load_get_password_save (PpsJobLoad *job);
 PPS_PUBLIC
-void pps_job_load_set_load_flags (PpsJobLoad *job,
-                                  PpsDocumentLoadFlags flags);
-PPS_PUBLIC
 PpsDocument *pps_job_load_get_loaded_document (PpsJobLoad *job);
 
 /* PpsJobSave */

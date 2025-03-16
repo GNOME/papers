@@ -220,7 +220,7 @@ pps_document_doc_mutex_unlock (PpsDocument *document)
 	g_mutex_unlock (&priv->mutex);
 }
 
-static void
+void
 pps_document_setup_cache (PpsDocument *document)
 {
 	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
@@ -241,7 +241,9 @@ pps_document_setup_cache (PpsDocument *document)
 		PpsPageSize *page_size;
 		gchar *page_label = NULL;
 
-		pps_document_get_page_size (document, i, &page_width, &page_height);
+		g_mutex_lock (&priv->mutex);
+		klass->get_page_size (document, page, &page_width, &page_height);
+		g_mutex_unlock (&priv->mutex);
 
 		if (i == 0) {
 			priv->uniform_width = page_width;
@@ -316,23 +318,10 @@ pps_document_setup_cache (PpsDocument *document)
 	priv->cache_loaded = TRUE;
 }
 
-static void
-pps_document_ensure_cache (PpsDocument *document)
-{
-	PpsDocumentPrivate *priv = GET_PRIVATE (document);
-
-	if (!priv->cache_loaded) {
-		g_mutex_lock (&priv->mutex);
-		pps_document_setup_cache (document);
-		g_mutex_unlock (&priv->mutex);
-	}
-}
-
 /**
- * pps_document_load_full:
+ * pps_document_load:
  * @document: a #PpsDocument
  * @uri: the document's URI
- * @flags: flags from #PpsDocumentLoadFlags
  * @error: a #GError location to store an error, or %NULL
  *
  * Loads @document from @uri.
@@ -340,17 +329,17 @@ pps_document_ensure_cache (PpsDocument *document)
  * On failure, %FALSE is returned and @error is filled in.
  * If the document is encrypted, PPS_DEFINE_ERROR_ENCRYPTED is returned.
  * If the backend cannot load the specific document, PPS_DOCUMENT_ERROR_INVALID
- * is returned. Other errors are possible too, depending on the backend
- * used to load the document and the URI, e.g. #GIOError, #GFileError, and
- * #GConvertError.
+ * is returned. If the backend does not support the format for the document's
+ * contents, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT is returned. Other errors
+ * are possible too, depending on the backend used to load the document and
+ * the URI, e.g. #GIOError, #GFileError, and #GConvertError.
  *
  * Returns: %TRUE on success, or %FALSE on failure.
  */
 gboolean
-pps_document_load_full (PpsDocument *document,
-                        const char *uri,
-                        PpsDocumentLoadFlags flags,
-                        GError **error)
+pps_document_load (PpsDocument *document,
+                   const char *uri,
+                   GError **error)
 {
 	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
 	gboolean retval;
@@ -375,8 +364,6 @@ pps_document_load_full (PpsDocument *document,
 			                     "Internal error in backend");
 		}
 	} else {
-		if (!(flags & PPS_DOCUMENT_LOAD_FLAG_NO_CACHE))
-			pps_document_setup_cache (document);
 		priv->uri = g_strdup (uri);
 		priv->file_size = _pps_document_get_size (uri);
 	}
@@ -385,37 +372,9 @@ pps_document_load_full (PpsDocument *document,
 }
 
 /**
- * pps_document_load:
- * @document: a #PpsDocument
- * @uri: the document's URI
- * @error: a #GError location to store an error, or %NULL
- *
- * Loads @document from @uri.
- *
- * On failure, %FALSE is returned and @error is filled in.
- * If the document is encrypted, PPS_DEFINE_ERROR_ENCRYPTED is returned.
- * If the backend cannot load the specific document, PPS_DOCUMENT_ERROR_INVALID
- * is returned. If the backend does not support the format for the document's
- * contents, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT is returned. Other errors
- * are possible too, depending on the backend used to load the document and
- * the URI, e.g. #GIOError, #GFileError, and #GConvertError.
- *
- * Returns: %TRUE on success, or %FALSE on failure.
- */
-gboolean
-pps_document_load (PpsDocument *document,
-                   const char *uri,
-                   GError **error)
-{
-	return pps_document_load_full (document, uri,
-	                               PPS_DOCUMENT_LOAD_FLAG_NONE, error);
-}
-
-/**
  * pps_document_load_fd:
  * @document: a #PpsDocument
  * @fd: a file descriptor
- * @flags: flags from #PpsDocumentLoadFlags
  * @error: (allow-none): a #GError location to store an error, or %NULL
  *
  * Synchronously loads the document from @fd, which must refer to
@@ -434,7 +393,6 @@ pps_document_load (PpsDocument *document,
 gboolean
 pps_document_load_fd (PpsDocument *document,
                       int fd,
-                      PpsDocumentLoadFlags flags,
                       GError **error)
 {
 	PpsDocumentClass *klass;
@@ -454,7 +412,7 @@ pps_document_load_fd (PpsDocument *document,
 	}
 
 	if (fstat (fd, &statbuf) == -1 ||
-	    (fd_flags = fcntl (fd, F_GETFL, &flags)) == -1) {
+	    (fd_flags = fcntl (fd, F_GETFL, NULL)) == -1) {
 		int errsv = errno;
 		g_set_error_literal (error, G_FILE_ERROR,
 		                     g_file_error_from_errno (errsv),
@@ -484,9 +442,6 @@ pps_document_load_fd (PpsDocument *document,
 
 	if (!klass->load_fd (document, fd, error))
 		return FALSE;
-
-	if (!(flags & PPS_DOCUMENT_LOAD_FLAG_NO_CACHE))
-		pps_document_setup_cache (document);
 
 	return TRUE;
 }
@@ -569,39 +524,27 @@ pps_document_get_page_size (PpsDocument *document,
                             double *width,
                             double *height)
 {
-	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
-	PpsDocumentPrivate *priv;
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
 	g_return_if_fail (PPS_IS_DOCUMENT (document));
-	priv = GET_PRIVATE (document);
 	g_return_if_fail (0 <= page_index && page_index < pps_document_get_n_pages (document));
+	g_return_if_fail (priv->cache_loaded == TRUE);
 
-	if (priv->cache_loaded) {
-		if (width)
-			*width = priv->uniform ? priv->uniform_width : priv->page_sizes[page_index].width;
-		if (height)
-			*height = priv->uniform ? priv->uniform_height : priv->page_sizes[page_index].height;
-	} else {
-		PpsPage *page;
-
-		g_mutex_lock (&priv->mutex);
-		page = pps_document_get_page (document, page_index);
-		klass->get_page_size (document, page, width, height);
-		g_object_unref (page);
-		g_mutex_unlock (&priv->mutex);
-	}
+	if (width)
+		*width = priv->uniform ? priv->uniform_width : priv->page_sizes[page_index].width;
+	if (height)
+		*height = priv->uniform ? priv->uniform_height : priv->page_sizes[page_index].height;
 }
 
 gchar *
 pps_document_get_page_label (PpsDocument *document,
                              gint page_index)
 {
-	PpsDocumentPrivate *priv;
-	g_return_val_if_fail (PPS_IS_DOCUMENT (document), NULL);
-	priv = GET_PRIVATE (document);
-	g_return_val_if_fail (0 <= page_index && page_index < pps_document_get_n_pages (document), NULL);
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (PPS_IS_DOCUMENT (document), NULL);
+	g_return_val_if_fail (0 <= page_index && page_index < pps_document_get_n_pages (document), NULL);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, NULL);
 
 	return (priv->page_labels && priv->page_labels[page_index]) ? g_strdup (priv->page_labels[page_index]) : g_strdup_printf ("%d", page_index + 1);
 }
@@ -723,10 +666,10 @@ pps_document_get_title (PpsDocument *document)
 gboolean
 pps_document_is_page_size_uniform (PpsDocument *document)
 {
-	g_return_val_if_fail (PPS_IS_DOCUMENT (document), TRUE);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (PPS_IS_DOCUMENT (document), TRUE);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, TRUE);
 
 	return priv->uniform;
 }
@@ -743,10 +686,10 @@ pps_document_get_max_page_size (PpsDocument *document,
                                 gdouble *width,
                                 gdouble *height)
 {
-	g_return_if_fail (PPS_IS_DOCUMENT (document));
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_if_fail (PPS_IS_DOCUMENT (document));
+	g_return_if_fail (priv->cache_loaded == TRUE);
 
 	if (width)
 		*width = priv->max_width;
@@ -766,10 +709,10 @@ pps_document_get_min_page_size (PpsDocument *document,
                                 gdouble *width,
                                 gdouble *height)
 {
-	g_return_if_fail (PPS_IS_DOCUMENT (document));
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_if_fail (PPS_IS_DOCUMENT (document));
+	g_return_if_fail (priv->cache_loaded == TRUE);
 
 	if (width)
 		*width = priv->min_width;
@@ -780,10 +723,10 @@ pps_document_get_min_page_size (PpsDocument *document,
 gboolean
 pps_document_check_dimensions (PpsDocument *document)
 {
-	g_return_val_if_fail (PPS_IS_DOCUMENT (document), FALSE);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (PPS_IS_DOCUMENT (document), FALSE);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, FALSE);
 
 	return (priv->max_width > 0 && priv->max_height > 0);
 }
@@ -800,10 +743,10 @@ pps_document_get_size (PpsDocument *document)
 gint
 pps_document_get_max_label_len (PpsDocument *document)
 {
-	g_return_val_if_fail (PPS_IS_DOCUMENT (document), -1);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (PPS_IS_DOCUMENT (document), -1);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, -1);
 
 	return priv->max_label;
 }
@@ -811,10 +754,10 @@ pps_document_get_max_label_len (PpsDocument *document)
 gboolean
 pps_document_has_text_page_labels (PpsDocument *document)
 {
-	g_return_val_if_fail (PPS_IS_DOCUMENT (document), FALSE);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (PPS_IS_DOCUMENT (document), FALSE);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, FALSE);
 
 	return priv->page_labels != NULL;
 }
@@ -841,8 +784,7 @@ pps_document_find_page_by_label (PpsDocument *document,
 	g_return_val_if_fail (PPS_IS_DOCUMENT (document), FALSE);
 	g_return_val_if_fail (page_label != NULL, FALSE);
 	g_return_val_if_fail (page_index != NULL, FALSE);
-
-	pps_document_ensure_cache (document);
+	g_return_val_if_fail (priv->cache_loaded == TRUE, FALSE);
 
 	n_pages = pps_document_get_n_pages (document);
 

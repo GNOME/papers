@@ -780,7 +780,6 @@ typedef struct _PpsJobLoadPrivate {
 	char *mime_type;
 	gchar *password;
 	GPasswordSave password_save;
-	PpsDocumentLoadFlags flags;
 	PpsDocument *loaded_document;
 	PpsDocument *document;
 } PpsJobLoadPrivate;
@@ -862,10 +861,7 @@ pps_job_load_run (PpsJob *job)
 		pps_job_reset (job);
 
 		if (priv->uri) {
-			pps_document_load_full (priv->document,
-			                        priv->uri,
-			                        priv->flags,
-			                        &error);
+			pps_document_load (priv->document, priv->uri, &error);
 		} else {
 			/* We need to dup the FD since we may need to pass it again
 			 * if the document is reloaded, as pps_document calls
@@ -873,18 +869,13 @@ pps_job_load_run (PpsJob *job)
 			 */
 			int fd = pps_dupfd (priv->fd, &error);
 			if (fd != -1)
-				pps_document_load_fd (priv->document,
-				                      fd,
-				                      priv->flags,
-				                      &error);
+				pps_document_load_fd (priv->document, fd, &error);
 		}
 	} else {
 		if (priv->uri) {
 			priv->document = pps_document_factory_get_document (priv->uri, &error);
 			if (priv->document != NULL &&
-			    pps_document_load_full (priv->document, priv->uri,
-			                            priv->flags,
-			                            &error))
+			    pps_document_load (priv->document, priv->uri, &error))
 				priv->loaded_document = g_object_ref (priv->document);
 
 		} else {
@@ -899,12 +890,13 @@ pps_job_load_run (PpsJob *job)
 				int fd = pps_dupfd (priv->fd, &error);
 				if (fd != -1 && pps_document_load_fd (priv->document,
 				                                      fd,
-				                                      priv->flags,
 				                                      &error))
 					priv->loaded_document = g_object_ref (priv->document);
 			}
 		}
 	}
+	if (priv->document && priv->loaded_document)
+		pps_document_setup_cache (priv->document);
 
 	if (error) {
 		pps_job_failed_from_error (job, error);
@@ -1078,16 +1070,6 @@ pps_job_load_get_password_save (PpsJobLoad *job)
 	g_return_val_if_fail (PPS_IS_JOB_LOAD (job), G_PASSWORD_SAVE_NEVER);
 
 	return priv->password_save;
-}
-
-void
-pps_job_load_set_load_flags (PpsJobLoad *job,
-                             PpsDocumentLoadFlags flags)
-{
-	PpsJobLoadPrivate *priv = JOB_LOAD_GET_PRIVATE (job);
-	g_return_if_fail (PPS_IS_JOB_LOAD (job));
-
-	priv->flags = flags;
 }
 
 /**
