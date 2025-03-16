@@ -2730,6 +2730,16 @@ pps_view_rerender_annotation (PpsView *view,
 	GdkRectangle view_rect;
 	cairo_region_t *region;
 	guint scroll_x, scroll_y;
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
+
+	/* it is not necessary to render again if the annotation is hidden */
+	if (state & PPS_ANNOTATION_EDITING_STATE_TEXT && (PPS_IS_ANNOTATION_FREE_TEXT (annot) || PPS_IS_ANNOTATION_STAMP (annot))) {
+		return;
+	}
+	if (state & PPS_ANNOTATION_EDITING_STATE_INK && PPS_IS_ANNOTATION_INK (annot)) {
+		return;
+	}
 
 	g_return_if_fail (PPS_IS_VIEW (view));
 	g_return_if_fail (PPS_IS_ANNOTATION (annot));
