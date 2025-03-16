@@ -853,7 +853,6 @@ pps_job_load_run (PpsJob *job)
 	   creating a new instance */
 	if (priv->loaded_document) {
 		PpsDocument *loaded_doc = priv->loaded_document;
-		const gchar *uncompressed_uri;
 
 		if (priv->password) {
 			pps_document_security_set_password (PPS_DOCUMENT_SECURITY (loaded_doc),
@@ -863,10 +862,8 @@ pps_job_load_run (PpsJob *job)
 		pps_job_reset (job);
 
 		if (priv->uri) {
-			uncompressed_uri = g_object_get_data (G_OBJECT (loaded_doc),
-			                                      "uri-uncompressed");
 			pps_document_load_full (loaded_doc,
-			                        uncompressed_uri ? uncompressed_uri : priv->uri,
+			                        priv->uri,
 			                        priv->flags,
 			                        &error);
 		} else {

@@ -302,7 +302,7 @@ pps_document_factory_get_document_full (const char *uri,
 			                        uri_unc,
 			                        (GDestroyNotify) free_uncompressed_uri);
 
-		result = pps_document_load_full (document, uri_unc ? uri_unc : uri, flags, &err);
+		result = pps_document_load_full (document, uri, flags, &err);
 		if (result == FALSE) {
 			g_assert (err);
 			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||

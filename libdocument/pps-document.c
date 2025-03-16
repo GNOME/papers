@@ -356,14 +356,17 @@ pps_document_load_full (PpsDocument *document,
 	gboolean retval;
 	GError *err = NULL;
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
+	const gchar *uncompressed_uri;
 
-	retval = klass->load (document, uri, &err);
+	uncompressed_uri = g_object_get_data (G_OBJECT (document),
+	                                      "uri-uncompressed");
+	retval = klass->load (document, uncompressed_uri ? uncompressed_uri : uri, &err);
 	if (!retval) {
 		if (err) {
 			g_propagate_error (error, err);
 		} else {
 			g_critical ("%s::PpsDocument::load returned FALSE but did not fill in @error; fix the backend!\n",
-			           G_OBJECT_TYPE_NAME (document));
+			            G_OBJECT_TYPE_NAME (document));
 
 			/* So upper layers don't crash */
 			g_set_error_literal (error,
