@@ -920,12 +920,7 @@ mod imp {
                                 #[weak]
                                 job,
                                 async move {
-                                    if e.matches(papers_document::DocumentError::Encrypted)
-                                        && job
-                                            .loaded_document()
-                                            .and_dynamic_cast::<papers_document::DocumentSecurity>()
-                                            .is_ok()
-                                    {
+                                    if e.matches(papers_document::DocumentError::Encrypted) {
                                         obj.set_mode(WindowRunMode::PasswordView);
 
                                         // First look whether password is in keyring
