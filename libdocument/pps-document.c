@@ -362,7 +362,7 @@ pps_document_load_full (PpsDocument *document,
 		if (err) {
 			g_propagate_error (error, err);
 		} else {
-			g_warning ("%s::PpsDocument::load returned FALSE but did not fill in @error; fix the backend!\n",
+			g_critical ("%s::PpsDocument::load returned FALSE but did not fill in @error; fix the backend!\n",
 			           G_OBJECT_TYPE_NAME (document));
 
 			/* So upper layers don't crash */

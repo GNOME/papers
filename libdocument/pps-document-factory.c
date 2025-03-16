@@ -297,11 +297,10 @@ pps_document_factory_get_document_full (const char *uri,
 		}
 
 		result = pps_document_load_full (document, uri_unc ? uri_unc : uri, flags, &err);
-
-		if (result == FALSE || err) {
-			if (err &&
-			    (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
-			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT))) {
+		if (result == FALSE) {
+			g_assert (err);
+			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
+			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
 				g_propagate_error (error, err);
 				return g_steal_pointer (&document);
 			}
@@ -337,15 +336,8 @@ pps_document_factory_get_document_full (const char *uri,
 	result = pps_document_load_full (document, uri_unc ? uri_unc : uri,
 	                                 PPS_DOCUMENT_LOAD_FLAG_NONE, &err);
 	if (result == FALSE) {
-		if (err == NULL) {
-			/* FIXME: this really should not happen; the backend should
-			 * always return a meaningful error.
-			 */
-			g_set_error_literal (&err,
-			                     PPS_DOCUMENT_ERROR,
-			                     PPS_DOCUMENT_ERROR_INVALID,
-			                     _ ("Unknown MIME Type"));
-		} else if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED)) {
+		g_assert (err != NULL);
+		if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED)) {
 			g_propagate_error (error, err);
 			return g_steal_pointer (&document);
 		}
