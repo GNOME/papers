@@ -22,13 +22,8 @@ void _pps_document_factory_shutdown (void);
 PPS_PUBLIC
 PpsDocument *pps_document_factory_get_document (const char *uri, GError **error);
 PPS_PUBLIC
-PpsDocument *pps_document_factory_get_document_full (const char *uri,
-                                                     PpsDocumentLoadFlags flags,
-                                                     GError **error);
-PPS_PUBLIC
 PpsDocument *pps_document_factory_get_document_for_fd (int fd,
                                                        const char *mime_type,
-                                                       PpsDocumentLoadFlags flags,
                                                        GError **error);
 
 PPS_PUBLIC

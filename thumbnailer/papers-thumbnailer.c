@@ -99,7 +99,7 @@ get_local_path (GFile *file)
 static PpsDocument *
 papers_thumbnailer_get_document (GFile *file)
 {
-	PpsDocument *document = NULL;
+	g_autoptr (PpsDocument) document = NULL;
 	g_autofree gchar *uri = NULL;
 	g_autofree gchar *path = NULL;
 	g_autoptr (GFile) tmp_file = NULL;
@@ -132,7 +132,12 @@ papers_thumbnailer_get_document (GFile *file)
 		uri = g_filename_to_uri (path, NULL, NULL);
 	}
 
-	document = pps_document_factory_get_document_full (uri, PPS_DOCUMENT_LOAD_FLAG_NO_CACHE, &error);
+	document = pps_document_factory_get_document (uri, &error);
+	if (document != NULL)
+		pps_document_load_full (document, uri,
+		                        PPS_DOCUMENT_LOAD_FLAG_NO_CACHE,
+		                        &error);
+
 	if (tmp_file) {
 		if (document) {
 			g_object_weak_ref (G_OBJECT (document),
@@ -143,8 +148,8 @@ papers_thumbnailer_get_document (GFile *file)
 		}
 	}
 	if (error) {
-		if (error->domain == PPS_DOCUMENT_ERROR &&
-		    error->code == PPS_DOCUMENT_ERROR_ENCRYPTED) {
+		if (g_error_matches (error, PPS_DOCUMENT_ERROR,
+		                     PPS_DOCUMENT_ERROR_ENCRYPTED)) {
 			/* FIXME: Create a thumb for cryp docs */
 			return NULL;
 		}
@@ -152,7 +157,7 @@ papers_thumbnailer_get_document (GFile *file)
 		return NULL;
 	}
 
-	return document;
+	return g_steal_pointer (&document);
 }
 
 static gboolean

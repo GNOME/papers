@@ -254,9 +254,8 @@ _pps_document_factory_shutdown (void)
 }
 
 /**
- * pps_document_factory_get_document_full:
+ * pps_document_factory_get_document:
  * @uri: an URI
- * @flags: flags from #PpsDocumentLoadFlags
  * @error: a #GError location to store an error, or %NULL
  *
  * Creates a #PpsDocument for the document at @uri; or, if no backend handling
@@ -268,12 +267,10 @@ _pps_document_factory_shutdown (void)
  * Returns: (transfer full): a new #PpsDocument, or %NULL
  */
 PpsDocument *
-pps_document_factory_get_document_full (const char *uri,
-                                        PpsDocumentLoadFlags flags,
-                                        GError **error)
+pps_document_factory_get_document (const char *uri,
+                                   GError **error)
 {
-	g_autoptr (PpsDocument) document;
-	int result;
+	g_autoptr (PpsDocument) document = NULL;
 	PpsCompressionType compression;
 	gchar *uri_unc = NULL;
 	GError *err = NULL;
@@ -302,18 +299,7 @@ pps_document_factory_get_document_full (const char *uri,
 			                        uri_unc,
 			                        (GDestroyNotify) free_uncompressed_uri);
 
-		result = pps_document_load_full (document, uri, flags, &err);
-		if (result == FALSE) {
-			g_assert (err);
-			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
-			    g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
-				g_propagate_error (error, err);
-				return g_steal_pointer (&document);
-			}
-			/* else fall through, deal with errors outside loop */
-		} else {
-			return g_steal_pointer (&document);
-		}
+		return g_steal_pointer (&document);
 	}
 
 	g_assert (err != NULL);
@@ -322,31 +308,9 @@ pps_document_factory_get_document_full (const char *uri,
 }
 
 /**
- * pps_document_factory_get_document:
- * @uri: an URI
- * @error: a #GError location to store an error, or %NULL
- *
- * Creates a #PpsDocument for the document at @uri; or, if no backend handling
- * the document's type is found, or an error occurred on opening the document,
- * returns %NULL and fills in @error.
- * If the document is encrypted, it is returned but also @error is set to
- * %PPS_DOCUMENT_ERROR_ENCRYPTED.
- *
- * Returns: (transfer full): a new #PpsDocument, or %NULL
- */
-PpsDocument *
-pps_document_factory_get_document (const char *uri, GError **error)
-{
-	return pps_document_factory_get_document_full (uri,
-	                                               PPS_DOCUMENT_LOAD_FLAG_NONE,
-	                                               error);
-}
-
-/**
  * pps_document_factory_get_document_for_fd:
  * @fd: a file descriptor
  * @mime_type: the mime type
- * @flags: flags from #PpsDocumentLoadFlags
  * @error: (allow-none): a #GError location to store an error, or %NULL
  *
  * Synchronously creates a #PpsDocument for the document from @fd using the backend
@@ -370,33 +334,18 @@ pps_document_factory_get_document (const char *uri, GError **error)
 PpsDocument *
 pps_document_factory_get_document_for_fd (int fd,
                                           const char *mime_type,
-                                          PpsDocumentLoadFlags flags,
                                           GError **error)
 {
-	g_autoptr (PpsDocument) document = NULL;
-
 	g_return_val_if_fail (fd != -1, NULL);
 	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
 
 	if (mime_type == NULL) {
 		g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
 		                     "Cannot query mime type from file descriptor");
-		close (fd);
 		return NULL;
 	}
 
-	document = pps_document_factory_new_document_for_mime_type (mime_type, error);
-	if (document == NULL) {
-		close (fd);
-		return NULL;
-	}
-
-	if (!pps_document_load_fd (document, fd, flags, error)) {
-		/* fd is now consumed */
-		return NULL;
-	}
-
-	return g_steal_pointer (&document);
+	return pps_document_factory_new_document_for_mime_type (mime_type, error);
 }
 
 static void

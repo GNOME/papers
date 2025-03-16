@@ -782,6 +782,7 @@ typedef struct _PpsJobLoadPrivate {
 	GPasswordSave password_save;
 	PpsDocumentLoadFlags flags;
 	PpsDocument *loaded_document;
+	PpsDocument *document;
 } PpsJobLoadPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (PpsJobLoad, pps_job_load, PPS_TYPE_JOB)
@@ -811,6 +812,7 @@ pps_job_load_dispose (GObject *object)
 	g_clear_pointer (&priv->uri, g_free);
 	g_clear_pointer (&priv->password, g_free);
 	g_clear_object (&priv->loaded_document);
+	g_clear_object (&priv->document);
 
 	G_OBJECT_CLASS (pps_job_load_parent_class)->dispose (object);
 }
@@ -851,18 +853,16 @@ pps_job_load_run (PpsJob *job)
 	/* This job may already have a document even if the job didn't complete
 	   because, e.g., a password is required - if so, just reload rather than
 	   creating a new instance */
-	if (priv->loaded_document) {
-		PpsDocument *loaded_doc = priv->loaded_document;
-
+	if (priv->document) {
 		if (priv->password) {
-			pps_document_security_set_password (PPS_DOCUMENT_SECURITY (loaded_doc),
+			pps_document_security_set_password (PPS_DOCUMENT_SECURITY (priv->document),
 			                                    priv->password);
 		}
 
 		pps_job_reset (job);
 
 		if (priv->uri) {
-			pps_document_load_full (loaded_doc,
+			pps_document_load_full (priv->document,
 			                        priv->uri,
 			                        priv->flags,
 			                        &error);
@@ -873,29 +873,36 @@ pps_job_load_run (PpsJob *job)
 			 */
 			int fd = pps_dupfd (priv->fd, &error);
 			if (fd != -1)
-				pps_document_load_fd (loaded_doc,
+				pps_document_load_fd (priv->document,
 				                      fd,
 				                      priv->flags,
 				                      &error);
 		}
 	} else {
 		if (priv->uri) {
-			priv->loaded_document =
-			    pps_document_factory_get_document_full (priv->uri,
-			                                            priv->flags,
-			                                            &error);
+			priv->document = pps_document_factory_get_document (priv->uri, &error);
+			if (priv->document != NULL &&
+			    pps_document_load_full (priv->document, priv->uri,
+			                            priv->flags,
+			                            &error))
+				priv->loaded_document = g_object_ref (priv->document);
+
 		} else {
-			/* We need to dup the FD since we may need to pass it again
-			 * if the document is reloaded, as pps_document calls
-			 * consume it.
-			 */
-			int fd = pps_dupfd (priv->fd, &error);
-			if (fd != -1)
-				priv->loaded_document =
-				    pps_document_factory_get_document_for_fd (fd,
-				                                              priv->mime_type,
-				                                              priv->flags,
-				                                              &error);
+			priv->document = pps_document_factory_get_document_for_fd (priv->fd,
+			                                                           priv->mime_type,
+			                                                           &error);
+			if (priv->document != NULL) {
+				/* We need to dup the FD since we may need to pass it again
+				 * if the document is reloaded, as pps_document_load calls
+				 * consume it.
+				 */
+				int fd = pps_dupfd (priv->fd, &error);
+				if (fd != -1 && pps_document_load_fd (priv->document,
+				                                      fd,
+				                                      priv->flags,
+				                                      &error))
+					priv->loaded_document = g_object_ref (priv->document);
+			}
 		}
 	}
 
