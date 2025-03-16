@@ -277,13 +277,19 @@ pps_document_factory_get_document_full (const char *uri,
 	PpsCompressionType compression;
 	gchar *uri_unc = NULL;
 	GError *err = NULL;
+	gboolean fast = TRUE;
 
 	g_return_val_if_fail (uri != NULL, NULL);
 
-	document = new_document_for_uri (uri, TRUE, &compression, &err);
-	g_assert (document != NULL || err != NULL);
+	// Run twice, once with fast=TRUE, one with fast=FALSE
+	for (int i = 0; i < 2; i++, fast = !fast) {
+		document = new_document_for_uri (uri, fast, &compression, &err);
+		g_assert (document != NULL || err != NULL);
 
-	if (document != NULL) {
+		if (err != NULL) {
+			continue;
+		}
+
 		uri_unc = pps_file_uncompress (uri, compression, &err);
 		if (err != NULL) {
 			/* Error uncompressing file */
@@ -300,43 +306,11 @@ pps_document_factory_get_document_full (const char *uri,
 		if (result == FALSE) {
 			g_assert (err);
 			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
-			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
+			    g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
 				g_propagate_error (error, err);
 				return g_steal_pointer (&document);
 			}
-			/* else fall through to slow mime code section below */
-		} else {
-			return g_steal_pointer (&document);
-		}
-	}
-
-	/* Try again with slow mime detection */
-	g_clear_error (&err);
-	uri_unc = NULL;
-
-	document = new_document_for_uri (uri, FALSE, &compression, &err);
-	if (document != NULL) {
-		uri_unc = pps_file_uncompress (uri, compression, &err);
-		if (err != NULL) {
-			/* Error uncompressing file */
-			g_propagate_error (error, err);
-			return NULL;
-		}
-		if (uri_unc)
-			g_object_set_data_full (G_OBJECT (document),
-						"uri-uncompressed",
-						uri_unc,
-						(GDestroyNotify) free_uncompressed_uri);
-
-		result = pps_document_load_full (document, uri_unc ? uri_unc : uri,
-						 flags, &err);
-		if (result == FALSE) {
-			g_assert (err);
-			if (g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_ENCRYPTED) ||
-			     g_error_matches (err, PPS_DOCUMENT_ERROR, PPS_DOCUMENT_ERROR_UNSUPPORTED_CONTENT)) {
-				g_propagate_error (error, err);
-				return g_steal_pointer (&document);
-			}
+			/* else fall through, deal with errors outside loop */
 		} else {
 			return g_steal_pointer (&document);
 		}
