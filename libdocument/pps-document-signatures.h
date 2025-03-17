@@ -19,7 +19,7 @@
  */
 
 #if !defined(__PPS_PAPERS_DOCUMENT_H_INSIDE__) && !defined(PAPERS_COMPILATION)
-#error "Only <ppsince-document.h> can be included directly."
+#error "Only <papers-document.h> can be included directly."
 #endif
 
 #ifndef PPS_DOCUMENT_SIGNATURES_H
