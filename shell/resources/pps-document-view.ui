@@ -98,10 +98,10 @@
                     <property name="document-model">model</property>
                     <signal name="navigated-to-view" handler="sidebar_navigate_to_view" swapped="yes" />
                     <child internal-child="stack">
-                      <object class="GtkStack">
-                        <property name="transition-type">crossfade</property>
+                      <object class="AdwViewStack">
+                        <property name="enable-transitions">True</property>
                         <child>
-                          <object class="GtkStackPage">
+                          <object class="AdwViewStackPage">
                             <property name="name">thumbnails</property>
                             <property name="title" translatable="yes">Thumbnails</property>
                             <property name="icon-name">grid-large-symbolic</property>
@@ -114,7 +114,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkStackPage">
+                          <object class="AdwViewStackPage">
                             <property name="name">links</property>
                             <property name="title" translatable="yes">Outline</property>
                             <property name="icon-name">outline-symbolic</property>
@@ -128,7 +128,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkStackPage">
+                          <object class="AdwViewStackPage">
                             <property name="name">annotations</property>
                             <property name="title" translatable="yes">Annotations</property>
                             <property name="icon-name">chat-bubble-text-symbolic</property>
@@ -148,7 +148,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkStackPage">
+                          <object class="AdwViewStackPage">
                             <property name="name">attachments</property>
                             <property name="title" translatable="yes">Attachments</property>
                             <property name="icon-name">mail-attachment-symbolic</property>
@@ -166,7 +166,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkStackPage">
+                          <object class="AdwViewStackPage">
                             <property name="name">layers</property>
                             <property name="title" translatable="yes">Layers</property>
                             <property name="icon-name">view-paged-symbolic</property>

@@ -8,7 +8,7 @@ mod imp {
     #[template(resource = "/org/gnome/papers/ui/sidebar.ui")]
     pub struct PpsSidebar {
         #[template_child]
-        pub(super) stack: TemplateChild<gtk::Stack>,
+        pub(super) stack: TemplateChild<adw::ViewStack>,
         #[property(name = "document-model", set = Self::set_model, construct_only)]
         pub(super) model: RefCell<Option<DocumentModel>>,
         #[property(name= "visible-child-name", type = Option<String>, set = Self::set_visible_child_name, get = Self::visible_child_name)]
@@ -23,8 +23,6 @@ mod imp {
         type Interfaces = (gtk::Buildable,);
 
         fn class_init(klass: &mut Self::Class) {
-            PpsStackSwitcher::ensure_type();
-
             klass.bind_template();
             klass.bind_template_callbacks();
         }
@@ -64,7 +62,7 @@ mod imp {
 
             let mut first_supported_page = None;
 
-            for page in self.stack.pages().iter::<gtk::StackPage>() {
+            for page in self.stack.pages().iter::<adw::ViewStackPage>() {
                 let page = page.unwrap();
                 let sidebar_page = page.child();
                 let supported = sidebar_page

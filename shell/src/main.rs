@@ -33,7 +33,6 @@ mod sidebar_layers;
 mod sidebar_links;
 mod sidebar_page;
 mod sidebar_thumbnails;
-mod stack_switcher;
 mod thumbnail_item;
 mod window;
 

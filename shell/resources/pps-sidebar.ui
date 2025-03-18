@@ -4,14 +4,23 @@
     <property name="child">
       <object class="AdwToolbarView">
         <property name="content">
-          <object class="GtkStack" id="stack">
+          <object class="AdwViewStack" id="stack">
             <signal name="notify::visible-child"
                     handler="visible_child_changed" swapped="yes" />
           </object>
         </property>
         <child type="bottom">
-          <object class="PpsStackSwitcher">
+          <object class="AdwInlineViewSwitcher">
             <property name="stack">stack</property>
+            <property name="display-mode">icons</property>
+            <property name="homogeneous">True</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="margin-start">6</property>
+            <property name="margin-end">6</property>
+            <style>
+              <class name="flat" />
+            </style>
           </object>
         </child>
       </object>

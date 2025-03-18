@@ -66,6 +66,5 @@ pub use crate::sidebar_layers::PpsSidebarLayers;
 pub use crate::sidebar_links::PpsSidebarLinks;
 pub use crate::sidebar_page::{PpsSidebarPage, PpsSidebarPageExt, PpsSidebarPageImpl};
 pub use crate::sidebar_thumbnails::PpsSidebarThumbnails;
-pub use crate::stack_switcher::PpsStackSwitcher;
 pub use crate::thumbnail_item::PpsThumbnailItem;
 pub use crate::window::PpsWindow;
