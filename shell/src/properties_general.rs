@@ -80,7 +80,21 @@ mod imp {
             let file = gio::File::for_uri(uri);
 
             if let Some(parent) = file.parent() {
-                let text = parent
+                // This is a extended attributes exported by document portal
+                const HOST_PATH_ATTR: &str = "xattr::document-portal.host-path";
+
+                let host_parent = file
+                    .query_info(
+                        HOST_PATH_ATTR,
+                        gio::FileQueryInfoFlags::NONE,
+                        gio::Cancellable::NONE,
+                    )
+                    .ok()
+                    .and_then(|r| r.attribute_string(HOST_PATH_ATTR))
+                    .and_then(|p| gio::File::for_path(p).parent());
+
+                let text = host_parent
+                    .unwrap_or(parent)
                     .basename()
                     .map(|p| p.display().to_string())
                     .unwrap_or(gettext("None"));
