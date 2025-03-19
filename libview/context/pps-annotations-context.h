@@ -74,4 +74,6 @@ void pps_annotations_context_set_color (PpsAnnotationsContext *self,
 PpsAnnotation *pps_annotations_context_get_annot_at_doc_point (PpsAnnotationsContext *self,
                                                                const PpsDocumentPoint *doc_point);
 
+int
+pps_annotations_context_first_index_for_page (PpsAnnotationsContext *self, gint page);
 G_END_DECLS

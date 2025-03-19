@@ -308,6 +308,73 @@ pps_annotations_context_get_annots_model (PpsAnnotationsContext *self)
 	return G_LIST_MODEL (priv->annots_model);
 }
 
+/**
+ * pps_annotations_context_first_index_for_page:
+ * @self: a #PpsAnnotationsContext
+ * @page: The page number to search for.
+ *
+ * Finds the first index of an annotation for the specified page with a dichotomic
+ * search.
+ *
+ * Returns: The index of the first annotation for the specified page in the model,
+ * or the number of items if there is none.
+ */
+int
+pps_annotations_context_first_index_for_page (PpsAnnotationsContext *self, gint page)
+{
+	g_return_val_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self), 0);
+
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
+	GListModel *annots_model = G_LIST_MODEL (priv->annots_model);
+
+	int n = g_list_model_get_n_items (annots_model);
+	int l = 0;
+	int u = n - 1;
+	PpsAnnotation *annot;
+
+	if (page < 0 || l > u) {
+		return n;
+	}
+
+	annot = PPS_ANNOTATION (g_list_model_get_item (annots_model, l));
+	if (pps_annotation_get_page_index (annot) > page) {
+		return n;
+	}
+
+	if (pps_annotation_get_page_index (annot) == page) {
+		return l;
+	}
+
+	annot = PPS_ANNOTATION (g_list_model_get_item (annots_model, u));
+	if (pps_annotation_get_page_index (annot) < page) {
+		return n;
+	}
+
+	while (l < u) {
+		int m = (l + u) / 2;
+		annot = PPS_ANNOTATION (g_list_model_get_item (annots_model, m));
+		int page_annot = pps_annotation_get_page_index (annot);
+		if (page_annot > page) {
+			u = m;
+		} else if (page_annot == page) {
+			if (m == 0 || pps_annotation_get_page_index (PPS_ANNOTATION (g_list_model_get_item (annots_model, m - 1))) < page) {
+				return m;
+			} else {
+				u = m;
+			}
+		} else if (l == m) { /* u = l + 1 */
+			PpsAnnotation *annot_u = PPS_ANNOTATION (g_list_model_get_item (annots_model, u));
+			if (pps_annotation_get_page_index (annot_u) == page) {
+				return u;
+			}
+			return n;
+		} else {
+			l = m;
+		}
+	}
+	return l;
+}
+
 static int
 compare_annot (const PpsAnnotation *a,
                const PpsAnnotation *b,
