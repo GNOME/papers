@@ -14,6 +14,7 @@
 
 #include <string.h>
 
+#include "pps-annotation-layer-objects.h"
 #include "pps-colors.h"
 #include "pps-debug.h"
 #include "pps-overlay.h"
@@ -33,6 +34,7 @@ typedef struct
 } MovingAnnotInfo;
 
 enum {
+	LAYER_OBJECTS,
 	LAYER_COUNT
 };
 
@@ -611,14 +613,41 @@ inverted_changed_cb (PpsDocumentModel *model,
 }
 
 static void
+display_annotation_layers (PpsViewPage *page)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
+	PpsAnnotationLayer *layer = NULL;
+
+	if (state != PPS_ANNOTATION_EDITING_STATE_TEXT && priv->layers[LAYER_OBJECTS]) {
+		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_OBJECTS]), FALSE);
+	}
+
+	if (state == PPS_ANNOTATION_EDITING_STATE_TEXT) {
+		if (!priv->layers[LAYER_OBJECTS]) {
+			priv->layers[LAYER_OBJECTS] = PPS_ANNOTATION_LAYER (pps_annotation_layer_objects_new (pps_document_model_get_document (priv->model), priv->model, priv->annots_context));
+			gtk_widget_insert_after (GTK_WIDGET (priv->layers[LAYER_OBJECTS]), GTK_WIDGET (page), NULL);
+		}
+		layer = priv->layers[LAYER_OBJECTS];
+	}
+
+	if (layer) {
+		pps_annotation_layer_set_page (layer, priv->index);
+		gtk_widget_set_visible (GTK_WIDGET (layer), TRUE);
+	}
+}
+
+static void
 job_finished_cb (PpsPixbufCache *pixbuf_cache,
                  int finished_page,
                  PpsViewPage *page)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 
-	if (finished_page == priv->index)
+	if (finished_page == priv->index) {
+		display_annotation_layers (page);
 		gtk_widget_queue_draw (GTK_WIDGET (page));
+	}
 }
 
 static void
@@ -1525,6 +1554,8 @@ pps_view_page_set_page (PpsViewPage *page, gint index)
 	priv->had_search_results = FALSE;
 
 	g_object_notify_by_pspec (G_OBJECT (page), properties[PROP_PAGE]);
+
+	display_annotation_layers (page);
 
 	gtk_widget_queue_resize (GTK_WIDGET (page));
 }
