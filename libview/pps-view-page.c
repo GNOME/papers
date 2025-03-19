@@ -14,6 +14,7 @@
 
 #include <string.h>
 
+#include "pps-annotation-layer-ink.h"
 #include "pps-annotation-layer-objects.h"
 #include "pps-colors.h"
 #include "pps-debug.h"
@@ -34,6 +35,7 @@ typedef struct
 } MovingAnnotInfo;
 
 enum {
+	LAYER_INK,
 	LAYER_OBJECTS,
 	LAYER_COUNT
 };
@@ -553,6 +555,12 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	area_rect.width = width;
 	area_rect.height = height;
 
+	if (priv->layers[LAYER_INK] && gtk_widget_get_visible (GTK_WIDGET (priv->layers[LAYER_INK]))) {
+		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_MULTIPLY);
+		pps_annotation_layer_ink_snapshot_below (PPS_ANNOTATION_LAYER_INK (priv->layers[LAYER_INK]), snapshot);
+		gtk_snapshot_pop (snapshot);
+	}
+
 	/* snap the texture to a physical pixel so it is not blurred */
 	/* FIXME: it is not clear why a translation of 1 - ceil(fractional_scale) / fractional_scale
 	is necessary, but it seems to be so in practice. It looks like it is important to have
@@ -598,6 +606,10 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 		draw_debug_borders (snapshot, page, &area_rect);
 
 	GTK_WIDGET_CLASS (pps_view_page_parent_class)->snapshot (widget, snapshot);
+
+	if (priv->layers[LAYER_INK] && gtk_widget_get_visible (GTK_WIDGET (priv->layers[LAYER_INK]))) {
+		gtk_snapshot_pop (snapshot);
+	}
 }
 
 static void
@@ -623,12 +635,22 @@ display_annotation_layers (PpsViewPage *page)
 		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_OBJECTS]), FALSE);
 	}
 
+	if (state != PPS_ANNOTATION_EDITING_STATE_INK && priv->layers[LAYER_INK]) {
+		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_INK]), FALSE);
+	}
+
 	if (state == PPS_ANNOTATION_EDITING_STATE_TEXT) {
 		if (!priv->layers[LAYER_OBJECTS]) {
 			priv->layers[LAYER_OBJECTS] = PPS_ANNOTATION_LAYER (pps_annotation_layer_objects_new (pps_document_model_get_document (priv->model), priv->model, priv->annots_context));
 			gtk_widget_insert_after (GTK_WIDGET (priv->layers[LAYER_OBJECTS]), GTK_WIDGET (page), NULL);
 		}
 		layer = priv->layers[LAYER_OBJECTS];
+	} else if (state == PPS_ANNOTATION_EDITING_STATE_INK) {
+		if (!priv->layers[LAYER_INK]) {
+			priv->layers[LAYER_INK] = PPS_ANNOTATION_LAYER (pps_annotation_layer_ink_new (pps_document_model_get_document (priv->model), priv->model, priv->annots_context));
+			gtk_widget_insert_before (GTK_WIDGET (priv->layers[LAYER_INK]), GTK_WIDGET (page), NULL);
+		}
+		layer = priv->layers[LAYER_INK];
 	}
 
 	if (layer) {
@@ -1435,6 +1457,7 @@ pps_view_page_size_allocate (GtkWidget *widget,
 			real_view_area.width = width;
 			real_view_area.height = height;
 			gtk_widget_set_size_request (child, width, height);
+			// TODO: this is a temporary solution to eliminate the warning
 			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, height, NULL, NULL, NULL, NULL);
 			gtk_widget_size_allocate (child, &real_view_area, baseline);
 		}
