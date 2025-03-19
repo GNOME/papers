@@ -762,6 +762,7 @@ pps_view_page_dispose (GObject *object)
 	g_clear_object (&priv->page_cache);
 	g_clear_object (&priv->annots_context);
 	g_clear_object (&priv->search_context);
+	g_clear_object (&priv->annots_context);
 
 	G_OBJECT_CLASS (pps_view_page_parent_class)->dispose (object);
 }
@@ -807,12 +808,15 @@ pps_view_page_setup (PpsViewPage *page,
 		g_signal_handlers_disconnect_by_data (priv->pixbuf_cache, page);
 	if (priv->search_context != NULL)
 		g_signal_handlers_disconnect_by_data (priv->search_context, page);
+	if (priv->annots_context != NULL)
+		g_signal_handlers_disconnect_by_data (priv->annots_context, page);
 
 	g_set_object (&priv->model, model);
 	g_set_object (&priv->annots_context, annots_context);
 	g_set_object (&priv->search_context, search_context);
 	g_set_object (&priv->page_cache, page_cache);
 	g_set_object (&priv->pixbuf_cache, pixbuf_cache);
+	g_set_object (&priv->annots_context, annots_context);
 	pps_view_page_set_page (page, -1);
 
 	g_signal_connect_swapped (priv->model, "notify::scale",

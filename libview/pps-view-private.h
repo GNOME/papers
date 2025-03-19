@@ -11,6 +11,7 @@
 #endif
 
 #include "adwaita.h"
+#include "factory/pps-element-widget-factory.h"
 #include "pps-form-field.h"
 #include "pps-image.h"
 #include "pps-jobs.h"
@@ -73,6 +74,10 @@ typedef struct
 	gdouble stop_x;
 	gdouble stop_y;
 } SigningInfo;
+
+enum {
+	WIDGET_FACTORY_COUNT
+};
 
 typedef struct _PpsViewPrivate {
 	/* Find */
@@ -171,6 +176,9 @@ typedef struct _PpsViewPrivate {
 	/* Signing Info */
 	SigningInfo signing_info;
 	GtkEventController *signing_drag_gesture;
+
+	/* Widgets Factory */
+	PpsElementWidgetFactory *widget_factories[WIDGET_FACTORY_COUNT];
 } PpsViewPrivate;
 
 struct _PpsViewClass {

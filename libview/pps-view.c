@@ -740,8 +740,9 @@ view_update_range_and_current_page (PpsView *view)
 				page_index = priv->start_page - start_widget + i;
 		}
 
-		if (page_index != -1)
+		if (page_index != -1) {
 			pps_view_page_set_page (page, page_index);
+		}
 	}
 
 #if 0
@@ -6072,6 +6073,10 @@ pps_view_dispose (GObject *object)
 		g_clear_object (&priv->model);
 	}
 
+	for (int i = 0; i < WIDGET_FACTORY_COUNT; i++) {
+		g_clear_object (&priv->widget_factories[i]);
+	}
+
 	g_clear_object (&priv->pixbuf_cache);
 	g_clear_object (&priv->page_cache);
 	g_clear_object (&priv->scroll_animation_vertical);
@@ -6730,6 +6735,15 @@ setup_caches (PpsView *view)
 	                              PPS_PAGE_DATA_INCLUDE_TEXT |
 	                              PPS_PAGE_DATA_INCLUDE_TEXT_ATTRS |
 	                              PPS_PAGE_DATA_INCLUDE_TEXT_LOG_ATTRS);
+
+	for (int i = 0; i < WIDGET_FACTORY_COUNT; i++) {
+		pps_element_widget_factory_setup (priv->widget_factories[i],
+		                                  priv->model,
+		                                  priv->annots_context,
+		                                  priv->pixbuf_cache,
+		                                  priv->page_widgets,
+		                                  priv->page_cache);
+	}
 }
 
 static void

@@ -2,6 +2,7 @@ libview_inc = include_directories('.')
 
 # For MacOS build
 context_inc = include_directories('context')
+factory_inc = include_directories('factory')
 
 include_subdir = join_paths(pps_include_subdir, 'libview')
 
@@ -15,6 +16,10 @@ context_headers = files(
   'context/pps-search-result.h',
   'context/pps-undo-context.h',
   'context/pps-undo-handler.h'
+)
+
+factory_headers = files (
+  'factory/pps-element-widget-factory.h',
 )
 
 headers = files(
@@ -50,6 +55,7 @@ sources = files(
   'context/pps-search-result.c',
   'context/pps-undo-context.c',
   'context/pps-undo-handler.c',
+  'factory/pps-element-widget-factory.c',
   'pps-annotation-window.c',
   'pps-colors.c',
   'pps-debug.c',
@@ -60,6 +66,7 @@ sources = files(
   'pps-job-scheduler.c',
   #'pps-link-accessible.c',
   #'pps-page-accessible.c',
+  'pps-overlay.c',
   'pps-page-cache.c',
   'pps-pixbuf-cache.c',
   'pps-print-operation.c',
@@ -148,7 +155,7 @@ libppsview = shared_library(
   'ppsview-' + pps_api_version,
   version: pps_view_version,
   sources: sources + marshal_sources + enum_sources,
-  include_directories: [top_inc, context_inc],
+  include_directories: [top_inc, context_inc, factory_inc],
   dependencies: libview_deps,
   c_args: cflags,
   install: true,
