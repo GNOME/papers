@@ -162,7 +162,7 @@ libaw_dep = dependency(
     'werror=false',
     'introspection=disabled',
     'vapi=false',
-    'gtk_doc=false',
+    'documentation=false',
     'tests=false',
     'examples=false',
   ])
