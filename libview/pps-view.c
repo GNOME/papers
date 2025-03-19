@@ -4753,6 +4753,11 @@ pps_view_button_press_event (GtkGestureClick *self,
 	if (!document || pps_document_get_n_pages (document) <= 0)
 		return;
 
+	if (pps_document_model_get_annotation_editing_state (priv->model) != PPS_ANNOTATION_EDITING_STATE_NONE) {
+		gtk_gesture_set_state (GTK_GESTURE (self), GTK_EVENT_SEQUENCE_DENIED);
+		return;
+	}
+
 	if (!gtk_widget_has_focus (widget)) {
 		gtk_widget_grab_focus (widget);
 	}

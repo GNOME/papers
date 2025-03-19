@@ -705,6 +705,12 @@ annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
 		return;
 	}
 
+	if (pps_document_model_get_annotation_editing_state (priv->model) != PPS_ANNOTATION_EDITING_STATE_NONE) {
+		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
+		                       GTK_EVENT_SEQUENCE_DENIED);
+		return;
+	}
+
 	g_set_object (&(priv->moving_annot_info.annot), annot);
 
 	pps_annotation_get_area (annot, &annot_area);
