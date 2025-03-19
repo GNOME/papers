@@ -35,9 +35,9 @@ if libaw_dep.type_name() == 'internal'
 endif
 
 if gtk_dep.type_name() == 'internal'
-  cargo_env.set('SYSTEM_DEPS_GTK4_NO_PKG_CONFIG', '1')
-  cargo_env.set('SYSTEM_DEPS_GTK4_SEARCH_NATIVE', build_root / 'subprojects/gtk/gtk')
-  cargo_env.set('SYSTEM_DEPS_GTK4_LIB', 'gtk-4')
+  cargo_common_env.set('SYSTEM_DEPS_GTK4_NO_PKG_CONFIG', '1')
+  cargo_common_env.set('SYSTEM_DEPS_GTK4_SEARCH_NATIVE', build_root / 'subprojects/gtk/gtk')
+  cargo_common_env.set('SYSTEM_DEPS_GTK4_LIB', 'gtk-4')
 endif
 
 # Setup the debuginfo option from the meson build system
