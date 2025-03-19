@@ -51,6 +51,12 @@ if libaw_dep.type_name() == 'internal'
   cargo_env.set('SYSTEM_DEPS_LIBADWAITA_1_LIB', 'adwaita-1')
 endif
 
+if gtk_dep.type_name() == 'internal'
+  cargo_env.set('SYSTEM_DEPS_GTK4_NO_PKG_CONFIG', '1')
+  cargo_env.set('SYSTEM_DEPS_GTK4_SEARCH_NATIVE', build_root / 'subprojects/gtk/gtk')
+  cargo_env.set('SYSTEM_DEPS_GTK4_LIB', 'gtk-4')
+endif
+
 cargo_build = custom_target(
   'cargo-build',
   build_by_default: true,
