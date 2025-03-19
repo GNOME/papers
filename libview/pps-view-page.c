@@ -15,6 +15,7 @@
 
 #include "pps-colors.h"
 #include "pps-debug.h"
+#include "pps-overlay.h"
 
 #define PPS_STYLE_CLASS_DOCUMENT_PAGE "document-page"
 #define PPS_STYLE_CLASS_INVERTED "inverted"
@@ -774,6 +775,39 @@ pps_view_page_dispose (GObject *object)
 }
 
 static void
+pps_view_page_size_allocate (GtkWidget *widget,
+                             int width,
+                             int height,
+                             int baseline)
+{
+	PpsViewPage *view_page = PPS_VIEW_PAGE (widget);
+	PpsViewPagePrivate *priv = GET_PRIVATE (view_page);
+	gdouble scale = pps_document_model_get_scale (priv->model);
+
+	for (GtkWidget *child = gtk_widget_get_first_child (widget);
+	     child != NULL;
+	     child = gtk_widget_get_next_sibling (child)) {
+		GdkRectangle real_view_area;
+		if (PPS_IS_OVERLAY (child)) {
+			gdouble padding;
+			g_autofree PpsRectangle *doc_rect;
+
+			doc_rect = pps_overlay_get_area (PPS_OVERLAY (child), &padding);
+
+			real_view_area.x = doc_rect->x1 * scale - padding;
+			real_view_area.y = doc_rect->y1 * scale - padding;
+			real_view_area.width = (doc_rect->x2 - doc_rect->x1) * scale + 2 * padding;
+			real_view_area.height = (doc_rect->y2 - doc_rect->y1) * scale + 2 * padding;
+
+			gtk_widget_set_size_request (child, real_view_area.width, real_view_area.height);
+
+			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, real_view_area.height, NULL, NULL, NULL, NULL);
+			gtk_widget_size_allocate (child, &real_view_area, baseline);
+		}
+	}
+}
+
+static void
 pps_view_page_class_init (PpsViewPageClass *page_class)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (page_class);
@@ -784,6 +818,7 @@ pps_view_page_class_init (PpsViewPageClass *page_class)
 	object_class->set_property = pps_view_page_set_property;
 	widget_class->snapshot = pps_view_page_snapshot;
 	widget_class->measure = pps_view_page_measure;
+	widget_class->size_allocate = pps_view_page_size_allocate;
 	properties[PROP_PAGE] =
 	    g_param_spec_int ("page",
 	                      "Page",
