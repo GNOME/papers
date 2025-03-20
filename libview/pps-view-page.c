@@ -831,6 +831,8 @@ pps_view_page_class_init (PpsViewPageClass *page_class)
 	g_object_class_install_property (object_class,
 	                                 PROP_PAGE,
 	                                 properties[PROP_PAGE]);
+
+	gtk_widget_class_set_accessible_role (GTK_WIDGET_CLASS (page_class), GTK_ACCESSIBLE_ROLE_PARAGRAPH);
 }
 
 void

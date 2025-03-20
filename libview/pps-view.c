@@ -5899,6 +5899,8 @@ pps_view_class_init (PpsViewClass *class)
 	                              GDK_KEY_a, GDK_CONTROL_MASK,
 	                              (GtkShortcutFunc) pps_view_select_all,
 	                              NULL);
+
+	gtk_widget_class_set_accessible_role (widget_class, GTK_ACCESSIBLE_ROLE_DOCUMENT);
 }
 
 static void
