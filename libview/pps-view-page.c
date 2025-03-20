@@ -706,6 +706,8 @@ pps_view_page_class_init (PpsViewPageClass *page_class)
 	object_class->dispose = pps_view_page_dispose;
 	widget_class->snapshot = pps_view_page_snapshot;
 	widget_class->measure = pps_view_page_measure;
+
+	gtk_widget_class_set_accessible_role (GTK_WIDGET_CLASS (page_class), GTK_ACCESSIBLE_ROLE_PARAGRAPH);
 }
 
 void
