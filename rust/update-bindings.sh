@@ -12,11 +12,15 @@ then
 	exit 1
 fi
 
+for g in ${@:1}; do
+	cp "$g" pps-girs
+done
+
 for d in papers-document papers-view; do
 	pushd $d > /dev/null
 	pushd sys > /dev/null
-	gir -d ${MESON_SOURCE_ROOT}/rust/gir-files -d `dirname $1` -d `dirname $2` -o .
+	gir -o .
 	popd &> /dev/null
-	gir -d ${MESON_SOURCE_ROOT}/rust/gir-files -d `dirname $1` -d `dirname $2` -o .
+	gir -o .
 	popd > /dev/null
 done
