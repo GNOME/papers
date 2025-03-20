@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: papers main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2024-09-12 06:05+0000\n"
-"PO-Revision-Date: 2024-09-12 14:04+0300\n"
+"POT-Creation-Date: 2025-03-15 22:16+0000\n"
+"PO-Revision-Date: 2025-03-21 01:42+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: previewer/pps-previewer-window.c:477 shell/pps-document-view.c:1218
 #: shell/pps-document-view.ui:73 shell/pps-loader-view.ui:10
 #: shell-rs/src/application.rs:41 shell-rs/src/application.rs:64
-#: shell-rs/src/application.rs:288
+#: shell-rs/src/application.rs:295
 msgid "Papers"
 msgstr "Papers"
 
@@ -141,12 +141,24 @@ msgstr ""
 "TIFF, і архівы коміксаў (CBR, CBT, CBZ, CB7)."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:43
-msgid "A clear, simple UI"
-msgstr "Просты і зразумелы інтэрфейс карыстальніка"
+msgid "A clear, simple, and modern UI"
+msgstr "Просты зразумелы і сучасны інтэрфейс карыстальніка"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:47
-msgid "Advanced highlighting and annotation"
-msgstr "Пашыраныя магчымасці для маркіравання і стварэння нататак"
+msgid "A mobile-friendly UI"
+msgstr "Інтэрфейс, сумяшчальны з мабільнымі прыладамі"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:51
+msgid "A modern and colorful annotation list"
+msgstr "Сучасны каляровы спіс нататак"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:55
+msgid "Big thumbnails in the sidebar"
+msgstr "Вялікія мініяцюры на бакавой панэлі"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:59
+msgid "All search actions are contained in the sidebar"
+msgstr "Усе пошукавыя дзеянні размешчаны на бакавой панэлі"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Print Preview"
@@ -230,52 +242,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Дадае падтрымку прагляду дакументаў у фармаце PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:721
-#: libdocument/backend/pdf/pps-poppler.c:727
+#: libdocument/backend/pdf/pps-poppler.c:742
+#: libdocument/backend/pdf/pps-poppler.c:748
 #: nautilus/pps-nautilus-extension.c:121 shell-rs/src/properties_general.rs:170
 msgid "Yes"
 msgstr "Так"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:724
-#: libdocument/backend/pdf/pps-poppler.c:727
+#: libdocument/backend/pdf/pps-poppler.c:745
+#: libdocument/backend/pdf/pps-poppler.c:748
 #: nautilus/pps-nautilus-extension.c:123 shell-rs/src/properties_general.rs:171
 msgid "No"
 msgstr "Не"
 
-#: libdocument/backend/pdf/pps-poppler.c:835
+#: libdocument/backend/pdf/pps-poppler.c:856
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:837
+#: libdocument/backend/pdf/pps-poppler.c:858
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:839
+#: libdocument/backend/pdf/pps-poppler.c:860
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:841
+#: libdocument/backend/pdf/pps-poppler.c:862
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:843
+#: libdocument/backend/pdf/pps-poppler.c:864
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:845
+#: libdocument/backend/pdf/pps-poppler.c:866
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:847
+#: libdocument/backend/pdf/pps-poppler.c:868
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:849
+#: libdocument/backend/pdf/pps-poppler.c:870
 msgid "Unknown font type"
 msgstr "Невядомы тып шрыфту"
 
-#: libdocument/backend/pdf/pps-poppler.c:893
+#: libdocument/backend/pdf/pps-poppler.c:914
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -286,11 +298,11 @@ msgstr ""
 "ад шрыфтоў, выкарыстаных пры стварэнні PDF, дакумент можа мець няправільны "
 "выгляд."
 
-#: libdocument/backend/pdf/pps-poppler.c:898
+#: libdocument/backend/pdf/pps-poppler.c:919
 msgid "All fonts are either standard or embedded."
 msgstr "Усе шрыфты або стандартныя, або ўбудаваныя."
 
-#: libdocument/backend/pdf/pps-poppler.c:929
+#: libdocument/backend/pdf/pps-poppler.c:950
 msgid "No name"
 msgstr "Без назвы"
 
@@ -299,20 +311,20 @@ msgstr "Без назвы"
 #. Encoding: None
 #.
 #. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#: libdocument/backend/pdf/pps-poppler.c:938 libview/pps-print-operation.c:2643
+#: libdocument/backend/pdf/pps-poppler.c:959 libview/pps-print-operation.c:2643
 #: shell-rs/src/properties_general.rs:82 shell-rs/src/properties_general.rs:199
 msgid "None"
 msgstr "Няма"
 
-#: libdocument/backend/pdf/pps-poppler.c:946
+#: libdocument/backend/pdf/pps-poppler.c:967
 msgid "Embedded subset"
 msgstr "Убудаванае падмноства"
 
-#: libdocument/backend/pdf/pps-poppler.c:948
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded"
 msgstr "Убудаваны"
 
-#: libdocument/backend/pdf/pps-poppler.c:950
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Not embedded"
 msgstr "Не ўбудаваны"
 
@@ -321,7 +333,7 @@ msgstr "Не ўбудаваны"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:957
+#: libdocument/backend/pdf/pps-poppler.c:978
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (адзін з 14 стандартных шрыфтоў)"
 
@@ -330,7 +342,7 @@ msgstr " (адзін з 14 стандартных шрыфтоў)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:964
+#: libdocument/backend/pdf/pps-poppler.c:985
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (не з 14 стандартных шрыфтоў)"
 
@@ -344,7 +356,7 @@ msgstr " (не з 14 стандартных шрыфтоў)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:983
+#: libdocument/backend/pdf/pps-poppler.c:1004
 #, c-format
 msgid ""
 "%s%s\n"
@@ -368,7 +380,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1001
+#: libdocument/backend/pdf/pps-poppler.c:1022
 #, c-format
 msgid ""
 "%s%s\n"
@@ -502,7 +514,7 @@ msgstr "Не ўдалося стварыць часовы каталог: %s"
 msgid "This work is in the Public Domain"
 msgstr "Гэтая праца належыць грамадскай прасторы"
 
-#: libview/context/pps-attachment-context.c:345
+#: libview/context/pps-attachment-context.c:346
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Захаваць далучаны файл"
@@ -516,22 +528,22 @@ msgstr[2] "Захаваць далучаныя файлы"
 msgid "Page %s"
 msgstr "Старонка %s"
 
-#: libview/pps-jobs.c:419
+#: libview/pps-jobs.c:418
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Не ўдалося апрацаваць старонку %d: %s"
 
-#: libview/pps-jobs.c:426
+#: libview/pps-jobs.c:425
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Не ўдалося апрацаваць старонку %d"
 
-#: libview/pps-jobs.c:644
+#: libview/pps-jobs.c:643
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Не ўдалося стварыць мініяцюру старонкі %d"
 
-#: libview/pps-jobs.c:1596
+#: libview/pps-jobs.c:1618
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Не ўдалося надрукаваць старонку %d: %s"
@@ -677,51 +689,51 @@ msgstr "Прагартаць вобласць прагляду ўніз"
 msgid "Document View"
 msgstr "Прагляд дакумента"
 
-#: libview/pps-view.c:2126
+#: libview/pps-view.c:2127
 msgid "Go to first page"
 msgstr "Перайсці да першай старонкі"
 
-#: libview/pps-view.c:2128
+#: libview/pps-view.c:2129
 msgid "Go to previous page"
 msgstr "Перайсці да папярэдняй старонкі"
 
-#: libview/pps-view.c:2130
+#: libview/pps-view.c:2131
 msgid "Go to next page"
 msgstr "Перайсці да наступнай старонкі"
 
-#: libview/pps-view.c:2132
+#: libview/pps-view.c:2133
 msgid "Go to last page"
 msgstr "Перайсці да апошняй старонкі"
 
-#: libview/pps-view.c:2134
+#: libview/pps-view.c:2135
 msgid "Go to page"
 msgstr "Перайсці да старонкі"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2137
 msgid "Find"
 msgstr "Пошук"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Go to page %s"
 msgstr "Перайсці да старонкі %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2172
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Перайсці да %s у файле «%s»"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Перайсці да файла «%s»"
 
-#: libview/pps-view.c:2182
+#: libview/pps-view.c:2183
 #, c-format
 msgid "Launch %s"
 msgstr "Запусціць %s"
 
-#: libview/pps-view.c:2189
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Reset form"
 msgstr "Ачысціць форму"
@@ -1302,7 +1314,7 @@ msgstr "Хвалістая лінія"
 msgid "_Apply"
 msgstr "_Ужыць"
 
-#: shell/pps-document-view.c:497 shell-rs/src/window.rs:460
+#: shell/pps-document-view.c:497 shell-rs/src/window.rs:486
 msgid "View Details"
 msgstr "Паказаць падрабязнасці"
 
@@ -1348,11 +1360,11 @@ msgstr "Заданне друку «%s»"
 msgid "C_ancel"
 msgstr "_Скасаваць"
 
-#: shell/pps-document-view.c:2205 shell-rs/src/window.rs:266
+#: shell/pps-document-view.c:2205 shell-rs/src/window.rs:268
 msgid "Document contains form fields that have been filled out."
 msgstr "Дакумент змяшчае запоўненыя графы формы."
 
-#: shell/pps-document-view.c:2208 shell-rs/src/window.rs:267
+#: shell/pps-document-view.c:2208 shell-rs/src/window.rs:269
 msgid "Document contains new or modified annotations."
 msgstr "Дакумент змяшчае новыя або змененыя нататкі."
 
@@ -1711,19 +1723,19 @@ msgstr "Дадаць тэкставую _нататку"
 msgid "_Highlight Selected Text"
 msgstr "Маркіраваць вылучаны тэкст"
 
-#: shell/pps-find-sidebar.ui:69
+#: shell/pps-find-sidebar.ui:70
 msgid "No Results Found"
 msgstr "Нічога не знойдзена"
 
-#: shell/pps-find-sidebar.ui:70
+#: shell/pps-find-sidebar.ui:71
 msgid "Try a different search"
 msgstr "Паспрабуйце змяніць пошукавы запыт"
 
-#: shell/pps-find-sidebar.ui:84
+#: shell/pps-find-sidebar.ui:85
 msgid "Perform a Search"
 msgstr "Выканаць пошук"
 
-#: shell/pps-find-sidebar.ui:85
+#: shell/pps-find-sidebar.ui:86
 msgid "The search results will appear here"
 msgstr "Тут з'явяцца вынікі пошуку"
 
@@ -1894,43 +1906,43 @@ msgstr ""
 "  Yuras https://launchpad.net/~shumovichy\n"
 "  Клюеў Аляксандр https://launchpad.net/~plaga-medicum"
 
-#: shell-rs/src/application.rs:295
+#: shell-rs/src/application.rs:302
 msgid "The page label of the document to display."
 msgstr "Надпіс на старонцы дакумента."
 
-#: shell-rs/src/application.rs:296
+#: shell-rs/src/application.rs:303
 msgid "PAGE"
 msgstr "СТАРОНКА"
 
-#: shell-rs/src/application.rs:304
+#: shell-rs/src/application.rs:311
 msgid "The page number of the document to display."
 msgstr "Нумар старонкі дакумента."
 
-#: shell-rs/src/application.rs:305
+#: shell-rs/src/application.rs:312
 msgid "NUMBER"
 msgstr "НУМАР"
 
-#: shell-rs/src/application.rs:313
+#: shell-rs/src/application.rs:320
 msgid "Named destination to display."
 msgstr "Месца з назвай, якое трэба паказаць."
 
-#: shell-rs/src/application.rs:314
+#: shell-rs/src/application.rs:321
 msgid "DEST"
 msgstr "НАЗВА_МЕСЦА"
 
-#: shell-rs/src/application.rs:322
+#: shell-rs/src/application.rs:329
 msgid "Run papers in fullscreen mode."
 msgstr "Запусціць papers у поўнаэкранным рэжыме."
 
-#: shell-rs/src/application.rs:331
+#: shell-rs/src/application.rs:338
 msgid "Run papers in presentation mode."
 msgstr "Запусціць papers у рэжыме прэзентацыі."
 
-#: shell-rs/src/application.rs:340
+#: shell-rs/src/application.rs:347
 msgid "Show the version of the program."
 msgstr "Паказаць нумар версіі праграмы."
 
-#: shell-rs/src/application.rs:350
+#: shell-rs/src/application.rs:357
 msgid "[FILE…]"
 msgstr "[ФАЙЛ...]"
 
@@ -1967,35 +1979,38 @@ msgstr "Змесціва"
 msgid "Date &amp; Time"
 msgstr "Дата і час"
 
-#: shell-rs/src/window.rs:265
+#: shell-rs/src/window.rs:267
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr "Дакумент змяшчае новыя або змененыя нататкі і запоўненыя графы формы."
 
-#: shell-rs/src/window.rs:277
+#: shell-rs/src/window.rs:279
 msgid "If you reload the document, changes will be permanently lost."
 msgstr "Калі перазагрузіць дакумент, усе змены будуць незваротна страчаны."
 
-#: shell-rs/src/window.rs:278
+#: shell-rs/src/window.rs:280
 msgid "File changed outside Papers. Reload document?"
 msgstr "Файл быў зменены іншай праграмай. Перазагрузіць дакумент?"
 
-#: shell-rs/src/window.rs:286
+#: shell-rs/src/window.rs:288
 msgid "_No"
 msgstr "_Не"
 
-#: shell-rs/src/window.rs:286
+#: shell-rs/src/window.rs:288
 msgid "_Reload"
 msgstr "Пера_загрузіць"
 
-#: shell-rs/src/window.rs:562
+#: shell-rs/src/window.rs:588
 msgid "Failed to Load Remote File."
 msgstr "Не ўдалося загрузіць файл з аддаленага сервера."
 
-#: shell-rs/src/window.rs:725
+#: shell-rs/src/window.rs:751
 msgid "Failed to Reload Document."
 msgstr "Не ўдалося перазагрузіць дакумент."
+
+#~ msgid "Advanced highlighting and annotation"
+#~ msgstr "Пашыраныя магчымасці для маркіравання і стварэння нататак"
 
 #, c-format
 #~ msgid "Password for document %s"
