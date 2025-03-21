@@ -177,10 +177,20 @@ mod imp {
 
         pub(super) fn previous(&self) {
             let result_model = self.context().and_then(|c| c.result_model()).unwrap();
-            let pos = result_model.selected() - 1;
+            let selected = result_model.selected();
 
-            self.list_view
-                .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+            let pos = if selected != gtk::INVALID_LIST_POSITION {
+                selected.checked_sub(1)
+            } else if result_model.n_items() > 0 {
+                Some(0)
+            } else {
+                None
+            };
+
+            if let Some(pos) = pos {
+                self.list_view
+                    .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+            }
         }
 
         pub(super) fn next(&self) {
@@ -193,8 +203,10 @@ mod imp {
                 0
             };
 
-            self.list_view
-                .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+            if result_model.n_items() <= pos {
+                self.list_view
+                    .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+            }
         }
     }
 
