@@ -5,14 +5,14 @@
 # Mikel Olasagasti <hey_neken@mundurat.net>, 2005.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2005, 2006, 2007, 2008, 2009, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-01-11 11:39+0000\n"
-"PO-Revision-Date: 2025-01-25 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-03-22 03:27+0000\n"
+"PO-Revision-Date: 2025-03-23 10:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Project-Id-Version: evince master\n"
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Paperak"
@@ -145,35 +145,35 @@ msgstr "Inprimatzeko aurrebista"
 msgid "Preview before printing"
 msgstr "Aurreikusi inprimatu aurretik"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Fitxategia hondatuta dago"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Artxiboa zifratuta dago"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Onartzen ez diren irudiak fitxategian"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Ez dago fitxategirik artxiboan"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Ez da komikien MIME mota: %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
 msgstr "libarchive liburutegiak ez dauka komikiaren konpresioarentzako euskarririk. Jar zaitez banatzailearekin harremanetan."
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Ezin du artxiboaren bide-izen lokala eskuratu"
 
@@ -215,63 +215,63 @@ msgid "Adds support for reading PDF Documents"
 msgstr "PDF dokumentuak irakurtzeko euskarria gehitzen du"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Bai"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Ez"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "1 mota"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "1C mota"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "3 mota"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "1 mota (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "1C mota (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Letra-tipo mota ezezaguna"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
 "the fonts used to create the PDF, the rendering may not be correct."
 msgstr "Dokumentu honek kapsulatu gabeko letra-tipoak ditu (PDFren 14 letra-tipo estandarrekoak ez direnak). Letra-tipoen konfigurazioan hautatutako ordezko letra-tipoak PDFa sortzeko erabilitako letra-tipoen berdinak ez badira, baliteke errendaketa zuzena ez izatea."
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Letra-tipo guztiak estandarrak edo kapsulatutakoak dira."
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Izenik gabe"
 
@@ -279,20 +279,20 @@ msgstr "Izenik gabe"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Bat ere ez"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Kapsulatutako azpimultzoa"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Kapsulatua"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Kapsulatu gabea"
 
@@ -301,7 +301,7 @@ msgstr "Kapsulatu gabea"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (14 letra-tipo estandarretariko bat)"
 
@@ -310,7 +310,7 @@ msgstr " (14 letra-tipo estandarretariko bat)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (14 letra-tipo estandarretarikoetatik  bat bera ere ez)"
 
@@ -324,7 +324,7 @@ msgstr " (14 letra-tipo estandarretarikoetatik  bat bera ere ez)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -347,7 +347,7 @@ msgstr "%s%s\n"
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -385,22 +385,22 @@ msgstr "Ezin izan da “%s” eranskina ireki: %s"
 msgid "Couldn’t open attachment “%s”"
 msgstr "Ezin izan da “%s” eranskina ireki"
 
-#: libdocument/pps-document-factory.c:104
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "%s (%s) fitxategi mota ez dago onartuta"
 
-#: libdocument/pps-document-factory.c:374 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
 #: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
 #: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
 msgid "Unknown MIME Type"
 msgstr "MIME mota ezezaguna"
 
-#: libdocument/pps-document-factory.c:504
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Dokumentu guztiak"
 
-#: libdocument/pps-document-factory.c:532
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Fitxategi guztiak"
 
@@ -447,8 +447,8 @@ msgstr "Huts egin du aldi baterako fitxategiaren sorrerak: %s"
 msgid "This work is in the Public Domain"
 msgstr "Lan hau Domeinu Publikoan dago"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:963
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Gorde eranskina"
@@ -459,26 +459,26 @@ msgstr[1] "Gorde eranskinak"
 msgid "Page %s"
 msgstr "%s orrialdea"
 
-#: libview/pps-annotation-window.c:281
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Editatu oharra"
 
-#: libview/pps-jobs.c:438
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Huts egin du %d orrialdearen errendatzeak: %s"
 
-#: libview/pps-jobs.c:445
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Huts egin du %d orrialdearen errendatzeak"
 
-#: libview/pps-jobs.c:663
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Huts egin du %d orrialdearen koadro txikiaren sorrerak"
 
-#: libview/pps-jobs.c:1648
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Huts egin du %d orrialdearen inprimatzeak: %s"
@@ -518,8 +518,8 @@ msgstr "Inprimatzeko hautatutako barrutiak ez du inolako orrialderik"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:594 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
+#: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "It_xi"
 
@@ -591,71 +591,71 @@ msgstr "Gaituta dagoenean, ertz bat marraztuko da orrialde bakoitzaren inguruan.
 msgid "Page Handling"
 msgstr "Orrialdeen kudeaketa"
 
-#: libview/pps-view-accessible.c:42
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Korritu gora"
 
-#: libview/pps-view-accessible.c:43
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Korritu behera"
 
-#: libview/pps-view-accessible.c:48
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Korritu ikuspegia gora"
 
-#: libview/pps-view-accessible.c:49
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Korritu ikuspegia behera"
 
-#: libview/pps-view-accessible.c:126
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Dokumentuaren ikuspegia"
 
-#: libview/pps-view.c:2104
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Joan lehen orrialdera"
 
-#: libview/pps-view.c:2106
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Joan aurreko orrira"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Joan hurrengo orrira"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Joan azken orrialdera"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Joan orrira:"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Aurkitu"
 
-#: libview/pps-view.c:2143
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Joan %s orrira"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Joan hona: %s ('%s' fitxategian)"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Joan '%s' fitxategira"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Abiarazi %s"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Leheneratu inprimakia"
@@ -740,7 +740,7 @@ msgid "Next Page"
 msgstr "Hurrengo orrialdea"
 
 #: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:217
+#: shell/resources/pps-document-view.ui:222
 msgid "Page Count"
 msgstr "Orrialde kopurua"
 
@@ -753,7 +753,7 @@ msgid "Print This Document"
 msgstr "Inprimatu dokumentu hau"
 
 #: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:300
+#: shell/resources/pps-document-view.ui:305
 msgid "Zoom Out"
 msgstr "Txikiagotu"
 
@@ -762,17 +762,17 @@ msgid "Normal Size"
 msgstr "Tamaina normala"
 
 #: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:287
+#: shell/resources/pps-document-view.ui:292
 msgid "Zoom In"
 msgstr "Handiagotu"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:98
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
 msgid "Failed to Print Document"
 msgstr "Huts egin du dokumentua inprimatzeak"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Ezezaguna"
 
@@ -780,70 +780,70 @@ msgstr "Ezezaguna"
 msgid "Document Properties"
 msgstr "Dokumentuaren propietateak"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Titulua"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Kokalekua"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Gaia"
 
-#: nautilus/pps-nautilus-extension.h:63
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Egilea"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Gako-hitzak"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Ekoizlea"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Sortzailea"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Sortze-data"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Aldatze-data"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Orrialde kopurua"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Optimizatua"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Formateatu"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Segurtasuna"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Javascript dauka"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Paper-tamaina"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Tamaina"
 
@@ -937,12 +937,12 @@ msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Biratu 90 gradu erlojuaren noranzkoan"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Handiagotu"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Txikiagotu"
@@ -977,188 +977,188 @@ msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Dokumentuan zehar kokatzea"
 
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Orri batean kokatzea"
 
-#: shell/resources/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Joan orrialde bat gora/behera hainbat lerro"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Aurreko orrialdea"
 
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Hurrengo orrialdea"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Joan orrialdera:"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Aurreko orrialdea (azkarra)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Hurrengo orrialdea (azkarra)"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Ikusitako aurreko orrialdea"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Ikusitako hurrengo orrialdea"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Joan orrialdearen hasierara/amaierara"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Joan dokumentuaren hasierara"
 
-#: shell/resources/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Joan dokumentuaren amaierara"
 
-#: shell/resources/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:234
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Dokumentua ikustea eta maneiatzea"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:237
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Gehitu laster-marka"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Kendu laster-marka"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Gaueko modua"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Korritze jarraia"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Bi orrialde"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Orrialde bakoitiak ezkerrean"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Dokumentuaren propietateak"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Gehitu testu-oharpena"
 
-#: shell/resources/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Nabarmendu testua"
 
-#: shell/resources/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:293
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Testua aurkitzea"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Aurkitu"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Aurkitu hurrengoa"
 
-#: shell/resources/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Aurkitu aurrekoa"
 
-#: shell/resources/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Orokorra"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:319
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Laguntza"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menua"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Laster-teklak"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Leiho berria"
 
-#: shell/resources/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
-#: shell/resources/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Aurkezpen modua"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Pantaila beltza"
 
-#: shell/resources/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Pantaila zuria"
 
-#: shell/resources/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Ukipen-teklatuaren keinuak"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-sidebar-annotations.ui:69
 msgid "Annotation Properties"
 msgstr "Oharpenaren propietateak"
 
@@ -1219,6 +1219,7 @@ msgid "Markup Type"
 msgstr "Markaketa mota"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
 msgstr "Nabarmendu"
 
@@ -1227,10 +1228,12 @@ msgid "Strike out"
 msgstr "Marratu"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Azpimarratua"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
 msgstr "Zirriborroa"
 
@@ -1238,6 +1241,7 @@ msgstr "Zirriborroa"
 msgid "_Apply"
 msgstr "_Aplikatu"
 
+#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.ui:71
 msgid "Search"
 msgstr "Bilatu"
@@ -1258,221 +1262,224 @@ msgstr "Eskema"
 msgid "Annotations"
 msgstr "Oharpenak"
 
-#: shell/resources/pps-document-view.ui:148
+#: shell/resources/pps-document-view.ui:153
 msgid "Attachments"
 msgstr "Eranskinak"
 
-#: shell/resources/pps-document-view.ui:167
+#: shell/resources/pps-document-view.ui:171
 msgid "Layers"
 msgstr "Geruzak"
 
-#: shell/resources/pps-document-view.ui:204
+#: shell/resources/pps-document-view.ui:209
 msgid "Toggle Sidebar"
 msgstr "Txandakatu alboko barra"
 
-#: shell/resources/pps-document-view.ui:210
+#: shell/resources/pps-document-view.ui:215
 msgid "Document Menu"
 msgstr "Dokumentu-menua"
 
-#: shell/resources/pps-document-view.ui:233 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
 msgid "Document has been digitally signed."
 msgstr "Dokumentuak sinadura digitala du."
 
-#: shell/resources/pps-document-view.ui:234
+#: shell/resources/pps-document-view.ui:239
 msgid "View Signature…"
 msgstr "Ikusi sinadura…"
 
-#: shell/resources/pps-document-view.ui:267
+#: shell/resources/pps-document-view.ui:272
 msgid "Fit Automatically"
 msgstr "Doitu automatikoki"
 
-#: shell/resources/pps-document-view.ui:568
+#: shell/resources/pps-document-view.ui:565
 msgid "Selection too Small"
 msgstr "Hautapena txikiegia da"
 
-#: shell/resources/pps-document-view.ui:569
+#: shell/resources/pps-document-view.ui:566
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
 msgstr "Tamaina horretako sinadura txikiegia izan daiteke irakurtzeko. Hobeto irakurriko den sinadura bat sortu nahi baduzu, sakatu 'Hasi berriro' eta marraztu laukizuzen handiagoa."
 
-#: shell/resources/pps-document-view.ui:574
+#: shell/resources/pps-document-view.ui:571
 msgid "Start _Over"
 msgstr "Hasi _berriro"
 
-#: shell/resources/pps-document-view.ui:575
+#: shell/resources/pps-document-view.ui:572
 msgid "_Sign"
 msgstr "_Sinatu"
 
-#: shell/resources/pps-document-view.ui:581
+#: shell/resources/pps-document-view.ui:578
 msgid "Abort Printing?"
 msgstr "Abortatu inprimatzea?"
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.ui:579
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
 msgstr "Inprimatze-lan aktibo bat edo gehiago dago. Leihoa ixten baduzu, falta diren inprimatze-lanak ez dira inprimatuko."
 
-#: shell/resources/pps-document-view.ui:585
+#: shell/resources/pps-document-view.ui:582
 msgid "Abort _Print and Close"
 msgstr "A_bortatu inprimatzea eta irten"
 
-#: shell/resources/pps-document-view.ui:586 shell/src/document_view.rs:714
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Utzi"
 
-#: shell/resources/pps-document-view.ui:587
+#: shell/resources/pps-document-view.ui:584
 msgid "Close _After Printing"
 msgstr "Itxi inprimatu _ondoren"
 
-#: shell/resources/pps-document-view.ui:601
+#: shell/resources/pps-document-view.ui:598
 msgid "Open…"
 msgstr "Ireki…"
 
-#: shell/resources/pps-document-view.ui:607
+#: shell/resources/pps-document-view.ui:604
 msgid "Ni_ght Mode"
 msgstr "Ga_ueko modua"
 
-#: shell/resources/pps-document-view.ui:613 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
-#: shell/resources/pps-document-view.ui:617 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: shell/resources/pps-document-view.ui:621 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
 msgid "_About Papers"
 msgstr "Paperak aplikazioari _buruz"
 
-#: shell/resources/pps-document-view.ui:629
+#: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
 msgstr "_Inprimatu…"
 
-#: shell/resources/pps-document-view.ui:633
+#: shell/resources/pps-document-view.ui:630
 msgid "Fullscreen"
 msgstr "Pantaila osoa"
 
-#: shell/resources/pps-document-view.ui:637
+#: shell/resources/pps-document-view.ui:634
 msgid "Present as Slideshow"
 msgstr "Aurkeztu diapositiba gisa"
 
-#: shell/resources/pps-document-view.ui:643
+#: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
 msgstr "Sinatu modu d_igitalean…"
 
-#: shell/resources/pps-document-view.ui:649
+#: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
 msgstr "Ireki k_opia bat"
 
-#: shell/resources/pps-document-view.ui:653
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Ireki honekin…"
 
-#: shell/resources/pps-document-view.ui:657
+#: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
 msgstr "Gorde _honela…"
 
-#: shell/resources/pps-document-view.ui:663
+#: shell/resources/pps-document-view.ui:660
 msgid "_Continuous"
 msgstr "_Etengabea"
 
-#: shell/resources/pps-document-view.ui:667
+#: shell/resources/pps-document-view.ui:664
 msgid "_Dual"
 msgstr "_Duala"
 
-#: shell/resources/pps-document-view.ui:671
+#: shell/resources/pps-document-view.ui:668
 msgid "_Odd Pages Left"
 msgstr "Orrialde b_akoitiak ezkerrean"
 
-#: shell/resources/pps-document-view.ui:675
+#: shell/resources/pps-document-view.ui:672
 msgid "Right to Left Document"
 msgstr "Eskuinetik ezkerrerako dokumentua"
 
-#: shell/resources/pps-document-view.ui:681
+#: shell/resources/pps-document-view.ui:678
 msgid "Ro_tate ⤵"
 msgstr "Bira_tu ⤵"
 
-#: shell/resources/pps-document-view.ui:687
+#: shell/resources/pps-document-view.ui:684
 msgid "Document Prop_erties"
 msgstr "Dokumentuaren _propietateak"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.ui:735
+msgid "Strikethrough"
+msgstr "Marratua"
+
+#: shell/resources/pps-document-view.ui:839
 msgid "_Open Link"
 msgstr "_Ireki esteka"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.ui:844
 msgid "_Copy Link Address"
 msgstr "_Kopiatu estekaren helbidea"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.ui:849
 msgid "_Go To"
 msgstr "_Joan hona"
 
-#: shell/resources/pps-document-view.ui:807
+#: shell/resources/pps-document-view.ui:854
 msgid "Open in New _Window"
 msgstr "Ireki _leiho berrian"
 
-#: shell/resources/pps-document-view.ui:814
+#: shell/resources/pps-document-view.ui:861
 msgid "_Copy"
 msgstr "_Kopiatu"
 
-#: shell/resources/pps-document-view.ui:818
+#: shell/resources/pps-document-view.ui:865
 msgid "Select _All"
 msgstr "Hautatu _dena"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.ui:871
 msgid "_Save Image As…"
 msgstr "Gorde _irudia honela…"
 
-#: shell/resources/pps-document-view.ui:829
+#: shell/resources/pps-document-view.ui:876
 msgid "Copy _Image"
 msgstr "Kopiatu _irudia"
 
-#: shell/resources/pps-document-view.ui:836
-#: shell/resources/pps-document-view.ui:874
-#: shell/resources/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.ui:883
+#: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Ireki eranskina"
 
-#: shell/resources/pps-document-view.ui:841
-#: shell/resources/pps-document-view.ui:878
-#: shell/resources/pps-sidebar-annotations.ui:90
+#: shell/resources/pps-document-view.ui:888
+#: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Gorde eranskina honela…"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.ui:896
 msgid "Annotation _Properties…"
 msgstr "O_harpenaren propietateak…"
 
-#: shell/resources/pps-document-view.ui:854
+#: shell/resources/pps-document-view.ui:901
 msgid "R_emove Annotation"
 msgstr "K_endu oharpena"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.ui:908
 msgid "_Add Text Annotation"
 msgstr "Gehitu te_stu-oharpena"
 
-#: shell/resources/pps-document-view.ui:866
+#: shell/resources/pps-document-view.ui:913
 msgid "_Highlight Selected Text"
 msgstr "Nabarmendu hautatutako _testua"
 
-#: shell/resources/pps-find-sidebar.ui:69
+#: shell/resources/pps-find-sidebar.ui:64
 msgid "No Results Found"
 msgstr "Ez da emaitzarik aurkitu"
 
-#: shell/resources/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
 msgstr "Saiatu bestelako bilaketa bat"
 
-#: shell/resources/pps-find-sidebar.ui:84
+#: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
 msgstr "Bilatu"
 
-#: shell/resources/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
 msgstr "Bilaketaren emaitzak hemen agertuko dira"
 
@@ -1486,7 +1493,7 @@ msgstr "_Utzi"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
 msgid "Password Required"
 msgstr "Pasahitza behar da"
 
@@ -1535,6 +1542,10 @@ msgstr "Testuaren lizentzia"
 msgid "Further Information"
 msgstr "Informazio gehiago"
 
+#: shell/resources/pps-properties-signatures.ui:37
+msgid "Signature Information"
+msgstr "Sinaduraren informazioa"
+
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
 msgstr "Ikusi xehetasunak…"
@@ -1579,7 +1590,7 @@ msgstr "M_aiuskulak/minuskulak"
 msgid "No Annotations"
 msgstr "Oharpenik ez"
 
-#: shell/resources/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-sidebar-annotations.ui:74
 msgid "Remove Annotation"
 msgstr "Kendu oharpena"
 
@@ -1623,113 +1634,113 @@ msgstr "Ezin izan da ireki dokumentua"
 msgid "_Open Other File…"
 msgstr "Ireki beste _fitxategia…"
 
-#: shell/src/application.rs:203
-msgid "© 1996–2024 The Papers authors"
-msgstr "© 1996–2024 Paperak aplikazioaren authors"
+#: shell/src/application.rs:212
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 Paperak aplikazioaren egileak"
 
-#: shell/src/application.rs:204
+#: shell/src/application.rs:213
 msgid "translator-credits"
-msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>"
+msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Dokumentuaren orrialdearen etiketa bistaratzeko."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "ORRIALDEA"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Dokumentuaren orrialdearen zenbakia bistaratzeko."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "ZENBAKIA"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Izendatutako helburua bistaratzeko."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "HELBURUA"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:344
 msgid "Run papers in fullscreen mode."
 msgstr "Exekutatu Paperak pantaila osoko moduan."
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:353
 msgid "Run papers in presentation mode."
 msgstr "Exekutatu Paperak aurkezpen moduan."
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr "Erakutsi programaren bertsioa."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[FITXATEGIA…]"
 
-#: shell/src/document_view.rs:297
+#: shell/src/document_view.rs:299
 msgid "View Details"
 msgstr "Ikusi xehetasunak"
 
-#: shell/src/document_view.rs:693
+#: shell/src/document_view.rs:696
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr "Dokumentuak jadanik bete diren oharpen eta inprimaki-eremu berriak edo aldatuak ditu."
 
-#: shell/src/document_view.rs:694
+#: shell/src/document_view.rs:697
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumentuak bete beharreko inprimaki-eremuak ditu."
 
-#: shell/src/document_view.rs:695
+#: shell/src/document_view.rs:698
 msgid "Document contains new or modified annotations."
 msgstr "Dokumentuak oharpen berriak edo aldatutakoak ditu."
 
-#: shell/src/document_view.rs:703
+#: shell/src/document_view.rs:706
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Ez baduzu kopia bat gordetzen, aldaketak betirako galduko dira."
 
-#: shell/src/document_view.rs:704
+#: shell/src/document_view.rs:707
 msgid "Save Changes to a Copy?"
 msgstr "Gorde aldaketak kopia batean?"
 
-#: shell/src/document_view.rs:713
+#: shell/src/document_view.rs:716
 msgid "Close _Without Saving"
 msgstr "Itxi gorde _gabe"
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:718
 msgid "_Save a Copy"
 msgstr "Gorde _kopia bat"
 
-#: shell/src/document_view/actions.rs:750
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Gorde irudia"
 
-#: shell/src/document_view/actions.rs:786
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Ezin izan da formatu egokirik aurkitu irudia gordetzeko"
 
-#: shell/src/document_view/actions.rs:809
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "Irudia ezin izan da gorde."
 
-#: shell/src/document_view/actions.rs:912
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Kurtsore-nabigazioaren modua gaituta dago, sakatu F7 desgaitzeko."
 
-#: shell/src/document_view/actions.rs:914
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Kurtsore-nabigazioaren modua desgaituta dago, sakatu F7 gaitzeko."
 
-#: shell/src/document_view/actions.rs:950
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Ezin da eranskina ireki"
 
-#: shell/src/document_view/actions.rs:980
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "Eranskina ezin izan da gorde."
 
@@ -1745,75 +1756,90 @@ msgstr "Dokumentuak ez du orrialderik"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumentuak orrialde hutsak soilik ditu"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
 msgid "The file could not be saved as “{}”."
 msgstr "Fitxategia ezin izan da “{}” bezala gorde."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:406
 msgid "Save As…"
 msgstr "Gorde honela…"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Marraztu laukizuzen bat sinadura-eremu bat txertatzeko"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:504
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
 msgstr "Sinatzaile digitala: {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
 msgstr "Ziurtagiria behar da"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
 msgstr "Hautatu sinatze-ziurtagiria"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:524
 msgid "Select"
 msgstr "Hautatu"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
 msgstr "Ziurtagiri bat behar da dokumentu hau sinatzeko"
 
-#: shell/src/document_view/io.rs:652
+#: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
 msgstr "Gorde sinatutako fitxategia"
+
+#: shell/src/document_view/io.rs:695
+msgid "Please enter password for {}"
+msgstr "Sartu pasahitza honentzako: {}"
+
+#: shell/src/document_view/io.rs:711
+msgid "_Login"
+msgstr "_Saio-hasiera"
 
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
 msgstr "“{}” lana inprimatzen"
 
 #: shell/src/document_view/print.rs:78
-msgid "No pending job in queue"
+msgid "No pending jobs in queue"
 msgstr "Ez dago lanik ilaran"
 
-#: shell/src/document_view/print.rs:80
-msgid "{} pending jobs in queue"
-msgstr "{} lan ilaran zain"
+#: shell/src/document_view/print.rs:81
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "Lan {} ilaran zain"
+msgstr[1] "{} lan ilaran zain"
 
-#: shell/src/document_view/signals.rs:250
+#: shell/src/document_view/signals.rs:225
 msgid "Unable to open external link"
 msgstr "Ezin da kanpoko esteka ireki"
 
-#: shell/src/document_view/signals.rs:279
-msgid "Security alert: this document has been prevented from opening the file"
-msgstr "Segurtasun-alerta: dokumentu honek fitxategia ireki dezan eragotzi da"
+#: shell/src/document_view/signals.rs:253
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr "Segurtasun-alerta: dokumentu honek “{}” fitxategia ireki dezan eragotzi da"
 
-#: shell/src/document_view/signals.rs:449 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "{}. orrialdea"
 
-#: shell/src/page_selector.rs:226 shell/src/page_selector.rs:244
-msgid "({} of {})"
-msgstr "({} / {})"
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} / {totalpages})"
 
-#: shell/src/page_selector.rs:228 shell/src/page_selector.rs:246
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
 msgid "of {}"
 msgstr "/ {}"
 
@@ -1826,15 +1852,15 @@ msgstr "“{}” dokumentua blokeatuta dago, pasahitza behar da irekitzeko."
 msgid "File"
 msgstr "Fitxategia"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Karpeta"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Edukia"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Data eta ordua"
 
@@ -1919,6 +1945,9 @@ msgstr "Ziurtagiriaren jaulkitze-ordua"
 msgid "Certificate's Expiration Time"
 msgstr "Ziurtagiriaren iraungitze-ordua"
 
+#~ msgid "({} of {})"
+#~ msgstr "({} / {})"
+
 #~ msgid ""
 #~ "Show a dialog to confirm that the user wants to activate the caret "
 #~ "navigation."
@@ -1961,13 +1990,6 @@ msgstr "Ziurtagiriaren iraungitze-ordua"
 
 #~ msgid "File Saved"
 #~ msgstr "Fitxategia gorde da"
-
-#, c-format
-#~ msgid "Please enter password for %s"
-#~ msgstr "Sartu pasahitza honentzako: %s"
-
-#~ msgid "_Login"
-#~ msgstr "_Saio-hasiera"
 
 #~ msgid "No certificates found!"
 #~ msgstr "Ez da ziurtagiririk aurkitu"
