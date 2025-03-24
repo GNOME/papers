@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: evince.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-05 13:47+0000\n"
-"PO-Revision-Date: 2025-03-03 18:09-0300\n"
+"POT-Creation-Date: 2025-03-22 06:44+0000\n"
+"PO-Revision-Date: 2025-03-22 09:30-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -251,14 +251,14 @@ msgstr "Añade soporte para leer documentos PDF"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Sí"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "No"
 
@@ -318,7 +318,7 @@ msgstr "Sin nombre"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Ninguno"
 
@@ -487,8 +487,8 @@ msgstr "Falló al crear un archivo temporal: %s"
 msgid "This work is in the Public Domain"
 msgstr "Este trabajo está en el dominio público"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1044
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Guardar adjunto"
@@ -503,22 +503,22 @@ msgstr "Página %s"
 msgid "Edit Note"
 msgstr "Editar nota"
 
-#: libview/pps-jobs.c:433
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Falló al renderizar la página %d: %s"
 
-#: libview/pps-jobs.c:440
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Falló al renderizar la página %d"
 
-#: libview/pps-jobs.c:674
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Falló al crear la miniatura para la página %d"
 
-#: libview/pps-jobs.c:1700
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Falló al imprimir la página %d: %s"
@@ -558,7 +558,7 @@ msgstr "Su selección de intervalo de páginas no incluye ninguna página"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:590 shell/resources/pps-window.ui:164
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
 #: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Cerrar"
@@ -664,51 +664,51 @@ msgstr "Desplazar la vista hacia abajo"
 msgid "Document View"
 msgstr "Vista de documento"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Ir a la primera página"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Ir a la página anterior"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Ir a la página siguiente"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Ir a la última página"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Ir a la página"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Buscar"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Ir a la página %s"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ir a %s en el archivo «%s»"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ir al archivo «%s»"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Lanzar %s"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Reiniciar formulario"
@@ -827,7 +827,7 @@ msgstr "No se pudo imprimir el documento"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -835,7 +835,7 @@ msgstr "Desconocido"
 msgid "Document Properties"
 msgstr "Propiedades del documento"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Título"
 
@@ -843,62 +843,62 @@ msgstr "Título"
 msgid "Location"
 msgstr "Ubicación"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Asunto"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Autor"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Palabras clave"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Productor"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Creador"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Creado"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Modificado"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Número de páginas"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Optimizado"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Formato"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Seguridad"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Contiene Javascript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Tamaño del papel"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Tamaño"
 
@@ -958,11 +958,9 @@ msgid "Side Pane"
 msgstr "Panel lateral"
 
 #: shell/resources/help-overlay.ui:73
-#, fuzzy
-#| msgid "Navigation"
 msgctxt "shortcut window"
 msgid "Caret Navigation"
-msgstr "Navegación"
+msgstr "Navegación del cursor"
 
 #: shell/resources/help-overlay.ui:81
 msgctxt "shortcut window"
@@ -994,12 +992,12 @@ msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Rotar la página 90º en sentido horario"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Alejar"
@@ -1034,182 +1032,182 @@ msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Moverse por el documento"
 
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Moverse por la página"
 
-#: shell/resources/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Subir/bajar varias líneas a la vez"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Página anterior"
 
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Siguiente página"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Ir a la página número"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Página anterior (Rápido)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Siguiente página (Rápido)"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Página visitada anterior"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Siguiente página visitada"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Ir al principio/final de la página"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Ir al inicio del documento"
 
-#: shell/resources/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Ir al final del documento"
 
-#: shell/resources/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:234
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Vista y manejo del documento"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:237
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Añadir marcador"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Quitar marcador"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Modo nocturno"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Desplazamiento continuo"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Página doble"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Páginas impares a la izquierda"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Propiedades del documento"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Añadir anotación de texto"
 
-#: shell/resources/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Resaltar texto"
 
-#: shell/resources/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:293
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Buscar texto"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Buscar"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Buscar siguiente"
 
-#: shell/resources/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Buscar anterior"
 
-#: shell/resources/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:319
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Ayuda"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menú"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nueva ventana"
 
-#: shell/resources/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
-#: shell/resources/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Modo presentación"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Pantalla oscura"
 
-#: shell/resources/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Pantalla clara"
 
-#: shell/resources/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Gestos del panel táctil"
@@ -1276,7 +1274,7 @@ msgid "Markup Type"
 msgstr "Tipo de marcado"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
-#: shell/resources/pps-document-view.ui:714
+#: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
 msgstr "Resaltado"
 
@@ -1285,12 +1283,12 @@ msgid "Strike out"
 msgstr "Tachado"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
-#: shell/resources/pps-document-view.ui:744
+#: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Subrayado"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
-#: shell/resources/pps-document-view.ui:724
+#: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
 msgstr "Garabato"
 
@@ -1332,14 +1330,12 @@ msgid "Toggle Sidebar"
 msgstr "Alternar barra lateral"
 
 #: shell/resources/pps-document-view.ui:215
-#, fuzzy
-#| msgid "Document View"
 msgid "Document Menu"
-msgstr "Vista de documento"
+msgstr "Menú del documento"
 
 #: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
 msgid "Document has been digitally signed."
-msgstr ""
+msgstr "El documento se ha firmado digitalmente."
 
 #: shell/resources/pps-document-view.ui:239
 msgid "View Signature…"
@@ -1349,32 +1345,33 @@ msgstr "Ver firma…"
 msgid "Fit Automatically"
 msgstr "Ajustar automáticamente"
 
-#: shell/resources/pps-document-view.ui:564
-#, fuzzy
-#| msgid "Select _All"
-msgid "Selection too Small"
-msgstr "Seleccionar _todo"
-
 #: shell/resources/pps-document-view.ui:565
+msgid "Selection too Small"
+msgstr "Selección demasiado pequeña"
+
+#: shell/resources/pps-document-view.ui:566
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
 msgstr ""
-
-#: shell/resources/pps-document-view.ui:570
-msgid "Start _Over"
-msgstr ""
+"Una firma de este tamaño puede ser demasiado pequeña para leer. Si quiere "
+"crear una firma potencialmente más legible, pulse «Empezar de nuevo» y "
+"dibuje un rectángulo más grande."
 
 #: shell/resources/pps-document-view.ui:571
+msgid "Start _Over"
+msgstr "Empezar de _nuevo"
+
+#: shell/resources/pps-document-view.ui:572
 msgid "_Sign"
 msgstr "_Firmar"
 
-#: shell/resources/pps-document-view.ui:577
+#: shell/resources/pps-document-view.ui:578
 msgid "Abort Printing?"
 msgstr "¿Cancelar la impresión?"
 
-#: shell/resources/pps-document-view.ui:578
+#: shell/resources/pps-document-view.ui:579
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1382,151 +1379,151 @@ msgstr ""
 "Hay uno o mas trabajos de impresión activos. Si cierra la ventana, los "
 "trabajos de impresión pendientes no se imprimirán."
 
-#: shell/resources/pps-document-view.ui:581
+#: shell/resources/pps-document-view.ui:582
 msgid "Abort _Print and Close"
 msgstr "Cancelar la _impresión y cerrar"
 
-#: shell/resources/pps-document-view.ui:582 shell/src/document_view.rs:716
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
 #: shell/src/document_view/io.rs:710
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: shell/resources/pps-document-view.ui:583
+#: shell/resources/pps-document-view.ui:584
 msgid "Close _After Printing"
 msgstr "Cerrar _después de imprimir"
 
-#: shell/resources/pps-document-view.ui:597
+#: shell/resources/pps-document-view.ui:598
 msgid "Open…"
 msgstr "Abrir…"
 
-#: shell/resources/pps-document-view.ui:603
+#: shell/resources/pps-document-view.ui:604
 msgid "Ni_ght Mode"
 msgstr "Modo no_cturno"
 
-#: shell/resources/pps-document-view.ui:609 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
 msgid "_Keyboard Shortcuts"
 msgstr "_Atajos del teclado"
 
-#: shell/resources/pps-document-view.ui:613 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: shell/resources/pps-document-view.ui:617 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
 msgid "_About Papers"
 msgstr "_Acerca de Papeles"
 
-#: shell/resources/pps-document-view.ui:625
+#: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
 msgstr "_Imprimir…"
 
-#: shell/resources/pps-document-view.ui:629
+#: shell/resources/pps-document-view.ui:630
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: shell/resources/pps-document-view.ui:633
+#: shell/resources/pps-document-view.ui:634
 msgid "Present as Slideshow"
 msgstr "Presentar como diapositivas"
 
-#: shell/resources/pps-document-view.ui:639
+#: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
 msgstr "Firmar _digitalmente…"
 
-#: shell/resources/pps-document-view.ui:645
+#: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
 msgstr "Abrir una c_opia"
 
-#: shell/resources/pps-document-view.ui:649
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Abrir con…"
 
-#: shell/resources/pps-document-view.ui:653
+#: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
 msgstr "Guardar _como…"
 
-#: shell/resources/pps-document-view.ui:659
+#: shell/resources/pps-document-view.ui:660
 msgid "_Continuous"
 msgstr "C_ontinuo"
 
-#: shell/resources/pps-document-view.ui:663
+#: shell/resources/pps-document-view.ui:664
 msgid "_Dual"
 msgstr "_Dual"
 
-#: shell/resources/pps-document-view.ui:667
+#: shell/resources/pps-document-view.ui:668
 msgid "_Odd Pages Left"
 msgstr "Páginas _impares a la izquierda"
 
-#: shell/resources/pps-document-view.ui:671
+#: shell/resources/pps-document-view.ui:672
 msgid "Right to Left Document"
 msgstr "Documentos de derecha a izquierda"
 
-#: shell/resources/pps-document-view.ui:677
+#: shell/resources/pps-document-view.ui:678
 msgid "Ro_tate ⤵"
 msgstr "Ro_tar ⤵"
 
-#: shell/resources/pps-document-view.ui:683
+#: shell/resources/pps-document-view.ui:684
 msgid "Document Prop_erties"
 msgstr "Propi_edades del documento"
 
-#: shell/resources/pps-document-view.ui:734
+#: shell/resources/pps-document-view.ui:735
 msgid "Strikethrough"
 msgstr "Tachado"
 
-#: shell/resources/pps-document-view.ui:838
+#: shell/resources/pps-document-view.ui:839
 msgid "_Open Link"
 msgstr "_Abrir enlace"
 
-#: shell/resources/pps-document-view.ui:843
+#: shell/resources/pps-document-view.ui:844
 msgid "_Copy Link Address"
 msgstr "_Copiar dirección del enlace"
 
-#: shell/resources/pps-document-view.ui:848
+#: shell/resources/pps-document-view.ui:849
 msgid "_Go To"
 msgstr "_Ir"
 
-#: shell/resources/pps-document-view.ui:853
+#: shell/resources/pps-document-view.ui:854
 msgid "Open in New _Window"
 msgstr "Abrir en una _ventana nueva"
 
-#: shell/resources/pps-document-view.ui:860
+#: shell/resources/pps-document-view.ui:861
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: shell/resources/pps-document-view.ui:864
+#: shell/resources/pps-document-view.ui:865
 msgid "Select _All"
 msgstr "Seleccionar _todo"
 
-#: shell/resources/pps-document-view.ui:870
+#: shell/resources/pps-document-view.ui:871
 msgid "_Save Image As…"
 msgstr "Guardar imagen _como…"
 
-#: shell/resources/pps-document-view.ui:875
+#: shell/resources/pps-document-view.ui:876
 msgid "Copy _Image"
 msgstr "Copiar _imagen"
 
-#: shell/resources/pps-document-view.ui:882
+#: shell/resources/pps-document-view.ui:883
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Abrir adjuntos"
 
-#: shell/resources/pps-document-view.ui:887
+#: shell/resources/pps-document-view.ui:888
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Guardar adjunto como…"
 
-#: shell/resources/pps-document-view.ui:895
+#: shell/resources/pps-document-view.ui:896
 msgid "Annotation _Properties…"
 msgstr "_Propiedades de la anotación…"
 
-#: shell/resources/pps-document-view.ui:900
+#: shell/resources/pps-document-view.ui:901
 msgid "R_emove Annotation"
 msgstr "Q_uitar anotación"
 
-#: shell/resources/pps-document-view.ui:907
+#: shell/resources/pps-document-view.ui:908
 msgid "_Add Text Annotation"
 msgstr "_Añadir anotación de texto"
 
-#: shell/resources/pps-document-view.ui:912
+#: shell/resources/pps-document-view.ui:913
 msgid "_Highlight Selected Text"
 msgstr "_Resaltar el texto seleccionado"
 
@@ -1607,6 +1604,12 @@ msgstr "Texto de la licencia"
 msgid "Further Information"
 msgstr "Más información"
 
+#: shell/resources/pps-properties-signatures.ui:37
+#, fuzzy
+#| msgid "Further Information"
+msgid "Signature Information"
+msgstr "Más información"
+
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
 msgstr "Ver detalles…"
@@ -1683,7 +1686,7 @@ msgstr "Abrir un documento"
 
 #: shell/resources/pps-window.ui:48
 msgid "Drag and drop documents here"
-msgstr ""
+msgstr "Arrastre y suelte documentos aquí"
 
 #: shell/resources/pps-window.ui:53
 msgid "_Open…"
@@ -1735,20 +1738,16 @@ msgid "DEST"
 msgstr "DESTINO"
 
 #: shell/src/application.rs:344
-#, fuzzy
-#| msgid "Run evince in fullscreen mode"
 msgid "Run papers in fullscreen mode."
-msgstr "Ejecutar Evince en modo pantalla completa"
+msgstr "Ejecutar Papeles en modo pantalla completa"
 
 #: shell/src/application.rs:353
-#, fuzzy
-#| msgid "Run evince in presentation mode"
 msgid "Run papers in presentation mode."
-msgstr "Ejecutar Evince en modo presentación"
+msgstr "Ejecutar Papeles en modo presentación"
 
 #: shell/src/application.rs:362
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Mostrar la versión del programa."
 
 #: shell/src/application.rs:372
 msgid "[FILE…]"
@@ -1758,89 +1757,81 @@ msgstr "[ARCHIVO…]"
 msgid "View Details"
 msgstr "Ver detalles"
 
-#: shell/src/document_view.rs:695
-#, fuzzy
-#| msgid "Document contains form fields that have been filled out."
+#: shell/src/document_view.rs:696
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
-msgstr "El documento contiene campos de formulario que se han rellenado."
+msgstr ""
+"El documento contiene anotaciones nuevas o modificadas y campos de "
+"formulario que se han rellenado."
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:697
 msgid "Document contains form fields that have been filled out."
 msgstr "El documento contiene campos de formulario que se han rellenado."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:698
 msgid "Document contains new or modified annotations."
 msgstr "El documento contiene anotaciones nuevas o modificadas."
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Los cambios se perderán permanentemente si no guarda una copia."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Save Changes to a Copy?"
 msgstr "¿Guardar cambios en una copia?"
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "Close _Without Saving"
 msgstr "Cerrar _sin guardar"
 
-#: shell/src/document_view.rs:717
+#: shell/src/document_view.rs:718
 msgid "_Save a Copy"
 msgstr "_Guardar una copia"
 
-#: shell/src/document_view/actions.rs:762
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Guardar imagen"
 
-#: shell/src/document_view/actions.rs:798
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "No se pudo encontrar un formato apropiado para guardar la imagen"
 
-#: shell/src/document_view/actions.rs:821
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "La imagen no se pudo guardar."
 
-#: shell/src/document_view/actions.rs:924
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 
-#: shell/src/document_view/actions.rs:926
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 
-#: shell/src/document_view/actions.rs:1028 shell/src/sidebar_attachments.rs:286
-#, fuzzy
-#| msgid "Unable to open attachment"
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "No se pudo abrir el adjunto"
 
-#: shell/src/document_view/actions.rs:1061
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "El adjunto no se pudo guardar."
 
 #: shell/src/document_view/io.rs:262
 msgid "Digital Signature is invalid!"
-msgstr ""
+msgstr "La firma digital no es válida."
 
 #: shell/src/document_view/io.rs:277
-#, fuzzy
-#| msgid "The document contains no pages"
 msgid "The Document Contains No Pages"
 msgstr "El documento no contiene ninguna página"
 
 #: shell/src/document_view/io.rs:279
-#, fuzzy
-#| msgid "The document contains only empty pages"
 msgid "The Document Contains Only Empty Pages"
 msgstr "El documento sólo contiene páginas vacías"
 
 #: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
-#, fuzzy
-#| msgid "The file could not be saved as “%s”."
 msgid "The file could not be saved as “{}”."
-msgstr "El archivo no se pudo guardar como «%s»."
+msgstr "El archivo no se pudo guardar como “{}”."
 
 #: shell/src/document_view/io.rs:406
 msgid "Save As…"
@@ -1848,7 +1839,7 @@ msgstr "Guardar como…"
 
 #: shell/src/document_view/io.rs:482
 msgid "Draw a rectangle to insert a signature field"
-msgstr ""
+msgstr "Dibuje un rectángulo para insertar un campo para la firma"
 
 #: shell/src/document_view/io.rs:504
 msgid ""
@@ -1860,7 +1851,7 @@ msgstr ""
 
 #: shell/src/document_view/io.rs:520
 msgid "Certificate Required"
-msgstr ""
+msgstr "Se necesita un certificado"
 
 #: shell/src/document_view/io.rs:523
 msgid "Select signing certificate"
@@ -1872,11 +1863,11 @@ msgstr "Seleccionar"
 
 #: shell/src/document_view/io.rs:597
 msgid "A certificate is required to sign this document"
-msgstr ""
+msgstr "Se necesita un certificado para firmar este documento."
 
 #: shell/src/document_view/io.rs:666
 msgid "Save Signed File"
-msgstr ""
+msgstr "Guardar archivo firmado"
 
 #: shell/src/document_view/io.rs:695
 msgid "Please enter password for {}"
@@ -1887,10 +1878,8 @@ msgid "_Login"
 msgstr "_Iniciar sesión"
 
 #: shell/src/document_view/print.rs:45
-#, fuzzy
-#| msgid "Printing job “%s”"
 msgid "Printing job “{}”"
-msgstr "Imprimiendo trabajo «%s»"
+msgstr "Imprimiendo trabajo «{}»"
 
 #: shell/src/document_view/print.rs:78
 msgid "No pending jobs in queue"
@@ -1940,15 +1929,15 @@ msgstr ""
 msgid "File"
 msgstr "Archivo"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Carpeta"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Contenido"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Fecha y hora"
 
@@ -1975,7 +1964,7 @@ msgstr "No se pudo decodificar la firma."
 
 #: shell/src/properties_signatures.rs:202
 msgid "Signature verification error."
-msgstr ""
+msgstr "Error al verificar la firma."
 
 #: shell/src/properties_signatures.rs:214
 msgid "Signed with a certificate issued by trusted issuer."
@@ -1999,7 +1988,7 @@ msgstr "Firmado con certificados expirados."
 
 #: shell/src/properties_signatures.rs:239
 msgid "Certificate verification error."
-msgstr ""
+msgstr "Error al verificar el certificado."
 
 #: shell/src/properties_signatures.rs:243
 msgid "Certificate has not been verified."
@@ -2015,7 +2004,7 @@ msgstr "Fecha y hora"
 
 #: shell/src/properties_signatures.rs:276
 msgid "Certificate Issuer"
-msgstr ""
+msgstr "Emisor del certificado"
 
 #: shell/src/properties_signatures.rs:287
 msgid "Certificate Issuer's Email"
@@ -2031,7 +2020,7 @@ msgstr ""
 
 #: shell/src/properties_signatures.rs:321
 msgid "Certificate's Expiration Time"
-msgstr ""
+msgstr "Fecha de expiración del certificado"
 
 #~ msgid "DVI document has incorrect format"
 #~ msgstr "El documento DVI tiene un formato incorrecto"
