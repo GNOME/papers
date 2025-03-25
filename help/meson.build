@@ -80,6 +80,7 @@ if enable_user_doc
     'figures/annotations-nav-to-page.png',
     'figures/emblem-system-symbolic.svg',
     'figures/org.gnome.Papers.svg',
+    'figures/search-not-found.png',
     'figures/zoom.png',
   ]
 
