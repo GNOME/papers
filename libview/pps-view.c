@@ -5908,6 +5908,8 @@ pps_view_init (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
+	gtk_widget_init_template (GTK_WIDGET (view));
+
 	priv->start_page = -1;
 	priv->end_page = -1;
 	priv->spacing = 12;
@@ -5937,8 +5939,6 @@ pps_view_init (PpsView *view)
 		gtk_widget_set_parent (GTK_WIDGET (page), GTK_WIDGET (view));
 		g_ptr_array_add (priv->page_widgets, page);
 	}
-
-	gtk_widget_init_template (GTK_WIDGET (view));
 
 	gtk_gesture_group (priv->middle_clicked_drag_gesture,
 	                   priv->middle_clicked_drag_swipe_gesture);
