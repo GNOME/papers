@@ -203,7 +203,7 @@ mod imp {
                 0
             };
 
-            if result_model.n_items() <= pos {
+            if pos < result_model.n_items() {
                 self.list_view
                     .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
             }
