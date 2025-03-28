@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: papers main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-12 06:37+0000\n"
-"PO-Revision-Date: 2025-03-13 18:22+0700\n"
+"POT-Creation-Date: 2025-03-22 17:22+0000\n"
+"PO-Revision-Date: 2025-03-28 19:33+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id\n"
@@ -238,14 +238,14 @@ msgstr "Menambahkan dukungan untuk membaca dokumen PDF"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Ya"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Tidak"
 
@@ -304,7 +304,7 @@ msgstr "Tidak ada nama"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Nihil"
 
@@ -473,8 +473,8 @@ msgstr "Gagal membuat berkas sementara: %s"
 msgid "This work is in the Public Domain"
 msgstr "Karya ini berada di Ranah Publik"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1041
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Simpan Lampiran"
@@ -488,22 +488,22 @@ msgstr "Halaman %s"
 msgid "Edit Note"
 msgstr "Sunting Catatan"
 
-#: libview/pps-jobs.c:433
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Gagal merender halaman %d: %s"
 
-#: libview/pps-jobs.c:440
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Gagal merender halaman %d"
 
-#: libview/pps-jobs.c:674
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Gagal membuat gambar mini untuk halaman %d"
 
-#: libview/pps-jobs.c:1700
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Gagal mencetak halaman %d: %s"
@@ -648,51 +648,51 @@ msgstr "Gulir Tampilan Turun"
 msgid "Document View"
 msgstr "Tampilan Dokumen"
 
-#: libview/pps-view.c:2097
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Pergi ke halaman pertama"
 
-#: libview/pps-view.c:2099
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Pergi ke halaman sebelumnya"
 
-#: libview/pps-view.c:2101
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Pergi ke halaman selanjutnya"
 
-#: libview/pps-view.c:2103
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Pergi ke halaman terakhir"
 
-#: libview/pps-view.c:2105
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Pergi ke halaman"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Cari"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Pergi ke halaman %s"
 
-#: libview/pps-view.c:2142
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Pergi ke %s pada berkas “%s”"
 
-#: libview/pps-view.c:2145
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Pergi ke berkas “%s”"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Luncurkan %s"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Reset formulir"
@@ -809,7 +809,7 @@ msgstr "Gagal Mencetak Dokumen"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
@@ -817,7 +817,7 @@ msgstr "Tidak Dikenal"
 msgid "Document Properties"
 msgstr "Properti Dokumen"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Judul"
 
@@ -825,62 +825,62 @@ msgstr "Judul"
 msgid "Location"
 msgstr "Lokasi"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Subjek"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Penulis"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Kata Kunci"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Produsen"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Pembuat"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Dibuat"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Diubah"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Cacah Halaman"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Dioptimalkan"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Keamanan"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Berisi Javascript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Ukuran Kertas"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Ukuran"
 
@@ -1586,6 +1586,10 @@ msgstr "Lisensi Teks"
 msgid "Further Information"
 msgstr "Informasi Lebih Lanjut"
 
+#: shell/resources/pps-properties-signatures.ui:37
+msgid "Signature Information"
+msgstr "Informasi Tanda Tangan"
+
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
 msgstr "Lihat Detail…"
@@ -1786,11 +1790,11 @@ msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Mode navigasi caret sekarang dinonaktifkan, tekan F7 untuk mengaktifkan."
 
-#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Tidak Bisa Membuka Lampiran"
 
-#: shell/src/document_view/actions.rs:1058
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "Lampiran tidak dapat disimpan."
 
@@ -1904,15 +1908,15 @@ msgstr ""
 msgid "File"
 msgstr "Berkas"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Folder"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Isi"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Tanggal &amp; Waktu"
 
