@@ -1137,10 +1137,12 @@ static void
 update_job_selection (CacheJobInfo *job_info,
                       PpsViewSelection *selection)
 {
-	job_info->selection_stale = TRUE;
-	job_info->points_set = TRUE;
-	job_info->target_points = selection->rect;
-	job_info->selection_style = selection->style;
+	if (pps_rect_cmp (&job_info->target_points, &selection->rect) != 0 || !job_info->points_set || job_info->selection_style != selection->style) {
+		job_info->selection_stale = TRUE;
+		job_info->points_set = TRUE;
+		job_info->target_points = selection->rect;
+		job_info->selection_style = selection->style;
+	}
 }
 
 /* This function will reset the selection on pages that no longer have them, and
