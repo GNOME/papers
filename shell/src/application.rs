@@ -5,6 +5,7 @@ use papers_view::Job;
 
 use crate::config::RESOURCES_DATA;
 
+use git_version::git_version;
 use std::env;
 use std::ffi::OsString;
 
@@ -209,6 +210,39 @@ mod imp {
 
             about.set_copyright(&gettext("© 1996–2025 The Papers authors"));
             about.set_translator_credits(&gettext("translator-credits"));
+
+            let adw_version = format!(
+                "{}.{}.{}",
+                adw::major_version(),
+                adw::minor_version(),
+                adw::micro_version()
+            );
+
+            let gtk_version = format!(
+                "{}.{}.{}",
+                gtk::major_version(),
+                gtk::minor_version(),
+                gtk::micro_version()
+            );
+
+            const GIT_COMMIT_ID: &str = git_version!();
+
+            let debug_info = format!(
+                "GNOME Papers ({})\n\n\
+                *Flatpak: {}\n\
+                *GTK: {}\n\
+                *Libadwaita: {}\n",
+                GIT_COMMIT_ID,
+                if std::env::var("FLATPAK_ID").is_ok() {
+                    "yes"
+                } else {
+                    "no"
+                },
+                gtk_version,
+                adw_version,
+            );
+
+            about.set_debug_info(&debug_info);
 
             about.set_developers(&[
                 "Martin Kretzschmar <m_kretzschmar@gmx.net>",
