@@ -121,24 +121,6 @@ doc_rect_to_view_rect (PpsViewPage *page,
 	view_rect->height = (gint) (height + 0.5);
 }
 
-static PpsViewSelection *
-find_selection_for_page (PpsViewPage *page)
-{
-	GList *list;
-	PpsViewPagePrivate *priv = GET_PRIVATE (page);
-
-	for (list = pps_pixbuf_cache_get_selection_list (priv->pixbuf_cache); list != NULL; list = list->next) {
-		PpsViewSelection *selection;
-
-		selection = (PpsViewSelection *) list->data;
-
-		if (selection->page == priv->index)
-			return selection;
-	}
-
-	return NULL;
-}
-
 static void
 stroke_view_rect (GtkSnapshot *snapshot,
                   GdkRectangle *clip,
@@ -465,10 +447,9 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	draw_surface (snapshot, page_texture, &area, inverted);
 
 	/* Get the selection pixbuf iff we have something to draw */
-	if (find_selection_for_page (page))
-		selection_texture = pps_pixbuf_cache_get_selection_texture (priv->pixbuf_cache,
-		                                                            priv->index,
-		                                                            scale);
+	selection_texture = pps_pixbuf_cache_get_selection_texture (priv->pixbuf_cache,
+	                                                            priv->index,
+	                                                            scale);
 
 	if (selection_texture) {
 		draw_surface (snapshot, selection_texture, &area, false);
