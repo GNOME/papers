@@ -32,6 +32,7 @@ typedef struct _CacheJobInfo {
 	gboolean selection_stale;
 
 	GdkTexture *selection_texture;
+	cairo_surface_t *selection_surface;
 	gdouble selection_scale;
 	PpsRectangle selection_points;
 
@@ -185,6 +186,7 @@ dispose_cache_job_info (CacheJobInfo *job_info,
 
 	g_clear_object (&job_info->texture);
 	g_clear_object (&job_info->selection_texture);
+	g_clear_pointer (&job_info->selection_surface, cairo_surface_destroy);
 	g_clear_pointer (&job_info->region, cairo_region_destroy);
 	g_clear_pointer (&job_info->selection_region, cairo_region_destroy);
 
@@ -275,6 +277,7 @@ copy_job_to_job_info (PpsJobRenderTexture *job_render,
 		g_set_object (&job_info->selection_texture, job_render->selection);
 		job_info->points_set = TRUE;
 	}
+	g_clear_pointer (&job_info->selection_surface, cairo_surface_destroy);
 
 	if (job_info->job)
 		end_job (job_info, pixbuf_cache);
@@ -954,6 +957,7 @@ pps_pixbuf_cache_style_changed (PpsPixbufCache *pixbuf_cache)
 		job_info = pixbuf_cache->prev_job + i;
 		if (job_info->selection_texture) {
 			g_clear_object (&job_info->selection_texture);
+			g_clear_pointer (&job_info->selection_surface, cairo_surface_destroy);
 			job_info->selection_points.x1 = -1;
 		}
 
@@ -961,6 +965,7 @@ pps_pixbuf_cache_style_changed (PpsPixbufCache *pixbuf_cache)
 
 		if (job_info->selection_texture) {
 			g_clear_object (&job_info->selection_texture);
+			g_clear_pointer (&job_info->selection_surface, cairo_surface_destroy);
 			job_info->selection_points.x1 = -1;
 		}
 	}
@@ -972,6 +977,7 @@ pps_pixbuf_cache_style_changed (PpsPixbufCache *pixbuf_cache)
 
 		if (job_info->selection_texture) {
 			g_clear_object (&job_info->selection_texture);
+			g_clear_pointer (&job_info->selection_surface, cairo_surface_destroy);
 			job_info->selection_points.x1 = -1;
 		}
 	}
@@ -1017,7 +1023,6 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 		PpsRenderContext *rc;
 		PpsPage *pps_page;
 		gint width, height;
-		cairo_surface_t *selection = NULL;
 
 		/* we need to get a new selection pixbuf */
 		pps_document_doc_mutex_lock (pixbuf_cache->document);
@@ -1040,20 +1045,20 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 
 		get_accent_color (&base, &text);
 		pps_selection_render_selection (PPS_SELECTION (pixbuf_cache->document),
-		                                rc, &selection,
+		                                rc, &job_info->selection_surface,
 		                                &(job_info->target_points),
 		                                old_points,
 		                                job_info->selection_style,
 		                                &text, &base);
-		if (selection)
-			set_device_scale_on_surface (selection, job_info->device_scale);
+
+		if (job_info->selection_surface)
+			set_device_scale_on_surface (job_info->selection_surface, job_info->device_scale);
 		job_info->selection_points = job_info->target_points;
 		job_info->selection_scale = scale * job_info->device_scale;
 
 		g_clear_object (&job_info->selection_texture);
 
-		job_info->selection_texture = pps_document_misc_texture_from_surface (selection);
-		cairo_surface_destroy (selection);
+		job_info->selection_texture = pps_document_misc_texture_from_surface (job_info->selection_surface);
 		g_object_unref (rc);
 		pps_document_doc_mutex_unlock (pixbuf_cache->document);
 	}
@@ -1153,9 +1158,6 @@ void
 pps_pixbuf_cache_set_selection_list (PpsPixbufCache *pixbuf_cache,
                                      GList *selection_list)
 {
-	gdouble scale = pps_document_model_get_scale (pixbuf_cache->model);
-	gint rotation = pps_document_model_get_rotation (pixbuf_cache->model);
-	PpsRenderAnnotsFlags annot_flags = pps_pixbuf_cache_get_annot_flags (pixbuf_cache);
 	PpsViewSelection *selection;
 	GList *list = selection_list;
 	int page;
