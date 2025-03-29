@@ -1603,9 +1603,19 @@ pps_ink_list_free (PpsInkList *ink_list)
 	g_free (ink_list);
 }
 
+PpsInkTime *
+pps_ink_time_copy (const PpsInkTime *t)
+{
+	PpsInkTime *new_path = g_new (PpsInkTime, 1);
+	*new_path = *t;
+	return new_path;
+}
+
 G_DEFINE_BOXED_TYPE (PpsPath, pps_path, pps_path_copy, pps_path_free)
 
 G_DEFINE_BOXED_TYPE (PpsInkList, pps_ink_list, pps_ink_list_copy, pps_ink_list_free)
+
+G_DEFINE_BOXED_TYPE (PpsInkTime, pps_ink_time, pps_ink_time_copy, g_free)
 
 static void
 pps_annotation_ink_finalize (GObject *object)
@@ -1740,6 +1750,11 @@ pps_annotation_ink_set_ink_list (PpsAnnotationInk *ink, PpsInkList *ink_list)
 
 	priv->ink_list = ink_list;
 
+	if (priv->time_list) {
+		g_slist_free_full (priv->time_list, g_free);
+		priv->time_list = NULL;
+	}
+
 	g_object_notify_by_pspec (G_OBJECT (ink), ink_properties[PROP_INK_INK_LIST]);
 }
 
@@ -1761,6 +1776,42 @@ pps_annotation_ink_get_ink_list (PpsAnnotationInk *ink)
 	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
 
 	return priv->ink_list;
+}
+
+/**
+ * pps_annotation_ink_set_time_list:
+ * @ink: a #PpsAnnotationInk
+ * @time_list: (element-type PpsInkTime): the new time list.
+ *
+ */
+void
+pps_annotation_ink_set_time_list (PpsAnnotationInk *ink, GSList *time_list)
+{
+	g_return_if_fail (PPS_IS_ANNOTATION_INK (ink));
+
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
+
+	if (priv->time_list) {
+		g_assert (FALSE);
+	}
+
+	priv->time_list = time_list;
+}
+
+/**
+ * pps_annotation_ink_get_time_list:
+ * @ink: a #PpsAnnotationInk
+ *
+ * Returns: (element-type PpsInkTime) (transfer none): the time list
+ */
+GSList *
+pps_annotation_ink_get_time_list (PpsAnnotationInk *ink)
+{
+	g_return_val_if_fail (PPS_IS_ANNOTATION_INK (ink), NULL);
+
+	PpsAnnotationInkPrivate *priv = GET_ANNOT_INK_PRIVATE (ink);
+
+	return priv->time_list;
 }
 
 gboolean
