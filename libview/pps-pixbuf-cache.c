@@ -1233,8 +1233,6 @@ pps_pixbuf_cache_set_selection_list (PpsPixbufCache *pixbuf_cache,
 			clear_job_selection (pixbuf_cache->next_job + i);
 		page++;
 	}
-
-	pps_pixbuf_cache_add_jobs_if_needed (pixbuf_cache, rotation, scale, annot_flags);
 }
 
 /* Returns what the pixbuf cache thinks is */
