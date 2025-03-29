@@ -255,6 +255,18 @@ void pps_ink_list_free (PpsInkList *ink_list);
 PPS_PUBLIC
 PpsPath **pps_ink_list_get_array (PpsInkList *ink_list, gsize *n_paths);
 
+typedef struct {
+	guint32 time;
+	double x;
+	double y;
+} PpsInkTime;
+#define PPS_TYPE_INK_TIME (pps_ink_time_get_type ())
+PPS_PUBLIC
+GType pps_ink_time_get_type (void) G_GNUC_CONST;
+PPS_PUBLIC
+PpsInkTime *
+pps_ink_time_copy (const PpsInkTime *t);
+
 PPS_PUBLIC
 PpsAnnotation *pps_annotation_ink_new (PpsPage *page);
 PPS_PUBLIC
@@ -263,6 +275,11 @@ PPS_PUBLIC
 void pps_annotation_ink_set_ink_list (PpsAnnotationInk *ink, PpsInkList *ink_list);
 PPS_PUBLIC
 PpsInkList *pps_annotation_ink_get_ink_list (PpsAnnotationInk *ink);
+
+PPS_PUBLIC
+void pps_annotation_ink_set_time_list (PpsAnnotationInk *ink, GSList *time_list);
+PPS_PUBLIC
+GSList *pps_annotation_ink_get_time_list (PpsAnnotationInk *ink);
 PPS_PUBLIC
 gboolean pps_annotation_ink_get_highlight (PpsAnnotationInk *ink);
 
