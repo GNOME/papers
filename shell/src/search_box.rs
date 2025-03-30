@@ -117,7 +117,14 @@ mod imp {
 
     impl WidgetImpl for PpsSearchBox {
         fn grab_focus(&self) -> bool {
-            self.entry.grab_focus()
+            let focused = self.entry.grab_focus();
+
+            // SearchEntry does not re-select by default when focused
+            if focused {
+                self.entry.select_region(0, -1);
+            }
+
+            focused
         }
     }
 
