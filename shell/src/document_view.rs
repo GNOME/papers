@@ -487,6 +487,14 @@ mod imp {
                 self.model.set_continuous(continuous);
             }
 
+            // Fullscreen
+            if let Some(fullscreen) = metadata.boolean("fullscreen") {
+                self.parent_window()
+                    .dynamic_cast::<gio::ActionGroup>()
+                    .unwrap()
+                    .change_action_state("fullscreen", &fullscreen.into());
+            }
+
             // Dual page
             if let Some(dual_page) = metadata.boolean("dual-page") {
                 let page_layout = if dual_page {
