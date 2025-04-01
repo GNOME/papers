@@ -104,16 +104,39 @@ mod imp {
                     .css_classes(["property"])
                     .build();
 
-                let button = gtk::Button::builder()
-                    .tooltip_text("Open File Location")
+                // Create a button box
+                let button_box = gtk::Box::builder()
+                    .orientation(gtk::Orientation::Horizontal)
+                    .css_classes(["linked"])
+                    .build();
+
+                // Open With button
+                let open_with_button = gtk::Button::builder()
+                    .tooltip_text(gettext("Open With..."))
+                    .icon_name("external-link-symbolic")
+                    .valign(gtk::Align::Center)
+                    .css_classes(["flat"])
+                    .build();
+
+                let file_for_open = file.clone();
+                open_with_button.connect_clicked(move |_| {
+                    let file_launcher = gtk::FileLauncher::new(Some(&file_for_open));
+                    file_launcher.set_always_ask(true);
+                    file_launcher.launch(gtk::Window::NONE, gio::Cancellable::NONE, |_| {});
+                });
+
+                // Open file location button
+                let folder_button = gtk::Button::builder()
+                    .tooltip_text(gettext("Open File Location"))
                     .icon_name("folder-open-symbolic")
                     .valign(gtk::Align::Center)
                     .css_classes(["flat"])
                     .build();
 
                 let uri = uri.to_string();
+                let file_for_folder = file.clone();
 
-                button.connect_clicked(glib::clone!(
+                folder_button.connect_clicked(glib::clone!(
                     #[weak(rename_to = obj)]
                     self,
                     move |_| {
@@ -122,7 +145,7 @@ mod imp {
                         let uri = uri.clone();
 
                         // FIXME: It's broken on MacOS due to lack of support in GTK4
-                        gtk::FileLauncher::new(Some(&file)).open_containing_folder(
+                        gtk::FileLauncher::new(Some(&file_for_folder)).open_containing_folder(
                             window,
                             gio::Cancellable::NONE,
                             move |result| {
@@ -139,8 +162,12 @@ mod imp {
                     }
                 ));
 
+                // Add buttons to the box
+                button_box.append(&open_with_button);
+                button_box.append(&folder_button);
+
                 row.set_subtitle(&text);
-                row.add_suffix(&button);
+                row.add_suffix(&button_box);
                 group.add(&row);
             }
 
