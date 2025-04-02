@@ -34,16 +34,16 @@ msgstr ""
 "Project-Id-Version: Evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-15 22:18+0000\n"
-"PO-Revision-Date: 2025-03-18 17:47+0100\n"
-"Last-Translator: Jonas Harer <jonas.harer@icloud.com>\n"
+"POT-Creation-Date: 2025-03-22 16:50+0000\n"
+"PO-Revision-Date: 2025-04-02 12:54+0200\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
@@ -1480,8 +1480,6 @@ msgid "Document Prop_erties"
 msgstr "Dokument_eigenschaften"
 
 #: shell/resources/pps-document-view.ui:735
-#, fuzzy
-#| msgid "Strike out"
 msgid "Strikethrough"
 msgstr "Durchstreichen"
 
@@ -1709,10 +1707,8 @@ msgid "_Open Other File…"
 msgstr "Eine _andere Datei öffnen …"
 
 #: shell/src/application.rs:212
-#, fuzzy
-#| msgid "© 1996–2024 The Papers authors"
 msgid "© 1996–2025 The Papers authors"
-msgstr "© 1996-2024 Die Papers-Autoren"
+msgstr "© 1996–2025 Die Papers-Autoren"
 
 #: shell/src/application.rs:213
 msgid "translator-credits"
@@ -1897,31 +1893,29 @@ msgid "Save Signed File"
 msgstr "Signierte Datei speichern"
 
 #: shell/src/document_view/io.rs:695
-#, fuzzy
-#| msgid "Please enter password for %s"
 msgid "Please enter password for {}"
-msgstr "Bitte Passwort eingeben für %s"
+msgstr "Bitte Passwort für {} eingeben"
 
 #: shell/src/document_view/io.rs:711
 msgid "_Login"
 msgstr "Anme_lden"
 
+# https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/406 - pk
 #: shell/src/document_view/print.rs:45
 msgid "Printing job “{}”"
 msgstr "Auftrag »%s« wird gedruckt"
 
+# Es geht um Druckaufträge - pk
 #: shell/src/document_view/print.rs:78
-#, fuzzy
-#| msgid "No pending job in queue"
 msgid "No pending jobs in queue"
-msgstr "Kein ausstehender Auftrag in Warteschlange"
+msgstr "Keine ausstehenden Aufträge in Warteschlange"
 
+# Es geht um Druckaufträge - pk
 # See https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/338 - pk
 #: shell/src/document_view/print.rs:81
-#, fuzzy
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
-msgstr[0] "{} ausstehende Aufträge in Warteschlange"
+msgstr[0] "{} ausstehender Auftrag in Warteschlange"
 msgstr[1] "{} ausstehende Aufträge in Warteschlange"
 
 #: shell/src/document_view/signals.rs:225
@@ -1930,11 +1924,10 @@ msgstr "Externer Link konnte nicht geöffnet werden"
 
 # See https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/338 - pk
 #: shell/src/document_view/signals.rs:253
-#, fuzzy
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
-"Sicherheitswarnung: Dieses Dokument wurde daran gehindert, die Datei zu "
+"Sicherheitswarnung: Dieses Dokument wurde daran gehindert, die Datei »{}« zu "
 "öffnen"
 
 #: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
