@@ -137,7 +137,7 @@ mod imp {
                 context.autoselect_result(first_result);
                 self.list_view.scroll_to(
                     result_model.selected(),
-                    gtk::ListScrollFlags::SELECT,
+                    gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
                     None,
                 );
             }
@@ -189,7 +189,7 @@ mod imp {
 
             if let Some(pos) = pos {
                 self.list_view
-                    .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+                    .scroll_to(pos, gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT, None);
             }
         }
 
@@ -205,7 +205,7 @@ mod imp {
 
             if pos < result_model.n_items() {
                 self.list_view
-                    .scroll_to(pos, gtk::ListScrollFlags::SELECT, None);
+                    .scroll_to(pos, gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT, None);
             }
         }
     }
