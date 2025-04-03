@@ -587,25 +587,15 @@ impl imp::PpsDocumentView {
                     self,
                     move |_, _, _| {
                         let selected_text = obj.view.selected_text().filter(|t| !t.is_empty());
-
+                        obj.document_action_group
+                            .change_action_state("toggle-find", &true.into());
                         if let Some(selected_text) = selected_text {
                             obj.search_context
                                 .borrow()
                                 .as_ref()
                                 .unwrap()
                                 .set_search_term(&selected_text);
-                            obj.document_action_group
-                                .change_action_state("toggle-find", &true.into());
                             obj.find_restart();
-                        } else {
-                            let active = obj
-                                .sidebar_stack
-                                .visible_child()
-                                .is_some_and(|w| w == *obj.find_sidebar)
-                                && obj.find_sidebar.focus_child().is_some();
-
-                            obj.document_action_group
-                                .change_action_state("toggle-find", &(!active).into());
                         }
                     }
                 ))
