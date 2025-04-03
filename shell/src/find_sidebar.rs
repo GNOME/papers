@@ -177,35 +177,31 @@ mod imp {
 
         pub(super) fn previous(&self) {
             let result_model = self.context().and_then(|c| c.result_model()).unwrap();
-            let selected = result_model.selected();
-
-            let pos = if selected != gtk::INVALID_LIST_POSITION {
-                selected.checked_sub(1)
-            } else if result_model.n_items() > 0 {
-                Some(0)
-            } else {
-                None
-            };
-
-            if let Some(pos) = pos {
-                self.list_view
-                    .scroll_to(pos, gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT, None);
+            if let Some(pos) = Some(result_model.selected())
+                .filter(|selected| *selected != gtk::INVALID_LIST_POSITION)
+                .unwrap()
+                .checked_sub(1)
+                .or_else(|| result_model.n_items().checked_sub(1))
+            {
+                self.list_view.scroll_to(
+                    pos,
+                    gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                    None,
+                );
             }
         }
 
         pub(super) fn next(&self) {
             let result_model = self.context().and_then(|c| c.result_model()).unwrap();
             let selected = result_model.selected();
+            let n_items = result_model.n_items();
 
-            let pos = if selected != gtk::INVALID_LIST_POSITION {
-                selected + 1
-            } else {
-                0
-            };
-
-            if pos < result_model.n_items() {
-                self.list_view
-                    .scroll_to(pos, gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT, None);
+            if selected != gtk::INVALID_LIST_POSITION && n_items > 0 {
+                self.list_view.scroll_to(
+                    (selected + 1) % n_items,
+                    gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                    None,
+                );
             }
         }
     }
