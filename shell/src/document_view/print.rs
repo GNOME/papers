@@ -42,6 +42,7 @@ impl imp::PpsDocumentView {
 
         if self.message_area().is_none() {
             let job_name = op.job_name().unwrap_or_default();
+            // TRANSLATORS: In the context of "the job {} is being printed"
             let text = gettext_f("Printing job “{}”", [job_name]);
 
             let area = PpsProgressMessageArea::new("document-print-symbolic", &text);
