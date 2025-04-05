@@ -173,19 +173,15 @@ pps_job_emit_finished (PpsJob *job)
  * @job: A #PpsJob object to run.
  *
  * Starts or executes the specified job.
- *
- * Returns: TRUE if the job was successfully started, FALSE otherwise.
  */
-gboolean
+void
 pps_job_run (PpsJob *job)
 {
 	PpsJobClass *class = PPS_JOB_GET_CLASS (job);
-	gboolean ret;
 
 	PPS_PROFILER_START (PPS_GET_TYPE_NAME (job), g_strdup ("running"));
-	ret = class->run (job);
+	class->run (job);
 	PPS_PROFILER_STOP ();
-	return ret;
 }
 
 /**

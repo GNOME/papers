@@ -119,7 +119,7 @@ fill_page_labels (GListModel *model, PpsJob *job)
 	}
 }
 
-static gboolean
+static void
 pps_job_links_run (PpsJob *job)
 {
 	PpsJobLinksPrivate *priv = JOB_LINKS_GET_PRIVATE (PPS_JOB_LINKS (job));
@@ -133,8 +133,6 @@ pps_job_links_run (PpsJob *job)
 	fill_page_labels (priv->model, job);
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -203,7 +201,7 @@ pps_job_attachments_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_attachments_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_attachments_run (PpsJob *job)
 {
 	PpsJobAttachmentsPrivate *priv = JOB_ATTACHMENTS_GET_PRIVATE (PPS_JOB_ATTACHMENTS (job));
@@ -216,8 +214,6 @@ pps_job_attachments_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 /**
@@ -282,7 +278,7 @@ pps_job_annots_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_annots_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_annots_run (PpsJob *job)
 {
 	PpsJobAnnotsPrivate *priv = JOB_ANNOTS_GET_PRIVATE (PPS_JOB_ANNOTS (job));
@@ -305,8 +301,6 @@ pps_job_annots_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -394,7 +388,7 @@ pps_job_render_texture_new (PpsDocument *document,
 	return PPS_JOB (job);
 }
 
-static gboolean
+static void
 pps_job_render_texture_run (PpsJob *job)
 {
 	PpsJobRenderTexture *job_render = PPS_JOB_RENDER_TEXTURE (job);
@@ -438,7 +432,7 @@ pps_job_render_texture_run (PpsJob *job)
 		}
 
 		job_render->texture = NULL;
-		return FALSE;
+		return;
 	}
 
 	job_render->texture = pps_document_misc_texture_from_surface (surface);
@@ -451,7 +445,7 @@ pps_job_render_texture_run (PpsJob *job)
 		PPS_PROFILER_STOP ();
 		pps_document_doc_mutex_unlock (pps_job_get_document (job));
 		g_object_unref (rc);
-		return FALSE;
+		return;
 	}
 
 	if (job_render->include_selection && PPS_IS_SELECTION (pps_job_get_document (job))) {
@@ -480,8 +474,6 @@ pps_job_render_texture_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -515,7 +507,7 @@ pps_job_page_data_init (PpsJobPageData *job)
 {
 }
 
-static gboolean
+static void
 pps_job_page_data_run (PpsJob *job)
 {
 	PpsJobPageData *job_pd = PPS_JOB_PAGE_DATA (job);
@@ -571,8 +563,6 @@ pps_job_page_data_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -635,7 +625,7 @@ pps_job_thumbnail_texture_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_thumbnail_texture_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_thumbnail_texture_run (PpsJob *job)
 {
 	PpsJobThumbnailTexturePrivate *priv =
@@ -672,8 +662,6 @@ pps_job_thumbnail_texture_run (PpsJob *job)
 	} else {
 		pps_job_succeeded (job);
 	}
-
-	return FALSE;
 }
 
 static void
@@ -755,7 +743,7 @@ pps_job_fonts_init (PpsJobFonts *job)
 {
 }
 
-static gboolean
+static void
 pps_job_fonts_run (PpsJob *job)
 {
 	PpsDocument *document = pps_job_get_document (job);
@@ -769,8 +757,6 @@ pps_job_fonts_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -862,7 +848,7 @@ pps_dupfd (int fd,
 	return new_fd;
 }
 
-static gboolean
+static void
 pps_job_load_run (PpsJob *job)
 {
 	PpsJobLoad *job_load = PPS_JOB_LOAD (job);
@@ -876,7 +862,7 @@ pps_job_load_run (PpsJob *job)
 		                     "Either the URI or the FD must be set!");
 		pps_job_failed_from_error (job, error);
 		g_error_free (error);
-		return FALSE;
+		return;
 	}
 
 	/* This job may already have a document even if the job didn't complete
@@ -939,8 +925,6 @@ pps_job_load_run (PpsJob *job)
 	} else {
 		pps_job_succeeded (job);
 	}
-
-	return FALSE;
 }
 
 static void
@@ -1169,7 +1153,7 @@ pps_job_save_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_save_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_save_run (PpsJob *job)
 {
 	PpsJobSave *job_save = PPS_JOB_SAVE (job);
@@ -1185,7 +1169,7 @@ pps_job_save_run (PpsJob *job)
 	fd = pps_mkstemp ("saveacopy.XXXXXX", &tmp_filename, &error);
 	if (fd == -1) {
 		pps_job_failed_from_error (job, error);
-		return FALSE;
+		return;
 	}
 	close (fd);
 
@@ -1201,7 +1185,7 @@ pps_job_save_run (PpsJob *job)
 
 	if (error) {
 		pps_job_failed_from_error (job, error);
-		return FALSE;
+		return;
 	}
 
 	/* If original document was compressed,
@@ -1232,11 +1216,11 @@ pps_job_save_run (PpsJob *job)
 
 	if (error) {
 		pps_job_failed_from_error (job, error);
-		return FALSE;
+		return;
 	}
 
 	if (!tmp_uri)
-		return FALSE;
+		return;
 
 	pps_xfer_uri_simple (tmp_uri, priv->uri, &error);
 	pps_tmp_uri_unlink (tmp_uri);
@@ -1252,8 +1236,6 @@ pps_job_save_run (PpsJob *job)
 	} else {
 		pps_job_succeeded (job);
 	}
-
-	return FALSE;
 }
 
 static void
@@ -1322,7 +1304,7 @@ pps_job_find_dispose (GObject *object)
 	(*G_OBJECT_CLASS (pps_job_find_parent_class)->dispose) (object);
 }
 
-static gboolean
+static void
 pps_job_find_run (PpsJob *job)
 {
 	PpsJobFind *job_find = PPS_JOB_FIND (job);
@@ -1338,7 +1320,7 @@ pps_job_find_run (PpsJob *job)
 
 	while (n_pages-- > 0) {
 		if (g_cancellable_is_cancelled (pps_job_get_cancellable (job)))
-			return FALSE;
+			return;
 
 		pps_document_doc_mutex_lock (pps_job_get_document (job));
 		pps_page = pps_document_get_page (pps_job_get_document (job), current_page);
@@ -1356,8 +1338,6 @@ pps_job_find_run (PpsJob *job)
 	}
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -1486,7 +1466,7 @@ pps_job_layers_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_layers_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_layers_run (PpsJob *job)
 {
 	PpsJobLayersPrivate *priv = JOB_LAYERS_GET_PRIVATE (PPS_JOB_LAYERS (job));
@@ -1498,8 +1478,6 @@ pps_job_layers_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -1568,7 +1546,7 @@ pps_job_export_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_export_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_export_run (PpsJob *job)
 {
 	PpsJobExportPrivate *priv = JOB_EXPORT_GET_PRIVATE (PPS_JOB_EXPORT (job));
@@ -1595,8 +1573,6 @@ pps_job_export_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void
@@ -1660,7 +1636,7 @@ pps_job_print_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_print_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_print_run (PpsJob *job)
 {
 	PpsJobPrintPrivate *priv = JOB_PRINT_GET_PRIVATE (PPS_JOB_PRINT (job));
@@ -1684,7 +1660,7 @@ pps_job_print_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	if (g_cancellable_is_cancelled (pps_job_get_cancellable (job)))
-		return FALSE;
+		return;
 
 	cr_status = cairo_status (priv->cr);
 	if (cr_status == CAIRO_STATUS_SUCCESS) {
@@ -1697,8 +1673,6 @@ pps_job_print_run (PpsJob *job)
 		                priv->page,
 		                cairo_status_to_string (cr_status));
 	}
-
-	return FALSE;
 }
 
 static void
@@ -1772,7 +1746,7 @@ pps_job_signatures_dispose (GObject *object)
 	G_OBJECT_CLASS (pps_job_signatures_parent_class)->dispose (object);
 }
 
-static gboolean
+static void
 pps_job_signatures_run (PpsJob *job)
 {
 	PpsJobSignaturesPrivate *priv = JOB_SIGNATURES_GET_PRIVATE (PPS_JOB_SIGNATURES (job));
@@ -1785,8 +1759,6 @@ pps_job_signatures_run (PpsJob *job)
 	pps_document_doc_mutex_unlock (pps_job_get_document (job));
 
 	pps_job_succeeded (job);
-
-	return FALSE;
 }
 
 static void

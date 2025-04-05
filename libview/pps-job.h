@@ -41,14 +41,14 @@ G_DECLARE_DERIVABLE_TYPE (PpsJob, pps_job, PPS, JOB, GObject)
 struct _PpsJobClass {
 	GObjectClass parent_class;
 
-	gboolean (*run) (PpsJob *job);
+	void (*run) (PpsJob *job);
 
 	/* Signals */
 	void (*cancelled) (PpsJob *job);
 	void (*finished) (PpsJob *job);
 };
 
-gboolean pps_job_run (PpsJob *job);
+void pps_job_run (PpsJob *job);
 PPS_PUBLIC
 void pps_job_cancel (PpsJob *job);
 void pps_job_failed (PpsJob *job,
