@@ -5,25 +5,25 @@
 # Matic Žgur <mr.zgur@gmail.com>, 2006.
 # Matjaž Horvat <m@owca.info>, 2006.
 # Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2010.
-# Matej Urbančič <mateju@src.gnome.org>, 2006–2022.
+# Matej Urbančič <mateju@src.gnome.org>, 2006–2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-04-05 23:57+0000\n"
-"PO-Revision-Date: 2025-04-06 08:43+0200\n"
-"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"POT-Creation-Date: 2025-04-06 06:44+0000\n"
+"PO-Revision-Date: 2025-04-06 13:19+0200\n"
+"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
@@ -33,18 +33,16 @@ msgstr ""
 #: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
-msgstr "Članki"
+msgstr "Dokumenti"
 
 #: data/org.gnome.Papers.desktop.in.in:4
 msgid "View multi-page documents"
-msgstr "Poglejte večstranske dokumente"
+msgstr "Pregledovalnik dokumentov"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:6
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
-msgstr ""
-"pdf;djvu;tiff;dokument;predstavitev;pregledovalnik;časopisi;papers;članki;"
-"članek;revija;revije;"
+msgstr "pdf;djvu;tiff;dokument;predstavitev;dokumenti;pregledovalnik;časopisi;papers;članki;članek;revija;revije;"
 
 #: data/org.gnome.Papers.desktop.in.in:21
 msgid "New Window"
@@ -79,7 +77,7 @@ msgid ""
 "zoom level."
 msgstr ""
 "Največja dovoljena velikost, uporabljena za predpomnjene izrisane strani, z "
-"omejitvijo ravni probližanja"
+"omejitvijo ravni približanja"
 
 #: data/org.gnome.Papers.gschema.xml:32
 msgid "Allow links to change the zoom level."
@@ -451,7 +449,7 @@ msgstr "%.0f × %.0f mm"
 #: libdocument/pps-document-info.c:268
 #, c-format
 msgid "%.2f × %.2f inch"
-msgstr "%.2f × %.2f inch"
+msgstr "%.2f × %.2f pal."
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
@@ -748,7 +746,7 @@ msgstr "FD"
 
 #: previewer/pps-previewer.c:54
 msgid "MIME type of input file"
-msgstr "Vrsta mime vhodne datoteke"
+msgstr "Vrsta MIME vhodne datoteke"
 
 #: previewer/pps-previewer.c:54
 msgid "TYPE"
@@ -764,7 +762,7 @@ msgstr "Pregledovalnik dokumentov za GNOME"
 
 #: previewer/pps-previewer-window.c:187 previewer/pps-previewer-window.c:510
 msgid "Papers Document Viewer"
-msgstr "Pregledovalnik dokumentov Članki"
+msgstr "Pregledovalnik dokumentov"
 
 #: previewer/pps-previewer-window.c:225
 #, c-format
@@ -844,11 +842,11 @@ msgstr "Ključne besede"
 
 #: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:192
 msgid "Producer"
-msgstr "Programnik"
+msgstr "Pripravljavec"
 
 #: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:193
 msgid "Creator"
-msgstr "Uporabljen program"
+msgstr "Ustvarjalec"
 
 #: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:204
 msgid "Created"
@@ -895,7 +893,7 @@ msgstr "Odpiranje, zapiranje, shranjevanje in tiskanje"
 #: shell/resources/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Open Document"
-msgstr "Odpri dokument"
+msgstr "Odpre dokument"
 
 #: shell/resources/help-overlay.ui:20
 msgctxt "shortcut window"
@@ -905,7 +903,7 @@ msgstr "Odpre kopijo trenutnega dokumenta"
 #: shell/resources/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Open With…"
-msgstr "Odpri z ..."
+msgstr "Odpre z …"
 
 #: shell/resources/help-overlay.ui:32
 msgctxt "shortcut window"
@@ -930,12 +928,12 @@ msgstr "Okno"
 #: shell/resources/help-overlay.ui:55
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr "Celozaslonski način"
+msgstr "Odpre v celozaslonskem načinu"
 
 #: shell/resources/help-overlay.ui:61
 msgctxt "shortcut window"
 msgid "Enter Presentation Mode"
-msgstr "Zagon v predstavitvenem načinu"
+msgstr "Zažene v predstavitvenem načinu"
 
 #: shell/resources/help-overlay.ui:67
 msgctxt "shortcut window"
@@ -950,7 +948,7 @@ msgstr "Krmarjenje kazalke"
 #: shell/resources/help-overlay.ui:81
 msgctxt "shortcut window"
 msgid "Selecting and Copying Text"
-msgstr "Izbiranje in kopiranje besedila"
+msgstr "Izbere in kopira besedilo"
 
 #: shell/resources/help-overlay.ui:84
 msgctxt "shortcut window"
@@ -990,12 +988,12 @@ msgstr "Oddalji"
 #: shell/resources/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "Normal Size"
-msgstr "Navadna velikost"
+msgstr "Ponastavi na normalno velikost"
 
 #: shell/resources/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Zoom In (Alternative)"
-msgstr "Približa (drug način)"
+msgstr "Približa (dodaten način)"
 
 #: shell/resources/help-overlay.ui:137
 msgctxt "shortcut window"
@@ -1030,12 +1028,12 @@ msgstr "Premakne stran gor/dol po več vrstic hkrati"
 #: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
-msgstr "Predhodna stran"
+msgstr "Skoči na predhodno stran"
 
 #: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
-msgstr "Naslednja stran"
+msgstr "Skoči na naslednjo stran"
 
 #: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
@@ -1045,22 +1043,22 @@ msgstr "Skoči na številko strani"
 #: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
-msgstr "Predhodna stran (hitro)"
+msgstr "Skoči na predhodno stran (hitro)"
 
 #: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
-msgstr "Naslednja stran (hitro)"
+msgstr "Skoči na naslednjo stran (hitro)"
 
 #: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
-msgstr "Predhodna obiskana stran"
+msgstr "Skoči na predhodno obiskano stran"
 
 #: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
-msgstr "Naslednja obiskana stran"
+msgstr "Skoči na naslednjo obiskano stran"
 
 #: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
@@ -1095,32 +1093,32 @@ msgstr "Odstrani zaznamek"
 #: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
-msgstr "Nočni način"
+msgstr "Omogoči nočni način"
 
 #: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
-msgstr "Neskončno drsenje"
+msgstr "Omogoči neskončno drsenje"
 
 #: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
-msgstr "Dvojna stran"
+msgstr "Prikaže dvojne strani"
 
 #: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
-msgstr "Lihe strani levo"
+msgstr "Postavi lihe strani levo"
 
 #: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
-msgstr "Lastnosti dokumenta"
+msgstr "Odpre lastnosti dokumenta"
 
 #: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
-msgstr "Brez besedilnih opomb"
+msgstr "Doda besedilno opombo"
 
 #: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
@@ -1135,17 +1133,17 @@ msgstr "Iskanje besedila"
 #: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
-msgstr "Najdi"
+msgstr "Začne iskanje"
 
 #: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
-msgstr "Najdi naslednje"
+msgstr "Najde naslednji zadetek"
 
 #: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
-msgstr "Najdi predhodne"
+msgstr "Najde predhodni zadetek"
 
 #: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
@@ -1160,12 +1158,12 @@ msgstr "Pokaže pomoč"
 #: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
-msgstr "Meni"
+msgstr "Odpre meni"
 
 #: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
-msgstr "Tipkovne bližnjice\t"
+msgstr "Pokaže tipkovne bližnjice"
 
 #: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
@@ -1180,17 +1178,17 @@ msgstr "Zapre okno"
 #: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
-msgstr "Predstavitveni način"
+msgstr "Zažene v predstavitvenem načinu"
 
 #: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
-msgstr "Črni zaslon"
+msgstr "Omogoči črni zaslon"
 
 #: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
-msgstr "Beli zaslon"
+msgstr "Omogoči beli zaslon"
 
 #: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
@@ -1395,7 +1393,7 @@ msgstr "Pomo_č"
 
 #: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
 msgid "_About Papers"
-msgstr "_O programu Članki"
+msgstr "_O programu"
 
 #: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
@@ -1411,7 +1409,7 @@ msgstr "Prikaži kot diapredstavitev"
 
 #: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
-msgstr "Podpiši d_igitalno ..."
+msgstr "Podpiši d_igitalno …"
 
 #: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
@@ -1419,7 +1417,7 @@ msgstr "Odpri kopijo"
 
 #: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
-msgstr "Odpri z ..."
+msgstr "Odpri z …"
 
 #: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
@@ -1521,7 +1519,7 @@ msgstr "Poskusite z drugačnim iskanjem"
 
 #: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
-msgstr "Izvedi iskanje"
+msgstr "Poišči"
 
 #: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
@@ -1670,7 +1668,7 @@ msgstr "Povlecite in spustite dokumente sem"
 
 #: shell/resources/pps-window.ui:53
 msgid "_Open…"
-msgstr "_Odpri ..."
+msgstr "_Odpri …"
 
 #: shell/resources/pps-window.ui:79
 msgid "Unable to Open Document"
@@ -1678,19 +1676,19 @@ msgstr "Dokumenta ni mogoče odpreti"
 
 #: shell/resources/pps-window.ui:84
 msgid "_Open Other File…"
-msgstr "_Odpri drugo datoteko ..."
+msgstr "_Odpri drugo datoteko …"
 
 #: shell/src/application.rs:212
 msgid "© 1996–2025 The Papers authors"
-msgstr "© 1996–2025 Avtorji programa Članki/Papers"
+msgstr "© 1996–2025 Avtorji programa Dokumenti/Papers"
 
 #: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
+"Martin Srebotnjak\n"
 "Matic Žgur\n"
-"Matjaž Horvat\n"
-"Martin Srebotnjak"
+"Matjaž Horvat"
 
 #: shell/src/application.rs:317
 msgid "The page label of the document to display."
