@@ -715,15 +715,22 @@ impl imp::PpsDocumentView {
 
     fn cmd_annot_textmarkup_type(&self, markup_type: &str) {
         let markup_type = match markup_type {
-            "highlight" => AnnotationTextMarkupType::Highlight,
-            "squiggly" => AnnotationTextMarkupType::Squiggly,
-            "strikethrough" => AnnotationTextMarkupType::StrikeOut,
-            "underline" => AnnotationTextMarkupType::Underline,
+            "highlight" => Some(AnnotationTextMarkupType::Highlight),
+            "squiggly" => Some(AnnotationTextMarkupType::Squiggly),
+            "strikethrough" => Some(AnnotationTextMarkupType::StrikeOut),
+            "underline" => Some(AnnotationTextMarkupType::Underline),
+            "none" => None,
             _ => panic!("unknown markup_type {markup_type}"),
         };
+
+        if markup_type.is_none() {
+            return;
+        }
+
         let annot = self.annot.borrow().clone();
         if let Some(annot) = annot {
             if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
+                let markup_type = markup_type.expect("no markup_type, but an annot is set");
                 if annot.markup_type() != markup_type {
                     annot.set_markup_type(markup_type);
                 }
@@ -733,6 +740,7 @@ impl imp::PpsDocumentView {
             for sel in selections.iter() {
                 let mut start_point = papers_document::Point::new();
                 let mut end_point = papers_document::Point::new();
+                let markup_type = markup_type.expect("no markup_type, but an annot is set");
                 start_point.set_x(sel.rect().x1());
                 start_point.set_y(sel.rect().y1());
                 end_point.set_x(sel.rect().x2());

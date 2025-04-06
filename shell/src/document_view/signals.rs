@@ -480,6 +480,7 @@ impl imp::PpsDocumentView {
         let mut show_annot_props = false;
         let mut is_annot_textmarkup = false;
         let mut show_attachment = false;
+        let mut markup_type = "none";
         let has_selection = self.view.has_selection();
 
         if let Some(annot) = annot {
@@ -512,8 +513,7 @@ impl imp::PpsDocumentView {
         self.set_action_enabled("save-attachment", show_attachment);
 
         if is_annot_textmarkup {
-            let markup_type = match annot
-                .clone()
+            markup_type = match annot
                 .unwrap()
                 .dynamic_cast_ref::<AnnotationTextMarkup>()
                 .unwrap()
@@ -525,13 +525,13 @@ impl imp::PpsDocumentView {
                 AnnotationTextMarkupType::Underline => "underline",
                 _ => panic!("unknown markup type"),
             };
-            self.set_action_state("annot-textmarkup-type", &glib::Variant::from(markup_type));
         }
 
         if let Some(annot) = annot.cloned() {
             let color = AnnotationColor::from(annot.rgba()).to_string();
             self.set_action_state("annot-color", &glib::Variant::from(color.as_str()));
         };
+        self.set_action_state("annot-textmarkup-type", &glib::Variant::from(markup_type));
 
         self.annot.replace(annot.cloned());
     }
