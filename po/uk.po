@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/"
 "\n"
-"POT-Creation-Date: 2025-03-22 03:27+0000\n"
-"PO-Revision-Date: 2025-03-22 19:21+0200\n"
+"POT-Creation-Date: 2025-04-05 23:57+0000\n"
+"PO-Revision-Date: 2025-04-06 09:52+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -243,14 +243,14 @@ msgstr "Додає підтримування читання документі�
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:224
 msgid "Yes"
 msgstr "Так"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:225
 msgid "No"
 msgstr "Ні"
 
@@ -309,7 +309,7 @@ msgstr "Без назви"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:258
 msgid "None"
 msgstr "Немає"
 
@@ -495,22 +495,22 @@ msgstr "Сторінка %s"
 msgid "Edit Note"
 msgstr "Змінити нотатку"
 
-#: libview/pps-jobs.c:429
+#: libview/pps-jobs.c:423
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Не вдалося відтворити сторінку %d: %s"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:430
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Не вдалося відтворити сторінку %d"
 
-#: libview/pps-jobs.c:670
+#: libview/pps-jobs.c:660
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Не вдалося створити мініатюру для сторінки %d"
 
-#: libview/pps-jobs.c:1696
+#: libview/pps-jobs.c:1672
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Не вдалось надрукувати сторінку %d: %s"
@@ -807,13 +807,13 @@ msgstr "Звичайний розмір"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Не вдалося надрукувати документ"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:199
+#: shell/src/properties_general.rs:226
 msgid "Unknown"
 msgstr "Невідомо"
 
@@ -821,7 +821,7 @@ msgstr "Невідомо"
 msgid "Document Properties"
 msgstr "Властивості документа"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:188
 msgid "Title"
 msgstr "Заголовок"
 
@@ -829,62 +829,62 @@ msgstr "Заголовок"
 msgid "Location"
 msgstr "Адреса"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:189
 msgid "Subject"
 msgstr "Тема"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:163
+#: shell/src/properties_general.rs:190
 msgid "Author"
 msgstr "Автор"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:191
 msgid "Keywords"
 msgstr "Ключові слова"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:192
 msgid "Producer"
 msgstr "Виготовлено"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:193
 msgid "Creator"
 msgstr "Автор"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:204
 msgid "Created"
 msgstr "Створено"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:205
 msgid "Modified"
 msgstr "Змінено"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:217
 msgid "Number of Pages"
 msgstr "Кількість сторінок"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:218
 msgid "Optimized"
 msgstr "З оптимізацією"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
-#: shell/src/properties_general.rs:189
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:214
+#: shell/src/properties_general.rs:216
 msgid "Format"
 msgstr "Формат"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:219
 msgid "Security"
 msgstr "Безпека"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:228
 msgid "Contains Javascript"
 msgstr "Містить Javascript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:220
 msgid "Paper Size"
 msgstr "Розмір паперу"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:177
 msgid "Size"
 msgstr "Розмір"
 
@@ -1369,7 +1369,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Скасувати др_ук та закрити"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
 #: shell/src/document_view/io.rs:710
 msgid "_Cancel"
@@ -1533,7 +1533,7 @@ msgstr "Тут буде показано результати пошуку"
 msgid "Loading Document"
 msgstr "Завантажуємо документ"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_Скасувати"
 
@@ -1590,7 +1590,6 @@ msgid "Further Information"
 msgstr "Подальша інформація"
 
 #: shell/resources/pps-properties-signatures.ui:37
-#| msgid "Further Information"
 msgid "Signature Information"
 msgstr "Дані щодо підпису"
 
@@ -1736,34 +1735,34 @@ msgstr "[ФАЙЛ…]"
 msgid "View Details"
 msgstr "Переглянути подробиці"
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "Документ містить нові або змінені анотації та поля форм, які заповнено."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ містить поля форми, які заповнено."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "Документ містить нові або змінені примітки."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Якщо копію не збережено, зміни буде остаточно втрачено."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "Зберегти зміни до копії?"
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "Закрити б_ез збереження"
 
-#: shell/src/document_view.rs:718
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "_Зберегти копію"
 
@@ -1855,15 +1854,16 @@ msgstr "Будь ласка, введіть пароль до {}"
 msgid "_Login"
 msgstr "_Увійти"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "Друкування завдання «{}»"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "У черзі немає завдань"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} завдання у черзі"
@@ -1910,11 +1910,21 @@ msgstr "Файл"
 msgid "Folder"
 msgstr "Тека"
 
-#: shell/src/properties_general.rs:159
+#: shell/src/properties_general.rs:115
+#| msgid "Open With…"
+msgid "Open With..."
+msgstr "Відкрити за допомогою…"
+
+#: shell/src/properties_general.rs:130
+#| msgid "File options"
+msgid "Open File Location"
+msgstr "Відкрити теку файла"
+
+#: shell/src/properties_general.rs:186
 msgid "Content"
 msgstr "Вміст"
 
-#: shell/src/properties_general.rs:175
+#: shell/src/properties_general.rs:202
 msgid "Date &amp; Time"
 msgstr "Дата та час"
 
@@ -2289,9 +2299,6 @@ msgstr "Строк дії сертифіката"
 
 #~ msgid "Annotate document"
 #~ msgstr "Анотувати документ"
-
-#~ msgid "File options"
-#~ msgstr "Параметри файлів"
 
 #~ msgid "Set zoom level"
 #~ msgstr "Вказати рівень масштабу"
