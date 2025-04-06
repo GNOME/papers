@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-22 03:27+0000\n"
-"PO-Revision-Date: 2025-03-23 13:04+0100\n"
+"POT-Creation-Date: 2025-04-05 23:57+0000\n"
+"PO-Revision-Date: 2025-04-06 08:43+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -241,14 +241,14 @@ msgstr "Doda podporo za branje datotek PDF"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:224
 msgid "Yes"
 msgstr "Da"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:225
 msgid "No"
 msgstr "Ne"
 
@@ -307,7 +307,7 @@ msgstr "Brez imena"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:258
 msgid "None"
 msgstr "Ni določeno"
 
@@ -494,22 +494,22 @@ msgstr "Stran %s"
 msgid "Edit Note"
 msgstr "Uredi opombo"
 
-#: libview/pps-jobs.c:429
+#: libview/pps-jobs.c:423
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Izrisovanje strani %d je spodletelo: %s"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:430
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Izrisovanje strani %d je spodletelo"
 
-#: libview/pps-jobs.c:670
+#: libview/pps-jobs.c:660
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Ustvarjanje sličice za stran %d je spodletelo"
 
-#: libview/pps-jobs.c:1696
+#: libview/pps-jobs.c:1672
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Napaka med tiskanjem strani %d: %s"
@@ -806,13 +806,13 @@ msgstr "Navadna velikost"
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Tiskanje dokumenta ni uspelo"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:199
+#: shell/src/properties_general.rs:226
 msgid "Unknown"
 msgstr "Neznano"
 
@@ -820,7 +820,7 @@ msgstr "Neznano"
 msgid "Document Properties"
 msgstr "Lastnosti dokumenta"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:188
 msgid "Title"
 msgstr "Naslov"
 
@@ -828,62 +828,62 @@ msgstr "Naslov"
 msgid "Location"
 msgstr "Kraj"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:189
 msgid "Subject"
 msgstr "Zadeva"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:163
+#: shell/src/properties_general.rs:190
 msgid "Author"
 msgstr "Avtor"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:191
 msgid "Keywords"
 msgstr "Ključne besede"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:192
 msgid "Producer"
 msgstr "Programnik"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:193
 msgid "Creator"
 msgstr "Uporabljen program"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:204
 msgid "Created"
 msgstr "Ustvarjeno"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:205
 msgid "Modified"
 msgstr "Spremenjeno"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:217
 msgid "Number of Pages"
 msgstr "Število strani"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:218
 msgid "Optimized"
 msgstr "Optimizirano"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
-#: shell/src/properties_general.rs:189
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:214
+#: shell/src/properties_general.rs:216
 msgid "Format"
 msgstr "Zapis"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:219
 msgid "Security"
 msgstr "Varnost"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:228
 msgid "Contains Javascript"
 msgstr "Vsebuje JavaScript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:220
 msgid "Paper Size"
 msgstr "Velikost papirja"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:177
 msgid "Size"
 msgstr "Velikost"
 
@@ -1367,7 +1367,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Prekini _tiskanje in zapri okno"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
 #: shell/src/document_view/io.rs:710
 msgid "_Cancel"
@@ -1531,7 +1531,7 @@ msgstr "Rezultati iskanja bodo prikazani tukaj"
 msgid "Loading Document"
 msgstr "Poteka nalaganje dokumenta"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "P_rekliči"
 
@@ -1736,7 +1736,7 @@ msgstr "[DATOTEKA ...]"
 msgid "View Details"
 msgstr "Pokaži podrobnosti"
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1744,27 +1744,27 @@ msgstr ""
 "Dokument vsebuje nove ali spremenjene opombe in polja obrazcev, ki so "
 "izpolnjena."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokument vsebuje že izpolnjena polja obrazca."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "Dokument vsebuje nove ali spremenjene pripombe."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "V primeru, da kopije ne shranite, bodo spremembe trajno izgubljene."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "Ali želite shraniti spremembe v kopijo?"
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "Zapri _brez shranjevanja"
 
-#: shell/src/document_view.rs:718
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "_Shrani kopijo"
 
@@ -1858,15 +1858,16 @@ msgstr "Vnesite geslo za {}"
 msgid "_Login"
 msgstr "_Prijava"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "Tiskanje »{}«"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "V čakalni vrsti ni čakajočih poslov"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} poslov na čakanju v vrsti"
@@ -1914,11 +1915,19 @@ msgstr "Datoteka"
 msgid "Folder"
 msgstr "Mapa"
 
-#: shell/src/properties_general.rs:159
+#: shell/src/properties_general.rs:115
+msgid "Open With..."
+msgstr "Odpri s programom …"
+
+#: shell/src/properties_general.rs:130
+msgid "Open File Location"
+msgstr "Odpri mesto datoteke"
+
+#: shell/src/properties_general.rs:186
 msgid "Content"
 msgstr "Vsebina"
 
-#: shell/src/properties_general.rs:175
+#: shell/src/properties_general.rs:202
 msgid "Date &amp; Time"
 msgstr "Datum in čas"
 
