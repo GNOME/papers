@@ -4403,6 +4403,9 @@ pps_view_do_popup_menu (PpsView *view,
 	if (annot)
 		items = g_list_prepend (items, annot);
 
+	if (g_list_length (items) > 0 && pps_view_has_selection (view)) {
+		clear_selection (view);
+	}
 	g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, items, x, y);
 
 	g_list_free (items);
