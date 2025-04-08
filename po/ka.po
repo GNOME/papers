@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-22 03:27+0000\n"
-"PO-Revision-Date: 2025-03-22 07:42+0100\n"
+"POT-Creation-Date: 2025-04-05 23:57+0000\n"
+"PO-Revision-Date: 2025-04-08 04:27+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -232,14 +232,14 @@ msgstr "PDF დოკუმენტების კითხვის მხა
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:224
 msgid "Yes"
 msgstr "დიახ"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:225
 msgid "No"
 msgstr "არა"
 
@@ -299,7 +299,7 @@ msgstr "უსახელო"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:258
 msgid "None"
 msgstr "არა"
 
@@ -483,22 +483,22 @@ msgstr "გვერდი: %s"
 msgid "Edit Note"
 msgstr "შენიშვნის ჩასწორება"
 
-#: libview/pps-jobs.c:429
+#: libview/pps-jobs.c:423
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "%d-ე გვერდის რენდერის შეცდომა: %s"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:430
 #, c-format
 msgid "Failed to render page %d"
 msgstr "%d-ე გვერდის რენდერის შეცდომა"
 
-#: libview/pps-jobs.c:670
+#: libview/pps-jobs.c:660
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "%d-ე გვერდის მინიატურის შექმნის შეცდომა"
 
-#: libview/pps-jobs.c:1696
+#: libview/pps-jobs.c:1672
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "%d-ე გვერდის დაბეჭდვის შეცდომა: %s"
@@ -797,13 +797,13 @@ msgstr "ნორმალური ზომა"
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "დოკუმენტის დაბეჭდვა ჩავარდა"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:199
+#: shell/src/properties_general.rs:226
 msgid "Unknown"
 msgstr "უცნობი"
 
@@ -811,7 +811,7 @@ msgstr "უცნობი"
 msgid "Document Properties"
 msgstr "დოკუმენტის თვისებები"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:188
 msgid "Title"
 msgstr "სათაური"
 
@@ -819,62 +819,62 @@ msgstr "სათაური"
 msgid "Location"
 msgstr "მდებარეობა"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:189
 msgid "Subject"
 msgstr "თემა"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:163
+#: shell/src/properties_general.rs:190
 msgid "Author"
 msgstr "ავტორი"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:191
 msgid "Keywords"
 msgstr "საკვანძო სიტყვები"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:192
 msgid "Producer"
 msgstr "პროდიუსერი"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:193
 msgid "Creator"
 msgstr "შემქმნელი"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:204
 msgid "Created"
 msgstr "შექმნილია"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:205
 msgid "Modified"
 msgstr "შეცვლილია"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:217
 msgid "Number of Pages"
 msgstr "გვერდების რაოდენობა"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:218
 msgid "Optimized"
 msgstr "ოპტიმიზებული"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
-#: shell/src/properties_general.rs:189
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:214
+#: shell/src/properties_general.rs:216
 msgid "Format"
 msgstr "ფორმატი"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:219
 msgid "Security"
 msgstr "უსაფრთხოება"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:228
 msgid "Contains Javascript"
 msgstr "შეიცავს Javascript-ს"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:220
 msgid "Paper Size"
 msgstr "ფურცლის ზომა"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:177
 msgid "Size"
 msgstr "ზომა"
 
@@ -1359,7 +1359,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "_დაბეჭდვის გაუქმება და დახურვა"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
 #: shell/src/document_view/io.rs:710
 msgid "_Cancel"
@@ -1523,7 +1523,7 @@ msgstr "ძებნის შედეგები აქ გამოჩნდ
 msgid "Loading Document"
 msgstr "დოკუმენტის ჩატვირთვა"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_გაუქმება"
 
@@ -1722,7 +1722,7 @@ msgstr "[ფაილი...]"
 msgid "View Details"
 msgstr "დეტალების ნახვა"
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1730,27 +1730,27 @@ msgstr ""
 "დოკუმენტი შეიცავს ახალ ან შეცვლილ ანოტაციებს და ფორმის ველებს, რომლებიც "
 "შევსებულია."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "დოკუმენტი შეიცავს შევსებულ ფორმის ველებს."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "დოკუმენტი ახალ ან შეცვლილ ანოტაციებს შეიცავს."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "თუ ასლს არ შეინახავთ, ცვლილებები სამუდამოდ დაიკარგება."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "შევინახო ცვლილებები ასლში?"
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "დახურვა _შენახვის გარეშე"
 
-#: shell/src/document_view.rs:718
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "ა_სლის შენახვა"
 
@@ -1844,15 +1844,16 @@ msgstr "შეიყვანეთ პაროლი {}-სთვის"
 msgid "_Login"
 msgstr "_მომხმარებელი"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "ბეჭდვის დავალება \"{}\""
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "რიგში დავალებები არაა"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "რიგში დარჩენილია {} დავალება"
@@ -1896,11 +1897,19 @@ msgstr "ფაილი"
 msgid "Folder"
 msgstr "საქაღალდე"
 
-#: shell/src/properties_general.rs:159
+#: shell/src/properties_general.rs:115
+msgid "Open With..."
+msgstr "გამხსნელი პროგრამა…"
+
+#: shell/src/properties_general.rs:130
+msgid "Open File Location"
+msgstr "ფაილის მდებარეობის გახსნა"
+
+#: shell/src/properties_general.rs:186
 msgid "Content"
 msgstr "შემცველობა"
 
-#: shell/src/properties_general.rs:175
+#: shell/src/properties_general.rs:202
 msgid "Date &amp; Time"
 msgstr "თარიღი &amp; დრო"
 
@@ -2264,9 +2273,6 @@ msgstr "სერტიფიკატის ვადის გასვლი�
 
 #~ msgid "Annotate document"
 #~ msgstr "დოკუმენტის ანოტაცია"
-
-#~ msgid "File options"
-#~ msgstr "ფაილის მორგება"
 
 #~ msgid "Set zoom level"
 #~ msgstr "გადიდების მაშტაბის დაყენება"
