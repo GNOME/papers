@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-03-22 03:27+0000\n"
-"PO-Revision-Date: 2025-03-24 00:42+0330\n"
+"POT-Creation-Date: 2025-04-08 02:28+0000\n"
+"PO-Revision-Date: 2025-04-08 15:11+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -224,14 +224,14 @@ msgstr "پشتیبانی از خواندن سندهای PDF را اضافه می
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775 nautilus/pps-nautilus-extension.c:119
-#: shell/src/properties_general.rs:197
+#: shell/src/properties_general.rs:224
 msgid "Yes"
 msgstr "بله"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775 nautilus/pps-nautilus-extension.c:121
-#: shell/src/properties_general.rs:198
+#: shell/src/properties_general.rs:225
 msgid "No"
 msgstr "خیر"
 
@@ -290,7 +290,7 @@ msgstr "بدون نام"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:258
 msgid "None"
 msgstr "هیچ‌کدام"
 
@@ -475,22 +475,22 @@ msgstr "صفحه %s"
 msgid "Edit Note"
 msgstr "ویرایش یاداشت"
 
-#: libview/pps-jobs.c:429
+#: libview/pps-jobs.c:423
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "شکست در پرداخت صفحهٔ %Id: ‏%s"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:430
 #, c-format
 msgid "Failed to render page %d"
 msgstr "شکست در پرداخت صفحهٔ %Id"
 
-#: libview/pps-jobs.c:670
+#: libview/pps-jobs.c:660
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "شکست در ایجاد بندانگشتی برای صفحهٔ %Id"
 
-#: libview/pps-jobs.c:1696
+#: libview/pps-jobs.c:1672
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "شکست در چاپ صفحهٔ %Id: ‏%s"
@@ -783,13 +783,13 @@ msgstr "اندازهٔ عادی"
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "شکست در چاپ سند"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:199
+#: shell/src/properties_general.rs:226
 msgid "Unknown"
 msgstr "ناشناخته"
 
@@ -797,7 +797,7 @@ msgstr "ناشناخته"
 msgid "Document Properties"
 msgstr "ویژگی‌های سند"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:188
 msgid "Title"
 msgstr "عنوان"
 
@@ -805,62 +805,62 @@ msgstr "عنوان"
 msgid "Location"
 msgstr "مکان"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:189
 msgid "Subject"
 msgstr "موضوع"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:163
+#: shell/src/properties_general.rs:190
 msgid "Author"
 msgstr "نگارنده"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:191
 msgid "Keywords"
 msgstr "کلیدواژگان"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:192
 msgid "Producer"
 msgstr "تولیدکننده"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:193
 msgid "Creator"
 msgstr "سازنده"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:204
 msgid "Created"
 msgstr "ایجاد شد"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:205
 msgid "Modified"
 msgstr "تغییریافته"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:217
 msgid "Number of Pages"
 msgstr "شمار صفحه"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:218
 msgid "Optimized"
 msgstr "بهینه"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
-#: shell/src/properties_general.rs:189
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:214
+#: shell/src/properties_general.rs:216
 msgid "Format"
 msgstr "قالب"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:219
 msgid "Security"
 msgstr "امنیت"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:228
 msgid "Contains Javascript"
 msgstr "دارای جاوااسکریپت"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:220
 msgid "Paper Size"
 msgstr "اندازهٔ کاغذ"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:177
 msgid "Size"
 msgstr "اندازه"
 
@@ -1344,7 +1344,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "خاتمهٔ _چاپ و بستن"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
 #: shell/src/document_view/io.rs:710
 msgid "_Cancel"
@@ -1508,7 +1508,7 @@ msgstr "نتایج جست‌وجو این‌جا ظاهر خواهند شد"
 msgid "Loading Document"
 msgstr "بار کردن سند"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_لغو"
 
@@ -1713,35 +1713,35 @@ msgstr "[FILE…]"
 msgid "View Details"
 msgstr "نمایش جزییات"
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "سند دارای زمینه‌های فرم یا حاشیه نویسی‌های جدید یا تغییریافته  است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "سند دارای زمینه‌های فرمی است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "سند دارای حاشیه‌نویسی‌های جدید یا تغییر یافته است."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "اگر یک رونوشت از سند را ذخیره نکنید، تغییرات برای همیشه از بین خواهند رفت."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "ذخیرهٔ دگرگونی‌ها در یک رونوشت؟"
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "بستن _بدون ذخیره"
 
-#: shell/src/document_view.rs:718
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "_ذخیرهٔ یک رونوشت"
 
@@ -1833,15 +1833,16 @@ msgstr "ورود گذرواژه برای {}"
 msgid "_Login"
 msgstr "_ورود"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "چاپ کردن کار «{}»"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "هیچ کاری در صف منتظر نیست"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "تعداد {} کار منتظر در صف"
@@ -1886,11 +1887,19 @@ msgstr "پرونده"
 msgid "Folder"
 msgstr "شاخه‌"
 
-#: shell/src/properties_general.rs:159
+#: shell/src/properties_general.rs:115
+msgid "Open With..."
+msgstr "گشودن با…"
+
+#: shell/src/properties_general.rs:130
+msgid "Open File Location"
+msgstr "گشودن مکان پرونده"
+
+#: shell/src/properties_general.rs:186
 msgid "Content"
 msgstr "محتوا"
 
-#: shell/src/properties_general.rs:175
+#: shell/src/properties_general.rs:202
 msgid "Date &amp; Time"
 msgstr "تاریخ و زمان"
 
@@ -2489,9 +2498,6 @@ msgstr "زمان انقضای گواهی"
 
 #~ msgid "Annotate document"
 #~ msgstr "حاشیه‌نویسی سند"
-
-#~ msgid "File options"
-#~ msgstr "گزینه‌های پرونده"
 
 #~ msgid "Print…"
 #~ msgstr "چاپ…"
