@@ -665,6 +665,7 @@ impl imp::PpsDocumentView {
         let dialog = gtk::FileDialog::builder()
             .title(gettext("Save Signed File"))
             .initial_name(name)
+            .initial_folder(&gio::File::for_path(self.default_save_directory()))
             .build();
 
         glib::spawn_future_local(glib::clone!(
