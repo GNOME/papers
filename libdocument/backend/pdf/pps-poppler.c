@@ -4058,24 +4058,20 @@ pps_backend_query_type (void)
 static PopplerCertificateInfo *
 find_poppler_certificate_info (PpsCertificateInfo *certificate_info)
 {
-	GList *signing_certificates = poppler_get_available_signing_certificates ();
-	PopplerCertificateInfo *ret = NULL;
+	g_autolist (PopplerCertificateInfo) signing_certificates = NULL;
 	g_autofree char *certificate_id = NULL;
 
+	signing_certificates = poppler_get_available_signing_certificates ();
 	g_object_get (certificate_info, "id", &certificate_id, NULL);
 
 	for (GList *list = signing_certificates; list != NULL && list->data != NULL; list = list->next) {
 		PopplerCertificateInfo *certificate_info = list->data;
 
-		if (g_strcmp0 (certificate_id, poppler_certificate_info_get_id (certificate_info)) == 0) {
-			ret = poppler_certificate_info_copy (certificate_info);
-			break;
-		}
+		if (g_strcmp0 (certificate_id, poppler_certificate_info_get_id (certificate_info)) == 0)
+			return poppler_certificate_info_copy (certificate_info);
 	}
 
-	g_clear_list (&signing_certificates, (GDestroyNotify) poppler_certificate_info_free);
-
-	return ret;
+	return NULL;
 }
 
 struct poppler_sign_cb_data {
@@ -4106,7 +4102,7 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerSigningData *signing_data = poppler_signing_data_new ();
 	PopplerCertificateInfo *cert_info;
-	PpsCertificateInfo *cinfo = NULL;
+	g_autoptr (PpsCertificateInfo) cinfo = NULL;
 	PopplerRectangle signing_rect;
 	PpsRectangle *rect;
 	PpsPage *page;
@@ -4116,8 +4112,6 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 
 	g_object_get (signature, "certificate-info", &cinfo, NULL);
 	cert_info = find_poppler_certificate_info (cinfo);
-	g_object_unref (cinfo);
-
 	g_assert (cert_info);
 
 	poppler_signing_data_set_certificate_info (signing_data, cert_info);
@@ -4210,7 +4204,7 @@ pdf_document_set_password_callback (PpsDocumentSignatures *document,
 static GList *
 pdf_document_get_available_signing_certificates (PpsDocumentSignatures *document)
 {
-	GList *signing_certs = poppler_get_available_signing_certificates ();
+	g_autolist (PopplerCertificateInfo) signing_certs = poppler_get_available_signing_certificates ();
 	GList *ev_certs = NULL;
 
 	for (GList *list = signing_certs; list != NULL && list->data != NULL; list = list->next) {
@@ -4222,8 +4216,6 @@ pdf_document_get_available_signing_certificates (PpsDocumentSignatures *document
 
 		ev_certs = g_list_append (ev_certs, cert_info);
 	}
-
-	g_clear_list (&signing_certs, (GDestroyNotify) poppler_certificate_info_free);
 
 	return ev_certs;
 }
