@@ -4074,22 +4074,20 @@ find_poppler_certificate_info (PpsCertificateInfo *certificate_info)
 	return NULL;
 }
 
-struct poppler_sign_cb_data {
-	PdfDocument *document;
-	gpointer user_data;
-	GAsyncReadyCallback callback;
-};
-
 static void
 poppler_sign_callback_wrapper (GObject *source_object,
                                GAsyncResult *result,
                                gpointer user_data)
 {
-	struct poppler_sign_cb_data *data = user_data;
+	g_autoptr (GTask) task = user_data;
+	g_autoptr (GError) error = NULL;
 
-	data->callback (G_OBJECT (data->document), result, data->user_data);
+	if (!poppler_document_sign_finish (POPPLER_DOCUMENT (source_object), result, &error)) {
+		g_task_return_error (G_TASK (result), error);
+		return;
+	}
 
-	g_free (data);
+	g_task_return_boolean (task, TRUE);
 }
 
 static void
@@ -4103,12 +4101,12 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	PopplerSigningData *signing_data = poppler_signing_data_new ();
 	g_autoptr (PopplerCertificateInfo) cert_info = NULL;
 	g_autoptr (PpsCertificateInfo) cinfo = NULL;
+	g_autoptr (GTask) task = NULL;
 	PopplerRectangle signing_rect;
 	PpsRectangle *rect;
 	PpsPage *page;
 	PopplerColor color;
 	GdkRGBA rgba;
-	struct poppler_sign_cb_data *wrapper_data = g_malloc (sizeof (struct poppler_sign_cb_data));
 
 	g_object_get (signature, "certificate-info", &cinfo, NULL);
 	cert_info = find_poppler_certificate_info (cinfo);
@@ -4155,11 +4153,10 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 
 	poppler_signing_data_set_signature_rectangle (signing_data, &signing_rect);
 
-	wrapper_data->user_data = user_data;
-	wrapper_data->callback = callback;
-	wrapper_data->document = self;
-
-	poppler_document_sign (POPPLER_DOCUMENT (self->document), signing_data, cancellable, poppler_sign_callback_wrapper, wrapper_data);
+	task = g_task_new (document, cancellable, callback, user_data);
+	poppler_document_sign (POPPLER_DOCUMENT (self->document), signing_data,
+	                       cancellable, poppler_sign_callback_wrapper,
+	                       g_steal_pointer (&task));
 }
 
 static gboolean
@@ -4167,9 +4164,7 @@ pdf_document_signatures_sign_finish (PpsDocumentSignatures *document_signatures,
                                      GAsyncResult *result,
                                      GError **error)
 {
-	PdfDocument *self = PDF_DOCUMENT (document_signatures);
-
-	return poppler_document_sign_finish (POPPLER_DOCUMENT (self->document), result, error);
+	return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static gboolean
