@@ -71,7 +71,7 @@ pps_signature_finalize (GObject *object)
 	g_clear_pointer (&priv->password, g_free);
 	g_clear_pointer (&priv->signature, g_free);
 	g_clear_pointer (&priv->signature_left, g_free);
-	g_clear_object (&priv->rect);
+	g_clear_pointer (&priv->rect, g_free);
 	g_clear_pointer (&priv->document_owner_password, g_free);
 	g_clear_pointer (&priv->document_user_password, g_free);
 	g_clear_pointer (&priv->signature_time, g_date_time_unref);
