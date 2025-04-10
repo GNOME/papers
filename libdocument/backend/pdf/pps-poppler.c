@@ -4101,7 +4101,7 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 {
 	PdfDocument *self = PDF_DOCUMENT (document);
 	PopplerSigningData *signing_data = poppler_signing_data_new ();
-	PopplerCertificateInfo *cert_info;
+	g_autoptr (PopplerCertificateInfo) cert_info = NULL;
 	g_autoptr (PpsCertificateInfo) cinfo = NULL;
 	PopplerRectangle signing_rect;
 	PpsRectangle *rect;
