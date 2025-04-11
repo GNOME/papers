@@ -4438,30 +4438,17 @@ draw_signing_rect (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GskRoundedRect outline;
-	gint pos_x1, pos_x2, pos_y1, pos_y2;
-	gint x, y, w, h;
+	graphene_rect_t rect;
 	GdkRGBA bg_color;
 	GdkRGBA border_color;
-	gdouble scroll_x, scroll_y;
 
 	if (!gtk_gesture_is_active (GTK_GESTURE (priv->signing_drag_gesture)))
 		return;
 
-	scroll_x = gtk_adjustment_get_value (priv->hadjustment);
-	scroll_y = gtk_adjustment_get_value (priv->vadjustment);
-
-	pos_x1 = priv->signing_info.start_x - scroll_x;
-	pos_y1 = priv->signing_info.start_y - scroll_y;
-	pos_x2 = priv->signing_info.stop_x - scroll_x;
-	pos_y2 = priv->signing_info.stop_y - scroll_y;
-
-	x = MIN (pos_x1, pos_x2);
-	y = MIN (pos_y1, pos_y2);
-	w = ABS (pos_x1 - pos_x2);
-	h = ABS (pos_y1 - pos_y2);
-
-	if (w <= 0 || h <= 0)
-		return;
+	rect = GRAPHENE_RECT_INIT (priv->signing_info.start_x,
+	                           priv->signing_info.start_y,
+	                           priv->signing_info.stop_x - priv->signing_info.start_x,
+	                           priv->signing_info.stop_y - priv->signing_info.start_y);
 
 	get_accent_color (&bg_color, NULL);
 	border_color.alpha = 0.2;
@@ -4469,8 +4456,8 @@ draw_signing_rect (PpsView *view,
 	bg_color.alpha = 0.35;
 
 	gtk_snapshot_save (snapshot);
-	gsk_rounded_rect_init_from_rect (&outline, &GRAPHENE_RECT_INIT (x, y, w, h), 1);
-	gtk_snapshot_append_color (snapshot, &bg_color, &GRAPHENE_RECT_INIT (x, y, w, h));
+	gsk_rounded_rect_init_from_rect (&outline, &rect, 1);
+	gtk_snapshot_append_color (snapshot, &bg_color, &rect);
 	gtk_snapshot_append_border (snapshot, &outline, (float[4]) { 1, 1, 1, 1 }, (GdkRGBA[4]) { border_color, border_color, border_color, border_color });
 	gtk_snapshot_restore (snapshot);
 }
