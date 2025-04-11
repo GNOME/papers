@@ -8587,29 +8587,74 @@ pps_view_cancel_signature_rect (PpsView *view)
 static void
 pps_view_stop_signature_rect (PpsView *view)
 {
-	PpsRectangle rect;
+	PpsRectangle rect = { 0 };
+	PpsRectangle r;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	g_autofree PpsMark *start;
 	g_autofree PpsMark *end;
+	gint selection_page = -1;
 
 	pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 
-	start = pps_view_get_mark_for_view_point (view,
-	                                          priv->signing_info.start_x,
-	                                          priv->signing_info.start_y);
-	end = pps_view_get_mark_for_view_point (view,
-	                                        priv->signing_info.stop_x,
-	                                        priv->signing_info.stop_y);
+	r.x1 = MIN (priv->signing_info.start_x, priv->signing_info.stop_x);
+	r.y1 = MIN (priv->signing_info.start_y, priv->signing_info.stop_y);
+	r.x2 = MAX (priv->signing_info.start_x, priv->signing_info.stop_x);
+	r.y2 = MAX (priv->signing_info.start_y, priv->signing_info.stop_y);
 
-	rect.x1 = MIN (start->doc_point.x, end->doc_point.x);
-	rect.y1 = MIN (start->doc_point.y, end->doc_point.y);
-	rect.x2 = MAX (start->doc_point.x, end->doc_point.x);
-	rect.y2 = MAX (start->doc_point.y, end->doc_point.y);
+	start = pps_view_get_mark_for_view_point (view, r.x1, r.y1);
+	end = pps_view_get_mark_for_view_point (view, r.x2, r.y2);
+
+	if (!start || !end) {
+		/* if start or end are outside the page extents, let's try to clamp them */
+		gint page = -1;
+
+		if (start)
+			page = start->page_index;
+		if (end)
+			page = end->page_index;
+
+		if (page == -1) {
+			/* If both start and end are outside the document area, let's try to see
+			 * if at least the center of the selection is hitting a page...
+			 */
+			find_page_at_location (view,
+			                       (r.x1 + r.x2) / 2,
+			                       (r.y1 + r.y2) / 2,
+			                       &page, NULL, NULL);
+		}
+
+		if (page != -1) {
+			GdkRectangle page_area;
+
+			/* Now that we have a page let's clamp the signing area to its extents */
+			pps_view_get_page_extents (view, page, &page_area);
+
+			if (!start) {
+				start = pps_view_get_mark_for_view_point (view,
+				                                          MAX (page_area.x, r.x1),
+				                                          MAX (page_area.y, r.y1));
+			}
+
+			if (!end) {
+				end = pps_view_get_mark_for_view_point (view,
+				                                        MIN (page_area.x + page_area.width - 1, r.x2),
+				                                        MIN (page_area.y + page_area.height - 1, r.y2));
+			}
+		}
+	}
+
+	if (start && end) {
+		selection_page = start->page_index;
+		rect.x1 = start->doc_point.x;
+		rect.y1 = start->doc_point.y;
+		rect.x2 = end->doc_point.x;
+		rect.y2 = end->doc_point.y;
+	}
 
 	gtk_event_controller_set_propagation_phase (priv->signing_drag_gesture,
 	                                            GTK_PHASE_NONE);
 
-	g_signal_emit (view, signals[SIGNAL_SIGNATURE_RECT], 0, start->page_index, &rect);
+	g_signal_emit (view, signals[SIGNAL_SIGNATURE_RECT], 0, selection_page, &rect);
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
