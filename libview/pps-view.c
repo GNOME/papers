@@ -2288,25 +2288,21 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 	PpsAnnotation *annot = NULL;
 	PpsMedia *media;
 
-	if (gtk_event_controller_get_propagation_phase (priv->signing_drag_gesture) != GTK_PHASE_NONE)
-		return;
+	if (gtk_event_controller_get_propagation_phase (priv->signing_drag_gesture) != GTK_PHASE_NONE) {
+		pps_view_set_cursor (view, PPS_VIEW_CURSOR_ADD);
+	} else if (gtk_gesture_is_active (GTK_GESTURE (priv->middle_clicked_drag_gesture))) {
+		pps_view_set_cursor (view, PPS_VIEW_CURSOR_DRAG);
+	} else if ((link = pps_view_get_link_at_location (view, x, y))) {
+		if (priv->link_preview.link != link) {
+			priv->link_preview.link = link;
+			find_page_at_location (view, x, y, &priv->link_preview.source_page, NULL, NULL);
+			gtk_widget_add_tick_callback (GTK_WIDGET (view), (GtkTickCallback) handle_link_preview, NULL, NULL);
+		}
 
-	link = pps_view_get_link_at_location (view, x, y);
-
-	if (priv->link_preview.link != link) {
-		priv->link_preview.link = link;
-		find_page_at_location (view, x, y, &priv->link_preview.source_page, NULL, NULL);
-		gtk_widget_add_tick_callback (GTK_WIDGET (view), (GtkTickCallback) handle_link_preview, NULL, NULL);
-	}
-
-	if (link) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
 	} else if ((field = pps_view_get_form_field_at_location (view, x, y))) {
 		if (field->is_read_only) {
-			if (priv->cursor == PPS_VIEW_CURSOR_LINK ||
-			    priv->cursor == PPS_VIEW_CURSOR_IBEAM ||
-			    priv->cursor == PPS_VIEW_CURSOR_DRAG)
-				pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
+			pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
 		} else if (PPS_IS_FORM_FIELD_TEXT (field)) {
 			pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 		} else {
@@ -2322,10 +2318,7 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 	} else if (location_in_text (view, x, y)) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 	} else {
-		if (priv->cursor == PPS_VIEW_CURSOR_LINK ||
-		    priv->cursor == PPS_VIEW_CURSOR_IBEAM ||
-		    priv->cursor == PPS_VIEW_CURSOR_DRAG)
-			pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
+		pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
 	}
 }
 
@@ -8590,7 +8583,6 @@ pps_view_cancel_signature_rect (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 	gtk_event_controller_set_propagation_phase (priv->signing_drag_gesture,
 	                                            GTK_PHASE_NONE);
 	gtk_gesture_set_state (GTK_GESTURE (priv->signing_drag_gesture),
@@ -8606,8 +8598,6 @@ pps_view_stop_signature_rect (PpsView *view)
 	g_autofree PpsMark *start;
 	g_autofree PpsMark *end;
 	gint selection_page = -1;
-
-	pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 
 	r.x1 = MIN (priv->signing_info.start_x, priv->signing_info.stop_x);
 	r.y1 = MIN (priv->signing_info.start_y, priv->signing_info.stop_y);
