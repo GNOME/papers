@@ -2290,7 +2290,7 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 	PpsAnnotation *annot = NULL;
 	PpsMedia *media;
 
-	if (gtk_gesture_is_active (GTK_GESTURE (priv->signing_drag_gesture)))
+	if (gtk_event_controller_get_propagation_phase (priv->signing_drag_gesture) != GTK_PHASE_NONE)
 		return;
 
 	link = pps_view_get_link_at_location (view, x, y);
