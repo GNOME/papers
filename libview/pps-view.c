@@ -1970,6 +1970,9 @@ pps_view_goto_dest (PpsView *view, PpsLinkDest *dest)
 		named_dest = pps_link_dest_get_named_dest (dest);
 		final_dest = pps_document_links_find_link_dest (PPS_DOCUMENT_LINKS (pps_document_model_get_document (priv->model)),
 		                                                named_dest);
+
+		if (!final_dest)
+			return;
 	}
 
 	goto_dest (view, final_dest ? final_dest : dest);
@@ -2202,6 +2205,8 @@ handle_link_preview (PpsView *view)
 	if (type == PPS_LINK_DEST_TYPE_NAMED) {
 		dest = pps_document_links_find_link_dest (PPS_DOCUMENT_LINKS (pps_document_model_get_document (priv->model)),
 		                                          pps_link_dest_get_named_dest (dest));
+		if (!dest)
+			return G_SOURCE_REMOVE;
 	}
 
 	/* Handle the case that page doesn't exist */
