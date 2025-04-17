@@ -533,6 +533,13 @@ pps_view_scroll_to_doc_point (PpsView *view, gint page, PpsPoint *point)
 	transform_doc_point_to_view_point (view, page, point, &x, &y);
 	priv->current_page = page;
 	scroll_to_view_point (view, x, y);
+
+	/*
+	 * When the adjustments' values don't change due to multiple doc points
+	 * mapped to the same view point, which is possible with non-continuous
+	 * mode, we still want to re-allocate.
+	 */
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 static void
