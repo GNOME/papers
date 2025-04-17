@@ -71,21 +71,21 @@ build.container.fedora:
 
 editorconfig:
     stage: lint
-    image: alpine:edge
+    image: alpine:3.21
     script:
         - apk add editorconfig-checker
         - ec --disable-indentation --exclude '^.git/'
 
 clang-format:
     stage: lint
-    image: alpine:edge
+    image: alpine:3.21
     script:
         - apk add clang19-extra-tools
         - ./.gitlab-ci/clang-format.sh
 
 pot-files:
     stage: lint
-    image: alpine:edge
+    image: alpine:3.21
     script:
         - ./.gitlab-ci/check-potfiles.sh
 
