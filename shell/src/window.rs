@@ -120,6 +120,7 @@ mod imp {
 
         fn dispose(&self) {
             self.default_settings.apply();
+            self.clear_local_uri();
         }
     }
 
