@@ -1100,6 +1100,15 @@ mod imp {
     #[gtk::template_callbacks]
     impl PpsWindow {
         #[template_callback]
+        fn window_fullscreened(&self) {
+            let obj = self.obj();
+
+            if !obj.is_fullscreen() {
+                obj.change_action_state("fullscreen", &false.into());
+            }
+        }
+
+        #[template_callback]
         fn night_mode_changed(&self) {
             let night_mode = self.settings.boolean("night-mode");
 
