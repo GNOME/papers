@@ -1,4 +1,5 @@
 Papers 48.0
+----------------
 
 * Some changes we can highlight:
   - Papers is now a lot more stable during reloads, due to multiple race
