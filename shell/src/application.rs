@@ -127,25 +127,23 @@ mod imp {
 
     impl PpsApplication {
         fn parse_dest(&self, uri: &str) -> Option<papers_document::LinkDest> {
-            if papers_document::file_get_mime_type(uri, true) == Ok("application/pdf".into()) {
-                if let Ok((_, _, _, _, _, _, Some(frag))) =
-                    glib::Uri::split(uri, glib::UriFlags::ENCODED)
-                {
-                    match frag.rsplit_once('=') {
-                        Some(("page", page)) => {
-                            if let Ok(n) = page.parse::<u32>() {
-                                if n > 0 {
-                                    return Some(LinkDest::new_page((n - 1) as i32));
-                                }
-                            }
+            let Ok((_, _, _, _, _, _, Some(frag))) = glib::Uri::split(uri, glib::UriFlags::ENCODED)
+            else {
+                return None;
+            };
+
+            // We use the standard specified by RFC8118 for all document types.
+            match frag.rsplit_once('=') {
+                Some(("page", page)) => {
+                    if let Ok(n) = page.parse::<u32>() {
+                        if n > 0 {
+                            return Some(LinkDest::new_page((n - 1) as i32));
                         }
-                        Some(("nameddest", named_dest)) => {
-                            return Some(LinkDest::new_named(named_dest))
-                        }
-                        None => return Some(LinkDest::new_page_label(&frag)),
-                        _ => (),
                     }
                 }
+                Some(("nameddest", named_dest)) => return Some(LinkDest::new_named(named_dest)),
+                None => return Some(LinkDest::new_page_label(&frag)),
+                _ => (),
             }
 
             None
