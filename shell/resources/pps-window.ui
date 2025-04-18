@@ -18,6 +18,8 @@
     <property name="width-request">360</property>
     <property name="height-request">360</property>
 
+    <signal name="notify::fullscreened" handler="window_fullscreened" swapped="yes" />
+
     <property name="content">
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
