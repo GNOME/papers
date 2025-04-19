@@ -48,10 +48,16 @@
   <repository name="system"
               type="system" />
 
-  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/-/raw/650c743624426000a01b42d67a2449b058bea899/modulesets-stable/gtk-osx.modules" />
+  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/-/raw/master/modulesets-stable/gtk-osx.modules" />
 
-  <cmake id="poppler" cmakeargs="-DCMAKE_MACOSX_RPATH=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_BOOST=OFF -DENABLE_NSS3=OFF -DENABLE_QT5=OFF -DENABLE_QT6=OFF -DENABLE_GOBJECT_INTROSPECTION=OFF">
-    <branch module="poppler-24.08.0.tar.xz" version="24.08.0"
+  <cmake id="openjpeg2">
+    <branch repo="github-tarball" version="2.5.3"
+            module="uclouvain/openjpeg/archive/refs/tags/v2.5.3.tar.gz"
+            checkoutdir="openjpeg-2.5.3.tar.gz" />
+  </cmake>
+
+  <cmake id="poppler" cmakeargs="-DCMAKE_MACOSX_RPATH=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_BOOST=OFF -DENABLE_NSS3=OFF -DENABLE_QT5=OFF -DENABLE_QT6=OFF -DENABLE_GOBJECT_INTROSPECTION=OFF -DENABLE_GPGME=OFF">
+    <branch module="poppler-25.04.0.tar.xz" version="25.04.0"
             repo="poppler" />
     <pkg-config>poppler-glib.pc</pkg-config>
     <dependencies>
@@ -59,6 +65,7 @@
       <dep package="glib" />
       <dep package="cairo" />
       <dep package="lcms2" />
+      <dep package="openjpeg2" />
     </dependencies>
   </cmake>
   <cmake id="poppler-data">
@@ -73,7 +80,7 @@
                                 -Ddjvu=enabled
                                 -Dnautilus=false">
     <branch repo="gnome-gitlab" module="GNOME/Incubator/papers.git"
-            revision="main" />
+            revision="gnome-48" />
     <dependencies>
       <dep package="poppler" />
       <dep package="gtk-4" />
@@ -134,20 +141,38 @@
   </meson>
 
   <meson id="libadwaita" mesonargs="-Dvapi=false -Dintrospection=disabled">
-    <branch module="libadwaita/1.6/libadwaita-1.6.0.tar.xz"
-            version="1.6.0" />
+    <branch module="libadwaita/1.7/libadwaita-1.7.2.tar.xz"
+            version="1.7.2" />
     <dependencies>
       <dep package="gtk-4" />
       <dep package="adwaita-icon-theme" />
       <dep package="appstream" />
+      <dep package="sassc" />
     </dependencies>
   </meson>
+
+  <autotools id="libsass"
+             autogen-sh="autoreconf"
+             autogenargs="--disable-tests --disable-static">
+    <branch module="sass/libsass"
+            repo="github"
+            revision="3.6.6"/>
+  </autotools>
+  <autotools id="sassc"
+             autogen-sh="autoreconf">
+    <branch module="sass/sassc"
+            repo="github"
+            revision="3.6.2"/>
+    <dependencies>
+      <dep package="libsass"/>
+    </dependencies>
+  </autotools>
 
   <meson id="gtk-4"
          mesonargs="-Dx11-backend=false -Dmedia-gstreamer=disabled">
 
-    <branch module="gtk/4.16/gtk-4.16.3.tar.xz"
-            version="4.16.3">
+    <branch module="gtk/4.18/gtk-4.18.4.tar.xz"
+            version="4.18.4">
     </branch>
 
     <dependencies>
@@ -155,7 +180,7 @@
       <dep package="atk" />
       <dep package="gdk-pixbuf" />
       <dep package="graphene" />
-      <dep package="libsass" />
+      <dep package="sassc" />
       <dep package="libepoxy" />
       <dep package="hicolor-icon-theme" />
     </dependencies>
@@ -168,8 +193,8 @@
   </meson>
 
   <autotools id="exempi" autogen-sh="autoreconf" autogenargs="--enable-unittest=no">
-    <branch repo="exempi" module="exempi-2.6.5.tar.xz"
-            version="2.6.5" />
+    <branch repo="exempi" module="exempi-2.6.6.tar.xz"
+            version="2.6.6" />
   </autotools>
 
 </moduleset>
