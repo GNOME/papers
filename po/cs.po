@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-04-08 02:28+0000\n"
-"PO-Revision-Date: 2025-04-08 22:18+0200\n"
+"POT-Creation-Date: 2025-04-20 18:29+0000\n"
+"PO-Revision-Date: 2025-04-21 19:32+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. Manually set name and icon
@@ -38,7 +38,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:310
+#: shell/src/application.rs:68 shell/src/application.rs:308
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Papers"
@@ -557,7 +557,7 @@ msgstr "Snažíte se vytisknout výběr, který nezahrnuje žádné stránky"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
 #: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Zavřít"
@@ -660,51 +660,51 @@ msgstr "Posunout pohled dolů"
 msgid "Document View"
 msgstr "Pohled na dokument"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2120
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2122
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2124
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2126
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2128
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2130
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2159
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2165
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2176
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2183
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
@@ -1295,7 +1295,7 @@ msgstr "_Použít"
 msgid "Search"
 msgstr "Hledat"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
@@ -1380,7 +1380,7 @@ msgstr "Přerušit _tisk a zavřít"
 
 #: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
-#: shell/src/document_view/io.rs:710
+#: shell/src/document_view/io.rs:711
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -1396,15 +1396,15 @@ msgstr "Otevřít…"
 msgid "Ni_ght Mode"
 msgstr "_Noční režim"
 
-#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
 msgid "_About Papers"
 msgstr "O _aplikaci Papers"
 
@@ -1548,7 +1548,7 @@ msgstr "_Zrušit"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:704
 msgid "Password Required"
 msgstr "Je vyžadováno heslo"
 
@@ -1669,31 +1669,31 @@ msgstr "Vytisknout tento oddíl…"
 msgid "Previews"
 msgstr "Náhledy"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
 msgid "Open a Document"
 msgstr "Otevřít dokument"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.ui:50
 msgid "Drag and drop documents here"
 msgstr "Sem přetáhněte a pusťte dokumenty"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.ui:55
 msgid "_Open…"
 msgstr "_Otevřít…"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.ui:81
 msgid "Unable to Open Document"
 msgstr "Nepodařilo se otevřít dokument"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.ui:86
 msgid "_Open Other File…"
 msgstr "_Otevřít jiný soubor…"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:210
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996 — 2025 autoři aplikace Papers"
 
-#: shell/src/application.rs:213
+#: shell/src/application.rs:211
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -1708,43 +1708,43 @@ msgstr ""
 "Adam Matoušek <adydas95@gmail.com>\n"
 "Daniel Rusek <mail@asciiwolf.com>"
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:315
 msgid "The page label of the document to display."
-msgstr "Popisek stránky dokumentu, která se má zobrazit"
+msgstr "Popisek stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:318
+#: shell/src/application.rs:316
 msgid "PAGE"
 msgstr "STRÁNKA"
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:324
 msgid "The page number of the document to display."
-msgstr "Číslo stránky dokumentu, která se má zobrazit"
+msgstr "Číslo stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:327
+#: shell/src/application.rs:325
 msgid "NUMBER"
 msgstr "ČÍSLO"
 
-#: shell/src/application.rs:335
+#: shell/src/application.rs:333
 msgid "Named destination to display."
-msgstr "Pojmenované umístění k zobrazení"
+msgstr "Pojmenované umístění k zobrazení."
 
-#: shell/src/application.rs:336
+#: shell/src/application.rs:334
 msgid "DEST"
 msgstr "MÍSTO"
 
-#: shell/src/application.rs:344
+#: shell/src/application.rs:342
 msgid "Run papers in fullscreen mode."
 msgstr "Spustit Papers v celoobrazovkovém režimu."
 
-#: shell/src/application.rs:353
+#: shell/src/application.rs:351
 msgid "Run papers in presentation mode."
 msgstr "Spustit Papers v prezentačním režimu."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:360
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: shell/src/application.rs:372
+#: shell/src/application.rs:370
 msgid "[FILE…]"
 msgstr "[SOUBOR…]"
 
@@ -1762,11 +1762,11 @@ msgstr ""
 
 #: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
-msgstr "Dokument obsahuje pole, která byla vyplněna. "
+msgstr "Dokument obsahuje pole, která byla vyplněna."
 
 #: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
-msgstr "Dokument obsahuje nové nebo změněné poznámky. "
+msgstr "Dokument obsahuje nové nebo změněné poznámky."
 
 #: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
@@ -1868,11 +1868,11 @@ msgstr "K podepsání tohoto dokumentu je vyžadován certifikát"
 msgid "Save Signed File"
 msgstr "Uložit podepsaný soubor"
 
-#: shell/src/document_view/io.rs:695
+#: shell/src/document_view/io.rs:696
 msgid "Please enter password for {}"
 msgstr "Zadejte prosím heslo pro {}"
 
-#: shell/src/document_view/io.rs:711
+#: shell/src/document_view/io.rs:712
 msgid "_Login"
 msgstr "Přih_lásit"
 
