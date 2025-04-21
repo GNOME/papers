@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 #include "pps-pixbuf-cache.h"
 #include "pps-colors.h"
 #include "pps-job-scheduler.h"
