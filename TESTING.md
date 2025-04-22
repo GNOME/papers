@@ -1,9 +1,36 @@
 ## Testing and Reporting
 
-should be done on a current **Devel**opment version, which we assume here. The install is quite easy through [flatpak](https://docs.flatpak.org/en/latest/introduction.html). To test the current main **Devel**opment version, you will want to use the [Nightly Repository](https://wiki.gnome.org/Apps/Nightly).
+
+Whatever problems you experience with Papers, please test against a current flatpak version, as installed from [Flathub](https://flathub.org/apps/org.gnome.Papers) or the GNOME [Nightly Repository](https://nightly.gnome.org/).
+If you can reproduce with these installs, check out our [testing guidlines](#testing) below and file an [issue](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/).
+
+Otherwise Papers itself is most likely not at fault and you should report to your distribution's
+
+### Bug Trackers
 
 
-### The Nightly Repository
+* [Arch Linux](https://gitlab.archlinux.org/archlinux/packaging/packages/papers)
+* [Alpine](https://gitlab.alpinelinux.org/alpine/aports/-/issues/?sort=created_date&state=all&search=papers&first_page_size=20)
+* [Debian](https://bugs.debian.org/cgi-bin/pkgreport.cgi?repeatmerged=no&src=papers)
+* [Deepin](https://bbs.deepin.org/en/module/detail/223)
+* [Fedora](https://packages.fedoraproject.org/pkgs/papers/papers/)
+* [EndeavourOS](https://forum.endeavouros.com/c/general-system/software/)
+* [Linux Mint](https://github.com/linuxmint/Cinnamon/issues?q=is%3Aissue%20%20papers)
+*  [OpenSuse](https://bugzilla.opensuse.org/)
+* [Pop-Os](https://github.com/pop-os/iso/issues?q=papers)
+* [PostmarketOS](https://gitlab.postmarketos.org/groups/postmarketOS/-/issues/?sort=created_date&state=all&search=papers&first_page_size=20)
+* [Ubuntu](https://launchpad.net/ubuntu/+source/papers/+bugs)
+* [ZorinOS](https://zorin.com/os/feedback/)
+
+[Help us](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/new?description_template=none) to improve and extend this list!
+
+
+## [Testing](testing)
+
+should be done on a current **Devel**opment version, which we assume here. The install is quite easy through [flatpak](https://docs.flatpak.org/en/latest/introduction.html). To test the current main **Devel**opment version, you will want to use the
+
+
+### [Nightly Repository](https://wiki.gnome.org/Apps/Nightly)
 
 The advantage is, that you can stay on the Nightly Repository and Papers will be updated therefrom, whenever you run `flatpak update` from a terminal. You can add the Nightly Repository via
 
