@@ -1,4 +1,4 @@
-.TH papers 1 "19 Jun 2011" "GNOME"
+.TH papers 1 2025\-04\-22 GNOME
 .SH NAME
 \fBpapers\fP \- GNOME document viewer
 
@@ -12,16 +12,13 @@ The Papers Document Viewer application for the GNOME desktop environment
 .RI --named-dest=DEST]
 .RI [--fullscreen]
 .RI [--presentation]
-.RI [--preview]
-.RI [--find=STRING]
 .RI [filename(s)...]
 .SH DESCRIPTION
-.B papers
 
 Papers is a document viewer capable of displaying multiple and single
 page document formats like PDF and DjVu.  For more general
 information about Papers please visit our website at
-http://www.gnome.org/projects/papers/
+https://apps.gnome.org/Papers/
 
 .LP
 .SH OPTIONS
@@ -45,32 +42,12 @@ Run papers in fullscreen mode.
 \fB\-s, \-\-presentation\fR
 Run papers in presentation mode.
 .TP
-\fB\-l, \-\-find=string\fR
-You can pass a word or phrase here. If it exists, papers will display
-the document and the first match.
-.TP
 \fBfilename(s)...\fR
 Specifies the file to open when Papers starts. If this is not
 specified, Papers will open a blank window. Multiple files can be loaded
 if they are separated by spaces.  Papers also supports handling of
 remote files.  For example, you can pass the location on the web or load
 a file from a FTP server, like "ftp://adobe.com/sample.pdf".
-
-.SH Print preview options
-These options are primarily intended for use with the GTK+ print
-preview function. For more information about these options see
-http://developer.gnome.org/gtk3/stable/GtkSettings.html#GtkSettings--gtk-print-preview-command
-.TP
-\fB\-w, \-\-preview\fR
-Run papers as a previewer.
-.TP
-\fB\-\-unlink\-temp\-file\fR
-If papers is run in preview mode, this will unlink the temporary file
-created by GTK+.
-.TP
-\fB\-\-print\-settings %s %f
-This sends the full path of the PDF file, f, and the settings of the
-print dialog, s, to papers.
 
 .SH BUGS
 If you find a bug, please report it at https://gitlab.gnome.org/GNOME/Incubator/papers/issues.
