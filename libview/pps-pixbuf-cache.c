@@ -5,11 +5,7 @@
 #include "pps-job-scheduler.h"
 #include "pps-view-private.h"
 #include <config.h>
-
-typedef enum {
-	SCROLL_DIRECTION_DOWN,
-	SCROLL_DIRECTION_UP
-} ScrollDirection;
+#include <gdk/gdk.h>
 
 typedef struct _CacheJobInfo {
 	PpsJob *job;
@@ -51,7 +47,7 @@ struct _PpsPixbufCache {
 	PpsDocumentModel *model;
 	int start_page;
 	int end_page;
-	ScrollDirection scroll_direction;
+	GdkScrollDirection scroll_direction;
 
 	gsize max_size;
 
@@ -785,7 +781,7 @@ pps_pixbuf_cache_add_jobs_if_needed (PpsPixbufCache *pixbuf_cache,
 		                   PPS_JOB_PRIORITY_URGENT, annot_flags);
 	}
 
-	if (pixbuf_cache->scroll_direction == SCROLL_DIRECTION_UP) {
+	if (pixbuf_cache->scroll_direction == GDK_SCROLL_UP) {
 		add_prev_jobs_if_needed (pixbuf_cache, rotation, scale, annot_flags);
 		add_next_jobs_if_needed (pixbuf_cache, rotation, scale, annot_flags);
 	} else {
@@ -794,22 +790,22 @@ pps_pixbuf_cache_add_jobs_if_needed (PpsPixbufCache *pixbuf_cache,
 	}
 }
 
-static ScrollDirection
+static GdkScrollDirection
 pps_pixbuf_cache_get_scroll_direction (PpsPixbufCache *pixbuf_cache,
                                        gint start_page,
                                        gint end_page)
 {
 	if (start_page < pixbuf_cache->start_page)
-		return SCROLL_DIRECTION_UP;
+		return GDK_SCROLL_UP;
 
 	if (end_page > pixbuf_cache->end_page)
-		return SCROLL_DIRECTION_DOWN;
+		return GDK_SCROLL_DOWN;
 
 	if (start_page > pixbuf_cache->start_page)
-		return SCROLL_DIRECTION_DOWN;
+		return GDK_SCROLL_DOWN;
 
 	if (end_page < pixbuf_cache->end_page)
-		return SCROLL_DIRECTION_UP;
+		return GDK_SCROLL_UP;
 
 	return pixbuf_cache->scroll_direction;
 }
