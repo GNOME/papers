@@ -10,18 +10,12 @@
 #include <glib/gi18n-lib.h>
 
 #include <adwaita.h>
-#include <math.h>
 #include <string.h>
 
 #include <pps-document-annotations.h>
 
 #include "pps-annotation-window.h"
 #include "pps-document-misc.h"
-#include "pps-view-marshal.h"
-
-#ifdef GDK_WINDOWING_X11
-#include <gdk/x11/gdkx.h>
-#endif
 
 #if HAVE_LIBSPELLING
 #include <libspelling.h>
@@ -208,20 +202,6 @@ pps_annotation_window_init (PpsAnnotationWindow *window)
 	gtk_box_append (GTK_BOX (vbox), swindow);
 
 	gtk_window_set_child (GTK_WINDOW (window), vbox);
-
-#ifdef GDK_WINDOWING_X11
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	{
-		GtkNative *native = gtk_widget_get_native (GTK_WIDGET (window));
-		GdkSurface *surface = gtk_native_get_surface (native);
-
-		if (GDK_IS_X11_SURFACE (surface)) {
-			gdk_x11_surface_set_skip_taskbar_hint (GDK_X11_SURFACE (surface), TRUE);
-			gdk_x11_surface_set_skip_pager_hint (GDK_X11_SURFACE (surface), TRUE);
-		}
-	}
-	G_GNUC_END_IGNORE_DEPRECATIONS
-#endif
 
 	gtk_window_set_decorated (GTK_WINDOW (window), TRUE);
 	gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
