@@ -112,7 +112,7 @@ impl imp::PpsDocumentView {
         let n_jobs = self.print_queue.borrow().len();
         self.update_pending_jobs_message(n_jobs);
 
-        if self.print_queue.borrow().len() == 0 && self.close_after_print.get() {
+        if self.print_queue.borrow().is_empty() && self.close_after_print.get() {
             glib::idle_add_local_once(glib::clone!(
                 #[weak(rename_to = obj)]
                 self,

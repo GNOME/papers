@@ -126,7 +126,7 @@ impl imp::PpsDocumentView {
     fn print_cancel_alert_response(&self, response: &str) {
         match response {
             "close-later" => {
-                if self.print_queue.borrow().len() == 0 {
+                if self.print_queue.borrow().is_empty() {
                     self.parent_window().destroy();
                 } else {
                     self.close_after_print.set(true);
@@ -134,7 +134,7 @@ impl imp::PpsDocumentView {
             }
             "force-close" => {
                 self.close_after_print.set(true);
-                if self.print_queue.borrow().len() != 0 {
+                if !self.print_queue.borrow().is_empty() {
                     self.obj().set_sensitive(false);
                     self.print_cancel();
                 }
