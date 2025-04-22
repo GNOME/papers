@@ -124,12 +124,75 @@ mod imp {
 
             let page = adw::PreferencesPage::new();
 
+            let file = gio::File::for_uri(uri);
+
+            // Create buttons box with linked style
+            let button_box = gtk::Box::builder()
+                .orientation(gtk::Orientation::Horizontal)
+                .css_classes(["linked"])
+                .build();
+
+            // Open With button
+            let open_with_button = gtk::Button::builder()
+                .tooltip_text(gettext("Open With..."))
+                .icon_name("external-link-symbolic")
+                .valign(gtk::Align::Center)
+                .css_classes(["flat"])
+                .build();
+
+            let file_for_open = file.clone();
+            open_with_button.connect_clicked(move |_| {
+                let file_launcher = gtk::FileLauncher::new(Some(&file_for_open));
+                file_launcher.set_always_ask(true);
+                file_launcher.launch(gtk::Window::NONE, gio::Cancellable::NONE, |_| {});
+            });
+
+            // Create open folder button
+            let folder_button = gtk::Button::builder()
+                .tooltip_text(gettext("Open File Location"))
+                .icon_name("folder-open-symbolic")
+                .valign(gtk::Align::Center)
+                .css_classes(["flat"])
+                .build();
+
+            let uri_clone = uri.to_string();
+            let file_for_folder = file.clone();
+
+            folder_button.connect_clicked(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
+                    let native = obj.obj().native();
+                    let window = native.and_dynamic_cast_ref::<gtk::Window>();
+                    let uri = uri_clone.clone();
+
+                    // FIXME: It's broken on MacOS due to lack of support in GTK4
+                    gtk::FileLauncher::new(Some(&file_for_folder)).open_containing_folder(
+                        window,
+                        gio::Cancellable::NONE,
+                        move |result| {
+                            if let Err(e) = result {
+                                glib::g_warning!(
+                                    "",
+                                    "Could not show containing folder for \"{}\": {}",
+                                    uri,
+                                    e.message()
+                                );
+                            }
+                        },
+                    );
+                }
+            ));
+
+            // Add buttons to the box
+            button_box.append(&open_with_button);
+            button_box.append(&folder_button);
+
             // File group
             let group = adw::PreferencesGroup::builder()
                 .title(gettext("File"))
+                .header_suffix(&button_box)
                 .build();
-
-            let file = gio::File::for_uri(uri);
 
             // Add filename with copy button as first item
             if let Some(filename) = file.basename() {
@@ -183,68 +246,6 @@ mod imp {
                     .subtitle_selectable(true)
                     .build();
 
-                // Create buttons box with linked style
-                let button_box = gtk::Box::builder()
-                    .orientation(gtk::Orientation::Horizontal)
-                    .css_classes(["linked"])
-                    .build();
-
-                // Open With button
-                let open_with_button = gtk::Button::builder()
-                    .tooltip_text(gettext("Open With..."))
-                    .icon_name("external-link-symbolic")
-                    .valign(gtk::Align::Center)
-                    .css_classes(["flat"])
-                    .build();
-
-                let file_for_open = file.clone();
-                open_with_button.connect_clicked(move |_| {
-                    let file_launcher = gtk::FileLauncher::new(Some(&file_for_open));
-                    file_launcher.set_always_ask(true);
-                    file_launcher.launch(gtk::Window::NONE, gio::Cancellable::NONE, |_| {});
-                });
-
-                // Create open folder button
-                let folder_button = gtk::Button::builder()
-                    .tooltip_text(gettext("Open File Location"))
-                    .icon_name("folder-open-symbolic")
-                    .valign(gtk::Align::Center)
-                    .css_classes(["flat"])
-                    .build();
-
-                let uri_clone = uri.to_string();
-                let file_for_folder = file.clone();
-
-                folder_button.connect_clicked(glib::clone!(
-                    #[weak(rename_to = obj)]
-                    self,
-                    move |_| {
-                        let native = obj.obj().native();
-                        let window = native.and_dynamic_cast_ref::<gtk::Window>();
-                        let uri = uri_clone.clone();
-
-                        // FIXME: It's broken on MacOS due to lack of support in GTK4
-                        gtk::FileLauncher::new(Some(&file_for_folder)).open_containing_folder(
-                            window,
-                            gio::Cancellable::NONE,
-                            move |result| {
-                                if let Err(e) = result {
-                                    glib::g_warning!(
-                                        "",
-                                        "Could not show containing folder for \"{}\": {}",
-                                        uri,
-                                        e.message()
-                                    );
-                                }
-                            },
-                        );
-                    }
-                ));
-
-                // Add buttons to the box
-                button_box.append(&open_with_button);
-                button_box.append(&folder_button);
-
                 // Set folder name as subtitle
                 row.set_subtitle(&folder_name);
 
@@ -253,9 +254,6 @@ mod imp {
                     let copy_button = self.create_copy_button(path);
                     row.add_suffix(&copy_button);
                 }
-
-                // Add buttons box
-                row.add_suffix(&button_box);
 
                 // Add folder row to group
                 group.add(&row);
