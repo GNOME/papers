@@ -400,7 +400,11 @@ impl imp::PpsDocumentView {
     }
 
     #[template_callback]
-    fn view_handle_link(&self, link: &papers_document::Link, backlink: &papers_document::Link) {
+    fn view_handle_link(
+        &self,
+        link: &papers_document::Link,
+        backlink: Option<&papers_document::Link>,
+    ) {
         let mut new_link = None;
 
         if link.title().is_none() {
@@ -427,7 +431,10 @@ impl imp::PpsDocumentView {
             }
         }
 
-        self.history.add_link(backlink);
+        if let Some(backlink) = backlink {
+            self.history.add_link(backlink);
+        }
+
         self.history.add_link(new_link.as_ref().unwrap_or(link));
     }
 
