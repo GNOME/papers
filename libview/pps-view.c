@@ -1998,6 +1998,11 @@ pps_view_link_to_current_view (PpsView *view, PpsLink **backlink)
 	gint x_offset, y_offset;
 	guint scroll_x, scroll_y;
 
+	if (priv->start_page == -1) {
+		*backlink = NULL;
+		return;
+	}
+
 	get_scroll_offset (view, &scroll_x, &scroll_y);
 	pps_view_get_page_extents (view, backlink_page, &backlink_page_area);
 	x_offset = backlink_page_area.x;
