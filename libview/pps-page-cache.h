@@ -28,9 +28,6 @@ void pps_page_cache_set_page_range (PpsPageCache *cache,
 PpsJobPageDataFlags pps_page_cache_get_flags (PpsPageCache *cache);
 void pps_page_cache_set_flags (PpsPageCache *cache,
                                PpsJobPageDataFlags flags);
-void pps_page_cache_mark_dirty (PpsPageCache *cache,
-                                gint page,
-                                PpsJobPageDataFlags flags);
 PpsMappingList *pps_page_cache_get_link_mapping (PpsPageCache *cache,
                                                  gint page);
 PpsMappingList *pps_page_cache_get_image_mapping (PpsPageCache *cache,

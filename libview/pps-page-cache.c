@@ -21,7 +21,6 @@ static guint pps_page_cache_signals[LAST_SIGNAL] = { 0 };
 typedef struct _PpsPageCacheData {
 	PpsJob *job;
 	gboolean done : 1;
-	gboolean dirty : 1;
 	PpsJobPageDataFlags flags;
 
 	PpsMappingList *link_mapping;
@@ -150,10 +149,9 @@ pps_page_cache_get_flags_for_data (PpsPageCache *cache,
 {
 	PpsJobPageDataFlags flags = PPS_PAGE_DATA_INCLUDE_NONE;
 
-	if (data->flags == cache->flags && !data->dirty)
+	if (data->flags == cache->flags)
 		return cache->flags;
 
-	/* Flags changed or data is dirty */
 	if (cache->flags & PPS_PAGE_DATA_INCLUDE_LINKS) {
 		flags = (data->link_mapping) ? flags & ~PPS_PAGE_DATA_INCLUDE_LINKS : flags | PPS_PAGE_DATA_INCLUDE_LINKS;
 	}
@@ -242,7 +240,6 @@ job_page_data_finished_cb (PpsJob *job,
 	}
 
 	data->done = TRUE;
-	data->dirty = FALSE;
 
 	g_clear_object (&data->job);
 
@@ -263,7 +260,7 @@ pps_page_cache_schedule_job_if_needed (PpsPageCache *cache,
 	PpsPageCacheData *data = &cache->page_list[page];
 	PpsJobPageDataFlags flags;
 
-	if (data->flags == cache->flags && !data->dirty && (data->done || data->job))
+	if (data->flags == cache->flags && (data->done || data->job))
 		return;
 
 	if (data->job)
@@ -333,53 +330,6 @@ pps_page_cache_set_flags (PpsPageCache *cache,
 	cache->flags = flags;
 
 	/* Update the current range for new flags */
-	pps_page_cache_set_page_range (cache, cache->start_page, cache->end_page);
-}
-
-void
-pps_page_cache_mark_dirty (PpsPageCache *cache,
-                           gint page,
-                           PpsJobPageDataFlags flags)
-{
-	PpsPageCacheData *data;
-
-	g_return_if_fail (PPS_IS_PAGE_CACHE (cache));
-
-	data = &cache->page_list[page];
-	data->dirty = TRUE;
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_LINKS)
-		g_clear_pointer (&data->link_mapping, pps_mapping_list_unref);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_IMAGES)
-		g_clear_pointer (&data->image_mapping, pps_mapping_list_unref);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_FORMS)
-		g_clear_pointer (&data->form_field_mapping, pps_mapping_list_unref);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_MEDIA)
-		g_clear_pointer (&data->media_mapping, pps_mapping_list_unref);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_TEXT_MAPPING)
-		g_clear_pointer (&data->text_mapping, cairo_region_destroy);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_TEXT)
-		g_clear_pointer (&data->text, g_free);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_TEXT_LAYOUT) {
-		g_clear_pointer (&data->text_layout, g_free);
-		data->text_layout_length = 0;
-	}
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_TEXT_ATTRS)
-		g_clear_pointer (&data->text_attrs, pango_attr_list_unref);
-
-	if (flags & PPS_PAGE_DATA_INCLUDE_TEXT_LOG_ATTRS) {
-		g_clear_pointer (&data->text_log_attrs, g_free);
-		data->text_log_attrs_length = 0;
-	}
-
-	/* Update the current range */
 	pps_page_cache_set_page_range (cache, cache->start_page, cache->end_page);
 }
 
