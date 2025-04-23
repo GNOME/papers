@@ -32,7 +32,7 @@ guidelines, before starting to work on any changes.
 [poppler]: https://poppler.freedesktop.org/
 [djvulibre]: https://djvulibre.djvuzone.org/
 [comics]: https://libarchive.org/
-[tiff]: http://libtiff.org/
+[tiff]: https://libtiff.gitlab.io/libtiff/
 [license]: COPYING
 [papers-logo]: data/icons/scalable/apps/org.gnome.Papers.svg
 [flatpak]: https://flathub.org/api/badge?svg&locale=en
