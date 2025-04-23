@@ -31,8 +31,6 @@ PPS_PUBLIC
 void pps_view_set_model (PpsView *view,
                          PpsDocumentModel *model);
 PPS_PUBLIC
-gboolean pps_view_is_loading (PpsView *view);
-PPS_PUBLIC
 void pps_view_reload (PpsView *view);
 PPS_PUBLIC
 void pps_view_set_page_cache_size (PpsView *view,
