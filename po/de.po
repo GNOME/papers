@@ -25,7 +25,7 @@
 # Tim Sabsch <tim@sabsch.com>, 2019-2020, 2022.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2013, 2016-2018, 2021.
 # Philipp Kiemle <l10n@prly.mozmail.com>, 2021, 2023, 2025.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2023, 2024.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2023-2025.
 # Elias Projahn <elias@johrpan.de>, 2024.
 # Konstantin Tutsch <mail@konstantintutsch.com>, 2024.
 #
@@ -34,16 +34,16 @@ msgstr ""
 "Project-Id-Version: Evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-22 16:50+0000\n"
-"PO-Revision-Date: 2025-04-02 12:54+0200\n"
-"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
+"POT-Creation-Date: 2025-04-24 01:27+0000\n"
+"PO-Revision-Date: 2025-04-24 19:55+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
@@ -267,14 +267,14 @@ msgstr "Fügt Unterstützung für das Lesen von PDF-Dokumenten hinzu"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Nein"
 
@@ -337,7 +337,7 @@ msgstr "Kein Name"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Kein"
 
@@ -577,7 +577,7 @@ msgstr "Ihre Druckbereichsauswahl enthält keine Seiten"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
 #: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "S_chließen"
@@ -679,51 +679,51 @@ msgstr "Ansicht nach unten verschieben"
 msgid "Document View"
 msgstr "Dokumentenansicht"
 
-#: libview/pps-view.c:2097
+#: libview/pps-view.c:2112
 msgid "Go to first page"
 msgstr "Zur ersten Seite gehen"
 
-#: libview/pps-view.c:2099
+#: libview/pps-view.c:2114
 msgid "Go to previous page"
 msgstr "Zur vorherigen Seite gehen"
 
-#: libview/pps-view.c:2101
+#: libview/pps-view.c:2116
 msgid "Go to next page"
 msgstr "Zur nächsten Seite gehen"
 
-#: libview/pps-view.c:2103
+#: libview/pps-view.c:2118
 msgid "Go to last page"
 msgstr "Zur letzten Seite gehen"
 
-#: libview/pps-view.c:2105
+#: libview/pps-view.c:2120
 msgid "Go to page"
 msgstr "Zu Seite gehen"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2122
 msgid "Find"
 msgstr "Suchen"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2151
 #, c-format
 msgid "Go to page %s"
 msgstr "Zu Seite %s gehen"
 
-#: libview/pps-view.c:2142
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Zu %s in Datei »%s« gehen"
 
-#: libview/pps-view.c:2145
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Zu Datei »%s« gehen"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Launch %s"
 msgstr "%s starten"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Reset form"
 msgstr "Formular zurücksetzen"
@@ -835,13 +835,13 @@ msgstr "Normale Größe"
 msgid "Zoom In"
 msgstr "Vergrößern"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Dokument konnte nicht gedruckt werden"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -849,7 +849,7 @@ msgstr "Unbekannt"
 msgid "Document Properties"
 msgstr "Dokumenteigenschaften"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Titel"
 
@@ -857,62 +857,62 @@ msgstr "Titel"
 msgid "Location"
 msgstr "Ort"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Betreff"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Verfasser"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Schlüsselwörter"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Hersteller"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Ersteller"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Erstellt"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Bearbeitet"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Seitenanzahl"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Optimiert"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Sicherheit"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Enthält Javascript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Papiergröße"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Größe"
 
@@ -1315,7 +1315,7 @@ msgstr "An_wenden"
 msgid "Search"
 msgstr "Suche"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
@@ -1397,9 +1397,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Drucken a_bbrechen und schließen"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:717
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
-#: shell/src/document_view/io.rs:710
+#: shell/src/document_view/io.rs:711
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -1415,15 +1415,15 @@ msgstr "Öffnen …"
 msgid "Ni_ght Mode"
 msgstr "Na_chtmodus"
 
-#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastenkürzel"
 
-#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
 msgid "_About Papers"
 msgstr "_Info zu Papers"
 
@@ -1561,13 +1561,13 @@ msgstr "Die Suchergebnisse werden hier erscheinen"
 msgid "Loading Document"
 msgstr "Dokument wird geladen"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "A_bbrechen"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:704
 msgid "Password Required"
 msgstr "Passwort erforderlich"
 
@@ -1617,6 +1617,10 @@ msgstr "Lizenztext"
 #: shell/resources/pps-properties-license.ui:84
 msgid "Further Information"
 msgstr "Weitere Informationen"
+
+#: shell/resources/pps-properties-signatures.ui:37
+msgid "Signature Information"
+msgstr "Signaturinformationen"
 
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
@@ -1686,23 +1690,23 @@ msgstr "Diesen Abschnitt drucken …"
 msgid "Previews"
 msgstr "Vorschaubilder"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
 msgid "Open a Document"
 msgstr "Ein Dokument öffnen"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.ui:50
 msgid "Drag and drop documents here"
 msgstr "Dokumente hierher ziehen"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.ui:55
 msgid "_Open…"
 msgstr "Ö_ffnen …"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.ui:81
 msgid "Unable to Open Document"
 msgstr "Dokument konnte nicht geöffnet werden"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.ui:86
 msgid "_Open Other File…"
 msgstr "Eine _andere Datei öffnen …"
 
@@ -1775,7 +1779,7 @@ msgstr "[DATEI …]"
 msgid "View Details"
 msgstr "Details anzeigen"
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1783,28 +1787,28 @@ msgstr ""
 "Das Dokument enthält neue oder modifizierte Anmerkungen und Formularfelder, "
 "die ausgefüllt wurden."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "Das Dokument enthält Formularfelder, die ausgefüllt wurden."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "Das Dokument enthält neue oder veränderte Anmerkungen."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Wenn keine Kopie gespeichert wird, gehen die Einträge dauerhaft verloren."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "Änderungen als Kopie speichern?"
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "Schließen, _ohne zu speichern"
 
-#: shell/src/document_view.rs:718
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "Eine Kopie _speichern"
 
@@ -1892,27 +1896,28 @@ msgstr "Zum Signieren dieses Dokuments ist ein Zertifikat erforderlich"
 msgid "Save Signed File"
 msgstr "Signierte Datei speichern"
 
-#: shell/src/document_view/io.rs:695
+#: shell/src/document_view/io.rs:696
 msgid "Please enter password for {}"
 msgstr "Bitte Passwort für {} eingeben"
 
-#: shell/src/document_view/io.rs:711
+#: shell/src/document_view/io.rs:712
 msgid "_Login"
 msgstr "Anme_lden"
 
 # https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/406 - pk
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "Auftrag »%s« wird gedruckt"
 
 # Es geht um Druckaufträge - pk
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "Keine ausstehenden Aufträge in Warteschlange"
 
 # Es geht um Druckaufträge - pk
 # See https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/338 - pk
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} ausstehender Auftrag in Warteschlange"
@@ -1930,7 +1935,7 @@ msgstr ""
 "Sicherheitswarnung: Dieses Dokument wurde daran gehindert, die Datei »{}« zu "
 "öffnen"
 
-#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:428 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Seite {}"
@@ -1958,15 +1963,15 @@ msgstr ""
 msgid "File"
 msgstr "Datei"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Ordner"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Inhalt"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Datum &amp; Uhrzeit"
 
