@@ -65,7 +65,7 @@ mod imp {
 
         fn add_list_box_item_with_copy_button(
             &self,
-            group: &impl IsA<adw::PreferencesGroup>,
+            _group: &impl IsA<adw::PreferencesGroup>,
             label: &str,
             text: Option<&str>,
             text_to_copy: &str,
@@ -222,7 +222,7 @@ mod imp {
 
                 let host_parent = host_path
                     .as_ref()
-                    .map(|p| gio::File::for_path(p))
+                    .map(gio::File::for_path)
                     .and_then(|f| f.parent());
 
                 // Default to regular parent if no host path available
