@@ -10,7 +10,15 @@ Thanks to the [gtk-osx-build](https://gitlab.gnome.org/GNOME/gtk-osx) and [gtk-m
 4. Use gtk-mac-bundler to bundle the Papers and its dependencies into the Papers.app.
 5. Run some predefined scripts to turn Papers.app into Papers.dmg.
 
-WARNING: `gtk-osx-build` is based on jhbuild and is not compatible with homebrew. Rename your homebrew directory before bootstrapping `gtk-osx-build`.
+WARNING: `gtk-osx-build` is based on jhbuild and is not compatible with homebrew. Rename your homebrew directory before bootstrapping `gtk-osx-build`. The best practice is creating a new user and doing all the work with it.
+
+The essential configuration of `jhbuildrc-custom` are:
+
+```python
+modulesets_dir = "/Users/papersdev/papers/build-aux/"
+use_local_modulesets = True
+moduleset = "papers"
+```
 
 ## File Structure
 
