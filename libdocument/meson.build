@@ -127,15 +127,12 @@ enum_sources = gnome.mkenums_simple(
   install_dir: join_paths(pps_includedir, include_subdir),
 )
 
-common_deps = [
+libdocument_deps = [
   cairo_dep,
   gdk_pixbuf_dep,
   gio_dep,
   glib_dep,
   gtk_dep,
-]
-
-deps = common_deps + [
   gmodule_dep,
   exempi_dep,
   m_dep,
@@ -155,7 +152,7 @@ libppsdocument = shared_library(
   version: pps_document_version,
   sources: sources + enum_sources + [version_header],
   include_directories: top_inc,
-  dependencies: deps,
+  dependencies: libdocument_deps,
   c_args: cflags,
   install: true,
   gnu_symbol_visibility: 'hidden',
@@ -164,7 +161,7 @@ libppsdocument = shared_library(
 libppsdocument_dep = declare_dependency(
   sources: headers + [enum_sources[1]] + [version_header],
   include_directories: libdocument_inc,
-  dependencies: deps,
+  dependencies: libdocument_deps,
   link_with: libppsdocument,
 )
 
