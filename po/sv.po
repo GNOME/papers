@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-08 16:21+0000\n"
-"PO-Revision-Date: 2025-03-09 11:30+0100\n"
+"POT-Creation-Date: 2025-04-24 01:27+0000\n"
+"PO-Revision-Date: 2025-05-03 14:02+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
@@ -243,14 +243,14 @@ msgstr "Lägger till stöd för att läsa PDF-dokument"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Nej"
 
@@ -310,7 +310,7 @@ msgstr "Inget namn"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Ingen"
 
@@ -480,8 +480,8 @@ msgstr "Misslyckades med att skapa en temporärfil: %s"
 msgid "This work is in the Public Domain"
 msgstr "Detta är ett publikt verk"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1044
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1041
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Spara bilaga"
@@ -496,22 +496,22 @@ msgstr "Sida %s"
 msgid "Edit Note"
 msgstr "Redigera notering"
 
-#: libview/pps-jobs.c:433
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Misslyckades med att rendera sida %d: %s"
 
-#: libview/pps-jobs.c:440
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Misslyckades med att rendera sida %d"
 
-#: libview/pps-jobs.c:674
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Misslyckades med att skapa en miniatyrbild för sida %d"
 
-#: libview/pps-jobs.c:1700
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Misslyckades med att skriva ut sida %d: %s"
@@ -551,7 +551,7 @@ msgstr "Ditt val av utskriftsintervall inkluderar inte några sidor"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:590 shell/resources/pps-window.ui:164
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
 #: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "S_täng"
@@ -655,51 +655,51 @@ msgstr "Rulla vy ned"
 msgid "Document View"
 msgstr "Dokumentvy"
 
-#: libview/pps-view.c:2097
+#: libview/pps-view.c:2112
 msgid "Go to first page"
 msgstr "Gå till första sidan"
 
-#: libview/pps-view.c:2099
+#: libview/pps-view.c:2114
 msgid "Go to previous page"
 msgstr "Gå till föregående sida"
 
-#: libview/pps-view.c:2101
+#: libview/pps-view.c:2116
 msgid "Go to next page"
 msgstr "Gå till nästa sida"
 
-#: libview/pps-view.c:2103
+#: libview/pps-view.c:2118
 msgid "Go to last page"
 msgstr "Gå till sista sidan"
 
-#: libview/pps-view.c:2105
+#: libview/pps-view.c:2120
 msgid "Go to page"
 msgstr "Gå till sidan"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2122
 msgid "Find"
 msgstr "Sök"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2151
 #, c-format
 msgid "Go to page %s"
 msgstr "Gå till sida %s"
 
-#: libview/pps-view.c:2142
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Gå till %s i filen ”%s”"
 
-#: libview/pps-view.c:2145
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Gå till filen ”%s”"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Launch %s"
 msgstr "Starta %s"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Reset form"
 msgstr "Återställ formulär"
@@ -812,13 +812,13 @@ msgstr "Normal storlek"
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Misslyckades med att skriva ut dokument"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Okänd"
 
@@ -826,7 +826,7 @@ msgstr "Okänd"
 msgid "Document Properties"
 msgstr "Dokumentegenskaper"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Titel"
 
@@ -834,62 +834,62 @@ msgstr "Titel"
 msgid "Location"
 msgstr "Plats"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Ämne"
 
 #: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Författare"
 
-#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Nyckelord"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Producent"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Skapare"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Skapad"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Ändrad"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Antal sidor"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Optimerad"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Säkerhet"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Innehåller Javascript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Pappersstorlek"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Storlek"
 
@@ -983,12 +983,12 @@ msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Rotera sida 90 grader medurs"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Zooma ut"
@@ -1023,182 +1023,182 @@ msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Flytta runt i dokument"
 
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Flytta runt på sida"
 
-#: shell/resources/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Gå flera rader upp/ned på sida"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Föregående sida"
 
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Nästa sida"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Gå till sidnummer"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Föregående sida (snabbt)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Nästa sida (snabbt)"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Föregående besökt sida"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Nästa besökt sida"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Gå till början/slutet på sida"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Gå till början på dokument"
 
-#: shell/resources/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Gå till slutet på dokument"
 
-#: shell/resources/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:234
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Visning och hantering av dokument"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:237
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Lägg till bokmärke"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Ta bort bokmärke"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Nattläge"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Sammanhängande rullning"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Dubbla sidor"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Udda sidnummer till vänster"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Dokumentegenskaper"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Lägg till textkommentar"
 
-#: shell/resources/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Färgmarkera text"
 
-#: shell/resources/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:293
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Söka efter text"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Sök"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Sök nästa"
 
-#: shell/resources/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Sök föregående"
 
-#: shell/resources/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allmänt"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:319
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Hjälp"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Meny"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Tangentbordsgenvägar"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: shell/resources/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: shell/resources/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Presentationsläge"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Svart skärm"
 
-#: shell/resources/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Vit skärm"
 
-#: shell/resources/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Gester för styrplatta"
@@ -1266,7 +1266,7 @@ msgid "Markup Type"
 msgstr "Märkningstyp"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
-#: shell/resources/pps-document-view.ui:714
+#: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
 msgstr "Markering"
 
@@ -1275,12 +1275,12 @@ msgid "Strike out"
 msgstr "Genomstrykning"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
-#: shell/resources/pps-document-view.ui:744
+#: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Understrykning"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
-#: shell/resources/pps-document-view.ui:724
+#: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
 msgstr "Vågig"
 
@@ -1293,7 +1293,7 @@ msgstr "V_erkställ"
 msgid "Search"
 msgstr "Sök"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
@@ -1337,11 +1337,11 @@ msgstr "Visa signatur…"
 msgid "Fit Automatically"
 msgstr "Anpassa automatiskt"
 
-#: shell/resources/pps-document-view.ui:564
+#: shell/resources/pps-document-view.ui:565
 msgid "Selection too Small"
 msgstr "Markering för liten"
 
-#: shell/resources/pps-document-view.ui:565
+#: shell/resources/pps-document-view.ui:566
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1351,19 +1351,19 @@ msgstr ""
 "du vill skapa en potentiellt mer läsbar signatur, tryck på ”Börja om” och "
 "rita en större rektangel."
 
-#: shell/resources/pps-document-view.ui:570
+#: shell/resources/pps-document-view.ui:571
 msgid "Start _Over"
 msgstr "Börja _om"
 
-#: shell/resources/pps-document-view.ui:571
+#: shell/resources/pps-document-view.ui:572
 msgid "_Sign"
 msgstr "_Signera"
 
-#: shell/resources/pps-document-view.ui:577
+#: shell/resources/pps-document-view.ui:578
 msgid "Abort Printing?"
 msgstr "Avbryt utskrift?"
 
-#: shell/resources/pps-document-view.ui:578
+#: shell/resources/pps-document-view.ui:579
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1371,151 +1371,151 @@ msgstr ""
 "Det finns ett eller flera aktiva utskriftsjobb. Om du stänger fönstret så "
 "kommer väntande utskriftsjobb inte att skrivas ut."
 
-#: shell/resources/pps-document-view.ui:581
+#: shell/resources/pps-document-view.ui:582
 msgid "Abort _Print and Close"
 msgstr "Avbryt _utskrift och stäng"
 
-#: shell/resources/pps-document-view.ui:582 shell/src/document_view.rs:716
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
-#: shell/src/document_view/io.rs:710
+#: shell/src/document_view/io.rs:711
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: shell/resources/pps-document-view.ui:583
+#: shell/resources/pps-document-view.ui:584
 msgid "Close _After Printing"
 msgstr "Stäng _efter utskrift"
 
-#: shell/resources/pps-document-view.ui:597
+#: shell/resources/pps-document-view.ui:598
 msgid "Open…"
 msgstr "Öppna…"
 
-#: shell/resources/pps-document-view.ui:603
+#: shell/resources/pps-document-view.ui:604
 msgid "Ni_ght Mode"
 msgstr "Nattlä_ge"
 
-#: shell/resources/pps-document-view.ui:609 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: shell/resources/pps-document-view.ui:613 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: shell/resources/pps-document-view.ui:617 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
 msgid "_About Papers"
 msgstr "_Om Papers"
 
-#: shell/resources/pps-document-view.ui:625
+#: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
 msgstr "Skriv _ut…"
 
-#: shell/resources/pps-document-view.ui:629
+#: shell/resources/pps-document-view.ui:630
 msgid "Fullscreen"
 msgstr "Helskärm"
 
-#: shell/resources/pps-document-view.ui:633
+#: shell/resources/pps-document-view.ui:634
 msgid "Present as Slideshow"
 msgstr "Presentera som bildspel"
 
-#: shell/resources/pps-document-view.ui:639
+#: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
 msgstr "Signera d_igitalt…"
 
-#: shell/resources/pps-document-view.ui:645
+#: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
 msgstr "Öppna en k_opia"
 
-#: shell/resources/pps-document-view.ui:649
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Öppna med…"
 
-#: shell/resources/pps-document-view.ui:653
+#: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
 msgstr "_Spara som…"
 
-#: shell/resources/pps-document-view.ui:659
+#: shell/resources/pps-document-view.ui:660
 msgid "_Continuous"
 msgstr "Sa_mmanhängande"
 
-#: shell/resources/pps-document-view.ui:663
+#: shell/resources/pps-document-view.ui:664
 msgid "_Dual"
 msgstr "_Dubbel"
 
-#: shell/resources/pps-document-view.ui:667
+#: shell/resources/pps-document-view.ui:668
 msgid "_Odd Pages Left"
 msgstr "_Udda sidnummer till vänster"
 
-#: shell/resources/pps-document-view.ui:671
+#: shell/resources/pps-document-view.ui:672
 msgid "Right to Left Document"
 msgstr "Höger till vänster-dokument"
 
-#: shell/resources/pps-document-view.ui:677
+#: shell/resources/pps-document-view.ui:678
 msgid "Ro_tate ⤵"
 msgstr "Ro_tera ⤵"
 
-#: shell/resources/pps-document-view.ui:683
+#: shell/resources/pps-document-view.ui:684
 msgid "Document Prop_erties"
 msgstr "Dokument_egenskaper"
 
-#: shell/resources/pps-document-view.ui:734
+#: shell/resources/pps-document-view.ui:735
 msgid "Strikethrough"
 msgstr "Genomstrykning"
 
-#: shell/resources/pps-document-view.ui:838
+#: shell/resources/pps-document-view.ui:839
 msgid "_Open Link"
 msgstr "_Öppna länk"
 
-#: shell/resources/pps-document-view.ui:843
+#: shell/resources/pps-document-view.ui:844
 msgid "_Copy Link Address"
 msgstr "_Kopiera länkadress"
 
-#: shell/resources/pps-document-view.ui:848
+#: shell/resources/pps-document-view.ui:849
 msgid "_Go To"
 msgstr "_Gå till"
 
-#: shell/resources/pps-document-view.ui:853
+#: shell/resources/pps-document-view.ui:854
 msgid "Open in New _Window"
 msgstr "Öppna i nytt _fönster"
 
-#: shell/resources/pps-document-view.ui:860
+#: shell/resources/pps-document-view.ui:861
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: shell/resources/pps-document-view.ui:864
+#: shell/resources/pps-document-view.ui:865
 msgid "Select _All"
 msgstr "Markera _allt"
 
-#: shell/resources/pps-document-view.ui:870
+#: shell/resources/pps-document-view.ui:871
 msgid "_Save Image As…"
 msgstr "_Spara bild som…"
 
-#: shell/resources/pps-document-view.ui:875
+#: shell/resources/pps-document-view.ui:876
 msgid "Copy _Image"
 msgstr "Kopiera _bild"
 
-#: shell/resources/pps-document-view.ui:882
+#: shell/resources/pps-document-view.ui:883
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "Ö_ppna bilaga"
 
-#: shell/resources/pps-document-view.ui:887
+#: shell/resources/pps-document-view.ui:888
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Spara bilaga som…"
 
-#: shell/resources/pps-document-view.ui:895
+#: shell/resources/pps-document-view.ui:896
 msgid "Annotation _Properties…"
 msgstr "_Egenskaper för kommentar…"
 
-#: shell/resources/pps-document-view.ui:900
+#: shell/resources/pps-document-view.ui:901
 msgid "R_emove Annotation"
 msgstr "_Ta bort kommentar"
 
-#: shell/resources/pps-document-view.ui:907
+#: shell/resources/pps-document-view.ui:908
 msgid "_Add Text Annotation"
 msgstr "_Lägg till textkommentar"
 
-#: shell/resources/pps-document-view.ui:912
+#: shell/resources/pps-document-view.ui:913
 msgid "_Highlight Selected Text"
 msgstr "_Färgmarkera vald text"
 
@@ -1539,13 +1539,13 @@ msgstr "Sökresultaten kommer visas här"
 msgid "Loading Document"
 msgstr "Läser in dokument"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_Avbryt"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:704
 msgid "Password Required"
 msgstr "Lösenord krävs"
 
@@ -1593,6 +1593,10 @@ msgstr "Textlicens"
 #: shell/resources/pps-properties-license.ui:84
 msgid "Further Information"
 msgstr "Ytterligare information"
+
+#: shell/resources/pps-properties-signatures.ui:37
+msgid "Signature Information"
+msgstr "Signaturinformation"
 
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
@@ -1662,23 +1666,23 @@ msgstr "Skriv ut denna del…"
 msgid "Previews"
 msgstr "Förhandsvyer"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
 msgid "Open a Document"
 msgstr "Öppna ett dokument"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.ui:50
 msgid "Drag and drop documents here"
 msgstr "Dra och släpp dokument här"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.ui:55
 msgid "_Open…"
 msgstr "Ö_ppna…"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.ui:81
 msgid "Unable to Open Document"
 msgstr "Kunde inte öppna dokument"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.ui:86
 msgid "_Open Other File…"
 msgstr "Ö_ppna annan fil…"
 
@@ -1742,7 +1746,7 @@ msgstr "[FIL…]"
 msgid "View Details"
 msgstr "Visa detaljer"
 
-#: shell/src/document_view.rs:695
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1750,56 +1754,56 @@ msgstr ""
 "Dokumentet innehåller nya eller ändrade kommentarer och formulärfält som har "
 "fyllts i."
 
-#: shell/src/document_view.rs:696
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumentet innehåller formulärfält som har fyllts i."
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "Dokumentet innehåller nya eller ändrade kommentarer."
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Om du inte sparar en kopia så kommer ändringarna att förloras permanent."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "Spara ändringar till en kopia?"
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "Stäng _utan att spara"
 
-#: shell/src/document_view.rs:717
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "_Spara en kopia"
 
-#: shell/src/document_view/actions.rs:762
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Spara bild"
 
-#: shell/src/document_view/actions.rs:798
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Kunde inte hitta lämpligt format att spara bilden i"
 
-#: shell/src/document_view/actions.rs:821
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "Bilden kunde inte sparas."
 
-#: shell/src/document_view/actions.rs:924
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Markörnavigeringsläge är nu aktiverat, tryck F7 för att inaktivera."
 
-#: shell/src/document_view/actions.rs:926
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Markörnavigeringsläge är nu inaktiverat, tryck F7 för att aktivera."
 
-#: shell/src/document_view/actions.rs:1028 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Kunde inte öppna bilaga"
 
-#: shell/src/document_view/actions.rs:1061
+#: shell/src/document_view/actions.rs:1058
 msgid "The attachment could not be saved."
 msgstr "Bilagan kunde inte sparas."
 
@@ -1855,23 +1859,24 @@ msgstr "Ett certifikat krävs för att signera detta dokument"
 msgid "Save Signed File"
 msgstr "Spara signerad fil"
 
-#: shell/src/document_view/io.rs:695
+#: shell/src/document_view/io.rs:696
 msgid "Please enter password for {}"
 msgstr "Ange lösenord för {}"
 
-#: shell/src/document_view/io.rs:711
+#: shell/src/document_view/io.rs:712
 msgid "_Login"
 msgstr "_Logga in"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "Skriver ut jobbet ”{}”"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "Inga väntande jobb i kö"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} väntande jobb i kö"
@@ -1887,7 +1892,7 @@ msgid ""
 msgstr ""
 "Säkerhetsvarning: detta dokument har hindrats från att öppna filen ”{}”"
 
-#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:428 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Sida {}"
@@ -1913,15 +1918,15 @@ msgstr "Dokumentet ”{}” är låst och kräver ett lösenord för att öppnas
 msgid "File"
 msgstr "Fil"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Mapp"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Innehåll"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Datum och tid"
 
