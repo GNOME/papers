@@ -2821,7 +2821,7 @@ get_poppler_annot_text_icon (PpsAnnotationTextIcon icon)
 }
 
 static PpsAnnotation *
-create_pps_annot (PopperAnnot *poppler_annot,
+create_pps_annot (PopplerAnnot *poppler_annot,
                   PpsPage *page)
 {
 	PpsAnnotation *pps_annot = NULL;
@@ -3087,6 +3087,371 @@ annot_set_unique_name (PpsAnnotation *annot)
 	g_free (name);
 }
 
+static void
+annot_change_data_finish (PdfDocument *self)
+{
+	self->annots_modified = TRUE;
+	pps_document_set_modified (PPS_DOCUMENT (self), TRUE);
+	g_rw_lock_writer_unlock (&self->rwlock);
+}
+
+static void
+annot_contents_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_set_contents (poppler_annot,
+	                            pps_annotation_get_contents (annot));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_color_set (PpsAnnotation *annot, PopplerAnnot *poppler_annot)
+{
+	PopplerColor color;
+	GdkRGBA pps_color;
+
+	pps_annotation_get_rgba (annot, &pps_color);
+	gdk_rgba_to_poppler_color (&pps_color, &color);
+
+	if (pps_color.alpha > 0.) {
+		poppler_annot_set_color (poppler_annot, &color);
+	} else {
+		poppler_annot_set_color (poppler_annot, NULL);
+	}
+}
+
+static void
+annot_color_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	annot_color_set (annot, poppler_annot);
+	annot_change_data_finish (self);
+}
+
+static void
+annot_area_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PpsRectangle area;
+	PopplerRectangle poppler_rect;
+	PpsPage *page = pps_annotation_get_page (annot);
+
+	pps_annotation_get_area (annot, &area);
+	poppler_rect = pps_rect_to_poppler (page, &area);
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	// Saving the area of text markup annotations is not supported
+	// It requires re-computing the bounding box of the annotation
+	// and re-setting it, causing a recursive call to set_area
+	// within the saving logic. This was formerly implemented, but
+	// never used. If it is considered useful in the future, it very
+	// likely will require changes to PpsDocumentAnnotations iface
+	// and maybe also to poppler
+	if (PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
+		g_assert_not_reached ();
+	} else {
+		poppler_annot_set_rectangle (poppler_annot, &poppler_rect);
+	}
+	annot_change_data_finish (self);
+}
+
+static void
+annot_hidden_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PopplerAnnotFlag flag = poppler_annot_get_flags (poppler_annot);
+
+	flag = flag & ~POPPLER_ANNOT_FLAG_HIDDEN;
+	if (pps_annotation_get_hidden (annot)) {
+		flag = flag | POPPLER_ANNOT_FLAG_HIDDEN;
+	}
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_set_flags (poppler_annot, flag);
+	annot_change_data_finish (self);
+}
+
+static void
+annot_markup_label_changed_cb (PpsAnnotationMarkup *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_markup_set_label (POPPLER_ANNOT_MARKUP (poppler_annot),
+	                                pps_annotation_markup_get_label (annot));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_markup_opacity_changed_cb (PpsAnnotationMarkup *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_markup_set_opacity (POPPLER_ANNOT_MARKUP (poppler_annot),
+	                                  pps_annotation_markup_get_opacity (annot));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_markup_popup_rect_changed_cb (PpsAnnotationMarkup *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnotMarkup *poppler_annot = POPPLER_ANNOT_MARKUP (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PpsPage *page;
+	PpsRectangle pps_rect;
+	PopplerRectangle poppler_rect;
+
+	page = pps_annotation_get_page (PPS_ANNOTATION (annot));
+	pps_annotation_markup_get_rectangle (annot, &pps_rect);
+	poppler_rect = pps_rect_to_poppler (page, &pps_rect);
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	if (poppler_annot_markup_has_popup (poppler_annot))
+		poppler_annot_markup_set_popup_rectangle (poppler_annot, &poppler_rect);
+	else
+		poppler_annot_markup_set_popup (poppler_annot, &poppler_rect);
+	annot_change_data_finish (self);
+}
+
+static void
+annot_markup_popup_is_open_changed_cb (PpsAnnotationMarkup *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_markup_set_popup_is_open (POPPLER_ANNOT_MARKUP (poppler_annot),
+	                                        pps_annotation_markup_get_popup_is_open (annot));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_text_icon_changed_cb (PpsAnnotationText *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PpsAnnotationTextIcon icon = pps_annotation_text_get_icon (annot);
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_text_set_icon (POPPLER_ANNOT_TEXT (poppler_annot),
+	                             get_poppler_annot_text_icon (icon));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_text_is_open_changed_cb (PpsAnnotationText *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	g_rw_lock_writer_lock (&self->rwlock);
+	poppler_annot_text_set_is_open (POPPLER_ANNOT_TEXT (poppler_annot),
+	                                pps_annotation_text_get_is_open (annot));
+	annot_change_data_finish (self);
+}
+
+#ifdef HAVE_FREE_TEXT
+static void
+annot_free_text_font_desc_set (PpsAnnotationFreeText *annot, PopplerAnnotFreeText *poppler_annot)
+{
+	g_autoptr (PangoFontDescription) font;
+	g_autoptr (PopplerFontDescription) poppler_font;
+	gdouble size;
+
+	font = pps_annotation_free_text_get_font_description (annot);
+	size = pango_font_description_get_size (font) / PANGO_SCALE;
+	poppler_font = poppler_font_description_new (pango_font_description_get_family (font));
+
+	poppler_font->weight = (PopplerWeight) pango_font_description_get_weight (font);
+	poppler_font->stretch = (PopplerStretch) pango_font_description_get_stretch (font);
+	poppler_font->style = (PopplerStyle) pango_font_description_get_style (font);
+	poppler_font->size_pt = size;
+	poppler_annot_free_text_set_font_desc (poppler_annot, poppler_font);
+}
+
+static void
+annot_free_text_font_desc_changed_cb (PpsAnnotationFreeText *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+
+	g_rw_lock_writer_lock (&self->rwlock);
+	annot_free_text_font_desc_set (annot, POPPLER_ANNOT_FREE_TEXT (poppler_annot));
+	annot_change_data_finish (self);
+}
+
+static void
+annot_free_text_font_rgba_changed_cb (PpsAnnotationFreeText *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	PopplerColor color;
+	g_autoptr (GdkRGBA) pps_font_color = NULL;
+
+	g_rw_lock_writer_lock (&self->rwlock);
+
+	pps_font_color = pps_annotation_free_text_get_font_rgba (annot);
+	gdk_rgba_to_poppler_color (pps_font_color, &color);
+
+	poppler_annot_free_text_set_font_color (POPPLER_ANNOT_FREE_TEXT (poppler_annot), &color);
+
+	annot_change_data_finish (self);
+}
+#endif
+
+/* FIXME: We could probably add this to poppler */
+static void
+copy_poppler_annot (PopplerAnnot *src_annot,
+                    PopplerAnnot *dst_annot)
+{
+	char *contents;
+	PopplerColor *color;
+
+	contents = poppler_annot_get_contents (src_annot);
+	poppler_annot_set_contents (dst_annot, contents);
+	g_free (contents);
+
+	poppler_annot_set_flags (dst_annot, poppler_annot_get_flags (src_annot));
+
+	color = poppler_annot_get_color (src_annot);
+	poppler_annot_set_color (dst_annot, color);
+	g_free (color);
+
+	if (POPPLER_IS_ANNOT_MARKUP (src_annot) && POPPLER_IS_ANNOT_MARKUP (dst_annot)) {
+		PopplerAnnotMarkup *src_markup = POPPLER_ANNOT_MARKUP (src_annot);
+		PopplerAnnotMarkup *dst_markup = POPPLER_ANNOT_MARKUP (dst_annot);
+		char *label;
+
+		label = poppler_annot_markup_get_label (src_markup);
+		poppler_annot_markup_set_label (dst_markup, label);
+		g_free (label);
+
+		poppler_annot_markup_set_opacity (dst_markup, poppler_annot_markup_get_opacity (src_markup));
+
+		if (poppler_annot_markup_has_popup (src_markup)) {
+			PopplerRectangle popup_rect;
+
+			if (poppler_annot_markup_get_popup_rectangle (src_markup, &popup_rect)) {
+				poppler_annot_markup_set_popup (dst_markup, &popup_rect);
+				poppler_annot_markup_set_popup_is_open (dst_markup, poppler_annot_markup_get_popup_is_open (src_markup));
+			}
+		}
+	}
+}
+
+static void
+annot_text_markup_type_changed_cb (PpsAnnotationTextMarkup *annot, GParamSpec *pspec, PdfDocument *self)
+{
+	PopplerAnnot *poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
+	GArray *quads;
+	PopplerRectangle rect;
+	PopplerAnnot *new_annot;
+	PpsPage *page;
+	PopplerPage *poppler_page;
+
+	g_rw_lock_writer_lock (&self->rwlock);
+
+	quads = poppler_annot_text_markup_get_quadrilaterals (POPPLER_ANNOT_TEXT_MARKUP (poppler_annot));
+	poppler_annot_get_rectangle (poppler_annot, &rect);
+
+	/* In poppler every text markup annotation type is a different class */
+	switch (pps_annotation_text_markup_get_markup_type (annot)) {
+	case PPS_ANNOTATION_TEXT_MARKUP_HIGHLIGHT:
+		new_annot = poppler_annot_text_markup_new_highlight (self->document, &rect, quads);
+		break;
+	case PPS_ANNOTATION_TEXT_MARKUP_STRIKE_OUT:
+		new_annot = poppler_annot_text_markup_new_strikeout (self->document, &rect, quads);
+		break;
+	case PPS_ANNOTATION_TEXT_MARKUP_UNDERLINE:
+		new_annot = poppler_annot_text_markup_new_underline (self->document, &rect, quads);
+		break;
+	case PPS_ANNOTATION_TEXT_MARKUP_SQUIGGLY:
+		new_annot = poppler_annot_text_markup_new_squiggly (self->document, &rect, quads);
+		break;
+	default:
+		g_assert_not_reached ();
+	}
+
+	g_array_unref (quads);
+
+	copy_poppler_annot (poppler_annot, new_annot);
+
+	page = pps_annotation_get_page (PPS_ANNOTATION (annot));
+	poppler_page = POPPLER_PAGE (page->backend_page);
+
+	poppler_page_remove_annot (poppler_page, poppler_annot);
+	poppler_page_add_annot (poppler_page, new_annot);
+	g_object_set_data_full (G_OBJECT (annot),
+	                        "poppler-annot",
+	                        new_annot,
+	                        (GDestroyNotify) g_object_unref);
+
+	annot_change_data_finish (self);
+}
+
+static void
+connect_annot_signals (PdfDocument *self, PpsAnnotation *annot)
+{
+	// TODO: modified and border_width missing!
+	// They were missing in the previous implementation too
+	g_signal_connect (annot, "notify::contents",
+	                  G_CALLBACK (annot_contents_changed_cb), self);
+	g_signal_connect (annot, "notify::rgba",
+	                  G_CALLBACK (annot_color_changed_cb), self);
+	g_signal_connect (annot, "notify::area",
+	                  G_CALLBACK (annot_area_changed_cb), self);
+	g_signal_connect (annot, "notify::hidden",
+	                  G_CALLBACK (annot_hidden_changed_cb), self);
+
+	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
+		PpsAnnotationMarkup *annot_markup = PPS_ANNOTATION_MARKUP (annot);
+
+		// TODO: has_popup missing, but that might be less of an issue
+		// how crappy the popup management in poppler is
+		g_signal_connect (annot_markup, "notify::label",
+		                  G_CALLBACK (annot_markup_label_changed_cb),
+		                  self);
+		g_signal_connect (annot_markup, "notify::opacity",
+		                  G_CALLBACK (annot_markup_opacity_changed_cb),
+		                  self);
+		g_signal_connect (annot_markup, "notify::rectangle",
+		                  G_CALLBACK (annot_markup_popup_rect_changed_cb),
+		                  self);
+		g_signal_connect (annot_markup, "notify::popup-is-open",
+		                  G_CALLBACK (annot_markup_popup_is_open_changed_cb),
+		                  self);
+	}
+
+	if (PPS_IS_ANNOTATION_TEXT (annot)) {
+		PpsAnnotationText *annot_text = PPS_ANNOTATION_TEXT (annot);
+
+		g_signal_connect (annot_text, "notify::icon",
+		                  G_CALLBACK (annot_text_icon_changed_cb),
+		                  self);
+		g_signal_connect (annot_text, "notify::is-open",
+		                  G_CALLBACK (annot_text_is_open_changed_cb),
+		                  self);
+	}
+
+#ifdef HAVE_FREE_TEXT
+	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+		PpsAnnotationFreeText *annot_ft = PPS_ANNOTATION_FREE_TEXT (annot);
+
+		g_signal_connect (annot_ft, "notify::font-desc",
+		                  G_CALLBACK (annot_free_text_font_desc_changed_cb),
+		                  self);
+		g_signal_connect (annot_ft, "notify::font-rgba",
+		                  G_CALLBACK (annot_free_text_font_rgba_changed_cb),
+		                  self);
+	}
+#endif
+
+	if (PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
+		PpsAnnotationTextMarkup *annot_text_markup = PPS_ANNOTATION_TEXT_MARKUP (annot);
+
+		g_signal_connect (annot_text_markup, "notify::type",
+		                  G_CALLBACK (annot_text_markup_type_changed_cb),
+		                  self);
+	}
+}
+
 static GList *
 pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annotations,
                                           PpsPage *page)
@@ -3114,6 +3479,12 @@ pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annot
 		if (!pps_annotation_get_name (annot))
 			annot_set_unique_name (annot);
 
+		// TODO: Once we can stop depending on the mapping area to get
+		// the poppler rectangle (See:
+		// https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1652 and
+		// and https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/382)
+		// all this block should be moved inside
+		// "pps_annot_from_poppler_annot"
 		area = poppler_rect_to_pps (page, &mapping->area);
 		if (PPS_IS_ANNOTATION_TEXT (annot)) {
 			/* Force 24x24 rectangle */
@@ -3125,6 +3496,7 @@ pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annot
 		                        "poppler-annot",
 		                        g_object_ref (mapping->annot),
 		                        (GDestroyNotify) g_object_unref);
+		connect_annot_signals (PDF_DOCUMENT (document_annotations), annot);
 
 		annots = g_list_prepend (annots, annot);
 	}
@@ -3154,6 +3526,7 @@ pdf_document_annotations_remove_annotation (PpsDocumentAnnotations *document_ann
 	poppler_annot = POPPLER_ANNOT (g_object_get_data (G_OBJECT (annot), "poppler-annot"));
 
 	poppler_page_remove_annot (poppler_page, poppler_annot);
+	g_signal_handlers_disconnect_by_data (annot, self);
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
@@ -3267,8 +3640,6 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	PpsPage *page = pps_annotation_get_page (annot);
 	PopplerAnnot *poppler_annot;
 	PopplerRectangle poppler_rect;
-	PopplerColor poppler_color;
-	GdkRGBA color;
 	PpsRectangle rect;
 
 	g_rw_lock_writer_lock (&self->rwlock);
@@ -3279,31 +3650,19 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	switch (pps_annotation_get_annotation_type (annot)) {
 	case PPS_ANNOTATION_TYPE_TEXT: {
 		PpsAnnotationText *text = PPS_ANNOTATION_TEXT (annot);
-		PpsAnnotationTextIcon icon;
+		PpsAnnotationTextIcon icon = pps_annotation_text_get_icon (text);
 
 		poppler_annot = poppler_annot_text_new (self->document, &poppler_rect);
-
-		icon = pps_annotation_text_get_icon (text);
 		poppler_annot_text_set_icon (POPPLER_ANNOT_TEXT (poppler_annot),
 		                             get_poppler_annot_text_icon (icon));
 	} break;
 #ifdef HAVE_FREE_TEXT
 	case PPS_ANNOTATION_TYPE_FREE_TEXT: {
 		PpsAnnotationFreeText *annot_ft = PPS_ANNOTATION_FREE_TEXT (annot);
-		g_autoptr (PangoFontDescription) font;
-		g_autoptr (PopplerFontDescription) poppler_font;
-		gdouble size;
 		poppler_annot = poppler_annot_free_text_new (self->document, &poppler_rect);
 
 		/* Fonts */
-		font = pps_annotation_free_text_get_font_description (annot_ft);
-		size = pango_font_description_get_size (font) / PANGO_SCALE;
-		poppler_font = poppler_font_description_new (pango_font_description_get_family (font));
-		poppler_font->weight = (PopplerWeight) pango_font_description_get_weight (font);
-		poppler_font->stretch = (PopplerStretch) pango_font_description_get_stretch (font);
-		poppler_font->style = (PopplerStyle) pango_font_description_get_style (font);
-		poppler_font->size_pt = size;
-		poppler_annot_free_text_set_font_desc (POPPLER_ANNOT_FREE_TEXT (poppler_annot), poppler_font);
+		annot_free_text_font_desc_set (annot_ft, POPPLER_ANNOT_FREE_TEXT (poppler_annot));
 
 		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
 	} break;
@@ -3351,17 +3710,10 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		g_assert_not_reached ();
 	}
 
-	pps_annotation_get_rgba (annot, &color);
-	if (color.alpha > 0.) {
-		gdk_rgba_to_poppler_color (&color, &poppler_color);
-		poppler_annot_set_color (poppler_annot, &poppler_color);
-	} else {
-		poppler_annot_set_color (poppler_annot, NULL);
-	}
+	annot_color_set (annot, poppler_annot);
 
 	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
 		PpsAnnotationMarkup *markup = PPS_ANNOTATION_MARKUP (annot);
-		const gchar *label;
 
 		if (pps_annotation_markup_has_popup (markup)) {
 			PpsRectangle popup_rect;
@@ -3373,9 +3725,8 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 			                                        pps_annotation_markup_get_popup_is_open (markup));
 		}
 
-		label = pps_annotation_markup_get_label (markup);
-		if (label)
-			poppler_annot_markup_set_label (POPPLER_ANNOT_MARKUP (poppler_annot), label);
+		poppler_annot_markup_set_label (POPPLER_ANNOT_MARKUP (poppler_annot),
+		                                pps_annotation_markup_get_label (markup));
 	}
 
 	poppler_page_add_annot (POPPLER_PAGE (page->backend_page), poppler_annot);
@@ -3386,51 +3737,12 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	                        (GDestroyNotify) g_object_unref);
 
 	annot_set_unique_name (annot);
+	connect_annot_signals (self, annot);
 
 	self->annots_modified = TRUE;
 	pps_document_set_modified (PPS_DOCUMENT (document_annotations), TRUE);
 
 	g_rw_lock_writer_unlock (&self->rwlock);
-}
-
-/* FIXME: We could probably add this to poppler */
-static void
-copy_poppler_annot (PopplerAnnot *src_annot,
-                    PopplerAnnot *dst_annot)
-{
-	char *contents;
-	PopplerColor *color;
-
-	contents = poppler_annot_get_contents (src_annot);
-	poppler_annot_set_contents (dst_annot, contents);
-	g_free (contents);
-
-	poppler_annot_set_flags (dst_annot, poppler_annot_get_flags (src_annot));
-
-	color = poppler_annot_get_color (src_annot);
-	poppler_annot_set_color (dst_annot, color);
-	g_free (color);
-
-	if (POPPLER_IS_ANNOT_MARKUP (src_annot) && POPPLER_IS_ANNOT_MARKUP (dst_annot)) {
-		PopplerAnnotMarkup *src_markup = POPPLER_ANNOT_MARKUP (src_annot);
-		PopplerAnnotMarkup *dst_markup = POPPLER_ANNOT_MARKUP (dst_annot);
-		char *label;
-
-		label = poppler_annot_markup_get_label (src_markup);
-		poppler_annot_markup_set_label (dst_markup, label);
-		g_free (label);
-
-		poppler_annot_markup_set_opacity (dst_markup, poppler_annot_markup_get_opacity (src_markup));
-
-		if (poppler_annot_markup_has_popup (src_markup)) {
-			PopplerRectangle popup_rect;
-
-			if (poppler_annot_markup_get_popup_rectangle (src_markup, &popup_rect)) {
-				poppler_annot_markup_set_popup (dst_markup, &popup_rect);
-				poppler_annot_markup_set_popup_is_open (dst_markup, poppler_annot_markup_get_popup_is_open (src_markup));
-			}
-		}
-	}
 }
 
 static void
