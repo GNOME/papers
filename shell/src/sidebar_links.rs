@@ -591,7 +591,7 @@ mod imp {
 
                                     obj.list_view.scroll_to(
                                         pos,
-                                        gtk::ListScrollFlags::SELECT,
+                                        gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
                                         None,
                                     );
 

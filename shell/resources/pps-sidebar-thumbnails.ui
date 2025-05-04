@@ -22,6 +22,7 @@
                     <property name="max-columns">1</property>
                     <property name="min-columns">1</property>
                     <property name="halign">center</property>
+                    <property name="tab-behavior">item</property>
                     <property name="factory">
                       <object class="GtkSignalListItemFactory" id="factory">
                         <signal name="setup" handler="grid_view_factory_setup" swapped="yes" />

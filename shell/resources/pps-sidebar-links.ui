@@ -13,6 +13,7 @@
             <property name="vexpand">True</property>
             <property name="child">
               <object class="GtkListView" id="list_view">
+                <property name="tab-behavior">item</property>
                 <property name="model">
                   <object class="GtkSingleSelection" id="selection_model">
                     <property name="autoselect">False</property>

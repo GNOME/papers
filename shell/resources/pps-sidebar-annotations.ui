@@ -36,6 +36,7 @@
                           <class name="navigation-sidebar"/>
                         </style>
                         <property name="hexpand">True</property>
+                        <property name="tab-behavior">item</property>
                         <property name="factory">
                           <object class="GtkSignalListItemFactory" id="factory">
                             <signal name="setup" handler="list_view_factory_setup" swapped="yes" />
