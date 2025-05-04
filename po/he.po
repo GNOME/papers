@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: evince.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-04-22 11:53+0000\n"
-"PO-Revision-Date: 2025-04-22 21:55+0300\n"
+"POT-Creation-Date: 2025-05-04 12:02+0000\n"
+"PO-Revision-Date: 2025-05-04 15:04+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -23,15 +23,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 48.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: previewer/pps-previewer-window.c:472 shell/resources/pps-document-view.ui:80
-#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:308
+#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:46
+#: shell/src/application.rs:69 shell/src/application.rs:342
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "מסמכים"
@@ -232,52 +232,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "הוספת תמיכה לקריאת מסמכי PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:756
-#: libdocument/backend/pdf/pps-poppler.c:762
-#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:224
+#: libdocument/backend/pdf/pps-poppler.c:749
+#: libdocument/backend/pdf/pps-poppler.c:755
+#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "כן"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:759
-#: libdocument/backend/pdf/pps-poppler.c:762
-#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:225
+#: libdocument/backend/pdf/pps-poppler.c:752
+#: libdocument/backend/pdf/pps-poppler.c:755
+#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "לא"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:862
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:864
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:873
+#: libdocument/backend/pdf/pps-poppler.c:866
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:875
+#: libdocument/backend/pdf/pps-poppler.c:868
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:877
+#: libdocument/backend/pdf/pps-poppler.c:870
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:879
+#: libdocument/backend/pdf/pps-poppler.c:872
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:881
+#: libdocument/backend/pdf/pps-poppler.c:874
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:883
+#: libdocument/backend/pdf/pps-poppler.c:876
 msgid "Unknown font type"
 msgstr "סוג גופן לא ידוע"
 
-#: libdocument/backend/pdf/pps-poppler.c:927
+#: libdocument/backend/pdf/pps-poppler.c:920
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -287,11 +287,11 @@ msgstr ""
 "גופני ההחלפה שנבחרו על ידי fontconfig אינם זהים לגופנים בהם נעשה שימוש "
 "ליצירת ה־PDF, העיבוד עשוי להיות שגוי."
 
-#: libdocument/backend/pdf/pps-poppler.c:932
+#: libdocument/backend/pdf/pps-poppler.c:925
 msgid "All fonts are either standard or embedded."
 msgstr "כל הגופנים הם תקניים או מוטמעים."
 
-#: libdocument/backend/pdf/pps-poppler.c:963
+#: libdocument/backend/pdf/pps-poppler.c:956
 msgid "No name"
 msgstr "ללא שם"
 
@@ -299,20 +299,21 @@ msgstr "ללא שם"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:972 libview/pps-print-operation.c:1890
-#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:258
+#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1890
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "ללא"
 
-#: libdocument/backend/pdf/pps-poppler.c:980
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Embedded subset"
 msgstr "תת־קבוצה מוטמעת"
 
-#: libdocument/backend/pdf/pps-poppler.c:982
+#: libdocument/backend/pdf/pps-poppler.c:975
 msgid "Embedded"
 msgstr "מוטמע"
 
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:977
 msgid "Not embedded"
 msgstr "לא מוטמע"
 
@@ -321,7 +322,7 @@ msgstr "לא מוטמע"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (אחד מ־14 הגופנים הרגילים)"
 
@@ -330,7 +331,7 @@ msgstr " (אחד מ־14 הגופנים הרגילים)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:998
+#: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (אף אחד מ־14 הגופנים הרגילים)"
 
@@ -344,7 +345,7 @@ msgstr " (אף אחד מ־14 הגופנים הרגילים)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1017
+#: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
 "%s%s\n"
@@ -368,7 +369,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1035
+#: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
 "%s%s\n"
@@ -470,7 +471,7 @@ msgid "This work is in the Public Domain"
 msgstr "יצירה זו היא לרשות הציבור"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1042
+#: shell/src/document_view/actions.rs:1032
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "שמירת צרופה"
@@ -483,7 +484,7 @@ msgstr[3] "שמירת צרופות"
 msgid "Page %s"
 msgstr "עמוד %s"
 
-#: libview/pps-annotation-window.c:255
+#: libview/pps-annotation-window.c:235
 msgid "Edit Note"
 msgstr "עריכת הערה"
 
@@ -497,12 +498,12 @@ msgstr "עיבוד עמוד %d נכשל: %s"
 msgid "Failed to render page %d"
 msgstr "עיבוד עמוד %d נכשל"
 
-#: libview/pps-jobs.c:647
+#: libview/pps-jobs.c:643
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "יצירת תמונה ממוזערת עבור עמוד %d נכשלה"
 
-#: libview/pps-jobs.c:1659
+#: libview/pps-jobs.c:1655
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "הדפסת עמוד %d נכשלה: ‏%s"
@@ -641,51 +642,51 @@ msgstr "גלילת התצוגה למטה"
 msgid "Document View"
 msgstr "תצוגת מסמך"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2114
 msgid "Go to first page"
 msgstr "מעבר לעמוד הראשון"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2116
 msgid "Go to previous page"
 msgstr "מעבר לעמוד הקודם"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2118
 msgid "Go to next page"
 msgstr "מעבר לעמוד הבא"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2120
 msgid "Go to last page"
 msgstr "מעבר לעמוד האחרון"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2122
 msgid "Go to page"
 msgstr "מעבר לעמוד"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2124
 msgid "Find"
 msgstr "חיפוש"
 
-#: libview/pps-view.c:2151
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to page %s"
 msgstr "מעבר לעמוד %s"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2159
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "מעבר ל־%s בקובץ „%s“"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2162
 #, c-format
 msgid "Go to file “%s”"
 msgstr "מעבר לקובץ „%s“"
 
-#: libview/pps-view.c:2168
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Launch %s"
 msgstr "שיגור %s"
 
-#: libview/pps-view.c:2175
+#: libview/pps-view.c:2177
 #, c-format
 msgid "Reset form"
 msgstr "איפוס טופס"
@@ -802,7 +803,7 @@ msgstr "הדפסת המסמך נכשלה"
 
 #: nautilus/pps-nautilus-extension.c:110
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:226
+#: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "לא ידוע"
 
@@ -810,7 +811,7 @@ msgstr "לא ידוע"
 msgid "Document Properties"
 msgstr "מאפייני מסמך"
 
-#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:188
+#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "כותרת"
 
@@ -818,62 +819,62 @@ msgstr "כותרת"
 msgid "Location"
 msgstr "מיקום"
 
-#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:189
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "נושא"
 
 #: nautilus/pps-nautilus-extension.h:49
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:190
+#: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "יוצר או יוצרת"
 
-#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:191
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "מילות מפתח"
 
-#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:192
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "יצרן"
 
-#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:193
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "יוצר"
 
-#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:204
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "נוצר"
 
-#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:205
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "‏השתנה"
 
-#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:217
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
 msgid "Number of Pages"
 msgstr "מספר עמודים"
 
-#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:218
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "‏הוטב"
 
-#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:214
-#: shell/src/properties_general.rs:216
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "תבנית"
 
-#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:219
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "אבטחה"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:228
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
 msgstr "מכילים Javascript"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:220
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "‏גודל דף"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "גודל"
 
@@ -1188,7 +1189,7 @@ msgid "Touchpad Gestures"
 msgstr "מחוות משטח מגע"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:69
+#: shell/resources/pps-sidebar-annotations.ui:70
 msgid "Annotation Properties"
 msgstr "מאפייני הפרשנות"
 
@@ -1248,6 +1249,7 @@ msgstr "עיגול"
 msgid "Markup Type"
 msgstr "סוג סימון"
 
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:73
 #: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
@@ -1257,11 +1259,13 @@ msgstr "הדגשה"
 msgid "Strike out"
 msgstr "מחיקה"
 
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:75
 #: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "קו תחתי"
 
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:76
 #: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
@@ -1440,6 +1444,7 @@ msgstr "_סיבוב ⤵"
 msgid "Document Prop_erties"
 msgstr "_מאפייני מסמך"
 
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline.
 #: shell/resources/pps-document-view.ui:735
 msgid "Strikethrough"
 msgstr "קו חוצה"
@@ -1477,12 +1482,12 @@ msgid "Copy _Image"
 msgstr "העתקת ת_מונה"
 
 #: shell/resources/pps-document-view.ui:883
-#: shell/resources/pps-sidebar-annotations.ui:79
+#: shell/resources/pps-sidebar-annotations.ui:80
 msgid "_Open Attachment"
 msgstr "_פתיחת צרופה"
 
 #: shell/resources/pps-document-view.ui:888
-#: shell/resources/pps-sidebar-annotations.ui:84
+#: shell/resources/pps-sidebar-annotations.ui:85
 msgid "_Save Attachment As…"
 msgstr "_שמירת הקובץ המצורף בשם…"
 
@@ -1502,19 +1507,19 @@ msgstr "הו_ספת הערה לטקסט"
 msgid "_Highlight Selected Text"
 msgstr "ה_דגשת הטקסט הנבחר"
 
-#: shell/resources/pps-find-sidebar.ui:64
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "No Results Found"
 msgstr "לא נמצאו תוצאות"
 
-#: shell/resources/pps-find-sidebar.ui:65
+#: shell/resources/pps-find-sidebar.ui:66
 msgid "Try a different search"
 msgstr "יש לנסות חיפוש שונה"
 
-#: shell/resources/pps-find-sidebar.ui:79
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "Perform a Search"
 msgstr "חיפוש במסמך"
 
-#: shell/resources/pps-find-sidebar.ui:80
+#: shell/resources/pps-find-sidebar.ui:81
 msgid "The search results will appear here"
 msgstr "תוצאות החיפוש תופענה כאן"
 
@@ -1626,27 +1631,27 @@ msgstr "_תלוי רישיות"
 msgid "No Annotations"
 msgstr "אין הערות"
 
-#: shell/resources/pps-sidebar-annotations.ui:74
+#: shell/resources/pps-sidebar-annotations.ui:75
 msgid "Remove Annotation"
 msgstr "מחיקת הערה"
 
-#: shell/resources/pps-sidebar-links.ui:52
+#: shell/resources/pps-sidebar-links.ui:53
 msgid "Collapse all tree"
 msgstr "צמצום כל העץ"
 
-#: shell/resources/pps-sidebar-links.ui:56
+#: shell/resources/pps-sidebar-links.ui:57
 msgid "Expand all tree"
 msgstr "הרחבת כל העץ"
 
-#: shell/resources/pps-sidebar-links.ui:60
+#: shell/resources/pps-sidebar-links.ui:61
 msgid "Expand all under this element"
 msgstr "הרחבה של הכול תחת הרכיב הזה"
 
-#: shell/resources/pps-sidebar-links.ui:66
+#: shell/resources/pps-sidebar-links.ui:67
 msgid "Print this section…"
 msgstr "הדפסת קטע זה…"
 
-#: shell/resources/pps-sidebar-thumbnails.ui:46
+#: shell/resources/pps-sidebar-thumbnails.ui:47
 msgid "Previews"
 msgstr "תצוגה מקדימה"
 
@@ -1670,11 +1675,11 @@ msgstr "לא ניתן לפתוח את המסמך"
 msgid "_Open Other File…"
 msgstr "_פתיחת קובץ אחר…"
 
-#: shell/src/application.rs:210
+#: shell/src/application.rs:211
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996‏-2024 יוצרי „מסמכים”"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:212
 msgid "translator-credits"
 msgstr ""
 "יובל טנאי\n"
@@ -1683,43 +1688,43 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: shell/src/application.rs:315
+#: shell/src/application.rs:349
 msgid "The page label of the document to display."
 msgstr "The page label of the document to display."
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:350
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell/src/application.rs:324
+#: shell/src/application.rs:358
 msgid "The page number of the document to display."
 msgstr "The page number of the document to display."
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:359
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:333
+#: shell/src/application.rs:367
 msgid "Named destination to display."
 msgstr "Named destination to display."
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:368
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:342
+#: shell/src/application.rs:376
 msgid "Run papers in fullscreen mode."
 msgstr "Run papers in fullscreen mode."
 
-#: shell/src/application.rs:351
+#: shell/src/application.rs:385
 msgid "Run papers in presentation mode."
 msgstr "Run papers in presentation mode."
 
-#: shell/src/application.rs:360
+#: shell/src/application.rs:394
 msgid "Show the version of the program."
 msgstr "Show the version of the program."
 
-#: shell/src/application.rs:370
+#: shell/src/application.rs:404
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
@@ -1757,31 +1762,31 @@ msgstr "סגירה _ללא שמירה"
 msgid "_Save a Copy"
 msgstr "שמירת _עותק"
 
-#: shell/src/document_view/actions.rs:761
+#: shell/src/document_view/actions.rs:751
 msgid "Save Image"
 msgstr "שמירת התמונה"
 
-#: shell/src/document_view/actions.rs:797
+#: shell/src/document_view/actions.rs:787
 msgid "Couldn’t find appropriate format to save image"
 msgstr "לא נמצאה התבנית המתאימה לשמירת התמונה"
 
-#: shell/src/document_view/actions.rs:820
+#: shell/src/document_view/actions.rs:810
 msgid "The image could not be saved."
 msgstr "לא ניתן לשמור את התמונה."
 
-#: shell/src/document_view/actions.rs:921
+#: shell/src/document_view/actions.rs:911
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "מצב ניווט סמן פעיל מעכשיו, יש ללחוץ על F7 להשבתה."
 
-#: shell/src/document_view/actions.rs:923
+#: shell/src/document_view/actions.rs:913
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "מצב ניווט סמן כבוי מעכשיו, יש ללחוץ על F7 להפעלה."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1016 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "לא ניתן לפתוח את הצרופה"
 
-#: shell/src/document_view/actions.rs:1059
+#: shell/src/document_view/actions.rs:1049
 msgid "The attachment could not be saved."
 msgstr "לא ניתן לשמור את הצרופה."
 
@@ -1894,27 +1899,39 @@ msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "המסמך „{}“ נעול ונדרשת ססמה כדי לפתוח אותו"
 
-#: shell/src/properties_general.rs:77
-msgid "File"
-msgstr "קובץ"
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "העתקה ללוח הגזירים"
 
-#: shell/src/properties_general.rs:103
-msgid "Folder"
-msgstr "תיקייה"
-
-#: shell/src/properties_general.rs:115
+#: shell/src/properties_general.rs:137
 msgid "Open With..."
 msgstr "פתיחה באמצעות…"
 
-#: shell/src/properties_general.rs:130
+#: shell/src/properties_general.rs:152
 msgid "Open File Location"
 msgstr "פתיחת מיקום הקובץ"
 
-#: shell/src/properties_general.rs:186
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr "קובץ"
+
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr "שם"
+
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr "תיקייה"
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "נתיב לקובץ"
+
+#: shell/src/properties_general.rs:298
 msgid "Content"
 msgstr "תוכן"
 
-#: shell/src/properties_general.rs:202
+#: shell/src/properties_general.rs:314
 msgid "Date &amp; Time"
 msgstr "תאריך ושעה"
 
@@ -2034,9 +2051,6 @@ msgstr "מועד פקיעת תוקף האישור"
 
 #~ msgid "Decoding error"
 #~ msgstr "שגיאת פענוח"
-
-#~ msgid "File Saved"
-#~ msgstr "הקובץ נשמר"
 
 #~ msgid "Bookmarks"
 #~ msgstr "סימניות"
