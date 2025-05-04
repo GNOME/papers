@@ -56,7 +56,7 @@ G_DEFINE_TYPE (PpsAnnotationWindow, pps_annotation_window, GTK_TYPE_WINDOW)
 static void
 pps_annotation_window_sync_contents (PpsAnnotationWindow *window)
 {
-	gchar *contents;
+	g_autofree gchar *contents = NULL;
 	GtkTextIter start, end;
 	GtkTextBuffer *buffer;
 	PpsAnnotation *annot = window->annotation;
@@ -67,13 +67,7 @@ pps_annotation_window_sync_contents (PpsAnnotationWindow *window)
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->text_view));
 	gtk_text_buffer_get_bounds (buffer, &start, &end);
 	contents = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-	if (pps_annotation_set_contents (annot, contents)) {
-		pps_document_annotations_save_annotation (PPS_DOCUMENT_ANNOTATIONS (window->document),
-		                                          annot,
-		                                          PPS_ANNOTATIONS_SAVE_CONTENTS);
-	}
-
-	g_free (contents);
+	pps_annotation_set_contents (annot, contents);
 }
 
 static void

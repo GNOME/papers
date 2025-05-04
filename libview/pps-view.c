@@ -5120,11 +5120,7 @@ pps_view_move_annot_to_point (PpsView *view,
 		rect.y1 = page_height - current_area.y2 + current_area.y1;
 	}
 
-	if (pps_annotation_set_area (priv->moving_annot_info.annot, &rect)) {
-		pps_document_annotations_save_annotation (PPS_DOCUMENT_ANNOTATIONS (document),
-		                                          priv->moving_annot_info.annot,
-		                                          PPS_ANNOTATIONS_SAVE_AREA);
-	}
+	pps_annotation_set_area (priv->moving_annot_info.annot, &rect);
 
 	/* FIXME: reload only annotation area */
 	pps_view_reload_page (view, page_index, NULL);

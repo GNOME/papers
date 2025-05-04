@@ -832,45 +832,22 @@ impl imp::PpsDocumentView {
         let rgba = dialog.rgba();
         let opacity = dialog.opacity();
         let popup_is_open = dialog.popup_open();
-        let mut mask = AnnotationsSaveMask::NONE;
         let _notify = annot.freeze_notify();
 
         // Set annotations changes
         if let Some(annot) = annot.dynamic_cast_ref::<AnnotationMarkup>() {
-            if annot.set_label(&author) {
-                mask |= AnnotationsSaveMask::LABEL;
-            }
-            if annot.set_rgba(&rgba) {
-                mask |= AnnotationsSaveMask::COLOR;
-            }
-            if annot.set_opacity(opacity) {
-                mask |= AnnotationsSaveMask::OPACITY;
-            }
-            if annot.set_popup_is_open(popup_is_open) {
-                mask |= AnnotationsSaveMask::POPUP_IS_OPEN;
-            }
+            annot.set_label(&author);
+            annot.set_rgba(&rgba);
+            annot.set_opacity(opacity);
+            annot.set_popup_is_open(popup_is_open);
         }
 
         if let Some(annot) = annot.dynamic_cast_ref::<AnnotationText>() {
-            let icon = dialog.text_icon();
-            if annot.set_icon(icon) {
-                mask |= AnnotationsSaveMask::TEXT_ICON;
-            }
+            annot.set_icon(dialog.text_icon());
         }
 
         if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
-            let markup_type = dialog.markup_type();
-            if annot.set_markup_type(markup_type) {
-                mask |= AnnotationsSaveMask::TEXT_MARKUP_TYPE;
-            }
-        }
-
-        if !mask.is_empty() {
-            if let Some(document) = self.document() {
-                if let Some(doc_annot) = document.dynamic_cast_ref::<DocumentAnnotations>() {
-                    doc_annot.save_annotation(&annot, mask);
-                }
-            }
+            annot.set_markup_type(dialog.markup_type());
         }
     }
 

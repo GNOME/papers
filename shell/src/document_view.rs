@@ -9,9 +9,8 @@ use glib::{UserDirectory, Variant, VariantTy};
 use gtk::{PrintOperationResult, TextDirection};
 
 use papers_document::{
-    Annotation, AnnotationMarkup, AnnotationText, AnnotationTextMarkup, AnnotationsSaveMask,
-    Attachment, DocumentAnnotations, DocumentForms, Link, LinkAction, LinkActionType, LinkDest,
-    Outlines,
+    Annotation, AnnotationMarkup, AnnotationText, AnnotationTextMarkup, Attachment,
+    DocumentAnnotations, DocumentForms, Link, LinkAction, LinkActionType, LinkDest, Outlines,
 };
 use papers_view::{History, PageLayout, SizingMode};
 
