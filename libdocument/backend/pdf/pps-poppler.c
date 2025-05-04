@@ -2821,8 +2821,8 @@ get_poppler_annot_text_icon (PpsAnnotationTextIcon icon)
 }
 
 static PpsAnnotation *
-pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
-                              PpsPage *page)
+create_pps_annot (PopperAnnot *poppler_annot,
+                  PpsPage *page)
 {
 	PpsAnnotation *pps_annot = NULL;
 	const gchar *unimplemented_annot = NULL;
@@ -2983,85 +2983,95 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 		}
 	}
 
-	if (pps_annot) {
-		time_t utime;
-		g_autofree gchar *modified;
-		g_autofree gchar *contents;
-		g_autofree gchar *name;
-		GdkRGBA color;
+	return pps_annot;
+}
 
-		contents = poppler_annot_get_contents (poppler_annot);
-		if (contents)
-			pps_annotation_set_contents (pps_annot, contents);
+static PpsAnnotation *
+pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
+                              PpsPage *page)
+{
+	time_t utime;
+	g_autofree gchar *modified = NULL;
+	g_autofree gchar *contents = NULL;
+	g_autofree gchar *name = NULL;
+	GdkRGBA color;
+	PpsAnnotation *pps_annot = create_pps_annot (poppler_annot, page);
 
-		name = poppler_annot_get_name (poppler_annot);
-		if (name)
-			pps_annotation_set_name (pps_annot, name);
+	if (!pps_annot)
+		return NULL;
 
-		modified = poppler_annot_get_modified (poppler_annot);
-		if (poppler_date_parse (modified, &utime))
-			pps_annotation_set_modified_from_time_t (pps_annot, utime);
-		else
-			pps_annotation_set_modified (pps_annot, modified);
+	// If we have an annot, fill-in all the details
+	contents = poppler_annot_get_contents (poppler_annot);
+	if (contents)
+		pps_annotation_set_contents (pps_annot, contents);
 
-		poppler_annot_color_to_gdk_rgba (poppler_annot, &color);
-		pps_annotation_set_rgba (pps_annot, &color);
+	name = poppler_annot_get_name (poppler_annot);
+	if (name)
+		pps_annotation_set_name (pps_annot, name);
 
-		PopplerAnnotFlag flag = poppler_annot_get_flags (poppler_annot);
-		if (flag & POPPLER_ANNOT_FLAG_HIDDEN) {
-			pps_annotation_set_hidden (pps_annot, TRUE);
-		} else {
-			pps_annotation_set_hidden (pps_annot, FALSE);
-		}
+	modified = poppler_annot_get_modified (poppler_annot);
+	if (poppler_date_parse (modified, &utime))
+		pps_annotation_set_modified_from_time_t (pps_annot, utime);
+	else
+		pps_annotation_set_modified (pps_annot, modified);
 
-		if (PPS_IS_ANNOTATION_MARKUP (pps_annot) &&
-		    pps_annotation_markup_can_have_popup (PPS_ANNOTATION_MARKUP (pps_annot)) &&
-		    /*
-		     * Per PDF 32000-1:2008 Table 169 stamp annotations are
-		     * markup annotations, but Poppler does not subclass
-		     * PopplerAnnotMarkup for PopplerAnnotStamp.
-		     *
-		     * This can be dropped once our minimum required version of
-		     * Poppler contains these or equivalent changes:
-		     * https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1760
-		     */
-		    POPPLER_IS_ANNOT_MARKUP (poppler_annot)) {
-			PopplerAnnotMarkup *markup;
-			gchar *label;
-			gdouble opacity;
-			PopplerRectangle poppler_rect;
+	poppler_annot_color_to_gdk_rgba (poppler_annot, &color);
+	pps_annotation_set_rgba (pps_annot, &color);
 
-			markup = POPPLER_ANNOT_MARKUP (poppler_annot);
+	PopplerAnnotFlag flag = poppler_annot_get_flags (poppler_annot);
+	if (flag & POPPLER_ANNOT_FLAG_HIDDEN) {
+		pps_annotation_set_hidden (pps_annot, TRUE);
+	} else {
+		pps_annotation_set_hidden (pps_annot, FALSE);
+	}
 
-			if (poppler_annot_markup_get_popup_rectangle (markup, &poppler_rect)) {
-				PpsRectangle pps_rect;
-				gboolean is_open;
+	if (PPS_IS_ANNOTATION_MARKUP (pps_annot) &&
+	    pps_annotation_markup_can_have_popup (PPS_ANNOTATION_MARKUP (pps_annot)) &&
+	    /*
+	     * Per PDF 32000-1:2008 Table 169 stamp annotations are
+	     * markup annotations, but Poppler does not subclass
+	     * PopplerAnnotMarkup for PopplerAnnotStamp.
+	     *
+	     * This can be dropped once our minimum required version of
+	     * Poppler is >= 25.03.0 and contains:
+	     * https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1760
+	     */
+	    POPPLER_IS_ANNOT_MARKUP (poppler_annot)) {
+		PopplerAnnotMarkup *markup;
+		gchar *label;
+		gdouble opacity;
+		PopplerRectangle poppler_rect;
 
-				pps_rect = poppler_rect_to_pps (page, &poppler_rect);
-				is_open = poppler_annot_markup_get_popup_is_open (markup);
+		markup = POPPLER_ANNOT_MARKUP (poppler_annot);
 
-				g_object_set (pps_annot,
-				              "rectangle", &pps_rect,
-				              "popup_is_open", is_open,
-				              "has_popup", TRUE,
-				              NULL);
-			} else {
-				g_object_set (pps_annot,
-				              "has_popup", FALSE,
-				              NULL);
-			}
+		if (poppler_annot_markup_get_popup_rectangle (markup, &poppler_rect)) {
+			PpsRectangle pps_rect;
+			gboolean is_open;
 
-			label = poppler_annot_markup_get_label (markup);
-			if (label)
-				g_object_set (pps_annot, "label", label, NULL);
-			opacity = poppler_annot_markup_get_opacity (markup);
+			pps_rect = poppler_rect_to_pps (page, &poppler_rect);
+			is_open = poppler_annot_markup_get_popup_is_open (markup);
 
 			g_object_set (pps_annot,
-			              "opacity", opacity,
+			              "rectangle", &pps_rect,
+			              "popup_is_open", is_open,
+			              "has_popup", TRUE,
 			              NULL);
-
-			g_free (label);
+		} else {
+			g_object_set (pps_annot,
+			              "has_popup", FALSE,
+			              NULL);
 		}
+
+		label = poppler_annot_markup_get_label (markup);
+		if (label)
+			g_object_set (pps_annot, "label", label, NULL);
+		opacity = poppler_annot_markup_get_opacity (markup);
+
+		g_object_set (pps_annot,
+		              "opacity", opacity,
+		              NULL);
+
+		g_free (label);
 	}
 
 	return pps_annot;
