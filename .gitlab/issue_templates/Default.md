@@ -38,11 +38,11 @@ i.e. in plain text editing mode all and incuding from <details> to <details>.-->
 
 ### Summary
 
-`REPLACE ME: explain the in short, for instance "Crash when opening a pdf"`
+`REPLACE ME: explain the issue in short, for instance "Crash when opening a pdf"`
 
 ### Description
 
-<!--DELETE ME: give here a more details on the problem. In particular,
+<!--DELETE ME: give here more details on the problem. In particular,
 
 * if you have issues with a specific document, please attach or add a link to it
 * if Papers freezes or crashes, follow the relevant section of
