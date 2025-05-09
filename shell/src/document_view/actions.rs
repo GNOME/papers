@@ -222,7 +222,7 @@ impl imp::PpsDocumentView {
 
                         let has_pages = obj.document().map(|d| d.n_pages() > 0).unwrap_or_default();
 
-                        obj.set_action_enabled("dual-odd-left", has_pages);
+                        obj.set_action_enabled("dual-odd-left", dual_page && has_pages);
 
                         action.set_state(state);
                     }
