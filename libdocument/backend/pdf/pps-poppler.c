@@ -2666,9 +2666,9 @@ pps_annot_from_poppler_annot (PopplerAnnot *poppler_annot,
 		font = pango_font_description_new ();
 		if (poppler_font) {
 			pango_font_description_set_family (font, poppler_font->font_name);
-			pango_font_description_set_weight (font, poppler_font->weight);
-			pango_font_description_set_style (font, poppler_font->style);
-			pango_font_description_set_stretch (font, poppler_font->stretch);
+			pango_font_description_set_weight (font, (PangoWeight) poppler_font->weight);
+			pango_font_description_set_style (font, (PangoStyle) poppler_font->style);
+			pango_font_description_set_stretch (font, (PangoStretch) poppler_font->stretch);
 			pango_font_description_set_size (font, poppler_font->size_pt * PANGO_SCALE);
 		} else {
 			pango_font_description_set_size (font, 12 * PANGO_SCALE);
@@ -3033,9 +3033,9 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		font = pps_annotation_free_text_get_font_description (annot_ft);
 		size = pango_font_description_get_size (font) / PANGO_SCALE;
 		poppler_font = poppler_font_description_new (pango_font_description_get_family (font));
-		poppler_font->weight = pango_font_description_get_weight (font);
-		poppler_font->stretch = pango_font_description_get_stretch (font);
-		poppler_font->style = pango_font_description_get_style (font);
+		poppler_font->weight = (PopplerWeight) pango_font_description_get_weight (font);
+		poppler_font->stretch = (PopplerStretch) pango_font_description_get_stretch (font);
+		poppler_font->style = (PopplerStyle) pango_font_description_get_style (font);
 		poppler_font->size_pt = size;
 		poppler_annot_free_text_set_font_desc (POPPLER_ANNOT_FREE_TEXT (poppler_annot), poppler_font);
 
@@ -3259,9 +3259,9 @@ pdf_document_annotations_save_annotation (PpsDocumentAnnotations *document_annot
 		size = pango_font_description_get_size (font) / PANGO_SCALE;
 		poppler_font = poppler_font_description_new (pango_font_description_get_family (font));
 
-		poppler_font->weight = pango_font_description_get_weight (font);
-		poppler_font->stretch = pango_font_description_get_stretch (font);
-		poppler_font->style = pango_font_description_get_style (font);
+		poppler_font->weight = (PopplerWeight) pango_font_description_get_weight (font);
+		poppler_font->stretch = (PopplerStretch) pango_font_description_get_stretch (font);
+		poppler_font->style = (PopplerStyle) pango_font_description_get_style (font);
 		poppler_font->size_pt = size;
 		poppler_annot_free_text_set_font_desc (poppler_annot_ft, poppler_font);
 	}
