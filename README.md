@@ -30,7 +30,7 @@ guidelines, before starting to work on any changes.
 
 [gnome]: https://www.gnome.org/
 [poppler]: https://poppler.freedesktop.org/
-[djvulibre]: https://djvulibre.djvuzone.org/
+[djvulibre]: https://djvu.sourceforge.net/
 [comics]: https://libarchive.org/
 [tiff]: https://libtiff.gitlab.io/libtiff/
 [license]: COPYING
