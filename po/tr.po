@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-02-19 14:36+0000\n"
-"PO-Revision-Date: 2025-02-21 08:00+0300\n"
+"POT-Creation-Date: 2025-05-10 21:41+0000\n"
+"PO-Revision-Date: 2025-05-11 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
 msgid "Papers"
 msgstr "Papers"
@@ -163,29 +163,29 @@ msgstr "Baskı Ön İzleme"
 msgid "Preview before printing"
 msgstr "Yazdırmadan önce ön izle"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Dosya bozuk"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Arşiv şifrelenmiş"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Arşivde desteklenen resim yok"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Arşivde dosya yok"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Çizgi roman MIME türü değil: %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -193,7 +193,7 @@ msgstr ""
 "libarchive, bu çizgi romanın sıkıştırmasını desteklemiyor. Lütfen "
 "dağıtıcınız ile iletişim kurun"
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Arşiv için yerel yol alınamıyor"
 
@@ -239,14 +239,14 @@ msgstr "PDF belgelerini görüntüleme desteği ekler"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:769
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Evet"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:772
 #: libdocument/backend/pdf/pps-poppler.c:775
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Hayır"
 
@@ -306,7 +306,7 @@ msgstr "Adsız"
 #. Encoding: None
 #.
 #: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -475,8 +475,8 @@ msgstr "Geçici dosya oluşturulamadı: %s"
 msgid "This work is in the Public Domain"
 msgstr "Bu çalışma Kamu Malıdır"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1037
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1041
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Ekleri Kaydet"
@@ -490,22 +490,22 @@ msgstr "%s. Sayfa"
 msgid "Edit Note"
 msgstr "Notu Düzenle"
 
-#: libview/pps-jobs.c:433
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "%d. sayfa canlandırılamadı: %s"
 
-#: libview/pps-jobs.c:440
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "%d. sayfa canlandırılamadı"
 
-#: libview/pps-jobs.c:674
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "%d sayfasına küçük resim oluşturulamadı"
 
-#: libview/pps-jobs.c:1700
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "%d. sayfa yazdırılamadı: %s"
@@ -545,7 +545,7 @@ msgstr "Yazdırma aralığı seçiminiz herhangi bir sayfa içermiyor"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
 #: shell/src/document_view/io.rs:599
 msgid "_Close"
 msgstr "_Kapat"
@@ -629,71 +629,71 @@ msgstr "Etkinken, her pencerenin çevresine sınır çizilecektir."
 msgid "Page Handling"
 msgstr "Sayfa İşleme"
 
-#: libview/pps-view-accessible.c:42
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "Yukarı Kaydır"
 
-#: libview/pps-view-accessible.c:43
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "Aşağı Kaydır"
 
-#: libview/pps-view-accessible.c:48
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Görünümü Yukarı Kaydır"
 
-#: libview/pps-view-accessible.c:49
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Görünümü Aşağı Kaydır"
 
-#: libview/pps-view-accessible.c:126
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Belge Görünümü"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2112
 msgid "Go to first page"
 msgstr "İlk sayfaya git"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2114
 msgid "Go to previous page"
 msgstr "Önceki sayfaya git"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2116
 msgid "Go to next page"
 msgstr "Sonraki sayfaya git"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2118
 msgid "Go to last page"
 msgstr "Son sayfaya git"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2120
 msgid "Go to page"
 msgstr "Sayfaya git"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2122
 msgid "Find"
 msgstr "Bul"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2151
 #, c-format
 msgid "Go to page %s"
 msgstr "%s. sayfaya git"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "“%2$s” dosyasındaki %1$s konumuna git"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Go to file “%s”"
 msgstr "“%s” dosyasına git"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Launch %s"
 msgstr "%s başlat"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Reset form"
 msgstr "Formu sıfırla"
@@ -778,7 +778,7 @@ msgid "Next Page"
 msgstr "Sonraki Sayfa"
 
 #: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:221
+#: shell/resources/pps-document-view.ui:222
 msgid "Page Count"
 msgstr "Sayfa Sayısı"
 
@@ -791,7 +791,7 @@ msgid "Print This Document"
 msgstr "Bu Belgeyi Yazdır"
 
 #: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:304
+#: shell/resources/pps-document-view.ui:305
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
@@ -800,17 +800,17 @@ msgid "Normal Size"
 msgstr "Olağan Boyut"
 
 #: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:291
+#: shell/resources/pps-document-view.ui:292
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Belge Yazdırılırılamadı"
 
 #: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -818,70 +818,70 @@ msgstr "Bilinmiyor"
 msgid "Document Properties"
 msgstr "Belge Özellikleri"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Başlık"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Konum"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Konu"
 
-#: nautilus/pps-nautilus-extension.h:63
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Yazar"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Anahtar Sözcükler"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Üretici"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Oluşturucu"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Oluşturulma"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Değiştirilme"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Sayfa Sayısı"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "İyileştirme"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Biçim"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Güvenlik"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Javascript Barındırır"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Kağıt Boyutu"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Boyut"
 
@@ -975,12 +975,12 @@ msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Sayfayı Saat Yönünde 90 Derece Döndür"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
@@ -1015,182 +1015,182 @@ msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Belgede Gezinme"
 
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.ui:160
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Sayfada Gezinme"
 
-#: shell/resources/help-overlay.ui:172
+#: shell/resources/help-overlay.ui:166
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Sayfada Birkaç Satır Birden Aşağı/Yukarı Git"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
+#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Önceki Sayfa"
 
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Sonraki Sayfa"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.ui:184
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Sayfa Numarasına Git"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.ui:190
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Önceki Sayfa (Hızlı)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.ui:196
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Sonraki Sayfa (Hızlı)"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Önceki Ziyaret Edilen Sayfa"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Sonraki Ziyaret Edilen Sayfa"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Sayfanın Başlangıcına/Sonuna Git"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Belge Başlangıcına Git"
 
-#: shell/resources/help-overlay.ui:232
+#: shell/resources/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Belge Sonuna Git"
 
-#: shell/resources/help-overlay.ui:240
+#: shell/resources/help-overlay.ui:234
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Belge Görünümü ve İşlemesi"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.ui:237
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Yer İmi Ekle"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.ui:243
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Yer İmini Kaldır"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Gece Kipi"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.ui:255
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Kesintisiz Kaydırma"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.ui:261
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Çift Sayfa"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.ui:267
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Tek Sayfalar Solda"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.ui:273
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Belge Özellikleri"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.ui:279
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Açıklama Metni Ekle"
 
-#: shell/resources/help-overlay.ui:291
+#: shell/resources/help-overlay.ui:285
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Metni Vurgula"
 
-#: shell/resources/help-overlay.ui:299
+#: shell/resources/help-overlay.ui:293
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Metin Bulma"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.ui:296
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Bul"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.ui:302
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Sonrakini Bul"
 
-#: shell/resources/help-overlay.ui:314
+#: shell/resources/help-overlay.ui:308
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Öncekini Bul"
 
-#: shell/resources/help-overlay.ui:322
+#: shell/resources/help-overlay.ui:316
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Genel"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.ui:319
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Yardım"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.ui:325
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menü"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.ui:331
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.ui:337
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: shell/resources/help-overlay.ui:349
+#: shell/resources/help-overlay.ui:343
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
-#: shell/resources/help-overlay.ui:357
+#: shell/resources/help-overlay.ui:351
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Sunum Kipi"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.ui:354
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Siyah Ekran"
 
-#: shell/resources/help-overlay.ui:366
+#: shell/resources/help-overlay.ui:360
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Beyaz Ekran"
 
-#: shell/resources/help-overlay.ui:374
+#: shell/resources/help-overlay.ui:368
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Dokunmatik Yüzey Hareketleri"
@@ -1257,7 +1257,7 @@ msgid "Markup Type"
 msgstr "İmleme Türü"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:73
-#: shell/resources/pps-document-view.ui:713
+#: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
 msgstr "Vurgula"
 
@@ -1266,12 +1266,12 @@ msgid "Strike out"
 msgstr "Üstünü çiz"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:75
-#: shell/resources/pps-document-view.ui:743
+#: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Altını çiz"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:76
-#: shell/resources/pps-document-view.ui:723
+#: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
 msgstr "Dalgalı"
 
@@ -1284,7 +1284,7 @@ msgstr "_Uygula"
 msgid "Search"
 msgstr "Ara"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
 msgid "Main Menu"
 msgstr "Ana Menü"
 
@@ -1308,31 +1308,31 @@ msgstr "Ekler"
 msgid "Layers"
 msgstr "Katmanlar"
 
-#: shell/resources/pps-document-view.ui:208
+#: shell/resources/pps-document-view.ui:209
 msgid "Toggle Sidebar"
 msgstr "Kenar Çubuğu Aç/Kapat"
 
-#: shell/resources/pps-document-view.ui:214
+#: shell/resources/pps-document-view.ui:215
 msgid "Document Menu"
 msgstr "Belge Menüsü"
 
-#: shell/resources/pps-document-view.ui:237 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
 msgid "Document has been digitally signed."
 msgstr "Belge sayısal olarak imzalandı."
 
-#: shell/resources/pps-document-view.ui:238
+#: shell/resources/pps-document-view.ui:239
 msgid "View Signature…"
 msgstr "İmzayı Görüntüle…"
 
-#: shell/resources/pps-document-view.ui:271
+#: shell/resources/pps-document-view.ui:272
 msgid "Fit Automatically"
 msgstr "Kendiliğinden Sığdır"
 
-#: shell/resources/pps-document-view.ui:563
+#: shell/resources/pps-document-view.ui:565
 msgid "Selection too Small"
 msgstr "Seçim Çok Küçük"
 
-#: shell/resources/pps-document-view.ui:564
+#: shell/resources/pps-document-view.ui:566
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1342,19 +1342,19 @@ msgstr ""
 "oluşturmak istiyorsanız, `Baştan Başla` düğmesine basıp daha büyük bir "
 "dikdörtgen çizin."
 
-#: shell/resources/pps-document-view.ui:569
+#: shell/resources/pps-document-view.ui:571
 msgid "Start _Over"
 msgstr "_Baştan Başla"
 
-#: shell/resources/pps-document-view.ui:570
+#: shell/resources/pps-document-view.ui:572
 msgid "_Sign"
 msgstr "İ_mzala"
 
-#: shell/resources/pps-document-view.ui:576
+#: shell/resources/pps-document-view.ui:578
 msgid "Abort Printing?"
 msgstr "Yazdırma İptal Edilsin Mi?"
 
-#: shell/resources/pps-document-view.ui:577
+#: shell/resources/pps-document-view.ui:579
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1362,167 +1362,167 @@ msgstr ""
 "Bir ya da daha çok etkin yazdırma işi var. Pencere kapatılırsa, bekleyen "
 "yazdırma işleri yazdırılmayacak."
 
-#: shell/resources/pps-document-view.ui:580
+#: shell/resources/pps-document-view.ui:582
 msgid "Abort _Print and Close"
 msgstr "_Yazdırmayı İptal Et ve Kapat"
 
-#: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
+#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
 #: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
-#: shell/src/document_view/io.rs:710
+#: shell/src/document_view/io.rs:711
 msgid "_Cancel"
 msgstr "İ_ptal"
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.ui:584
 msgid "Close _After Printing"
 msgstr "Yazdırdıktan _Sonra Kapat"
 
-#: shell/resources/pps-document-view.ui:596
+#: shell/resources/pps-document-view.ui:598
 msgid "Open…"
 msgstr "Aç…"
 
-#: shell/resources/pps-document-view.ui:602
+#: shell/resources/pps-document-view.ui:604
 msgid "Ni_ght Mode"
 msgstr "_Gece Kipi"
 
-#: shell/resources/pps-document-view.ui:608 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: shell/resources/pps-document-view.ui:612 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
 msgid "_Help"
 msgstr "_Yardım"
 
-#: shell/resources/pps-document-view.ui:616 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
 msgid "_About Papers"
 msgstr "Papers _Hakkında"
 
-#: shell/resources/pps-document-view.ui:624
+#: shell/resources/pps-document-view.ui:626
 msgid "_Print…"
 msgstr "Yazdır…"
 
-#: shell/resources/pps-document-view.ui:628
+#: shell/resources/pps-document-view.ui:630
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
-#: shell/resources/pps-document-view.ui:632
+#: shell/resources/pps-document-view.ui:634
 msgid "Present as Slideshow"
 msgstr "Slayt Gösterisi Olarak Sun"
 
-#: shell/resources/pps-document-view.ui:638
+#: shell/resources/pps-document-view.ui:640
 msgid "Sign D_igitally…"
 msgstr "S_ayısal İmzala…"
 
-#: shell/resources/pps-document-view.ui:644
+#: shell/resources/pps-document-view.ui:646
 msgid "Open a C_opy"
 msgstr "K_opya Aç"
 
-#: shell/resources/pps-document-view.ui:648
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Birlikte Aç…"
 
-#: shell/resources/pps-document-view.ui:652
+#: shell/resources/pps-document-view.ui:654
 msgid "_Save As…"
 msgstr "_Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.ui:658
+#: shell/resources/pps-document-view.ui:660
 msgid "_Continuous"
 msgstr "Kesintisi_z"
 
-#: shell/resources/pps-document-view.ui:662
+#: shell/resources/pps-document-view.ui:664
 msgid "_Dual"
 msgstr "_İkili"
 
-#: shell/resources/pps-document-view.ui:666
+#: shell/resources/pps-document-view.ui:668
 msgid "_Odd Pages Left"
 msgstr "Tek Sayfalar S_olda"
 
-#: shell/resources/pps-document-view.ui:670
+#: shell/resources/pps-document-view.ui:672
 msgid "Right to Left Document"
 msgstr "Sağdan Sola Belge"
 
-#: shell/resources/pps-document-view.ui:676
+#: shell/resources/pps-document-view.ui:678
 msgid "Ro_tate ⤵"
 msgstr "Dön_dür ⤵"
 
-#: shell/resources/pps-document-view.ui:682
+#: shell/resources/pps-document-view.ui:684
 msgid "Document Prop_erties"
 msgstr "B_elge Özellikleri"
 
-#: shell/resources/pps-document-view.ui:733
+#: shell/resources/pps-document-view.ui:735
 msgid "Strikethrough"
 msgstr "Üstü Çizili"
 
-#: shell/resources/pps-document-view.ui:837
+#: shell/resources/pps-document-view.ui:839
 msgid "_Open Link"
 msgstr "_Bağlantı Aç"
 
-#: shell/resources/pps-document-view.ui:842
+#: shell/resources/pps-document-view.ui:844
 msgid "_Copy Link Address"
 msgstr "_Bağlantı Adresini Kopyala"
 
-#: shell/resources/pps-document-view.ui:847
+#: shell/resources/pps-document-view.ui:849
 msgid "_Go To"
 msgstr "_Git"
 
-#: shell/resources/pps-document-view.ui:852
+#: shell/resources/pps-document-view.ui:854
 msgid "Open in New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: shell/resources/pps-document-view.ui:859
+#: shell/resources/pps-document-view.ui:861
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: shell/resources/pps-document-view.ui:863
+#: shell/resources/pps-document-view.ui:865
 msgid "Select _All"
 msgstr "Tü_münü Seç"
 
-#: shell/resources/pps-document-view.ui:869
+#: shell/resources/pps-document-view.ui:871
 msgid "_Save Image As…"
 msgstr "_Resmi Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.ui:874
+#: shell/resources/pps-document-view.ui:876
 msgid "Copy _Image"
 msgstr "Resmi K_opyala"
 
-#: shell/resources/pps-document-view.ui:881
+#: shell/resources/pps-document-view.ui:883
 #: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "Ekleri _Aç"
 
-#: shell/resources/pps-document-view.ui:886
+#: shell/resources/pps-document-view.ui:888
 #: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "Ekleri _Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.ui:894
+#: shell/resources/pps-document-view.ui:896
 msgid "Annotation _Properties…"
 msgstr "Açıklama _Özellikleri…"
 
-#: shell/resources/pps-document-view.ui:899
+#: shell/resources/pps-document-view.ui:901
 msgid "R_emove Annotation"
 msgstr "Açıklamayı _Kaldır"
 
-#: shell/resources/pps-document-view.ui:906
+#: shell/resources/pps-document-view.ui:908
 msgid "_Add Text Annotation"
 msgstr "Açıklama Metni _Ekle"
 
-#: shell/resources/pps-document-view.ui:911
+#: shell/resources/pps-document-view.ui:913
 msgid "_Highlight Selected Text"
 msgstr "Seçili Metni _Vurgula"
 
-#: shell/resources/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.ui:64
 msgid "No Results Found"
 msgstr "Sonuç Bulunamadı"
 
-#: shell/resources/pps-find-sidebar.ui:71
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
 msgstr "Başka arama dene"
 
-#: shell/resources/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
 msgstr "Arama Gerçekleştir"
 
-#: shell/resources/pps-find-sidebar.ui:86
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
 msgstr "Arama sonuçları burada görünecek"
 
@@ -1530,13 +1530,13 @@ msgstr "Arama sonuçları burada görünecek"
 msgid "Loading Document"
 msgstr "Belge Yükleme"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "İ_ptal"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:703
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:704
 msgid "Password Required"
 msgstr "Parola Gerekli"
 
@@ -1584,6 +1584,10 @@ msgstr "Metin Lisansı"
 #: shell/resources/pps-properties-license.ui:84
 msgid "Further Information"
 msgstr "Daha Çok Bilgi"
+
+#: shell/resources/pps-properties-signatures.ui:37
+msgid "Signature Information"
+msgstr "İmza Bilgisi"
 
 #: shell/resources/pps-properties-signatures.ui:55
 msgid "View Details…"
@@ -1653,73 +1657,73 @@ msgstr "Bu seçimi yazdır…"
 msgid "Previews"
 msgstr "Ön İzle"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
 msgid "Open a Document"
 msgstr "Belge Aç"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.ui:50
 msgid "Drag and drop documents here"
 msgstr "Belgeleri buraya sürükleyip bırakın"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.ui:55
 msgid "_Open…"
 msgstr "_Aç…"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.ui:81
 msgid "Unable to Open Document"
 msgstr "Belge Açılamadı"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.ui:86
 msgid "_Open Other File…"
 msgstr "Diğer Dosyayı _Aç…"
 
-#: shell/src/application.rs:202
+#: shell/src/application.rs:212
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996-2025 Papers yazarları"
 
-#: shell/src/application.rs:203
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Sabri Ünal <yakushabb@gmail.com>"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Gösterilecek belgenin sayfa etiketi."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "SAYFA"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Gösterilecek belgenin sayfa numarası."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "NUMARA"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Gösterilecek adlandırılmış hedef."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "HEDEF"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:344
 msgid "Run papers in fullscreen mode."
 msgstr "Papers’i tam ekran kipinde çalıştır."
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:353
 msgid "Run papers in presentation mode."
 msgstr "Papers’i sunum kipinde çalıştır."
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr "Programın sürümünü göster."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[DOSYA…]"
 
@@ -1727,7 +1731,7 @@ msgstr "[DOSYA…]"
 msgid "View Details"
 msgstr "Ayrıntıları Göster"
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:704
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1735,55 +1739,55 @@ msgstr ""
 "Belge, yeni ya da değiştirilmiş ek açıklamalar ve doldurulmuş form alanları "
 "içeriyor."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:705
 msgid "Document contains form fields that have been filled out."
 msgstr "Belge, doldurulmuş form alanları içeriyor."
 
-#: shell/src/document_view.rs:699
+#: shell/src/document_view.rs:706
 msgid "Document contains new or modified annotations."
 msgstr "Belge, yeni ya da değiştirilmiş açıklamalar içeriyor."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:714
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Eğer kopya kaydetmezseniz, değişiklikler tümüyle yitirilecek."
 
-#: shell/src/document_view.rs:708
+#: shell/src/document_view.rs:715
 msgid "Save Changes to a Copy?"
 msgstr "Değişiklikler Kopyaya Kaydedilsin Mi?"
 
-#: shell/src/document_view.rs:717
+#: shell/src/document_view.rs:724
 msgid "Close _Without Saving"
 msgstr "Kaydet_meden Kapat"
 
-#: shell/src/document_view.rs:719
+#: shell/src/document_view.rs:726
 msgid "_Save a Copy"
 msgstr "_Kopya Kaydet"
 
-#: shell/src/document_view/actions.rs:755
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Resmi Kaydet"
 
-#: shell/src/document_view/actions.rs:791
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Resmi kaydetmek için uygun biçim bulunamadı"
 
-#: shell/src/document_view/actions.rs:814
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "Resim kaydedilemedi."
 
-#: shell/src/document_view/actions.rs:917
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "İmleç gezinme kipi etkin, devre dışı bırakmak için F7 tuşuna basın."
 
-#: shell/src/document_view/actions.rs:919
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "İmleç gezinme kipi devre dışı, etkinleştirmek için F7 tuşuna basın."
 
-#: shell/src/document_view/actions.rs:1021 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Ek Açılamadı"
 
-#: shell/src/document_view/actions.rs:1054
+#: shell/src/document_view/actions.rs:1058
 msgid "The attachment could not be saved."
 msgstr "Ek kaydedilemedi."
 
@@ -1839,23 +1843,24 @@ msgstr "Bu belgeyi imzalamak için sertifika gerekli"
 msgid "Save Signed File"
 msgstr "İmzalı Dosyayı Kaydet"
 
-#: shell/src/document_view/io.rs:695
+#: shell/src/document_view/io.rs:696
 msgid "Please enter password for {}"
 msgstr "{} parolasını gir"
 
-#: shell/src/document_view/io.rs:711
+#: shell/src/document_view/io.rs:712
 msgid "_Login"
 msgstr "Oturum _Aç"
 
-#: shell/src/document_view/print.rs:45
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "“{}” işi yazdırılıyor"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "Sırada bekleyen görev yok"
 
-#: shell/src/document_view/print.rs:81
+#: shell/src/document_view/print.rs:82
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} görev sırada bekliyor"
@@ -1869,7 +1874,7 @@ msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Güvenlik uyarısı: bu belgenin “{}” dosyasını açması önlenmiştir"
 
-#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:428 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "{}. Sayfa"
@@ -1895,15 +1900,15 @@ msgstr "“{}” belgesi kilitli ve açılabilmesi için önce parola gerekiyor"
 msgid "File"
 msgstr "Dosya"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Klasör"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "İçerik"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Tarih ve Saat"
 
