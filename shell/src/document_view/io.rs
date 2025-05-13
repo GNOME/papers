@@ -108,9 +108,9 @@ impl imp::PpsDocumentView {
         let title = window_title.title();
 
         let new_title = if self.obj().direction() == gtk::TextDirection::Rtl {
-            format!("{} •", title)
+            format!("{title} •")
         } else {
-            format!("• {}", title)
+            format!("• {title}")
         };
 
         window_title.set_title(&new_title);
@@ -180,9 +180,9 @@ impl imp::PpsDocumentView {
         if !display_name.is_empty() {
             if let Some(doc_title) = doc_title.filter(|title| !title.is_empty()) {
                 let title = if ltr {
-                    format!("{} – {}", doc_title, display_name)
+                    format!("{doc_title} – {display_name}")
                 } else {
-                    format!("{} – {}", display_name, doc_title)
+                    format!("{display_name} – {doc_title}")
                 };
 
                 let title = title.replace('\n', " ");
@@ -658,7 +658,7 @@ impl imp::PpsDocumentView {
         let name = match edit_name.rsplit_once(".") {
             None => edit_name,
             Some((filename, ext)) => {
-                format!("{}-signed.{}", filename, ext)
+                format!("{filename}-signed.{ext}")
             }
         };
 

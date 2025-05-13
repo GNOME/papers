@@ -25,7 +25,7 @@ impl imp::PpsDocumentView {
             .document_action_group
             .lookup_action(name)
             .and_downcast::<gio::SimpleAction>()
-            .unwrap_or_else(|| panic!("there is no action named {}", name));
+            .unwrap_or_else(|| panic!("there is no action named {name}"));
 
         action.set_enabled(enabled);
     }
@@ -934,7 +934,7 @@ impl imp::PpsDocumentView {
             "purple" => gdk::RGBA::parse("#c061cb").unwrap(),
             "blue" => gdk::RGBA::parse("#3584e4").unwrap(),
             "green" => gdk::RGBA::parse("#33d17a").unwrap(),
-            _ => panic!("unknown color {}", color),
+            _ => panic!("unknown color {color}"),
         }
     }
 
@@ -954,7 +954,7 @@ impl imp::PpsDocumentView {
             "squiggly" => Squiggly,
             "strikethrough" => StrikeOut,
             "underline" => Underline,
-            _ => panic!("unknown style {}", style),
+            _ => panic!("unknown style {style}"),
         }
     }
 

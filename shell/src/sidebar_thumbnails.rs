@@ -442,7 +442,7 @@ mod imp {
 
             self.obj().remove_css_class("columns-1");
             self.obj().remove_css_class("columns-2");
-            self.obj().add_css_class(&format!("columns-{}", columns));
+            self.obj().add_css_class(&format!("columns-{columns}"));
         }
 
         fn set_current_page(&self, doc_page: i32) {

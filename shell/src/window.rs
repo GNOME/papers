@@ -248,7 +248,7 @@ mod imp {
             let text = gettext("File changed outside Papers. Reload document?");
 
             let dialog = adw::AlertDialog::builder()
-                .body(format!("{} {}", secondary_text, secondary_text_command))
+                .body(format!("{secondary_text} {secondary_text_command}"))
                 .heading(text)
                 .default_response("yes")
                 .build();
@@ -537,7 +537,7 @@ mod imp {
                     // We'd like to keep extension of source uri since
                     // it helps to resolve some mime types, say cbz.
                     let base_name = self.edit_name.borrow().clone();
-                    let template = format!("document.XXXXXX-{}", base_name);
+                    let template = format!("document.XXXXXX-{base_name}");
                     match papers_document::mkstemp(&template) {
                         Ok((_, temp_file)) => {
                             let file = gio::File::for_path(&temp_file);
@@ -1153,7 +1153,7 @@ mod imp {
                 uri.to_string()
             } else if uri.starts_with("www.") {
                 // Not a valid uri, assume https if it starts with www
-                format!("https://{}", uri)
+                format!("https://{uri}")
             } else {
                 return;
             };
