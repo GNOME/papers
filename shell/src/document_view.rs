@@ -715,7 +715,7 @@ mod imp {
             let text = gettext("Save Changes to a Copy?");
 
             let dialog = adw::AlertDialog::builder()
-                .body(format!("{} {}", secondary_text, secondary_text_command))
+                .body(format!("{secondary_text} {secondary_text_command}"))
                 .heading(text)
                 .default_response("yes")
                 .build();
