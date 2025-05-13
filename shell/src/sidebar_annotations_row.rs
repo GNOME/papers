@@ -63,8 +63,8 @@ mod imp {
             let tooltip = annot.filter(|annot| annot.label().is_some()).map(|annot| {
                 let label = annot.label().unwrap();
                 annot.modified().map_or(
-                    format!("<span weight=\"bold\">{}</span>", label),
-                    |modified| format!("<span weight=\"bold\">{}</span>\n{}", label, modified),
+                    format!("<span weight=\"bold\">{label}</span>"),
+                    |modified| format!("<span weight=\"bold\">{label}</span>\n{modified}"),
                 )
             });
             self.obj().set_tooltip_markup(tooltip.as_deref());
@@ -136,10 +136,9 @@ mod imp {
                 .map(|gstr| gstr.as_str().to_string())
                 .unwrap_or("default".to_string());
             let page_index = annot.map(|annot| annot.page_index() as i32).unwrap_or(-1);
-            let annotation_id_class = format!("annotation-{}-{}", page_index, name);
+            let annotation_id_class = format!("annotation-{page_index}-{name}");
             let css = format!(
-                "pps-sidebar-annotations-row.{} {{ --annotation-color: {}; }}",
-                annotation_id_class, color
+                "pps-sidebar-annotations-row.{annotation_id_class} {{ --annotation-color: {color}; }}"
             );
             let provider = gtk::CssProvider::new();
 

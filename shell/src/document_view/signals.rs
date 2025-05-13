@@ -202,7 +202,7 @@ impl imp::PpsDocumentView {
             uri.to_string()
         } else if uri.starts_with("www.") {
             // Not a valid uri, assume https if it starts with www
-            format!("https://{}", uri)
+            format!("https://{uri}")
         } else {
             let path = self
                 .file()

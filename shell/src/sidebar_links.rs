@@ -79,7 +79,7 @@ mod imp {
                 out.push('|');
 
                 for p in set {
-                    out.push_str(&format!("{}|", p));
+                    out.push_str(&format!("{p}|"));
                 }
             }
 
