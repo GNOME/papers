@@ -3458,6 +3458,14 @@ pps_view_connect_annot_signals (PpsView *view,
 		                         view,
 		                         G_CONNECT_DEFAULT);
 	}
+
+	if (PPS_IS_ANNOTATION_TEXT (annot)) {
+		g_signal_connect_object (annot,
+		                         "notify::icon",
+		                         G_CALLBACK (pps_view_annot_changed_cb),
+		                         view,
+		                         G_CONNECT_DEFAULT);
+	}
 }
 
 static void
