@@ -890,7 +890,7 @@ pps_point_new (void)
 }
 
 PpsPoint *
-pps_point_copy (PpsPoint *point)
+pps_point_copy (const PpsPoint *point)
 {
 	PpsPoint *new_point;
 
