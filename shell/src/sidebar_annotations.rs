@@ -176,10 +176,10 @@ mod imp {
                 .document_model()
                 .and_then(|m| m.document())
                 .unwrap();
-            let annot = item.item().and_downcast::<AnnotationMarkup>().unwrap();
-
-            row.set_document(document);
-            row.set_annotation(annot);
+            if let Some(annot) = item.item().and_downcast::<AnnotationMarkup>() {
+                row.set_document(document);
+                row.set_annotation(annot);
+            }
         }
     }
 }

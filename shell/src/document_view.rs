@@ -62,6 +62,26 @@ mod imp {
         #[template_child]
         pub(super) annot_menu_child: TemplateChild<gtk::Box>,
 
+        // Ink and text tools
+        #[template_child]
+        pub(super) eraser_settings_button: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        pub(super) eraser_radius_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) pencil_stroke_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) pencil_color_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) highlight_stroke_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) highlight_color_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) text_font_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) text_color_popover: TemplateChild<gtk::Popover>,
+        #[template_child]
+        pub(super) draw_revealer: TemplateChild<gtk::Revealer>,
+
         // sidebar
         #[template_child]
         pub(super) sidebar: TemplateChild<PpsSidebar>,
@@ -156,6 +176,8 @@ mod imp {
         #[template_child]
         pub(super) annots_context: TemplateChild<papers_view::AnnotationsContext>,
         pub(super) deletion_toast: RefCell<Option<adw::Toast>>,
+        #[template_child]
+        pub(super) draw_button: TemplateChild<gtk::Button>,
 
         // Signature
         #[template_child]
@@ -194,6 +216,8 @@ mod imp {
             PpsSidebarLayers::ensure_type();
             PpsSidebarLinks::ensure_type();
             PpsSidebarThumbnails::ensure_type();
+
+            crate::simple_color_swatch::SimpleColorSwatch::ensure_type();
 
             klass.bind_template();
             klass.bind_template_callbacks();
@@ -286,6 +310,17 @@ mod imp {
                     }
                 }
             ));
+
+            let eraser_settings_popover = self.eraser_settings_button.popover().unwrap();
+            eraser_settings_popover.set_has_arrow(false);
+            eraser_settings_popover.set_offset(0, -8);
+            self.eraser_radius_popover.set_offset(0, -8);
+            self.pencil_stroke_popover.set_offset(0, -8);
+            self.pencil_color_popover.set_offset(0, -8);
+            self.highlight_stroke_popover.set_offset(0, -8);
+            self.highlight_color_popover.set_offset(0, -8);
+            self.text_font_popover.set_offset(0, -8);
+            self.text_color_popover.set_offset(0, -8);
         }
     }
 

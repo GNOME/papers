@@ -178,7 +178,7 @@ GType pps_point_get_type (void);
 PPS_PUBLIC
 PpsPoint *pps_point_new (void);
 PPS_PUBLIC
-PpsPoint *pps_point_copy (PpsPoint *point);
+PpsPoint *pps_point_copy (const PpsPoint *point);
 
 /**
  * PpsDocumentPoint:
