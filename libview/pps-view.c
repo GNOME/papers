@@ -6677,28 +6677,22 @@ pps_view_set_property (GObject *object,
 static void
 view_update_scale_limits (PpsView *view)
 {
-	gdouble min_width, min_height;
-	gdouble width, height;
+	gdouble max_width, max_height;
 	gdouble max_scale;
 	gdouble dpi;
-	gint rotation;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 
 	if (!document)
 		return;
 
-	rotation = pps_document_model_get_rotation (priv->model);
-
 	dpi = pps_document_misc_get_widget_dpi (GTK_WIDGET (view)) / 72.0;
 
-	pps_document_get_min_page_size (document, &min_width, &min_height);
-	width = (rotation == 0 || rotation == 180) ? min_width : min_height;
-	height = (rotation == 0 || rotation == 180) ? min_height : min_width;
-	max_scale = sqrt (priv->pixbuf_cache_size / (width * dpi * 4 * height * dpi));
+	pps_document_get_max_page_size (document, &max_width, &max_height);
+	max_scale = sqrt (priv->pixbuf_cache_size / (max_width * 4 * max_height));
 
 	pps_document_model_set_min_scale (priv->model, MIN_SCALE * dpi);
-	pps_document_model_set_max_scale (priv->model, max_scale * dpi);
+	pps_document_model_set_max_scale (priv->model, max_scale);
 }
 
 static void
