@@ -6307,6 +6307,9 @@ pps_view_set_property (GObject *object,
 	}
 }
 
+/* This is hardcoded into cairo, see https://github.com/ImageMagick/cairo/blob/2fd08a0e6a452f72d1b7780ff9f88632e3bd64fe/src/cairo-image-surface.c#L62C2-L62C8 */
+#define MAX_IMAGE_SIZE 32767
+
 static void
 view_update_scale_limits (PpsView *view)
 {
@@ -6323,6 +6326,8 @@ view_update_scale_limits (PpsView *view)
 
 	pps_document_get_max_page_size (document, &max_width, &max_height);
 	max_scale = sqrt (priv->pixbuf_cache_size / (max_width * 4 * max_height));
+	max_scale = MIN (max_scale, MAX_IMAGE_SIZE / max_height);
+	max_scale = MIN (max_scale, MAX_IMAGE_SIZE / max_width);
 
 	pps_document_model_set_min_scale (priv->model, MIN_SCALE * dpi);
 	pps_document_model_set_max_scale (priv->model, max_scale);
