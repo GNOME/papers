@@ -677,6 +677,18 @@ view_cursor_moved_cb (PpsView *view,
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 	priv->cursor_page = cursor_page;
 	priv->cursor_offset = cursor_offset;
+	if (cursor_page == priv->index) {
+		gtk_accessible_text_update_caret_position (GTK_ACCESSIBLE_TEXT (page));
+	}
+}
+
+static void
+view_selection_changed_cb (PpsViewPage *page)
+{
+	queue_draw (GTK_WIDGET (page));
+	if (priv->cursor_page == priv->index) {
+		gtk_accessible_text_update_selection_bound (GTK_ACCESSIBLE_TEXT (page));
+	}
 }
 
 /* ATs expect to be able to identify sentence boundaries based on content. Valid,
@@ -1308,7 +1320,7 @@ pps_view_page_setup (PpsViewPage *page,
 
 	g_signal_connect_object (view,
 	                         "selection-changed",
-	                         G_CALLBACK (gtk_widget_queue_draw),
+	                         G_CALLBACK (view_selection_changed_cb),
 	                         page, G_CONNECT_SWAPPED);
 	g_signal_connect_object (view,
 	                         "cursor-moved",
