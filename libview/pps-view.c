@@ -35,6 +35,10 @@
 #include "pps-view-marshal.h"
 #include "pps-view-page.h"
 
+#if HAVE_LIBSPELLING
+#include <libspelling.h>
+#endif
+
 enum {
 	SIGNAL_SCROLL,
 	SIGNAL_HANDLE_LINK,
@@ -2646,6 +2650,9 @@ pps_view_form_field_text_create_widget (PpsView *view,
 	GtkTextBuffer *buffer = NULL;
 	gchar *txt;
 	GtkEventController *controller;
+#if HAVE_LIBSPELLING
+	g_autoptr (SpellingTextBufferAdapter) adapter = NULL;
+#endif
 
 	txt = pps_document_forms_form_field_text_get_text (PPS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)),
 	                                                   field);
@@ -2674,7 +2681,23 @@ pps_view_form_field_text_create_widget (PpsView *view,
 		                  field);
 		break;
 	case PPS_FORM_FIELD_TEXT_MULTILINE:
+#if HAVE_LIBSPELLING
+		if (priv->enable_spellchecking && field_text->do_spell_check) {
+			text = gtk_source_view_new ();
+			adapter = spelling_text_buffer_adapter_new (
+			    GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (text))),
+			    spelling_checker_get_default ());
+
+			gtk_text_view_set_extra_menu (GTK_TEXT_VIEW (text),
+			                              spelling_text_buffer_adapter_get_menu_model (adapter));
+			gtk_widget_insert_action_group (text, "spelling", G_ACTION_GROUP (adapter));
+			spelling_text_buffer_adapter_set_enabled (adapter, TRUE);
+		} else {
+			text = gtk_text_view_new ();
+		}
+#else
 		text = gtk_text_view_new ();
+#endif
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (text));
 
 		if (txt) {
