@@ -2899,7 +2899,7 @@ pdf_document_annotations_remove_annotation (PpsDocumentAnnotations *document_ann
 
 static GArray *
 get_quads_for_area (PopplerPage *page,
-                    PopplerRectangle *area,
+                    const PopplerRectangle *area,
                     PopplerRectangle *bbox)
 {
 	guint n_rects;
@@ -3329,29 +3329,15 @@ pdf_document_annotations_save_annotation (PpsDocumentAnnotations *document_annot
 			                        (GDestroyNotify) g_object_unref);
 		}
 
-		if (mask & PPS_ANNOTATIONS_SAVE_AREA) {
-			PpsRectangle rect;
-			GArray *quads;
-			PpsPage *page;
-			PopplerRectangle poppler_rect, bbox;
-
-			page = pps_annotation_get_page (annot);
-			pps_annotation_get_area (annot, &rect);
-			poppler_rect = pps_rect_to_poppler (page, &rect);
-
-			quads = get_quads_for_area (POPPLER_PAGE (page->backend_page),
-			                            &poppler_rect, &bbox);
-
-			if (!quads)
-				return;
-
-			rect = poppler_rect_to_pps (page, &bbox);
-
-			pps_annotation_set_area (annot, &rect);
-			poppler_annot_set_rectangle (poppler_annot, &bbox);
-			poppler_annot_text_markup_set_quadrilaterals (text_markup, quads);
-			g_array_unref (quads);
-		}
+		// Saving the area of text markup annotations is not supported
+		// It requires re-computing the bounding box of the annotation
+		// and re-setting it, causing a recursive call to set_area
+		// within the saving logic. This was formerly implemented, but
+		// never used. If it is considered useful in the future, it very
+		// likely will require changes to PpsDocumentAnnotations iface
+		// and maybe also to poppler
+		if (mask & PPS_ANNOTATIONS_SAVE_AREA)
+			g_assert_not_reached ();
 	}
 
 	PDF_DOCUMENT (document_annotations)->annots_modified = TRUE;
