@@ -3157,7 +3157,7 @@ pps_view_create_annotation_window (PpsView *view,
 	                        NULL);
 
 	pps_annotation_window_set_enable_spellchecking (PPS_ANNOTATION_WINDOW (window),
-	                                                pps_view_get_enable_spellchecking (view));
+	                                                priv->enable_spellchecking);
 
 	return window;
 }
@@ -5328,6 +5328,7 @@ void
 pps_view_set_enable_spellchecking (PpsView *view,
                                    gboolean enabled)
 {
+#ifdef HAVE_LIBSPELLING
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	GListModel *model =
 	    pps_annotations_context_get_annots_model (priv->annots_context);
@@ -5348,6 +5349,7 @@ pps_view_set_enable_spellchecking (PpsView *view,
 			pps_annotation_window_set_enable_spellchecking (window, priv->enable_spellchecking);
 		}
 	}
+#endif
 }
 
 gboolean
@@ -5357,11 +5359,7 @@ pps_view_get_enable_spellchecking (PpsView *view)
 
 	g_return_val_if_fail (PPS_IS_VIEW (view), FALSE);
 
-#ifdef HAVE_LIBSPELLING
 	return priv->enable_spellchecking;
-#else
-	return FALSE;
-#endif
 }
 
 static void
