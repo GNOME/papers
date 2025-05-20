@@ -590,22 +590,18 @@ pps_view_page_setup (PpsViewPage *page,
 	g_set_object (&priv->pixbuf_cache, pixbuf_cache);
 	pps_view_page_set_page (page, -1);
 
-	g_signal_connect_data (priv->model, "notify::scale",
-	                       G_CALLBACK (gtk_widget_queue_resize), page,
-	                       NULL, G_CONNECT_SWAPPED);
+	g_signal_connect_swapped (priv->model, "notify::scale",
+	                          G_CALLBACK (gtk_widget_queue_resize), page);
 	g_signal_connect (priv->model, "notify::inverted-colors",
 	                  G_CALLBACK (inverted_changed_cb), page);
 	g_signal_connect (priv->pixbuf_cache, "job-finished",
 	                  G_CALLBACK (job_finished_cb), page);
-	g_signal_connect_data (priv->search_context, "finished",
-	                       G_CALLBACK (search_results_changed_cb), page,
-	                       NULL, G_CONNECT_SWAPPED);
-	g_signal_connect_data (priv->search_context, "result-activated",
-	                       G_CALLBACK (search_results_changed_cb), page,
-	                       NULL, G_CONNECT_SWAPPED);
-	g_signal_connect_data (priv->search_context, "notify::active",
-	                       G_CALLBACK (gtk_widget_queue_draw), page,
-	                       NULL, G_CONNECT_SWAPPED);
+	g_signal_connect_swapped (priv->search_context, "finished",
+	                          G_CALLBACK (search_results_changed_cb), page);
+	g_signal_connect_swapped (priv->search_context, "result-activated",
+	                          G_CALLBACK (search_results_changed_cb), page);
+	g_signal_connect_swapped (priv->search_context, "notify::active",
+	                          G_CALLBACK (gtk_widget_queue_draw), page);
 
 	if (pps_document_model_get_inverted_colors (priv->model))
 		gtk_widget_add_css_class (GTK_WIDGET (page), PPS_STYLE_CLASS_INVERTED);
