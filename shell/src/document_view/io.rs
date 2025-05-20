@@ -146,23 +146,26 @@ impl imp::PpsDocumentView {
             (BACKEND_PDF, "Microsoft PowerPoint - "),
         ];
 
-        self.document().and_then(|d| d.title()).map(|title| {
-            let mut title = title.as_str();
+        self.document()
+            .and_then(|d| d.title())
+            .filter(|s| !s.trim().is_empty())
+            .map(|title| {
+                let mut title = title.as_str();
 
-            for (target_backend, extension) in BAD_EXTENSIONS {
-                if *target_backend == backend {
-                    title = title.trim_end_matches(extension);
+                for (target_backend, extension) in BAD_EXTENSIONS {
+                    if *target_backend == backend {
+                        title = title.trim_end_matches(extension);
+                    }
                 }
-            }
 
-            for (target_backend, prefix) in BAD_PREFIXES {
-                if *target_backend == backend {
-                    title = title.trim_start_matches(prefix);
+                for (target_backend, prefix) in BAD_PREFIXES {
+                    if *target_backend == backend {
+                        title = title.trim_start_matches(prefix);
+                    }
                 }
-            }
 
-            title.to_string()
-        })
+                title.to_string()
+            })
     }
 
     fn update_title(&self) {
