@@ -501,13 +501,13 @@ pps_view_adjustment_to_page_position (PpsView *view)
 }
 
 static void
-pps_view_scroll_to_doc_point (PpsView *view, gint page, PpsPoint *point)
+pps_view_scroll_to_doc_point (PpsView *view, PpsDocumentPoint *doc_point)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble x, y;
 
-	transform_page_point_to_view_point (view, page, point, &x, &y);
-	priv->current_page = page;
+	transform_page_point_to_view_point (view, doc_point->page_index, &doc_point->point_on_page, &x, &y);
+	priv->current_page = doc_point->page_index;
 	scroll_to_view_point (view, x, y);
 
 	/*
@@ -1768,7 +1768,7 @@ static void
 goto_fitr_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsPoint point_on_page;
+	PpsDocumentPoint doc_point;
 	gdouble left, top;
 	gboolean change_left, change_top;
 	int widget_width = gtk_widget_get_width (GTK_WIDGET (view));
@@ -1797,10 +1797,11 @@ goto_fitr_dest (PpsView *view, PpsLinkDest *dest)
 		top -= (widget_height / zoom - doc_height) / 2;
 	}
 
-	point_on_page.x = change_left ? left : 0;
-	point_on_page.y = change_top ? top : 0;
+	doc_point.page_index = pps_link_dest_get_page (dest);
+	doc_point.point_on_page.x = change_left ? left : 0;
+	doc_point.point_on_page.y = change_top ? top : 0;
 
-	pps_view_scroll_to_doc_point (view, pps_link_dest_get_page (dest), &point_on_page);
+	pps_view_scroll_to_doc_point (view, &doc_point);
 }
 
 static void
@@ -1808,24 +1809,23 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsPoint point_on_page;
-	gint page;
+	PpsDocumentPoint doc_point;
 	double left;
 	gboolean change_left;
 
-	page = pps_link_dest_get_page (dest);
+	doc_point.page_index = pps_link_dest_get_page (dest);
 
 	left = pps_link_dest_get_left (dest, &change_left);
-	point_on_page.x = change_left ? left : 0;
-	point_on_page.y = 0;
+	doc_point.point_on_page.x = change_left ? left : 0;
+	doc_point.point_on_page.y = 0;
 
 	if (priv->allow_links_change_zoom) {
 		gdouble doc_width, doc_height;
 		double zoom;
 
-		pps_document_get_page_size (document, page, &doc_width, &doc_height);
+		pps_document_get_page_size (document, doc_point.page_index, &doc_width, &doc_height);
 
-		zoom = zoom_for_size_fit_height (doc_width - point_on_page.x, doc_height,
+		zoom = zoom_for_size_fit_height (doc_width - doc_point.point_on_page.x, doc_height,
 		                                 gtk_widget_get_width (GTK_WIDGET (view)),
 		                                 gtk_widget_get_height (GTK_WIDGET (view)));
 
@@ -1833,7 +1833,7 @@ goto_fitv_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	pps_view_scroll_to_doc_point (view, page, &point_on_page);
+	pps_view_scroll_to_doc_point (view, &doc_point);
 }
 
 static void
@@ -1841,22 +1841,21 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsPoint point_on_page;
-	gint page;
+	PpsDocumentPoint doc_point;
 	gdouble top;
 	gboolean change_top;
 
-	page = pps_link_dest_get_page (dest);
+	doc_point.page_index = pps_link_dest_get_page (dest);
 
 	top = pps_link_dest_get_top (dest, &change_top);
-	point_on_page.x = 0;
-	point_on_page.y = change_top ? top : 0;
+	doc_point.point_on_page.x = 0;
+	doc_point.point_on_page.y = change_top ? top : 0;
 
 	if (priv->allow_links_change_zoom) {
 		gdouble doc_width;
 		gdouble zoom;
 
-		pps_document_get_page_size (document, page, &doc_width, NULL);
+		pps_document_get_page_size (document, doc_point.page_index, &doc_width, NULL);
 
 		zoom = zoom_for_size_fit_width (doc_width, top,
 		                                gtk_widget_get_width (GTK_WIDGET (view)),
@@ -1866,7 +1865,7 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 		pps_document_model_set_scale (priv->model, zoom);
 	}
 
-	pps_view_scroll_to_doc_point (view, page, &point_on_page);
+	pps_view_scroll_to_doc_point (view, &doc_point);
 }
 
 static void
@@ -1899,13 +1898,11 @@ static void
 goto_xyz_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsPoint point_on_page;
-	gint page;
+	PpsDocumentPoint doc_point;
 	gdouble zoom, left, top;
 	gboolean change_zoom, change_left, change_top;
 
 	zoom = pps_link_dest_get_zoom (dest, &change_zoom);
-	page = pps_link_dest_get_page (dest);
 
 	if (priv->allow_links_change_zoom && change_zoom && zoom > 1) {
 		pps_document_model_set_sizing_mode (priv->model, PPS_SIZING_FREE);
@@ -1915,10 +1912,11 @@ goto_xyz_dest (PpsView *view, PpsLinkDest *dest)
 	left = pps_link_dest_get_left (dest, &change_left);
 	top = pps_link_dest_get_top (dest, &change_top);
 
-	point_on_page.x = change_left ? left : 0;
-	point_on_page.y = change_top ? top : 0;
+	doc_point.page_index = pps_link_dest_get_page (dest);
+	doc_point.point_on_page.x = change_left ? left : 0;
+	doc_point.point_on_page.y = change_top ? top : 0;
 
-	pps_view_scroll_to_doc_point (view, page, &point_on_page);
+	pps_view_scroll_to_doc_point (view, &doc_point);
 }
 
 static void
