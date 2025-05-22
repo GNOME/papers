@@ -1,5 +1,5 @@
 use crate::deps::*;
-use oo7::Keyring;
+use oo7::{Keyring, Secret};
 use std::collections::HashMap;
 
 const DOC_LABEL: &str = "org.gnome.Papers.Document";
@@ -33,6 +33,11 @@ pub async fn save_password(uri: &str, password: &str, flags: gio::PasswordSave) 
 
     Keyring::new()
         .await?
-        .create_item(DOC_LABEL, &attributes_for_uri(uri), &password, true)
+        .create_item(
+            DOC_LABEL,
+            &attributes_for_uri(uri),
+            Secret::text(password),
+            true,
+        )
         .await
 }

@@ -21,9 +21,14 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 log = "0.4"
 lru = "0.13"
 futures = "0.3"
-oo7 = { version = "0.3", optional = true }
 gtk = { workspace = true, features = ["gnome_45"]}
 git-version = "0.3.9"
+
+[dependencies.oo7]
+version = "0.4"
+default-features = false
+features = ["async-std", "native_crypto"]
+optional = true
 
 [dependencies.adw]
 package = "libadwaita"
