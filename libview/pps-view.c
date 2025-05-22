@@ -6233,6 +6233,8 @@ pps_view_dispose (GObject *object)
 	PpsView *view = PPS_VIEW (object);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
+	pps_view_remove_all (view);
+
 	if (priv->model) {
 		g_signal_handlers_disconnect_by_data (priv->model, view);
 		g_clear_object (&priv->model);
