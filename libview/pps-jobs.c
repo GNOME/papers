@@ -861,15 +861,16 @@ pps_job_load_run (PpsJob *job)
 		pps_job_reset (job);
 
 		if (priv->uri) {
-			pps_document_load (priv->document, priv->uri, &error);
+			if (pps_document_load (priv->document, priv->uri, &error))
+				g_set_object (&priv->loaded_document, priv->document);
 		} else {
 			/* We need to dup the FD since we may need to pass it again
 			 * if the document is reloaded, as pps_document calls
 			 * consume it.
 			 */
 			int fd = pps_dupfd (priv->fd, &error);
-			if (fd != -1)
-				pps_document_load_fd (priv->document, fd, &error);
+			if (fd != -1 && pps_document_load_fd (priv->document, fd, &error))
+				g_set_object (&priv->loaded_document, priv->document);
 		}
 	} else {
 		if (priv->uri) {
