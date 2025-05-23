@@ -184,6 +184,22 @@ window.pps-annotation-window textview {
 }
 
 #text-highlight > image {
-    background-color: var(--accent-bg-color);
+    --icon-color: var(--yellow-4);
+    background-color: var(--icon-color);
     background-clip: content-box;
+}
+
+#text-strikethrough {
+  --icon-color: var(--red-2);
+  -gtk-icon-palette: error var(--icon-color);
+}
+
+#text-underline {
+  --icon-color: var(--blue-3);
+  -gtk-icon-palette: error var(--icon-color);
+}
+
+#text-squiggly {
+  --icon-color: var(--green-3);
+  -gtk-icon-palette: error var(--icon-color);
 }
