@@ -691,20 +691,6 @@ Box annot_menu_child {
     ToggleButton {
       styles ["flat"]
 
-      name: "text-squiggly";
-      hexpand: true;
-      group: annot-textmarkup-type-group;
-      icon-name: "text-squiggly-symbolic";
-      action-name: "doc.annot-textmarkup-type";
-      action-target: "'squiggly'";
-
-      /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Squiggly");
-    }
-
-    ToggleButton {
-      styles ["flat"]
-
       name: "text-strikethrough";
       hexpand: true;
       group: annot-textmarkup-type-group;
@@ -728,6 +714,20 @@ Box annot_menu_child {
 
       /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
       tooltip-text: _("Underline");
+    }
+
+    ToggleButton {
+      styles ["flat"]
+
+      name: "text-squiggly";
+      hexpand: true;
+      group: annot-textmarkup-type-group;
+      icon-name: "text-squiggly-symbolic";
+      action-name: "doc.annot-textmarkup-type";
+      action-target: "'squiggly'";
+
+      /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
+      tooltip-text: _("Squiggly");
     }
   }
 
