@@ -3501,6 +3501,9 @@ pps_view_annot_added_cb (PpsView *view,
 {
 	PpsAnnotation *annot = PPS_ANNOTATION (user_data);
 
+	if (pps_view_has_selection (view))
+		clear_selection (view);
+
 	pps_view_rerender_annotation (view, annot);
 	pps_view_connect_annot_signals (view, annot);
 
@@ -3508,9 +3511,6 @@ pps_view_annot_added_cb (PpsView *view,
 		GtkWidget *window = pps_view_create_annotation_window (view, PPS_ANNOTATION_MARKUP (annot));
 		pps_annotation_window_show (PPS_ANNOTATION_WINDOW (window));
 	}
-
-	if (pps_view_has_selection (view))
-		clear_selection (view);
 }
 
 static void
