@@ -40,16 +40,6 @@ pps_document_annotations_document_is_modified (PpsDocumentAnnotations *document_
 }
 
 void
-pps_document_annotations_save_annotation (PpsDocumentAnnotations *document_annots,
-                                          PpsAnnotation *annot,
-                                          PpsAnnotationsSaveMask mask)
-{
-	PpsDocumentAnnotationsInterface *iface = PPS_DOCUMENT_ANNOTATIONS_GET_IFACE (document_annots);
-
-	iface->save_annotation (document_annots, annot, mask);
-}
-
-void
 pps_document_annotations_add_annotation (PpsDocumentAnnotations *document_annots,
                                          PpsAnnotation *annot)
 {
