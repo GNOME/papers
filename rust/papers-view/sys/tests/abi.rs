@@ -210,6 +210,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsAnnotationInkAddData",
+        Layout {
+            size: size_of::<PpsAnnotationInkAddData>(),
+            alignment: align_of::<PpsAnnotationInkAddData>(),
+        },
+    ),
+    (
         "PpsAnnotationsContext",
         Layout {
             size: size_of::<PpsAnnotationsContext>(),
