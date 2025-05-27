@@ -16,6 +16,7 @@ pub mod prelude;
 mod auto;
 
 mod document_point;
+mod inktime;
 mod path;
 mod point;
 mod rectangle;
