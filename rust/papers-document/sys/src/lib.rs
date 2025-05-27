@@ -1207,6 +1207,24 @@ impl ::std::fmt::Debug for PpsInkList {
 
 #[derive(Copy, Clone)]
 #[repr(C)]
+pub struct PpsInkTime {
+    pub time: u32,
+    pub x: c_double,
+    pub y: c_double,
+}
+
+impl ::std::fmt::Debug for PpsInkTime {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsInkTime @ {self:p}"))
+            .field("time", &self.time)
+            .field("x", &self.x)
+            .field("y", &self.y)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
 pub struct PpsLayerClass {
     pub parent_class: gobject::GObjectClass,
 }
@@ -2390,6 +2408,12 @@ extern "C" {
     ) -> *mut *mut PpsPath;
 
     //=========================================================================
+    // PpsInkTime
+    //=========================================================================
+    pub fn pps_ink_time_get_type() -> GType;
+    pub fn pps_ink_time_copy(t: *const PpsInkTime) -> *mut PpsInkTime;
+
+    //=========================================================================
     // PpsMapping
     //=========================================================================
     pub fn pps_mapping_get_type() -> GType;
@@ -2565,7 +2589,12 @@ extern "C" {
     pub fn pps_annotation_ink_new_highlight(page: *mut PpsPage) -> *mut PpsAnnotation;
     pub fn pps_annotation_ink_get_highlight(ink: *mut PpsAnnotationInk) -> gboolean;
     pub fn pps_annotation_ink_get_ink_list(ink: *mut PpsAnnotationInk) -> *mut PpsInkList;
+    pub fn pps_annotation_ink_get_time_list(ink: *mut PpsAnnotationInk) -> *mut glib::GSList;
     pub fn pps_annotation_ink_set_ink_list(ink: *mut PpsAnnotationInk, ink_list: *mut PpsInkList);
+    pub fn pps_annotation_ink_set_time_list(
+        ink: *mut PpsAnnotationInk,
+        time_list: *mut glib::GSList,
+    );
 
     //=========================================================================
     // PpsAnnotationMarkup

@@ -88,6 +88,7 @@ pub const PPS_PAGE_DATA_INCLUDE_ALL: PpsJobPageDataFlags = 511;
 #[repr(C)]
 pub struct PpsAnnotationInkAddData {
     pub ink_list: *mut papers_document::PpsInkList,
+    pub times: *mut glib::GSList,
     pub highlight: gboolean,
     pub line_width: c_float,
 }
@@ -96,6 +97,7 @@ impl ::std::fmt::Debug for PpsAnnotationInkAddData {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsAnnotationInkAddData @ {self:p}"))
             .field("ink_list", &self.ink_list)
+            .field("times", &self.times)
             .field("highlight", &self.highlight)
             .field("line_width", &self.line_width)
             .finish()

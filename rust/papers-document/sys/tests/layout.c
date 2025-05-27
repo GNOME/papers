@@ -80,6 +80,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsImage", sizeof(PpsImage), alignof(PpsImage));
     printf("%s;%zu;%zu\n", "PpsImageClass", sizeof(PpsImageClass), alignof(PpsImageClass));
     printf("%s;%zu;%zu\n", "PpsInkList", sizeof(PpsInkList), alignof(PpsInkList));
+    printf("%s;%zu;%zu\n", "PpsInkTime", sizeof(PpsInkTime), alignof(PpsInkTime));
     printf("%s;%zu;%zu\n", "PpsLayer", sizeof(PpsLayer), alignof(PpsLayer));
     printf("%s;%zu;%zu\n", "PpsLayerClass", sizeof(PpsLayerClass), alignof(PpsLayerClass));
     printf("%s;%zu;%zu\n", "PpsLinkActionClass", sizeof(PpsLinkActionClass), alignof(PpsLinkActionClass));

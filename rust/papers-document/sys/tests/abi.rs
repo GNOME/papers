@@ -707,6 +707,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsInkTime",
+        Layout {
+            size: size_of::<PpsInkTime>(),
+            alignment: align_of::<PpsInkTime>(),
+        },
+    ),
+    (
         "PpsLayer",
         Layout {
             size: size_of::<PpsLayer>(),
