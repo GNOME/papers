@@ -470,7 +470,7 @@ PpsSignature *
 pps_signature_new (PpsSignatureStatus status, PpsCertificateInfo *info)
 {
 	return g_object_new (PPS_TYPE_SIGNATURE,
-	                     "status", PPS_SIGNATURE_STATUS_INVALID,
+	                     "status", status,
 	                     "certificate-info", info,
 	                     NULL);
 }
