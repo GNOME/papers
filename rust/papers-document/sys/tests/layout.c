@@ -12,6 +12,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsAnnotationAttachmentClass", sizeof(PpsAnnotationAttachmentClass), alignof(PpsAnnotationAttachmentClass));
     printf("%s;%zu;%zu\n", "PpsAnnotationClass", sizeof(PpsAnnotationClass), alignof(PpsAnnotationClass));
     printf("%s;%zu;%zu\n", "PpsAnnotationFreeTextClass", sizeof(PpsAnnotationFreeTextClass), alignof(PpsAnnotationFreeTextClass));
+    printf("%s;%zu;%zu\n", "PpsAnnotationInkClass", sizeof(PpsAnnotationInkClass), alignof(PpsAnnotationInkClass));
     printf("%s;%zu;%zu\n", "PpsAnnotationMarkup", sizeof(PpsAnnotationMarkup), alignof(PpsAnnotationMarkup));
     printf("%s;%zu;%zu\n", "PpsAnnotationMarkupClass", sizeof(PpsAnnotationMarkupClass), alignof(PpsAnnotationMarkupClass));
     printf("%s;%zu;%zu\n", "PpsAnnotationStampClass", sizeof(PpsAnnotationStampClass), alignof(PpsAnnotationStampClass));
@@ -78,6 +79,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsFormFieldTextType", sizeof(PpsFormFieldTextType), alignof(PpsFormFieldTextType));
     printf("%s;%zu;%zu\n", "PpsImage", sizeof(PpsImage), alignof(PpsImage));
     printf("%s;%zu;%zu\n", "PpsImageClass", sizeof(PpsImageClass), alignof(PpsImageClass));
+    printf("%s;%zu;%zu\n", "PpsInkList", sizeof(PpsInkList), alignof(PpsInkList));
     printf("%s;%zu;%zu\n", "PpsLayer", sizeof(PpsLayer), alignof(PpsLayer));
     printf("%s;%zu;%zu\n", "PpsLayerClass", sizeof(PpsLayerClass), alignof(PpsLayerClass));
     printf("%s;%zu;%zu\n", "PpsLinkActionClass", sizeof(PpsLinkActionClass), alignof(PpsLinkActionClass));
@@ -92,6 +94,7 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsOutlinesClass", sizeof(PpsOutlinesClass), alignof(PpsOutlinesClass));
     printf("%s;%zu;%zu\n", "PpsPage", sizeof(PpsPage), alignof(PpsPage));
     printf("%s;%zu;%zu\n", "PpsPageClass", sizeof(PpsPageClass), alignof(PpsPageClass));
+    printf("%s;%zu;%zu\n", "PpsPath", sizeof(PpsPath), alignof(PpsPath));
     printf("%s;%zu;%zu\n", "PpsPoint", sizeof(PpsPoint), alignof(PpsPoint));
     printf("%s;%zu;%zu\n", "PpsRectangle", sizeof(PpsRectangle), alignof(PpsRectangle));
     printf("%s;%zu;%zu\n", "PpsRenderAnnotsFlags", sizeof(PpsRenderAnnotsFlags), alignof(PpsRenderAnnotsFlags));

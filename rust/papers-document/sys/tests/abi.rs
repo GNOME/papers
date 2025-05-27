@@ -231,6 +231,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsAnnotationInkClass",
+        Layout {
+            size: size_of::<PpsAnnotationInkClass>(),
+            alignment: align_of::<PpsAnnotationInkClass>(),
+        },
+    ),
+    (
         "PpsAnnotationMarkup",
         Layout {
             size: size_of::<PpsAnnotationMarkup>(),
@@ -693,6 +700,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsInkList",
+        Layout {
+            size: size_of::<PpsInkList>(),
+            alignment: align_of::<PpsInkList>(),
+        },
+    ),
+    (
         "PpsLayer",
         Layout {
             size: size_of::<PpsLayer>(),
@@ -788,6 +802,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         Layout {
             size: size_of::<PpsPageClass>(),
             alignment: align_of::<PpsPageClass>(),
+        },
+    ),
+    (
+        "PpsPath",
+        Layout {
+            size: size_of::<PpsPath>(),
+            alignment: align_of::<PpsPath>(),
         },
     ),
     (
@@ -918,6 +939,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) PPS_ANNOTATION_TEXT_MARKUP_UNDERLINE", "2"),
     ("(gint) PPS_ANNOTATION_TYPE_ATTACHMENT", "3"),
     ("(gint) PPS_ANNOTATION_TYPE_FREE_TEXT", "2"),
+    ("(gint) PPS_ANNOTATION_TYPE_INK", "6"),
     ("(gint) PPS_ANNOTATION_TYPE_STAMP", "5"),
     ("(gint) PPS_ANNOTATION_TYPE_TEXT", "1"),
     ("(gint) PPS_ANNOTATION_TYPE_TEXT_MARKUP", "4"),

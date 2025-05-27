@@ -12,6 +12,9 @@ pub use self::annotation_attachment::AnnotationAttachment;
 mod annotation_free_text;
 pub use self::annotation_free_text::AnnotationFreeText;
 
+mod annotation_ink;
+pub use self::annotation_ink::AnnotationInk;
+
 mod annotation_markup;
 pub use self::annotation_markup::AnnotationMarkup;
 
@@ -118,11 +121,17 @@ pub use self::document_point::DocumentPoint;
 mod find_rectangle;
 pub use self::find_rectangle::FindRectangle;
 
+mod ink_list;
+pub use self::ink_list::InkList;
+
 mod mapping;
 pub use self::mapping::Mapping;
 
 mod mapping_list;
 pub use self::mapping_list::MappingList;
+
+mod path;
+pub use self::path::Path;
 
 mod point;
 pub use self::point::Point;

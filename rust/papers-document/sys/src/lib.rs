@@ -64,6 +64,7 @@ pub const PPS_ANNOTATION_TYPE_FREE_TEXT: PpsAnnotationType = 2;
 pub const PPS_ANNOTATION_TYPE_ATTACHMENT: PpsAnnotationType = 3;
 pub const PPS_ANNOTATION_TYPE_TEXT_MARKUP: PpsAnnotationType = 4;
 pub const PPS_ANNOTATION_TYPE_STAMP: PpsAnnotationType = 5;
+pub const PPS_ANNOTATION_TYPE_INK: PpsAnnotationType = 6;
 
 pub type PpsAnnotationsOverMarkup = c_int;
 pub const PPS_ANNOTATION_OVER_MARKUP_NOT_IMPLEMENTED: PpsAnnotationsOverMarkup = 0;
@@ -322,6 +323,20 @@ pub struct PpsAnnotationFreeTextClass {
 impl ::std::fmt::Debug for PpsAnnotationFreeTextClass {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsAnnotationFreeTextClass @ {self:p}"))
+            .field("parent_class", &self.parent_class)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsAnnotationInkClass {
+    pub parent_class: PpsAnnotationClass,
+}
+
+impl ::std::fmt::Debug for PpsAnnotationInkClass {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsAnnotationInkClass @ {self:p}"))
             .field("parent_class", &self.parent_class)
             .finish()
     }
@@ -1176,6 +1191,22 @@ impl ::std::fmt::Debug for PpsImageClass {
 
 #[derive(Copy, Clone)]
 #[repr(C)]
+pub struct PpsInkList {
+    pub paths: *mut *mut PpsPath,
+    pub n_paths: size_t,
+}
+
+impl ::std::fmt::Debug for PpsInkList {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsInkList @ {self:p}"))
+            .field("paths", &self.paths)
+            .field("n_paths", &self.n_paths)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
 pub struct PpsLayerClass {
     pub parent_class: gobject::GObjectClass,
 }
@@ -1298,6 +1329,22 @@ impl ::std::fmt::Debug for PpsPageClass {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsPageClass @ {self:p}"))
             .field("parent_class", &self.parent_class)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsPath {
+    pub points: *mut PpsPoint,
+    pub n_points: size_t,
+}
+
+impl ::std::fmt::Debug for PpsPath {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsPath @ {self:p}"))
+            .field("points", &self.points)
+            .field("n_points", &self.n_points)
             .finish()
     }
 }
@@ -1464,6 +1511,20 @@ pub struct PpsAnnotationFreeText {
 impl ::std::fmt::Debug for PpsAnnotationFreeText {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("PpsAnnotationFreeText @ {self:p}"))
+            .finish()
+    }
+}
+
+#[repr(C)]
+#[allow(dead_code)]
+pub struct PpsAnnotationInk {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for PpsAnnotationInk {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsAnnotationInk @ {self:p}"))
             .finish()
     }
 }
@@ -2313,6 +2374,22 @@ extern "C" {
     pub fn pps_find_rectangle_free(pps_find_rect: *mut PpsFindRectangle);
 
     //=========================================================================
+    // PpsInkList
+    //=========================================================================
+    pub fn pps_ink_list_get_type() -> GType;
+    pub fn pps_ink_list_new_for_array(
+        paths: *mut *const PpsPath,
+        n_paths: c_uint,
+    ) -> *mut PpsInkList;
+    pub fn pps_ink_list_new_for_list(paths: *mut glib::GSList) -> *mut PpsInkList;
+    pub fn pps_ink_list_copy(ink_list: *const PpsInkList) -> *mut PpsInkList;
+    pub fn pps_ink_list_free(ink_list: *mut PpsInkList);
+    pub fn pps_ink_list_get_array(
+        ink_list: *mut PpsInkList,
+        n_paths: *mut size_t,
+    ) -> *mut *mut PpsPath;
+
+    //=========================================================================
     // PpsMapping
     //=========================================================================
     pub fn pps_mapping_get_type() -> GType;
@@ -2354,11 +2431,21 @@ extern "C" {
     pub fn pps_mapping_list_unref(mapping_list: *mut PpsMappingList);
 
     //=========================================================================
+    // PpsPath
+    //=========================================================================
+    pub fn pps_path_get_type() -> GType;
+    pub fn pps_path_new_for_array(points: *const PpsPoint, n_points: c_uint) -> *mut PpsPath;
+    pub fn pps_path_new_for_list(points: *mut glib::GSList) -> *mut PpsPath;
+    pub fn pps_path_copy(path: *const PpsPath) -> *mut PpsPath;
+    pub fn pps_path_copy_array(path: *mut PpsPath, n_points: *mut size_t) -> *mut PpsPoint;
+    pub fn pps_path_free(path: *mut PpsPath);
+
+    //=========================================================================
     // PpsPoint
     //=========================================================================
     pub fn pps_point_get_type() -> GType;
     pub fn pps_point_new() -> *mut PpsPoint;
-    pub fn pps_point_copy(point: *mut PpsPoint) -> *mut PpsPoint;
+    pub fn pps_point_copy(point: *const PpsPoint) -> *mut PpsPoint;
 
     //=========================================================================
     // PpsRectangle
@@ -2469,6 +2556,16 @@ extern "C" {
         annot: *mut PpsAnnotationFreeText,
         rgba: *const gdk::GdkRGBA,
     ) -> gboolean;
+
+    //=========================================================================
+    // PpsAnnotationInk
+    //=========================================================================
+    pub fn pps_annotation_ink_get_type() -> GType;
+    pub fn pps_annotation_ink_new(page: *mut PpsPage) -> *mut PpsAnnotation;
+    pub fn pps_annotation_ink_new_highlight(page: *mut PpsPage) -> *mut PpsAnnotation;
+    pub fn pps_annotation_ink_get_highlight(ink: *mut PpsAnnotationInk) -> gboolean;
+    pub fn pps_annotation_ink_get_ink_list(ink: *mut PpsAnnotationInk) -> *mut PpsInkList;
+    pub fn pps_annotation_ink_set_ink_list(ink: *mut PpsAnnotationInk, ink_list: *mut PpsInkList);
 
     //=========================================================================
     // PpsAnnotationMarkup
