@@ -116,3 +116,27 @@ boxed_inline = true
 name = "PapersDocument.Point"
 status = "generate"
 boxed_inline = true
+
+[[object]]
+name="PapersDocument.Path"
+status = "generate"
+[[object.function]]
+name = "new_for_array"
+ignore = true
+[[object.function]]
+name = "new_for_list"
+ignore = true
+
+[[object]]
+name="PapersDocument.InkList"
+status = "generate"
+[[object.function]]
+name = "get_array"
+ignore = true
+[[object.function]]
+name = "new_for_list"
+ignore = true
+
+[[object]]
+name="PapersDocument.AnnotationInk"
+status = "generate"
