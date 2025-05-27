@@ -685,7 +685,8 @@ view_cursor_moved_cb (PpsView *view,
 static void
 view_selection_changed_cb (PpsViewPage *page)
 {
-	queue_draw (GTK_WIDGET (page));
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	gtk_widget_queue_draw (GTK_WIDGET (page));
 	if (priv->cursor_page == priv->index) {
 		gtk_accessible_text_update_selection_bound (GTK_ACCESSIBLE_TEXT (page));
 	}
@@ -1197,7 +1198,7 @@ pps_view_page_accessible_text_get_offset (GtkAccessibleText      *text,
 	view_x -= widget_point.x;
 	view_y -= widget_point.y;
 
-	doc_point = pps_view_get_doc_point_for_page (view, priv->index, view_x, view_y);
+	doc_point = pps_view_get_point_on_page (view, priv->index, view_x, view_y);
 
 	for (i = 0; i < n_areas; i++) {
 		rect = areas + i;
@@ -1325,7 +1326,7 @@ pps_view_page_setup (PpsViewPage *page,
 	g_signal_connect_object (view,
 	                         "cursor-moved",
 	                         G_CALLBACK (view_cursor_moved_cb),
-	                         page, G_CONNECT_SWAPPED);
+	                         page, 0);
 }
 
 PpsViewPage *
