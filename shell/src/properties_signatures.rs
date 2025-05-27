@@ -398,6 +398,12 @@ mod imp {
         fn details_button_toggled(&self) {
             self.listbox.invalidate_filter();
             self.status_listbox.invalidate_filter();
+
+            if self.details_button.is_active() {
+                self.details_button.set_label(&gettext("Hide Details…"));
+            } else {
+                self.details_button.set_label(&gettext("View Details…"));
+            }
         }
 
         #[template_callback]
