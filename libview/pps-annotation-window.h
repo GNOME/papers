@@ -32,8 +32,7 @@ typedef struct _PpsAnnotationWindowClass PpsAnnotationWindowClass;
 
 GType pps_annotation_window_get_type (void) G_GNUC_CONST;
 GtkWidget *pps_annotation_window_new (PpsAnnotationMarkup *annot,
-                                      GtkWindow *parent,
-                                      PpsDocument *document);
+                                      GtkWindow *parent);
 PpsAnnotation *pps_annotation_window_get_annotation (PpsAnnotationWindow *window);
 gboolean pps_annotation_window_is_open (PpsAnnotationWindow *window);
 void pps_annotation_window_show (PpsAnnotationWindow *window);

@@ -25,7 +25,6 @@ enum {
 	PROP_0,
 	PROP_ANNOTATION,
 	PROP_PARENT,
-	PROP_DOCUMENT,
 };
 
 struct _PpsAnnotationWindow {
@@ -33,7 +32,6 @@ struct _PpsAnnotationWindow {
 
 	PpsAnnotation *annotation;
 	GtkWindow *parent;
-	PpsDocument *document;
 
 	GtkWidget *headerbar;
 	GtkWidget *title_label;
@@ -134,9 +132,6 @@ pps_annotation_window_set_property (GObject *object,
 		break;
 	case PROP_PARENT:
 		window->parent = g_value_get_object (value);
-		break;
-	case PROP_DOCUMENT:
-		window->document = g_value_dup_object (value);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -282,8 +277,6 @@ pps_annotation_window_dispose (GObject *object)
 	                                      G_CALLBACK (pps_annotation_window_contents_changed),
 	                                      window);
 
-	g_clear_object (&window->document);
-
 	g_object_set_data (G_OBJECT (window->annotation), "popup",
 	                   NULL);
 
@@ -332,21 +325,12 @@ pps_annotation_window_class_init (PpsAnnotationWindowClass *klass)
 	                                                      G_PARAM_WRITABLE |
 	                                                          G_PARAM_CONSTRUCT_ONLY |
 	                                                          G_PARAM_STATIC_STRINGS));
-	g_object_class_install_property (g_object_class,
-	                                 PROP_DOCUMENT,
-	                                 g_param_spec_object ("document",
-	                                                      NULL, NULL,
-	                                                      PPS_TYPE_DOCUMENT,
-	                                                      G_PARAM_WRITABLE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
 }
 
 /* Public methods */
 GtkWidget *
 pps_annotation_window_new (PpsAnnotationMarkup *annot,
-                           GtkWindow *parent,
-                           PpsDocument *document)
+                           GtkWindow *parent)
 {
 	GtkWidget *window;
 
@@ -356,7 +340,6 @@ pps_annotation_window_new (PpsAnnotationMarkup *annot,
 	window = g_object_new (PPS_TYPE_ANNOTATION_WINDOW,
 	                       "annotation", annot,
 	                       "parent", parent,
-	                       "document", document,
 	                       NULL);
 	return window;
 }

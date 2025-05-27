@@ -3172,7 +3172,7 @@ pps_view_create_annotation_window (PpsView *view,
 		              NULL);
 	}
 
-	window = pps_annotation_window_new (annot, parent, pps_document_model_get_document (priv->model));
+	window = pps_annotation_window_new (annot, parent);
 	g_object_set_data_full (G_OBJECT (annot), "popup",
 	                        g_object_ref_sink (window),
 	                        NULL);
