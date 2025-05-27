@@ -8,6 +8,114 @@ use glib::{prelude::*, translate::*};
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "PpsAnnotationTool")]
+pub enum AnnotationTool {
+    #[doc(alias = "TOOL_PENCIL")]
+    Pencil,
+    #[doc(alias = "TOOL_HIGHLIGHT")]
+    Highlight,
+    #[doc(alias = "TOOL_ERASER")]
+    Eraser,
+    #[doc(alias = "TOOL_TEXT")]
+    Text,
+    #[doc(alias = "TOOL_MAX")]
+    Max,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl IntoGlib for AnnotationTool {
+    type GlibType = ffi::PpsAnnotationTool;
+
+    #[inline]
+    fn into_glib(self) -> ffi::PpsAnnotationTool {
+        match self {
+            Self::Pencil => ffi::TOOL_PENCIL,
+            Self::Highlight => ffi::TOOL_HIGHLIGHT,
+            Self::Eraser => ffi::TOOL_ERASER,
+            Self::Text => ffi::TOOL_TEXT,
+            Self::Max => ffi::TOOL_MAX,
+            Self::__Unknown(value) => value,
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::PpsAnnotationTool> for AnnotationTool {
+    #[inline]
+    unsafe fn from_glib(value: ffi::PpsAnnotationTool) -> Self {
+        skip_assert_initialized!();
+
+        match value {
+            ffi::TOOL_PENCIL => Self::Pencil,
+            ffi::TOOL_HIGHLIGHT => Self::Highlight,
+            ffi::TOOL_ERASER => Self::Eraser,
+            ffi::TOOL_TEXT => Self::Text,
+            ffi::TOOL_MAX => Self::Max,
+            value => Self::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for AnnotationTool {
+    #[inline]
+    #[doc(alias = "pps_annotation_tool_get_type")]
+    fn static_type() -> glib::Type {
+        unsafe { from_glib(ffi::pps_annotation_tool_get_type()) }
+    }
+}
+
+impl glib::HasParamSpec for AnnotationTool {
+    type ParamSpec = glib::ParamSpecEnum;
+    type SetValue = Self;
+    type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
+    fn param_spec_builder() -> Self::BuilderFn {
+        Self::ParamSpec::builder_with_default
+    }
+}
+
+impl glib::value::ValueType for AnnotationTool {
+    type Type = Self;
+}
+
+unsafe impl<'a> glib::value::FromValue<'a> for AnnotationTool {
+    type Checker = glib::value::GenericValueTypeChecker<Self>;
+
+    #[inline]
+    unsafe fn from_value(value: &'a glib::Value) -> Self {
+        skip_assert_initialized!();
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl ToValue for AnnotationTool {
+    #[inline]
+    fn to_value(&self) -> glib::Value {
+        let mut value = glib::Value::for_value_type::<Self>();
+        unsafe {
+            glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
+        }
+        value
+    }
+
+    #[inline]
+    fn value_type(&self) -> glib::Type {
+        Self::static_type()
+    }
+}
+
+impl From<AnnotationTool> for glib::Value {
+    #[inline]
+    fn from(v: AnnotationTool) -> Self {
+        skip_assert_initialized!();
+        ToValue::to_value(&v)
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 #[doc(alias = "PpsJobPriority")]
 pub enum JobPriority {
     #[doc(alias = "PPS_JOB_PRIORITY_URGENT")]

@@ -10,6 +10,8 @@
 int main() {
     printf("%s;%zu;%zu\n", "PpsAnnotationEditingState", sizeof(PpsAnnotationEditingState), alignof(PpsAnnotationEditingState));
     printf("%s;%zu;%zu\n", "PpsAnnotationInkAddData", sizeof(PpsAnnotationInkAddData), alignof(PpsAnnotationInkAddData));
+    printf("%s;%zu;%zu\n", "PpsAnnotationModelClass", sizeof(PpsAnnotationModelClass), alignof(PpsAnnotationModelClass));
+    printf("%s;%zu;%zu\n", "PpsAnnotationTool", sizeof(PpsAnnotationTool), alignof(PpsAnnotationTool));
     printf("%s;%zu;%zu\n", "PpsAnnotationsContext", sizeof(PpsAnnotationsContext), alignof(PpsAnnotationsContext));
     printf("%s;%zu;%zu\n", "PpsAnnotationsContextClass", sizeof(PpsAnnotationsContextClass), alignof(PpsAnnotationsContextClass));
     printf("%s;%zu;%zu\n", "PpsAttachmentContext", sizeof(PpsAttachmentContext), alignof(PpsAttachmentContext));

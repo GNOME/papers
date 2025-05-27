@@ -35,6 +35,13 @@ use std::ffi::{
 use glib::{gboolean, gconstpointer, gpointer, GType};
 
 // Enums
+pub type PpsAnnotationTool = c_int;
+pub const TOOL_PENCIL: PpsAnnotationTool = 0;
+pub const TOOL_HIGHLIGHT: PpsAnnotationTool = 1;
+pub const TOOL_ERASER: PpsAnnotationTool = 2;
+pub const TOOL_TEXT: PpsAnnotationTool = 3;
+pub const TOOL_MAX: PpsAnnotationTool = 4;
+
 pub type PpsAttachmentContextError = c_int;
 pub const PPS_ATTACHMENT_CONTEXT_ERROR_NOT_IMPLEMENTED: PpsAttachmentContextError = 0;
 pub const PPS_ATTACHMENT_CONTEXT_ERROR_EMPTY_INPUT: PpsAttachmentContextError = 1;
@@ -91,6 +98,20 @@ impl ::std::fmt::Debug for PpsAnnotationInkAddData {
             .field("ink_list", &self.ink_list)
             .field("highlight", &self.highlight)
             .field("line_width", &self.line_width)
+            .finish()
+    }
+}
+
+#[derive(Copy, Clone)]
+#[repr(C)]
+pub struct PpsAnnotationModelClass {
+    pub parent_class: gobject::GObjectClass,
+}
+
+impl ::std::fmt::Debug for PpsAnnotationModelClass {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsAnnotationModelClass @ {self:p}"))
+            .field("parent_class", &self.parent_class)
             .finish()
     }
 }
@@ -495,6 +516,20 @@ impl ::std::fmt::Debug for PpsViewSelection {
 }
 
 // Classes
+#[repr(C)]
+#[allow(dead_code)]
+pub struct PpsAnnotationModel {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for PpsAnnotationModel {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("PpsAnnotationModel @ {self:p}"))
+            .finish()
+    }
+}
+
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PpsAnnotationsContext {
@@ -943,6 +978,11 @@ impl ::std::fmt::Debug for PpsUndoHandler {
 extern "C" {
 
     //=========================================================================
+    // PpsAnnotationTool
+    //=========================================================================
+    pub fn pps_annotation_tool_get_type() -> GType;
+
+    //=========================================================================
     // PpsAttachmentContextError
     //=========================================================================
     pub fn pps_attachment_context_error_get_type() -> GType;
@@ -979,6 +1019,53 @@ extern "C" {
     pub fn pps_view_selection_get_type() -> GType;
     pub fn pps_view_selection_copy(selection: *mut PpsViewSelection) -> *mut PpsViewSelection;
     pub fn pps_view_selection_free(selection: *mut PpsViewSelection);
+
+    //=========================================================================
+    // PpsAnnotationModel
+    //=========================================================================
+    pub fn pps_annotation_model_get_type() -> GType;
+    pub fn pps_annotation_model_new() -> *mut PpsAnnotationModel;
+    pub fn pps_annotation_model_get_eraser_objects(model: *mut PpsAnnotationModel) -> gboolean;
+    pub fn pps_annotation_model_get_eraser_radius(model: *mut PpsAnnotationModel) -> c_double;
+    pub fn pps_annotation_model_get_font_desc(
+        model: *mut PpsAnnotationModel,
+    ) -> *mut pango::PangoFontDescription;
+    pub fn pps_annotation_model_get_highlight_color(
+        model: *mut PpsAnnotationModel,
+    ) -> *mut gdk::GdkRGBA;
+    pub fn pps_annotation_model_get_highlight_radius(model: *mut PpsAnnotationModel) -> c_double;
+    pub fn pps_annotation_model_get_pen_color(model: *mut PpsAnnotationModel) -> *mut gdk::GdkRGBA;
+    pub fn pps_annotation_model_get_pen_radius(model: *mut PpsAnnotationModel) -> c_double;
+    pub fn pps_annotation_model_get_text_color(model: *mut PpsAnnotationModel)
+        -> *mut gdk::GdkRGBA;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_annotation_model_get_tool(model: *mut PpsAnnotationModel) -> PpsAnnotationTool;
+    pub fn pps_annotation_model_set_eraser_radius(model: *mut PpsAnnotationModel, radius: c_double);
+    pub fn pps_annotation_model_set_font_desc(
+        model: *mut PpsAnnotationModel,
+        font_desc: *const pango::PangoFontDescription,
+    );
+    pub fn pps_annotation_model_set_highlight_color(
+        model: *mut PpsAnnotationModel,
+        pen_color: *const gdk::GdkRGBA,
+    );
+    pub fn pps_annotation_model_set_highlight_radius(
+        model: *mut PpsAnnotationModel,
+        radius: c_double,
+    );
+    pub fn pps_annotation_model_set_pen_color(
+        model: *mut PpsAnnotationModel,
+        pen_color: *const gdk::GdkRGBA,
+    );
+    pub fn pps_annotation_model_set_pen_radius(model: *mut PpsAnnotationModel, radius: c_double);
+    pub fn pps_annotation_model_set_text_color(
+        model: *mut PpsAnnotationModel,
+        color: *const gdk::GdkRGBA,
+    );
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+    pub fn pps_annotation_model_set_tool(model: *mut PpsAnnotationModel, tool: PpsAnnotationTool);
 
     //=========================================================================
     // PpsAnnotationsContext
@@ -1052,6 +1139,9 @@ extern "C" {
     pub fn pps_document_model_get_annotation_editing_state(
         model: *mut PpsDocumentModel,
     ) -> PpsAnnotationEditingState;
+    pub fn pps_document_model_get_annotation_model(
+        model: *mut PpsDocumentModel,
+    ) -> *mut PpsAnnotationModel;
     pub fn pps_document_model_get_continuous(model: *mut PpsDocumentModel) -> gboolean;
     pub fn pps_document_model_get_document(
         model: *mut PpsDocumentModel,

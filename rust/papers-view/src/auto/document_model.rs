@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, AnnotationEditingState, PageLayout, SizingMode};
+use crate::{ffi, AnnotationEditingState, AnnotationModel, PageLayout, SizingMode};
 use glib::{
     object::ObjectType as _,
     prelude::*,
@@ -47,6 +47,17 @@ impl DocumentModel {
     pub fn annotation_editing_state(&self) -> AnnotationEditingState {
         unsafe {
             from_glib(ffi::pps_document_model_get_annotation_editing_state(
+                self.to_glib_none().0,
+            ))
+        }
+    }
+
+    #[doc(alias = "pps_document_model_get_annotation_model")]
+    #[doc(alias = "get_annotation_model")]
+    #[doc(alias = "annotation-model")]
+    pub fn annotation_model(&self) -> Option<AnnotationModel> {
+        unsafe {
+            from_glib_none(ffi::pps_document_model_get_annotation_model(
                 self.to_glib_none().0,
             ))
         }

@@ -3,6 +3,9 @@
 // from ../pps-girs
 // DO NOT EDIT
 
+mod annotation_model;
+pub use self::annotation_model::AnnotationModel;
+
 mod annotations_context;
 pub use self::annotations_context::AnnotationsContext;
 
@@ -76,6 +79,7 @@ mod view_selection;
 pub use self::view_selection::ViewSelection;
 
 mod enums;
+pub use self::enums::AnnotationTool;
 pub use self::enums::JobPriority;
 pub use self::enums::PageLayout;
 pub use self::enums::SizingMode;

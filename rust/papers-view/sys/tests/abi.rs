@@ -217,6 +217,20 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "PpsAnnotationModelClass",
+        Layout {
+            size: size_of::<PpsAnnotationModelClass>(),
+            alignment: align_of::<PpsAnnotationModelClass>(),
+        },
+    ),
+    (
+        "PpsAnnotationTool",
+        Layout {
+            size: size_of::<PpsAnnotationTool>(),
+            alignment: align_of::<PpsAnnotationTool>(),
+        },
+    ),
+    (
         "PpsAnnotationsContext",
         Layout {
             size: size_of::<PpsAnnotationsContext>(),
@@ -611,4 +625,9 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) PPS_SIZING_FIT_PAGE", "0"),
     ("(gint) PPS_SIZING_FIT_WIDTH", "1"),
     ("(gint) PPS_SIZING_FREE", "2"),
+    ("(gint) TOOL_ERASER", "2"),
+    ("(gint) TOOL_HIGHLIGHT", "1"),
+    ("(gint) TOOL_MAX", "4"),
+    ("(gint) TOOL_PENCIL", "0"),
+    ("(gint) TOOL_TEXT", "3"),
 ];
