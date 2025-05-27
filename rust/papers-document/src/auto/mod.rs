@@ -124,6 +124,9 @@ pub use self::find_rectangle::FindRectangle;
 mod ink_list;
 pub use self::ink_list::InkList;
 
+mod ink_time;
+pub use self::ink_time::InkTime;
+
 mod mapping;
 pub use self::mapping::Mapping;
 

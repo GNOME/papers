@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Annotation, InkList, Page};
+use crate::{ffi, Annotation, InkList, InkTime, Page};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -52,6 +52,16 @@ impl AnnotationInk {
     #[doc(alias = "ink-list")]
     pub fn ink_list(&self) -> Option<InkList> {
         unsafe { from_glib_none(ffi::pps_annotation_ink_get_ink_list(self.to_glib_none().0)) }
+    }
+
+    #[doc(alias = "pps_annotation_ink_get_time_list")]
+    #[doc(alias = "get_time_list")]
+    pub fn time_list(&self) -> Vec<InkTime> {
+        unsafe {
+            FromGlibPtrContainer::from_glib_none(ffi::pps_annotation_ink_get_time_list(
+                self.to_glib_none().0,
+            ))
+        }
     }
 
     #[doc(alias = "pps_annotation_ink_set_ink_list")]
