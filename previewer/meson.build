@@ -6,11 +6,36 @@ previewer_sources = files(
   'pps-previewer.c',
 )
 
+blueprint_sources = [
+  'pps-page-selector.blp',
+  'pps-previewer-window.blp',
+]
+
+blueprint_output = []
+
+foreach source : blueprint_sources
+  blueprint_output += source.replace('.blp', '.ui')
+endforeach
+
+blueprints = custom_target(
+  'blueprints',
+  input: blueprint_sources,
+  output: blueprint_output,
+  command: [
+    find_program('blueprint-compiler'),
+    'batch-compile',
+    '@OUTDIR@',
+    '@CURRENT_SOURCE_DIR@',
+    '@INPUT@',
+  ],
+)
+
 previewer_sources += gnome.compile_resources(
   'pps-previewer-resources',
   'previewer.gresource.xml',
   source_dir: data_dir,
   c_name: 'pps_previewer',
+  dependencies: blueprints,
 )
 
 previewer_deps = [

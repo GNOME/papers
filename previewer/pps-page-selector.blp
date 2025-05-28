@@ -1,0 +1,36 @@
+using Gtk 4.0;
+
+template $PpsPageSelector: Box {
+  styles [
+    "numeric",
+  ]
+
+  orientation: horizontal;
+  sensitive: false;
+
+  Entry entry {
+    accessibility {
+      label: _("Select page");
+    }
+
+    max-width-chars: 0;
+    width-chars: 5;
+    xalign: 0.9;
+    activate => $activate_cb() swapped;
+
+    EventControllerScroll {
+      flags: vertical | discrete;
+      scroll => $page_scroll_cb();
+    }
+
+    EventControllerFocus {
+      leave => $focus_out_cb() swapped;
+    }
+  }
+
+  Label label {
+    max-width-chars: 0;
+    width-chars: 5;
+    sensitive: false;
+  }
+}

@@ -1,0 +1,83 @@
+using Gtk 4.0;
+using Adw 1;
+
+$PpsDocumentModel model {
+  continuous: "False";
+}
+
+template $PpsPreviewerWindow: Adw.ApplicationWindow {
+  default-width: 600;
+  default-height: 600;
+  title: "";
+
+  content: Adw.ToolbarView {
+    top-bar-style: raised_border;
+
+    [top]
+    Adw.HeaderBar {
+      Button go-previous-page {
+        tooltip-text: _("Previous Page");
+        action-name: "win.go-previous-page";
+        icon-name: "go-up-symbolic";
+      }
+
+      Button go-next-page {
+        tooltip-text: _("Next Page");
+        action-name: "win.go-next-page";
+        icon-name: "go-down-symbolic";
+      }
+
+      $PpsPageSelector page_selector {
+        tooltip-text: _("Page Count");
+      }
+
+      [end]
+      Button print {
+        label: _("_Print");
+        tooltip-text: _("Print This Document");
+        action-name: "win.print";
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+
+      [end]
+      Button zoom-out {
+        tooltip-text: _("Zoom Out");
+        action-name: "win.zoom-out";
+        icon-name: "zoom-out-symbolic";
+      }
+
+      [end]
+      Button zoom-default {
+        tooltip-text: _("Normal Size");
+        action-name: "win.zoom-default";
+        icon-name: "zoom-fit-best-symbolic";
+      }
+
+      [end]
+      Button zoom-in {
+        tooltip-text: _("Zoom In");
+        action-name: "win.zoom-in";
+        icon-name: "zoom-in-symbolic";
+      }
+    }
+
+    ScrolledWindow {
+      hexpand: true;
+      vexpand: true;
+
+      $PpsView view {}
+    }
+  };
+}
+
+Adw.AlertDialog dialog {
+  heading: _("Failed to Print Document");
+
+  responses [
+    close: _("_Close"),
+  ]
+}
