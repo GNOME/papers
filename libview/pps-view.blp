@@ -1,0 +1,91 @@
+using Gtk 4.0;
+
+template $PpsView: Widget {
+  styles [
+    "content-view",
+  ]
+
+  has-tooltip: true;
+  can-focus: true;
+  focusable: true;
+  notify::scale-factor => $notify_scale_factor_cb();
+
+  GestureClick {
+    button: 0;
+    exclusive: true;
+    pressed => $pps_view_button_press_event();
+    released => $pps_view_button_release_event();
+  }
+
+  EventControllerMotion {
+    motion => $pps_view_motion_notify_event();
+  }
+
+  EventControllerScroll {
+    flags: vertical;
+    scroll => $pps_view_scroll_event();
+  }
+
+  EventControllerFocus {
+    enter => $pps_view_focus_in();
+    leave => $pps_view_focus_out();
+  }
+
+  GestureZoom {
+    propagation-phase: capture;
+    begin => $zoom_gesture_begin_cb();
+    scale-changed => $zoom_gesture_scale_changed_cb();
+  }
+
+  GestureDrag {
+    button: 1;
+    propagation-phase: bubble;
+    exclusive: true;
+    drag-begin => $selection_begin_cb();
+    drag-end => $selection_end_cb();
+    drag-update => $selection_update_cb();
+  }
+
+  GestureDrag {
+    button: 1;
+    propagation-phase: capture;
+    exclusive: true;
+    drag-begin => $annotation_drag_begin_cb();
+    drag-end => $annotation_drag_end_cb();
+    drag-update => $annotation_drag_update_cb();
+  }
+
+  GestureDrag middle_clicked_drag_gesture {
+    button: 2;
+    exclusive: true;
+    drag-begin => $middle_clicked_drag_begin_cb();
+    drag-update => $middle_clicked_drag_update_cb();
+  }
+
+  GestureDrag signing_drag_gesture {
+    button: 1;
+    propagation-phase: none;
+    exclusive: true;
+    drag-begin => $signing_begin_cb();
+    drag-end => $signing_end_cb();
+    drag-update => $signing_update_cb();
+  }
+
+  GestureSwipe middle_clicked_drag_swipe_gesture {
+    button: 2;
+    exclusive: true;
+    swipe => $middle_clicked_end_swipe_cb();
+  }
+
+  GestureSwipe {
+    propagation-phase: capture;
+    touch-only: true;
+    swipe => $page_swipe_cb();
+  }
+
+  GestureLongPress {
+    touch-only: true;
+    exclusive: true;
+    pressed => $context_longpress_gesture_pressed_cb();
+  }
+}

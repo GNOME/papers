@@ -107,11 +107,36 @@ cflags = [
   '-DPAPERS_COMPILATION'
 ]
 
+blueprint_sources = [
+  'pps-view-presentation.blp',
+  'pps-view.blp',
+]
+
+blueprint_output = []
+
+foreach source : blueprint_sources
+  blueprint_output = source.replace('.blp', '.ui')
+endforeach
+
+blueprints = custom_target(
+  'blueprints',
+  input: blueprint_sources,
+  output: blueprint_output,
+  command: [
+    find_program('blueprint-compiler'),
+    'batch-compile',
+    '@OUTDIR@',
+    '@CURRENT_SOURCE_DIR@',
+    '@INPUT@',
+  ],
+)
+
 sources += gnome.compile_resources(
   'pps-view-resources',
   'libview.gresource.xml',
   source_dir: data_dir,
   c_name: 'pps_view',
+  dependencies: blueprints,
 )
 
 

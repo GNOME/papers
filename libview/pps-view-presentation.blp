@@ -1,0 +1,57 @@
+using Gtk 4.0;
+
+template $PpsViewPresentation: Widget {
+  can-focus: true;
+  focusable: true;
+
+  EventControllerScroll {
+    flags: vertical;
+    scroll => $pps_view_presentation_scroll_event();
+  }
+
+  EventControllerKey {
+    key-pressed => $pps_view_presentation_key_press_event();
+  }
+
+  EventControllerMotion {
+    motion => $pps_view_presentation_motion_notify_event();
+  }
+
+  EventControllerFocus {
+    enter => $pps_view_presentation_inhibit_screenlock() swapped;
+    leave => $pps_view_presentation_uninhibit_screenlock() swapped;
+  }
+
+  GestureClick {
+    button: 1;
+    released => $pps_view_presentation_primary_button_released();
+  }
+
+  GestureClick {
+    button: 3;
+    released => $pps_view_presentation_secondary_button_released();
+  }
+
+  Popover goto_popup {
+    has-arrow: false;
+    position: bottom;
+    halign: start;
+
+    child: Box {
+      orientation: horizontal;
+      spacing: 3;
+      margin-top: 3;
+      margin-start: 3;
+      margin-bottom: 3;
+      margin-end: 3;
+
+      Label {
+        label: _("Jump to page:");
+      }
+
+      Entry goto_entry {
+        activate => $pps_view_presentation_goto_entry_activate();
+      }
+    };
+  }
+}
