@@ -284,6 +284,9 @@ pps_document_factory_get_document (const char *uri,
 		g_assert (document != NULL || err != NULL);
 
 		if (err != NULL) {
+			if (i == 0)
+				g_clear_error (&err);
+
 			continue;
 		}
 
