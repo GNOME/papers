@@ -134,7 +134,7 @@ mod imp {
 
             // Open With button
             let open_with_button = gtk::Button::builder()
-                .tooltip_text(gettext("Open With..."))
+                .tooltip_text(gettext("Open With…"))
                 .icon_name("external-link-symbolic")
                 .valign(gtk::Align::Center)
                 .css_classes(["flat"])
