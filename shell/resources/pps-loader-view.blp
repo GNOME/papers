@@ -1,0 +1,58 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsLoaderView: Adw.Bin {
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      [title]
+      Adw.WindowTitle {
+        title: _("Papers");
+      }
+    }
+
+    Adw.StatusPage {
+      title: _("Loading Document");
+      description: bind template.uri;
+
+      child: Box {
+        orientation: vertical;
+        spacing: 24;
+
+        Adw.Clamp {
+          child: Stack stack {
+            StackPage {
+              name: "spinner";
+
+              child: Adw.Spinner spinner {
+                width-request: 64;
+                height-request: 64;
+              };
+            }
+
+            StackPage {
+              name: "bar";
+
+              child: ProgressBar progress_bar {
+                show-text: true;
+                width-request: 250;
+                halign: center;
+              };
+            }
+          };
+        }
+
+        Button {
+          halign: center;
+          use-underline: true;
+          label: _("C_ancel");
+          clicked => $cancel_clicked() swapped;
+
+          styles [
+            "pill",
+          ]
+        }
+      };
+    }
+  };
+}

@@ -1,0 +1,83 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsSidebarAnnotations: $PpsSidebarPage {
+  child: Box {
+    orientation: vertical;
+
+    Adw.ViewStack stack {
+      Adw.ViewStackPage {
+        name: "empty";
+
+        child: Adw.StatusPage {
+          title: _("No Annotations");
+          icon-name: "chat-bubble-text-symbolic";
+
+          styles [
+            "compact",
+          ]
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "annot";
+
+        child: ScrolledWindow {
+          halign: fill;
+          hexpand: true;
+          vexpand: true;
+
+          child: ListView list_view {
+            styles [
+              "navigation-sidebar",
+            ]
+
+            hexpand: true;
+            tab-behavior: item;
+
+            factory: SignalListItemFactory factory {
+              setup => $list_view_factory_setup() swapped;
+              bind => $list_view_factory_bind() swapped;
+            };
+
+            model: SingleSelection selection_model {};
+          };
+        };
+      }
+    }
+
+    PopoverMenu popup {
+      has-arrow: false;
+      halign: start;
+      menu-model: annotation-popup;
+    }
+  };
+}
+
+menu annotation-popup {
+  section {
+    item {
+      label: _("Annotation Properties");
+      action: "doc.annot-properties";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Remove Annotation");
+      action: "doc.remove-annot";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Open Attachment");
+      action: "doc.open-attachment";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Save Attachment As…");
+      action: "doc.save-attachment";
+      hidden-when: "action-disabled";
+    }
+  }
+}

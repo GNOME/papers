@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsPropertiesWindow: Adw.Dialog {
+  title: _("Properties");
+  content-width: 500;
+  content-height: 600;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar header_bar {
+      centering-policy: strict;
+
+      title-widget: Adw.ViewSwitcher view_switcher {
+        policy: wide;
+        stack: stack;
+      };
+    }
+
+    content: Adw.ViewStack stack {
+      Adw.ViewStackPage {
+        name: "general";
+        title: _("_Document");
+        use-underline: true;
+        icon-name: "document-properties-symbolic";
+
+        child: $PpsPropertiesGeneral {
+          document: bind template.document no-sync-create;
+        };
+      }
+
+      Adw.ViewStackPage fonts_page {
+        name: "fonts";
+        title: _("_Fonts");
+        use-underline: true;
+        icon-name: "font-x-generic-symbolic";
+
+        child: $PpsPropertiesFonts fonts {};
+      }
+
+      Adw.ViewStackPage license_page {
+        name: "license";
+        title: _("License");
+        icon-name: "license-symbolic";
+
+        child: $PpsPropertiesLicense license {};
+      }
+
+      Adw.ViewStackPage signatures_page {
+        name: "signatures";
+        title: _("_Signatures");
+        use-underline: true;
+        icon-name: "document-edit-symbolic";
+
+        child: $PpsPropertiesSignatures signatures {};
+      }
+    };
+  };
+}

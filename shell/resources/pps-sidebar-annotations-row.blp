@@ -1,0 +1,65 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsSidebarAnnotationsRow: Box {
+  orientation: vertical;
+  spacing: 6;
+
+  Box {
+    orientation: horizontal;
+    spacing: 6;
+
+    Label page_label {
+      styles [
+        "heading",
+      ]
+
+      hexpand: true;
+      xalign: 0.0;
+      ellipsize: end;
+    }
+
+    Image image {}
+
+    Label author_label {
+      styles [
+        "caption",
+      ]
+
+      xalign: 0.0;
+      ellipsize: middle;
+    }
+  }
+
+  Box {
+    orientation: horizontal;
+    spacing: 6;
+
+    Adw.Bin {
+      vexpand: true;
+
+      styles [
+        "reference-bar",
+      ]
+    }
+
+    Label reference_label {
+      xalign: 0.0;
+      lines: 3;
+      wrap: true;
+      ellipsize: end;
+    }
+  }
+
+  Label content_label {
+    styles [
+      "annotation-content",
+    ]
+
+    xalign: 0.0;
+    lines: 3;
+    wrap: true;
+    ellipsize: end;
+    use-markup: true;
+  }
+}

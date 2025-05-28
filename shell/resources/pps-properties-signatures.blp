@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsPropertiesSignatures: Adw.Bin {
+  child: Box {
+    Adw.PreferencesPage signatures_page {
+      Adw.PreferencesGroup status_group {
+        title: "Signed by:";
+
+        Box {
+          orientation: vertical;
+          spacing: 12;
+
+          DropDown signers_drop_down {
+            notify::selected => $signer_changed() swapped;
+          }
+
+          ListBox status_listbox {
+            selection-mode: none;
+            can-focus: false;
+            hexpand: true;
+            vexpand: false;
+
+            styles [
+              "content",
+            ]
+          }
+        }
+      }
+
+      Adw.PreferencesGroup details_group {
+        title: _("Signature Information");
+
+        ListBox listbox {
+          selection-mode: none;
+          can-focus: false;
+          hexpand: true;
+          vexpand: false;
+
+          styles [
+            "content",
+          ]
+        }
+      }
+
+      Adw.PreferencesGroup {
+        ToggleButton details_button {
+          label: _("View Details…");
+          receives-default: true;
+          hexpand: false;
+          vexpand: false;
+          halign: center;
+          valign: center;
+          toggled => $details_button_toggled() swapped;
+        }
+      }
+    }
+  };
+}

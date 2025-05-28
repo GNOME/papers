@@ -1,0 +1,53 @@
+using Gtk 4.0;
+using Adw 1;
+using Gio 2.0;
+
+template $PpsSidebarThumbnails: $PpsSidebarPage {
+  notify::scale-factor => $reload() swapped;
+
+  child: Box {
+    orientation: vertical;
+
+    ScrolledWindow {
+      valign: fill;
+      vexpand: true;
+      hscrollbar-policy: never;
+      vscrollbar-policy: automatic;
+
+      child: Adw.ClampScrollable clamp {
+        vscroll-policy: natural;
+        maximum-size: 240;
+        tightening-threshold: 180;
+
+        child: GridView grid_view {
+          max-columns: 1;
+          min-columns: 1;
+          halign: center;
+          tab-behavior: item;
+
+          factory: SignalListItemFactory factory {
+            setup => $grid_view_factory_setup() swapped;
+            bind => $grid_view_factory_bind() swapped;
+            unbind => $grid_view_factory_unbind() swapped;
+          };
+
+          model: SingleSelection selection_model {
+            autoselect: false;
+
+            model: Gio.ListStore list_store {};
+
+            selection-changed => $grid_view_selection_changed() swapped;
+          };
+
+          styles [
+            "navigation-sidebar",
+          ]
+
+          accessibility {
+            label: _("Previews");
+          }
+        };
+      };
+    }
+  };
+}

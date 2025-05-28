@@ -1,0 +1,81 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsAnnotationPropertiesDialog: Adw.AlertDialog {
+  heading: _("Annotation Properties");
+
+  extra-child: Adw.PreferencesGroup group {
+    Adw.EntryRow author {
+      title: _("Author");
+    }
+
+    Adw.ActionRow {
+      title: _("Color");
+
+      ColorDialogButton color {
+        dialog: ColorDialog {};
+      }
+    }
+
+    Adw.SpinRow opacity {
+      title: _("Opacity");
+
+      adjustment: Adjustment {
+        lower: 0;
+        upper: 100;
+        value: 100;
+        page-increment: 10;
+        step-increment: 1;
+      };
+    }
+
+    Adw.SwitchRow popup_state {
+      title: _("Initially Opened");
+    }
+
+    Adw.ComboRow icon {
+      visible: false;
+      title: _("Icon");
+
+      model: StringList {
+        strings [
+          _("Note"),
+          _("Comment"),
+          _("Key"),
+          _("Help"),
+          _("New Paragraph"),
+          _("Paragraph"),
+          _("Insert"),
+          _("Cross"),
+          _("Circle"),
+          _("Unknown"),
+        ]
+      };
+
+      selected: 0;
+    }
+
+    Adw.ComboRow markup_type {
+      visible: false;
+      title: _("Markup Type");
+
+      model: StringList {
+        strings [
+          _("Highlight"),
+          _("Strike out"),
+          _("Underline"),
+          _("Squiggly"),
+        ]
+      };
+
+      selected: 0;
+    }
+  };
+
+  default-response: "apply";
+
+  responses [
+    close: _("_Close"),
+    apply: _("_Apply") destructive,
+  ]
+}

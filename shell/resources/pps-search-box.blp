@@ -1,0 +1,55 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsSearchBox: Adw.Bin {
+  hexpand: true;
+
+  child: Box {
+    orientation: horizontal;
+    halign: center;
+    spacing: 6;
+
+    SearchEntry entry {
+      max-width-chars: 32;
+      input-purpose: free_form;
+      input-hints: no_spellcheck | word_completion;
+      placeholder-text: _("Search in document");
+      search-delay: 500;
+      activate => $entry_activated() swapped;
+      next-match => $entry_next_matched() swapped;
+      previous-match => $entry_previous_matched() swapped;
+      stop-search => $stopped_search() swapped;
+
+      accessibility {
+        labelled-by: [
+          entry,
+        ];
+      }
+    }
+
+    MenuButton {
+      styles [
+        "flat",
+      ]
+
+      direction: down;
+      icon-name: "view-more-symbolic";
+      menu-model: search_options;
+      tooltip-text: _("Search Options");
+    }
+  };
+}
+
+menu search_options {
+  section {
+    item {
+      label: _("_Whole Words Only");
+      action: "search.whole-words-only";
+    }
+
+    item {
+      label: _("C_ase Sensitive");
+      action: "search.case-sensitive";
+    }
+  }
+}

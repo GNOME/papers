@@ -1,0 +1,68 @@
+using Gtk 4.0;
+using Gio 2.0;
+
+template $PpsSidebarLinks: $PpsSidebarPage {
+  child: Box {
+    orientation: vertical;
+
+    [start]
+    ScrolledWindow {
+      halign: fill;
+      hexpand: true;
+      vexpand: true;
+
+      child: ListView list_view {
+        tab-behavior: item;
+
+        model: SingleSelection selection_model {
+          autoselect: false;
+          selection-changed => $list_view_selection_changed() swapped;
+        };
+
+        factory: SignalListItemFactory {
+          setup => $list_view_factory_setup() swapped;
+          bind => $list_view_factory_bind() swapped;
+          unbind => $list_view_factory_unbind() swapped;
+        };
+
+        styles [
+          "navigation-sidebar",
+        ]
+      };
+    }
+
+    PopoverMenu popup {
+      has-arrow: false;
+      halign: start;
+      menu-model: links-menu;
+    }
+  };
+}
+
+Gio.SimpleActionGroup action_group {}
+
+menu links-menu {
+  section {
+    item {
+      label: _("Collapse all tree");
+      action: "links.collapse-all";
+    }
+
+    item {
+      label: _("Expand all tree");
+      action: "links.expand-all";
+    }
+
+    item {
+      label: _("Expand all under this element");
+      action: "links.expand-all-under";
+    }
+  }
+
+  section {
+    item {
+      label: _("Print this section…");
+      action: "links.print-section";
+    }
+  }
+}

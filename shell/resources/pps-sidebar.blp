@@ -1,0 +1,25 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsSidebar: Adw.Bin {
+  child: Adw.ToolbarView {
+    content: Adw.ViewStack stack {
+      notify::visible-child => $visible_child_changed() swapped;
+    };
+
+    [bottom]
+    Adw.InlineViewSwitcher {
+      stack: stack;
+      display-mode: icons;
+      homogeneous: true;
+      margin-top: 6;
+      margin-bottom: 6;
+      margin-start: 6;
+      margin-end: 6;
+
+      styles [
+        "flat",
+      ]
+    }
+  };
+}

@@ -1,0 +1,881 @@
+using Gtk 4.0;
+using Adw 1;
+using Gio 2.0;
+
+$PpsDocumentModel model {
+  page-changed => $page_changed() swapped;
+  notify::scale => $zoom_changed() swapped;
+  notify::sizing-mode => $sizing_mode_changed() swapped;
+  notify::rotation => $rotation_changed() swapped;
+  notify::continuous => $continuous_changed() swapped;
+  notify::page-layout => $page_layout_changed() swapped;
+  notify::dual-odd-left => $dual_mode_odd_pages_left_changed() swapped;
+  notify::rtl => $direction_changed() swapped;
+}
+
+Gio.SimpleActionGroup document_action_group {}
+
+$PpsHistory history {
+  document-model: "model";
+  activate-link => $link_activated() swapped;
+  changed => $history_changed() swapped;
+}
+
+Gio.Settings default_settings {
+  schema-id: "org.gnome.Papers.Default";
+}
+
+Gio.Settings settings {
+  schema-id: "org.gnome.Papers";
+  changed::override-restrictions => $doc_restrictions_changed() swapped;
+  changed::page-cache-size => $page_cache_size_changed();
+  changed::allow-links-change-zoom => $allow_links_change_zoom_changed();
+}
+
+template $PpsDocumentView: Adw.BreakpointBin {
+  Adw.Breakpoint {
+    condition ("max-width: 720sp")
+
+    setters {
+      split_view.collapsed: true;
+    }
+  }
+
+  Adw.Breakpoint {
+    condition ("max-width: 540sp")
+
+    setters {
+      split_view.collapsed: true;
+      page_selector.visible: "False";
+    }
+  }
+
+  width-request: 360;
+  height-request: 200;
+
+  child: Adw.OverlaySplitView split_view {
+    min-sidebar-width: 210;
+    max-sidebar-width: 300;
+    pin-sidebar: true;
+    notify::show-sidebar => $sidebar_visibility_changed() swapped;
+    notify::collapsed => $sidebar_collapsed_changed() swapped;
+
+    sidebar: Adw.ToolbarView sidebar_toolbar_view {
+      [top]
+      Adw.HeaderBar {
+        [start]
+        Revealer {
+          child: ToggleButton find_button {
+            icon-name: "edit-find-symbolic";
+
+            /* Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search */
+            tooltip-text: _("Search");
+            action-name: "doc.toggle-find";
+          };
+
+          reveal-child: bind find_button.sensitive;
+        }
+
+        [title]
+        Adw.WindowTitle {
+          title: _("Papers");
+        }
+
+        [end]
+        MenuButton action_menu_button {
+          icon-name: "open-menu-symbolic";
+          tooltip-text: _("Main Menu");
+          menu-model: sidebar_menu;
+          primary: true;
+        }
+      }
+
+      content: Stack sidebar_stack {
+        transition-type: crossfade;
+
+        $PpsSidebar sidebar {
+          document-model: "model";
+          navigated-to-view => $sidebar_navigate_to_view() swapped;
+
+          [internal-child stack]
+          Adw.ViewStack {
+            enable-transitions: true;
+
+            Adw.ViewStackPage {
+              name: "thumbnails";
+              title: _("Thumbnails");
+              icon-name: "grid-large-symbolic";
+
+              child: $PpsSidebarThumbnails sidebar_thumbs {
+                document-model: "model";
+                sidebar: "sidebar";
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "links";
+              title: _("Outline");
+              icon-name: "outline-symbolic";
+
+              child: $PpsSidebarLinks sidebar_links {
+                document-model: "model";
+                sidebar: "sidebar";
+                link-activated => $link_activated() swapped;
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "annotations";
+              title: _("Annotations");
+              icon-name: "chat-bubble-text-symbolic";
+
+              child: $PpsSidebarAnnotations sidebar_annots {
+                document-model: "model";
+
+                annotations-context: $PpsAnnotationsContext annots_context {
+                  document-model: "model";
+                };
+
+                sidebar: "sidebar";
+                annot-activated => $sidebar_annots_annot_activated() swapped;
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "attachments";
+              title: _("Attachments");
+              icon-name: "mail-attachment-symbolic";
+
+              child: $PpsSidebarAttachments sidebar_attachments {
+                document-model: "model";
+
+                attachment-context: $PpsAttachmentContext attachment_context {
+                  document-model: "model";
+                };
+
+                sidebar: "sidebar";
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "layers";
+              title: _("Layers");
+              icon-name: "view-paged-symbolic";
+
+              child: $PpsSidebarLayers sidebar_layers {
+                document-model: "model";
+                sidebar: "sidebar";
+                visibility-changed => $sidebar_layers_visibility_changed() swapped;
+              };
+            }
+
+            visible-child-name: "links";
+          }
+        }
+
+        $PpsFindSidebar find_sidebar {
+          document-model: "model";
+        }
+      };
+    };
+
+    content: Adw.ToolbarView document_toolbar_view {
+      [top]
+      Adw.HeaderBar header_bar {
+        [title]
+        Adw.WindowTitle {}
+
+        [start]
+        ToggleButton sidebar_button {
+          icon-name: "sidebar-show-symbolic";
+          action-name: "doc.show-sidebar";
+          tooltip-text: _("Toggle Sidebar");
+        }
+
+        [end]
+        MenuButton document_menu_button {
+          icon-name: "view-more-symbolic";
+          tooltip-text: _("Document Menu");
+          menu-model: document_menu;
+        }
+
+        [end]
+        $PpsPageSelector page_selector {
+          model: "model";
+          tooltip-text: _("Page Count");
+          activate-link => $link_activated() swapped;
+        }
+      }
+
+      content: Box view_box {
+        orientation: vertical;
+
+        Adw.Banner banner {
+          button-clicked => $view_banner_cancelled() swapped;
+        }
+
+        Adw.Banner signature_banner {
+          title: _("Document has been digitally signed.");
+          button-label: _("View Signature…");
+          button-clicked => $view_signature_details() swapped;
+        }
+
+        Adw.ToastOverlay toast_overlay {
+          child: Overlay {
+            [overlay]
+            Box {
+              styles [
+                "zoom-overlay",
+              ]
+
+              orientation: vertical;
+              spacing: 9;
+              margin-top: 18;
+              margin-bottom: 18;
+              margin-start: 18;
+              margin-end: 18;
+              halign: end;
+              valign: end;
+
+              Revealer zoom_fit_best_revealer {
+                transition-type: crossfade;
+
+                child: Button {
+                  styles [
+                    "circular",
+                    "osd",
+                  ]
+
+                  icon-name: "zoom-fit-best-symbolic";
+                  action-name: "doc.sizing-mode";
+                  action-target: "'automatic'";
+                  tooltip-text: _("Fit Automatically");
+                };
+              }
+
+              Separator {
+                styles [
+                  "spacer",
+                ]
+              }
+
+              Button {
+                styles [
+                  "circular",
+                  "osd",
+                ]
+
+                icon-name: "zoom-in-symbolic";
+                action-name: "doc.zoom-in";
+                tooltip-text: _("Zoom In");
+                sensitive: bind view.can-zoom-in;
+              }
+
+              Button {
+                styles [
+                  "circular",
+                  "osd",
+                ]
+
+                icon-name: "zoom-out-symbolic";
+                action-name: "doc.zoom-out";
+                tooltip-text: _("Zoom Out");
+                sensitive: bind view.can-zoom-out;
+              }
+            }
+
+            child: ScrolledWindow scrolled_window {
+              child: $PpsView view {
+                hexpand: "True";
+                vexpand: "True";
+                halign: "fill";
+                valign: "fill";
+                external-link => $view_external_link() swapped;
+                handle-link => $view_handle_link() swapped;
+                popup => $view_menu_popup() swapped;
+                selection-changed => $view_selection_changed() swapped;
+                scroll => $scroll_history() swapped;
+                layers-changed => $view_layers_changed() swapped;
+                cursor-moved => $view_caret_cursor_moved() swapped;
+                signature-rect => $on_signature_rect() swapped;
+              };
+
+              scroll-child => $scroll_child_history() swapped;
+            };
+          };
+        }
+
+        PopoverMenu view_popup {
+          has-arrow: false;
+          menu-model: view-popup-menu;
+          halign: start;
+          closed => $view_popup_closed() swapped;
+        }
+      };
+    };
+
+    GestureClick {
+      button: 0;
+      pressed => $button_pressed() swapped;
+    }
+
+    ShortcutController {
+      propagation-phase: bubble;
+
+      Shortcut {
+        trigger: "<Ctrl><Shift>O";
+        action: "action(doc.open-with)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>F|slash|KP_Divide";
+        action: "action(doc.find)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>G|F3";
+        action: "action(doc.find-next)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl><Shift>G|<Shift>F3";
+        action: "action(doc.find-previous)";
+      }
+
+      Shortcut {
+        trigger: "<Shift>Page_Down";
+        action: "action(doc.go-forward)";
+      }
+
+      Shortcut {
+        trigger: "<Shift>Page_Up";
+        action: "action(doc.go-backwards)";
+      }
+
+      Shortcut {
+        trigger: "<alt>N|Forward";
+        action: "action(doc.go-forward-history)";
+      }
+
+      Shortcut {
+        trigger: "<alt>P|Back";
+        action: "action(doc.go-back-history)";
+      }
+
+      Shortcut {
+        trigger: "Escape";
+        action: "action(win.escape)";
+      }
+
+      Shortcut {
+        trigger: "F7";
+        action: "action(doc.caret-navigation)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>P";
+        action: "action(doc.print)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl><Shift>N";
+        action: "action(doc.open-copy)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>S";
+        action: "action(doc.save-as)";
+      }
+
+      Shortcut {
+        trigger: "<alt>Return";
+        action: "action(doc.show-properties)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>C|<Ctrl>Insert";
+        action: "action(doc.copy)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>L";
+        action: "action(doc.select-page)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>Left";
+        action: "action(doc.rotate-left)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>Right";
+        action: "action(doc.rotate-right)";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>H";
+        action: "action(doc.add-highlight-annotation)";
+      }
+
+      Shortcut {
+        trigger: "F9";
+        action: "action(doc.show-sidebar)";
+      }
+
+      Shortcut {
+        trigger: "w";
+        action: "action(doc.sizing-mode)";
+        arguments: "'fit-width'";
+      }
+
+      Shortcut {
+        trigger: "f";
+        action: "action(doc.sizing-mode)";
+        arguments: "'fit-page'";
+      }
+
+      Shortcut {
+        trigger: "a";
+        action: "action(doc.sizing-mode)";
+        arguments: "'automatic'";
+      }
+
+      Shortcut {
+        trigger: "<Ctrl>0|<Ctrl>KP_0";
+        action: "action(doc.zoom)";
+        arguments: "1.";
+      }
+
+      Shortcut {
+        trigger: "s";
+        action: "action(doc.add-text-annotation)";
+      }
+
+      Shortcut {
+        trigger: "c";
+        action: "action(doc.continuous)";
+      }
+
+      Shortcut {
+        trigger: "d";
+        action: "action(doc.dual-page)";
+      }
+
+      Shortcut {
+        trigger: "o";
+        action: "action(doc.dual-odd-left)";
+      }
+
+      Shortcut {
+        trigger: "n|<Ctrl>Page_Down";
+        action: "action(doc.go-next-page)";
+      }
+
+      Shortcut {
+        trigger: "p|<Ctrl>Page_Up";
+        action: "action(doc.go-previous-page)";
+      }
+
+      Shortcut {
+        trigger: "plus|equal|<Ctrl>plus|KP_Add|<Ctrl>KP_Add|<Ctrl>equal";
+        action: "action(doc.zoom-in)";
+      }
+
+      Shortcut {
+        trigger: "minus|<Ctrl>minus|KP_Subtract|<Ctrl>KP_Subtract";
+        action: "action(doc.zoom-out)";
+      }
+    }
+  };
+}
+
+Adw.AlertDialog rect_small_alert {
+  heading: _("Selection too Small");
+  body: _("A signature of this size may be too small to read. If you would like to create a potentially more readable signature, press `Start over` and draw a bigger rectangle.");
+  follows-content-size: true;
+  default-response: "cancel";
+  close-response: "cancel";
+
+  responses [
+    cancel: _("Start _Over"),
+    sign: _("_Sign") destructive,
+  ]
+
+  response => $signature_rect_too_small() swapped;
+}
+
+Adw.AlertDialog print_cancel_alert {
+  heading: _("Abort Printing?");
+  body: _("There is one or more active print jobs. If the window is closed, pending print jobs will not be printed.");
+  follows-content-size: true;
+
+  responses [
+    force-close: _("Abort _Print and Close") destructive,
+    cancel: _("_Cancel"),
+    close-later: _("Close _After Printing") suggested,
+  ]
+
+  response => $print_cancel_alert_response() swapped;
+}
+
+Adw.AlertDialog error_alert {
+  responses [
+    close: _("_Close"),
+  ]
+}
+
+menu sidebar_menu {
+  section {
+    item {
+      label: _("Open…");
+      action: "win.open";
+    }
+  }
+
+  section {
+    item {
+      label: _("Ni_ght Mode");
+      action: "win.night-mode";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("_About Papers");
+      action: "app.about";
+    }
+  }
+}
+
+menu document_menu {
+  section {
+    item {
+      label: _("_Print…");
+      action: "doc.print";
+    }
+
+    item {
+      label: _("Fullscreen");
+      action: "win.fullscreen";
+    }
+
+    item {
+      label: _("Present as Slideshow");
+      action: "win.presentation";
+    }
+  }
+
+  section {
+    item {
+      label: _("Sign D_igitally…");
+      action: "doc.digital-signing";
+    }
+  }
+
+  section {
+    item {
+      label: _("Open a C_opy");
+      action: "doc.open-copy";
+    }
+
+    item {
+      label: _("Open With…");
+      action: "doc.open-with";
+    }
+
+    item {
+      label: _("_Save As…");
+      action: "doc.save-as";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Continuous");
+      action: "doc.continuous";
+    }
+
+    item {
+      label: _("_Dual");
+      action: "doc.dual-page";
+    }
+
+    item {
+      label: _("_Odd Pages Left");
+      action: "doc.dual-odd-left";
+    }
+
+    item {
+      label: _("Right to Left Document");
+      action: "doc.rtl";
+    }
+  }
+
+  section {
+    item {
+      label: _("Ro_tate ⤵");
+      action: "doc.rotate-right";
+    }
+  }
+
+  section {
+    item {
+      label: _("Document Prop_erties");
+      action: "doc.show-properties";
+    }
+  }
+}
+
+Box annot_menu_child {
+  orientation: vertical;
+
+  Box {
+    orientation: horizontal;
+    halign: center;
+    margin-start: 6;
+    margin-end: 6;
+  }
+
+  Box {
+    orientation: horizontal;
+    halign: center;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    spacing: 18;
+
+    ToggleButton annot-style-group {
+      name: "text-highlight";
+      icon-name: "text-highlight-symbolic";
+      action-name: "doc.annot-style";
+      action-target: "'highlight'";
+
+      /* Translators: Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. */
+      tooltip-text: _("Highlight");
+    }
+
+    ToggleButton {
+      name: "text-squiggly";
+      group: annot-style-group;
+      icon-name: "text-squiggly-symbolic";
+      action-name: "doc.annot-style";
+      action-target: "'squiggly'";
+
+      /* Translators: Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. */
+      tooltip-text: _("Squiggly");
+    }
+
+    ToggleButton {
+      name: "text-strikethrough";
+      group: annot-style-group;
+      icon-name: "text-strikethrough-symbolic";
+      action-name: "doc.annot-style";
+      action-target: "'strikethrough'";
+
+      /* Translators: Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. */
+      tooltip-text: _("Strikethrough");
+    }
+
+    ToggleButton {
+      name: "text-underline";
+      group: annot-style-group;
+      icon-name: "text-underline-symbolic";
+      action-name: "doc.annot-style";
+      action-target: "'underline'";
+
+      /* Translators: Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. */
+      tooltip-text: _("Underline");
+    }
+  }
+
+  Box {
+    orientation: horizontal;
+    halign: center;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    spacing: 6;
+
+    ToggleButton {
+      name: "color-button-yellow";
+      action-name: "doc.annot-color";
+      action-target: "'yellow'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+        "selected-color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-orange";
+      action-name: "doc.annot-color";
+      action-target: "'orange'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-red";
+      action-name: "doc.annot-color";
+      action-target: "'red'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-purple";
+      action-name: "doc.annot-color";
+      action-target: "'purple'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-blue";
+      action-name: "doc.annot-color";
+      action-target: "'blue'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-green";
+      action-name: "doc.annot-color";
+      action-target: "'green'";
+
+      styles [
+        "circular",
+        "suggested-action",
+        "color-button",
+      ]
+    }
+  }
+}
+
+menu view-popup-menu {
+  section {
+    item {
+      label: _("_Open Link");
+      action: "doc.open-link";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Copy Link Address");
+      action: "doc.copy-link-address";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Go To");
+      action: "doc.go-to-link";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Open in New _Window");
+      action: "doc.open-link-new-window";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Copy");
+      action: "doc.copy";
+    }
+
+    item {
+      label: _("Select _All");
+      action: "doc.select-all";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Save Image As…");
+      action: "doc.save-image";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Copy _Image");
+      action: "doc.copy-image";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Open Attachment");
+      action: "doc.open-attachment";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Save Attachment As…");
+      action: "doc.save-attachment";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section annot_menu {}
+
+  section {
+    item {
+      label: _("Annotation _Properties…");
+      action: "doc.annot-properties";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("R_emove Annotation");
+      action: "doc.remove-annot";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Add Text Annotation");
+      action: "doc.add-text-annotation";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Highlight Selected Text");
+      action: "doc.add-highlight-annotation";
+    }
+  }
+}

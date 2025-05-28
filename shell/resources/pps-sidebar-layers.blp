@@ -1,0 +1,34 @@
+using Gtk 4.0;
+
+template $PpsSidebarLayers: $PpsSidebarPage {
+  child: Box {
+    orientation: vertical;
+
+    ScrolledWindow {
+      valign: fill;
+      vexpand: true;
+      hexpand: true;
+      hscrollbar-policy: never;
+      vscrollbar-policy: automatic;
+
+      child: ListView list_view {
+        single-click-activate: true;
+        tab-behavior: item;
+
+        model: NoSelection selection_model {};
+
+        factory: SignalListItemFactory {
+          setup => $list_view_factory_setup() swapped;
+          bind => $list_view_factory_bind() swapped;
+          unbind => $list_view_factory_unbind() swapped;
+        };
+
+        activate => $list_view_activate() swapped;
+
+        styles [
+          "navigation-sidebar",
+        ]
+      };
+    }
+  };
+}

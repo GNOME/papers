@@ -1,0 +1,103 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PpsPropertiesLicense: Adw.Bin {
+  Adw.Clamp {
+    child: Box {
+      margin-start: 12;
+      margin-end: 12;
+      margin-top: 12;
+      margin-bottom: 12;
+      orientation: vertical;
+      spacing: 12;
+
+      Box license_box {
+        orientation: vertical;
+        spacing: 12;
+
+        Label {
+          label: _("Usage Terms");
+          xalign: 0;
+
+          styles [
+            "heading",
+          ]
+        }
+
+        ScrolledWindow {
+          hscrollbar-policy: never;
+          min-content-height: 150;
+          has-frame: true;
+
+          child: Label license {
+            wrap: true;
+            wrap-mode: word_char;
+            selectable: true;
+            margin-start: 12;
+            xalign: 0;
+
+            styles [
+              "body",
+              "link",
+            ]
+          };
+        }
+      }
+
+      Box uri_box {
+        orientation: vertical;
+        spacing: 12;
+
+        Label {
+          label: _("Text License");
+          xalign: 0;
+
+          styles [
+            "heading",
+          ]
+        }
+
+        Label uri {
+          margin-start: 12;
+          selectable: true;
+          ellipsize: end;
+          width-chars: 25;
+          xalign: 0;
+
+          styles [
+            "body",
+            "link",
+          ]
+        }
+      }
+
+      Box web_statement_box {
+        orientation: vertical;
+        spacing: 12;
+
+        Label {
+          label: _("Further Information");
+          xalign: 0;
+          yalign: 0.5;
+
+          styles [
+            "heading",
+          ]
+        }
+
+        Label web_statement {
+          margin-start: 12;
+          selectable: true;
+          ellipsize: end;
+          width-chars: 25;
+          xalign: 0;
+
+          styles [
+            "body",
+            "link",
+          ]
+        }
+      }
+    };
+  }
+}

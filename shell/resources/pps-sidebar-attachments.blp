@@ -1,0 +1,39 @@
+using Gtk 4.0;
+
+template $PpsSidebarAttachments: $PpsSidebarPage {
+  child: Box {
+    name: "pps-sidebar-attachments";
+    orientation: vertical;
+
+    [start]
+    ScrolledWindow swindow {
+      valign: fill;
+      vexpand: true;
+      hscrollbar-policy: never;
+      vscrollbar-policy: automatic;
+
+      GestureClick {
+        button: 0;
+        pressed => $button_clicked() swapped;
+      }
+
+      child: ListView list_view {
+        factory: SignalListItemFactory factory {
+          setup => $list_view_factory_setup() swapped;
+          bind => $list_view_factory_bind() swapped;
+        };
+
+        enable-rubberband: true;
+
+        model: MultiSelection selection_model {};
+
+        tab-behavior: item;
+        activate => $list_view_item_activated() swapped;
+
+        styles [
+          "navigation-sidebar",
+        ]
+      };
+    }
+  };
+}

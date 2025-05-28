@@ -1,0 +1,159 @@
+using Gtk 4.0;
+using Adw 1;
+using Gio 2.0;
+
+Gio.Settings settings {
+  schema-id: "org.gnome.Papers";
+  changed::night-mode => $night_mode_changed() swapped;
+}
+
+Gio.Settings default_settings {
+  schema-id: "org.gnome.Papers.Default";
+}
+
+template $PpsWindow: Adw.ApplicationWindow {
+  default-width: 600;
+  default-height: 600;
+  width-request: 360;
+  height-request: 360;
+  notify::fullscreened => $window_fullscreened() swapped;
+
+  content: Adw.ToastOverlay toast_overlay {
+    child: Adw.ViewStack stack {
+      hhomogeneous: false;
+      vhomogeneous: false;
+
+      Adw.ViewStackPage {
+        name: "start";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            [end]
+            MenuButton {
+              icon-name: "open-menu-symbolic";
+              tooltip-text: _("Main Menu");
+              menu-model: app_menu;
+              primary: true;
+            }
+          }
+
+          content: Adw.StatusPage {
+            icon-name: "x-office-document-symbolic";
+            title: _("Open a Document");
+            description: _("Drag and drop documents here");
+
+            child: Button open_button {
+              halign: center;
+              action-name: "win.open";
+              label: _("_Open…");
+              use-underline: true;
+              tooltip-text: _("Open a Document");
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            };
+          };
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "error";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: Adw.StatusPage error_page {
+            icon-name: "dialog-error-symbolic";
+            title: _("Unable to Open Document");
+
+            child: Button {
+              halign: center;
+              action-name: "win.open";
+              label: _("_Open Other File…");
+              use-underline: true;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            };
+          };
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "password";
+
+        child: $PpsPasswordView password_view {
+          unlock => $password_view_unlock() swapped;
+          cancelled => $password_view_cancelled() swapped;
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "loader";
+
+        child: $PpsLoaderView loader_view {
+          cancel => $loader_view_cancelled() swapped;
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "document";
+
+        child: $PpsDocumentView document_view {};
+      }
+
+      Adw.ViewStackPage {
+        name: "presentation";
+
+        child: $PpsViewPresentation presentation {
+          finished => $presentation_finished() swapped;
+          external-link => $external_link_clicked() swapped;
+
+          ShortcutController {
+            Shortcut {
+              trigger: "Escape";
+              action: "action(win.escape)";
+            }
+          }
+        };
+      }
+    };
+  };
+
+  DropTarget {
+    formats: "GdkFileList";
+    actions: copy;
+    drop => $drag_data_received() swapped;
+  }
+}
+
+Adw.AlertDialog error_alert {
+  responses [
+    close: _("_Close"),
+  ]
+}
+
+menu app_menu {
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("_About Papers");
+      action: "app.about";
+    }
+  }
+}
