@@ -1910,7 +1910,12 @@ pdf_selection_render_selection (PpsSelection *selection,
 	gint width, height;
 	double xscale, yscale;
 
-	g_rw_lock_reader_lock (&self->rwlock);
+	// HACK! This could potentially be a reader lock, but cannot happen
+	// concurrently to the regular rendering, since poppler is not safe.
+	// Since this in regular usage this is less expensive than regular
+	// rendering, lock exclusive here, so we hold an exclusive lock
+	// the for as little time as possible.
+	g_rw_lock_writer_lock (&self->rwlock);
 
 	poppler_page = POPPLER_PAGE (rc->page->backend_page);
 
@@ -1943,7 +1948,7 @@ pdf_selection_render_selection (PpsSelection *selection,
 	                               &base_color);
 	cairo_destroy (cr);
 
-	g_rw_lock_reader_unlock (&self->rwlock);
+	g_rw_lock_writer_unlock (&self->rwlock);
 }
 
 static gchar *
