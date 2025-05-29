@@ -7,7 +7,7 @@ variables:
     # stable branch.
     # Could probably also switch away from rawhide,
     # to stable fedora branch as well.
-    FDO_DISTRIBUTION_TAG: '2024-03-01.0-main'
+    FDO_DISTRIBUTION_TAG: '2025-05-29.0-main'
     FDO_DISTRIBUTION_VERSION: rawhide
 
 include:
@@ -66,6 +66,7 @@ build.container.fedora:
             rustfmt
             cargo
             git
+            blueprint-compiler
 
 # stage: lint
 
