@@ -493,11 +493,12 @@ Adw.AlertDialog rect_small_alert {
   heading: _("Selection too Small");
   body: _("A signature of this size may be too small to read. If you would like to create a potentially more readable signature, press `Start over` and draw a bigger rectangle.");
   follows-content-size: true;
-  default-response: "cancel";
-  close-response: "cancel";
+  // https://gitlab.gnome.org/GNOME/blueprint-compiler/-/issues/195
+  default-response: "cancel2";
+  close-response: "cancel2";
 
   responses [
-    cancel: _("Start _Over"),
+    cancel2: _("Start _Over"),
     sign: _("_Sign") destructive,
   ]
 
