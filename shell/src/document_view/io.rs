@@ -519,7 +519,7 @@ impl imp::PpsDocumentView {
             .document()
             .and_dynamic_cast_ref::<DocumentSignatures>()
             .map(|d| d.available_signing_certificates())
-            .unwrap();
+            .unwrap_or_default();
         let dialog = adw::AlertDialog::new(Some(&gettext("Certificate Required")), None);
 
         if !certs.is_empty() {
