@@ -124,50 +124,60 @@ G_DEFINE_TYPE_WITH_PRIVATE (PpsAnnotationTextMarkup,
 
 /* PpsAnnotation */
 enum {
-	PROP_ANNOT_0,
-	PROP_ANNOT_PAGE,
-	PROP_ANNOT_CONTENTS,
-	PROP_ANNOT_NAME,
-	PROP_ANNOT_MODIFIED,
-	PROP_ANNOT_RGBA,
-	PROP_ANNOT_AREA,
-	PROP_ANNOT_HIDDEN,
-	PROP_ANNOT_BORDER_WIDTH
+	PROP_PAGE = 1,
+	PROP_CONTENTS,
+	PROP_NAME,
+	PROP_MODIFIED,
+	PROP_RGBA,
+	PROP_AREA,
+	PROP_HIDDEN,
+	PROP_BORDER_WIDTH,
+	PROP_LAST,
 };
+static GParamSpec *properties[PROP_LAST];
 
 /* PpsAnnotationMarkup */
 enum {
-	PROP_MARKUP_0,
-	PROP_MARKUP_LABEL,
+	PROP_MARKUP_LABEL = 1,
 	PROP_MARKUP_OPACITY,
 	PROP_MARKUP_CAN_HAVE_POPUP,
 	PROP_MARKUP_HAS_POPUP,
 	PROP_MARKUP_RECTANGLE,
-	PROP_MARKUP_POPUP_IS_OPEN
+	PROP_MARKUP_POPUP_IS_OPEN,
+	PROP_MARKUP_LAST
 };
+static GParamSpec *markup_properties[PROP_MARKUP_LAST];
 
 /* PpsAnnotationText */
 enum {
 	PROP_TEXT_ICON = 1,
-	PROP_TEXT_IS_OPEN
+	PROP_TEXT_IS_OPEN,
+	PROP_TEXT_LAST,
 };
-
-/* PpsAnnotationAttachment */
-enum {
-	PROP_ATTACHMENT_ATTACHMENT = 1
-};
-
-/* PpsAnnotationTextMarkup */
-enum {
-	PROP_TEXT_MARKUP_TYPE = 1
-};
+static GParamSpec *text_properties[PROP_TEXT_LAST];
 
 /* PpsAnnotationFreeText */
 enum {
-	PROP_ANNOT_FREE_TEXT_0,
-	PROP_ANNOT_FREE_TEXT_FONT_DESC,
-	PROP_ANNOT_FREE_TEXT_FONT_RGBA
+	PROP_FREE_TEXT_0 = 1,
+	PROP_FREE_TEXT_FONT_DESC,
+	PROP_FREE_TEXT_FONT_RGBA,
+	PROP_FREE_TEXT_LAST,
 };
+static GParamSpec *free_text_properties[PROP_FREE_TEXT_LAST];
+
+/* PpsAnnotationAttachment */
+enum {
+	PROP_ATTACHMENT_ATTACHMENT = 1,
+	PROP_ATTACHMENT_LAST,
+};
+static GParamSpec *attachment_properties[PROP_ATTACHMENT_LAST];
+
+/* PpsAnnotationTextMarkup */
+enum {
+	PROP_TEXT_MARKUP_TYPE = 1,
+	PROP_TEXT_MARKUP_LAST,
+};
+static GParamSpec *text_markup_properties[PROP_TEXT_MARKUP_LAST];
 
 /* PpsAnnotation */
 static void
@@ -206,28 +216,28 @@ pps_annotation_set_property (GObject *object,
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
 
 	switch (prop_id) {
-	case PROP_ANNOT_PAGE:
+	case PROP_PAGE:
 		priv->page = g_value_dup_object (value);
 		break;
-	case PROP_ANNOT_CONTENTS:
+	case PROP_CONTENTS:
 		pps_annotation_set_contents (annot, g_value_get_string (value));
 		break;
-	case PROP_ANNOT_NAME:
+	case PROP_NAME:
 		pps_annotation_set_name (annot, g_value_get_string (value));
 		break;
-	case PROP_ANNOT_MODIFIED:
+	case PROP_MODIFIED:
 		pps_annotation_set_modified (annot, g_value_get_string (value));
 		break;
-	case PROP_ANNOT_RGBA:
+	case PROP_RGBA:
 		pps_annotation_set_rgba (annot, g_value_get_boxed (value));
 		break;
-	case PROP_ANNOT_AREA:
+	case PROP_AREA:
 		pps_annotation_set_area (annot, g_value_get_boxed (value));
 		break;
-	case PROP_ANNOT_HIDDEN:
+	case PROP_HIDDEN:
 		pps_annotation_set_hidden (annot, g_value_get_boolean (value));
 		break;
-	case PROP_ANNOT_BORDER_WIDTH:
+	case PROP_BORDER_WIDTH:
 		pps_annotation_set_border_width (annot, g_value_get_double (value));
 		break;
 	default:
@@ -245,25 +255,25 @@ pps_annotation_get_property (GObject *object,
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
 
 	switch (prop_id) {
-	case PROP_ANNOT_CONTENTS:
+	case PROP_CONTENTS:
 		g_value_set_string (value, pps_annotation_get_contents (annot));
 		break;
-	case PROP_ANNOT_NAME:
+	case PROP_NAME:
 		g_value_set_string (value, pps_annotation_get_name (annot));
 		break;
-	case PROP_ANNOT_MODIFIED:
+	case PROP_MODIFIED:
 		g_value_set_string (value, pps_annotation_get_modified (annot));
 		break;
-	case PROP_ANNOT_RGBA:
+	case PROP_RGBA:
 		g_value_set_boxed (value, &priv->rgba);
 		break;
-	case PROP_ANNOT_AREA:
+	case PROP_AREA:
 		g_value_set_boxed (value, &priv->area);
 		break;
-	case PROP_ANNOT_HIDDEN:
+	case PROP_HIDDEN:
 		g_value_set_boolean (value, priv->hidden);
 		break;
-	case PROP_ANNOT_BORDER_WIDTH:
+	case PROP_BORDER_WIDTH:
 		g_value_set_double (value, priv->border_width);
 		break;
 	default:
@@ -280,38 +290,73 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	g_object_class->set_property = pps_annotation_set_property;
 	g_object_class->get_property = pps_annotation_get_property;
 
+	properties[PROP_PAGE] =
+	    g_param_spec_object ("page",
+	                         "Page",
+	                         "The page wehere the annotation is",
+	                         PPS_TYPE_PAGE,
+	                         G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY |
+	                             G_PARAM_STATIC_STRINGS);
+	properties[PROP_CONTENTS] =
+	    g_param_spec_string ("contents",
+	                         "Contents",
+	                         "The annotation contents",
+	                         NULL,
+	                         G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
+	properties[PROP_NAME] =
+	    g_param_spec_string ("name",
+	                         "Name",
+	                         "The annotation unique name",
+	                         NULL,
+	                         G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
+	properties[PROP_MODIFIED] =
+	    g_param_spec_string ("modified",
+	                         "Modified",
+	                         "Last modified date as string",
+	                         NULL,
+	                         G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
+	properties[PROP_RGBA] =
+	    g_param_spec_boxed ("rgba", NULL, NULL,
+	                        GDK_TYPE_RGBA,
+	                        G_PARAM_READWRITE |
+	                            G_PARAM_STATIC_STRINGS);
+	properties[PROP_AREA] =
+	    g_param_spec_boxed ("area",
+	                        "Area",
+	                        "The area of the page where the annotation is placed",
+	                        PPS_TYPE_RECTANGLE,
+	                        G_PARAM_READWRITE |
+	                            G_PARAM_STATIC_STRINGS);
+	properties[PROP_HIDDEN] =
+	    g_param_spec_boolean ("hidden",
+	                          "Hidden Flag",
+	                          "Whether the annotation is hidden or not",
+	                          FALSE,
+	                          G_PARAM_READWRITE |
+	                              G_PARAM_STATIC_STRINGS);
+	properties[PROP_BORDER_WIDTH] =
+	    g_param_spec_double ("border-width",
+	                         "Border Width",
+	                         "The annotation border width",
+	                         0., G_MAXDOUBLE, 0.,
+	                         G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
+
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_PAGE,
-	                                 g_param_spec_object ("page",
-	                                                      "Page",
-	                                                      "The page wehere the annotation is",
-	                                                      PPS_TYPE_PAGE,
-	                                                      G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 PROP_PAGE,
+	                                 properties[PROP_PAGE]);
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_CONTENTS,
-	                                 g_param_spec_string ("contents",
-	                                                      "Contents",
-	                                                      "The annotation contents",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 PROP_CONTENTS,
+	                                 properties[PROP_CONTENTS]);
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_NAME,
-	                                 g_param_spec_string ("name",
-	                                                      "Name",
-	                                                      "The annotation unique name",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 PROP_NAME,
+	                                 properties[PROP_NAME]);
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_MODIFIED,
-	                                 g_param_spec_string ("modified",
-	                                                      "Modified",
-	                                                      "Last modified date as string",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 PROP_MODIFIED,
+	                                 properties[PROP_MODIFIED]);
 
 	/**
 	 * PpsAnnotation:rgba:
@@ -321,11 +366,8 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	 * Since: 3.6
 	 */
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_RGBA,
-	                                 g_param_spec_boxed ("rgba", NULL, NULL,
-	                                                     GDK_TYPE_RGBA,
-	                                                     G_PARAM_READWRITE |
-	                                                         G_PARAM_STATIC_STRINGS));
+	                                 PROP_RGBA,
+	                                 properties[PROP_RGBA]);
 
 	/**
 	 * PpsAnnotation:area:
@@ -335,13 +377,19 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	 * Since 3.18
 	 */
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_AREA,
-	                                 g_param_spec_boxed ("area",
-	                                                     "Area",
-	                                                     "The area of the page where the annotation is placed",
-	                                                     PPS_TYPE_RECTANGLE,
-	                                                     G_PARAM_READWRITE |
-	                                                         G_PARAM_STATIC_STRINGS));
+	                                 PROP_AREA,
+	                                 properties[PROP_AREA]);
+
+	/**
+	 * PpsAnnotation:hidden:
+	 *
+	 * A flag to hide an annotation from the view.
+	 *
+	 * Since: 48.0
+	 */
+	g_object_class_install_property (g_object_class,
+	                                 PROP_HIDDEN,
+	                                 properties[PROP_HIDDEN]);
 
 	/**
 	 * PpsAnnotation:border-width:
@@ -352,29 +400,8 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	 * Since: 48.0
 	 */
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_BORDER_WIDTH,
-	                                 g_param_spec_double ("border-width",
-	                                                      "Border Width",
-	                                                      "The annotation border width",
-	                                                      0., G_MAXDOUBLE, 0.,
-	                                                      G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
-
-	/**
-	 * PpsAnnotation:hidden:
-	 *
-	 * A flag to hide an annotation from the view.
-	 *
-	 * Since: 48.0
-	 */
-	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_BORDER_WIDTH,
-	                                 g_param_spec_boolean ("hidden",
-	                                                       "Hidden Flag",
-	                                                       "Whether the annotation is hidden or not",
-	                                                       FALSE,
-	                                                       G_PARAM_READWRITE |
-	                                                           G_PARAM_STATIC_STRINGS));
+	                                 PROP_BORDER_WIDTH,
+	                                 properties[PROP_BORDER_WIDTH]);
 }
 
 PpsAnnotationType
@@ -492,7 +519,7 @@ pps_annotation_set_contents (PpsAnnotation *annot,
 		g_free (priv->contents);
 	priv->contents = contents ? g_strdup (contents) : NULL;
 
-	g_object_notify (G_OBJECT (annot), "contents");
+	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_CONTENTS]);
 
 	return TRUE;
 }
@@ -542,7 +569,7 @@ pps_annotation_set_name (PpsAnnotation *annot,
 		g_free (priv->name);
 	priv->name = name ? g_strdup (name) : NULL;
 
-	g_object_notify (G_OBJECT (annot), "name");
+	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_NAME]);
 
 	return TRUE;
 }
@@ -593,7 +620,7 @@ pps_annotation_set_modified (PpsAnnotation *annot,
 		g_free (priv->modified);
 	priv->modified = modified ? g_strdup (modified) : NULL;
 
-	g_object_notify (G_OBJECT (annot), "modified");
+	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_MODIFIED]);
 
 	return TRUE;
 }
@@ -631,7 +658,7 @@ pps_annotation_set_modified_from_time_t (PpsAnnotation *annot,
 		g_free (priv->modified);
 
 	priv->modified = modified;
-	g_object_notify (G_OBJECT (annot), "modified");
+	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_MODIFIED]);
 
 	return TRUE;
 }
@@ -681,7 +708,7 @@ pps_annotation_set_rgba (PpsAnnotation *annot,
 		return FALSE;
 
 	priv->rgba = *rgba;
-	g_object_notify (G_OBJECT (annot), "rgba");
+	g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_RGBA]);
 
 	return TRUE;
 }
@@ -734,7 +761,7 @@ pps_annotation_set_area (PpsAnnotation *annot,
 	was_initial = priv->area.x1 == -1 && priv->area.x2 == -1 && priv->area.y1 == -1 && priv->area.y2 == -1;
 	priv->area = *area;
 	if (!was_initial)
-		g_object_notify (G_OBJECT (annot), "area");
+		g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_AREA]);
 
 	return TRUE;
 }
@@ -756,7 +783,7 @@ pps_annotation_set_hidden (PpsAnnotation *annot, const gboolean hidden)
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
 	if (priv->hidden != hidden) {
 		priv->hidden = hidden;
-		g_object_notify (G_OBJECT (annot), "hidden");
+		g_object_notify_by_pspec (G_OBJECT (annot), properties[PROP_HIDDEN]);
 		return TRUE;
 	}
 	return FALSE;
@@ -794,7 +821,8 @@ pps_annotation_set_border_width (PpsAnnotation *annot, const gdouble width)
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
 	if (priv->border_width != width) {
 		priv->border_width = width;
-		g_object_notify (G_OBJECT (annot), "border-width");
+		g_object_notify_by_pspec (G_OBJECT (annot),
+		                          properties[PROP_BORDER_WIDTH]);
 		return TRUE;
 	}
 	return FALSE;
@@ -902,58 +930,71 @@ pps_annotation_markup_class_init (PpsAnnotationMarkupClass *klass)
 	g_object_class->set_property = pps_annotation_markup_set_property;
 	g_object_class->get_property = pps_annotation_markup_get_property;
 
+	markup_properties[PROP_MARKUP_LABEL] =
+	    g_param_spec_string ("label",
+	                         "Label",
+	                         "Label of the markup annotation",
+	                         NULL,
+	                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+	markup_properties[PROP_MARKUP_OPACITY] =
+	    g_param_spec_double ("opacity",
+	                         "Opacity",
+	                         "Opacity of the markup annotation",
+	                         0,
+	                         G_MAXDOUBLE,
+	                         1.,
+	                         G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
+	markup_properties[PROP_MARKUP_CAN_HAVE_POPUP] =
+	    g_param_spec_boolean ("can-have-popup",
+	                          "Can have popup",
+	                          "Whether it is allowed to have a popup "
+	                          "window for this type of markup annotation",
+	                          FALSE,
+	                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	markup_properties[PROP_MARKUP_HAS_POPUP] =
+	    g_param_spec_boolean ("has-popup",
+	                          "Has popup",
+	                          "Whether the markup annotation has "
+	                          "a popup window associated",
+	                          TRUE,
+	                          G_PARAM_READWRITE |
+	                              G_PARAM_STATIC_STRINGS);
+	markup_properties[PROP_MARKUP_RECTANGLE] =
+	    g_param_spec_boxed ("rectangle",
+	                        "Rectangle",
+	                        "The Rectangle of the popup associated "
+	                        "to the markup annotation",
+	                        PPS_TYPE_RECTANGLE,
+	                        G_PARAM_READWRITE |
+	                            G_PARAM_STATIC_STRINGS);
+	markup_properties[PROP_MARKUP_POPUP_IS_OPEN] =
+	    g_param_spec_boolean ("popup-is-open",
+	                          "PopupIsOpen",
+	                          "Whether the popup associated to "
+	                          "the markup annotation is open",
+	                          FALSE,
+	                          G_PARAM_READWRITE |
+	                              G_PARAM_STATIC_STRINGS);
+
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_LABEL,
-	                                 g_param_spec_string ("label",
-	                                                      "Label",
-	                                                      "Label of the markup annotation",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_LABEL]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_OPACITY,
-	                                 g_param_spec_double ("opacity",
-	                                                      "Opacity",
-	                                                      "Opacity of the markup annotation",
-	                                                      0,
-	                                                      G_MAXDOUBLE,
-	                                                      1.,
-	                                                      G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_OPACITY]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_CAN_HAVE_POPUP,
-	                                 g_param_spec_boolean ("can-have-popup",
-	                                                       "Can have popup",
-	                                                       "Whether it is allowed to have a popup "
-	                                                       "window for this type of markup annotation",
-	                                                       FALSE,
-	                                                       G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_CAN_HAVE_POPUP]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_HAS_POPUP,
-	                                 g_param_spec_boolean ("has-popup",
-	                                                       "Has popup",
-	                                                       "Whether the markup annotation has "
-	                                                       "a popup window associated",
-	                                                       TRUE,
-	                                                       G_PARAM_READWRITE |
-	                                                           G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_HAS_POPUP]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_RECTANGLE,
-	                                 g_param_spec_boxed ("rectangle",
-	                                                     "Rectangle",
-	                                                     "The Rectangle of the popup associated "
-	                                                     "to the markup annotation",
-	                                                     PPS_TYPE_RECTANGLE,
-	                                                     G_PARAM_READWRITE |
-	                                                         G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_RECTANGLE]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_MARKUP_POPUP_IS_OPEN,
-	                                 g_param_spec_boolean ("popup-is-open",
-	                                                       "PopupIsOpen",
-	                                                       "Whether the popup associated to "
-	                                                       "the markup annotation is open",
-	                                                       FALSE,
-	                                                       G_PARAM_READWRITE |
-	                                                           G_PARAM_STATIC_STRINGS));
+	                                 markup_properties[PROP_MARKUP_POPUP_IS_OPEN]);
 }
 
 const gchar *
@@ -981,7 +1022,8 @@ pps_annotation_markup_set_label (PpsAnnotationMarkup *self,
 	g_free (priv->label);
 	priv->label = g_strdup (label);
 
-	g_object_notify (G_OBJECT (self), "label");
+	g_object_notify_by_pspec (G_OBJECT (self),
+	                          markup_properties[PROP_MARKUP_LABEL]);
 
 	return TRUE;
 }
@@ -1009,7 +1051,8 @@ pps_annotation_markup_set_opacity (PpsAnnotationMarkup *self,
 
 	priv->opacity = opacity;
 
-	g_object_notify (G_OBJECT (self), "opacity");
+	g_object_notify_by_pspec (G_OBJECT (self),
+	                          markup_properties[PROP_MARKUP_OPACITY]);
 
 	return TRUE;
 }
@@ -1047,7 +1090,8 @@ pps_annotation_markup_set_has_popup (PpsAnnotationMarkup *self,
 
 	priv->has_popup = has_popup;
 
-	g_object_notify (G_OBJECT (self), "has-popup");
+	g_object_notify_by_pspec (G_OBJECT (self),
+	                          markup_properties[PROP_MARKUP_HAS_POPUP]);
 
 	return TRUE;
 }
@@ -1081,7 +1125,8 @@ pps_annotation_markup_set_rectangle (PpsAnnotationMarkup *self,
 
 	priv->rectangle = *pps_rect;
 
-	g_object_notify (G_OBJECT (self), "rectangle");
+	g_object_notify_by_pspec (G_OBJECT (self),
+	                          markup_properties[PROP_MARKUP_RECTANGLE]);
 
 	return TRUE;
 }
@@ -1109,7 +1154,8 @@ pps_annotation_markup_set_popup_is_open (PpsAnnotationMarkup *self,
 
 	priv->popup_is_open = is_open;
 
-	g_object_notify (G_OBJECT (self), "popup_is_open");
+	g_object_notify_by_pspec (G_OBJECT (self),
+	                          markup_properties[PROP_MARKUP_POPUP_IS_OPEN]);
 
 	return TRUE;
 }
@@ -1174,23 +1220,27 @@ pps_annotation_text_class_init (PpsAnnotationTextClass *klass)
 	g_object_class->set_property = pps_annotation_text_set_property;
 	g_object_class->get_property = pps_annotation_text_get_property;
 
+	text_properties[PROP_TEXT_ICON] =
+	    g_param_spec_enum ("icon",
+	                       "Icon",
+	                       "The icon fo the text annotation",
+	                       PPS_TYPE_ANNOTATION_TEXT_ICON,
+	                       PPS_ANNOTATION_TEXT_ICON_NOTE,
+	                       G_PARAM_READWRITE |
+	                           G_PARAM_STATIC_STRINGS);
+	text_properties[PROP_TEXT_IS_OPEN] =
+	    g_param_spec_boolean ("is-open",
+	                          "IsOpen",
+	                          "Whether text annot is initially open",
+	                          FALSE,
+	                          G_PARAM_READWRITE |
+	                              G_PARAM_STATIC_STRINGS);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_TEXT_ICON,
-	                                 g_param_spec_enum ("icon",
-	                                                    "Icon",
-	                                                    "The icon fo the text annotation",
-	                                                    PPS_TYPE_ANNOTATION_TEXT_ICON,
-	                                                    PPS_ANNOTATION_TEXT_ICON_NOTE,
-	                                                    G_PARAM_READWRITE |
-	                                                        G_PARAM_STATIC_STRINGS));
+	                                 text_properties[PROP_TEXT_ICON]);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_TEXT_IS_OPEN,
-	                                 g_param_spec_boolean ("is-open",
-	                                                       "IsOpen",
-	                                                       "Whether text annot is initially open",
-	                                                       FALSE,
-	                                                       G_PARAM_READWRITE |
-	                                                           G_PARAM_STATIC_STRINGS));
+	                                 text_properties[PROP_TEXT_IS_OPEN]);
 }
 
 PpsAnnotation *
@@ -1224,7 +1274,8 @@ pps_annotation_text_set_icon (PpsAnnotationText *text,
 
 	priv->icon = icon;
 
-	g_object_notify (G_OBJECT (text), "icon");
+	g_object_notify_by_pspec (G_OBJECT (text),
+	                          text_properties[PROP_TEXT_ICON]);
 
 	return TRUE;
 }
@@ -1252,7 +1303,8 @@ pps_annotation_text_set_is_open (PpsAnnotationText *text,
 
 	priv->is_open = is_open;
 
-	g_object_notify (G_OBJECT (text), "is_open");
+	g_object_notify_by_pspec (G_OBJECT (text),
+	                          text_properties[PROP_TEXT_IS_OPEN]);
 
 	return TRUE;
 }
@@ -1354,10 +1406,10 @@ pps_annotation_free_text_set_property (GObject *object,
 	PpsAnnotationFreeText *annot = PPS_ANNOTATION_FREE_TEXT (object);
 
 	switch (prop_id) {
-	case PROP_ANNOT_FREE_TEXT_FONT_DESC:
+	case PROP_FREE_TEXT_FONT_DESC:
 		pps_annotation_free_text_set_font_description (annot, g_value_get_boxed (value));
 		break;
-	case PROP_ANNOT_FREE_TEXT_FONT_RGBA:
+	case PROP_FREE_TEXT_FONT_RGBA:
 		pps_annotation_free_text_set_font_rgba (annot, g_value_get_boxed (value));
 		break;
 	default:
@@ -1374,10 +1426,10 @@ pps_annotation_free_text_get_property (GObject *object,
 	PpsAnnotationFreeTextPrivate *priv = GET_ANNOT_FREE_TEXT_PRIVATE (PPS_ANNOTATION_FREE_TEXT (object));
 
 	switch (prop_id) {
-	case PROP_ANNOT_FREE_TEXT_FONT_RGBA:
+	case PROP_FREE_TEXT_FONT_RGBA:
 		g_value_set_boxed (value, &priv->font_rgba);
 		break;
-	case PROP_ANNOT_FREE_TEXT_FONT_DESC:
+	case PROP_FREE_TEXT_FONT_DESC:
 		g_value_set_boxed (value, &priv->font_desc);
 		break;
 	default:
@@ -1403,19 +1455,22 @@ pps_annotation_free_text_class_init (PpsAnnotationFreeTextClass *klass)
 	g_object_class->get_property = pps_annotation_free_text_get_property;
 	g_object_class->dispose = pps_annotation_free_text_dispose;
 
+	free_text_properties[PROP_FREE_TEXT_FONT_DESC] =
+	    g_param_spec_boxed ("font-desc", NULL, NULL,
+	                        PANGO_TYPE_FONT_DESCRIPTION,
+	                        G_PARAM_READWRITE |
+	                            G_PARAM_STATIC_STRINGS);
+	free_text_properties[PROP_FREE_TEXT_FONT_RGBA] =
+	    g_param_spec_boxed ("font-rgba", NULL, NULL,
+	                        GDK_TYPE_RGBA,
+	                        G_PARAM_READWRITE |
+	                            G_PARAM_STATIC_STRINGS);
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_FREE_TEXT_FONT_DESC,
-	                                 g_param_spec_boxed ("font-desc", NULL, NULL,
-	                                                     PANGO_TYPE_FONT_DESCRIPTION,
-	                                                     G_PARAM_READWRITE |
-	                                                         G_PARAM_STATIC_STRINGS));
-
+	                                 PROP_FREE_TEXT_FONT_DESC,
+	                                 free_text_properties[PROP_FREE_TEXT_FONT_DESC]);
 	g_object_class_install_property (g_object_class,
-	                                 PROP_ANNOT_FREE_TEXT_FONT_RGBA,
-	                                 g_param_spec_boxed ("font-rgba", NULL, NULL,
-	                                                     GDK_TYPE_RGBA,
-	                                                     G_PARAM_READWRITE |
-	                                                         G_PARAM_STATIC_STRINGS));
+	                                 PROP_FREE_TEXT_FONT_RGBA,
+	                                 free_text_properties[PROP_FREE_TEXT_FONT_RGBA]);
 }
 
 /**
@@ -1456,7 +1511,8 @@ pps_annotation_free_text_set_font_description (PpsAnnotationFreeText *annot,
 	g_clear_pointer (&priv->font_desc, pango_font_description_free);
 	priv->font_desc = pango_font_description_copy (font_desc);
 
-	g_object_notify (G_OBJECT (annot), "font-desc");
+	g_object_notify_by_pspec (G_OBJECT (annot),
+	                          free_text_properties[PROP_FREE_TEXT_FONT_DESC]);
 	return TRUE;
 }
 
@@ -1500,7 +1556,8 @@ pps_annotation_free_text_set_font_rgba (PpsAnnotationFreeText *annot, const GdkR
 
 	priv->font_rgba = *rgba;
 
-	g_object_notify (G_OBJECT (annot), "font-rgba");
+	g_object_notify_by_pspec (G_OBJECT (annot),
+	                          free_text_properties[PROP_FREE_TEXT_FONT_RGBA]);
 
 	return TRUE;
 }
@@ -1636,15 +1693,17 @@ pps_annotation_attachment_class_init (PpsAnnotationAttachmentClass *klass)
 	g_object_class->get_property = pps_annotation_attachment_get_property;
 	g_object_class->finalize = pps_annotation_attachment_finalize;
 
+	attachment_properties[PROP_ATTACHMENT_ATTACHMENT] =
+	    g_param_spec_object ("attachment",
+	                         "Attachment",
+	                         "The attachment of the annotation",
+	                         PPS_TYPE_ATTACHMENT,
+	                         G_PARAM_CONSTRUCT |
+	                             G_PARAM_READWRITE |
+	                             G_PARAM_STATIC_STRINGS);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_ATTACHMENT_ATTACHMENT,
-	                                 g_param_spec_object ("attachment",
-	                                                      "Attachment",
-	                                                      "The attachment of the annotation",
-	                                                      PPS_TYPE_ATTACHMENT,
-	                                                      G_PARAM_CONSTRUCT |
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_STATIC_STRINGS));
+	                                 attachment_properties[PROP_ATTACHMENT_ATTACHMENT]);
 }
 
 PpsAnnotation *
@@ -1684,7 +1743,8 @@ pps_annotation_attachment_set_attachment (PpsAnnotationAttachment *annot,
 	g_return_val_if_fail (PPS_IS_ANNOTATION_ATTACHMENT (annot), FALSE);
 
 	if (g_set_object (&priv->attachment, attachment)) {
-		g_object_notify (G_OBJECT (annot), "attachment");
+		g_object_notify_by_pspec (G_OBJECT (annot),
+		                          attachment_properties[PROP_ATTACHMENT_ATTACHMENT]);
 		return TRUE;
 	}
 
@@ -1746,16 +1806,18 @@ pps_annotation_text_markup_class_init (PpsAnnotationTextMarkupClass *class)
 	g_object_class->get_property = pps_annotation_text_markup_get_property;
 	g_object_class->set_property = pps_annotation_text_markup_set_property;
 
+	text_markup_properties[PROP_TEXT_MARKUP_TYPE] =
+	    g_param_spec_enum ("type",
+	                       "Type",
+	                       "The text markup annotation type",
+	                       PPS_TYPE_ANNOTATION_TEXT_MARKUP_TYPE,
+	                       PPS_ANNOTATION_TEXT_MARKUP_HIGHLIGHT,
+	                       G_PARAM_READWRITE |
+	                           G_PARAM_CONSTRUCT |
+	                           G_PARAM_STATIC_STRINGS);
 	g_object_class_install_property (g_object_class,
 	                                 PROP_TEXT_MARKUP_TYPE,
-	                                 g_param_spec_enum ("type",
-	                                                    "Type",
-	                                                    "The text markup annotation type",
-	                                                    PPS_TYPE_ANNOTATION_TEXT_MARKUP_TYPE,
-	                                                    PPS_ANNOTATION_TEXT_MARKUP_HIGHLIGHT,
-	                                                    G_PARAM_READWRITE |
-	                                                        G_PARAM_CONSTRUCT |
-	                                                        G_PARAM_STATIC_STRINGS));
+	                                 text_markup_properties[PROP_TEXT_MARKUP_TYPE]);
 }
 
 PpsAnnotation *
@@ -1815,7 +1877,8 @@ pps_annotation_text_markup_set_markup_type (PpsAnnotationTextMarkup *annot,
 		return FALSE;
 
 	priv->type = markup_type;
-	g_object_notify (G_OBJECT (annot), "type");
+	g_object_notify_by_pspec (G_OBJECT (annot),
+	                          text_markup_properties[PROP_TEXT_MARKUP_TYPE]);
 
 	return TRUE;
 }
