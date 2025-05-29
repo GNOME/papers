@@ -21,7 +21,6 @@ if enable_user_doc
     'bug-filing.page',
     'commandline.page',
     'convertSVG.page',
-    'default-settings.page',
     'develop.page',
     'documentation.page',
     'duplex-10pages.page',
