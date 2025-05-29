@@ -205,6 +205,9 @@ if not gobject_introspection_dep.found()
   enable_docs = false
 endif
 
+# *** Blueprint-Compiler ***
+blueprint_compiler = find_program('blueprint-compiler', version: '>= 0.16')
+
 # *** Libspelling ***
 libspelling_dep = dependency('libspelling-1', version: '>= 0.2', required: get_option('spell_check'))
 enable_spellcheck = libspelling_dep.found()

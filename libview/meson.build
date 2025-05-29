@@ -123,7 +123,7 @@ blueprints = custom_target(
   input: blueprint_sources,
   output: blueprint_output,
   command: [
-    find_program('blueprint-compiler'),
+    blueprint_compiler,
     'batch-compile',
     '@OUTDIR@',
     '@CURRENT_SOURCE_DIR@',
