@@ -503,7 +503,6 @@ pdf_document_get_thumbnail (PpsDocument *document,
 	poppler_page_get_size (poppler_page,
 	                       &page_width, &page_height);
 	surface = poppler_page_get_thumbnail (poppler_page);
-	g_rw_lock_reader_unlock (&self->rwlock);
 
 	pps_render_context_compute_transformed_size (rc, page_width, page_height,
 	                                             &width, &height);
@@ -532,6 +531,7 @@ pdf_document_get_thumbnail (PpsDocument *document,
 		/* There is no provided thumbnail. We need to make one. */
 		pixbuf = make_thumbnail_for_page (poppler_page, rc, width, height);
 	}
+	g_rw_lock_reader_unlock (&self->rwlock);
 
 	return pixbuf;
 }
