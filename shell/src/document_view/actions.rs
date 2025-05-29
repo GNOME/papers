@@ -67,9 +67,12 @@ impl imp::PpsDocumentView {
             self.set_action_enabled("add-text-annotation", false);
         }
 
-        if let Some(document) = document.dynamic_cast_ref::<DocumentSignatures>() {
-            self.set_action_enabled("digital-signing", document.can_sign());
-        }
+        let can_sign = document
+            .dynamic_cast_ref::<DocumentSignatures>()
+            .map(|doc| doc.can_sign())
+            .unwrap_or_default();
+
+        self.set_action_enabled("digital-signing", can_sign);
 
         self.set_action_enabled("dual-odd-left", dual_mode);
 
