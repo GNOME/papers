@@ -4,7 +4,7 @@ use std::process::ExitCode;
 
 use gio::prelude::FileExt;
 use papers_document::prelude::DocumentExt;
-use papers_document::{DocumentLoadFlags, RenderAnnotsFlags};
+use papers_document::RenderAnnotsFlags;
 
 const USAGE: &str = "Usage:
   papers-thumbnailer [OPTION…] <input> <output> - GNOME Document Thumbnailer
@@ -76,13 +76,16 @@ fn main() -> ExitCode {
         return ExitCode::FAILURE;
     };
 
-    let Ok(document) =
-        papers_document::Document::factory_get_document(&uri)
-    else {
+    let Ok(document) = papers_document::Document::factory_get_document(&uri) else {
         papers_document::shutdown();
         log::error!("Failed to get document for {uri}");
         return ExitCode::FAILURE;
     };
+    if let Err(err) = papers_document::Document::load(&document, &uri) {
+        papers_document::shutdown();
+        log::error!("Failed to load document for {uri}: {err}");
+        return ExitCode::FAILURE;
+    }
 
     // start a timer
     std::thread::spawn(move || {
