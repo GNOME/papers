@@ -17,10 +17,11 @@ rustc-args = ["--cfg", "docsrs"]
 rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
-default = ["v48"]
+default = ["v49"]
 v42 = ["papers-document-sys/v42"]
 v47 = ["papers-document-sys/v47", "v42"]
 v48 = ["papers-document-sys/v48", "v47"]
+v49 = ["papers-document-sys/v49", "v48"]
 
 [dependencies]
 papers-document-sys.workspace = true

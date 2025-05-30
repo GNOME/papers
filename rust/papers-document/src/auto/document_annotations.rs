@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Annotation, AnnotationsOverMarkup, AnnotationsSaveMask, Page};
+use crate::{ffi, Annotation, AnnotationsOverMarkup, Page};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
@@ -86,17 +86,6 @@ pub trait DocumentAnnotationsExt: IsA<DocumentAnnotations> + 'static {
             ffi::pps_document_annotations_remove_annotation(
                 self.as_ref().to_glib_none().0,
                 annot.as_ref().to_glib_none().0,
-            );
-        }
-    }
-
-    #[doc(alias = "pps_document_annotations_save_annotation")]
-    fn save_annotation(&self, annot: &impl IsA<Annotation>, mask: AnnotationsSaveMask) {
-        unsafe {
-            ffi::pps_document_annotations_save_annotation(
-                self.as_ref().to_glib_none().0,
-                annot.as_ref().to_glib_none().0,
-                mask.into_glib(),
             );
         }
     }

@@ -130,20 +130,6 @@ pub trait DocumentExt: IsA<Document> + 'static {
         }
     }
 
-    #[doc(alias = "pps_document_doc_mutex_lock")]
-    fn doc_mutex_lock(&self) {
-        unsafe {
-            ffi::pps_document_doc_mutex_lock(self.as_ref().to_glib_none().0);
-        }
-    }
-
-    #[doc(alias = "pps_document_doc_mutex_unlock")]
-    fn doc_mutex_unlock(&self) {
-        unsafe {
-            ffi::pps_document_doc_mutex_unlock(self.as_ref().to_glib_none().0);
-        }
-    }
-
     #[doc(alias = "pps_document_find_page_by_label")]
     fn find_page_by_label(&self, page_label: &str) -> Option<i32> {
         unsafe {
@@ -257,6 +243,24 @@ pub trait DocumentExt: IsA<Document> + 'static {
             ffi::pps_document_get_page_size(
                 self.as_ref().to_glib_none().0,
                 page_index,
+                width.as_mut_ptr(),
+                height.as_mut_ptr(),
+            );
+            (width.assume_init(), height.assume_init())
+        }
+    }
+
+    #[cfg(feature = "v49")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
+    #[doc(alias = "pps_document_get_page_size_uncached")]
+    #[doc(alias = "get_page_size_uncached")]
+    fn page_size_uncached(&self, page: &impl IsA<Page>) -> (f64, f64) {
+        unsafe {
+            let mut width = std::mem::MaybeUninit::uninit();
+            let mut height = std::mem::MaybeUninit::uninit();
+            ffi::pps_document_get_page_size_uncached(
+                self.as_ref().to_glib_none().0,
+                page.as_ref().to_glib_none().0,
                 width.as_mut_ptr(),
                 height.as_mut_ptr(),
             );

@@ -294,13 +294,6 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
-        "PpsAnnotationsSaveMask",
-        Layout {
-            size: size_of::<PpsAnnotationsSaveMask>(),
-            alignment: align_of::<PpsAnnotationsSaveMask>(),
-        },
-    ),
-    (
         "PpsAttachment",
         Layout {
             size: size_of::<PpsAttachment>(),
@@ -905,21 +898,6 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
 ];
 
 const RUST_CONSTANTS: &[(&str, &str)] = &[
-    ("(guint) PPS_ANNOTATIONS_SAVE_ALL", "8191"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_AREA", "4"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_ATTACHMENT", "1024"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_COLOR", "2"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_CONTENTS", "1"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_FREE_TEXT_FONT", "4096"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_HIDDEN", "8"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_LABEL", "16"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_NONE", "0"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_OPACITY", "32"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_POPUP_IS_OPEN", "128"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_POPUP_RECT", "64"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_TEXT_ICON", "512"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_TEXT_IS_OPEN", "256"),
-    ("(guint) PPS_ANNOTATIONS_SAVE_TEXT_MARKUP_TYPE", "2048"),
     ("(gint) PPS_ANNOTATION_OVER_MARKUP_NOT", "3"),
     ("(gint) PPS_ANNOTATION_OVER_MARKUP_NOT_IMPLEMENTED", "0"),
     ("(gint) PPS_ANNOTATION_OVER_MARKUP_UNKNOWN", "1"),

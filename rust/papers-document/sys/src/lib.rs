@@ -190,23 +190,6 @@ pub const PPS_MAJOR_VERSION: c_int = 48;
 pub const PPS_MINOR_VERSION: c_int = 0;
 
 // Flags
-pub type PpsAnnotationsSaveMask = c_uint;
-pub const PPS_ANNOTATIONS_SAVE_NONE: PpsAnnotationsSaveMask = 0;
-pub const PPS_ANNOTATIONS_SAVE_CONTENTS: PpsAnnotationsSaveMask = 1;
-pub const PPS_ANNOTATIONS_SAVE_COLOR: PpsAnnotationsSaveMask = 2;
-pub const PPS_ANNOTATIONS_SAVE_AREA: PpsAnnotationsSaveMask = 4;
-pub const PPS_ANNOTATIONS_SAVE_HIDDEN: PpsAnnotationsSaveMask = 8;
-pub const PPS_ANNOTATIONS_SAVE_LABEL: PpsAnnotationsSaveMask = 16;
-pub const PPS_ANNOTATIONS_SAVE_OPACITY: PpsAnnotationsSaveMask = 32;
-pub const PPS_ANNOTATIONS_SAVE_POPUP_RECT: PpsAnnotationsSaveMask = 64;
-pub const PPS_ANNOTATIONS_SAVE_POPUP_IS_OPEN: PpsAnnotationsSaveMask = 128;
-pub const PPS_ANNOTATIONS_SAVE_TEXT_IS_OPEN: PpsAnnotationsSaveMask = 256;
-pub const PPS_ANNOTATIONS_SAVE_TEXT_ICON: PpsAnnotationsSaveMask = 512;
-pub const PPS_ANNOTATIONS_SAVE_ATTACHMENT: PpsAnnotationsSaveMask = 1024;
-pub const PPS_ANNOTATIONS_SAVE_TEXT_MARKUP_TYPE: PpsAnnotationsSaveMask = 2048;
-pub const PPS_ANNOTATIONS_SAVE_FREE_TEXT_FONT: PpsAnnotationsSaveMask = 4096;
-pub const PPS_ANNOTATIONS_SAVE_ALL: PpsAnnotationsSaveMask = 8191;
-
 pub type PpsDocumentInfoFields = c_uint;
 pub const PPS_DOCUMENT_INFO_TITLE: PpsDocumentInfoFields = 1;
 pub const PPS_DOCUMENT_INFO_FORMAT: PpsDocumentInfoFields = 2;
@@ -438,13 +421,6 @@ pub struct PpsDocumentAnnotationsInterface {
     pub document_is_modified: Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations) -> gboolean>,
     pub add_annotation:
         Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations, *mut PpsAnnotation)>,
-    pub save_annotation: Option<
-        unsafe extern "C" fn(
-            *mut PpsDocumentAnnotations,
-            *mut PpsAnnotation,
-            PpsAnnotationsSaveMask,
-        ),
-    >,
     pub remove_annotation:
         Option<unsafe extern "C" fn(*mut PpsDocumentAnnotations, *mut PpsAnnotation)>,
     pub over_markup: Option<
@@ -464,7 +440,6 @@ impl ::std::fmt::Debug for PpsDocumentAnnotationsInterface {
             .field("get_annotations", &self.get_annotations)
             .field("document_is_modified", &self.document_is_modified)
             .field("add_annotation", &self.add_annotation)
-            .field("save_annotation", &self.save_annotation)
             .field("remove_annotation", &self.remove_annotation)
             .field("over_markup", &self.over_markup)
             .finish()
@@ -2192,11 +2167,6 @@ extern "C" {
     pub fn pps_transition_effect_type_get_type() -> GType;
 
     //=========================================================================
-    // PpsAnnotationsSaveMask
-    //=========================================================================
-    pub fn pps_annotations_save_mask_get_type() -> GType;
-
-    //=========================================================================
     // PpsDocumentInfoFields
     //=========================================================================
     pub fn pps_document_info_fields_get_type() -> GType;
@@ -2672,8 +2642,6 @@ extern "C" {
         surface: *mut cairo::cairo_surface_t,
     ) -> *mut gdk::GdkTexture;
     pub fn pps_document_check_dimensions(document: *mut PpsDocument) -> gboolean;
-    pub fn pps_document_doc_mutex_lock(document: *mut PpsDocument);
-    pub fn pps_document_doc_mutex_unlock(document: *mut PpsDocument);
     pub fn pps_document_find_page_by_label(
         document: *mut PpsDocument,
         page_label: *const c_char,
@@ -2705,6 +2673,14 @@ extern "C" {
     pub fn pps_document_get_page_size(
         document: *mut PpsDocument,
         page_index: c_int,
+        width: *mut c_double,
+        height: *mut c_double,
+    );
+    #[cfg(feature = "v49")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
+    pub fn pps_document_get_page_size_uncached(
+        document: *mut PpsDocument,
+        page: *mut PpsPage,
         width: *mut c_double,
         height: *mut c_double,
     );
@@ -3050,11 +3026,6 @@ extern "C" {
     pub fn pps_document_annotations_remove_annotation(
         document_annots: *mut PpsDocumentAnnotations,
         annot: *mut PpsAnnotation,
-    );
-    pub fn pps_document_annotations_save_annotation(
-        document_annots: *mut PpsDocumentAnnotations,
-        annot: *mut PpsAnnotation,
-        mask: PpsAnnotationsSaveMask,
     );
 
     //=========================================================================

@@ -21,7 +21,6 @@ int main() {
     printf("%s;%zu;%zu\n", "PpsAnnotationTextMarkupType", sizeof(PpsAnnotationTextMarkupType), alignof(PpsAnnotationTextMarkupType));
     printf("%s;%zu;%zu\n", "PpsAnnotationType", sizeof(PpsAnnotationType), alignof(PpsAnnotationType));
     printf("%s;%zu;%zu\n", "PpsAnnotationsOverMarkup", sizeof(PpsAnnotationsOverMarkup), alignof(PpsAnnotationsOverMarkup));
-    printf("%s;%zu;%zu\n", "PpsAnnotationsSaveMask", sizeof(PpsAnnotationsSaveMask), alignof(PpsAnnotationsSaveMask));
     printf("%s;%zu;%zu\n", "PpsAttachment", sizeof(PpsAttachment), alignof(PpsAttachment));
     printf("%s;%zu;%zu\n", "PpsAttachmentClass", sizeof(PpsAttachmentClass), alignof(PpsAttachmentClass));
     printf("%s;%zu;%zu\n", "PpsBackendPage", sizeof(PpsBackendPage), alignof(PpsBackendPage));
