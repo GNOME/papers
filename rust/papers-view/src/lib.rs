@@ -15,6 +15,9 @@ pub use papers_view_sys as ffi;
 pub use auto::*;
 pub mod annotations_context;
 mod attachment_context;
+
+#[allow(unused_imports)]
 mod auto;
+
 pub mod prelude;
 mod view_selection;
