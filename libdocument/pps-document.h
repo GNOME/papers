@@ -123,6 +123,11 @@ void pps_document_get_page_size (PpsDocument *document,
                                  double *width,
                                  double *height);
 PPS_PUBLIC
+void pps_document_get_page_size_uncached (PpsDocument *document,
+                                          PpsPage *page,
+                                          double *width,
+                                          double *height);
+PPS_PUBLIC
 gchar *pps_document_get_page_label (PpsDocument *document,
                                     gint page_index);
 PPS_PUBLIC

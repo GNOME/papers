@@ -513,6 +513,35 @@ pps_document_get_page_size (PpsDocument *document,
 		*height = priv->uniform ? priv->uniform_height : priv->page_sizes[page_index].height;
 }
 
+/**
+ * pps_document_get_page_size_uncached:
+ * @document: a #PpsDocument
+ * @page: a #PpsPage
+ * @width: (out) (allow-none): return location for the width of the page, or %NULL
+ * @height: (out) (allow-none): return location for the height of the page, or %NULL
+ *
+ * Calls the @document's backend to fetch the page size. This should only be
+ * used on very specific cases, where it is not desired that the cache should
+ * be loaded. Calling with a loaded cache is a programmers' error.
+ *
+ * Since: 49.0
+ */
+void
+pps_document_get_page_size_uncached (PpsDocument *document,
+                                     PpsPage *page,
+                                     double *width,
+                                     double *height)
+{
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
+	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
+
+	g_return_if_fail (PPS_IS_DOCUMENT (document));
+	g_return_if_fail (PPS_IS_PAGE (page));
+	g_return_if_fail (priv->cache_loaded == FALSE);
+
+	return klass->get_page_size (document, page, width, height);
+}
+
 gchar *
 pps_document_get_page_label (PpsDocument *document,
                              gint page_index)
