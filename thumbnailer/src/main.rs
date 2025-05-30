@@ -127,7 +127,7 @@ fn render_thumbnail_to_file(
     size: f64,
 ) -> Option<()> {
     let page = document.page(0)?;
-    let (width, height) = document.page_size(0);
+    let (width, height) = document.page_size_uncached(&page);
 
     let render_ctxt = papers_document::RenderContext::new(
         &page,
