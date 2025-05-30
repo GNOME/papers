@@ -260,7 +260,11 @@ impl imp::PpsDocumentView {
         // does, simply ignore it
         let file = self.file().unwrap();
         if file.uri() != uri {
-            application::spawn(Some(&file), action.dest().as_ref(), Some(self.mode.get()));
+            application::spawn(
+                Some(&gio::File::for_uri(&uri)),
+                action.dest().as_ref(),
+                Some(self.mode.get()),
+            );
         }
     }
 
