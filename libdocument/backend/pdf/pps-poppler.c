@@ -4444,21 +4444,9 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 
 	task = g_task_new (document, cancellable, callback, user_data);
 
-	/* Keep the signing data alive for the whole task lifetime since poppler
-	 * document sign is buggy upstream and does copy it, but we still don't want
-	 * to leak it here.
-	 * Drop this when we depend on a poppler version that includes the MR below:
-	 *   https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1803
-	 */
-	g_task_set_task_data (task, signing_data,
-	                      (GDestroyNotify) poppler_signing_data_free);
-
 	poppler_document_sign (POPPLER_DOCUMENT (self->document), signing_data,
 	                       cancellable, poppler_sign_callback_wrapper,
 	                       g_steal_pointer (&task));
-
-	/* Remove this when the task data workaround above is removed too */
-	g_steal_pointer (&signing_data);
 
 	g_rw_lock_writer_unlock (&self->rwlock);
 }
