@@ -296,9 +296,6 @@ if enable_pdf
   backends += {'pdf': mime_types_list.get('pdf') + mime_types_list.get('illustrator')}
   papers_mime_types += mime_types_list.get('pdf')
   papers_mime_types += mime_types_list.get('illustrator')
-  if poppler_glib_dep.version().version_compare('>= 25.02.0')
-    add_project_arguments ('-DHAVE_FREE_TEXT', language: 'c')
-  endif
 
   if cc.has_function('poppler_page_render_transparent_selection', prefix: '#include <poppler.h>', dependencies: poppler_glib_dep)
     add_project_arguments ('-DHAVE_TRANSPARENT_SELECTION', language: 'c')

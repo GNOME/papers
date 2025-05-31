@@ -428,11 +428,7 @@ pdf_page_render (PopplerPage *page,
 	pps_render_context_compute_scales (rc, page_width, page_height, &xscale, &yscale);
 	cairo_scale (cr, xscale, yscale);
 	cairo_rotate (cr, rc->rotation * G_PI / 180.0);
-#ifdef HAVE_FREE_TEXT
 	poppler_page_render_full (page, cr, FALSE, (PopplerRenderAnnotsFlags) rc->annot_flags);
-#else
-	poppler_page_render (page, cr);
-#endif
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
 	cairo_set_source_rgb (cr, 1., 1., 1.);
@@ -2767,12 +2763,10 @@ poppler_annot_color_to_gdk_rgba (PopplerAnnot *poppler_annot, GdkRGBA *color)
 	PopplerColor *poppler_color;
 
 	poppler_color = poppler_annot_get_color (poppler_annot);
-#ifdef HAVE_FREE_TEXT
 	if (POPPLER_IS_ANNOT_FREE_TEXT (poppler_annot) && !poppler_color) {
 		color->alpha = 0.0;
 		return;
 	}
-#endif
 	poppler_color_to_gdk_rgba (poppler_color, color);
 	g_free (poppler_color);
 }
@@ -2914,7 +2908,6 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 	case POPPLER_ANNOT_MOVIE:
 		/* Ignore link, widgets and movie annots since they are already handled */
 		break;
-#ifdef HAVE_FREE_TEXT
 	case POPPLER_ANNOT_FREE_TEXT: {
 		PopplerAnnotFreeText *poppler_ft = POPPLER_ANNOT_FREE_TEXT (poppler_annot);
 		PpsAnnotationFreeText *pps_annot_ft;
@@ -2950,7 +2943,6 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 		poppler_annot_get_border_width (poppler_annot, &border_width);
 		pps_annotation_set_border_width (pps_annot, border_width);
 	} break;
-#endif
 	case POPPLER_ANNOT_SCREEN: {
 		PopplerAction *action;
 
@@ -2960,9 +2952,6 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 			break;
 	}
 	/* Fall through */
-#ifndef HAVE_FREE_TEXT
-	case POPPLER_ANNOT_FREE_TEXT:
-#endif
 	case POPPLER_ANNOT_3D:
 	case POPPLER_ANNOT_CARET:
 	case POPPLER_ANNOT_LINE:
@@ -3269,7 +3258,6 @@ annot_text_is_open_changed_cb (PpsAnnotationText *annot, GParamSpec *pspec, PdfD
 	annot_change_data_finish (self);
 }
 
-#ifdef HAVE_FREE_TEXT
 static void
 annot_free_text_font_desc_set (PpsAnnotationFreeText *annot, PopplerAnnotFreeText *poppler_annot)
 {
@@ -3314,7 +3302,6 @@ annot_free_text_font_rgba_changed_cb (PpsAnnotationFreeText *annot, GParamSpec *
 
 	annot_change_data_finish (self);
 }
-#endif
 
 /* FIXME: We could probably add this to poppler */
 static void
@@ -3450,7 +3437,6 @@ connect_annot_signals (PdfDocument *self, PpsAnnotation *annot)
 		                  self);
 	}
 
-#ifdef HAVE_FREE_TEXT
 	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
 		PpsAnnotationFreeText *annot_ft = PPS_ANNOTATION_FREE_TEXT (annot);
 
@@ -3461,7 +3447,6 @@ connect_annot_signals (PdfDocument *self, PpsAnnotation *annot)
 		                  G_CALLBACK (annot_free_text_font_rgba_changed_cb),
 		                  self);
 	}
-#endif
 
 	if (PPS_IS_ANNOTATION_TEXT_MARKUP (annot)) {
 		PpsAnnotationTextMarkup *annot_text_markup = PPS_ANNOTATION_TEXT_MARKUP (annot);
@@ -3678,7 +3663,6 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		poppler_annot_text_set_icon (POPPLER_ANNOT_TEXT (poppler_annot),
 		                             get_poppler_annot_text_icon (icon));
 	} break;
-#ifdef HAVE_FREE_TEXT
 	case PPS_ANNOTATION_TYPE_FREE_TEXT: {
 		PpsAnnotationFreeText *annot_ft = PPS_ANNOTATION_FREE_TEXT (annot);
 		poppler_annot = poppler_annot_free_text_new (self->document, &poppler_rect);
@@ -3688,7 +3672,6 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
 	} break;
-#endif
 	case PPS_ANNOTATION_TYPE_TEXT_MARKUP: {
 		GArray *quads;
 		PopplerRectangle bbox;

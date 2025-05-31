@@ -508,7 +508,6 @@ connect_notify_signals (PpsAnnotationsContext *self, PpsAnnotation *annot)
 		                       G_CONNECT_DEFAULT);
 	}
 
-#ifdef HAVE_FREE_TEXT
 	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
 		g_signal_connect_data (annot,
 		                       "notify::font-rgba",
@@ -521,7 +520,6 @@ connect_notify_signals (PpsAnnotationsContext *self, PpsAnnotation *annot)
 		                       self, (GClosureNotify) NULL,
 		                       G_CONNECT_DEFAULT);
 	}
-#endif
 }
 
 static void
