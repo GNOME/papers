@@ -368,10 +368,14 @@ pps_view_presentation_schedule_new_job (PpsViewPresentation *pview,
 {
 	PpsViewPresentationPrivate *priv = GET_PRIVATE (pview);
 
+	GtkWindow *window;
 	PpsJob *job;
 	int view_width, view_height;
 
-	if (page < 0 || page >= pps_document_get_n_pages (priv->document))
+	// Do not render if the window is not yet fullscreened
+	window = GTK_WINDOW (gtk_widget_get_native (GTK_WIDGET (pview)));
+
+	if (page < 0 || page >= pps_document_get_n_pages (priv->document) || !gtk_window_is_fullscreen (window))
 		return NULL;
 
 	pps_view_presentation_get_view_size (pview, page, &view_width, &view_height);
@@ -534,7 +538,7 @@ pps_view_presentation_update_current_page (PpsViewPresentation *pview,
 		pps_view_presentation_set_cursor_for_location (pview, x, y);
 	}
 
-	if (PPS_JOB_RENDER_TEXTURE (priv->curr_job)->texture) {
+	if (priv->curr_job && PPS_JOB_RENDER_TEXTURE (priv->curr_job)->texture) {
 		pps_view_presentation_update_current_texture (pview,
 		                                              PPS_JOB_RENDER_TEXTURE (priv->curr_job)->texture);
 
