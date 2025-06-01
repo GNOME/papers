@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-28 13:26+0000\n"
-"PO-Revision-Date: 2025-05-28 16:16+0200\n"
+"POT-Creation-Date: 2025-05-28 14:20+0000\n"
+"PO-Revision-Date: 2025-06-01 11:39+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -28,10 +28,10 @@ msgstr ""
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
-#: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472 shell/resources/pps-document-view.ui:80
-#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:342
+#: data/org.gnome.Papers.metainfo.xml.in.in:23
+#: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
+#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
+#: shell/src/application.rs:68 shell/src/application.rs:310
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
 msgstr "Documente"
@@ -120,11 +120,11 @@ msgstr ""
 "Arată prima pagină (pagina impară) la stânga (când se afișează două pagini "
 "una lângă alta)"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:10
+#: data/org.gnome.Papers.metainfo.xml.in.in:24
 msgid "Read documents"
 msgstr "Citește documente"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:12
+#: data/org.gnome.Papers.metainfo.xml.in.in:26
 msgid ""
 "A document viewer for the GNOME desktop. You can view, search or annotate "
 "documents in many different formats."
@@ -133,7 +133,7 @@ msgstr ""
 "posibilitatea de a vizualiza, căuta sau adnota documente în multe formate "
 "diferite."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:13
+#: data/org.gnome.Papers.metainfo.xml.in.in:27
 msgid ""
 "Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
 "(CBR, CBT, CBZ, CB7)."
@@ -141,23 +141,23 @@ msgstr ""
 "Acceptă documente în: PDF, DjVu, TIFF și arhive de benzi desenate (CBR, CBT, "
 "CBZ, CB7)."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:29
+#: data/org.gnome.Papers.metainfo.xml.in.in:43
 msgid "A clear, simple, and modern UI"
 msgstr "O interfață clară, simplă și modernă"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:33
+#: data/org.gnome.Papers.metainfo.xml.in.in:47
 msgid "A mobile-friendly UI"
 msgstr "Interfață potrivită pentru mobil"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:37
+#: data/org.gnome.Papers.metainfo.xml.in.in:51
 msgid "A modern and colorful annotation list"
 msgstr "O listă de adnotări modernă și colorată"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:41
+#: data/org.gnome.Papers.metainfo.xml.in.in:55
 msgid "Big thumbnails in the sidebar"
 msgstr "Miniaturi mari în panoul lateral"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:45
+#: data/org.gnome.Papers.metainfo.xml.in.in:59
 msgid "All search actions are contained in the sidebar"
 msgstr "Toate acțiunile de căutare sunt conținute în panoul lateral"
 
@@ -169,29 +169,29 @@ msgstr "Previzualizare tipărire"
 msgid "Preview before printing"
 msgstr "Vizualizează documentul înainte de a fi tipărit"
 
-#: libdocument/backend/comics/comics-document.c:179
-#: libdocument/backend/comics/comics-document.c:248
+#: libdocument/backend/comics/comics-document.c:191
+#: libdocument/backend/comics/comics-document.c:260
 msgid "File is corrupted"
 msgstr "Fișierul este deteriorat"
 
-#: libdocument/backend/comics/comics-document.c:238
+#: libdocument/backend/comics/comics-document.c:250
 msgid "Archive is encrypted"
 msgstr "Arhiva este cifrată"
 
-#: libdocument/backend/comics/comics-document.c:243
+#: libdocument/backend/comics/comics-document.c:255
 msgid "No supported images in archive"
 msgstr "Nu există imagini compatibile în arhivă"
 
-#: libdocument/backend/comics/comics-document.c:253
+#: libdocument/backend/comics/comics-document.c:265
 msgid "No files in archive"
 msgstr "Niciun fișier în arhivă"
 
-#: libdocument/backend/comics/comics-document.c:302
+#: libdocument/backend/comics/comics-document.c:314
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Nu este un tip MIME pentru benzi desenate: %s"
 
-#: libdocument/backend/comics/comics-document.c:309
+#: libdocument/backend/comics/comics-document.c:321
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -199,7 +199,7 @@ msgstr ""
 "libarchive nu este compatibil cu comprimarea benzilor desenate, contactează "
 "distribuitorul"
 
-#: libdocument/backend/comics/comics-document.c:348
+#: libdocument/backend/comics/comics-document.c:358
 msgid "Can not get local path for archive"
 msgstr "Nu s-a putut obține calea pentru arhivă"
 
@@ -212,11 +212,11 @@ msgstr "Benzi desenate"
 msgid "Adds support for reading comic books"
 msgstr "Adaugă compatibilitate pentru citirea benzilor desenate"
 
-#: libdocument/backend/djvu/djvu-document.c:173
+#: libdocument/backend/djvu/djvu-document.c:181
 msgid "DjVu document has incorrect format"
 msgstr "Documentul DjVu are un format greșit"
 
-#: libdocument/backend/djvu/djvu-document.c:263
+#: libdocument/backend/djvu/djvu-document.c:268
 msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
@@ -243,52 +243,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Adaugă compatibilitate pentru citirea documentelor PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:769
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:197
 msgid "Yes"
 msgstr "Da"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:772
+#: libdocument/backend/pdf/pps-poppler.c:775
+#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:198
 msgid "No"
 msgstr "Nu"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:882
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:884
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:886
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:888
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:890
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:892
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:894
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:896
 msgid "Unknown font type"
 msgstr "Tip necunoscut de caractere"
 
-#: libdocument/backend/pdf/pps-poppler.c:915
+#: libdocument/backend/pdf/pps-poppler.c:940
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -299,11 +299,11 @@ msgstr ""
 "fontconfig nu sunt aceleași folosite la crearea PDF-ului, afișarea poate să "
 "nu fie corectă."
 
-#: libdocument/backend/pdf/pps-poppler.c:920
+#: libdocument/backend/pdf/pps-poppler.c:945
 msgid "All fonts are either standard or embedded."
 msgstr "Toate tipurile de caractere sunt standard sau incluse."
 
-#: libdocument/backend/pdf/pps-poppler.c:956
+#: libdocument/backend/pdf/pps-poppler.c:976
 msgid "No name"
 msgstr "Fără nume"
 
@@ -311,21 +311,20 @@ msgstr "Fără nume"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
-#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
-#: shell/src/properties_general.rs:370
+#: libdocument/backend/pdf/pps-poppler.c:985 libview/pps-print-operation.c:1903
+#: shell/src/properties_general.rs:100 shell/src/properties_general.rs:231
 msgid "None"
 msgstr "Fără"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:993
 msgid "Embedded subset"
 msgstr "Inclus parțial"
 
-#: libdocument/backend/pdf/pps-poppler.c:975
+#: libdocument/backend/pdf/pps-poppler.c:995
 msgid "Embedded"
 msgstr "Inclus"
 
-#: libdocument/backend/pdf/pps-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:997
 msgid "Not embedded"
 msgstr "Neinclus"
 
@@ -334,7 +333,7 @@ msgstr "Neinclus"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:1004
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Este unul dintre cele 14 tipuri standard de caractere)"
 
@@ -343,7 +342,7 @@ msgstr " (Este unul dintre cele 14 tipuri standard de caractere)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:1011
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Nu este unul dintre cele 14 tipuri standard de caractere)"
 
@@ -357,7 +356,7 @@ msgstr " (Nu este unul dintre cele 14 tipuri standard de caractere)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1010
+#: libdocument/backend/pdf/pps-poppler.c:1030
 #, c-format
 msgid ""
 "%s%s\n"
@@ -381,7 +380,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1028
+#: libdocument/backend/pdf/pps-poppler.c:1048
 #, c-format
 msgid ""
 "%s%s\n"
@@ -401,35 +400,41 @@ msgstr "Documente TIFF"
 msgid "Adds support for reading TIFF documents"
 msgstr "Adaugă compatibilitate pentru citirea documentelor TIFF"
 
-#: libdocument/backend/tiff/tiff-document.c:97
+#: libdocument/backend/tiff/tiff-document.c:105
 msgid "Invalid document"
 msgstr "Document nevalid"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:304 libdocument/pps-attachment.c:325
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Nu s-a putut salva fișierul atașat „%s”: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:362
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Nu s-a putut deschide fișierul atașat „%s”: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:399
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Nu s-a putut deschide fișierul atașat „%s”"
 
-#: libdocument/pps-document-factory.c:86
+#: libdocument/pps-document-factory.c:100
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Tipul de fișier %s (%s) nu este acceptat"
 
-#: libdocument/pps-document-factory.c:392
+#: libdocument/pps-document-factory.c:368 libdocument/pps-file-helpers.c:371
+#: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
+#: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
+msgid "Unknown MIME Type"
+msgstr "Tip MIME necunoscut"
+
+#: libdocument/pps-document-factory.c:498
 msgid "All Documents"
 msgstr "Toate documentele"
 
-#: libdocument/pps-document-factory.c:420
+#: libdocument/pps-document-factory.c:526
 msgid "All Files"
 msgstr "Toate fișierele"
 
@@ -439,120 +444,114 @@ msgstr "Toate fișierele"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: libdocument/pps-document-info.c:198
+#: libdocument/pps-document-info.c:212
 msgid "default:mm"
 msgstr "default:mm"
 
-#: libdocument/pps-document-info.c:250
+#: libdocument/pps-document-info.c:264
 #, c-format
 msgid "%.0f × %.0f mm"
 msgstr "%.0f × %.0f mm"
 
-#: libdocument/pps-document-info.c:254
+#: libdocument/pps-document-info.c:268
 #, c-format
 msgid "%.2f × %.2f inch"
 msgstr "%.2f × %.2f inch"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:278
+#: libdocument/pps-document-info.c:292
 #, c-format
 msgid "%s, Portrait (%s)"
 msgstr "%s, Verticală (%s)"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:285
+#: libdocument/pps-document-info.c:299
 #, c-format
 msgid "%s, Landscape (%s)"
 msgstr "%s, Orizontală (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:148
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Crearea fișierului temporar a eșuat: %s"
 
-#: libdocument/pps-file-helpers.c:358 libdocument/pps-file-helpers.c:404
-#: libdocument/pps-file-helpers.c:413 libdocument/pps-file-helpers.c:494
-#: libdocument/pps-file-helpers.c:503
-msgid "Unknown MIME Type"
-msgstr "Tip MIME necunoscut"
-
-#: libdocument/pps-xmp.c:188
+#: libdocument/pps-xmp.c:201
 msgid "This work is in the Public Domain"
 msgstr "Această lucrare este în Domeniul public"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1020
+#: shell/src/document_view/actions.rs:1041
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Salvează fișierul atașat"
 msgstr[1] "Salvează fișierele atașate"
 msgstr[2] "Salvează fișierele atașate"
 
-#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
+#: libview/context/pps-history.c:487 previewer/pps-page-selector.c:194
 #, c-format
 msgid "Page %s"
 msgstr "Pagina %s"
 
-#: libview/pps-annotation-window.c:233
+#: libview/pps-annotation-window.c:268
 msgid "Edit Note"
 msgstr "Modifică notița"
 
-#: libview/pps-jobs.c:401
+#: libview/pps-jobs.c:429
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Nu s-a putut afișa pagina %d: %s"
 
-#: libview/pps-jobs.c:408
+#: libview/pps-jobs.c:436
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Afișarea paginii %d a eșuat"
 
-#: libview/pps-jobs.c:627
+#: libview/pps-jobs.c:670
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Crearea miniaturii pentru pagina %d a eșuat"
 
-#: libview/pps-jobs.c:1606
+#: libview/pps-jobs.c:1696
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Tipărirea paginii %d a eșuat: %s"
 
 #. Initial state
-#: libview/pps-print-operation.c:331
+#: libview/pps-print-operation.c:344
 msgid "Preparing preview…"
 msgstr "Se pregătește previzualizarea…"
 
-#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
+#: libview/pps-print-operation.c:346 libview/pps-print-operation.c:356
 msgid "Finishing…"
 msgstr "Se finalizează…"
 
-#: libview/pps-print-operation.c:335
+#: libview/pps-print-operation.c:348
 #, c-format
 msgid "Generating preview: page %d of %d"
 msgstr "Se generează previzualizarea: pagina %d din %d"
 
 #. Initial state
-#: libview/pps-print-operation.c:341
+#: libview/pps-print-operation.c:354
 msgid "Preparing to print…"
 msgstr "Se pregătește tipărirea…"
 
-#: libview/pps-print-operation.c:345
+#: libview/pps-print-operation.c:358
 #, c-format
 msgid "Printing page %d of %d…"
 msgstr "Se tipărește pagina %d din %d…"
 
-#: libview/pps-print-operation.c:1334
+#: libview/pps-print-operation.c:1359
 msgid "Invalid Page Selection"
 msgstr "Selecție greșită de pagini"
 
-#: libview/pps-print-operation.c:1335
+#: libview/pps-print-operation.c:1360
 msgid "Your print range selection does not include any pages"
 msgstr "Intervalul ales pentru tipărire nu include nicio pagină"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.ui:91
+#: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
 #: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
 #: shell/src/document_view/io.rs:602
@@ -560,23 +559,23 @@ msgid "_Close"
 msgstr "În_chide"
 
 #. translators: Title of the print dialog
-#: libview/pps-print-operation.c:1413
+#: libview/pps-print-operation.c:1438
 msgid "Print"
 msgstr "Tipărește"
 
-#: libview/pps-print-operation.c:1871
+#: libview/pps-print-operation.c:1896
 msgid "Page Scaling:"
 msgstr "Ajustare pagină:"
 
-#: libview/pps-print-operation.c:1879
+#: libview/pps-print-operation.c:1904
 msgid "Shrink to Printable Area"
 msgstr "Micșorează la aria tipăribilă"
 
-#: libview/pps-print-operation.c:1880
+#: libview/pps-print-operation.c:1905
 msgid "Fit to Printable Area"
 msgstr "Încadrează în aria tipăribilă"
 
-#: libview/pps-print-operation.c:1887
+#: libview/pps-print-operation.c:1912
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of "
 "the following:\n"
@@ -602,11 +601,11 @@ msgstr ""
 "micșorate după nevoie pentru a încăpea în zona tipăribilă a paginii "
 "imprimantei.\n"
 
-#: libview/pps-print-operation.c:1898
+#: libview/pps-print-operation.c:1923
 msgid "Auto Rotate and Center"
 msgstr "Rotește automat și centrează"
 
-#: libview/pps-print-operation.c:1901
+#: libview/pps-print-operation.c:1926
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -615,11 +614,11 @@ msgstr ""
 "fiecărei pagini a documentului. Pagina documentului va fi centrată pe pagina "
 "imprimantei."
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1930
 msgid "Select page size using document page size"
 msgstr "Alege mărimea paginii folosind mărimea paginii documentului"
 
-#: libview/pps-print-operation.c:1907
+#: libview/pps-print-operation.c:1932
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
@@ -627,92 +626,92 @@ msgstr ""
 "Dacă este activată, fiecare pagină va fi tipărită pe o hârtie de aceeași "
 "mărime ca a documentului."
 
-#: libview/pps-print-operation.c:1911
+#: libview/pps-print-operation.c:1936
 msgid "Draw border around pages"
 msgstr "Desenează un chenar în jurul paginilor"
 
-#: libview/pps-print-operation.c:1913
+#: libview/pps-print-operation.c:1938
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Dacă este activată, va fi desenat un chenar în jurul fiecărei pagini."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2031
 msgid "Page Handling"
 msgstr "Gestionare pagini"
 
-#: libview/pps-view-accessible.c:28
+#: libview/pps-view-accessible.c:41
 msgid "Scroll Up"
 msgstr "În sus"
 
-#: libview/pps-view-accessible.c:29
+#: libview/pps-view-accessible.c:42
 msgid "Scroll Down"
 msgstr "În jos"
 
-#: libview/pps-view-accessible.c:34
+#: libview/pps-view-accessible.c:47
 msgid "Scroll View Up"
 msgstr "Vederea în sus"
 
-#: libview/pps-view-accessible.c:35
+#: libview/pps-view-accessible.c:48
 msgid "Scroll View Down"
 msgstr "Vederea în jos"
 
-#: libview/pps-view-accessible.c:112
+#: libview/pps-view-accessible.c:125
 msgid "Document View"
 msgstr "Vizualizare document"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2112
 msgid "Go to first page"
 msgstr "La prima pagină"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2114
 msgid "Go to previous page"
 msgstr "La pagina precedentă"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2116
 msgid "Go to next page"
 msgstr "La pagina următoare"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2118
 msgid "Go to last page"
 msgstr "La ultima pagină"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2120
 msgid "Go to page"
 msgstr "Du-te la pagina"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2122
 msgid "Find"
 msgstr "Caută"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2151
 #, c-format
 msgid "Go to page %s"
 msgstr "Du-te la pagina %s"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Du-te la %s în fișierul „%s”"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Du-te în fișierul „%s”"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Launch %s"
 msgstr "Pornește %s"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Reset form"
 msgstr "Restabilește formularul"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:833
 msgid "Running in presentation mode"
 msgstr "Pornit în modul de prezentare"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:884
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Sfârșitul prezentării. Se apasă Esc sau clic pentru a ieși."
 
@@ -720,12 +719,12 @@ msgstr "Sfârșitul prezentării. Se apasă Esc sau clic pentru a ieși."
 msgid "Jump to page:"
 msgstr "Du-te la pagina:"
 
-#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
+#: previewer/pps-page-selector.c:80 previewer/pps-page-selector.c:119
 #, c-format
 msgid "(%d of %d)"
 msgstr "(%d din %d)"
 
-#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
+#: previewer/pps-page-selector.c:82 previewer/pps-page-selector.c:123
 #, c-format
 msgid "of %d"
 msgstr "din %d"
@@ -734,47 +733,47 @@ msgstr "din %d"
 msgid "Select page"
 msgstr "Alege pagina"
 
-#: previewer/pps-previewer.c:32
+#: previewer/pps-previewer.c:48
 msgid "Delete the temporary file"
 msgstr "Șterge fișierul temporar"
 
-#: previewer/pps-previewer.c:34
+#: previewer/pps-previewer.c:50
 msgid "File specifying print settings"
 msgstr "Fișier ce specifică preferințele de tipărire"
 
-#: previewer/pps-previewer.c:34
+#: previewer/pps-previewer.c:50
 msgid "FILE"
 msgstr "FIȘIER"
 
-#: previewer/pps-previewer.c:36
+#: previewer/pps-previewer.c:52
 msgid "File descriptor of input file"
 msgstr "Descriptorul de fișier al fișierului introdus"
 
-#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
+#: previewer/pps-previewer.c:52 previewer/pps-previewer.c:56
 msgid "FD"
 msgstr "FD"
 
-#: previewer/pps-previewer.c:38
+#: previewer/pps-previewer.c:54
 msgid "MIME type of input file"
 msgstr "Tipul MIME al fișierului introdus"
 
-#: previewer/pps-previewer.c:38
+#: previewer/pps-previewer.c:54
 msgid "TYPE"
 msgstr "TYPE"
 
-#: previewer/pps-previewer.c:40
+#: previewer/pps-previewer.c:56
 msgid "File descriptor of print settings file"
 msgstr "Descriptor de fișier al fișierului cu preferințe de tipărire"
 
-#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
+#: previewer/pps-previewer.c:280 previewer/pps-previewer.c:296
 msgid "GNOME Document Previewer"
 msgstr "GNOME Previzualizare documente"
 
-#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: previewer/pps-previewer-window.c:187 previewer/pps-previewer-window.c:510
 msgid "Papers Document Viewer"
 msgstr "Vizualizare documente"
 
-#: previewer/pps-previewer-window.c:209
+#: previewer/pps-previewer-window.c:225
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Imprimanta aleasă „%s” nu a fost găsită"
@@ -819,80 +818,80 @@ msgid "Failed to Print Document"
 msgstr "Tipărirea documentului a eșuat"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: nautilus/pps-nautilus-extension.c:110
+#: nautilus/pps-nautilus-extension.c:123
 #: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:338
+#: shell/src/properties_general.rs:199
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: nautilus/pps-nautilus-extension.c:155
+#: nautilus/pps-nautilus-extension.c:168
 msgid "Document Properties"
 msgstr "Proprietăți document"
 
-#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:161
 msgid "Title"
 msgstr "Titlu"
 
-#: nautilus/pps-nautilus-extension.h:47
+#: nautilus/pps-nautilus-extension.h:60
 msgid "Location"
 msgstr "Locul"
 
-#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:162
 msgid "Subject"
 msgstr "Subiect"
 
-#: nautilus/pps-nautilus-extension.h:49
+#: nautilus/pps-nautilus-extension.h:62
 #: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:302
+#: shell/src/properties_general.rs:163
 msgid "Author"
 msgstr "Autor"
 
-#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
+#: nautilus/pps-nautilus-extension.h:63 shell/src/properties_general.rs:164
 msgid "Keywords"
 msgstr "Cuvinte cheie"
 
-#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
+#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:165
 msgid "Producer"
 msgstr "Producător"
 
-#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
+#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:166
 msgid "Creator"
 msgstr "Creator"
 
-#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
+#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:177
 msgid "Created"
 msgstr "Creat"
 
-#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
+#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:178
 msgid "Modified"
 msgstr "Modificat"
 
-#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
+#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:190
 msgid "Number of Pages"
 msgstr "Număr de pagini"
 
-#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
+#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:191
 msgid "Optimized"
 msgstr "Optimizat"
 
-#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
-#: shell/src/properties_general.rs:328
+#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:187
+#: shell/src/properties_general.rs:189
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
+#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:192
 msgid "Security"
 msgstr "Securitate"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
+#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:201
 msgid "Contains Javascript"
 msgstr "Conține Javascript"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
+#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:193
 msgid "Paper Size"
 msgstr "Mărime hârtie"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
+#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:150
 msgid "Size"
 msgstr "Mărime"
 
@@ -1208,7 +1207,7 @@ msgid "Touchpad Gestures"
 msgstr "Gesturi pe panoul tactil"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:70
+#: shell/resources/pps-sidebar-annotations.ui:69
 msgid "Annotation Properties"
 msgstr "Proprietăți notițe"
 
@@ -1277,7 +1276,6 @@ msgstr "Cerc"
 msgid "Markup Type"
 msgstr "Tip de marcare"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:73
 #: shell/resources/pps-document-view.ui:715
 msgid "Highlight"
@@ -1287,17 +1285,15 @@ msgstr "Evidențiere"
 msgid "Strike out"
 msgstr "Tăiat"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:75
 #: shell/resources/pps-document-view.ui:745
 msgid "Underline"
 msgstr "Subliniat"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation.
 #: shell/resources/pps-annotation-properties-dialog.ui:76
 #: shell/resources/pps-document-view.ui:725
 msgid "Squiggly"
-msgstr "Linie ondulată"
+msgstr "Zigzag"
 
 #: shell/resources/pps-annotation-properties-dialog.ui:88
 msgid "_Apply"
@@ -1440,7 +1436,7 @@ msgstr "Semnează d_igital…"
 msgid "Open a C_opy"
 msgstr "Deschide o c_opie"
 
-#: shell/resources/pps-document-view.ui:650 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.ui:650
 msgid "Open With…"
 msgstr "Deschide cu…"
 
@@ -1472,7 +1468,6 @@ msgstr "Ro_tește ⤵"
 msgid "Document Prop_erties"
 msgstr "Propri_etăți document"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline.
 #: shell/resources/pps-document-view.ui:735
 msgid "Strikethrough"
 msgstr "Tăiat"
@@ -1510,12 +1505,12 @@ msgid "Copy _Image"
 msgstr "Copiază _imaginea"
 
 #: shell/resources/pps-document-view.ui:883
-#: shell/resources/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-sidebar-annotations.ui:79
 msgid "_Open Attachment"
 msgstr "_Deschide atașarea"
 
 #: shell/resources/pps-document-view.ui:888
-#: shell/resources/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-sidebar-annotations.ui:84
 msgid "_Save Attachment As…"
 msgstr "_Salvează atașarea ca…"
 
@@ -1535,19 +1530,19 @@ msgstr "_Adăugă notiță de text"
 msgid "_Highlight Selected Text"
 msgstr "Evi_dențiază textul ales"
 
-#: shell/resources/pps-find-sidebar.ui:65
+#: shell/resources/pps-find-sidebar.ui:64
 msgid "No Results Found"
 msgstr "Niciun rezultat"
 
-#: shell/resources/pps-find-sidebar.ui:66
+#: shell/resources/pps-find-sidebar.ui:65
 msgid "Try a different search"
 msgstr "Caută altfel"
 
-#: shell/resources/pps-find-sidebar.ui:80
+#: shell/resources/pps-find-sidebar.ui:79
 msgid "Perform a Search"
 msgstr "Efectuează o căutare"
 
-#: shell/resources/pps-find-sidebar.ui:81
+#: shell/resources/pps-find-sidebar.ui:80
 msgid "The search results will appear here"
 msgstr "Rezultatele căutării vor apărea aici"
 
@@ -1617,7 +1612,6 @@ msgid "Signature Information"
 msgstr "Informații Semnătură"
 
 #: shell/resources/pps-properties-signatures.ui:55
-#: shell/src/properties_signatures.rs:405
 msgid "View Details…"
 msgstr "Arată detaliile…"
 
@@ -1661,27 +1655,27 @@ msgstr "Recunoaște _majuscule"
 msgid "No Annotations"
 msgstr "Nu există notițe"
 
-#: shell/resources/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-sidebar-annotations.ui:74
 msgid "Remove Annotation"
 msgstr "Elimină notița"
 
-#: shell/resources/pps-sidebar-links.ui:53
+#: shell/resources/pps-sidebar-links.ui:52
 msgid "Collapse all tree"
 msgstr "Restrânge tot"
 
-#: shell/resources/pps-sidebar-links.ui:57
+#: shell/resources/pps-sidebar-links.ui:56
 msgid "Expand all tree"
 msgstr "Extinde tot"
 
-#: shell/resources/pps-sidebar-links.ui:61
+#: shell/resources/pps-sidebar-links.ui:60
 msgid "Expand all under this element"
 msgstr "Extinde tot de sub acest element"
 
-#: shell/resources/pps-sidebar-links.ui:67
+#: shell/resources/pps-sidebar-links.ui:66
 msgid "Print this section…"
 msgstr "Tipărește această secțiune…"
 
-#: shell/resources/pps-sidebar-thumbnails.ui:47
+#: shell/resources/pps-sidebar-thumbnails.ui:46
 msgid "Previews"
 msgstr "Previzualizări"
 
@@ -1705,11 +1699,11 @@ msgstr "Nu se poate deschide documentul"
 msgid "_Open Other File…"
 msgstr "_Deschide alt fișier…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:212
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 Autorii Papers"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:213
 msgid "translator-credits"
 msgstr ""
 "Eugen Paiuc <eug_paiuc@bluewin.ch>\n"
@@ -1725,43 +1719,43 @@ msgstr ""
 "  Gheorghe Pop https://launchpad.net/~pop-gheorghe\n"
 "  Ionuț Jula https://launchpad.net/~ionutjula"
 
-#: shell/src/application.rs:349
+#: shell/src/application.rs:317
 msgid "The page label of the document to display."
 msgstr "Eticheta paginii documentului de afișat."
 
-#: shell/src/application.rs:350
+#: shell/src/application.rs:318
 msgid "PAGE"
 msgstr "PAGINĂ"
 
-#: shell/src/application.rs:358
+#: shell/src/application.rs:326
 msgid "The page number of the document to display."
 msgstr "Numărul paginii documentului de afișat."
 
-#: shell/src/application.rs:359
+#: shell/src/application.rs:327
 msgid "NUMBER"
 msgstr "NUMĂR"
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:335
 msgid "Named destination to display."
 msgstr "Locul numit pentru a fi afișat."
 
-#: shell/src/application.rs:368
+#: shell/src/application.rs:336
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:344
 msgid "Run papers in fullscreen mode."
 msgstr "Deschide programul pe tot ecranul."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:353
 msgid "Run papers in presentation mode."
 msgstr "Deschide programul în modul prezentare."
 
-#: shell/src/application.rs:394
+#: shell/src/application.rs:362
 msgid "Show the version of the program."
 msgstr "Arată versiunea programului."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:372
 msgid "[FILE…]"
 msgstr "[FIȘIER…]"
 
@@ -1801,35 +1795,35 @@ msgstr "Închide _fără a salva"
 msgid "_Save a Copy"
 msgstr "_Salvează o copie"
 
-#: shell/src/document_view/actions.rs:751
+#: shell/src/document_view/actions.rs:761
 msgid "Save Image"
 msgstr "Salvează imaginea"
 
-#: shell/src/document_view/actions.rs:787
+#: shell/src/document_view/actions.rs:797
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Nu s-a găsit un format potrivit pentru salvarea imaginii"
 
-#: shell/src/document_view/actions.rs:804
+#: shell/src/document_view/actions.rs:820
 msgid "The image could not be saved."
 msgstr "Imaginea nu a putut fi salvată."
 
-#: shell/src/document_view/actions.rs:899
+#: shell/src/document_view/actions.rs:921
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Navigarea folosind cursorul este activată acum, pentru dezactivare se apasă "
 "F7."
 
-#: shell/src/document_view/actions.rs:901
+#: shell/src/document_view/actions.rs:923
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Navigarea folosind cursorul este dezactivată acum, pentru activare se apasă "
 "F7."
 
-#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Atașarea nu a putut fi deschisă"
 
-#: shell/src/document_view/actions.rs:1037
+#: shell/src/document_view/actions.rs:1058
 msgid "The attachment could not be saved."
 msgstr "Atașarea nu a putut fi salvată."
 
@@ -1943,35 +1937,19 @@ msgid ""
 msgstr ""
 "Documentul „{}” este blocat și este nevoie de o parolă pentru a fi deschis"
 
-#: shell/src/properties_general.rs:50
-msgid "Copy to Clipboard"
-msgstr "Copiază"
-
-#: shell/src/properties_general.rs:152
-msgid "Open File Location"
-msgstr "Deschide locul fișierului"
-
-#: shell/src/properties_general.rs:193
+#: shell/src/properties_general.rs:77
 msgid "File"
 msgstr "Fișier"
 
-#: shell/src/properties_general.rs:202
-msgid "Name"
-msgstr "Nume"
-
-#: shell/src/properties_general.rs:244
+#: shell/src/properties_general.rs:103
 msgid "Folder"
 msgstr "Dosar"
 
-#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
-msgid "File Path"
-msgstr "Calea fișierului"
-
-#: shell/src/properties_general.rs:298
+#: shell/src/properties_general.rs:159
 msgid "Content"
 msgstr "Conținut"
 
-#: shell/src/properties_general.rs:314
+#: shell/src/properties_general.rs:175
 msgid "Date &amp; Time"
 msgstr "Data și ora"
 
@@ -2055,7 +2033,3 @@ msgstr "Data emiterii certificatului"
 #: shell/src/properties_signatures.rs:321
 msgid "Certificate's Expiration Time"
 msgstr "Data expirării certificatului"
-
-#: shell/src/properties_signatures.rs:403
-msgid "Hide Details…"
-msgstr "Ascunde detaliile…"
