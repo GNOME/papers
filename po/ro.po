@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-28 13:26+0000\n"
-"PO-Revision-Date: 2025-05-28 16:16+0200\n"
+"POT-Creation-Date: 2025-05-31 19:45+0000\n"
+"PO-Revision-Date: 2025-06-01 11:34+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -29,8 +29,9 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472 shell/resources/pps-document-view.ui:80
-#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:46
+#: previewer/pps-previewer-window.c:472
+#: shell/resources/pps-document-view.blp:81
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
 #: shell/src/application.rs:69 shell/src/application.rs:342
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
@@ -483,7 +484,7 @@ msgid "This work is in the Public Domain"
 msgstr "Această lucrare este în Domeniul public"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1020
+#: shell/src/document_view/actions.rs:1002
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Salvează fișierul atașat"
@@ -495,7 +496,7 @@ msgstr[2] "Salvează fișierele atașate"
 msgid "Page %s"
 msgstr "Pagina %s"
 
-#: libview/pps-annotation-window.c:233
+#: libview/pps-annotation-window.c:227
 msgid "Edit Note"
 msgstr "Modifică notița"
 
@@ -552,9 +553,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Intervalul ales pentru tipărire nu include nicio pagină"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.ui:91
-#: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-annotation-properties-dialog.blp:78
+#: shell/resources/pps-document-view.blp:543 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "În_chide"
@@ -716,7 +717,7 @@ msgstr "Pornit în modul de prezentare"
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Sfârșitul prezentării. Se apasă Esc sau clic pentru a ieși."
 
-#: libview/pps-view-presentation.ui:57
+#: libview/pps-view-presentation.blp:49
 msgid "Jump to page:"
 msgstr "Du-te la pagina:"
 
@@ -730,7 +731,7 @@ msgstr "(%d din %d)"
 msgid "of %d"
 msgstr "din %d"
 
-#: previewer/pps-page-selector.ui:12 shell/resources/pps-page-selector.ui:12
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
 msgid "Select page"
 msgstr "Alege pagina"
 
@@ -779,48 +780,48 @@ msgstr "Vizualizare documente"
 msgid "The selected printer “%s” could not be found"
 msgstr "Imprimanta aleasă „%s” nu a fost găsită"
 
-#: previewer/pps-previewer-window.ui:22
+#: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
 msgstr "Pagina precedentă"
 
-#: previewer/pps-previewer-window.ui:29
+#: previewer/pps-previewer-window.blp:25
 msgid "Next Page"
 msgstr "Pagina următoare"
 
-#: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:222
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:205
 msgid "Page Count"
 msgstr "Număr pagini"
 
-#: previewer/pps-previewer-window.ui:42
+#: previewer/pps-previewer-window.blp:36
 msgid "_Print"
 msgstr "_Tipărește"
 
-#: previewer/pps-previewer-window.ui:43
+#: previewer/pps-previewer-window.blp:37
 msgid "Print This Document"
 msgstr "Tipărește acest document"
 
-#: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:305
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:282
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: previewer/pps-previewer-window.ui:60
+#: previewer/pps-previewer-window.blp:55
 msgid "Normal Size"
 msgstr "Mărime normală"
 
-#: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:292
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:270
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Tipărirea documentului a eșuat"
 
 # LG: descriere a unei iconițe atașabile unei notițe
 #: nautilus/pps-nautilus-extension.c:110
-#: shell/resources/pps-annotation-properties-dialog.ui:59
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Necunoscut"
@@ -842,7 +843,7 @@ msgid "Subject"
 msgstr "Subiect"
 
 #: nautilus/pps-nautilus-extension.h:49
-#: shell/resources/pps-annotation-properties-dialog.ui:9
+#: shell/resources/pps-annotation-properties-dialog.blp:9
 #: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "Autor"
@@ -896,467 +897,482 @@ msgstr "Mărime hârtie"
 msgid "Size"
 msgstr "Mărime"
 
-#: shell/resources/help-overlay.ui:11
+#: shell/resources/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "Opening, Closing, Saving and Printing"
 msgstr "Deschidere, închidere, salvare și tipărire"
 
-#: shell/resources/help-overlay.ui:14
+#: shell/resources/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open Document"
 msgstr "Deschide documentul"
 
-#: shell/resources/help-overlay.ui:20
+#: shell/resources/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "Open Copy of Current Document"
 msgstr "Deschide o copie a documentului actual"
 
-#: shell/resources/help-overlay.ui:26
+#: shell/resources/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Open With…"
 msgstr "Deschide cu…"
 
-#: shell/resources/help-overlay.ui:32
+#: shell/resources/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Save Copy of Current Document"
 msgstr "Salvează o copie a documentului actual"
 
-#: shell/resources/help-overlay.ui:38
+#: shell/resources/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "Print Current Document"
 msgstr "Tipărește documentul actual"
 
-#: shell/resources/help-overlay.ui:44
+#: shell/resources/help-overlay.blp:39
 msgctxt "shortcut window"
 msgid "Close Current Document Window"
 msgstr "Închide fereastra documentului actual"
 
-#: shell/resources/help-overlay.ui:52
+#: shell/resources/help-overlay.blp:45
 msgctxt "shortcut window"
 msgid "Window"
 msgstr "Fereastră"
 
-#: shell/resources/help-overlay.ui:55
+#: shell/resources/help-overlay.blp:48
 msgctxt "shortcut window"
 msgid "Fullscreen"
 msgstr "Pe tot ecranul"
 
-#: shell/resources/help-overlay.ui:61
+#: shell/resources/help-overlay.blp:53
 msgctxt "shortcut window"
 msgid "Enter Presentation Mode"
 msgstr "Intră în modul Prezentare"
 
-#: shell/resources/help-overlay.ui:67
+#: shell/resources/help-overlay.blp:58
 msgctxt "shortcut window"
 msgid "Side Pane"
 msgstr "Panou lateral"
 
-#: shell/resources/help-overlay.ui:73
+#: shell/resources/help-overlay.blp:63
 msgctxt "shortcut window"
 msgid "Caret Navigation"
 msgstr "Navigare folosind cursorul"
 
-#: shell/resources/help-overlay.ui:81
+#: shell/resources/help-overlay.blp:69
 msgctxt "shortcut window"
 msgid "Selecting and Copying Text"
 msgstr "Selecționare și copiere text"
 
-#: shell/resources/help-overlay.ui:84
+#: shell/resources/help-overlay.blp:72
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Copiază"
 
-#: shell/resources/help-overlay.ui:90
+#: shell/resources/help-overlay.blp:77
 msgctxt "shortcut window"
 msgid "Select All"
 msgstr "Selecționează tot"
 
-#: shell/resources/help-overlay.ui:98
+#: shell/resources/help-overlay.blp:83
 msgctxt "shortcut window"
 msgid "Rotating and Zooming"
 msgstr "Rotire și mărire"
 
-#: shell/resources/help-overlay.ui:101
+#: shell/resources/help-overlay.blp:86
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Counter-Clockwise"
 msgstr "Rotește pagina la stânga cu 90 de grade"
 
-#: shell/resources/help-overlay.ui:107
+#: shell/resources/help-overlay.blp:91
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Rotește pagina la dreapta cu 90 de grade"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
+#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: shell/resources/help-overlay.ui:125
+#: shell/resources/help-overlay.blp:106
 msgctxt "shortcut window"
 msgid "Normal Size"
 msgstr "Mărime normală"
 
-#: shell/resources/help-overlay.ui:131
+#: shell/resources/help-overlay.blp:111
 msgctxt "shortcut window"
 msgid "Zoom In (Alternative)"
 msgstr "Mărește (alternativ)"
 
-#: shell/resources/help-overlay.ui:137
+#: shell/resources/help-overlay.blp:116
 msgctxt "shortcut window"
 msgid "Fit Page"
 msgstr "Încadrează pagina"
 
-#: shell/resources/help-overlay.ui:143
+#: shell/resources/help-overlay.blp:121
 msgctxt "shortcut window"
 msgid "Fit Width"
 msgstr "Încadrează lățimea"
 
-#: shell/resources/help-overlay.ui:149
+#: shell/resources/help-overlay.blp:126
 msgctxt "shortcut window"
 msgid "Automatic Zoom"
 msgstr "Mărire automată"
 
-#: shell/resources/help-overlay.ui:157
+#: shell/resources/help-overlay.blp:132
 msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Deplasare în document"
 
-#: shell/resources/help-overlay.ui:160
+#: shell/resources/help-overlay.blp:135
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Deplasare în pagină"
 
-#: shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.blp:140
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Mută în sus/jos în pagină cu câteva rânduri"
 
-#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Pagina precedentă"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Pagina următoare"
 
-#: shell/resources/help-overlay.ui:184
+#: shell/resources/help-overlay.blp:155
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Duce la pagina cu numărul"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.blp:160
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Pagina precedentă (rapid)"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.blp:165
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Pagina următoare (rapid)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.blp:170
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Precedenta pagină vizitată"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.blp:175
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Următoarea pagină vizitată"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.blp:180
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Duce la începutul/sfârșitul paginii"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.blp:185
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Duce la începutul documentului"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.blp:190
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Duce la sfârșitul documentului"
 
-#: shell/resources/help-overlay.ui:234
+#: shell/resources/help-overlay.blp:196
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Vizualizare și gestionare document"
 
-#: shell/resources/help-overlay.ui:237
+#: shell/resources/help-overlay.blp:199
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Adaugă în Preferate"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.blp:204
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Elimină din Preferate"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.blp:209
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Mod de noapte"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.blp:214
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Derulare continuă"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.blp:219
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Pagini alăturate"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.blp:224
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Paginile impare la stânga"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.blp:229
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Proprietăți document"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.blp:234
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Adăugă notițe în text"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.blp:239
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Evidențiază textul"
 
-#: shell/resources/help-overlay.ui:293
+#: shell/resources/help-overlay.blp:244
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Taie textul cu o linie"
+
+#: shell/resources/help-overlay.blp:249
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Subliniază textul Ondulat/Zigzag"
+
+#: shell/resources/help-overlay.blp:254
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Subliniază textul"
+
+#: shell/resources/help-overlay.blp:260
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Căutare de text"
 
-#: shell/resources/help-overlay.ui:296
+#: shell/resources/help-overlay.blp:263
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Caută"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.blp:268
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Caută înainte"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.blp:273
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Caută înapoi"
 
-#: shell/resources/help-overlay.ui:316
+#: shell/resources/help-overlay.blp:279
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Generale"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/help-overlay.ui:319
+#: shell/resources/help-overlay.blp:282
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Ajutor"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.blp:287
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Opțiuni"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.blp:292
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Scurtături"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.blp:297
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Fereastră nouă"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.blp:302
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Închide fereastra"
 
-#: shell/resources/help-overlay.ui:351
+#: shell/resources/help-overlay.blp:308
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Modul Prezentare"
 
-#: shell/resources/help-overlay.ui:354
+#: shell/resources/help-overlay.blp:311
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Ecran negru"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.blp:316
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Ecran alb"
 
-#: shell/resources/help-overlay.ui:368
+#: shell/resources/help-overlay.blp:322
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Gesturi pe panoul tactil"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:70
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Annotation Properties"
 msgstr "Proprietăți notițe"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:14
+#: shell/resources/pps-annotation-properties-dialog.blp:13
 msgid "Color"
 msgstr "Culoare"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:26
+#: shell/resources/pps-annotation-properties-dialog.blp:21
 msgid "Opacity"
 msgstr "Opacitate"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:40
+#: shell/resources/pps-annotation-properties-dialog.blp:33
 msgid "Initially Opened"
 msgstr "Deschisă inițial"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:46
+#: shell/resources/pps-annotation-properties-dialog.blp:38
 msgid "Icon"
 msgstr "Simbol"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:50
+#: shell/resources/pps-annotation-properties-dialog.blp:42
 msgid "Note"
 msgstr "Notiță"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:51
+#: shell/resources/pps-annotation-properties-dialog.blp:43
 msgid "Comment"
 msgstr "Comentariu"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:52
+#: shell/resources/pps-annotation-properties-dialog.blp:44
 msgid "Key"
 msgstr "Cheie"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:53
+#: shell/resources/pps-annotation-properties-dialog.blp:45
 msgid "Help"
 msgstr "Ajutor"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:54
+#: shell/resources/pps-annotation-properties-dialog.blp:46
 msgid "New Paragraph"
 msgstr "Paragraf nou"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:55
+#: shell/resources/pps-annotation-properties-dialog.blp:47
 msgid "Paragraph"
 msgstr "Paragraf"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:56
+#: shell/resources/pps-annotation-properties-dialog.blp:48
 msgid "Insert"
 msgstr "Inserție"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:57
+#: shell/resources/pps-annotation-properties-dialog.blp:49
 msgid "Cross"
 msgstr "Cruce"
 
 # LG: descriere a unei iconițe atașabile unei notițe
-#: shell/resources/pps-annotation-properties-dialog.ui:58
+#: shell/resources/pps-annotation-properties-dialog.blp:50
 msgid "Circle"
 msgstr "Cerc"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:69
+#: shell/resources/pps-annotation-properties-dialog.blp:60
 msgid "Markup Type"
 msgstr "Tip de marcare"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:73
-#: shell/resources/pps-document-view.ui:715
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:64
+#: shell/resources/pps-document-view.blp:688
 msgid "Highlight"
 msgstr "Evidențiere"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:74
+#: shell/resources/pps-annotation-properties-dialog.blp:65
 msgid "Strike out"
 msgstr "Tăiat"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:75
-#: shell/resources/pps-document-view.ui:745
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:66
+#: shell/resources/pps-document-view.blp:716
 msgid "Underline"
 msgstr "Subliniat"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:76
-#: shell/resources/pps-document-view.ui:725
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:67
+#: shell/resources/pps-document-view.blp:730
 msgid "Squiggly"
-msgstr "Linie ondulată"
+msgstr "Zigzag"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:88
+#: shell/resources/pps-annotation-properties-dialog.blp:79
 msgid "_Apply"
 msgstr "_Aplică"
 
-#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.ui:71
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:72
 msgid "Search"
 msgstr "Caută"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
+#: shell/resources/pps-document-view.blp:87 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Opțiuni"
 
-#: shell/resources/pps-document-view.ui:106
+#: shell/resources/pps-document-view.blp:106
 msgid "Thumbnails"
 msgstr "Miniaturi"
 
-#: shell/resources/pps-document-view.ui:119
+#: shell/resources/pps-document-view.blp:117
 msgid "Outline"
 msgstr "Cuprins"
 
-#: shell/resources/pps-document-view.ui:133
+#: shell/resources/pps-document-view.blp:129
 msgid "Annotations"
 msgstr "Însemnări"
 
-#: shell/resources/pps-document-view.ui:153
+#: shell/resources/pps-document-view.blp:146
 msgid "Attachments"
 msgstr "Atașări"
 
-#: shell/resources/pps-document-view.ui:171
+#: shell/resources/pps-document-view.blp:162
 msgid "Layers"
 msgstr "Straturi"
 
-#: shell/resources/pps-document-view.ui:209
+#: shell/resources/pps-document-view.blp:192
 msgid "Toggle Sidebar"
 msgstr "Arată/Ascunde Panoul lateral"
 
-#: shell/resources/pps-document-view.ui:215
+#: shell/resources/pps-document-view.blp:198
 msgid "Document Menu"
 msgstr "Opțiuni document"
 
-#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:218 shell/src/document_view/io.rs:269
 msgid "Document has been digitally signed."
 msgstr "Documentul a fost semnat digital."
 
-#: shell/resources/pps-document-view.ui:239
+#: shell/resources/pps-document-view.blp:219
 msgid "View Signature…"
 msgstr "Arată semnătura…"
 
-#: shell/resources/pps-document-view.ui:272
+#: shell/resources/pps-document-view.blp:252
 msgid "Fit Automatically"
 msgstr "Potrivește automat"
 
-#: shell/resources/pps-document-view.ui:565
+#: shell/resources/pps-document-view.blp:512
 msgid "Selection too Small"
 msgstr "Selecția este prea mică"
 
-#: shell/resources/pps-document-view.ui:566
+#: shell/resources/pps-document-view.blp:513
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1366,19 +1382,19 @@ msgstr ""
 "a crea o semnătură mai ușor de citit, se apasă „Începe din nou” și se "
 "desenează un dreptunghi mai mare."
 
-#: shell/resources/pps-document-view.ui:571
+#: shell/resources/pps-document-view.blp:520
 msgid "Start _Over"
 msgstr "Începe din n_ou"
 
-#: shell/resources/pps-document-view.ui:572
+#: shell/resources/pps-document-view.blp:521
 msgid "_Sign"
 msgstr "_Semnează"
 
-#: shell/resources/pps-document-view.ui:578
+#: shell/resources/pps-document-view.blp:528
 msgid "Abort Printing?"
 msgstr "Se întrerupe tipărirea?"
 
-#: shell/resources/pps-document-view.ui:579
+#: shell/resources/pps-document-view.blp:529
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1386,322 +1402,319 @@ msgstr ""
 "Există una sau mai multe lucrări de tipărire active. Dacă fereastra este "
 "închisă, lucrările de tipărire în așteptare nu vor fi tipărite."
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.blp:533
 msgid "Abort _Print and Close"
 msgstr "Întrerupe _tipărirea și închide"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
+#: shell/resources/pps-document-view.blp:534 shell/src/document_view.rs:722
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "An_ulează"
 
-#: shell/resources/pps-document-view.ui:584
+#: shell/resources/pps-document-view.blp:535
 msgid "Close _After Printing"
 msgstr "Închide _după tipărire"
 
-#: shell/resources/pps-document-view.ui:598
+#: shell/resources/pps-document-view.blp:550
 msgid "Open…"
 msgstr "Deschide…"
 
-#: shell/resources/pps-document-view.ui:604
+#: shell/resources/pps-document-view.blp:557
 msgid "Ni_ght Mode"
 msgstr "Mod de _noapte"
 
-#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
+#: shell/resources/pps-document-view.blp:564 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "Scurtă_turi"
 
-#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
+#: shell/resources/pps-document-view.blp:569 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
+#: shell/resources/pps-document-view.blp:574 shell/resources/pps-window.blp:155
 msgid "_About Papers"
 msgstr "_Despre Documente"
 
-#: shell/resources/pps-document-view.ui:626
+#: shell/resources/pps-document-view.blp:583
 msgid "_Print…"
 msgstr "Ti_părește…"
 
-#: shell/resources/pps-document-view.ui:630
+#: shell/resources/pps-document-view.blp:588
 msgid "Fullscreen"
 msgstr "Pe tot ecranul"
 
-#: shell/resources/pps-document-view.ui:634
+#: shell/resources/pps-document-view.blp:593
 msgid "Present as Slideshow"
 msgstr "Prezintă ca diapozitive"
 
-#: shell/resources/pps-document-view.ui:640
+#: shell/resources/pps-document-view.blp:600
 msgid "Sign D_igitally…"
 msgstr "Semnează d_igital…"
 
-#: shell/resources/pps-document-view.ui:646
+#: shell/resources/pps-document-view.blp:607
 msgid "Open a C_opy"
 msgstr "Deschide o c_opie"
 
-#: shell/resources/pps-document-view.ui:650 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:612
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Deschide cu…"
 
-#: shell/resources/pps-document-view.ui:654
+#: shell/resources/pps-document-view.blp:617
 msgid "_Save As…"
 msgstr "_Salvează ca…"
 
-#: shell/resources/pps-document-view.ui:660
+#: shell/resources/pps-document-view.blp:624
 msgid "_Continuous"
 msgstr "_Continuu"
 
-#: shell/resources/pps-document-view.ui:664
+#: shell/resources/pps-document-view.blp:629
 msgid "_Dual"
 msgstr "_Dual"
 
-#: shell/resources/pps-document-view.ui:668
+#: shell/resources/pps-document-view.blp:634
 msgid "_Odd Pages Left"
 msgstr "_Paginile impare la stânga"
 
-#: shell/resources/pps-document-view.ui:672
+#: shell/resources/pps-document-view.blp:639
 msgid "Right to Left Document"
 msgstr "Document de la dreapta la stânga"
 
-#: shell/resources/pps-document-view.ui:678
+#: shell/resources/pps-document-view.blp:646
 msgid "Ro_tate ⤵"
 msgstr "Ro_tește ⤵"
 
-#: shell/resources/pps-document-view.ui:684
+#: shell/resources/pps-document-view.blp:653
 msgid "Document Prop_erties"
 msgstr "Propri_etăți document"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline.
-#: shell/resources/pps-document-view.ui:735
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:702
 msgid "Strikethrough"
 msgstr "Tăiat"
 
-#: shell/resources/pps-document-view.ui:839
+#: shell/resources/pps-document-view.blp:821
 msgid "_Open Link"
 msgstr "_Deschide adresa"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.blp:827
 msgid "_Copy Link Address"
 msgstr "_Copiază adresa"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.blp:833
 msgid "_Go To"
 msgstr "Du-te _la"
 
-#: shell/resources/pps-document-view.ui:854
+#: shell/resources/pps-document-view.blp:839
 msgid "Open in New _Window"
 msgstr "Deschide într-o nouă _fereastră"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.blp:847
 msgid "_Copy"
 msgstr "_Copiază"
 
-#: shell/resources/pps-document-view.ui:865
+#: shell/resources/pps-document-view.blp:852
 msgid "Select _All"
 msgstr "Selecționează t_ot"
 
-#: shell/resources/pps-document-view.ui:871
+#: shell/resources/pps-document-view.blp:859
 msgid "_Save Image As…"
 msgstr "_Salvează imaginea ca…"
 
-#: shell/resources/pps-document-view.ui:876
+#: shell/resources/pps-document-view.blp:865
 msgid "Copy _Image"
 msgstr "Copiază _imaginea"
 
-#: shell/resources/pps-document-view.ui:883
-#: shell/resources/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Deschide atașarea"
 
-#: shell/resources/pps-document-view.ui:888
-#: shell/resources/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.blp:879
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Salvează atașarea ca…"
 
-#: shell/resources/pps-document-view.ui:896
+#: shell/resources/pps-document-view.blp:889
 msgid "Annotation _Properties…"
 msgstr "Proprietățile notiței…"
 
-#: shell/resources/pps-document-view.ui:901
+#: shell/resources/pps-document-view.blp:895
 msgid "R_emove Annotation"
 msgstr "_Elimină notița"
 
-#: shell/resources/pps-document-view.ui:908
+#: shell/resources/pps-document-view.blp:903
 msgid "_Add Text Annotation"
 msgstr "_Adăugă notiță de text"
 
-#: shell/resources/pps-document-view.ui:913
-msgid "_Highlight Selected Text"
-msgstr "Evi_dențiază textul ales"
-
-#: shell/resources/pps-find-sidebar.ui:65
+#: shell/resources/pps-find-sidebar.blp:60
 msgid "No Results Found"
 msgstr "Niciun rezultat"
 
-#: shell/resources/pps-find-sidebar.ui:66
+#: shell/resources/pps-find-sidebar.blp:61
 msgid "Try a different search"
 msgstr "Caută altfel"
 
-#: shell/resources/pps-find-sidebar.ui:80
+#: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
 msgstr "Efectuează o căutare"
 
-#: shell/resources/pps-find-sidebar.ui:81
+#: shell/resources/pps-find-sidebar.blp:75
 msgid "The search results will appear here"
 msgstr "Rezultatele căutării vor apărea aici"
 
-#: shell/resources/pps-loader-view.ui:17
+#: shell/resources/pps-loader-view.blp:15
 msgid "Loading Document"
 msgstr "Se încarcă documentul"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_Anulează"
 
-#: shell/resources/pps-password-dialog.ui:4
-#: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
 msgid "Password Required"
 msgstr "E nevoie de parolă"
 
-#: shell/resources/pps-password-dialog.ui:7
+#: shell/resources/pps-password-dialog.blp:9
 msgid "Cancel"
 msgstr "Anulează"
 
-#: shell/resources/pps-password-dialog.ui:8
+#: shell/resources/pps-password-dialog.blp:10
 msgid "Unlock"
 msgstr "Deblochează"
 
-#: shell/resources/pps-password-dialog.ui:17
+#: shell/resources/pps-password-dialog.blp:19
 msgid "Password"
 msgstr "Parola"
 
-#: shell/resources/pps-password-dialog.ui:32
+#: shell/resources/pps-password-dialog.blp:33
 msgid "Invalid password"
 msgstr "Parolă greșită"
 
-#: shell/resources/pps-password-dialog.ui:48
+#: shell/resources/pps-password-dialog.blp:48
 msgid "Forget password _immediately"
 msgstr "_Uită parola imediat"
 
-#: shell/resources/pps-password-dialog.ui:56
+#: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
 msgstr "Reține pentru _totdeauna"
 
-#: shell/resources/pps-password-view.ui:20
+#: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr ""
 "Acest document este blocat și poate fi citit doar prin introducerea parolei "
 "corecte"
 
-#: shell/resources/pps-password-view.ui:25
+#: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
 msgstr "_Deblochează documentul"
 
-#: shell/resources/pps-properties-license.ui:21
+#: shell/resources/pps-properties-license.blp:19
 msgid "Usage Terms"
 msgstr "Termeni de utilizare"
 
-#: shell/resources/pps-properties-license.ui:56
+#: shell/resources/pps-properties-license.blp:52
 msgid "Text License"
 msgstr "Textul licenței"
 
-#: shell/resources/pps-properties-license.ui:84
+#: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Informații suplimentare"
 
-#: shell/resources/pps-properties-signatures.ui:37
+#: shell/resources/pps-properties-signatures.blp:32
 msgid "Signature Information"
 msgstr "Informații Semnătură"
 
-#: shell/resources/pps-properties-signatures.ui:55
+#: shell/resources/pps-properties-signatures.blp:48
 #: shell/src/properties_signatures.rs:405
 msgid "View Details…"
 msgstr "Arată detaliile…"
 
-#: shell/resources/pps-properties-window.ui:4
+#: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
 msgstr "Proprietăți"
 
-#: shell/resources/pps-properties-window.ui:25
+#: shell/resources/pps-properties-window.blp:23
 msgid "_Document"
 msgstr "_Document"
 
-#: shell/resources/pps-properties-window.ui:40
+#: shell/resources/pps-properties-window.blp:34
 msgid "_Fonts"
 msgstr "_Litere"
 
-#: shell/resources/pps-properties-window.ui:51
+#: shell/resources/pps-properties-window.blp:43
 msgid "License"
 msgstr "Licența"
 
-#: shell/resources/pps-properties-window.ui:61
+#: shell/resources/pps-properties-window.blp:51
 msgid "_Signatures"
 msgstr "_Semnături"
 
-#: shell/resources/pps-search-box.ui:15
+#: shell/resources/pps-search-box.blp:16
 msgid "Search in document"
 msgstr "Caută în document"
 
-#: shell/resources/pps-search-box.ui:34
+#: shell/resources/pps-search-box.blp:38
 msgid "Search Options"
 msgstr "Opțiuni de căutare"
 
-#: shell/resources/pps-search-box.ui:43
+#: shell/resources/pps-search-box.blp:46
 msgid "_Whole Words Only"
 msgstr "_Numai cuvinte întregi"
 
-#: shell/resources/pps-search-box.ui:47
+#: shell/resources/pps-search-box.blp:51
 msgid "C_ase Sensitive"
 msgstr "Recunoaște _majuscule"
 
-#: shell/resources/pps-sidebar-annotations.ui:16
+#: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "Nu există notițe"
 
-#: shell/resources/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
 msgstr "Elimină notița"
 
-#: shell/resources/pps-sidebar-links.ui:53
+#: shell/resources/pps-sidebar-links.blp:47
 msgid "Collapse all tree"
 msgstr "Restrânge tot"
 
-#: shell/resources/pps-sidebar-links.ui:57
+#: shell/resources/pps-sidebar-links.blp:52
 msgid "Expand all tree"
 msgstr "Extinde tot"
 
-#: shell/resources/pps-sidebar-links.ui:61
+#: shell/resources/pps-sidebar-links.blp:57
 msgid "Expand all under this element"
 msgstr "Extinde tot de sub acest element"
 
-#: shell/resources/pps-sidebar-links.ui:67
+#: shell/resources/pps-sidebar-links.blp:64
 msgid "Print this section…"
 msgstr "Tipărește această secțiune…"
 
-#: shell/resources/pps-sidebar-thumbnails.ui:47
+#: shell/resources/pps-sidebar-thumbnails.blp:47
 msgid "Previews"
 msgstr "Previzualizări"
 
-#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
 msgid "Open a Document"
 msgstr "Deschide un document"
 
-#: shell/resources/pps-window.ui:50
+#: shell/resources/pps-window.blp:44
 msgid "Drag and drop documents here"
 msgstr "Trage și așează documente aici"
 
-#: shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.blp:49
 msgid "_Open…"
 msgstr "_Deschide…"
 
-#: shell/resources/pps-window.ui:81
+#: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
 msgstr "Nu se poate deschide documentul"
 
-#: shell/resources/pps-window.ui:86
+#: shell/resources/pps-window.blp:76
 msgid "_Open Other File…"
 msgstr "_Deschide alt fișier…"
 
@@ -1765,11 +1778,11 @@ msgstr "Arată versiunea programului."
 msgid "[FILE…]"
 msgstr "[FIȘIER…]"
 
-#: shell/src/document_view.rs:299
+#: shell/src/document_view.rs:296
 msgid "View Details"
 msgstr "Arată detalii"
 
-#: shell/src/document_view.rs:704
+#: shell/src/document_view.rs:701
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1777,59 +1790,59 @@ msgstr ""
 "Documentul conține notițe noi sau modificate și spații de formular care au "
 "fost completate."
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:702
 msgid "Document contains form fields that have been filled out."
 msgstr "Documentul conține spații de formular care au fost completate."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:703
 msgid "Document contains new or modified annotations."
 msgstr "Documentul conține notițe noi sau modificate."
 
-#: shell/src/document_view.rs:714
+#: shell/src/document_view.rs:711
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Dacă nu se salvează o copie, modificările vor fi pierdute definitiv."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:712
 msgid "Save Changes to a Copy?"
 msgstr "Se salvează o copie cu modificările?"
 
-#: shell/src/document_view.rs:724
+#: shell/src/document_view.rs:721
 msgid "Close _Without Saving"
 msgstr "Închide _fără a salva"
 
-#: shell/src/document_view.rs:726
+#: shell/src/document_view.rs:723
 msgid "_Save a Copy"
 msgstr "_Salvează o copie"
 
-#: shell/src/document_view/actions.rs:751
+#: shell/src/document_view/actions.rs:804
 msgid "Save Image"
 msgstr "Salvează imaginea"
 
-#: shell/src/document_view/actions.rs:787
+#: shell/src/document_view/actions.rs:840
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Nu s-a găsit un format potrivit pentru salvarea imaginii"
 
-#: shell/src/document_view/actions.rs:804
+#: shell/src/document_view/actions.rs:857
 msgid "The image could not be saved."
 msgstr "Imaginea nu a putut fi salvată."
 
-#: shell/src/document_view/actions.rs:899
+#: shell/src/document_view/actions.rs:929
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Navigarea folosind cursorul este activată acum, pentru dezactivare se apasă "
 "F7."
 
-#: shell/src/document_view/actions.rs:901
+#: shell/src/document_view/actions.rs:931
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Navigarea folosind cursorul este dezactivată acum, pentru activare se apasă "
 "F7."
 
-#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:986 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Atașarea nu a putut fi deschisă"
 
-#: shell/src/document_view/actions.rs:1037
+#: shell/src/document_view/actions.rs:1019
 msgid "The attachment could not be saved."
 msgstr "Atașarea nu a putut fi salvată."
 
@@ -1909,18 +1922,18 @@ msgstr[0] "{} lucrare în așteptare"
 msgstr[1] "{} lucrări în așteptare"
 msgstr[2] "{} de lucrări în așteptare"
 
-#: shell/src/document_view/signals.rs:225
+#: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
 msgstr "Adresa externă nu a putut fi deschisă"
 
-#: shell/src/document_view/signals.rs:253
+#: shell/src/document_view/signals.rs:254
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Alertă de securitate: acestui document nu i s-a permis să deschidă fișierul "
 "„{}”"
 
-#: shell/src/document_view/signals.rs:428 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Pagina {}"
