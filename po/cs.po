@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-28 08:54+0000\n"
-"PO-Revision-Date: 2025-05-28 14:32+0200\n"
+"POT-Creation-Date: 2025-06-02 15:26+0000\n"
+"PO-Revision-Date: 2025-06-02 18:44+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -36,8 +36,9 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472 shell/resources/pps-document-view.ui:80
-#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:46
+#: previewer/pps-previewer-window.c:472
+#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
 #: shell/src/application.rs:69 shell/src/application.rs:342
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
@@ -499,7 +500,7 @@ msgstr[2] "Uložit přílohy"
 msgid "Page %s"
 msgstr "Stránka %s"
 
-#: libview/pps-annotation-window.c:233
+#: libview/pps-annotation-window.c:237
 msgid "Edit Note"
 msgstr "Upravit poznámku"
 
@@ -556,9 +557,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Snažíte se vytisknout výběr, který nezahrnuje žádné stránky"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.ui:91
-#: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-annotation-properties-dialog.blp:78
+#: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Zavřít"
@@ -718,7 +719,7 @@ msgstr "Běží v režimu prezentace"
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Konec prezentace. Opustíte ji kliknutím nebo klávesou Esc."
 
-#: libview/pps-view-presentation.ui:57
+#: libview/pps-view-presentation.blp:49
 msgid "Jump to page:"
 msgstr "Přejít na stránku:"
 
@@ -732,7 +733,7 @@ msgstr "(%d z %d)"
 msgid "of %d"
 msgstr "z %d"
 
-#: previewer/pps-page-selector.ui:12 shell/resources/pps-page-selector.ui:12
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
 msgid "Select page"
 msgstr "Zvolit stránku"
 
@@ -781,47 +782,47 @@ msgstr "Prohlížeč dokumentů Papers"
 msgid "The selected printer “%s” could not be found"
 msgstr "Vybraná tiskárna „%s“ nebyla nalezena"
 
-#: previewer/pps-previewer-window.ui:22
+#: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
 msgstr "Předchozí stránka"
 
-#: previewer/pps-previewer-window.ui:29
+#: previewer/pps-previewer-window.blp:25
 msgid "Next Page"
 msgstr "Následující stránka"
 
-#: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:222
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Počet stránek"
 
-#: previewer/pps-previewer-window.ui:42
+#: previewer/pps-previewer-window.blp:36
 msgid "_Print"
 msgstr "_Tisk"
 
-#: previewer/pps-previewer-window.ui:43
+#: previewer/pps-previewer-window.blp:37
 msgid "Print This Document"
 msgstr "Vytisknout tento dokument"
 
-#: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:305
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: previewer/pps-previewer-window.ui:60
+#: previewer/pps-previewer-window.blp:55
 msgid "Normal Size"
 msgstr "Normální velikost"
 
-#: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:292
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
 msgid "Failed to Print Document"
 msgstr "Nepodařilo se vytisknout dokument"
 
 #: nautilus/pps-nautilus-extension.c:110
-#: shell/resources/pps-annotation-properties-dialog.ui:59
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Neznámo"
@@ -843,7 +844,7 @@ msgid "Subject"
 msgstr "Předmět"
 
 #: nautilus/pps-nautilus-extension.h:49
-#: shell/resources/pps-annotation-properties-dialog.ui:9
+#: shell/resources/pps-annotation-properties-dialog.blp:9
 #: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "Autor"
@@ -897,458 +898,473 @@ msgstr "Velikost papíru"
 msgid "Size"
 msgstr "Velikost"
 
-#: shell/resources/help-overlay.ui:11
+#: shell/resources/help-overlay.blp:11
 msgctxt "shortcut window"
 msgid "Opening, Closing, Saving and Printing"
 msgstr "Otevírání, zavírání, ukládání a tisk"
 
-#: shell/resources/help-overlay.ui:14
+#: shell/resources/help-overlay.blp:14
 msgctxt "shortcut window"
 msgid "Open Document"
 msgstr "Otevřít dokument"
 
-#: shell/resources/help-overlay.ui:20
+#: shell/resources/help-overlay.blp:19
 msgctxt "shortcut window"
 msgid "Open Copy of Current Document"
 msgstr "Otevřít kopii aktuálního dokumentu"
 
-#: shell/resources/help-overlay.ui:26
+#: shell/resources/help-overlay.blp:24
 msgctxt "shortcut window"
 msgid "Open With…"
 msgstr "Otevřít pomocí…"
 
-#: shell/resources/help-overlay.ui:32
+#: shell/resources/help-overlay.blp:29
 msgctxt "shortcut window"
 msgid "Save Copy of Current Document"
 msgstr "Uložit kopii aktuálního dokumentu"
 
-#: shell/resources/help-overlay.ui:38
+#: shell/resources/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "Print Current Document"
 msgstr "Vytisknout aktuální dokument"
 
-#: shell/resources/help-overlay.ui:44
+#: shell/resources/help-overlay.blp:39
 msgctxt "shortcut window"
 msgid "Close Current Document Window"
 msgstr "Zavřít okno s aktuálním dokumentem"
 
-#: shell/resources/help-overlay.ui:52
+#: shell/resources/help-overlay.blp:45
 msgctxt "shortcut window"
 msgid "Window"
 msgstr "Okno"
 
-#: shell/resources/help-overlay.ui:55
+#: shell/resources/help-overlay.blp:48
 msgctxt "shortcut window"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: shell/resources/help-overlay.ui:61
+#: shell/resources/help-overlay.blp:53
 msgctxt "shortcut window"
 msgid "Enter Presentation Mode"
 msgstr "Přepnout do režimu prezentace"
 
-#: shell/resources/help-overlay.ui:67
+#: shell/resources/help-overlay.blp:58
 msgctxt "shortcut window"
 msgid "Side Pane"
 msgstr "Postranní panel"
 
-#: shell/resources/help-overlay.ui:73
+#: shell/resources/help-overlay.blp:63
 msgctxt "shortcut window"
 msgid "Caret Navigation"
 msgstr "Kurzorová navigace"
 
-#: shell/resources/help-overlay.ui:81
+#: shell/resources/help-overlay.blp:69
 msgctxt "shortcut window"
 msgid "Selecting and Copying Text"
 msgstr "Výběr a kopírování textu"
 
-#: shell/resources/help-overlay.ui:84
+#: shell/resources/help-overlay.blp:72
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: shell/resources/help-overlay.ui:90
+#: shell/resources/help-overlay.blp:77
 msgctxt "shortcut window"
 msgid "Select All"
 msgstr "Vybrat vše"
 
-#: shell/resources/help-overlay.ui:98
+#: shell/resources/help-overlay.blp:83
 msgctxt "shortcut window"
 msgid "Rotating and Zooming"
 msgstr "Otáčení a přibližování"
 
-#: shell/resources/help-overlay.ui:101
+#: shell/resources/help-overlay.blp:86
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Counter-Clockwise"
 msgstr "Otočit stránku o 90 stupňů po směru hodinových ručiček"
 
-#: shell/resources/help-overlay.ui:107
+#: shell/resources/help-overlay.blp:91
 msgctxt "shortcut window"
 msgid "Rotate Page 90 Degrees Clockwise"
 msgstr "Otočit stránku o 90 stupňů proti směru hodinových ručiček"
 
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:371
+#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:377
+#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: shell/resources/help-overlay.ui:125
+#: shell/resources/help-overlay.blp:106
 msgctxt "shortcut window"
 msgid "Normal Size"
 msgstr "Normální velikost"
 
-#: shell/resources/help-overlay.ui:131
+#: shell/resources/help-overlay.blp:111
 msgctxt "shortcut window"
 msgid "Zoom In (Alternative)"
 msgstr "Přiblížit (další způsob)"
 
-#: shell/resources/help-overlay.ui:137
+#: shell/resources/help-overlay.blp:116
 msgctxt "shortcut window"
 msgid "Fit Page"
 msgstr "Přizpůsobit stránce"
 
-#: shell/resources/help-overlay.ui:143
+#: shell/resources/help-overlay.blp:121
 msgctxt "shortcut window"
 msgid "Fit Width"
 msgstr "Přizpůsobit šířce"
 
-#: shell/resources/help-overlay.ui:149
+#: shell/resources/help-overlay.blp:126
 msgctxt "shortcut window"
 msgid "Automatic Zoom"
 msgstr "Automaticky přiblížit"
 
-#: shell/resources/help-overlay.ui:157
+#: shell/resources/help-overlay.blp:132
 msgctxt "shortcut window"
 msgid "Moving Around Document"
 msgstr "Pohyb v dokumentu"
 
-#: shell/resources/help-overlay.ui:160
+#: shell/resources/help-overlay.blp:135
 msgctxt "shortcut window"
 msgid "Move Around Page"
 msgstr "Pohyb po stránce"
 
-#: shell/resources/help-overlay.ui:166
+#: shell/resources/help-overlay.blp:140
 msgctxt "shortcut window"
 msgid "Move Up/Down Page Several Lines"
 msgstr "Posunout stránku nahoru/dolů o několik řádků"
 
-#: shell/resources/help-overlay.ui:172 shell/resources/help-overlay.ui:389
+#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
 msgctxt "shortcut window"
 msgid "Previous Page"
 msgstr "Předchozí stránka"
 
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:383
+#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
 msgctxt "shortcut window"
 msgid "Next Page"
 msgstr "Následující stránka"
 
-#: shell/resources/help-overlay.ui:184
+#: shell/resources/help-overlay.blp:155
 msgctxt "shortcut window"
 msgid "Go to Page Number"
 msgstr "Přejít na stránku s určeným číslem"
 
-#: shell/resources/help-overlay.ui:190
+#: shell/resources/help-overlay.blp:160
 msgctxt "shortcut window"
 msgid "Previous Page (Fast)"
 msgstr "Předchozí stránka (rychle)"
 
-#: shell/resources/help-overlay.ui:196
+#: shell/resources/help-overlay.blp:165
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Následující stránka (rychle)"
 
-#: shell/resources/help-overlay.ui:202
+#: shell/resources/help-overlay.blp:170
 msgctxt "shortcut window"
 msgid "Previous Visited Page"
 msgstr "Předchozí navštívená stránka"
 
-#: shell/resources/help-overlay.ui:208
+#: shell/resources/help-overlay.blp:175
 msgctxt "shortcut window"
 msgid "Next Visited Page"
 msgstr "Následující navštívená stránka"
 
-#: shell/resources/help-overlay.ui:214
+#: shell/resources/help-overlay.blp:180
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
 msgstr "Přejít na začátek/konec stránky"
 
-#: shell/resources/help-overlay.ui:220
+#: shell/resources/help-overlay.blp:185
 msgctxt "shortcut window"
 msgid "Go to Document Start"
 msgstr "Přejít na začátek dokumentu"
 
-#: shell/resources/help-overlay.ui:226
+#: shell/resources/help-overlay.blp:190
 msgctxt "shortcut window"
 msgid "Go to Document End"
 msgstr "Přejít na konec dokumentu"
 
-#: shell/resources/help-overlay.ui:234
+#: shell/resources/help-overlay.blp:196
 msgctxt "shortcut window"
 msgid "Document View and Handling"
 msgstr "Zobrazení a obsluha dokumentu"
 
-#: shell/resources/help-overlay.ui:237
+#: shell/resources/help-overlay.blp:199
 msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Přidat záložku"
 
-#: shell/resources/help-overlay.ui:243
+#: shell/resources/help-overlay.blp:204
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Odstranit záložku"
 
-#: shell/resources/help-overlay.ui:249
+#: shell/resources/help-overlay.blp:209
 msgctxt "shortcut window"
 msgid "Night Mode"
 msgstr "Noční režim"
 
-#: shell/resources/help-overlay.ui:255
+#: shell/resources/help-overlay.blp:214
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
 msgstr "Souvislý posuv"
 
-#: shell/resources/help-overlay.ui:261
+#: shell/resources/help-overlay.blp:219
 msgctxt "shortcut window"
 msgid "Dual Page"
 msgstr "Dvojstránka"
 
-#: shell/resources/help-overlay.ui:267
+#: shell/resources/help-overlay.blp:224
 msgctxt "shortcut window"
 msgid "Odd Pages Left"
 msgstr "Liché stránky vlevo"
 
-#: shell/resources/help-overlay.ui:273
+#: shell/resources/help-overlay.blp:229
 msgctxt "shortcut window"
 msgid "Document Properties"
 msgstr "Vlastnosti dokumentu"
 
-#: shell/resources/help-overlay.ui:279
+#: shell/resources/help-overlay.blp:234
 msgctxt "shortcut window"
 msgid "Add Text Annotation"
 msgstr "Opatřit textovou poznámkou"
 
-#: shell/resources/help-overlay.ui:285
+#: shell/resources/help-overlay.blp:239
 msgctxt "shortcut window"
 msgid "Highlight Text"
 msgstr "Zvýraznit text"
 
-#: shell/resources/help-overlay.ui:293
+#: shell/resources/help-overlay.blp:244
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Přeškrtnout text"
+
+#: shell/resources/help-overlay.blp:249
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Vlnovkou podtrhnout text"
+
+#: shell/resources/help-overlay.blp:254
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Podtrhnout text"
+
+#: shell/resources/help-overlay.blp:260
 msgctxt "shortcut window"
 msgid "Finding Text"
 msgstr "Hledání textu"
 
-#: shell/resources/help-overlay.ui:296
+#: shell/resources/help-overlay.blp:263
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Najít"
 
-#: shell/resources/help-overlay.ui:302
+#: shell/resources/help-overlay.blp:268
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Najít další"
 
-#: shell/resources/help-overlay.ui:308
+#: shell/resources/help-overlay.blp:273
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Najít předchozí"
 
-#: shell/resources/help-overlay.ui:316
+#: shell/resources/help-overlay.blp:279
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Obecné"
 
-#: shell/resources/help-overlay.ui:319
+#: shell/resources/help-overlay.blp:282
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Nápověda"
 
-#: shell/resources/help-overlay.ui:325
+#: shell/resources/help-overlay.blp:287
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Nabídka"
 
-#: shell/resources/help-overlay.ui:331
+#: shell/resources/help-overlay.blp:292
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: shell/resources/help-overlay.ui:337
+#: shell/resources/help-overlay.blp:297
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nové okno"
 
-#: shell/resources/help-overlay.ui:343
+#: shell/resources/help-overlay.blp:302
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Zavřít okno"
 
-#: shell/resources/help-overlay.ui:351
+#: shell/resources/help-overlay.blp:308
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Režim prezentace"
 
-#: shell/resources/help-overlay.ui:354
+#: shell/resources/help-overlay.blp:311
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Černá obrazovka"
 
-#: shell/resources/help-overlay.ui:360
+#: shell/resources/help-overlay.blp:316
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Bílá obrazovka"
 
-#: shell/resources/help-overlay.ui:368
+#: shell/resources/help-overlay.blp:322
 msgctxt "shortcut window"
 msgid "Touchpad Gestures"
 msgstr "Dotyková gesta"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:70
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Annotation Properties"
 msgstr "Vlastnosti poznámky"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:14
+#: shell/resources/pps-annotation-properties-dialog.blp:13
 msgid "Color"
 msgstr "Barva"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:26
+#: shell/resources/pps-annotation-properties-dialog.blp:21
 msgid "Opacity"
 msgstr "Krytí"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:40
+#: shell/resources/pps-annotation-properties-dialog.blp:33
 msgid "Initially Opened"
 msgstr "Původně otevřeno"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:46
+#: shell/resources/pps-annotation-properties-dialog.blp:38
 msgid "Icon"
 msgstr "Ikona"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:50
+#: shell/resources/pps-annotation-properties-dialog.blp:42
 msgid "Note"
 msgstr "Poznámka"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:51
+#: shell/resources/pps-annotation-properties-dialog.blp:43
 msgid "Comment"
 msgstr "Komentář"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:52
+#: shell/resources/pps-annotation-properties-dialog.blp:44
 msgid "Key"
 msgstr "Klíč"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:53
+#: shell/resources/pps-annotation-properties-dialog.blp:45
 msgid "Help"
 msgstr "Nápověda"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:54
+#: shell/resources/pps-annotation-properties-dialog.blp:46
 msgid "New Paragraph"
 msgstr "Nový odstavec"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:55
+#: shell/resources/pps-annotation-properties-dialog.blp:47
 msgid "Paragraph"
 msgstr "Odstavec"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:56
+#: shell/resources/pps-annotation-properties-dialog.blp:48
 msgid "Insert"
 msgstr "Vložit"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:57
+#: shell/resources/pps-annotation-properties-dialog.blp:49
 msgid "Cross"
 msgstr "Křížek"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:58
+#: shell/resources/pps-annotation-properties-dialog.blp:50
 msgid "Circle"
 msgstr "Kolečko"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:69
+#: shell/resources/pps-annotation-properties-dialog.blp:60
 msgid "Markup Type"
 msgstr "Typ označení"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:73
-#: shell/resources/pps-document-view.ui:715
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:64
+#: shell/resources/pps-document-view.blp:703
 msgid "Highlight"
 msgstr "zvýraznění"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:74
+#: shell/resources/pps-annotation-properties-dialog.blp:65
 msgid "Strike out"
 msgstr "přeškrtnutí"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:75
-#: shell/resources/pps-document-view.ui:745
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:66
+#: shell/resources/pps-document-view.blp:731
 msgid "Underline"
 msgstr "podtržení"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation.
-#: shell/resources/pps-annotation-properties-dialog.ui:76
-#: shell/resources/pps-document-view.ui:725
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-annotation-properties-dialog.blp:67
+#: shell/resources/pps-document-view.blp:745
 msgid "Squiggly"
 msgstr "vlnovka"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:88
+#: shell/resources/pps-annotation-properties-dialog.blp:79
 msgid "_Apply"
 msgstr "_Použít"
 
-#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.ui:71
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Hledat"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: shell/resources/pps-document-view.ui:106
+#: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
 msgstr "Náhledy"
 
 # https://bugzilla.gnome.org/show_bug.cgi?id=732547
-#: shell/resources/pps-document-view.ui:119
+#: shell/resources/pps-document-view.blp:121
 msgid "Outline"
 msgstr "Obsah"
 
-#: shell/resources/pps-document-view.ui:133
+#: shell/resources/pps-document-view.blp:133
 msgid "Annotations"
 msgstr "Poznámky"
 
-#: shell/resources/pps-document-view.ui:153
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "Přílohy"
 
-#: shell/resources/pps-document-view.ui:171
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "Vrstvy"
 
-#: shell/resources/pps-document-view.ui:209
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "Zobrazit/skrýt postranní panel"
 
-#: shell/resources/pps-document-view.ui:215
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "Nabídka dokumentu"
 
-#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:269
 msgid "Document has been digitally signed."
 msgstr "Dokument byl digitálně podepsán."
 
-#: shell/resources/pps-document-view.ui:239
+#: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
 msgstr "Zobrazit podpis…"
 
-#: shell/resources/pps-document-view.ui:272
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "Přizpůsobit automaticky"
 
-#: shell/resources/pps-document-view.ui:565
+#: shell/resources/pps-document-view.blp:527
 msgid "Selection too Small"
 msgstr "Výběr je příliš malý"
 
-#: shell/resources/pps-document-view.ui:566
+#: shell/resources/pps-document-view.blp:528
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1358,19 +1374,19 @@ msgstr ""
 "vytvořit potenciálně čitelnější podpis, stiskněte `Začít znovu` a nakreslete "
 "větší obdélník."
 
-#: shell/resources/pps-document-view.ui:571
+#: shell/resources/pps-document-view.blp:535
 msgid "Start _Over"
 msgstr "Začít zn_ovu"
 
-#: shell/resources/pps-document-view.ui:572
+#: shell/resources/pps-document-view.blp:536
 msgid "_Sign"
 msgstr "Podep_sat"
 
-#: shell/resources/pps-document-view.ui:578
+#: shell/resources/pps-document-view.blp:543
 msgid "Abort Printing?"
 msgstr "Přerušit tisk?"
 
-#: shell/resources/pps-document-view.ui:579
+#: shell/resources/pps-document-view.blp:544
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1378,320 +1394,317 @@ msgstr ""
 "Existuje jedna nebo více aktivních tiskových úloh. Pokud je okno zavřené, "
 "čekající tiskové úlohy nebudou vytištěny."
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.blp:548
 msgid "Abort _Print and Close"
 msgstr "Přerušit _tisk a zavřít"
 
-#: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
+#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: shell/resources/pps-document-view.ui:584
+#: shell/resources/pps-document-view.blp:550
 msgid "Close _After Printing"
 msgstr "Zavřít _po vytištění"
 
-#: shell/resources/pps-document-view.ui:598
+#: shell/resources/pps-document-view.blp:565
 msgid "Open…"
 msgstr "Otevřít…"
 
-#: shell/resources/pps-document-view.ui:604
+#: shell/resources/pps-document-view.blp:572
 msgid "Ni_ght Mode"
 msgstr "_Noční režim"
 
-#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
+#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
+#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
+#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
 msgid "_About Papers"
 msgstr "O _aplikaci Papers"
 
-#: shell/resources/pps-document-view.ui:626
+#: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
 msgstr "_Tisk…"
 
-#: shell/resources/pps-document-view.ui:630
+#: shell/resources/pps-document-view.blp:603
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: shell/resources/pps-document-view.ui:634
+#: shell/resources/pps-document-view.blp:608
 msgid "Present as Slideshow"
 msgstr "Promítnout jako prezentaci"
 
-#: shell/resources/pps-document-view.ui:640
+#: shell/resources/pps-document-view.blp:615
 msgid "Sign D_igitally…"
 msgstr "D_igitálně podepsat…"
 
-#: shell/resources/pps-document-view.ui:646
+#: shell/resources/pps-document-view.blp:622
 msgid "Open a C_opy"
 msgstr "Otevřít k_opii"
 
-#: shell/resources/pps-document-view.ui:650 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:627
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Otevřít pomocí…"
 
-#: shell/resources/pps-document-view.ui:654
+#: shell/resources/pps-document-view.blp:632
 msgid "_Save As…"
 msgstr "_Uložit jako…"
 
-#: shell/resources/pps-document-view.ui:660
+#: shell/resources/pps-document-view.blp:639
 msgid "_Continuous"
 msgstr "_Souvislý"
 
-#: shell/resources/pps-document-view.ui:664
+#: shell/resources/pps-document-view.blp:644
 msgid "_Dual"
 msgstr "_Dvojstrana"
 
-#: shell/resources/pps-document-view.ui:668
+#: shell/resources/pps-document-view.blp:649
 msgid "_Odd Pages Left"
 msgstr "_Liché stránky vlevo"
 
-#: shell/resources/pps-document-view.ui:672
+#: shell/resources/pps-document-view.blp:654
 msgid "Right to Left Document"
 msgstr "Dokument zprava doleva"
 
-#: shell/resources/pps-document-view.ui:678
+#: shell/resources/pps-document-view.blp:661
 msgid "Ro_tate ⤵"
 msgstr "O_točit ⤵"
 
-#: shell/resources/pps-document-view.ui:684
+#: shell/resources/pps-document-view.blp:668
 msgid "Document Prop_erties"
 msgstr "Vlastnosti dokum_entu"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline.
-#: shell/resources/pps-document-view.ui:735
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:717
 msgid "Strikethrough"
 msgstr "přeškrtnutí"
 
-#: shell/resources/pps-document-view.ui:839
+#: shell/resources/pps-document-view.blp:836
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.blp:842
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.blp:848
 msgid "_Go To"
 msgstr "_Přejít na"
 
-#: shell/resources/pps-document-view.ui:854
+#: shell/resources/pps-document-view.blp:854
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: shell/resources/pps-document-view.ui:861
+#: shell/resources/pps-document-view.blp:862
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: shell/resources/pps-document-view.ui:865
+#: shell/resources/pps-document-view.blp:867
 msgid "Select _All"
 msgstr "Vy_brat vše"
 
-#: shell/resources/pps-document-view.ui:871
+#: shell/resources/pps-document-view.blp:874
 msgid "_Save Image As…"
 msgstr "_Uložit obrázek jako…"
 
-#: shell/resources/pps-document-view.ui:876
+#: shell/resources/pps-document-view.blp:880
 msgid "Copy _Image"
 msgstr "Kopí_rovat obrázek"
 
-#: shell/resources/pps-document-view.ui:883
-#: shell/resources/pps-sidebar-annotations.ui:80
+#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Otevřít přílohu"
 
-#: shell/resources/pps-document-view.ui:888
-#: shell/resources/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.blp:894
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Uložit přílohu jako…"
 
-#: shell/resources/pps-document-view.ui:896
+#: shell/resources/pps-document-view.blp:904
 msgid "Annotation _Properties…"
 msgstr "Vlastnosti _poznámky…"
 
-#: shell/resources/pps-document-view.ui:901
+#: shell/resources/pps-document-view.blp:910
 msgid "R_emove Annotation"
 msgstr "O_dstranit poznámku"
 
-#: shell/resources/pps-document-view.ui:908
+#: shell/resources/pps-document-view.blp:918
 msgid "_Add Text Annotation"
 msgstr "Op_atřit textovou poznámkou"
 
-#: shell/resources/pps-document-view.ui:913
-msgid "_Highlight Selected Text"
-msgstr "Z_výraznit vybraný text"
-
-#: shell/resources/pps-find-sidebar.ui:65
+#: shell/resources/pps-find-sidebar.blp:60
 msgid "No Results Found"
 msgstr "Nenalezeny žádné výsledky"
 
-#: shell/resources/pps-find-sidebar.ui:66
+#: shell/resources/pps-find-sidebar.blp:61
 msgid "Try a different search"
 msgstr "Zkuste hledat něco jiného"
 
-#: shell/resources/pps-find-sidebar.ui:80
+#: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
 msgstr "Provést hledání"
 
-#: shell/resources/pps-find-sidebar.ui:81
+#: shell/resources/pps-find-sidebar.blp:75
 msgid "The search results will appear here"
 msgstr "Zde se zobrazí výsledky hledání"
 
-#: shell/resources/pps-loader-view.ui:17
+#: shell/resources/pps-loader-view.blp:15
 msgid "Loading Document"
 msgstr "Načítání dokumentu"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "_Zrušit"
 
-#: shell/resources/pps-password-dialog.ui:4
-#: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
 msgid "Password Required"
 msgstr "Je vyžadováno heslo"
 
-#: shell/resources/pps-password-dialog.ui:7
+#: shell/resources/pps-password-dialog.blp:9
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: shell/resources/pps-password-dialog.ui:8
+#: shell/resources/pps-password-dialog.blp:10
 msgid "Unlock"
 msgstr "Odemknout"
 
-#: shell/resources/pps-password-dialog.ui:17
+#: shell/resources/pps-password-dialog.blp:19
 msgid "Password"
 msgstr "Heslo"
 
-#: shell/resources/pps-password-dialog.ui:32
+#: shell/resources/pps-password-dialog.blp:33
 msgid "Invalid password"
 msgstr "Neplatné heslo"
 
-#: shell/resources/pps-password-dialog.ui:48
+#: shell/resources/pps-password-dialog.blp:48
 msgid "Forget password _immediately"
 msgstr "Zapomenout heslo _okamžitě"
 
-#: shell/resources/pps-password-dialog.ui:56
+#: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
 msgstr "Zapamatovat si _napořád"
 
-#: shell/resources/pps-password-view.ui:20
+#: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr "Tento dokument je uzamčen a lze jej číst jen po zadání správného hesla"
 
-#: shell/resources/pps-password-view.ui:25
+#: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
 msgstr "_Odemknout dokument"
 
-#: shell/resources/pps-properties-license.ui:21
+#: shell/resources/pps-properties-license.blp:19
 msgid "Usage Terms"
 msgstr "Podmínky užívání"
 
-#: shell/resources/pps-properties-license.ui:56
+#: shell/resources/pps-properties-license.blp:52
 msgid "Text License"
 msgstr "Licence textu"
 
-#: shell/resources/pps-properties-license.ui:84
+#: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Další informace"
 
-#: shell/resources/pps-properties-signatures.ui:37
+#: shell/resources/pps-properties-signatures.blp:32
 msgid "Signature Information"
 msgstr "Informace o podpisu"
 
-#: shell/resources/pps-properties-signatures.ui:55
+#: shell/resources/pps-properties-signatures.blp:48
 #: shell/src/properties_signatures.rs:405
 msgid "View Details…"
 msgstr "Zobrazit podrobnosti…"
 
-#: shell/resources/pps-properties-window.ui:4
+#: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: shell/resources/pps-properties-window.ui:25
+#: shell/resources/pps-properties-window.blp:23
 msgid "_Document"
 msgstr "_Dokument"
 
-#: shell/resources/pps-properties-window.ui:40
+#: shell/resources/pps-properties-window.blp:34
 msgid "_Fonts"
 msgstr "_Písma"
 
-#: shell/resources/pps-properties-window.ui:51
+#: shell/resources/pps-properties-window.blp:43
 msgid "License"
 msgstr "Licence"
 
-#: shell/resources/pps-properties-window.ui:61
+#: shell/resources/pps-properties-window.blp:51
 msgid "_Signatures"
 msgstr "Podpi_sy"
 
-#: shell/resources/pps-search-box.ui:15
+#: shell/resources/pps-search-box.blp:16
 msgid "Search in document"
 msgstr "Hledat v dokumentu"
 
-#: shell/resources/pps-search-box.ui:34
+#: shell/resources/pps-search-box.blp:38
 msgid "Search Options"
 msgstr "Volby hledání"
 
-#: shell/resources/pps-search-box.ui:43
+#: shell/resources/pps-search-box.blp:46
 msgid "_Whole Words Only"
 msgstr "Pouze _celá slova"
 
-#: shell/resources/pps-search-box.ui:47
+#: shell/resources/pps-search-box.blp:51
 msgid "C_ase Sensitive"
 msgstr "_Rozlišovat velikost písmen"
 
-#: shell/resources/pps-sidebar-annotations.ui:16
+#: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "Žádné poznámky"
 
-#: shell/resources/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
 msgstr "Odstranit poznámku"
 
-#: shell/resources/pps-sidebar-links.ui:53
+#: shell/resources/pps-sidebar-links.blp:47
 msgid "Collapse all tree"
 msgstr "Sbalit celý strom"
 
-#: shell/resources/pps-sidebar-links.ui:57
+#: shell/resources/pps-sidebar-links.blp:52
 msgid "Expand all tree"
 msgstr "Rozbalit celý strom"
 
-#: shell/resources/pps-sidebar-links.ui:61
+#: shell/resources/pps-sidebar-links.blp:57
 msgid "Expand all under this element"
 msgstr "Rozbalit vše pod tímto prvkem"
 
-#: shell/resources/pps-sidebar-links.ui:67
+#: shell/resources/pps-sidebar-links.blp:64
 msgid "Print this section…"
 msgstr "Vytisknout tento oddíl…"
 
-#: shell/resources/pps-sidebar-thumbnails.ui:47
+#: shell/resources/pps-sidebar-thumbnails.blp:47
 msgid "Previews"
 msgstr "Náhledy"
 
-#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
 msgid "Open a Document"
 msgstr "Otevřít dokument"
 
-#: shell/resources/pps-window.ui:50
+#: shell/resources/pps-window.blp:44
 msgid "Drag and drop documents here"
 msgstr "Sem přetáhněte a pusťte dokumenty"
 
-#: shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.blp:49
 msgid "_Open…"
 msgstr "_Otevřít…"
 
-#: shell/resources/pps-window.ui:81
+#: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
 msgstr "Nepodařilo se otevřít dokument"
 
-#: shell/resources/pps-window.ui:86
+#: shell/resources/pps-window.blp:76
 msgid "_Open Other File…"
 msgstr "_Otevřít jiný soubor…"
 
@@ -1754,11 +1767,11 @@ msgstr "Zobrazit verzi programu."
 msgid "[FILE…]"
 msgstr "[SOUBOR…]"
 
-#: shell/src/document_view.rs:299
+#: shell/src/document_view.rs:300
 msgid "View Details"
 msgstr "Zobrazit podrobnosti"
 
-#: shell/src/document_view.rs:704
+#: shell/src/document_view.rs:705
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1766,49 +1779,49 @@ msgstr ""
 "Dokument obsahuje nové nebo upravené poznámky a pole formuláře, která byla "
 "vyplněna."
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokument obsahuje pole, která byla vyplněna."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains new or modified annotations."
 msgstr "Dokument obsahuje nové nebo změněné poznámky."
 
-#: shell/src/document_view.rs:714
+#: shell/src/document_view.rs:715
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Pokud neuložíte kopii, budou změny nenávratně ztraceny."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "Save Changes to a Copy?"
 msgstr "Uložit změny do kopie?"
 
-#: shell/src/document_view.rs:724
+#: shell/src/document_view.rs:725
 msgid "Close _Without Saving"
 msgstr "Zavřít _bez uložení"
 
-#: shell/src/document_view.rs:726
+#: shell/src/document_view.rs:727
 msgid "_Save a Copy"
 msgstr "Uložit _kopii"
 
-#: shell/src/document_view/actions.rs:751
+#: shell/src/document_view/actions.rs:822
 msgid "Save Image"
 msgstr "Uložit obrázek"
 
-#: shell/src/document_view/actions.rs:787
+#: shell/src/document_view/actions.rs:858
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Nepodařilo se najít vhodný formát pro uložení obrázku"
 
-#: shell/src/document_view/actions.rs:804
+#: shell/src/document_view/actions.rs:875
 msgid "The image could not be saved."
 msgstr "Nepodařilo se uložit obrázek."
 
-#: shell/src/document_view/actions.rs:899
+#: shell/src/document_view/actions.rs:947
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Režim kurzorové navigace je nyní povolen, stisknutím klávesy F7 jej "
 "deaktivujete."
 
-#: shell/src/document_view/actions.rs:901
+#: shell/src/document_view/actions.rs:949
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Režim kurzorové navigace je nyní deaktivován, stisknutím klávesy F7 jej "
@@ -1898,18 +1911,18 @@ msgstr[0] "{} nevyřízená úloha ve frontě"
 msgstr[1] "{} nevyřízené úlohy ve frontě"
 msgstr[2] "{} nevyřízených úloh ve frontě"
 
-#: shell/src/document_view/signals.rs:225
+#: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
 msgstr "Nepodařilo se otevřít externí odkaz"
 
-#: shell/src/document_view/signals.rs:253
+#: shell/src/document_view/signals.rs:254
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Bezpečnostní upozornění: tomuto dokumentu bylo zabráněno v otevření souboru "
 "„{}“"
 
-#: shell/src/document_view/signals.rs:428 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Stránka {}"
@@ -2047,6 +2060,9 @@ msgstr "Doba platnosti certifikátu"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Skrýt podrobnosti…"
+
+#~ msgid "_Highlight Selected Text"
+#~ msgstr "Z_výraznit vybraný text"
 
 #~ msgid "Open With..."
 #~ msgstr "Otevřít pomocí..."
