@@ -252,6 +252,14 @@ void
 pps_annotation_get_value_last_property (PpsAnnotation *annot, GValue *value)
 {
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
+	GType src_type = G_VALUE_TYPE (&priv->last_property_set);
+	GType dst_type = G_VALUE_TYPE (value);
+
+	if (!g_value_type_compatible (src_type, dst_type)) {
+		g_value_unset (value);
+		g_value_init (value, src_type);
+	}
+
 	g_value_copy (&priv->last_property_set, value);
 }
 
@@ -1084,7 +1092,7 @@ pps_annotation_markup_set_opacity (PpsAnnotationMarkup *self,
 	if (priv->opacity == opacity)
 		return FALSE;
 
-	SAVE_PROPERTY (self, "opacity", G_TYPE_FLOAT, g_value_set_float, priv->opacity)
+	SAVE_PROPERTY (self, "opacity", G_TYPE_DOUBLE, g_value_set_double, priv->opacity)
 
 	priv->opacity = opacity;
 
@@ -1312,7 +1320,7 @@ pps_annotation_text_set_icon (PpsAnnotationText *text,
 	if (priv->icon == icon)
 		return FALSE;
 
-	SAVE_PROPERTY (self, "icon", G_TYPE_ENUM, g_value_set_enum, priv->icon)
+	SAVE_PROPERTY (self, "icon", PPS_TYPE_ANNOTATION_TEXT_ICON, g_value_set_enum, priv->icon)
 
 	priv->icon = icon;
 
