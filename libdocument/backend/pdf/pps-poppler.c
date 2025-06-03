@@ -4373,7 +4373,8 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	g_autoptr (GTask) task = NULL;
 	PopplerRectangle signing_rect;
 	PpsRectangle *rect;
-	PpsPage *page;
+	PpsPage *page = pps_document_get_page (PPS_DOCUMENT (document),
+	                                       pps_signature_get_page (signature));
 	PopplerColor color;
 	GdkRGBA rgba;
 
@@ -4418,8 +4419,6 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 		poppler_signing_data_set_document_user_password (signing_data, pps_signature_get_user_password (signature));
 
 	rect = pps_signature_get_rect (signature);
-	page = pps_document_get_page (PPS_DOCUMENT (document),
-	                              pps_signature_get_page (signature));
 	signing_rect = pps_rect_to_poppler (page, rect);
 
 	poppler_signing_data_set_signature_rectangle (signing_data, &signing_rect);
