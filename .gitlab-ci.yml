@@ -84,6 +84,13 @@ clang-format:
         - apk add clang19-extra-tools
         - ./.gitlab-ci/clang-format.sh
 
+blueprint-compiler-format:
+    stage: lint
+    image: alpine:3.21
+    script:
+        - apk add blueprint-compiler
+        - ./.gitlab-ci/blueprint-compiler-format.sh
+
 pot-files:
     stage: lint
     image: alpine:3.21
