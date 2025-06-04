@@ -1665,24 +1665,6 @@ get_page_point_from_offset (PpsView *view,
 	*y_new = y;
 }
 
-static gboolean
-get_doc_point_from_location (PpsView *view,
-                             gdouble x,
-                             gdouble y,
-                             gint *page,
-                             gdouble *x_new,
-                             gdouble *y_new)
-{
-	gint x_offset = 0, y_offset = 0;
-
-	find_page_at_location (view, x, y, page, &x_offset, &y_offset);
-	if (*page == -1)
-		return FALSE;
-	get_page_point_from_offset (view, *page, x_offset, y_offset, x_new, y_new);
-
-	return TRUE;
-}
-
 static void
 pps_view_get_area_from_mapping (PpsView *view,
                                 guint page,
@@ -1733,18 +1715,23 @@ get_link_mapping_at_location (PpsView *view,
                               gint *page)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gdouble x_new = 0, y_new = 0;
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsMappingList *link_mapping;
 
 	if (!PPS_IS_DOCUMENT_LINKS (pps_document_model_get_document (priv->model)))
 		return NULL;
 
-	if (!get_doc_point_from_location (view, x, y, page, &x_new, &y_new))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return NULL;
 
-	link_mapping = pps_page_cache_get_link_mapping (priv->page_cache, *page);
+	if (page)
+		*page = doc_point->page_index;
+
+	link_mapping = pps_page_cache_get_link_mapping (priv->page_cache,
+	                                                doc_point->page_index);
 	if (link_mapping)
-		return pps_mapping_list_get (link_mapping, x_new, y_new);
+		return pps_mapping_list_get (link_mapping, &doc_point->point_on_page);
 
 	return NULL;
 }
@@ -1755,9 +1742,8 @@ pps_view_get_link_at_location (PpsView *view,
                                gdouble y)
 {
 	PpsMapping *mapping;
-	gint page;
 
-	mapping = get_link_mapping_at_location (view, x, y, &page);
+	mapping = get_link_mapping_at_location (view, x, y, NULL);
 
 	return mapping ? mapping->data : NULL;
 }
@@ -2331,20 +2317,22 @@ pps_view_get_image_at_location (PpsView *view,
                                 gdouble y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gint page = -1;
-	gdouble x_new = 0, y_new = 0;
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsMappingList *image_mapping;
 
 	if (!PPS_IS_DOCUMENT_IMAGES (pps_document_model_get_document (priv->model)))
 		return NULL;
 
-	if (!get_doc_point_from_location (view, x, y, &page, &x_new, &y_new))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return NULL;
 
-	image_mapping = pps_page_cache_get_image_mapping (priv->page_cache, page);
+	image_mapping = pps_page_cache_get_image_mapping (priv->page_cache,
+	                                                  doc_point->page_index);
 
 	if (image_mapping)
-		return pps_mapping_list_get_data (image_mapping, x_new, y_new);
+		return pps_mapping_list_get_data (image_mapping,
+		                                  &doc_point->point_on_page);
 	else
 		return NULL;
 }
@@ -2419,23 +2407,24 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 static PpsMapping *
 get_form_field_mapping_at_location (PpsView *view,
                                     gdouble x,
-                                    gdouble y,
-                                    gint *page)
+                                    gdouble y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gdouble x_new = 0, y_new = 0;
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsMappingList *forms_mapping;
 
 	if (!PPS_IS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)))
 		return NULL;
 
-	if (!get_doc_point_from_location (view, x, y, page, &x_new, &y_new))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return NULL;
 
-	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache, *page);
+	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
+	                                                       doc_point->page_index);
 
 	if (forms_mapping)
-		return pps_mapping_list_get (forms_mapping, x_new, y_new);
+		return pps_mapping_list_get (forms_mapping, &doc_point->point_on_page);
 
 	return NULL;
 }
@@ -2446,9 +2435,8 @@ pps_view_get_form_field_at_location (PpsView *view,
                                      gdouble y)
 {
 	PpsMapping *field_mapping;
-	gint page;
 
-	field_mapping = get_form_field_mapping_at_location (view, x, y, &page);
+	field_mapping = get_form_field_mapping_at_location (view, x, y);
 
 	return field_mapping ? field_mapping->data : NULL;
 }
@@ -3060,22 +3048,23 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static PpsMapping *
 get_media_mapping_at_location (PpsView *view,
                                gdouble x,
-                               gdouble y,
-                               gint *page)
+                               gdouble y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	gdouble x_new = 0, y_new = 0;
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsMappingList *media_mapping;
 
 	if (!PPS_IS_DOCUMENT_MEDIA (pps_document_model_get_document (priv->model)))
 		return NULL;
 
-	if (!get_doc_point_from_location (view, x, y, page, &x_new, &y_new))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return NULL;
 
-	media_mapping = pps_page_cache_get_media_mapping (priv->page_cache, *page);
+	media_mapping = pps_page_cache_get_media_mapping (priv->page_cache,
+	                                                  doc_point->page_index);
 
-	return media_mapping ? pps_mapping_list_get (media_mapping, x_new, y_new) : NULL;
+	return media_mapping ? pps_mapping_list_get (media_mapping, &doc_point->point_on_page) : NULL;
 }
 
 static PpsMedia *
@@ -3084,9 +3073,8 @@ pps_view_get_media_at_location (PpsView *view,
                                 gdouble y)
 {
 	PpsMapping *media_mapping;
-	gint page;
 
-	media_mapping = get_media_mapping_at_location (view, x, y, &page);
+	media_mapping = get_media_mapping_at_location (view, x, y);
 
 	return media_mapping ? media_mapping->data : NULL;
 }
@@ -3238,7 +3226,7 @@ get_annotation_at_location (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsDocumentPoint doc_point;
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsDocumentAnnotations *doc_annots;
 
 	if (!PPS_IS_DOCUMENT_ANNOTATIONS (document))
@@ -3248,11 +3236,11 @@ get_annotation_at_location (PpsView *view,
 
 	if (!doc_annots)
 		return NULL;
-
-	if (!get_doc_point_from_location (view, x, y, &doc_point.page_index, &doc_point.point_on_page.x, &doc_point.point_on_page.y))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return NULL;
 
-	return pps_annotations_context_get_annot_at_doc_point (priv->annots_context, &doc_point);
+	return pps_annotations_context_get_annot_at_doc_point (priv->annots_context, doc_point);
 }
 
 static PpsMapping *
@@ -4679,9 +4667,8 @@ position_caret_cursor_at_location (PpsView *view,
                                    gdouble x,
                                    gdouble y)
 {
-	gint page;
-	gdouble doc_x, doc_y;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+	g_autofree PpsDocumentPoint *doc_point = NULL;
 
 	if (!priv->caret_enabled || pps_document_model_get_rotation (priv->model) != 0)
 		return FALSE;
@@ -4689,11 +4676,13 @@ position_caret_cursor_at_location (PpsView *view,
 	if (!priv->page_cache)
 		return FALSE;
 
-	/* Get the offset from the doc point */
-	if (!get_doc_point_from_location (view, x, y, &page, &doc_x, &doc_y))
+	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
+	if (!doc_point)
 		return FALSE;
 
-	return position_caret_cursor_at_doc_point (view, page, doc_x, doc_y);
+	return position_caret_cursor_at_doc_point (view, doc_point->page_index,
+	                                           doc_point->point_on_page.x,
+	                                           doc_point->point_on_page.y);
 }
 
 static gboolean
