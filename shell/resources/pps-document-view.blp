@@ -290,6 +290,8 @@ template $PpsDocumentView: Adw.BreakpointBin {
             }
 
             child: ScrolledWindow scrolled_window {
+              focusable: false;
+
               child: $PpsView view {
                 hexpand: "True";
                 vexpand: "True";
