@@ -3231,30 +3231,6 @@ hide_annotation_windows (PpsView *view,
 	}
 }
 
-static int
-cmp_rectangle_area_size (PpsRectangle *a,
-                         PpsRectangle *b)
-{
-	gdouble wa, ha, wb, hb;
-
-	wa = a->x2 - a->x1;
-	ha = a->y2 - a->y1;
-	wb = b->x2 - b->x1;
-	hb = b->y2 - b->y1;
-
-	if (wa == wb) {
-		if (ha == hb)
-			return 0;
-		return (ha < hb) ? -1 : 1;
-	}
-
-	if (ha == hb) {
-		return (wa < wb) ? -1 : 1;
-	}
-
-	return (wa * ha < wb * hb) ? -1 : 1;
-}
-
 static PpsAnnotation *
 get_annotation_at_location (PpsView *view,
                             gdouble x,
@@ -3262,11 +3238,8 @@ get_annotation_at_location (PpsView *view,
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
-	gdouble x_new = 0, y_new = 0;
+	PpsDocumentPoint doc_point;
 	PpsDocumentAnnotations *doc_annots;
-	PpsAnnotation *best;
-	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
-	gint page;
 
 	if (!PPS_IS_DOCUMENT_ANNOTATIONS (document))
 		return NULL;
@@ -3276,43 +3249,10 @@ get_annotation_at_location (PpsView *view,
 	if (!doc_annots)
 		return NULL;
 
-	if (!get_doc_point_from_location (view, x, y, &page, &x_new, &y_new))
+	if (!get_doc_point_from_location (view, x, y, &doc_point.page_index, &doc_point.point_on_page.x, &doc_point.point_on_page.y))
 		return NULL;
 
-	best = NULL;
-	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
-		PpsRectangle area;
-		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
-
-		if (pps_annotation_get_page_index (annot) != page)
-			continue;
-
-		pps_annotation_get_area (annot, &area);
-
-		if ((x_new >= area.x1) &&
-		    (y_new >= area.y1) &&
-		    (x_new <= area.x2) &&
-		    (y_new <= area.y2)) {
-			PpsRectangle best_area;
-
-			if (pps_annotation_get_annotation_type (annot) == PPS_ANNOTATION_TYPE_TEXT_MARKUP &&
-			    pps_document_annotations_over_markup (doc_annots, annot, (gdouble) x_new, (gdouble) y_new) == PPS_ANNOTATION_OVER_MARKUP_NOT)
-				continue; /* ignore markup annots clicked outside the markup text */
-
-			if (best == NULL) {
-				best = annot;
-				continue;
-			}
-
-			/* In case of only one match choose that. Otherwise
-			 * compare the area of the bounding boxes and return the
-			 * smallest element */
-			pps_annotation_get_area (best, &best_area);
-			if (cmp_rectangle_area_size (&area, &best_area) < 0)
-				best = annot;
-		}
-	}
-	return best;
+	return pps_annotations_context_get_annot_at_doc_point (priv->annots_context, &doc_point);
 }
 
 static PpsMapping *
@@ -5082,47 +5022,6 @@ selection_scroll_timeout_cb (PpsView *view)
 }
 
 static void
-pps_view_move_annot_to_point (PpsView *view,
-                              gdouble view_point_x,
-                              gdouble view_point_y)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsRectangle rect;
-	PpsRectangle current_area;
-	PpsPoint point_on_page;
-	guint page_index;
-	double page_width;
-	double page_height;
-
-	pps_annotation_get_area (priv->moving_annot_info.annot, &current_area);
-	page_index = pps_annotation_get_page_index (priv->moving_annot_info.annot);
-	pps_document_get_page_size (document, page_index, &page_width, &page_height);
-	point_on_page = pps_view_get_point_on_page (view, page_index,
-	                                            view_point_x, view_point_y);
-
-	rect.x1 = MAX (0, point_on_page.x - priv->moving_annot_info.cursor_offset.x);
-	rect.y1 = MAX (0, point_on_page.y - priv->moving_annot_info.cursor_offset.y);
-	rect.x2 = rect.x1 + current_area.x2 - current_area.x1;
-	rect.y2 = rect.y1 + current_area.y2 - current_area.y1;
-
-	/* Prevent the annotation from being moved off the page */
-	if (rect.x2 > page_width) {
-		rect.x2 = page_width;
-		rect.x1 = page_width - current_area.x2 + current_area.x1;
-	}
-	if (rect.y2 > page_height) {
-		rect.y2 = page_height;
-		rect.y1 = page_height - current_area.y2 + current_area.y1;
-	}
-
-	pps_annotation_set_area (priv->moving_annot_info.annot, &rect);
-
-	/* FIXME: reload only annotation area */
-	pps_view_reload_page (view, page_index, NULL);
-}
-
-static void
 selection_update_cb (GtkGestureDrag *selection_gesture,
                      gdouble offset_x,
                      gdouble offset_y,
@@ -5246,76 +5145,6 @@ signing_end_cb (GtkGestureDrag *selection_gesture,
                 PpsView *view)
 {
 	pps_view_stop_signature_rect (view);
-}
-
-static void
-annotation_drag_update_cb (GtkGestureDrag *annotation_drag_gesture,
-                           gdouble offset_x,
-                           gdouble offset_y,
-                           PpsView *view)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkEventSequence *sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (annotation_drag_gesture));
-	gdouble x, y;
-	gdouble view_point_x, view_point_y;
-
-	if (!priv->moving_annot_info.annot)
-		g_assert_not_reached ();
-
-	if (gtk_drag_check_threshold (GTK_WIDGET (view), 0, 0,
-	                              offset_x, offset_y))
-		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
-		                       GTK_EVENT_SEQUENCE_CLAIMED);
-
-	if (gtk_gesture_get_sequence_state (GTK_GESTURE (annotation_drag_gesture), sequence) != GTK_EVENT_SEQUENCE_CLAIMED)
-		return;
-
-	gtk_gesture_drag_get_start_point (annotation_drag_gesture, &x, &y);
-
-	view_point_x = x + offset_x;
-	view_point_y = y + offset_y;
-	pps_view_move_annot_to_point (view, view_point_x, view_point_y);
-}
-
-static void
-annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
-                          gdouble x,
-                          gdouble y,
-                          PpsView *view)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsAnnotation *annot = get_annotation_at_location (view, x, y);
-	PpsRectangle annot_area;
-	PpsPoint point_on_page;
-	gint page_index;
-
-	if (!PPS_IS_ANNOTATION_TEXT (annot)) {
-		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
-		                       GTK_EVENT_SEQUENCE_DENIED);
-		return;
-	}
-
-	priv->moving_annot_info.annot = annot;
-
-	pps_annotation_get_area (annot, &annot_area);
-	page_index = pps_annotation_get_page_index (annot);
-	point_on_page = pps_view_get_point_on_page (view, page_index, x, y);
-	/* Remember the offset of the cursor with respect to
-	 * the annotation area in order to prevent the annotation from
-	 * jumping under the cursor while moving it. */
-	priv->moving_annot_info.cursor_offset.x = point_on_page.x - annot_area.x1;
-	priv->moving_annot_info.cursor_offset.y = point_on_page.y - annot_area.y1;
-}
-
-static void
-annotation_drag_end_cb (GtkGestureDrag *annotation_drag_gesture,
-                        gdouble offset_x,
-                        gdouble offset_y,
-                        PpsView *view)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	priv->moving_annot_info.annot = NULL;
 }
 
 static void
@@ -6590,12 +6419,6 @@ pps_view_class_init (PpsViewClass *class)
 	                                         selection_end_cb);
 	gtk_widget_class_bind_template_callback (widget_class,
 	                                         selection_update_cb);
-	gtk_widget_class_bind_template_callback (widget_class,
-	                                         annotation_drag_begin_cb);
-	gtk_widget_class_bind_template_callback (widget_class,
-	                                         annotation_drag_end_cb);
-	gtk_widget_class_bind_template_callback (widget_class,
-	                                         annotation_drag_update_cb);
 	gtk_widget_class_bind_template_callback (widget_class,
 	                                         signing_begin_cb);
 	gtk_widget_class_bind_template_callback (widget_class,

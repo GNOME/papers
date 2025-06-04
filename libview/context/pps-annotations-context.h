@@ -64,4 +64,7 @@ PPS_PUBLIC
 void pps_annotations_context_set_color (PpsAnnotationsContext *self,
                                         const GdkRGBA *color);
 
+PpsAnnotation *pps_annotations_context_get_annot_at_doc_point (PpsAnnotationsContext *self,
+                                                               const PpsDocumentPoint *doc_point);
+
 G_END_DECLS

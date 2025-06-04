@@ -21,6 +21,12 @@
 
 typedef struct
 {
+	PpsPoint cursor_offset;
+	PpsAnnotation *annot;
+} MovingAnnotInfo;
+
+typedef struct
+{
 	gint index;
 
 	PpsDocumentModel *model;
@@ -31,6 +37,7 @@ typedef struct
 	PpsPixbufCache *pixbuf_cache;
 
 	gboolean had_search_results;
+	MovingAnnotInfo moving_annot_info;
 } PpsViewPagePrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (PpsViewPage, pps_view_page, GTK_TYPE_WIDGET)
@@ -119,6 +126,39 @@ doc_rect_to_view_rect (PpsViewPage *page,
 	view_rect->y = (gint) (y + 0.5);
 	view_rect->width = (gint) (width + 0.5);
 	view_rect->height = (gint) (height + 0.5);
+}
+
+static PpsPoint
+view_point_to_doc_point (PpsViewPage *page, double x, double y)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	gdouble scale = pps_document_model_get_scale (priv->model);
+	gdouble page_width = gtk_widget_get_width (GTK_WIDGET (page));
+	gdouble page_height = gtk_widget_get_height (GTK_WIDGET (page));
+	PpsPoint point;
+
+	switch (pps_document_model_get_rotation (priv->model)) {
+	case 0:
+		point.x = x / scale;
+		point.y = y / scale;
+		break;
+	case 90: {
+		point.x = (page_width - x) * scale;
+		point.y = y / scale;
+	} break;
+	case 180: {
+		point.x = (page_width - x) / scale;
+		point.y = (page_height - y) / scale;
+	} break;
+	case 270: {
+		point.x = x / scale;
+		point.y = (page_height - y) / scale;
+	} break;
+	default:
+		g_assert_not_reached ();
+	}
+
+	return point;
 }
 
 static void
@@ -513,8 +553,131 @@ search_results_changed_cb (PpsViewPage *page)
 }
 
 static void
+move_annot_to_point (PpsViewPage *page,
+                     gdouble view_point_x,
+                     gdouble view_point_y)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	PpsDocument *document = pps_document_model_get_document (priv->model);
+	PpsRectangle new_area, old_area;
+	PpsPoint doc_point;
+	double page_width, page_height;
+
+	pps_annotation_get_area (priv->moving_annot_info.annot, &old_area);
+	pps_document_get_page_size (document, priv->index, &page_width, &page_height);
+	doc_point = view_point_to_doc_point (page, view_point_x, view_point_y);
+
+	new_area.x1 = MAX (0, doc_point.x - priv->moving_annot_info.cursor_offset.x);
+	new_area.y1 = MAX (0, doc_point.y - priv->moving_annot_info.cursor_offset.y);
+	new_area.x2 = new_area.x1 + old_area.x2 - old_area.x1;
+	new_area.y2 = new_area.y1 + old_area.y2 - old_area.y1;
+
+	/* Prevent the annotation from being moved off the page */
+	if (new_area.x2 > page_width) {
+		new_area.x2 = page_width;
+		new_area.x1 = page_width - old_area.x2 + old_area.x1;
+	}
+	if (new_area.y2 > page_height) {
+		new_area.y2 = page_height;
+		new_area.y1 = page_height - old_area.y2 + old_area.y1;
+	}
+
+	pps_annotation_set_area (priv->moving_annot_info.annot, &new_area);
+}
+
+static void
+annotation_drag_update_cb (GtkGestureDrag *annotation_drag_gesture,
+                           gdouble offset_x,
+                           gdouble offset_y,
+                           PpsViewPage *page)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	GdkEventSequence *sequence = gtk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (annotation_drag_gesture));
+	gdouble start_x, start_y, view_point_x, view_point_y;
+
+	if (!priv->moving_annot_info.annot)
+		g_assert_not_reached ();
+
+	if (gtk_drag_check_threshold (GTK_WIDGET (page), 0, 0,
+	                              offset_x, offset_y))
+		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
+		                       GTK_EVENT_SEQUENCE_CLAIMED);
+
+	if (gtk_gesture_get_sequence_state (GTK_GESTURE (annotation_drag_gesture), sequence) != GTK_EVENT_SEQUENCE_CLAIMED)
+		return;
+
+	gtk_gesture_drag_get_start_point (annotation_drag_gesture, &start_x, &start_y);
+
+	view_point_x = start_x + offset_x;
+	view_point_y = start_y + offset_y;
+	move_annot_to_point (page, view_point_x, view_point_y);
+}
+
+static void
+annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
+                          gdouble x,
+                          gdouble y,
+                          PpsViewPage *page)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+	PpsAnnotation *annot;
+	PpsDocumentPoint doc_point;
+	PpsRectangle annot_area;
+
+	doc_point.page_index = priv->index;
+	doc_point.point_on_page = view_point_to_doc_point (page, x, y);
+
+	annot = pps_annotations_context_get_annot_at_doc_point (priv->annots_context,
+	                                                        &doc_point);
+
+	if (!PPS_IS_ANNOTATION_TEXT (annot)) {
+		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture),
+		                       GTK_EVENT_SEQUENCE_DENIED);
+		return;
+	}
+
+	g_set_object (&(priv->moving_annot_info.annot), annot);
+
+	pps_annotation_get_area (annot, &annot_area);
+	/* Remember the offset of the cursor with respect to
+	 * the annotation area in order to prevent the annotation from
+	 * jumping under the cursor while moving it. */
+	priv->moving_annot_info.cursor_offset.x = doc_point.point_on_page.x - annot_area.x1;
+	priv->moving_annot_info.cursor_offset.y = doc_point.point_on_page.y - annot_area.y1;
+}
+
+static void
+annotation_drag_end_cb (GtkGestureDrag *annotation_drag_gesture,
+                        gdouble offset_x,
+                        gdouble offset_y,
+                        PpsViewPage *page)
+{
+	PpsViewPagePrivate *priv = GET_PRIVATE (page);
+
+	g_clear_object (&(priv->moving_annot_info.annot));
+}
+
+static void
 pps_view_page_init (PpsViewPage *page)
 {
+	GtkGesture *annot_drag;
+
+	annot_drag = gtk_gesture_drag_new ();
+	gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (annot_drag),
+	                                            GTK_PHASE_CAPTURE);
+	gtk_gesture_single_set_exclusive (GTK_GESTURE_SINGLE (annot_drag), TRUE);
+	gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (annot_drag), 1);
+
+	g_signal_connect (annot_drag, "drag-begin",
+	                  G_CALLBACK (annotation_drag_begin_cb), page);
+
+	gtk_widget_add_controller (GTK_WIDGET (page),
+	                           GTK_EVENT_CONTROLLER (annot_drag));
+	g_signal_connect (annot_drag, "drag-end",
+	                  G_CALLBACK (annotation_drag_end_cb), page);
+	g_signal_connect (annot_drag, "drag-update",
+	                  G_CALLBACK (annotation_drag_update_cb), page);
+
 	gtk_widget_add_css_class (GTK_WIDGET (page), PPS_STYLE_CLASS_DOCUMENT_PAGE);
 	gtk_widget_add_css_class (GTK_WIDGET (page), "card");
 }
