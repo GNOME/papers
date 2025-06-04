@@ -665,7 +665,7 @@ pps_view_presentation_get_link_at_location (PpsViewPresentation *pview,
 	PpsMappingList *link_mapping;
 	PpsLink *link;
 	gdouble width, height;
-	gdouble new_x, new_y;
+	PpsPoint point;
 
 	if (!priv->page_cache)
 		return NULL;
@@ -677,20 +677,20 @@ pps_view_presentation_get_link_at_location (PpsViewPresentation *pview,
 	switch (priv->rotation) {
 	case 0:
 	case 360:
-		new_x = width * x;
-		new_y = height * y;
+		point.x = width * x;
+		point.y = height * y;
 		break;
 	case 90:
-		new_x = width * y;
-		new_y = height * (1 - x);
+		point.x = width * y;
+		point.y = height * (1 - x);
 		break;
 	case 180:
-		new_x = width * (1 - x);
-		new_y = height * (1 - y);
+		point.x = width * (1 - x);
+		point.y = height * (1 - y);
 		break;
 	case 270:
-		new_x = width * (1 - y);
-		new_y = height * x;
+		point.x = width * (1 - y);
+		point.y = height * x;
 		break;
 	default:
 		g_assert_not_reached ();
@@ -698,7 +698,7 @@ pps_view_presentation_get_link_at_location (PpsViewPresentation *pview,
 
 	link_mapping = pps_page_cache_get_link_mapping (priv->page_cache, priv->current_page);
 
-	link = link_mapping ? pps_mapping_list_get_data (link_mapping, new_x, new_y) : NULL;
+	link = link_mapping ? pps_mapping_list_get_data (link_mapping, &point) : NULL;
 
 	return link && pps_view_presentation_link_is_supported (pview, link) ? link : NULL;
 }

@@ -43,12 +43,10 @@ PpsMapping *pps_mapping_list_find (PpsMappingList *mapping_list,
                                    gconstpointer data);
 PPS_PUBLIC
 PpsMapping *pps_mapping_list_get (PpsMappingList *mapping_list,
-                                  gdouble x,
-                                  gdouble y);
+                                  const PpsPoint *point);
 PPS_PUBLIC
 gpointer pps_mapping_list_get_data (PpsMappingList *mapping_list,
-                                    gdouble x,
-                                    gdouble y);
+                                    const PpsPoint *point);
 PPS_PUBLIC
 PpsMapping *pps_mapping_list_nth (PpsMappingList *mapping_list,
                                   guint n);

@@ -97,8 +97,7 @@ cmp_mapping_area_size (PpsMapping *a,
  */
 PpsMapping *
 pps_mapping_list_get (PpsMappingList *mapping_list,
-                      gdouble x,
-                      gdouble y)
+                      const PpsPoint *point)
 {
 	GList *list;
 	PpsMapping *found = NULL;
@@ -108,10 +107,10 @@ pps_mapping_list_get (PpsMappingList *mapping_list,
 	for (list = mapping_list->list; list; list = list->next) {
 		PpsMapping *mapping = list->data;
 
-		if ((x >= mapping->area.x1) &&
-		    (y >= mapping->area.y1) &&
-		    (x <= mapping->area.x2) &&
-		    (y <= mapping->area.y2)) {
+		if ((point->x >= mapping->area.x1) &&
+		    (point->y >= mapping->area.y1) &&
+		    (point->x <= mapping->area.x2) &&
+		    (point->y <= mapping->area.y2)) {
 
 			/* In case of only one match choose that. Otherwise
 			 * compare the area of the bounding boxes and return the
@@ -134,12 +133,11 @@ pps_mapping_list_get (PpsMappingList *mapping_list,
  */
 gpointer
 pps_mapping_list_get_data (PpsMappingList *mapping_list,
-                           gdouble x,
-                           gdouble y)
+                           const PpsPoint *point)
 {
 	PpsMapping *mapping;
 
-	mapping = pps_mapping_list_get (mapping_list, x, y);
+	mapping = pps_mapping_list_get (mapping_list, point);
 	if (mapping)
 		return mapping->data;
 
