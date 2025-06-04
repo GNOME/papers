@@ -686,3 +686,82 @@ pps_annotations_context_undo_handler_init (PpsUndoHandlerInterface *iface)
 	iface->undo = pps_annotations_context_undo;
 	iface->free_action = pps_annotations_context_free_action;
 }
+
+static int
+cmp_rectangle_area_size (PpsRectangle *a,
+                         PpsRectangle *b)
+{
+	gdouble wa, ha, wb, hb;
+
+	wa = a->x2 - a->x1;
+	ha = a->y2 - a->y1;
+	wb = b->x2 - b->x1;
+	hb = b->y2 - b->y1;
+
+	if (wa == wb) {
+		if (ha == hb)
+			return 0;
+		return (ha < hb) ? -1 : 1;
+	}
+
+	if (ha == hb) {
+		return (wa < wb) ? -1 : 1;
+	}
+
+	return (wa * ha < wb * hb) ? -1 : 1;
+}
+
+/**
+ * pps_annotations_context_get_annot_at_doc_point:
+ * @self: a #PpsAnnotationsContext
+ * @doc_point: the document point where to search for annotations
+ *
+ * Returns: (nullable) (transfer none): the #PpsAnnotation, if to be found
+ *
+ * Since: 49.0
+ */
+PpsAnnotation *
+pps_annotations_context_get_annot_at_doc_point (PpsAnnotationsContext *self,
+                                                const PpsDocumentPoint *doc_point)
+{
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
+	PpsDocumentAnnotations *document = PPS_DOCUMENT_ANNOTATIONS (pps_document_model_get_document (priv->model));
+	GListModel *model = G_LIST_MODEL (priv->annots_model);
+	PpsPoint point_on_page = doc_point->point_on_page;
+	PpsAnnotation *best;
+
+	best = NULL;
+	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
+		PpsRectangle area;
+		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
+
+		if (pps_annotation_get_page_index (annot) != doc_point->page_index)
+			continue;
+
+		pps_annotation_get_area (annot, &area);
+
+		if ((point_on_page.x >= area.x1) &&
+		    (point_on_page.y >= area.y1) &&
+		    (point_on_page.x <= area.x2) &&
+		    (point_on_page.y <= area.y2)) {
+			PpsRectangle best_area;
+
+			if (pps_annotation_get_annotation_type (annot) == PPS_ANNOTATION_TYPE_TEXT_MARKUP &&
+			    pps_document_annotations_over_markup (document, annot, point_on_page.x, point_on_page.y) == PPS_ANNOTATION_OVER_MARKUP_NOT)
+				continue; /* ignore markup annots clicked outside the markup text */
+
+			if (best == NULL) {
+				best = annot;
+				continue;
+			}
+
+			/* In case of only one match choose that. Otherwise
+			 * compare the area of the bounding boxes and return the
+			 * smallest element */
+			pps_annotation_get_area (best, &best_area);
+			if (cmp_rectangle_area_size (&area, &best_area) < 0)
+				best = annot;
+		}
+	}
+	return best;
+}

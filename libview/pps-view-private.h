@@ -54,13 +54,6 @@ typedef struct _PpsHeightToPageCache {
 	gdouble *dual_height_to_page;
 } PpsHeightToPageCache;
 
-/* Information for handling annotations */
-typedef struct
-{
-	PpsPoint cursor_offset;
-	PpsAnnotation *annot;
-} MovingAnnotInfo;
-
 /* Information for handling link preview thumbnails */
 typedef struct
 {
@@ -147,7 +140,6 @@ typedef struct _PpsViewPrivate {
 
 	/* Annotations */
 	PpsAnnotationsContext *annots_context;
-	MovingAnnotInfo moving_annot_info;
 	gboolean enable_spellchecking;
 
 	/* Focus */

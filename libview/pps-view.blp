@@ -46,15 +46,6 @@ template $PpsView: Widget {
     drag-update => $selection_update_cb();
   }
 
-  GestureDrag {
-    button: 1;
-    propagation-phase: capture;
-    exclusive: true;
-    drag-begin => $annotation_drag_begin_cb();
-    drag-end => $annotation_drag_end_cb();
-    drag-update => $annotation_drag_update_cb();
-  }
-
   GestureDrag middle_clicked_drag_gesture {
     button: 2;
     exclusive: true;
