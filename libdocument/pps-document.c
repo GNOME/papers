@@ -45,6 +45,8 @@ struct _PpsDocumentPrivate {
 
 	gchar **page_labels;
 	PpsPageSize *page_sizes;
+
+	GWeakRef *cached_pages;
 };
 
 static guint64 _pps_document_get_size (const char *uri);
@@ -87,6 +89,8 @@ pps_document_finalize (GObject *object)
 	g_clear_pointer (&priv->uri, g_free);
 	g_clear_pointer (&priv->page_sizes, g_free);
 	g_clear_pointer (&priv->page_labels, g_strfreev);
+
+	g_clear_pointer (&priv->cached_pages, g_free);
 
 	G_OBJECT_CLASS (pps_document_parent_class)->finalize (object);
 }
@@ -215,12 +219,18 @@ pps_document_setup_cache (PpsDocument *document)
 	 */
 	priv->cache_loaded = FALSE;
 
+	priv->cached_pages = g_new0 (GWeakRef, n_pages);
+
 	for (i = 0; i < n_pages; i++) {
-		PpsPage *page = pps_document_get_page (document, i);
+		PpsPage *page;
 		gdouble page_width = 0;
 		gdouble page_height = 0;
 		PpsPageSize *page_size;
 		gchar *page_label = NULL;
+
+		g_weak_ref_init (&priv->cached_pages[i], NULL);
+
+		page = pps_document_get_page (document, i);
 
 		klass->get_page_size (document, page, &page_width, &page_height);
 
@@ -455,8 +465,23 @@ pps_document_get_page (PpsDocument *document,
                        gint index)
 {
 	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
+	PpsPage *pps_page;
 
-	return klass->get_page (document, index);
+	/* Cache may not be loaded if this is called from the thumbnailer */
+	if (!priv->cache_loaded) {
+		pps_page = klass->get_page (document, index);
+		return pps_page;
+	}
+
+	if ((pps_page = g_weak_ref_get (&priv->cached_pages[index]))) {
+		return pps_page;
+	}
+
+	pps_page = klass->get_page (document, index);
+	g_weak_ref_set (&priv->cached_pages[index], pps_page);
+
+	return pps_page;
 }
 
 static guint64
