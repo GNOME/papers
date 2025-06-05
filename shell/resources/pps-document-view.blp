@@ -430,15 +430,15 @@ template $PpsDocumentView: Adw.BreakpointBin {
       }
 
       Shortcut {
-        trigger: "q";
-        action: "action(doc.annot-textmarkup-type)";
-        arguments: "'squiggly'";
-      }
-
-      Shortcut {
         trigger: "u";
         action: "action(doc.annot-textmarkup-type)";
         arguments: "'underline'";
+      }
+
+      Shortcut {
+        trigger: "q";
+        action: "action(doc.annot-textmarkup-type)";
+        arguments: "'squiggly'";
       }
 
       Shortcut {
@@ -702,7 +702,7 @@ Box annot_menu_child {
       action-target: "'highlight'";
 
       /* Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Highlight");
+      tooltip-text: _("Highlight (h)");
     }
 
     ToggleButton {
@@ -718,7 +718,7 @@ Box annot_menu_child {
       action-target: "'strikethrough'";
 
       /* Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Strikethrough");
+      tooltip-text: _("Strikethrough (k)");
     }
 
     ToggleButton {
@@ -734,7 +734,7 @@ Box annot_menu_child {
       action-target: "'underline'";
 
       /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Underline");
+      tooltip-text: _("Underline (u)");
     }
 
     ToggleButton {
@@ -750,7 +750,7 @@ Box annot_menu_child {
       action-target: "'squiggly'";
 
       /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Squiggly");
+      tooltip-text: _("Squiggly (q)");
     }
   }
 
