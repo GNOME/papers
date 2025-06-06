@@ -766,7 +766,7 @@ impl imp::PpsDocumentView {
                 start_point.set_y(sel.rect().y1());
                 end_point.set_x(sel.rect().x2());
                 end_point.set_y(sel.rect().y2());
-                _ = self.annots_context.add_annotation_sync(
+                let annot = self.annots_context.add_annotation_sync(
                     sel.page(),
                     papers_document::AnnotationType::TextMarkup,
                     &start_point,
@@ -774,8 +774,8 @@ impl imp::PpsDocumentView {
                     &self.rgba_from_annot_color(),
                     AddAnnotationData::TextMarkup(markup_type),
                 );
+                self.annot.replace(annot.as_ref().cloned());
             }
-            self.view_popup.popdown();
         }
     }
 
