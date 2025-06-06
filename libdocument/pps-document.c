@@ -47,6 +47,9 @@ struct _PpsDocumentPrivate {
 	PpsPageSize *page_sizes;
 
 	GWeakRef *cached_pages;
+	/* the last page that was requested through pps_document_get_page
+	is saved, it optimizes cases where the same page is repeatedly queried */
+	PpsPage *last_page;
 };
 
 static guint64 _pps_document_get_size (const char *uri);
@@ -90,6 +93,7 @@ pps_document_finalize (GObject *object)
 	g_clear_pointer (&priv->page_sizes, g_free);
 	g_clear_pointer (&priv->page_labels, g_strfreev);
 
+	g_clear_object (&priv->last_page);
 	g_clear_pointer (&priv->cached_pages, g_free);
 
 	G_OBJECT_CLASS (pps_document_parent_class)->finalize (object);
@@ -480,6 +484,7 @@ pps_document_get_page (PpsDocument *document,
 
 	pps_page = klass->get_page (document, index);
 	g_weak_ref_set (&priv->cached_pages[index], pps_page);
+	g_set_object (&priv->last_page, pps_page);
 
 	return pps_page;
 }
