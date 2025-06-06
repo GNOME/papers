@@ -184,22 +184,18 @@ window.pps-annotation-window textview {
 }
 
 #text-highlight > image {
-    --icon-color: var(--yellow-4);
-    background-color: var(--icon-color);
+    background-color: var(--annot-textmarkup-color);
     background-clip: content-box;
 }
 
 #text-strikethrough {
-  --icon-color: var(--red-2);
-  -gtk-icon-palette: error var(--icon-color);
+  -gtk-icon-palette: error var(--annot-textmarkup-color);
 }
 
 #text-underline {
-  --icon-color: var(--blue-3);
-  -gtk-icon-palette: error var(--icon-color);
+  -gtk-icon-palette: error var(--annot-textmarkup-color);
 }
 
 #text-squiggly {
-  --icon-color: var(--green-3);
-  -gtk-icon-palette: error var(--icon-color);
+  -gtk-icon-palette: error var(--annot-textmarkup-color);
 }

@@ -722,9 +722,12 @@ impl imp::PpsDocumentView {
     }
 
     fn cmd_annot_color(&self, color: &str) {
+        let rgba = AnnotationColor::from(color).to_rgba();
+
+        self.set_annot_textmarkup_icon_color(&rgba);
+
         let annot = self.annot.borrow().clone();
         if let Some(annot) = annot {
-            let rgba = AnnotationColor::from(color).to_rgba();
             if annot.rgba() != rgba {
                 annot.set_rgba(&rgba);
             }
@@ -773,6 +776,25 @@ impl imp::PpsDocumentView {
                 );
             }
             self.view_popup.popdown();
+        }
+    }
+
+    fn set_annot_textmarkup_icon_color(&self, color: &gdk::RGBA) {
+        let css_color = color.to_string();
+        let css = format!("#annot-type-container {{--annot-textmarkup-color: {css_color}; }}");
+
+        let provider = gtk::CssProvider::new();
+        provider.load_from_string(&css);
+
+        match gdk::Display::default() {
+            Some(display) => {
+                gtk::style_context_add_provider_for_display(
+                    &display,
+                    &provider,
+                    gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+                );
+            }
+            _ => glib::g_critical!("", "Could not find a display"),
         }
     }
 
