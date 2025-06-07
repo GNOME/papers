@@ -249,6 +249,13 @@ pps_undo_context_redo (PpsUndoContext *context)
 one registered by the context. This is used by the annotations context
 but should be avoided in newly written code, i.e. an action should always
 represent a complete user action. */
+
+/**
+ * pps_undo_context_get_last_handler:
+ * @context: #PpsUndoContext instance
+ *
+ * Returns: (transfer none): The last handler
+ */
 PpsUndoHandler *
 pps_undo_context_get_last_handler (PpsUndoContext *context)
 {
