@@ -260,13 +260,13 @@ impl imp::PpsDocumentView {
 
                     if !sigs.is_empty() {
                         if sigs.iter().all(|s| s.is_valid()) {
-                            obj.signature_banner.add_css_class("error");
-                            obj.signature_banner
-                                .set_title(&gettext("Digital Signature is invalid!"));
-                        } else {
                             obj.signature_banner.remove_css_class("error");
                             obj.signature_banner
                                 .set_title(&gettext("Document has been digitally signed."));
+                        } else {
+                            obj.signature_banner.add_css_class("error");
+                            obj.signature_banner
+                                .set_title(&gettext("Digital Signature is invalid!"));
                         }
                         obj.signature_banner.set_revealed(true);
                     }
