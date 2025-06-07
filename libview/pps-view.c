@@ -6353,7 +6353,22 @@ pps_view_focus (GtkWidget *widget,
 		if (direction == GTK_DIR_TAB_FORWARD || direction == GTK_DIR_TAB_BACKWARD)
 			return pps_view_focus_next (view, direction);
 	}
+}
 
+static gboolean
+pps_view_grab_focus (GtkWidget *widget)
+{
+	PpsView *view = PPS_VIEW (widget);
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
+
+		if (pps_view_page_get_page (view_page) == priv->current_page) {
+			gtk_widget_grab_focus (GTK_WIDGET (view_page));
+			return TRUE;
+		}
+	}
 	return FALSE;
 }
 

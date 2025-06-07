@@ -889,6 +889,7 @@ pps_view_page_new (void)
 {
 	return g_object_new (PPS_TYPE_VIEW_PAGE,
 	                     "overflow", GTK_OVERFLOW_HIDDEN,
+	                     "focusable", TRUE,
 	                     NULL);
 }
 
