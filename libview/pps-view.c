@@ -6322,11 +6322,33 @@ pps_view_focus (GtkWidget *widget,
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
-	if (pps_document_model_get_document (priv->model)) {
-		if (direction == GTK_DIR_TAB_FORWARD || direction == GTK_DIR_TAB_BACKWARD)
-			return pps_view_focus_next (view, direction);
-	}
+	if (direction != GTK_DIR_TAB_FORWARD && direction != GTK_DIR_TAB_BACKWARD)
+		return FALSE;
 
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		GtkWidget *view_page = g_ptr_array_index (priv->page_widgets, i);
+
+		if (gtk_widget_is_focus (view_page))
+			return FALSE;
+	}
+	return gtk_widget_grab_focus (widget);
+}
+
+static gboolean
+pps_view_grab_focus (GtkWidget *widget)
+{
+	PpsView *view = PPS_VIEW (widget);
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
+
+		if (pps_view_page_get_page (view_page) == priv->current_page) {
+			gtk_widget_grab_focus (GTK_WIDGET (view_page));
+			gtk_widget_set_focus_child (widget, GTK_WIDGET (view_page));
+			return TRUE;
+		}
+	}
 	return FALSE;
 }
 
@@ -6384,6 +6406,7 @@ pps_view_class_init (PpsViewClass *class)
 	widget_class->size_allocate = pps_view_size_allocate;
 	widget_class->query_tooltip = pps_view_query_tooltip;
 	widget_class->focus = pps_view_focus;
+	widget_class->grab_focus = pps_view_grab_focus;
 
 	gtk_widget_class_set_css_name (widget_class, "pps-view");
 
