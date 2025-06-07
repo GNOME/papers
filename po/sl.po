@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-06-02 08:08+0000\n"
-"PO-Revision-Date: 2025-06-02 13:38+0200\n"
+"POT-Creation-Date: 2025-06-07 17:36+0000\n"
+"PO-Revision-Date: 2025-06-08 00:54+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -551,7 +551,7 @@ msgstr "Območje tiskanja ne vključuje nobene strani"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-annotation-properties-dialog.blp:78
-#: shell/resources/pps-document-view.blp:557 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Zapri"
@@ -782,7 +782,7 @@ msgid "Next Page"
 msgstr "Naslednja stran"
 
 #: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:209
+#: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Število strani"
 
@@ -795,7 +795,7 @@ msgid "Print This Document"
 msgstr "Natisnite ta dokument"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:286
+#: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Oddalji"
 
@@ -804,7 +804,7 @@ msgid "Normal Size"
 msgstr "Navadna velikost"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:274
+#: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Približaj"
 
@@ -1275,9 +1275,7 @@ msgstr "Krog"
 msgid "Markup Type"
 msgstr "Vrsta označevanja"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:702
 msgid "Highlight"
 msgstr "Poudari"
 
@@ -1285,15 +1283,11 @@ msgstr "Poudari"
 msgid "Strike out"
 msgstr "Prečrtano"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:730
 msgid "Underline"
 msgstr "Podčrtano"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:744
 msgid "Squiggly"
 msgstr "Čačka"
 
@@ -1322,39 +1316,39 @@ msgstr "Obris"
 msgid "Annotations"
 msgstr "Pripombe"
 
-#: shell/resources/pps-document-view.blp:150
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "Priloge"
 
-#: shell/resources/pps-document-view.blp:166
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "Plasti"
 
-#: shell/resources/pps-document-view.blp:196
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "Preklopi stransko okno"
 
-#: shell/resources/pps-document-view.blp:202
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "Meni Dokument"
 
-#: shell/resources/pps-document-view.blp:222 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Dokument je digitalno podpisan."
 
-#: shell/resources/pps-document-view.blp:223
+#: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
 msgstr "Pokaži podpis …"
 
-#: shell/resources/pps-document-view.blp:256
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "Samodejno prilagodi"
 
-#: shell/resources/pps-document-view.blp:526
+#: shell/resources/pps-document-view.blp:527
 msgid "Selection too Small"
 msgstr "Izbor je premajhen"
 
-#: shell/resources/pps-document-view.blp:527
+#: shell/resources/pps-document-view.blp:528
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1363,19 +1357,19 @@ msgstr ""
 "Podpis te velikosti je lahko premajhen za branje. Če želite ustvariti bolj "
 "berljiv podpis, pritisnite »Začni znova« in narišite večji pravokotnik."
 
-#: shell/resources/pps-document-view.blp:534
+#: shell/resources/pps-document-view.blp:535
 msgid "Start _Over"
 msgstr "Začnite _znova"
 
-#: shell/resources/pps-document-view.blp:535
+#: shell/resources/pps-document-view.blp:536
 msgid "_Sign"
 msgstr "_Podpiši"
 
-#: shell/resources/pps-document-view.blp:542
+#: shell/resources/pps-document-view.blp:543
 msgid "Abort Printing?"
 msgstr "Prekinitev tiskanja?"
 
-#: shell/resources/pps-document-view.blp:543
+#: shell/resources/pps-document-view.blp:544
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1383,149 +1377,164 @@ msgstr ""
 "Obstaja eno ali več dejavnih opravil tiskanja. V primeru, da zaprete okno, "
 "čakajoči posli tiskanja ne bodo izvršeni."
 
-#: shell/resources/pps-document-view.blp:547
+#: shell/resources/pps-document-view.blp:548
 msgid "Abort _Print and Close"
 msgstr "Prekini _tiskanje in zapri okno"
 
-#: shell/resources/pps-document-view.blp:548 shell/src/document_view.rs:726
+#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: shell/resources/pps-document-view.blp:549
+#: shell/resources/pps-document-view.blp:550
 msgid "Close _After Printing"
 msgstr "Zapri _po tiskanju"
 
-#: shell/resources/pps-document-view.blp:564
+#: shell/resources/pps-document-view.blp:565
 msgid "Open…"
 msgstr "Odpri …"
 
-#: shell/resources/pps-document-view.blp:571
+#: shell/resources/pps-document-view.blp:572
 msgid "Ni_ght Mode"
 msgstr "_Nočni način prikaza"
 
-#: shell/resources/pps-document-view.blp:578 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice‫"
 
-#: shell/resources/pps-document-view.blp:583 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
 msgid "_About Papers"
 msgstr "_O programu"
 
-#: shell/resources/pps-document-view.blp:597
+#: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
 msgstr "Na_tisni …"
 
-#: shell/resources/pps-document-view.blp:602
+#: shell/resources/pps-document-view.blp:603
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:608
 msgid "Present as Slideshow"
 msgstr "Prikaži kot diapredstavitev"
 
-#: shell/resources/pps-document-view.blp:614
+#: shell/resources/pps-document-view.blp:615
 msgid "Sign D_igitally…"
 msgstr "Podpiši d_igitalno …"
 
-#: shell/resources/pps-document-view.blp:621
+#: shell/resources/pps-document-view.blp:622
 msgid "Open a C_opy"
 msgstr "Odpri kopijo"
 
-#: shell/resources/pps-document-view.blp:626
+#: shell/resources/pps-document-view.blp:627
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Odpri z …"
 
-#: shell/resources/pps-document-view.blp:631
+#: shell/resources/pps-document-view.blp:632
 msgid "_Save As…"
 msgstr "S_hrani kot …"
 
-#: shell/resources/pps-document-view.blp:638
+#: shell/resources/pps-document-view.blp:639
 msgid "_Continuous"
 msgstr "N_eprekinjeno premikanje"
 
-#: shell/resources/pps-document-view.blp:643
+#: shell/resources/pps-document-view.blp:644
 msgid "_Dual"
 msgstr "_Dvojni pogled strani"
 
-#: shell/resources/pps-document-view.blp:648
+#: shell/resources/pps-document-view.blp:649
 msgid "_Odd Pages Left"
 msgstr "_Preostale lihe strani"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:654
 msgid "Right to Left Document"
 msgstr "Dokument z zapisom z desne proti levi"
 
-#: shell/resources/pps-document-view.blp:660
+#: shell/resources/pps-document-view.blp:661
 msgid "Ro_tate ⤵"
 msgstr "Zavrti _levo ⤵"
 
-#: shell/resources/pps-document-view.blp:667
+#: shell/resources/pps-document-view.blp:668
 msgid "Document Prop_erties"
 msgstr "Lastnosti do_kumenta"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:716
-msgid "Strikethrough"
-msgstr "Prečrtano"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:705
+msgid "Highlight (h)"
+msgstr "Poudarek (h)"
 
-#: shell/resources/pps-document-view.blp:835
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:721
+msgid "Strikethrough (k)"
+msgstr "Prečrtano (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:737
+msgid "Underline (u)"
+msgstr "Podčrtano (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:753
+msgid "Squiggly (q)"
+msgstr "Čačka (q)"
+
+#: shell/resources/pps-document-view.blp:844
 msgid "_Open Link"
 msgstr "_Odpri povezavo"
 
-#: shell/resources/pps-document-view.blp:841
+#: shell/resources/pps-document-view.blp:850
 msgid "_Copy Link Address"
 msgstr "_Kopiraj naslov povezave"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:856
 msgid "_Go To"
 msgstr "Sk_oči na"
 
-#: shell/resources/pps-document-view.blp:853
+#: shell/resources/pps-document-view.blp:862
 msgid "Open in New _Window"
 msgstr "Odpri v _novem oknu"
 
-#: shell/resources/pps-document-view.blp:861
+#: shell/resources/pps-document-view.blp:870
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:875
 msgid "Select _All"
 msgstr "Izberi _vse"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:882
 msgid "_Save Image As…"
 msgstr "S_hrani sliko kot …"
 
-#: shell/resources/pps-document-view.blp:879
+#: shell/resources/pps-document-view.blp:888
 msgid "Copy _Image"
 msgstr "Kopiraj _sliko"
 
-#: shell/resources/pps-document-view.blp:887
+#: shell/resources/pps-document-view.blp:896
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Odpri prilogo"
 
-#: shell/resources/pps-document-view.blp:893
+#: shell/resources/pps-document-view.blp:902
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "Shrani prilogo _kot …"
 
-#: shell/resources/pps-document-view.blp:903
+#: shell/resources/pps-document-view.blp:912
 msgid "Annotation _Properties…"
 msgstr "Lastnosti _pripombe …"
 
-#: shell/resources/pps-document-view.blp:909
+#: shell/resources/pps-document-view.blp:918
 msgid "R_emove Annotation"
 msgstr "_Odstrani pripombo"
 
-#: shell/resources/pps-document-view.blp:917
+#: shell/resources/pps-document-view.blp:926
 msgid "_Add Text Annotation"
 msgstr "_Dodaj besedilno pripombo"
 
@@ -1817,7 +1826,7 @@ msgstr "Ni mogoče odpreti priloge"
 msgid "The attachment could not be saved."
 msgstr "Ni mogoče shraniti priloge."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "Digitalni podpis je neveljaven!"
 
