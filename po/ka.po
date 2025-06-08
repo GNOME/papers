@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-06-02 15:26+0000\n"
-"PO-Revision-Date: 2025-06-02 19:05+0200\n"
+"POT-Creation-Date: 2025-06-07 17:36+0000\n"
+"PO-Revision-Date: 2025-06-08 04:45+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -1266,9 +1266,7 @@ msgstr "წრე"
 msgid "Markup Type"
 msgstr "მარქაფის ტიპი"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:703
 msgid "Highlight"
 msgstr "გამოკვეთა"
 
@@ -1276,15 +1274,11 @@ msgstr "გამოკვეთა"
 msgid "Strike out"
 msgstr "ხაზის გადასმა"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:731
 msgid "Underline"
 msgstr "ხაზგასმული"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:745
 msgid "Squiggly"
 msgstr "ტალღებიანი"
 
@@ -1329,7 +1323,7 @@ msgstr "გვერდითი პანელის ჩვენების 
 msgid "Document Menu"
 msgstr "დოკუმენტის მენიუ"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "დოკუმენტი ციფრულად არის ხელმოწერილი."
 
@@ -1462,62 +1456,77 @@ msgstr "_მობრუნება ⤵"
 msgid "Document Prop_erties"
 msgstr "_დოკუმენტის თვისებები"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:717
-msgid "Strikethrough"
-msgstr "გადახაზული"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:705
+msgid "Highlight (h)"
+msgstr "გამოკვეთა (h)"
 
-#: shell/resources/pps-document-view.blp:836
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:721
+msgid "Strikethrough (k)"
+msgstr "გადახაზული (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:737
+msgid "Underline (u)"
+msgstr "ხაზგასმული (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:753
+msgid "Squiggly (q)"
+msgstr "ტალღებიანი (q)"
+
+#: shell/resources/pps-document-view.blp:844
 msgid "_Open Link"
 msgstr "_ბმულის გახსნა"
 
-#: shell/resources/pps-document-view.blp:842
+#: shell/resources/pps-document-view.blp:850
 msgid "_Copy Link Address"
 msgstr "დაა_კოპირე ბმულის მისამართი"
 
-#: shell/resources/pps-document-view.blp:848
+#: shell/resources/pps-document-view.blp:856
 msgid "_Go To"
 msgstr "_გადასვლა"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:862
 msgid "Open in New _Window"
 msgstr "ახალ ფან_ჯარაში გახსნა"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:870
 msgid "_Copy"
 msgstr "_კოპირება"
 
-#: shell/resources/pps-document-view.blp:867
+#: shell/resources/pps-document-view.blp:875
 msgid "Select _All"
 msgstr "მონიშნე _ყველა"
 
-#: shell/resources/pps-document-view.blp:874
+#: shell/resources/pps-document-view.blp:882
 msgid "_Save Image As…"
 msgstr "_გამოსახულების შენახვა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:888
 msgid "Copy _Image"
 msgstr "გამოსახულების _კოპირება"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:896
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_მიმაგრებული ფაილის გახსნა"
 
-#: shell/resources/pps-document-view.blp:894
+#: shell/resources/pps-document-view.blp:902
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_მიმაგრებული ფაილის გახსნა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:912
 msgid "Annotation _Properties…"
 msgstr "ანოტაციის _თვისებები…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:918
 msgid "R_emove Annotation"
 msgstr "_ანოტაციის წაშლა"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:926
 msgid "_Add Text Annotation"
 msgstr "_ტექსტის ანოტაციის დამატება"
 
@@ -1803,7 +1812,7 @@ msgstr "მიმაგრებული ფაილის გახსნა 
 msgid "The attachment could not be saved."
 msgstr "შეუძლებელია დანართის დამახსოვრება."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "ციფრული ხელმოწერა არასწორია!"
 
