@@ -158,6 +158,24 @@ mod imp {
             }
         }
 
+        fn markup_type_to_icon_name(&self, markup_type: AnnotationTextMarkupType) -> Option<&str> {
+            match markup_type {
+                AnnotationTextMarkupType::StrikeOut => Some("format-text-strikethrough-symbolic"),
+                AnnotationTextMarkupType::Underline
+                | AnnotationTextMarkupType::Squiggly
+                | AnnotationTextMarkupType::Highlight => None,
+                _ => unimplemented!(),
+            }
+        }
+
+        fn set_markup_icon_name(&self, annot: Option<&AnnotationTextMarkup>) {
+            if let Some(annot) = annot {
+                let icon_name = self.markup_type_to_icon_name(annot.markup_type());
+                self.image.set_icon_name(icon_name);
+                self.image.set_visible(icon_name.is_some());
+            }
+        }
+
         fn document(&self) -> Option<Document> {
             self.document.borrow().clone()
         }
@@ -220,23 +238,26 @@ mod imp {
                         obj.set_color(Some(annot));
                     }
                 )));
+
+                if let Some(markup_annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
+                    handlers.push(markup_annot.connect_type_notify(glib::clone!(
+                        #[weak(rename_to = obj)]
+                        self,
+                        move |markup_annot| {
+                            obj.set_markup_icon_name(Some(markup_annot));
+                        }
+                    )))
+                }
             }
 
             let icon_name = annot.and_then(|annot| match annot.annotation_type() {
                 AnnotationType::Attachment => Some("mail-attachment-symbolic"),
-                AnnotationType::TextMarkup => match annot
-                    .dynamic_cast_ref::<AnnotationTextMarkup>()
-                    .unwrap()
-                    .markup_type()
-                {
-                    AnnotationTextMarkupType::StrikeOut => {
-                        Some("format-text-strikethrough-symbolic")
-                    }
-                    AnnotationTextMarkupType::Underline
-                    | AnnotationTextMarkupType::Squiggly
-                    | AnnotationTextMarkupType::Highlight => None,
-                    _ => unimplemented!(),
-                },
+                AnnotationType::TextMarkup => self.markup_type_to_icon_name(
+                    annot
+                        .dynamic_cast_ref::<AnnotationTextMarkup>()
+                        .unwrap()
+                        .markup_type(),
+                ),
                 AnnotationType::Text | AnnotationType::FreeText | AnnotationType::Stamp => None,
                 _ => unimplemented!(),
             });
