@@ -90,17 +90,7 @@ pps_archive_set_archive_type (PpsArchive *archive,
 {
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), FALSE);
 	g_return_val_if_fail (archive->type == PPS_ARCHIVE_TYPE_NONE, FALSE);
-
-	switch (archive_type) {
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		libarchive_set_archive_type (archive, archive_type);
-		break;
-	default:
-		g_assert_not_reached ();
-	}
+	libarchive_set_archive_type (archive, archive_type);
 
 	return TRUE;
 }
@@ -116,23 +106,13 @@ pps_archive_open_filename (PpsArchive *archive,
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, FALSE);
 	g_return_val_if_fail (path != NULL, FALSE);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		r = archive_read_open_filename (archive->libar, path, BUFFER_SIZE);
-		if (r != ARCHIVE_OK) {
-			g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-			             "Error opening archive: %s", archive_error_string (archive->libar));
-			return FALSE;
-		}
-		return TRUE;
+	r = archive_read_open_filename (archive->libar, path, BUFFER_SIZE);
+	if (r != ARCHIVE_OK) {
+		g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+		             "Error opening archive: %s", archive_error_string (archive->libar));
+		return FALSE;
 	}
-
-	return FALSE;
+	return TRUE;
 }
 
 static gboolean
@@ -171,17 +151,7 @@ pps_archive_read_next_header (PpsArchive *archive,
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), FALSE);
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, FALSE);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		return libarchive_read_next_header (archive, error);
-	}
-
-	return FALSE;
+	return libarchive_read_next_header (archive, error);
 }
 
 gboolean
@@ -198,19 +168,9 @@ pps_archive_get_entry_pathname (PpsArchive *archive)
 {
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), NULL);
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, NULL);
+	g_return_val_if_fail (archive->libar_entry != NULL, NULL);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		g_return_val_if_fail (archive->libar_entry != NULL, NULL);
-		return archive_entry_pathname (archive->libar_entry);
-	}
-
-	return NULL;
+	return archive_entry_pathname (archive->libar_entry);
 }
 
 gint64
@@ -218,19 +178,9 @@ pps_archive_get_entry_size (PpsArchive *archive)
 {
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), -1);
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, -1);
+	g_return_val_if_fail (archive->libar_entry != NULL, -1);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		g_return_val_if_fail (archive->libar_entry != NULL, -1);
-		return archive_entry_size (archive->libar_entry);
-	}
-
-	return -1;
+	return archive_entry_size (archive->libar_entry);
 }
 
 gboolean
@@ -238,19 +188,9 @@ pps_archive_get_entry_is_encrypted (PpsArchive *archive)
 {
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), FALSE);
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, FALSE);
+	g_return_val_if_fail (archive->libar_entry != NULL, -1);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		g_return_val_if_fail (archive->libar_entry != NULL, -1);
-		return archive_entry_is_encrypted (archive->libar_entry);
-	}
-
-	return FALSE;
+	return archive_entry_is_encrypted (archive->libar_entry);
 }
 
 gssize
@@ -263,21 +203,12 @@ pps_archive_read_data (PpsArchive *archive,
 
 	g_return_val_if_fail (PPS_IS_ARCHIVE (archive), -1);
 	g_return_val_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE, -1);
+	g_return_val_if_fail (archive->libar_entry != NULL, -1);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_NONE:
-		g_assert_not_reached ();
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		g_return_val_if_fail (archive->libar_entry != NULL, -1);
-		r = archive_read_data (archive->libar, buf, count);
-		if (r < 0) {
-			g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-			             "Failed to decompress data: %s", archive_error_string (archive->libar));
-		}
-		break;
+	r = archive_read_data (archive->libar, buf, count);
+	if (r < 0) {
+		g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+		             "Failed to decompress data: %s", archive_error_string (archive->libar));
 	}
 
 	return r;
@@ -289,18 +220,9 @@ pps_archive_reset (PpsArchive *archive)
 	g_return_if_fail (PPS_IS_ARCHIVE (archive));
 	g_return_if_fail (archive->type != PPS_ARCHIVE_TYPE_NONE);
 
-	switch (archive->type) {
-	case PPS_ARCHIVE_TYPE_RAR:
-	case PPS_ARCHIVE_TYPE_ZIP:
-	case PPS_ARCHIVE_TYPE_7Z:
-	case PPS_ARCHIVE_TYPE_TAR:
-		g_clear_pointer (&archive->libar, archive_free);
-		libarchive_set_archive_type (archive, archive->type);
-		archive->libar_entry = NULL;
-		break;
-	default:
-		g_assert_not_reached ();
-	}
+	g_clear_pointer (&archive->libar, archive_free);
+	libarchive_set_archive_type (archive, archive->type);
+	archive->libar_entry = NULL;
 }
 
 static void
