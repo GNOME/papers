@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-06-01 12:57+0000\n"
-"PO-Revision-Date: 2025-06-02 01:03+0330\n"
+"POT-Creation-Date: 2025-06-08 12:41+0000\n"
+"PO-Revision-Date: 2025-06-09 11:03+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9 previewer/pps-previewer-window.c:472
-#: shell/resources/pps-document-view.blp:81 shell/resources/pps-loader-view.blp:10
+#: shell/resources/pps-document-view.blp:85 shell/resources/pps-loader-view.blp:10
 #: shell/src/application.rs:46 shell/src/application.rs:69
 #: shell/src/application.rs:342 shell/src/document_view/io.rs:201
 #: shell/src/document_view/io.rs:202
@@ -461,7 +461,7 @@ msgid "This work is in the Public Domain"
 msgstr "این کار در دامنهٔ عمومی است"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1002
+#: shell/src/document_view/actions.rs:1020
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "ذخیرهٔ پیوست"
@@ -472,7 +472,7 @@ msgstr[1] "ذخیرهٔ پیوست‌ها"
 msgid "Page %s"
 msgstr "صفحه %s"
 
-#: libview/pps-annotation-window.c:227
+#: libview/pps-annotation-window.c:237
 msgid "Edit Note"
 msgstr "ویرایش یاداشت"
 
@@ -531,7 +531,7 @@ msgstr "محدوده انتخاب شدهٔ شما جهت چاپ هیچ صفحه�
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-annotation-properties-dialog.blp:78
-#: shell/resources/pps-document-view.blp:543 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_بستن"
@@ -681,11 +681,11 @@ msgstr "راه‌اندازی %s"
 msgid "Reset form"
 msgstr "بازنشانی فرم"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "اجرا شده در حالت ارائه"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "پایان ارائه. برای خروج کلید گریز را بزنید."
 
@@ -760,7 +760,7 @@ msgstr "صفحهٔ پیش"
 msgid "Next Page"
 msgstr "صفحهٔ بعد"
 
-#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:205
+#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "شمارش صفحه"
 
@@ -772,7 +772,7 @@ msgstr "_چاپ"
 msgid "Print This Document"
 msgstr "چاپ این سند"
 
-#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:282
+#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "کوچک‌نمایی"
 
@@ -780,7 +780,7 @@ msgstr "کوچک‌نمایی"
 msgid "Normal Size"
 msgstr "اندازهٔ عادی"
 
-#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:270
+#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
@@ -1251,9 +1251,7 @@ msgstr "دایره"
 msgid "Markup Type"
 msgstr "گونهٔ نشانه‌گذاری"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:688
 msgid "Highlight"
 msgstr "پررنگ"
 
@@ -1261,15 +1259,11 @@ msgstr "پررنگ"
 msgid "Strike out"
 msgstr "باطل کردن"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:716
 msgid "Underline"
 msgstr "زیر خط"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:730
 msgid "Squiggly"
 msgstr "پیچ و تاب"
 
@@ -1278,59 +1272,59 @@ msgid "_Apply"
 msgstr "_اعمال"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:72
+#: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: shell/resources/pps-document-view.blp:87 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: shell/resources/pps-document-view.blp:106
+#: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
 msgstr "تصاویر بندانگشتی"
 
-#: shell/resources/pps-document-view.blp:117
+#: shell/resources/pps-document-view.blp:121
 msgid "Outline"
 msgstr "طرح کلی"
 
-#: shell/resources/pps-document-view.blp:129
+#: shell/resources/pps-document-view.blp:133
 msgid "Annotations"
 msgstr "حاشیه‌نویسی‌ها"
 
-#: shell/resources/pps-document-view.blp:146
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "پیوست‌ها"
 
-#: shell/resources/pps-document-view.blp:162
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "لایه‌ها"
 
-#: shell/resources/pps-document-view.blp:192
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "تغییر وضعیت نوار کناری"
 
-#: shell/resources/pps-document-view.blp:198
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "فهرست سند"
 
-#: shell/resources/pps-document-view.blp:218 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "سند به صورت رقمی امضا شده."
 
-#: shell/resources/pps-document-view.blp:219
+#: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
 msgstr "دیدن امضا…"
 
-#: shell/resources/pps-document-view.blp:252
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "برازش خودکار"
 
-#: shell/resources/pps-document-view.blp:512
+#: shell/resources/pps-document-view.blp:527
 msgid "Selection too Small"
 msgstr "گزینش بیش از حد کوچک"
 
-#: shell/resources/pps-document-view.blp:513
+#: shell/resources/pps-document-view.blp:528
 msgid ""
 "A signature of this size may be too small to read. If you would like to create "
 "a potentially more readable signature, press `Start over` and draw a bigger "
@@ -1340,167 +1334,182 @@ msgstr ""
 "با قابلیت خواندن بیش‌تری ایجاد کنید، «امضا از نو» را زده و چهارگوشی بزرگ‌تر رسم "
 "کنید."
 
-#: shell/resources/pps-document-view.blp:520
+#: shell/resources/pps-document-view.blp:535
 msgid "Start _Over"
 msgstr "آغاز از _نو"
 
-#: shell/resources/pps-document-view.blp:521
+#: shell/resources/pps-document-view.blp:536
 msgid "_Sign"
 msgstr "_امضا"
 
-#: shell/resources/pps-document-view.blp:528
+#: shell/resources/pps-document-view.blp:543
 msgid "Abort Printing?"
 msgstr "خاتمهٔ چاپ؟"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:544
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending print "
 "jobs will not be printed."
 msgstr ""
 "یک یا چند کار چاپ فعّال است. اگر پنجره بسته شود، کارهای منتظر، چاپ نخواهند شد."
 
-#: shell/resources/pps-document-view.blp:533
+#: shell/resources/pps-document-view.blp:548
 msgid "Abort _Print and Close"
 msgstr "خاتمهٔ _چاپ و بستن"
 
-#: shell/resources/pps-document-view.blp:534 shell/src/document_view.rs:722
+#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_لغو"
 
-#: shell/resources/pps-document-view.blp:535
+#: shell/resources/pps-document-view.blp:550
 msgid "Close _After Printing"
 msgstr "بستن _پس از چاپ"
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:565
 msgid "Open…"
 msgstr "گشودن…"
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:572
 msgid "Ni_ght Mode"
 msgstr "حالت _شب"
 
-#: shell/resources/pps-document-view.blp:564 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_کلید‌های میانبر"
 
-#: shell/resources/pps-document-view.blp:569 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_راهنما"
 
-#: shell/resources/pps-document-view.blp:574 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
 msgid "_About Papers"
 msgstr "_دربارهٔ کاغذها"
 
-#: shell/resources/pps-document-view.blp:583
+#: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
 msgstr "_چاپ…"
 
-#: shell/resources/pps-document-view.blp:588
+#: shell/resources/pps-document-view.blp:603
 msgid "Fullscreen"
 msgstr "تمام‌صفحه"
 
-#: shell/resources/pps-document-view.blp:593
+#: shell/resources/pps-document-view.blp:608
 msgid "Present as Slideshow"
 msgstr "ارائه به عنوان اسلاید"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:615
 msgid "Sign D_igitally…"
 msgstr "امضای _رقمی…"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:622
 msgid "Open a C_opy"
 msgstr "گشودن یک _رونوشت"
 
-#: shell/resources/pps-document-view.blp:612 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:627 shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "گشودن با…"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:632
 msgid "_Save As…"
 msgstr "_ذخیره به نام…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:639
 msgid "_Continuous"
 msgstr "_پیوسته"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:644
 msgid "_Dual"
 msgstr "_دوتایی"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:649
 msgid "_Odd Pages Left"
 msgstr "شروع از صفحات _فرد"
 
-#: shell/resources/pps-document-view.blp:639
+#: shell/resources/pps-document-view.blp:654
 msgid "Right to Left Document"
 msgstr "سند راست به چپ"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:661
 msgid "Ro_tate ⤵"
 msgstr "_چرخش ⤵"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:668
 msgid "Document Prop_erties"
 msgstr "_ویژگی‌های سند"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:702
-msgid "Strikethrough"
-msgstr "خط‌خورده"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:705
+msgid "Highlight (h)"
+msgstr "برجسته (h)"
 
-#: shell/resources/pps-document-view.blp:821
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:721
+msgid "Strikethrough (k)"
+msgstr "خط‌خورده (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:737
+msgid "Underline (u)"
+msgstr "زیر خط (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:753
+msgid "Squiggly (q)"
+msgstr "با پیچ‌وتاب (q)"
+
+#: shell/resources/pps-document-view.blp:844
 msgid "_Open Link"
 msgstr "_گشودن پیوند"
 
-#: shell/resources/pps-document-view.blp:827
+#: shell/resources/pps-document-view.blp:850
 msgid "_Copy Link Address"
 msgstr "_رونوشت از نشانی پیوند"
 
-#: shell/resources/pps-document-view.blp:833
+#: shell/resources/pps-document-view.blp:856
 msgid "_Go To"
 msgstr "_رفتن به"
 
-#: shell/resources/pps-document-view.blp:839
+#: shell/resources/pps-document-view.blp:862
 msgid "Open in New _Window"
 msgstr "گشودن در یک پنجرهٔ _جدید"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:870
 msgid "_Copy"
 msgstr "_رونوشت"
 
-#: shell/resources/pps-document-view.blp:852
+#: shell/resources/pps-document-view.blp:875
 msgid "Select _All"
 msgstr "انتخاب _همه"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:882
 msgid "_Save Image As…"
 msgstr "_ذخیرهٔ تصویر به نام…"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:888
 msgid "Copy _Image"
 msgstr "رونوشت _تصویر"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:896
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_گشودن پیوست"
 
-#: shell/resources/pps-document-view.blp:879
+#: shell/resources/pps-document-view.blp:902
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_ذخیرهٔ پیوست به نام…"
 
-#: shell/resources/pps-document-view.blp:889
+#: shell/resources/pps-document-view.blp:912
 msgid "Annotation _Properties…"
 msgstr "_ویژگی‌های حاشیه‌نویسی…"
 
-#: shell/resources/pps-document-view.blp:895
+#: shell/resources/pps-document-view.blp:918
 msgid "R_emove Annotation"
 msgstr "_برداشتن حاشیه‌نویسی"
 
-#: shell/resources/pps-document-view.blp:903
+#: shell/resources/pps-document-view.blp:926
 msgid "_Add Text Annotation"
 msgstr "_افزودن حاشیه‌نویسی متنی"
 
@@ -1726,71 +1735,71 @@ msgstr "نمایش نگارش برنامه."
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
-#: shell/src/document_view.rs:296
+#: shell/src/document_view.rs:300
 msgid "View Details"
 msgstr "نمایش جزییات"
 
-#: shell/src/document_view.rs:701
+#: shell/src/document_view.rs:705
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "سند دارای زمینه‌های فرم یا حاشیه نویسی‌های جدید یا تغییریافته  است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:702
+#: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
 msgstr "سند دارای زمینه‌های فرمی است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:703
+#: shell/src/document_view.rs:707
 msgid "Document contains new or modified annotations."
 msgstr "سند دارای حاشیه‌نویسی‌های جدید یا تغییر یافته است."
 
-#: shell/src/document_view.rs:711
+#: shell/src/document_view.rs:715
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "اگر یک رونوشت از سند را ذخیره نکنید، تغییرات برای همیشه از بین خواهند رفت."
 
-#: shell/src/document_view.rs:712
+#: shell/src/document_view.rs:716
 msgid "Save Changes to a Copy?"
 msgstr "ذخیرهٔ دگرگونی‌ها در یک رونوشت؟"
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:725
 msgid "Close _Without Saving"
 msgstr "بستن _بدون ذخیره"
 
-#: shell/src/document_view.rs:723
+#: shell/src/document_view.rs:727
 msgid "_Save a Copy"
 msgstr "_ذخیرهٔ یک رونوشت"
 
-#: shell/src/document_view/actions.rs:804
+#: shell/src/document_view/actions.rs:822
 msgid "Save Image"
 msgstr "ذخیرهٔ تصویر"
 
-#: shell/src/document_view/actions.rs:840
+#: shell/src/document_view/actions.rs:858
 msgid "Couldn’t find appropriate format to save image"
 msgstr "قالب مناسب برای ذخیرهٔ عکس پیدا نشد"
 
-#: shell/src/document_view/actions.rs:857
+#: shell/src/document_view/actions.rs:875
 msgid "The image could not be saved."
 msgstr "تصویر ذخیره نشد."
 
-#: shell/src/document_view/actions.rs:929
+#: shell/src/document_view/actions.rs:947
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "حالت پیمایش مکان‌نما اکنون به کار افتاده. برای از کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:931
+#: shell/src/document_view/actions.rs:949
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "حالت پیمایش مکان‌نما اکنون از کار افتاده. برای به کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:986 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "ناتوان در گشودن پیوست"
 
-#: shell/src/document_view/actions.rs:1019
+#: shell/src/document_view/actions.rs:1037
 msgid "The attachment could not be saved."
 msgstr "پیوست ذخیره نشد."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "امضای رقمی نامعتبر است!"
 
