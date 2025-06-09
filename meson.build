@@ -329,8 +329,8 @@ endif
 subdir('data')
 
 # *** Papers ***
-enable_viewer = get_option('viewer')
-if enable_viewer
+enable_shell = get_option('shell')
+if enable_shell
   subdir('shell')
 endif
 
@@ -365,7 +365,7 @@ summary({'Build type'                 : get_option('buildtype'),
          'Application ID'             : app_id,
          'Rust build mode'            : rust_target,
         }, section: 'General', bool_yn: true)
-summary({'Viewer'                     : enable_viewer,
+summary({'Shell'                     : enable_shell,
          'Previewer'                  : enable_previewer,
          'Thumbnailer'                : enable_thumbnailer,
          'Nautilus extension'         : enable_nautilus,
