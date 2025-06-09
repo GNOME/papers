@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-06-02 15:26+0000\n"
-"PO-Revision-Date: 2025-06-03 19:33+1000\n"
+"POT-Creation-Date: 2025-06-08 12:41+0000\n"
+"PO-Revision-Date: 2025-06-09 17:42+1000\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -705,11 +705,11 @@ msgstr "Aviar %s"
 msgid "Reset form"
 msgstr "Reïnicializar lo formulari"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "Execucion en mòde presentacion"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Fin de la presentacion. Quichat Esc o clicatz per sortir."
 
@@ -1278,9 +1278,7 @@ msgstr "Cercle"
 msgid "Markup Type"
 msgstr "Tipe de balisatge"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:703
 msgid "Highlight"
 msgstr "Suslinhar"
 
@@ -1288,15 +1286,11 @@ msgstr "Suslinhar"
 msgid "Strike out"
 msgstr "Raiar"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:731
 msgid "Underline"
 msgstr "Soslinhar"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:745
 msgid "Squiggly"
 msgstr "Desformat"
 
@@ -1341,7 +1335,7 @@ msgstr "Afichar o amagar lo panèl lateral"
 msgid "Document Menu"
 msgstr "Menú del document"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Lo document foguèt signat electronicament."
 
@@ -1474,62 +1468,77 @@ msgstr "Pivo_tar ⤵"
 msgid "Document Prop_erties"
 msgstr "Propri_etats del document"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:717
-msgid "Strikethrough"
-msgstr "Raiar"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:705
+msgid "Highlight (h)"
+msgstr "Suslinhar (h)"
 
-#: shell/resources/pps-document-view.blp:836
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:721
+msgid "Strikethrough (k)"
+msgstr "Raiar (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:737
+msgid "Underline (u)"
+msgstr "Soslinhar (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:753
+msgid "Squiggly (q)"
+msgstr "Desformat (q)"
+
+#: shell/resources/pps-document-view.blp:844
 msgid "_Open Link"
 msgstr "_Dobrir lo ligam"
 
-#: shell/resources/pps-document-view.blp:842
+#: shell/resources/pps-document-view.blp:850
 msgid "_Copy Link Address"
 msgstr "_Copiar l'adreça del ligam"
 
-#: shell/resources/pps-document-view.blp:848
+#: shell/resources/pps-document-view.blp:856
 msgid "_Go To"
 msgstr "A_nar a"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:862
 msgid "Open in New _Window"
 msgstr "Dobrir dins una _novèla fenèstra"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:870
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: shell/resources/pps-document-view.blp:867
+#: shell/resources/pps-document-view.blp:875
 msgid "Select _All"
 msgstr "Seleccionar _tot"
 
-#: shell/resources/pps-document-view.blp:874
+#: shell/resources/pps-document-view.blp:882
 msgid "_Save Image As…"
 msgstr "_Enregistrar l'imatge jos…"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:888
 msgid "Copy _Image"
 msgstr "Copiar l'_imatge"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:896
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Dobrir la pèça junta"
 
-#: shell/resources/pps-document-view.blp:894
+#: shell/resources/pps-document-view.blp:902
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Enregistrar la pèça junta jos…"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:912
 msgid "Annotation _Properties…"
 msgstr "_Proprietats de l'anotacion…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:918
 msgid "R_emove Annotation"
 msgstr "L_evar las anotacions"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:926
 msgid "_Add Text Annotation"
 msgstr "_Apondre una anotacion tèxte"
 
@@ -1819,7 +1828,7 @@ msgstr "Impossible de dobrir la pèça junta"
 msgid "The attachment could not be saved."
 msgstr "La pèça junta pòt pas èsser enregistrada."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "La signatura electronica es invalida."
 
