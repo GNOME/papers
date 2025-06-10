@@ -249,13 +249,6 @@ get_device_scale (PpsPixbufCache *pixbuf_cache)
 }
 
 static void
-set_device_scale_on_surface (cairo_surface_t *surface,
-                             int device_scale)
-{
-	cairo_surface_set_device_scale (surface, device_scale, device_scale);
-}
-
-static void
 copy_job_to_job_info (PpsJobRenderTexture *job_render,
                       CacheJobInfo *job_info,
                       PpsPixbufCache *pixbuf_cache)
@@ -1051,8 +1044,6 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 		                                job_info->selection_style,
 		                                &text, &base);
 
-		if (job_info->selection_surface)
-			set_device_scale_on_surface (job_info->selection_surface, job_info->device_scale);
 		job_info->selection_points = job_info->target_points;
 		job_info->selection_scale = scale * job_info->device_scale;
 
