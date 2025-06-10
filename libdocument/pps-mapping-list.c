@@ -88,8 +88,7 @@ cmp_mapping_area_size (PpsMapping *a,
 /**
  * pps_mapping_list_get:
  * @mapping_list: an #PpsMappingList
- * @x: X coordinate
- * @y: Y coordinate
+ * @point: coordinate
  *
  * Returns: (transfer none): the #PpsMapping in the list at coordinates (x, y)
  *
@@ -126,8 +125,7 @@ pps_mapping_list_get (PpsMappingList *mapping_list,
 /**
  * pps_mapping_list_get_data:
  * @mapping_list: an #PpsMappingList
- * @x: X coordinate
- * @y: Y coordinate
+ * @point: coordinate
  *
  * Returns: (transfer none): the data of a mapping in the list at coordinates (x, y)
  */
