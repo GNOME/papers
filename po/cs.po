@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-06-02 15:26+0000\n"
-"PO-Revision-Date: 2025-06-02 18:44+0200\n"
+"POT-Creation-Date: 2025-06-09 16:31+0000\n"
+"PO-Revision-Date: 2025-06-10 02:22+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -662,60 +662,60 @@ msgstr "Posunout pohled dolů"
 msgid "Document View"
 msgstr "Pohled na dokument"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2100
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2102
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2104
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2106
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2108
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2110
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2139
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2145
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2148
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2163
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "Běží v režimu prezentace"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Konec prezentace. Opustíte ji kliknutím nebo klávesou Esc."
 
@@ -1284,9 +1284,7 @@ msgstr "Kolečko"
 msgid "Markup Type"
 msgstr "Typ označení"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:703
 msgid "Highlight"
 msgstr "zvýraznění"
 
@@ -1294,15 +1292,11 @@ msgstr "zvýraznění"
 msgid "Strike out"
 msgstr "přeškrtnutí"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:731
 msgid "Underline"
 msgstr "podtržení"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:745
 msgid "Squiggly"
 msgstr "vlnovka"
 
@@ -1348,7 +1342,7 @@ msgstr "Zobrazit/skrýt postranní panel"
 msgid "Document Menu"
 msgstr "Nabídka dokumentu"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Dokument byl digitálně podepsán."
 
@@ -1481,62 +1475,77 @@ msgstr "O_točit ⤵"
 msgid "Document Prop_erties"
 msgstr "Vlastnosti dokum_entu"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:717
-msgid "Strikethrough"
-msgstr "přeškrtnutí"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:705
+msgid "Highlight (h)"
+msgstr "zvýraznění (h)"
 
-#: shell/resources/pps-document-view.blp:836
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:721
+msgid "Strikethrough (k)"
+msgstr "přeškrtnutí (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:737
+msgid "Underline (u)"
+msgstr "podtržení (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:753
+msgid "Squiggly (q)"
+msgstr "vlnovka (q)"
+
+#: shell/resources/pps-document-view.blp:844
 msgid "_Open Link"
 msgstr "_Otevřít odkaz"
 
-#: shell/resources/pps-document-view.blp:842
+#: shell/resources/pps-document-view.blp:850
 msgid "_Copy Link Address"
 msgstr "_Kopírovat adresu odkazu"
 
-#: shell/resources/pps-document-view.blp:848
+#: shell/resources/pps-document-view.blp:856
 msgid "_Go To"
 msgstr "_Přejít na"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:862
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:870
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: shell/resources/pps-document-view.blp:867
+#: shell/resources/pps-document-view.blp:875
 msgid "Select _All"
 msgstr "Vy_brat vše"
 
-#: shell/resources/pps-document-view.blp:874
+#: shell/resources/pps-document-view.blp:882
 msgid "_Save Image As…"
 msgstr "_Uložit obrázek jako…"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:888
 msgid "Copy _Image"
 msgstr "Kopí_rovat obrázek"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:896
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Otevřít přílohu"
 
-#: shell/resources/pps-document-view.blp:894
+#: shell/resources/pps-document-view.blp:902
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Uložit přílohu jako…"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:912
 msgid "Annotation _Properties…"
 msgstr "Vlastnosti _poznámky…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:918
 msgid "R_emove Annotation"
 msgstr "O_dstranit poznámku"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:926
 msgid "_Add Text Annotation"
 msgstr "Op_atřit textovou poznámkou"
 
@@ -1835,7 +1844,7 @@ msgstr "Nepodařilo se otevřít přílohu"
 msgid "The attachment could not be saved."
 msgstr "Nepodařilo se uložit přílohu."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "Digitální podpis je neplatný!"
 
