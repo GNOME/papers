@@ -1,0 +1,1943 @@
+# Filipino translation for papers.
+# Copyright (C) 2025 papers's COPYRIGHT HOLDER
+# This file is distributed under the same license as the papers package.
+# Iverson Briones <ivercoder@proton.me>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: papers main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
+"POT-Creation-Date: 2025-06-11 13:11+0000\n"
+"PO-Revision-Date: 2025-06-13 18:24+0800\n"
+"Last-Translator: \n"
+"Language-Team: Filipino <fil@li.org>\n"
+"Language: fil\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. Manually set name and icon
+#: data/org.gnome.Papers.desktop.in.in:3 data/org.gnome.Papers.metainfo.xml.in.in:9
+#: previewer/pps-previewer-window.c:472 shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46 shell/src/application.rs:69
+#: shell/src/application.rs:342 shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papeles"
+
+#: data/org.gnome.Papers.desktop.in.in:4
+msgid "View multi-page documents"
+msgstr "Tingnan ang mga maramihang-pahinang dokumento"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Papers.desktop.in.in:6
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;document;presentation;viewer;papers;dokumento;presentasyon;pantingin;papeles;"
+
+#: data/org.gnome.Papers.desktop.in.in:21
+msgid "New Window"
+msgstr "Bagong Window"
+
+#: data/org.gnome.Papers.gschema.xml:14
+msgid "Override document restrictions"
+msgstr "I-override ang mga restriksyon sa dokumento"
+
+#: data/org.gnome.Papers.gschema.xml:15
+msgid "Override document restrictions, like restriction to copy or to print."
+msgstr "I-override ang mga restriksyon sa dokumento, tulad ng restriksyong kumopya o mag-print."
+
+#: data/org.gnome.Papers.gschema.xml:19
+msgid "The URI of the directory last used to open or save a document"
+msgstr "Ang URI ng huling directory na ginamit para magbukas o mag-save ng dokumento"
+
+#: data/org.gnome.Papers.gschema.xml:23
+msgid "The URI of the directory last used to save a picture"
+msgstr "Ang URI ng huling directory na ginamit para mag-save ng larawan"
+
+#: data/org.gnome.Papers.gschema.xml:27
+#, fuzzy
+msgid "Page cache size in MiB"
+msgstr "Laki ng cache sa pahina sa MiB"
+
+#: data/org.gnome.Papers.gschema.xml:28
+msgid "The maximum size that will be used to cache rendered pages, limits maximum zoom level."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:32
+msgid "Allow links to change the zoom level."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:43
+msgid "Check spelling when writing annotation notes or filling text forms."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:47
+msgid "Show a side bar next to the document to help navigate the document."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:60
+msgid "Set the default zoom level to display a document."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:64
+msgid "Display the document as a continuous stream of pages instead of page at a time."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:68
+msgid "Show two pages side by side."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:72
+msgid "Show the first page (odd page) on the left (when displaying two pages side by side)"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
+msgid "Read documents"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
+msgid ""
+"A document viewer for the GNOME desktop. You can view, search or annotate documents in many "
+"different formats."
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
+msgid ""
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, CBT, CBZ, CB7)."
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
+msgid "A clear, simple, and modern UI"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
+msgid "A mobile-friendly UI"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
+msgid "A modern and colorful annotation list"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
+msgid "Big thumbnails in the sidebar"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
+msgid "All search actions are contained in the sidebar"
+msgstr ""
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
+msgid "Print Preview"
+msgstr ""
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:4
+msgid "Preview before printing"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:179 libdocument/backend/comics/comics-document.c:248
+msgid "File is corrupted"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:238
+msgid "Archive is encrypted"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:243
+msgid "No supported images in archive"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:253
+msgid "No files in archive"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:302
+#, c-format
+msgid "Not a comic book MIME type: %s"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:309
+msgid "libarchive lacks support for this comic book’s compression, please contact your distributor"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:348
+msgid "Can not get local path for archive"
+msgstr ""
+
+#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+msgid "Comic Books"
+msgstr ""
+
+#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+msgid "Adds support for reading comic books"
+msgstr ""
+
+#: libdocument/backend/djvu/djvu-document.c:173
+msgid "DjVu document has incorrect format"
+msgstr ""
+
+#: libdocument/backend/djvu/djvu-document.c:263
+msgid "The document is composed of several files. One or more of these files cannot be accessed."
+msgstr ""
+
+#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+msgid "DjVu Documents"
+msgstr ""
+
+#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+msgid "Adds support for reading DjVu documents"
+msgstr ""
+
+#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+msgid "PDF Documents"
+msgstr ""
+
+#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+msgid "Adds support for reading PDF Documents"
+msgstr ""
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:741 libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:336
+msgid "Yes"
+msgstr ""
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:744 libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:337
+msgid "No"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:857
+msgid "Type 1"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:859
+msgid "Type 1C"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:861
+msgid "Type 3"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:863
+msgid "TrueType"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:865
+msgid "Type 1 (CID)"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:867
+msgid "Type 1C (CID)"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:869
+msgid "TrueType (CID)"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:871
+msgid "Unknown font type"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:915
+msgid ""
+"This document contains non-embedded fonts that are not from the PDF Standard 14 fonts. If the "
+"substitute fonts selected by fontconfig are not the same as the fonts used to create the PDF, the "
+"rendering may not be correct."
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:920
+msgid "All fonts are either standard or embedded."
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:956
+msgid "No name"
+msgstr ""
+
+#. translators: When a font type does not have
+#. encoding information or it is unknown.  Example:
+#. Encoding: None
+#.
+#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
+msgid "None"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:973
+msgid "Embedded subset"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:975
+msgid "Embedded"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:977
+msgid "Not embedded"
+msgstr ""
+
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "Type 1 (One of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:984
+msgid " (One of the Standard 14 Fonts)"
+msgstr ""
+
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "TrueType (Not one of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:991
+msgid " (Not one of the Standard 14 Fonts)"
+msgstr ""
+
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * Type 1 (One of the standard 14 Fonts)
+#. * Not embedded
+#. * Substituting with TeXGyreTermes-Regular
+#. * (/usr/share/textmf/.../texgyretermes-regular.otf)
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1010
+#, c-format
+msgid ""
+"%s%s\n"
+"Encoding: %s\n"
+"%s\n"
+"Substituting with <b>%s</b>\n"
+"(%s)"
+msgstr ""
+
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * TrueType (CID)
+#. * Encoding: Custom
+#. * Embedded subset
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1028
+#, c-format
+msgid ""
+"%s%s\n"
+"Encoding: %s\n"
+"%s"
+msgstr ""
+
+#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+msgid "TIFF Documents"
+msgstr ""
+
+#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+msgid "Adds support for reading TIFF documents"
+msgstr ""
+
+#: libdocument/backend/tiff/tiff-document.c:97
+msgid "Invalid document"
+msgstr ""
+
+#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#, c-format
+msgid "Couldn’t save attachment “%s”: %s"
+msgstr ""
+
+#: libdocument/pps-attachment.c:349
+#, c-format
+msgid "Couldn’t open attachment “%s”: %s"
+msgstr ""
+
+#: libdocument/pps-attachment.c:386
+#, c-format
+msgid "Couldn’t open attachment “%s”"
+msgstr ""
+
+#: libdocument/pps-document-factory.c:86
+#, c-format
+msgid "File type %s (%s) is not supported"
+msgstr ""
+
+#: libdocument/pps-document-factory.c:392
+msgid "All Documents"
+msgstr ""
+
+#: libdocument/pps-document-factory.c:420
+msgid "All Files"
+msgstr ""
+
+#. Translate to the default units to use for presenting
+#. * lengths to the user. Translate to default:inch if you
+#. * want inches, otherwise translate to default:mm.
+#. * Do *not* translate it to "predefinito:mm", if it
+#. * it isn't default:mm or default:inch it will not work
+#.
+#: libdocument/pps-document-info.c:198
+msgid "default:mm"
+msgstr ""
+
+#: libdocument/pps-document-info.c:250
+#, c-format
+msgid "%.0f × %.0f mm"
+msgstr ""
+
+#: libdocument/pps-document-info.c:254
+#, c-format
+msgid "%.2f × %.2f inch"
+msgstr ""
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:278
+#, c-format
+msgid "%s, Portrait (%s)"
+msgstr ""
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:285
+#, c-format
+msgid "%s, Landscape (%s)"
+msgstr ""
+
+#: libdocument/pps-file-helpers.c:135
+#, c-format
+msgid "Failed to create a temporary file: %s"
+msgstr ""
+
+#: libdocument/pps-file-helpers.c:358 libdocument/pps-file-helpers.c:404
+#: libdocument/pps-file-helpers.c:413 libdocument/pps-file-helpers.c:494
+#: libdocument/pps-file-helpers.c:503
+msgid "Unknown MIME Type"
+msgstr ""
+
+#: libdocument/pps-xmp.c:188
+msgid "This work is in the Public Domain"
+msgstr ""
+
+#: libview/context/pps-attachment-context.c:349 shell/src/document_view/actions.rs:1042
+msgid "Save Attachment"
+msgid_plural "Save Attachments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
+#, c-format
+msgid "Page %s"
+msgstr ""
+
+#: libview/pps-annotation-window.c:237
+msgid "Edit Note"
+msgstr ""
+
+#: libview/pps-jobs.c:401
+#, c-format
+msgid "Failed to render page %d: %s"
+msgstr ""
+
+#: libview/pps-jobs.c:408
+#, c-format
+msgid "Failed to render page %d"
+msgstr ""
+
+#: libview/pps-jobs.c:627
+#, c-format
+msgid "Failed to create thumbnail for page %d"
+msgstr ""
+
+#: libview/pps-jobs.c:1606
+#, c-format
+msgid "Failed to print page %d: %s"
+msgstr ""
+
+#. Initial state
+#: libview/pps-print-operation.c:331
+msgid "Preparing preview…"
+msgstr ""
+
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
+msgid "Finishing…"
+msgstr ""
+
+#: libview/pps-print-operation.c:335
+#, c-format
+msgid "Generating preview: page %d of %d"
+msgstr ""
+
+#. Initial state
+#: libview/pps-print-operation.c:341
+msgid "Preparing to print…"
+msgstr ""
+
+#: libview/pps-print-operation.c:345
+#, c-format
+msgid "Printing page %d of %d…"
+msgstr ""
+
+#: libview/pps-print-operation.c:1334
+msgid "Invalid Page Selection"
+msgstr ""
+
+#: libview/pps-print-operation.c:1335
+msgid "Your print range selection does not include any pages"
+msgstr ""
+
+#. show close if the certificate is null, or if no cert is found
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-annotation-properties-dialog.blp:78 shell/resources/pps-document-view.blp:558
+#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:602
+msgid "_Close"
+msgstr ""
+
+#. translators: Title of the print dialog
+#: libview/pps-print-operation.c:1413
+msgid "Print"
+msgstr ""
+
+#: libview/pps-print-operation.c:1871
+msgid "Page Scaling:"
+msgstr ""
+
+#: libview/pps-print-operation.c:1879
+msgid "Shrink to Printable Area"
+msgstr ""
+
+#: libview/pps-print-operation.c:1880
+msgid "Fit to Printable Area"
+msgstr ""
+
+#: libview/pps-print-operation.c:1887
+msgid ""
+"Scale document pages to fit the selected printer page. Select from one of the following:\n"
+"\n"
+"• “None”: No page scaling is performed.\n"
+"\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area are reduced to fit "
+"the printable area of the printer page.\n"
+"\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as required to fit the "
+"printable area of the printer page.\n"
+msgstr ""
+
+#: libview/pps-print-operation.c:1898
+msgid "Auto Rotate and Center"
+msgstr ""
+
+#: libview/pps-print-operation.c:1901
+msgid ""
+"Rotate printer page orientation of each page to match orientation of each document page. Document "
+"pages will be centered within the printer page."
+msgstr ""
+
+#: libview/pps-print-operation.c:1905
+msgid "Select page size using document page size"
+msgstr ""
+
+#: libview/pps-print-operation.c:1907
+msgid "When enabled, each page will be printed on the same size paper as the document page."
+msgstr ""
+
+#: libview/pps-print-operation.c:1911
+msgid "Draw border around pages"
+msgstr ""
+
+#: libview/pps-print-operation.c:1913
+msgid "When enabled, a border will be drawn around each page."
+msgstr ""
+
+#: libview/pps-print-operation.c:2006
+msgid "Page Handling"
+msgstr ""
+
+#: libview/pps-view-accessible.c:28
+msgid "Scroll Up"
+msgstr ""
+
+#: libview/pps-view-accessible.c:29
+msgid "Scroll Down"
+msgstr ""
+
+#: libview/pps-view-accessible.c:34
+msgid "Scroll View Up"
+msgstr ""
+
+#: libview/pps-view-accessible.c:35
+msgid "Scroll View Down"
+msgstr ""
+
+#: libview/pps-view-accessible.c:112
+msgid "Document View"
+msgstr ""
+
+#: libview/pps-view.c:2100
+msgid "Go to first page"
+msgstr ""
+
+#: libview/pps-view.c:2102
+msgid "Go to previous page"
+msgstr ""
+
+#: libview/pps-view.c:2104
+msgid "Go to next page"
+msgstr ""
+
+#: libview/pps-view.c:2106
+msgid "Go to last page"
+msgstr ""
+
+#: libview/pps-view.c:2108
+msgid "Go to page"
+msgstr ""
+
+#: libview/pps-view.c:2110
+msgid "Find"
+msgstr ""
+
+#: libview/pps-view.c:2139
+#, c-format
+msgid "Go to page %s"
+msgstr ""
+
+#: libview/pps-view.c:2145
+#, c-format
+msgid "Go to %s on file “%s”"
+msgstr ""
+
+#: libview/pps-view.c:2148
+#, c-format
+msgid "Go to file “%s”"
+msgstr ""
+
+#: libview/pps-view.c:2156
+#, c-format
+msgid "Launch %s"
+msgstr ""
+
+#: libview/pps-view.c:2163
+#, c-format
+msgid "Reset form"
+msgstr ""
+
+#: libview/pps-view-presentation.c:824
+msgid "Running in presentation mode"
+msgstr ""
+
+#: libview/pps-view-presentation.c:875
+msgid "End of presentation. Press Esc or click to exit."
+msgstr ""
+
+#: libview/pps-view-presentation.blp:49
+msgid "Jump to page:"
+msgstr ""
+
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
+#, c-format
+msgid "(%d of %d)"
+msgstr ""
+
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
+#, c-format
+msgid "of %d"
+msgstr ""
+
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
+msgid "Select page"
+msgstr ""
+
+#: previewer/pps-previewer.c:32
+msgid "Delete the temporary file"
+msgstr ""
+
+#: previewer/pps-previewer.c:34
+msgid "File specifying print settings"
+msgstr ""
+
+#: previewer/pps-previewer.c:34
+msgid "FILE"
+msgstr ""
+
+#: previewer/pps-previewer.c:36
+msgid "File descriptor of input file"
+msgstr ""
+
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
+msgid "FD"
+msgstr ""
+
+#: previewer/pps-previewer.c:38
+msgid "MIME type of input file"
+msgstr ""
+
+#: previewer/pps-previewer.c:38
+msgid "TYPE"
+msgstr ""
+
+#: previewer/pps-previewer.c:40
+msgid "File descriptor of print settings file"
+msgstr ""
+
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
+msgid "GNOME Document Previewer"
+msgstr ""
+
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+msgid "Papers Document Viewer"
+msgstr ""
+
+#: previewer/pps-previewer-window.c:209
+#, c-format
+msgid "The selected printer “%s” could not be found"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:19
+msgid "Previous Page"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:25
+msgid "Next Page"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:210
+msgid "Page Count"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:36
+msgid "_Print"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:37
+msgid "Print This Document"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:287
+msgid "Zoom Out"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:55
+msgid "Normal Size"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:275
+msgid "Zoom In"
+msgstr ""
+
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
+msgid "Failed to Print Document"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.c:110 shell/resources/pps-annotation-properties-dialog.blp:51
+#: shell/src/properties_general.rs:338
+msgid "Unknown"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.c:155
+msgid "Document Properties"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
+msgid "Title"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:47
+msgid "Location"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
+msgid "Subject"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:49 shell/resources/pps-annotation-properties-dialog.blp:9
+#: shell/src/properties_general.rs:302
+msgid "Author"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
+msgid "Keywords"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
+msgid "Producer"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
+msgid "Creator"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
+msgid "Created"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
+msgid "Modified"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
+msgid "Number of Pages"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
+msgid "Optimized"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
+msgid "Format"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
+msgid "Security"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
+msgid "Contains Javascript"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
+msgid "Paper Size"
+msgstr ""
+
+#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
+msgid "Size"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:11
+msgctxt "shortcut window"
+msgid "Opening, Closing, Saving and Printing"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:14
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:19
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:24
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:29
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:34
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:39
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:45
+msgctxt "shortcut window"
+msgid "Window"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:48
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:53
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:58
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:63
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:69
+msgctxt "shortcut window"
+msgid "Selecting and Copying Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:72
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:77
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:83
+msgctxt "shortcut window"
+msgid "Rotating and Zooming"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:91
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:106
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:111
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:116
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:121
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:126
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:132
+msgctxt "shortcut window"
+msgid "Moving Around Document"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:135
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:140
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:155
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:160
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:165
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:170
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:175
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:180
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:190
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:196
+msgctxt "shortcut window"
+msgid "Document View and Handling"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:199
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:204
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:209
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:214
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:219
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:224
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:229
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:234
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:239
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:244
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:249
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:254
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:260
+msgctxt "shortcut window"
+msgid "Finding Text"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:263
+msgctxt "shortcut window"
+msgid "Find"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:268
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:273
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:279
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:282
+msgctxt "shortcut window"
+msgid "Help"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:287
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:292
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:297
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:302
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:308
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:311
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:316
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr ""
+
+#: shell/resources/help-overlay.blp:322
+msgctxt "shortcut window"
+msgid "Touchpad Gestures"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:13
+msgid "Color"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:21
+msgid "Opacity"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:33
+msgid "Initially Opened"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:38
+msgid "Icon"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:42
+msgid "Note"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:43
+msgid "Comment"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:44
+msgid "Key"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:45
+msgid "Help"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "New Paragraph"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:47
+msgid "Paragraph"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:48
+msgid "Insert"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:49
+msgid "Cross"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:50
+msgid "Circle"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+msgid "Markup Type"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:64
+msgid "Highlight"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:65
+msgid "Strike out"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:66
+msgid "Underline"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:67
+msgid "Squiggly"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:79
+msgid "_Apply"
+msgstr ""
+
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:76
+msgid "Search"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+msgid "Main Menu"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:110
+msgid "Thumbnails"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:121
+msgid "Outline"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:133
+msgid "Annotations"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:151
+msgid "Attachments"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:167
+msgid "Layers"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:197
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:203
+msgid "Document Menu"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+msgid "Document has been digitally signed."
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:224
+msgid "View Signature…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:257
+msgid "Fit Automatically"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:527
+msgid "Selection too Small"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:528
+msgid ""
+"A signature of this size may be too small to read. If you would like to create a potentially more "
+"readable signature, press `Start over` and draw a bigger rectangle."
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:535
+msgid "Start _Over"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:536
+msgid "_Sign"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:543
+msgid "Abort Printing?"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:544
+msgid ""
+"There is one or more active print jobs. If the window is closed, pending print jobs will not be "
+"printed."
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:548
+msgid "Abort _Print and Close"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
+#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
+#: shell/src/document_view/io.rs:714
+msgid "_Cancel"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:550
+msgid "Close _After Printing"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:565
+msgid "Open…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:572
+msgid "Ni_ght Mode"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
+msgid "_Help"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
+msgid "_About Papers"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:598
+msgid "_Print…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:603
+msgid "Fullscreen"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:608
+msgid "Present as Slideshow"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:615
+msgid "Sign D_igitally…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:622
+msgid "Open a C_opy"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:627 shell/src/properties_general.rs:137
+msgid "Open With…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:632
+msgid "_Save As…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:639
+msgid "_Continuous"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:644
+msgid "_Dual"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:649
+msgid "_Odd Pages Left"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:654
+msgid "Right to Left Document"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:661
+msgid "Ro_tate ⤵"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:668
+msgid "Document Prop_erties"
+msgstr ""
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:706
+msgid "Highlight (h)"
+msgstr ""
+
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:722
+msgid "Strikethrough (k)"
+msgstr ""
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:738
+msgid "Underline (u)"
+msgstr ""
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:754
+msgid "Squiggly (q)"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:845
+msgid "_Open Link"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:851
+msgid "_Copy Link Address"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:857
+msgid "_Go To"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:863
+msgid "Open in New _Window"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:871
+msgid "_Copy"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:876
+msgid "Select _All"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:883
+msgid "_Save Image As…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:889
+msgid "Copy _Image"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:897 shell/resources/pps-sidebar-annotations.blp:72
+msgid "_Open Attachment"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:903 shell/resources/pps-sidebar-annotations.blp:78
+msgid "_Save Attachment As…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:913
+msgid "Annotation _Properties…"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:919
+msgid "R_emove Annotation"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:927
+msgid "_Add Text Annotation"
+msgstr ""
+
+#: shell/resources/pps-find-sidebar.blp:60
+msgid "No Results Found"
+msgstr ""
+
+#: shell/resources/pps-find-sidebar.blp:61
+msgid "Try a different search"
+msgstr ""
+
+#: shell/resources/pps-find-sidebar.blp:74
+msgid "Perform a Search"
+msgstr ""
+
+#: shell/resources/pps-find-sidebar.blp:75
+msgid "The search results will appear here"
+msgstr ""
+
+#: shell/resources/pps-loader-view.blp:15
+msgid "Loading Document"
+msgstr ""
+
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+msgid "C_ancel"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+msgid "Password Required"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:9
+msgid "Cancel"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:10
+msgid "Unlock"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:19
+msgid "Password"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:33
+msgid "Invalid password"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:48
+msgid "Forget password _immediately"
+msgstr ""
+
+#: shell/resources/pps-password-dialog.blp:55
+msgid "Remember _forever"
+msgstr ""
+
+#: shell/resources/pps-password-view.blp:18
+msgid "This document is locked and can only be read by entering the correct password"
+msgstr ""
+
+#: shell/resources/pps-password-view.blp:23
+msgid "_Unlock Document"
+msgstr ""
+
+#: shell/resources/pps-properties-license.blp:19
+msgid "Usage Terms"
+msgstr ""
+
+#: shell/resources/pps-properties-license.blp:52
+msgid "Text License"
+msgstr ""
+
+#: shell/resources/pps-properties-license.blp:79
+msgid "Further Information"
+msgstr ""
+
+#: shell/resources/pps-properties-signatures.blp:32
+msgid "Signature Information"
+msgstr ""
+
+#: shell/resources/pps-properties-signatures.blp:48 shell/src/properties_signatures.rs:405
+msgid "View Details…"
+msgstr ""
+
+#: shell/resources/pps-properties-window.blp:5
+msgid "Properties"
+msgstr ""
+
+#: shell/resources/pps-properties-window.blp:23
+msgid "_Document"
+msgstr ""
+
+#: shell/resources/pps-properties-window.blp:34
+msgid "_Fonts"
+msgstr ""
+
+#: shell/resources/pps-properties-window.blp:43
+msgid "License"
+msgstr ""
+
+#: shell/resources/pps-properties-window.blp:51
+msgid "_Signatures"
+msgstr ""
+
+#: shell/resources/pps-search-box.blp:16
+msgid "Search in document"
+msgstr ""
+
+#: shell/resources/pps-search-box.blp:38
+msgid "Search Options"
+msgstr ""
+
+#: shell/resources/pps-search-box.blp:46
+msgid "_Whole Words Only"
+msgstr ""
+
+#: shell/resources/pps-search-box.blp:51
+msgid "C_ase Sensitive"
+msgstr ""
+
+#: shell/resources/pps-sidebar-annotations.blp:13
+msgid "No Annotations"
+msgstr ""
+
+#: shell/resources/pps-sidebar-annotations.blp:66
+msgid "Remove Annotation"
+msgstr ""
+
+#: shell/resources/pps-sidebar-links.blp:47
+msgid "Collapse all tree"
+msgstr ""
+
+#: shell/resources/pps-sidebar-links.blp:52
+msgid "Expand all tree"
+msgstr ""
+
+#: shell/resources/pps-sidebar-links.blp:57
+msgid "Expand all under this element"
+msgstr ""
+
+#: shell/resources/pps-sidebar-links.blp:64
+msgid "Print this section…"
+msgstr ""
+
+#: shell/resources/pps-sidebar-thumbnails.blp:47
+msgid "Previews"
+msgstr ""
+
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
+msgid "Open a Document"
+msgstr ""
+
+#: shell/resources/pps-window.blp:44
+msgid "Drag and drop documents here"
+msgstr ""
+
+#: shell/resources/pps-window.blp:49
+msgid "_Open…"
+msgstr ""
+
+#: shell/resources/pps-window.blp:71
+msgid "Unable to Open Document"
+msgstr ""
+
+#: shell/resources/pps-window.blp:76
+msgid "_Open Other File…"
+msgstr ""
+
+#: shell/src/application.rs:211
+msgid "© 1996–2025 The Papers authors"
+msgstr ""
+
+#: shell/src/application.rs:212
+msgid "translator-credits"
+msgstr ""
+
+#: shell/src/application.rs:349
+msgid "The page label of the document to display."
+msgstr ""
+
+#: shell/src/application.rs:350
+msgid "PAGE"
+msgstr ""
+
+#: shell/src/application.rs:358
+msgid "The page number of the document to display."
+msgstr ""
+
+#: shell/src/application.rs:359
+msgid "NUMBER"
+msgstr ""
+
+#: shell/src/application.rs:367
+msgid "Named destination to display."
+msgstr ""
+
+#: shell/src/application.rs:368
+msgid "DEST"
+msgstr ""
+
+#: shell/src/application.rs:376
+msgid "Run papers in fullscreen mode."
+msgstr ""
+
+#: shell/src/application.rs:385
+msgid "Run papers in presentation mode."
+msgstr ""
+
+#: shell/src/application.rs:394
+msgid "Show the version of the program."
+msgstr ""
+
+#: shell/src/application.rs:404
+msgid "[FILE…]"
+msgstr ""
+
+#: shell/src/document_view.rs:300
+msgid "View Details"
+msgstr ""
+
+#: shell/src/document_view.rs:705
+msgid "Document contains new or modified annotations and form fields that have been filled out."
+msgstr ""
+
+#: shell/src/document_view.rs:706
+msgid "Document contains form fields that have been filled out."
+msgstr ""
+
+#: shell/src/document_view.rs:707
+msgid "Document contains new or modified annotations."
+msgstr ""
+
+#: shell/src/document_view.rs:715
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr ""
+
+#: shell/src/document_view.rs:716
+msgid "Save Changes to a Copy?"
+msgstr ""
+
+#: shell/src/document_view.rs:725
+msgid "Close _Without Saving"
+msgstr ""
+
+#: shell/src/document_view.rs:727
+msgid "_Save a Copy"
+msgstr ""
+
+#: shell/src/document_view/actions.rs:844
+msgid "Save Image"
+msgstr ""
+
+#: shell/src/document_view/actions.rs:880
+msgid "Couldn’t find appropriate format to save image"
+msgstr ""
+
+#: shell/src/document_view/actions.rs:897
+msgid "The image could not be saved."
+msgstr ""
+
+#: shell/src/document_view/actions.rs:969
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr ""
+
+#: shell/src/document_view/actions.rs:971
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+msgid "Unable to Open Attachment"
+msgstr ""
+
+#: shell/src/document_view/actions.rs:1059
+msgid "The attachment could not be saved."
+msgstr ""
+
+#: shell/src/document_view/io.rs:269
+msgid "Digital Signature is invalid!"
+msgstr ""
+
+#: shell/src/document_view/io.rs:280
+msgid "The Document Contains No Pages"
+msgstr ""
+
+#: shell/src/document_view/io.rs:282
+msgid "The Document Contains Only Empty Pages"
+msgstr ""
+
+#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
+msgid "The file could not be saved as “{}”."
+msgstr ""
+
+#: shell/src/document_view/io.rs:409
+msgid "Save As…"
+msgstr ""
+
+#: shell/src/document_view/io.rs:485
+msgid "Draw a rectangle to insert a signature field"
+msgstr ""
+
+#: shell/src/document_view/io.rs:507
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+
+#: shell/src/document_view/io.rs:523
+msgid "Certificate Required"
+msgstr ""
+
+#: shell/src/document_view/io.rs:526
+msgid "Select signing certificate"
+msgstr ""
+
+#: shell/src/document_view/io.rs:527
+msgid "Select"
+msgstr ""
+
+#: shell/src/document_view/io.rs:600
+msgid "A certificate is required to sign this document"
+msgstr ""
+
+#: shell/src/document_view/io.rs:669
+msgid "Save Signed File"
+msgstr ""
+
+#: shell/src/document_view/io.rs:699
+msgid "Please enter password for {}"
+msgstr ""
+
+#: shell/src/document_view/io.rs:715
+msgid "_Login"
+msgstr ""
+
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
+msgid "Printing job “{}”"
+msgstr ""
+
+#: shell/src/document_view/print.rs:79
+msgid "No pending jobs in queue"
+msgstr ""
+
+#: shell/src/document_view/print.rs:82
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] ""
+msgstr[1] ""
+
+#: shell/src/document_view/signals.rs:226
+msgid "Unable to open external link"
+msgstr ""
+
+#: shell/src/document_view/signals.rs:254
+msgid "Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/sidebar_annotations_row.rs:82
+msgid "Page {}"
+msgstr ""
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr ""
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+msgid "of {}"
+msgstr ""
+
+#: shell/src/password_view.rs:145
+msgid "The document “{}” is locked and requires a password before it can be opened"
+msgstr ""
+
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr ""
+
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr ""
+
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr ""
+
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr ""
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr ""
+
+#: shell/src/properties_general.rs:298
+msgid "Content"
+msgstr ""
+
+#: shell/src/properties_general.rs:314
+msgid "Date &amp; Time"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:138 shell/src/properties_signatures.rs:146
+msgid "Signed by"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:187
+msgid "Signature is valid."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:190
+msgid "Signature is invalid."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:194
+msgid "Document has been changed after signing."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:198
+msgid "Signature could not be decoded."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:202
+msgid "Signature verification error."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:214
+msgid "Signed with a certificate issued by trusted issuer."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:220
+msgid "Signed with a certificate issued by untrusted issuer."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:226
+msgid "Signed with a certificate issued by unknown issuer."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:231
+msgid "Signed with revoked certificate."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:235
+msgid "Signed with expired certificate."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:239
+msgid "Certificate verification error."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:243
+msgid "Certificate has not been verified."
+msgstr ""
+
+#: shell/src/properties_signatures.rs:256
+msgid "Organization"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:265
+msgid "Date and Time"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:276
+msgid "Certificate Issuer"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:287
+msgid "Certificate Issuer's Email"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:298
+msgid "Certificate Issuer's Organization"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:309
+msgid "Certificate's Issuance Time"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:321
+msgid "Certificate's Expiration Time"
+msgstr ""
+
+#: shell/src/properties_signatures.rs:403
+msgid "Hide Details…"
+msgstr ""
