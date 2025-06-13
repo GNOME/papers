@@ -680,7 +680,7 @@ pps_annotation_set_modified_from_time_t (PpsAnnotation *annot,
 {
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (annot);
 	gchar *modified;
-	g_autoptr (GDateTime) dt = g_date_time_new_from_unix_utc ((gint64) utime);
+	g_autoptr (GDateTime) dt = g_date_time_new_from_unix_local ((gint64) utime);
 
 	g_return_val_if_fail (PPS_IS_ANNOTATION (annot), FALSE);
 
