@@ -9,17 +9,17 @@
 # Serdar CICEK <serdar@nerd.com.tr>, 2008.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2013, 2014.
 # Sabri Ünal <yakushabb@gmail.com>, 2014, 2019, 2023-2025.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2016-2025.
 # Muhammet Kara <muhammetk@gmail.com>, 2011-2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2016-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-31 19:45+0000\n"
-"PO-Revision-Date: 2025-05-31 23:53+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"POT-Creation-Date: 2025-06-10 07:48+0000\n"
+"PO-Revision-Date: 2025-06-14 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: previewer/pps-previewer-window.c:472
-#: shell/resources/pps-document-view.blp:81
+#: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
 #: shell/src/application.rs:69 shell/src/application.rs:342
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
@@ -47,7 +47,8 @@ msgstr "Çok sayfalı belgeleri göster"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:6
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
-msgstr "pdf;djvu;tiff;document;presentation;viewer;papers;belge;sunum;görüntüleyici"
+msgstr ""
+"pdf;djvu;tiff;document;presentation;viewer;papers;belge;sunum;görüntüleyici"
 
 #: data/org.gnome.Papers.desktop.in.in:21
 msgid "New Window"
@@ -477,7 +478,7 @@ msgid "This work is in the Public Domain"
 msgstr "Bu çalışma Kamu Malıdır"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1002
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Ekleri Kaydet"
@@ -487,7 +488,7 @@ msgstr[0] "Ekleri Kaydet"
 msgid "Page %s"
 msgstr "%s. Sayfa"
 
-#: libview/pps-annotation-window.c:227
+#: libview/pps-annotation-window.c:237
 msgid "Edit Note"
 msgstr "Notu Düzenle"
 
@@ -546,7 +547,7 @@ msgstr "Yazdırma aralığı seçiminiz herhangi bir sayfa içermiyor"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-annotation-properties-dialog.blp:78
-#: shell/resources/pps-document-view.blp:543 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Kapat"
@@ -650,60 +651,60 @@ msgstr "Görünümü Aşağı Kaydır"
 msgid "Document View"
 msgstr "Belge Görünümü"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2100
 msgid "Go to first page"
 msgstr "İlk sayfaya git"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2102
 msgid "Go to previous page"
 msgstr "Önceki sayfaya git"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2104
 msgid "Go to next page"
 msgstr "Sonraki sayfaya git"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2106
 msgid "Go to last page"
 msgstr "Son sayfaya git"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2108
 msgid "Go to page"
 msgstr "Sayfaya git"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2110
 msgid "Find"
 msgstr "Bul"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2139
 #, c-format
 msgid "Go to page %s"
 msgstr "%s. sayfaya git"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2145
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "“%2$s” dosyasındaki %1$s konumuna git"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2148
 #, c-format
 msgid "Go to file “%s”"
 msgstr "“%s” dosyasına git"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Launch %s"
 msgstr "%s başlat"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2163
 #, c-format
 msgid "Reset form"
 msgstr "Formu sıfırla"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "Sunum kipinde çalışıyor"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Sunumun sonu. Çıkmak için tıklayın veya Escʼye basın."
 
@@ -779,7 +780,7 @@ msgid "Next Page"
 msgstr "Sonraki Sayfa"
 
 #: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:205
+#: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Sayfa Sayısı"
 
@@ -792,7 +793,7 @@ msgid "Print This Document"
 msgstr "Bu Belgeyi Yazdır"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:282
+#: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
@@ -801,7 +802,7 @@ msgid "Normal Size"
 msgstr "Olağan Boyut"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:270
+#: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
@@ -1272,9 +1273,7 @@ msgstr "Çember"
 msgid "Markup Type"
 msgstr "İmleme Türü"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:64
-#: shell/resources/pps-document-view.blp:688
 msgid "Highlight"
 msgstr "Vurgula"
 
@@ -1282,15 +1281,11 @@ msgstr "Vurgula"
 msgid "Strike out"
 msgstr "Üstünü çiz"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:66
-#: shell/resources/pps-document-view.blp:716
 msgid "Underline"
 msgstr "Altını çiz"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-annotation-properties-dialog.blp:67
-#: shell/resources/pps-document-view.blp:730
 msgid "Squiggly"
 msgstr "Dalgalı"
 
@@ -1299,59 +1294,59 @@ msgid "_Apply"
 msgstr "_Uygula"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:72
+#: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Ara"
 
-#: shell/resources/pps-document-view.blp:87 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: shell/resources/pps-document-view.blp:106
+#: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
 msgstr "Küçük Resimler"
 
-#: shell/resources/pps-document-view.blp:117
+#: shell/resources/pps-document-view.blp:121
 msgid "Outline"
 msgstr "Ana Hat"
 
-#: shell/resources/pps-document-view.blp:129
+#: shell/resources/pps-document-view.blp:133
 msgid "Annotations"
 msgstr "Açıklamalar"
 
-#: shell/resources/pps-document-view.blp:146
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "Ekler"
 
-#: shell/resources/pps-document-view.blp:162
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "Katmanlar"
 
-#: shell/resources/pps-document-view.blp:192
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "Kenar Çubuğu Aç/Kapat"
 
-#: shell/resources/pps-document-view.blp:198
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "Belge Menüsü"
 
-#: shell/resources/pps-document-view.blp:218 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Belge sayısal olarak imzalandı."
 
-#: shell/resources/pps-document-view.blp:219
+#: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
 msgstr "İmzayı Görüntüle…"
 
-#: shell/resources/pps-document-view.blp:252
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "Kendiliğinden Sığdır"
 
-#: shell/resources/pps-document-view.blp:512
+#: shell/resources/pps-document-view.blp:527
 msgid "Selection too Small"
 msgstr "Seçim Çok Küçük"
 
-#: shell/resources/pps-document-view.blp:513
+#: shell/resources/pps-document-view.blp:528
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1361,19 +1356,19 @@ msgstr ""
 "oluşturmak istiyorsanız, `Baştan Başla` düğmesine basıp daha büyük bir "
 "dikdörtgen çizin."
 
-#: shell/resources/pps-document-view.blp:520
+#: shell/resources/pps-document-view.blp:535
 msgid "Start _Over"
 msgstr "_Baştan Başla"
 
-#: shell/resources/pps-document-view.blp:521
+#: shell/resources/pps-document-view.blp:536
 msgid "_Sign"
 msgstr "İ_mzala"
 
-#: shell/resources/pps-document-view.blp:528
+#: shell/resources/pps-document-view.blp:543
 msgid "Abort Printing?"
 msgstr "Yazdırma İptal Edilsin Mi?"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:544
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1381,149 +1376,164 @@ msgstr ""
 "Bir ya da daha çok etkin yazdırma işi var. Pencere kapatılırsa, bekleyen "
 "yazdırma işleri yazdırılmayacak."
 
-#: shell/resources/pps-document-view.blp:533
+#: shell/resources/pps-document-view.blp:548
 msgid "Abort _Print and Close"
 msgstr "_Yazdırmayı İptal Et ve Kapat"
 
-#: shell/resources/pps-document-view.blp:534 shell/src/document_view.rs:722
+#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "İ_ptal"
 
-#: shell/resources/pps-document-view.blp:535
+#: shell/resources/pps-document-view.blp:550
 msgid "Close _After Printing"
 msgstr "Yazdırdıktan _Sonra Kapat"
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:565
 msgid "Open…"
 msgstr "Aç…"
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:572
 msgid "Ni_ght Mode"
 msgstr "_Gece Kipi"
 
-#: shell/resources/pps-document-view.blp:564 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: shell/resources/pps-document-view.blp:569 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Yardım"
 
-#: shell/resources/pps-document-view.blp:574 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
 msgid "_About Papers"
 msgstr "Papers _Hakkında"
 
-#: shell/resources/pps-document-view.blp:583
+#: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
 msgstr "Yazdır…"
 
-#: shell/resources/pps-document-view.blp:588
+#: shell/resources/pps-document-view.blp:603
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
-#: shell/resources/pps-document-view.blp:593
+#: shell/resources/pps-document-view.blp:608
 msgid "Present as Slideshow"
 msgstr "Slayt Gösterisi Olarak Sun"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:615
 msgid "Sign D_igitally…"
 msgstr "S_ayısal İmzala…"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:622
 msgid "Open a C_opy"
 msgstr "K_opya Aç"
 
-#: shell/resources/pps-document-view.blp:612
+#: shell/resources/pps-document-view.blp:627
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Birlikte Aç…"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:632
 msgid "_Save As…"
 msgstr "_Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:639
 msgid "_Continuous"
 msgstr "Kesintisi_z"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:644
 msgid "_Dual"
 msgstr "_İkili"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:649
 msgid "_Odd Pages Left"
 msgstr "Tek Sayfalar S_olda"
 
-#: shell/resources/pps-document-view.blp:639
+#: shell/resources/pps-document-view.blp:654
 msgid "Right to Left Document"
 msgstr "Sağdan Sola Belge"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:661
 msgid "Ro_tate ⤵"
 msgstr "Dön_dür ⤵"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:668
 msgid "Document Prop_erties"
 msgstr "B_elge Özellikleri"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:702
-msgid "Strikethrough"
-msgstr "Üstü Çizili"
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:706
+msgid "Highlight (h)"
+msgstr "Vurgula (h)"
 
-#: shell/resources/pps-document-view.blp:821
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:722
+msgid "Strikethrough (k)"
+msgstr "Üstü Çizili (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:738
+msgid "Underline (u)"
+msgstr "Altını çiz (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:754
+msgid "Squiggly (q)"
+msgstr "Dalgalı (q)"
+
+#: shell/resources/pps-document-view.blp:845
 msgid "_Open Link"
 msgstr "_Bağlantı Aç"
 
-#: shell/resources/pps-document-view.blp:827
+#: shell/resources/pps-document-view.blp:851
 msgid "_Copy Link Address"
 msgstr "_Bağlantı Adresini Kopyala"
 
-#: shell/resources/pps-document-view.blp:833
+#: shell/resources/pps-document-view.blp:857
 msgid "_Go To"
 msgstr "_Git"
 
-#: shell/resources/pps-document-view.blp:839
+#: shell/resources/pps-document-view.blp:863
 msgid "Open in New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:871
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: shell/resources/pps-document-view.blp:852
+#: shell/resources/pps-document-view.blp:876
 msgid "Select _All"
 msgstr "Tü_münü Seç"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:883
 msgid "_Save Image As…"
 msgstr "_Resmi Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:889
 msgid "Copy _Image"
 msgstr "Resmi K_opyala"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:897
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "Ekleri _Aç"
 
-#: shell/resources/pps-document-view.blp:879
+#: shell/resources/pps-document-view.blp:903
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "Ekleri _Farklı Kaydet…"
 
-#: shell/resources/pps-document-view.blp:889
+#: shell/resources/pps-document-view.blp:913
 msgid "Annotation _Properties…"
 msgstr "Açıklama _Özellikleri…"
 
-#: shell/resources/pps-document-view.blp:895
+#: shell/resources/pps-document-view.blp:919
 msgid "R_emove Annotation"
 msgstr "Açıklamayı _Kaldır"
 
-#: shell/resources/pps-document-view.blp:903
+#: shell/resources/pps-document-view.blp:927
 msgid "_Add Text Annotation"
 msgstr "Açıklama Metni _Ekle"
 
@@ -1745,11 +1755,11 @@ msgstr "Programın sürümünü göster."
 msgid "[FILE…]"
 msgstr "[DOSYA…]"
 
-#: shell/src/document_view.rs:296
+#: shell/src/document_view.rs:300
 msgid "View Details"
 msgstr "Ayrıntıları Göster"
 
-#: shell/src/document_view.rs:701
+#: shell/src/document_view.rs:705
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1757,59 +1767,59 @@ msgstr ""
 "Belge, yeni ya da değiştirilmiş ek açıklamalar ve doldurulmuş form alanları "
 "içeriyor."
 
-#: shell/src/document_view.rs:702
+#: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
 msgstr "Belge, doldurulmuş form alanları içeriyor."
 
-#: shell/src/document_view.rs:703
+#: shell/src/document_view.rs:707
 msgid "Document contains new or modified annotations."
 msgstr "Belge, yeni ya da değiştirilmiş açıklamalar içeriyor."
 
-#: shell/src/document_view.rs:711
+#: shell/src/document_view.rs:715
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Eğer kopya kaydetmezseniz, değişiklikler tümüyle yitirilecek."
 
-#: shell/src/document_view.rs:712
+#: shell/src/document_view.rs:716
 msgid "Save Changes to a Copy?"
 msgstr "Değişiklikler Kopyaya Kaydedilsin Mi?"
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:725
 msgid "Close _Without Saving"
 msgstr "Kaydet_meden Kapat"
 
-#: shell/src/document_view.rs:723
+#: shell/src/document_view.rs:727
 msgid "_Save a Copy"
 msgstr "_Kopya Kaydet"
 
-#: shell/src/document_view/actions.rs:804
+#: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "Resmi Kaydet"
 
-#: shell/src/document_view/actions.rs:840
+#: shell/src/document_view/actions.rs:880
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Resmi kaydetmek için uygun biçim bulunamadı"
 
-#: shell/src/document_view/actions.rs:857
+#: shell/src/document_view/actions.rs:897
 msgid "The image could not be saved."
 msgstr "Resim kaydedilemedi."
 
-#: shell/src/document_view/actions.rs:929
+#: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "İmleç gezinme kipi etkin, devre dışı bırakmak için F7 tuşuna basın."
 
-#: shell/src/document_view/actions.rs:931
+#: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "İmleç gezinme kipi devre dışı, etkinleştirmek için F7 tuşuna basın."
 
-#: shell/src/document_view/actions.rs:986 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Ek Açılamadı"
 
-#: shell/src/document_view/actions.rs:1019
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "Ek kaydedilemedi."
 
-#: shell/src/document_view/io.rs:265
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "Sayısal İmza geçersiz!"
 
