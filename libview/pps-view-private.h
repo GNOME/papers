@@ -235,4 +235,5 @@ void _pps_view_focus_form_field (PpsView *view,
                                  PpsFormField *field);
 
 void _pps_view_ensure_rectangle_is_visible (PpsView *view,
+                                            gint page,
                                             GdkRectangle *rect);

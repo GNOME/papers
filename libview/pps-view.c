@@ -1078,7 +1078,7 @@ pps_view_scroll (PpsView *view,
 #define MARGIN 5
 
 void
-_pps_view_ensure_rectangle_is_visible (PpsView *view, GdkRectangle *rect)
+_pps_view_ensure_rectangle_is_visible (PpsView *view, gint page, GdkRectangle *rect)
 {
 	GtkAdjustment *adjustment;
 	gdouble adj_value;
@@ -1086,6 +1086,10 @@ _pps_view_ensure_rectangle_is_visible (PpsView *view, GdkRectangle *rect)
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	int widget_width = gtk_widget_get_width (GTK_WIDGET (view));
 	int widget_height = gtk_widget_get_height (GTK_WIDGET (view));
+
+	if (!pps_document_model_get_continuous (priv->model)) {
+		pps_document_model_set_page (priv->model, page);
+	}
 
 	priv->pending_scroll = SCROLL_TO_KEEP_POSITION;
 
@@ -2392,10 +2396,9 @@ _pps_view_set_focused_element (PpsView *view,
 		else
 			cairo_region_union_rectangle (region, &view_rect);
 
-		pps_document_model_set_page (priv->model, page);
 		view_rect.x += scroll_x;
 		view_rect.y += scroll_y;
-		_pps_view_ensure_rectangle_is_visible (view, &view_rect);
+		_pps_view_ensure_rectangle_is_visible (view, page, &view_rect);
 	}
 
 	g_clear_pointer (&region, cairo_region_destroy);
@@ -5791,14 +5794,14 @@ pps_view_move_cursor (PpsView *view,
 		} else if (prev_page > priv->cursor_page) {
 			pps_view_previous_page (view);
 			cursor_go_to_page_end (view);
-			_pps_view_ensure_rectangle_is_visible (view, &rect);
+			_pps_view_ensure_rectangle_is_visible (view, priv->cursor_page, &rect);
 			changed_page = TRUE;
 		}
 
 		if (changed_page) {
 			rect.x += scroll_x;
 			rect.y += scroll_y;
-			_pps_view_ensure_rectangle_is_visible (view, &rect);
+			_pps_view_ensure_rectangle_is_visible (view, priv->cursor_page, &rect);
 			g_signal_emit (view, signals[SIGNAL_CURSOR_MOVED], 0, priv->cursor_page, priv->cursor_offset);
 			clear_selection (view);
 			return TRUE;
@@ -5835,8 +5838,7 @@ pps_view_move_cursor (PpsView *view,
 	rect.x += scroll_x;
 	rect.y += scroll_y;
 
-	pps_document_model_set_page (priv->model, priv->cursor_page);
-	_pps_view_ensure_rectangle_is_visible (view, &rect);
+	_pps_view_ensure_rectangle_is_visible (view, priv->cursor_page, &rect);
 
 	g_signal_emit (view, signals[SIGNAL_CURSOR_MOVED], 0, priv->cursor_page, priv->cursor_offset);
 
@@ -7391,7 +7393,7 @@ jump_to_find_result (PpsView *view, guint page, GList *rect_list)
 	}
 	_pps_view_transform_doc_rect_to_view_rect (view, page,
 	                                           &rect, &view_rect);
-	_pps_view_ensure_rectangle_is_visible (view, &view_rect);
+	_pps_view_ensure_rectangle_is_visible (view, page, &view_rect);
 	if (priv->caret_enabled && pps_document_model_get_rotation (priv->model) == 0)
 		position_caret_cursor_at_doc_point (view, page,
 		                                    find_rect->x1, find_rect->y1);
@@ -7409,7 +7411,6 @@ pps_view_search_result_changed_cb (PpsView *view)
 
 	page = pps_search_result_get_page (result);
 
-	pps_document_model_set_page (priv->model, page);
 	jump_to_find_result (view, page,
 	                     pps_search_result_get_rectangle_list (result));
 }
