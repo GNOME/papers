@@ -6754,9 +6754,9 @@ add_move_binding_keypad (GtkWidgetClass *widget_class,
 }
 
 static gint
-pps_view_mapping_compare (const PpsMapping *a,
-                          const PpsMapping *b,
-                          gpointer user_data)
+pps_view_mapping_compare_data (const PpsMapping *a,
+                               const PpsMapping *b,
+                               gpointer user_data)
 {
 	GtkTextDirection text_direction = GPOINTER_TO_INT (user_data);
 	gint y1 = a->area.y1 + (a->area.y2 - a->area.y1) / 2;
@@ -6773,6 +6773,13 @@ pps_view_mapping_compare (const PpsMapping *a,
 	}
 
 	return (y1 < y2) ? -1 : 1;
+}
+
+static gint
+pps_view_mapping_compare (const PpsMapping *a,
+                          const PpsMapping *b)
+{
+	return pps_view_mapping_compare_data (a, b, (gpointer) GTK_TEXT_DIR_LTR);
 }
 
 static GList *
@@ -6800,7 +6807,7 @@ pps_view_get_sorted_mapping_list (PpsView *view,
 		return NULL;
 
 	mapping_list = g_list_sort_with_data (g_list_reverse (mapping_list),
-	                                      (GCompareDataFunc) pps_view_mapping_compare,
+	                                      (GCompareDataFunc) pps_view_mapping_compare_data,
 	                                      GINT_TO_POINTER (gtk_widget_get_direction (GTK_WIDGET (view))));
 
 	if (direction == GTK_DIR_TAB_BACKWARD)
@@ -6827,7 +6834,7 @@ pps_view_focus_next (PpsView *view,
 		elements = pps_view_get_sorted_mapping_list (view, direction, page);
 
 		if (had_focused_element) {
-			elements = g_list_next (g_list_find (elements, priv->focused_element));
+			elements = g_list_next (g_list_find_custom (elements, priv->focused_element, (GCompareFunc) pps_view_mapping_compare));
 			had_focused_element = FALSE;
 		}
 
