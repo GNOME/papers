@@ -37,6 +37,8 @@ typedef struct _CacheJobInfo {
 	cairo_region_t *selection_region;
 	gdouble selection_region_scale;
 	PpsRectangle selection_region_points;
+
+	PpsRenderAnnotsFlags annot_flags;
 } CacheJobInfo;
 
 struct _PpsPixbufCache {
@@ -252,6 +254,7 @@ copy_job_to_job_info (PpsJobRenderTexture *job_render,
                       PpsPixbufCache *pixbuf_cache)
 {
 	g_set_object (&job_info->texture, job_render->texture);
+	job_info->annot_flags = job_render->annot_flags;
 
 	job_info->points_set = FALSE;
 	if (job_render->include_selection) {
@@ -1288,6 +1291,18 @@ pps_pixbuf_cache_get_selection_list (PpsPixbufCache *pixbuf_cache)
 	}
 
 	return g_list_reverse (retval);
+}
+
+PpsRenderAnnotsFlags
+pps_pixbuf_cache_rendered_state (PpsPixbufCache *pixbuf_cache, gint page)
+{
+	CacheJobInfo *job_info;
+
+	job_info = find_job_cache (pixbuf_cache, page);
+	if (job_info == NULL)
+		return PPS_ANNOTATION_EDITING_STATE_NONE;
+
+	return job_info->annot_flags;
 }
 
 void

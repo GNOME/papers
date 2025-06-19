@@ -58,4 +58,6 @@ void pps_pixbuf_cache_set_selection_list (PpsPixbufCache *pixbuf_cache,
                                           GList *selection_list);
 GList *pps_pixbuf_cache_get_selection_list (PpsPixbufCache *pixbuf_cache);
 
+PpsRenderAnnotsFlags pps_pixbuf_cache_rendered_state (PpsPixbufCache *pixbuf_cache, gint page);
+
 G_END_DECLS
