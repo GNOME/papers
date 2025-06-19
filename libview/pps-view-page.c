@@ -44,6 +44,44 @@ G_DEFINE_TYPE_WITH_PRIVATE (PpsViewPage, pps_view_page, GTK_TYPE_WIDGET)
 
 #define GET_PRIVATE(o) pps_view_page_get_instance_private (o)
 
+enum {
+	PROP_PAGE = 1,
+	PROP_LAST
+};
+static GParamSpec *properties[PROP_LAST];
+
+static void
+pps_view_page_set_property (GObject *object,
+                            guint prop_id,
+                            const GValue *value,
+                            GParamSpec *pspec)
+{
+	PpsViewPage *page = PPS_VIEW_PAGE (object);
+	switch (prop_id) {
+	case PROP_PAGE:
+		pps_view_page_set_page (page, g_value_get_int (value));
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
+static void
+pps_view_page_get_property (GObject *object,
+                            guint prop_id,
+                            GValue *value,
+                            GParamSpec *pspec)
+{
+	PpsViewPage *page = PPS_VIEW_PAGE (object);
+	switch (prop_id) {
+	case PROP_PAGE:
+		g_value_set_int (value, pps_view_page_get_page (page));
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	}
+}
+
 static void
 pps_view_page_measure (GtkWidget *widget,
                        GtkOrientation orientation,
@@ -735,8 +773,20 @@ pps_view_page_class_init (PpsViewPageClass *page_class)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (page_class);
 
 	object_class->dispose = pps_view_page_dispose;
+	object_class->get_property = pps_view_page_get_property;
+	object_class->set_property = pps_view_page_set_property;
 	widget_class->snapshot = pps_view_page_snapshot;
 	widget_class->measure = pps_view_page_measure;
+	properties[PROP_PAGE] =
+	    g_param_spec_int ("page",
+	                      "Page",
+	                      "Current page index",
+	                      -1, G_MAXINT, 0,
+	                      G_PARAM_READWRITE |
+	                          G_PARAM_STATIC_STRINGS);
+	g_object_class_install_property (object_class,
+	                                 PROP_PAGE,
+	                                 properties[PROP_PAGE]);
 }
 
 void
@@ -810,6 +860,8 @@ pps_view_page_set_page (PpsViewPage *page, gint index)
 	}
 
 	priv->had_search_results = FALSE;
+
+	g_object_notify_by_pspec (G_OBJECT (page), properties[PROP_PAGE]);
 
 	gtk_widget_queue_resize (GTK_WIDGET (page));
 }
