@@ -1450,6 +1450,7 @@ pps_view_page_setup (PpsViewPage *page,
 	if (pps_document_model_get_inverted_colors (priv->model))
 		gtk_widget_add_css_class (GTK_WIDGET (page), PPS_STYLE_CLASS_INVERTED);
 
+	g_signal_handlers_disconnect_by_data (view, page);
 	g_signal_connect_object (view,
 	                         "selection-changed",
 	                         G_CALLBACK (view_selection_changed_cb),
