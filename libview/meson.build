@@ -20,6 +20,7 @@ context_headers = files(
 
 factory_headers = files (
   'factory/pps-element-widget-factory.h',
+  'factory/pps-form-widget-factory.h'
 )
 
 headers = files(
@@ -56,6 +57,7 @@ sources = files(
   'context/pps-undo-context.c',
   'context/pps-undo-handler.c',
   'factory/pps-element-widget-factory.c',
+  'factory/pps-form-widget-factory.c',
   'pps-annotation-window.c',
   'pps-colors.c',
   'pps-debug.c',
@@ -67,6 +69,7 @@ sources = files(
   #'pps-link-accessible.c',
   #'pps-page-accessible.c',
   'pps-overlay.c',
+  'pps-form-overlay.c',
   'pps-page-cache.c',
   'pps-pixbuf-cache.c',
   'pps-print-operation.c',

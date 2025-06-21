@@ -36,6 +36,8 @@
 #include "pps-view-marshal.h"
 #include "pps-view-page.h"
 
+#include "factory/pps-form-widget-factory.h"
+
 #if HAVE_LIBSPELLING
 #include <libspelling.h>
 #endif
@@ -136,10 +138,7 @@ static void link_preview_set_thumbnail (GdkTexture *page_surface,
 static void link_preview_job_finished_cb (PpsJobThumbnailTexture *job,
                                           PpsView *view);
 static void link_preview_delayed_show (PpsView *view);
-/*** Forms ***/
-static PpsFormField *pps_view_get_form_field_at_location (PpsView *view,
-                                                          gdouble x,
-                                                          gdouble y);
+
 /*** Media ***/
 static PpsMedia *pps_view_get_media_at_location (PpsView *view,
                                                  gdouble x,
@@ -154,8 +153,6 @@ static void show_annotation_windows (PpsView *view,
                                      gint page);
 static void hide_annotation_windows (PpsView *view,
                                      gint page);
-
-static void pps_view_remove_all_form_fields (PpsView *view);
 
 /*** Drawing ***/
 static void draw_surface (GtkSnapshot *snapshot,
@@ -2289,7 +2286,6 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsLink *link;
-	PpsFormField *field;
 	PpsAnnotation *annot = NULL;
 	PpsMedia *media;
 	gboolean is_link = FALSE;
@@ -2308,14 +2304,6 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 		}
 
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
-	} else if ((field = pps_view_get_form_field_at_location (view, x, y))) {
-		if (field->is_read_only) {
-			pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
-		} else if (PPS_IS_FORM_FIELD_TEXT (field)) {
-			pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
-		} else {
-			pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
-		}
 	} else if ((media = pps_view_get_media_at_location (view, x, y))) {
 		if (!pps_view_find_player_for_media (view, media))
 			pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
@@ -2424,649 +2412,6 @@ _pps_view_set_focused_element (PpsView *view,
 
 	g_clear_pointer (&region, cairo_region_destroy);
 }
-
-/*** Forms ***/
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
-static PpsMapping *
-get_form_field_mapping_at_location (PpsView *view,
-                                    gdouble x,
-                                    gdouble y)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	g_autofree PpsDocumentPoint *doc_point = NULL;
-	PpsMappingList *forms_mapping;
-
-	if (!PPS_IS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)))
-		return NULL;
-
-	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
-	if (!doc_point)
-		return NULL;
-
-	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
-	                                                       doc_point->page_index);
-
-	if (forms_mapping)
-		return pps_mapping_list_get (forms_mapping, &doc_point->point_on_page);
-
-	return NULL;
-}
-
-static PpsFormField *
-pps_view_get_form_field_at_location (PpsView *view,
-                                     gdouble x,
-                                     gdouble y)
-{
-	PpsMapping *field_mapping;
-
-	field_mapping = get_form_field_mapping_at_location (view, x, y);
-
-	return field_mapping ? field_mapping->data : NULL;
-}
-
-static cairo_region_t *
-pps_view_form_field_get_region (PpsView *view,
-                                PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRectangle view_area;
-	PpsMappingList *forms_mapping;
-
-	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
-	                                                       field->page->index);
-	pps_view_get_area_from_mapping (view, field->page->index,
-	                                forms_mapping,
-	                                field, &view_area);
-
-	return cairo_region_create_rectangle (&view_area);
-}
-
-static void
-pps_view_form_field_destroy (GtkWidget *widget,
-                             PpsView *view)
-{
-	g_idle_add_once ((GSourceOnceFunc) pps_view_remove_all_form_fields, view);
-}
-
-static void
-pps_view_form_field_button_toggle (PpsView *view,
-                                   PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsMappingList *forms_mapping;
-	cairo_region_t *region;
-	gboolean state;
-	GList *l;
-	PpsFormFieldButton *field_button = PPS_FORM_FIELD_BUTTON (field);
-
-	if (field_button->type == PPS_FORM_FIELD_BUTTON_PUSH)
-		return;
-
-	state = pps_document_forms_form_field_button_get_state (PPS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)),
-	                                                        field);
-
-	/* FIXME: it actually depends on NoToggleToOff flags */
-	if (field_button->type == PPS_FORM_FIELD_BUTTON_RADIO && state && field_button->state)
-		return;
-
-	region = pps_view_form_field_get_region (view, field);
-
-	/* For radio buttons and checkbox buttons that are in a set
-	 * we need to update also the region for the current selected item
-	 */
-	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
-	                                                       field->page->index);
-
-	for (l = pps_mapping_list_get_list (forms_mapping); l; l = g_list_next (l)) {
-		PpsFormField *button = ((PpsMapping *) (l->data))->data;
-		cairo_region_t *button_region;
-
-		if (button->id == field->id)
-			continue;
-
-		/* FIXME: only buttons in the same group should be updated */
-		if (!PPS_IS_FORM_FIELD_BUTTON (button) ||
-		    PPS_FORM_FIELD_BUTTON (button)->type != field_button->type ||
-		    PPS_FORM_FIELD_BUTTON (button)->state != TRUE)
-			continue;
-
-		button_region = pps_view_form_field_get_region (view, button);
-		cairo_region_union (region, button_region);
-		cairo_region_destroy (button_region);
-	}
-
-	/* Update state */
-	pps_document_forms_form_field_button_set_state (PPS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)),
-	                                                field,
-	                                                !state);
-	field_button->state = !state;
-
-#if 0
-	if (priv->accessible)
-		pps_view_accessible_update_element_state (PPS_VIEW_ACCESSIBLE (priv->accessible),
-							 pps_mapping_list_find (forms_mapping, field),
-							 field->page->index);
-#endif
-
-	pps_view_reload_page (view, field->page->index, region);
-	cairo_region_destroy (region);
-}
-
-static GtkWidget *
-pps_view_form_field_button_create_widget (PpsView *view,
-                                          PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsMappingList *form_mapping;
-	PpsMapping *mapping;
-
-	/* We need to do this focus grab prior to setting the focused element for accessibility */
-	if (!gtk_widget_has_focus (GTK_WIDGET (view)))
-		gtk_widget_grab_focus (GTK_WIDGET (view));
-
-	form_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
-	                                                      field->page->index);
-	mapping = pps_mapping_list_find (form_mapping, field);
-	_pps_view_set_focused_element (view, mapping, field->page->index);
-
-	return NULL;
-}
-
-static void
-pps_view_form_field_text_save (PpsView *view,
-                               GtkWidget *widget)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsFormField *field;
-
-	if (!document)
-		return;
-
-	field = g_object_get_data (G_OBJECT (widget), "form-field");
-
-	if (field->changed) {
-		PpsFormFieldText *field_text = PPS_FORM_FIELD_TEXT (field);
-		cairo_region_t *field_region;
-
-		field_region = pps_view_form_field_get_region (view, field);
-
-		pps_document_forms_form_field_text_set_text (PPS_DOCUMENT_FORMS (document),
-		                                             field, field_text->text);
-		field->changed = FALSE;
-		pps_view_reload_page (view, field->page->index, field_region);
-		cairo_region_destroy (field_region);
-	}
-}
-
-static void
-pps_view_form_field_text_changed (GObject *widget,
-                                  PpsFormField *field)
-{
-	PpsFormFieldText *field_text = PPS_FORM_FIELD_TEXT (field);
-	gchar *text = NULL;
-
-	if (GTK_IS_ENTRY (widget)) {
-		text = g_strdup (gtk_editable_get_text (GTK_EDITABLE (widget)));
-	} else if (GTK_IS_TEXT_BUFFER (widget)) {
-		GtkTextIter start, end;
-
-		gtk_text_buffer_get_bounds (GTK_TEXT_BUFFER (widget), &start, &end);
-		text = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (widget),
-		                                 &start, &end, FALSE);
-	}
-
-	if (!field_text->text ||
-	    (field_text->text && g_ascii_strcasecmp (field_text->text, text) != 0)) {
-		g_free (field_text->text);
-		field_text->text = text;
-		field->changed = TRUE;
-	}
-}
-
-static void
-pps_view_form_field_text_focus_out (GtkEventControllerFocus *self,
-                                    PpsView *view)
-{
-	GtkWidget *widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (self));
-	pps_view_form_field_text_save (view, widget);
-}
-
-static void
-pps_view_form_field_text_button_pressed (GtkGestureClick *self,
-                                         gint n_press,
-                                         gdouble x,
-                                         gdouble y,
-                                         gpointer user_data)
-{
-	gtk_gesture_set_state (GTK_GESTURE (self), GTK_EVENT_SEQUENCE_CLAIMED);
-}
-
-static GtkWidget *
-pps_view_form_field_text_create_widget (PpsView *view,
-                                        PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsFormFieldText *field_text = PPS_FORM_FIELD_TEXT (field);
-	GtkWidget *text = NULL;
-	GtkTextBuffer *buffer = NULL;
-	gchar *txt;
-	GtkEventController *controller;
-#if HAVE_LIBSPELLING
-	g_autoptr (SpellingTextBufferAdapter) adapter = NULL;
-#endif
-
-	txt = pps_document_forms_form_field_text_get_text (PPS_DOCUMENT_FORMS (pps_document_model_get_document (priv->model)),
-	                                                   field);
-
-	switch (field_text->type) {
-	case PPS_FORM_FIELD_TEXT_FILE_SELECT:
-		/* TODO */
-		return NULL;
-	case PPS_FORM_FIELD_TEXT_NORMAL:
-		text = gtk_entry_new ();
-		gtk_entry_set_has_frame (GTK_ENTRY (text), FALSE);
-		/* Remove '.flat' style added by previous call
-		 * gtk_entry_set_has_frame(FALSE) which caused bug #687 */
-		gtk_widget_remove_css_class (text, "flat");
-		gtk_entry_set_max_length (GTK_ENTRY (text), field_text->max_len);
-		gtk_entry_set_visibility (GTK_ENTRY (text), !field_text->is_password);
-
-		if (txt)
-			gtk_editable_set_text (GTK_EDITABLE (text), txt);
-
-		g_signal_connect_after (text, "activate",
-		                        G_CALLBACK (pps_view_form_field_destroy),
-		                        view);
-		g_signal_connect (text, "changed",
-		                  G_CALLBACK (pps_view_form_field_text_changed),
-		                  field);
-		break;
-	case PPS_FORM_FIELD_TEXT_MULTILINE:
-#if HAVE_LIBSPELLING
-		if (priv->enable_spellchecking && field_text->do_spell_check) {
-			text = gtk_source_view_new ();
-			adapter = spelling_text_buffer_adapter_new (
-			    GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (text))),
-			    spelling_checker_get_default ());
-
-			gtk_text_view_set_extra_menu (GTK_TEXT_VIEW (text),
-			                              spelling_text_buffer_adapter_get_menu_model (adapter));
-			gtk_widget_insert_action_group (text, "spelling", G_ACTION_GROUP (adapter));
-			spelling_text_buffer_adapter_set_enabled (adapter, TRUE);
-		} else {
-			text = gtk_text_view_new ();
-		}
-#else
-		text = gtk_text_view_new ();
-#endif
-		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (text));
-
-		if (txt) {
-			gtk_text_buffer_set_text (buffer, txt, -1);
-		}
-
-		g_signal_connect (buffer, "changed",
-		                  G_CALLBACK (pps_view_form_field_text_changed),
-		                  field);
-
-		break;
-	default:
-		g_assert_not_reached ();
-	}
-
-	g_clear_pointer (&txt, g_free);
-
-	controller = GTK_EVENT_CONTROLLER (gtk_event_controller_focus_new ());
-	g_signal_connect (controller, "leave",
-	                  G_CALLBACK (pps_view_form_field_text_focus_out),
-	                  view);
-	gtk_widget_add_controller (text, controller);
-
-	controller = GTK_EVENT_CONTROLLER (gtk_gesture_click_new ());
-	g_signal_connect (controller, "pressed",
-	                  G_CALLBACK (pps_view_form_field_text_button_pressed), NULL);
-	gtk_widget_add_controller (text, controller);
-
-	g_object_weak_ref (G_OBJECT (text),
-	                   (GWeakNotify) pps_view_form_field_text_save,
-	                   view);
-
-	return text;
-}
-
-static void
-pps_view_form_field_choice_save (PpsView *view,
-                                 GtkWidget *widget)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsFormField *field;
-
-	if (!document)
-		return;
-
-	field = g_object_get_data (G_OBJECT (widget), "form-field");
-
-	if (field->changed) {
-		GList *l;
-		PpsFormFieldChoice *field_choice = PPS_FORM_FIELD_CHOICE (field);
-		cairo_region_t *field_region;
-
-		field_region = pps_view_form_field_get_region (view, field);
-
-		if (field_choice->is_editable) {
-			pps_document_forms_form_field_choice_set_text (PPS_DOCUMENT_FORMS (document),
-			                                               field, field_choice->text);
-		} else {
-			pps_document_forms_form_field_choice_unselect_all (PPS_DOCUMENT_FORMS (document), field);
-			for (l = field_choice->selected_items; l; l = g_list_next (l)) {
-				pps_document_forms_form_field_choice_select_item (PPS_DOCUMENT_FORMS (document),
-				                                                  field,
-				                                                  GPOINTER_TO_INT (l->data));
-			}
-		}
-		field->changed = FALSE;
-		pps_view_reload_page (view, field->page->index, field_region);
-		cairo_region_destroy (field_region);
-	}
-}
-
-static void
-pps_view_form_field_choice_changed (GtkWidget *widget,
-                                    PpsFormField *field)
-{
-	PpsFormFieldChoice *field_choice = PPS_FORM_FIELD_CHOICE (field);
-
-	if (GTK_IS_COMBO_BOX (widget)) {
-		gint item;
-
-		item = gtk_combo_box_get_active (GTK_COMBO_BOX (widget));
-		if (item != -1 && (!field_choice->selected_items ||
-		                   GPOINTER_TO_INT (field_choice->selected_items->data) != item)) {
-			g_clear_pointer (&field_choice->selected_items, g_list_free);
-			field_choice->selected_items = g_list_prepend (field_choice->selected_items,
-			                                               GINT_TO_POINTER (item));
-			field->changed = TRUE;
-		}
-
-		if (gtk_combo_box_get_has_entry (GTK_COMBO_BOX (widget))) {
-			const gchar *text;
-
-			text = gtk_editable_get_text (GTK_EDITABLE (gtk_combo_box_get_child (GTK_COMBO_BOX (widget))));
-			if (!field_choice->text ||
-			    (field_choice->text && g_ascii_strcasecmp (field_choice->text, text) != 0)) {
-				g_free (field_choice->text);
-				field_choice->text = g_strdup (text);
-				field->changed = TRUE;
-			}
-		}
-	} else if (GTK_IS_TREE_SELECTION (widget)) {
-		GtkTreeSelection *selection = GTK_TREE_SELECTION (widget);
-		GtkTreeModel *model;
-		GList *items, *l;
-
-		items = gtk_tree_selection_get_selected_rows (selection, &model);
-		g_clear_pointer (&field_choice->selected_items, g_list_free);
-
-		for (l = items; l && l->data; l = g_list_next (l)) {
-			GtkTreeIter iter;
-			GtkTreePath *path = (GtkTreePath *) l->data;
-			gint item;
-
-			gtk_tree_model_get_iter (model, &iter, path);
-			gtk_tree_model_get (model, &iter, 1, &item, -1);
-
-			field_choice->selected_items = g_list_prepend (field_choice->selected_items,
-			                                               GINT_TO_POINTER (item));
-
-			gtk_tree_path_free (path);
-		}
-
-		g_list_free (items);
-
-		field->changed = TRUE;
-	}
-}
-
-typedef struct _PopupShownData {
-	GtkWidget *choice;
-	PpsFormField *field;
-	PpsView *view;
-} PopupShownData;
-
-static void
-pps_view_form_field_choice_popup_shown_real (PopupShownData *data)
-{
-	pps_view_form_field_choice_changed (data->choice, data->field);
-	pps_view_form_field_destroy (data->choice, data->view);
-
-	g_object_unref (data->choice);
-	g_object_unref (data->field);
-	g_free (data);
-}
-
-static void
-pps_view_form_field_choice_popup_shown_cb (GObject *self,
-                                           GParamSpec *pspec,
-                                           PpsView *view)
-{
-	PpsFormField *field;
-	GtkWidget *choice;
-	gboolean shown;
-	PopupShownData *data;
-
-	g_object_get (self, "popup-shown", &shown, NULL);
-	if (shown)
-		return; /* popup is already opened */
-
-	/* Popup has been closed */
-	field = g_object_get_data (self, "form-field");
-	choice = GTK_WIDGET (self);
-
-	data = g_new0 (PopupShownData, 1);
-	data->choice = g_object_ref (choice);
-	data->field = g_object_ref (field);
-	data->view = view;
-	/* We need to use an idle here because combobox "active" item is not updated yet */
-	g_idle_add_once ((GSourceOnceFunc) pps_view_form_field_choice_popup_shown_real,
-	                 (gpointer) data);
-}
-
-static GtkWidget *
-pps_view_form_field_choice_create_widget (PpsView *view,
-                                          PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsFormFieldChoice *field_choice = PPS_FORM_FIELD_CHOICE (field);
-	GtkWidget *choice;
-	GtkTreeModel *model;
-	gint n_items, i;
-	gint selected_item = -1;
-
-	n_items = pps_document_forms_form_field_choice_get_n_items (PPS_DOCUMENT_FORMS (document),
-	                                                            field);
-	model = GTK_TREE_MODEL (gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT));
-	for (i = 0; i < n_items; i++) {
-		GtkTreeIter iter;
-		gchar *item;
-
-		item = pps_document_forms_form_field_choice_get_item (PPS_DOCUMENT_FORMS (document),
-		                                                      field, i);
-		if (pps_document_forms_form_field_choice_is_item_selected (
-			PPS_DOCUMENT_FORMS (document), field, i)) {
-			selected_item = i;
-			/* FIXME: we need a get_selected_items function in poppler */
-			field_choice->selected_items = g_list_prepend (field_choice->selected_items,
-			                                               GINT_TO_POINTER (i));
-		}
-
-		if (item) {
-			gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-			gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-			                    0, item,
-			                    1, i,
-			                    -1);
-			g_free (item);
-		}
-	}
-
-	if (field_choice->type == PPS_FORM_FIELD_CHOICE_LIST) {
-		GtkCellRenderer *renderer;
-		GtkWidget *tree_view;
-		GtkTreeSelection *selection;
-
-		tree_view = gtk_tree_view_new_with_model (model);
-		gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
-
-		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
-		if (field_choice->multi_select) {
-			gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
-		}
-
-		/* TODO: set selected items */
-
-		renderer = gtk_cell_renderer_text_new ();
-		gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
-		                                             0,
-		                                             "choix", renderer,
-		                                             "text", 0,
-		                                             NULL);
-
-		choice = gtk_scrolled_window_new ();
-		gtk_scrolled_window_set_child (GTK_SCROLLED_WINDOW (choice), tree_view);
-
-		g_signal_connect (selection, "changed",
-		                  G_CALLBACK (pps_view_form_field_choice_changed),
-		                  field);
-		g_signal_connect_after (selection, "changed",
-		                        G_CALLBACK (pps_view_form_field_destroy),
-		                        view);
-	} else if (field_choice->is_editable) { /* ComboBoxEntry */
-		GtkEntry *combo_entry;
-		gchar *text;
-
-		choice = gtk_combo_box_new_with_model_and_entry (model);
-		combo_entry = GTK_ENTRY (gtk_combo_box_get_child (GTK_COMBO_BOX (choice)));
-		/* This sets GtkEntry's minimum-width to be 1 char long, short enough
-		 * to workaround gtk issue gtk#1422 . Papers issue #1002 */
-		gtk_editable_set_width_chars (GTK_EDITABLE (combo_entry), 1);
-		gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX (choice), 0);
-
-		text = pps_document_forms_form_field_choice_get_text (PPS_DOCUMENT_FORMS (document), field);
-		if (text) {
-			gtk_editable_set_text (GTK_EDITABLE (combo_entry), text);
-			g_free (text);
-		}
-
-		g_signal_connect (choice, "changed",
-		                  G_CALLBACK (pps_view_form_field_choice_changed),
-		                  field);
-		g_signal_connect_after (gtk_combo_box_get_child (GTK_COMBO_BOX (choice)),
-		                        "activate",
-		                        G_CALLBACK (pps_view_form_field_destroy),
-		                        view);
-	} else { /* ComboBoxText */
-		GtkCellRenderer *renderer;
-
-		choice = gtk_combo_box_new_with_model (model);
-		renderer = gtk_cell_renderer_text_new ();
-		gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (choice),
-		                            renderer, TRUE);
-		gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (choice),
-		                                renderer,
-		                                "text", 0,
-		                                NULL);
-		gtk_combo_box_set_active (GTK_COMBO_BOX (choice), selected_item);
-
-		/* See issue #294 for why we use this instead of "changed" signal */
-		g_signal_connect (choice, "notify::popup-shown",
-		                  G_CALLBACK (pps_view_form_field_choice_popup_shown_cb),
-		                  view);
-	}
-
-	g_object_unref (model);
-
-	g_object_weak_ref (G_OBJECT (choice),
-	                   (GWeakNotify) pps_view_form_field_choice_save,
-	                   view);
-
-	return choice;
-}
-
-void
-_pps_view_focus_form_field (PpsView *view,
-                            PpsFormField *field)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GtkWidget *field_widget = NULL;
-	PpsMappingList *form_field_mapping;
-	PpsMapping *mapping;
-
-	_pps_view_set_focused_element (view, NULL, -1);
-
-	if (field->is_read_only)
-		return;
-
-	if (PPS_IS_FORM_FIELD_BUTTON (field)) {
-		field_widget = pps_view_form_field_button_create_widget (view, field);
-	} else if (PPS_IS_FORM_FIELD_TEXT (field)) {
-		field_widget = pps_view_form_field_text_create_widget (view, field);
-	} else if (PPS_IS_FORM_FIELD_CHOICE (field)) {
-		field_widget = pps_view_form_field_choice_create_widget (view, field);
-	} else if (PPS_IS_FORM_FIELD_SIGNATURE (field)) {
-		/* TODO */
-	}
-
-	/* Form field doesn't require a widget */
-	if (!field_widget) {
-		if (!gtk_widget_has_focus (GTK_WIDGET (view)))
-			gtk_widget_grab_focus (GTK_WIDGET (view));
-		return;
-	}
-
-	gtk_widget_add_css_class (field_widget, "view");
-
-	g_object_set_data_full (G_OBJECT (field_widget), "form-field",
-	                        g_object_ref (field),
-	                        (GDestroyNotify) g_object_unref);
-
-	form_field_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache,
-	                                                            field->page->index);
-	mapping = pps_mapping_list_find (form_field_mapping, field);
-	_pps_view_set_focused_element (view, mapping, field->page->index);
-	pps_view_put (view, field_widget, field->page->index, &mapping->area);
-
-	/* gtk_combo_box_popup do nothing if widget is not mapped. It seems that
-	 * the widget only get mapped after adding to PpsView as child in GTK4.
-	 */
-	if (GTK_IS_COMBO_BOX (field_widget)) {
-		gtk_combo_box_popup (GTK_COMBO_BOX (field_widget));
-	}
-
-	gtk_widget_set_visible (field_widget, TRUE);
-	gtk_widget_grab_focus (field_widget);
-}
-
-static void
-pps_view_handle_form_field (PpsView *view,
-                            PpsFormField *field)
-{
-	if (field->is_read_only)
-		return;
-
-	_pps_view_focus_form_field (view, field);
-
-	if (field->activation_link)
-		pps_view_handle_link (view, field->activation_link);
-
-	if (PPS_IS_FORM_FIELD_BUTTON (field))
-		pps_view_form_field_button_toggle (view, field);
-}
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 /* Media */
 static PpsMapping *
@@ -4286,7 +3631,6 @@ pps_view_set_focused_element_at_location (PpsView *view,
                                           gdouble y)
 {
 	PpsMapping *mapping;
-	PpsFormField *field;
 	gint page;
 
 	mapping = get_annotation_mapping_at_location (view, x, y);
@@ -4299,12 +3643,6 @@ pps_view_set_focused_element_at_location (PpsView *view,
 	mapping = get_link_mapping_at_location (view, x, y, &page);
 	if (mapping) {
 		_pps_view_set_focused_element (view, mapping, page);
-		return;
-	}
-
-	if ((field = pps_view_get_form_field_at_location (view, x, y))) {
-		pps_view_remove_all_form_fields (view);
-		_pps_view_focus_form_field (view, field);
 		return;
 	}
 
@@ -4356,24 +3694,6 @@ get_link_area (PpsView *view,
 	pps_view_get_area_from_mapping (view, page,
 	                                link_mapping,
 	                                link, area);
-}
-
-static void
-get_field_area (PpsView *view,
-                gint x,
-                gint y,
-                PpsFormField *field,
-                GdkRectangle *area)
-{
-	PpsMappingList *field_mapping;
-	gint page;
-	gint x_offset = 0, y_offset = 0;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	find_page_at_location (view, x, y, &page, &x_offset, &y_offset);
-
-	field_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache, page);
-	pps_view_get_area_from_mapping (view, page, field_mapping, field, area);
 }
 
 static void
@@ -4505,7 +3825,6 @@ pps_view_query_tooltip (GtkWidget *widget,
                         GtkTooltip *tooltip)
 {
 	PpsView *view = PPS_VIEW (widget);
-	PpsFormField *field;
 	PpsLink *link;
 	PpsAnnotation *annot;
 	gchar *text;
@@ -4533,21 +3852,6 @@ pps_view_query_tooltip (GtkWidget *widget,
 
 			gtk_tooltip_set_text (tooltip, contents);
 			gtk_tooltip_set_tip_area (tooltip, &view_area);
-
-			return TRUE;
-		}
-	}
-
-	field = pps_view_get_form_field_at_location (view, x, y);
-	if (field != NULL) {
-		gchar *alt_ui_name = pps_form_field_get_alternate_name (field);
-
-		if (alt_ui_name && *(alt_ui_name) != '\0') {
-			GdkRectangle field_area;
-
-			get_field_area (view, x, y, field, &field_area);
-			gtk_tooltip_set_text (tooltip, alt_ui_name);
-			gtk_tooltip_set_tip_area (tooltip, &field_area);
 
 			return TRUE;
 		}
@@ -4786,7 +4090,6 @@ pps_view_button_press_event (GtkGestureClick *self,
 
 	switch (button) {
 	case GDK_BUTTON_PRIMARY: {
-		PpsFormField *field;
 		PpsMapping *link;
 		PpsMedia *media;
 		gint page;
@@ -4820,13 +4123,9 @@ pps_view_button_press_event (GtkGestureClick *self,
 
 		if ((media = pps_view_get_media_at_location (view, x, y))) {
 			pps_view_handle_media (view, media);
-		} else if ((field = pps_view_get_form_field_at_location (view, x, y))) {
-			pps_view_remove_all_form_fields (view);
-			pps_view_handle_form_field (view, field);
 		} else if ((link = get_link_mapping_at_location (view, x, y, &page))) {
 			_pps_view_set_focused_element (view, link, page);
 		} else {
-			pps_view_remove_all_form_fields (view);
 			_pps_view_set_focused_element (view, NULL, -1);
 
 			if (position_caret_cursor_for_event (view, x, y, TRUE)) {
@@ -4954,21 +4253,6 @@ middle_clicked_end_swipe_cb (GtkGestureSwipe *gesture,
 
 	priv->drag_info.release_timeout_id =
 	    g_timeout_add (20, (GSourceFunc) pps_view_scroll_drag_release, view);
-}
-
-static void
-pps_view_remove_all_form_fields (PpsView *view)
-{
-	GtkWidget *child = gtk_widget_get_first_child (GTK_WIDGET (view));
-
-	while (child != NULL) {
-		GtkWidget *next = gtk_widget_get_next_sibling (child);
-
-		if (g_object_get_data (G_OBJECT (child), "form-field"))
-			gtk_widget_unparent (child);
-
-		child = next;
-	}
 }
 
 static void
@@ -5892,28 +5176,6 @@ pps_view_move_cursor (PpsView *view,
 	return TRUE;
 }
 
-static gboolean
-pps_view_activate_form_field (PpsView *view,
-                              PpsFormField *field)
-{
-	gboolean handled = FALSE;
-
-	if (field->is_read_only)
-		return handled;
-
-	if (field->activation_link) {
-		pps_view_handle_link (view, field->activation_link);
-		handled = TRUE;
-	}
-
-	if (PPS_IS_FORM_FIELD_BUTTON (field)) {
-		pps_view_form_field_button_toggle (view, field);
-		handled = TRUE;
-	}
-
-	return handled;
-}
-
 #if 0
 static gboolean
 current_event_is_space_key_press (void)
@@ -5959,12 +5221,6 @@ pps_view_activate (PpsView *view)
 
 	if (!priv->focused_element)
 		return;
-
-	if (PPS_IS_DOCUMENT_FORMS (document) &&
-	    PPS_IS_FORM_FIELD (priv->focused_element->data)) {
-		priv->key_binding_handled = pps_view_activate_form_field (view, PPS_FORM_FIELD (priv->focused_element->data));
-		return;
-	}
 
 	if (PPS_IS_DOCUMENT_LINKS (document) &&
 	    PPS_IS_LINK (priv->focused_element->data)) {
@@ -6264,110 +5520,6 @@ add_move_binding_keypad (GtkWidgetClass *widget_class,
 	                                     step, count, TRUE);
 }
 
-static gint
-pps_view_mapping_compare_data (const PpsMapping *a,
-                               const PpsMapping *b,
-                               gpointer user_data)
-{
-	GtkTextDirection text_direction = GPOINTER_TO_INT (user_data);
-	gint y1 = a->area.y1 + (a->area.y2 - a->area.y1) / 2;
-	gint y2 = b->area.y1 + (b->area.y2 - b->area.y1) / 2;
-
-	if (y1 == y2) {
-		gint x1 = a->area.x1 + (a->area.x2 - a->area.x1) / 2;
-		gint x2 = b->area.x1 + (b->area.x2 - b->area.x1) / 2;
-
-		if (text_direction == GTK_TEXT_DIR_RTL)
-			return (x1 < x2) ? 1 : ((x1 == x2) ? 0 : -1);
-
-		return (x1 < x2) ? -1 : ((x1 == x2) ? 0 : 1);
-	}
-
-	return (y1 < y2) ? -1 : 1;
-}
-
-static gint
-pps_view_mapping_compare (const PpsMapping *a,
-                          const PpsMapping *b)
-{
-	return pps_view_mapping_compare_data (a, b, (gpointer) GTK_TEXT_DIR_LTR);
-}
-
-static GList *
-pps_view_get_sorted_mapping_list (PpsView *view,
-                                  GtkDirectionType direction,
-                                  gint page)
-{
-	GList *mapping_list = NULL, *l;
-	PpsMappingList *forms_mapping;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	forms_mapping = pps_page_cache_get_form_field_mapping (priv->page_cache, page);
-
-	for (l = pps_mapping_list_get_list (forms_mapping); l; l = g_list_next (l)) {
-		PpsMapping *mapping = (PpsMapping *) l->data;
-		PpsFormField *field = (PpsFormField *) mapping->data;
-
-		if (field->is_read_only || PPS_IS_FORM_FIELD_SIGNATURE (field))
-			continue;
-
-		mapping_list = g_list_prepend (mapping_list, mapping);
-	}
-
-	if (!mapping_list)
-		return NULL;
-
-	mapping_list = g_list_sort_with_data (g_list_reverse (mapping_list),
-	                                      (GCompareDataFunc) pps_view_mapping_compare_data,
-	                                      GINT_TO_POINTER (gtk_widget_get_direction (GTK_WIDGET (view))));
-
-	if (direction == GTK_DIR_TAB_BACKWARD)
-		mapping_list = g_list_reverse (mapping_list);
-	return mapping_list;
-}
-
-static gboolean
-pps_view_focus_next (PpsView *view,
-                     GtkDirectionType direction)
-{
-	PpsMapping *focus_element;
-	GList *elements;
-	gboolean had_focused_element = FALSE;
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	guint page = priv->current_page;
-
-	if (priv->focused_element) {
-		page = priv->focused_element_page;
-		had_focused_element = TRUE;
-	}
-
-	do {
-		elements = pps_view_get_sorted_mapping_list (view, direction, page);
-
-		if (had_focused_element) {
-			elements = g_list_next (g_list_find_custom (elements, priv->focused_element, (GCompareFunc) pps_view_mapping_compare));
-			had_focused_element = FALSE;
-		}
-
-		focus_element = elements ? elements->data : NULL;
-		page = (direction == GTK_DIR_TAB_BACKWARD ? go_to_previous_page : go_to_next_page) (view, page);
-	} while (elements == NULL && page != -1);
-
-	g_list_free (elements);
-
-	if (focus_element) {
-		pps_view_remove_all_form_fields (view);
-		_pps_view_focus_form_field (view, PPS_FORM_FIELD (focus_element->data));
-
-		return TRUE;
-	}
-
-	pps_view_remove_all_form_fields (view);
-	_pps_view_set_focused_element (view, NULL, -1);
-
-	return FALSE;
-}
-
 static void
 pps_view_set_focus_child (GtkWidget *widget, GtkWidget *focus_child)
 {
@@ -6523,6 +5675,7 @@ pps_view_class_init (PpsViewClass *class)
 	widget_class->query_tooltip = pps_view_query_tooltip;
 	widget_class->set_focus_child = pps_view_set_focus_child;
 	widget_class->focus = pps_view_focus;
+	widget_class->grab_focus = pps_view_grab_focus;
 
 	gtk_widget_class_set_css_name (widget_class, "pps-view");
 
@@ -6771,6 +5924,8 @@ pps_view_init (PpsView *view)
 
 	adw_animation_pause (priv->scroll_animation_vertical);
 	adw_animation_pause (priv->scroll_animation_horizontal);
+
+	priv->widget_factories[FORM_FACTORY] = pps_form_widget_factory_new ();
 
 	priv->page_widgets = g_ptr_array_new_full (PAGE_WIDGET_POOL_SIZE, (GDestroyNotify) gtk_widget_unparent);
 

@@ -76,6 +76,7 @@ typedef struct
 } SigningInfo;
 
 enum {
+	FORM_FACTORY,
 	WIDGET_FACTORY_COUNT
 };
 
