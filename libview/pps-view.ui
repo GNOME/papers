@@ -25,7 +25,7 @@
     <child>
       <object class="GtkEventControllerScroll">
         <property name="flags">vertical</property>
-        <signal name="scroll" handler="pps_view_scroll_event" />
+        <signal name="scroll" handler="scroll_to_zoom_cb" />
       </object>
     </child>
     <child>
