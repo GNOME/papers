@@ -4090,14 +4090,12 @@ pps_view_size_allocate (GtkWidget *widget,
 }
 
 static gboolean
-pps_view_scroll_event (GtkEventControllerScroll *self, gdouble dx, gdouble dy, GtkWidget *widget)
+scroll_to_zoom_cb (GtkEventControllerScroll *self, gdouble dx, gdouble dy, GtkWidget *widget)
 {
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	guint state;
 	gint x, y;
-
-	pps_view_link_preview_popover_cleanup (view);
 
 	state = gtk_event_controller_get_current_event_state (GTK_EVENT_CONTROLLER (self)) & gtk_accelerator_get_default_mod_mask ();
 
@@ -6451,7 +6449,7 @@ pps_view_class_init (PpsViewClass *class)
 	                                         middle_clicked_drag_update_cb);
 	gtk_widget_class_bind_template_callback (widget_class,
 	                                         middle_clicked_end_swipe_cb);
-	gtk_widget_class_bind_template_callback (widget_class, pps_view_scroll_event);
+	gtk_widget_class_bind_template_callback (widget_class, scroll_to_zoom_cb);
 	gtk_widget_class_bind_template_callback (widget_class, page_swipe_cb);
 	gtk_widget_class_bind_template_callback (widget_class,
 	                                         context_longpress_gesture_pressed_cb);

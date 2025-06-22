@@ -23,7 +23,7 @@ template $PpsView: Widget {
 
   EventControllerScroll {
     flags: vertical;
-    scroll => $pps_view_scroll_event();
+    scroll => $scroll_to_zoom_cb();
   }
 
   EventControllerFocus {
