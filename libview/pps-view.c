@@ -2287,12 +2287,15 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 	PpsFormField *field;
 	PpsAnnotation *annot = NULL;
 	PpsMedia *media;
+	gboolean is_link = FALSE;
 
 	if (gtk_event_controller_get_propagation_phase (priv->signing_drag_gesture) != GTK_PHASE_NONE) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_ADD);
 	} else if (gtk_gesture_is_active (GTK_GESTURE (priv->middle_clicked_drag_gesture))) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_DRAG);
 	} else if ((link = pps_view_get_link_at_location (view, x, y))) {
+		is_link = TRUE;
+
 		if (priv->link_preview.link != link) {
 			priv->link_preview.link = link;
 			find_page_at_location (view, x, y, &priv->link_preview.source_page, NULL, NULL);
@@ -2319,6 +2322,11 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 	} else {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
+	}
+
+	if (!is_link) {
+		priv->link_preview.link = NULL;
+		pps_view_link_preview_popover_cleanup (view);
 	}
 }
 
