@@ -912,32 +912,36 @@ pps_view_page_accessible_text_get_caret_position (GtkAccessibleText *text)
 
 static gboolean
 get_selection_bounds (PpsViewPage          *self,
-		      PpsViewSelection *selection,
 		      gint            *start_offset,
 		      gint            *end_offset)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
 	PpsView *view = PPS_VIEW (gtk_widget_get_parent (GTK_WIDGET (self)));
 	cairo_rectangle_int_t rect;
+	cairo_region_t *region;
 	gint start, end;
 gdouble scale = pps_document_model_get_scale (priv->model);
 
-	if (!selection->covered_region || cairo_region_is_empty (selection->covered_region))
+	region = pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache,
+		                                                priv->index,
+		                                                scale);
+
+if (!region || cairo_region_is_empty (region))
 		return FALSE;
 
-	cairo_region_get_rectangle (selection->covered_region, 0, &rect);
+	cairo_region_get_rectangle (region, 0, &rect);
 	start = _pps_view_get_caret_cursor_offset_at_doc_point (view,
-							       selection->page,
+							       priv->index,
 							       rect.x / scale,
 							       (rect.y + (rect.height / 2)) / scale);
 	if (start == -1)
 		return FALSE;
 
-	cairo_region_get_rectangle (selection->covered_region,
-				    cairo_region_num_rectangles (selection->covered_region) - 1,
+	cairo_region_get_rectangle (region,
+				    cairo_region_num_rectangles (region) - 1,
 				    &rect);
 	end = _pps_view_get_caret_cursor_offset_at_doc_point (view,
-							     selection->page,
+							     priv->index,
 							     (rect.x + rect.width) / scale,
 							     (rect.y + (rect.height / 2)) / scale);
 	if (end == -1)
@@ -955,20 +959,16 @@ gsize             *n_ranges,
 										GtkAccessibleTextRange **ranges)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
-	PpsViewSelection *selection = find_selection_for_page (self);
 
 	*n_ranges = 0;
 
-	if (!selection)
-		return FALSE;
-
 	gint start = 0, end = 0;
-	if (get_selection_bounds (self, selection, &start, &end) && start != end) {
+	if (get_selection_bounds (self, &start, &end) && start != end) {
 		*n_ranges = 1;
 		*ranges = g_new (GtkAccessibleTextRange, 1);
 		(*ranges)[0].start = start;
 		(*ranges)[0].length = end - start;
-		return TRUE;
+											return TRUE;
 	}
 
 	return FALSE;
