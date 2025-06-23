@@ -499,7 +499,15 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	area_rect.height = height;
 
 	/* snap the texture to a physical pixel so it is not blurred */
-	area = GRAPHENE_RECT_INIT (0, 0, ceil (width * fractional_scale), ceil (height * fractional_scale));
+	/* FIXME: it is not clear why a translation of 1 - ceil(fractional_scale) / fractional_scale
+	is necessary, but it seems to be so in practice. It looks like it is important to have
+	a translation of a number in the interval (0, 1) (if fractional_scale is not an integer)
+	so that there is no (widget) pixel on the boundary of two physical pixels. In the future,
+	snapping API in GTK should provide a cleaner solution. */
+	area = GRAPHENE_RECT_INIT (1 - ceil (fractional_scale) / fractional_scale,
+	                           1 - ceil (fractional_scale) / fractional_scale,
+	                           ceil (width * fractional_scale),
+	                           ceil (height * fractional_scale));
 	gtk_snapshot_save (snapshot);
 	gtk_snapshot_scale (snapshot, 1 / fractional_scale, 1 / fractional_scale);
 
