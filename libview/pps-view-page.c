@@ -15,10 +15,9 @@
 
 #include "pps-colors.h"
 #include "pps-debug.h"
-#include "pps-view.h"
 #include "pps-view-private.h"
+#include "pps-view.h"
 #include <gdk/gdk.h>
-
 
 #define PPS_STYLE_CLASS_DOCUMENT_PAGE "document-page"
 #define PPS_STYLE_CLASS_INVERTED "inverted"
@@ -49,9 +48,7 @@ typedef struct
 	gint cursor_offset;
 } PpsViewPagePrivate;
 
-G_DEFINE_TYPE_WITH_CODE (PpsViewPage, pps_view_page, GTK_TYPE_WIDGET,
-	G_ADD_PRIVATE (PpsViewPage)
-G_IMPLEMENT_INTERFACE (GTK_TYPE_ACCESSIBLE_TEXT, pps_view_page_accessible_text_init))
+G_DEFINE_TYPE_WITH_CODE (PpsViewPage, pps_view_page, GTK_TYPE_WIDGET, G_ADD_PRIVATE (PpsViewPage) G_IMPLEMENT_INTERFACE (GTK_TYPE_ACCESSIBLE_TEXT, pps_view_page_accessible_text_init))
 
 #define GET_PRIVATE(o) pps_view_page_get_instance_private (o)
 
@@ -670,9 +667,9 @@ annotation_drag_end_cb (GtkGestureDrag *annotation_drag_gesture,
 
 static void
 view_cursor_moved_cb (PpsView *view,
-							gint cursor_page,
-							gint cursor_offset,
-							PpsViewPage *page)
+                      gint cursor_page,
+                      gint cursor_offset,
+                      PpsViewPage *page)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 	priv->cursor_page = cursor_page;
@@ -700,9 +697,9 @@ view_selection_changed_cb (PpsViewPage *page)
  * broken accessibility implementation w.r.t. sentences.
  */
 static gboolean
-treat_as_soft_return (PpsViewPage       *self,
-		      PangoLogAttr *log_attrs,
-		      gint          offset)
+treat_as_soft_return (PpsViewPage *self,
+                      PangoLogAttr *log_attrs,
+                      gint offset)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
 	PpsRectangle *areas = NULL;
@@ -738,7 +735,8 @@ treat_as_soft_return (PpsViewPage       *self,
 	 * and a newline at the end of a paragraph that is followed by a heading.
 	 */
 	this_line_end = areas + prpps_offset;
-	next_line_start = areas + next_offset;;
+	next_line_start = areas + next_offset;
+	;
 
 	this_line_height = this_line_end->y2 - this_line_end->y1;
 	if (ABS (this_line_height - (next_line_start->y2 - next_line_start->y1)) > 0.25)
@@ -758,17 +756,20 @@ treat_as_soft_return (PpsViewPage       *self,
 	 * and hanging indents (e.g. in the works cited within an academic paper). So we'll
 	 * be somewhat tolerant here.
 	 */
-	for ( ; prpps_offset > 0 && !log_attrs[prpps_offset].is_mandatory_break; prpps_offset--);
+	for (; prpps_offset > 0 && !log_attrs[prpps_offset].is_mandatory_break; prpps_offset--)
+		;
 	this_line_start = areas + prpps_offset;
 	if (ABS (this_line_start->x1 - next_line_start->x1) > 20)
 		return FALSE;
 
 	/* Ditto for x2, but this line might be short due to a wide word on the next line. */
-	for ( ; next_offset < n_areas && !log_attrs[next_offset].is_word_end; next_offset++);
+	for (; next_offset < n_areas && !log_attrs[next_offset].is_word_end; next_offset++)
+		;
 	next_word_end = areas + next_offset;
 	next_word_width = next_word_end->x2 - next_line_start->x1;
 
-	for ( ; next_offset < n_areas && !log_attrs[next_offset + 1].is_mandatory_break; next_offset++);
+	for (; next_offset < n_areas && !log_attrs[next_offset + 1].is_mandatory_break; next_offset++)
+		;
 	next_line_end = areas + next_offset;
 	if (next_line_end->x2 - (this_line_end->x2 + next_word_width) > 20)
 		return FALSE;
@@ -778,13 +779,13 @@ treat_as_soft_return (PpsViewPage       *self,
 
 static gchar *
 get_substring (GtkAccessibleText *text,
-				  unsigned int     start,
-				  unsigned int     end)
+               unsigned int start,
+               unsigned int end)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
 	gchar *substring, *normalized;
-	const gchar* page_text;
+	const gchar *page_text;
 
 	page_text = pps_page_cache_get_text (priv->page_cache, priv->index);
 	if (!page_text)
@@ -802,22 +803,22 @@ get_substring (GtkAccessibleText *text,
 
 static GBytes *
 pps_view_page_accessible_text_get_contents (GtkAccessibleText *text,
-				  unsigned int     start,
-				  unsigned int     end)
+                                            unsigned int start,
+                                            unsigned int end)
 {
 	gchar *substring = get_substring (text, start, end);
 	if (!substring)
 		return g_bytes_new (NULL, 0);
 
-	return g_bytes_new_take(substring, strlen(substring));
+	return g_bytes_new_take (substring, strlen (substring));
 }
 
 static void
-get_range_for_granularity (GtkAccessibleText          *text,
-					    GtkAccessibleTextGranularity  granularity,
-					   unsigned int              offset,
-					   unsigned int             *start_offset,
-					   unsigned int             *end_offset)
+get_range_for_granularity (GtkAccessibleText *text,
+                           GtkAccessibleTextGranularity granularity,
+                           unsigned int offset,
+                           unsigned int *start_offset,
+                           unsigned int *end_offset)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
@@ -842,8 +843,10 @@ get_range_for_granularity (GtkAccessibleText          *text,
 		end = offset + 1;
 		break;
 	case GTK_ACCESSIBLE_TEXT_GRANULARITY_WORD:
-		for (start = offset; start > 0 && !log_attrs[start].is_word_start; start--);
-		for (end = offset + 1; end < n_attrs && !log_attrs[end].is_word_start; end++);
+		for (start = offset; start > 0 && !log_attrs[start].is_word_start; start--)
+			;
+		for (end = offset + 1; end < n_attrs && !log_attrs[end].is_word_start; end++)
+			;
 		break;
 	case GTK_ACCESSIBLE_TEXT_GRANULARITY_SENTENCE:
 		for (start = offset; start > 0; start--) {
@@ -853,20 +856,22 @@ get_range_for_granularity (GtkAccessibleText          *text,
 				break;
 		}
 		for (end = offset + 1; end < n_attrs; end++) {
-		if (log_attrs[end].is_mandatory_break && treat_as_soft_return (self, log_attrs, end - 1))
+			if (log_attrs[end].is_mandatory_break && treat_as_soft_return (self, log_attrs, end - 1))
 				continue;
 			if (log_attrs[end].is_sentence_start)
 				break;
 		}
 		break;
 	case GTK_ACCESSIBLE_TEXT_GRANULARITY_LINE:
-		for (start = offset; start > 0 && !log_attrs[start].is_mandatory_break; start--);
-		for (end = offset + 1; end < n_attrs && !log_attrs[end].is_mandatory_break; end++);
+		for (start = offset; start > 0 && !log_attrs[start].is_mandatory_break; start--)
+			;
+		for (end = offset + 1; end < n_attrs && !log_attrs[end].is_mandatory_break; end++)
+			;
 		break;
 	case GTK_ACCESSIBLE_TEXT_GRANULARITY_PARAGRAPH:
-	/* FIXME: There is likely more than one paragraph on the pag, so try to deduce it properly e*/
-	start = 0;
-	end = n_attrs;
+		/* FIXME: There is likely more than one paragraph on the pag, so try to deduce it properly e*/
+		start = 0;
+		end = n_attrs;
 	}
 
 	*start_offset = start;
@@ -874,13 +879,13 @@ get_range_for_granularity (GtkAccessibleText          *text,
 }
 
 static GBytes *
-pps_view_page_accessible_text_get_contents_at (GtkAccessibleText        *text,
-                                       unsigned int            offset,
-                                       GtkAccessibleTextGranularity granularity,
-                                       unsigned int           *start_offset,
-                                       unsigned int           *end_offset)
+pps_view_page_accessible_text_get_contents_at (GtkAccessibleText *text,
+                                               unsigned int offset,
+                                               GtkAccessibleTextGranularity granularity,
+                                               unsigned int *start_offset,
+                                               unsigned int *end_offset)
 {
-	 gchar *substring;
+	gchar *substring;
 
 	get_range_for_granularity (text, granularity, offset, start_offset, end_offset);
 	substring = get_substring (text, *start_offset, *end_offset);
@@ -891,7 +896,7 @@ pps_view_page_accessible_text_get_contents_at (GtkAccessibleText        *text,
 	 * speech synthesizers tend to pause after the newline char as if it were the end
 	 * of the sentence.
 	 */
-        if (granularity == GTK_ACCESSIBLE_TEXT_GRANULARITY_SENTENCE)
+	if (granularity == GTK_ACCESSIBLE_TEXT_GRANULARITY_SENTENCE)
 		g_strdelimit (substring, "\n", ' ');
 
 	return g_bytes_new_take (substring, strlen (substring));
@@ -911,39 +916,39 @@ pps_view_page_accessible_text_get_caret_position (GtkAccessibleText *text)
 }
 
 static gboolean
-get_selection_bounds (PpsViewPage          *self,
-		      gint            *start_offset,
-		      gint            *end_offset)
+get_selection_bounds (PpsViewPage *self,
+                      gint *start_offset,
+                      gint *end_offset)
 {
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
 	PpsView *view = PPS_VIEW (gtk_widget_get_parent (GTK_WIDGET (self)));
 	cairo_rectangle_int_t rect;
 	cairo_region_t *region;
 	gint start, end;
-gdouble scale = pps_document_model_get_scale (priv->model);
+	gdouble scale = pps_document_model_get_scale (priv->model);
 
 	region = pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache,
-		                                                priv->index,
-		                                                scale);
+	                                                priv->index,
+	                                                scale);
 
-if (!region || cairo_region_is_empty (region))
+	if (!region || cairo_region_is_empty (region))
 		return FALSE;
 
 	cairo_region_get_rectangle (region, 0, &rect);
 	start = _pps_view_get_caret_cursor_offset_at_doc_point (view,
-							       priv->index,
-							       rect.x / scale,
-							       (rect.y + (rect.height / 2)) / scale);
+	                                                        priv->index,
+	                                                        rect.x / scale,
+	                                                        (rect.y + (rect.height / 2)) / scale);
 	if (start == -1)
 		return FALSE;
 
 	cairo_region_get_rectangle (region,
-				    cairo_region_num_rectangles (region) - 1,
-				    &rect);
+	                            cairo_region_num_rectangles (region) - 1,
+	                            &rect);
 	end = _pps_view_get_caret_cursor_offset_at_doc_point (view,
-							     priv->index,
-							     (rect.x + rect.width) / scale,
-							     (rect.y + (rect.height / 2)) / scale);
+	                                                      priv->index,
+	                                                      (rect.x + rect.width) / scale,
+	                                                      (rect.y + (rect.height / 2)) / scale);
 	if (end == -1)
 		return FALSE;
 
@@ -955,8 +960,8 @@ if (!region || cairo_region_is_empty (region))
 
 static gboolean
 pps_view_page_accessible_text_get_selection (GtkAccessibleText *text,
-gsize             *n_ranges,
-										GtkAccessibleTextRange **ranges)
+                                             gsize *n_ranges,
+                                             GtkAccessibleTextRange **ranges)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 
@@ -968,29 +973,29 @@ gsize             *n_ranges,
 		*ranges = g_new (GtkAccessibleTextRange, 1);
 		(*ranges)[0].start = start;
 		(*ranges)[0].length = end - start;
-											return TRUE;
+		return TRUE;
 	}
 
 	return FALSE;
 }
 
 static void
-fill_run_attributes (PangoAttrList   *attrs,
-		    const gchar     *text,
-		    unsigned int             offset,
-		    unsigned int            *start_offset,
-		    unsigned int            *end_offset,
-			GStrvBuilder *names,
-			GStrvBuilder *values)
+fill_run_attributes (PangoAttrList *attrs,
+                     const gchar *text,
+                     unsigned int offset,
+                     unsigned int *start_offset,
+                     unsigned int *end_offset,
+                     GStrvBuilder *names,
+                     GStrvBuilder *values)
 {
-	PangoAttrString   *pango_string;
-	PangoAttrInt      *pango_int;
-	PangoAttrColor    *pango_color;
+	PangoAttrString *pango_string;
+	PangoAttrInt *pango_int;
+	PangoAttrColor *pango_color;
 	PangoAttrIterator *iter;
-	gint               i, start, end;
-	gboolean           has_attrs = FALSE;
-	glong              text_length;
-	gchar             *attr_value;
+	gint i, start, end;
+	gboolean has_attrs = FALSE;
+	glong text_length;
+	gchar *attr_value;
 
 	text_length = g_utf8_strlen (text, -1);
 	if (offset < 0 || offset >= text_length)
@@ -1008,7 +1013,7 @@ fill_run_attributes (PangoAttrList   *attrs,
 			if (end == G_MAXINT) /* Last iterator */
 				end = text_length;
 			*end_offset = g_utf8_pointer_to_offset (text, text + end);
-			 has_attrs = TRUE;
+			has_attrs = TRUE;
 		}
 	} while (!has_attrs && pango_attr_iterator_next (iter));
 
@@ -1039,9 +1044,9 @@ fill_run_attributes (PangoAttrList   *attrs,
 	pango_color = (PangoAttrColor *) pango_attr_iterator_get (iter, PANGO_ATTR_FOREGROUND);
 	if (pango_color) {
 		attr_value = g_strdup_printf ("%u,%u,%u",
-					      pango_color->color.red,
-					      pango_color->color.green,
-					      pango_color->color.blue);
+		                              pango_color->color.red,
+		                              pango_color->color.green,
+		                              pango_color->color.blue);
 		g_strv_builder_add (names, GTK_ACCESSIBLE_ATTRIBUTE_FOREGROUND);
 		g_strv_builder_add (values, attr_value);
 	}
@@ -1051,16 +1056,16 @@ fill_run_attributes (PangoAttrList   *attrs,
 
 static gboolean
 pps_view_page_accessible_text_get_attributes (GtkAccessibleText *text,
-					   unsigned int     offset,
-				       gsize    *n_ranges,
-				       GtkAccessibleTextRange    **ranges,
-					   				       char          ***attribute_names,
-					   char          ***attribute_values)
+                                              unsigned int offset,
+                                              gsize *n_ranges,
+                                              GtkAccessibleTextRange **ranges,
+                                              char ***attribute_names,
+                                              char ***attribute_values)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
 	PangoAttrList *attrs;
-	const gchar   *page_text;
+	const gchar *page_text;
 	unsigned int start_offset = 0;
 	unsigned int end_offset = 0;
 	PpsPageCache *cache = priv->page_cache;
@@ -1079,8 +1084,8 @@ pps_view_page_accessible_text_get_attributes (GtkAccessibleText *text,
 	if (!attrs)
 		goto no_attrs;
 
-	GStrvBuilder *names = g_strv_builder_new() ;
-	GStrvBuilder *values = g_strv_builder_new() ;
+	GStrvBuilder *names = g_strv_builder_new ();
+	GStrvBuilder *values = g_strv_builder_new ();
 	fill_run_attributes (attrs, page_text, offset, &start_offset, &end_offset, names, values);
 	*n_ranges = 1;
 	*ranges = g_new (GtkAccessibleTextRange, 1);
@@ -1092,22 +1097,21 @@ pps_view_page_accessible_text_get_attributes (GtkAccessibleText *text,
 	g_strv_builder_unref (values);
 	if (attribute_names[0] && attribute_names[0][0])
 		return TRUE;
-	else
-	{
+	else {
 		*n_ranges = 0;
 		return FALSE;
-	}	
+	}
 no_attrs:
-		*n_ranges = 0;
-		*attribute_names = g_new0 (char *, 1);
-		*attribute_values = g_new0 (char *, 1);
-		return FALSE;
+	*n_ranges = 0;
+	*attribute_names = g_new0 (char *, 1);
+	*attribute_values = g_new0 (char *, 1);
+	return FALSE;
 }
 
 static void
 pps_view_page_accessible_text_get_default_attributes (GtkAccessibleText *text,
-char ***attribute_names,
-char ***attribute_values)
+                                                      char ***attribute_names,
+                                                      char ***attribute_values)
 {
 	/* No default attributes */
 	*attribute_names = g_new0 (char *, 1);
@@ -1116,10 +1120,10 @@ char ***attribute_values)
 }
 
 static gboolean
-pps_view_page_accessible_text_get_extents (GtkAccessibleText      *text,
-					  unsigned int         start,
-					  unsigned int          end,
-					  graphene_rect_t         *extents)
+pps_view_page_accessible_text_get_extents (GtkAccessibleText *text,
+                                           unsigned int start,
+                                           unsigned int end,
+                                           graphene_rect_t *extents)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
@@ -1142,30 +1146,29 @@ pps_view_page_accessible_text_get_extents (GtkAccessibleText      *text,
 	extents->origin.y = 0;
 	extents->size.width = 0;
 	extents->size.height = 0;
-toplevel = GTK_WIDGET (gtk_widget_get_root (GTK_WIDGET (self)));
-	for (int offset = start; offset <= end; offset++)
-	{
-	doc_rect = areas + offset;
-	doc_rect_to_view_rect (self, doc_rect, &view_rect);
+	toplevel = GTK_WIDGET (gtk_widget_get_root (GTK_WIDGET (self)));
+	for (int offset = start; offset <= end; offset++) {
+		doc_rect = areas + offset;
+		doc_rect_to_view_rect (self, doc_rect, &view_rect);
 
-	if (!gtk_widget_compute_point (GTK_WIDGET (self), toplevel, graphene_point_zero (), &widget_point))
-		return FALSE;
-	view_rect.x += widget_point.x;
-	view_rect.y += widget_point.y;
+		if (!gtk_widget_compute_point (GTK_WIDGET (self), toplevel, graphene_point_zero (), &widget_point))
+			return FALSE;
+		view_rect.x += widget_point.x;
+		view_rect.y += widget_point.y;
 
-	extents->origin.x = MAX (extents->origin.x, view_rect.x);
-	extents->origin.y = MAX (extents->origin.y, view_rect.y);
-	extents->size.width = MAX (extents->size.width, view_rect.width);
-	extents->size.height = MAX (extents->size.height, view_rect.height);
-}
+		extents->origin.x = MAX (extents->origin.x, view_rect.x);
+		extents->origin.y = MAX (extents->origin.y, view_rect.y);
+		extents->size.width = MAX (extents->size.width, view_rect.width);
+		extents->size.height = MAX (extents->size.height, view_rect.height);
+	}
 
 	return TRUE;
 }
 
 static gboolean
-pps_view_page_accessible_text_get_offset (GtkAccessibleText      *text,
-					const graphene_point_t        *point,
-					unsigned int *offset)
+pps_view_page_accessible_text_get_offset (GtkAccessibleText *text,
+                                          const graphene_point_t *point,
+                                          unsigned int *offset)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
