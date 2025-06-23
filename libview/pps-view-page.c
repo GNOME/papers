@@ -1123,7 +1123,6 @@ pps_view_page_accessible_text_get_extents (GtkAccessibleText      *text,
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
-	PpsView *view = PPS_VIEW (gtk_widget_get_parent (GTK_WIDGET (self)));
 	GtkWidget *toplevel;
 	PpsRectangle *areas = NULL;
 	PpsRectangle *doc_rect;
@@ -1147,9 +1146,7 @@ toplevel = GTK_WIDGET (gtk_widget_get_root (GTK_WIDGET (self)));
 	for (int offset = start; offset <= end; offset++)
 	{
 	doc_rect = areas + offset;
-	_pps_view_transform_doc_rect_to_view_rect (view, priv->index, doc_rect, &view_rect);
-	view_rect.x -= pps_view_get_scroll_x (view);
-	view_rect.y -= pps_view_get_scroll_y (view);
+	doc_rect_to_view_rect (self, doc_rect, &view_rect);
 
 	if (!gtk_widget_compute_point (GTK_WIDGET (self), toplevel, graphene_point_zero (), &widget_point))
 		return FALSE;

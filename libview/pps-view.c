@@ -8081,21 +8081,3 @@ pps_view_stop_signature_rect (PpsView *view)
 	g_signal_emit (view, signals[SIGNAL_SIGNATURE_RECT], 0, selection_page, &rect);
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
-
-guint
-pps_view_get_scroll_x (PpsView *view)
-{
-	guint x;
-
-	get_scroll_offset (view, &x, NULL);
-	return x;
-}
-
-guint
-pps_view_get_scroll_y (PpsView *view)
-{
-	guint y;
-
-	get_scroll_offset (view, NULL, &y);
-	return y;
-}

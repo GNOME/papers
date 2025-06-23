@@ -236,6 +236,3 @@ void _pps_view_focus_form_field (PpsView *view,
 
 void _pps_view_ensure_rectangle_is_visible (PpsView *view,
                                             GdkRectangle *rect);
-
-guint pps_view_get_scroll_x (PpsView *view);
-guint pps_view_get_scroll_y (PpsView *view);
