@@ -3522,10 +3522,11 @@ should_draw_caret_cursor (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
+	GtkWidget *focus = gtk_window_get_focus (GTK_WINDOW (gtk_widget_get_root (GTK_WIDGET (view))));
 
 	return (priv->caret_enabled &&
 	        priv->cursor_visible &&
-	        gtk_widget_has_focus (GTK_WIDGET (view)) &&
+	        focus && gtk_widget_get_parent (focus) == GTK_WIDGET (view) &&
 	        !pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache, priv->cursor_page, scale));
 }
 
