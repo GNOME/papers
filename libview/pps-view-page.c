@@ -580,6 +580,8 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 
 	if (pps_debug_get_debug_borders ())
 		draw_debug_borders (snapshot, page, &area_rect);
+
+	GTK_WIDGET_CLASS (pps_view_page_parent_class)->snapshot (widget, snapshot);
 }
 
 static void
