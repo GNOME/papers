@@ -6226,9 +6226,14 @@ pps_view_move_cursor (PpsView *view,
 		end_x = rect.x;
 		end_y = rect.y + rect.height / 2;
 
+		if (!priv->selection_info.selections) {
+			priv->selection_info.start_x = start_x;
+			priv->selection_info.start_y = start_y;
+		}
+
 		compute_selections (view,
 		                    PPS_SELECTION_STYLE_GLYPH,
-		                    start_x, start_y,
+		                    priv->selection_info.start_x, priv->selection_info.start_y,
 		                    end_x, end_y);
 	} else if (clear_selections)
 		clear_selection (view);
