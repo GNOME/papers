@@ -19,7 +19,6 @@ if rust_target == 'release'
 endif
 
 cargo_env = cargo_common_env
-cargo_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
 
 cargo_build = custom_target(
   'cargo-build',
@@ -57,7 +56,6 @@ test_env.set('DYLD_LIBRARY_PATH', pps_library_path)
 test_env.set('LD_LIBRARY_PATH', pps_library_path)
 test_env.set('G_DEBUG', 'fatal-criticals')
 
-meson.add_devenv(cargo_env)
 meson_env = environment()
 meson_env.prepend('PATH', meson.current_build_dir())
 meson.add_devenv(meson_env)

@@ -1,9 +1,3 @@
-configure_file(
-  input: 'config.rs.in',
-  output: 'config.rs',
-  configuration: config_h,
-)
-
 cargo = find_program('cargo', required: true)
 
 cargo_options = [ '--manifest-path', shell_rs_root / 'Cargo.toml' ]
@@ -22,7 +16,13 @@ if enable_spellcheck
 endif
 
 cargo_env = cargo_common_env
-cargo_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
+
+cargo_env.set('PAPERS_RESOURCES_FILE', papers_resources.full_path())
+
+papers_resources_env = environment()
+papers_resources_env.set('PAPERS_RESOURCES_FILE', papers_resources.full_path())
+meson.add_devenv(papers_resources_env)
+
 
 cargo_build = custom_target(
   'cargo-build',
@@ -104,7 +104,6 @@ test(
   timeout: 1800,
 )
 
-meson.add_devenv(cargo_env)
 meson_env = environment()
 meson_env.prepend('PATH', meson.current_build_dir())
 meson.add_devenv(meson_env)

@@ -56,5 +56,3 @@ papers_resources = gnome.compile_resources(
   dependencies: [metainfo_file, blueprints],
   gresource_bundle: true,
 )[0]
-
-config_h.set_quoted('RESOURCES_FILE', papers_resources.full_path())

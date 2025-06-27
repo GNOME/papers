@@ -14,11 +14,17 @@ if gobject_introspection_dep.found() and cargo_fmt.found()
   )
 endif
 
+configure_file(
+  input: 'config.rs.in',
+  output: 'config.rs',
+  configuration: config_h,
+)
 
 # Common environment variables for all rust build targets
 cargo_common_env = environment()
 # it seems that flatpak can't access network during install stage.
 cargo_common_env.set('CARGO_HOME', build_root / 'cargo-home')
+cargo_common_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
 # override library lookup, we should not use the system library.
 cargo_common_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_NO_PKG_CONFIG', '1')
 cargo_common_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_SEARCH_NATIVE', build_root / 'libview')
@@ -43,6 +49,8 @@ endif
 # Setup the debuginfo option from the meson build system
 cargo_common_env.set('CARGO_PROFILE_RELEASE_DEBUG', get_option('debug').to_string())
 cargo_common_env.set('CARGO_PROFILE_DEV_DEBUG', get_option('debug').to_string())
+
+meson.add_devenv(cargo_common_env)
 
 if get_option('optimization') == '0'
   rust_target = 'debug'

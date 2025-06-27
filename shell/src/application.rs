@@ -3,11 +3,11 @@ use crate::deps::*;
 use papers_document::{LinkDest, LinkDestType};
 use papers_view::Job;
 
-use crate::config::RESOURCES_DATA;
-
 use git_version::git_version;
 use std::env;
 use std::ffi::OsString;
+
+const RESOURCES_DATA: &[u8] = include_bytes!(env!("PAPERS_RESOURCES_FILE"));
 
 mod imp {
     use super::*;
