@@ -1,5 +1,5 @@
 if enable_docs
-  docs_dir = get_option('prefix') / get_option('datadir') / 'doc'
+  docs_dir = pps_datadir / 'doc'
 
   toml_conf = configuration_data()
   toml_conf.set('version', meson.project_version())
