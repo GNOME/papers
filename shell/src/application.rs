@@ -225,7 +225,7 @@ mod imp {
                 gtk::micro_version()
             );
 
-            const GIT_COMMIT_ID: &str = git_version!();
+            const GIT_COMMIT_ID: &str = git_version!(fallback = VERSION);
 
             let debug_info = format!(
                 "GNOME Papers ({})\n\n\
