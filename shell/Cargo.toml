@@ -16,12 +16,12 @@ spell-check = []
 [dependencies]
 papers-view.workspace = true
 papers-document.workspace = true
-env_logger = "0.11"
+gtk.workspace = true
+env_logger.workspace = true
+log.workspace = true
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-log = "0.4"
 lru = "0.15"
 futures = "0.3"
-gtk = { workspace = true, features = ["gnome_45"]}
 git-version = "0.3"
 
 [dependencies.oo7]
