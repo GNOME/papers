@@ -1,3 +1,20 @@
+Papers 49.alpha
+----------------
+* Some changes we can highlight:
+  - Improved annotation UI logic (Pablo Correa Gomez)
+  - Better support for fractional scaling (lbaudin)
+  - Performance optimizations for selection (lbaudin)
+  - Migrate to Blueprint (Jamie Gravendeel)
+  - Port thumbnailer to Rust (FineFindus)
+  - Move document mutex locks to the backend (Ahmed Fatthi)
+  - PpsDocumentPoint refactor (Markus Göllnitz)
+  - Add spell checking support for multiline form fields (nibon7)
+  - Various search improvements (Hari Rana)
+  - Add troubleshooting page to the About dialog (Arujjwal Negi)
+
+* Potentially of interest to packaging and other downstreams might be:
+  - The `viewer` meson option is renamed to `shell`
+
 Papers 48.0
 ----------------
 

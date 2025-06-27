@@ -1,6 +1,6 @@
 project(
   'papers', ['c'],
-  version: '48.0',
+  version: '49.alpha',
   license: 'GPL-2.0-or-later',
   meson_version: '>= 0.59.0',
   default_options: [
@@ -41,14 +41,14 @@ pps_mandir = join_paths(pps_prefix, get_option('mandir'))
 # - If the interface is the same as the previous version, change to C:R+1:A
 
 # Libtool version of the backend library
-pps_document_current = 5
+pps_document_current = 6
 pps_document_revision = 0
 pps_document_age = 0
 pps_document_version = '@0@.@1@.@2@'.format(pps_document_current, pps_document_revision, pps_document_age)
 pps_document_current_minus_age = pps_document_current - pps_document_age
 
 # Libtool version of the view library
-pps_view_current = 4
+pps_view_current = 5
 pps_view_revision = 0
 pps_view_age = 0
 pps_view_version = '@0@.@1@.@2@'.format(pps_view_current, pps_view_revision, pps_view_age)
