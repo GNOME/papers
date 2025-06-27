@@ -15,15 +15,9 @@
  *
  */
 
-#include <config.h>
-
-#include <string.h>
-
-#include <glib/gi18n-lib.h>
-#include <nautilus-extension.h>
-#include <papers-document.h>
-
 #include "pps-nautilus-extension.h"
+
+#include <nautilus-extension.h>
 
 static void properties_model_provider_iface_init (NautilusPropertiesModelProviderInterface *iface);
 
