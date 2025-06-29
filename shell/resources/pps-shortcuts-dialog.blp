@@ -1,0 +1,315 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.ShortcutsDialog shortcuts_dialog {
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Opening, Closing, Saving and Printing");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open Document");
+      action-name: "win.open";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open Copy of Current Document");
+      accelerator: "<Ctrl><Shift>N";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open With…");
+      accelerator: "<Ctrl><Shift>O";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Save Copy of Current Document");
+      accelerator: "<Ctrl>S <Ctrl><Shift>S";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Print Current Document");
+      accelerator: "<Ctrl>P";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Close Current Document Window");
+      action-name: "win.close";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Window");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Fullscreen");
+      action-name: "win.fullscreen";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Enter Presentation Mode");
+      action-name: "win.presentation";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Side Pane");
+      accelerator: "F9";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Caret Navigation");
+      accelerator: "F7";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Selecting and Copying Text");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Copy");
+      accelerator: "<Ctrl>C <Ctrl>Insert";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Select All");
+      accelerator: "<Ctrl>A";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Rotating and Zooming");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Rotate Page 90 Degrees Counter-Clockwise");
+      accelerator: "<Ctrl>Left";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Rotate Page 90 Degrees Clockwise");
+      accelerator: "<Ctrl>Right";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Zoom In");
+      accelerator: "<Primary>plus plus";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Zoom Out");
+      accelerator: "<Primary>minus minus";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Normal Size");
+      accelerator: "<Primary>0";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Zoom In (Alternative)");
+      accelerator: "<Primary>equal equal";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Fit Page");
+      accelerator: "f";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Fit Width");
+      accelerator: "w";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Automatic Zoom");
+      accelerator: "a";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Moving Around Document");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Move Around Page");
+      accelerator: "Left Up Down Right";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Move Up/Down Page Several Lines");
+      accelerator: "Page_Up Page_Down";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Previous Page");
+      accelerator: "p <Ctrl>Page_Up";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Next Page");
+      accelerator: "n <Ctrl>Page_Down";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Go to Page Number");
+      accelerator: "<Ctrl>L";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Previous Page (Fast)");
+      accelerator: "<Shift>Page_Up";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Next Page (Fast)");
+      accelerator: "<Shift>Page_Down";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Previous Visited Page");
+      accelerator: "<alt>P Back";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Next Visited Page");
+      accelerator: "<alt>N Forward";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Go to Page Beginning/End");
+      accelerator: "Home End";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Go to Document Start");
+      accelerator: "<Primary>Home";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Go to Document End");
+      accelerator: "<Primary>End";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Document View and Handling");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Add Bookmark");
+      accelerator: "<Ctrl>d";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Remove Bookmark");
+      accelerator: "<Ctrl><Shift>d";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Night Mode");
+      action-name: "win.night-mode";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Continuous Scrolling");
+      accelerator: "c";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Dual Page");
+      accelerator: "d";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Odd Pages Left");
+      accelerator: "o";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Document Properties");
+      accelerator: "<Alt>Return";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Add Text Annotation");
+      accelerator: "S";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Highlight Text");
+      accelerator: "h";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Strikethrough Text");
+      accelerator: "k";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Wavy/Squiggly Underline Text");
+      accelerator: "q";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Underline Text");
+      accelerator: "u";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Finding Text");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Find");
+      accelerator: "<Primary>F slash";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Find Next");
+      accelerator: "<Ctrl>G F3";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Find Previous");
+      accelerator: "<Ctrl><Shift>G <Shift>F3";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "General");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Help");
+      action-name: "app.help";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Menu");
+      accelerator: "F10";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Keyboard Shortcuts");
+      action-name: "app.shortcuts";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "New Window");
+      action-name: "app.new";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Close Window");
+      action-name: "win.close";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Presentation Mode");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Black Screen");
+      accelerator: "b period";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "White Screen");
+      accelerator: "w";
+    }
+  }
+}

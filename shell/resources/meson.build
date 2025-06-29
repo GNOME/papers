@@ -2,7 +2,6 @@ resources_conf = configuration_data()
 resources_conf.set('APP_ID', app_id)
 
 blueprint_sources = [
-  'help-overlay.blp',
   'pps-annotation-properties-dialog.blp',
   'pps-document-view.blp',
   'pps-find-sidebar.blp',
@@ -16,6 +15,7 @@ blueprint_sources = [
   'pps-properties-signatures.blp',
   'pps-properties-window.blp',
   'pps-search-box.blp',
+  'pps-shortcuts-dialog.blp',
   'pps-sidebar-annotations-row.blp',
   'pps-sidebar-annotations.blp',
   'pps-sidebar-attachments.blp',
