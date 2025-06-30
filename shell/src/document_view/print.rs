@@ -78,10 +78,11 @@ impl imp::PpsDocumentView {
             }
             1 => area.set_secondary_text(gettext("No pending jobs in queue")),
             n => {
-                let text = gettextrs::ngettext(
+                let text = ngettext_f(
                     "{} pending job in queue",
                     "{} pending jobs in queue",
                     n as u32 - 1,
+                    [n.to_string()],
                 );
                 area.set_secondary_text(text);
             }
