@@ -21,7 +21,8 @@ context_headers = files(
 
 factory_headers = files (
   'factory/pps-element-widget-factory.h',
-  'factory/pps-form-widget-factory.h'
+  'factory/pps-form-widget-factory.h',
+  'factory/pps-annotation-widget-factory.h'
 )
 
 headers = files(
@@ -58,6 +59,7 @@ sources = files(
   'context/pps-search-result.c',
   'context/pps-undo-context.c',
   'context/pps-undo-handler.c',
+  'factory/pps-annotation-widget-factory.c',
   'factory/pps-element-widget-factory.c',
   'factory/pps-form-widget-factory.c',
   'pps-annotation-window.c',

@@ -77,6 +77,7 @@ typedef struct
 
 enum {
 	FORM_FACTORY,
+	ANNOT_FACTORY,
 	WIDGET_FACTORY_COUNT
 };
 

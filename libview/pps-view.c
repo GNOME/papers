@@ -36,6 +36,7 @@
 #include "pps-view-marshal.h"
 #include "pps-view-page.h"
 
+#include "factory/pps-annotation-widget-factory.h"
 #include "factory/pps-form-widget-factory.h"
 
 #if HAVE_LIBSPELLING
@@ -6016,6 +6017,7 @@ pps_view_init (PpsView *view)
 	adw_animation_pause (priv->scroll_animation_horizontal);
 
 	priv->widget_factories[FORM_FACTORY] = pps_form_widget_factory_new ();
+	priv->widget_factories[ANNOT_FACTORY] = pps_annotation_widget_factory_new ();
 
 	priv->page_widgets = g_ptr_array_new_full (PAGE_WIDGET_POOL_SIZE, (GDestroyNotify) gtk_widget_unparent);
 
