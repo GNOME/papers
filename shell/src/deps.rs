@@ -40,6 +40,7 @@ pub use log::{debug, warn};
 pub use crate::config::*;
 pub use crate::i18n::gettext_f;
 pub use crate::i18n::gettext_fd;
+pub use crate::i18n::ngettext_f;
 pub use crate::window::WindowRunMode;
 
 // All widget types
