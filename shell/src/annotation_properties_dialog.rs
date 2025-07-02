@@ -52,7 +52,7 @@ mod imp {
     impl ObjectSubclass for PpsAnnotationPropertiesDialog {
         const NAME: &'static str = "PpsAnnotationPropertiesDialog";
         type Type = super::PpsAnnotationPropertiesDialog;
-        type ParentType = adw::AlertDialog;
+        type ParentType = adw::Dialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -64,14 +64,17 @@ mod imp {
         }
     }
 
-    impl AdwAlertDialogImpl for PpsAnnotationPropertiesDialog {}
-
     impl AdwDialogImpl for PpsAnnotationPropertiesDialog {}
 
     impl WidgetImpl for PpsAnnotationPropertiesDialog {}
 
     #[glib::derived_properties]
-    impl ObjectImpl for PpsAnnotationPropertiesDialog {}
+    impl ObjectImpl for PpsAnnotationPropertiesDialog {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
+            SIGNALS.get_or_init(|| vec![Signal::builder("changed").run_last().action().build()])
+        }
+    }
 
     impl PpsAnnotationPropertiesDialog {
         fn set_annotation(&self, annot: &Annotation) {
@@ -152,15 +155,15 @@ mod imp {
     #[gtk::template_callbacks]
     impl PpsAnnotationPropertiesDialog {
         #[template_callback]
-        fn cancel_clicked(&self) {
-            self.obj().emit_by_name::<()>("cancel", &[]);
+        fn property_changed(&self) {
+            self.obj().emit_by_name::<()>("changed", &[]);
         }
     }
 }
 
 glib::wrapper! {
     pub struct PpsAnnotationPropertiesDialog(ObjectSubclass<imp::PpsAnnotationPropertiesDialog>)
-        @extends gtk::Widget, adw::AlertDialog, adw::Dialog;
+        @extends gtk::Widget, adw::Dialog;
 }
 
 impl PpsAnnotationPropertiesDialog {

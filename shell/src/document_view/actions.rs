@@ -948,15 +948,15 @@ impl imp::PpsDocumentView {
 
         let dialog = PpsAnnotationPropertiesDialog::new(&annot);
 
-        dialog.connect_response(
-            Some("apply"),
-            glib::clone!(
+        dialog.connect_closure(
+            "changed",
+            true,
+            glib::closure_local!(
                 #[weak(rename_to = obj)]
                 self,
-                move |dialog, _| obj.annot_properties_dialog_response(dialog)
+                move |dialog| { obj.annot_properties_dialog_response(dialog) }
             ),
         );
-
         dialog.present(Some(self.obj().as_ref()));
     }
 
