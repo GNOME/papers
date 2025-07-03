@@ -214,7 +214,7 @@ impl imp::PpsDocumentView {
             glib::filename_to_uri(path, None).unwrap().to_string()
         };
 
-        debug!("Launch external uri: {}", uri);
+        debug!("Launch external uri: {uri}");
 
         glib::spawn_future_local(glib::clone!(
             #[weak(rename_to = obj)]

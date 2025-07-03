@@ -1158,7 +1158,7 @@ mod imp {
                 return;
             };
 
-            debug!("Launch external uri: {}", uri);
+            debug!("Launch external uri: {uri}");
 
             glib::spawn_future_local(glib::clone!(
                 #[weak(rename_to = obj)]
