@@ -48,14 +48,14 @@ mod imp {
 
         fn load_metadata(&mut self, metadata: &Metadata) {
             if let Some(collapse) = metadata.string(Self::KEY_COLLAPSE) {
-                debug!("load collapse string: {}", collapse);
+                debug!("load collapse string: {collapse}");
                 for path in PathData::parse_tree_paths(&collapse) {
                     self.collapse.insert(path);
                 }
             }
 
             if let Some(expand) = metadata.string(Self::KEY_EXPAND) {
-                debug!("load expand string: {}", expand);
+                debug!("load expand string: {expand}");
                 for path in PathData::parse_tree_paths(&expand) {
                     self.expand.insert(path);
                 }
@@ -121,7 +121,7 @@ mod imp {
         }
 
         fn expand(&mut self, path: &TreePath) {
-            debug!("expand: {}", path);
+            debug!("expand: {path}");
             self.collapse_remove(path);
 
             if !self.expand_by_producer.contains(path) {
@@ -130,14 +130,14 @@ mod imp {
         }
 
         fn expand_by_producer(&mut self, path: &TreePath) {
-            debug!("expand by producer: {}", path);
+            debug!("expand by producer: {path}");
             self.collapse_remove(path);
             self.expand_remove(path);
             self.expand_by_producer.insert(path.clone());
         }
 
         fn collapse(&mut self, path: &TreePath) {
-            debug!("collapse: {}", path);
+            debug!("collapse: {path}");
             if self.expand_by_producer.contains(path) {
                 self.collapse_insert(path);
             } else {
@@ -227,7 +227,7 @@ mod imp {
             }
 
             if row.is_expanded() {
-                debug!("collapse tree list model: {}", self);
+                debug!("collapse tree list model: {self}");
                 row.set_expanded(false);
             }
         }
