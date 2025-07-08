@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: evince.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-06-10 05:40+0000\n"
-"PO-Revision-Date: 2025-06-10 08:43+0300\n"
+"POT-Creation-Date: 2025-07-08 03:16+0000\n"
+"PO-Revision-Date: 2025-07-08 11:24+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:342
+#: shell/src/application.rs:69 shell/src/application.rs:354
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
 msgstr "מסמכים"
@@ -235,14 +235,14 @@ msgstr "הוספת תמיכה לקריאת מסמכי PDF"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "כן"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "לא"
 
@@ -472,7 +472,7 @@ msgid "This work is in the Public Domain"
 msgstr "יצירה זו היא לרשות הציבור"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1020
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "שמירת צרופה"
@@ -543,7 +543,6 @@ msgstr "בחירת טווח ההדפסה שלך אינו כולל עמודים �
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-annotation-properties-dialog.blp:78
 #: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
@@ -643,51 +642,51 @@ msgstr "גלילת התצוגה למטה"
 msgid "Document View"
 msgstr "תצוגת מסמך"
 
-#: libview/pps-view.c:2100
+#: libview/pps-view.c:2105
 msgid "Go to first page"
 msgstr "מעבר לעמוד הראשון"
 
-#: libview/pps-view.c:2102
+#: libview/pps-view.c:2107
 msgid "Go to previous page"
 msgstr "מעבר לעמוד הקודם"
 
-#: libview/pps-view.c:2104
+#: libview/pps-view.c:2109
 msgid "Go to next page"
 msgstr "מעבר לעמוד הבא"
 
-#: libview/pps-view.c:2106
+#: libview/pps-view.c:2111
 msgid "Go to last page"
 msgstr "מעבר לעמוד האחרון"
 
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2113
 msgid "Go to page"
 msgstr "מעבר לעמוד"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2115
 msgid "Find"
 msgstr "חיפוש"
 
-#: libview/pps-view.c:2139
+#: libview/pps-view.c:2144
 #, c-format
 msgid "Go to page %s"
 msgstr "מעבר לעמוד %s"
 
-#: libview/pps-view.c:2145
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "מעבר ל־%s בקובץ „%s“"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to file “%s”"
 msgstr "מעבר לקובץ „%s“"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2161
 #, c-format
 msgid "Launch %s"
 msgstr "שיגור %s"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Reset form"
 msgstr "איפוס טופס"
@@ -798,84 +797,84 @@ msgstr "גודל _רגיל"
 msgid "Zoom In"
 msgstr "להתקרב"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:106
 msgid "Failed to Print Document"
 msgstr "הדפסת המסמך נכשלה"
 
-#: nautilus/pps-nautilus-extension.c:110
-#: shell/resources/pps-annotation-properties-dialog.blp:51
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: nautilus/pps-nautilus-extension.c:155
+#: nautilus/pps-nautilus-extension.c:149
 msgid "Document Properties"
 msgstr "מאפייני מסמך"
 
-#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "כותרת"
 
-#: nautilus/pps-nautilus-extension.h:47
+#: nautilus/pps-nautilus-extension.h:46
 msgid "Location"
 msgstr "מיקום"
 
-#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "נושא"
 
-#: nautilus/pps-nautilus-extension.h:49
-#: shell/resources/pps-annotation-properties-dialog.blp:9
+#: nautilus/pps-nautilus-extension.h:48
+#: shell/resources/pps-annotation-properties-dialog.blp:85
 #: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "יוצר או יוצרת"
 
-#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "מילות מפתח"
 
-#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "יצרן"
 
-#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "יוצר"
 
-#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "נוצר"
 
-#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "‏השתנה"
 
-#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
 msgstr "מספר עמודים"
 
-#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "‏הוטב"
 
-#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
 #: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "תבנית"
 
-#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "אבטחה"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
 msgstr "מכילים Javascript"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "‏גודל דף"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "גודל"
 
@@ -1205,85 +1204,85 @@ msgid "Touchpad Gestures"
 msgstr "מחוות משטח מגע"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:5
-#: shell/resources/pps-sidebar-annotations.blp:60
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "מאפייני הפרשנות"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:13
+#: shell/resources/pps-annotation-properties-dialog.blp:18
 msgid "Color"
 msgstr "צבע"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:21
+#: shell/resources/pps-annotation-properties-dialog.blp:31
 msgid "Opacity"
 msgstr "אטימות"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:33
-msgid "Initially Opened"
-msgstr "נפתח לראשונה"
-
-#: shell/resources/pps-annotation-properties-dialog.blp:38
+#: shell/resources/pps-annotation-properties-dialog.blp:46
 msgid "Icon"
 msgstr "סמל"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:42
+#: shell/resources/pps-annotation-properties-dialog.blp:50
 msgid "Note"
 msgstr "פתקית"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:43
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Comment"
 msgstr "הערה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:44
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Key"
 msgstr "מפתח"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:45
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Help"
 msgstr "עזרה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:46
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "New Paragraph"
 msgstr "פסקה חדשה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:47
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "Paragraph"
 msgstr "פסקה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:48
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Insert"
 msgstr "הוספה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:49
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Cross"
 msgstr "צלב"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:50
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Circle"
 msgstr "עיגול"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/resources/pps-annotation-properties-dialog.blp:69
 msgid "Markup Type"
 msgstr "סוג סימון"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:64
+#: shell/resources/pps-annotation-properties-dialog.blp:73
 msgid "Highlight"
 msgstr "הדגשה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:65
+#: shell/resources/pps-annotation-properties-dialog.blp:74
 msgid "Strike out"
 msgstr "מחיקה"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:66
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Underline"
 msgstr "קו תחתי"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:67
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Squiggly"
 msgstr "משורבט"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:79
-msgid "_Apply"
-msgstr "ה_חלה"
+#: shell/resources/pps-annotation-properties-dialog.blp:91
+msgid "Auto-Reveal on Scroll"
+msgstr "חשיפה אוטומטית בגלילה"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:92
+msgid "Pop up note while scrolling the document"
+msgstr "להקפיץ הערה בזמן גלילת המסמך"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
@@ -1456,76 +1455,76 @@ msgid "Document Prop_erties"
 msgstr "_מאפייני מסמך"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:705
+#: shell/resources/pps-document-view.blp:706
 msgid "Highlight (h)"
 msgstr "הדגשה (י)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:721
+#: shell/resources/pps-document-view.blp:722
 msgid "Strikethrough (k)"
 msgstr "קו חוצה (ל)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:737
+#: shell/resources/pps-document-view.blp:738
 msgid "Underline (u)"
 msgstr "קו תחתי (ו)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:753
+#: shell/resources/pps-document-view.blp:754
 msgid "Squiggly (q)"
 msgstr "מזוגזג (q)"
 
-#: shell/resources/pps-document-view.blp:844
+#: shell/resources/pps-document-view.blp:845
 msgid "_Open Link"
 msgstr "פתיחת _קישור"
 
-#: shell/resources/pps-document-view.blp:850
+#: shell/resources/pps-document-view.blp:851
 msgid "_Copy Link Address"
 msgstr "העתקת מיקום ה_קישור"
 
-#: shell/resources/pps-document-view.blp:856
+#: shell/resources/pps-document-view.blp:857
 msgid "_Go To"
 msgstr "מ_עבר"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:863
 msgid "Open in New _Window"
 msgstr "פתיחה ב_חלון חדש"
 
-#: shell/resources/pps-document-view.blp:870
+#: shell/resources/pps-document-view.blp:871
 msgid "_Copy"
 msgstr "ה_עתקה"
 
-#: shell/resources/pps-document-view.blp:875
+#: shell/resources/pps-document-view.blp:876
 msgid "Select _All"
 msgstr "_בחירת הכול"
 
-#: shell/resources/pps-document-view.blp:882
+#: shell/resources/pps-document-view.blp:883
 msgid "_Save Image As…"
 msgstr "שמירת תמונה _בשם…"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:889
 msgid "Copy _Image"
 msgstr "העתקת ת_מונה"
 
-#: shell/resources/pps-document-view.blp:896
+#: shell/resources/pps-document-view.blp:897
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_פתיחת צרופה"
 
-#: shell/resources/pps-document-view.blp:902
+#: shell/resources/pps-document-view.blp:903
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_שמירת הקובץ המצורף בשם…"
 
-#: shell/resources/pps-document-view.blp:912
+#: shell/resources/pps-document-view.blp:913
 msgid "Annotation _Properties…"
 msgstr "מאפייני ה_ערות…"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:919
 msgid "R_emove Annotation"
 msgstr "ה_סרת הערה"
 
-#: shell/resources/pps-document-view.blp:926
+#: shell/resources/pps-document-view.blp:927
 msgid "_Add Text Annotation"
 msgstr "הו_ספת הערה לטקסט"
 
@@ -1654,6 +1653,10 @@ msgstr "_תלוי רישיות"
 msgid "No Annotations"
 msgstr "אין הערות"
 
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "מאפייני הפרשנות"
+
 #: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
 msgstr "מחיקת הערה"
@@ -1711,43 +1714,43 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: shell/src/application.rs:349
+#: shell/src/application.rs:361
 msgid "The page label of the document to display."
 msgstr "The page label of the document to display."
 
-#: shell/src/application.rs:350
+#: shell/src/application.rs:362
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell/src/application.rs:358
+#: shell/src/application.rs:370
 msgid "The page number of the document to display."
 msgstr "The page number of the document to display."
 
-#: shell/src/application.rs:359
+#: shell/src/application.rs:371
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:379
 msgid "Named destination to display."
 msgstr "Named destination to display."
 
-#: shell/src/application.rs:368
+#: shell/src/application.rs:380
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:388
 msgid "Run papers in fullscreen mode."
 msgstr "Run papers in fullscreen mode."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:397
 msgid "Run papers in presentation mode."
 msgstr "Run papers in presentation mode."
 
-#: shell/src/application.rs:394
+#: shell/src/application.rs:406
 msgid "Show the version of the program."
 msgstr "Show the version of the program."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:416
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
@@ -1785,31 +1788,31 @@ msgstr "סגירה _ללא שמירה"
 msgid "_Save a Copy"
 msgstr "שמירת _עותק"
 
-#: shell/src/document_view/actions.rs:822
+#: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "שמירת התמונה"
 
-#: shell/src/document_view/actions.rs:858
+#: shell/src/document_view/actions.rs:880
 msgid "Couldn’t find appropriate format to save image"
 msgstr "לא נמצאה התבנית המתאימה לשמירת התמונה"
 
-#: shell/src/document_view/actions.rs:875
+#: shell/src/document_view/actions.rs:897
 msgid "The image could not be saved."
 msgstr "לא ניתן לשמור את התמונה."
 
-#: shell/src/document_view/actions.rs:947
+#: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "מצב ניווט סמן פעיל מעכשיו, יש ללחוץ על F7 להשבתה."
 
-#: shell/src/document_view/actions.rs:949
+#: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "מצב ניווט סמן כבוי מעכשיו, יש ללחוץ על F7 להפעלה."
 
-#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "לא ניתן לפתוח את הצרופה"
 
-#: shell/src/document_view/actions.rs:1037
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "לא ניתן לשמור את הצרופה."
 
@@ -1882,14 +1885,6 @@ msgstr "המשימה „{}“ מודפסת"
 #: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "אין משימות שממתינות בתור"
-
-#: shell/src/document_view/print.rs:82
-msgid "{} pending job in queue"
-msgid_plural "{} pending jobs in queue"
-msgstr[0] "משימה ממתינה בתור"
-msgstr[1] "שתי משימות ממתינות בתור"
-msgstr[2] "{} משימות ממתינות בתור"
-msgstr[3] "{} משימות ממתינות בתור"
 
 #: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
@@ -2038,6 +2033,19 @@ msgstr "מועד פקיעת תוקף האישור"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "הסתרת פרטים…"
+
+#~ msgid "Initially Opened"
+#~ msgstr "נפתח לראשונה"
+
+#~ msgid "_Apply"
+#~ msgstr "ה_חלה"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "משימה ממתינה בתור"
+#~ msgstr[1] "שתי משימות ממתינות בתור"
+#~ msgstr[2] "{} משימות ממתינות בתור"
+#~ msgstr[3] "{} משימות ממתינות בתור"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "ה_דגשת הטקסט הנבחר"
@@ -2601,10 +2609,6 @@ msgstr "הסתרת פרטים…"
 #~ msgctxt "shortcut window"
 #~ msgid "Go to the beginning of the document"
 #~ msgstr "מעבר לתחילת המסמך"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the end of the document"
-#~ msgstr "מעבר לסוף המסמך"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Add bookmark"
