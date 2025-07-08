@@ -3161,6 +3161,10 @@ annot_color_set (PpsAnnotation *annot, PopplerAnnot *poppler_annot)
 	PopplerColor color;
 	GdkRGBA pps_color;
 
+	if (POPPLER_IS_ANNOT_STAMP (poppler_annot)) {
+		return;
+	}
+
 	pps_annotation_get_rgba (annot, &pps_color);
 	gdk_rgba_to_poppler_color (&pps_color, &color);
 
