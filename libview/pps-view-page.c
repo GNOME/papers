@@ -885,7 +885,9 @@ pps_view_page_setup (PpsViewPage *page,
 PpsViewPage *
 pps_view_page_new (void)
 {
-	return g_object_new (PPS_TYPE_VIEW_PAGE, NULL);
+	return g_object_new (PPS_TYPE_VIEW_PAGE,
+	                     "overflow", GTK_OVERFLOW_HIDDEN,
+	                     NULL);
 }
 
 void
