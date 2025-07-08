@@ -276,7 +276,19 @@ mod imp {
                     .activate(glib::clone!(
                         #[weak(rename_to = obj)]
                         self,
-                        move |_, _, _| obj.obj().quit()
+                        move |_, _, _| {
+                            /*
+                             * Closing an app means closing its foreground tasks.
+                             * Our windows are the only top-level entities holding the
+                             * application.
+                             * Background tasks such as storing a file or printing it,
+                             * can independently hold the app until they are finished.
+                             * Such a task should not be terminated here.
+                             */
+                            for window in &obj.obj().windows() {
+                                window.close()
+                            }
+                        }
                     ))
                     .build(),
                 gio::ActionEntryBuilder::new("new")
