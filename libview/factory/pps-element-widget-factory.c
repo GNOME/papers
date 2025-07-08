@@ -34,16 +34,18 @@ pps_element_widget_factory_dispose (GObject *object)
 	PpsElementWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
 	PpsElementWidgetFactoryClass *factory_class = PPS_ELEMENT_WIDGET_FACTORY_GET_CLASS (factory);
 
-	for (gint i = 0; i < priv->page_widgets->len; i++) {
-		PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
-		GtkWidget *child = gtk_widget_get_first_child (GTK_WIDGET (page));
+	if (priv->page_widgets) {
+		for (gint i = 0; i < priv->page_widgets->len; i++) {
+			PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
+			GtkWidget *child = gtk_widget_get_first_child (GTK_WIDGET (page));
 
-		while (child) {
-			GtkWidget *next = gtk_widget_get_next_sibling (child);
-			if (factory_class->is_managed (factory, child)) {
-				gtk_widget_unparent (child);
+			while (child) {
+				GtkWidget *next = gtk_widget_get_next_sibling (child);
+				if (factory_class->is_managed (factory, child)) {
+					gtk_widget_unparent (child);
+				}
+				child = next;
 			}
-			child = next;
 		}
 	}
 
