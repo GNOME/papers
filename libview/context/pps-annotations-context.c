@@ -87,7 +87,9 @@ typedef struct
 } PpsAnnotationsContextPrivate;
 
 static void
-pps_annotations_context_undo_handler_init (PpsUndoHandlerInterface *iface);
+connect_notify_signals (PpsAnnotationsContext *self, PpsAnnotation *annot);
+
+static void pps_annotations_context_undo_handler_init (PpsUndoHandlerInterface *iface);
 G_DEFINE_TYPE_WITH_CODE (PpsAnnotationsContext, pps_annotations_context, G_TYPE_OBJECT, G_ADD_PRIVATE (PpsAnnotationsContext) G_IMPLEMENT_INTERFACE (PPS_TYPE_UNDO_HANDLER, pps_annotations_context_undo_handler_init))
 
 #define GET_PRIVATE(o) pps_annotations_context_get_instance_private (o)
@@ -126,6 +128,7 @@ annotations_job_finished_cb (PpsJobAnnots *job,
 
 	for (GList *l = annotations_list; l && l->data; l = g_list_next (l)) {
 		g_ptr_array_add (annotations_array, l->data);
+		connect_notify_signals (self, PPS_ANNOTATION (l->data));
 	}
 
 	annotations = g_ptr_array_steal (annotations_array, &n_annotations);
@@ -438,27 +441,8 @@ annot_prop_changed_cb (PpsAnnotation *annot, GParamSpec *pspec, PpsAnnotationsCo
 }
 
 static void
-add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
+connect_notify_signals (PpsAnnotationsContext *self, PpsAnnotation *annot)
 {
-	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
-	PpsAnnotationsContextUndoable *undoable = g_new0 (PpsAnnotationsContextUndoable, 1);
-
-	undoable->action = PPS_ANNOTATIONS_ADDED;
-	undoable->time = g_date_time_new_now_local ();
-	undoable->annots = g_list_append (NULL, g_object_ref (annot));
-	PpsRectangle rect;
-	pps_annotation_get_area (annot, &rect);
-	undoable->added.areas = g_list_append (NULL, pps_rectangle_copy (&rect));
-	pps_undo_context_add_action (priv->undo_context, PPS_UNDO_HANDLER (self), undoable);
-
-	pps_document_annotations_add_annotation (PPS_DOCUMENT_ANNOTATIONS (document), annot);
-
-	g_signal_emit (self, signals[SIGNAL_ANNOT_ADDED], 0, annot);
-
-	g_list_store_insert_sorted (priv->annots_model, annot,
-	                            (GCompareDataFunc) compare_annot, NULL);
-
 	g_signal_connect_data (annot,
 	                       "notify::area",
 	                       G_CALLBACK (annot_prop_changed_cb),
@@ -538,6 +522,31 @@ add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
 		                       G_CONNECT_DEFAULT);
 	}
 #endif
+}
+
+static void
+add_annotation (PpsAnnotationsContext *self, PpsAnnotation *annot)
+{
+	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
+	PpsDocument *document = pps_document_model_get_document (priv->model);
+	PpsAnnotationsContextUndoable *undoable = g_new0 (PpsAnnotationsContextUndoable, 1);
+
+	undoable->action = PPS_ANNOTATIONS_ADDED;
+	undoable->time = g_date_time_new_now_local ();
+	undoable->annots = g_list_append (NULL, g_object_ref (annot));
+	PpsRectangle rect;
+	pps_annotation_get_area (annot, &rect);
+	undoable->added.areas = g_list_append (NULL, pps_rectangle_copy (&rect));
+	pps_undo_context_add_action (priv->undo_context, PPS_UNDO_HANDLER (self), undoable);
+
+	pps_document_annotations_add_annotation (PPS_DOCUMENT_ANNOTATIONS (document), annot);
+
+	g_signal_emit (self, signals[SIGNAL_ANNOT_ADDED], 0, annot);
+
+	g_list_store_insert_sorted (priv->annots_model, annot,
+	                            (GCompareDataFunc) compare_annot, NULL);
+
+	connect_notify_signals (self, annot);
 }
 
 /**
