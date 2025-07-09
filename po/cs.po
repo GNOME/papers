@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-07-08 11:49+0000\n"
-"PO-Revision-Date: 2025-07-08 14:56+0200\n"
+"POT-Creation-Date: 2025-07-09 22:00+0000\n"
+"PO-Revision-Date: 2025-07-10 01:46+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -36,13 +36,11 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:354
-#: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
-msgid "Papers"
-msgstr "Papers"
+#: shell/src/application.rs:358
+msgid "Document Viewer"
+msgstr "Prohlížeč dokumentů"
 
 #: data/org.gnome.Papers.desktop.in.in:4
 msgid "View multi-page documents"
@@ -773,6 +771,7 @@ msgid "GNOME Document Previewer"
 msgstr "Prohlížeč dokumentů pro uživatelské prostředí GNOME"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:71
 msgid "Papers Document Viewer"
 msgstr "Prohlížeč dokumentů Papers"
 
@@ -780,6 +779,11 @@ msgstr "Prohlížeč dokumentů Papers"
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Vybraná tiskárna „%s“ nebyla nalezena"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
 
 #: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
@@ -1093,8 +1097,8 @@ msgid "_Help"
 msgstr "_Nápověda"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-msgid "_About Papers"
-msgstr "O _aplikaci Papers"
+msgid "_About Document Viewer"
+msgstr "O _aplikaci Prohlížeč dokumentů"
 
 #: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
@@ -1715,11 +1719,11 @@ msgstr "Nepodařilo se otevřít dokument"
 msgid "_Open Other File…"
 msgstr "_Otevřít jiný soubor…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:215
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996 — 2025 autoři aplikace Papers"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:216
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -1734,43 +1738,43 @@ msgstr ""
 "Adam Matoušek <adydas95@gmail.com>\n"
 "Daniel Rusek <mail@asciiwolf.com>"
 
-#: shell/src/application.rs:361
+#: shell/src/application.rs:365
 msgid "The page label of the document to display."
 msgstr "Popisek stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:366
 msgid "PAGE"
 msgstr "STRÁNKA"
 
-#: shell/src/application.rs:370
+#: shell/src/application.rs:374
 msgid "The page number of the document to display."
 msgstr "Číslo stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:371
+#: shell/src/application.rs:375
 msgid "NUMBER"
 msgstr "ČÍSLO"
 
-#: shell/src/application.rs:379
+#: shell/src/application.rs:383
 msgid "Named destination to display."
 msgstr "Pojmenované umístění k zobrazení."
 
-#: shell/src/application.rs:380
+#: shell/src/application.rs:384
 msgid "DEST"
 msgstr "MÍSTO"
 
-#: shell/src/application.rs:388
+#: shell/src/application.rs:392
 msgid "Run papers in fullscreen mode."
 msgstr "Spustit Papers v celoobrazovkovém režimu."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:401
 msgid "Run papers in presentation mode."
 msgstr "Spustit Papers v prezentačním režimu."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:410
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: shell/src/application.rs:416
+#: shell/src/application.rs:420
 msgid "[FILE…]"
 msgstr "[SOUBOR…]"
 
@@ -2060,6 +2064,9 @@ msgstr "Doba platnosti certifikátu"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Skrýt podrobnosti…"
+
+#~ msgid "_About Papers"
+#~ msgstr "O _aplikaci Papers"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
@@ -2630,9 +2637,6 @@ msgstr "Skrýt podrobnosti…"
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
 #~ msgstr "Klávesové zkratky"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "Prohlížeč dokumentů pro uživatelské prostředí GNOME"
 
 #~ msgid "Open a new window."
 #~ msgstr "Otevřít nové okno"
