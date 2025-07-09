@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-06-08 12:41+0000\n"
-"PO-Revision-Date: 2025-06-09 11:03+0330\n"
+"POT-Creation-Date: 2025-07-08 11:49+0000\n"
+"PO-Revision-Date: 2025-07-09 17:26+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:9 previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85 shell/resources/pps-loader-view.blp:10
 #: shell/src/application.rs:46 shell/src/application.rs:69
-#: shell/src/application.rs:342 shell/src/document_view/io.rs:201
+#: shell/src/application.rs:354 shell/src/document_view/io.rs:201
 #: shell/src/document_view/io.rs:202
 msgid "Papers"
 msgstr "کاغذها"
@@ -223,14 +223,14 @@ msgstr "پشتیبانی از خواندن سندهای PDF را اضافه می
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:106
+#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:100
 #: shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "بله"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:108
+#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:102
 #: shell/src/properties_general.rs:337
 msgid "No"
 msgstr "خیر"
@@ -461,7 +461,7 @@ msgid "This work is in the Public Domain"
 msgstr "این کار در دامنهٔ عمومی است"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1020
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "ذخیرهٔ پیوست"
@@ -530,7 +530,6 @@ msgstr "محدوده انتخاب شدهٔ شما جهت چاپ هیچ صفحه�
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-annotation-properties-dialog.blp:78
 #: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
@@ -632,51 +631,51 @@ msgstr "لغزشِ نما به پایین"
 msgid "Document View"
 msgstr "نمای سند"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2105
 msgid "Go to first page"
 msgstr "رفتن به صفحهٔ نخست"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2107
 msgid "Go to previous page"
 msgstr "رفتن به صفحهٔ پیشین"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2109
 msgid "Go to next page"
 msgstr "رفتن به صفحهٔ بعدی"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2111
 msgid "Go to last page"
 msgstr "رفتن به صفحهٔ پایانی"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2113
 msgid "Go to page"
 msgstr "رفتن به صفحه"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2115
 msgid "Find"
 msgstr "یافتن"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2144
 #, c-format
 msgid "Go to page %s"
 msgstr "رفتن به صفحهٔ %s"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "برو به %s در پروندهٔ «%s»"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to file “%s”"
 msgstr "رفتن به پروندهٔ «%s»"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2161
 #, c-format
 msgid "Launch %s"
 msgstr "راه‌اندازی %s"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Reset form"
 msgstr "بازنشانی فرم"
@@ -784,492 +783,167 @@ msgstr "اندازهٔ عادی"
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:106
 msgid "Failed to Print Document"
 msgstr "شکست در چاپ سند"
 
-#: nautilus/pps-nautilus-extension.c:110
-#: shell/resources/pps-annotation-properties-dialog.blp:51
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: nautilus/pps-nautilus-extension.c:155
+#: nautilus/pps-nautilus-extension.c:149
 msgid "Document Properties"
 msgstr "ویژگی‌های سند"
 
-#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "عنوان"
 
-#: nautilus/pps-nautilus-extension.h:47
+#: nautilus/pps-nautilus-extension.h:46
 msgid "Location"
 msgstr "مکان"
 
-#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "موضوع"
 
-#: nautilus/pps-nautilus-extension.h:49
-#: shell/resources/pps-annotation-properties-dialog.blp:9
+#: nautilus/pps-nautilus-extension.h:48
+#: shell/resources/pps-annotation-properties-dialog.blp:85
 #: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "نگارنده"
 
-#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "کلیدواژگان"
 
-#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "تولیدکننده"
 
-#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "سازنده"
 
-#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "ایجاد شد"
 
-#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "تغییریافته"
 
-#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
 msgstr "شمار صفحه"
 
-#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "بهینه"
 
-#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
 #: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "قالب"
 
-#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "امنیت"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
 msgstr "دارای جاوااسکریپت"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "اندازهٔ کاغذ"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "اندازه"
 
-#: shell/resources/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "گشودن، بستن، ذخیره و چاپ"
-
-#: shell/resources/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open Document"
-msgstr "گشودن سند"
-
-#: shell/resources/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "Open Copy of Current Document"
-msgstr "گشودن رونوشتی از سند جاری"
-
-#: shell/resources/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Open With…"
-msgstr "گشودن با…"
-
-#: shell/resources/help-overlay.blp:29
-msgctxt "shortcut window"
-msgid "Save Copy of Current Document"
-msgstr "ذخیرهٔ رونوشتی از سند جاری"
-
-#: shell/resources/help-overlay.blp:34
-msgctxt "shortcut window"
-msgid "Print Current Document"
-msgstr "چاپ سند جاری"
-
-#: shell/resources/help-overlay.blp:39
-msgctxt "shortcut window"
-msgid "Close Current Document Window"
-msgstr "بستن پنجرهٔ سند جاری"
-
-#: shell/resources/help-overlay.blp:45
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "پنجره"
-
-#: shell/resources/help-overlay.blp:48
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "تمام‌صفحه"
-
-#: shell/resources/help-overlay.blp:53
-msgctxt "shortcut window"
-msgid "Enter Presentation Mode"
-msgstr "ورود به حالت ارائه"
-
-#: shell/resources/help-overlay.blp:58
-msgctxt "shortcut window"
-msgid "Side Pane"
-msgstr "تابلوی کناری"
-
-#: shell/resources/help-overlay.blp:63
-msgctxt "shortcut window"
-msgid "Caret Navigation"
-msgstr "پیمایش مکان‌نما"
-
-#: shell/resources/help-overlay.blp:69
-msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "گزینش و رونوشت متن"
-
-#: shell/resources/help-overlay.blp:72
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "رونوشت"
-
-#: shell/resources/help-overlay.blp:77
-msgctxt "shortcut window"
-msgid "Select All"
-msgstr "گزینش همه"
-
-#: shell/resources/help-overlay.blp:83
-msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "چرخش و بزرگنمایی"
-
-#: shell/resources/help-overlay.blp:86
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Counter-Clockwise"
-msgstr "چرخش صفحه ۹۰ درجه در جهت پادساعتگرد"
-
-#: shell/resources/help-overlay.blp:91
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Clockwise"
-msgstr "چرخش صفحه ۹۰ درجه در جهت ساعتگرد"
-
-#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "بزرگ‌نمایی"
-
-#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "کوچک‌نمایی"
-
-#: shell/resources/help-overlay.blp:106
-msgctxt "shortcut window"
-msgid "Normal Size"
-msgstr "اندازهٔ عادی"
-
-#: shell/resources/help-overlay.blp:111
-msgctxt "shortcut window"
-msgid "Zoom In (Alternative)"
-msgstr "بزرگ‌نمایی (جایگزین)"
-
-#: shell/resources/help-overlay.blp:116
-msgctxt "shortcut window"
-msgid "Fit Page"
-msgstr "برازش صفحه"
-
-#: shell/resources/help-overlay.blp:121
-msgctxt "shortcut window"
-msgid "Fit Width"
-msgstr "برازش پهنا"
-
-#: shell/resources/help-overlay.blp:126
-msgctxt "shortcut window"
-msgid "Automatic Zoom"
-msgstr "بزرگ‌نمایی خودکار"
-
-#: shell/resources/help-overlay.blp:132
-msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "حرکت در سند"
-
-#: shell/resources/help-overlay.blp:135
-msgctxt "shortcut window"
-msgid "Move Around Page"
-msgstr "حرکت در صفحه"
-
-#: shell/resources/help-overlay.blp:140
-msgctxt "shortcut window"
-msgid "Move Up/Down Page Several Lines"
-msgstr "چند خط جابه‌جایی به بالا یا پایین"
-
-#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
-msgctxt "shortcut window"
-msgid "Previous Page"
-msgstr "صفحهٔ پیشین"
-
-#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
-msgctxt "shortcut window"
-msgid "Next Page"
-msgstr "صفحهٔ بعدی"
-
-#: shell/resources/help-overlay.blp:155
-msgctxt "shortcut window"
-msgid "Go to Page Number"
-msgstr "رفتن به شماره صفحه"
-
-#: shell/resources/help-overlay.blp:160
-msgctxt "shortcut window"
-msgid "Previous Page (Fast)"
-msgstr "صفحهٔ پیش (تند)"
-
-#: shell/resources/help-overlay.blp:165
-msgctxt "shortcut window"
-msgid "Next Page (Fast)"
-msgstr "صفحهٔ بعد (تند)"
-
-#: shell/resources/help-overlay.blp:170
-msgctxt "shortcut window"
-msgid "Previous Visited Page"
-msgstr "صفحهٔ دیده شدهٔ پیشین"
-
-#: shell/resources/help-overlay.blp:175
-msgctxt "shortcut window"
-msgid "Next Visited Page"
-msgstr "صفحهٔ دیده شدهٔ بعدی"
-
-#: shell/resources/help-overlay.blp:180
-msgctxt "shortcut window"
-msgid "Go to Page Beginning/End"
-msgstr "رفتن به ابتدا یا انتهای صفحه"
-
-#: shell/resources/help-overlay.blp:185
-msgctxt "shortcut window"
-msgid "Go to Document Start"
-msgstr "رفتن به آغاز سند"
-
-#: shell/resources/help-overlay.blp:190
-msgctxt "shortcut window"
-msgid "Go to Document End"
-msgstr "رفتن به پایان سند"
-
-#: shell/resources/help-overlay.blp:196
-msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "نمای سند و مدیریت"
-
-#: shell/resources/help-overlay.blp:199
-msgctxt "shortcut window"
-msgid "Add Bookmark"
-msgstr "افزودن نشانک"
-
-#: shell/resources/help-overlay.blp:204
-msgctxt "shortcut window"
-msgid "Remove Bookmark"
-msgstr "برداشتن نشانک"
-
-#: shell/resources/help-overlay.blp:209
-msgctxt "shortcut window"
-msgid "Night Mode"
-msgstr "حالت شب"
-
-#: shell/resources/help-overlay.blp:214
-msgctxt "shortcut window"
-msgid "Continuous Scrolling"
-msgstr "لغزش متوالی"
-
-#: shell/resources/help-overlay.blp:219
-msgctxt "shortcut window"
-msgid "Dual Page"
-msgstr "جفت صفحه"
-
-#: shell/resources/help-overlay.blp:224
-msgctxt "shortcut window"
-msgid "Odd Pages Left"
-msgstr "شروع از صفحات فرد"
-
-#: shell/resources/help-overlay.blp:229
-msgctxt "shortcut window"
-msgid "Document Properties"
-msgstr "ویژگی‌های سند"
-
-#: shell/resources/help-overlay.blp:234
-msgctxt "shortcut window"
-msgid "Add Text Annotation"
-msgstr "افزودن حاشیه‌نویسی متنی"
-
-#: shell/resources/help-overlay.blp:239
-msgctxt "shortcut window"
-msgid "Highlight Text"
-msgstr "برجسته سازی متن"
-
-#: shell/resources/help-overlay.blp:244
-msgctxt "shortcut window"
-msgid "Strikethrough Text"
-msgstr "متن خط‌خورده"
-
-#: shell/resources/help-overlay.blp:249
-msgctxt "shortcut window"
-msgid "Wavy/Squiggly Underline Text"
-msgstr "متن زیرخط‌دار موجی"
-
-#: shell/resources/help-overlay.blp:254
-msgctxt "shortcut window"
-msgid "Underline Text"
-msgstr "متن زیرخط‌دار"
-
-#: shell/resources/help-overlay.blp:260
-msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "یافتن متن"
-
-#: shell/resources/help-overlay.blp:263
-msgctxt "shortcut window"
-msgid "Find"
-msgstr "یافتن"
-
-#: shell/resources/help-overlay.blp:268
-msgctxt "shortcut window"
-msgid "Find Next"
-msgstr "یافتن بعدی"
-
-#: shell/resources/help-overlay.blp:273
-msgctxt "shortcut window"
-msgid "Find Previous"
-msgstr "یافتن پیشین"
-
-#: shell/resources/help-overlay.blp:279
-msgctxt "shortcut window"
-msgid "General"
-msgstr "عمومی"
-
-#: shell/resources/help-overlay.blp:282
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "راهنما"
-
-#: shell/resources/help-overlay.blp:287
-msgctxt "shortcut window"
-msgid "Menu"
-msgstr "فهرست"
-
-#: shell/resources/help-overlay.blp:292
-msgctxt "shortcut window"
-msgid "Keyboard Shortcuts"
-msgstr "میان‌برهای صفحه‌کلید"
-
-#: shell/resources/help-overlay.blp:297
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "پنجرهٔ جدید"
-
-#: shell/resources/help-overlay.blp:302
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "بستن پنجره"
-
-#: shell/resources/help-overlay.blp:308
-msgctxt "shortcut window"
-msgid "Presentation Mode"
-msgstr "حالت ارائه"
-
-#: shell/resources/help-overlay.blp:311
-msgctxt "shortcut window"
-msgid "Black Screen"
-msgstr "صفحهٔ سیاه"
-
-#: shell/resources/help-overlay.blp:316
-msgctxt "shortcut window"
-msgid "White Screen"
-msgstr "صفحهٔ سفید"
-
-#: shell/resources/help-overlay.blp:322
-msgctxt "shortcut window"
-msgid "Touchpad Gestures"
-msgstr "حرکات صفحه‌لمسی"
-
 #: shell/resources/pps-annotation-properties-dialog.blp:5
-#: shell/resources/pps-sidebar-annotations.blp:60
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "ویژگی‌های حاشیه‌نویسی"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:13
+#: shell/resources/pps-annotation-properties-dialog.blp:18
 msgid "Color"
 msgstr "رنگ"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:21
+#: shell/resources/pps-annotation-properties-dialog.blp:31
 msgid "Opacity"
 msgstr "شفافیت"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:33
-msgid "Initially Opened"
-msgstr "گشوده در ابتدا"
-
-#: shell/resources/pps-annotation-properties-dialog.blp:38
+#: shell/resources/pps-annotation-properties-dialog.blp:46
 msgid "Icon"
 msgstr "نقشک"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:42
+#: shell/resources/pps-annotation-properties-dialog.blp:50
 msgid "Note"
 msgstr "یاداشت"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:43
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Comment"
 msgstr "نظر"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:44
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Key"
 msgstr "کلید"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:45
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Help"
 msgstr "راهنما"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:46
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "New Paragraph"
 msgstr "پاراگراف جدید"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:47
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "Paragraph"
 msgstr "پاراگراف"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:48
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Insert"
 msgstr "درج"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:49
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Cross"
 msgstr "ضربدر"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:50
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Circle"
 msgstr "دایره"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/resources/pps-annotation-properties-dialog.blp:69
 msgid "Markup Type"
 msgstr "گونهٔ نشانه‌گذاری"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:64
+#: shell/resources/pps-annotation-properties-dialog.blp:73
 msgid "Highlight"
 msgstr "پررنگ"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:65
+#: shell/resources/pps-annotation-properties-dialog.blp:74
 msgid "Strike out"
 msgstr "باطل کردن"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:66
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Underline"
 msgstr "زیر خط"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:67
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Squiggly"
 msgstr "پیچ و تاب"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:79
-msgid "_Apply"
-msgstr "_اعمال"
+#: shell/resources/pps-annotation-properties-dialog.blp:91
+msgid "Auto-Reveal on Scroll"
+msgstr "آشکار سازی خودکار هنگام لغزش"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:92
+msgid "Pop up note while scrolling the document"
+msgstr "بالا پریدن یادداشت هنگام لغزش سند"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
@@ -1440,76 +1114,76 @@ msgid "Document Prop_erties"
 msgstr "_ویژگی‌های سند"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:705
+#: shell/resources/pps-document-view.blp:706
 msgid "Highlight (h)"
 msgstr "برجسته (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:721
+#: shell/resources/pps-document-view.blp:722
 msgid "Strikethrough (k)"
 msgstr "خط‌خورده (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:737
+#: shell/resources/pps-document-view.blp:738
 msgid "Underline (u)"
 msgstr "زیر خط (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:753
+#: shell/resources/pps-document-view.blp:754
 msgid "Squiggly (q)"
 msgstr "با پیچ‌وتاب (q)"
 
-#: shell/resources/pps-document-view.blp:844
+#: shell/resources/pps-document-view.blp:845
 msgid "_Open Link"
 msgstr "_گشودن پیوند"
 
-#: shell/resources/pps-document-view.blp:850
+#: shell/resources/pps-document-view.blp:851
 msgid "_Copy Link Address"
 msgstr "_رونوشت از نشانی پیوند"
 
-#: shell/resources/pps-document-view.blp:856
+#: shell/resources/pps-document-view.blp:857
 msgid "_Go To"
 msgstr "_رفتن به"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:863
 msgid "Open in New _Window"
 msgstr "گشودن در یک پنجرهٔ _جدید"
 
-#: shell/resources/pps-document-view.blp:870
+#: shell/resources/pps-document-view.blp:871
 msgid "_Copy"
 msgstr "_رونوشت"
 
-#: shell/resources/pps-document-view.blp:875
+#: shell/resources/pps-document-view.blp:876
 msgid "Select _All"
 msgstr "انتخاب _همه"
 
-#: shell/resources/pps-document-view.blp:882
+#: shell/resources/pps-document-view.blp:883
 msgid "_Save Image As…"
 msgstr "_ذخیرهٔ تصویر به نام…"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:889
 msgid "Copy _Image"
 msgstr "رونوشت _تصویر"
 
-#: shell/resources/pps-document-view.blp:896
+#: shell/resources/pps-document-view.blp:897
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_گشودن پیوست"
 
-#: shell/resources/pps-document-view.blp:902
+#: shell/resources/pps-document-view.blp:903
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_ذخیرهٔ پیوست به نام…"
 
-#: shell/resources/pps-document-view.blp:912
+#: shell/resources/pps-document-view.blp:913
 msgid "Annotation _Properties…"
 msgstr "_ویژگی‌های حاشیه‌نویسی…"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:919
 msgid "R_emove Annotation"
 msgstr "_برداشتن حاشیه‌نویسی"
 
-#: shell/resources/pps-document-view.blp:926
+#: shell/resources/pps-document-view.blp:927
 msgid "_Add Text Annotation"
 msgstr "_افزودن حاشیه‌نویسی متنی"
 
@@ -1633,9 +1307,333 @@ msgstr "_فقط تمام کلمات"
 msgid "C_ase Sensitive"
 msgstr "_حساس به کوچکی و بزرگی حروف"
 
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "Opening, Closing, Saving and Printing"
+msgstr "گشودن، بستن، ذخیره و چاپ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "گشودن سند"
+
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "گشودن رونوشتی از سند جاری"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "گشودن با…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "ذخیرهٔ رونوشتی از سند جاری"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "چاپ سند جاری"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "بستن پنجرهٔ سند جاری"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "پنجره"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "تمام‌صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "ورود به حالت ارائه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "تابلوی کناری"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "پیمایش مکان‌نما"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selecting and Copying Text"
+msgstr "گزینش و رونوشت متن"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "رونوشت"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "گزینش همه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Rotating and Zooming"
+msgstr "چرخش و بزرگنمایی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "چرخش صفحه ۹۰ درجه در جهت پادساعتگرد"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "چرخش صفحه ۹۰ درجه در جهت ساعتگرد"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "بزرگ‌نمایی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "کوچک‌نمایی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "اندازهٔ عادی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "بزرگ‌نمایی (جایگزین)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "برازش صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "برازش پهنا"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "بزرگ‌نمایی خودکار"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Moving Around Document"
+msgstr "حرکت در سند"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "حرکت در صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "چند خط جابه‌جایی به بالا یا پایین"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "صفحهٔ پیشین"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "صفحهٔ بعدی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "رفتن به شماره صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "صفحهٔ پیش (تند)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "صفحهٔ بعد (تند)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "صفحهٔ دیده شدهٔ پیشین"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "صفحهٔ دیده شدهٔ بعدی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "رفتن به ابتدا یا انتهای صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "رفتن به آغاز سند"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "رفتن به پایان سند"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View and Handling"
+msgstr "نمای سند و مدیریت"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "افزودن نشانک"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "برداشتن نشانک"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "حالت شب"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "لغزش متوالی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "جفت صفحه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "شروع از صفحات فرد"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "ویژگی‌های سند"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "افزودن حاشیه‌نویسی متنی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "برجسته سازی متن"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "متن خط‌خورده"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "متن زیرخط‌دار موجی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "متن زیرخط‌دار"
+
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Finding Text"
+msgstr "یافتن متن"
+
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "یافتن"
+
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "یافتن بعدی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "یافتن پیشین"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عمومی"
+
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "راهنما"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "فهرست"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "میان‌برهای صفحه‌کلید"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "پنجرهٔ جدید"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "بستن پنجره"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "حالت ارائه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "صفحهٔ سیاه"
+
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "صفحهٔ سفید"
+
 #: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "بدون حاشیه‌نویسی"
+
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "ویژگی‌های حاشیه‌نویسی"
 
 #: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
@@ -1695,43 +1693,43 @@ msgstr ""
 "الناز سربر <elnaz@farsiweb.info>\n"
 "مهیار مقیمی <mahyar.moqimi@gmail.com>"
 
-#: shell/src/application.rs:349
+#: shell/src/application.rs:361
 msgid "The page label of the document to display."
 msgstr "برچسب صفحهٔ سند که نمایش‌داده شود."
 
-#: shell/src/application.rs:350
+#: shell/src/application.rs:362
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell/src/application.rs:358
+#: shell/src/application.rs:370
 msgid "The page number of the document to display."
 msgstr "شمارهٔ صفحهٔ سند که نمایش‌داده شود."
 
-#: shell/src/application.rs:359
+#: shell/src/application.rs:371
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:379
 msgid "Named destination to display."
 msgstr "مقصد نامگذاری شده جهت نمایش."
 
-#: shell/src/application.rs:368
+#: shell/src/application.rs:380
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:388
 msgid "Run papers in fullscreen mode."
 msgstr "اجرای کاغذها در حالت تمام‌صفحه."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:397
 msgid "Run papers in presentation mode."
 msgstr "اجرای کاغذها در حالت ارائه."
 
-#: shell/src/application.rs:394
+#: shell/src/application.rs:406
 msgid "Show the version of the program."
 msgstr "نمایش نگارش برنامه."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:416
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
@@ -1771,31 +1769,31 @@ msgstr "بستن _بدون ذخیره"
 msgid "_Save a Copy"
 msgstr "_ذخیرهٔ یک رونوشت"
 
-#: shell/src/document_view/actions.rs:822
+#: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "ذخیرهٔ تصویر"
 
-#: shell/src/document_view/actions.rs:858
+#: shell/src/document_view/actions.rs:880
 msgid "Couldn’t find appropriate format to save image"
 msgstr "قالب مناسب برای ذخیرهٔ عکس پیدا نشد"
 
-#: shell/src/document_view/actions.rs:875
+#: shell/src/document_view/actions.rs:897
 msgid "The image could not be saved."
 msgstr "تصویر ذخیره نشد."
 
-#: shell/src/document_view/actions.rs:947
+#: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "حالت پیمایش مکان‌نما اکنون به کار افتاده. برای از کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:949
+#: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "حالت پیمایش مکان‌نما اکنون از کار افتاده. برای به کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "ناتوان در گشودن پیوست"
 
-#: shell/src/document_view/actions.rs:1037
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "پیوست ذخیره نشد."
 
@@ -1867,12 +1865,6 @@ msgstr "چاپ کردن کار «{}»"
 #: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "هیچ کاری در صف منتظر نیست"
-
-#: shell/src/document_view/print.rs:82
-msgid "{} pending job in queue"
-msgid_plural "{} pending jobs in queue"
-msgstr[0] "تعداد {} کار منتظر در صف"
-msgstr[1] "تعداد {} کار منتظر در صف"
 
 #: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
@@ -2020,6 +2012,21 @@ msgstr "زمان انقضای گواهی"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "نهفتن جزییات…"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad Gestures"
+#~ msgstr "حرکات صفحه‌لمسی"
+
+#~ msgid "Initially Opened"
+#~ msgstr "گشوده در ابتدا"
+
+#~ msgid "_Apply"
+#~ msgstr "_اعمال"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "تعداد {} کار منتظر در صف"
+#~ msgstr[1] "تعداد {} کار منتظر در صف"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "_نشانه‌گذاری متن گزیده"
@@ -2301,10 +2308,6 @@ msgstr "نهفتن جزییات…"
 #~ msgctxt "shortcut window"
 #~ msgid "Go to the beginning of the document"
 #~ msgstr "رفتن به ابتدا سند"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the end of the document"
-#~ msgstr "رفتن به پایان سند"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Remove bookmark"
