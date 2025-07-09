@@ -43,7 +43,7 @@ mod imp {
             papers_document::init();
 
             // Manually set name and icon
-            glib::set_application_name(&gettext("Papers"));
+            glib::set_application_name(&gettext("Document Viewer"));
             gtk::Window::set_default_icon_name(APP_ID);
 
             self.setup_actions();
@@ -66,7 +66,11 @@ mod imp {
         fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
             // print the version in local instance rather than sending it to primary
             if options.contains("version") {
-                glib::g_print!("{} {}", gettext("Papers"), crate::config::VERSION);
+                glib::g_print!(
+                    "{} {}",
+                    gettext("Papers Document Viewer"),
+                    crate::config::VERSION
+                );
                 return 0.into();
             }
 
@@ -181,7 +185,7 @@ mod imp {
                 // There are windows, but they hold a different document.
                 // Since we don't have security between documents, then
                 // spawn a new process! See:
-                // https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/104
+                // https://gitlab.gnome.org/GNOME/papers/-/issues/104
                 spawn(Some(file), dest, mode);
                 return;
             }
@@ -228,7 +232,7 @@ mod imp {
             const GIT_COMMIT_ID: &str = git_version!(fallback = VERSION);
 
             let debug_info = format!(
-                "GNOME Papers ({})\n\n\
+                "Document Viewer ({})\n\n\
                 *Flatpak: {}\n\
                 *GTK: {}\n\
                 *Libadwaita: {}\n",
@@ -351,7 +355,7 @@ mod imp {
 
             let obj = self.obj();
 
-            obj.set_option_context_parameter_string(Some(&gettext("Papers")));
+            obj.set_option_context_parameter_string(Some(&gettext("Document Viewer")));
 
             obj.add_main_option(
                 "page-label",

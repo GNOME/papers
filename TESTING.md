@@ -2,7 +2,7 @@
 
 
 Whatever problems you experience with Papers, please test against a current flatpak version, as installed from [Flathub](https://flathub.org/apps/org.gnome.Papers) or the GNOME [Nightly Repository](https://nightly.gnome.org/).
-If you can reproduce with these installs, check out our [testing guidlines](#testing) below and file an [issue](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/).
+If you can reproduce with these installs, check out our [testing guidlines](#testing) below and file an [issue](https://gitlab.gnome.org/GNOME/papers/-/issues/).
 
 Otherwise Papers itself is most likely not at fault and you should report to your distribution's
 
@@ -22,7 +22,7 @@ Otherwise Papers itself is most likely not at fault and you should report to you
 * [Ubuntu](https://launchpad.net/ubuntu/+source/papers/+bugs)
 * [ZorinOS](https://zorin.com/os/feedback/)
 
-[Help us](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/new?description_template=none) to improve and extend this list!
+[Help us](https://gitlab.gnome.org/GNOME/papers/-/issues/new?description_template=none) to improve and extend this list!
 
 
 ## [Testing](testing)
@@ -48,7 +48,7 @@ Here some additional information, if you wish to test a
 
 <details><summary>Specific Pipeline</summary>
 
-To test other _concurrent_  **Devel**opment versions of Papers, head over to [Papers' pipelines](https://gitlab.gnome.org/GNOME/Incubator/papers/-/pipelines), download from the dropdown on the right the correct flatpak, unzip the downloaded file and install via
+To test other _concurrent_  **Devel**opment versions of Papers, head over to [Papers' pipelines](https://gitlab.gnome.org/GNOME/papers/-/pipelines), download from the dropdown on the right the correct flatpak, unzip the downloaded file and install via
 
 ```
 flatpak install --user org.gnome.Papers.Devel.flatpak
@@ -74,8 +74,8 @@ flatpak info --user org.gnome.Papers.Devel
 ```
 
 and include the OUTPUT as Information
-* in a pre-existing [relevant issue](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues) or
-* create a [new one](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/new?issuable_template=Default) following the issue template.
+* in a pre-existing [relevant issue](https://gitlab.gnome.org/GNOME/papers/-/issues) or
+* create a [new one](https://gitlab.gnome.org/GNOME/papers/-/issues/new?issuable_template=Default) following the issue template.
 
 Preferrably insert the OUTPUT into a collapsible section, which you can create in Gitlab's text field from the comment menu atop in *plain text mode* or via
 
@@ -129,7 +129,7 @@ Now Papers should start. **Try to reproduce the crash** or, if necessary, close 
 ```
 bt full
 ```
-and copy the OUTPUT in a relevant Gitlab [issue](https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues), again preferrably into a collapsible section, see above.
+and copy the OUTPUT in a relevant Gitlab [issue](https://gitlab.gnome.org/GNOME/papers/-/issues), again preferrably into a collapsible section, see above.
 
 
 ### Rendering Issues

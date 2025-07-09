@@ -1,4 +1,4 @@
-# ![papers-logo] Papers
+# ![papers-logo] Document Viewer
 
 Papers is a document viewer capable of displaying multiple and single
 page document formats like PDF and DejaVu.  For more general

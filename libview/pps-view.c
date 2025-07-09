@@ -3454,7 +3454,7 @@ pps_view_annot_removed_cb (PpsView *view,
 	GtkWindow *window = g_object_get_data (G_OBJECT (annot), "popup");
 
 	// This is a hack to fix
-	// https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/383
+	// https://gitlab.gnome.org/GNOME/papers/-/issues/383
 	// in stable
 	if (window)
 		gtk_window_destroy (window);

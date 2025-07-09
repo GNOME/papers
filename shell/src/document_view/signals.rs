@@ -281,7 +281,7 @@ impl imp::PpsDocumentView {
         // The goto-remote action should not reference the file itself. If it
         // does, simply ignore it. Ideally, we would not launch a new instance
         // but open a new tab or a new window, but that's not possible until
-        // https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/104 is fixed
+        // https://gitlab.gnome.org/GNOME/papers/-/issues/104 is fixed
         if target != path {
             application::spawn(
                 Some(&gio::File::for_path(target)),
@@ -325,7 +325,7 @@ impl imp::PpsDocumentView {
                 self.document_action_group.activate_action("save-as", None)
             }
             _ => {
-                glib::g_warning!("", "Unimplemented named action: {}, please post a bug report in Papers Gitlab (https://gitlab.gnome.org/GNOME/Incubator/papers/issues) with a testcase.", name);
+                glib::g_warning!("", "Unimplemented named action: {}, please post a bug report in Document Viewer Gitlab (https://gitlab.gnome.org/GNOME/papers/issues) with a testcase.", name);
             }
         }
     }

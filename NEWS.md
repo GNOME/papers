@@ -126,7 +126,7 @@ Potentially of interest to packaging and other downstreams might be:
   to which you can contribute (#151). For XPS, there has been no previous public
   consideration, but the format seems to never have gained traction and is
   deprecated elsewhere.
-  (https://gitlab.gnome.org/GNOME/Incubator/papers/-/merge_requests/367#note_2276634)
+  (https://gitlab.gnome.org/GNOME/papers/-/merge_requests/367#note_2276634)
 
 Some changes we can highlight:
 * simplified printing job handling relying more on GTK's implementation (!339, Qiu Wenbo)

@@ -94,7 +94,7 @@ pps_job_scheduler_init (gpointer data)
 	                                            (GDestroyNotify) pps_scheduler_job_destroy,
 	                                            /* MIN (8, g_get_num_processors()),
 	                                             * Temporary remove multi-threading. See
-	                                             * https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/107
+	                                             * https://gitlab.gnome.org/GNOME/papers/-/issues/107
 	                                             * for more context
 	                                             */
 	                                            1,

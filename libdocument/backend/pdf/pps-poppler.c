@@ -1148,8 +1148,8 @@ pps_link_dest_from_dest (PdfDocument *self,
 
 	if (unimplemented_dest) {
 		g_warning ("Unimplemented destination: %s, please post a "
-		           "bug report in Papers issue tracker "
-		           "(https://gitlab.gnome.org/GNOME/Incubator/papers/issues) with a testcase.",
+		           "bug report in Document Viewer issue tracker "
+		           "(https://gitlab.gnome.org/GNOME/papers/issues) with a testcase.",
 		           unimplemented_dest);
 	}
 
@@ -1263,7 +1263,7 @@ pps_link_from_action (PdfDocument *self,
 
 	if (unimplemented_action) {
 		g_warning ("Unimplemented action: %s, please post a bug report "
-		           "in Papers issue tracker (https://gitlab.gnome.org/GNOME/Incubator/papers/issues) "
+		           "in Document Viewer issue tracker (https://gitlab.gnome.org/GNOME/papers/issues) "
 		           "with a testcase.",
 		           unimplemented_action);
 	}
@@ -2982,8 +2982,8 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 			           unimplemented_annot);
 		} else {
 			g_warning ("Unimplemented annotation: %s, please post a "
-			           "bug report in Papers issue tracker "
-			           "(https://gitlab.gnome.org/GNOME/Incubator/papers/issues) with a testcase.",
+			           "bug report in Document Viewer issue tracker "
+			           "(https://gitlab.gnome.org/GNOME/papers/issues) with a testcase.",
 			           unimplemented_annot);
 		}
 	}
@@ -3487,7 +3487,7 @@ pdf_document_annotations_get_annotations (PpsDocumentAnnotations *document_annot
 		// TODO: Once we can stop depending on the mapping area to get
 		// the poppler rectangle (See:
 		// https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/1652 and
-		// and https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/382)
+		// and https://gitlab.gnome.org/GNOME/papers/-/issues/382)
 		// all this block should be moved inside
 		// "pps_annot_from_poppler_annot"
 		area = poppler_rect_to_pps (page, &mapping->area);
