@@ -200,6 +200,7 @@ if gobject_introspection_dep.found()
   libppsdocument_gir = gnome.generate_gir(
     libppsdocument,
     sources: sources + headers + [enum_sources[1], version_header],
+    doc_format: 'gi-docgen',
     includes: incs,
     nsversion: pps_api_version,
     namespace: 'PapersDocument',

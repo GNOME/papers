@@ -2,7 +2,7 @@ project(
   'papers', ['c'],
   version: '49.alpha',
   license: 'GPL-2.0-or-later',
-  meson_version: '>= 0.59.0',
+  meson_version: '>= 1.8.0',
   default_options: [
     'buildtype=debugoptimized',
   ]

@@ -203,6 +203,7 @@ if gobject_introspection_dep.found()
   libppsview_gir = gnome.generate_gir(
     [libppsview, libppsdocument],
     sources: sources + headers + [enum_sources[1]],
+    doc_format: 'gi-docgen',
     includes: incs,
     nsversion: pps_api_version,
     namespace: 'PapersView',
