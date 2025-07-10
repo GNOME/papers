@@ -13,7 +13,7 @@
 
 G_BEGIN_DECLS
 
-gboolean pps_xmp_parse (const char *xmp,
+gboolean pps_xmp_parse (const char *metadata,
                         gsize size,
                         PpsDocumentInfo *info);
 

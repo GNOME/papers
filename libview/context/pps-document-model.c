@@ -680,12 +680,11 @@ pps_document_model_set_rtl (PpsDocumentModel *model,
 
 /**
  * pps_document_model_set_annotation_editing_state:
- * @model: a #PpsDocumentModel
- * @state: a #PpsAnnotationEditingState
+ * @state: The editing state of annotation
  *
- * Sets the current editing state to @state. In a #PpsView,
- * This implies that editing widgets for annotations may be shown
- * and annotations not rendered by the backend.
+ * Sets the current editing state. In a [class@View], This implies that editing
+ * widgets for annotations may be shown and annotations not rendered by the
+ * backend.
  *
  * Since: 48.0
  */

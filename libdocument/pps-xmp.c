@@ -225,11 +225,13 @@ pps_xmp_get_license (XmpPtr xmp)
 	return license;
 }
 
-/*
+/**
  * pps_xmp_parse:
  * @metadata: XMP document data
  * @size: size of @metadata in bytes
- * @info: a #PpsDocumentInfo
+ * @info: target to update
+ *
+ * Parse XMP based document metadata into [struct@DocumentInfo]
  *
  * Returns: %TRUE iff @metadata could be successfully parsed
  */
