@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
 "issues/\n"
-"POT-Creation-Date: 2025-04-21 13:18+0000\n"
-"PO-Revision-Date: 2025-04-21 19:36+0200\n"
+"POT-Creation-Date: 2025-07-04 21:58+0000\n"
+"PO-Revision-Date: 2025-07-10 11:08+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -39,7 +39,7 @@ msgstr ""
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
 #: shell/src/application.rs:68 shell/src/application.rs:310
-#: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
+#: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
 msgstr "Papers"
 
@@ -486,7 +486,7 @@ msgid "This work is in the Public Domain"
 msgstr "Toto je volné dílo (Public Domain)"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1041
+#: shell/src/document_view/actions.rs:1044
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Uložit přílohu"
@@ -557,8 +557,8 @@ msgstr "Snažíte se vytisknout výběr, který nezahrnuje žádné stránky"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
 #: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:599
+#: shell/resources/pps-document-view.ui:591 shell/resources/pps-window.ui:166
+#: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -660,60 +660,60 @@ msgstr "Posunout pohled dolů"
 msgid "Document View"
 msgstr "Pohled na dokument"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2112
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2114
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2116
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2118
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2120
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2122
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2151
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2160
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
 
-#: libview/pps-view-presentation.c:833
+#: libview/pps-view-presentation.c:837
 msgid "Running in presentation mode"
 msgstr "Běží v režimu prezentace"
 
-#: libview/pps-view-presentation.c:884
+#: libview/pps-view-presentation.c:888
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Konec prezentace. Opustíte ji kliknutím nebo klávesou Esc."
 
@@ -769,7 +769,7 @@ msgstr "Popisovač souboru souboru s nastavením tisku"
 
 #: previewer/pps-previewer.c:280 previewer/pps-previewer.c:296
 msgid "GNOME Document Previewer"
-msgstr "Prohlížeč dokumentů pro uživatelské prostředí GNOME"
+msgstr "Náhled dokumentů GNOME"
 
 #: previewer/pps-previewer-window.c:187 previewer/pps-previewer-window.c:510
 msgid "Papers Document Viewer"
@@ -1295,7 +1295,7 @@ msgstr "_Použít"
 msgid "Search"
 msgstr "Hledat"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:39
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
@@ -1328,7 +1328,7 @@ msgstr "Zobrazit/skrýt postranní panel"
 msgid "Document Menu"
 msgstr "Nabídka dokumentu"
 
-#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.ui:238 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Dokument byl digitálně podepsán."
 
@@ -1379,8 +1379,8 @@ msgid "Abort _Print and Close"
 msgstr "Přerušit _tisk a zavřít"
 
 #: shell/resources/pps-document-view.ui:583 shell/src/document_view.rs:725
-#: shell/src/document_view/io.rs:483 shell/src/document_view/io.rs:527
-#: shell/src/document_view/io.rs:711
+#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
+#: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -1396,15 +1396,15 @@ msgstr "Otevřít…"
 msgid "Ni_ght Mode"
 msgstr "_Noční režim"
 
-#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.ui:610 shell/resources/pps-window.ui:173
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.ui:614 shell/resources/pps-window.ui:177
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:179
+#: shell/resources/pps-document-view.ui:618 shell/resources/pps-window.ui:181
 msgid "_About Papers"
 msgstr "O _aplikaci Papers"
 
@@ -1548,7 +1548,7 @@ msgstr "_Zrušit"
 
 #: shell/resources/pps-password-dialog.ui:4
 #: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:704
+#: shell/resources/pps-password-view.ui:19 shell/src/document_view/io.rs:707
 msgid "Password Required"
 msgstr "Je vyžadováno heslo"
 
@@ -1669,23 +1669,23 @@ msgstr "Vytisknout tento oddíl…"
 msgid "Previews"
 msgstr "Náhledy"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.ui:49 shell/resources/pps-window.ui:57
 msgid "Open a Document"
 msgstr "Otevřít dokument"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.ui:50
 msgid "Drag and drop documents here"
 msgstr "Sem přetáhněte a pusťte dokumenty"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.ui:55
 msgid "_Open…"
 msgstr "_Otevřít…"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.ui:81
 msgid "Unable to Open Document"
 msgstr "Nepodařilo se otevřít dokument"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.ui:86
 msgid "_Open Other File…"
 msgstr "_Otevřít jiný soubor…"
 
@@ -1784,63 +1784,63 @@ msgstr "Zavřít _bez uložení"
 msgid "_Save a Copy"
 msgstr "Uložit _kopii"
 
-#: shell/src/document_view/actions.rs:761
+#: shell/src/document_view/actions.rs:764
 msgid "Save Image"
 msgstr "Uložit obrázek"
 
-#: shell/src/document_view/actions.rs:797
+#: shell/src/document_view/actions.rs:800
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Nepodařilo se najít vhodný formát pro uložení obrázku"
 
-#: shell/src/document_view/actions.rs:820
+#: shell/src/document_view/actions.rs:823
 msgid "The image could not be saved."
 msgstr "Nepodařilo se uložit obrázek."
 
-#: shell/src/document_view/actions.rs:921
+#: shell/src/document_view/actions.rs:924
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Režim kurzorové navigace je nyní povolen, stisknutím klávesy F7 jej "
 "deaktivujete."
 
-#: shell/src/document_view/actions.rs:923
+#: shell/src/document_view/actions.rs:926
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Režim kurzorové navigace je nyní deaktivován, stisknutím klávesy F7 jej "
 "povolíte."
 
-#: shell/src/document_view/actions.rs:1025 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1028 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Nepodařilo se otevřít přílohu"
 
-#: shell/src/document_view/actions.rs:1058
+#: shell/src/document_view/actions.rs:1061
 msgid "The attachment could not be saved."
 msgstr "Nepodařilo se uložit přílohu."
 
-#: shell/src/document_view/io.rs:262
+#: shell/src/document_view/io.rs:269
 msgid "Digital Signature is invalid!"
 msgstr "Digitální podpis je neplatný!"
 
-#: shell/src/document_view/io.rs:277
+#: shell/src/document_view/io.rs:280
 msgid "The Document Contains No Pages"
 msgstr "Dokument neobsahuje žádné stránky"
 
-#: shell/src/document_view/io.rs:279
+#: shell/src/document_view/io.rs:282
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokument obsahuje pouze prázdné stránky"
 
-#: shell/src/document_view/io.rs:365 shell/src/document_view/io.rs:443
+#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
 msgid "The file could not be saved as “{}”."
 msgstr "Soubor nelze uložit jako „{}“."
 
-#: shell/src/document_view/io.rs:406
+#: shell/src/document_view/io.rs:409
 msgid "Save As…"
 msgstr "Uložení jako…"
 
-#: shell/src/document_view/io.rs:482
+#: shell/src/document_view/io.rs:485
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Nakreslete obdélník pro vložení pole podpisu"
 
-#: shell/src/document_view/io.rs:504
+#: shell/src/document_view/io.rs:507
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1848,31 +1848,31 @@ msgstr ""
 "Digitální podpis od {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:520
+#: shell/src/document_view/io.rs:523
 msgid "Certificate Required"
 msgstr "Je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:526
 msgid "Select signing certificate"
 msgstr "Vyberte podpisový certifikát"
 
-#: shell/src/document_view/io.rs:524
+#: shell/src/document_view/io.rs:527
 msgid "Select"
 msgstr "Vybrat"
 
-#: shell/src/document_view/io.rs:597
+#: shell/src/document_view/io.rs:600
 msgid "A certificate is required to sign this document"
 msgstr "K podepsání tohoto dokumentu je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:666
+#: shell/src/document_view/io.rs:669
 msgid "Save Signed File"
 msgstr "Uložit podepsaný soubor"
 
-#: shell/src/document_view/io.rs:696
+#: shell/src/document_view/io.rs:699
 msgid "Please enter password for {}"
 msgstr "Zadejte prosím heslo pro {}"
 
-#: shell/src/document_view/io.rs:712
+#: shell/src/document_view/io.rs:715
 msgid "_Login"
 msgstr "Přih_lásit"
 
@@ -1903,7 +1903,7 @@ msgstr ""
 "Bezpečnostní upozornění: tomuto dokumentu bylo zabráněno v otevření souboru "
 "„{}“"
 
-#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:432 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Stránka {}"
