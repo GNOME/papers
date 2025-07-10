@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-07-08 03:16+0000\n"
-"PO-Revision-Date: 2025-07-08 09:29+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-07-09 23:48+0000\n"
+"PO-Revision-Date: 2025-07-10 12:58+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -23,13 +22,11 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:354
-#: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
-msgid "Papers"
-msgstr "Papers"
+#: shell/src/application.rs:358
+msgid "Document Viewer"
+msgstr "Visionador de documents"
 
 # Utilizacion de l'infinitiu dins las infobullas del Burèu
 # Utilizacion de l'infinitiu dins las infobullas del Burèu
@@ -767,6 +764,7 @@ msgid "GNOME Document Previewer"
 msgstr "Previsualizador de documents de GNOME"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:71
 msgid "Papers Document Viewer"
 msgstr "Visionador de documents Papers"
 
@@ -774,6 +772,11 @@ msgstr "Visionador de documents Papers"
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "L'imprimenta seleccionada « %s » pòt pas èsser trobada"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
 
 #: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
@@ -890,331 +893,6 @@ msgstr "Talha del papièr"
 #: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "Talha"
-
-#: shell/resources/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Dobertura, tampadura, enregistrament e impression"
-
-#: shell/resources/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open Document"
-msgstr "Dobrir un document"
-
-#: shell/resources/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "Open Copy of Current Document"
-msgstr "Dobrir una còpia del document actual"
-
-#: shell/resources/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Open With…"
-msgstr "Dobrir amb…"
-
-#: shell/resources/help-overlay.blp:29
-msgctxt "shortcut window"
-msgid "Save Copy of Current Document"
-msgstr "Enregistrar una còpia del document actual"
-
-#: shell/resources/help-overlay.blp:34
-msgctxt "shortcut window"
-msgid "Print Current Document"
-msgstr "Imprimir lo document actual"
-
-#: shell/resources/help-overlay.blp:39
-msgctxt "shortcut window"
-msgid "Close Current Document Window"
-msgstr "Tampar lo document actual de la fenèstra"
-
-#: shell/resources/help-overlay.blp:45
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "Fenèstra"
-
-#: shell/resources/help-overlay.blp:48
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "Ecran complèt"
-
-#: shell/resources/help-overlay.blp:53
-msgctxt "shortcut window"
-msgid "Enter Presentation Mode"
-msgstr "Passar en mòde presentacion"
-
-#: shell/resources/help-overlay.blp:58
-msgctxt "shortcut window"
-msgid "Side Pane"
-msgstr "Panèl lateral"
-
-#: shell/resources/help-overlay.blp:63
-msgctxt "shortcut window"
-msgid "Caret Navigation"
-msgstr "Navegacion"
-
-#: shell/resources/help-overlay.blp:69
-msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Seleccion e còpia del tèxte"
-
-#: shell/resources/help-overlay.blp:72
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "Copiar"
-
-#: shell/resources/help-overlay.blp:77
-msgctxt "shortcut window"
-msgid "Select All"
-msgstr "Tot seleccionar"
-
-#: shell/resources/help-overlay.blp:83
-msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Rotacion e agrandiment"
-
-#: shell/resources/help-overlay.blp:86
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Counter-Clockwise"
-msgstr "Virar la pagina de 90° dins lo sens anti-orari"
-
-#: shell/resources/help-overlay.blp:91
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Clockwise"
-msgstr "Virar la pagina de 90° dins lo sens orari"
-
-#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Zoom avant"
-
-#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Zoom arrièr"
-
-#: shell/resources/help-overlay.blp:106
-msgctxt "shortcut window"
-msgid "Normal Size"
-msgstr "Talha normala"
-
-#: shell/resources/help-overlay.blp:111
-msgctxt "shortcut window"
-msgid "Zoom In (Alternative)"
-msgstr "Zoom avant (alternativa)"
-
-#: shell/resources/help-overlay.blp:116
-msgctxt "shortcut window"
-msgid "Fit Page"
-msgstr "Adaptar a la pagina"
-
-#: shell/resources/help-overlay.blp:121
-msgctxt "shortcut window"
-msgid "Fit Width"
-msgstr "Adaptar a la longor"
-
-#: shell/resources/help-overlay.blp:126
-msgctxt "shortcut window"
-msgid "Automatic Zoom"
-msgstr "Zoom automatic"
-
-#: shell/resources/help-overlay.blp:132
-msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Desplaçament dins lo document"
-
-#: shell/resources/help-overlay.blp:135
-msgctxt "shortcut window"
-msgid "Move Around Page"
-msgstr "Se desplaçar dins una pagina"
-
-#: shell/resources/help-overlay.blp:140
-msgctxt "shortcut window"
-msgid "Move Up/Down Page Several Lines"
-msgstr "Montar / daval dins una pagina mantuna linha a l'encòp"
-
-#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
-msgctxt "shortcut window"
-msgid "Previous Page"
-msgstr "Pagina precedenta"
-
-#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
-msgctxt "shortcut window"
-msgid "Next Page"
-msgstr "Pagina seguenta"
-
-#: shell/resources/help-overlay.blp:155
-msgctxt "shortcut window"
-msgid "Go to Page Number"
-msgstr "Anar a la pagina numèro"
-
-#: shell/resources/help-overlay.blp:160
-msgctxt "shortcut window"
-msgid "Previous Page (Fast)"
-msgstr "Pagina precedenta (rapid)"
-
-#: shell/resources/help-overlay.blp:165
-msgctxt "shortcut window"
-msgid "Next Page (Fast)"
-msgstr "Pagina seguenta (rapid)"
-
-#: shell/resources/help-overlay.blp:170
-msgctxt "shortcut window"
-msgid "Previous Visited Page"
-msgstr "Pagina precedenta visitada"
-
-#: shell/resources/help-overlay.blp:175
-msgctxt "shortcut window"
-msgid "Next Visited Page"
-msgstr "Pagina seguenta visitada"
-
-#: shell/resources/help-overlay.blp:180
-msgctxt "shortcut window"
-msgid "Go to Page Beginning/End"
-msgstr "Anar a la debuta/fin de la pagina"
-
-#: shell/resources/help-overlay.blp:185
-msgctxt "shortcut window"
-msgid "Go to Document Start"
-msgstr "Anar a la debuta del document"
-
-#: shell/resources/help-overlay.blp:190
-msgctxt "shortcut window"
-msgid "Go to Document End"
-msgstr "Anar a la fin del document"
-
-#: shell/resources/help-overlay.blp:196
-msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Vista e gestion del document"
-
-#: shell/resources/help-overlay.blp:199
-msgctxt "shortcut window"
-msgid "Add Bookmark"
-msgstr "Apondre un signet"
-
-#: shell/resources/help-overlay.blp:204
-msgctxt "shortcut window"
-msgid "Remove Bookmark"
-msgstr "Suprimir lo signet"
-
-#: shell/resources/help-overlay.blp:209
-msgctxt "shortcut window"
-msgid "Night Mode"
-msgstr "Mòde nuèch"
-
-#: shell/resources/help-overlay.blp:214
-msgctxt "shortcut window"
-msgid "Continuous Scrolling"
-msgstr "Defilament continú"
-
-#: shell/resources/help-overlay.blp:219
-msgctxt "shortcut window"
-msgid "Dual Page"
-msgstr "Pagina dobla"
-
-#: shell/resources/help-overlay.blp:224
-msgctxt "shortcut window"
-msgid "Odd Pages Left"
-msgstr "Paginas imparas"
-
-#: shell/resources/help-overlay.blp:229
-msgctxt "shortcut window"
-msgid "Document Properties"
-msgstr "Proprietats del document"
-
-#: shell/resources/help-overlay.blp:234
-msgctxt "shortcut window"
-msgid "Add Text Annotation"
-msgstr "Apondre una anotacion tèxte"
-
-#: shell/resources/help-overlay.blp:239
-msgctxt "shortcut window"
-msgid "Highlight Text"
-msgstr "Suslinhar lo tèxte"
-
-#: shell/resources/help-overlay.blp:244
-msgctxt "shortcut window"
-msgid "Strikethrough Text"
-msgstr "Raiar lo tèxte"
-
-#: shell/resources/help-overlay.blp:249
-msgctxt "shortcut window"
-msgid "Wavy/Squiggly Underline Text"
-msgstr "Ondular/Desformar lo soslinhament del tèxte"
-
-#: shell/resources/help-overlay.blp:254
-msgctxt "shortcut window"
-msgid "Underline Text"
-msgstr "Soslinhar lo tèxte"
-
-#: shell/resources/help-overlay.blp:260
-msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Recèrca de tèxte"
-
-#: shell/resources/help-overlay.blp:263
-msgctxt "shortcut window"
-msgid "Find"
-msgstr "Recercar"
-
-#: shell/resources/help-overlay.blp:268
-msgctxt "shortcut window"
-msgid "Find Next"
-msgstr "Recercar lo seguent"
-
-#: shell/resources/help-overlay.blp:273
-msgctxt "shortcut window"
-msgid "Find Previous"
-msgstr "Recercar lo precedent"
-
-#: shell/resources/help-overlay.blp:279
-msgctxt "shortcut window"
-msgid "General"
-msgstr "General"
-
-#: shell/resources/help-overlay.blp:282
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "Ajuda"
-
-#: shell/resources/help-overlay.blp:287
-msgctxt "shortcut window"
-msgid "Menu"
-msgstr "Menú"
-
-#: shell/resources/help-overlay.blp:292
-msgctxt "shortcut window"
-msgid "Keyboard Shortcuts"
-msgstr "Acorchis de clavièr"
-
-#: shell/resources/help-overlay.blp:297
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Fenèstra novèla"
-
-#: shell/resources/help-overlay.blp:302
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Tampar la fenèstra"
-
-#: shell/resources/help-overlay.blp:308
-msgctxt "shortcut window"
-msgid "Presentation Mode"
-msgstr "Mòde presentacion"
-
-#: shell/resources/help-overlay.blp:311
-msgctxt "shortcut window"
-msgid "Black Screen"
-msgstr "Ecran negre"
-
-#: shell/resources/help-overlay.blp:316
-msgctxt "shortcut window"
-msgid "White Screen"
-msgstr "Ecran blanc"
-
-#: shell/resources/help-overlay.blp:322
-msgctxt "shortcut window"
-msgid "Touchpad Gestures"
-msgstr "Gèstes amb lo pavat tactil"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:5
 msgctxt "Title of the dialog shown to edit properties of a given annotation."
@@ -1411,8 +1089,8 @@ msgid "_Help"
 msgstr "Ajud_a"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-msgid "_About Papers"
-msgstr "_A prepaus de Papers"
+msgid "_About Document Viewer"
+msgstr "_A prepaus del Visionador de documents"
 
 #: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
@@ -1663,6 +1341,326 @@ msgstr "_Mots entièrs"
 msgid "C_ase Sensitive"
 msgstr "Respectar la c_assa"
 
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "Opening, Closing, Saving and Printing"
+msgstr "Dobertura, tampadura, enregistrament e impression"
+
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "Dobrir un document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Dobrir una còpia del document actual"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Dobrir amb…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Enregistrar una còpia del document actual"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Imprimir lo document actual"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Tampar lo document actual de la fenèstra"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Fenèstra"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Ecran complèt"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Passar en mòde presentacion"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Panèl lateral"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Navegacion"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selecting and Copying Text"
+msgstr "Seleccion e còpia del tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Copiar"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Tot seleccionar"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Rotating and Zooming"
+msgstr "Rotacion e agrandiment"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Virar la pagina de 90° dins lo sens anti-orari"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Virar la pagina de 90° dins lo sens orari"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Zoom avant"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Zoom arrièr"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Talha normala"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Zoom avant (alternativa)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Adaptar a la pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Adaptar a la longor"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Zoom automatic"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Moving Around Document"
+msgstr "Desplaçament dins lo document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Se desplaçar dins una pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Montar / daval dins una pagina mantuna linha a l'encòp"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Pagina precedenta"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Pagina seguenta"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Anar a la pagina numèro"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Pagina precedenta (rapid)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Pagina seguenta (rapid)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Pagina precedenta visitada"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Pagina seguenta visitada"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Anar a la debuta/fin de la pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Anar a la debuta del document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Anar a la fin del document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View and Handling"
+msgstr "Vista e gestion del document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Apondre un signet"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Suprimir lo signet"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Mòde nuèch"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Defilament continú"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Pagina dobla"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Paginas imparas"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Proprietats del document"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Apondre una anotacion tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Suslinhar lo tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Raiar lo tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Ondular/Desformar lo soslinhament del tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Soslinhar lo tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Finding Text"
+msgstr "Recèrca de tèxte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Recercar"
+
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Recercar lo seguent"
+
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Recercar lo precedent"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Ajuda"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menú"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Acorchis de clavièr"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Fenèstra novèla"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tampar la fenèstra"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Mòde presentacion"
+
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Ecran negre"
+
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Ecran blanc"
+
 #: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "Cap d’annotacion"
@@ -1715,51 +1713,51 @@ msgstr "Impossible de dobrir lo document"
 msgid "_Open Other File…"
 msgstr "_Dobrir autre fichièr…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:215
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996-2025 Los autors del visionador de documents Papers"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:216
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: shell/src/application.rs:361
+#: shell/src/application.rs:365
 msgid "The page label of the document to display."
 msgstr "L'etiqueta de la pagina del document d'afichar."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:366
 msgid "PAGE"
 msgstr "PAGINA"
 
-#: shell/src/application.rs:370
+#: shell/src/application.rs:374
 msgid "The page number of the document to display."
 msgstr "Lo numèro de la pagina del document d'afichar."
 
-#: shell/src/application.rs:371
+#: shell/src/application.rs:375
 msgid "NUMBER"
 msgstr "NUMÈRO"
 
-#: shell/src/application.rs:379
+#: shell/src/application.rs:383
 msgid "Named destination to display."
 msgstr "Destinacion nomenada d'afichar."
 
-#: shell/src/application.rs:380
+#: shell/src/application.rs:384
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:388
+#: shell/src/application.rs:392
 msgid "Run papers in fullscreen mode."
 msgstr "Executar papers en mòde ecran complèt."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:401
 msgid "Run papers in presentation mode."
 msgstr "Executar papers en mòde presentacion."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:410
 msgid "Show the version of the program."
 msgstr "Afichar la version del programa."
 
-#: shell/src/application.rs:416
+#: shell/src/application.rs:420
 msgid "[FILE…]"
 msgstr "[FICHIÈR…]"
 
@@ -2051,6 +2049,13 @@ msgstr "Data d’expiracion del certificat"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Amagar los detalhs…"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad Gestures"
+#~ msgstr "Gèstes amb lo pavat tactil"
+
+#~ msgid "_About Papers"
+#~ msgstr "_A prepaus de Papers"
 
 #~ msgid "Initially Opened"
 #~ msgstr "Dubertura iniciala"
@@ -2671,9 +2676,6 @@ msgstr "Amagar los detalhs…"
 
 #~ msgid "6400%"
 #~ msgstr "6400 %"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "Visionador de documents de GNOME"
 
 #~ msgid "Run evince as a previewer"
 #~ msgstr "Executa evince en mòde apercebut"
