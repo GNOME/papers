@@ -23,10 +23,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-07-08 11:49+0000\n"
-"PO-Revision-Date: 2025-07-09 07:36+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-07-10 18:24+0000\n"
+"PO-Revision-Date: 2025-07-11 07:09+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -40,13 +39,11 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:354
-#: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
-msgid "Papers"
-msgstr "Papers"
+#: shell/src/application.rs:358
+msgid "Document Viewer"
+msgstr "文档查看器"
 
 #: data/org.gnome.Papers.desktop.in.in:4
 msgid "View multi-page documents"
@@ -752,6 +749,7 @@ msgid "GNOME Document Previewer"
 msgstr "GNOME 文档预览器"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:71
 msgid "Papers Document Viewer"
 msgstr "Papers 文档查看器"
 
@@ -759,6 +757,11 @@ msgstr "Papers 文档查看器"
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "无法找到选中的打印机“%s”"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
 
 #: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
@@ -1069,8 +1072,8 @@ msgid "_Help"
 msgstr "帮助(_H)"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-msgid "_About Papers"
-msgstr "关于 Papers(_A)"
+msgid "_About Document Viewer"
+msgstr "关于文档查看器(_A)"
 
 #: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
@@ -1691,11 +1694,11 @@ msgstr "无法打开文档"
 msgid "_Open Other File…"
 msgstr "打开其它文件(_O)…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:215
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 Papers 的作者们"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:216
 msgid "translator-credits"
 msgstr ""
 "Aron Xu <happyaron.xu@gmail.com>, 2009, 2010, 2011\n"
@@ -1725,43 +1728,43 @@ msgstr ""
 "rainofchaos https://launchpad.net/~rainofchaos\n"
 "zhangmiao https://launchpad.net/~mymzhang"
 
-#: shell/src/application.rs:361
+#: shell/src/application.rs:365
 msgid "The page label of the document to display."
 msgstr "要显示的文档的页标签。"
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:366
 msgid "PAGE"
 msgstr "页面"
 
-#: shell/src/application.rs:370
+#: shell/src/application.rs:374
 msgid "The page number of the document to display."
 msgstr "要显示的文档的页编号。"
 
-#: shell/src/application.rs:371
+#: shell/src/application.rs:375
 msgid "NUMBER"
 msgstr "页码"
 
-#: shell/src/application.rs:379
+#: shell/src/application.rs:383
 msgid "Named destination to display."
 msgstr "要显示的已命名目标。"
 
-#: shell/src/application.rs:380
+#: shell/src/application.rs:384
 msgid "DEST"
 msgstr "目标"
 
-#: shell/src/application.rs:388
+#: shell/src/application.rs:392
 msgid "Run papers in fullscreen mode."
 msgstr "以全屏模式运行 Papers。"
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:401
 msgid "Run papers in presentation mode."
 msgstr "以放映模式运行 Papers。"
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:410
 msgid "Show the version of the program."
 msgstr "显示程序的版本。"
 
-#: shell/src/application.rs:416
+#: shell/src/application.rs:420
 msgid "[FILE…]"
 msgstr "[文件…]"
 
@@ -2043,6 +2046,9 @@ msgstr "证书到期时间"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "隐藏详情…"
+
+#~ msgid "_About Papers"
+#~ msgstr "关于 Papers(_A)"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
@@ -2637,9 +2643,6 @@ msgstr "隐藏详情…"
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
 #~ msgstr "键盘快捷键"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "GNOME 文档查看器"
 
 #~ msgid "Open a new window."
 #~ msgstr "打开一个新窗口。"
