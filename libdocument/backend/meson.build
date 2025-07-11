@@ -6,6 +6,7 @@ backends_common_cflags = [
 
 foreach backend, backend_mime_types: backends
   backend_name = backend + 'document'
+  backend_id = 'org.gnome.Papers.@0@Document'.format(backend.substring(0, 1).to_upper() + backend.substring(1))
 
   # Set default values, let each backend configure its own
   backend_sources = []
@@ -30,12 +31,12 @@ foreach backend, backend_mime_types: backends
 
   metainfo_mime_types = ''
   foreach type: backend_mime_types
-    metainfo_mime_types += '\t<mimetype>@0@</mimetype>\n'.format(type)
+    metainfo_mime_types += '\t<mediatype>@0@</mediatype>\n'.format(type)
   endforeach
 
   backend_mime_types_conf.set('METAINFO_@0@_MIME_TYPES'.format(backend.to_upper()), metainfo_mime_types)
 
-  backend_desc = backend_name + '.papers-backend'
+  backend_desc = backend_id + '.papers-backend'
 
   backend_desc_in = configure_file(
     input: '@0@/@1@.desktop.in.in'.format(backend, backend_desc),
@@ -53,7 +54,7 @@ foreach backend, backend_mime_types: backends
     args: '--keyword=TypeDescription',
   )
 
-  backend_metainfo = 'papers-@0@.metainfo.xml'.format(backend_name)
+  backend_metainfo = '@0@.metainfo.xml'.format(backend_id)
   i18n.merge_file(
     input: configure_file(
       input: '@0@/@1@.in.in'.format(backend, backend_metainfo),
