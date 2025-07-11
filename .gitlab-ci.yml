@@ -164,13 +164,14 @@ msrv:
     stage: build
     variables:
         MANIFEST_PATH: "build-aux/flatpak/org.gnome.Papers.Devel.json"
+        MANIFEST_NIGHTLY_OVERRIDES: "build-aux/flatpak/nightly.json"
         RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
         FLATPAK_MODULE: "papers"
         APP_ID: "org.gnome.Papers.Devel"
         BUNDLE: "org.gnome.Papers.Devel.flatpak"
     retry: 2
     before_script:
-        - "jq '. + { \"runtime-version\": \"master\" }' ${MANIFEST_PATH} > ${MANIFEST_PATH}.tmp"
+        - "jq -s '.[0] * .[1]' ${MANIFEST_PATH} ${MANIFEST_NIGHTLY_OVERRIDES} > ${MANIFEST_PATH}.tmp"
         - mv ${MANIFEST_PATH}.tmp ${MANIFEST_PATH}
     rules:
         - if: $CI_COMMIT_BRANCH =~ /gnome-\d+/

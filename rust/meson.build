@@ -52,7 +52,8 @@ cargo_common_env.set('CARGO_PROFILE_DEV_DEBUG', get_option('debug').to_string())
 
 meson.add_devenv(cargo_common_env)
 
-if get_option('optimization') == '0'
+optimization_level = get_option('optimization')
+if optimization_level == '0' or optimization_level == 'g'
   rust_target = 'debug'
 else
   rust_target = 'release'
