@@ -74,9 +74,7 @@ pps_form_field_class_init (PpsFormFieldClass *klass)
  * is hovered by a pointing device (eg. mouse).
  *
  * Returns: (transfer full): a string.
- *
- * Since: 3.38
- **/
+ */
 gchar *
 pps_form_field_get_alternate_name (PpsFormField *field)
 {
@@ -97,9 +95,7 @@ pps_form_field_get_alternate_name (PpsFormField *field)
  * Sets the alternate ui name of @field. This name is also commonly
  * used by pdf producers/readers to show it as a tooltip when @field area
  * is hovered by a pointing device (eg. mouse).
- *
- * Since: 3.38
- **/
+ */
 void
 pps_form_field_set_alternate_name (PpsFormField *field,
                                    gchar *alternative_text)

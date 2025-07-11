@@ -35,10 +35,10 @@ G_DECLARE_FINAL_TYPE (PpsDocumentModel, pps_document_model, PPS, DOCUMENT_MODEL,
 
 /**
  * PpsSizingMode:
- * @PPS_SIZING_FIT_PAGE: Since: 3.8
+ * @PPS_SIZING_FIT_PAGE:
  * @PPS_SIZING_FIT_WIDTH:
  * @PPS_SIZING_FREE:
- * @PPS_SIZING_AUTOMATIC: Since: 3.8
+ * @PPS_SIZING_AUTOMATIC:
  */
 typedef enum {
 	PPS_SIZING_FIT_PAGE,

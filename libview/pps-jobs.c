@@ -151,8 +151,6 @@ pps_job_links_new (PpsDocument *document)
  * Get a #GListModel loaded with the links
  *
  * Returns: (nullable) (transfer none): a #GListModel of #PpsOutlines objects
- *
- * Since: 3.6
  */
 GListModel *
 pps_job_links_get_model (PpsJobLinks *self)
@@ -1334,8 +1332,6 @@ pps_job_find_new (PpsDocument *document,
  * @job:
  *
  * Returns: the job's find options
- *
- * Since: 3.6
  */
 PpsFindOptions
 pps_job_find_get_options (PpsJobFind *job)

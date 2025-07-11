@@ -521,8 +521,6 @@ pps_link_dest_new_page_label (const gchar *page_label)
  * Checks whether @a and @b are equal.
  *
  * Returns: %TRUE iff @a and @b are equal
- *
- * Since: 3.8
  */
 gboolean
 pps_link_dest_equal (PpsLinkDest *a,

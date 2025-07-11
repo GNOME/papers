@@ -503,8 +503,6 @@ pps_page_cache_get_text_layout (PpsPageCache *cache,
  * @page:
  *
  * FIXME
- *
- * Since: 3.10
  */
 PangoAttrList *
 pps_page_cache_get_text_attrs (PpsPageCache *cache,
@@ -538,8 +536,6 @@ pps_page_cache_get_text_attrs (PpsPageCache *cache,
  * FIXME
  *
  * Returns: %TRUE on success with @log_attrs filled in, %FALSE otherwise
- *
- * Since: 3.10
  */
 gboolean
 pps_page_cache_get_text_log_attrs (PpsPageCache *cache,

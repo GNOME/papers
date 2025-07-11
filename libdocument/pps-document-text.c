@@ -92,8 +92,6 @@ pps_document_text_get_text_mapping (PpsDocumentText *document_text,
  * FIXME
  *
  * Returns: (transfer full): a newly created #PangoAttrList
- *
- * Since: 3.10
  */
 PangoAttrList *
 pps_document_text_get_text_attrs (PpsDocumentText *document_text,

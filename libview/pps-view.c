@@ -3113,8 +3113,6 @@ preload_pages_for_caret_navigation (PpsView *view)
  * @view: a #PpsView
  *
  * Returns: whether the document supports caret navigation
- *
- * Since: 3.10
  */
 gboolean
 pps_view_supports_caret_navigation (PpsView *view)
@@ -3139,8 +3137,6 @@ pps_view_supports_caret_navigation (PpsView *view)
  * @enabled: whether to enable caret navigation mode
  *
  * Enables or disables caret navigation mode for the document.
- *
- * Since: 3.10
  */
 void
 pps_view_set_caret_navigation_enabled (PpsView *view,
@@ -3166,8 +3162,6 @@ pps_view_set_caret_navigation_enabled (PpsView *view,
  * @view: a #PpsView
  *
  * Returns: whether caret navigation mode is enabled for the document
- *
- * Since: 3.10
  */
 gboolean
 pps_view_is_caret_navigation_enabled (PpsView *view)
@@ -3183,8 +3177,6 @@ pps_view_is_caret_navigation_enabled (PpsView *view)
  * @view: a #PpsView
  * @page:
  * @offset:
- *
- * Since: 3.10
  */
 void
 pps_view_set_caret_cursor_position (PpsView *view,
@@ -5720,8 +5712,6 @@ pps_view_class_init (PpsViewClass *class)
 
 	/**
 	 * PpsView:can-zoom-in:
-	 *
-	 * Since: 3.8
 	 */
 	g_object_class_install_property (object_class,
 	                                 PROP_CAN_ZOOM_IN,
@@ -5733,8 +5723,6 @@ pps_view_class_init (PpsViewClass *class)
 	                                                           G_PARAM_STATIC_STRINGS));
 	/**
 	 * PpsView:can-zoom-out:
-	 *
-	 * Since: 3.8
 	 */
 	g_object_class_install_property (object_class,
 	                                 PROP_CAN_ZOOM_OUT,
@@ -7037,8 +7025,6 @@ _pps_view_set_selection (PpsView *view,
  * The value returned may be NULL if there is no selected text.
  *
  * Returns: The string representing selected text.
- *
- * Since: 3.30
  */
 char *
 pps_view_get_selected_text (PpsView *view)

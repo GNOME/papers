@@ -175,8 +175,6 @@ pps_document_class_init (PpsDocumentClass *klass)
  *
  * You can monitor changes to the modification state by connecting to the
  * notify::modified signal on @document.
- *
- * Since: 3.28
  */
 gboolean
 pps_document_get_modified (PpsDocument *document)
@@ -193,8 +191,6 @@ pps_document_get_modified (PpsDocument *document)
  * @modified: a boolean value to set the document as modified or not.
  *
  * Set the @document modification state as @modified.
- *
- * Since: 3.28
  */
 void
 pps_document_set_modified (PpsDocument *document,
@@ -666,8 +662,6 @@ pps_document_get_thumbnail (PpsDocument *document,
  * @rc: an #PpsRenderContext
  *
  * Returns: (transfer full): a #cairo_surface_t
- *
- * Since: 3.14
  */
 cairo_surface_t *
 pps_document_get_thumbnail_surface (PpsDocument *document,

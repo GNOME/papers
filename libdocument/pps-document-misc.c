@@ -204,8 +204,6 @@ pps_document_misc_get_widget_dpi (GtkWidget *widget)
  * Returns: (transfer full): a new allocated string or NULL in the case
  * that there was an error (such as a format specifier not being supported
  * in the current locale). The string should be freed with g_free().
- *
- * Since: 3.38
  */
 gchar *
 pps_document_misc_format_datetime (GDateTime *dt)

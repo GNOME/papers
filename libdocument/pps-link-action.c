@@ -520,8 +520,6 @@ pps_link_action_new_reset_form (GList *reset_fields,
  * Checks whether @a and @b are equal.
  *
  * Returns: %TRUE iff @a and @b are equal
- *
- * Since: 3.8
  */
 gboolean
 pps_link_action_equal (PpsLinkAction *a,

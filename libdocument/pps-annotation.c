@@ -392,7 +392,6 @@ pps_annotation_class_init (PpsAnnotationClass *klass)
 	 *
 	 * The colour of the annotation as a #GdkRGBA.
 	 *
-	 * Since: 3.6
 	 */
 	g_object_class_install_property (g_object_class,
 	                                 PROP_RGBA,
@@ -707,7 +706,6 @@ pps_annotation_set_modified_from_time_t (PpsAnnotation *annot,
  *
  * Gets the color of @annot.
  *
- * Since: 3.6
  */
 void
 pps_annotation_get_rgba (PpsAnnotation *annot,
@@ -729,8 +727,6 @@ pps_annotation_get_rgba (PpsAnnotation *annot,
  * Set the color of the annotation to @rgba.
  *
  * Returns: %TRUE if the color has been changed, %FALSE otherwise
- *
- * Since: 3.6
  */
 gboolean
 pps_annotation_set_rgba (PpsAnnotation *annot,
@@ -758,8 +754,6 @@ pps_annotation_set_rgba (PpsAnnotation *annot,
  * @area: (out): a #PpsRectangle to be filled with the annotation area
  *
  * Gets the area of @annot.
- *
- * Since: 3.18
  */
 void
 pps_annotation_get_area (PpsAnnotation *annot,
@@ -781,8 +775,6 @@ pps_annotation_get_area (PpsAnnotation *annot,
  * Set the area of the annotation to @area.
  *
  * Returns: %TRUE if the area has been changed, %FALSE otherwise
- *
- * Since: 3.18
  */
 gboolean
 pps_annotation_set_area (PpsAnnotation *annot,

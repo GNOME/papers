@@ -532,8 +532,6 @@ pps_document_model_get_sizing_mode (PpsDocumentModel *model)
  * @layout: a #PpsPageLayout
  *
  * Sets the document model's page layout to @layout.
- *
- * Since: 3.8
  */
 void
 pps_document_model_set_page_layout (PpsDocumentModel *model,
@@ -554,8 +552,6 @@ pps_document_model_set_page_layout (PpsDocumentModel *model,
  * @model: a #PpsDocumentModel
  *
  * Returns: the document model's page layout
- *
- * Since: 3.8
  */
 PpsPageLayout
 pps_document_model_get_page_layout (PpsDocumentModel *model)

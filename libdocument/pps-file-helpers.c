@@ -303,8 +303,6 @@ pps_xfer_uri_simple (const char *from,
  * from @from to @to.
  *
  * Returns: %TRUE if the attributes were copied successfully, %FALSE otherwise.
- *
- * Since: 3.4
  */
 gboolean
 pps_file_copy_metadata (const char *from,

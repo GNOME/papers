@@ -10,8 +10,6 @@
 /**
  * SECTION: pps-mapping-list
  * @short_description: a refcounted list of #PpsMappings.
- *
- * Since: 3.8
  */
 struct _PpsMappingList {
 	guint page;
@@ -91,8 +89,6 @@ cmp_mapping_area_size (PpsMapping *a,
  * @point: coordinate
  *
  * Returns: (transfer none): the #PpsMapping in the list at coordinates (x, y)
- *
- * Since: 3.12
  */
 PpsMapping *
 pps_mapping_list_get (PpsMappingList *mapping_list,
@@ -158,8 +154,6 @@ pps_mapping_list_get_list (PpsMappingList *mapping_list)
  * pps_mapping_list_remove:
  * @mapping_list: an #PpsMappingList
  * @mapping: #PpsMapping to remove
- *
- * Since: 3.14
  */
 void
 pps_mapping_list_remove (PpsMappingList *mapping_list,
