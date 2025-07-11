@@ -1,8 +1,8 @@
 # Swedish messages for Papers help.
-# Copyright © 2006-2024 Free Software Foundation, Inc.
+# Copyright © 2006-2025 Free Software Foundation, Inc.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2008, 2009.
 # Sebastian Rasmussen <sebras@gmail.com>, 2015, 2016, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 #
 # "PostScript" bör enligt Datatermgruppen skrivas "Postscript" på svenska.
 # http://www.nada.kth.se/dataterm/fos-lista.html#f19
@@ -10,15 +10,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: papers help\n"
-"POT-Creation-Date: 2024-11-27 14:38+0000\n"
-"PO-Revision-Date: 2024-12-20 13:37+0100\n"
+"POT-Creation-Date: 2025-07-09 22:04+0000\n"
+"PO-Revision-Date: 2025-07-11 11:01+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -26,7 +26,7 @@ msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>, 2006, 2008, 2009\n"
 "Sebastian Rasmussen <sebras@gmail.com>, 2015, 2017\n"
-"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2024"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018, 2019, 2024, 2025"
 
 #. (itstool) path: info/desc
 #: C/annotation-properties.page:7
@@ -61,14 +61,14 @@ msgstr "Tiffany Antopolski"
 #: C/commandline.page:20 C/forms.page:15 C/reload.page:18
 #: C/presentations.page:21 C/singlesided-17-20pages.page:16 C/develop.page:15
 #: C/printing.page:22 C/textselection.page:15 C/annotations-disabled.page:15
-#: C/default-settings.page:16 C/duplex-13pages.page:16 C/duplex-4pages.page:16
-#: C/duplex-7pages.page:16 C/duplex-16pages.page:16
-#: C/singlesided-npages.page:16 C/print-order.page:16 C/translate.page:19
-#: C/headerbar.page:18 C/annotations.page:21 C/print-select.page:15
-#: C/annotations-save.page:20 C/annotations-navigate.page:16
-#: C/print-booklet.page:16 C/noprint.page:18 C/documentation.page:14
-#: C/duplex-12pages.page:16 C/singlesided-5-8pages.page:16
-#: C/duplex-3pages.page:16 C/duplex-9pages.page:16 C/duplex-10pages.page:16
+#: C/duplex-13pages.page:16 C/duplex-4pages.page:16 C/duplex-7pages.page:16
+#: C/duplex-16pages.page:16 C/singlesided-npages.page:16 C/print-order.page:16
+#: C/translate.page:19 C/headerbar.page:18 C/annotations.page:21
+#: C/print-select.page:15 C/annotations-save.page:20
+#: C/annotations-navigate.page:16 C/print-booklet.page:16 C/noprint.page:18
+#: C/documentation.page:14 C/duplex-12pages.page:16
+#: C/singlesided-5-8pages.page:16 C/duplex-3pages.page:16
+#: C/duplex-9pages.page:16 C/duplex-10pages.page:16
 #: C/singlesided-13-16pages.page:16 C/openerror.page:17
 #: C/singlesided-3-4pages.page:16 C/forms-saving.page:23 C/formats.page:20
 #: C/duplex-14pages.page:16 C/bug-filing.page:15 C/duplex-5pages.page:16
@@ -825,9 +825,11 @@ msgstr "Bokmärken"
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:31
-msgid "You can add, rename and delete bookmarks using <app>Papers</app>."
+msgid ""
+"You can add, rename and delete bookmarks using <app>Document Viewer</app>."
 msgstr ""
-"Du kan lägga till, byta namn på och ta bort bokmärken via <app>Papers</app>."
+"Du kan lägga till, byta namn på och ta bort bokmärken via "
+"<app>Dokumentvisare</app>."
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:38
@@ -1080,11 +1082,11 @@ msgstr "Portable Document Format (.pdf)"
 #. (itstool) path: page/p
 #: C/convertSVG.page:32
 msgid ""
-"This works by opening the file in <app>Papers</app> and \"printing\" the "
-"document as an SVG file."
+"This works by opening the file in <app>Document Viewer</app> and "
+"\"printing\" the document as an SVG file."
 msgstr ""
-"Detta fungerar genom att öppna filen i <app>Papers</app> och ”skriva ut” "
-"dokumentet som en SVG-fil."
+"Detta fungerar genom att öppna filen i <app>Dokumentvisare</app> och ”skriva "
+"ut” dokumentet som en SVG-fil."
 
 #. (itstool) path: item/p
 #: C/convertSVG.page:37 C/printing.page:33
@@ -1189,12 +1191,13 @@ msgstr "Kommandoraden"
 #. (itstool) path: page/p
 #: C/commandline.page:25
 msgid ""
-"To start <app>Papers</app> from the command line, type <cmd>papers</cmd>. "
-"You can open a specific file by typing the filename after the papers command:"
+"To start <app>Document Viewer</app> from the command line, type <cmd>papers</"
+"cmd>. You can open a specific file by typing the filename after the papers "
+"command:"
 msgstr ""
-"För att starta <app>Papers</app> från kommandoraden, skriv <cmd>papers</"
-"cmd>. Du kan öppna en specifik fil genom att skriva filnamnet efter papers-"
-"kommandot:"
+"För att starta <app>Dokumentvisare</app> från kommandoraden, skriv "
+"<cmd>papers</cmd>. Du kan öppna en specifik fil genom att skriva filnamnet "
+"efter papers-kommandot:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:30
@@ -1220,12 +1223,13 @@ msgstr "papers fil1.pdf fil2.pdf"
 #. (itstool) path: page/p
 #: C/commandline.page:35
 msgid ""
-"<app>Papers</app> also supports the handling of files on the web. For "
-"example, after the papers command you can give the location of a file on the "
-"web:"
+"<app>Document Viewer</app> also supports the handling of files on the web. "
+"For example, after the papers command you can give the location of a file on "
+"the web:"
 msgstr ""
-"<app>Papers</app> har också stöd för att hantera filer från internet. Du kan "
-"till exempel efter papers-kommandot ange platsen för en fil på internet:"
+"<app>Dokumentvisare</app> har också stöd för att hantera filer från "
+"internet. Du kan till exempel efter papers-kommandot ange platsen för en fil "
+"på internet:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:38
@@ -1258,10 +1262,10 @@ msgstr "papers --page-label=3 fil.pdf"
 #: C/commandline.page:46
 msgid ""
 "The page label should be in the same format as the page number displayed in "
-"the <app>Papers</app> header bar."
+"the <app>Document Viewer</app> header bar."
 msgstr ""
 "Sidetiketten ska vara i samma format som sidnumret som visas i rubrikraden "
-"för <app>Papers</app>."
+"för <app>Dokumentvisare</app>."
 
 #. (itstool) path: section/title
 #: C/commandline.page:52
@@ -1360,12 +1364,13 @@ msgstr "Varför läses dokumentet in hela tiden?"
 #. (itstool) path: page/p
 #: C/reload.page:25
 msgid ""
-"If <app>Papers</app> detects that the document you have open has changed "
-"(perhaps because another program has modified it), it will automatically "
-"reload the document and display the most recent version for you."
+"If <app>Document Viewer</app> detects that the document you have open has "
+"changed (perhaps because another program has modified it), it will "
+"automatically reload the document and display the most recent version for "
+"you."
 msgstr ""
-"Om <app>Papers</app> detekterar att dokumentet du har öppnat har ändrats "
-"(kanske för att ett annat program har modifierat det), kommer det "
+"Om <app>Dokumentvisare</app> detekterar att dokumentet du har öppnat har "
+"ändrats (kanske för att ett annat program har modifierat det), kommer det "
 "automatiskt att läsa in dokumentet på nytt och visa den senaste versionen "
 "för dig."
 
@@ -1534,8 +1539,8 @@ msgstr "Skriv in sidnumren i följande ordning: <_:item-1/>"
 
 #. (itstool) path: info/desc
 #: C/develop.page:7
-msgid "Improve <app>Papers</app>."
-msgstr "Förbättra <app>Papers</app>."
+msgid "Improve <app>Document Viewer</app>."
+msgstr "Förbättra <app>Dokumentvisare</app>."
 
 #. (itstool) path: credit/years
 #: C/develop.page:12 C/translate.page:12 C/documentation.page:11
@@ -1550,25 +1555,25 @@ msgstr "Hjälp till att utveckla"
 #. (itstool) path: page/p
 #: C/develop.page:20
 msgid ""
-"<app>Papers</app> is developed and maintained by a volunteer community. You "
-"are welcome to participate."
+"<app>Document Viewer</app> is developed and maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"<app>Papers</app> utvecklas och underhålls av en frivillig gemenskap. Du är "
-"välkommen att delta."
+"<app>Dokumentvisare</app> utvecklas och underhålls av en frivillig "
+"gemenskap. Du är välkommen att delta."
 
 #. (itstool) path: page/p
 #: C/develop.page:23
 msgid ""
 "If you would like to <link href=\"https://wiki.gnome.org/Apps/Papers\">help "
-"develop</link> <app>Papers</app>, you can get in touch with the developers "
-"at <link href=\"https://matrix.to/#/#papers:gnome.org\">#papers:gnome.org</"
-"link> on <link xref=\"help:gnome-help/help-matrix\">Matrix</link> or <link "
-"href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> on "
-"irc.libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
-"papers\">GNOME Discourse</link>."
+"develop</link> <app>Document Viewer</app>, you can get in touch with the "
+"developers at <link href=\"https://matrix.to/#/"
+"#papers:gnome.org\">#papers:gnome.org</link> on <link xref=\"help:gnome-help/"
+"help-matrix\">Matrix</link> or <link href=\"https://web.libera.chat/#gnome-"
+"papers\">#gnome-papers</link> on irc.libera.chat, or via <link "
+"href=\"https://discourse.gnome.org/tag/papers\">GNOME Discourse</link>."
 msgstr ""
 "Om du vill <link href=\"https://wiki.gnome.org/Apps/Papers\">hjälpa till att "
-"utveckla</link> <app>Papers</app> kan du försöka komma i kontakt med "
+"utveckla</link> <app>Dokumentvisare</app> kan du komma i kontakt med "
 "utvecklarna via <link href=\"https://matrix.to/#/"
 "#papers:gnome.org\">#papers:gnome.org</link> på <link xref=\"help:gnome-help/"
 "help-matrix\">Matrix</link> eller <link href=\"https://web.libera.chat/"
@@ -1697,15 +1702,16 @@ msgstr "Varför kopierades texten jag valde inte korrekt?"
 #. (itstool) path: page/p
 #: C/textselection.page:23
 msgid ""
-"If you highlight and copy text from a document using <app>Papers</app> and "
-"then paste it into another application, the formatting may alter. It may "
-"also contain different characters than the original selection. This often "
-"happens when copying text from a PDF document with multiple columns."
+"If you highlight and copy text from a document using <app>Document Viewer</"
+"app> and then paste it into another application, the formatting may alter. "
+"It may also contain different characters than the original selection. This "
+"often happens when copying text from a PDF document with multiple columns."
 msgstr ""
-"Om du markerar och kopierar text från ett dokument via <app>Papers</app> och "
-"sedan klistrar in den i ett annat program kan formateringen förändras. Den "
-"kan också innehålla andra tecken än originalmarkeringen. Detta händer ofta "
-"vid kopiering av text från ett PDF-dokument som har flera kolumner."
+"Om du markerar och kopierar text från ett dokument via <app>Dokumentvisare</"
+"app> och sedan klistrar in den i ett annat program kan formateringen "
+"förändras. Den kan också innehålla andra tecken än originalmarkeringen. "
+"Detta händer ofta vid kopiering av text från ett PDF-dokument som har flera "
+"kolumner."
 
 #. (itstool) path: page/p
 #: C/textselection.page:29
@@ -1748,55 +1754,6 @@ msgstr ""
 "Kommentarer kan bara läggas till i PDF-filer. Om din fil är av ett annat "
 "format än PDF kommer möjligheten att lägga till kommentarer att vara utgråad "
 "(inaktiverad)."
-
-#. (itstool) path: info/desc
-#: C/default-settings.page:7
-msgid "Save current settings as default for new documents."
-msgstr "Spara aktuella inställningar som standard för nya dokument."
-
-#. (itstool) path: credit/name
-#: C/default-settings.page:12
-msgid "Sindhu S"
-msgstr "Sindhu S"
-
-#. (itstool) path: page/title
-#: C/default-settings.page:21
-msgid "Change default settings"
-msgstr "Ändra standardinställningar"
-
-#. (itstool) path: page/p
-#: C/default-settings.page:23
-msgid ""
-"When a document is opened for the first time, default settings, such as zoom "
-"and page view preferences, are applied. Any changes you make to these "
-"settings are saved for the document."
-msgstr ""
-"När ett dokument öppnas för första gången kommer standardinställningar såsom "
-"zoom och visningsinställningar att appliceras. Ändringar du gör för dessa "
-"inställningar sparas för dokumentet."
-
-#. (itstool) path: page/p
-#: C/default-settings.page:26
-msgid ""
-"You can save the settings which you are currently using as default for all "
-"new documents by pressing the menu button in the top-right corner of the "
-"window and selecting <gui style=\"menuitem\">Save Current Settings as "
-"Default</gui>."
-msgstr ""
-"Du kan spara inställningarna som du använder för närvarande som standard för "
-"alla nya dokument genom att trycka på menyknappen i fönstrets övre högra "
-"hörn och välja <gui style=\"menuitem\">Spara aktuella inställningar som "
-"standard</gui>."
-
-#. (itstool) path: note/p
-#: C/default-settings.page:31
-msgid ""
-"The new default settings do not override settings of previously opened "
-"documents, they are applied only to documents opened for the first time."
-msgstr ""
-"De nya standardinställningarna kommer inte att åsidosätta inställningar för "
-"tidigare öppnade dokument, de appliceras bara på dokument som öppnas för "
-"första gången."
 
 #. (itstool) path: info/desc
 #: C/duplex-13pages.page:8
@@ -2131,8 +2088,8 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/translate.page:7
-msgid "Localize <app>Papers</app>."
-msgstr "Översätt <app>Papers</app>."
+msgid "Localize <app>Document Viewer</app>."
+msgstr "Översätt <app>Dokumentvisare</app>."
 
 #. (itstool) path: credit/name
 #: C/translate.page:15
@@ -2147,11 +2104,13 @@ msgstr "Hjälp till att översätta"
 #. (itstool) path: page/p
 #: C/translate.page:24
 msgid ""
-"The <app>Papers</app> user interface and documentation is being translated "
-"by a world-wide volunteer community. You are welcome to participate."
+"The <app>Document Viewer</app> user interface and documentation is being "
+"translated by a world-wide volunteer community. You are welcome to "
+"participate."
 msgstr ""
-"Användargränssnittet och dokumentationen för <app>Papers</app> översätts av "
-"en världsomspännande gemenskap av frivilliga. Du är välkommen att delta."
+"Användargränssnittet och dokumentationen för <app>Dokumentvisare</app> "
+"översätts av en världsomspännande gemenskap av frivilliga. Du är välkommen "
+"att delta."
 
 #. (itstool) path: page/p
 #: C/translate.page:27
@@ -2280,10 +2239,10 @@ msgstr "Lägga till kommentarer"
 #: C/annotations.page:27
 msgid ""
 "An annotation is a note or comment added to a PDF document. You can add "
-"annotations using <app>Papers</app>."
+"annotations using <app>Document Viewer</app>."
 msgstr ""
 "En kommentar är en notering som läggs till i ett PDF-dokument. Du kan lägga "
-"till kommentarer via <app>Papers</app>."
+"till kommentarer via <app>Dokumentvisare</app>."
 
 #. (itstool) path: page/p
 #: C/annotations.page:36
@@ -2451,11 +2410,12 @@ msgstr "Spara en kopia av en kommenterad PDF"
 #: C/annotations-save.page:24
 msgid ""
 "To save a copy of your annotated PDF for future viewing using the "
-"<app>Papers</app> or any other PDF viewer <em>that supports annotations</em>:"
+"<app>Document Viewer</app> or any other PDF viewer <em>that supports "
+"annotations</em>:"
 msgstr ""
 "För att spara en kopia av din kommenterade PDF för framtida visning via "
-"<app>Papers</app> eller annan PDF-visare <em>som har stöd för kommentarer</"
-"em>:"
+"<app>Dokumentvisare</app> eller annan PDF-visare <em>som har stöd för "
+"kommentarer</em>:"
 
 #. (itstool) path: item/p
 #: C/annotations-save.page:31
@@ -2507,13 +2467,13 @@ msgstr ""
 msgid ""
 "To quickly navigate to the location of a particular annotation, click on the "
 "arrow to the left of the page number. You will see a list of annotations on "
-"that page. Click on the annotation you are interested in, and <app>Papers</"
-"app> will navigate to the location of the annotation in the document."
+"that page. Click on the annotation you are interested in, and <app>Document "
+"Viewer</app> will navigate to the location of the annotation in the document."
 msgstr ""
 "För att snabbt navigera till platsen för en viss kommentar, klicka på pilen "
 "till vänster om sidnumret. Du kommer att se en lista över kommentarer på den "
-"sidan. Klicka på den kommentar du är intresserad av så kommer <app>Papers</"
-"app> att navigera till kommentarens plats i dokumentet."
+"sidan. Klicka på den kommentar du är intresserad av så kommer "
+"<app>Dokumentvisare</app> att navigera till kommentarens plats i dokumentet."
 
 #. (itstool) path: page/media
 #. This is a reference to an external file such as an image or video. When
@@ -2673,13 +2633,13 @@ msgstr "Restriktioner för utskrift av PDF"
 msgid ""
 "Some PDF documents have a setting which prevents you from printing them. "
 "Authors can set this printing restriction when they write a document. "
-"<app>Papers</app> overrides this restriction by default, but you may want to "
-"check that it hasn't been disabled:"
+"<app>Document Viewer</app> overrides this restriction by default, but you "
+"may want to check that it hasn't been disabled:"
 msgstr ""
 "Vissa PDF-dokument har en inställning som förhindrar dig från att skriva ut "
 "dem. Upphovsmän kan ställa in denna utskriftsrestriktion när de skriver ett "
-"dokument. <app>Papers</app> åsidosätter denna restriktion som standard, men "
-"du kan behöva kontrollera att det inte har inaktiverats:"
+"dokument. <app>Dokumentvisare</app> åsidosätter denna restriktion som "
+"standard, men du kan behöva kontrollera att det inte har inaktiverats:"
 
 #. (itstool) path: note/p
 #: C/noprint.page:83
@@ -2728,9 +2688,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/noprint.page:108
-msgid "Go back to <app>Papers</app> and try to print the document again."
+msgid ""
+"Go back to <app>Document Viewer</app> and try to print the document again."
 msgstr ""
-"Gå tillbaka till <app>Papers</app> och försök att skriva ut dokumentet igen."
+"Gå tillbaka till <app>Dokumentvisare</app> och försök att skriva ut "
+"dokumentet igen."
 
 #. (itstool) path: info/desc
 #: C/documentation.page:7
@@ -2745,11 +2707,11 @@ msgstr "Hjälp till att skriva dokumentation"
 #. (itstool) path: page/p
 #: C/documentation.page:20
 msgid ""
-"The <app>Papers</app> documentation is maintained by a volunteer community. "
-"You are welcome to participate."
+"The <app>Document Viewer</app> documentation is maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"Dokumentationen för <app>Papers</app> underhålls av en frivillig gemenskap. "
-"Du är välkommen att delta."
+"Dokumentationen för <app>Dokumentvisare</app> underhålls av en frivillig "
+"gemenskap. Du är välkommen att delta."
 
 #. (itstool) path: page/p
 #: C/documentation.page:23
@@ -2899,16 +2861,18 @@ msgstr "Papers dokumentvisare"
 #. (itstool) path: info/desc
 #: C/index.page:24
 msgid ""
-"<app>Papers</app> is made for viewing PDF documents. Learn how to get "
-"started with <app>Papers</app> and its features."
+"<app>Document Viewer</app>, formally known as <app>Papers</app>, is made for "
+"viewing PDF documents. Learn how to get started with <app>Papers</app> and "
+"its features."
 msgstr ""
-"<app>Papers</app> är avsett för att visa PDF-dokument. Lär dig hur du börjar "
-"med <app>Papers</app> och dess funktioner."
+"<app>Dokumentvisare</app>, tidigare känt som <app>Papers</app> är avsett för "
+"att visa PDF-dokument. Lär dig hur du börjar med <app>Papers</app> och dess "
+"funktioner."
 
 #. (itstool) path: page/title
 #: C/index.page:30
-msgid "<_:media-1/> Papers Help"
-msgstr "<_:media-1/> Handbok för Papers"
+msgid "<_:media-1/> Document Viewer Help"
+msgstr "<_:media-1/> Handbok för Dokumentvisare"
 
 #. (itstool) path: section/title
 #: C/index.page:36
@@ -3111,24 +3075,24 @@ msgstr ""
 #: C/opening.page:37
 msgid ""
 "Double clicking PDF, .djvu, and Comic Book Archive files opens them in "
-"<app>Papers</app> by default."
+"<app>Document Viewer</app> by default."
 msgstr ""
 "Dubbelklick på PDF-, .djvu- och serietidningsarkiv-filer kommer som standard "
-"att öppna dem i <app>Papers</app>."
+"att öppna dem i <app>Dokumentvisare</app>."
 
 #. (itstool) path: item/p
 #: C/opening.page:42
 msgid ""
 "Right-click on a file icon in <app>Files</app> and click <guiseq><gui>Open "
-"With</gui><gui>Papers</gui></guiseq>."
+"With</gui><gui>Document Viewer</gui></guiseq>."
 msgstr ""
 "Högerklicka på en filikon i <app>Filer</app> och klicka på "
-"<guiseq><gui>Öppna med</gui><gui>Papers</gui></guiseq>."
+"<guiseq><gui>Öppna med</gui><gui>Dokumentvisare</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/opening.page:47
-msgid "If an empty <app>Papers</app> window is already open you can:"
-msgstr "Om ett tomt <app>Papers</app>-fönster redan är öppet kan du:"
+msgid "If an empty <app>Document Viewer</app> window is already open you can:"
+msgstr "Om ett tomt <app>Dokumentvisare</app>-fönster redan är öppet kan du:"
 
 #. (itstool) path: item/p
 #: C/opening.page:51
@@ -3152,8 +3116,12 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/opening.page:62
-msgid "If a document is already opened in a <app>Papers</app> window you can:"
-msgstr "Om ett dokument redan är öppet i ett <app>Papers</app>-fönster kan du:"
+msgid ""
+"If a document is already opened in a <app>Document Viewer</app> window you "
+"can:"
+msgstr ""
+"Om ett dokument redan är öppet i ett <app>Dokumentvisare</app>-fönster kan "
+"du:"
 
 #. (itstool) path: item/p
 #: C/opening.page:66
@@ -3233,13 +3201,15 @@ msgstr "Varför kan jag inte öppna en fil?"
 #. (itstool) path: page/p
 #: C/openerror.page:24
 msgid ""
-"If you try to open a document of a format that <app>Papers</app> does not "
-"recognize, you will get an \"Unable to open document\" error message. Click "
-"<gui>Close</gui> to return to the <app>Papers</app> window."
+"If you try to open a document of a format that <app>Document Viewer</app> "
+"does not recognize, you will get an \"Unable to open document\" error "
+"message. Click <gui>Close</gui> to return to the <app>Document Viewer</app> "
+"window."
 msgstr ""
-"Om du försöker att öppna ett dokument av ett format <app>Papers</app> inte "
-"känner igen kommer du att få felmeddelandet ”Kan inte öppna dokument”. "
-"Klicka på <gui>Stäng</gui> för att återgå till <app>Papers</app>-fönstret."
+"Om du försöker att öppna ett dokument av ett format <app>Dokumentvisare</"
+"app> inte känner igen kommer du att få felmeddelandet ”Kan inte öppna "
+"dokument”. Klicka på <gui>Stäng</gui> för att återgå till "
+"<app>Dokumentvisare</app>-fönstret."
 
 # sebras: strängen sorteras men ordningen ska vara numerisk, därför behövs den inledande nollan.
 #. (itstool) path: info/title
@@ -3373,8 +3343,8 @@ msgstr "Format som stöds"
 
 #. (itstool) path: page/p
 #: C/formats.page:27
-msgid "<app>Papers</app> supports the following formats:"
-msgstr "<app>Papers</app> stöder följande format:"
+msgid "<app>Document Viewer</app> supports the following formats:"
+msgstr "<app>Dokumentvisare</app> stöder följande format:"
 
 #. (itstool) path: item/p
 #: C/formats.page:31
@@ -3495,21 +3465,21 @@ msgstr "Hur och var man kan rapportera fel."
 
 #. (itstool) path: page/title
 #: C/bug-filing.page:19
-msgid "File a bug against <app>Papers</app>"
-msgstr "Rapportera ett fel för <app>Papers</app>"
+msgid "File a bug against <app>Document Viewer</app>"
+msgstr "Rapportera ett fel för <app>Dokumentvisare</app>"
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:20
 msgid ""
-"<app>Papers</app> is maintained by a volunteer community. You are welcome to "
-"participate. If you notice a problem you can file a <em>bug report</em>. To "
-"file a bug, go to <link href=\"https://gitlab.gnome.org/GNOME/Incubator/"
-"papers/issues/\"/>."
+"<app>Document Viewer</app> is maintained by a volunteer community. You are "
+"welcome to participate. If you notice a problem you can file a <em>bug "
+"report</em>. To file a bug, go to <link href=\"https://gitlab.gnome.org/"
+"GNOME/papers/issues/\"/>."
 msgstr ""
-"<app>Papers</app> underhålls av en frivillig gemenskap. Du är välkommen att "
-"delta. Om du märker av ett problem kan du skapa en <em>felrapport</em>. För "
-"att rapportera ett fel, gå till <link href=\"https://gitlab.gnome.org/GNOME/"
-"Incubator/papers/issues/\"/>."
+"<app>Dokumentvisare</app> underhålls av en frivillig gemenskap. Du är "
+"välkommen att delta. Om du märker av ett problem kan du skapa en "
+"<em>felrapport</em>. För att rapportera ett fel, gå till <link "
+"href=\"https://gitlab.gnome.org/GNOME/papers/issues/\"/>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:23
@@ -3541,14 +3511,14 @@ msgid ""
 "Once you have an account, log in, and click on <gui>New issue</gui>. Before "
 "reporting a bug, please read the <link href=\"https://wiki.gnome.org/"
 "GettingInTouch/BugReportingGuidelines\">bug writing guidelines</link>, and "
-"please <link href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues\">browse</link> for the bug to see if it already exists."
+"please <link href=\"https://gitlab.gnome.org/GNOME/papers/issues\">browse</"
+"link> for the bug to see if it already exists."
 msgstr ""
 "När du har ett konto, logga in och klicka på <gui>New issue</gui>. Innan du "
 "rapporterar ett fel, läs <link href=\"https://wiki.gnome.org/GettingInTouch/"
 "BugReportingGuidelines\">riktlinjerna för hur man skriver en felrapport</"
-"link> och <link href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues\">sök</link> för att se om felet redan rapporterats."
+"link> och <link href=\"https://gitlab.gnome.org/GNOME/papers/issues\">sök</"
+"link> för att se om felet redan rapporterats."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:33
@@ -3606,23 +3576,24 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/editing.page:7
-msgid "You can't use <app>Papers</app> to edit files."
-msgstr "Du kan inte använda <app>Papers</app> för att redigera filer."
+msgid "You can't use <app>Document Viewer</app> to edit files."
+msgstr "Du kan inte använda <app>Dokumentvisare</app> för att redigera filer."
 
 #. (itstool) path: page/title
 #: C/editing.page:21
-msgid "Can I edit documents in Papers?"
-msgstr "Kan jag redigera dokument i Papers?"
+msgid "Can I edit documents in Document Viewer?"
+msgstr "Kan jag redigera dokument i Dokumentvisare?"
 
 #. (itstool) path: page/p
 #: C/editing.page:24
 msgid ""
-"<app>Papers</app> can't be used to make changes to documents. You need to "
-"use the appropriate editing application for the type of file you want to "
-"change."
+"<app>Document Viewer</app> can't be used to make changes to documents. You "
+"need to use the appropriate editing application for the type of file you "
+"want to change."
 msgstr ""
-"<app>Papers</app> kan inte användas för att göra ändringar i dokument. Du "
-"måste använda ett lämpligt redigeringsprogram för filtypen du vill ändra."
+"<app>Dokumentvisare</app> kan inte användas för att göra ändringar i "
+"dokument. Du måste använda ett lämpligt redigeringsprogram för filtypen du "
+"vill ändra."
 
 #. (itstool) path: note/p
 #: C/editing.page:30
@@ -3636,6 +3607,43 @@ msgstr ""
 "redigeringsprogram existerar. Prova till exempel <app>LibreOffice Draw</app> "
 "eller <app>Okular</app>. Vidare tillåter <app>pdfarranger</app> att byta "
 "plats på eller ta bort sidor samt att slå ihop filer."
+
+#~ msgid "Save current settings as default for new documents."
+#~ msgstr "Spara aktuella inställningar som standard för nya dokument."
+
+#~ msgid "Sindhu S"
+#~ msgstr "Sindhu S"
+
+#~ msgid "Change default settings"
+#~ msgstr "Ändra standardinställningar"
+
+#~ msgid ""
+#~ "When a document is opened for the first time, default settings, such as "
+#~ "zoom and page view preferences, are applied. Any changes you make to "
+#~ "these settings are saved for the document."
+#~ msgstr ""
+#~ "När ett dokument öppnas för första gången kommer standardinställningar "
+#~ "såsom zoom och visningsinställningar att appliceras. Ändringar du gör för "
+#~ "dessa inställningar sparas för dokumentet."
+
+#~ msgid ""
+#~ "You can save the settings which you are currently using as default for "
+#~ "all new documents by pressing the menu button in the top-right corner of "
+#~ "the window and selecting <gui style=\"menuitem\">Save Current Settings as "
+#~ "Default</gui>."
+#~ msgstr ""
+#~ "Du kan spara inställningarna som du använder för närvarande som standard "
+#~ "för alla nya dokument genom att trycka på menyknappen i fönstrets övre "
+#~ "högra hörn och välja <gui style=\"menuitem\">Spara aktuella inställningar "
+#~ "som standard</gui>."
+
+#~ msgid ""
+#~ "The new default settings do not override settings of previously opened "
+#~ "documents, they are applied only to documents opened for the first time."
+#~ msgstr ""
+#~ "De nya standardinställningarna kommer inte att åsidosätta inställningar "
+#~ "för tidigare öppnade dokument, de appliceras bara på dokument som öppnas "
+#~ "för första gången."
 
 #~ msgid "You can convert a document to PostScript."
 #~ msgstr "Du kan konvertera ett dokument till Postscript."
