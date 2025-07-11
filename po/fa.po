@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-07-08 11:49+0000\n"
-"PO-Revision-Date: 2025-07-09 17:26+0330\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-07-10 18:24+0000\n"
+"PO-Revision-Date: 2025-07-12 01:50+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -21,13 +21,11 @@ msgstr ""
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
-#: data/org.gnome.Papers.metainfo.xml.in.in:9 previewer/pps-previewer-window.c:472
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:85 shell/resources/pps-loader-view.blp:10
-#: shell/src/application.rs:46 shell/src/application.rs:69
-#: shell/src/application.rs:354 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
-msgid "Papers"
-msgstr "کاغذها"
+#: shell/src/application.rs:46 shell/src/application.rs:358
+msgid "Document Viewer"
+msgstr "نمایشگر سند"
 
 #: data/org.gnome.Papers.desktop.in.in:4
 msgid "View multi-page documents"
@@ -743,6 +741,7 @@ msgid "GNOME Document Previewer"
 msgstr "پیش‌نمایش‌گر سند گنوم"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:71
 msgid "Papers Document Viewer"
 msgstr "نمایشگر سند کاغذها"
 
@@ -750,6 +749,11 @@ msgstr "نمایشگر سند کاغذها"
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "چاپگر انتخاب شده «%s» پیدا نشد"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "کاغذها"
 
 #: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
@@ -1058,8 +1062,8 @@ msgid "_Help"
 msgstr "_راهنما"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-msgid "_About Papers"
-msgstr "_دربارهٔ کاغذها"
+msgid "_About Document Viewer"
+msgstr "_دربارهٔ نمایشگر سند"
 
 #: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
@@ -1679,11 +1683,11 @@ msgstr "ناتوان در گشودن سند"
 msgid "_Open Other File…"
 msgstr "_گشودن دیگر پرونده‌ّا…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:215
 msgid "© 1996–2025 The Papers authors"
 msgstr "© ۱۹۹۶ - ۲۰۲۴ نگارندگان کاغذها"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:216
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
@@ -1693,43 +1697,43 @@ msgstr ""
 "الناز سربر <elnaz@farsiweb.info>\n"
 "مهیار مقیمی <mahyar.moqimi@gmail.com>"
 
-#: shell/src/application.rs:361
+#: shell/src/application.rs:365
 msgid "The page label of the document to display."
 msgstr "برچسب صفحهٔ سند که نمایش‌داده شود."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:366
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell/src/application.rs:370
+#: shell/src/application.rs:374
 msgid "The page number of the document to display."
 msgstr "شمارهٔ صفحهٔ سند که نمایش‌داده شود."
 
-#: shell/src/application.rs:371
+#: shell/src/application.rs:375
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:379
+#: shell/src/application.rs:383
 msgid "Named destination to display."
 msgstr "مقصد نامگذاری شده جهت نمایش."
 
-#: shell/src/application.rs:380
+#: shell/src/application.rs:384
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:388
+#: shell/src/application.rs:392
 msgid "Run papers in fullscreen mode."
 msgstr "اجرای کاغذها در حالت تمام‌صفحه."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:401
 msgid "Run papers in presentation mode."
 msgstr "اجرای کاغذها در حالت ارائه."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:410
 msgid "Show the version of the program."
 msgstr "نمایش نگارش برنامه."
 
-#: shell/src/application.rs:416
+#: shell/src/application.rs:420
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
@@ -2012,6 +2016,9 @@ msgstr "زمان انقضای گواهی"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "نهفتن جزییات…"
+
+#~ msgid "_About Papers"
+#~ msgstr "_دربارهٔ کاغذها"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
@@ -2618,9 +2625,6 @@ msgstr "نهفتن جزییات…"
 
 #~ msgid "6400%"
 #~ msgstr "٪۶۴۰۰"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "نمایشگر سند گنوم"
 
 #~ msgid "Run evince as a previewer"
 #~ msgstr "اجرای اوینس به عنوان یک پیش‌نمایش‌‌گر"
