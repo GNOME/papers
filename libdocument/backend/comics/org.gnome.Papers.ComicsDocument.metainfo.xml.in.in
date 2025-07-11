@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="addon">
-  <id>papers-comicsdocument</id>
+  <id>org.gnome.Papers.ComicsDocument</id>
   <extends>org.gnome.Papers</extends>
   <name>Comic Books</name>
   <summary>Adds support for reading comic books</summary>
-  <mimetypes>
+  <provides>
     @METAINFO_COMICS_MIME_TYPES@
-  </mimetypes>
-  <kudos>
-    <kudo>ModernToolkit</kudo>
-  </kudos>
+  </provides>
   <url type="homepage">https://wiki.gnome.org/Apps/Papers/SupportedDocumentFormats</url>
   <metadata_license>GPL-2.0+ or GFDL-1.3-only</metadata_license>
   <project_license>GPL-2.0+</project_license>
