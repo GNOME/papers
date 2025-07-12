@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Papers\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-06-07 17:36+0000\n"
-"PO-Revision-Date: 2025-06-08 04:45+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-07-10 18:24+0000\n"
+"PO-Revision-Date: 2025-07-12 04:15+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -23,13 +22,11 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:3
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: previewer/pps-previewer-window.c:472
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:69 shell/src/application.rs:342
-#: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
-msgid "Papers"
-msgstr "Papers"
+#: shell/src/application.rs:358
+msgid "Document Viewer"
+msgstr "დოკუმენტების მნახველი"
 
 #: data/org.gnome.Papers.desktop.in.in:4
 msgid "View multi-page documents"
@@ -233,14 +230,14 @@ msgstr "PDF დოკუმენტების კითხვის მხა
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:106 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "დიახ"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:108 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "არა"
 
@@ -471,7 +468,7 @@ msgid "This work is in the Public Domain"
 msgstr "ეს ნამუშევარი საჯაროა"
 
 #: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1020
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "მიმაგრებული ფაილის შენახვა"
@@ -539,7 +536,6 @@ msgstr "დასაბეჭდი დიაპაზონი არც ერ
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-annotation-properties-dialog.blp:78
 #: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
@@ -643,60 +639,60 @@ msgstr "ჩვენება ქვემოთ"
 msgid "Document View"
 msgstr "დოკუმენტის ნახვა"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2105
 msgid "Go to first page"
 msgstr "პირველ გვერდზე"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2107
 msgid "Go to previous page"
 msgstr "წინა გვერდზე"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2109
 msgid "Go to next page"
 msgstr "შემდეგ გვერდზე გადასვლა"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2111
 msgid "Go to last page"
 msgstr "ბოლო გვერდზე"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2113
 msgid "Go to page"
 msgstr "გვერდზე გადასვლა"
 
-#: libview/pps-view.c:2124
+#: libview/pps-view.c:2115
 msgid "Find"
 msgstr "ძებნა"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2144
 #, c-format
 msgid "Go to page %s"
 msgstr "%s გვერდზე"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "%s-ზე გადასვლა “%s” ფაილში"
 
-#: libview/pps-view.c:2162
+#: libview/pps-view.c:2153
 #, c-format
 msgid "Go to file “%s”"
 msgstr "გადასვლა ფაილზე “%s”"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2161
 #, c-format
 msgid "Launch %s"
 msgstr "%s-ის გაშვება"
 
-#: libview/pps-view.c:2177
+#: libview/pps-view.c:2168
 #, c-format
 msgid "Reset form"
 msgstr "ფორმის საწყის მდგომარეობაში დაბრუნება"
 
-#: libview/pps-view-presentation.c:820
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "პრეზენტაციის რეჟიმი ჩართულია"
 
-#: libview/pps-view-presentation.c:871
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "პრეზენტაციის დასასრული. გამოსასვლელად დააჭირეთ Esc-ს ან დააწკაპუნეთ."
 
@@ -756,6 +752,7 @@ msgid "GNOME Document Previewer"
 msgstr "GNOME-ის დოკუმენტების დამთვალიერებელი"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:71
 msgid "Papers Document Viewer"
 msgstr "დოკუმენტების მნახველი Papers"
 
@@ -763,6 +760,11 @@ msgstr "დოკუმენტების მნახველი Papers"
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "არჩეული პრინტერის პოვნა შეუძლებელია: %s"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
 
 #: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
@@ -799,492 +801,167 @@ msgstr "ნორმალური ზომა"
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:106
 msgid "Failed to Print Document"
 msgstr "დოკუმენტის დაბეჭდვა ჩავარდა"
 
-#: nautilus/pps-nautilus-extension.c:110
-#: shell/resources/pps-annotation-properties-dialog.blp:51
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: nautilus/pps-nautilus-extension.c:155
+#: nautilus/pps-nautilus-extension.c:149
 msgid "Document Properties"
 msgstr "დოკუმენტის თვისებები"
 
-#: nautilus/pps-nautilus-extension.h:46 shell/src/properties_general.rs:300
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "სათაური"
 
-#: nautilus/pps-nautilus-extension.h:47
+#: nautilus/pps-nautilus-extension.h:46
 msgid "Location"
 msgstr "მდებარეობა"
 
-#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:301
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "თემა"
 
-#: nautilus/pps-nautilus-extension.h:49
-#: shell/resources/pps-annotation-properties-dialog.blp:9
+#: nautilus/pps-nautilus-extension.h:48
+#: shell/resources/pps-annotation-properties-dialog.blp:85
 #: shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "ავტორი"
 
-#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:303
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "საკვანძო სიტყვები"
 
-#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:304
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "პროდიუსერი"
 
-#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:305
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "შემქმნელი"
 
-#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:316
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "შექმნილია"
 
-#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:317
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "შეცვლილია"
 
-#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:329
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
 msgstr "გვერდების რაოდენობა"
 
-#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:330
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "ოპტიმიზებული"
 
-#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:326
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
 #: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "ფორმატი"
 
-#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:331
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "უსაფრთხოება"
 
-#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:340
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
 msgstr "შეიცავს Javascript-ს"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:332
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "ფურცლის ზომა"
 
-#: nautilus/pps-nautilus-extension.h:61 shell/src/properties_general.rs:289
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "ზომა"
 
-#: shell/resources/help-overlay.blp:11
-msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "გახსნა, დახურვა, შენახვა და დაბეჭდვა"
-
-#: shell/resources/help-overlay.blp:14
-msgctxt "shortcut window"
-msgid "Open Document"
-msgstr "დოკუმენტის გახსნა"
-
-#: shell/resources/help-overlay.blp:19
-msgctxt "shortcut window"
-msgid "Open Copy of Current Document"
-msgstr "მიმდინარე დოკუმენტის ასლის გახსნა"
-
-#: shell/resources/help-overlay.blp:24
-msgctxt "shortcut window"
-msgid "Open With…"
-msgstr "გამხსნელი პროგრამა…"
-
-#: shell/resources/help-overlay.blp:29
-msgctxt "shortcut window"
-msgid "Save Copy of Current Document"
-msgstr "მიმდინარე დოკუმენტის ასლის შენახვა"
-
-#: shell/resources/help-overlay.blp:34
-msgctxt "shortcut window"
-msgid "Print Current Document"
-msgstr "მიმდინარე დოკუმენტის დაბეჭდვა"
-
-#: shell/resources/help-overlay.blp:39
-msgctxt "shortcut window"
-msgid "Close Current Document Window"
-msgstr "მიმდინარე დოკუმენტის ფანჯრის დახურვა"
-
-#: shell/resources/help-overlay.blp:45
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "ფანჯარა"
-
-#: shell/resources/help-overlay.blp:48
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "სრულ ეკრანზე"
-
-#: shell/resources/help-overlay.blp:53
-msgctxt "shortcut window"
-msgid "Enter Presentation Mode"
-msgstr "პრეზენტაციის რეჟიმში გადასვლა"
-
-#: shell/resources/help-overlay.blp:58
-msgctxt "shortcut window"
-msgid "Side Pane"
-msgstr "გვერდითი პანელი"
-
-#: shell/resources/help-overlay.blp:63
-msgctxt "shortcut window"
-msgid "Caret Navigation"
-msgstr "კარეტით ნავიგაცია"
-
-#: shell/resources/help-overlay.blp:69
-msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "ტექსტის მონიშვნა და კოპირება"
-
-#: shell/resources/help-overlay.blp:72
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "კოპირება"
-
-#: shell/resources/help-overlay.blp:77
-msgctxt "shortcut window"
-msgid "Select All"
-msgstr "ყველაფრის მონიშვნა"
-
-#: shell/resources/help-overlay.blp:83
-msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "შემობრუნება და გადიდება"
-
-#: shell/resources/help-overlay.blp:86
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Counter-Clockwise"
-msgstr "გვერდის საათის ისრის საწინააღმდეგოდ 90 გრადუსით მობრუნება"
-
-#: shell/resources/help-overlay.blp:91
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Clockwise"
-msgstr "გვერდის საათის ისრის მიმართულებით 90 გრადუსით მობრუნება"
-
-#: shell/resources/help-overlay.blp:96 shell/resources/help-overlay.blp:325
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "გადიდება"
-
-#: shell/resources/help-overlay.blp:101 shell/resources/help-overlay.blp:330
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "დაპატარავება"
-
-#: shell/resources/help-overlay.blp:106
-msgctxt "shortcut window"
-msgid "Normal Size"
-msgstr "ნორმალური ზომა"
-
-#: shell/resources/help-overlay.blp:111
-msgctxt "shortcut window"
-msgid "Zoom In (Alternative)"
-msgstr "გადიდება (სხვანაირად)"
-
-#: shell/resources/help-overlay.blp:116
-msgctxt "shortcut window"
-msgid "Fit Page"
-msgstr "გვერდის ჩატევა"
-
-#: shell/resources/help-overlay.blp:121
-msgctxt "shortcut window"
-msgid "Fit Width"
-msgstr "სიგანის ჩატევა"
-
-#: shell/resources/help-overlay.blp:126
-msgctxt "shortcut window"
-msgid "Automatic Zoom"
-msgstr "ავტომატური გადიდება"
-
-#: shell/resources/help-overlay.blp:132
-msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "დოკუმენტში მოძრაობა"
-
-#: shell/resources/help-overlay.blp:135
-msgctxt "shortcut window"
-msgid "Move Around Page"
-msgstr "გვერდის თავიდან დაიწყება"
-
-#: shell/resources/help-overlay.blp:140
-msgctxt "shortcut window"
-msgid "Move Up/Down Page Several Lines"
-msgstr "გვერდის რამდენიმე ხაზით აწევა/ჩამოწევა"
-
-#: shell/resources/help-overlay.blp:145 shell/resources/help-overlay.blp:340
-msgctxt "shortcut window"
-msgid "Previous Page"
-msgstr "წინა გვერდი"
-
-#: shell/resources/help-overlay.blp:150 shell/resources/help-overlay.blp:335
-msgctxt "shortcut window"
-msgid "Next Page"
-msgstr "შემდეგი გვერდი"
-
-#: shell/resources/help-overlay.blp:155
-msgctxt "shortcut window"
-msgid "Go to Page Number"
-msgstr "გვერდის ნომერზე გადასვლა"
-
-#: shell/resources/help-overlay.blp:160
-msgctxt "shortcut window"
-msgid "Previous Page (Fast)"
-msgstr "წინა გვერდი (სწრაფი)"
-
-#: shell/resources/help-overlay.blp:165
-msgctxt "shortcut window"
-msgid "Next Page (Fast)"
-msgstr "შემდეგი გვერდი (სწრაფი)"
-
-#: shell/resources/help-overlay.blp:170
-msgctxt "shortcut window"
-msgid "Previous Visited Page"
-msgstr "წინა უკვე ნანახ გვერდი"
-
-#: shell/resources/help-overlay.blp:175
-msgctxt "shortcut window"
-msgid "Next Visited Page"
-msgstr "შემდეგი უკვე ნანახი გვერდი"
-
-#: shell/resources/help-overlay.blp:180
-msgctxt "shortcut window"
-msgid "Go to Page Beginning/End"
-msgstr "გვერდის დასაწყისში/ბოლოში გადასვლა"
-
-#: shell/resources/help-overlay.blp:185
-msgctxt "shortcut window"
-msgid "Go to Document Start"
-msgstr "გადასვლა დოკუმენტის დასაწყისზე"
-
-#: shell/resources/help-overlay.blp:190
-msgctxt "shortcut window"
-msgid "Go to Document End"
-msgstr "გადასვლა დოკუმენტის ბოლოში"
-
-#: shell/resources/help-overlay.blp:196
-msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "დოკუმენტის ნახვა და დამუშავება"
-
-#: shell/resources/help-overlay.blp:199
-msgctxt "shortcut window"
-msgid "Add Bookmark"
-msgstr "სანიშნეს დამატება"
-
-#: shell/resources/help-overlay.blp:204
-msgctxt "shortcut window"
-msgid "Remove Bookmark"
-msgstr "სანიშნეების წაშლა"
-
-#: shell/resources/help-overlay.blp:209
-msgctxt "shortcut window"
-msgid "Night Mode"
-msgstr "ღამის რეჟიმი"
-
-#: shell/resources/help-overlay.blp:214
-msgctxt "shortcut window"
-msgid "Continuous Scrolling"
-msgstr "უწყვეტი დაქაჩვა"
-
-#: shell/resources/help-overlay.blp:219
-msgctxt "shortcut window"
-msgid "Dual Page"
-msgstr "ორმაგი გვერდი"
-
-#: shell/resources/help-overlay.blp:224
-msgctxt "shortcut window"
-msgid "Odd Pages Left"
-msgstr "კენტი გვერდები მარცხნივ"
-
-#: shell/resources/help-overlay.blp:229
-msgctxt "shortcut window"
-msgid "Document Properties"
-msgstr "დოკუმენტის თვისებები"
-
-#: shell/resources/help-overlay.blp:234
-msgctxt "shortcut window"
-msgid "Add Text Annotation"
-msgstr "ტექსტის ანოტაციის დამატება"
-
-#: shell/resources/help-overlay.blp:239
-msgctxt "shortcut window"
-msgid "Highlight Text"
-msgstr "ტექსტის გამოკვეთა"
-
-#: shell/resources/help-overlay.blp:244
-msgctxt "shortcut window"
-msgid "Strikethrough Text"
-msgstr "ხაზგადასმული ტექსტი"
-
-#: shell/resources/help-overlay.blp:249
-msgctxt "shortcut window"
-msgid "Wavy/Squiggly Underline Text"
-msgstr "ტალღოვანი/გაბნეული ხაზგასმული ტექსტი"
-
-#: shell/resources/help-overlay.blp:254
-msgctxt "shortcut window"
-msgid "Underline Text"
-msgstr "ტექსტის ხაზგასმა"
-
-#: shell/resources/help-overlay.blp:260
-msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "ტექსტის ძებნა"
-
-#: shell/resources/help-overlay.blp:263
-msgctxt "shortcut window"
-msgid "Find"
-msgstr "ძებნა"
-
-#: shell/resources/help-overlay.blp:268
-msgctxt "shortcut window"
-msgid "Find Next"
-msgstr "მომდევნოს მოძებნა"
-
-#: shell/resources/help-overlay.blp:273
-msgctxt "shortcut window"
-msgid "Find Previous"
-msgstr "წინას პოვნა"
-
-#: shell/resources/help-overlay.blp:279
-msgctxt "shortcut window"
-msgid "General"
-msgstr "საერთო"
-
-#: shell/resources/help-overlay.blp:282
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "დახმარება"
-
-#: shell/resources/help-overlay.blp:287
-msgctxt "shortcut window"
-msgid "Menu"
-msgstr "მენიუ"
-
-#: shell/resources/help-overlay.blp:292
-msgctxt "shortcut window"
-msgid "Keyboard Shortcuts"
-msgstr "კლავიატურის მალსახმობები"
-
-#: shell/resources/help-overlay.blp:297
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "ახალი ფანჯარა"
-
-#: shell/resources/help-overlay.blp:302
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "ფანჯრის დახურვა"
-
-#: shell/resources/help-overlay.blp:308
-msgctxt "shortcut window"
-msgid "Presentation Mode"
-msgstr "პრეზენტაციის რეჟიმი"
-
-#: shell/resources/help-overlay.blp:311
-msgctxt "shortcut window"
-msgid "Black Screen"
-msgstr "შავი ეკრანი"
-
-#: shell/resources/help-overlay.blp:316
-msgctxt "shortcut window"
-msgid "White Screen"
-msgstr "თეთრი ეკრანი"
-
-#: shell/resources/help-overlay.blp:322
-msgctxt "shortcut window"
-msgid "Touchpad Gestures"
-msgstr "თაჩპედის ჟესტები"
-
 #: shell/resources/pps-annotation-properties-dialog.blp:5
-#: shell/resources/pps-sidebar-annotations.blp:60
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "ანოტაციის თვისებები"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:13
+#: shell/resources/pps-annotation-properties-dialog.blp:18
 msgid "Color"
 msgstr "ფერი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:21
+#: shell/resources/pps-annotation-properties-dialog.blp:31
 msgid "Opacity"
 msgstr "გაუმჭვირვალობა"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:33
-msgid "Initially Opened"
-msgstr "თავიდან გახსნილი"
-
-#: shell/resources/pps-annotation-properties-dialog.blp:38
+#: shell/resources/pps-annotation-properties-dialog.blp:46
 msgid "Icon"
 msgstr "ხატულა"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:42
+#: shell/resources/pps-annotation-properties-dialog.blp:50
 msgid "Note"
 msgstr "შენიშვნა"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:43
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Comment"
 msgstr "კომენტარი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:44
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Key"
 msgstr "გასაღები"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:45
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Help"
 msgstr "დახმარება"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:46
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "New Paragraph"
 msgstr "ახალი პარაგრაფი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:47
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "Paragraph"
 msgstr "პარაგრაფი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:48
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Insert"
 msgstr "ჩამატება"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:49
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Cross"
 msgstr "ჯვარი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:50
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Circle"
 msgstr "წრე"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/resources/pps-annotation-properties-dialog.blp:69
 msgid "Markup Type"
 msgstr "მარქაფის ტიპი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:64
+#: shell/resources/pps-annotation-properties-dialog.blp:73
 msgid "Highlight"
 msgstr "გამოკვეთა"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:65
+#: shell/resources/pps-annotation-properties-dialog.blp:74
 msgid "Strike out"
 msgstr "ხაზის გადასმა"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:66
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Underline"
 msgstr "ხაზგასმული"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:67
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Squiggly"
 msgstr "ტალღებიანი"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:79
-msgid "_Apply"
-msgstr "_გადატარება"
+#: shell/resources/pps-annotation-properties-dialog.blp:91
+msgid "Auto-Reveal on Scroll"
+msgstr "ავტოგამოვლენა გადახვევისას"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:92
+msgid "Pop up note while scrolling the document"
+msgstr "შენიშვნის მხტუნარა დოკუმენტის გადახვევისას"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
@@ -1400,8 +1077,8 @@ msgid "_Help"
 msgstr "_დახმარება"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-msgid "_About Papers"
-msgstr "Papers-ის _შესახებ"
+msgid "_About Document Viewer"
+msgstr "დოკუმენტების დამთვალიერებლის შესახებ"
 
 #: shell/resources/pps-document-view.blp:598
 msgid "_Print…"
@@ -1457,76 +1134,76 @@ msgid "Document Prop_erties"
 msgstr "_დოკუმენტის თვისებები"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:705
+#: shell/resources/pps-document-view.blp:706
 msgid "Highlight (h)"
 msgstr "გამოკვეთა (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:721
+#: shell/resources/pps-document-view.blp:722
 msgid "Strikethrough (k)"
 msgstr "გადახაზული (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:737
+#: shell/resources/pps-document-view.blp:738
 msgid "Underline (u)"
 msgstr "ხაზგასმული (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:753
+#: shell/resources/pps-document-view.blp:754
 msgid "Squiggly (q)"
 msgstr "ტალღებიანი (q)"
 
-#: shell/resources/pps-document-view.blp:844
+#: shell/resources/pps-document-view.blp:845
 msgid "_Open Link"
 msgstr "_ბმულის გახსნა"
 
-#: shell/resources/pps-document-view.blp:850
+#: shell/resources/pps-document-view.blp:851
 msgid "_Copy Link Address"
 msgstr "დაა_კოპირე ბმულის მისამართი"
 
-#: shell/resources/pps-document-view.blp:856
+#: shell/resources/pps-document-view.blp:857
 msgid "_Go To"
 msgstr "_გადასვლა"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:863
 msgid "Open in New _Window"
 msgstr "ახალ ფან_ჯარაში გახსნა"
 
-#: shell/resources/pps-document-view.blp:870
+#: shell/resources/pps-document-view.blp:871
 msgid "_Copy"
 msgstr "_კოპირება"
 
-#: shell/resources/pps-document-view.blp:875
+#: shell/resources/pps-document-view.blp:876
 msgid "Select _All"
 msgstr "მონიშნე _ყველა"
 
-#: shell/resources/pps-document-view.blp:882
+#: shell/resources/pps-document-view.blp:883
 msgid "_Save Image As…"
 msgstr "_გამოსახულების შენახვა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:888
+#: shell/resources/pps-document-view.blp:889
 msgid "Copy _Image"
 msgstr "გამოსახულების _კოპირება"
 
-#: shell/resources/pps-document-view.blp:896
+#: shell/resources/pps-document-view.blp:897
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_მიმაგრებული ფაილის გახსნა"
 
-#: shell/resources/pps-document-view.blp:902
+#: shell/resources/pps-document-view.blp:903
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_მიმაგრებული ფაილის გახსნა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:912
+#: shell/resources/pps-document-view.blp:913
 msgid "Annotation _Properties…"
 msgstr "ანოტაციის _თვისებები…"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:919
 msgid "R_emove Annotation"
 msgstr "_ანოტაციის წაშლა"
 
-#: shell/resources/pps-document-view.blp:926
+#: shell/resources/pps-document-view.blp:927
 msgid "_Add Text Annotation"
 msgstr "_ტექსტის ანოტაციის დამატება"
 
@@ -1650,9 +1327,333 @@ msgstr "_მხოლოდ მთლიანი სიტყვები"
 msgid "C_ase Sensitive"
 msgstr "რეგისტრის გათვალისწინება"
 
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "Opening, Closing, Saving and Printing"
+msgstr "გახსნა, დახურვა, შენახვა და დაბეჭდვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "დოკუმენტის გახსნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "მიმდინარე დოკუმენტის ასლის გახსნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "გამხსნელი პროგრამა…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "მიმდინარე დოკუმენტის ასლის შენახვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "მიმდინარე დოკუმენტის დაბეჭდვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "მიმდინარე დოკუმენტის ფანჯრის დახურვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "ფანჯარა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "სრულ ეკრანზე"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "პრეზენტაციის რეჟიმში გადასვლა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "გვერდითი პანელი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "კარეტით ნავიგაცია"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selecting and Copying Text"
+msgstr "ტექსტის მონიშვნა და კოპირება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "კოპირება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "ყველაფრის მონიშვნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Rotating and Zooming"
+msgstr "შემობრუნება და გადიდება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "გვერდის საათის ისრის საწინააღმდეგოდ 90 გრადუსით მობრუნება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "გვერდის საათის ისრის მიმართულებით 90 გრადუსით მობრუნება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "გადიდება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "დაპატარავება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "ნორმალური ზომა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "გადიდება (სხვანაირად)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "გვერდის ჩატევა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "სიგანის ჩატევა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "ავტომატური გადიდება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Moving Around Document"
+msgstr "დოკუმენტში მოძრაობა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "გვერდის თავიდან დაიწყება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "გვერდის რამდენიმე ხაზით აწევა/ჩამოწევა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "წინა გვერდი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "შემდეგი გვერდი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "გვერდის ნომერზე გადასვლა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "წინა გვერდი (სწრაფი)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "შემდეგი გვერდი (სწრაფი)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "წინა უკვე ნანახ გვერდი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "შემდეგი უკვე ნანახი გვერდი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "გვერდის დასაწყისში/ბოლოში გადასვლა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "გადასვლა დოკუმენტის დასაწყისზე"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "გადასვლა დოკუმენტის ბოლოში"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View and Handling"
+msgstr "დოკუმენტის ნახვა და დამუშავება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "სანიშნეს დამატება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "სანიშნეების წაშლა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "ღამის რეჟიმი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "უწყვეტი დაქაჩვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "ორმაგი გვერდი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "კენტი გვერდები მარცხნივ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "დოკუმენტის თვისებები"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "ტექსტის ანოტაციის დამატება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "ტექსტის გამოკვეთა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "ხაზგადასმული ტექსტი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "ტალღოვანი/გაბნეული ხაზგასმული ტექსტი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "ტექსტის ხაზგასმა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Finding Text"
+msgstr "ტექსტის ძებნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "ძებნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "მომდევნოს მოძებნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "წინას პოვნა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "საერთო"
+
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "დახმარება"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "მენიუ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "კლავიატურის მალსახმობები"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "ახალი ფანჯარა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "ფანჯრის დახურვა"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "პრეზენტაციის რეჟიმი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "შავი ეკრანი"
+
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "თეთრი ეკრანი"
+
 #: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "ანოტაციების გარეშე"
+
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "ანოტაციის თვისებები"
 
 #: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
@@ -1698,51 +1699,51 @@ msgstr "დოკუმენტის გახსნა შეუძლებ�
 msgid "_Open Other File…"
 msgstr "_სხვა ფაილის გახსნა…"
 
-#: shell/src/application.rs:211
+#: shell/src/application.rs:215
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 Paper-ის ავტორები"
 
-#: shell/src/application.rs:212
+#: shell/src/application.rs:216
 msgid "translator-credits"
 msgstr "თემური დოღონაძე"
 
-#: shell/src/application.rs:349
+#: shell/src/application.rs:365
 msgid "The page label of the document to display."
 msgstr "საჩვენებელი დოკუმენტის გვერდის ჭდე."
 
-#: shell/src/application.rs:350
+#: shell/src/application.rs:366
 msgid "PAGE"
 msgstr "გვერდი"
 
-#: shell/src/application.rs:358
+#: shell/src/application.rs:374
 msgid "The page number of the document to display."
 msgstr "საჩვენებელი დოკუმენტის გვერდის ნომერი."
 
-#: shell/src/application.rs:359
+#: shell/src/application.rs:375
 msgid "NUMBER"
 msgstr "რიცხვი"
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:383
 msgid "Named destination to display."
 msgstr "საჩვენებელი სამიზნე."
 
-#: shell/src/application.rs:368
+#: shell/src/application.rs:384
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:392
 msgid "Run papers in fullscreen mode."
 msgstr "Papers-ის გაშვება სრულეკრანიან რეჟიმში."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:401
 msgid "Run papers in presentation mode."
 msgstr "Papers-ის გაშვება პრეზენტაციის რეჟიმში."
 
-#: shell/src/application.rs:394
+#: shell/src/application.rs:410
 msgid "Show the version of the program."
 msgstr "პროგრამის ვერსიის ჩვენება."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:420
 msgid "[FILE…]"
 msgstr "[ფაილი...]"
 
@@ -1782,33 +1783,33 @@ msgstr "დახურვა _შენახვის გარეშე"
 msgid "_Save a Copy"
 msgstr "ა_სლის შენახვა"
 
-#: shell/src/document_view/actions.rs:822
+#: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "გამოსახულების შენახვა"
 
-#: shell/src/document_view/actions.rs:858
+#: shell/src/document_view/actions.rs:880
 msgid "Couldn’t find appropriate format to save image"
 msgstr "გამოსახულების შესანახად შესაბამისი ფორმატის პოვნა შეუძლებელია"
 
-#: shell/src/document_view/actions.rs:875
+#: shell/src/document_view/actions.rs:897
 msgid "The image could not be saved."
 msgstr "გამოსახულების შენახვის შეცდომა."
 
-#: shell/src/document_view/actions.rs:947
+#: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "კარეტით ნავიგაციის რეჟიმი ახლა ჩართულია. გამოსართავად დააწექით ღილაკს F7."
 
-#: shell/src/document_view/actions.rs:949
+#: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "კარეტით ნავიგაციის რეჟიმი ახლა გამორთულია. ჩასართავად დააწექით ღილაკს F7."
 
-#: shell/src/document_view/actions.rs:1004 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "მიმაგრებული ფაილის გახსნა შეუძლებელია"
 
-#: shell/src/document_view/actions.rs:1037
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "შეუძლებელია დანართის დამახსოვრება."
 
@@ -1880,11 +1881,6 @@ msgstr "ბეჭდვის დავალება \"{}\""
 #: shell/src/document_view/print.rs:79
 msgid "No pending jobs in queue"
 msgstr "რიგში დავალებები არაა"
-
-#: shell/src/document_view/print.rs:82
-msgid "{} pending job in queue"
-msgid_plural "{} pending jobs in queue"
-msgstr[0] "რიგში დარჩენილია {} დავალება"
 
 #: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
@@ -2035,6 +2031,23 @@ msgstr "სერტიფიკატის ვადის გასვლი�
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "დეტალების დამალვა…"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad Gestures"
+#~ msgstr "თაჩპედის ჟესტები"
+
+#~ msgid "Initially Opened"
+#~ msgstr "თავიდან გახსნილი"
+
+#~ msgid "_Apply"
+#~ msgstr "_გადატარება"
+
+#~ msgid "_About Papers"
+#~ msgstr "Papers-ის _შესახებ"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "რიგში დარჩენილია {} დავალება"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "_მონიშნული ტექსტის გამოკვეთა"
@@ -2539,10 +2552,6 @@ msgstr "დეტალების დამალვა…"
 #~ msgstr "დოკუმენტის დასაწყისში გადასვლა"
 
 #~ msgctxt "shortcut window"
-#~ msgid "Go to the end of the document"
-#~ msgstr "დოკუმენტის ბოლოში გადასვლა"
-
-#~ msgctxt "shortcut window"
 #~ msgid "Add bookmark"
 #~ msgstr "სანიშნის დამატება"
 
@@ -2593,9 +2602,6 @@ msgstr "დეტალების დამალვა…"
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
 #~ msgstr "კლავიატურის მალსახმობები"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "დოკუმენტების დამთვალიერებელი"
 
 #~ msgid "Open a new window."
 #~ msgstr "ახალ ფანჯრის გახსნა."
