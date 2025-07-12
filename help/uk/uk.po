@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the epiphany package.
 #
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2005-2006.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: evince manual\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 13:42+0000\n"
-"PO-Revision-Date: 2024-11-29 18:50+0200\n"
+"POT-Creation-Date: 2025-07-09 22:04+0000\n"
+"PO-Revision-Date: 2025-07-12 20:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 23.04.3\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -60,14 +60,14 @@ msgstr "Tiffany Antopolski"
 #: C/commandline.page:20 C/forms.page:15 C/reload.page:18
 #: C/presentations.page:21 C/singlesided-17-20pages.page:16 C/develop.page:15
 #: C/printing.page:22 C/textselection.page:15 C/annotations-disabled.page:15
-#: C/default-settings.page:16 C/duplex-13pages.page:16 C/duplex-4pages.page:16
-#: C/duplex-7pages.page:16 C/duplex-16pages.page:16
-#: C/singlesided-npages.page:16 C/print-order.page:16 C/translate.page:19
-#: C/headerbar.page:18 C/annotations.page:21 C/print-select.page:15
-#: C/annotations-save.page:20 C/annotations-navigate.page:16
-#: C/print-booklet.page:16 C/noprint.page:18 C/documentation.page:14
-#: C/duplex-12pages.page:16 C/singlesided-5-8pages.page:16
-#: C/duplex-3pages.page:16 C/duplex-9pages.page:16 C/duplex-10pages.page:16
+#: C/duplex-13pages.page:16 C/duplex-4pages.page:16 C/duplex-7pages.page:16
+#: C/duplex-16pages.page:16 C/singlesided-npages.page:16 C/print-order.page:16
+#: C/translate.page:19 C/headerbar.page:18 C/annotations.page:21
+#: C/print-select.page:15 C/annotations-save.page:20
+#: C/annotations-navigate.page:16 C/print-booklet.page:16 C/noprint.page:18
+#: C/documentation.page:14 C/duplex-12pages.page:16
+#: C/singlesided-5-8pages.page:16 C/duplex-3pages.page:16
+#: C/duplex-9pages.page:16 C/duplex-10pages.page:16
 #: C/singlesided-13-16pages.page:16 C/openerror.page:17
 #: C/singlesided-3-4pages.page:16 C/forms-saving.page:23 C/formats.page:20
 #: C/duplex-14pages.page:16 C/bug-filing.page:15 C/duplex-5pages.page:16
@@ -642,8 +642,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/movingaround.page:95
-msgid ""
-"Press <keyseq><key>Ctrl</key><key>Home</key></keyseq> on your keyboard."
+msgid "Press <keyseq><key>Ctrl</key><key>Home</key></keyseq> on your keyboard."
 msgstr ""
 "Натисніть комбінацію <keyseq><key>Ctrl</key><key>Home</key></keyseq> на "
 "клавіатурі."
@@ -808,8 +807,7 @@ msgstr ""
 #. (itstool) path: section/p
 #: C/movingaround.page:175
 msgid "You can use the whole of your screen to view the document:"
-msgstr ""
-"Ви можете скористатися усією поверхнею екрана для перегляду документа:"
+msgstr "Ви можете скористатися усією поверхнею екрана для перегляду документа:"
 
 #. (itstool) path: item/p
 #: C/movingaround.page:179
@@ -845,10 +843,12 @@ msgstr "Закладки"
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:31
-msgid "You can add, rename and delete bookmarks using <app>Papers</app>."
+#| msgid "You can add, rename and delete bookmarks using <app>Papers</app>."
+msgid ""
+"You can add, rename and delete bookmarks using <app>Document Viewer</app>."
 msgstr ""
 "Ви можете додавати, перейменовувати та вилучати закладки за допомогою "
-"<app>Паперів</app>."
+"<app>Переглядача документів</app>."
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:38
@@ -1104,11 +1104,15 @@ msgstr "Portable Document Format (.pdf)"
 
 #. (itstool) path: page/p
 #: C/convertSVG.page:32
+#| msgid ""
+#| "This works by opening the file in <app>Papers</app> and \"printing\" the "
+#| "document as an SVG file."
 msgid ""
-"This works by opening the file in <app>Papers</app> and \"printing\" the "
-"document as an SVG file."
+"This works by opening the file in <app>Document Viewer</app> and "
+"\"printing\" the document as an SVG file."
 msgstr ""
-"Зробити це можна відкривши файл у <app>Паперах</app> і «надрукувавши» "
+"Зробити це можна відкривши файл у <app>Переглядачі документів</app> і"
+" «надрукувавши» "
 "документ як файл SVG."
 
 #. (itstool) path: item/p
@@ -1211,11 +1215,17 @@ msgstr "Командний рядок"
 
 #. (itstool) path: page/p
 #: C/commandline.page:25
+#| msgid ""
+#| "To start <app>Papers</app> from the command line, type <cmd>papers</cmd>. "
+#| "You can open a specific file by typing the filename after the papers "
+#| "command:"
 msgid ""
-"To start <app>Papers</app> from the command line, type <cmd>papers</cmd>. "
-"You can open a specific file by typing the filename after the papers command:"
+"To start <app>Document Viewer</app> from the command line, type <cmd>papers</"
+"cmd>. You can open a specific file by typing the filename after the papers "
+"command:"
 msgstr ""
-"Щоб запустити <app>Папери</app> з командного рядка, слід віддати команду "
+"Щоб запустити <app>Переглядач документів</app> з командного рядка, слід"
+" віддати команду "
 "<cmd>papers</cmd>. Ви можете наказати програмі відкрити певний файл, якщо "
 "впишете назву файла після команди papers:"
 
@@ -1242,12 +1252,17 @@ msgstr "papers файл1.pdf файл2.pdf"
 
 #. (itstool) path: page/p
 #: C/commandline.page:35
+#| msgid ""
+#| "<app>Papers</app> also supports the handling of files on the web. For "
+#| "example, after the papers command you can give the location of a file on "
+#| "the web:"
 msgid ""
-"<app>Papers</app> also supports the handling of files on the web. For "
-"example, after the papers command you can give the location of a file on the "
-"web:"
+"<app>Document Viewer</app> also supports the handling of files on the web. "
+"For example, after the papers command you can give the location of a file on "
+"the web:"
 msgstr ""
-"Крім того, <app>Папери</app> може працювати із файлами у мережі. Наприклад, "
+"Крім того, <app>Переглядач документів</app> може працювати із файлами у"
+" мережі. Наприклад, "
 "після команди papers ви можете вказати адресу файла в інтернеті:"
 
 #. (itstool) path: page/screen
@@ -1279,12 +1294,15 @@ msgstr "papers --page-label=3 файл.pdf"
 
 #. (itstool) path: section/p
 #: C/commandline.page:46
+#| msgid ""
+#| "The page label should be in the same format as the page number displayed "
+#| "in the <app>Papers</app> header bar."
 msgid ""
 "The page label should be in the same format as the page number displayed in "
-"the <app>Papers</app> header bar."
+"the <app>Document Viewer</app> header bar."
 msgstr ""
 "Мітку сторінки слід вказувати у тому самому форматі, у якому її показано на "
-"панелі заголовка <app>Паперів</app>."
+"панелі заголовка <app>Переглядача документів</app>."
 
 #. (itstool) path: section/title
 #: C/commandline.page:52
@@ -1381,12 +1399,18 @@ msgstr "Чому документ перезавантажується?"
 
 #. (itstool) path: page/p
 #: C/reload.page:25
+#| msgid ""
+#| "If <app>Papers</app> detects that the document you have open has changed "
+#| "(perhaps because another program has modified it), it will automatically "
+#| "reload the document and display the most recent version for you."
 msgid ""
-"If <app>Papers</app> detects that the document you have open has changed "
-"(perhaps because another program has modified it), it will automatically "
-"reload the document and display the most recent version for you."
+"If <app>Document Viewer</app> detects that the document you have open has "
+"changed (perhaps because another program has modified it), it will "
+"automatically reload the document and display the most recent version for "
+"you."
 msgstr ""
-"Якщо <app>Папери</app> виявить, що до відкритого документа було внесено "
+"Якщо <app>Переглядач документів</app> виявить, що до відкритого документа"
+" було внесено "
 "зміни (ймовірно, внаслідок роботи іншої програми), програма автоматично "
 "перезавантажить документ і покаже найсвіжішу його версію."
 
@@ -1562,8 +1586,9 @@ msgstr "Введіть номери сторінок у такому поряд�
 
 #. (itstool) path: info/desc
 #: C/develop.page:7
-msgid "Improve <app>Papers</app>."
-msgstr "Удосконалення <app>Паперів</app>."
+#| msgid "Improve <app>Papers</app>."
+msgid "Improve <app>Document Viewer</app>."
+msgstr "Удосконалення <app>Переглядача документів</app>."
 
 #. (itstool) path: credit/years
 #: C/develop.page:12 C/translate.page:12 C/documentation.page:11
@@ -1577,26 +1602,39 @@ msgstr "Допомога у розробці"
 
 #. (itstool) path: page/p
 #: C/develop.page:20
+#| msgid ""
+#| "<app>Papers</app> is developed and maintained by a volunteer community. "
+#| "You are welcome to participate."
 msgid ""
-"<app>Papers</app> is developed and maintained by a volunteer community. You "
-"are welcome to participate."
+"<app>Document Viewer</app> is developed and maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"Розробкою і супроводом <app>Паперів</app> переймається спільнота "
+"Розробкою і супроводом <app>Переглядача документів</app> переймається"
+" спільнота "
 "добровольців. Ми будемо раді вашій участі у ній."
 
 #. (itstool) path: page/p
 #: C/develop.page:23
+#| msgid ""
+#| "If you would like to <link href=\"https://wiki.gnome.org/Apps/"
+#| "Papers\">help develop</link> <app>Papers</app>, you can get in touch with "
+#| "the developers at <link href=\"https://matrix.to/#/#papers:gnome."
+#| "org\">#papers:gnome.org</link> on <link xref=\"help:gnome-help/help-"
+#| "matrix\">Matrix</link> or <link href=\"https://web.libera.chat/#gnome-"
+#| "papers\">#gnome-papers</link> on irc.libera.chat, or via <link "
+#| "href=\"https://discourse.gnome.org/tag/papers\">GNOME Discourse</link>."
 msgid ""
 "If you would like to <link href=\"https://wiki.gnome.org/Apps/Papers\">help "
-"develop</link> <app>Papers</app>, you can get in touch with the developers "
-"at <link href=\"https://matrix.to/#/#papers:gnome.org\">#papers:gnome.org</"
-"link> on <link xref=\"help:gnome-help/help-matrix\">Matrix</link> or <link "
-"href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> on irc."
-"libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
+"develop</link> <app>Document Viewer</app>, you can get in touch with the "
+"developers at <link href=\"https://matrix.to/#/#papers:gnome.org\">#papers:"
+"gnome.org</link> on <link xref=\"help:gnome-help/help-matrix\">Matrix</link> "
+"or <link href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> "
+"on irc.libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
 "papers\">GNOME Discourse</link>."
 msgstr ""
 "Якщо ви хочете допомогти у <link href=\"https://wiki.gnome.org/Apps/"
-"Papers\">розробці</link> <app>Паперів</app>, можете зв'язатися із нашими "
+"Papers\">розробці</link> <app>Переглядача документів</app>, можете зв'язатися"
+" із нашими "
 "розробниками за допомогою <link href=\"https://matrix.to/#/#papers:gnome."
 "org\">#papers:gnome.org</link> у <link xref=\"help:gnome-help/help-"
 "matrix\">Matrix</link>, або <link href=\"https://web.libera.chat/#gnome-"
@@ -1727,13 +1765,19 @@ msgstr "Чому позначений вами текст не копіюєть�
 
 #. (itstool) path: page/p
 #: C/textselection.page:23
+#| msgid ""
+#| "If you highlight and copy text from a document using <app>Papers</app> "
+#| "and then paste it into another application, the formatting may alter. It "
+#| "may also contain different characters than the original selection. This "
+#| "often happens when copying text from a PDF document with multiple columns."
 msgid ""
-"If you highlight and copy text from a document using <app>Papers</app> and "
-"then paste it into another application, the formatting may alter. It may "
-"also contain different characters than the original selection. This often "
-"happens when copying text from a PDF document with multiple columns."
+"If you highlight and copy text from a document using <app>Document Viewer</"
+"app> and then paste it into another application, the formatting may alter. "
+"It may also contain different characters than the original selection. This "
+"often happens when copying text from a PDF document with multiple columns."
 msgstr ""
-"Якщо ви позначаєте і копіюєте текст документа у вікні <app>Паперів</app>, а "
+"Якщо ви позначаєте і копіюєте текст документа у вікні <app>Переглядача"
+" документів</app>, а "
 "потім вставляєте цей текст до вікна іншої програми, форматування тексту може "
 "бути змінено. Також текст може містити символи, яких не було у початковому "
 "позначеному фрагменті. Таке часто трапляється при копіюванні тексту із "
@@ -1781,56 +1825,6 @@ msgstr ""
 "Анотації можна додавати лише до файлів PDF. Якщо ваш файл збережено у "
 "форматі, відмінному від PDF, пункт додавання анотацій буде показано сірим "
 "кольором (пункт буде неактивним)."
-
-#. (itstool) path: info/desc
-#: C/default-settings.page:7
-msgid "Save current settings as default for new documents."
-msgstr "Збереження поточних параметрів як типових для нових документів."
-
-#. (itstool) path: credit/name
-#: C/default-settings.page:12
-msgid "Sindhu S"
-msgstr "Sindhu S"
-
-#. (itstool) path: page/title
-#: C/default-settings.page:21
-msgid "Change default settings"
-msgstr "Зміна типових параметрів"
-
-#. (itstool) path: page/p
-#: C/default-settings.page:23
-msgid ""
-"When a document is opened for the first time, default settings, such as zoom "
-"and page view preferences, are applied. Any changes you make to these "
-"settings are saved for the document."
-msgstr ""
-"Під час першого відкриття документа програма застосовує для його показу "
-"типові параметри, зокрема масштабування та налаштування перегляду сторінки. "
-"Програма зберігатиме усі зміни у параметрах перегляду, які ви вноситимете "
-"під час перегляду документа."
-
-#. (itstool) path: page/p
-#: C/default-settings.page:26
-msgid ""
-"You can save the settings which you are currently using as default for all "
-"new documents by pressing the menu button in the top-right corner of the "
-"window and selecting <gui style=\"menuitem\">Save Current Settings as "
-"Default</gui>."
-msgstr ""
-"Ви можете зберегти параметри, якими користуєтеся для типового використання "
-"для усіх нових документів. Натисніть кнопку меню у верхньому правому куті "
-"вікна програми і виберіть пункт <gui style=\"menuitem\">Зберегти поточні "
-"налаштування як типові</gui>."
-
-#. (itstool) path: note/p
-#: C/default-settings.page:31
-msgid ""
-"The new default settings do not override settings of previously opened "
-"documents, they are applied only to documents opened for the first time."
-msgstr ""
-"Нові типові параметри не змінюватимуть параметрів, які збережено для раніше "
-"відкритих документів. Їх буде застосовано лише до документів, які ви "
-"відкриваєте уперше."
 
 #. (itstool) path: info/desc
 #: C/duplex-13pages.page:8
@@ -1953,8 +1947,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: C/password.page:50
 msgid "Passwords can be set by the person who created or edited the document."
-msgstr ""
-"Паролі може встановлювати особа, яка створила або редагувала документ."
+msgstr "Паролі може встановлювати особа, яка створила або редагувала документ."
 
 #. (itstool) path: info/desc
 #: C/license.page:8
@@ -2172,8 +2165,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/translate.page:7
-msgid "Localize <app>Papers</app>."
-msgstr "Локалізація <app>Паперів</app>."
+#| msgid "Localize <app>Papers</app>."
+msgid "Localize <app>Document Viewer</app>."
+msgstr "Локалізація <app>Переглядача документів</app>."
 
 #. (itstool) path: credit/name
 #: C/translate.page:15
@@ -2187,11 +2181,17 @@ msgstr "Допомога у перекладі"
 
 #. (itstool) path: page/p
 #: C/translate.page:24
+#| msgid ""
+#| "The <app>Papers</app> user interface and documentation is being "
+#| "translated by a world-wide volunteer community. You are welcome to "
+#| "participate."
 msgid ""
-"The <app>Papers</app> user interface and documentation is being translated "
-"by a world-wide volunteer community. You are welcome to participate."
+"The <app>Document Viewer</app> user interface and documentation is being "
+"translated by a world-wide volunteer community. You are welcome to "
+"participate."
 msgstr ""
-"Перекладом інтерфейсу та документації до <app>Паперів</app> переймається "
+"Перекладом інтерфейсу та документації до <app>Переглядача документів</app>"
+" переймається "
 "спільнота добровольців з усього світу. Ми будемо раді вашій участі у ній."
 
 #. (itstool) path: page/p
@@ -2320,12 +2320,15 @@ msgstr "Як додати анотацію"
 
 #. (itstool) path: page/p
 #: C/annotations.page:27
+#| msgid ""
+#| "An annotation is a note or comment added to a PDF document. You can add "
+#| "annotations using <app>Papers</app>."
 msgid ""
 "An annotation is a note or comment added to a PDF document. You can add "
-"annotations using <app>Papers</app>."
+"annotations using <app>Document Viewer</app>."
 msgstr ""
 "Анотація — примітка або коментар, який додано до документа PDF. За допомогою "
-"<app>Паперів</app> ви можете додавати анотації."
+"<app>Переглядача документів</app> ви можете додавати анотації."
 
 #. (itstool) path: page/p
 #: C/annotations.page:36
@@ -2493,12 +2496,18 @@ msgstr "Збереження копії анотованого PDF"
 
 #. (itstool) path: page/p
 #: C/annotations-save.page:24
+#| msgid ""
+#| "To save a copy of your annotated PDF for future viewing using the "
+#| "<app>Papers</app> or any other PDF viewer <em>that supports annotations</"
+#| "em>:"
 msgid ""
 "To save a copy of your annotated PDF for future viewing using the "
-"<app>Papers</app> or any other PDF viewer <em>that supports annotations</em>:"
+"<app>Document Viewer</app> or any other PDF viewer <em>that supports "
+"annotations</em>:"
 msgstr ""
 "Щоб зберегти копію вашого анотованого PDF для майбутнього перегляду за "
-"допомогою <app>Паперів</app> або будь-якої іншої програми для перегляду PDF, "
+"допомогою <app>Переглядача документів</app> або будь-якої іншої програми для"
+" перегляду PDF, "
 "<em>у якій передбачено підтримку анотацій</em>:"
 
 #. (itstool) path: item/p
@@ -2549,15 +2558,22 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/annotations-navigate.page:25
+#| msgid ""
+#| "To quickly navigate to the location of a particular annotation, click on "
+#| "the arrow to the left of the page number. You will see a list of "
+#| "annotations on that page. Click on the annotation you are interested in, "
+#| "and <app>Papers</app> will navigate to the location of the annotation in "
+#| "the document."
 msgid ""
 "To quickly navigate to the location of a particular annotation, click on the "
 "arrow to the left of the page number. You will see a list of annotations on "
-"that page. Click on the annotation you are interested in, and <app>Papers</"
-"app> will navigate to the location of the annotation in the document."
+"that page. Click on the annotation you are interested in, and <app>Document "
+"Viewer</app> will navigate to the location of the annotation in the document."
 msgstr ""
 "Щоб швидко перейти до розташування певної анотації, натисніть стрілочку "
 "ліворуч від номер сторінки. Ви побачите список анотацій відповідної "
-"сторінки. Клацніть на пункті потрібної вам анотації і <app>Папери</app> "
+"сторінки. Клацніть на пункті потрібної вам анотації і <app>Переглядач"
+" документів</app> "
 "перейде до місця анотації у документі."
 
 #. (itstool) path: page/media
@@ -2720,15 +2736,21 @@ msgstr "Обмеження на друк у PDF"
 
 #. (itstool) path: section/p
 #: C/noprint.page:75
+#| msgid ""
+#| "Some PDF documents have a setting which prevents you from printing them. "
+#| "Authors can set this printing restriction when they write a document. "
+#| "<app>Papers</app> overrides this restriction by default, but you may want "
+#| "to check that it hasn't been disabled:"
 msgid ""
 "Some PDF documents have a setting which prevents you from printing them. "
 "Authors can set this printing restriction when they write a document. "
-"<app>Papers</app> overrides this restriction by default, but you may want to "
-"check that it hasn't been disabled:"
+"<app>Document Viewer</app> overrides this restriction by default, but you "
+"may want to check that it hasn't been disabled:"
 msgstr ""
 "Для деяких документів PDF вказано параметр, який забороняє вам друк "
 "документа. Автори документів можуть встановлювати таке обмеження під час "
-"створення документа. Типово, <app>Папери</app> ігнорує таке обмеження, але "
+"створення документа. Типово, <app>Переглядач документів</app> ігнорує таке"
+" обмеження, але "
 "ви можете перевірити, чи не було вимкнено відповідний параметр роботи "
 "програми:"
 
@@ -2778,9 +2800,12 @@ msgstr "Переконайтеся, що позначено пункт <gui>over
 
 #. (itstool) path: item/p
 #: C/noprint.page:108
-msgid "Go back to <app>Papers</app> and try to print the document again."
+#| msgid "Go back to <app>Papers</app> and try to print the document again."
+msgid ""
+"Go back to <app>Document Viewer</app> and try to print the document again."
 msgstr ""
-"Поверніться до вікна <app>Паперів</app> і спробуйте надрукувати документ ще "
+"Поверніться до вікна <app>Переглядача документів</app> і спробуйте"
+" надрукувати документ ще "
 "раз."
 
 #. (itstool) path: info/desc
@@ -2795,11 +2820,15 @@ msgstr "Допомога у написанні документації"
 
 #. (itstool) path: page/p
 #: C/documentation.page:20
+#| msgid ""
+#| "The <app>Papers</app> documentation is maintained by a volunteer "
+#| "community. You are welcome to participate."
 msgid ""
-"The <app>Papers</app> documentation is maintained by a volunteer community. "
-"You are welcome to participate."
+"The <app>Document Viewer</app> documentation is maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"Документуванням <app>Паперів</app> переймається спільнота добровольців. Ми "
+"Документуванням <app>Переглядача документів</app> переймається спільнота"
+" добровольців. Ми "
 "будемо раді вашій участі у ній."
 
 #. (itstool) path: page/p
@@ -2948,17 +2977,23 @@ msgstr "Переглядач документів «Папери»"
 
 #. (itstool) path: info/desc
 #: C/index.page:24
+#| msgid ""
+#| "<app>Papers</app> is made for viewing PDF documents. Learn how to get "
+#| "started with <app>Papers</app> and its features."
 msgid ""
-"<app>Papers</app> is made for viewing PDF documents. Learn how to get "
-"started with <app>Papers</app> and its features."
+"<app>Document Viewer</app>, formally known as <app>Papers</app>, is made for "
+"viewing PDF documents. Learn how to get started with <app>Papers</app> and "
+"its features."
 msgstr ""
-"<app>Папери</app> створено для перегляду документів PDF. Ознайомтеся із "
+"<app>Переглядач документів</app>, формально відомий як <app>Папери</app>,"
+" створено для перегляду документів PDF. Ознайомтеся із "
 "основами роботи у <app>Паперах</app> та можливостями програми."
 
 #. (itstool) path: page/title
 #: C/index.page:30
-msgid "<_:media-1/> Papers Help"
-msgstr "<_:media-1/> Довідка з «Паперів»"
+#| msgid "<_:media-1/> Papers Help"
+msgid "<_:media-1/> Document Viewer Help"
+msgstr "<_:media-1/> Довідка з «Переглядача документів»"
 
 #. (itstool) path: section/title
 #: C/index.page:36
@@ -3164,29 +3199,35 @@ msgstr ""
 #. (itstool) path: note/p
 #: C/opening.page:37
 #| msgid ""
-#| "Double clicking PDF, PostScript, .djvu, and Comic Book Archive files "
-#| "opens them in <app>Papers</app> by default."
+#| "Double clicking PDF, .djvu, and Comic Book Archive files opens them in "
+#| "<app>Papers</app> by default."
 msgid ""
 "Double clicking PDF, .djvu, and Comic Book Archive files opens them in "
-"<app>Papers</app> by default."
+"<app>Document Viewer</app> by default."
 msgstr ""
-"Подвійне клацання типово відкриває файли PDF, .djvu та архівів "
-"коміксів у <app>Паперах</app>."
+"Подвійне клацання типово відкриває файли PDF, .djvu та архівів коміксів у "
+"<app>Переглядачі документів</app>."
 
 #. (itstool) path: item/p
 #: C/opening.page:42
+#| msgid ""
+#| "Right-click on a file icon in <app>Files</app> and click "
+#| "<guiseq><gui>Open With</gui><gui>Papers</gui></guiseq>."
 msgid ""
 "Right-click on a file icon in <app>Files</app> and click <guiseq><gui>Open "
-"With</gui><gui>Papers</gui></guiseq>."
+"With</gui><gui>Document Viewer</gui></guiseq>."
 msgstr ""
 "Клацніть правою кнопкою миші на піктограмі файла у <app>Файлах</app> і "
-"виберіть пункт <guiseq><gui>Відкрити за допомогою</gui><gui>Папери</gui></"
+"виберіть пункт <guiseq><gui>Відкрити за допомогою</gui><gui>Переглядач"
+" документів</gui></"
 "guiseq>."
 
 #. (itstool) path: page/p
 #: C/opening.page:47
-msgid "If an empty <app>Papers</app> window is already open you can:"
-msgstr "Якщо вже відкрито порожнє вікно <app>Паперів</app>, ви можете:"
+#| msgid "If an empty <app>Papers</app> window is already open you can:"
+msgid "If an empty <app>Document Viewer</app> window is already open you can:"
+msgstr ""
+"Якщо вже відкрито порожнє вікно <app>Переглядача документів</app>, ви можете:"
 
 #. (itstool) path: item/p
 #: C/opening.page:51
@@ -3211,8 +3252,14 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/opening.page:62
-msgid "If a document is already opened in a <app>Papers</app> window you can:"
-msgstr "Якщо у вікні <app>Паперів</app> вже відкрито документ, ви можете:"
+#| msgid ""
+#| "If a document is already opened in a <app>Papers</app> window you can:"
+msgid ""
+"If a document is already opened in a <app>Document Viewer</app> window you "
+"can:"
+msgstr ""
+"Якщо у вікні <app>Переглядача документів</app> вже відкрито документ, ви"
+" можете:"
 
 #. (itstool) path: item/p
 #: C/opening.page:66
@@ -3247,8 +3294,7 @@ msgstr "10-сторінковий буклет"
 
 #. (itstool) path: item/p
 #: C/duplex-10pages.page:36
-msgid ""
-"Type the numbers of the pages in this order: 10, 3, 4, 9, 8, 5, 6, 7, 2"
+msgid "Type the numbers of the pages in this order: 10, 3, 4, 9, 8, 5, 6, 7, 2"
 msgstr "Введіть номери сторінок у такому порядку: 10, 3, 4, 9, 8, 5, 6, 7, 2"
 
 #. (itstool) path: note/p
@@ -3293,15 +3339,21 @@ msgstr "Чому не вдається відкрити файл?"
 
 #. (itstool) path: page/p
 #: C/openerror.page:24
+#| msgid ""
+#| "If you try to open a document of a format that <app>Papers</app> does not "
+#| "recognize, you will get an \"Unable to open document\" error message. "
+#| "Click <gui>Close</gui> to return to the <app>Papers</app> window."
 msgid ""
-"If you try to open a document of a format that <app>Papers</app> does not "
-"recognize, you will get an \"Unable to open document\" error message. Click "
-"<gui>Close</gui> to return to the <app>Papers</app> window."
+"If you try to open a document of a format that <app>Document Viewer</app> "
+"does not recognize, you will get an \"Unable to open document\" error "
+"message. Click <gui>Close</gui> to return to the <app>Document Viewer</app> "
+"window."
 msgstr ""
 "Якщо ви спробуєте відкрити документ у форматі, який не може обробляти "
-"<app>Папери</app>, програма повідомить вам, що «Неможливо відкрити "
+"<app>Переглядач документів</app>, програма повідомить вам, що «Неможливо"
+" відкрити "
 "документ». Натисніть кнопку <gui>Закрити</gui>, щоб повернутися до головного "
-"вікна <app>Паперів</app>."
+"вікна <app>Переглядача документів</app>."
 
 #. (itstool) path: info/title
 #: C/singlesided-3-4pages.page:7
@@ -3425,7 +3477,6 @@ msgstr "Копії зашифрованих файлів не можна збе�
 
 #. (itstool) path: info/desc
 #: C/formats.page:8
-#| msgid "PDF, PostScript and many others are."
 msgid "PDF, DejaVu and many others are."
 msgstr "PDF, DejaVu та багато інших форматів."
 
@@ -3436,8 +3487,11 @@ msgstr "Підтримувані формати"
 
 #. (itstool) path: page/p
 #: C/formats.page:27
-msgid "<app>Papers</app> supports the following formats:"
-msgstr "У <app>Паперах</app> передбачено підтримку таких форматів документів:"
+#| msgid "<app>Papers</app> supports the following formats:"
+msgid "<app>Document Viewer</app> supports the following formats:"
+msgstr ""
+"У <app>Переглядачі документів</app> передбачено підтримку таких форматів"
+" документів:"
 
 #. (itstool) path: item/p
 #: C/formats.page:31
@@ -3561,21 +3615,28 @@ msgstr "Як і де слід повідомляти про проблеми."
 
 #. (itstool) path: page/title
 #: C/bug-filing.page:19
-msgid "File a bug against <app>Papers</app>"
-msgstr "Створення повідомлення про ваду у <app>Паперах</app>"
+#| msgid "File a bug against <app>Papers</app>"
+msgid "File a bug against <app>Document Viewer</app>"
+msgstr "Створення повідомлення про ваду у <app>Переглядачі документів</app>"
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:20
+#| msgid ""
+#| "<app>Papers</app> is maintained by a volunteer community. You are welcome "
+#| "to participate. If you notice a problem you can file a <em>bug report</"
+#| "em>. To file a bug, go to <link href=\"https://gitlab.gnome.org/GNOME/"
+#| "Incubator/papers/issues/\"/>."
 msgid ""
-"<app>Papers</app> is maintained by a volunteer community. You are welcome to "
-"participate. If you notice a problem you can file a <em>bug report</em>. To "
-"file a bug, go to <link href=\"https://gitlab.gnome.org/GNOME/Incubator/"
-"papers/issues/\"/>."
+"<app>Document Viewer</app> is maintained by a volunteer community. You are "
+"welcome to participate. If you notice a problem you can file a <em>bug "
+"report</em>. To file a bug, go to <link href=\"https://gitlab.gnome.org/"
+"GNOME/papers/issues/\"/>."
 msgstr ""
-"Супроводом <app>Паперів</app> займається спільнота добровольців. Ми будемо "
+"Супроводом <app>Переглядача документів</app> займається спільнота"
+" добровольців. Ми будемо "
 "раді вашій допомозі. Якщо ви виявили проблему у програмі, ви можете створити "
 "<em>звіт щодо вади</em>. Для створення такого звіту перейдіть на сторінку "
-"<link href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\"/>."
+"<link href=\"https://gitlab.gnome.org/GNOME/papers/issues/\"/>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:23
@@ -3605,19 +3666,26 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:29
+#| msgid ""
+#| "Once you have an account, log in, and click on <gui>New issue</gui>. "
+#| "Before reporting a bug, please read the <link href=\"https://wiki.gnome."
+#| "org/GettingInTouch/BugReportingGuidelines\">bug writing guidelines</"
+#| "link>, and please <link href=\"https://gitlab.gnome.org/GNOME/Incubator/"
+#| "papers/issues\">browse</link> for the bug to see if it already exists."
 msgid ""
 "Once you have an account, log in, and click on <gui>New issue</gui>. Before "
 "reporting a bug, please read the <link href=\"https://wiki.gnome.org/"
 "GettingInTouch/BugReportingGuidelines\">bug writing guidelines</link>, and "
-"please <link href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues\">browse</link> for the bug to see if it already exists."
+"please <link href=\"https://gitlab.gnome.org/GNOME/papers/issues\">browse</"
+"link> for the bug to see if it already exists."
 msgstr ""
 "Щойно ваш обліковий запис буде зареєстровано, увійдіть до нього і натисніть "
 "кнопку <gui>New issue</gui> («Нова вада»). Перш ніж повідомляти про ваду, "
 "будь ласка, ознайомтеся із <link href=\"https://wiki.gnome.org/"
 "GettingInTouch/BugReportingGuidelines\">настановами щодо створення "
-"повідомлень про вади</link>, і, будь ласка, <link href=\"https://gitlab."
-"gnome.org/GNOME/Incubator/papers/issues\">перегляньте</link> список вад, щоб "
+"повідомлень про вади</link>, і, будь ласка, <link"
+" href=\"https://gitlab.gnome.org/GNOME/papers/issues\">перегляньте</link>"
+" список вад, щоб "
 "переконатися у тому, що про виявлену вами ваду ще ніхто не повідомив."
 
 #. (itstool) path: page/p
@@ -3678,43 +3746,84 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/editing.page:7
-msgid "You can't use <app>Papers</app> to edit files."
-msgstr "<app>Папери</app> не можна використовувати для редагування файлів."
+#| msgid "You can't use <app>Papers</app> to edit files."
+msgid "You can't use <app>Document Viewer</app> to edit files."
+msgstr ""
+"<app>Переглядач документів</app> не можна використовувати для редагування"
+" файлів."
 
 #. (itstool) path: page/title
 #: C/editing.page:21
-msgid "Can I edit documents in Papers?"
-msgstr "Чи можна редагувати документи за допомогою «Паперів»?"
+#| msgid "Can I edit documents in Papers?"
+msgid "Can I edit documents in Document Viewer?"
+msgstr "Чи можна редагувати документи за допомогою «Переглядача документів»?"
 
 #. (itstool) path: page/p
 #: C/editing.page:24
+#| msgid ""
+#| "<app>Papers</app> can't be used to make changes to documents. You need to "
+#| "use the appropriate editing application for the type of file you want to "
+#| "change."
 msgid ""
-"<app>Papers</app> can't be used to make changes to documents. You need to "
-"use the appropriate editing application for the type of file you want to "
-"change."
+"<app>Document Viewer</app> can't be used to make changes to documents. You "
+"need to use the appropriate editing application for the type of file you "
+"want to change."
 msgstr ""
-"<app>Паперами</app> не можна скористатися для внесення змін до документів. "
+"<app>Переглядачем документів</app> не можна скористатися для внесення змін до"
+" документів. "
 "Вам слід скористатися відповідною програмою для редагування типу файлів, до "
 "якого ви хочете внести зміни."
 
 #. (itstool) path: note/p
 #: C/editing.page:30
-#| msgid ""
-#| "PDF and PostScript (.ps) files are not usually intended to be edited, but "
-#| "PDF editing software is available. Try <app>LibreOffice Draw</app> or "
-#| "<app>Okular</app>, for example. Furthermore, <app>pdfarranger</app> "
-#| "allows rearranging or removing pages and merging files."
 msgid ""
 "PDF files are not usually intended to be edited, but PDF editing software is "
 "available. Try <app>LibreOffice Draw</app> or <app>Okular</app>, for "
 "example. Furthermore, <app>pdfarranger</app> allows rearranging or removing "
 "pages and merging files."
 msgstr ""
-"Зазвичай, файли PDF не призначено для редагування, але "
-"існують програми, які можуть вносити зміни до PDF. Спробуйте, наприклад, "
-"<app>LibreOffice Draw</app> або <app>Okular</app>. Крім того, "
-"перевпорядковувати і вилучати сторінки, а також об'єднувати файли може "
-"<app>pdfarranger</app>."
+"Зазвичай, файли PDF не призначено для редагування, але існують програми, які "
+"можуть вносити зміни до PDF. Спробуйте, наприклад, <app>LibreOffice Draw</"
+"app> або <app>Okular</app>. Крім того, перевпорядковувати і вилучати "
+"сторінки, а також об'єднувати файли може <app>pdfarranger</app>."
+
+#~ msgid "Save current settings as default for new documents."
+#~ msgstr "Збереження поточних параметрів як типових для нових документів."
+
+#~ msgid "Sindhu S"
+#~ msgstr "Sindhu S"
+
+#~ msgid "Change default settings"
+#~ msgstr "Зміна типових параметрів"
+
+#~ msgid ""
+#~ "When a document is opened for the first time, default settings, such as "
+#~ "zoom and page view preferences, are applied. Any changes you make to "
+#~ "these settings are saved for the document."
+#~ msgstr ""
+#~ "Під час першого відкриття документа програма застосовує для його показу "
+#~ "типові параметри, зокрема масштабування та налаштування перегляду "
+#~ "сторінки. Програма зберігатиме усі зміни у параметрах перегляду, які ви "
+#~ "вноситимете під час перегляду документа."
+
+#~ msgid ""
+#~ "You can save the settings which you are currently using as default for "
+#~ "all new documents by pressing the menu button in the top-right corner of "
+#~ "the window and selecting <gui style=\"menuitem\">Save Current Settings as "
+#~ "Default</gui>."
+#~ msgstr ""
+#~ "Ви можете зберегти параметри, якими користуєтеся для типового "
+#~ "використання для усіх нових документів. Натисніть кнопку меню у верхньому "
+#~ "правому куті вікна програми і виберіть пункт <gui "
+#~ "style=\"menuitem\">Зберегти поточні налаштування як типові</gui>."
+
+#~ msgid ""
+#~ "The new default settings do not override settings of previously opened "
+#~ "documents, they are applied only to documents opened for the first time."
+#~ msgstr ""
+#~ "Нові типові параметри не змінюватимуть параметрів, які збережено для "
+#~ "раніше відкритих документів. Їх буде застосовано лише до документів, які "
+#~ "ви відкриваєте уперше."
 
 #~ msgid "You can convert a document to PostScript."
 #~ msgstr "Ви можете перетворити документ на формат PostScript."
