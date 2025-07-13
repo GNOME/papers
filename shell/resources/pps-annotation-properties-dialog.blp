@@ -3,94 +3,92 @@ using Adw 1;
 
 template $PpsAnnotationPropertiesDialog: Adw.Dialog {
   title: C_("Title of the dialog shown to edit properties of a given annotation.", "Annotation Properties");
+  content-width: 360;
 
   child: Adw.ToolbarView {
     [top]
     Adw.HeaderBar {}
 
-    content: Adw.PreferencesGroup {
-      margin-top: 18;
-      margin-bottom: 18;
-      margin-start: 18;
-      margin-end: 18;
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        Adw.ActionRow {
+          title: _("Color");
 
-      Adw.ActionRow {
-        title: _("Color");
+          ColorDialogButton color {
+            dialog: ColorDialog {};
 
-        ColorDialogButton color {
-          dialog: ColorDialog {};
-
-          margin-start: 6;
-          margin-top: 6;
-          margin-bottom: 6;
-          notify::rgba => $property_changed() swapped;
+            margin-start: 6;
+            margin-top: 6;
+            margin-bottom: 6;
+            notify::rgba => $property_changed() swapped;
+          }
         }
-      }
 
-      Adw.SpinRow opacity {
-        title: _("Opacity");
+        Adw.SpinRow opacity {
+          title: _("Opacity");
 
-        adjustment: Adjustment {
-          lower: 0;
-          upper: 100;
-          value: 100;
-          page-increment: 10;
-          step-increment: 1;
-        };
+          adjustment: Adjustment {
+            lower: 0;
+            upper: 100;
+            value: 100;
+            page-increment: 10;
+            step-increment: 1;
+          };
 
-        notify::value => $property_changed() swapped;
-      }
+          notify::value => $property_changed() swapped;
+        }
 
-      Adw.ComboRow icon {
-        visible: false;
-        title: _("Icon");
+        Adw.ComboRow icon {
+          visible: false;
+          title: _("Icon");
 
-        model: StringList {
-          strings [
-            _("Note"),
-            _("Comment"),
-            _("Key"),
-            _("Help"),
-            _("New Paragraph"),
-            _("Paragraph"),
-            _("Insert"),
-            _("Cross"),
-            _("Circle"),
-            _("Unknown"),
-          ]
-        };
+          model: StringList {
+            strings [
+              _("Note"),
+              _("Comment"),
+              _("Key"),
+              _("Help"),
+              _("New Paragraph"),
+              _("Paragraph"),
+              _("Insert"),
+              _("Cross"),
+              _("Circle"),
+              _("Unknown"),
+            ]
+          };
 
-        selected: 0;
-        notify::selected => $property_changed() swapped;
-      }
+          selected: 0;
+          notify::selected => $property_changed() swapped;
+        }
 
-      Adw.ComboRow markup_type {
-        visible: false;
-        title: _("Markup Type");
+        Adw.ComboRow markup_type {
+          visible: false;
+          title: _("Markup Type");
 
-        model: StringList {
-          strings [
-            _("Highlight"),
-            _("Strike out"),
-            _("Underline"),
-            _("Squiggly"),
-          ]
-        };
+          model: StringList {
+            strings [
+              _("Highlight"),
+              _("Strike out"),
+              _("Underline"),
+              _("Squiggly"),
+            ]
+          };
 
-        selected: 0;
-        notify::selected => $property_changed() swapped;
-      }
+          selected: 0;
+          notify::selected => $property_changed() swapped;
+        }
 
-      Adw.EntryRow author {
-        title: _("Author");
-        show-apply-button: true;
-        apply => $property_changed() swapped;
-      }
+        Adw.EntryRow author {
+          title: _("Author");
+          show-apply-button: true;
+          apply => $property_changed() swapped;
+        }
 
-      Adw.SwitchRow popup_state {
-        title: _("Auto-Reveal on Scroll");
-        subtitle: _("Pop up note while scrolling the document");
-        notify::active => $property_changed() swapped;
+        Adw.SwitchRow popup_state {
+          title: _("Auto-Reveal on Scroll");
+          subtitle: _("Pop up note while scrolling the document");
+          notify::active => $property_changed() swapped;
+        }
       }
     };
   };
