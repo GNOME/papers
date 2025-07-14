@@ -12,7 +12,9 @@ template $PpsAnnotationPropertiesDialog: Adw.Dialog {
     content: Adw.PreferencesPage {
       Adw.PreferencesGroup {
         Adw.ActionRow {
-          title: _("Color");
+          title: _("_Color");
+          use-underline: true;
+          activatable-widget: color;
 
           ColorDialogButton color {
             dialog: ColorDialog {};
@@ -25,7 +27,8 @@ template $PpsAnnotationPropertiesDialog: Adw.Dialog {
         }
 
         Adw.SpinRow opacity {
-          title: _("Opacity");
+          title: _("_Opacity");
+          use-underline: true;
 
           adjustment: Adjustment {
             lower: 0;
@@ -40,7 +43,8 @@ template $PpsAnnotationPropertiesDialog: Adw.Dialog {
 
         Adw.ComboRow icon {
           visible: false;
-          title: _("Icon");
+          title: _("_Icon");
+          use-underline: true;
 
           model: StringList {
             strings [
@@ -63,7 +67,8 @@ template $PpsAnnotationPropertiesDialog: Adw.Dialog {
 
         Adw.ComboRow markup_type {
           visible: false;
-          title: _("Markup Type");
+          title: _("_Markup Type");
+          use-underline: true;
 
           model: StringList {
             strings [
@@ -79,13 +84,15 @@ template $PpsAnnotationPropertiesDialog: Adw.Dialog {
         }
 
         Adw.EntryRow author {
-          title: _("Author");
+          title: _("_Author");
+          use-underline: true;
           show-apply-button: true;
           apply => $property_changed() swapped;
         }
 
         Adw.SwitchRow popup_state {
-          title: _("Auto-Reveal on Scroll");
+          title: _("Auto-Reveal on _Scroll");
+          use-underline: true;
           subtitle: _("Pop up note while scrolling the document");
           notify::active => $property_changed() swapped;
         }
