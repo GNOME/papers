@@ -72,13 +72,6 @@ pps_overlay_form_field_button_toggle (PpsOverlayForm *view,
 	                                                !state);
 	field_button->state = !state;
 
-#if 0
-	if (priv->accessible)
-		pps_overlay_form_accessible_update_element_state (PPS_OVERLAY_FORM_ACCESSIBLE (priv->accessible),
-							 pps_mapping_list_find (forms_mapping, field),
-							 field->page->index);
-#endif
-
 	pps_pixbuf_cache_reload_page (priv->pixbuf_cache,
 	                              NULL,
 	                              priv->field->page->index,

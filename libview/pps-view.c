@@ -753,13 +753,6 @@ view_update_range_and_current_page (PpsView *view)
 	if (gtk_widget_is_focus (GTK_WIDGET (view)) || gtk_widget_get_focus_child (GTK_WIDGET (view))) {
 		gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
-
-#if 0
-	if (priv->accessible)
-		pps_view_accessible_set_page_range (PPS_VIEW_ACCESSIBLE (priv->accessible),
-						   priv->start_page,
-						   priv->end_page);
-#endif
 }
 
 static void
@@ -2383,11 +2376,6 @@ _pps_view_set_focused_element (PpsView *view,
 	cairo_region_t *region = NULL;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	guint scroll_x, scroll_y;
-
-#if 0
-	if (priv->accessible)
-		pps_view_accessible_set_focused_element (PPS_VIEW_ACCESSIBLE (priv->accessible), element_mapping, page);
-#endif
 
 	if (pps_view_get_focused_area (view, &view_rect))
 		region = cairo_region_create_rectangle (&view_rect);
@@ -6282,11 +6270,6 @@ pps_view_set_model (PpsView *view,
 	g_signal_connect (priv->model, "page-changed",
 	                  G_CALLBACK (pps_view_page_changed_cb),
 	                  view);
-#if 0
-	if (priv->accessible)
-		pps_view_accessible_set_model (PPS_VIEW_ACCESSIBLE (priv->accessible),
-					      priv->model);
-#endif
 }
 
 static void
