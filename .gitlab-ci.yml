@@ -146,6 +146,20 @@ meson-pot:
         - meson compile -C "${MESON_BUILD_DIR}" papers-pot
         - if [ "$(grep 'gettext!' -R shell)" != "" ]; then exit 1; fi
 
+msrv:
+    extends: '.setup-meson'
+    variables:
+        MESON_SETUP_OPTIONS: "-Dbuildtype=debug -Dthumbnailer=false"
+    script:
+        - dnf install -y rustup
+        - rustup-init -y
+        - cargo install --debug cargo-msrv
+        - meson compile -C "${MESON_BUILD_DIR}"
+        - meson devenv -C "${MESON_BUILD_DIR}" cargo msrv --manifest-path=${CI_PROJECT_DIR}/shell/Cargo.toml verify
+    only:
+        changes:
+            - Cargo.lock
+
 .flatpak-local:
     stage: build
     variables:
