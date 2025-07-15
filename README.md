@@ -37,6 +37,13 @@ guidelines, before starting to work on any changes.
 [papers-logo]: data/icons/scalable/apps/org.gnome.Papers.svg
 [flatpak]: https://flathub.org/api/badge?svg&locale=en
 
+## Documentation
+
+The documentation for the libraries can be found online.
+
+* [libppsview](https://gnome.pages.gitlab.gnome.org/papers/view/)
+* [libppsdocument](https://gnome.pages.gitlab.gnome.org/papers/document/)
+
 ## Code of Conduct
 
 When interacting with the project, the [GNOME Code Of Conduct](https://conduct.gnome.org/) applies.
