@@ -147,12 +147,11 @@ typedef struct _PpsViewPrivate {
 	PpsAnnotationsContext *annots_context;
 	gboolean enable_spellchecking;
 
-	/* Focus */
+	/* Focus & Caret navigation */
 	PpsMapping *focused_element;
 	guint focused_element_page;
 	guint child_focus_idle_id;
 
-	/* Caret navigation */
 	gboolean caret_enabled;
 	gint cursor_offset;
 	gint cursor_page;

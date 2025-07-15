@@ -745,6 +745,11 @@ view_update_range_and_current_page (PpsView *view)
 		}
 	}
 
+	/* make sure the correct page keeps focus */
+	if (gtk_widget_is_focus (GTK_WIDGET (view)) || gtk_widget_get_focus_child (GTK_WIDGET (view))) {
+		gtk_widget_grab_focus (GTK_WIDGET (view));
+	}
+
 #if 0
 	if (priv->accessible)
 		pps_view_accessible_set_page_range (PPS_VIEW_ACCESSIBLE (priv->accessible),
@@ -5784,6 +5789,8 @@ pps_view_move_cursor (PpsView *view,
 	if (!get_caret_cursor_area (view, priv->cursor_page, priv->cursor_offset, &rect))
 		return TRUE;
 
+	gtk_widget_grab_focus (GTK_WIDGET (view));
+
 	if (!pps_document_model_get_continuous (priv->model)) {
 		changed_page = FALSE;
 		if (prev_page < priv->cursor_page) {
@@ -6342,17 +6349,74 @@ pps_view_focus_next (PpsView *view,
 	return FALSE;
 }
 
+static void
+pps_view_set_focus_child (GtkWidget *widget, GtkWidget *focus_child)
+{
+	PpsView *view = PPS_VIEW (widget);
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	guint new_cursor_page;
+
+	if (PPS_IS_VIEW_PAGE (focus_child)) {
+		new_cursor_page = pps_view_page_get_page (PPS_VIEW_PAGE (focus_child));
+
+		if (priv->cursor_page != new_cursor_page) {
+			priv->cursor_page = new_cursor_page;
+			cursor_go_to_page_start (view);
+		}
+	}
+
+	GTK_WIDGET_CLASS (pps_view_parent_class)->set_focus_child (widget, focus_child);
+}
+
 static gboolean
 pps_view_focus (GtkWidget *widget,
                 GtkDirectionType direction)
 {
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GtkWidget *focus_child = gtk_widget_get_focus_child (widget);
+	PpsDocument *document = pps_document_model_get_document (priv->model);
+	gboolean has_focus;
 
-	if (pps_document_model_get_document (priv->model)) {
-		if (direction == GTK_DIR_TAB_FORWARD || direction == GTK_DIR_TAB_BACKWARD)
-			return pps_view_focus_next (view, direction);
+	g_return_val_if_fail (document != NULL, FALSE);
+
+	if (direction != GTK_DIR_TAB_FORWARD && direction != GTK_DIR_TAB_BACKWARD)
+		return FALSE;
+
+	if (focus_child != NULL && gtk_widget_child_focus (focus_child, direction))
+		return TRUE;
+
+	has_focus = gtk_widget_is_focus (widget) || focus_child != NULL;
+
+	switch (direction) {
+	case GTK_DIR_TAB_FORWARD:
+		/* if view has focused page that didn't keep it, tabbing out of that one */
+		if (has_focus) {
+			if (!cursor_go_to_next_page (view))
+				return FALSE;
+		} else {
+			if (!cursor_go_to_document_start (view))
+				return FALSE;
+		}
+		break;
+	case GTK_DIR_TAB_BACKWARD:
+		/* if view has focused page that didn't keep it, tabbing out of that one */
+		if (has_focus) {
+			if (!cursor_go_to_previous_page (view))
+				return FALSE;
+		} else {
+			if (!cursor_go_to_document_end (view))
+				return FALSE;
+		}
+
+		cursor_go_to_page_start (view);
+		break;
+	default:
+		g_assert_not_reached ();
 	}
+
+	pps_view_scroll_to_page (view, priv->cursor_page);
+	return gtk_widget_grab_focus (widget);
 }
 
 static gboolean
@@ -6364,12 +6428,13 @@ pps_view_grab_focus (GtkWidget *widget)
 	for (guint i = 0; i < priv->page_widgets->len; i++) {
 		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
 
-		if (pps_view_page_get_page (view_page) == priv->current_page) {
+		if (pps_view_page_get_page (view_page) == priv->cursor_page) {
 			gtk_widget_grab_focus (GTK_WIDGET (view_page));
 			return TRUE;
 		}
 	}
-	return FALSE;
+
+	return GTK_WIDGET_CLASS (pps_view_parent_class)->grab_focus (widget);
 }
 
 static void
@@ -6425,6 +6490,7 @@ pps_view_class_init (PpsViewClass *class)
 	widget_class->measure = pps_view_measure;
 	widget_class->size_allocate = pps_view_size_allocate;
 	widget_class->query_tooltip = pps_view_query_tooltip;
+	widget_class->set_focus_child = pps_view_set_focus_child;
 	widget_class->focus = pps_view_focus;
 
 	gtk_widget_class_set_css_name (widget_class, "pps-view");
