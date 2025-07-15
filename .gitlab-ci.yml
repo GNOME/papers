@@ -215,7 +215,7 @@ pages:
     rules:
         - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PROJECT_NAMESPACE == "GNOME"
     script:
-        - meson setup "${MESON_BUILD_DIR}"
+        - meson setup "${MESON_BUILD_DIR}" -Dthumbnailer=false -Dshell=false
         - ninja -C "${MESON_BUILD_DIR}"
         - mkdir public
         - mv ${MESON_BUILD_DIR}/help/reference/libdocument/libppsdocument public/document/
