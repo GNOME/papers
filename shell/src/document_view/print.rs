@@ -49,15 +49,19 @@ impl imp::PpsDocumentView {
             area.add_button(&gettext("C_ancel"), gtk::ResponseType::Cancel);
 
             #[allow(deprecated)]
-            area.info_bar().connect_response(
-                glib::clone!(@weak area, @weak op => move |_, response| {
+            area.info_bar().connect_response(glib::clone!(
+                #[weak]
+                area,
+                #[weak]
+                op,
+                move |_, response| {
                     if response == gtk::ResponseType::Cancel {
                         op.cancel();
                     } else {
                         area.set_visible(false);
                     }
-                }),
-            );
+                }
+            ));
 
             self.set_message_area(Some(&area));
         }
