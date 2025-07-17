@@ -67,7 +67,7 @@ mod imp {
             // print the version in local instance rather than sending it to primary
             if options.contains("version") {
                 glib::g_print!(
-                    "{} {}",
+                    "{} {}\n",
                     gettext("Papers Document Viewer"),
                     crate::config::VERSION
                 );
