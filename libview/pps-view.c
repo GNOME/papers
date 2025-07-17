@@ -6429,7 +6429,8 @@ pps_view_grab_focus (GtkWidget *widget)
 		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
 
 		if (pps_view_page_get_page (view_page) == priv->cursor_page) {
-			gtk_widget_grab_focus (GTK_WIDGET (view_page));
+			if ((gtk_widget_get_state_flags (GTK_WIDGET (view_page)) & GTK_STATE_FLAG_FOCUS_WITHIN) == 0)
+				gtk_widget_grab_focus (GTK_WIDGET (view_page));
 			return TRUE;
 		}
 	}
