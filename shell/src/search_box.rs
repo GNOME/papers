@@ -244,7 +244,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsSearchBox(ObjectSubclass<imp::PpsSearchBox>)
-        @extends adw::Bin, gtk::Widget;
+        @extends adw::Bin, gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsSearchBox {

@@ -24,7 +24,7 @@ authors = ["The GNOME Project"]
 edition = "2021"
 homepage = "https://apps.gnome.org/Papers/"
 repository = "https://gitlab.gnome.org/GNOME/papers"
-rust-version = "1.80"
+rust-version = "1.83"
 
 [workspace.dependencies]
 papers-document = { path = "rust/papers-document" }
@@ -32,20 +32,20 @@ papers-document-sys = { path = "rust/papers-document/sys" }
 papers-view = { path = "rust/papers-view" }
 papers-view-sys = { path = "rust/papers-view/sys" }
 
-gtk = { package = "gtk4", version = "0.9", features = ["gnome_45"] }
-gtk-sys = { package = "gtk4-sys", version = "0.9" }
-gdk = { package = "gdk4", version = "0.9" }
-gdk-sys = { package = "gdk4-sys", version = "0.9" }
-glib = "0.20"
-glib-sys = "0.20"
-gobject-sys = "0.20"
-gio = "0.20"
-gio-sys = "0.20"
-gdk-pixbuf = "0.20"
-gdk-pixbuf-sys = "0.20"
-pango = "0.20"
-pango-sys = "0.20"
-cairo-rs = "0.20"
-cairo-sys-rs = "0.20"
+gtk = { package = "gtk4", version = "0.10", features = ["gnome_45"] }
+gtk-sys = { package = "gtk4-sys", version = "0.10" }
+gdk = { package = "gdk4", version = "0.10" }
+gdk-sys = { package = "gdk4-sys", version = "0.10" }
+glib = "0.21"
+glib-sys = "0.21"
+gobject-sys = "0.21"
+gio = "0.21"
+gio-sys = "0.21"
+gdk-pixbuf = "0.21"
+gdk-pixbuf-sys = "0.21"
+pango = "0.21"
+pango-sys = "0.21"
+cairo-rs = "0.21"
+cairo-sys-rs = "0.21"
 env_logger = "0.11"
 log = "0.4"

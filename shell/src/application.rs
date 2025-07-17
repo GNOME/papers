@@ -6,6 +6,7 @@ use papers_view::Job;
 use git_version::git_version;
 use std::env;
 use std::ffi::OsString;
+use std::ops::ControlFlow;
 
 const RESOURCES_DATA: &[u8] = include_bytes!(env!("PAPERS_RESOURCES_FILE"));
 
@@ -63,7 +64,7 @@ mod imp {
             }
         }
 
-        fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
+        fn handle_local_options(&self, options: &glib::VariantDict) -> ControlFlow<glib::ExitCode> {
             // print the version in local instance rather than sending it to primary
             if options.contains("version") {
                 glib::g_print!(
@@ -71,10 +72,10 @@ mod imp {
                     gettext("Papers Document Viewer"),
                     crate::config::VERSION
                 );
-                return 0.into();
+                return ControlFlow::Break(glib::ExitCode::SUCCESS);
             }
 
-            (-1).into()
+            ControlFlow::Continue(())
         }
 
         fn command_line(&self, command_line: &gio::ApplicationCommandLine) -> glib::ExitCode {

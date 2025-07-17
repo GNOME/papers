@@ -536,7 +536,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsSidebarThumbnails(ObjectSubclass<imp::PpsSidebarThumbnails>)
-        @extends PpsSidebarPage, adw::Bin, gtk::Widget;
+        @extends PpsSidebarPage, adw::Bin, gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsSidebarThumbnails {

@@ -163,7 +163,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsAnnotationPropertiesDialog(ObjectSubclass<imp::PpsAnnotationPropertiesDialog>)
-        @extends gtk::Widget, adw::Dialog;
+        @extends gtk::Widget, adw::Dialog,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsAnnotationPropertiesDialog {

@@ -769,7 +769,7 @@ impl imp::PpsDocumentView {
         properties.set_visible_page_name(Some("signatures"));
         properties.set_document(self.document());
 
-        properties.present(Some(self.obj().as_ref()));
+        AdwDialogExt::present(&properties, Some(self.obj().as_ref()));
     }
 
     #[template_callback]

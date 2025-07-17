@@ -700,7 +700,7 @@ impl imp::PpsDocumentView {
         let properties = PpsPropertiesWindow::new();
 
         properties.set_document(self.model.document());
-        properties.present(Some(self.obj().as_ref()));
+        AdwDialogExt::present(&properties, Some(self.obj().as_ref()));
     }
 
     fn cmd_escape(&self) {

@@ -448,7 +448,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsPropertiesSignatures(ObjectSubclass<imp::PpsPropertiesSignatures>)
-    @extends gtk::Widget, adw::Bin;
+    @extends gtk::Widget, adw::Bin,
+    @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl Default for PpsPropertiesSignatures {

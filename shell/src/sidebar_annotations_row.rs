@@ -271,7 +271,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsSidebarAnnotationsRow(ObjectSubclass<imp::PpsSidebarAnnotationsRow>)
-        @extends gtk::Box, gtk::Widget;
+        @extends gtk::Box, gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsSidebarAnnotationsRow {

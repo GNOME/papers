@@ -126,7 +126,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsPropertiesWindow(ObjectSubclass<imp::PpsPropertiesWindow>)
-        @extends adw::Dialog, gtk::Widget;
+        @extends adw::Dialog, gtk::Widget, gtk::Window,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::ShortcutManager, gtk::Root, gtk::Native;
 }
 
 impl Default for PpsPropertiesWindow {

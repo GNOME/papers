@@ -178,7 +178,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsSidebarAnnotations(ObjectSubclass<imp::PpsSidebarAnnotations>)
-    @extends gtk::Widget, adw::Bin, PpsSidebarPage;
+    @extends gtk::Widget, adw::Bin, PpsSidebarPage,
+    @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl Default for PpsSidebarAnnotations {

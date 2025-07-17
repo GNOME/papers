@@ -776,7 +776,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsDocumentView(ObjectSubclass<imp::PpsDocumentView>)
-        @extends gtk::Widget, adw::BreakpointBin;
+        @extends gtk::Widget, adw::BreakpointBin,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsDocumentView {

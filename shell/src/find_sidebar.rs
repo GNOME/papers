@@ -253,7 +253,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsFindSidebar(ObjectSubclass<imp::PpsFindSidebar>)
-        @extends adw::Bin, gtk::Widget;
+        @extends adw::Bin, gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsFindSidebar {

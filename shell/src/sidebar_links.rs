@@ -982,7 +982,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct PpsSidebarLinks(ObjectSubclass<imp::PpsSidebarLinks>)
-        @extends PpsSidebarPage, adw::Bin, gtk::Widget;
+        @extends PpsSidebarPage, adw::Bin, gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsSidebarLinks {

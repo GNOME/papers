@@ -1003,7 +1003,7 @@ mod imp {
         fn set_night_mode(&self, night_mode: bool) {
             self.document_view.set_inverted_colors(night_mode);
 
-            let manager = adw::StyleManager::for_display(&self.obj().display());
+            let manager = adw::StyleManager::for_display(&WidgetExt::display(&self.obj().clone()));
 
             let color_scheme = if night_mode {
                 adw::ColorScheme::ForceDark
@@ -1145,7 +1145,7 @@ mod imp {
         }
 
         fn launch_external_uri(&self, action: &LinkAction) {
-            let context = self.obj().display().app_launch_context();
+            let context = WidgetExt::display(&self.obj().clone()).app_launch_context();
             let uri = action.uri().unwrap();
             let file = gio::File::for_uri(&uri);
 
@@ -1216,7 +1216,7 @@ mod imp {
 glib::wrapper! {
     pub struct PpsWindow(ObjectSubclass<imp::PpsWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gtk::Native, gio::ActionGroup, gio::ActionMap;
+        @implements gtk::Native, gio::ActionGroup, gio::ActionMap, gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Root, gtk::ShortcutManager;
 }
 
 impl PpsWindow {

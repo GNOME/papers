@@ -101,7 +101,7 @@ mod imp {
 glib::wrapper! {
     pub struct PpsProgressMessageArea(ObjectSubclass<imp::PpsProgressMessageArea>)
         @extends adw::Bin, gtk::Widget,
-        @implements gtk::Buildable;
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl PpsProgressMessageArea {
