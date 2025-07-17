@@ -6751,7 +6751,6 @@ gdk_rectangle_point_in (GdkRectangle *rectangle,
 
 static gboolean
 get_selection_page_range (PpsView *view,
-                          PpsSelectionStyle style,
                           graphene_point_t *start,
                           graphene_point_t *stop,
                           gint *first_page,
@@ -6815,7 +6814,7 @@ compute_new_selection (PpsView *view,
 	GList *list = NULL;
 
 	/* First figure out the range of pages the selection affects. */
-	if (!get_selection_page_range (view, style, start, stop, &first, &last))
+	if (!get_selection_page_range (view, start, stop, &first, &last))
 		return list;
 
 	/* If everything is equal, then there's nothing to select */
