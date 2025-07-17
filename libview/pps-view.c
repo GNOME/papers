@@ -226,6 +226,12 @@ static void compute_selections (PpsView *view,
                                 gdouble stop_x,
                                 gdouble stop_y);
 static void clear_selection (PpsView *view);
+static gboolean
+get_selection_page_range (PpsView *view,
+                          graphene_point_t *start,
+                          graphene_point_t *stop,
+                          gint *first_page,
+                          gint *last_page);
 
 /*** Caret navigation ***/
 static void pps_view_check_cursor_blink (PpsView *pps_view);
@@ -4740,6 +4746,8 @@ pps_view_button_press_event (GtkGestureClick *self,
 	PpsView *view = PPS_VIEW (widget);
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsDocument *document = pps_document_model_get_document (priv->model);
+	graphene_point_t loc;
+	gint first_page, last_page;
 
 	pps_view_link_preview_popover_cleanup (view);
 
@@ -4751,7 +4759,20 @@ pps_view_button_press_event (GtkGestureClick *self,
 		return;
 	}
 
-	if (!gtk_widget_has_focus (widget)) {
+	loc = GRAPHENE_POINT_INIT (x + gtk_adjustment_get_value (priv->hadjustment),
+	                           y + gtk_adjustment_get_value (priv->vadjustment));
+
+	if (get_selection_page_range (view, &loc, &loc, &first_page, &last_page) &&
+	    first_page == last_page) {
+		for (guint i = 0; i < priv->page_widgets->len; i++) {
+			PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
+
+			if (pps_view_page_get_page (view_page) == first_page) {
+				gtk_widget_grab_focus (GTK_WIDGET (view_page));
+				break;
+			}
+		}
+	} else if (!gtk_widget_has_focus (widget)) {
 		gtk_widget_grab_focus (widget);
 	}
 
@@ -4789,14 +4810,11 @@ pps_view_button_press_event (GtkGestureClick *self,
 				break;
 			}
 			if (n_press > 1) {
-				double point_x, point_y;
 				/* In case of WORD or LINE, compute selections */
-				point_x = x + gtk_adjustment_get_value (priv->hadjustment);
-				point_y = y + gtk_adjustment_get_value (priv->vadjustment);
 				compute_selections (view,
 				                    priv->selection_info.style,
-				                    point_x, point_y,
-				                    point_x, point_y);
+				                    loc.x, loc.y,
+				                    loc.x, loc.y);
 			}
 		}
 
