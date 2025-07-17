@@ -23,6 +23,7 @@
 #include "pps-document-misc.h"
 #include "pps-mapping-list.h"
 
+#include "pps-overlay.h"
 #include "pps-view-private.h"
 #include "pps-view.h"
 
@@ -6383,8 +6384,19 @@ pps_view_focus (GtkWidget *widget,
 	if (direction != GTK_DIR_TAB_FORWARD && direction != GTK_DIR_TAB_BACKWARD)
 		return FALSE;
 
-	if (focus_child != NULL && gtk_widget_child_focus (focus_child, direction))
+	if (focus_child != NULL && gtk_widget_child_focus (focus_child, direction)) {
+		GtkWidget *overlay = gtk_widget_get_focus_child (focus_child);
+		if (PPS_IS_VIEW_PAGE (focus_child) && PPS_IS_OVERLAY (overlay)) {
+			GdkRectangle doc_rect;
+			gdouble padding;
+			g_autofree PpsRectangle *view_rect = pps_overlay_get_area (PPS_OVERLAY (overlay), &padding);
+			gint page = pps_view_page_get_page (PPS_VIEW_PAGE (focus_child));
+
+			_pps_view_transform_doc_rect_to_view_rect (view, page, view_rect, &doc_rect);
+			_pps_view_ensure_rectangle_is_visible (view, page, &doc_rect);
+		}
 		return TRUE;
+	}
 
 	has_focus = gtk_widget_is_focus (widget) || focus_child != NULL;
 
