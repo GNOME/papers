@@ -65,7 +65,7 @@ mod imp {
         fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
             // print the version in local instance rather than sending it to primary
             if options.contains("version") {
-                glib::g_print!("{} {}", gettext("Papers"), crate::config::VERSION);
+                glib::g_print!("{} {}\n", gettext("Papers"), crate::config::VERSION);
                 return 0.into();
             }
 
