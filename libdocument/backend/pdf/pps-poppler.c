@@ -2763,7 +2763,7 @@ poppler_annot_color_to_gdk_rgba (PopplerAnnot *poppler_annot, GdkRGBA *color)
 	PopplerColor *poppler_color;
 
 	poppler_color = poppler_annot_get_color (poppler_annot);
-	if (POPPLER_IS_ANNOT_FREE_TEXT (poppler_annot) && !poppler_color) {
+	if ((POPPLER_IS_ANNOT_FREE_TEXT (poppler_annot) || POPPLER_IS_ANNOT_STAMP (poppler_annot)) && !poppler_color) {
 		color->alpha = 0.0;
 		return;
 	}
