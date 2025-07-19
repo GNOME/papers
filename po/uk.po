@@ -7,18 +7,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/"
-"\n"
-"POT-Creation-Date: 2025-07-10 10:59+0000\n"
-"PO-Revision-Date: 2025-07-10 21:23+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-07-17 11:14+0000\n"
+"PO-Revision-Date: 2025-07-19 08:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 23.04.3\n"
 "X-Project-Style: gnome\n"
 
@@ -28,7 +27,6 @@ msgstr ""
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
 #: shell/src/application.rs:358
-#| msgid "Document View"
 msgid "Document Viewer"
 msgstr "Переглядач документів"
 
@@ -818,7 +816,7 @@ msgid "Failed to Print Document"
 msgstr "Не вдалося надрукувати документ"
 
 #: nautilus/pps-nautilus-extension.c:104
-#: shell/resources/pps-annotation-properties-dialog.blp:59
+#: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Невідомо"
@@ -839,9 +837,7 @@ msgstr "Адреса"
 msgid "Subject"
 msgstr "Тема"
 
-#: nautilus/pps-nautilus-extension.h:48
-#: shell/resources/pps-annotation-properties-dialog.blp:85
-#: shell/src/properties_general.rs:302
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "Автор"
 
@@ -899,79 +895,89 @@ msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "Властивості анотацій"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:18
-msgid "Color"
-msgstr "Колір"
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+#| msgid "Color"
+msgid "_Color"
+msgstr "_Колір"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:31
-msgid "Opacity"
-msgstr "Непрозорість"
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+#| msgid "Opacity"
+msgid "_Opacity"
+msgstr "_Непрозорість"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:46
-msgid "Icon"
-msgstr "Піктограма"
+#| msgid "Icon"
+msgid "_Icon"
+msgstr "_Піктограма"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:50
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Note"
 msgstr "Примітка"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:51
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Comment"
 msgstr "Коментар"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:52
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Key"
 msgstr "Ключ"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:53
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "Help"
 msgstr "Довідка"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:54
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "New Paragraph"
 msgstr "Новий абзац"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:55
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Paragraph"
 msgstr "Абзац"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:56
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Insert"
 msgstr "Вставити"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:57
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Cross"
 msgstr "Перехрестя"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:58
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 msgid "Circle"
 msgstr "Коло"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:69
-msgid "Markup Type"
-msgstr "Тип розмітки"
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+#| msgid "Markup Type"
+msgid "_Markup Type"
+msgstr "Тип _розмітки"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:73
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Highlight"
 msgstr "Підсвічення"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:74
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Strike out"
 msgstr "Закреслення"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-annotation-properties-dialog.blp:77
 msgid "Underline"
 msgstr "Підкреслення"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:76
+#: shell/resources/pps-annotation-properties-dialog.blp:78
 msgid "Squiggly"
 msgstr "Напис"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:91
-msgid "Auto-Reveal on Scroll"
-msgstr "Автопоказ при гортанні"
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+#| msgid "Author"
+msgid "_Author"
+msgstr "_Автор"
 
-#: shell/resources/pps-annotation-properties-dialog.blp:92
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+#| msgid "Auto-Reveal on Scroll"
+msgid "Auto-Reveal on _Scroll"
+msgstr "Автопоказ при _гортанні"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:96
 msgid "Pop up note while scrolling the document"
 msgstr "Контекстна панель нотатки при гортанні документа"
 
@@ -1089,7 +1095,6 @@ msgid "_Help"
 msgstr "_Довідка"
 
 #: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
-#| msgid "GNOME Document Viewer"
 msgid "_About Document Viewer"
 msgstr "_Про «Переглядач документів»"
 
