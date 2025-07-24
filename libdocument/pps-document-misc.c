@@ -24,7 +24,11 @@ pps_document_misc_surface_from_pixbuf (GdkPixbuf *pixbuf)
 	                                      gdk_pixbuf_get_width (pixbuf),
 	                                      gdk_pixbuf_get_height (pixbuf));
 	cr = cairo_create (surface);
+
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+	G_GNUC_END_IGNORE_DEPRECATIONS
+
 	cairo_paint (cr);
 	cairo_destroy (cr);
 
