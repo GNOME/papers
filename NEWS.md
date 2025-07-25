@@ -1,3 +1,16 @@
+Papers 49.beta
+----------------
+* Potentially of interest to packaging and other downstreams might be:
+  - The MSRV is now bumped to 1.83
+  - We now requires meson >= 1.80
+
+* Some changes we can highlight:
+  - Switch to use AdwShortcutDialog (Urtsi Santsi)
+  - Screen reader support (Lukáš Tyrychtr, lbaudin)
+  - UI rework of annotation properties dialog (Qiu Wenbo)
+  - Renamed to Document Viewer (Daniel Rusek)
+  - Save on CTRL+SHIFT+S as well (Markus Göllnitz)
+
 Papers 49.alpha
 ----------------
 * Some changes we can highlight:
