@@ -266,7 +266,7 @@ impl imp::PpsDocumentView {
                         } else {
                             obj.signature_banner.add_css_class("error");
                             obj.signature_banner
-                                .set_title(&gettext("Digital Signature is invalid!"));
+                                .set_title(&gettext("Digital signature is invalid"));
                         }
                         obj.signature_banner.set_revealed(true);
                     }
