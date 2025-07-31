@@ -83,8 +83,7 @@ struct _PpsJobRenderTexture {
 	cairo_region_t *selection_region;
 	PpsRectangle selection_points;
 	PpsSelectionStyle selection_style;
-	GdkRGBA base;
-	GdkRGBA text;
+	GdkRGBA color;
 
 	PpsRenderAnnotsFlags annot_flags;
 };
@@ -226,8 +225,7 @@ PPS_PUBLIC
 void pps_job_render_texture_set_selection_info (PpsJobRenderTexture *job,
                                                 PpsRectangle *selection_points,
                                                 PpsSelectionStyle selection_style,
-                                                GdkRGBA *text,
-                                                GdkRGBA *base);
+                                                GdkRGBA *color);
 
 /* PpsJobPageData */
 PPS_PUBLIC

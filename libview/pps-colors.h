@@ -7,3 +7,5 @@
 #include <gtk/gtk.h>
 
 void get_accent_color (GdkRGBA *color, GdkRGBA *foreground_color);
+
+void get_selection_color (GtkWidget *widget, GdkRGBA *color);

@@ -654,13 +654,13 @@ add_job (PpsPixbufCache *pixbuf_cache,
 	                                  annot_flags);
 
 	if (new_selection_surface_needed (pixbuf_cache, job_info, page, scale)) {
-		GdkRGBA text, base;
+		GdkRGBA color;
 
-		get_accent_color (&base, &text);
+		get_selection_color (pixbuf_cache->view, &color);
 		pps_job_render_texture_set_selection_info (PPS_JOB_RENDER_TEXTURE (job),
 		                                           &(job_info->target_points),
 		                                           job_info->selection_style,
-		                                           &text, &base);
+		                                           &color);
 	}
 	job_info->selection_stale = FALSE;
 
@@ -1013,7 +1013,7 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 	 */
 	if (pps_rect_cmp (&(job_info->target_points), &(job_info->selection_points))) {
 		PpsRectangle *old_points;
-		GdkRGBA text, base;
+		GdkRGBA color;
 		PpsRenderContext *rc;
 		PpsPage *pps_page;
 		gint width, height;
@@ -1036,13 +1036,13 @@ pps_pixbuf_cache_get_selection_texture (PpsPixbufCache *pixbuf_cache,
 		pps_render_context_set_target_size (rc, ceil (width * job_info->device_scale), ceil (height * job_info->device_scale));
 		g_object_unref (pps_page);
 
-		get_accent_color (&base, &text);
+		get_selection_color (pixbuf_cache->view, &color);
 		pps_selection_render_selection (PPS_SELECTION (pixbuf_cache->document),
 		                                rc, &job_info->selection_surface,
 		                                &(job_info->target_points),
 		                                old_points,
 		                                job_info->selection_style,
-		                                &text, &base);
+		                                &color);
 
 		job_info->selection_points = job_info->target_points;
 		job_info->selection_scale = scale * job_info->device_scale;

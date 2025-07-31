@@ -5259,6 +5259,25 @@ accent_changed_cb (PpsView *view)
 	}
 }
 
+static void
+state_flags_changed_cb (PpsView *view,
+                        GtkStateFlags flags)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GtkStateFlags new_flags = gtk_widget_get_state_flags (GTK_WIDGET (view));
+
+	if (((new_flags ^ flags) & GTK_STATE_FLAG_FOCUS_WITHIN) == 0)
+		return;
+
+	if (priv->pixbuf_cache)
+		pps_pixbuf_cache_style_changed (priv->pixbuf_cache);
+
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
+		gtk_widget_queue_draw (GTK_WIDGET (view_page));
+	}
+}
+
 /*
  * TODO: This was copied over to PpsViewPage and can be removed here after that
  * gained support for handling pointer hovering, including the link preview
@@ -5933,6 +5952,12 @@ pps_view_init (PpsView *view)
 	                         G_CALLBACK (accent_changed_cb),
 	                         view,
 	                         G_CONNECT_SWAPPED);
+
+	g_signal_connect_object (view,
+	                         "state-flags-changed",
+	                         G_CALLBACK (state_flags_changed_cb),
+	                         view,
+	                         0);
 }
 
 /*** Callbacks ***/

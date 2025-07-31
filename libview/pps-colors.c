@@ -23,3 +23,17 @@ get_accent_color (GdkRGBA *background_color, GdkRGBA *foreground_color)
 		foreground_color->blue = 1.0;
 	}
 }
+
+void
+get_selection_color (GtkWidget *widget, GdkRGBA *color)
+{
+	if (gtk_widget_get_state_flags (widget) & GTK_STATE_FLAG_FOCUS_WITHIN) {
+		AdwStyleManager *style_manager = adw_style_manager_get_default ();
+		AdwAccentColor accent = adw_style_manager_get_accent_color (style_manager);
+		adw_accent_color_to_rgba (accent, color);
+		color->alpha *= 0.3;
+	} else {
+		gtk_widget_get_color (widget, color);
+		color->alpha *= 0.1;
+	}
+}

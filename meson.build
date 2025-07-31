@@ -274,7 +274,7 @@ elif get_option('djvu').auto()
 endif
 
 # *** PDF ***
-poppler_req_version = '>= 25.01.0'
+poppler_req_version = '>= 25.08.0'
 poppler_glib_dep = dependency('poppler-glib', version: poppler_req_version, required: get_option('pdf'))
 
 enable_pdf = poppler_glib_dep.found()

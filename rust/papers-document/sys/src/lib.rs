@@ -3360,8 +3360,7 @@ extern "C" {
         points: *mut PpsRectangle,
         old_points: *mut PpsRectangle,
         style: PpsSelectionStyle,
-        text: *mut gdk::GdkRGBA,
-        base: *mut gdk::GdkRGBA,
+        color: *mut gdk::GdkRGBA,
     );
 
     //=========================================================================

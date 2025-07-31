@@ -430,7 +430,7 @@ pps_job_render_texture_run (PpsJob *job)
 		                                &(job_render->selection_points),
 		                                NULL,
 		                                job_render->selection_style,
-		                                &(job_render->text), &(job_render->base));
+		                                &(job_render->color));
 		job_render->selection_region =
 		    pps_selection_get_selection_region (PPS_SELECTION (pps_job_get_document (job)),
 		                                        rc,
@@ -464,15 +464,13 @@ void
 pps_job_render_texture_set_selection_info (PpsJobRenderTexture *job,
                                            PpsRectangle *selection_points,
                                            PpsSelectionStyle selection_style,
-                                           GdkRGBA *text,
-                                           GdkRGBA *base)
+                                           GdkRGBA *color)
 {
 	job->include_selection = TRUE;
 
 	job->selection_points = *selection_points;
 	job->selection_style = selection_style;
-	job->text = *text;
-	job->base = *base;
+	job->color = *color;
 }
 
 /* PpsJobPageData */
