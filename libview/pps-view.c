@@ -5259,6 +5259,7 @@ accent_changed_cb (PpsView *view)
 	}
 }
 
+#ifdef HAVE_TRANSPARENT_SELECTION
 static void
 state_flags_changed_cb (PpsView *view,
                         GtkStateFlags flags)
@@ -5277,6 +5278,7 @@ state_flags_changed_cb (PpsView *view,
 		gtk_widget_queue_draw (GTK_WIDGET (view_page));
 	}
 }
+#endif
 
 /*
  * TODO: This was copied over to PpsViewPage and can be removed here after that
@@ -5953,11 +5955,13 @@ pps_view_init (PpsView *view)
 	                         view,
 	                         G_CONNECT_SWAPPED);
 
+#ifdef HAVE_TRANSPARENT_SELECTION
 	g_signal_connect_object (view,
 	                         "state-flags-changed",
 	                         G_CALLBACK (state_flags_changed_cb),
 	                         view,
 	                         0);
+#endif
 }
 
 /*** Callbacks ***/

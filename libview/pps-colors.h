@@ -8,4 +8,6 @@
 
 void get_accent_color (GdkRGBA *color, GdkRGBA *foreground_color);
 
+#ifdef HAVE_TRANSPARENT_SELECTION
 void get_selection_color (GtkWidget *widget, GdkRGBA *color);
+#endif

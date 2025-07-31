@@ -1899,12 +1899,16 @@ pdf_selection_render_selection (PpsSelection *selection,
                                 PpsRectangle *points,
                                 PpsRectangle *old_points,
                                 PpsSelectionStyle style,
-                                GdkRGBA *color)
+                                GdkRGBA *text,
+                                GdkRGBA *base)
 {
 	PdfDocument *self = PDF_DOCUMENT (selection);
 	PopplerPage *poppler_page;
 	cairo_t *cr;
-	PopplerColor bg_color;
+#ifndef HAVE_TRANSPARENT_SELECTION
+	PopplerColor text_color;
+#endif
+	PopplerColor base_color;
 	double width_points, height_points;
 	gint width, height;
 	double xscale, yscale;
@@ -1922,7 +1926,10 @@ pdf_selection_render_selection (PpsSelection *selection,
 	                       &width_points, &height_points);
 	pps_render_context_compute_scaled_size (rc, width_points, height_points, &width, &height);
 
-	gdk_rgba_to_poppler_color (color, &bg_color);
+#ifndef HAVE_TRANSPARENT_SELECTION
+	gdk_rgba_to_poppler_color (text, &text_color);
+#endif
+	gdk_rgba_to_poppler_color (base, &base_color);
 
 	if (*surface == NULL) {
 		*surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
@@ -1937,13 +1944,23 @@ pdf_selection_render_selection (PpsSelection *selection,
 	        cairo_image_surface_get_height (*surface) *
 	            cairo_image_surface_get_stride (*surface));
 
+#ifdef HAVE_TRANSPARENT_SELECTION
 	poppler_page_render_transparent_selection (poppler_page,
 	                                           cr,
 	                                           (PopplerRectangle *) points,
 	                                           (PopplerRectangle *) old_points,
 	                                           (PopplerSelectionStyle) style,
-	                                           &bg_color,
-	                                           CLAMP (color->alpha, 0, 1));
+	                                           &base_color,
+	                                           CLAMP (base->alpha, 0, 1));
+#else
+	poppler_page_render_selection (poppler_page,
+	                               cr,
+	                               (PopplerRectangle *) points,
+	                               (PopplerRectangle *) old_points,
+	                               (PopplerSelectionStyle) style,
+	                               &text_color,
+	                               &base_color);
+#endif
 	cairo_destroy (cr);
 
 	g_rw_lock_writer_unlock (&self->rwlock);

@@ -24,6 +24,7 @@ get_accent_color (GdkRGBA *background_color, GdkRGBA *foreground_color)
 	}
 }
 
+#ifdef HAVE_TRANSPARENT_SELECTION
 void
 get_selection_color (GtkWidget *widget, GdkRGBA *color)
 {
@@ -37,3 +38,4 @@ get_selection_color (GtkWidget *widget, GdkRGBA *color)
 		color->alpha *= 0.1;
 	}
 }
+#endif

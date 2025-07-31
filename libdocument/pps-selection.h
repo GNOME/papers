@@ -38,7 +38,8 @@ struct _PpsSelectionInterface {
 	                          PpsRectangle *points,
 	                          PpsRectangle *old_points,
 	                          PpsSelectionStyle style,
-	                          GdkRGBA *color);
+	                          GdkRGBA *text,
+	                          GdkRGBA *base);
 	gchar *(*get_selected_text) (PpsSelection *selection,
 	                             PpsPage *page,
 	                             PpsSelectionStyle style,
@@ -56,7 +57,8 @@ void pps_selection_render_selection (PpsSelection *selection,
                                      PpsRectangle *points,
                                      PpsRectangle *old_points,
                                      PpsSelectionStyle style,
-                                     GdkRGBA *color);
+                                     GdkRGBA *text,
+                                     GdkRGBA *base);
 PPS_PUBLIC
 gchar *pps_selection_get_selected_text (PpsSelection *selection,
                                         PpsPage *page,

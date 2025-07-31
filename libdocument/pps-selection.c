@@ -21,7 +21,8 @@ pps_selection_render_selection (PpsSelection *selection,
                                 PpsRectangle *points,
                                 PpsRectangle *old_points,
                                 PpsSelectionStyle style,
-                                GdkRGBA *color)
+                                GdkRGBA *text,
+                                GdkRGBA *base)
 {
 	PpsSelectionInterface *iface = PPS_SELECTION_GET_IFACE (selection);
 
@@ -32,7 +33,7 @@ pps_selection_render_selection (PpsSelection *selection,
 	                         surface,
 	                         points, old_points,
 	                         style,
-	                         color);
+	                         text, base);
 }
 
 gchar *
