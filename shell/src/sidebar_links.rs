@@ -837,6 +837,7 @@ mod imp {
                 .ellipsize(gtk::pango::EllipsizeMode::End)
                 .hexpand(true)
                 .wrap(true)
+                .wrap_mode(gtk::pango::WrapMode::WordChar)
                 .lines(3)
                 .margin_top(6)
                 .margin_bottom(6)
