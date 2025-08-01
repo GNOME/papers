@@ -846,7 +846,6 @@ mod imp {
 
             let index = gtk::Label::builder()
                 .xalign(1.0)
-                .ellipsize(gtk::pango::EllipsizeMode::Middle)
                 .max_width_chars(7)
                 .css_classes(["dim-label"])
                 .build();
