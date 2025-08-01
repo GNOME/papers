@@ -5253,7 +5253,10 @@ accent_changed_cb (PpsView *view)
 	if (priv->pixbuf_cache)
 		pps_pixbuf_cache_style_changed (priv->pixbuf_cache);
 
-	gtk_widget_queue_draw (GTK_WIDGET (view));
+	for (guint i = 0; i < priv->page_widgets->len; i++) {
+		PpsViewPage *view_page = g_ptr_array_index (priv->page_widgets, i);
+		gtk_widget_queue_draw (GTK_WIDGET (view_page));
+	}
 }
 
 /*
