@@ -49,6 +49,58 @@
     ],
     "modules": [
         {
+            "name": "gtk",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dintrospection=disabled",
+                "-Dvulkan=disabled",
+                "-Dbuild-demos=false",
+                "-Dbuild-testsuite=false",
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false"
+            ],
+            "cleanup": [
+                "/bin/*"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/camelCaseNick/gtk.git",
+                    "commit": "c9d364084a0c7420fdd3f164eab773e52241df51"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libsass",
+                    "buildsystem": "meson",
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/lazka/libsass.git",
+                            "commit": "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
+                        }
+                    ]
+                },
+                {
+                    "name": "sassc",
+                    "buildsystem": "meson",
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/lazka/sassc.git",
+                            "commit": "82803377c33247265d779af034eceb5949e78354"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "popplerdata",
             "no-autogen": true,
             "make-install-args": [
