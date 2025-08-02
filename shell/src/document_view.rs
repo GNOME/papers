@@ -258,14 +258,6 @@ mod imp {
 
             let search_context = papers_view::SearchContext::new(&self.model);
 
-            search_context.connect_result_activated(glib::clone!(
-                #[weak(rename_to = obj)]
-                self,
-                move |_, _| {
-                    obj.sidebar_navigate_to_view();
-                }
-            ));
-
             self.setup_lockdown();
 
             self.find_sidebar.set_search_context(Some(&search_context));
