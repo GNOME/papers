@@ -86,12 +86,13 @@ acquire_widgets (PpsElementWidgetFactory *factory, PpsViewPage *view_page)
 	PpsElementWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
 	GtkWidget *view_page_widget = GTK_WIDGET (view_page);
 	int page_index = pps_view_page_get_page (view_page);
+	GList *all_widgets, *widget_list;
 
 	if (page_index < 0) {
 		return;
 	}
 
-	GList *all_widgets =
+	all_widgets = widget_list =
 	    PPS_ELEMENT_WIDGET_FACTORY_GET_CLASS (factory)->widgets_for_page (factory, page_index);
 
 	while (all_widgets) {
@@ -111,7 +112,7 @@ acquire_widgets (PpsElementWidgetFactory *factory, PpsViewPage *view_page)
 		all_widgets = all_widgets->next;
 	}
 
-	g_list_free (all_widgets);
+	g_list_free (widget_list);
 
 	gtk_widget_queue_resize (view_page_widget);
 	gtk_widget_queue_draw (view_page_widget);
