@@ -2526,7 +2526,12 @@ show_annotation_windows (PpsView *view,
                          gint page)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GListModel *model = pps_annotations_context_get_annots_model (priv->annots_context);
+	GListModel *model;
+
+	if (priv->annots_context == NULL)
+		return;
+
+	model = pps_annotations_context_get_annots_model (priv->annots_context);
 
 	for (gint i = 0; i < g_list_model_get_n_items (model); i++) {
 		g_autoptr (PpsAnnotation) annot = g_list_model_get_item (model, i);
@@ -2585,6 +2590,9 @@ get_annotation_at_location (PpsView *view,
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 	g_autofree PpsDocumentPoint *doc_point = NULL;
 	PpsDocumentAnnotations *doc_annots;
+
+	if (priv->annots_context == NULL)
+		return NULL;
 
 	if (!PPS_IS_DOCUMENT_ANNOTATIONS (document))
 		return NULL;
