@@ -40,8 +40,6 @@ enum {
 };
 
 enum {
-	RESULT_ACTIVATED,
-
 	STARTED,
 	FINISHED,
 	CLEARED,
@@ -58,8 +56,6 @@ typedef struct
 
 	gchar *search_term;
 	guint active_use_count;
-
-	gboolean autoselecting;
 
 	GHashTable *per_page_store;
 	GListStore *result_model;
@@ -402,16 +398,6 @@ find_job_finished_cb (PpsJobFind *job,
 }
 
 static void
-selection_changed_cb (PpsSearchContext *context)
-{
-	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-	PpsSearchResult *result = PPS_SEARCH_RESULT (gtk_single_selection_get_selected_item (priv->selection_model));
-
-	if (result != NULL && !priv->autoselecting)
-		g_signal_emit (context, signals[RESULT_ACTIVATED], 0, result);
-}
-
-static void
 pps_search_context_dispose (GObject *object)
 {
 	PpsSearchContext *context = PPS_SEARCH_CONTEXT (object);
@@ -494,10 +480,6 @@ pps_search_context_constructed (GObject *object)
 	g_signal_connect_object (priv->model, "notify::document",
 	                         G_CALLBACK (document_changed_cb),
 	                         context, G_CONNECT_DEFAULT);
-
-	g_signal_connect_object (priv->selection_model, "selection-changed",
-	                         G_CALLBACK (selection_changed_cb), context,
-	                         G_CONNECT_SWAPPED);
 }
 
 static void
@@ -534,14 +516,6 @@ pps_search_context_class_init (PpsSearchContextClass *klass)
 	g_object_class_install_properties (gobject_class, NUM_PROPERTIES, props);
 
 	/* Signals */
-	signals[RESULT_ACTIVATED] =
-	    g_signal_new ("result-activated",
-	                  G_TYPE_FROM_CLASS (gobject_class),
-	                  G_SIGNAL_RUN_LAST,
-	                  0, NULL, NULL,
-	                  g_cclosure_marshal_generic,
-	                  G_TYPE_NONE, 1,
-	                  PPS_TYPE_SEARCH_RESULT);
 	signals[STARTED] =
 	    g_signal_new ("started",
 	                  G_OBJECT_CLASS_TYPE (gobject_class),
@@ -778,22 +752,4 @@ pps_search_context_restart (PpsSearchContext *context)
 	} else {
 		g_signal_emit (context, signals[CLEARED], 0);
 	}
-}
-
-/**
- * pps_search_context_autoselect_result:
- * @result: a #PpsSearchResult to be the auto-selected one
- *
- * Since: 48.0
- */
-void
-pps_search_context_autoselect_result (PpsSearchContext *context,
-                                      PpsSearchResult *result)
-{
-	PpsSearchContextPrivate *priv = GET_PRIVATE (context);
-
-	priv->autoselecting = TRUE;
-	gtk_single_selection_set_selected (priv->selection_model,
-	                                   pps_search_result_get_global_index (result));
-	priv->autoselecting = FALSE;
 }

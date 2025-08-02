@@ -74,8 +74,5 @@ PPS_PUBLIC
 gboolean pps_search_context_get_active (PpsSearchContext *context);
 PPS_PUBLIC
 void pps_search_context_restart (PpsSearchContext *context);
-PPS_PUBLIC
-void pps_search_context_autoselect_result (PpsSearchContext *context,
-                                           PpsSearchResult *result);
 
 G_END_DECLS
