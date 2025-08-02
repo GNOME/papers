@@ -5559,7 +5559,8 @@ pps_view_focus (GtkWidget *widget,
 	PpsDocument *document = pps_document_model_get_document (priv->model);
 	gboolean has_focus;
 
-	g_return_val_if_fail (document != NULL, FALSE);
+	if (document != NULL)
+		return FALSE;
 
 	if (direction != GTK_DIR_TAB_FORWARD && direction != GTK_DIR_TAB_BACKWARD)
 		return FALSE;
