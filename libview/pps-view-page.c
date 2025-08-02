@@ -583,7 +583,7 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 		}
 	}
 
-	if (pps_search_context_get_active (priv->search_context))
+	if (priv->search_context != NULL && pps_search_context_get_active (priv->search_context))
 		highlight_find_results (snapshot, page);
 
 	if (pps_debug_get_debug_borders ())
@@ -622,7 +622,7 @@ search_results_changed_cb (PpsViewPage *page)
 	gboolean has_search_results = pps_search_context_has_results_on_page (priv->search_context, priv->index);
 
 	/*
-	 * If there are currently no search results shown (has_search_results) nor
+	 * If there are currently no search results shown (had_search_results) nor
 	 * there are any to be shown in the next round (has_search_results), there
 	 * is no reason to redraw. If either is true, we might have changes.
 	 */
@@ -1440,12 +1440,14 @@ pps_view_page_setup (PpsViewPage *page,
 	                  G_CALLBACK (inverted_changed_cb), page);
 	g_signal_connect (priv->pixbuf_cache, "job-finished",
 	                  G_CALLBACK (job_finished_cb), page);
-	g_signal_connect_swapped (priv->search_context, "finished",
-	                          G_CALLBACK (search_results_changed_cb), page);
-	g_signal_connect_swapped (priv->search_context, "result-activated",
-	                          G_CALLBACK (search_results_changed_cb), page);
-	g_signal_connect_swapped (priv->search_context, "notify::active",
-	                          G_CALLBACK (gtk_widget_queue_draw), page);
+	if (priv->search_context != NULL) {
+		g_signal_connect_swapped (priv->search_context, "finished",
+		                          G_CALLBACK (search_results_changed_cb), page);
+		g_signal_connect_swapped (priv->search_context, "result-activated",
+		                          G_CALLBACK (search_results_changed_cb), page);
+		g_signal_connect_swapped (priv->search_context, "notify::active",
+		                          G_CALLBACK (gtk_widget_queue_draw), page);
+	}
 
 	if (pps_document_model_get_inverted_colors (priv->model))
 		gtk_widget_add_css_class (GTK_WIDGET (page), PPS_STYLE_CLASS_INVERTED);
