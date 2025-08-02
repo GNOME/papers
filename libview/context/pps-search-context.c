@@ -434,6 +434,7 @@ pps_search_context_init (PpsSearchContext *context)
 	priv->result_model = g_list_store_new (PPS_TYPE_SEARCH_RESULT);
 	priv->selection_model = gtk_single_selection_new (G_LIST_MODEL (priv->result_model));
 	gtk_single_selection_set_autoselect (priv->selection_model, FALSE);
+	gtk_single_selection_set_can_unselect (priv->selection_model, TRUE);
 }
 
 static void

@@ -27,12 +27,15 @@ template $PpsFindSidebar: Adw.Bin {
 
             hexpand: true;
             tab-behavior: item;
+            //activate-on-single-click: true;
 
             factory: SignalListItemFactory factory {
               setup => $list_view_factory_setup() swapped;
               bind => $list_view_factory_bind() swapped;
               unbind => $list_view_factory_unbind() swapped;
             };
+
+            activate => $list_view_row_activated() swapped;
           };
         };
       }

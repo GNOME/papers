@@ -1443,7 +1443,8 @@ pps_view_page_setup (PpsViewPage *page,
 	if (priv->search_context != NULL) {
 		g_signal_connect_swapped (priv->search_context, "finished",
 		                          G_CALLBACK (search_results_changed_cb), page);
-		g_signal_connect_swapped (priv->search_context, "result-activated",
+		g_signal_connect_swapped (pps_search_context_get_result_model (priv->search_context),
+		                          "notify::selected-item",
 		                          G_CALLBACK (search_results_changed_cb), page);
 		g_signal_connect_swapped (priv->search_context, "notify::active",
 		                          G_CALLBACK (gtk_widget_queue_draw), page);

@@ -20,6 +20,8 @@ mod imp {
         pub(super) context: RefCell<Option<papers_view::SearchContext>>,
         #[property(name = "document-model", nullable, set)]
         pub(super) document_model: RefCell<Option<papers_view::DocumentModel>>,
+        #[property(set, get, construct_only)]
+        pub(super) sidebar: RefCell<Option<PpsSidebar>>,
 
         pub(super) context_signal_handlers: RefCell<Vec<SignalHandlerId>>,
     }
@@ -131,12 +133,10 @@ mod imp {
 
         fn highlight_first_match_of_page(&self, page: u32) {
             let context = self.context().unwrap();
-            let result_model = context.result_model().unwrap();
 
             if let Some(first_result) = context.results_on_page(page).first() {
-                context.autoselect_result(first_result);
                 self.list_view.scroll_to(
-                    result_model.selected(),
+                    first_result.global_index(),
                     gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
                     None,
                 );
@@ -247,6 +247,27 @@ mod imp {
             while let Some(child) = box_.first_child() {
                 box_.remove(&child);
             }
+        }
+
+        #[template_callback]
+        fn list_view_row_activated(&self, position: u32) {
+            let result_model = self.context().and_then(|c| c.result_model()).unwrap();
+
+            // HACK: re-select item to let the view scroll after activation
+            let freeze_guard = result_model.freeze_notify();
+            result_model.set_selected(gtk::INVALID_LIST_POSITION);
+            self.list_view.scroll_to(
+                position,
+                gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                None,
+            );
+            drop(freeze_guard);
+
+            self.sidebar
+                .borrow()
+                .as_ref()
+                .unwrap()
+                .emit_by_name::<()>("navigated-to-view", &[]);
         }
     }
 }
