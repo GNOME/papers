@@ -8,40 +8,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-07-17 11:14+0000\n"
-"PO-Revision-Date: 2025-07-19 08:31+0300\n"
+"POT-Creation-Date: 2025-08-03 14:55+0000\n"
+"PO-Revision-Date: 2025-08-03 20:25+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 23.04.3\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:3
+#: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:85
-#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:46
-#: shell/src/application.rs:358
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:359
 msgid "Document Viewer"
 msgstr "Переглядач документів"
 
-#: data/org.gnome.Papers.desktop.in.in:4
+#: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
 msgstr "Перегляд багатосторінкових документів"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Papers.desktop.in.in:6
+#: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr ""
-"pdf;djvu;tiff;document;presentation;viewer;evince;документ;презентація;"
-"перегляд;папери;"
+"pdf;djvu;tiff;document;presentation;viewer;evince;документ;презентація;перегл"
+"яд;папери;"
 
-#: data/org.gnome.Papers.desktop.in.in:21
+#: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
 msgstr "Створити вікно"
 
@@ -156,11 +156,11 @@ msgstr "Великі мініатюри на бічній панелі"
 msgid "All search actions are contained in the sidebar"
 msgstr "Усі дії з пошуку на бічній панелі"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:3
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Попередній перегляд"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:4
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Preview before printing"
 msgstr "Перегляд перед друкуванням"
 
@@ -199,12 +199,12 @@ msgstr ""
 msgid "Can not get local path for archive"
 msgstr "Не вдалося отримати локальний шлях для архіву"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Книги коміксів"
 
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Додає підтримування читання коміксів"
 
@@ -220,21 +220,21 @@ msgstr ""
 "Документ складається з кількох файлів. Не має доступу до одного або кількох "
 "з цих файлів."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "Документи DjVu"
 
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Додає підтримування читання документів DjVu"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "Документи PDF"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Додає підтримування читання документів PDF"
 
@@ -387,12 +387,12 @@ msgstr ""
 "Кодування: %s\n"
 "%s"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "Документи TIFF"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Додає підтримування читання документів TIFF"
 
@@ -467,9 +467,9 @@ msgstr "%s, альбомна (%s)"
 msgid "Failed to create a temporary file: %s"
 msgstr "Помилка при створенні тимчасового файла: %s"
 
-#: libdocument/pps-file-helpers.c:358 libdocument/pps-file-helpers.c:404
-#: libdocument/pps-file-helpers.c:413 libdocument/pps-file-helpers.c:494
-#: libdocument/pps-file-helpers.c:503
+#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
+#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
+#: libdocument/pps-file-helpers.c:501
 msgid "Unknown MIME Type"
 msgstr "Невідомий тип MIME"
 
@@ -494,22 +494,22 @@ msgstr "Сторінка %s"
 msgid "Edit Note"
 msgstr "Змінити нотатку"
 
-#: libview/pps-jobs.c:401
+#: libview/pps-jobs.c:399
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Не вдалося відтворити сторінку %d: %s"
 
-#: libview/pps-jobs.c:408
+#: libview/pps-jobs.c:406
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Не вдалося відтворити сторінку %d"
 
-#: libview/pps-jobs.c:627
+#: libview/pps-jobs.c:625
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Не вдалося створити мініатюру для сторінки %d"
 
-#: libview/pps-jobs.c:1606
+#: libview/pps-jobs.c:1602
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Не вдалось надрукувати сторінку %d: %s"
@@ -548,7 +548,7 @@ msgstr "Вибраний діапазон сторінок не містить �
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:558 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Закрити"
@@ -630,71 +630,51 @@ msgstr "Якщо увімкнено, навколо кожної сторінк�
 msgid "Page Handling"
 msgstr "Оброблення сторінок"
 
-#: libview/pps-view-accessible.c:28
-msgid "Scroll Up"
-msgstr "Прокрутка вверх"
-
-#: libview/pps-view-accessible.c:29
-msgid "Scroll Down"
-msgstr "Прокрутка вниз"
-
-#: libview/pps-view-accessible.c:34
-msgid "Scroll View Up"
-msgstr "Прокрутка документа вверх"
-
-#: libview/pps-view-accessible.c:35
-msgid "Scroll View Down"
-msgstr "Прокрутка документа вниз"
-
-#: libview/pps-view-accessible.c:112
-msgid "Document View"
-msgstr "Перегляд документа"
-
-#: libview/pps-view.c:2105
+#: libview/pps-view.c:2107
 msgid "Go to first page"
 msgstr "Перейти до першої сторінки"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2109
 msgid "Go to previous page"
 msgstr "Перейти до попередньої сторінки"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2111
 msgid "Go to next page"
 msgstr "Перейти до наступної сторінки"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2113
 msgid "Go to last page"
 msgstr "Перейти до останньої сторінки"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2115
 msgid "Go to page"
 msgstr "Перейти до сторінки"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2117
 msgid "Find"
 msgstr "Знайти"
 
-#: libview/pps-view.c:2144
+#: libview/pps-view.c:2146
 #, c-format
 msgid "Go to page %s"
 msgstr "Перейти до сторінки %s"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2152
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Перейти до %s у файлі «%s»"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Перейти до файла «%s»"
 
-#: libview/pps-view.c:2161
+#: libview/pps-view.c:2163
 #, c-format
 msgid "Launch %s"
 msgstr "Запустити %s"
 
-#: libview/pps-view.c:2168
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Reset form"
 msgstr "Відновити початковий стан форми"
@@ -762,7 +742,7 @@ msgid "GNOME Document Previewer"
 msgstr "Переглядач документів у GNOME"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:71
+#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Переглядач документів «Папери»"
 
@@ -811,7 +791,7 @@ msgstr "Звичайний розмір"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:106
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Не вдалося надрукувати документ"
 
@@ -896,17 +876,14 @@ msgid "Annotation Properties"
 msgstr "Властивості анотацій"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:15
-#| msgid "Color"
 msgid "_Color"
 msgstr "_Колір"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:30
-#| msgid "Opacity"
 msgid "_Opacity"
 msgstr "_Непрозорість"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:46
-#| msgid "Icon"
 msgid "_Icon"
 msgstr "_Піктограма"
 
@@ -947,7 +924,6 @@ msgid "Circle"
 msgstr "Коло"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:70
-#| msgid "Markup Type"
 msgid "_Markup Type"
 msgstr "Тип _розмітки"
 
@@ -968,12 +944,10 @@ msgid "Squiggly"
 msgstr "Напис"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:87
-#| msgid "Author"
 msgid "_Author"
 msgstr "_Автор"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:94
-#| msgid "Auto-Reveal on Scroll"
 msgid "Auto-Reveal on _Scroll"
 msgstr "Автопоказ при _гортанні"
 
@@ -1030,11 +1004,11 @@ msgstr "Переглянути підпис…"
 msgid "Fit Automatically"
 msgstr "Автоматичний розмір"
 
-#: shell/resources/pps-document-view.blp:527
+#: shell/resources/pps-document-view.blp:529
 msgid "Selection too Small"
 msgstr "Позначено надто мало"
 
-#: shell/resources/pps-document-view.blp:528
+#: shell/resources/pps-document-view.blp:530
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1044,19 +1018,19 @@ msgstr ""
 "потенційно придатніший для читання підпис, натисніть «Почати з початку» і "
 "намалюйте більший прямокутник."
 
-#: shell/resources/pps-document-view.blp:535
+#: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
 msgstr "По_чати з початку"
 
-#: shell/resources/pps-document-view.blp:536
+#: shell/resources/pps-document-view.blp:538
 msgid "_Sign"
 msgstr "П_ідписати"
 
-#: shell/resources/pps-document-view.blp:543
+#: shell/resources/pps-document-view.blp:545
 msgid "Abort Printing?"
 msgstr "Скасувати друкування?"
 
-#: shell/resources/pps-document-view.blp:544
+#: shell/resources/pps-document-view.blp:546
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1064,164 +1038,164 @@ msgstr ""
 "Не завершено одне або декілька завдань з друку. Якщо ви закриєте вікно, "
 "завдання з черги друку не буде виконано."
 
-#: shell/resources/pps-document-view.blp:548
+#: shell/resources/pps-document-view.blp:550
 msgid "Abort _Print and Close"
 msgstr "Скасувати др_ук та закрити"
 
-#: shell/resources/pps-document-view.blp:549 shell/src/document_view.rs:726
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:552
 msgid "Close _After Printing"
 msgstr "Закрити п_ісля друкування"
 
-#: shell/resources/pps-document-view.blp:565
+#: shell/resources/pps-document-view.blp:567
 msgid "Open…"
 msgstr "Відкрити…"
 
-#: shell/resources/pps-document-view.blp:572
+#: shell/resources/pps-document-view.blp:574
 msgid "Ni_ght Mode"
 msgstr "_Нічний режим"
 
-#: shell/resources/pps-document-view.blp:579 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: shell/resources/pps-document-view.blp:584 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Довідка"
 
-#: shell/resources/pps-document-view.blp:589 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Про «Переглядач документів»"
 
-#: shell/resources/pps-document-view.blp:598
+#: shell/resources/pps-document-view.blp:600
 msgid "_Print…"
 msgstr "Над_рукувати…"
 
-#: shell/resources/pps-document-view.blp:603
+#: shell/resources/pps-document-view.blp:605
 msgid "Fullscreen"
 msgstr "На весь екран"
 
-#: shell/resources/pps-document-view.blp:608
+#: shell/resources/pps-document-view.blp:610
 msgid "Present as Slideshow"
 msgstr "Презентація у форматі слайдів"
 
-#: shell/resources/pps-document-view.blp:615
+#: shell/resources/pps-document-view.blp:617
 msgid "Sign D_igitally…"
 msgstr "_Цифровий підпис…"
 
-#: shell/resources/pps-document-view.blp:622
+#: shell/resources/pps-document-view.blp:624
 msgid "Open a C_opy"
 msgstr "Відкрити _копію"
 
-#: shell/resources/pps-document-view.blp:627
+#: shell/resources/pps-document-view.blp:629
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Відкрити за допомогою…"
 
-#: shell/resources/pps-document-view.blp:632
+#: shell/resources/pps-document-view.blp:634
 msgid "_Save As…"
 msgstr "Зберегти _як…"
 
-#: shell/resources/pps-document-view.blp:639
+#: shell/resources/pps-document-view.blp:641
 msgid "_Continuous"
 msgstr "Б_езперервно"
 
-#: shell/resources/pps-document-view.blp:644
+#: shell/resources/pps-document-view.blp:646
 msgid "_Dual"
 msgstr "_Дві сторінки"
 
-#: shell/resources/pps-document-view.blp:649
+#: shell/resources/pps-document-view.blp:651
 msgid "_Odd Pages Left"
 msgstr "_Непарні сторінки зліва"
 
-#: shell/resources/pps-document-view.blp:654
+#: shell/resources/pps-document-view.blp:656
 msgid "Right to Left Document"
 msgstr "Документ із писемністю справа ліворуч"
 
-#: shell/resources/pps-document-view.blp:661
+#: shell/resources/pps-document-view.blp:663
 msgid "Ro_tate ⤵"
 msgstr "По_вернути ⤵"
 
-#: shell/resources/pps-document-view.blp:668
+#: shell/resources/pps-document-view.blp:670
 msgid "Document Prop_erties"
 msgstr "В_ластивості документа"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:706
+#: shell/resources/pps-document-view.blp:708
 msgid "Highlight (h)"
 msgstr "Підсвічення (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:722
+#: shell/resources/pps-document-view.blp:724
 msgid "Strikethrough (k)"
 msgstr "Перекреслення (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:738
+#: shell/resources/pps-document-view.blp:740
 msgid "Underline (u)"
 msgstr "Підкреслення (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:754
+#: shell/resources/pps-document-view.blp:756
 msgid "Squiggly (q)"
 msgstr "Хвиляста (q}"
 
-#: shell/resources/pps-document-view.blp:845
+#: shell/resources/pps-document-view.blp:847
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
-#: shell/resources/pps-document-view.blp:851
+#: shell/resources/pps-document-view.blp:853
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: shell/resources/pps-document-view.blp:857
+#: shell/resources/pps-document-view.blp:859
 msgid "_Go To"
 msgstr "Пере_йти до"
 
-#: shell/resources/pps-document-view.blp:863
+#: shell/resources/pps-document-view.blp:865
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: shell/resources/pps-document-view.blp:871
+#: shell/resources/pps-document-view.blp:873
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: shell/resources/pps-document-view.blp:876
+#: shell/resources/pps-document-view.blp:878
 msgid "Select _All"
 msgstr "Виділ_ити все"
 
-#: shell/resources/pps-document-view.blp:883
+#: shell/resources/pps-document-view.blp:885
 msgid "_Save Image As…"
 msgstr "Зберегти зображення _як…"
 
-#: shell/resources/pps-document-view.blp:889
+#: shell/resources/pps-document-view.blp:891
 msgid "Copy _Image"
 msgstr "Копіювати _зображення"
 
-#: shell/resources/pps-document-view.blp:897
+#: shell/resources/pps-document-view.blp:899
 #: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Відкрити долучення"
 
-#: shell/resources/pps-document-view.blp:903
+#: shell/resources/pps-document-view.blp:905
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "З_берегти долучення як…"
 
-#: shell/resources/pps-document-view.blp:913
+#: shell/resources/pps-document-view.blp:915
 msgid "Annotation _Properties…"
 msgstr "Властивості при_мітки…"
 
-#: shell/resources/pps-document-view.blp:919
+#: shell/resources/pps-document-view.blp:921
 msgid "R_emove Annotation"
 msgstr "Ви_лучити примітку"
 
-#: shell/resources/pps-document-view.blp:927
+#: shell/resources/pps-document-view.blp:929
 msgid "_Add Text Annotation"
 msgstr "_Додати текстову анотацію"
 
@@ -1678,19 +1652,19 @@ msgstr "Властивості примітки"
 msgid "Remove Annotation"
 msgstr "Вилучити примітку"
 
-#: shell/resources/pps-sidebar-links.blp:47
+#: shell/resources/pps-sidebar-links.blp:48
 msgid "Collapse all tree"
 msgstr "Згорнути усю ієрархію"
 
-#: shell/resources/pps-sidebar-links.blp:52
+#: shell/resources/pps-sidebar-links.blp:53
 msgid "Expand all tree"
 msgstr "Розгорнути усю ієрархію"
 
-#: shell/resources/pps-sidebar-links.blp:57
+#: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
 msgstr "Розгорнути усе під цим елементом"
 
-#: shell/resources/pps-sidebar-links.blp:64
+#: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
 msgstr "Надрукувати цей розділ…"
 
@@ -1718,53 +1692,53 @@ msgstr "Не вдалося відкрити документ"
 msgid "_Open Other File…"
 msgstr "_Відкрити інший файл…"
 
-#: shell/src/application.rs:215
+#: shell/src/application.rs:216
 msgid "© 1996–2025 The Papers authors"
 msgstr "© Автори «Паперів», 1996–2025"
 
-#: shell/src/application.rs:216
+#: shell/src/application.rs:217
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: shell/src/application.rs:365
+#: shell/src/application.rs:366
 msgid "The page label of the document to display."
 msgstr "Показати мітку сторінки цього документа."
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:367
 msgid "PAGE"
 msgstr "СТОРІНКА"
 
-#: shell/src/application.rs:374
+#: shell/src/application.rs:375
 msgid "The page number of the document to display."
 msgstr "Показати номер сторінки цього документа."
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:376
 msgid "NUMBER"
 msgstr "НОМЕР"
 
-#: shell/src/application.rs:383
+#: shell/src/application.rs:384
 msgid "Named destination to display."
 msgstr "Іменоване місце для показу."
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:385
 msgid "DEST"
 msgstr "МІСЦЕ"
 
-#: shell/src/application.rs:392
+#: shell/src/application.rs:393
 msgid "Run papers in fullscreen mode."
 msgstr "Запустити «Папери» у повноекранного режимі."
 
-#: shell/src/application.rs:401
+#: shell/src/application.rs:402
 msgid "Run papers in presentation mode."
 msgstr "Запустити «Папери» у режимі презентації."
 
-#: shell/src/application.rs:410
+#: shell/src/application.rs:411
 msgid "Show the version of the program."
 msgstr "Показати версію програми."
 
-#: shell/src/application.rs:420
+#: shell/src/application.rs:421
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
@@ -1832,8 +1806,9 @@ msgid "The attachment could not be saved."
 msgstr "Долучення зберегти неможливо."
 
 #: shell/src/document_view/io.rs:269
-msgid "Digital Signature is invalid!"
-msgstr "Цифровий підпис є некоректним!"
+#| msgid "Digital Signature is invalid!"
+msgid "Digital signature is invalid"
+msgstr "Цифровий підпис є некоректним"
 
 #: shell/src/document_view/io.rs:280
 msgid "The Document Contains No Pages"
@@ -1896,7 +1871,7 @@ msgstr "_Увійти"
 msgid "Printing job “{}”"
 msgstr "Друкування завдання «{}»"
 
-#: shell/src/document_view/print.rs:79
+#: shell/src/document_view/print.rs:83
 msgid "No pending jobs in queue"
 msgstr "У черзі немає завдань"
 
@@ -2048,6 +2023,21 @@ msgstr "Строк дії сертифіката"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Приховати подробиці…"
+
+#~ msgid "Scroll Up"
+#~ msgstr "Прокрутка вверх"
+
+#~ msgid "Scroll Down"
+#~ msgstr "Прокрутка вниз"
+
+#~ msgid "Scroll View Up"
+#~ msgstr "Прокрутка документа вверх"
+
+#~ msgid "Scroll View Down"
+#~ msgstr "Прокрутка документа вниз"
+
+#~ msgid "Document View"
+#~ msgstr "Перегляд документа"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
