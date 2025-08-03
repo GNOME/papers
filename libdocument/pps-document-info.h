@@ -192,3 +192,6 @@ PPS_PUBLIC
 const gchar *pps_document_license_get_web_statement (PpsDocumentLicense *license);
 
 G_END_DECLS
+
+/* Automatic Cleanup */
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (PpsDocumentInfo, pps_document_info_free)

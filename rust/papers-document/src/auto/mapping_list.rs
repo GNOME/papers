@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Mapping};
+use crate::{ffi, Mapping, Point};
 use glib::translate::*;
 
 glib::wrapper! {
@@ -29,13 +29,18 @@ impl MappingList {
     //}
 
     #[doc(alias = "pps_mapping_list_get")]
-    pub fn get(&self, x: f64, y: f64) -> Option<Mapping> {
-        unsafe { from_glib_none(ffi::pps_mapping_list_get(self.to_glib_none().0, x, y)) }
+    pub fn get(&self, point: &Point) -> Option<Mapping> {
+        unsafe {
+            from_glib_none(ffi::pps_mapping_list_get(
+                self.to_glib_none().0,
+                point.to_glib_none().0,
+            ))
+        }
     }
 
     //#[doc(alias = "pps_mapping_list_get_data")]
     //#[doc(alias = "get_data")]
-    //pub fn data(&self, x: f64, y: f64) -> /*Unimplemented*/Option<Basic: Pointer> {
+    //pub fn data(&self, point: &Point) -> /*Unimplemented*/Option<Basic: Pointer> {
     //    unsafe { TODO: call ffi:pps_mapping_list_get_data() }
     //}
 

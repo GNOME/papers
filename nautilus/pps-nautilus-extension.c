@@ -37,7 +37,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (PpsDocumentPropertiesModelProvider,
 static GListModel *
 build_properties (PpsDocument *document)
 {
-	g_autofree PpsDocumentInfo *info = pps_document_get_info (document);
+	g_autoptr (PpsDocumentInfo) info = pps_document_get_info (document);
 	GListStore *model = g_list_store_new (NAUTILUS_TYPE_PROPERTIES_ITEM);
 	const char *uri = pps_document_get_uri (document);
 	GDateTime *datetime = NULL;

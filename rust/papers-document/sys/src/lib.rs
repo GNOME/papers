@@ -186,8 +186,7 @@ pub const PPS_TRANSITION_EFFECT_UNCOVER: PpsTransitionEffectType = 10;
 pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
-pub const PPS_MAJOR_VERSION: c_int = 48;
-pub const PPS_MINOR_VERSION: c_int = 0;
+pub const PPS_MAJOR_VERSION: c_int = 49;
 
 // Flags
 pub type PpsDocumentInfoFields = c_uint;
@@ -2340,13 +2339,11 @@ extern "C" {
     ) -> *mut PpsMapping;
     pub fn pps_mapping_list_get(
         mapping_list: *mut PpsMappingList,
-        x: c_double,
-        y: c_double,
+        point: *const PpsPoint,
     ) -> *mut PpsMapping;
     pub fn pps_mapping_list_get_data(
         mapping_list: *mut PpsMappingList,
-        x: c_double,
-        y: c_double,
+        point: *const PpsPoint,
     ) -> gpointer;
     pub fn pps_mapping_list_get_list(mapping_list: *mut PpsMappingList) -> *mut glib::GList;
     pub fn pps_mapping_list_get_page(mapping_list: *mut PpsMappingList) -> c_uint;
@@ -3407,6 +3404,10 @@ extern "C" {
         to: *const c_char,
         error: *mut *mut glib::GError,
     ) -> gboolean;
-    pub fn pps_xmp_parse(xmp: *const c_char, size: size_t, info: *mut PpsDocumentInfo) -> gboolean;
+    pub fn pps_xmp_parse(
+        metadata: *const c_char,
+        size: size_t,
+        info: *mut PpsDocumentInfo,
+    ) -> gboolean;
 
 }

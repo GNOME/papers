@@ -44,6 +44,22 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
     //    unsafe { TODO: call ffi:pps_annotations_context_add_annotation_sync() }
     //}
 
+    #[cfg(feature = "v49")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
+    #[doc(alias = "pps_annotations_context_get_annot_at_doc_point")]
+    #[doc(alias = "get_annot_at_doc_point")]
+    fn annot_at_doc_point(
+        &self,
+        doc_point: &papers_document::DocumentPoint,
+    ) -> Option<papers_document::Annotation> {
+        unsafe {
+            from_glib_none(ffi::pps_annotations_context_get_annot_at_doc_point(
+                self.as_ref().to_glib_none().0,
+                doc_point.to_glib_none().0,
+            ))
+        }
+    }
+
     #[doc(alias = "pps_annotations_context_get_annots_model")]
     #[doc(alias = "get_annots_model")]
     fn annots_model(&self) -> Option<gio::ListModel> {

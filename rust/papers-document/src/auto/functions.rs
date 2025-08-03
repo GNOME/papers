@@ -180,11 +180,11 @@ pub fn xfer_uri_simple(from: &str, to: &str) -> Result<(), glib::Error> {
 }
 
 #[doc(alias = "pps_xmp_parse")]
-pub fn xmp_parse(xmp: &str, size: usize, info: &mut DocumentInfo) -> bool {
+pub fn xmp_parse(metadata: &str, size: usize, info: &mut DocumentInfo) -> bool {
     assert_initialized_main_thread!();
     unsafe {
         from_glib(ffi::pps_xmp_parse(
-            xmp.to_glib_none().0,
+            metadata.to_glib_none().0,
             size,
             info.to_glib_none_mut().0,
         ))

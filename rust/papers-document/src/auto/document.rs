@@ -294,7 +294,7 @@ pub trait DocumentExt: IsA<Document> + 'static {
     #[doc(alias = "pps_document_get_title")]
     #[doc(alias = "get_title")]
     fn title(&self) -> Option<glib::GString> {
-        unsafe { from_glib_none(ffi::pps_document_get_title(self.as_ref().to_glib_none().0)) }
+        unsafe { from_glib_full(ffi::pps_document_get_title(self.as_ref().to_glib_none().0)) }
     }
 
     #[doc(alias = "pps_document_get_uri")]

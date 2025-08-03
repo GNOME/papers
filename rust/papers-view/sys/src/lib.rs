@@ -981,6 +981,12 @@ extern "C" {
         color: *const gdk::GdkRGBA,
         user_data: gpointer,
     ) -> *mut papers_document::PpsAnnotation;
+    #[cfg(feature = "v49")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
+    pub fn pps_annotations_context_get_annot_at_doc_point(
+        self_: *mut PpsAnnotationsContext,
+        doc_point: *const papers_document::PpsDocumentPoint,
+    ) -> *mut papers_document::PpsAnnotation;
     pub fn pps_annotations_context_get_annots_model(
         self_: *mut PpsAnnotationsContext,
     ) -> *mut gio::GListModel;

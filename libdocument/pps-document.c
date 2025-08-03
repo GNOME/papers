@@ -684,13 +684,19 @@ pps_document_get_uri (PpsDocument *document)
 	return priv->uri;
 }
 
+/**
+ * pps_document_get_title:
+ * @document: an #PpsDocument
+ *
+ * Returns: (transfer full):
+ */
 const gchar *
 pps_document_get_title (PpsDocument *document)
 {
 	g_return_val_if_fail (PPS_IS_DOCUMENT (document), NULL);
-	g_autofree PpsDocumentInfo *info = pps_document_get_info (document);
+	g_autoptr (PpsDocumentInfo) info = pps_document_get_info (document);
 
-	return (info->fields_mask & PPS_DOCUMENT_INFO_TITLE) ? info->title : NULL;
+	return (info->fields_mask & PPS_DOCUMENT_INFO_TITLE) ? g_strdup (info->title) : NULL;
 }
 
 gboolean
