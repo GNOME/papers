@@ -89,8 +89,8 @@ static void
 pps_undo_context_finalize (GObject *object)
 {
 	PpsUndoContext *context = PPS_UNDO_CONTEXT (object);
-	g_queue_clear_full (context->undo_stack, (GDestroyNotify) pps_undo_action_free);
-	g_queue_clear_full (context->redo_stack, (GDestroyNotify) pps_undo_action_free);
+	g_queue_free_full (context->undo_stack, (GDestroyNotify) pps_undo_action_free);
+	g_queue_free_full (context->redo_stack, (GDestroyNotify) pps_undo_action_free);
 	g_object_unref (context->document_model);
 	G_OBJECT_CLASS (pps_undo_context_parent_class)->finalize (object);
 }
