@@ -4559,7 +4559,7 @@ pdf_document_signatures_get_signatures (PpsDocumentSignatures *document)
 
 	for (iter = signature_fields; iter != NULL; iter = iter->next) {
 		PopplerFormField *field = iter->data;
-		PopplerSignatureInfo *info = NULL;
+		g_autoptr (PopplerSignatureInfo) info = NULL;
 		PpsSignature *signature = NULL;
 		PpsSignatureStatus signature_status;
 		PpsCertificateStatus certificate_status;
@@ -4652,7 +4652,6 @@ pdf_document_signatures_get_signatures (PpsDocumentSignatures *document)
 		} else {
 			g_warning ("Could not get certificate info for a signature!");
 		}
-		poppler_signature_info_free (info);
 	}
 
 	g_clear_list (&signature_fields, g_object_unref);

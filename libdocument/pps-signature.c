@@ -456,7 +456,7 @@ gboolean
 pps_signature_is_valid (PpsSignature *self)
 {
 	PpsSignaturePrivate *priv = GET_SIG_PRIVATE (self);
-	PpsCertificateInfo *certificate_info = NULL;
+	g_autoptr (PpsCertificateInfo) certificate_info = NULL;
 	PpsCertificateStatus certificate_status = PPS_CERTIFICATE_STATUS_NOT_VERIFIED;
 
 	g_object_get (self, "certificate-info", &certificate_info, NULL);
