@@ -2048,7 +2048,7 @@ pps_view_handle_link (PpsView *view, PpsLink *link)
 		 * document. */
 
 		PpsLinkDest *dest;
-		PpsLink *backlink = NULL;
+		g_autoptr (PpsLink) backlink = NULL;
 
 		pps_view_link_to_current_view (view, &backlink);
 
