@@ -104,7 +104,7 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
     #[doc(alias = "search-term")]
     fn search_term(&self) -> Option<glib::GString> {
         unsafe {
-            from_glib_none(ffi::pps_search_context_get_search_term(
+            from_glib_full(ffi::pps_search_context_get_search_term(
                 self.as_ref().to_glib_none().0,
             ))
         }

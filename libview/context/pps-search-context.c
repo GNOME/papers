@@ -583,11 +583,19 @@ pps_search_context_set_search_term (PpsSearchContext *context,
 	if (g_strcmp0 (search_term, priv->search_term) == 0)
 		return;
 
+	if (priv->search_term)
+		g_free (priv->search_term);
+
 	priv->search_term = g_strdup (search_term);
 	g_object_notify_by_pspec (G_OBJECT (context), props[PROP_SEARCH_TERM]);
 	pps_search_context_restart (context);
 }
 
+/**
+ * pps_search_context_get_search_term:
+ *
+ * Returns: (transfer full)
+ */
 const gchar *
 pps_search_context_get_search_term (PpsSearchContext *context)
 {
