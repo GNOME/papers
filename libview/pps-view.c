@@ -3701,6 +3701,7 @@ link_preview_set_thumbnail (GdkTexture *page_texture,
 	gdouble scale;
 	GtkNative *native = gtk_widget_get_native (GTK_WIDGET (view));
 	gdouble fractional_scale = gdk_surface_get_scale (gtk_native_get_surface (native));
+	g_autoptr (GdkPaintable) paintable = NULL;
 
 	scale = gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (GTK_WIDGET (view))));
 
@@ -3756,7 +3757,8 @@ link_preview_set_thumbnail (GdkTexture *page_texture,
 
 	gtk_snapshot_pop (snapshot);
 
-	picture = gtk_picture_new_for_paintable (gtk_snapshot_free_to_paintable (snapshot, NULL));
+	paintable = gtk_snapshot_free_to_paintable (snapshot, NULL);
+	picture = gtk_picture_new_for_paintable (paintable);
 	gtk_widget_set_size_request (popover, width, height);
 	gtk_popover_set_child (GTK_POPOVER (popover), picture);
 }
