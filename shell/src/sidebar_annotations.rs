@@ -5,6 +5,8 @@ use papers_view::AnnotationsContext;
 use gtk::graphene;
 
 mod imp {
+    use gtk::{CustomFilter, FilterListModel};
+
     use super::*;
 
     #[derive(CompositeTemplate, Debug, Default, Properties)]
@@ -86,7 +88,13 @@ mod imp {
             }
 
             let binding = context.as_ref().and_then(|context| context.annots_model());
-            let model = binding.as_ref().unwrap();
+            let unfiltered_model = binding.as_ref().unwrap();
+            let model = FilterListModel::builder()
+                .model(unfiltered_model)
+                .filter(&CustomFilter::new(|a| {
+                    a.clone().downcast::<AnnotationMarkup>().is_ok()
+                }))
+                .build();
 
             model.connect_items_changed(glib::clone!(
                 #[weak(rename_to = obj)]
@@ -100,7 +108,7 @@ mod imp {
                 }
             ));
 
-            self.selection_model.set_model(Some(model));
+            self.selection_model.set_model(Some(&model));
 
             self.annotations_context.replace(context);
         }
