@@ -3084,6 +3084,8 @@ get_quads_for_area (PopplerPage *page,
 		if (!aligned || ABS (r->x2 - rects[i].x1) > 0.01 * width) {
 			if (i > 0)
 				l_rects = g_list_append (l_rects, r);
+			else
+				g_slice_free (PopplerRectangle, r);
 
 			r = g_slice_new (PopplerRectangle);
 			r->x1 = rects[i].x1;
