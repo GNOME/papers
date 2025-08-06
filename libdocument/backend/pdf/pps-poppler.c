@@ -4119,12 +4119,12 @@ static GList *
 pdf_document_attachments_get_attachments (PpsDocumentAttachments *document)
 {
 	PdfDocument *self = PDF_DOCUMENT (document);
-	GList *list;
+	GList *list, *attachment_list;
 	GList *retval = NULL;
 
 	g_rw_lock_reader_lock (&self->rwlock);
 
-	list = poppler_document_get_attachments (self->document);
+	attachment_list = list = poppler_document_get_attachments (self->document);
 
 	while (list) {
 		PopplerAttachment *attachment = (PopplerAttachment *) list->data;
@@ -4157,7 +4157,7 @@ pdf_document_attachments_get_attachments (PpsDocumentAttachments *document)
 		list = list->next;
 	}
 
-	g_clear_list (&list, g_object_unref);
+	g_clear_list (&attachment_list, g_object_unref);
 
 	g_rw_lock_reader_unlock (&self->rwlock);
 
