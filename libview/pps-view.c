@@ -2617,8 +2617,10 @@ get_annotation_mapping_at_location (PpsView *view,
 	PpsAnnotation *annot;
 
 	annot = get_annotation_at_location (view, x, y);
-	if (!annot)
+	if (!annot) {
+		g_free (annotation_mapping);
 		return NULL;
+	}
 
 	annotation_mapping->data = annot;
 	pps_annotation_get_area (annot, &annotation_mapping->area);
@@ -3626,6 +3628,7 @@ pps_view_set_focused_element_at_location (PpsView *view,
 	if (mapping) {
 		page = pps_annotation_get_page_index ((PpsAnnotation *) mapping->data);
 		_pps_view_set_focused_element (view, mapping, page);
+		g_free (mapping);
 		return;
 	}
 
