@@ -53,21 +53,13 @@ impl imp::PpsDocumentView {
             self.set_action_enabled("toggle-find", false);
         }
 
-        if document
+        let can_have_annotations = document
             .dynamic_cast_ref::<DocumentAnnotations>()
-            .is_some_and(|d| d.can_add_annotation())
-        {
-            let item = gio::MenuItem::new(None, None);
+            .is_some_and(|d| d.can_add_annotation());
 
-            item.set_attribute_value("custom", Some(&"palette".into()));
-            self.annot_menu.insert_item(0, &item);
-
-            self.view_popup
-                .add_child(&self.annot_menu_child.get(), "palette");
-        } else {
-            self.set_action_enabled("add-text-annotation", false);
-            self.set_action_enabled("annot-textmarkup-type", false);
-        }
+        self.annotation_menu_palette_chooser.set_visible(can_have_annotations);
+        self.set_action_enabled("add-text-annotation", can_have_annotations);
+        self.set_action_enabled("annot-textmarkup-type", can_have_annotations);
 
         let can_sign = document
             .dynamic_cast_ref::<DocumentSignatures>()

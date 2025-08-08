@@ -2,6 +2,214 @@ using Gtk 4.0;
 using Adw 1;
 using Gio 2.0;
 
+menu sidebar_menu {
+  section {
+    item {
+      label: _("Open…");
+      action: "win.open";
+    }
+  }
+
+  section {
+    item {
+      label: _("Ni_ght Mode");
+      action: "win.night-mode";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("_About Document Viewer");
+      action: "app.about";
+    }
+  }
+}
+
+menu document_menu {
+  section {
+    item {
+      label: _("_Print…");
+      action: "doc.print";
+    }
+
+    item {
+      label: _("Fullscreen");
+      action: "win.fullscreen";
+    }
+
+    item {
+      label: _("Present as Slideshow");
+      action: "win.presentation";
+    }
+  }
+
+  section {
+    item {
+      label: _("Sign D_igitally…");
+      action: "doc.digital-signing";
+    }
+  }
+
+  section {
+    item {
+      label: _("Open a C_opy");
+      action: "doc.open-copy";
+    }
+
+    item {
+      label: _("Open With…");
+      action: "doc.open-with";
+    }
+
+    item {
+      label: _("_Save As…");
+      action: "doc.save-as";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Continuous");
+      action: "doc.continuous";
+    }
+
+    item {
+      label: _("_Dual");
+      action: "doc.dual-page";
+    }
+
+    item {
+      label: _("_Odd Pages Left");
+      action: "doc.dual-odd-left";
+    }
+
+    item {
+      label: _("Right to Left Document");
+      action: "doc.rtl";
+    }
+  }
+
+  section {
+    item {
+      label: _("Ro_tate ⤵");
+      action: "doc.rotate-right";
+    }
+  }
+
+  section {
+    item {
+      label: _("Document Prop_erties");
+      action: "doc.show-properties";
+    }
+  }
+}
+
+menu view-popup-menu {
+  section {
+    item {
+      label: _("_Open Link");
+      action: "doc.open-link";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Copy Link Address");
+      action: "doc.copy-link-address";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Go To");
+      action: "doc.go-to-link";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Open in New _Window");
+      action: "doc.open-link-new-window";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Copy");
+      action: "doc.copy";
+    }
+
+    item {
+      label: _("Select _All");
+      action: "doc.select-all";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Save Image As…");
+      action: "doc.save-image";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Copy _Image");
+      action: "doc.copy-image";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Open Attachment");
+      action: "doc.open-attachment";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("_Save Attachment As…");
+      action: "doc.save-attachment";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      custom: "palette";
+    }
+  }
+
+  section {
+    item {
+      label: _("Annotation _Properties…");
+      action: "doc.annot-properties";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("R_emove Annotation");
+      action: "doc.remove-annot";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Add Text Annotation");
+      action: "doc.add-text-annotation";
+      hidden-when: "action-disabled";
+    }
+  }
+}
+
 $PpsDocumentModel model {
   page-changed => $page_changed() swapped;
   notify::scale => $zoom_changed() swapped;
@@ -317,6 +525,175 @@ template $PpsDocumentView: Adw.BreakpointBin {
           menu-model: view-popup-menu;
           halign: start;
           closed => $view_popup_closed() swapped;
+
+          [palette]
+          Box annotation_menu_palette_chooser {
+            orientation: vertical;
+
+            Box {
+              orientation: horizontal;
+              halign: center;
+              margin-start: 6;
+              margin-end: 6;
+            }
+
+            Box {
+              name: "annot-type-container";
+              orientation: horizontal;
+              hexpand: true;
+              margin-start: 6;
+              margin-end: 6;
+              margin-top: 6;
+              margin-bottom: 6;
+              spacing: 12;
+
+              ToggleButton annot-textmarkup-type-group {
+                styles [
+                  "flat",
+                ]
+
+                name: "text-highlight";
+                hexpand: true;
+                icon-name: "text-highlight-symbolic";
+                action-name: "doc.annot-textmarkup-type";
+                action-target: "'highlight'";
+
+                /* Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
+                tooltip-text: _("Highlight (h)");
+              }
+
+              ToggleButton {
+                styles [
+                  "flat",
+                ]
+
+                name: "text-strikethrough";
+                hexpand: true;
+                group: annot-textmarkup-type-group;
+                icon-name: "text-strikethrough-symbolic";
+                action-name: "doc.annot-textmarkup-type";
+                action-target: "'strikethrough'";
+
+                /* Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
+                tooltip-text: _("Strikethrough (k)");
+              }
+
+              ToggleButton {
+                styles [
+                  "flat",
+                ]
+
+                name: "text-underline";
+                hexpand: true;
+                group: annot-textmarkup-type-group;
+                icon-name: "text-underline-symbolic";
+                action-name: "doc.annot-textmarkup-type";
+                action-target: "'underline'";
+
+                /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
+                tooltip-text: _("Underline (u)");
+              }
+
+              ToggleButton {
+                styles [
+                  "flat",
+                ]
+
+                name: "text-squiggly";
+                hexpand: true;
+                group: annot-textmarkup-type-group;
+                icon-name: "text-squiggly-symbolic";
+                action-name: "doc.annot-textmarkup-type";
+                action-target: "'squiggly'";
+
+                /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
+                tooltip-text: _("Squiggly (q)");
+              }
+            }
+
+            Box {
+              orientation: horizontal;
+              halign: center;
+              margin-start: 6;
+              margin-end: 6;
+              margin-top: 6;
+              margin-bottom: 6;
+              spacing: 6;
+
+              ToggleButton {
+                name: "color-button-yellow";
+                action-name: "doc.annot-color";
+                action-target: "'yellow'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                  "selected-color-button",
+                ]
+              }
+
+              ToggleButton {
+                name: "color-button-orange";
+                action-name: "doc.annot-color";
+                action-target: "'orange'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                ]
+              }
+
+              ToggleButton {
+                name: "color-button-red";
+                action-name: "doc.annot-color";
+                action-target: "'red'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                ]
+              }
+
+              ToggleButton {
+                name: "color-button-purple";
+                action-name: "doc.annot-color";
+                action-target: "'purple'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                ]
+              }
+
+              ToggleButton {
+                name: "color-button-blue";
+                action-name: "doc.annot-color";
+                action-target: "'blue'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                ]
+              }
+
+              ToggleButton {
+                name: "color-button-green";
+                action-name: "doc.annot-color";
+                action-target: "'green'";
+
+                styles [
+                  "circular",
+                  "suggested-action",
+                  "color-button",
+                ]
+              }
+            }
+          }
         }
       };
     };
@@ -559,376 +936,4 @@ Adw.AlertDialog error_alert {
   responses [
     close: _("_Close"),
   ]
-}
-
-menu sidebar_menu {
-  section {
-    item {
-      label: _("Open…");
-      action: "win.open";
-    }
-  }
-
-  section {
-    item {
-      label: _("Ni_ght Mode");
-      action: "win.night-mode";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Keyboard Shortcuts");
-      action: "app.shortcuts";
-    }
-
-    item {
-      label: _("_Help");
-      action: "app.help";
-    }
-
-    item {
-      label: _("_About Document Viewer");
-      action: "app.about";
-    }
-  }
-}
-
-menu document_menu {
-  section {
-    item {
-      label: _("_Print…");
-      action: "doc.print";
-    }
-
-    item {
-      label: _("Fullscreen");
-      action: "win.fullscreen";
-    }
-
-    item {
-      label: _("Present as Slideshow");
-      action: "win.presentation";
-    }
-  }
-
-  section {
-    item {
-      label: _("Sign D_igitally…");
-      action: "doc.digital-signing";
-    }
-  }
-
-  section {
-    item {
-      label: _("Open a C_opy");
-      action: "doc.open-copy";
-    }
-
-    item {
-      label: _("Open With…");
-      action: "doc.open-with";
-    }
-
-    item {
-      label: _("_Save As…");
-      action: "doc.save-as";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Continuous");
-      action: "doc.continuous";
-    }
-
-    item {
-      label: _("_Dual");
-      action: "doc.dual-page";
-    }
-
-    item {
-      label: _("_Odd Pages Left");
-      action: "doc.dual-odd-left";
-    }
-
-    item {
-      label: _("Right to Left Document");
-      action: "doc.rtl";
-    }
-  }
-
-  section {
-    item {
-      label: _("Ro_tate ⤵");
-      action: "doc.rotate-right";
-    }
-  }
-
-  section {
-    item {
-      label: _("Document Prop_erties");
-      action: "doc.show-properties";
-    }
-  }
-}
-
-Box annot_menu_child {
-  orientation: vertical;
-
-  Box {
-    orientation: horizontal;
-    halign: center;
-    margin-start: 6;
-    margin-end: 6;
-  }
-
-  Box {
-    name: "annot-type-container";
-    orientation: horizontal;
-    hexpand: true;
-    margin-start: 6;
-    margin-end: 6;
-    margin-top: 6;
-    margin-bottom: 6;
-    spacing: 12;
-
-    ToggleButton annot-textmarkup-type-group {
-      styles [
-        "flat",
-      ]
-
-      name: "text-highlight";
-      hexpand: true;
-      icon-name: "text-highlight-symbolic";
-      action-name: "doc.annot-textmarkup-type";
-      action-target: "'highlight'";
-
-      /* Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Highlight (h)");
-    }
-
-    ToggleButton {
-      styles [
-        "flat",
-      ]
-
-      name: "text-strikethrough";
-      hexpand: true;
-      group: annot-textmarkup-type-group;
-      icon-name: "text-strikethrough-symbolic";
-      action-name: "doc.annot-textmarkup-type";
-      action-target: "'strikethrough'";
-
-      /* Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Strikethrough (k)");
-    }
-
-    ToggleButton {
-      styles [
-        "flat",
-      ]
-
-      name: "text-underline";
-      hexpand: true;
-      group: annot-textmarkup-type-group;
-      icon-name: "text-underline-symbolic";
-      action-name: "doc.annot-textmarkup-type";
-      action-target: "'underline'";
-
-      /* Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Underline (u)");
-    }
-
-    ToggleButton {
-      styles [
-        "flat",
-      ]
-
-      name: "text-squiggly";
-      hexpand: true;
-      group: annot-textmarkup-type-group;
-      icon-name: "text-squiggly-symbolic";
-      action-name: "doc.annot-textmarkup-type";
-      action-target: "'squiggly'";
-
-      /* Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated. */
-      tooltip-text: _("Squiggly (q)");
-    }
-  }
-
-  Box {
-    orientation: horizontal;
-    halign: center;
-    margin-start: 6;
-    margin-end: 6;
-    margin-top: 6;
-    margin-bottom: 6;
-    spacing: 6;
-
-    ToggleButton {
-      name: "color-button-yellow";
-      action-name: "doc.annot-color";
-      action-target: "'yellow'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-        "selected-color-button",
-      ]
-    }
-
-    ToggleButton {
-      name: "color-button-orange";
-      action-name: "doc.annot-color";
-      action-target: "'orange'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-      ]
-    }
-
-    ToggleButton {
-      name: "color-button-red";
-      action-name: "doc.annot-color";
-      action-target: "'red'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-      ]
-    }
-
-    ToggleButton {
-      name: "color-button-purple";
-      action-name: "doc.annot-color";
-      action-target: "'purple'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-      ]
-    }
-
-    ToggleButton {
-      name: "color-button-blue";
-      action-name: "doc.annot-color";
-      action-target: "'blue'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-      ]
-    }
-
-    ToggleButton {
-      name: "color-button-green";
-      action-name: "doc.annot-color";
-      action-target: "'green'";
-
-      styles [
-        "circular",
-        "suggested-action",
-        "color-button",
-      ]
-    }
-  }
-}
-
-menu view-popup-menu {
-  section {
-    item {
-      label: _("_Open Link");
-      action: "doc.open-link";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("_Copy Link Address");
-      action: "doc.copy-link-address";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("_Go To");
-      action: "doc.go-to-link";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("Open in New _Window");
-      action: "doc.open-link-new-window";
-      hidden-when: "action-disabled";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Copy");
-      action: "doc.copy";
-    }
-
-    item {
-      label: _("Select _All");
-      action: "doc.select-all";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Save Image As…");
-      action: "doc.save-image";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("Copy _Image");
-      action: "doc.copy-image";
-      hidden-when: "action-disabled";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Open Attachment");
-      action: "doc.open-attachment";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("_Save Attachment As…");
-      action: "doc.save-attachment";
-      hidden-when: "action-disabled";
-    }
-  }
-
-  section annot_menu {}
-
-  section {
-    item {
-      label: _("Annotation _Properties…");
-      action: "doc.annot-properties";
-      hidden-when: "action-disabled";
-    }
-
-    item {
-      label: _("R_emove Annotation");
-      action: "doc.remove-annot";
-      hidden-when: "action-disabled";
-    }
-  }
-
-  section {
-    item {
-      label: _("_Add Text Annotation");
-      action: "doc.add-text-annotation";
-      hidden-when: "action-disabled";
-    }
-  }
 }

@@ -57,9 +57,7 @@ mod imp {
         pub(super) banner: TemplateChild<adw::Banner>,
 
         #[template_child]
-        pub(super) annot_menu: TemplateChild<gio::Menu>,
-        #[template_child]
-        pub(super) annot_menu_child: TemplateChild<gtk::Box>,
+        pub(super) annotation_menu_palette_chooser: TemplateChild<gtk::Box>,
 
         // sidebar
         #[template_child]
