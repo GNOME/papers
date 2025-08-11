@@ -46,6 +46,8 @@ struct _PpsDocumentPrivate {
 	gchar **page_labels;
 	PpsPageSize *page_sizes;
 
+	gint n_pages;
+
 	GWeakRef *cached_pages;
 	/* the last page that was requested through pps_document_get_page
 	is saved, it optimizes cases where the same page is repeatedly queried */
@@ -142,6 +144,8 @@ pps_document_init (PpsDocument *document)
 
 	/* Assume all pages are the same size until proven otherwise */
 	priv->uniform = TRUE;
+
+	priv->n_pages = -1;
 }
 
 static void
@@ -504,14 +508,24 @@ _pps_document_get_size (const char *uri)
 	return size;
 }
 
+/**
+ * pps_document_get_n_pages:
+ * @document: a #PpsDocument
+ *
+ * Returns: the number of pages of the document. This is constant throughout
+ * the lifetime of the document.
+ */
 gint
 pps_document_get_n_pages (PpsDocument *document)
 {
 	g_return_val_if_fail (PPS_IS_DOCUMENT (document), 0);
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
-
-	return klass->get_n_pages (document);
+	if (priv->n_pages < 0) {
+		PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
+		priv->n_pages = klass->get_n_pages (document);
+	}
+	return priv->n_pages;
 }
 
 /**
