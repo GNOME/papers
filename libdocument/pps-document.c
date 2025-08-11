@@ -90,12 +90,17 @@ pps_document_finalize (GObject *object)
 {
 	PpsDocument *document = PPS_DOCUMENT (object);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
+	gint n_pages = pps_document_get_n_pages (document);
 
 	g_clear_pointer (&priv->uri, g_free);
 	g_clear_pointer (&priv->page_sizes, g_free);
 	g_clear_pointer (&priv->page_labels, g_strfreev);
 
 	g_clear_object (&priv->last_page);
+
+	for (int j = 0; j < n_pages; j++) {
+		g_weak_ref_clear (&priv->cached_pages[j]);
+	}
 	g_clear_pointer (&priv->cached_pages, g_free);
 
 	G_OBJECT_CLASS (pps_document_parent_class)->finalize (object);
