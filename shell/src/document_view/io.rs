@@ -408,6 +408,10 @@ impl imp::PpsDocumentView {
     }
 
     pub(super) fn save_as(&self) {
+        /* exiting drawing mode as ink annotations must be drawn at least once before saving, arguably something that should be solved in poppler */
+        if self.model.annotation_editing_state() != papers_view::AnnotationEditingState::NONE {
+            self.cmd_toggle_edit_mode();
+        }
         let dialog = gtk::FileDialog::builder()
             .title(gettext("Save As…"))
             .modal(true)
