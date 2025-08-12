@@ -3736,12 +3736,19 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 	} break;
 	case PPS_ANNOTATION_TYPE_FREE_TEXT: {
 		PpsAnnotationFreeText *annot_ft = PPS_ANNOTATION_FREE_TEXT (annot);
+		g_autoptr (GdkRGBA) font_rgba = pps_annotation_free_text_get_font_rgba (annot_ft);
 		poppler_annot = poppler_annot_free_text_new (self->document, &poppler_rect);
+		PopplerColor poppler_color;
 
 		/* Fonts */
 		annot_free_text_font_desc_set (annot_ft, POPPLER_ANNOT_FREE_TEXT (poppler_annot));
 
 		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
+
+		poppler_annot_set_contents (poppler_annot, pps_annotation_get_contents (annot));
+
+		gdk_rgba_to_poppler_color (font_rgba, &poppler_color);
+		poppler_annot_free_text_set_font_color (POPPLER_ANNOT_FREE_TEXT (poppler_annot), &poppler_color);
 	} break;
 	case PPS_ANNOTATION_TYPE_INK: {
 		GdkRGBA color;
