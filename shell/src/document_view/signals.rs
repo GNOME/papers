@@ -2,6 +2,8 @@ use super::*;
 
 use crate::document_view::enums::AnnotationColor;
 use papers_document::{AnnotationTextMarkupType, DocumentPermissions};
+use papers_view::AnnotationEditingState;
+use papers_view::AnnotationTool;
 
 #[gtk::template_callbacks]
 impl imp::PpsDocumentView {
@@ -888,5 +890,30 @@ impl imp::PpsDocumentView {
         signature.set_left_font_size(font_size as i32);
 
         self.certificate_save_as_dialog();
+    }
+
+    #[template_callback(function, name = "is_pencil")]
+    fn is_pencil(a: i32) -> bool {
+        a == AnnotationTool::Pencil.into_glib()
+    }
+
+    #[template_callback(function, name = "is_highlight")]
+    fn is_highlight(a: i32) -> bool {
+        a == AnnotationTool::Highlight.into_glib()
+    }
+
+    #[template_callback(function, name = "is_eraser")]
+    fn is_eraser(a: i32) -> bool {
+        a == AnnotationTool::Eraser.into_glib()
+    }
+
+    #[template_callback(function, name = "is_text")]
+    fn is_text(a: AnnotationEditingState) -> bool {
+        a == AnnotationEditingState::TEXT
+    }
+
+    #[template_callback(function, name = "not_bool")]
+    fn not_bool(a: bool) -> bool {
+        !a
     }
 }

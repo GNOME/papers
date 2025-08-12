@@ -4,6 +4,7 @@ use crate::document_view::enums::AnnotationColor;
 use gtk::gdk::gdk_pixbuf;
 use papers_document::{AnnotationTextMarkupType, DocumentImages, DocumentSignatures};
 use papers_view::annotations_context::AddAnnotationData;
+use papers_view::AnnotationTool;
 
 fn gdk_pixbuf_format_by_extension(uri: &str) -> Option<gdk_pixbuf::PixbufFormat> {
     for format in gdk_pixbuf::Pixbuf::formats()
@@ -588,6 +589,102 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
+            gio::ActionEntryBuilder::new("toggle-edit-mode")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        obj.cmd_toggle_edit_mode();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("set-eraser-width")
+                .parameter_type(Some(glib::VariantTy::DOUBLE))
+                .state((5.).into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_radius_state(action, state.unwrap());
+                        obj.eraser_radius_popover.popdown();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("set-pen-width")
+                .parameter_type(Some(glib::VariantTy::DOUBLE))
+                .state((1.).into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_radius_state(action, state.unwrap());
+                        obj.pencil_stroke_popover.popdown();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("set-highlight-width")
+                .parameter_type(Some(glib::VariantTy::DOUBLE))
+                .state((5.).into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_radius_state(action, state.unwrap());
+                        obj.highlight_stroke_popover.popdown();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("set-eraser-objects")
+                // blueprint does not support non-string target, see https://gitlab.gnome.org/GNOME/blueprint-compiler/-/issues/137, so using string instead of bool for now
+                .parameter_type(Some(glib::VariantTy::STRING))
+                .state("true".into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        let annotation_model = obj.model.annotation_model().unwrap();
+                        let obj = state.unwrap().get::<String>().unwrap() == "true";
+                        annotation_model.set_property("eraser-objects", obj);
+                        action.set_state(state.unwrap());
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("pen-color")
+                .parameter_type(Some(glib::VariantTy::STRING))
+                .state("blue".into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.pencil_color_popover.popdown();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("highlight-color")
+                .parameter_type(Some(glib::VariantTy::STRING))
+                .state("yellow".into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.highlight_color_popover.popdown();
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("text-color")
+                .parameter_type(Some(glib::VariantTy::STRING))
+                .state("blue".into())
+                .change_state(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, action, state| {
+                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.text_color_popover.popdown();
+                    }
+                ))
+                .build(),
             gio::ActionEntryBuilder::new("open-attachment")
                 .activate(glib::clone!(
                     #[weak(rename_to = obj)]
@@ -782,6 +879,9 @@ impl imp::PpsDocumentView {
                 .change_action_state("fullscreen", &false.into());
         } else if self.split_view.is_collapsed() && self.split_view.shows_sidebar() {
             self.split_view.set_show_sidebar(false);
+        } else if self.model.annotation_editing_state() != papers_view::AnnotationEditingState::NONE
+        {
+            self.cmd_toggle_edit_mode();
         }
     }
 
@@ -1077,6 +1177,86 @@ impl imp::PpsDocumentView {
                 AddAnnotationData::None,
             );
         };
+    }
+
+    pub fn cmd_toggle_edit_mode(&self) {
+        if self.model.annotation_editing_state() == papers_view::AnnotationEditingState::NONE {
+            self.draw_revealer.set_reveal_child(true);
+            self.draw_revealer
+                .parent()
+                .unwrap()
+                .add_css_class("expanded");
+            self.draw_button.remove_css_class("circular");
+            self.draw_button.remove_css_class("flat");
+            self.draw_button.set_icon_name("window-close-symbolic");
+            self.draw_button
+                .set_tooltip_text(Some(&gettext("Close Menu")));
+            if self.model.annotation_model().unwrap().tool() == AnnotationTool::Text {
+                self.model
+                    .set_annotation_editing_state(papers_view::AnnotationEditingState::TEXT);
+            } else {
+                self.model
+                    .set_annotation_editing_state(papers_view::AnnotationEditingState::INK);
+            }
+        } else {
+            self.draw_revealer.set_reveal_child(false);
+            self.draw_button.set_icon_name("document-edit-symbolic");
+            self.draw_button.add_css_class("circular");
+            self.draw_button.add_css_class("flat");
+            self.draw_revealer
+                .parent()
+                .unwrap()
+                .remove_css_class("expanded");
+            self.draw_button
+                .set_tooltip_text(Some(&gettext("Edit Document")));
+            self.model
+                .set_annotation_editing_state(papers_view::AnnotationEditingState::NONE);
+        }
+    }
+
+    pub fn cmd_radius_state(&self, action: &gio::SimpleAction, state: &glib::Variant) {
+        let annotation_model = self.model.annotation_model().unwrap();
+        let radius = state.get::<f64>().unwrap();
+
+        match annotation_model.tool() {
+            AnnotationTool::Pencil => annotation_model.set_pen_radius(radius),
+            AnnotationTool::Highlight => annotation_model.set_highlight_radius(radius),
+            AnnotationTool::Eraser => annotation_model.set_eraser_radius(radius),
+            _ => panic!("Unexpected tool"),
+        }
+
+        action.set_state(state);
+    }
+
+    pub fn cmd_pen_color_state(&self, action: &gio::SimpleAction, state: &glib::Variant) {
+        let annotation_model = self.model.annotation_model().unwrap();
+        let color = state.get::<String>().unwrap();
+        let rgba = match color.as_str() {
+            "yellow" => gdk::RGBA::parse("#f5c211").unwrap(),
+            "black" => gdk::RGBA::parse("#000000").unwrap(),
+            "orange" => gdk::RGBA::parse("#ff7800").unwrap(),
+            "red" => gdk::RGBA::parse("#ed333b").unwrap(),
+            "purple" => gdk::RGBA::parse("#c061cb").unwrap(),
+            "blue" => gdk::RGBA::parse("#3584e4").unwrap(),
+            "green" => gdk::RGBA::parse("#33d17a").unwrap(),
+            _ => panic!("Unexpected color"),
+        };
+
+        match annotation_model.tool() {
+            AnnotationTool::Pencil => annotation_model.set_pen_color(&rgba),
+            AnnotationTool::Highlight => {
+                annotation_model.set_highlight_color(&rgba);
+            }
+            AnnotationTool::Eraser => {
+                // FIXME: should be hidden
+            }
+            AnnotationTool::Text => {
+                annotation_model.set_text_color(&rgba);
+            }
+            _ => panic!("Unexpected tool"),
+        }
+
+        action.set_state(state);
     }
 
     fn cmd_open_attachment(&self) {

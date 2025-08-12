@@ -35,6 +35,43 @@ pps-view.inverted {
     color: white;
 }
 
+@media (prefers-color-scheme: dark) {
+    /* FIXME: in dark mode, buttons background are not opaque and
+    they can not be overlaid properly over the document. This should be solved
+    in adwaita */
+    .zoom-overlay > button, .zoom-overlay > * > button, .box-circular {
+        background-color: rgb(from color-mix(in srgb, var(--window-bg-color) 92%, white 8%) r g b / 100%);
+    }
+    .box-circular.expanded > revealer > box > menubutton > button:hover,
+    .box-circular.expanded > button:hover {
+        background-color: rgb(from color-mix(in srgb, var(--window-bg-color) 85%, white 15%) r g b / 100%);
+    }
+}
+
+.box-circular {
+    border-radius:9999px;
+    padding: 0px;
+    margin-bottom:2px;
+}
+.box-circular > revealer > box {
+    padding: 3px;
+}
+
+.box-circular > button {
+    padding: 3px;
+}
+
+.box-circular.expanded > button {
+    border-radius:50px;
+    padding:0;
+    margin-right:7px;
+    margin-left: 6px;
+}
+
+.padded > * > * {
+    padding:6px;
+}
+
 pps-view .document-page {
     background-color: white;
     padding: 0;
@@ -169,6 +206,10 @@ window.pps-annotation-window textview {
 
 #color-button-yellow {
     --accent-bg-color: var(--yellow-4);
+}
+
+#color-button-black {
+    --accent-bg-color: black;
 }
 
 #color-button-orange {

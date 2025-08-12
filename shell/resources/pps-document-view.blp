@@ -230,7 +230,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
         Adw.ToastOverlay toast_overlay {
           child: Overlay {
             [overlay]
-            Box {
+            Box zoom_toolbar {
               styles [
                 "zoom-overlay",
               ]
@@ -238,7 +238,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
               orientation: vertical;
               spacing: 9;
               margin-top: 18;
-              margin-bottom: 18;
+              margin-bottom: 70;
               margin-start: 18;
               margin-end: 18;
               halign: end;
@@ -250,7 +250,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
                 child: Button {
                   styles [
                     "circular",
-                    "osd",
+                    "card",
                   ]
 
                   icon-name: "zoom-fit-best-symbolic";
@@ -258,6 +258,8 @@ template $PpsDocumentView: Adw.BreakpointBin {
                   action-target: "'automatic'";
                   tooltip-text: _("Fit Automatically");
                 };
+
+                halign: end;
               }
 
               Separator {
@@ -269,25 +271,244 @@ template $PpsDocumentView: Adw.BreakpointBin {
               Button {
                 styles [
                   "circular",
-                  "osd",
+                  "card",
                 ]
 
                 icon-name: "zoom-in-symbolic";
                 action-name: "doc.zoom-in";
                 tooltip-text: _("Zoom In");
                 sensitive: bind view.can-zoom-in;
+                halign: end;
               }
 
               Button {
                 styles [
                   "circular",
-                  "osd",
+                  "card",
                 ]
 
                 icon-name: "zoom-out-symbolic";
                 action-name: "doc.zoom-out";
                 tooltip-text: _("Zoom Out");
                 sensitive: bind view.can-zoom-out;
+                halign: end;
+              }
+
+              Separator {
+                styles [
+                  "spacer",
+                ]
+              }
+            }
+
+            [overlay]
+            Box annot_toolbar {
+              orientation: vertical;
+              spacing: 9;
+              margin-top: 18;
+              margin-bottom: 18;
+              margin-start: 18;
+              margin-end: 18;
+              halign: end;
+              valign: end;
+
+              styles [
+                "zoom-overlay",
+              ]
+
+              Box {
+                orientation: horizontal;
+                spacing: 0;
+                halign: start;
+                valign: end;
+
+                styles [
+                  "box-circular",
+                  "card",
+                ]
+
+                Revealer draw_revealer {
+                  transition-type: slide_left;
+
+                  Box {
+                    spacing: 4;
+                    margin-start: 0;
+                    orientation: horizontal;
+
+                    MenuButton {
+                      visible: bind $is_text(model.annotation-editing-state) as <bool>;
+                      can-focus: false;
+                      direction: up;
+                      tooltip-text: _("Choose Color");
+
+                      styles [
+                        "circular",
+                        "flat",
+                        "padded",
+                      ]
+
+                      child: $SimpleColorSwatch {
+                        color: bind (model.annotation-model as <$PpsAnnotationModel>).text-color;
+                      };
+
+                      popover: text_color_popover;
+                    }
+
+                    MenuButton {
+                      visible: bind $is_text(model.annotation-editing-state) as <bool>;
+                      can-focus: false;
+                      icon-name: "font-x-generic-symbolic";
+                      direction: up;
+                      tooltip-text: _("Font Settings");
+                      popover: text_font_popover;
+
+                      styles [
+                        "circular",
+                        "flat",
+                      ]
+                    }
+
+                    MenuButton {
+                      visible: bind $is_highlight((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+
+                      styles [
+                        "circular",
+                        "flat",
+                        "padded",
+                      ]
+
+                      child: $SimpleColorSwatch {
+                        color: bind annotation-model.highlight-color;
+                      };
+
+                      tooltip-text: _("Choose Color");
+                      direction: up;
+                      popover: highlight_color_popover;
+                    }
+
+                    MenuButton {
+                      visible: bind $is_highlight((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+                      icon-name: "stroke-2-symbolic";
+
+                      styles [
+                        "circular",
+                        "flat",
+                      ]
+
+                      direction: up;
+                      popover: highlight_stroke_popover;
+                    }
+
+                    MenuButton {
+                      visible: bind $is_pencil((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+
+                      styles [
+                        "circular",
+                        "flat",
+                        "padded",
+                      ]
+
+                      child: $SimpleColorSwatch {
+                        color: bind (model.annotation-model as <$PpsAnnotationModel>).pen-color;
+                      };
+
+                      tooltip-text: _("Choose Color");
+                      direction: up;
+                      popover: pencil_color_popover;
+                    }
+
+                    MenuButton {
+                      visible: bind $is_pencil((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+
+                      styles [
+                        "circular",
+                        "flat",
+                      ]
+
+                      icon-name: "stroke-2-symbolic";
+                      direction: up;
+                      tooltip-text: _("Pencil Size");
+                      popover: pencil_stroke_popover;
+                    }
+
+                    MenuButton eraser_settings_button {
+                      visible: bind $is_eraser((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+
+                      styles [
+                        "circular",
+                        "flat",
+                      ]
+
+                      icon-name: "cogged-wheel-symbolic";
+                      direction: up;
+                      menu-model: eraser-settings-menu;
+                    }
+
+                    MenuButton {
+                      visible: bind $is_eraser((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+
+                      styles [
+                        "circular",
+                        "flat",
+                      ]
+
+                      icon-name: "stroke-2-symbolic";
+                      direction: up;
+                      tooltip-text: _("Change Eraser Radius");
+                      popover: eraser_radius_popover;
+                    }
+
+                    Separator {}
+
+                    Adw.ToggleGroup tool_switcher {
+                      active-name: bind annotation-model.active-tool-str bidirectional;
+
+                      styles [
+                        "flat",
+                        "round",
+                      ]
+
+                      orientation: horizontal;
+
+                      Adw.Toggle {
+                        icon-name: "text-insert-symbolic";
+                        tooltip: _("Insert Text");
+                        name: "text";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "document-edit-symbolic";
+                        tooltip: _("Draw");
+                        name: "pencil";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "marker-symbolic";
+                        tooltip: _("Highlight");
+                        name: "highlighter";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "eraser4-symbolic";
+                        tooltip: _("Erase Annotations");
+                        name: "eraser";
+                      }
+                    }
+                  }
+                }
+
+                Button draw_button {
+                  styles [
+                    "circular",
+                    "flat",
+                  ]
+
+                  halign: center;
+                  valign: center;
+                  action-name: "doc.toggle-edit-mode";
+                  icon-name: "document-edit-symbolic";
+                  tooltip-text: _("Edit Document");
+                }
               }
             }
 
@@ -676,6 +897,504 @@ menu document_menu {
     item {
       label: _("Document Prop_erties");
       action: "doc.show-properties";
+    }
+  }
+}
+
+Popover text_font_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    halign: center;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    spacing: 6;
+
+    FontDialogButton {
+      font-desc: bind annotation-model.text-font bidirectional;
+      level: face;
+
+      dialog: FontDialog {};
+    }
+
+    SpinButton {
+      adjustment: Adjustment {
+        lower: 2;
+        upper: 50;
+        step-increment: 1;
+        value: bind annotation-model.text-font-size bidirectional;
+      };
+    }
+  }
+}
+
+Popover text_color_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    spacing: 6;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    ToggleButton {
+      name: "color-button-black";
+      action-name: "doc.text-color";
+      action-target: "'black'";
+      tooltip-text: _("Black");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-orange";
+      action-name: "doc.text-color";
+      action-target: "'orange'";
+      tooltip-text: _("Orange");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-red";
+      action-name: "doc.text-color";
+      action-target: "'red'";
+      tooltip-text: _("Red");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-purple";
+      action-name: "doc.text-color";
+      action-target: "'purple'";
+      tooltip-text: _("Purple");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-blue";
+      action-name: "doc.text-color";
+      action-target: "'blue'";
+      tooltip-text: _("Blue");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-green";
+      action-name: "doc.text-color";
+      action-target: "'green'";
+      tooltip-text: _("Green");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+  }
+}
+
+Popover highlight_color_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    spacing: 6;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    ToggleButton pen-color-group {
+      name: "color-button-yellow";
+      action-name: "doc.highlight-color";
+      action-target: "'yellow'";
+      tooltip-text: _("Yellow");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-orange";
+      group: pen-color-group;
+      action-name: "doc.highlight-color";
+      action-target: "'orange'";
+      tooltip-text: _("Orange");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      group: pen-color-group;
+      name: "color-button-red";
+      action-name: "doc.highlight-color";
+      action-target: "'red'";
+      tooltip-text: _("Red");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-purple";
+      action-name: "doc.highlight-color";
+      group: pen-color-group;
+      action-target: "'purple'";
+      tooltip-text: _("Purple");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-blue";
+      action-name: "doc.highlight-color";
+      action-target: "'blue'";
+      group: pen-color-group;
+      tooltip-text: _("Blue");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-green";
+      action-name: "doc.highlight-color";
+      action-target: "'green'";
+      group: pen-color-group;
+      tooltip-text: _("Green");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+  }
+}
+
+Popover highlight_stroke_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    spacing: 4;
+
+    ToggleButton {
+      icon-name: "stroke-0-symbolic";
+      action-name: "doc.set-highlight-width";
+      action-target: "1.";
+      tooltip-text: _("Thin");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-1-symbolic";
+      action-name: "doc.set-highlight-width";
+      action-target: "3.";
+      tooltip-text: _("Medium");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-2-symbolic";
+      action-name: "doc.set-highlight-width";
+      action-target: "5.";
+      tooltip-text: _("Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-3-symbolic";
+      action-name: "doc.set-highlight-width";
+      action-target: "10.";
+      tooltip-text: _("Very Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+  }
+}
+
+Popover pencil_color_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    halign: center;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    spacing: 6;
+
+    ToggleButton {
+      name: "color-button-yellow";
+      action-name: "doc.pen-color";
+      action-target: "'yellow'";
+      tooltip-text: _("Yellow");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-orange";
+      action-name: "doc.pen-color";
+      action-target: "'orange'";
+      tooltip-text: _("Orange");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-red";
+      action-name: "doc.pen-color";
+      action-target: "'red'";
+      tooltip-text: _("Red");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-purple";
+      action-name: "doc.pen-color";
+      action-target: "'purple'";
+      tooltip-text: _("Purple");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-blue";
+      action-name: "doc.pen-color";
+      action-target: "'blue'";
+      tooltip-text: _("Blue");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-green";
+      action-name: "doc.pen-color";
+      action-target: "'green'";
+      tooltip-text: _("Green");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+
+    ToggleButton {
+      name: "color-button-black";
+      action-name: "doc.pen-color";
+      action-target: "'black'";
+      tooltip-text: _("Black");
+
+      styles [
+        "circular",
+        "color-button",
+      ]
+    }
+  }
+}
+
+Popover pencil_stroke_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    spacing: 4;
+
+    ToggleButton {
+      icon-name: "stroke-0-symbolic";
+      action-name: "doc.set-pen-width";
+      action-target: "0.5";
+      tooltip-text: _("Thin");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-1-symbolic";
+      action-name: "doc.set-pen-width";
+      action-target: "1.";
+      active: true;
+      tooltip-text: _("Medium");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-2-symbolic";
+      action-name: "doc.set-pen-width";
+      action-target: "3.";
+      tooltip-text: _("Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-3-symbolic";
+      action-name: "doc.set-pen-width";
+      action-target: "10.";
+      tooltip-text: _("Very Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+  }
+}
+
+Popover eraser_radius_popover {
+  margin-start: 6;
+  has-arrow: false;
+
+  Box {
+    orientation: horizontal;
+    spacing: 4;
+
+    ToggleButton {
+      icon-name: "stroke-0-symbolic";
+      action-name: "doc.set-eraser-width";
+      action-target: "1.";
+      tooltip-text: _("Thin");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-1-symbolic";
+      action-name: "doc.set-eraser-width";
+      action-target: "3.";
+      tooltip-text: _("Medium");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-2-symbolic";
+      action-name: "doc.set-eraser-width";
+      action-target: "5.";
+      tooltip-text: _("Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+
+    ToggleButton {
+      icon-name: "stroke-3-symbolic";
+      action-name: "doc.set-eraser-width";
+      action-target: "10.";
+      tooltip-text: _("Very Thick");
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+  }
+}
+
+menu eraser-settings-menu {
+  section {
+    item {
+      label: _("Erase Ink");
+      action: "doc.set-eraser-objects";
+      target: "false";
+    }
+
+    item {
+      label: _("Erase Whole Strokes");
+      action: "doc.set-eraser-objects";
+      target: "true";
     }
   }
 }
