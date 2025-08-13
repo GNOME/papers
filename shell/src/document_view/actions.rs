@@ -7,12 +7,12 @@ use papers_view::annotations_context::AddAnnotationData;
 
 fn gdk_pixbuf_format_by_extension(uri: &str) -> Option<gdk_pixbuf::PixbufFormat> {
     for format in gdk_pixbuf::Pixbuf::formats()
-        .iter()
+        .into_iter()
         .filter(|f| !f.is_disabled() && f.is_writable())
     {
         for ext in format.extensions() {
-            if uri.ends_with(ext.as_str()) {
-                return Some(format.clone());
+            if uri.ends_with(&*ext) {
+                return Some(format);
             }
         }
     }
