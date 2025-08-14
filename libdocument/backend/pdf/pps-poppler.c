@@ -1051,11 +1051,11 @@ pdf_document_fonts_get_model (PpsDocumentFonts *document_fonts)
 			                                   type_str, standard_str,
 			                                   encoding, embedded);
 
-		g_list_store_append (model,
-		                     g_object_new (PPS_TYPE_FONT_DESCRIPTION,
-		                                   "name", name,
-		                                   "details", details,
-		                                   NULL));
+		g_autoptr (PpsFontDescription) font = g_object_new (PPS_TYPE_FONT_DESCRIPTION,
+		                                                    "name", name,
+		                                                    "details", details,
+		                                                    NULL);
+		g_list_store_append (model, font);
 
 		g_free (details);
 	} while (poppler_fonts_iter_next (iter));
