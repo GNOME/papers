@@ -34,6 +34,7 @@ template $PpsSidebarAnnotations: $PpsSidebarPage {
 
             hexpand: true;
             tab-behavior: item;
+            //activate-on-single-click: true;
 
             factory: SignalListItemFactory factory {
               setup => $list_view_factory_setup() swapped;
@@ -41,6 +42,8 @@ template $PpsSidebarAnnotations: $PpsSidebarPage {
             };
 
             model: SingleSelection selection_model {};
+
+            activate => $list_view_row_activated() swapped;
           };
         };
       }

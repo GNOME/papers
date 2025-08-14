@@ -52,16 +52,6 @@ mod imp {
                     .build()]
             })
         }
-
-        fn constructed(&self) {
-            self.obj().connect_closure(
-                "annot-activated",
-                true,
-                glib::closure_local!(move |obj: super::PpsSidebarAnnotations, _: Annotation| {
-                    obj.navigate_to_view();
-                }),
-            );
-        }
     }
 
     impl WidgetImpl for PpsSidebarAnnotations {}
@@ -108,48 +98,38 @@ mod imp {
         #[template_callback]
         fn list_view_factory_setup(&self, item: &gtk::ListItem, _factory: &gtk::ListItemFactory) {
             let row = PpsSidebarAnnotationsRow::new();
-
-            let gesture = gtk::GestureClick::builder().button(0).build();
+            let gesture = gtk::GestureClick::builder().button(gdk::BUTTON_SECONDARY).build();
 
             gesture.connect_pressed(glib::clone!(
                 #[weak(rename_to = obj)]
                 self,
                 #[weak]
                 item,
-                move |gesture, _, x, y| {
+                move |_, _, x, y| {
                     let annot = item.item().and_downcast::<AnnotationMarkup>().unwrap();
+                    let document_view = obj
+                        .obj()
+                        .ancestor(PpsDocumentView::static_type())
+                        .and_downcast::<PpsDocumentView>()
+                        .unwrap();
+                    let row = item.child().unwrap();
 
-                    match gesture.current_button() {
-                        gdk::BUTTON_PRIMARY => {
-                            obj.obj().emit_by_name::<()>("annot-activated", &[&annot])
-                        }
-                        gdk::BUTTON_SECONDARY => {
-                            let document_view = obj
-                                .obj()
-                                .ancestor(PpsDocumentView::static_type())
-                                .and_downcast::<PpsDocumentView>()
-                                .unwrap();
-                            let row = item.child().unwrap();
+                    document_view.handle_annot_popup(&annot);
 
-                            document_view.handle_annot_popup(&annot);
+                    let point = row
+                        .compute_point(
+                            &obj.popup.parent().unwrap(),
+                            &graphene::Point::new(x as f32, y as f32),
+                        )
+                        .unwrap();
 
-                            let point = row
-                                .compute_point(
-                                    &obj.popup.parent().unwrap(),
-                                    &graphene::Point::new(x as f32, y as f32),
-                                )
-                                .unwrap();
-
-                            obj.popup.set_pointing_to(Some(&gdk::Rectangle::new(
-                                point.x() as i32,
-                                point.y() as i32,
-                                1,
-                                1,
-                            )));
-                            obj.popup.popup();
-                        }
-                        _ => (),
-                    }
+                    obj.popup.set_pointing_to(Some(&gdk::Rectangle::new(
+                        point.x() as i32,
+                        point.y() as i32,
+                        1,
+                        1,
+                    )));
+                    obj.popup.popup();
                 }
             ));
 
@@ -172,6 +152,21 @@ mod imp {
 
             row.set_document(document);
             row.set_annotation(annot);
+        }
+
+        #[template_callback]
+        fn list_view_row_activated(&self, position: u32) {
+            let model = self
+                .annotations_context()
+                .and_then(|context| context.annots_model())
+                .unwrap();
+            let annot = model
+                .item(position)
+                .and_downcast::<AnnotationMarkup>()
+                .unwrap();
+
+            self.obj().emit_by_name::<()>("annot-activated", &[&annot]);
+            self.obj().navigate_to_view();
         }
     }
 }
