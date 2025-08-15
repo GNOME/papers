@@ -39,8 +39,6 @@ mod imp {
         /// model index between page index due to support of this mode.
         #[property(set, get)]
         pub(super) blank_head: Cell<bool>,
-        pub(super) block_page_changed: Cell<bool>,
-        pub(super) block_activate: Cell<bool>,
         pub(super) lru: RefCell<Option<LruCache<u32, PpsThumbnailItem>>>,
     }
 
@@ -75,10 +73,6 @@ mod imp {
                     #[weak(rename_to = obj)]
                     self,
                     move |model, _, new| {
-                        if obj.block_page_changed.get() {
-                            return;
-                        }
-
                         if model.document().is_none() {
                             return;
                         }
@@ -142,13 +136,19 @@ mod imp {
         fn map(&self) {
             self.parent_map();
 
-            if let Some(model) = self.obj().document_model() {
-                let page = model.page();
+            glib::idle_add_local_once(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move || {
+                    if let Some(model) = obj.obj().document_model() {
+                        let page = model.page();
 
-                if page >= 0 && model.document().is_some() {
-                    self.set_current_page(page);
+                        if page >= 0 && model.document().is_some() {
+                            obj.set_current_page(page);
+                        }
+                    }
                 }
-            }
+            ));
         }
     }
 
@@ -313,20 +313,13 @@ mod imp {
         }
 
         #[template_callback]
-        fn grid_view_selection_changed(&self) {
-            if self.block_activate.get() {
-                return;
-            }
-
+        fn grid_view_item_activated(&self, position: u32) {
             if let Some(model) = self.obj().document_model() {
-                let selected = self.selection_model.selected();
-                let doc_page = self.page_of_document(selected as i32);
+                let doc_page = self.page_of_document(position as i32);
 
                 if doc_page >= 0 {
-                    self.block_page_changed.set(true);
                     model.set_page(doc_page);
                     self.obj().navigate_to_view();
-                    self.block_page_changed.set(false);
                 }
             }
         }
@@ -446,8 +439,6 @@ mod imp {
         }
 
         fn set_current_page(&self, doc_page: i32) {
-            self.block_activate.set(true);
-
             let store_index = self.index_of_store(doc_page);
 
             debug!("set current selected page to {store_index}");
@@ -459,8 +450,6 @@ mod imp {
                     None,
                 );
             }
-
-            self.block_activate.set(false);
         }
 
         /// This is a special mode that a blank page is inserted into the start

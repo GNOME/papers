@@ -24,6 +24,7 @@ template $PpsSidebarThumbnails: $PpsSidebarPage {
           min-columns: 1;
           halign: center;
           tab-behavior: item;
+          //activate-on-single-click: true;
 
           factory: SignalListItemFactory factory {
             setup => $grid_view_factory_setup() swapped;
@@ -35,9 +36,9 @@ template $PpsSidebarThumbnails: $PpsSidebarPage {
             autoselect: false;
 
             model: Gio.ListStore list_store {};
-
-            selection-changed => $grid_view_selection_changed() swapped;
           };
+
+          activate => $grid_view_item_activated() swapped;
 
           styles [
             "navigation-sidebar",
