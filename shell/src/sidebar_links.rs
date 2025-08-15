@@ -339,7 +339,6 @@ mod imp {
         timeout_id: RefCell<Option<glib::SourceId>>,
         update_page_to: Cell<i32>,
         selected_row: RefCell<Option<gtk::TreeListRow>>,
-        pub(super) block_activate: Cell<bool>,
         pub(super) block_page_changed: Cell<bool>,
         pub(super) block_row_expand: Cell<bool>,
     }
@@ -576,7 +575,6 @@ mod imp {
 
                 if Some(path) != current_path.as_ref() {
                     if let Some(tree_model) = self.tree_model() {
-                        self.block_activate.set(true);
                         self.block_row_expand.set(true);
 
                         self.sidebar_collapse(Some(path));
@@ -587,7 +585,6 @@ mod imp {
                                 self,
                                 move || {
                                     obj.block_row_expand.set(true);
-                                    obj.block_activate.set(true);
 
                                     obj.list_view.scroll_to(
                                         pos,
@@ -596,12 +593,10 @@ mod imp {
                                     );
 
                                     obj.block_row_expand.set(false);
-                                    obj.block_activate.set(false);
                                 }
                             ));
                         }
 
-                        self.block_activate.set(false);
                         self.block_row_expand.set(false);
                     }
                 }
@@ -756,26 +751,21 @@ mod imp {
         }
 
         #[template_callback]
-        fn list_view_selection_changed(&self) {
-            if self.block_activate.get() {
-                return;
-            }
-
-            if let Some(outlines) = self
+        fn list_view_row_activated(&self, position: u32) {
+            if let Some(link) = self
                 .selection_model
-                .selected_item()
-                .and_then(|o| o.downcast::<gtk::TreeListRow>().ok())
+                .item(position)
+                .and_downcast::<gtk::TreeListRow>()
                 .and_then(|row| row.item())
-                .and_then(|item| item.downcast::<Outlines>().ok())
+                .and_downcast::<Outlines>()
+                .and_then(|outlines| outlines.link())
             {
-                if let Some(link) = outlines.link() {
-                    debug!("link activated: `{}`", link.title().unwrap_or_default());
+                debug!("link activated: `{}`", link.title().unwrap_or_default());
 
-                    self.block_page_changed.set(true);
-                    self.obj().emit_by_name::<()>("link-activated", &[&link]);
-                    self.obj().navigate_to_view();
-                    self.block_page_changed.set(false);
-                }
+                self.block_page_changed.set(true);
+                self.obj().emit_by_name::<()>("link-activated", &[&link]);
+                self.obj().navigate_to_view();
+                self.block_page_changed.set(false);
             }
         }
 

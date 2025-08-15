@@ -14,10 +14,10 @@ template $PpsSidebarLinks: $PpsSidebarPage {
 
       child: ListView list_view {
         tab-behavior: item;
+        //activate-on-single-click: true;
 
         model: SingleSelection selection_model {
           autoselect: false;
-          selection-changed => $list_view_selection_changed() swapped;
         };
 
         factory: SignalListItemFactory {
@@ -25,6 +25,8 @@ template $PpsSidebarLinks: $PpsSidebarPage {
           bind => $list_view_factory_bind() swapped;
           unbind => $list_view_factory_unbind() swapped;
         };
+
+        activate => $list_view_row_activated() swapped;
 
         styles [
           "navigation-sidebar",
