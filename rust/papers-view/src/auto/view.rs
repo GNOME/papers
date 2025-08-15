@@ -74,13 +74,6 @@ impl View {
         }
     }
 
-    #[doc(alias = "pps_view_focus_annotation")]
-    pub fn focus_annotation(&self, annot: &impl IsA<papers_document::Annotation>) {
-        unsafe {
-            ffi::pps_view_focus_annotation(self.to_glib_none().0, annot.as_ref().to_glib_none().0);
-        }
-    }
-
     #[doc(alias = "pps_view_get_allow_links_change_zoom")]
     #[doc(alias = "get_allow_links_change_zoom")]
     pub fn allows_links_change_zoom(&self) -> bool {

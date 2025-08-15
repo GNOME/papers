@@ -60,9 +60,11 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
         }
     }
 
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     #[doc(alias = "pps_annotations_context_get_annots_model")]
     #[doc(alias = "get_annots_model")]
-    fn annots_model(&self) -> Option<gio::ListModel> {
+    fn annots_model(&self) -> Option<gtk::SingleSelection> {
         unsafe {
             from_glib_none(ffi::pps_annotations_context_get_annots_model(
                 self.as_ref().to_glib_none().0,

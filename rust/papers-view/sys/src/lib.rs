@@ -987,9 +987,11 @@ extern "C" {
         self_: *mut PpsAnnotationsContext,
         doc_point: *const papers_document::PpsDocumentPoint,
     ) -> *mut papers_document::PpsAnnotation;
+    #[cfg(feature = "v48")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_annotations_context_get_annots_model(
         self_: *mut PpsAnnotationsContext,
-    ) -> *mut gio::GListModel;
+    ) -> *mut gtk::GtkSingleSelection;
     pub fn pps_annotations_context_remove_annotation(
         self_: *mut PpsAnnotationsContext,
         annot: *mut papers_document::PpsAnnotation,
@@ -1385,12 +1387,6 @@ extern "C" {
     pub fn pps_search_context_activate(context: *mut PpsSearchContext);
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    pub fn pps_search_context_autoselect_result(
-        context: *mut PpsSearchContext,
-        result: *mut PpsSearchResult,
-    );
-    #[cfg(feature = "v48")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_search_context_get_active(context: *mut PpsSearchContext) -> gboolean;
     pub fn pps_search_context_get_options(
         context: *mut PpsSearchContext,
@@ -1478,10 +1474,6 @@ extern "C" {
     );
     pub fn pps_view_current_event_is_type(view: *mut PpsView, type_: gdk::GdkEventType)
         -> gboolean;
-    pub fn pps_view_focus_annotation(
-        view: *mut PpsView,
-        annot: *mut papers_document::PpsAnnotation,
-    );
     pub fn pps_view_get_allow_links_change_zoom(view: *mut PpsView) -> gboolean;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]

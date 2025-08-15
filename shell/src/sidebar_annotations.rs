@@ -61,7 +61,6 @@ mod imp {
             let model = context
                 .as_ref()
                 .and_then(|context| context.annots_model())
-                .and_downcast::<gtk::SingleSelection>()
                 .unwrap();
 
             model.connect_items_changed(glib::clone!(
@@ -127,7 +126,6 @@ mod imp {
             let model = self
                 .annotations_context()
                 .and_then(|context| context.annots_model())
-                .and_downcast::<gtk::SingleSelection>()
                 .unwrap();
 
             // HACK: re-select item to let the view scroll after activation

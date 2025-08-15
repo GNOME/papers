@@ -3,7 +3,10 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel, SearchResult};
+#[cfg(feature = "v48")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
+use crate::SearchResult;
+use crate::{ffi, DocumentModel};
 use glib::{
     object::ObjectType as _,
     prelude::*,
@@ -38,18 +41,6 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
     fn activate(&self) {
         unsafe {
             ffi::pps_search_context_activate(self.as_ref().to_glib_none().0);
-        }
-    }
-
-    #[cfg(feature = "v48")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
-    #[doc(alias = "pps_search_context_autoselect_result")]
-    fn autoselect_result(&self, result: &impl IsA<SearchResult>) {
-        unsafe {
-            ffi::pps_search_context_autoselect_result(
-                self.as_ref().to_glib_none().0,
-                result.as_ref().to_glib_none().0,
-            );
         }
     }
 
@@ -208,38 +199,6 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
                 c"finished".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<Self, F> as *const (),
-                )),
-                Box_::into_raw(f),
-            )
-        }
-    }
-
-    #[doc(alias = "result-activated")]
-    fn connect_result_activated<F: Fn(&Self, &SearchResult) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        unsafe extern "C" fn result_activated_trampoline<
-            P: IsA<SearchContext>,
-            F: Fn(&P, &SearchResult) + 'static,
-        >(
-            this: *mut ffi::PpsSearchContext,
-            object: *mut ffi::PpsSearchResult,
-            f: glib::ffi::gpointer,
-        ) {
-            let f: &F = &*(f as *const F);
-            f(
-                SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
-                &from_glib_borrow(object),
-            )
-        }
-        unsafe {
-            let f: Box_<F> = Box_::new(f);
-            connect_raw(
-                self.as_ptr() as *mut _,
-                c"result-activated".as_ptr() as *const _,
-                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
-                    result_activated_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
