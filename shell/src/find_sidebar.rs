@@ -133,13 +133,18 @@ mod imp {
 
         fn highlight_first_match_of_page(&self, page: u32) {
             let context = self.context().unwrap();
+            let current_page: u32 = self.document_model().unwrap().page() as u32;
 
-            if let Some(first_result) = context.results_on_page(page).first() {
-                self.list_view.scroll_to(
-                    first_result.global_index(),
-                    gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
-                    None,
-                );
+            // only highlight page if it is near current page
+            // to avoid losing a page due to large jumps
+            if current_page.abs_diff(page) <= 2 {
+                if let Some(first_result) = context.results_on_page(page).first() {
+                    self.list_view.scroll_to(
+                        first_result.global_index(),
+                        gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                        None,
+                    );
+                }
             }
         }
 
