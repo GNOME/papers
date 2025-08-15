@@ -2674,24 +2674,6 @@ pps_view_handle_annotation (PpsView *view,
 	}
 }
 
-void
-pps_view_focus_annotation (PpsView *view,
-                           PpsAnnotation *annot)
-{
-	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsMapping mapping;
-
-	if (!PPS_IS_DOCUMENT_ANNOTATIONS (pps_document_model_get_document (priv->model)))
-		return;
-
-	mapping.data = g_object_ref (annot);
-	pps_annotation_get_area (annot, &mapping.area);
-
-	_pps_view_set_focused_element (view, &mapping,
-	                               pps_annotation_get_page_index (annot));
-	g_object_unref (annot);
-}
-
 static void
 pps_view_rerender_annotation (PpsView *view,
                               PpsAnnotation *annot)
@@ -2841,11 +2823,20 @@ pps_view_selected_annotation_changed_cb (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	PpsAnnotation *annotation = gtk_single_selection_get_selected_item (pps_annotations_context_get_annots_model (priv->annots_context));
+	PpsMapping mapping;
 
 	if (annotation == NULL)
 		return;
 
-	pps_view_focus_annotation (view, annotation);
+	if (!PPS_IS_DOCUMENT_ANNOTATIONS (pps_document_model_get_document (priv->model)))
+		return;
+
+	mapping.data = g_object_ref (annotation);
+	pps_annotation_get_area (annotation, &mapping.area);
+
+	_pps_view_set_focused_element (view, &mapping,
+	                               pps_annotation_get_page_index (annotation));
+	g_object_unref (annotation);
 }
 
 /**
