@@ -29,6 +29,8 @@ mod imp {
         reference_label: TemplateChild<gtk::Label>,
         #[template_child]
         content_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        popup: TemplateChild<gtk::PopoverMenu>,
     }
 
     #[glib::object_subclass]
@@ -39,6 +41,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_callbacks();
             klass.set_css_name("pps-sidebar-annotations-row")
         }
 
@@ -58,6 +61,7 @@ mod imp {
 
     impl BoxImpl for PpsSidebarAnnotationsRow {}
 
+    #[gtk::template_callbacks]
     impl PpsSidebarAnnotationsRow {
         fn set_row_tooltip(&self, annot: Option<&AnnotationMarkup>) {
             let tooltip = annot.filter(|annot| annot.label().is_some()).map(|annot| {
@@ -265,6 +269,26 @@ mod imp {
             self.image.set_visible(icon_name.is_some());
 
             self.annotation.replace(annot.cloned());
+        }
+
+        fn open_context_menu(&self, pointing_to: &gdk::Rectangle) {
+            let document_view = self
+                .obj()
+                .ancestor(PpsDocumentView::static_type())
+                .and_downcast::<PpsDocumentView>()
+                .unwrap();
+
+            document_view.handle_annot_popup(self.annotation.borrow().as_ref().unwrap());
+
+            self.popup.set_pointing_to(Some(pointing_to));
+            self.popup.popup();
+        }
+
+        #[template_callback]
+        fn secondary_button_clicked(&self, n_presses: i32, x: f64, y: f64) {
+            if n_presses == 1 {
+                self.open_context_menu(&gdk::Rectangle::new(x as i32, y as i32, 1, 1));
+            }
         }
     }
 }

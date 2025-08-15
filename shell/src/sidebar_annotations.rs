@@ -2,8 +2,6 @@ use crate::deps::*;
 use papers_document::{Annotation, AnnotationMarkup, DocumentAnnotations};
 use papers_view::AnnotationsContext;
 
-use gtk::graphene;
-
 mod imp {
     use super::*;
 
@@ -18,8 +16,6 @@ mod imp {
         list_view: TemplateChild<gtk::ListView>,
         #[template_child]
         stack: TemplateChild<adw::ViewStack>,
-        #[template_child]
-        popup: TemplateChild<gtk::PopoverMenu>,
         #[template_child]
         selection_model: TemplateChild<gtk::SingleSelection>,
     }
@@ -98,42 +94,6 @@ mod imp {
         #[template_callback]
         fn list_view_factory_setup(&self, item: &gtk::ListItem, _factory: &gtk::ListItemFactory) {
             let row = PpsSidebarAnnotationsRow::new();
-            let gesture = gtk::GestureClick::builder().button(gdk::BUTTON_SECONDARY).build();
-
-            gesture.connect_pressed(glib::clone!(
-                #[weak(rename_to = obj)]
-                self,
-                #[weak]
-                item,
-                move |_, _, x, y| {
-                    let annot = item.item().and_downcast::<AnnotationMarkup>().unwrap();
-                    let document_view = obj
-                        .obj()
-                        .ancestor(PpsDocumentView::static_type())
-                        .and_downcast::<PpsDocumentView>()
-                        .unwrap();
-                    let row = item.child().unwrap();
-
-                    document_view.handle_annot_popup(&annot);
-
-                    let point = row
-                        .compute_point(
-                            &obj.popup.parent().unwrap(),
-                            &graphene::Point::new(x as f32, y as f32),
-                        )
-                        .unwrap();
-
-                    obj.popup.set_pointing_to(Some(&gdk::Rectangle::new(
-                        point.x() as i32,
-                        point.y() as i32,
-                        1,
-                        1,
-                    )));
-                    obj.popup.popup();
-                }
-            ));
-
-            row.add_controller(gesture);
             item.set_child(Some(&row));
         }
 
