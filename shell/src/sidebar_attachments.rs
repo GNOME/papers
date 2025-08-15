@@ -147,21 +147,22 @@ mod imp {
         }
 
         #[template_callback]
-        fn button_clicked(&self, _n_press: i32, x: f64, y: f64, click: &gtk::GestureClick) {
+        fn button_clicked(&self, _n_press: i32, x: f64, y: f64, gesture: &gtk::GestureClick) {
             let Some(selection) = self.list_view.model() else {
                 return;
             };
 
             let point = gtk::graphene::Point::new(x as f32, y as f32);
 
-            if click
+            if gesture
                 .widget()
                 .and_then(|w| w.compute_point(self.list_view.upcast_ref::<gtk::Widget>(), &point))
                 .and_then(|point| {
                     self.list_view
                         .pick(point.x() as f64, point.y() as f64, gtk::PickFlags::DEFAULT)
                 })
-                .is_none()
+                .as_ref()
+                == Some(self.list_view.upcast_ref::<gtk::Widget>())
             {
                 selection.unselect_all();
             }
