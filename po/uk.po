@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-03 14:55+0000\n"
-"PO-Revision-Date: 2025-08-03 20:25+0300\n"
+"POT-Creation-Date: 2025-08-15 11:56+0000\n"
+"PO-Revision-Date: 2025-08-16 17:25+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:359
 msgid "Document Viewer"
-msgstr "Переглядач документів"
+msgstr "Преглядач документів"
 
 #: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
@@ -57,7 +57,8 @@ msgstr ""
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
 msgstr ""
-"URI до каталогу, в котрому востаннє відкривався або зберігався документ"
+"Адреса каталогу, який востаннє було використано для відкриття або збереження"
+" документа"
 
 #: data/org.gnome.Papers.gschema.xml:23
 msgid "The URI of the directory last used to save a picture"
@@ -462,14 +463,14 @@ msgstr "%s, книжкова (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, альбомна (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Помилка при створенні тимчасового файла: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "Невідомий тип MIME"
 
@@ -1321,9 +1322,10 @@ msgid "C_ase Sensitive"
 msgstr "З урахуванням _регістру"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
+#| msgid "File"
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Відкриття, закриття, збереження і друк"
+msgid "File"
+msgstr "Файл"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1381,9 +1383,10 @@ msgid "Caret Navigation"
 msgstr "Навігація з курсором"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
+#| msgid "Select"
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Позначення і копіювання тексту"
+msgid "Selection"
+msgstr "Вибір"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1396,9 +1399,10 @@ msgid "Select All"
 msgstr "Позначити все"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
+#| msgid "No Annotations"
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Показування"
+msgid "Zoom and Rotation"
+msgstr "Масштабування і обертання"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1446,9 +1450,11 @@ msgid "Automatic Zoom"
 msgstr "Автоматичне масштабування"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
+#| msgctxt "shortcut window"
+#| msgid "Caret Navigation"
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Пересуватися документом"
+msgid "Navigation"
+msgstr "Навігація"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1511,9 +1517,10 @@ msgid "Go to Document End"
 msgstr "Перейти до кінця документа"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
+#| msgid "Document View"
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Перегляд і робота з документом"
+msgid "Document View"
+msgstr "Перегляд документа"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1576,9 +1583,10 @@ msgid "Underline Text"
 msgstr "Підкреслити текст"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
+#| msgid "Search"
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Пошук тексту"
+msgid "Search"
+msgstr "Пошук"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -1806,7 +1814,6 @@ msgid "The attachment could not be saved."
 msgstr "Долучення зберегти неможливо."
 
 #: shell/src/document_view/io.rs:269
-#| msgid "Digital Signature is invalid!"
 msgid "Digital signature is invalid"
 msgstr "Цифровий підпис є некоректним"
 
@@ -2024,6 +2031,30 @@ msgstr "Строк дії сертифіката"
 msgid "Hide Details…"
 msgstr "Приховати подробиці…"
 
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Відкриття, закриття, збереження і друк"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Позначення і копіювання тексту"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Показування"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Пересуватися документом"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Перегляд і робота з документом"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Пошук тексту"
+
 #~ msgid "Scroll Up"
 #~ msgstr "Прокрутка вверх"
 
@@ -2035,9 +2066,6 @@ msgstr "Приховати подробиці…"
 
 #~ msgid "Scroll View Down"
 #~ msgstr "Прокрутка документа вниз"
-
-#~ msgid "Document View"
-#~ msgstr "Перегляд документа"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
