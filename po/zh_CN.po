@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-04 06:46+0000\n"
-"PO-Revision-Date: 2025-08-04 18:52+0800\n"
+"POT-Creation-Date: 2025-08-16 19:50+0000\n"
+"PO-Revision-Date: 2025-08-17 07:42+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -455,14 +455,14 @@ msgstr "%s，纵向（%s）"
 msgid "%s, Landscape (%s)"
 msgstr "%s，横向（%s）"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "无法创建临时文件：%s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "未知的 MIME 类型"
 
@@ -1306,8 +1306,8 @@ msgstr "区分大小写(_A)"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "打开、关闭、保存和打印"
+msgid "File"
+msgstr "文件"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1366,8 +1366,8 @@ msgstr "脱字符导航"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "选择和复制文本"
+msgid "Selection"
+msgstr "选择"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1381,8 +1381,8 @@ msgstr "全选"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "旋转和缩放"
+msgid "Zoom and Rotation"
+msgstr "缩放和旋转"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1431,8 +1431,8 @@ msgstr "自动缩放"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "浏览文档"
+msgid "Navigation"
+msgstr "导航"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1496,8 +1496,8 @@ msgstr "转到文档末尾"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "文档视图和处理"
+msgid "Document View"
+msgstr "文档视图"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1561,8 +1561,8 @@ msgstr "下划线"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "查找文本"
+msgid "Search"
+msgstr "搜索"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -2029,6 +2029,30 @@ msgstr "证书到期时间"
 msgid "Hide Details…"
 msgstr "隐藏详情…"
 
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "打开、关闭、保存和打印"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "选择和复制文本"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "旋转和缩放"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "浏览文档"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "文档视图和处理"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "查找文本"
+
 #~ msgid "Scroll Up"
 #~ msgstr "向上滚动"
 
@@ -2040,9 +2064,6 @@ msgstr "隐藏详情…"
 
 #~ msgid "Scroll View Down"
 #~ msgstr "向下滚动视图"
-
-#~ msgid "Document View"
-#~ msgstr "文档视图"
 
 #~ msgid "_About Papers"
 #~ msgstr "关于 Papers(_A)"
