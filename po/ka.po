@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-05 11:59+0000\n"
-"PO-Revision-Date: 2025-08-06 01:07+0200\n"
+"POT-Creation-Date: 2025-08-15 11:56+0000\n"
+"PO-Revision-Date: 2025-08-16 13:20+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -452,14 +452,14 @@ msgstr "%s, პორტრეტი (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, ლანდშაფტი (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "დროებითი ფაილის შექმნის შეცდომა: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "უცნობი MIME ტიპი"
 
@@ -1311,8 +1311,8 @@ msgstr "რეგისტრის გათვალისწინება"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "გახსნა, დახურვა, შენახვა და დაბეჭდვა"
+msgid "File"
+msgstr "ფაილი"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1371,8 +1371,8 @@ msgstr "კარეტით ნავიგაცია"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "ტექსტის მონიშვნა და კოპირება"
+msgid "Selection"
+msgstr "მონიშნული"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1386,8 +1386,8 @@ msgstr "ყველაფრის მონიშვნა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "შემობრუნება და გადიდება"
+msgid "Zoom and Rotation"
+msgstr "გადიდება და მობრუნება"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1436,8 +1436,8 @@ msgstr "ავტომატური გადიდება"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "დოკუმენტში მოძრაობა"
+msgid "Navigation"
+msgstr "ნავიგაცია"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1501,8 +1501,8 @@ msgstr "გადასვლა დოკუმენტის ბოლოშ�
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "დოკუმენტის ნახვა და დამუშავება"
+msgid "Document View"
+msgstr "დოკუმენტის ხედი"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1566,8 +1566,8 @@ msgstr "ტექსტის ხაზგასმა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "ტექსტის ძებნა"
+msgid "Search"
+msgstr "ძებნა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -2014,6 +2014,30 @@ msgstr "სერტიფიკატის ვადის გასვლი�
 msgid "Hide Details…"
 msgstr "დეტალების დამალვა…"
 
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "გახსნა, დახურვა, შენახვა და დაბეჭდვა"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "ტექსტის მონიშვნა და კოპირება"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "შემობრუნება და გადიდება"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "დოკუმენტში მოძრაობა"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "დოკუმენტის ნახვა და დამუშავება"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "ტექსტის ძებნა"
+
 #~ msgid "Scroll Up"
 #~ msgstr "ზემოთ"
 
@@ -2025,9 +2049,6 @@ msgstr "დეტალების დამალვა…"
 
 #~ msgid "Scroll View Down"
 #~ msgstr "ჩვენება ქვემოთ"
-
-#~ msgid "Document View"
-#~ msgstr "დოკუმენტის ნახვა"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
