@@ -22,17 +22,17 @@
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
 # Daniel Dias Rodrigues <danieldiasr@gmail.com>, 2025.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
-# Álvaro Burns <>, 2025.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
+# Álvaro Burns <>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-05 00:43+0000\n"
-"PO-Revision-Date: 2025-08-05 08:57-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
-"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
+"POT-Creation-Date: 2025-08-15 11:56+0000\n"
+"PO-Revision-Date: 2025-08-15 19:37-0300\n"
+"Last-Translator: Álvaro Burns <>\n"
+"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -486,14 +486,14 @@ msgstr "%s, Retrato (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, Paisagem (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Falha ao criar um arquivo temporário: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "Tipo MIME desconhecido"
 
@@ -1357,8 +1357,8 @@ msgstr "Diferenciar maiúsculas e minúsculas"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Abrir, fechar, salvar e imprimir"
+msgid "File"
+msgstr "Arquivo"
 
 #  Título da página
 #: shell/resources/pps-shortcuts-dialog.blp:9
@@ -1418,8 +1418,8 @@ msgstr "Navegação por cursor"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Seleção e cópia de texto"
+msgid "Selection"
+msgstr "Seleção"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1433,8 +1433,8 @@ msgstr "Seleciona tudo"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Rotação e ampliação"
+msgid "Zoom and Rotation"
+msgstr "Ampliação e Rotação"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1483,8 +1483,8 @@ msgstr "Ampliação automática"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Movimentação no documento"
+msgid "Navigation"
+msgstr "Navegação"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1548,8 +1548,8 @@ msgstr "Vá para o final do documento"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Visualização e manipulação do documento"
+msgid "Document View"
+msgstr "Visualização do documento"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1614,8 +1614,8 @@ msgstr "Texto sublinhado"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Busca de texto"
+msgid "Search"
+msgstr "Pesquisa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -2089,6 +2089,30 @@ msgstr "Data de expiração do certificado"
 msgid "Hide Details…"
 msgstr "Esconder detalhes…"
 
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Abrir, fechar, salvar e imprimir"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Seleção e cópia de texto"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Rotação e ampliação"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Movimentação no documento"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Visualização e manipulação do documento"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Busca de texto"
+
 #~ msgid "Scroll Up"
 #~ msgstr "Rolar para cima"
 
@@ -2100,9 +2124,6 @@ msgstr "Esconder detalhes…"
 
 #~ msgid "Scroll View Down"
 #~ msgstr "Rolar visualização para baixo"
-
-#~ msgid "Document View"
-#~ msgstr "Visualização do documento"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
