@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-07 07:24+0000\n"
-"PO-Revision-Date: 2025-08-07 09:34+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
+"POT-Creation-Date: 2025-08-19 08:04+0000\n"
+"PO-Revision-Date: 2025-08-19 20:16+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -423,13 +423,13 @@ msgstr "%s, retrait (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, païsatge (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Impossible de crear un fichièr temporari : %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402 libdocument/pps-file-helpers.c:411
-#: libdocument/pps-file-helpers.c:492 libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374 libdocument/pps-file-helpers.c:381
+#: libdocument/pps-file-helpers.c:463 libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "Tipe MIME desconegut"
 
@@ -1255,8 +1255,8 @@ msgstr "Respectar la c_assa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Dobertura, tampadura, enregistrament e impression"
+msgid "File"
+msgstr "Fichièr"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1315,8 +1315,8 @@ msgstr "Navegacion"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Seleccion e còpia del tèxte"
+msgid "Selection"
+msgstr "Seleccion"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1330,8 +1330,8 @@ msgstr "Tot seleccionar"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Rotacion e agrandiment"
+msgid "Zoom and Rotation"
+msgstr "Agrandiment e rotacion"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1380,8 +1380,8 @@ msgstr "Zoom automatic"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Desplaçament dins lo document"
+msgid "Navigation"
+msgstr "Navegacion"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1445,8 +1445,8 @@ msgstr "Anar a la fin del document"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Vista e gestion del document"
+msgid "Document View"
+msgstr "Vista del document"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1510,8 +1510,8 @@ msgstr "Soslinhar lo tèxte"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Recèrca de tèxte"
+msgid "Search"
+msgstr "Recèrca"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -1946,6 +1946,30 @@ msgstr "Data d’expiracion del certificat"
 msgid "Hide Details…"
 msgstr "Amagar los detalhs…"
 
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Dobertura, tampadura, enregistrament e impression"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Seleccion e còpia del tèxte"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Rotacion e agrandiment"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Desplaçament dins lo document"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Vista e gestion del document"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Recèrca de tèxte"
+
 #~ msgid "Scroll Up"
 #~ msgstr "Defilar cap amont"
 
@@ -1957,9 +1981,6 @@ msgstr "Amagar los detalhs…"
 
 #~ msgid "Scroll View Down"
 #~ msgstr "Far defilar la vista cap aval"
-
-#~ msgid "Document View"
-#~ msgstr "Vista del document"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Touchpad Gestures"
