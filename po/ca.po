@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-07 07:35+0000\n"
-"PO-Revision-Date: 2025-08-08 15:32+0200\n"
+"POT-Creation-Date: 2025-08-16 15:09+0000\n"
+"PO-Revision-Date: 2025-08-16 17:13+0200\n"
 "Last-Translator: maite guix <maite.guix@me.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -456,14 +456,14 @@ msgstr "%s, vertical (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, apaïsat (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "No s'ha pogut crear el fitxer temporal: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "Tipus MIME desconegut"
 
@@ -943,17 +943,12 @@ msgid "_Author"
 msgstr "_Autor"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:94
-#, fuzzy
-#| msgid "Auto_scroll"
 msgid "Auto-Reveal on _Scroll"
-msgstr "Desplaça _automàticament"
+msgstr "Revelat automàtic en de_splaçar-se"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:96
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Go to the end of the document"
 msgid "Pop up note while scrolling the document"
-msgstr "Ves al final del document"
+msgstr "Nota emergent mentre es desplaça pel document"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
@@ -1321,11 +1316,10 @@ msgstr "Només paraules _senceres"
 msgid "C_ase Sensitive"
 msgstr "_Distingeix entre majúscules i minúscules"
 
-# N.T.: Títol en la finestra de dreceres
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Obertura, tancament, desament i impressió"
+msgid "File"
+msgstr "Fitxer"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1383,11 +1377,10 @@ msgctxt "shortcut window"
 msgid "Caret Navigation"
 msgstr "Navegació per cursor"
 
-# N.T.: Títol en la finestra de dreceres
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Selecció i còpia de text"
+msgid "Selection"
+msgstr "Selecció"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1401,8 +1394,8 @@ msgstr "Selecciona-ho tot"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Rotació i ampliació"
+msgid "Zoom and Rotation"
+msgstr "Ampliació i rotació"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1451,8 +1444,8 @@ msgstr "Ampliació automàtica"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Moure's pel document"
+msgid "Navigation"
+msgstr "Navegació"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1516,8 +1509,8 @@ msgstr "Ves al final del document"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Visualització i gestió del document"
+msgid "Document View"
+msgstr "Visualització del document"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1581,8 +1574,8 @@ msgstr "Subratlla el text"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Cerca un text"
+msgid "Search"
+msgstr "Cerca"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -2036,6 +2029,32 @@ msgstr "Data de caducitat del certificat"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Amaga els detalls…"
+
+# N.T.: Títol en la finestra de dreceres
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Obertura, tancament, desament i impressió"
+
+# N.T.: Títol en la finestra de dreceres
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Selecció i còpia de text"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Rotació i ampliació"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Moure's pel document"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Visualització i gestió del document"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Cerca un text"
 
 #~ msgid "Scroll Up"
 #~ msgstr "Desplaça cap amunt"
