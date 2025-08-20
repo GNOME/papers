@@ -10,8 +10,8 @@
 msgid ""
 msgstr "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-07-25 10:47+0000\n"
-"PO-Revision-Date: 2025-07-27 10:00+0100\n"
+"POT-Creation-Date: 2025-08-20 02:50+0000\n"
+"PO-Revision-Date: 2025-08-20 10:00+0100\n"
 "Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -176,12 +176,12 @@ msgstr "libarchive liburutegiak ez dauka komikiaren konpresioarentzako euskarrir
 msgid "Can not get local path for archive"
 msgstr "Ezin du artxiboaren bide-izen lokala eskuratu"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:3
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Komikiak"
 
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Komikiak irakurtzeko euskarria gehitzen du"
 
@@ -195,21 +195,21 @@ msgid ""
 "be accessed."
 msgstr "Dokumentua hainbat fitxategirekin osatua dago. Fitxategi bat edo gehiago ezin da atzitu."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:3
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "DjVu dokumentuak"
 
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "DjVu dokumentuak irakurtzeko euskarria gehitzen du"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "PDF dokumentuak"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "PDF dokumentuak irakurtzeko euskarria gehitzen du"
 
@@ -357,12 +357,12 @@ msgstr "%s%s\n"
 "Kodeketa: %s\n"
 "%s"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "TIFF dokumentuak"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "TIFF dokumentuak irakurtzeko euskarria gehitzen du"
 
@@ -432,14 +432,14 @@ msgstr "%s, bertikala (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, horizontala (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Huts egin du aldi baterako fitxategiaren sorrerak: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "MIME mota ezezaguna"
 
@@ -1041,7 +1041,7 @@ msgstr "Aurkeztu diapositiba gisa"
 
 #: shell/resources/pps-document-view.blp:617
 msgid "Sign D_igitally…"
-msgstr "Sinatu modu d_igitalean…"
+msgstr "Sinatze d_igitala…"
 
 #: shell/resources/pps-document-view.blp:624
 msgid "Open a C_opy"
@@ -1276,8 +1276,8 @@ msgstr "M_aiuskulak/minuskulak"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Irekitzea, ixtea, gordetzea eta inprimatzea"
+msgid "File"
+msgstr "Fitxategia"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1336,8 +1336,8 @@ msgstr "Kurtsore-nabigazioa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Testua hautatzea eta kopiatzea"
+msgid "Selection"
+msgstr "Hautapena"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1351,8 +1351,8 @@ msgstr "Hautatu dena"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Biratzea eta zoom egitea"
+msgid "Zoom and Rotation"
+msgstr "Zooma eta biraketa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1401,13 +1401,13 @@ msgstr "Zoom automatikoa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Dokumentuan zehar kokatzea"
+msgid "Navigation"
+msgstr "Nabigazioa"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
 msgid "Move Around Page"
-msgstr "Orri batean kokatzea"
+msgstr "Orrialde batean kokatzea"
 
 #: shell/resources/pps-shortcuts-dialog.blp:135
 msgctxt "shortcut window"
@@ -1466,8 +1466,8 @@ msgstr "Joan dokumentuaren amaierara"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Dokumentua ikustea eta maneiatzea"
+msgid "Document View"
+msgstr "Dokumentuaren ikuspegia"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1531,8 +1531,8 @@ msgstr "Testu azpimarratua"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Testua aurkitzea"
+msgid "Search"
+msgstr "Bilatu"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -1606,19 +1606,19 @@ msgstr "Oharpenaren propietateak"
 msgid "Remove Annotation"
 msgstr "Kendu oharpena"
 
-#: shell/resources/pps-sidebar-links.blp:47
+#: shell/resources/pps-sidebar-links.blp:48
 msgid "Collapse all tree"
 msgstr "Tolestu zuhaitz osoa"
 
-#: shell/resources/pps-sidebar-links.blp:52
+#: shell/resources/pps-sidebar-links.blp:53
 msgid "Expand all tree"
 msgstr "Zabaldu zuhaitz osoa"
 
-#: shell/resources/pps-sidebar-links.blp:57
+#: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
 msgstr "Zabaldu elementu honen azpiko guztia"
 
-#: shell/resources/pps-sidebar-links.blp:64
+#: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
 msgstr "Inprimatu sekzio hau…"
 
@@ -1757,8 +1757,8 @@ msgid "The attachment could not be saved."
 msgstr "Eranskina ezin izan da gorde."
 
 #: shell/src/document_view/io.rs:269
-msgid "Digital Signature is invalid!"
-msgstr "Sinadura digitala ez da baliozkoa."
+msgid "Digital signature is invalid"
+msgstr "Sinadura digitala ez da baliozkoa"
 
 #: shell/src/document_view/io.rs:280
 msgid "The Document Contains No Pages"
@@ -1971,6 +1971,30 @@ msgstr "Ziurtagiriaren iraungitze-ordua"
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Ezkutatu xehetasunak…"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Irekitzea, ixtea, gordetzea eta inprimatzea"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Testua hautatzea eta kopiatzea"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Biratzea eta zoom egitea"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Dokumentuan zehar kokatzea"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Dokumentua ikustea eta maneiatzea"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Testua aurkitzea"
 
 #~ msgid "Scroll Up"
 #~ msgstr "Korritu gora"
