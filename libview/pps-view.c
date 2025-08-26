@@ -102,6 +102,8 @@ typedef struct
 
 #define BUTTON_MODIFIER_MASK (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK | GDK_BUTTON5_MASK)
 
+#define PPS_STYLE_CLASS_INVERTED "inverted"
+
 /*** Geometry computations ***/
 static void get_page_y_offset (PpsView *view,
                                int page,
@@ -5272,6 +5274,18 @@ accent_changed_cb (PpsView *view)
 	}
 }
 
+static void
+pps_view_inverted_changed_cb (PpsDocumentModel *model,
+                              GParamSpec *pspec,
+                              PpsView *view)
+{
+	if (pps_document_model_get_inverted_colors (model)) {
+		gtk_widget_add_css_class (GTK_WIDGET (view), PPS_STYLE_CLASS_INVERTED);
+	} else {
+		gtk_widget_remove_css_class (GTK_WIDGET (view), PPS_STYLE_CLASS_INVERTED);
+	}
+}
+
 #ifdef HAVE_TRANSPARENT_SELECTION
 static void
 state_flags_changed_cb (PpsView *view,
@@ -6304,6 +6318,12 @@ pps_view_set_model (PpsView *view,
 	g_signal_connect (priv->model, "page-changed",
 	                  G_CALLBACK (pps_view_page_changed_cb),
 	                  view);
+	g_signal_connect (priv->model, "notify::inverted-colors",
+	                  G_CALLBACK (pps_view_inverted_changed_cb),
+	                  view);
+
+	if (pps_document_model_get_inverted_colors (priv->model))
+		gtk_widget_add_css_class (GTK_WIDGET (view), PPS_STYLE_CLASS_INVERTED);
 }
 
 static void
