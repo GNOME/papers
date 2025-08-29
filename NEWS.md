@@ -1,3 +1,10 @@
+Papers 49.rc
+----------------
+* Some changes we can highlight:
+  - Various memory leak fix (nibon7)
+  - Simplify section names in shortcuts dialog (Urtsi Santsi)
+  - Switch to image-rs in thumbnailer due to sandbox limitation (lbaudin)
+
 Papers 49.beta
 ----------------
 * Potentially of interest to packaging and other downstreams might be:
