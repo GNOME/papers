@@ -3,6 +3,7 @@
 use std::process::ExitCode;
 
 use gio::prelude::FileExt;
+use image::{ImageBuffer, ImageFormat, Rgb, Rgba};
 use papers_document::prelude::DocumentExt;
 use papers_document::RenderAnnotsFlags;
 
@@ -136,8 +137,27 @@ fn render_thumbnail_to_file(
         RenderAnnotsFlags::ALL,
     );
     let pixbuf = document.thumbnail(&render_ctxt)?;
+    let data = pixbuf.read_pixel_bytes().to_vec();
+    let stride = pixbuf.rowstride() as u32;
+    let n_channels = pixbuf.n_channels() as u32;
+    let (width, height) = (pixbuf.width() as u32, pixbuf.height() as u32);
 
-    //TODO: rust gdk_pixbuf does not have save()
-    pixbuf.savev(thumbnail_path, "png", &[]).ok()?;
-    Some(())
+    let pixel = |x, y| {
+        &data[(y * stride + x * n_channels) as usize..(y * stride + (x + 1) * n_channels) as usize]
+    };
+
+    // As in a pixbuf the stride may be different from width * n_channels,
+    // we cannot use image::ImageBuffer::from_vec directly and we have to
+    // enumerate all pixels
+    // Since this is statically typed, it is necessary to have two copies
+    // of this code: one for 3-channels pixbuf and another one for 4-channels one
+    match n_channels {
+        4 => ImageBuffer::from_fn(width, height, |x, y| Rgba(pixel(x, y).try_into().unwrap()))
+            .save_with_format(thumbnail_path, ImageFormat::Png)
+            .ok(),
+        3 => ImageBuffer::from_fn(width, height, |x, y| Rgb(pixel(x, y).try_into().unwrap()))
+            .save_with_format(thumbnail_path, ImageFormat::Png)
+            .ok(),
+        _ => None,
+    }
 }
