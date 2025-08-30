@@ -19,10 +19,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-07-04 21:58+0000\n"
-"PO-Revision-Date: 2025-07-10 11:08+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-08-24 11:10+0000\n"
+"PO-Revision-Date: 2025-08-30 14:08+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -30,29 +29,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:3
+#: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
 #: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:310
+#: shell/src/application.rs:68 shell/src/application.rs:322
 #: shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
 msgid "Papers"
 msgstr "Papers"
 
-#: data/org.gnome.Papers.desktop.in.in:4
+#: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
 msgstr "Zobrazovat dokumenty po více stránkách"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Papers.desktop.in.in:6
+#: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr "pdf;djvu;tiff;dokument;prezentace;prohlížeč;papers;"
 
-#: data/org.gnome.Papers.desktop.in.in:21
+#: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -165,11 +164,11 @@ msgstr "Velké miniatury v postranním panelu"
 msgid "All search actions are contained in the sidebar"
 msgstr "Všechny akce hledání jsou obsaženy v postranním panelu"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:3
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Náhled tisku"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:4
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Preview before printing"
 msgstr "Náhled před vytištěním"
 
@@ -207,7 +206,7 @@ msgstr ""
 msgid "Can not get local path for archive"
 msgstr "Nelze získat místní cestu k archivu"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Komiksy"
@@ -228,7 +227,7 @@ msgstr ""
 "Dokument se skládá z několika souborů. K jednomu nebo více souborům se "
 "nepodařilo přistoupit."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "Dokumenty DjVu"
@@ -238,7 +237,7 @@ msgid "Adds support for reading DjVu documents"
 msgstr "Přidává podporu pro čtení dokumentů DjVu"
 
 #: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "Dokumenty PDF"
 
@@ -396,7 +395,7 @@ msgstr ""
 "%s"
 
 #: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "Dokumenty TIFF"
 
@@ -660,51 +659,51 @@ msgstr "Posunout pohled dolů"
 msgid "Document View"
 msgstr "Pohled na dokument"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2116
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2118
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2120
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2122
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2124
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2126
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2151
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2161
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2168
+#: libview/pps-view.c:2172
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2175
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
@@ -815,7 +814,7 @@ msgstr "Normální velikost"
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:105
+#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:106
 msgid "Failed to Print Document"
 msgstr "Nepodařilo se vytisknout dokument"
 
@@ -1627,7 +1626,7 @@ msgstr "Podpi_sy"
 
 #: shell/resources/pps-search-box.ui:15
 msgid "Search in document"
-msgstr "Hledat v dokumentu"
+msgstr "hledat v dokumentu"
 
 #: shell/resources/pps-search-box.ui:34
 msgid "Search Options"
@@ -1708,43 +1707,43 @@ msgstr ""
 "Adam Matoušek <adydas95@gmail.com>\n"
 "Daniel Rusek <mail@asciiwolf.com>"
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:329
 msgid "The page label of the document to display."
 msgstr "Popisek stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:318
+#: shell/src/application.rs:330
 msgid "PAGE"
 msgstr "STRÁNKA"
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:338
 msgid "The page number of the document to display."
 msgstr "Číslo stránky dokumentu, která se má zobrazit."
 
-#: shell/src/application.rs:327
+#: shell/src/application.rs:339
 msgid "NUMBER"
 msgstr "ČÍSLO"
 
-#: shell/src/application.rs:335
+#: shell/src/application.rs:347
 msgid "Named destination to display."
 msgstr "Pojmenované umístění k zobrazení."
 
-#: shell/src/application.rs:336
+#: shell/src/application.rs:348
 msgid "DEST"
 msgstr "MÍSTO"
 
-#: shell/src/application.rs:344
+#: shell/src/application.rs:356
 msgid "Run papers in fullscreen mode."
 msgstr "Spustit Papers v celoobrazovkovém režimu."
 
-#: shell/src/application.rs:353
+#: shell/src/application.rs:365
 msgid "Run papers in presentation mode."
 msgstr "Spustit Papers v prezentačním režimu."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:374
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: shell/src/application.rs:372
+#: shell/src/application.rs:384
 msgid "[FILE…]"
 msgstr "[SOUBOR…]"
 
@@ -1885,13 +1884,6 @@ msgstr "Tiskne se úloha „{}“"
 msgid "No pending jobs in queue"
 msgstr "Žádné nevyřízené úlohy ve frontě"
 
-#: shell/src/document_view/print.rs:82
-msgid "{} pending job in queue"
-msgid_plural "{} pending jobs in queue"
-msgstr[0] "{} nevyřízená úloha ve frontě"
-msgstr[1] "{} nevyřízené úlohy ve frontě"
-msgstr[2] "{} nevyřízených úloh ve frontě"
-
 #: shell/src/document_view/signals.rs:225
 msgid "Unable to open external link"
 msgstr "Nepodařilo se otevřít externí odkaz"
@@ -2021,6 +2013,12 @@ msgstr "Doba vystavení certifikátu"
 #: shell/src/properties_signatures.rs:321
 msgid "Certificate's Expiration Time"
 msgstr "Doba platnosti certifikátu"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "{} nevyřízená úloha ve frontě"
+#~ msgstr[1] "{} nevyřízené úlohy ve frontě"
+#~ msgstr[2] "{} nevyřízených úloh ve frontě"
 
 #~ msgid "({} of {})"
 #~ msgstr "({} z {})"
