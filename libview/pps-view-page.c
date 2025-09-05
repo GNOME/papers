@@ -1335,6 +1335,15 @@ pps_view_page_dispose (GObject *object)
 	PpsViewPage *page = PPS_VIEW_PAGE (object);
 	PpsViewPagePrivate *priv = GET_PRIVATE (page);
 
+	if (priv->model != NULL)
+		g_signal_handlers_disconnect_by_data (priv->model, page);
+	if (priv->pixbuf_cache != NULL)
+		g_signal_handlers_disconnect_by_data (priv->pixbuf_cache, page);
+	if (priv->search_context != NULL)
+		g_signal_handlers_disconnect_by_data (priv->search_context, page);
+	if (priv->annots_context != NULL)
+		g_signal_handlers_disconnect_by_data (priv->annots_context, page);
+
 	g_clear_object (&priv->model);
 	g_clear_object (&priv->pixbuf_cache);
 	g_clear_object (&priv->page_cache);
