@@ -34,6 +34,12 @@ pps_element_widget_factory_dispose (GObject *object)
 	PpsElementWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
 	PpsElementWidgetFactoryClass *factory_class = PPS_ELEMENT_WIDGET_FACTORY_GET_CLASS (factory);
 
+	if (priv->model != NULL)
+		g_signal_handlers_disconnect_by_data (priv->model, factory);
+
+	if (priv->pixbuf_cache != NULL)
+		g_signal_handlers_disconnect_by_data (priv->pixbuf_cache, factory);
+
 	if (priv->page_widgets) {
 		for (gint i = 0; i < priv->page_widgets->len; i++) {
 			PpsViewPage *page = g_ptr_array_index (priv->page_widgets, i);
