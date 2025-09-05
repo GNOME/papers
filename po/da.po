@@ -12,10 +12,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-02-12 14:21+0000\n"
-"PO-Revision-Date: 2025-02-16 11:43+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-08-18 10:55+0000\n"
+"PO-Revision-Date: 2025-08-18 17:45+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -26,25 +25,24 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:3
-#: data/org.gnome.Papers.metainfo.xml.in.in:23
-#: previewer/pps-previewer-window.c:488 shell/resources/pps-document-view.ui:80
-#: shell/resources/pps-loader-view.ui:10 shell/src/application.rs:45
-#: shell/src/application.rs:68 shell/src/application.rs:300
-#: shell/src/document_view/io.rs:198 shell/src/document_view/io.rs:199
-msgid "Papers"
-msgstr "Papers"
+#: data/org.gnome.Papers.desktop.in.in:2
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:359
+msgid "Document Viewer"
+msgstr "Dokumentfremviser"
 
-#: data/org.gnome.Papers.desktop.in.in:4
+#: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
 msgstr "Vis dokumenter med flere sider"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Papers.desktop.in.in:6
+#: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr "pdf;djvu;tiff;dokument;præsentation;fremviser;papers;"
 
-#: data/org.gnome.Papers.desktop.in.in:21
+#: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
 msgstr "Nyt vindue"
 
@@ -118,11 +116,11 @@ msgstr ""
 "Vis første side (ulige side) til venstre, når to sider vises ved siden af "
 "hinanden"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:24
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
 msgstr "Læs dokumenter"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:26
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
 msgid ""
 "A document viewer for the GNOME desktop. You can view, search or annotate "
 "documents in many different formats."
@@ -130,7 +128,7 @@ msgstr ""
 "En dokumentfremviser til GNOME-skrivebordet. Du kan vise, søge og skrive "
 "noter i dokumenter i mange forskellige dokumentformater."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:27
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
 "Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
 "(CBR, CBT, CBZ, CB7)."
@@ -138,57 +136,57 @@ msgstr ""
 "Papers understøtter følgende dokumentformater: PDF, DjVu, TIFF og "
 "tegneseriearkiver (CBR, CBT, CBZ, CB7)."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:43
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
 msgid "A clear, simple, and modern UI"
 msgstr "En ren, enkel og moderne brugerflade"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:47
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
 msgid "A mobile-friendly UI"
 msgstr "En mobilvenlig brugerflade"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:51
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
 msgid "A modern and colorful annotation list"
 msgstr "En moderne og farverig annoteringsliste"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:55
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
 msgid "Big thumbnails in the sidebar"
 msgstr "Store miniaturer i sidebjælken"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:59
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Alle søgehandlinger er indeholdt i sidebjælken"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:3
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Forhåndsvisning af udskrift"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:4
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Preview before printing"
 msgstr "Forhåndsvisning før udskrift"
 
-#: libdocument/backend/comics/comics-document.c:192
-#: libdocument/backend/comics/comics-document.c:261
+#: libdocument/backend/comics/comics-document.c:179
+#: libdocument/backend/comics/comics-document.c:248
 msgid "File is corrupted"
 msgstr "Filen er ødelagt"
 
-#: libdocument/backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:238
 msgid "Archive is encrypted"
 msgstr "Arkivet er krypteret"
 
-#: libdocument/backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:243
 msgid "No supported images in archive"
 msgstr "Ingen understøttede billeder i arkivet"
 
-#: libdocument/backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:253
 msgid "No files in archive"
 msgstr "Ingen filer i arkivet"
 
-#: libdocument/backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:302
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Ikke en MIME-type for en tegneserie: %s"
 
-#: libdocument/backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:309
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -196,24 +194,24 @@ msgstr ""
 "libarchive mangler understøttelse af denne tegneseries komprimering – "
 "kontakt venligst din distributør"
 
-#: libdocument/backend/comics/comics-document.c:359
+#: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
 msgstr "Kan ikke hente lokal sti for arkivet"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Tegneserier"
 
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Tilføjer understøttelse for tegneserier"
 
-#: libdocument/backend/djvu/djvu-document.c:181
+#: libdocument/backend/djvu/djvu-document.c:173
 msgid "DjVu document has incorrect format"
 msgstr "DjVu-dokument har ugyldigt format"
 
-#: libdocument/backend/djvu/djvu-document.c:268
+#: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
@@ -221,71 +219,71 @@ msgstr ""
 "Dokumentet er sammensat af adskillige filer. En eller flere af disse filer "
 "kan ikke tilgås."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "DjVu-dokumenter"
 
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Tilføjer understøttelse af DjVu-dokumenter"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "PDF-dokumenter"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Tilføjer understøttelse af PDF-dokumenter"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:765
-#: libdocument/backend/pdf/pps-poppler.c:771
-#: nautilus/pps-nautilus-extension.c:119 shell/src/properties_general.rs:183
+#: libdocument/backend/pdf/pps-poppler.c:741
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:768
-#: libdocument/backend/pdf/pps-poppler.c:771
-#: nautilus/pps-nautilus-extension.c:121 shell/src/properties_general.rs:184
+#: libdocument/backend/pdf/pps-poppler.c:744
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Nej"
 
-#: libdocument/backend/pdf/pps-poppler.c:878
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:880
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:882
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:884
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:886
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:888
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:890
+#: libdocument/backend/pdf/pps-poppler.c:869
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:892
+#: libdocument/backend/pdf/pps-poppler.c:871
 msgid "Unknown font type"
 msgstr "Ukendt skrifttype"
 
-#: libdocument/backend/pdf/pps-poppler.c:936
+#: libdocument/backend/pdf/pps-poppler.c:915
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -296,11 +294,11 @@ msgstr ""
 "vælger, ikke er de samme, som de skrifttyper der blev brugt til at danne "
 "PDF'en, vil gengivelsen muligvis ikke blive korrekt."
 
-#: libdocument/backend/pdf/pps-poppler.c:941
+#: libdocument/backend/pdf/pps-poppler.c:920
 msgid "All fonts are either standard or embedded."
 msgstr "Alle skrifttyper er enten standard eller indlejrede."
 
-#: libdocument/backend/pdf/pps-poppler.c:972
+#: libdocument/backend/pdf/pps-poppler.c:956
 msgid "No name"
 msgstr "Intet navn"
 
@@ -308,20 +306,21 @@ msgstr "Intet navn"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:981 libview/pps-print-operation.c:1903
-#: shell/src/properties_general.rs:86 shell/src/properties_general.rs:217
+#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Ingen"
 
-#: libdocument/backend/pdf/pps-poppler.c:989
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Embedded subset"
 msgstr "Indlejret delmængde"
 
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:975
 msgid "Embedded"
 msgstr "Indlejret"
 
-#: libdocument/backend/pdf/pps-poppler.c:993
+#: libdocument/backend/pdf/pps-poppler.c:977
 msgid "Not embedded"
 msgstr "Ikke indlejret"
 
@@ -330,7 +329,7 @@ msgstr "Ikke indlejret"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1000
+#: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (En af de 14 standardskrifttyper)"
 
@@ -339,7 +338,7 @@ msgstr " (En af de 14 standardskrifttyper)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1007
+#: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ikke en af de 14 standardskrifttyper)"
 
@@ -353,7 +352,7 @@ msgstr " (Ikke en af de 14 standardskrifttyper)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1026
+#: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
 "%s%s\n"
@@ -377,7 +376,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1044
+#: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
 "%s%s\n"
@@ -388,50 +387,44 @@ msgstr ""
 "Kodning: %s\n"
 "%s"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "TIFF-dokumenter"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Tilføjer understøttelse af TIFF-dokumenter"
 
-#: libdocument/backend/tiff/tiff-document.c:105
+#: libdocument/backend/tiff/tiff-document.c:97
 msgid "Invalid document"
 msgstr "Ugyldig dokument"
 
-#: libdocument/pps-attachment.c:304 libdocument/pps-attachment.c:325
+#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Kunne ikke gemme bilaget “%s”: %s"
 
-#: libdocument/pps-attachment.c:362
+#: libdocument/pps-attachment.c:349
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Kunne ikke åbne bilaget “%s”: %s"
 
-#: libdocument/pps-attachment.c:399
+#: libdocument/pps-attachment.c:386
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Kunne ikke åbne bilaget “%s”"
 
-#: libdocument/pps-document-factory.c:100
+#: libdocument/pps-document-factory.c:86
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Filtype %s (%s) er ikke understøttet"
 
-#: libdocument/pps-document-factory.c:370 libdocument/pps-file-helpers.c:371
-#: libdocument/pps-file-helpers.c:417 libdocument/pps-file-helpers.c:426
-#: libdocument/pps-file-helpers.c:507 libdocument/pps-file-helpers.c:516
-msgid "Unknown MIME Type"
-msgstr "Ukendt MIME-type"
-
-#: libdocument/pps-document-factory.c:500
+#: libdocument/pps-document-factory.c:392
 msgid "All Documents"
 msgstr "Alle dokumenter"
 
-#: libdocument/pps-document-factory.c:528
+#: libdocument/pps-document-factory.c:420
 msgid "All Files"
 msgstr "Alle filer"
 
@@ -441,137 +434,142 @@ msgstr "Alle filer"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: libdocument/pps-document-info.c:212
+#: libdocument/pps-document-info.c:198
 msgid "default:mm"
 msgstr "default:mm"
 
-#: libdocument/pps-document-info.c:264
+#: libdocument/pps-document-info.c:250
 #, c-format
 msgid "%.0f × %.0f mm"
 msgstr "%.0f × %.0f mm"
 
-#: libdocument/pps-document-info.c:268
+#: libdocument/pps-document-info.c:254
 #, c-format
 msgid "%.2f × %.2f inch"
 msgstr "%.2f × %.2f tommer"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:292
+#: libdocument/pps-document-info.c:278
 #, c-format
 msgid "%s, Portrait (%s)"
 msgstr "%s, Portræt (%s)"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:299
+#: libdocument/pps-document-info.c:285
 #, c-format
 msgid "%s, Landscape (%s)"
 msgstr "%s, Landskab (%s)"
 
-#: libdocument/pps-file-helpers.c:148
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Kunne ikke oprette en midlertidig fil: %s"
 
-#: libdocument/pps-xmp.c:201
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
+msgid "Unknown MIME Type"
+msgstr "Ukendt MIME-type"
+
+#: libdocument/pps-xmp.c:188
 msgid "This work is in the Public Domain"
 msgstr "Dette værk er i public domain"
 
-#: libview/context/pps-attachment-context.c:348
-#: shell/src/document_view/actions.rs:1001
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Gem bilag"
 msgstr[1] "Gem bilag"
 
-#: libview/context/pps-history.c:487 previewer/pps-page-selector.c:194
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
 #, c-format
 msgid "Page %s"
 msgstr "Side %s"
 
-#: libview/pps-annotation-window.c:270
+#: libview/pps-annotation-window.c:237
 msgid "Edit Note"
 msgstr "Redigér note"
 
-#: libview/pps-jobs.c:436
+#: libview/pps-jobs.c:399
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Kunne ikke gengive side %d: %s"
 
-#: libview/pps-jobs.c:443
+#: libview/pps-jobs.c:406
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Kunne ikke gengive side %d"
 
-#: libview/pps-jobs.c:661
+#: libview/pps-jobs.c:625
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Kunne ikke oprette minuature for side %d"
 
-#: libview/pps-jobs.c:1646
+#: libview/pps-jobs.c:1602
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Kunne ikke udskrive side %d: %s"
 
 #. Initial state
-#: libview/pps-print-operation.c:344
+#: libview/pps-print-operation.c:331
 msgid "Preparing preview…"
 msgstr "Forbereder forhåndsvisning …"
 
-#: libview/pps-print-operation.c:346 libview/pps-print-operation.c:356
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
 msgid "Finishing…"
 msgstr "Færdiggør …"
 
-#: libview/pps-print-operation.c:348
+#: libview/pps-print-operation.c:335
 #, c-format
 msgid "Generating preview: page %d of %d"
 msgstr "Genererer forhåndsvisning: side %d af %d"
 
 #. Initial state
-#: libview/pps-print-operation.c:354
+#: libview/pps-print-operation.c:341
 msgid "Preparing to print…"
 msgstr "Forbereder udskrift …"
 
-#: libview/pps-print-operation.c:358
+#: libview/pps-print-operation.c:345
 #, c-format
 msgid "Printing page %d of %d…"
 msgstr "Udskriver side %d af %d …"
 
-#: libview/pps-print-operation.c:1359
+#: libview/pps-print-operation.c:1334
 msgid "Invalid Page Selection"
 msgstr "Ugyldigt sidevalg"
 
-#: libview/pps-print-operation.c:1360
+#: libview/pps-print-operation.c:1335
 msgid "Your print range selection does not include any pages"
 msgstr "Det valgte udskriftsinterval indeholder ingen sider"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1361 previewer/pps-previewer-window.ui:91
-#: shell/resources/pps-annotation-properties-dialog.ui:87
-#: shell/resources/pps-document-view.ui:589 shell/resources/pps-window.ui:164
-#: shell/src/document_view/io.rs:589
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Luk"
 
 #. translators: Title of the print dialog
-#: libview/pps-print-operation.c:1438
+#: libview/pps-print-operation.c:1413
 msgid "Print"
 msgstr "Udskriv"
 
-#: libview/pps-print-operation.c:1896
+#: libview/pps-print-operation.c:1871
 msgid "Page Scaling:"
 msgstr "Sideskalering:"
 
-#: libview/pps-print-operation.c:1904
+#: libview/pps-print-operation.c:1879
 msgid "Shrink to Printable Area"
 msgstr "Formindsk til printbart område"
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1880
 msgid "Fit to Printable Area"
 msgstr "Tilpas til printbart område"
 
-#: libview/pps-print-operation.c:1912
+#: libview/pps-print-operation.c:1887
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of "
 "the following:\n"
@@ -597,11 +595,11 @@ msgstr ""
 "formindsket i passende grad, således at de passer til printersidens "
 "printbare område.\n"
 
-#: libview/pps-print-operation.c:1923
+#: libview/pps-print-operation.c:1898
 msgid "Auto Rotate and Center"
 msgstr "Autorotér og centrér"
 
-#: libview/pps-print-operation.c:1926
+#: libview/pps-print-operation.c:1901
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -610,11 +608,11 @@ msgstr ""
 "til hver enkelt dokumentside. Dokumentsider vil blive centreret inden for "
 "printersiden."
 
-#: libview/pps-print-operation.c:1930
+#: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
 msgstr "Vælg sidestørrelse ved hjælp af dokumentsidestørrelsen"
 
-#: libview/pps-print-operation.c:1932
+#: libview/pps-print-operation.c:1907
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
@@ -622,719 +620,397 @@ msgstr ""
 "Når dette er slået til, vil hver enkelt side blive udskrevet på den samme "
 "papirstørrelse som dokumentsiden."
 
-#: libview/pps-print-operation.c:1936
+#: libview/pps-print-operation.c:1911
 msgid "Draw border around pages"
 msgstr "Tegn en kant omkring sider"
 
-#: libview/pps-print-operation.c:1938
+#: libview/pps-print-operation.c:1913
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Når aktiveret vil en kant blive tegnet omkring hver side."
 
-#: libview/pps-print-operation.c:2031
+#: libview/pps-print-operation.c:2006
 msgid "Page Handling"
 msgstr "Sidehåndtering"
 
-#: libview/pps-view-accessible.c:42
-msgid "Scroll Up"
-msgstr "Rul op"
-
-#: libview/pps-view-accessible.c:43
-msgid "Scroll Down"
-msgstr "Rul ned"
-
-#: libview/pps-view-accessible.c:48
-msgid "Scroll View Up"
-msgstr "Rul visning op"
-
-#: libview/pps-view-accessible.c:49
-msgid "Scroll View Down"
-msgstr "Rul visning ned"
-
-#: libview/pps-view-accessible.c:126
-msgid "Document View"
-msgstr "Dokumentvisning"
-
-#: libview/pps-view.c:2108
+#: libview/pps-view.c:2107
 msgid "Go to first page"
 msgstr "Gå til første side"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2109
 msgid "Go to previous page"
 msgstr "Gå til forrige side"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2111
 msgid "Go to next page"
 msgstr "Gå til næste side"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2113
 msgid "Go to last page"
 msgstr "Gå til sidste side"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2115
 msgid "Go to page"
 msgstr "Gå til side"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2117
 msgid "Find"
 msgstr "Find"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2146
 #, c-format
 msgid "Go to page %s"
 msgstr "Gå til side %s"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2152
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Gå til %s i filen “%s”"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Gå til filen “%s”"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2163
 #, c-format
 msgid "Launch %s"
 msgstr "Start %s"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Reset form"
 msgstr "Nulstil formular"
 
-#: libview/pps-view-presentation.c:833
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "Kører i præsentationstilstand"
 
-#: libview/pps-view-presentation.c:884
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Slut på præsentation. Tryk Esc eller klik for at afslutte."
 
-#: libview/pps-view-presentation.ui:57
+#: libview/pps-view-presentation.blp:49
 msgid "Jump to page:"
 msgstr "Gå til side:"
 
-#: previewer/pps-page-selector.c:80 previewer/pps-page-selector.c:119
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
 #, c-format
 msgid "(%d of %d)"
 msgstr "(%d af %d)"
 
-#: previewer/pps-page-selector.c:82 previewer/pps-page-selector.c:123
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
 #, c-format
 msgid "of %d"
 msgstr "af %d"
 
-#: previewer/pps-page-selector.ui:12 shell/resources/pps-page-selector.ui:12
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
 msgid "Select page"
 msgstr "Vælg side"
 
-#: previewer/pps-previewer.c:48
+#: previewer/pps-previewer.c:32
 msgid "Delete the temporary file"
 msgstr "Slet den midlertidige fil"
 
-#: previewer/pps-previewer.c:50
+#: previewer/pps-previewer.c:34
 msgid "File specifying print settings"
 msgstr "Fil som angiver udskriftsindstillinger"
 
-#: previewer/pps-previewer.c:50
+#: previewer/pps-previewer.c:34
 msgid "FILE"
 msgstr "FIL"
 
-#: previewer/pps-previewer.c:52
+#: previewer/pps-previewer.c:36
 msgid "File descriptor of input file"
 msgstr "Inputfilens fildeskriptor"
 
-#: previewer/pps-previewer.c:52 previewer/pps-previewer.c:56
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
 msgid "FD"
 msgstr "FD"
 
-#: previewer/pps-previewer.c:54
+#: previewer/pps-previewer.c:38
 msgid "MIME type of input file"
 msgstr "Inputfils MIME-type"
 
-#: previewer/pps-previewer.c:54
+#: previewer/pps-previewer.c:38
 msgid "TYPE"
 msgstr "TYPE"
 
-#: previewer/pps-previewer.c:56
+#: previewer/pps-previewer.c:40
 msgid "File descriptor of print settings file"
 msgstr "Fildeskriptor for fil med udskriftsindstillinger"
 
-#: previewer/pps-previewer.c:280 previewer/pps-previewer.c:296
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
 msgid "GNOME Document Previewer"
 msgstr "Dokumentforhåndsviser til GNOME"
 
-#: previewer/pps-previewer-window.c:187 previewer/pps-previewer-window.c:510
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Dokumentfremviseren Papers"
 
-#: previewer/pps-previewer-window.c:225
+#: previewer/pps-previewer-window.c:209
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Den valgte printer “%s” kunne ikke findes"
 
-#: previewer/pps-previewer-window.ui:22
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
+
+#: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
 msgstr "Forrige side"
 
-#: previewer/pps-previewer-window.ui:29
+#: previewer/pps-previewer-window.blp:25
 msgid "Next Page"
 msgstr "Næste side"
 
-#: previewer/pps-previewer-window.ui:36
-#: shell/resources/pps-document-view.ui:221
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Sidetal"
 
-#: previewer/pps-previewer-window.ui:42
+#: previewer/pps-previewer-window.blp:36
 msgid "_Print"
 msgstr "_Udskriv"
 
-#: previewer/pps-previewer-window.ui:43
+#: previewer/pps-previewer-window.blp:37
 msgid "Print This Document"
 msgstr "Udskriv dette dokument"
 
-#: previewer/pps-previewer-window.ui:53
-#: shell/resources/pps-document-view.ui:304
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Zoom ud"
 
-#: previewer/pps-previewer-window.ui:60
+#: previewer/pps-previewer-window.blp:55
 msgid "Normal Size"
 msgstr "Normal størrelse"
 
-#: previewer/pps-previewer-window.ui:67
-#: shell/resources/pps-document-view.ui:291
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Zoom ind"
 
-#: previewer/pps-previewer-window.ui:89 shell/src/document_view/print.rs:104
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Kunne ikke udskrive dokument"
 
-#: nautilus/pps-nautilus-extension.c:123
-#: shell/resources/pps-annotation-properties-dialog.ui:59
-#: shell/src/properties_general.rs:185
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: nautilus/pps-nautilus-extension.c:168
+#: nautilus/pps-nautilus-extension.c:149
 msgid "Document Properties"
 msgstr "Dokumentegenskaber"
 
-#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "Titel"
 
-#: nautilus/pps-nautilus-extension.h:61
+#: nautilus/pps-nautilus-extension.h:46
 msgid "Location"
 msgstr "Placering"
 
-#: nautilus/pps-nautilus-extension.h:62 shell/src/properties_general.rs:148
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "Emne"
 
-#: nautilus/pps-nautilus-extension.h:63
-#: shell/resources/pps-annotation-properties-dialog.ui:9
-#: shell/src/properties_general.rs:149
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "Forfatter"
 
-#: nautilus/pps-nautilus-extension.h:64 shell/src/properties_general.rs:150
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "Nøgleord"
 
-#: nautilus/pps-nautilus-extension.h:65 shell/src/properties_general.rs:151
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "Producent"
 
-#: nautilus/pps-nautilus-extension.h:66 shell/src/properties_general.rs:152
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "Ophavsmand"
 
-#: nautilus/pps-nautilus-extension.h:67 shell/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "Oprettet"
 
-#: nautilus/pps-nautilus-extension.h:68 shell/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "Ændret"
 
-#: nautilus/pps-nautilus-extension.h:69 shell/src/properties_general.rs:176
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
 msgstr "Antal sider"
 
-#: nautilus/pps-nautilus-extension.h:70 shell/src/properties_general.rs:177
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "Optimeret"
 
-#: nautilus/pps-nautilus-extension.h:71 shell/src/properties_general.rs:173
-#: shell/src/properties_general.rs:175
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "Format"
 
-#: nautilus/pps-nautilus-extension.h:72 shell/src/properties_general.rs:178
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "Sikkerhed"
 
-#: nautilus/pps-nautilus-extension.h:73 shell/src/properties_general.rs:187
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
 msgstr "Indeholder Javascript"
 
-#: nautilus/pps-nautilus-extension.h:74 shell/src/properties_general.rs:179
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "Papirstørrelse"
 
-#: nautilus/pps-nautilus-extension.h:75 shell/src/properties_general.rs:136
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "Størrelse"
 
-#: shell/resources/help-overlay.ui:11
-msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Åbne, lukke, gemme og udskrive"
-
-#: shell/resources/help-overlay.ui:14
-msgctxt "shortcut window"
-msgid "Open Document"
-msgstr "Åbn dokument"
-
-#: shell/resources/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Open Copy of Current Document"
-msgstr "Åbn kopi af det aktuelle dokument"
-
-#: shell/resources/help-overlay.ui:26
-msgctxt "shortcut window"
-msgid "Open With…"
-msgstr "Åbn med …"
-
-#: shell/resources/help-overlay.ui:32
-msgctxt "shortcut window"
-msgid "Save Copy of Current Document"
-msgstr "Gem kopi af det aktuelle dokument"
-
-#: shell/resources/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Print Current Document"
-msgstr "Udskriv aktuelt dokument"
-
-#: shell/resources/help-overlay.ui:44
-msgctxt "shortcut window"
-msgid "Close Current Document Window"
-msgstr "Luk aktuel dokumentvisning"
-
-#: shell/resources/help-overlay.ui:52
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "Vindue"
-
-#: shell/resources/help-overlay.ui:55
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "Fuldskærm"
-
-#: shell/resources/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Enter Presentation Mode"
-msgstr "Start præsentationstilstand"
-
-#: shell/resources/help-overlay.ui:67
-msgctxt "shortcut window"
-msgid "Side Pane"
-msgstr "Siderude"
-
-#: shell/resources/help-overlay.ui:73
-msgctxt "shortcut window"
-msgid "Caret Navigation"
-msgstr "Markørnavigation"
-
-#: shell/resources/help-overlay.ui:81
-msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Markere og kopiere tekst"
-
-#: shell/resources/help-overlay.ui:84
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "Kopiér"
-
-#: shell/resources/help-overlay.ui:90
-msgctxt "shortcut window"
-msgid "Select All"
-msgstr "Markér alt"
-
-#: shell/resources/help-overlay.ui:98
-msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Dreje og zoome"
-
-#: shell/resources/help-overlay.ui:101
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Counter-Clockwise"
-msgstr "Drej siden 90 grader mod uret"
-
-#: shell/resources/help-overlay.ui:107
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Clockwise"
-msgstr "Drej siden 90 grader med uret"
-
-#: shell/resources/help-overlay.ui:113 shell/resources/help-overlay.ui:377
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Zoom ind"
-
-#: shell/resources/help-overlay.ui:119 shell/resources/help-overlay.ui:383
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Zoom ud"
-
-#: shell/resources/help-overlay.ui:125
-msgctxt "shortcut window"
-msgid "Normal Size"
-msgstr "Normal størrelse"
-
-#: shell/resources/help-overlay.ui:131
-msgctxt "shortcut window"
-msgid "Zoom In (Alternative)"
-msgstr "Zoom ind (alternativ)"
-
-#: shell/resources/help-overlay.ui:137
-msgctxt "shortcut window"
-msgid "Fit Page"
-msgstr "Tilpas side"
-
-#: shell/resources/help-overlay.ui:143
-msgctxt "shortcut window"
-msgid "Fit Width"
-msgstr "Tilpas bredde"
-
-#: shell/resources/help-overlay.ui:149
-msgctxt "shortcut window"
-msgid "Automatic Zoom"
-msgstr "Automatisk zoom"
-
-#: shell/resources/help-overlay.ui:157
-msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Finde rundt i dokument"
-
-#: shell/resources/help-overlay.ui:160 shell/resources/help-overlay.ui:166
-msgctxt "shortcut window"
-msgid "Move Around Page"
-msgstr "Flyt rundt på side"
-
-#: shell/resources/help-overlay.ui:172
-msgctxt "shortcut window"
-msgid "Move Up/Down Page Several Lines"
-msgstr "Gå op/ned på side flere linjer ad gangen"
-
-#: shell/resources/help-overlay.ui:178 shell/resources/help-overlay.ui:395
-msgctxt "shortcut window"
-msgid "Previous Page"
-msgstr "Forrige side"
-
-#: shell/resources/help-overlay.ui:184 shell/resources/help-overlay.ui:389
-msgctxt "shortcut window"
-msgid "Next Page"
-msgstr "Næste side"
-
-#: shell/resources/help-overlay.ui:190
-msgctxt "shortcut window"
-msgid "Go to Page Number"
-msgstr "Gå til sidetal"
-
-#: shell/resources/help-overlay.ui:196
-msgctxt "shortcut window"
-msgid "Previous Page (Fast)"
-msgstr "Forrige side (hurtigt)"
-
-#: shell/resources/help-overlay.ui:202
-msgctxt "shortcut window"
-msgid "Next Page (Fast)"
-msgstr "Næste side (hurtigt)"
-
-#: shell/resources/help-overlay.ui:208
-msgctxt "shortcut window"
-msgid "Previous Visited Page"
-msgstr "Forrige sete side"
-
-#: shell/resources/help-overlay.ui:214
-msgctxt "shortcut window"
-msgid "Next Visited Page"
-msgstr "Næste sete side"
-
-#: shell/resources/help-overlay.ui:220
-msgctxt "shortcut window"
-msgid "Go to Page Beginning/End"
-msgstr "Gå til sides begyndelse/slutning"
-
-#: shell/resources/help-overlay.ui:226
-msgctxt "shortcut window"
-msgid "Go to Document Start"
-msgstr "Gå til dokumentstart"
-
-#: shell/resources/help-overlay.ui:232
-msgctxt "shortcut window"
-msgid "Go to Document End"
-msgstr "Gå til dokumentslut"
-
-#: shell/resources/help-overlay.ui:240
-msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Dokumenthåndtering og -visning"
-
-#: shell/resources/help-overlay.ui:243
-msgctxt "shortcut window"
-msgid "Add Bookmark"
-msgstr "Tilføj bogmærke"
-
-#: shell/resources/help-overlay.ui:249
-msgctxt "shortcut window"
-msgid "Remove Bookmark"
-msgstr "Fjern bogmærke"
-
-#: shell/resources/help-overlay.ui:255
-msgctxt "shortcut window"
-msgid "Night Mode"
-msgstr "Nattilstand"
-
-#: shell/resources/help-overlay.ui:261
-msgctxt "shortcut window"
-msgid "Continuous Scrolling"
-msgstr "Fortløbende rulning"
-
-#: shell/resources/help-overlay.ui:267
-msgctxt "shortcut window"
-msgid "Dual Page"
-msgstr "Dobbeltsidet"
-
-#: shell/resources/help-overlay.ui:273
-msgctxt "shortcut window"
-msgid "Odd Pages Left"
-msgstr "Ulige sider til venstre"
-
-#: shell/resources/help-overlay.ui:279
-msgctxt "shortcut window"
-msgid "Document Properties"
-msgstr "Dokumentegenskaber"
-
-#: shell/resources/help-overlay.ui:285
-msgctxt "shortcut window"
-msgid "Add Text Annotation"
-msgstr "Tilføj tekstannotering"
-
-#: shell/resources/help-overlay.ui:291
-msgctxt "shortcut window"
-msgid "Highlight Text"
-msgstr "Fremhæv tekst"
-
-#: shell/resources/help-overlay.ui:299
-msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Finde tekst"
-
-#: shell/resources/help-overlay.ui:302
-msgctxt "shortcut window"
-msgid "Find"
-msgstr "Find"
-
-#: shell/resources/help-overlay.ui:308
-msgctxt "shortcut window"
-msgid "Find Next"
-msgstr "Find næste"
-
-#: shell/resources/help-overlay.ui:314
-msgctxt "shortcut window"
-msgid "Find Previous"
-msgstr "Find forrige"
-
-#: shell/resources/help-overlay.ui:322
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Generelt"
-
-#: shell/resources/help-overlay.ui:325
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "Hjælp"
-
-#: shell/resources/help-overlay.ui:331
-msgctxt "shortcut window"
-msgid "Menu"
-msgstr "Menu"
-
-#: shell/resources/help-overlay.ui:337
-msgctxt "shortcut window"
-msgid "Keyboard Shortcuts"
-msgstr "Tastaturgenveje"
-
-#: shell/resources/help-overlay.ui:343
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Nyt vindue"
-
-#: shell/resources/help-overlay.ui:349
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Luk vindue"
-
-#: shell/resources/help-overlay.ui:357
-msgctxt "shortcut window"
-msgid "Presentation Mode"
-msgstr "Præsentationstilstand"
-
-#: shell/resources/help-overlay.ui:360
-msgctxt "shortcut window"
-msgid "Black Screen"
-msgstr "Sort skærm"
-
-#: shell/resources/help-overlay.ui:366
-msgctxt "shortcut window"
-msgid "White Screen"
-msgstr "Hvid skærm"
-
-#: shell/resources/help-overlay.ui:374
-msgctxt "shortcut window"
-msgid "Touchpad Gestures"
-msgstr "Pegepladebevægelser"
-
-#: shell/resources/pps-annotation-properties-dialog.ui:4
-#: shell/resources/pps-sidebar-annotations.ui:69
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
-msgstr "Annoteringssegenskaber"
+msgstr "Annoteringsegenskaber"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:14
-msgid "Color"
-msgstr "Farve"
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+msgid "_Color"
+msgstr "_Farve"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:26
-msgid "Opacity"
-msgstr "Uigennemsigtighed"
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+msgid "_Opacity"
+msgstr "_Uigennemsigtighed"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:40
-msgid "Initially Opened"
-msgstr "Oprindeligt åbnet"
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "_Icon"
+msgstr "_Ikon"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:46
-msgid "Icon"
-msgstr "Ikon"
-
-#: shell/resources/pps-annotation-properties-dialog.ui:50
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Note"
 msgstr "Note"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:51
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Comment"
 msgstr "Kommentar"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:52
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Key"
 msgstr "Nøgle"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:53
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "Help"
 msgstr "Hjælp"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:54
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "New Paragraph"
 msgstr "Nyt afsnit"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:55
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Paragraph"
 msgstr "Afsnit"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:56
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Insert"
 msgstr "Indsæt"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:57
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Cross"
 msgstr "Kryds"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:58
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 msgid "Circle"
 msgstr "Cirkel"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:69
-msgid "Markup Type"
-msgstr "Opmærkningstype"
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+msgid "_Markup Type"
+msgstr "_Opmærkningstype"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Highlight"
 msgstr "Fremhævet"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:74
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Strike out"
 msgstr "Gennemstreget"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-annotation-properties-dialog.blp:77
 msgid "Underline"
 msgstr "Understreget"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-annotation-properties-dialog.blp:78
 msgid "Squiggly"
 msgstr "Bølget understregning"
 
-#: shell/resources/pps-annotation-properties-dialog.ui:88
-msgid "_Apply"
-msgstr "An_vend"
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+msgid "_Author"
+msgstr "Fo_rfatter"
 
-#. Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.ui:71
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+msgid "Auto-Reveal on _Scroll"
+msgstr "Auto_vis ved rulning"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:96
+msgid "Pop up note while scrolling the document"
+msgstr "Pop op-note mens der rulles i dokumentet"
+
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Søgning"
 
-#: shell/resources/pps-document-view.ui:86 shell/resources/pps-window.ui:37
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
-#: shell/resources/pps-document-view.ui:106
+#: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
 msgstr "Miniaturer"
 
-#: shell/resources/pps-document-view.ui:119
+#: shell/resources/pps-document-view.blp:121
 msgid "Outline"
 msgstr "Oversigt"
 
-#: shell/resources/pps-document-view.ui:133
+#: shell/resources/pps-document-view.blp:133
 msgid "Annotations"
 msgstr "Annoteringer"
 
-#: shell/resources/pps-document-view.ui:153
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "Bilag"
 
-#: shell/resources/pps-document-view.ui:171
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "Lag"
 
-#: shell/resources/pps-document-view.ui:208
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "Slå sidebjælke til/fra"
 
-#: shell/resources/pps-document-view.ui:214
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "Dokumentmenu"
 
-#: shell/resources/pps-document-view.ui:237 shell/src/document_view/io.rs:266
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
 msgstr "Dokumentet har en digital underskrift."
 
-#: shell/resources/pps-document-view.ui:238
+#: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
 msgstr "Vis underskrift …"
 
-#: shell/resources/pps-document-view.ui:271
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "Tilpas automatisk"
 
-#: shell/resources/pps-document-view.ui:563
+#: shell/resources/pps-document-view.blp:529
 msgid "Selection too Small"
 msgstr "Markeringen er for lille"
 
-#: shell/resources/pps-document-view.ui:564
+#: shell/resources/pps-document-view.blp:530
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1344,19 +1020,19 @@ msgstr ""
 "du gerne vil lave en potentielt mere læselig underskrift, skal du trykke på "
 "“Start forfra” og tegne et større rektangel."
 
-#: shell/resources/pps-document-view.ui:569
+#: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
 msgstr "Start _forfra"
 
-#: shell/resources/pps-document-view.ui:570
+#: shell/resources/pps-document-view.blp:538
 msgid "_Sign"
 msgstr "_Underskriv"
 
-#: shell/resources/pps-document-view.ui:576
+#: shell/resources/pps-document-view.blp:545
 msgid "Abort Printing?"
 msgstr "Afbryd udskrivning?"
 
-#: shell/resources/pps-document-view.ui:577
+#: shell/resources/pps-document-view.blp:546
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1364,319 +1040,666 @@ msgstr ""
 "Der er en eller flere aktive udskriftsopgaver. Lukkes vinduet, vil ventende "
 "job ikke blive udskrevet."
 
-#: shell/resources/pps-document-view.ui:580
+#: shell/resources/pps-document-view.blp:550
 msgid "Abort _Print and Close"
 msgstr "Afbryd _udskrivning og luk"
 
-#: shell/resources/pps-document-view.ui:581 shell/src/document_view.rs:718
-#: shell/src/document_view/io.rs:473 shell/src/document_view/io.rs:517
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
+#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
+#: shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Annullér"
 
-#: shell/resources/pps-document-view.ui:582
+#: shell/resources/pps-document-view.blp:552
 msgid "Close _After Printing"
 msgstr "Luk _efter udskrivning"
 
-#: shell/resources/pps-document-view.ui:596
+#: shell/resources/pps-document-view.blp:567
 msgid "Open…"
 msgstr "Åbn …"
 
-#: shell/resources/pps-document-view.ui:602
+#: shell/resources/pps-document-view.blp:574
 msgid "Ni_ght Mode"
 msgstr "_Nattetilstand"
 
-#: shell/resources/pps-document-view.ui:608 shell/resources/pps-window.ui:171
+#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: shell/resources/pps-document-view.ui:612 shell/resources/pps-window.ui:175
+#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: shell/resources/pps-document-view.ui:616 shell/resources/pps-window.ui:179
-msgid "_About Papers"
-msgstr "_Om Papers"
+#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+msgid "_About Document Viewer"
+msgstr "_Om Dokumentfremviser"
 
-#: shell/resources/pps-document-view.ui:624
+#: shell/resources/pps-document-view.blp:600
 msgid "_Print…"
 msgstr "_Udskriv …"
 
-#: shell/resources/pps-document-view.ui:628
+#: shell/resources/pps-document-view.blp:605
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
-#: shell/resources/pps-document-view.ui:632
+#: shell/resources/pps-document-view.blp:610
 msgid "Present as Slideshow"
 msgstr "Vis som præsentation"
 
-#: shell/resources/pps-document-view.ui:638
+#: shell/resources/pps-document-view.blp:617
 msgid "Sign D_igitally…"
 msgstr "U_nderskriv digitalt …"
 
-#: shell/resources/pps-document-view.ui:644
+#: shell/resources/pps-document-view.blp:624
 msgid "Open a C_opy"
 msgstr "Åbn en _kopi"
 
-#: shell/resources/pps-document-view.ui:648
+#: shell/resources/pps-document-view.blp:629
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Åbn med …"
 
-#: shell/resources/pps-document-view.ui:652
+#: shell/resources/pps-document-view.blp:634
 msgid "_Save As…"
 msgstr "Gem _som …"
 
-#: shell/resources/pps-document-view.ui:658
+#: shell/resources/pps-document-view.blp:641
 msgid "_Continuous"
 msgstr "_Fortløbende"
 
-#: shell/resources/pps-document-view.ui:662
+#: shell/resources/pps-document-view.blp:646
 msgid "_Dual"
 msgstr "_Dobbelt"
 
-#: shell/resources/pps-document-view.ui:666
+#: shell/resources/pps-document-view.blp:651
 msgid "_Odd Pages Left"
 msgstr "_Ulige sider venstre"
 
-#: shell/resources/pps-document-view.ui:670
+#: shell/resources/pps-document-view.blp:656
 msgid "Right to Left Document"
 msgstr "Højre til venstre-dokument"
 
-#: shell/resources/pps-document-view.ui:676
+#: shell/resources/pps-document-view.blp:663
 msgid "Ro_tate ⤵"
 msgstr "Ro_tér ⤵"
 
-#: shell/resources/pps-document-view.ui:682
+#: shell/resources/pps-document-view.blp:670
 msgid "Document Prop_erties"
 msgstr "Dokument_egenskaber"
 
-#: shell/resources/pps-document-view.ui:787
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:708
+msgid "Highlight (h)"
+msgstr "Fremhævet (h)"
+
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:724
+msgid "Strikethrough (k)"
+msgstr "Gennemstreget (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:740
+msgid "Underline (u)"
+msgstr "Understreget (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:756
+msgid "Squiggly (q)"
+msgstr "Bølget understregning (q)"
+
+#: shell/resources/pps-document-view.blp:847
 msgid "_Open Link"
 msgstr "_Åbn link"
 
-#: shell/resources/pps-document-view.ui:792
+#: shell/resources/pps-document-view.blp:853
 msgid "_Copy Link Address"
 msgstr "_Kopiér linkadresse"
 
-#: shell/resources/pps-document-view.ui:797
+#: shell/resources/pps-document-view.blp:859
 msgid "_Go To"
 msgstr "_Gå til"
 
-#: shell/resources/pps-document-view.ui:802
+#: shell/resources/pps-document-view.blp:865
 msgid "Open in New _Window"
 msgstr "Åben i ny _vindue"
 
-#: shell/resources/pps-document-view.ui:809
+#: shell/resources/pps-document-view.blp:873
 msgid "_Copy"
 msgstr "_Kopiér"
 
-#: shell/resources/pps-document-view.ui:813
+#: shell/resources/pps-document-view.blp:878
 msgid "Select _All"
 msgstr "Markér _alt"
 
-#: shell/resources/pps-document-view.ui:819
+#: shell/resources/pps-document-view.blp:885
 msgid "_Save Image As…"
 msgstr "_Gem billede som …"
 
-#: shell/resources/pps-document-view.ui:824
+#: shell/resources/pps-document-view.blp:891
 msgid "Copy _Image"
 msgstr "Kopiér _billede"
 
-#: shell/resources/pps-document-view.ui:831
-#: shell/resources/pps-sidebar-annotations.ui:79
+#: shell/resources/pps-document-view.blp:899
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Åbn bilag"
 
-#: shell/resources/pps-document-view.ui:836
-#: shell/resources/pps-sidebar-annotations.ui:84
+#: shell/resources/pps-document-view.blp:905
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Gem bilag som …"
 
-#: shell/resources/pps-document-view.ui:844
+#: shell/resources/pps-document-view.blp:915
 msgid "Annotation _Properties…"
 msgstr "A_nnoteringsegenskaber …"
 
-#: shell/resources/pps-document-view.ui:849
+#: shell/resources/pps-document-view.blp:921
 msgid "R_emove Annotation"
 msgstr "F_jern annotering"
 
-#: shell/resources/pps-document-view.ui:856
+#: shell/resources/pps-document-view.blp:929
 msgid "_Add Text Annotation"
 msgstr "_Tilføj tekstannotering"
 
-#: shell/resources/pps-document-view.ui:861
-msgid "_Highlight Selected Text"
-msgstr "Fremh_æv markeret tekst"
-
-#: shell/resources/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.blp:60
 msgid "No Results Found"
 msgstr "Ingen resultater fundet"
 
-#: shell/resources/pps-find-sidebar.ui:71
+#: shell/resources/pps-find-sidebar.blp:61
 msgid "Try a different search"
 msgstr "Prøv en anden søgning"
 
-#: shell/resources/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
 msgstr "Foretag en søgning"
 
-#: shell/resources/pps-find-sidebar.ui:86
+#: shell/resources/pps-find-sidebar.blp:75
 msgid "The search results will appear here"
 msgstr "Søgeresultaterne vises her"
 
-#: shell/resources/pps-loader-view.ui:17
+#: shell/resources/pps-loader-view.blp:15
 msgid "Loading Document"
 msgstr "Indlæser dokument"
 
-#: shell/resources/pps-loader-view.ui:60 shell/src/document_view/print.rs:48
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
 msgid "C_ancel"
 msgstr "A_nnullér"
 
-#: shell/resources/pps-password-dialog.ui:4
-#: shell/resources/pps-password-view.ui:10
-#: shell/resources/pps-password-view.ui:19
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
 msgid "Password Required"
 msgstr "Adgangskode påkrævet"
 
-#: shell/resources/pps-password-dialog.ui:7
+#: shell/resources/pps-password-dialog.blp:9
 msgid "Cancel"
 msgstr "Annullér"
 
-#: shell/resources/pps-password-dialog.ui:8
+#: shell/resources/pps-password-dialog.blp:10
 msgid "Unlock"
 msgstr "Lås op"
 
-#: shell/resources/pps-password-dialog.ui:17
+#: shell/resources/pps-password-dialog.blp:19
 msgid "Password"
 msgstr "Adgangskode"
 
-#: shell/resources/pps-password-dialog.ui:32
+#: shell/resources/pps-password-dialog.blp:33
 msgid "Invalid password"
 msgstr "Ugyldig adgangskode"
 
-#: shell/resources/pps-password-dialog.ui:48
+#: shell/resources/pps-password-dialog.blp:48
 msgid "Forget password _immediately"
 msgstr "Glem adgangskode _øjeblikkeligt"
 
-#: shell/resources/pps-password-dialog.ui:56
+#: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
 msgstr "_Husk altid"
 
-#: shell/resources/pps-password-view.ui:20
+#: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr ""
 "Dette dokument er låst og kan kun læses ved at indtaste den korrekte "
 "adgangskode"
 
-#: shell/resources/pps-password-view.ui:25
+#: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
 msgstr "Lås dokument _op"
 
-#: shell/resources/pps-properties-license.ui:21
+#: shell/resources/pps-properties-license.blp:19
 msgid "Usage Terms"
 msgstr "Brugervilkår"
 
-#: shell/resources/pps-properties-license.ui:56
+#: shell/resources/pps-properties-license.blp:52
 msgid "Text License"
 msgstr "Tekstlicens"
 
-#: shell/resources/pps-properties-license.ui:84
+#: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Yderligere information"
 
-#: shell/resources/pps-properties-signatures.ui:55
+#: shell/resources/pps-properties-signatures.blp:32
+msgid "Signature Information"
+msgstr "Underskriftsinformation"
+
+#: shell/resources/pps-properties-signatures.blp:48
+#: shell/src/properties_signatures.rs:405
 msgid "View Details…"
 msgstr "Vis detaljer …"
 
-#: shell/resources/pps-properties-window.ui:4
+#: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
 msgstr "Egenskaber"
 
-#: shell/resources/pps-properties-window.ui:25
+#: shell/resources/pps-properties-window.blp:23
 msgid "_Document"
 msgstr "_Dokument"
 
-#: shell/resources/pps-properties-window.ui:40
+#: shell/resources/pps-properties-window.blp:34
 msgid "_Fonts"
 msgstr "Skrift_typer"
 
-#: shell/resources/pps-properties-window.ui:51
+#: shell/resources/pps-properties-window.blp:43
 msgid "License"
 msgstr "Licens"
 
-#: shell/resources/pps-properties-window.ui:61
+#: shell/resources/pps-properties-window.blp:51
 msgid "_Signatures"
 msgstr "_Underskrifter"
 
-#: shell/resources/pps-search-box.ui:15
+#: shell/resources/pps-search-box.blp:16
 msgid "Search in document"
 msgstr "Søg i dokument"
 
-#: shell/resources/pps-search-box.ui:34
+#: shell/resources/pps-search-box.blp:38
 msgid "Search Options"
 msgstr "Søgeindstillinger"
 
-#: shell/resources/pps-search-box.ui:43
+#: shell/resources/pps-search-box.blp:46
 msgid "_Whole Words Only"
 msgstr "Kun _hele ord"
 
-#: shell/resources/pps-search-box.ui:47
+#: shell/resources/pps-search-box.blp:51
 msgid "C_ase Sensitive"
 msgstr "_Skeln mellem store/små bogstaver"
 
-#: shell/resources/pps-sidebar-annotations.ui:16
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "File"
+msgstr "Fil"
+
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "Åbn dokument"
+
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Åbn kopi af det aktuelle dokument"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Åbn med …"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Gem kopi af det aktuelle dokument"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Udskriv aktuelt dokument"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Luk aktuel dokumentvisning"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Vindue"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Fuldskærm"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Start præsentationstilstand"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Siderude"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Markørnavigation"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Markering"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Kopiér"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Markér alt"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Zoom and Rotation"
+msgstr "Zoom og rotation"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Drej siden 90 grader mod uret"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Drej siden 90 grader med uret"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Zoom ind"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Zoom ud"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Normal størrelse"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Zoom ind (alternativ)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Tilpas side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Tilpas bredde"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Automatisk zoom"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navigering"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Flyt rundt på side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Gå op/ned på side flere linjer ad gangen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Forrige side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Næste side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Gå til sidetal"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Forrige side (hurtigt)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Næste side (hurtigt)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Forrige sete side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Næste sete side"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Gå til sides begyndelse/slutning"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Gå til dokumentstart"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Gå til dokumentslut"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View"
+msgstr "Dokumentvisning"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Tilføj bogmærke"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Fjern bogmærke"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Nattilstand"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Fortløbende rulning"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Dobbeltsidet"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Ulige sider til venstre"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Dokumentegenskaber"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Tilføj tekstannotering"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Fremhævet tekst"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Gennemstreget tekst"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Bølget understreget tekst"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Understreget tekst"
+
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Søgning"
+
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Find"
+
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Find næste"
+
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Find forrige"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generelt"
+
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Hjælp"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menu"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Tastaturgenveje"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Præsentationstilstand"
+
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Sort skærm"
+
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Hvid skærm"
+
+#: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
 msgstr "Ingen annoteringer"
 
-#: shell/resources/pps-sidebar-annotations.ui:74
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "Annoteringssegenskaber"
+
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Remove Annotation"
 msgstr "Fjern annotering"
 
-#: shell/resources/pps-sidebar-links.ui:52
+#: shell/resources/pps-sidebar-links.blp:48
 msgid "Collapse all tree"
 msgstr "Sammenfold hele træet"
 
-#: shell/resources/pps-sidebar-links.ui:56
+#: shell/resources/pps-sidebar-links.blp:53
 msgid "Expand all tree"
 msgstr "Udfold hele træet"
 
-#: shell/resources/pps-sidebar-links.ui:60
+#: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
 msgstr "Udfold alle under dette element"
 
-#: shell/resources/pps-sidebar-links.ui:66
+#: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
 msgstr "Udskriv dette afsnit …"
 
-#: shell/resources/pps-sidebar-thumbnails.ui:46
+#: shell/resources/pps-sidebar-thumbnails.blp:47
 msgid "Previews"
 msgstr "Forhåndsvisninger"
 
-#: shell/resources/pps-window.ui:47 shell/resources/pps-window.ui:55
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
 msgid "Open a Document"
 msgstr "Åbn et dokument"
 
-#: shell/resources/pps-window.ui:48
+#: shell/resources/pps-window.blp:44
 msgid "Drag and drop documents here"
 msgstr "Træk og slip dokumenter her"
 
-#: shell/resources/pps-window.ui:53
+#: shell/resources/pps-window.blp:49
 msgid "_Open…"
 msgstr "_Åbn …"
 
-#: shell/resources/pps-window.ui:79
+#: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
 msgstr "Kan ikke åbne dokument"
 
-#: shell/resources/pps-window.ui:84
+#: shell/resources/pps-window.blp:76
 msgid "_Open Other File…"
 msgstr "_Åbn en anden fil …"
 
-#: shell/src/application.rs:202
+#: shell/src/application.rs:216
 msgid "© 1996–2025 The Papers authors"
 msgstr "© 1996–2025 forfatterne af Papers"
 
-#: shell/src/application.rs:203
+#: shell/src/application.rs:217
 msgid "translator-credits"
 msgstr ""
 "Ole Laursen\n"
@@ -1690,51 +1713,51 @@ msgstr ""
 "Websted http://dansk-gruppen.dk\n"
 "E-mail <dansk@dansk-gruppen.dk>"
 
-#: shell/src/application.rs:307
+#: shell/src/application.rs:366
 msgid "The page label of the document to display."
 msgstr "Sidemærkaten fra dokumentet der skal vises."
 
-#: shell/src/application.rs:308
+#: shell/src/application.rs:367
 msgid "PAGE"
 msgstr "SIDE"
 
-#: shell/src/application.rs:316
+#: shell/src/application.rs:375
 msgid "The page number of the document to display."
 msgstr "Sidetallet fra dokumentet der skal vises."
 
-#: shell/src/application.rs:317
+#: shell/src/application.rs:376
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: shell/src/application.rs:325
+#: shell/src/application.rs:384
 msgid "Named destination to display."
 msgstr "Navngiven destination der skal vises."
 
-#: shell/src/application.rs:326
+#: shell/src/application.rs:385
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:334
+#: shell/src/application.rs:393
 msgid "Run papers in fullscreen mode."
 msgstr "Start Papers i fuldskærmstilstand."
 
-#: shell/src/application.rs:343
+#: shell/src/application.rs:402
 msgid "Run papers in presentation mode."
 msgstr "Start Papers i præsentationstilstand."
 
-#: shell/src/application.rs:352
+#: shell/src/application.rs:411
 msgid "Show the version of the program."
 msgstr "Vis programmets version."
 
-#: shell/src/application.rs:362
+#: shell/src/application.rs:421
 msgid "[FILE…]"
 msgstr "[FIL …]"
 
-#: shell/src/document_view.rs:299
+#: shell/src/document_view.rs:300
 msgid "View Details"
 msgstr "Vis detaljer"
 
-#: shell/src/document_view.rs:697
+#: shell/src/document_view.rs:705
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1742,83 +1765,83 @@ msgstr ""
 "Dokumentet indeholder nye eller ændrede annoteringer og formularfelter, som "
 "er blevet udfyldt."
 
-#: shell/src/document_view.rs:698
+#: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumentet indeholder formularfelter, som er blevet udfyldt."
 
-#: shell/src/document_view.rs:699
+#: shell/src/document_view.rs:707
 msgid "Document contains new or modified annotations."
 msgstr "Dokumentet indeholder nye eller ændrede annoteringer."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:715
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Hvis du ikke gemmer en kopi, vil disse ændringer gå tabt."
 
-#: shell/src/document_view.rs:708
+#: shell/src/document_view.rs:716
 msgid "Save Changes to a Copy?"
 msgstr "Gem ændringer til en kopi?"
 
-#: shell/src/document_view.rs:717
+#: shell/src/document_view.rs:725
 msgid "Close _Without Saving"
 msgstr "Luk _uden at gemme"
 
-#: shell/src/document_view.rs:719
+#: shell/src/document_view.rs:727
 msgid "_Save a Copy"
 msgstr "Gem en _kopi"
 
-#: shell/src/document_view/actions.rs:741
+#: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "Gem billede"
 
-#: shell/src/document_view/actions.rs:777
+#: shell/src/document_view/actions.rs:880
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Kunne ikke finde passende format at gemme billede i"
 
-#: shell/src/document_view/actions.rs:800
+#: shell/src/document_view/actions.rs:897
 msgid "The image could not be saved."
 msgstr "Billedet kunne ikke gemmes."
 
-#: shell/src/document_view/actions.rs:903
+#: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Markørnavigation er aktiveret — tryk F7 for at deaktivere."
 
-#: shell/src/document_view/actions.rs:905
+#: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Markørnavigation er deaktiveret — tryk F7 for at aktivere."
 
-#: shell/src/document_view/actions.rs:985 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Kan ikke åbne bilag"
 
-#: shell/src/document_view/actions.rs:1018
+#: shell/src/document_view/actions.rs:1059
 msgid "The attachment could not be saved."
 msgstr "Kunne ikke gemme bilaget."
 
-#: shell/src/document_view/io.rs:262
-msgid "Digital Signature is invalid!"
-msgstr "Den digitale underskrift er ugyldig!"
+#: shell/src/document_view/io.rs:269
+msgid "Digital signature is invalid"
+msgstr "Den digitale underskrift er ugyldig"
 
-#: shell/src/document_view/io.rs:277
+#: shell/src/document_view/io.rs:280
 msgid "The Document Contains No Pages"
 msgstr "Dokumentet indeholder ingen sider"
 
-#: shell/src/document_view/io.rs:279
+#: shell/src/document_view/io.rs:282
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumentet indeholder kun tomme sider"
 
-#: shell/src/document_view/io.rs:355 shell/src/document_view/io.rs:433
+#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
 msgid "The file could not be saved as “{}”."
 msgstr "Filen kunne ikke gemmes som “{}”."
 
-#: shell/src/document_view/io.rs:396
+#: shell/src/document_view/io.rs:409
 msgid "Save As…"
 msgstr "Gem som …"
 
-#: shell/src/document_view/io.rs:472
+#: shell/src/document_view/io.rs:485
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Tegn et rektangel for at indsætte et underskriftsfelt"
 
-#: shell/src/document_view/io.rs:494
+#: shell/src/document_view/io.rs:507
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1826,50 +1849,53 @@ msgstr ""
 "Digitalt underskrevet af {}\n"
 "Dato: {}"
 
-#: shell/src/document_view/io.rs:510
+#: shell/src/document_view/io.rs:523
 msgid "Certificate Required"
 msgstr "Certifikat er nødvendigt"
 
-#: shell/src/document_view/io.rs:513
+#: shell/src/document_view/io.rs:526
 msgid "Select signing certificate"
 msgstr "Vælg underskriftscertifikat"
 
-#: shell/src/document_view/io.rs:514
+#: shell/src/document_view/io.rs:527
 msgid "Select"
 msgstr "Vælg"
 
-#: shell/src/document_view/io.rs:587
+#: shell/src/document_view/io.rs:600
 msgid "A certificate is required to sign this document"
 msgstr "Det er nødvendigt med et certifikat for at underskrive dette dokument"
 
-#: shell/src/document_view/io.rs:656
+#: shell/src/document_view/io.rs:669
 msgid "Save Signed File"
 msgstr "Gem underskrevet fil"
 
-#: shell/src/document_view/print.rs:45
+#: shell/src/document_view/io.rs:699
+msgid "Please enter password for {}"
+msgstr "Indtast adgangskode til {}"
+
+#: shell/src/document_view/io.rs:715
+msgid "_Login"
+msgstr "_Login"
+
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
 msgid "Printing job “{}”"
 msgstr "Udskriver job “{}”"
 
-#: shell/src/document_view/print.rs:78
+#: shell/src/document_view/print.rs:83
 msgid "No pending jobs in queue"
 msgstr "Ingen ventende job i køen"
 
-#: shell/src/document_view/print.rs:81
-msgid "{} pending job in queue"
-msgid_plural "{} pending jobs in queue"
-msgstr[0] "{} ventende job i køen"
-msgstr[1] "{} ventende job i køen"
-
-#: shell/src/document_view/signals.rs:225
+#: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
 msgstr "Kan ikke åbne eksternt link"
 
-#: shell/src/document_view/signals.rs:253
+#: shell/src/document_view/signals.rs:254
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Sikkerhedsbesked: Dokumentet er blevet forhindret i at åbne filen “{}”"
 
-#: shell/src/document_view/signals.rs:424 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Side {}"
@@ -1891,19 +1917,35 @@ msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Dokumentet “{}” er låst, og der kræves en adgangskode for at læse det."
 
-#: shell/src/properties_general.rs:77
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "Kopiér til udklipsholder"
+
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr "Åbn filplacering"
+
+#: shell/src/properties_general.rs:193
 msgid "File"
 msgstr "Fil"
 
-#: shell/src/properties_general.rs:89
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr "Navn"
+
+#: shell/src/properties_general.rs:244
 msgid "Folder"
 msgstr "Mappe"
 
-#: shell/src/properties_general.rs:145
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "Filsti"
+
+#: shell/src/properties_general.rs:298
 msgid "Content"
 msgstr "Indhold"
 
-#: shell/src/properties_general.rs:161
+#: shell/src/properties_general.rs:314
 msgid "Date &amp; Time"
 msgstr "Dato &amp; klokkeslæt"
 
@@ -1988,6 +2030,67 @@ msgstr "Certifikatets udstedelsestidspunkt"
 msgid "Certificate's Expiration Time"
 msgstr "Certifikatets udløbstidspunkt"
 
+#: shell/src/properties_signatures.rs:403
+msgid "Hide Details…"
+msgstr "Skjul detaljer …"
+
+#~ msgid "Scroll Up"
+#~ msgstr "Rul op"
+
+#~ msgid "Scroll Down"
+#~ msgstr "Rul ned"
+
+#~ msgid "Scroll View Up"
+#~ msgstr "Rul visning op"
+
+#~ msgid "Scroll View Down"
+#~ msgstr "Rul visning ned"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Åbne, lukke, gemme og udskrive"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Markere og kopiere tekst"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Dreje og zoome"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Finde rundt i dokument"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Dokumenthåndtering og -visning"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Finde tekst"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad Gestures"
+#~ msgstr "Pegepladebevægelser"
+
+#~ msgid "Initially Opened"
+#~ msgstr "Oprindeligt åbnet"
+
+#~ msgid "_Apply"
+#~ msgstr "An_vend"
+
+#~ msgid "_About Papers"
+#~ msgstr "_Om Papers"
+
+#~ msgid "_Highlight Selected Text"
+#~ msgstr "Fremh_æv markeret tekst"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "{} ventende job i køen"
+#~ msgstr[1] "{} ventende job i køen"
+
 #~ msgid ""
 #~ "Show a dialog to confirm that the user wants to activate the caret "
 #~ "navigation."
@@ -2027,9 +2130,6 @@ msgstr "Certifikatets udløbstidspunkt"
 
 #~ msgid "Failed to print document"
 #~ msgstr "Kunne ikke udskrive dokument"
-
-#~ msgid "File Saved"
-#~ msgstr "Fil gemt"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Bogmærker"
@@ -2174,9 +2274,6 @@ msgstr "Certifikatets udløbstidspunkt"
 #~ msgid "Add highlight annotation"
 #~ msgstr "Tilføj fremhævet annotering"
 
-#~ msgid "Auto_scroll"
-#~ msgstr "Auto_rul"
-
 #~ msgid "Annotation _Properties"
 #~ msgstr "A_nnoteringssegenskaber"
 
@@ -2209,9 +2306,6 @@ msgstr "Certifikatets udløbstidspunkt"
 
 #~ msgid "Annotate document"
 #~ msgstr "Annotér dokument"
-
-#~ msgid "File options"
-#~ msgstr "Filindstillinger"
 
 #~ msgid "Set zoom level"
 #~ msgstr "Indstil zoomniveau"
@@ -2448,10 +2542,6 @@ msgstr "Certifikatets udløbstidspunkt"
 #~ msgstr "Gå til begyndelsen af dokumentet"
 
 #~ msgctxt "shortcut window"
-#~ msgid "Go to the end of the document"
-#~ msgstr "Gå til slutningen af dokumentet"
-
-#~ msgctxt "shortcut window"
 #~ msgid "Add bookmark"
 #~ msgstr "Tilføj bogmærke"
 
@@ -2502,9 +2592,6 @@ msgstr "Certifikatets udløbstidspunkt"
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
 #~ msgstr "Tastaturgenveje"
-
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "GNOME Dokumentfremviser"
 
 #~ msgid "Open a new window."
 #~ msgstr "Åbn et nyt vindue."
