@@ -17,46 +17,190 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evince-master-po-gl-7620\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/evince/issues\n"
-"POT-Creation-Date: 2023-08-20 18:21+0000\n"
-"PO-Revision-Date: 2023-08-30 00:04+0200\n"
-"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-09-08 03:38+0000\n"
+"PO-Revision-Date: 2025-09-08 15:41+0200\n"
+"Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-"X-Project-Style: gnome\n"
-"X-DL-Team: gl\n"
-"X-DL-Module: evince\n"
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
+"X-DL-Module: evince\n"
 "X-DL-State: Translating\n"
+"X-DL-Team: gl\n"
+"X-Generator: Poedit 3.7\n"
+"X-Project-Style: gnome\n"
 
-#: backend/comics/comics-document.c:190 backend/comics/comics-document.c:261
+#. Manually set name and icon
+#: data/org.gnome.Papers.desktop.in.in:2
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:359
+msgid "Document Viewer"
+msgstr "Visor de documentos"
+
+#: data/org.gnome.Papers.desktop.in.in:3
+msgid "View multi-page documents"
+msgstr "Ver documentos de varias páxinas"
+
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Papers.desktop.in.in:5
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;documento;presentación;visor;papeles;"
+
+#: data/org.gnome.Papers.desktop.in.in:20
+msgid "New Window"
+msgstr "Nova xanela"
+
+#: data/org.gnome.Papers.gschema.xml:14
+msgid "Override document restrictions"
+msgstr "Ignorar as restricións do documento"
+
+#: data/org.gnome.Papers.gschema.xml:15
+msgid "Override document restrictions, like restriction to copy or to print."
+msgstr ""
+"Ignorar as restricións do documento, como a restrición para copiar ou imprimir."
+
+#: data/org.gnome.Papers.gschema.xml:19
+msgid "The URI of the directory last used to open or save a document"
+msgstr "O URI do último cartafol usado para abrir ou gardar un documento"
+
+#: data/org.gnome.Papers.gschema.xml:23
+msgid "The URI of the directory last used to save a picture"
+msgstr "O URI do último cartafol usado para gardar unha imaxe"
+
+#: data/org.gnome.Papers.gschema.xml:27
+msgid "Page cache size in MiB"
+msgstr "Tamaño da cache de páxina en MiB"
+
+#: data/org.gnome.Papers.gschema.xml:28
+msgid ""
+"The maximum size that will be used to cache rendered pages, limits maximum "
+"zoom level."
+msgstr ""
+"O tamaño máximo que se usará para cachear as páxinas renderizadas, limita o "
+"nivel de zoom máximo."
+
+#: data/org.gnome.Papers.gschema.xml:32
+msgid "Allow links to change the zoom level."
+msgstr "Permitir que as ligazóns cambien o nivel de ampliación."
+
+#: data/org.gnome.Papers.gschema.xml:43
+msgid "Check spelling when writing annotation notes or filling text forms."
+msgstr ""
+"Comprobación ortográfica ao escribir as anotacións e ao completar formularios "
+"de texto."
+
+#: data/org.gnome.Papers.gschema.xml:47
+msgid "Show a side bar next to the document to help navigate the document."
+msgstr ""
+"Mostrar unha barra lateral ao lado do documento que lle axuda a navegar o "
+"documento."
+
+#: data/org.gnome.Papers.gschema.xml:60
+msgid "Set the default zoom level to display a document."
+msgstr ""
+"Seleccione un nivel de ampliación predeterminado para mostrar o documento"
+
+#: data/org.gnome.Papers.gschema.xml:64
+msgid ""
+"Display the document as a continuous stream of pages instead of page at a time."
+msgstr ""
+"Mostrar o documento como un fluxo continuo de páxinas no lugar unha páxina "
+"cada vez."
+
+#: data/org.gnome.Papers.gschema.xml:68
+msgid "Show two pages side by side."
+msgstr "Mostrar dúas páxinas unha ao carón da outra."
+
+#: data/org.gnome.Papers.gschema.xml:72
+msgid ""
+"Show the first page (odd page) on the left (when displaying two pages side by "
+"side)"
+msgstr ""
+"Mostra a primeira páxina (páxina impar) á esquerda (ao mostrar dúas páxinas "
+"unha ao carón de outra)"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
+msgid "Read documents"
+msgstr "Cargar documentos"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
+msgid ""
+"A document viewer for the GNOME desktop. You can view, search or annotate "
+"documents in many different formats."
+msgstr ""
+"Un visor de documento para o ambiente GNOME. Pode ver, buscar ou anotar "
+"documentos en varios formatos distintos."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
+msgid ""
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, "
+"CBT, CBZ, CB7)."
+msgstr ""
+"Papers admite documentos en: PDF, DjVu, TIFF e arquivos de libros de banda "
+"deseñada (CBR, CBT, CBZ, CB7)."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
+msgid "A clear, simple, and modern UI"
+msgstr "Unha interface de usuario limpa, simple e moderna"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
+msgid "A mobile-friendly UI"
+msgstr "Unha interface de usuario móbil"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
+#, fuzzy
+msgid "A modern and colorful annotation list"
+msgstr "Unha lista de anotacións modernas e coloridas"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
+#, fuzzy
+msgid "Big thumbnails in the sidebar"
+msgstr "Miniaturas grandes na barra lateral"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
+#, fuzzy
+msgid "All search actions are contained in the sidebar"
+msgstr "Todas as accións de busca están contidas na barra lateral"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
+msgid "Print Preview"
+msgstr "Vista previa da impresión"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
+msgid "Preview before printing"
+msgstr "Vista previa antes de imprimir"
+
+#: libdocument/backend/comics/comics-document.c:179
+#: libdocument/backend/comics/comics-document.c:248
 msgid "File is corrupted"
 msgstr "O ficheiro está danado"
 
-#: backend/comics/comics-document.c:251
+#: libdocument/backend/comics/comics-document.c:238
 msgid "Archive is encrypted"
 msgstr "O ficheiro está cifrado"
 
-#: backend/comics/comics-document.c:256
+#: libdocument/backend/comics/comics-document.c:243
 msgid "No supported images in archive"
 msgstr "Ningunha imaxe compatíbel no arquivo"
 
-#: backend/comics/comics-document.c:266
+#: libdocument/backend/comics/comics-document.c:253
 msgid "No files in archive"
 msgstr "Non se atoparon ficheiros no arquivo"
 
-#: backend/comics/comics-document.c:315
+#: libdocument/backend/comics/comics-document.c:302
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "O tipo MIME non é un libro de banda deseñada: %s"
 
-#: backend/comics/comics-document.c:322
+#: libdocument/backend/comics/comics-document.c:309
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -64,107 +208,96 @@ msgstr ""
 "libarchive non ten compatibilidade para esta compresión de libro de banda "
 "deseñada, contacte co seu distribuidor"
 
-#: backend/comics/comics-document.c:362
+#: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
 msgstr "Non foi posíbel obter a ruta local ao arquivo"
 
-#: backend/comics/comicsdocument.evince-backend.desktop.in.in:4
-#: backend/comics/evince-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Libros de banda deseñada"
 
-#: backend/comics/evince-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Engade compatibilidade para ler libros de banda deseñada"
 
-#: backend/djvu/djvu-document.c:179
+#: libdocument/backend/djvu/djvu-document.c:173
 msgid "DjVu document has incorrect format"
 msgstr "O documento DjVu ten un formato incorrecto"
 
-#: backend/djvu/djvu-document.c:266
+#: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
 msgstr ""
-"O documento está composto por varios ficheiros. A un ou máis destes "
-"ficheiros non é posíbel acceder."
+"O documento está composto por varios ficheiros. A un ou máis destes ficheiros "
+"non é posíbel acceder."
 
-#: backend/djvu/djvudocument.evince-backend.desktop.in.in:4
-#: backend/djvu/evince-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "Documentos DjVu"
 
-#: backend/djvu/evince-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Engade compatibilidade para ler documentos DjVu"
 
-#: backend/dvi/dvi-document.c:110
-msgid "DVI document has incorrect format"
-msgstr "O documento DVI ten un formato incorrecto"
-
-#: backend/dvi/dvidocument.evince-backend.desktop.in.in:4
-#: backend/dvi/evince-dvidocument.metainfo.xml.in.in:5
-msgid "DVI Documents"
-msgstr "Documentos DVI"
-
-#: backend/dvi/evince-dvidocument.metainfo.xml.in.in:6
-msgid "Adds support for reading DVI documents"
-msgstr "Engade compatibilidade para ler documentos DVI"
-
-#: backend/pdf/evince-pdfdocument.metainfo.xml.in.in:5
-#: backend/pdf/pdfdocument.evince-backend.desktop.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "Documentos PDF"
 
-#: backend/pdf/evince-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Engade compatibilidade para ler documentos PDF"
 
 #. translators: this is the document security state
-#: backend/pdf/ev-poppler.c:725 backend/pdf/ev-poppler.c:731
-#: properties/ev-properties-view.c:429
+#: libdocument/backend/pdf/pps-poppler.c:741
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Si"
 
 #. translators: this is the document security state
-#: backend/pdf/ev-poppler.c:728 backend/pdf/ev-poppler.c:731
-#: properties/ev-properties-view.c:431
+#: libdocument/backend/pdf/pps-poppler.c:744
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Non"
 
-#: backend/pdf/ev-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 1"
 msgstr "Tipo 1"
 
-#: backend/pdf/ev-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "Type 1C"
 msgstr "Tipo 1C"
 
-#: backend/pdf/ev-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 3"
 msgstr "Tipo 3"
 
-#: backend/pdf/ev-poppler.c:873
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "TrueType"
 msgstr "TrueType"
 
-#: backend/pdf/ev-poppler.c:875
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "Type 1 (CID)"
 msgstr "Tipo 1 (CID)"
 
-#: backend/pdf/ev-poppler.c:877
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Type 1C (CID)"
 msgstr "Tipo 1C (CID)"
 
-#: backend/pdf/ev-poppler.c:879
+#: libdocument/backend/pdf/pps-poppler.c:869
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: backend/pdf/ev-poppler.c:881
+#: libdocument/backend/pdf/pps-poppler.c:871
 msgid "Unknown font type"
 msgstr "Tipo de letra descoñecido"
 
-#: backend/pdf/ev-poppler.c:925
+#: libdocument/backend/pdf/pps-poppler.c:915
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -175,38 +308,32 @@ msgstr ""
 "fontconfig non son os mesmos que os usados para crear o PDF, o renderizado "
 "podería non ser o correcto."
 
-#: backend/pdf/ev-poppler.c:930
+#: libdocument/backend/pdf/pps-poppler.c:920
 msgid "All fonts are either standard or embedded."
 msgstr "Todos os tipos de letra tanto os estándar como os incrustados."
 
-#: backend/pdf/ev-poppler.c:960
+#: libdocument/backend/pdf/pps-poppler.c:956
 msgid "No name"
 msgstr "Sen nome"
 
 #. translators: When a font type does not have
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
-#.
-#. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#. translators: This is used when a document property does
-#. not have a value.  Examples:
-#. Author: None
-#. Keywords: None
-#.
-#: backend/pdf/ev-poppler.c:969 libview/ev-print-operation.c:2691
-#: properties/ev-properties-view.c:230
+#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Ningún"
 
-#: backend/pdf/ev-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Embedded subset"
 msgstr "Subconxunto incorporado"
 
-#: backend/pdf/ev-poppler.c:979
+#: libdocument/backend/pdf/pps-poppler.c:975
 msgid "Embedded"
 msgstr "Incorporado"
 
-#: backend/pdf/ev-poppler.c:981
+#: libdocument/backend/pdf/pps-poppler.c:977
 msgid "Not embedded"
 msgstr "Non incorporado"
 
@@ -214,8 +341,7 @@ msgstr "Non incorporado"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
-#.
-#: backend/pdf/ev-poppler.c:988
+#: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Un dos 14 tipos de letra estándar)"
 
@@ -223,8 +349,7 @@ msgstr " (Un dos 14 tipos de letra estándar)"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
-#.
-#: backend/pdf/ev-poppler.c:995
+#: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ningún dos 14 tipos de letra estándar)"
 
@@ -237,8 +362,7 @@ msgstr " (Ningún dos 14 tipos de letra estándar)"
 #. * Not embedded
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
-#.
-#: backend/pdf/ev-poppler.c:1014
+#: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
 "%s%s\n"
@@ -261,8 +385,7 @@ msgstr ""
 #. * TrueType (CID)
 #. * Encoding: Custom
 #. * Embedded subset
-#.
-#: backend/pdf/ev-poppler.c:1032
+#: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
 "%s%s\n"
@@ -273,360 +396,217 @@ msgstr ""
 "Codificación: %s\n"
 "%s"
 
-#: backend/ps/evince-psdocument.metainfo.xml.in.in:5
-#: backend/ps/psdocument.evince-backend.desktop.in.in:5
-msgid "PostScript Documents"
-msgstr "Documentos PostScript"
-
-#: backend/ps/evince-psdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading PostScript documents"
-msgstr "Engade compatibilidade para ler documentos PostScript"
-
-#: backend/ps/ev-spectre.c:98
-#, c-format
-msgid "Failed to load document “%s”"
-msgstr "Produciuse un erro ao cargar o documento «%s»"
-
-#: backend/ps/ev-spectre.c:131
-#, c-format
-msgid "Failed to save document “%s”"
-msgstr "Produciuse un erro ao gardar o documento «%s»"
-
-#: backend/tiff/evince-tiffdocument.metainfo.xml.in.in:5
-#: backend/tiff/tiffdocument.evince-backend.desktop.in.in:4
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "Documentos TIFF"
 
-#: backend/tiff/evince-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Engade compatibilidade para ler documentos TIFF"
 
-#: backend/tiff/tiff-document.c:124
+#: libdocument/backend/tiff/tiff-document.c:97
 msgid "Invalid document"
 msgstr "Documento incorrecto"
 
-#: backend/xps/evince-xpsdocument.metainfo.xml.in.in:5
-#: backend/xps/xpsdocument.evince-backend.desktop.in.in:5
-msgid "XPS Documents"
-msgstr "Documentos XPS"
-
-#: backend/xps/evince-xpsdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading XPS documents"
-msgstr "Engade compatibilidade para ler documentos XPS"
-
-#. Manually set name and icon
-#: data/org.gnome.Evince.desktop.in.in:3 org.gnome.Evince.metainfo.xml.in:23
-#: shell/ev-window-title.c:131 shell/main.c:300
-msgid "Document Viewer"
-msgstr "Visor de documentos"
-
-#: data/org.gnome.Evince.desktop.in.in:4
-msgid "View multi-page documents"
-msgstr "Ver documentos de varias páxinas"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Evince.desktop.in.in:6
-msgid ""
-"pdf;ps;postscript;dvi;xps;djvu;tiff;document;presentation;viewer;evince;"
-msgstr ""
-"pdf;ps;postscript;dvi;xps;djvu;tiff;documento;presentación;visor;evince;"
-
-#: data/org.gnome.Evince.desktop.in.in:19
-msgid "New Window"
-msgstr "Nova xanela"
-
-#: data/org.gnome.Evince.gschema.xml:14
-msgid "Override document restrictions"
-msgstr "Ignorar as restricións do documento"
-
-#: data/org.gnome.Evince.gschema.xml:15
-msgid "Override document restrictions, like restriction to copy or to print."
-msgstr ""
-"Ignorar as restricións do documento, como a restrición para copiar ou "
-"imprimir."
-
-#: data/org.gnome.Evince.gschema.xml:19
-msgid "Automatically reload the document"
-msgstr "Recargar o documento automaticamente"
-
-#: data/org.gnome.Evince.gschema.xml:20
-msgid "The document is automatically reloaded on file change."
-msgstr "O documento recárgase automaticamente cando o ficheiro cambia."
-
-#: data/org.gnome.Evince.gschema.xml:24
-msgid "The URI of the directory last used to open or save a document"
-msgstr "O URI do último cartafol usado para abrir ou gardar un documento"
-
-#: data/org.gnome.Evince.gschema.xml:28
-msgid "The URI of the directory last used to save a picture"
-msgstr "O URI do último cartafol usado para gardar unha imaxe"
-
-#: data/org.gnome.Evince.gschema.xml:32
-msgid "Page cache size in MiB"
-msgstr "Tamaño da cache de páxina en MiB"
-
-#: data/org.gnome.Evince.gschema.xml:33
-msgid ""
-"The maximum size that will be used to cache rendered pages, limits maximum "
-"zoom level."
-msgstr ""
-"O tamaño máximo que se usará para cachear as páxinas renderizadas, limita o "
-"nivel de zoom máximo."
-
-#: data/org.gnome.Evince.gschema.xml:37
-msgid ""
-"Show a dialog to confirm that the user wants to activate the caret "
-"navigation."
-msgstr ""
-"Mostrar un diálogo para confirmar que o usuario quere activar a navegación "
-"cos cursores."
-
-#: data/org.gnome.Evince.gschema.xml:41
-msgid "Allow links to change the zoom level."
-msgstr "Permitir que as ligazóns cambien o nivel de ampliación."
-
-#: data/org.gnome.Evince.gschema.xml:49
-msgid "Check spelling when writing annotation notes or filling text forms."
-msgstr ""
-"Comprobación ortográfica ao escribir as anotacións e ao completar "
-"formularios de texto."
-
-#: data/org.gnome.Evince.gschema.xml:53
-msgid "Show a side bar next to the document to help navigate the document."
-msgstr ""
-"Mostrar unha barra lateral ao lado do documento que lle axuda a navegar o "
-"documento."
-
-#: data/org.gnome.Evince.gschema.xml:63
-msgid "Set the default zoom level to display a document."
-msgstr ""
-"Seleccione un nivel de ampliación predeterminado para mostrar o documento"
-
-#: data/org.gnome.Evince.gschema.xml:70
-msgid ""
-"Display the document as a continuous stream of pages instead of page at a "
-"time."
-msgstr ""
-"Mostrar o documento como un fluxo continuo de páxinas no lugar unha páxina "
-"cada vez."
-
-#: data/org.gnome.Evince.gschema.xml:74
-msgid "Show two pages side by side."
-msgstr "Mostrar dúas páxinas unha ao carón da outra."
-
-#: data/org.gnome.Evince.gschema.xml:78
-msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side "
-"by side)"
-msgstr ""
-"Mostra a primeira páxina (páxina impar) á esquerda (ao mostrar dúas páxinas "
-"unha ao carón de outra)"
-
-#: data/org.gnome.Evince-previewer.desktop.in.in:3
-msgid "Print Preview"
-msgstr "Vista previa da impresión"
-
-#: data/org.gnome.Evince-previewer.desktop.in.in:4
-msgid "Preview before printing"
-msgstr "Vista previa antes de imprimir"
-
-#: libdocument/ev-attachment.c:310 libdocument/ev-attachment.c:331
+#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Non foi posíbel gardar o anexo «%s»: %s"
 
-#: libdocument/ev-attachment.c:378
+#: libdocument/pps-attachment.c:349
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Non foi posíbel abrir o anexo «%s»: %s"
 
-#: libdocument/ev-attachment.c:417
+#: libdocument/pps-attachment.c:386
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Non foi posíbel abrir o anexo «%s»"
 
-#: libdocument/ev-document-factory.c:105
+#: libdocument/pps-document-factory.c:86
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Non se admite o tipo de ficheiro %s (%s)"
 
-#: libdocument/ev-document-factory.c:370 libdocument/ev-file-helpers.c:417
-#: libdocument/ev-file-helpers.c:463 libdocument/ev-file-helpers.c:482
-#: libdocument/ev-file-helpers.c:563 libdocument/ev-file-helpers.c:572
-msgid "Unknown MIME Type"
-msgstr "Tipo MIME descoñecido"
-
-#: libdocument/ev-document-factory.c:637
+#: libdocument/pps-document-factory.c:392
 msgid "All Documents"
 msgstr "Todos os documentos"
 
-#: libdocument/ev-document-factory.c:664 shell/ev-utils.c:272
+#: libdocument/pps-document-factory.c:420
 msgid "All Files"
 msgstr "Todos os ficheiros"
 
-#: libdocument/ev-file-helpers.c:157
+#. Translate to the default units to use for presenting
+#. * lengths to the user. Translate to default:inch if you
+#. * want inches, otherwise translate to default:mm.
+#. * Do *not* translate it to "predefinito:mm", if it
+#. * it isn't default:mm or default:inch it will not work
+#: libdocument/pps-document-info.c:198
+msgid "default:mm"
+msgstr "default:mm"
+
+#: libdocument/pps-document-info.c:250
+#, c-format
+msgid "%.0f × %.0f mm"
+msgstr "%.0f x %.0f mm"
+
+#: libdocument/pps-document-info.c:254
+#, c-format
+msgid "%.2f × %.2f inch"
+msgstr "%.2f x %.2f polgadas"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:278
+#, c-format
+msgid "%s, Portrait (%s)"
+msgstr "%s, Vertical (%s)"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:285
+#, c-format
+msgid "%s, Landscape (%s)"
+msgstr "%s, Horizontal (%s)"
+
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Produciuse un erro ao crear un cartafol temporal: %s"
 
-#: libdocument/ev-file-helpers.c:234
-#, c-format
-msgid "Failed to create a temporary directory: %s"
-msgstr "Produciuse un erro ao crear un cartafol temporal: %s"
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
+msgid "Unknown MIME Type"
+msgstr "Tipo MIME descoñecido"
 
-#: libdocument/ev-xmp.c:350
+#: libdocument/pps-xmp.c:188
 msgid "This work is in the Public Domain"
 msgstr "Este traballo está no dominio público"
 
-#: libmisc/ev-page-action-widget.c:90 libmisc/ev-page-action-widget.c:129
-#, c-format
-msgid "(%d of %d)"
-msgstr "(%d de %d)"
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
+msgid "Save Attachment"
+msgid_plural "Save Attachments"
+msgstr[0] "Gardar anexo"
+msgstr[1] "Gardar anexos"
 
-#: libmisc/ev-page-action-widget.c:92 libmisc/ev-page-action-widget.c:133
-#, c-format
-msgid "of %d"
-msgstr "de %d"
-
-#: libmisc/ev-page-action-widget.c:201 shell/ev-history.c:454
-#: shell/ev-sidebar-bookmarks.c:343 shell/ev-window.c:954
-#: shell/ev-window.c:5155
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
 #, c-format
 msgid "Page %s"
 msgstr "Páxina %s"
 
-#: libmisc/ev-search-box.c:112
-msgid "Not found, click to change search options"
-msgstr "Non atopado, prema para cambiar as opcións de busca"
+#: libview/pps-annotation-window.c:237
+msgid "Edit Note"
+msgstr "Editar nota"
 
-#: libmisc/ev-search-box.c:186 libmisc/ev-search-box.c:242
-msgid "Search options"
-msgstr "Opcións de busca"
-
-#: libmisc/ev-search-box.c:318
-msgid "_Whole Words Only"
-msgstr "_Só palabras completas"
-
-#: libmisc/ev-search-box.c:331
-msgid "C_ase Sensitive"
-msgstr "_Diferenciar as maiúsculas das minúsculas"
-
-#: libmisc/ev-search-box.c:600
-msgid "Find previous occurrence of the search string"
-msgstr "Buscar a anterior aparición da cadea de busca"
-
-#: libmisc/ev-search-box.c:607
-msgid "Find next occurrence of the search string"
-msgstr "Buscar a seguinte aparición da cadea de busca"
-
-#: libview/ev-jobs.c:625
+#: libview/pps-jobs.c:399
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Produciuse un erro ao renderizar a páxina %d: %s"
 
-#: libview/ev-jobs.c:632
+#: libview/pps-jobs.c:406
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Produciuse un erro ao renderizar a páxina %d"
 
-#: libview/ev-jobs.c:878
+#: libview/pps-jobs.c:625
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Produciuse un erro ao crear a vista previa para a páxina %d"
 
-#: libview/ev-jobs.c:2288
+#: libview/pps-jobs.c:1602
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Produciuse un erro ao imprimir a páxina %d: %s"
 
 #. Initial state
-#: libview/ev-print-operation.c:346
+#: libview/pps-print-operation.c:331
 msgid "Preparing preview…"
 msgstr "Preparando a vista previa…"
 
-#: libview/ev-print-operation.c:348 libview/ev-print-operation.c:358
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
 msgid "Finishing…"
 msgstr "Finalizando…"
 
-#: libview/ev-print-operation.c:350
+#: libview/pps-print-operation.c:335
 #, c-format
 msgid "Generating preview: page %d of %d"
 msgstr "Xerando vista previa: páxina %d de %d"
 
 #. Initial state
-#: libview/ev-print-operation.c:356
+#: libview/pps-print-operation.c:341
 msgid "Preparing to print…"
 msgstr "Preparándose para imprimir …"
 
-#: libview/ev-print-operation.c:360
+#: libview/pps-print-operation.c:345
 #, c-format
 msgid "Printing page %d of %d…"
 msgstr "Imprimindo a páxina %d de %d…"
 
-#: libview/ev-print-operation.c:1561 libview/ev-print-operation.c:2028
+#: libview/pps-print-operation.c:1334
+msgid "Invalid Page Selection"
+msgstr "A selección de páxina non é correcta"
+
+#: libview/pps-print-operation.c:1335
 msgid "Your print range selection does not include any pages"
 msgstr "A súa selección de intervalo para impresión non contén ningunha páxina"
 
+#. show close if the certificate is null, or if no cert is found
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:602
+msgid "_Close"
+msgstr "_Pechar"
+
 #. translators: Title of the print dialog
-#: libview/ev-print-operation.c:1702 libview/ev-print-operation.c:1800
-#: libview/ev-print-operation.c:2079
+#: libview/pps-print-operation.c:1413
 msgid "Print"
 msgstr "Imprimir"
 
-#: libview/ev-print-operation.c:2002
-msgid "Requested format is not supported by this printer."
-msgstr "O formato solicitado non é compatíbel nesta impresora."
-
-#: libview/ev-print-operation.c:2025
-msgid "Invalid page selection"
-msgstr "A selección de páxina non é correcta"
-
-#: libview/ev-print-operation.c:2026
-msgid "Warning"
-msgstr "Advertencia"
-
-#: libview/ev-print-operation.c:2685
+#: libview/pps-print-operation.c:1871
 msgid "Page Scaling:"
 msgstr "Escalado de páxina:"
 
-#: libview/ev-print-operation.c:2692
+#: libview/pps-print-operation.c:1879
 msgid "Shrink to Printable Area"
 msgstr "Reducir á área imprimíbel"
 
-#: libview/ev-print-operation.c:2693
+#: libview/pps-print-operation.c:1880
 msgid "Fit to Printable Area"
 msgstr "Axustar á área imprimíbel"
 
-#: libview/ev-print-operation.c:2696
+#: libview/pps-print-operation.c:1887
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of "
-"the following:\n"
+"Scale document pages to fit the selected printer page. Select from one of the "
+"following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
 "• “Shrink to Printable Area”: Document pages larger than the printable area "
 "are reduced to fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
-"required to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as required "
+"to fit the printable area of the printer page.\n"
 msgstr ""
 "Escalar as páxinas do documento para axustalas á páxina de impresora "
 "seleccionada. Seleccione unha das seguintes:\n"
 "\n"
 "• «Ningún»: Non se leva a cabo o escalado da páxina.\n"
 "\n"
-"• «Reducir á área imprimíbel»: As páxinas do documento máis grandes que a "
-"área imprimíbel son reducidas para axustarse á área imprimíbel da páxina na "
+"• «Reducir á área imprimíbel»: As páxinas do documento máis grandes que a área "
+"imprimíbel son reducidas para axustarse á área imprimíbel da páxina na "
 "impresora.\n"
 "\n"
 "• «Axustar á área imprimíbel»: As páxinas do documento son ampliadas ou "
 "reducidas para axustarse á área imprimíbel da páxina na impresora.\n"
 
-#: libview/ev-print-operation.c:2708
+#: libview/pps-print-operation.c:1898
 msgid "Auto Rotate and Center"
 msgstr "Rotar automaticamente e centrar"
 
-#: libview/ev-print-operation.c:2711
+#: libview/pps-print-operation.c:1901
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -635,1051 +615,1133 @@ msgstr ""
 "orientación de cada páxina do documento. As páxinas do documento serán "
 "centradas na páxina da impresora."
 
-#: libview/ev-print-operation.c:2716
+#: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
-msgstr ""
-"Seleccione o tamaño de páxina empregando o tamaño de páxina do documento"
+msgstr "Seleccione o tamaño de páxina empregando o tamaño de páxina do documento"
 
-#: libview/ev-print-operation.c:2718
+#: libview/pps-print-operation.c:1907
 msgid ""
-"When enabled, each page will be printed on the same size paper as the "
-"document page."
+"When enabled, each page will be printed on the same size paper as the document "
+"page."
 msgstr ""
 "Cando está activo, cada páxina será imprimida no mesmo tamaño de papel que a "
 "páxina do documento."
 
-#: libview/ev-print-operation.c:2723
+#: libview/pps-print-operation.c:1911
 msgid "Draw border around pages"
 msgstr "Debuxar o bordo ao redor das páxinas"
 
-#: libview/ev-print-operation.c:2725
+#: libview/pps-print-operation.c:1913
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Se está activo, debuxarase un bordo ao redor de cada páxina."
 
-#: libview/ev-print-operation.c:2819
+#: libview/pps-print-operation.c:2006
 msgid "Page Handling"
 msgstr "Xestión de páxina"
 
-#: libview/ev-view-accessible.c:43
-msgid "Scroll Up"
-msgstr "Desprazar cara arriba"
-
-#: libview/ev-view-accessible.c:44
-msgid "Scroll Down"
-msgstr "Desprazar cara abaixo"
-
-#: libview/ev-view-accessible.c:50
-msgid "Scroll View Up"
-msgstr "Desprazar a visualización cara arriba"
-
-#: libview/ev-view-accessible.c:51
-msgid "Scroll View Down"
-msgstr "Desprazar a visualización cara abaixo"
-
-#: libview/ev-view-accessible.c:131
-msgid "Document View"
-msgstr "Visualización de documentos"
-
-#: libview/ev-view.c:2141
+#: libview/pps-view.c:2109
 msgid "Go to first page"
 msgstr "Ir á primeira páxina"
 
-#: libview/ev-view.c:2143
+#: libview/pps-view.c:2111
 msgid "Go to previous page"
 msgstr "Ir á páxina anterior"
 
-#: libview/ev-view.c:2145
+#: libview/pps-view.c:2113
 msgid "Go to next page"
 msgstr "Ir á seguinte páxina"
 
-#: libview/ev-view.c:2147
+#: libview/pps-view.c:2115
 msgid "Go to last page"
 msgstr "Ir á última páxina"
 
-#: libview/ev-view.c:2149
+#: libview/pps-view.c:2117
 msgid "Go to page"
 msgstr "Ir á páxina"
 
-#: libview/ev-view.c:2151
+#: libview/pps-view.c:2119
 msgid "Find"
 msgstr "Buscar"
 
-#: libview/ev-view.c:2179
+#: libview/pps-view.c:2148
 #, c-format
 msgid "Go to page %s"
 msgstr "Ir á páxina %s"
 
-#: libview/ev-view.c:2185
+#: libview/pps-view.c:2154
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ir a %s no ficheiro «%s»"
 
-#: libview/ev-view.c:2188
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ir ao ficheiro «%s»"
 
-#: libview/ev-view.c:2196
+#: libview/pps-view.c:2165
 #, c-format
 msgid "Launch %s"
 msgstr "Iniciar %s"
 
-#: libview/ev-view.c:2203
+#: libview/pps-view.c:2172
+#, c-format
 msgid "Reset form"
 msgstr "Restabelecer o formulario"
 
-#: libview/ev-view-presentation.c:726
-msgid "Jump to page:"
-msgstr "Saltar á páxina:"
+#: libview/pps-view-presentation.c:824
+msgid "Running in presentation mode"
+msgstr "Executando no modo presentación"
 
-#: libview/ev-view-presentation.c:1010
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
 msgstr "Fin da presentación. Prema Esc ou prema para saír."
 
-#: org.gnome.Evince.metainfo.xml.in:24
-msgid "Document viewer for popular document formats"
-msgstr "Visor de documentos para os formatos de documentos máis populares"
+#: libview/pps-view-presentation.blp:49
+msgid "Jump to page:"
+msgstr "Saltar á páxina:"
 
-#: org.gnome.Evince.metainfo.xml.in:26
-msgid ""
-"A document viewer for the GNOME desktop. You can view, search or annotate "
-"documents in many different formats."
-msgstr ""
-"Un visor de documento para o ambiente GNOME. Pode ver, buscar ou anotar "
-"documentos en varios formatos distintos."
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
+#, c-format
+msgid "(%d of %d)"
+msgstr "(%d de %d)"
 
-#: org.gnome.Evince.metainfo.xml.in:27
-msgid ""
-"Evince supports documents in: PDF, PS, EPS, XPS, DjVu, TIFF, DVI (with "
-"SyncTeX), and Comic Books archives (CBR, CBT, CBZ, CB7)."
-msgstr ""
-"Evince admite documentos en: PDF, PS, EPS, XPS, DjVu, TIFF, DVI (con "
-"SyncTeX) e arquivos de libros de banda deseñada (CBR, CBT, CBZ, CB7)."
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
+#, c-format
+msgid "of %d"
+msgstr "de %d"
 
-#: org.gnome.Evince.metainfo.xml.in:35
-msgid "A clear, simple UI"
-msgstr "Unha interface de usuario limpa e simple"
-
-#: org.gnome.Evince.metainfo.xml.in:39
-msgid "Advanced highlighting and annotation"
-msgstr "Anotación e realzado avanzado"
-
-#: previewer/ev-previewer.c:57
-msgid "Delete the temporary file"
-msgstr "Eliminar o ficheiro temporal"
-
-#: previewer/ev-previewer.c:59
-msgid "File specifying print settings"
-msgstr "O ficheiro que especifica as preferencias de impresión"
-
-#: previewer/ev-previewer.c:59
-msgid "FILE"
-msgstr "FICHEIRO"
-
-#: previewer/ev-previewer.c:61
-msgid "File descriptor of input file"
-msgstr "Descritor de ficheiro do ficheiro de entrada"
-
-#: previewer/ev-previewer.c:61 previewer/ev-previewer.c:65
-msgid "FD"
-msgstr "DF"
-
-#: previewer/ev-previewer.c:63
-msgid "MIME type of input file"
-msgstr "Tipo MIME do ficheiro de entrada"
-
-#: previewer/ev-previewer.c:63
-msgid "TYPE"
-msgstr "TIPO"
-
-#: previewer/ev-previewer.c:65
-msgid "File descriptor of print settings file"
-msgstr "O descritor de ficheiro do ficheiro de preferencias de impresión"
-
-#: previewer/ev-previewer.c:295 previewer/ev-previewer.c:315
-msgid "GNOME Document Previewer"
-msgstr "Visor de documentos do GNOME"
-
-#: previewer/ev-previewer-toolbar.c:112 shell/evince-toolbar.ui:35
-msgid "Select page or search in the outline"
-msgstr "Seleccione unha páxina ou busca no índice"
-
-#: previewer/ev-previewer-toolbar.c:114 shell/evince-toolbar.ui:38
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
 msgid "Select page"
 msgstr "Seleccionar páxina"
 
-#: previewer/ev-previewer-window.c:78 shell/ev-window.c:3636
-msgid "Failed to print document"
-msgstr "Produciuse un erro ao imprimir o documento"
+#: previewer/pps-previewer.c:32
+msgid "Delete the temporary file"
+msgstr "Eliminar o ficheiro temporal"
 
-#: previewer/ev-previewer-window.c:193 previewer/ev-previewer-window.c:558
-msgid "Evince Document Viewer"
-msgstr "Visor de documentos Evince"
+#: previewer/pps-previewer.c:34
+msgid "File specifying print settings"
+msgstr "O ficheiro que especifica as preferencias de impresión"
 
-#: previewer/ev-previewer-window.c:229
+#: previewer/pps-previewer.c:34
+msgid "FILE"
+msgstr "FICHEIRO"
+
+#: previewer/pps-previewer.c:36
+msgid "File descriptor of input file"
+msgstr "Descritor de ficheiro do ficheiro de entrada"
+
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
+msgid "FD"
+msgstr "DF"
+
+#: previewer/pps-previewer.c:38
+msgid "MIME type of input file"
+msgstr "Tipo MIME do ficheiro de entrada"
+
+#: previewer/pps-previewer.c:38
+msgid "TYPE"
+msgstr "TIPO"
+
+#: previewer/pps-previewer.c:40
+msgid "File descriptor of print settings file"
+msgstr "O descritor de ficheiro do ficheiro de preferencias de impresión"
+
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
+msgid "GNOME Document Previewer"
+msgstr "Visor de documentos do GNOME"
+
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:72
+msgid "Papers Document Viewer"
+msgstr "Visor de documentos Papeis"
+
+#: previewer/pps-previewer-window.c:209
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Non foi posíbel atopar a impresora seleccionada «%s»"
 
-#: previewer/ev-previewer-window.c:536 shell/ev-window.c:4227
-msgid "Evince"
-msgstr "Evince"
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papeles"
 
-#: previewer/previewer.ui:7
-msgid "_Print"
-msgstr "_Imprimir"
-
-#: previewer/previewer.ui:10
-msgid "Print this document"
-msgstr "Imprimir este documento"
-
-#: previewer/previewer.ui:20 shell/evince-menus.ui:129
+#: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
 msgstr "Páxina anterior"
 
-#: previewer/previewer.ui:27 shell/evince-menus.ui:133
+#: previewer/pps-previewer-window.blp:25
 msgid "Next Page"
 msgstr "Páxina seguinte"
 
-#: previewer/previewer.ui:34
-msgid "Enlarge the document"
-msgstr "Ampliar o documento"
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:210
+msgid "Page Count"
+msgstr "Conta de páxinas"
 
-#: previewer/previewer.ui:42
-msgid "Shrink the document"
-msgstr "Reducir o documento"
+#: previewer/pps-previewer-window.blp:36
+msgid "_Print"
+msgstr "_Imprimir"
 
-#: previewer/previewer.ui:49
-msgid "Reset zoom and make the page fit in the window"
-msgstr "Restabelecer a ampliación e facer que a páxina se axuste á xanela"
+#: previewer/pps-previewer-window.blp:37
+msgid "Print This Document"
+msgstr "Imprimir este documento"
 
-#: properties/ev-properties-main.c:116
-msgid "Document"
-msgstr "Documento"
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:287
+msgid "Zoom Out"
+msgstr "Afastar"
 
-#: properties/ev-properties-view.c:62
-msgid "Title:"
-msgstr "Título:"
+#: previewer/pps-previewer-window.blp:55
+msgid "Normal Size"
+msgstr "Tamaño normal"
 
-#: properties/ev-properties-view.c:63
-msgid "Location:"
-msgstr "Localización:"
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:275
+msgid "Zoom In"
+msgstr "Ampliar"
 
-#: properties/ev-properties-view.c:64
-msgid "Subject:"
-msgstr "Asunto:"
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+msgid "Failed to Print Document"
+msgstr "Produciuse un erro ao imprimir o documento"
 
-#: properties/ev-properties-view.c:65
-#: shell/ev-annotation-properties-dialog.c:169
-msgid "Author:"
-msgstr "Autor:"
-
-#: properties/ev-properties-view.c:66
-msgid "Keywords:"
-msgstr "Palabras chave:"
-
-#: properties/ev-properties-view.c:67
-msgid "Producer:"
-msgstr "Produtor:"
-
-#: properties/ev-properties-view.c:68
-msgid "Creator:"
-msgstr "Creador:"
-
-#: properties/ev-properties-view.c:69
-msgid "Created:"
-msgstr "Creado:"
-
-#: properties/ev-properties-view.c:70
-msgid "Modified:"
-msgstr "Modificado:"
-
-#: properties/ev-properties-view.c:71
-msgid "Number of Pages:"
-msgstr "Número de páxinas:"
-
-#: properties/ev-properties-view.c:72
-msgid "Optimized:"
-msgstr "Optimizado:"
-
-#: properties/ev-properties-view.c:73
-msgid "Format:"
-msgstr "Formato:"
-
-#: properties/ev-properties-view.c:74
-msgid "Security:"
-msgstr "Seguranza:"
-
-#: properties/ev-properties-view.c:75
-msgid "Contains Javascript:"
-msgstr "Contén Javascript:"
-
-#: properties/ev-properties-view.c:76
-msgid "Paper Size:"
-msgstr "Tamaño do papel:"
-
-#: properties/ev-properties-view.c:77
-msgid "Size:"
-msgstr "Tamaño:"
-
-#. Translate to the default units to use for presenting
-#. * lengths to the user. Translate to default:inch if you
-#. * want inches, otherwise translate to default:mm.
-#. * Do *not* translate it to "predefinito:mm", if it
-#. * it isn't default:mm or default:inch it will not work
-#.
-#: properties/ev-properties-view.c:267
-msgid "default:mm"
-msgstr "default:mm"
-
-#: properties/ev-properties-view.c:311
-#, c-format
-msgid "%.0f × %.0f mm"
-msgstr "%.0f x %.0f mm"
-
-#: properties/ev-properties-view.c:315
-#, c-format
-msgid "%.2f × %.2f inch"
-msgstr "%.2f x %.2f polgadas"
-
-#. Note to translators: first placeholder is the paper name (eg.
-#. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: properties/ev-properties-view.c:339
-#, c-format
-msgid "%s, Portrait (%s)"
-msgstr "%s, Vertical (%s)"
-
-#. Note to translators: first placeholder is the paper name (eg.
-#. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: properties/ev-properties-view.c:346
-#, c-format
-msgid "%s, Landscape (%s)"
-msgstr "%s, Horizontal (%s)"
-
-#: properties/ev-properties-view.c:433
-#: shell/ev-annotation-properties-dialog.c:109
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Descoñecido"
 
-#: shell/ev-annotation-properties-dialog.c:94
-msgid "Icon:"
-msgstr "Icona:"
+#: nautilus/pps-nautilus-extension.c:149
+msgid "Document Properties"
+msgstr "Preferencias do documento"
 
-#: shell/ev-annotation-properties-dialog.c:100
-msgid "Note"
-msgstr "Nota"
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
+msgid "Title"
+msgstr "Título"
 
-#: shell/ev-annotation-properties-dialog.c:101
-msgid "Comment"
-msgstr "Comentario"
+#: nautilus/pps-nautilus-extension.h:46
+msgid "Location"
+msgstr "Localización"
 
-#: shell/ev-annotation-properties-dialog.c:102
-msgid "Key"
-msgstr "Chave"
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
+msgid "Subject"
+msgstr "Asunto"
 
-#: shell/ev-annotation-properties-dialog.c:103
-msgid "Help"
-msgstr "Axuda"
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
+msgid "Author"
+msgstr "Autor"
 
-#: shell/ev-annotation-properties-dialog.c:104
-msgid "New Paragraph"
-msgstr "Novo parágrafo"
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
+msgid "Keywords"
+msgstr "Palabras chave"
 
-#: shell/ev-annotation-properties-dialog.c:105
-msgid "Paragraph"
-msgstr "Parágrafo"
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
+msgid "Producer"
+msgstr "Produtor"
 
-#: shell/ev-annotation-properties-dialog.c:106
-msgid "Insert"
-msgstr "Inserir"
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
+msgid "Creator"
+msgstr "Creador"
 
-#: shell/ev-annotation-properties-dialog.c:107
-msgid "Cross"
-msgstr "Cruz"
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
+msgid "Created"
+msgstr "Creado"
 
-#: shell/ev-annotation-properties-dialog.c:108
-msgid "Circle"
-msgstr "Círculo"
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
+msgid "Modified"
+msgstr "Modificado"
 
-#: shell/ev-annotation-properties-dialog.c:120
-msgid "Markup type:"
-msgstr "Tipo de marcado:"
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
+msgid "Number of Pages"
+msgstr "Número de páxinas"
 
-#: shell/ev-annotation-properties-dialog.c:126
-msgid "Highlight"
-msgstr "Realzar"
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
+msgid "Optimized"
+msgstr "Optimizado"
 
-#: shell/ev-annotation-properties-dialog.c:127
-msgid "Strike out"
-msgstr "Riscar"
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
+msgid "Format"
+msgstr "Formato"
 
-#: shell/ev-annotation-properties-dialog.c:128
-msgid "Underline"
-msgstr "Subliñar"
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
+msgid "Security"
+msgstr "Seguranza"
 
-#: shell/ev-annotation-properties-dialog.c:129
-msgid "Squiggly"
-msgstr "Garabato"
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
+msgid "Contains Javascript"
+msgstr "Contén Javascript"
 
-#: shell/ev-annotation-properties-dialog.c:150 shell/evince-menus.ui:170
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
+msgid "Paper Size"
+msgstr "Tamaño do papel"
+
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
+msgid "Size"
+msgstr "Tamaño"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "Preferencias das anotacións"
 
-#: shell/ev-annotation-properties-dialog.c:154
-msgid "_Close"
-msgstr "_Pechar"
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+msgid "_Color"
+msgstr "_Cor"
 
-#: shell/ev-annotation-properties-dialog.c:155
-msgid "_Apply"
-msgstr "_Aplicar"
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+msgid "_Opacity"
+msgstr "_Opacidade"
 
-#: shell/ev-annotation-properties-dialog.c:180
-msgid "Color:"
-msgstr "Cor:"
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "_Icon"
+msgstr "_Icona"
 
-#: shell/ev-annotation-properties-dialog.c:190
-msgid "Opacity:"
-msgstr "Opacidade:"
+#: shell/resources/pps-annotation-properties-dialog.blp:51
+msgid "Note"
+msgstr "Nota"
 
-#: shell/ev-annotation-properties-dialog.c:202
-msgid "Initial window state:"
-msgstr "Estado inicial da xanela:"
+#: shell/resources/pps-annotation-properties-dialog.blp:52
+msgid "Comment"
+msgstr "Comentario"
 
-#: shell/ev-annotation-properties-dialog.c:208
-msgid "Open"
-msgstr "Abrir"
+#: shell/resources/pps-annotation-properties-dialog.blp:53
+msgid "Key"
+msgstr "Chave"
 
-#: shell/ev-annotation-properties-dialog.c:209
-msgid "Close"
-msgstr "Pechar"
+#: shell/resources/pps-annotation-properties-dialog.blp:54
+msgid "Help"
+msgstr "Axuda"
 
-#. Translators: an annotation that looks like a "sticky note"
-#: shell/ev-annotations-toolbar.c:132
-msgid "Note text"
-msgstr "Texto da nota"
+#: shell/resources/pps-annotation-properties-dialog.blp:55
+msgid "New Paragraph"
+msgstr "Novo parágrafo"
 
-#: shell/ev-annotations-toolbar.c:134
-msgid "Add text annotation"
-msgstr "Engadir texto de anotación"
+#: shell/resources/pps-annotation-properties-dialog.blp:56
+msgid "Paragraph"
+msgstr "Parágrafo"
 
-#: shell/ev-annotations-toolbar.c:139
-msgid "Highlight text"
-msgstr "Realzar texto"
+#: shell/resources/pps-annotation-properties-dialog.blp:57
+msgid "Insert"
+msgstr "Inserir"
 
-#: shell/ev-annotations-toolbar.c:141
-msgid "Add highlight annotation"
-msgstr "Engadir anotación de realzado"
+#: shell/resources/pps-annotation-properties-dialog.blp:58
+msgid "Cross"
+msgstr "Cruz"
 
-#: shell/evince-menus.ui:24
+#: shell/resources/pps-annotation-properties-dialog.blp:59
+msgid "Circle"
+msgstr "Círculo"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+msgid "_Markup Type"
+msgstr "_Tipo de marcado"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:75
+msgid "Highlight"
+msgstr "Realzar"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:76
+msgid "Strike out"
+msgstr "Riscar"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:77
+msgid "Underline"
+msgstr "Subliñar"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:78
+msgid "Squiggly"
+msgstr "Garabato"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+msgid "_Author"
+msgstr "_Autor"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+#, fuzzy
+#| msgid "Auto_scroll"
+msgid "Auto-Reveal on _Scroll"
+msgstr "Despra_zamento automático"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:96
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Go to the end of the document"
+msgid "Pop up note while scrolling the document"
+msgstr "Ir ao final do documento"
+
+#. Translators: Translators: This is an action (a verb in English) that opens
+#. the sidebar to start a search
+#: shell/resources/pps-document-view.blp:76
+msgid "Search"
+msgstr "Buscar"
+
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: shell/resources/pps-document-view.blp:110
+msgid "Thumbnails"
+msgstr "Miniaturas"
+
+#: shell/resources/pps-document-view.blp:121
+msgid "Outline"
+msgstr "Sumario"
+
+#: shell/resources/pps-document-view.blp:133
+msgid "Annotations"
+msgstr "Anotacións"
+
+#: shell/resources/pps-document-view.blp:151
+msgid "Attachments"
+msgstr "Anexos"
+
+#: shell/resources/pps-document-view.blp:167
+msgid "Layers"
+msgstr "Capas"
+
+#: shell/resources/pps-document-view.blp:197
+msgid "Toggle Sidebar"
+msgstr "Trocar panel lateral"
+
+#: shell/resources/pps-document-view.blp:203
+msgid "Document Menu"
+msgstr "Menú Documento"
+
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+msgid "Document has been digitally signed."
+msgstr "O documento foi asinado dixitalmente."
+
+#: shell/resources/pps-document-view.blp:224
+msgid "View Signature…"
+msgstr "Ver a sinatura…"
+
+#: shell/resources/pps-document-view.blp:257
+msgid "Fit Automatically"
+msgstr "Axustar automaticamente"
+
+#: shell/resources/pps-document-view.blp:529
+msgid "Selection too Small"
+msgstr "A selección é demasiado pequena"
+
+#: shell/resources/pps-document-view.blp:530
+#, fuzzy
+msgid ""
+"A signature of this size may be too small to read. If you would like to create "
+"a potentially more readable signature, press `Start over` and draw a bigger "
+"rectangle."
+msgstr ""
+"Unha sinatura deste tamaño pode ser demasiado pequena para ler. Se desexa "
+"crear unha firma potencialmente máis lexible, prema `Inicie Over` e debuxa un "
+"rectángulo máis grande."
+
+#: shell/resources/pps-document-view.blp:537
+msgid "Start _Over"
+msgstr "Comezar _de novo"
+
+#: shell/resources/pps-document-view.blp:538
+msgid "_Sign"
+msgstr "_Asinar"
+
+#: shell/resources/pps-document-view.blp:545
+msgid "Abort Printing?"
+msgstr "Desexa cancelar a impresión"
+
+#: shell/resources/pps-document-view.blp:546
+#, fuzzy
+#| msgid "If you close the window, pending print jobs will not be printed."
+msgid ""
+"There is one or more active print jobs. If the window is closed, pending print "
+"jobs will not be printed."
+msgstr "Se pecha a xanela, non se imprimirán os traballos pendentes."
+
+#: shell/resources/pps-document-view.blp:550
+#, fuzzy
+#| msgid "Cancel _print and Close"
+msgid "Abort _Print and Close"
+msgstr "Cancelar a im_presión e Pechar"
+
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
+#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
+#: shell/src/document_view/io.rs:714
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: shell/resources/pps-document-view.blp:552
+msgid "Close _After Printing"
+msgstr "Pechar _despois de imprimir"
+
+#: shell/resources/pps-document-view.blp:567
+msgid "Open…"
+msgstr "Abrir…"
+
+#: shell/resources/pps-document-view.blp:574
+msgid "Ni_ght Mode"
+msgstr "Modo _noite"
+
+#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
+msgid "_Keyboard Shortcuts"
+msgstr "Atallos de _teclado"
+
+#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
+msgid "_Help"
+msgstr "A_xuda"
+
+#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+msgid "_About Document Viewer"
+msgstr "_Sobre o Visor de documentos"
+
+#: shell/resources/pps-document-view.blp:600
+msgid "_Print…"
+msgstr "_Impresión…"
+
+#: shell/resources/pps-document-view.blp:605
+msgid "Fullscreen"
+msgstr "Pantalla completa"
+
+#: shell/resources/pps-document-view.blp:610
+msgid "Present as Slideshow"
+msgstr "Mostrar como _presentación"
+
+#: shell/resources/pps-document-view.blp:617
+msgid "Sign D_igitally…"
+msgstr "Asina d_igitalmente…"
+
+#: shell/resources/pps-document-view.blp:624
+msgid "Open a C_opy"
+msgstr "Abrir unha copia"
+
+#: shell/resources/pps-document-view.blp:629 shell/src/properties_general.rs:137
+msgid "Open With…"
+msgstr "Abrir con…"
+
+#: shell/resources/pps-document-view.blp:634
+msgid "_Save As…"
+msgstr "_Gardar como…"
+
+#: shell/resources/pps-document-view.blp:641
+msgid "_Continuous"
+msgstr "_Continuo"
+
+#: shell/resources/pps-document-view.blp:646
+msgid "_Dual"
+msgstr "_Dual"
+
+#: shell/resources/pps-document-view.blp:651
+msgid "_Odd Pages Left"
+msgstr "Páxinas _impares á esquerda"
+
+#: shell/resources/pps-document-view.blp:656
+msgid "Right to Left Document"
+msgstr "Documentos de dereita a esquerda"
+
+#: shell/resources/pps-document-view.blp:663
+msgid "Ro_tate ⤵"
+msgstr "Ro_tar ⤵"
+
+#: shell/resources/pps-document-view.blp:670
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Document properties"
+msgid "Document Prop_erties"
+msgstr "Preferencias do documento"
+
+#. Translators: As a noun, this is describing the type of text marking
+#. annotation, as are squiggly, strikethrough, and underline. An adjective
+#. could also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:708
+msgid "Highlight (h)"
+msgstr "Realzar (h)"
+
+#. Translators: As a noun or adjective, this is describing the type of text
+#. marking annotation, as are highlight, squiggly, and underline. The letter
+#. in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:724
+msgid "Strikethrough (k)"
+msgstr "Riscado (K)"
+
+#. Translators: As a noun, this is describing the type of text marking
+#. annotation, as are highlight, squiggly, and strikethrough. An adjective
+#. could also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:740
+msgid "Underline (u)"
+msgstr "Subliñar (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking
+#. annotation, as are highlight, strikethrough, and underline. A noun could
+#. also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:756
+msgid "Squiggly (q)"
+msgstr "Garabato (q)"
+
+#: shell/resources/pps-document-view.blp:847
 msgid "_Open Link"
 msgstr "_Abrir a ligazón"
 
-#: shell/evince-menus.ui:29
+#: shell/resources/pps-document-view.blp:853
 msgid "_Copy Link Address"
 msgstr "_Copiar a ligazón do enderezo"
 
-#: shell/evince-menus.ui:34
+#: shell/resources/pps-document-view.blp:859
 msgid "_Go To"
 msgstr "_Ir a"
 
-#: shell/evince-menus.ui:39
+#: shell/resources/pps-document-view.blp:865
 msgid "Open in New _Window"
 msgstr "Abrir nunha _xanela nova"
 
-#: shell/evince-menus.ui:46
-msgid "_Previous Page"
-msgstr "Páxina _anterior"
-
-#: shell/evince-menus.ui:50
-msgid "_Next Page"
-msgstr "Páxina _seguinte"
-
-#: shell/evince-menus.ui:54 shell/ev-window.c:3935
-msgid "_Reload"
-msgstr "_Recargar"
-
-#: shell/evince-menus.ui:58
-msgid "Auto_scroll"
-msgstr "Despra_zamento automático"
-
-#: shell/evince-menus.ui:64
+#: shell/resources/pps-document-view.blp:873
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: shell/evince-menus.ui:68
+#: shell/resources/pps-document-view.blp:878
 msgid "Select _All"
 msgstr "Seleccionar _todo"
 
-#: shell/evince-menus.ui:74
+#: shell/resources/pps-document-view.blp:885
 msgid "_Save Image As…"
 msgstr "_Gardar a imaxe como…"
 
-#: shell/evince-menus.ui:79
+#: shell/resources/pps-document-view.blp:891
 msgid "Copy _Image"
 msgstr "Copiar a _imaxe"
 
-#: shell/evince-menus.ui:86 shell/evince-menus.ui:157 shell/evince-menus.ui:180
+#: shell/resources/pps-document-view.blp:899
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Abrir anexo"
 
-#: shell/evince-menus.ui:91 shell/evince-menus.ui:161 shell/evince-menus.ui:185
+#: shell/resources/pps-document-view.blp:905
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Gardar o anexo como…"
 
-#: shell/evince-menus.ui:98
-msgid "Annotation _Properties"
-msgstr "_Preferencias das anotacións"
+#: shell/resources/pps-document-view.blp:915
+msgid "Annotation _Properties…"
+msgstr "_Propiedades das anotacións…"
 
-#: shell/evince-menus.ui:103
+#: shell/resources/pps-document-view.blp:921
 msgid "R_emove Annotation"
 msgstr "_Quitar anotación"
 
-#: shell/evince-menus.ui:110
-msgid "_Highlight Selected Text"
-msgstr "_Realzar o texto seleccionado"
+#: shell/resources/pps-document-view.blp:929
+msgid "_Add Text Annotation"
+msgstr "_Engadir anotación de texto"
 
-#: shell/evince-menus.ui:115 shell/evince-toolbar.ui:153
-msgid "Open Containing _Folder"
-msgstr "Abrir o cartafol _contedor"
+#: shell/resources/pps-find-sidebar.blp:60
+msgid "No Results Found"
+msgstr "Non se atoparon resultados"
 
-#: shell/evince-menus.ui:123
-msgid "Navigation"
-msgstr "Navegación"
+#: shell/resources/pps-find-sidebar.blp:61
+#, fuzzy
+msgid "Try a different search"
+msgstr "Proba unha busca diferente"
 
-#: shell/evince-menus.ui:125
-msgid "First Page"
-msgstr "Primeira páxina"
+#: shell/resources/pps-find-sidebar.blp:74
+msgid "Perform a Search"
+msgstr "Realizar unha busca"
 
-#: shell/evince-menus.ui:137
-msgid "Last Page"
-msgstr "Última páxina"
+#: shell/resources/pps-find-sidebar.blp:75
+#, fuzzy
+msgid "The search results will appear here"
+msgstr "Os resultados da busca aparecerán aquí"
 
-#: shell/evince-menus.ui:142
-msgid "History"
-msgstr "Historial"
+#: shell/resources/pps-loader-view.blp:15
+msgid "Loading Document"
+msgstr "Cargando documento"
 
-#: shell/evince-menus.ui:144
-msgid "Back"
-msgstr "Atrás"
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+msgid "C_ancel"
+msgstr "C_ancelar"
 
-#: shell/evince-menus.ui:148
-msgid "Forward"
-msgstr "Adiante"
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+msgid "Password Required"
+msgstr "Requírese un contrasinal"
 
-#: shell/evince-menus.ui:175
-msgid "Remove Annotation"
-msgstr "Quitar anotación"
+#: shell/resources/pps-password-dialog.blp:9
+msgid "Cancel"
+msgstr "Cancelar"
 
-#: shell/evince-menus.ui:195
-msgid "_Open Bookmark"
-msgstr "_Abrir marcador"
+#: shell/resources/pps-password-dialog.blp:10
+msgid "Unlock"
+msgstr "Desbloquear"
 
-#: shell/evince-menus.ui:201
-msgid "_Rename Bookmark"
-msgstr "_Renomear marcador"
+#: shell/resources/pps-password-dialog.blp:19
+msgid "Password"
+msgstr "Contrasinal"
 
-#: shell/evince-menus.ui:205
-msgid "_Delete Bookmark"
-msgstr "_Eliminar marcador"
+#: shell/resources/pps-password-dialog.blp:33
+msgid "Invalid password"
+msgstr "Contrasinal non válida"
 
-#: shell/evince-menus.ui:214
-msgid "Search in the outline…"
-msgstr "Buscar no índice…"
+#: shell/resources/pps-password-dialog.blp:48
+msgid "Forget password _immediately"
+msgstr "Esquecer o contrasinal _inmediatamente"
 
-#: shell/evince-menus.ui:218
-msgid "Print this section…"
-msgstr "Imprimir esta sección…"
+#: shell/resources/pps-password-dialog.blp:55
+msgid "Remember _forever"
+msgstr "Lem_brar sempre"
 
-#: shell/evince-menus.ui:222
-msgid "Collapse all tree"
-msgstr "Colapsar todas as árbores"
-
-#: shell/evince-menus.ui:226
-msgid "Expand all tree"
-msgstr "Expandir todas as árbores"
-
-#: shell/evince-menus.ui:230
-msgid "Expand all under this element"
-msgstr "Expandir todo baixo este elemento"
-
-#: shell/evince-password-view.ui:22
+#: shell/resources/pps-password-view.blp:18
+#, fuzzy
+#| msgid ""
+#| "This document is locked and can only be read by entering the correct "
+#| "password."
 msgid ""
-"This document is locked and can only be read by entering the correct "
-"password."
+"This document is locked and can only be read by entering the correct password"
 msgstr ""
 "Este documento está bloqueado e só se pode ler introducindo o contrasinal "
 "correcto."
 
-#: shell/evince-password-view.ui:37
+#: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
 msgstr "_Desbloquear o documento"
 
-#: shell/evince-properties-fonts.ui:40
-msgid "Font"
-msgstr "Tipo de letra"
-
-#: shell/evince-sidebar-bookmarks.ui:55
-msgid "Add bookmark"
-msgstr "Engadir marcador"
-
-#: shell/evince-sidebar-bookmarks.ui:64
-msgid "Remove bookmark"
-msgstr "Retirar marcador"
-
-#: shell/evince-toolbar.ui:10
-msgid "Open…"
-msgstr "Abrir…"
-
-#: shell/evince-toolbar.ui:11
-msgid "Open an existing document"
-msgstr "Abrir un documento existente"
-
-#: shell/evince-toolbar.ui:20
-msgid "Side pane"
-msgstr "Panel lateral"
-
-#: shell/evince-toolbar.ui:49
-msgid "Annotate the document"
-msgstr "Anotar o documento"
-
-#: shell/evince-toolbar.ui:59
-msgid "Annotate document"
-msgstr "Anotar documento"
-
-#: shell/evince-toolbar.ui:70 shell/evince-toolbar.ui:81
-msgid "File options"
-msgstr "Opcións do ficheiro"
-
-#: shell/evince-toolbar.ui:110
-msgid "Set zoom level"
-msgstr "Estabelecer nivel de ampliación"
-
-#: shell/evince-toolbar.ui:126
-msgid "Print…"
-msgstr "Imprimir…"
-
-#: shell/evince-toolbar.ui:131
-msgid "Fullscreen"
-msgstr "Pantalla completa"
-
-#: shell/evince-toolbar.ui:136
-msgid "Send To…"
-msgstr "Enviar a…"
-
-#: shell/evince-toolbar.ui:143
-msgid "New _Window"
-msgstr "Nova xanela"
-
-#: shell/evince-toolbar.ui:149
-msgid "Open a C_opy"
-msgstr "Abrir unha copia"
-
-#: shell/evince-toolbar.ui:159
-msgid "_Save As…"
-msgstr "_Gardar como…"
-
-#: shell/evince-toolbar.ui:165
-msgid "Present as _Slideshow"
-msgstr "Mostrar como _presentación"
-
-#: shell/evince-toolbar.ui:171
-msgid "_Continuous"
-msgstr "_Continuo"
-
-#: shell/evince-toolbar.ui:175
-msgid "_Dual"
-msgstr "_Dual"
-
-#: shell/evince-toolbar.ui:179
-msgid "_Odd Pages Left"
-msgstr "Páxinas _impares á esquerda"
-
-#: shell/evince-toolbar.ui:183
-msgid "Right to Left Document"
-msgstr "Documentos de dereita a esquerda"
-
-#: shell/evince-toolbar.ui:189
-msgid "Ro_tate ⤵"
-msgstr "Ro_tar ⤵"
-
-#: shell/evince-toolbar.ui:195
-msgid "Ni_ght Mode"
-msgstr "Modo _noite"
-
-#: shell/evince-toolbar.ui:201
-msgid "Prop_erties"
-msgstr "Propi_edades"
-
-#: shell/evince-toolbar.ui:207
-msgid "_Keyboard Shortcuts"
-msgstr "Atallos de _teclado"
-
-#: shell/evince-toolbar.ui:211
-msgid "_Help"
-msgstr "A_xuda"
-
-#: shell/evince-toolbar.ui:215
-msgid "_About Document Viewer"
-msgstr "_Sobre o Visor de documentos"
-
-#: shell/evince-zoom-action.ui:5
-msgid "Select or set the zoom level of the document"
-msgstr "Seleccione ou estabeleza un nivel de ampliación para o documento"
-
-#: shell/evince-zoom-action.ui:30
-msgid "Fit Pa_ge"
-msgstr "Axustar _páxina"
-
-#: shell/evince-zoom-action.ui:35
-msgid "Fit _Width"
-msgstr "Axustar ao _largo"
-
-#: shell/evince-zoom-action.ui:40
-msgid "_Automatic"
-msgstr "_Automática"
-
-#: shell/ev-keyring.c:86
-#, c-format
-msgid "Password for document %s"
-msgstr "Contrasinal para o documento %s"
-
-#: shell/ev-loading-message.c:50 shell/ev-sidebar-annotations.c:140
-#: shell/ev-sidebar-layers.c:119 shell/ev-sidebar-links.c:274
-msgid "Loading…"
-msgstr "Cargando…"
-
-#: shell/ev-password-view.c:224
-#, c-format
-msgid ""
-"The document “%s” is locked and requires a password before it can be opened."
-msgstr ""
-"O documento «%s» está bloqueado e require un contrasinal antes de que se "
-"poida abrir."
-
-#: shell/ev-password-view.c:231
-msgid "Password required"
-msgstr "Requírese un contrasinal"
-
-#: shell/ev-password-view.c:238 shell/ev-sidebar-attachments.c:493
-#: shell/ev-window.c:2877 shell/ev-window.c:3174 shell/ev-window.c:4059
-#: shell/ev-window.c:6983 shell/ev-window.c:7209
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-#: shell/ev-password-view.c:239
-msgid "_Unlock"
-msgstr "_Desbloquear o documento"
-
-#: shell/ev-password-view.c:251
-msgid "_Password:"
-msgstr "_Contrasinal:"
-
-#: shell/ev-password-view.c:285
-msgid "Forget password _immediately"
-msgstr "Esquecer o contrasinal _inmediatamente"
-
-#: shell/ev-password-view.c:296
-msgid "Remember password until you _log out"
-msgstr "Lembrar o contrasinal até saír da _sesión"
-
-#: shell/ev-password-view.c:307
-msgid "Remember _forever"
-msgstr "Lem_brar sempre"
-
-#: shell/ev-properties-dialog.c:63
-msgid "Properties"
-msgstr "Propiedades"
-
-#: shell/ev-properties-dialog.c:85
-msgid "General"
-msgstr "Xeral"
-
-#: shell/ev-properties-dialog.c:95
-msgid "Fonts"
-msgstr "Tipos de letra"
-
-#: shell/ev-properties-dialog.c:108
-msgid "Document License"
-msgstr "Licenza do documento"
-
-#: shell/ev-properties-fonts.c:136
-#, c-format
-msgid "Gathering font information… %3d%%"
-msgstr "Obtendo información do tipo de letra... %3d%%"
-
-#: shell/ev-properties-license.c:146
-msgid "Usage terms"
+#: shell/resources/pps-properties-license.blp:19
+msgid "Usage Terms"
 msgstr "Termos de uso"
 
-#: shell/ev-properties-license.c:158
+#: shell/resources/pps-properties-license.blp:52
 msgid "Text License"
 msgstr "Licenza do texto"
 
-#: shell/ev-properties-license.c:169
+#: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Máis información"
 
-#: shell/ev-sidebar-annotations.c:341
-msgid "Document contains no annotations"
-msgstr "O documento non contén anotacións"
+#: shell/resources/pps-properties-signatures.blp:32
+msgid "Signature Information"
+msgstr "Información da sinatura"
 
-#: shell/ev-sidebar-annotations.c:369
-#, c-format
-msgid "Page %d"
-msgstr "Páxina %d"
+#: shell/resources/pps-properties-signatures.blp:48
+#: shell/src/properties_signatures.rs:405
+msgid "View Details…"
+msgstr "Ver detalles…"
 
-#: shell/ev-sidebar-annotations.c:403
-msgid "No Comment"
-msgstr "Non hai comentarios"
+#: shell/resources/pps-properties-window.blp:5
+msgid "Properties"
+msgstr "Propiedades"
 
-#: shell/ev-sidebar-annotations.c:564 shell/ev-window.c:7592
-msgid "Annotations"
-msgstr "Anotacións"
+#: shell/resources/pps-properties-window.blp:23
+msgid "_Document"
+msgstr "_Documento"
 
-#: shell/ev-sidebar-attachments.c:485
-#, c-format
-msgid "A file named “%s” already exists. Do you want to replace it?"
-msgstr "Xa existe un ficheiro co nome «%s». Quere substituílo?"
+#: shell/resources/pps-properties-window.blp:34
+msgid "_Fonts"
+msgstr "_Tipos de letra"
 
-#: shell/ev-sidebar-attachments.c:489
-#, c-format
-msgid "The file “%s” already exists. Replacing it will overwrite its contents."
-msgstr ""
-"O ficheiro «%s» xa existe. Ao substituílo sobrescribirá os seus contidos."
+#: shell/resources/pps-properties-window.blp:43
+msgid "License"
+msgstr "Licenza"
 
-#: shell/ev-sidebar-attachments.c:494
-msgid "_Replace"
-msgstr "_Substituír"
+#: shell/resources/pps-properties-window.blp:51
+msgid "_Signatures"
+msgstr "_Sinaturas"
 
-#: shell/ev-sidebar-attachments.c:892 shell/ev-window.c:7616
-msgid "Attachments"
-msgstr "Anexos"
+#: shell/resources/pps-search-box.blp:16
+msgid "Search in document"
+msgstr "Buscar no documento"
 
-#: shell/ev-sidebar-bookmarks.c:553 shell/ev-window.c:7600
-msgid "Bookmarks"
-msgstr "Marcadores"
+#: shell/resources/pps-search-box.blp:38
+msgid "Search Options"
+msgstr "Opcións da busca"
 
-#: shell/ev-sidebar-layers.c:439 shell/ev-window.c:7628
-msgid "Layers"
-msgstr "Capas"
+#: shell/resources/pps-search-box.blp:46
+msgid "_Whole Words Only"
+msgstr "_Só palabras completas"
 
-#. Translators: This is the title for the sidebar pane that
-#. * shows the Outline or Table of Contents of the document.
-#.
-#: shell/ev-sidebar-links.c:1450 shell/ev-window.c:7580
-msgid "Outline"
-msgstr "Sumario"
+#: shell/resources/pps-search-box.blp:51
+msgid "C_ase Sensitive"
+msgstr "_Diferenciar as maiúsculas das minúsculas"
 
-#: shell/ev-sidebar-thumbnails.c:1038 shell/ev-window.c:7563
-msgid "Thumbnails"
-msgstr "Miniaturas"
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "File"
+msgstr "Ficheiro"
 
-#: shell/ev-toolbar.c:98
-msgid "Find a word or phrase in the document"
-msgstr "Buscar unha palabra ou frase no documento"
-
-#: shell/ev-toolbar.c:104
-msgid "Search not available for this document"
-msgstr "A busca non está dispoñíbel para este documento"
-
-#: shell/ev-utils.c:268
-msgid "Supported Image Files"
-msgstr "Ficheiros de imaxe admitidos"
-
-#: shell/ev-window.c:1753
-msgid "The document contains no pages"
-msgstr "O documento non contén páxinas"
-
-#: shell/ev-window.c:1756
-msgid "The document contains only empty pages"
-msgstr "O documento só contén páxinas baleiras"
-
-#: shell/ev-window.c:1997 shell/ev-window.c:2171
-#, c-format
-msgid "Unable to open document “%s”."
-msgstr "Non é posíbel abrir o documento «%s»."
-
-#: shell/ev-window.c:2136
-#, c-format
-msgid "Loading document from “%s”"
-msgstr "Cargando o documento desde «%s»"
-
-#: shell/ev-window.c:2141 shell/ev-window.c:2599 shell/ev-window.c:2965
-#: shell/ev-window.c:3700 shell/ev-window.c:3948
-msgid "C_ancel"
-msgstr "C_ancelar"
-
-#: shell/ev-window.c:2293 shell/ev-window.c:2650
-#, c-format
-msgid "Downloading document (%d%%)"
-msgstr "Descargando o documento (%d%%)"
-
-#: shell/ev-window.c:2326
-msgid "Failed to load remote file."
-msgstr "Produciuse un erro ao cargar o ficheiro remoto."
-
-#: shell/ev-window.c:2595
-#, c-format
-msgid "Reloading document from %s"
-msgstr "Recargando o documento desde %s"
-
-#: shell/ev-window.c:2625
-msgid "Failed to reload document."
-msgstr "Produciuse un erro ao recargar o documento."
-
-#: shell/ev-window.c:2873
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
 msgid "Open Document"
-msgstr "Abrir o documento"
+msgstr "Abrir documento"
 
-#: shell/ev-window.c:2876
-msgid "_Open"
-msgstr "_Abrir"
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Abrir unha copia do documento actual"
 
-#: shell/ev-window.c:2951
-#, c-format
-msgid "Saving document to %s"
-msgstr "Gardando o documento en %s"
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Abrir con…"
 
-#: shell/ev-window.c:2954
-#, c-format
-msgid "Saving attachment to %s"
-msgstr "Gardando o anexo en %s"
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Gardar unha copia do documento actual"
 
-#: shell/ev-window.c:2957
-#, c-format
-msgid "Saving image to %s"
-msgstr "Gardando a imaxe en %s"
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Imprimir o documento actual"
 
-#: shell/ev-window.c:2999 shell/ev-window.c:3113
-#, c-format
-msgid "The file could not be saved as “%s”."
-msgstr "Non foi posíbel gardar como «%s»."
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Pechar a xanela do documento actual"
 
-#: shell/ev-window.c:3031
-#, c-format
-msgid "Uploading document (%d%%)"
-msgstr "Enviando o documento (%d%%)"
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Xanela"
 
-#: shell/ev-window.c:3035
-#, c-format
-msgid "Uploading attachment (%d%%)"
-msgstr "Enviando o anexo (%d%%)"
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Pantalla completa"
 
-#: shell/ev-window.c:3039
-#, c-format
-msgid "Uploading image (%d%%)"
-msgstr "Enviando a imaxe (%d%%)"
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Entrar no modo presentación"
 
-#: shell/ev-window.c:3171
-msgid "Save As…"
-msgstr "Gardar como…"
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Panel lateral"
 
-#: shell/ev-window.c:3173 shell/ev-window.c:6982 shell/ev-window.c:7208
-msgid "_Save"
-msgstr "_Gardar"
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Navegación por "
 
-#: shell/ev-window.c:3260
-msgid "Could not send current document"
-msgstr "Non foi posíbel enviar o documento actual"
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Selección"
 
-#: shell/ev-window.c:3587
-#, c-format
-msgid "%d pending job in queue"
-msgid_plural "%d pending jobs in queue"
-msgstr[0] "%d traballo pendente na cola"
-msgstr[1] "%d traballos pendentes na cola"
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Copiar"
 
-#: shell/ev-window.c:3696
-#, c-format
-msgid "Printing job “%s”"
-msgstr "Imprimindo o traballo «%s»"
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Seleccionar todo"
 
-#: shell/ev-window.c:3914
-msgid "Document contains form fields that have been filled out."
-msgstr "O documento contén campos de formulario que se encheron."
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Zoom and Rotation"
+msgstr "Zoom e rotación"
 
-#: shell/ev-window.c:3917
-msgid "Document contains new or modified annotations."
-msgstr "O documento contén anotacións novas ou modificadas."
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Rotar a páxina 90 grados no sentido antihorario"
 
-#: shell/ev-window.c:3929
-#, c-format
-msgid "Reload document “%s”?"
-msgstr "Recargar o documento «%s»?"
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Rotar a páxina 90 grados no sentido horario"
 
-#: shell/ev-window.c:3931
-msgid "If you reload the document, changes will be permanently lost."
-msgstr "Se desexa recargar o documento, os cambios perderanse."
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Ampliar"
 
-#: shell/ev-window.c:3933
-msgid "_No"
-msgstr "_Non"
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Afastar"
 
-#: shell/ev-window.c:3942
-#, c-format
-msgid "Save a copy of document “%s” before closing?"
-msgstr "Desexa gardar unha copia do documento «%s» antes de pechar?"
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Tamaño normal"
 
-#: shell/ev-window.c:3944
-msgid "If you don’t save a copy, changes will be permanently lost."
-msgstr "Os cambios perderanse permanentemente se non garda unha copia."
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Ampliar (alternativa)"
 
-#: shell/ev-window.c:3946
-msgid "Close _without Saving"
-msgstr "Pechar _sen gardar"
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Axustar páxina"
 
-#: shell/ev-window.c:3950
-msgid "Save a _Copy"
-msgstr "Gardar unha _copia"
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Axustar ao largo"
 
-#: shell/ev-window.c:4032
-#, c-format
-msgid "Wait until print job “%s” finishes before closing?"
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Ampliación automática"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navegación"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Moverse pola páxina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Avanzar/retroceder a páxina varias liñas á vez"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Páxina anterior"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Páxina seguinte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Ir á paxina número"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Páxina anterior (Rápido)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+#| msgid "Next Page"
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Páxina seguinte (Rápido)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Páxina anterior visitada"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Páxina seguinte visitada"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Ir ao comezo/final da páxina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Ir ao inicio do documento"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Documento ao final do documento"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View"
+msgstr "Visualización de documento"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Engadir marcador"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Retirar marcador"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Modo noite"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Desprazamento continuo"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Páxina dual"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Páxinas impares á esquerda"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Preferencias do documento"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Engadir anotación do texto"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Realzar texto"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Riscar texto"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
 msgstr ""
-"Quere agardar a que remate o traballo de impresión «%s» antes de pechar?"
 
-#. TRANS: the singular form is not really used as n_print_jobs > 1
-#. but some languages distinguish between different plurals forms,
-#. so the ngettext is needed.
-#: shell/ev-window.c:4038
-#, c-format
-msgid "There is %d print job active. Wait until print finishes before closing?"
-msgid_plural ""
-"There are %d print jobs active. Wait until print finishes before closing?"
-msgstr[0] ""
-"Hai %d traballo de impresión activo. Quere agardar a que remate a impresión "
-"antes de pechar?"
-msgstr[1] ""
-"Hai %d traballos de impresión activos. Quere agardar a que remate a "
-"impresión antes de pechar?"
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Texto subliñado"
 
-#: shell/ev-window.c:4053
-msgid "If you close the window, pending print jobs will not be printed."
-msgstr "Se pecha a xanela, non se imprimirán os traballos pendentes."
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Buscar"
 
-#: shell/ev-window.c:4057
-msgid "Cancel _print and Close"
-msgstr "Cancelar a im_presión e Pechar"
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Buscar"
 
-#: shell/ev-window.c:4061
-msgid "Close _after Printing"
-msgstr "Pechar _despois de imprimir"
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Buscar seguinte"
 
-#: shell/ev-window.c:4229
-msgid "© 1996–2022 The Evince document viewer authors"
-msgstr "© 1996-2022 Os autores do Evince"
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Páxina anterior"
 
-#: shell/ev-window.c:4232
-msgid "Evince is a simple document viewer for GNOME"
-msgstr "Evince é un visor de documentos sinxelo para GNOME"
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Xeral"
 
-#: shell/ev-window.c:4235
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Axuda"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menú"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Atallos de teclado"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nova xanela"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Pechar xanela"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Modo presentación"
+
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Pantalla en negro"
+
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Pantalla en branco"
+
+#: shell/resources/pps-sidebar-annotations.blp:13
+msgid "No Annotations"
+msgstr "Non hai anotacións"
+
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "Preferencias das anotacións"
+
+#: shell/resources/pps-sidebar-annotations.blp:66
+msgid "Remove Annotation"
+msgstr "Quitar anotación"
+
+#: shell/resources/pps-sidebar-links.blp:48
+msgid "Collapse all tree"
+msgstr "Colapsar todas as árbores"
+
+#: shell/resources/pps-sidebar-links.blp:53
+msgid "Expand all tree"
+msgstr "Expandir todas as árbores"
+
+#: shell/resources/pps-sidebar-links.blp:58
+msgid "Expand all under this element"
+msgstr "Expandir todo baixo este elemento"
+
+#: shell/resources/pps-sidebar-links.blp:65
+msgid "Print this section…"
+msgstr "Imprimir esta sección…"
+
+#: shell/resources/pps-sidebar-thumbnails.blp:47
+msgid "Previews"
+msgstr "Vistas previas"
+
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
+msgid "Open a Document"
+msgstr "Abrir un documento"
+
+#: shell/resources/pps-window.blp:44
+msgid "Drag and drop documents here"
+msgstr "Arrastre e solte documentos aquí"
+
+#: shell/resources/pps-window.blp:49
+msgid "_Open…"
+msgstr "_Abrir…"
+
+#: shell/resources/pps-window.blp:71
+msgid "Unable to Open Document"
+msgstr "Non foi posíbel abrir o anexo"
+
+#: shell/resources/pps-window.blp:76
+msgid "_Open Other File…"
+msgstr "_Abrir outro ficheiro…"
+
+#: shell/src/application.rs:216
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996-2025 Os autores do Papeis"
+
+#: shell/src/application.rs:217
 msgid "translator-credits"
 msgstr ""
-"Fran Diéguez <frandieguez@gnome.org>, 2009-2023.\n"
+"Fran Diéguez <frandieguez@gnome.org>, 2009-2025.\n"
 "Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.\n"
-"Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun."
-"org>, 2009.\n"
+"Mancomún - Centro de Referencia e Servizos de Software Libre "
+"<g11n@mancomun.org>, 2009.\n"
 "Antón Méixome <meixome@mancomun.org>, 2009.\n"
 "Suso Baleato <suso.baleato@xunta.es>\n"
 "Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007, 2008.\n"
@@ -1689,499 +1751,912 @@ msgstr ""
 "Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas\n"
 "colaborar connosco, podes atopar máis información en http://www.trasno.net"
 
-#: shell/ev-window.c:4713
-msgid "Running in presentation mode"
-msgstr "Executando no modo presentación"
-
-#: shell/ev-window.c:5700
-msgid "The attachment could not be saved."
-msgstr "Non foi posíbel gardar o anexo."
-
-#: shell/ev-window.c:6022
-msgid "Enable caret navigation?"
-msgstr "Activar a navegación por cursores?"
-
-#: shell/ev-window.c:6023
-msgid "_Enable"
-msgstr "_Activar"
-
-#: shell/ev-window.c:6026
-msgid ""
-"Pressing F7 turns the caret navigation on or off. This feature places a "
-"moveable cursor in text pages, allowing you to move around and select text "
-"with your keyboard. Do you want to enable the caret navigation?"
-msgstr ""
-"Ao premer F7 cambia o modo de navegación por cursor entre activado e "
-"desactivado. Esta característica posiciona un cursor movíbel nas páxinas de "
-"texto, permitíndolle moverse co seu teclado. Desexa activar o modo de "
-"navegación con cursor?"
-
-#: shell/ev-window.c:6031
-msgid "Don’t show this message again"
-msgstr "Non mostrar esta mensaxe de novo"
-
-#: shell/ev-window.c:6620
-#, c-format
-msgid ""
-"Security alert: this document has been prevented from opening the file “%s”"
-msgstr ""
-"Alerta de seguranza: evitouse que este documento abrira o ficheiro «%s»"
-
-#: shell/ev-window.c:6685
-msgid "Unable to open external link"
-msgstr "Non foi posíbel abrir a ligazón externa"
-
-#: shell/ev-window.c:6911
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Non foi posíbel atopar o formato axeitado para gardar a imaxe"
-
-#: shell/ev-window.c:6943
-msgid "The image could not be saved."
-msgstr "Non foi posíbel gardar a imaxe."
-
-#: shell/ev-window.c:6979
-msgid "Save Image"
-msgstr "Gardar a imaxe"
-
-#: shell/ev-window.c:7137
-msgid "Unable to open attachment"
-msgstr "Non foi posíbel abrir o anexo"
-
-#: shell/ev-window.c:7205
-msgid "Save Attachment"
-msgstr "Gardar o anexo"
-
-#: shell/ev-window-title.c:108
-msgid "Recent Documents"
-msgstr "Documentos recentes"
-
-#: shell/ev-window-title.c:151 shell/ev-window-title.c:153
-#: shell/ev-window-title.c:158
-msgid "Password Required"
-msgstr "Requírese un contrasinal"
-
-#: shell/ev-zoom-action.c:41
-msgid "50%"
-msgstr "50%"
-
-#: shell/ev-zoom-action.c:42
-msgid "70%"
-msgstr "70%"
-
-#: shell/ev-zoom-action.c:43
-msgid "85%"
-msgstr "85%"
-
-#: shell/ev-zoom-action.c:44
-msgid "100%"
-msgstr "100%"
-
-#: shell/ev-zoom-action.c:45
-msgid "125%"
-msgstr "125%"
-
-#: shell/ev-zoom-action.c:46
-msgid "150%"
-msgstr "150%"
-
-#: shell/ev-zoom-action.c:47
-msgid "175%"
-msgstr "175%"
-
-#: shell/ev-zoom-action.c:48
-msgid "200%"
-msgstr "200%"
-
-#: shell/ev-zoom-action.c:49
-msgid "300%"
-msgstr "300%"
-
-#: shell/ev-zoom-action.c:50
-msgid "400%"
-msgstr "400%"
-
-#: shell/ev-zoom-action.c:51
-msgid "800%"
-msgstr "800%"
-
-#: shell/ev-zoom-action.c:52
-msgid "1600%"
-msgstr "1600%"
-
-#: shell/ev-zoom-action.c:53
-msgid "3200%"
-msgstr "3200%"
-
-#: shell/ev-zoom-action.c:54
-msgid "6400%"
-msgstr "6400%"
-
-#: shell/help-overlay.ui:13
-msgctxt "shortcut window"
-msgid "Opening, closing, saving and printing"
-msgstr "Abrir, pechar, gardar e imprimir"
-
-#: shell/help-overlay.ui:17
-msgctxt "shortcut window"
-msgid "Open a document"
-msgstr "Abrir un documento"
-
-#: shell/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Open a copy of the current document"
-msgstr "Abrir unha copia do documento actual"
-
-#: shell/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Save a copy of the current document"
-msgstr "Gardar unha copia do documento actual"
-
-#: shell/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Print the current document"
-msgstr "Imprimir o documento actual"
-
-#: shell/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Close the current document window"
-msgstr "Pechar a xanela do documento actual"
-
-#: shell/help-overlay.ui:52
-msgctxt "shortcut window"
-msgid "Reload the document"
-msgstr "Recargar o documento"
-
-#: shell/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "Xanela"
-
-#: shell/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Toggle fullscreen"
-msgstr "Alternar ao modo de pantalla completa"
-
-#: shell/help-overlay.ui:72
-msgctxt "shortcut window"
-msgid "Enter presentation mode"
-msgstr "Entrar no modo presentación"
-
-#: shell/help-overlay.ui:79
-msgctxt "shortcut window"
-msgid "Toggle sidebar"
-msgstr "Trocar panel lateral"
-
-#: shell/help-overlay.ui:86
-msgctxt "shortcut window"
-msgid "Toggle caret navigation"
-msgstr "Trocar a navegación con cursores"
-
-#: shell/help-overlay.ui:95
-msgctxt "shortcut window"
-msgid "Selecting and copying text"
-msgstr "Seleccionar e copiar texto"
-
-#: shell/help-overlay.ui:99
-msgctxt "shortcut window"
-msgid "Copy highlighted text"
-msgstr "Copiar o texto realzado"
-
-#: shell/help-overlay.ui:106
-msgctxt "shortcut window"
-msgid "Select all the text in a document"
-msgstr "Seleccionar todo o texto nun documento"
-
-#: shell/help-overlay.ui:115
-msgctxt "shortcut window"
-msgid "Rotating and zooming"
-msgstr "Rotar e ampliar"
-
-#: shell/help-overlay.ui:119
-msgctxt "shortcut window"
-msgid "Rotate the page 90 degrees counter-clockwise"
-msgstr "Rotar a páxina 90 grados no sentido contrario ao reloxo"
-
-#: shell/help-overlay.ui:126
-msgctxt "shortcut window"
-msgid "Rotate the page 90 degrees clockwise"
-msgstr "Rotar a páxina 90 grados no sentido do reloxo"
-
-#: shell/help-overlay.ui:133 shell/help-overlay.ui:435
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Ampliar"
-
-#: shell/help-overlay.ui:140 shell/help-overlay.ui:442
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Afastar"
-
-#: shell/help-overlay.ui:147
-msgctxt "shortcut window"
-msgid "Zoom 1∶1"
-msgstr "Ampliación 1:1"
-
-#: shell/help-overlay.ui:154
-msgctxt "shortcut window"
-msgid "Zoom in (alternative)"
-msgstr "Ampliar (alternativa)"
-
-#: shell/help-overlay.ui:161
-msgctxt "shortcut window"
-msgid "Fit page"
-msgstr "Axustar á páxina"
-
-#: shell/help-overlay.ui:168
-msgctxt "shortcut window"
-msgid "Fit width"
-msgstr "Axustar á largura"
-
-#: shell/help-overlay.ui:175
-msgctxt "shortcut window"
-msgid "Automatic zoom"
-msgstr "Ampliación automática"
-
-#: shell/help-overlay.ui:184
-msgctxt "shortcut window"
-msgid "Moving around the document"
-msgstr "Moverse polo documento"
-
-#: shell/help-overlay.ui:188 shell/help-overlay.ui:195
-msgctxt "shortcut window"
-msgid "Move around a page"
-msgstr "Mover unha páxina"
-
-#: shell/help-overlay.ui:202
-msgctxt "shortcut window"
-msgid "Move up/down a page several lines at a time"
-msgstr "Avanzar/retroceder unha páxina varias liñas á vez"
-
-#: shell/help-overlay.ui:209 shell/help-overlay.ui:456
-msgctxt "shortcut window"
-msgid "Go to previous page"
-msgstr "Ir a anterior páxina"
-
-#: shell/help-overlay.ui:216 shell/help-overlay.ui:449
-msgctxt "shortcut window"
-msgid "Go to next page"
-msgstr "Ir a seguinte páxina"
-
-#: shell/help-overlay.ui:223
-msgctxt "shortcut window"
-msgid "Go to page number"
-msgstr "Ir á paxina número"
-
-#: shell/help-overlay.ui:230
-msgctxt "shortcut window"
-msgid "Go to previous page (fast)"
-msgstr "Ir á páxina anterior (rápido)"
-
-#: shell/help-overlay.ui:237
-msgctxt "shortcut window"
-msgid "Go to next page (fast)"
-msgstr "Ir á seguinte páxina (rápido)"
-
-#: shell/help-overlay.ui:244
-msgctxt "shortcut window"
-msgid "Go to previous page visited"
-msgstr "Ir á anterior páxina visitada"
-
-#: shell/help-overlay.ui:251
-msgctxt "shortcut window"
-msgid "Go to next page visited"
-msgstr "Ir á seguinte páxina visitada"
-
-#: shell/help-overlay.ui:258
-msgctxt "shortcut window"
-msgid "Go to the beginning/end of a page"
-msgstr "Ir ao comezo/final da páxina"
-
-#: shell/help-overlay.ui:265
-msgctxt "shortcut window"
-msgid "Go to the beginning of the document"
-msgstr "Ir ao comezo do documento"
-
-#: shell/help-overlay.ui:272
-msgctxt "shortcut window"
-msgid "Go to the end of the document"
-msgstr "Ir ao final do documento"
-
-#: shell/help-overlay.ui:281
-msgctxt "shortcut window"
-msgid "Document view and handling"
-msgstr "Xestión e visualización de documentos"
-
-#: shell/help-overlay.ui:285
-msgctxt "shortcut window"
-msgid "Add bookmark"
-msgstr "Engadir marcador"
-
-#: shell/help-overlay.ui:292
-msgctxt "shortcut window"
-msgid "Remove bookmark"
-msgstr "Retirar marcador"
-
-#: shell/help-overlay.ui:299
-msgctxt "shortcut window"
-msgid "Toggle night mode"
-msgstr "Trocar o modo noite"
-
-#: shell/help-overlay.ui:306
-msgctxt "shortcut window"
-msgid "Toggle continuous scrolling"
-msgstr "Trocar o desprazamento continuo"
-
-#: shell/help-overlay.ui:313
-msgctxt "shortcut window"
-msgid "Toggle dual page"
-msgstr "Trocar a páxina dual"
-
-#: shell/help-overlay.ui:320
-msgctxt "shortcut window"
-msgid "Toggle odd pages left"
-msgstr "Trocar páxinas impares á esquerda"
-
-#: shell/help-overlay.ui:327
-msgctxt "shortcut window"
-msgid "Document properties"
-msgstr "Preferencias do documento"
-
-#: shell/help-overlay.ui:334
-msgctxt "shortcut window"
-msgid "Add a post-it like note"
-msgstr "Engadir unha nota"
-
-#: shell/help-overlay.ui:341
-msgctxt "shortcut window"
-msgid "Highlight text"
-msgstr "Realzar texto"
-
-#: shell/help-overlay.ui:350
-msgctxt "shortcut window"
-msgid "Finding text"
-msgstr "Buscar texto"
-
-#: shell/help-overlay.ui:354
-msgctxt "shortcut window"
-msgid "Show the search bar"
-msgstr "Mostrar a caixa de busca"
-
-#: shell/help-overlay.ui:361
-msgctxt "shortcut window"
-msgid "Go to the next search result"
-msgstr "Ir ao seguinte resultado da busca"
-
-#: shell/help-overlay.ui:368
-msgctxt "shortcut window"
-msgid "Go to the previous search result"
-msgstr "Ir ao anterior resultado da busca"
-
-#: shell/help-overlay.ui:377
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Xeral"
-
-#: shell/help-overlay.ui:381
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Mostrar a axuda"
-
-#: shell/help-overlay.ui:388
-msgctxt "shortcut window"
-msgid "Toggle primary menu"
-msgstr "Trocar o menú principal"
-
-#: shell/help-overlay.ui:395
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Atallos de teclado"
-
-#: shell/help-overlay.ui:402
-msgctxt "shortcut window"
-msgid "Close window"
-msgstr "Pechar xanela"
-
-#: shell/help-overlay.ui:411
-msgctxt "shortcut window"
-msgid "Presentation mode"
-msgstr "Modo presentación"
-
-#: shell/help-overlay.ui:415
-msgctxt "shortcut window"
-msgid "Toggle black screen"
-msgstr "Trocar a pantalla en negro"
-
-#: shell/help-overlay.ui:422
-msgctxt "shortcut window"
-msgid "Toggle white screen"
-msgstr "Trocar a pantalla en branco"
-
-#: shell/help-overlay.ui:431
-msgctxt "shortcut window"
-msgid "Touchpad gestures"
-msgstr "Xestos da área táctil"
-
-#: shell/main.c:64 shell/main.c:271
-msgid "GNOME Document Viewer"
-msgstr "Visor de documentos do GNOME"
-
-#: shell/main.c:72
-msgid "Open a new window."
-msgstr "Abrir xanela nova."
-
-#: shell/main.c:73
+#: shell/src/application.rs:366
 msgid "The page label of the document to display."
 msgstr "A etiqueta da páxina do documento para mostrar."
 
-#: shell/main.c:73
+#: shell/src/application.rs:367
 msgid "PAGE"
 msgstr "PÁXINA"
 
-#: shell/main.c:74
+#: shell/src/application.rs:375
 msgid "The page number of the document to display."
 msgstr "O número de páxina do documento para mostrar."
 
-#: shell/main.c:74
+#: shell/src/application.rs:376
 msgid "NUMBER"
 msgstr "NÚMERO"
 
-#: shell/main.c:75
+#: shell/src/application.rs:384
 msgid "Named destination to display."
 msgstr "Nome do destino que mostrar."
 
-#: shell/main.c:75
+#: shell/src/application.rs:385
 msgid "DEST"
 msgstr "DESTINO"
 
-#: shell/main.c:76
-msgid "Run evince in fullscreen mode"
-msgstr "Executar o Evince no modo de pantalla completa"
+#: shell/src/application.rs:393
+msgid "Run papers in fullscreen mode."
+msgstr "Executar Papeis no modo de pantalla completa"
 
-#: shell/main.c:77
-msgid "Run evince in presentation mode"
-msgstr "Executar o Evince no modo de presentación"
+#: shell/src/application.rs:402
+msgid "Run papers in presentation mode."
+msgstr "Executar Papeis no modo de presentación"
 
-#: shell/main.c:78
-msgid "Run evince as a previewer"
-msgstr "Executar o Evince como un previsualizador"
+#: shell/src/application.rs:411
+msgid "Show the version of the program."
+msgstr "Mostrar a versión do programa"
 
-#: shell/main.c:79
-msgid "The word or phrase to find in the document"
-msgstr "A palabra ou frase que se buscará no documento"
-
-#: shell/main.c:79
-msgid "STRING"
-msgstr "CADEA"
-
-#: shell/main.c:83
+#: shell/src/application.rs:421
 msgid "[FILE…]"
 msgstr "[FICHEIRO...]"
 
+#: shell/src/document_view.rs:300
+msgid "View Details"
+msgstr "Ver detalles"
+
+#: shell/src/document_view.rs:705
+#, fuzzy
+#| msgid "Document contains form fields that have been filled out."
+msgid ""
+"Document contains new or modified annotations and form fields that have been "
+"filled out."
+msgstr "O documento contén campos de formulario que se encheron."
+
+#: shell/src/document_view.rs:706
+msgid "Document contains form fields that have been filled out."
+msgstr "O documento contén campos de formulario que se encheron."
+
+#: shell/src/document_view.rs:707
+msgid "Document contains new or modified annotations."
+msgstr "O documento contén anotacións novas ou modificadas."
+
+#: shell/src/document_view.rs:715
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr "Os cambios perderanse permanentemente se non garda unha copia."
+
+#: shell/src/document_view.rs:716
+msgid "Save Changes to a Copy?"
+msgstr "Desexa gardar unha copia?"
+
+#: shell/src/document_view.rs:725
+msgid "Close _Without Saving"
+msgstr "Pechar _sen gardar"
+
+#: shell/src/document_view.rs:727
+msgid "_Save a Copy"
+msgstr "Gardar unha _copia"
+
+#: shell/src/document_view/actions.rs:844
+msgid "Save Image"
+msgstr "Gardar a imaxe"
+
+#: shell/src/document_view/actions.rs:880
+msgid "Couldn’t find appropriate format to save image"
+msgstr "Non foi posíbel atopar o formato axeitado para gardar a imaxe"
+
+#: shell/src/document_view/actions.rs:897
+msgid "The image could not be saved."
+msgstr "Non foi posíbel gardar a imaxe."
+
+#: shell/src/document_view/actions.rs:969
+#, fuzzy
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr ""
+"O modo de navegación de coidados agora está activado, prema F7 para desactivar."
+
+#: shell/src/document_view/actions.rs:971
+#, fuzzy
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+"O modo de navegación de coidados agora está desactivado, prema F7 para "
+"habilitar."
+
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+msgid "Unable to Open Attachment"
+msgstr "Non foi posíbel abrir o anexo"
+
+#: shell/src/document_view/actions.rs:1059
+msgid "The attachment could not be saved."
+msgstr "Non foi posíbel gardar o anexo."
+
+#: shell/src/document_view/io.rs:269
+msgid "Digital signature is invalid"
+msgstr "A sinatura dixital non é válida"
+
+#: shell/src/document_view/io.rs:280
+#, fuzzy
+#| msgid "The document contains no pages"
+msgid "The Document Contains No Pages"
+msgstr "O documento non contén páxinas"
+
+#: shell/src/document_view/io.rs:282
+#, fuzzy
+#| msgid "The document contains only empty pages"
+msgid "The Document Contains Only Empty Pages"
+msgstr "O documento só contén páxinas baleiras"
+
+#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
+#, fuzzy
+#| msgid "The file could not be saved as “%s”."
+msgid "The file could not be saved as “{}”."
+msgstr "Non foi posíbel gardar como «%s»."
+
+#: shell/src/document_view/io.rs:409
+msgid "Save As…"
+msgstr "Gardar como…"
+
+#: shell/src/document_view/io.rs:485
+#, fuzzy
+msgid "Draw a rectangle to insert a signature field"
+msgstr "Debuxa un rectángulo para inserir un campo de firma"
+
+#: shell/src/document_view/io.rs:507
+#, fuzzy
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"Asinado dixitalmente por {}\n"
+"Data: {}"
+
+#: shell/src/document_view/io.rs:523
+msgid "Certificate Required"
+msgstr "Certificado necesario"
+
+#: shell/src/document_view/io.rs:526
+msgid "Select signing certificate"
+msgstr "Seleccione un certificado para asinar"
+
+#: shell/src/document_view/io.rs:527
+msgid "Select"
+msgstr "Seleccionar"
+
+#: shell/src/document_view/io.rs:600
+#, fuzzy
+msgid "A certificate is required to sign this document"
+msgstr "É necesario un certificado para asinar este documento"
+
+#: shell/src/document_view/io.rs:669
+msgid "Save Signed File"
+msgstr "Gardar ficheiro asinado"
+
+#: shell/src/document_view/io.rs:699
+#, fuzzy
+msgid "Please enter password for {}"
+msgstr "Introduza o contrasinal para {}"
+
+#: shell/src/document_view/io.rs:715
+msgid "_Login"
+msgstr "_Iniciar sesión"
+
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
+#, fuzzy
+#| msgid "Printing job “%s”"
+msgid "Printing job “{}”"
+msgstr "Imprimindo o traballo «%s»"
+
+#: shell/src/document_view/print.rs:83
+#, fuzzy
+#| msgid "%d pending job in queue"
+#| msgid_plural "%d pending jobs in queue"
+msgid "No pending jobs in queue"
+msgstr "%d traballo pendente na cola"
+
+#: shell/src/document_view/signals.rs:226
+msgid "Unable to open external link"
+msgstr "Non foi posíbel abrir a ligazón externa"
+
+#: shell/src/document_view/signals.rs:254
+#, fuzzy
+#| msgid ""
+#| "Security alert: this document has been prevented from opening the file “%s”"
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr "Alerta de seguranza: evitouse que este documento abrira o ficheiro «%s»"
+
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/sidebar_annotations_row.rs:82
+msgid "Page {}"
+msgstr "Páxina {}"
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#, fuzzy
+msgid "({pagenum} of {totalpages})"
+msgstr "({Pagenum} de {TotalPages})"
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+msgid "of {}"
+msgstr "de {}"
+
+#: shell/src/password_view.rs:145
+#, fuzzy
+#| msgid ""
+#| "The document “%s” is locked and requires a password before it can be opened."
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr ""
+"O documento «%s» está bloqueado e require un contrasinal antes de que se poida "
+"abrir."
+
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "Copia no portapapeis"
+
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr "Abrir localización do ficheiro"
+
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr "Ficheiro"
+
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr "Nome"
+
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr "Cartafol"
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "Ruta do ficheiro"
+
+#: shell/src/properties_general.rs:298
+msgid "Content"
+msgstr "Contido"
+
+#: shell/src/properties_general.rs:314
+msgid "Date &amp; Time"
+msgstr "Data e hora"
+
+#: shell/src/properties_signatures.rs:138 shell/src/properties_signatures.rs:146
+msgid "Signed by"
+msgstr "Asinado por"
+
+#: shell/src/properties_signatures.rs:187
+msgid "Signature is valid."
+msgstr "A sinatura é válida."
+
+#: shell/src/properties_signatures.rs:190
+msgid "Signature is invalid."
+msgstr "A sinatura non é válida."
+
+#: shell/src/properties_signatures.rs:194
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Document view and handling"
+msgid "Document has been changed after signing."
+msgstr "Xestión e visualización de documentos"
+
+#: shell/src/properties_signatures.rs:198
+#, fuzzy
+#| msgid "The image could not be saved."
+msgid "Signature could not be decoded."
+msgstr "Non foi posíbel gardar a imaxe."
+
+#: shell/src/properties_signatures.rs:202
+msgid "Signature verification error."
+msgstr "Erro de verificación de sinatura."
+
+#: shell/src/properties_signatures.rs:214
+msgid "Signed with a certificate issued by trusted issuer."
+msgstr "Asinado cun certificado emitido por emisor de confianza."
+
+#: shell/src/properties_signatures.rs:220
+#, fuzzy
+msgid "Signed with a certificate issued by untrusted issuer."
+msgstr "Asinado cun certificado emitido polo emisor non fusionado."
+
+#: shell/src/properties_signatures.rs:226
+#, fuzzy
+msgid "Signed with a certificate issued by unknown issuer."
+msgstr "Asinado cun certificado emitido por emisor descoñecido."
+
+#: shell/src/properties_signatures.rs:231
+msgid "Signed with revoked certificate."
+msgstr "Asinado con certificado revogado."
+
+#: shell/src/properties_signatures.rs:235
+#, fuzzy
+msgid "Signed with expired certificate."
+msgstr "Asinado co certificado caducado."
+
+#: shell/src/properties_signatures.rs:239
+#, fuzzy
+msgid "Certificate verification error."
+msgstr "Erro de verificación do certificado."
+
+#: shell/src/properties_signatures.rs:243
+#, fuzzy
+msgid "Certificate has not been verified."
+msgstr "O certificado non se verificou."
+
+#: shell/src/properties_signatures.rs:256
+msgid "Organization"
+msgstr "Organización"
+
+#: shell/src/properties_signatures.rs:265
+msgid "Date and Time"
+msgstr "Data e hora"
+
+#: shell/src/properties_signatures.rs:276
+msgid "Certificate Issuer"
+msgstr "Emisor do certificado"
+
+#: shell/src/properties_signatures.rs:287
+#, fuzzy
+msgid "Certificate Issuer's Email"
+msgstr "O correo electrónico do emisor do certificado"
+
+#: shell/src/properties_signatures.rs:298
+#, fuzzy
+msgid "Certificate Issuer's Organization"
+msgstr "Organización do emisor do certificado"
+
+#: shell/src/properties_signatures.rs:309
+#, fuzzy
+msgid "Certificate's Issuance Time"
+msgstr "Tempo de emisión do certificado"
+
+#: shell/src/properties_signatures.rs:321
+#, fuzzy
+msgid "Certificate's Expiration Time"
+msgstr "Tempo de caducidade do certificado"
+
+#: shell/src/properties_signatures.rs:403
+msgid "Hide Details…"
+msgstr "Ocultar detalles…"
+
+#~ msgid "DVI document has incorrect format"
+#~ msgstr "O documento DVI ten un formato incorrecto"
+
+#~ msgid "DVI Documents"
+#~ msgstr "Documentos DVI"
+
+#~ msgid "Adds support for reading DVI documents"
+#~ msgstr "Engade compatibilidade para ler documentos DVI"
+
+#~ msgid "PostScript Documents"
+#~ msgstr "Documentos PostScript"
+
+#~ msgid "Adds support for reading PostScript documents"
+#~ msgstr "Engade compatibilidade para ler documentos PostScript"
+
+#, c-format
+#~ msgid "Failed to load document “%s”"
+#~ msgstr "Produciuse un erro ao cargar o documento «%s»"
+
+#, c-format
+#~ msgid "Failed to save document “%s”"
+#~ msgstr "Produciuse un erro ao gardar o documento «%s»"
+
+#~ msgid "XPS Documents"
+#~ msgstr "Documentos XPS"
+
+#~ msgid "Adds support for reading XPS documents"
+#~ msgstr "Engade compatibilidade para ler documentos XPS"
+
+#~ msgid "Automatically reload the document"
+#~ msgstr "Recargar o documento automaticamente"
+
+#~ msgid "The document is automatically reloaded on file change."
+#~ msgstr "O documento recárgase automaticamente cando o ficheiro cambia."
+
+#~ msgid ""
+#~ "Show a dialog to confirm that the user wants to activate the caret "
+#~ "navigation."
+#~ msgstr ""
+#~ "Mostrar un diálogo para confirmar que o usuario quere activar a navegación "
+#~ "cos cursores."
+
+#, c-format
+#~ msgid "Failed to create a temporary directory: %s"
+#~ msgstr "Produciuse un erro ao crear un cartafol temporal: %s"
+
+#~ msgid "Not found, click to change search options"
+#~ msgstr "Non atopado, prema para cambiar as opcións de busca"
+
+#~ msgid "Find previous occurrence of the search string"
+#~ msgstr "Buscar a anterior aparición da cadea de busca"
+
+#~ msgid "Find next occurrence of the search string"
+#~ msgstr "Buscar a seguinte aparición da cadea de busca"
+
+#~ msgid "Requested format is not supported by this printer."
+#~ msgstr "O formato solicitado non é compatíbel nesta impresora."
+
+#~ msgid "Warning"
+#~ msgstr "Advertencia"
+
+#~ msgid "Scroll Up"
+#~ msgstr "Desprazar cara arriba"
+
+#~ msgid "Scroll Down"
+#~ msgstr "Desprazar cara abaixo"
+
+#~ msgid "Scroll View Up"
+#~ msgstr "Desprazar a visualización cara arriba"
+
+#~ msgid "Scroll View Down"
+#~ msgstr "Desprazar a visualización cara abaixo"
+
+#~ msgid "Document viewer for popular document formats"
+#~ msgstr "Visor de documentos para os formatos de documentos máis populares"
+
+#~ msgid "Advanced highlighting and annotation"
+#~ msgstr "Anotación e realzado avanzado"
+
+#~ msgid "Select page or search in the outline"
+#~ msgstr "Seleccione unha páxina ou busca no índice"
+
+#~ msgid "Evince Document Viewer"
+#~ msgstr "Visor de documentos Evince"
+
+#~ msgid "Evince"
+#~ msgstr "Evince"
+
+#~ msgid "Enlarge the document"
+#~ msgstr "Ampliar o documento"
+
+#~ msgid "Shrink the document"
+#~ msgstr "Reducir o documento"
+
+#~ msgid "Reset zoom and make the page fit in the window"
+#~ msgstr "Restabelecer a ampliación e facer que a páxina se axuste á xanela"
+
+#~ msgid "_Apply"
+#~ msgstr "_Aplicar"
+
+#~ msgid "Initial window state:"
+#~ msgstr "Estado inicial da xanela:"
+
+#~ msgid "Open"
+#~ msgstr "Abrir"
+
+#~ msgid "Close"
+#~ msgstr "Pechar"
+
+#~ msgid "Note text"
+#~ msgstr "Texto da nota"
+
+#~ msgid "Add highlight annotation"
+#~ msgstr "Engadir anotación de realzado"
+
+#~ msgid "_Previous Page"
+#~ msgstr "Páxina _anterior"
+
+#~ msgid "_Next Page"
+#~ msgstr "Páxina _seguinte"
+
+#~ msgid "_Reload"
+#~ msgstr "_Recargar"
+
+#~ msgid "Annotation _Properties"
+#~ msgstr "_Preferencias das anotacións"
+
+#~ msgid "_Highlight Selected Text"
+#~ msgstr "_Realzar o texto seleccionado"
+
+#~ msgid "Open Containing _Folder"
+#~ msgstr "Abrir o cartafol _contedor"
+
+#~ msgid "First Page"
+#~ msgstr "Primeira páxina"
+
+#~ msgid "History"
+#~ msgstr "Historial"
+
+#~ msgid "Back"
+#~ msgstr "Atrás"
+
+#~ msgid "Forward"
+#~ msgstr "Adiante"
+
+#~ msgid "_Open Bookmark"
+#~ msgstr "_Abrir marcador"
+
+#~ msgid "_Rename Bookmark"
+#~ msgstr "_Renomear marcador"
+
+#~ msgid "_Delete Bookmark"
+#~ msgstr "_Eliminar marcador"
+
+#~ msgid "Search in the outline…"
+#~ msgstr "Buscar no índice…"
+
+#~ msgid "Font"
+#~ msgstr "Tipo de letra"
+
+#~ msgid "Remove bookmark"
+#~ msgstr "Retirar marcador"
+
+#~ msgid "Open an existing document"
+#~ msgstr "Abrir un documento existente"
+
+#~ msgid "Annotate the document"
+#~ msgstr "Anotar o documento"
+
+#~ msgid "Annotate document"
+#~ msgstr "Anotar documento"
+
+#~ msgid "Set zoom level"
+#~ msgstr "Estabelecer nivel de ampliación"
+
+#~ msgid "Send To…"
+#~ msgstr "Enviar a…"
+
+#~ msgid "New _Window"
+#~ msgstr "Nova xanela"
+
+#~ msgid "Prop_erties"
+#~ msgstr "Propi_edades"
+
+#~ msgid "Select or set the zoom level of the document"
+#~ msgstr "Seleccione ou estabeleza un nivel de ampliación para o documento"
+
+#, c-format
+#~ msgid "Password for document %s"
+#~ msgstr "Contrasinal para o documento %s"
+
+#~ msgid "Loading…"
+#~ msgstr "Cargando…"
+
+#~ msgid "Password required"
+#~ msgstr "Requírese un contrasinal"
+
+#~ msgid "Remember password until you _log out"
+#~ msgstr "Lembrar o contrasinal até saír da _sesión"
+
+#~ msgid "General"
+#~ msgstr "Xeral"
+
+#~ msgid "Document License"
+#~ msgstr "Licenza do documento"
+
+#, c-format
+#~ msgid "Gathering font information… %3d%%"
+#~ msgstr "Obtendo información do tipo de letra... %3d%%"
+
+#~ msgid "Document contains no annotations"
+#~ msgstr "O documento non contén anotacións"
+
+#, c-format
+#~ msgid "Page %d"
+#~ msgstr "Páxina %d"
+
+#~ msgid "No Comment"
+#~ msgstr "Non hai comentarios"
+
+#, c-format
+#~ msgid "A file named “%s” already exists. Do you want to replace it?"
+#~ msgstr "Xa existe un ficheiro co nome «%s». Quere substituílo?"
+
+#, c-format
+#~ msgid ""
+#~ "The file “%s” already exists. Replacing it will overwrite its contents."
+#~ msgstr ""
+#~ "O ficheiro «%s» xa existe. Ao substituílo sobrescribirá os seus contidos."
+
+#~ msgid "_Replace"
+#~ msgstr "_Substituír"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Marcadores"
+
+#~ msgid "Find a word or phrase in the document"
+#~ msgstr "Buscar unha palabra ou frase no documento"
+
+#~ msgid "Search not available for this document"
+#~ msgstr "A busca non está dispoñíbel para este documento"
+
+#~ msgid "Supported Image Files"
+#~ msgstr "Ficheiros de imaxe admitidos"
+
+#, c-format
+#~ msgid "Unable to open document “%s”."
+#~ msgstr "Non é posíbel abrir o documento «%s»."
+
+#, c-format
+#~ msgid "Loading document from “%s”"
+#~ msgstr "Cargando o documento desde «%s»"
+
+#, c-format
+#~ msgid "Downloading document (%d%%)"
+#~ msgstr "Descargando o documento (%d%%)"
+
+#~ msgid "Failed to load remote file."
+#~ msgstr "Produciuse un erro ao cargar o ficheiro remoto."
+
+#, c-format
+#~ msgid "Reloading document from %s"
+#~ msgstr "Recargando o documento desde %s"
+
+#~ msgid "Failed to reload document."
+#~ msgstr "Produciuse un erro ao recargar o documento."
+
+#~ msgid "_Open"
+#~ msgstr "_Abrir"
+
+#, c-format
+#~ msgid "Saving document to %s"
+#~ msgstr "Gardando o documento en %s"
+
+#, c-format
+#~ msgid "Saving attachment to %s"
+#~ msgstr "Gardando o anexo en %s"
+
+#, c-format
+#~ msgid "Saving image to %s"
+#~ msgstr "Gardando a imaxe en %s"
+
+#, c-format
+#~ msgid "Uploading document (%d%%)"
+#~ msgstr "Enviando o documento (%d%%)"
+
+#, c-format
+#~ msgid "Uploading attachment (%d%%)"
+#~ msgstr "Enviando o anexo (%d%%)"
+
+#, c-format
+#~ msgid "Uploading image (%d%%)"
+#~ msgstr "Enviando a imaxe (%d%%)"
+
+#~ msgid "_Save"
+#~ msgstr "_Gardar"
+
+#~ msgid "Could not send current document"
+#~ msgstr "Non foi posíbel enviar o documento actual"
+
+#, c-format
+#~ msgid "Reload document “%s”?"
+#~ msgstr "Recargar o documento «%s»?"
+
+#~ msgid "If you reload the document, changes will be permanently lost."
+#~ msgstr "Se desexa recargar o documento, os cambios perderanse."
+
+#~ msgid "_No"
+#~ msgstr "_Non"
+
+#, c-format
+#~ msgid "Save a copy of document “%s” before closing?"
+#~ msgstr "Desexa gardar unha copia do documento «%s» antes de pechar?"
+
+#, c-format
+#~ msgid "Wait until print job “%s” finishes before closing?"
+#~ msgstr ""
+#~ "Quere agardar a que remate o traballo de impresión «%s» antes de pechar?"
+
+#, c-format
+#~ msgid ""
+#~ "There is %d print job active. Wait until print finishes before closing?"
+#~ msgid_plural ""
+#~ "There are %d print jobs active. Wait until print finishes before closing?"
+#~ msgstr[0] ""
+#~ "Hai %d traballo de impresión activo. Quere agardar a que remate a impresión "
+#~ "antes de pechar?"
+#~ msgstr[1] ""
+#~ "Hai %d traballos de impresión activos. Quere agardar a que remate a "
+#~ "impresión antes de pechar?"
+
+#~ msgid "Evince is a simple document viewer for GNOME"
+#~ msgstr "Evince é un visor de documentos sinxelo para GNOME"
+
+#~ msgid "Enable caret navigation?"
+#~ msgstr "Activar a navegación por cursores?"
+
+#~ msgid "_Enable"
+#~ msgstr "_Activar"
+
+#~ msgid ""
+#~ "Pressing F7 turns the caret navigation on or off. This feature places a "
+#~ "moveable cursor in text pages, allowing you to move around and select text "
+#~ "with your keyboard. Do you want to enable the caret navigation?"
+#~ msgstr ""
+#~ "Ao premer F7 cambia o modo de navegación por cursor entre activado e "
+#~ "desactivado. Esta característica posiciona un cursor movíbel nas páxinas de "
+#~ "texto, permitíndolle moverse co seu teclado. Desexa activar o modo de "
+#~ "navegación con cursor?"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Non mostrar esta mensaxe de novo"
+
+#~ msgid "Recent Documents"
+#~ msgstr "Documentos recentes"
+
+#~ msgid "50%"
+#~ msgstr "50%"
+
+#~ msgid "70%"
+#~ msgstr "70%"
+
+#~ msgid "85%"
+#~ msgstr "85%"
+
+#~ msgid "100%"
+#~ msgstr "100%"
+
+#~ msgid "125%"
+#~ msgstr "125%"
+
+#~ msgid "150%"
+#~ msgstr "150%"
+
+#~ msgid "175%"
+#~ msgstr "175%"
+
+#~ msgid "200%"
+#~ msgstr "200%"
+
+#~ msgid "300%"
+#~ msgstr "300%"
+
+#~ msgid "400%"
+#~ msgstr "400%"
+
+#~ msgid "800%"
+#~ msgstr "800%"
+
+#~ msgid "1600%"
+#~ msgstr "1600%"
+
+#~ msgid "3200%"
+#~ msgstr "3200%"
+
+#~ msgid "6400%"
+#~ msgstr "6400%"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, closing, saving and printing"
+#~ msgstr "Abrir, pechar, gardar e imprimir"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Alternar ao modo de pantalla completa"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle caret navigation"
+#~ msgstr "Trocar a navegación con cursores"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and copying text"
+#~ msgstr "Seleccionar e copiar texto"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy highlighted text"
+#~ msgstr "Copiar o texto realzado"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Select all the text in a document"
+#~ msgstr "Seleccionar todo o texto nun documento"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and zooming"
+#~ msgstr "Rotar e ampliar"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Zoom 1∶1"
+#~ msgstr "Ampliación 1:1"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Fit page"
+#~ msgstr "Axustar á páxina"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Fit width"
+#~ msgstr "Axustar á largura"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving around the document"
+#~ msgstr "Moverse polo documento"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous page"
+#~ msgstr "Ir a anterior páxina"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next page"
+#~ msgstr "Ir a seguinte páxina"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous page (fast)"
+#~ msgstr "Ir á páxina anterior (rápido)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next page (fast)"
+#~ msgstr "Ir á seguinte páxina (rápido)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous page visited"
+#~ msgstr "Ir á anterior páxina visitada"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next page visited"
+#~ msgstr "Ir á seguinte páxina visitada"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to the beginning of the document"
+#~ msgstr "Ir ao comezo do documento"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Add bookmark"
+#~ msgstr "Engadir marcador"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Remove bookmark"
+#~ msgstr "Retirar marcador"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle night mode"
+#~ msgstr "Trocar o modo noite"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle dual page"
+#~ msgstr "Trocar a páxina dual"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle odd pages left"
+#~ msgstr "Trocar páxinas impares á esquerda"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Add a post-it like note"
+#~ msgstr "Engadir unha nota"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Highlight text"
+#~ msgstr "Realzar texto"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Show the search bar"
+#~ msgstr "Mostrar a caixa de busca"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to the next search result"
+#~ msgstr "Ir ao seguinte resultado da busca"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to the previous search result"
+#~ msgstr "Ir ao anterior resultado da busca"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Show help"
+#~ msgstr "Mostrar a axuda"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Toggle primary menu"
+#~ msgstr "Trocar o menú principal"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Atallos de teclado"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad gestures"
+#~ msgstr "Xestos da área táctil"
+
+#~ msgid "GNOME Document Viewer"
+#~ msgstr "Visor de documentos do GNOME"
+
+#~ msgid "Open a new window."
+#~ msgstr "Abrir xanela nova."
+
+#~ msgid "Run evince as a previewer"
+#~ msgstr "Executar o Evince como un previsualizador"
+
+#~ msgid "The word or phrase to find in the document"
+#~ msgstr "A palabra ou frase que se buscará no documento"
+
+#~ msgid "STRING"
+#~ msgstr "CADEA"
+
 #~ msgid "Save Current Settings as Defa_ult"
 #~ msgstr "Gardar as configuracións actuais como as _predefinidas"
-
-#~ msgid "Annotation _Properties…"
-#~ msgstr "_Propiedades das anotacións…"
 
 #~ msgid "Annotation Properties…"
 #~ msgstr "Propiedades das anotacións…"
@@ -2206,14 +2681,8 @@ msgstr "[FICHEIRO...]"
 #~ msgid "Download document"
 #~ msgstr "Descargar o documento"
 
-#~ msgid "Print document"
-#~ msgstr "Imprimir o documento"
-
 #~ msgid "Unable to launch external application."
 #~ msgstr "Non foi posíbel iniciar a aplicación externa."
-
-#~ msgid "_Remove Bookmark"
-#~ msgstr "_Retirar marcador"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Go to previous/next page"
