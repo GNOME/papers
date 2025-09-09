@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince-master-po-gl-7620\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-09-08 03:38+0000\n"
-"PO-Revision-Date: 2025-09-08 15:41+0200\n"
+"POT-Creation-Date: 2025-09-08 13:41+0000\n"
+"PO-Revision-Date: 2025-09-09 07:48+0200\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -48,8 +48,7 @@ msgstr "Visor de documentos"
 msgid "View multi-page documents"
 msgstr "Ver documentos de varias páxinas"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr "pdf;djvu;tiff;documento;presentación;visor;papeles;"
@@ -65,7 +64,8 @@ msgstr "Ignorar as restricións do documento"
 #: data/org.gnome.Papers.gschema.xml:15
 msgid "Override document restrictions, like restriction to copy or to print."
 msgstr ""
-"Ignorar as restricións do documento, como a restrición para copiar ou imprimir."
+"Ignorar as restricións do documento, como a restrición para copiar ou "
+"imprimir."
 
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
@@ -94,8 +94,8 @@ msgstr "Permitir que as ligazóns cambien o nivel de ampliación."
 #: data/org.gnome.Papers.gschema.xml:43
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr ""
-"Comprobación ortográfica ao escribir as anotacións e ao completar formularios "
-"de texto."
+"Comprobación ortográfica ao escribir as anotacións e ao completar "
+"formularios de texto."
 
 #: data/org.gnome.Papers.gschema.xml:47
 msgid "Show a side bar next to the document to help navigate the document."
@@ -106,11 +106,12 @@ msgstr ""
 #: data/org.gnome.Papers.gschema.xml:60
 msgid "Set the default zoom level to display a document."
 msgstr ""
-"Seleccione un nivel de ampliación predeterminado para mostrar o documento"
+"Seleccione un nivel de ampliación predeterminado para mostrar o documento."
 
 #: data/org.gnome.Papers.gschema.xml:64
 msgid ""
-"Display the document as a continuous stream of pages instead of page at a time."
+"Display the document as a continuous stream of pages instead of page at a "
+"time."
 msgstr ""
 "Mostrar o documento como un fluxo continuo de páxinas no lugar unha páxina "
 "cada vez."
@@ -121,8 +122,8 @@ msgstr "Mostrar dúas páxinas unha ao carón da outra."
 
 #: data/org.gnome.Papers.gschema.xml:72
 msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side by "
-"side)"
+"Show the first page (odd page) on the left (when displaying two pages side "
+"by side)"
 msgstr ""
 "Mostra a primeira páxina (páxina impar) á esquerda (ao mostrar dúas páxinas "
 "unha ao carón de outra)"
@@ -141,8 +142,8 @@ msgstr ""
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, "
-"CBT, CBZ, CB7)."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
 msgstr ""
 "Papers admite documentos en: PDF, DjVu, TIFF e arquivos de libros de banda "
 "deseñada (CBR, CBT, CBZ, CB7)."
@@ -156,17 +157,14 @@ msgid "A mobile-friendly UI"
 msgstr "Unha interface de usuario móbil"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:37
-#, fuzzy
 msgid "A modern and colorful annotation list"
-msgstr "Unha lista de anotacións modernas e coloridas"
+msgstr "Unha lista de anotacións moderna e colorida"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:41
-#, fuzzy
 msgid "Big thumbnails in the sidebar"
 msgstr "Miniaturas grandes na barra lateral"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
-#, fuzzy
 msgid "All search actions are contained in the sidebar"
 msgstr "Todas as accións de busca están contidas na barra lateral"
 
@@ -230,8 +228,8 @@ msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
 msgstr ""
-"O documento está composto por varios ficheiros. A un ou máis destes ficheiros "
-"non é posíbel acceder."
+"O documento está composto por varios ficheiros. A un ou máis destes "
+"ficheiros non é posíbel acceder."
 
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
@@ -319,6 +317,7 @@ msgstr "Sen nome"
 #. translators: When a font type does not have
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
+#.
 #: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
@@ -341,6 +340,7 @@ msgstr "Non incorporado"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
+#.
 #: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Un dos 14 tipos de letra estándar)"
@@ -349,6 +349,7 @@ msgstr " (Un dos 14 tipos de letra estándar)"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
+#.
 #: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ningún dos 14 tipos de letra estándar)"
@@ -362,6 +363,7 @@ msgstr " (Ningún dos 14 tipos de letra estándar)"
 #. * Not embedded
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
+#.
 #: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
@@ -385,6 +387,7 @@ msgstr ""
 #. * TrueType (CID)
 #. * Encoding: Custom
 #. * Embedded subset
+#.
 #: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
@@ -442,6 +445,7 @@ msgstr "Todos os ficheiros"
 #. * want inches, otherwise translate to default:mm.
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
+#.
 #: libdocument/pps-document-info.c:198
 msgid "default:mm"
 msgstr "default:mm"
@@ -579,24 +583,24 @@ msgstr "Axustar á área imprimíbel"
 
 #: libview/pps-print-operation.c:1887
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of the "
-"following:\n"
+"Scale document pages to fit the selected printer page. Select from one of "
+"the following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
 "• “Shrink to Printable Area”: Document pages larger than the printable area "
 "are reduced to fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as required "
-"to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
+"required to fit the printable area of the printer page.\n"
 msgstr ""
 "Escalar as páxinas do documento para axustalas á páxina de impresora "
 "seleccionada. Seleccione unha das seguintes:\n"
 "\n"
 "• «Ningún»: Non se leva a cabo o escalado da páxina.\n"
 "\n"
-"• «Reducir á área imprimíbel»: As páxinas do documento máis grandes que a área "
-"imprimíbel son reducidas para axustarse á área imprimíbel da páxina na "
+"• «Reducir á área imprimíbel»: As páxinas do documento máis grandes que a "
+"área imprimíbel son reducidas para axustarse á área imprimíbel da páxina na "
 "impresora.\n"
 "\n"
 "• «Axustar á área imprimíbel»: As páxinas do documento son ampliadas ou "
@@ -617,12 +621,13 @@ msgstr ""
 
 #: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
-msgstr "Seleccione o tamaño de páxina empregando o tamaño de páxina do documento"
+msgstr ""
+"Seleccione o tamaño de páxina empregando o tamaño de páxina do documento"
 
 #: libview/pps-print-operation.c:1907
 msgid ""
-"When enabled, each page will be printed on the same size paper as the document "
-"page."
+"When enabled, each page will be printed on the same size paper as the "
+"document page."
 msgstr ""
 "Cando está activo, cada páxina será imprimida no mesmo tamaño de papel que a "
 "páxina do documento."
@@ -957,20 +962,14 @@ msgid "_Author"
 msgstr "_Autor"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:94
-#, fuzzy
-#| msgid "Auto_scroll"
 msgid "Auto-Reveal on _Scroll"
 msgstr "Despra_zamento automático"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:96
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Go to the end of the document"
 msgid "Pop up note while scrolling the document"
-msgstr "Ir ao final do documento"
+msgstr "Nota emerxente ao desprazarse polo documento"
 
-#. Translators: Translators: This is an action (a verb in English) that opens
-#. the sidebar to start a search
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Buscar"
@@ -1024,15 +1023,14 @@ msgid "Selection too Small"
 msgstr "A selección é demasiado pequena"
 
 #: shell/resources/pps-document-view.blp:530
-#, fuzzy
 msgid ""
-"A signature of this size may be too small to read. If you would like to create "
-"a potentially more readable signature, press `Start over` and draw a bigger "
-"rectangle."
+"A signature of this size may be too small to read. If you would like to "
+"create a potentially more readable signature, press `Start over` and draw a "
+"bigger rectangle."
 msgstr ""
 "Unha sinatura deste tamaño pode ser demasiado pequena para ler. Se desexa "
-"crear unha firma potencialmente máis lexible, prema `Inicie Over` e debuxa un "
-"rectángulo máis grande."
+"crear unha firma potencialmente máis lexible, prema «Iniciar de novo» e "
+"debuxe un rectángulo máis grande."
 
 #: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
@@ -1044,21 +1042,19 @@ msgstr "_Asinar"
 
 #: shell/resources/pps-document-view.blp:545
 msgid "Abort Printing?"
-msgstr "Desexa cancelar a impresión"
+msgstr "Desexa cancelar a impresión?"
 
 #: shell/resources/pps-document-view.blp:546
-#, fuzzy
-#| msgid "If you close the window, pending print jobs will not be printed."
 msgid ""
-"There is one or more active print jobs. If the window is closed, pending print "
-"jobs will not be printed."
-msgstr "Se pecha a xanela, non se imprimirán os traballos pendentes."
+"There is one or more active print jobs. If the window is closed, pending "
+"print jobs will not be printed."
+msgstr ""
+"Hai un ou máis traballos de impresión activos. Se pecha a xanela, non se "
+"imprimirán os traballos pendentes."
 
 #: shell/resources/pps-document-view.blp:550
-#, fuzzy
-#| msgid "Cancel _print and Close"
 msgid "Abort _Print and Close"
-msgstr "Cancelar a im_presión e Pechar"
+msgstr "Cancelar a im_presión e pechar"
 
 #: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
@@ -1110,7 +1106,8 @@ msgstr "Asina d_igitalmente…"
 msgid "Open a C_opy"
 msgstr "Abrir unha copia"
 
-#: shell/resources/pps-document-view.blp:629 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:629
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Abrir con…"
 
@@ -1139,39 +1136,25 @@ msgid "Ro_tate ⤵"
 msgstr "Ro_tar ⤵"
 
 #: shell/resources/pps-document-view.blp:670
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Document properties"
 msgid "Document Prop_erties"
-msgstr "Preferencias do documento"
+msgstr "_Propiedades do documento"
 
-#. Translators: As a noun, this is describing the type of text marking
-#. annotation, as are squiggly, strikethrough, and underline. An adjective
-#. could also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:708
 msgid "Highlight (h)"
 msgstr "Realzar (h)"
 
-#. Translators: As a noun or adjective, this is describing the type of text
-#. marking annotation, as are highlight, squiggly, and underline. The letter
-#. in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:724
 msgid "Strikethrough (k)"
 msgstr "Riscado (K)"
 
-#. Translators: As a noun, this is describing the type of text marking
-#. annotation, as are highlight, squiggly, and strikethrough. An adjective
-#. could also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:740
 msgid "Underline (u)"
 msgstr "Subliñar (u)"
 
-#. Translators: As an adjective, this is describing the type of text marking
-#. annotation, as are highlight, strikethrough, and underline. A noun could
-#. also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:756
 msgid "Squiggly (q)"
 msgstr "Garabato (q)"
@@ -1235,16 +1218,14 @@ msgid "No Results Found"
 msgstr "Non se atoparon resultados"
 
 #: shell/resources/pps-find-sidebar.blp:61
-#, fuzzy
 msgid "Try a different search"
-msgstr "Proba unha busca diferente"
+msgstr "Tente con unha busca diferente"
 
 #: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
 msgstr "Realizar unha busca"
 
 #: shell/resources/pps-find-sidebar.blp:75
-#, fuzzy
 msgid "The search results will appear here"
 msgstr "Os resultados da busca aparecerán aquí"
 
@@ -1287,15 +1268,11 @@ msgid "Remember _forever"
 msgstr "Lem_brar sempre"
 
 #: shell/resources/pps-password-view.blp:18
-#, fuzzy
-#| msgid ""
-#| "This document is locked and can only be read by entering the correct "
-#| "password."
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr ""
 "Este documento está bloqueado e só se pode ler introducindo o contrasinal "
-"correcto."
+"correcto"
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -1416,7 +1393,7 @@ msgstr "Panel lateral"
 #: shell/resources/pps-shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Caret Navigation"
-msgstr "Navegación por "
+msgstr "Navegación por cursor de teclado"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
@@ -1519,7 +1496,6 @@ msgid "Previous Page (Fast)"
 msgstr "Páxina anterior (Rápido)"
 
 #: shell/resources/pps-shortcuts-dialog.blp:160
-#| msgid "Next Page"
 msgctxt "shortcut window"
 msgid "Next Page (Fast)"
 msgstr "Páxina seguinte (Rápido)"
@@ -1777,15 +1753,15 @@ msgstr "DESTINO"
 
 #: shell/src/application.rs:393
 msgid "Run papers in fullscreen mode."
-msgstr "Executar Papeis no modo de pantalla completa"
+msgstr "Executar Papeis no modo de pantalla completa."
 
 #: shell/src/application.rs:402
 msgid "Run papers in presentation mode."
-msgstr "Executar Papeis no modo de presentación"
+msgstr "Executar Papeis no modo de presentación."
 
 #: shell/src/application.rs:411
 msgid "Show the version of the program."
-msgstr "Mostrar a versión do programa"
+msgstr "Mostrar a versión do programa."
 
 #: shell/src/application.rs:421
 msgid "[FILE…]"
@@ -1796,12 +1772,12 @@ msgid "View Details"
 msgstr "Ver detalles"
 
 #: shell/src/document_view.rs:705
-#, fuzzy
-#| msgid "Document contains form fields that have been filled out."
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
-msgstr "O documento contén campos de formulario que se encheron."
+msgstr ""
+"O documento contén anotacións novas ou modificadas e campos de formulario "
+"que se encheron."
 
 #: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
@@ -1840,17 +1816,16 @@ msgid "The image could not be saved."
 msgstr "Non foi posíbel gardar a imaxe."
 
 #: shell/src/document_view/actions.rs:969
-#, fuzzy
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
-"O modo de navegación de coidados agora está activado, prema F7 para desactivar."
+"O modo de navegación por cursor de teclado agora está activado, prema F7 "
+"para desactivar."
 
 #: shell/src/document_view/actions.rs:971
-#, fuzzy
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
-"O modo de navegación de coidados agora está desactivado, prema F7 para "
-"habilitar."
+"O modo de navegación por cursor do teclado agora está desactivado, prema F7 "
+"para habilitar."
 
 #: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
@@ -1865,34 +1840,26 @@ msgid "Digital signature is invalid"
 msgstr "A sinatura dixital non é válida"
 
 #: shell/src/document_view/io.rs:280
-#, fuzzy
-#| msgid "The document contains no pages"
 msgid "The Document Contains No Pages"
 msgstr "O documento non contén páxinas"
 
 #: shell/src/document_view/io.rs:282
-#, fuzzy
-#| msgid "The document contains only empty pages"
 msgid "The Document Contains Only Empty Pages"
 msgstr "O documento só contén páxinas baleiras"
 
 #: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-#, fuzzy
-#| msgid "The file could not be saved as “%s”."
 msgid "The file could not be saved as “{}”."
-msgstr "Non foi posíbel gardar como «%s»."
+msgstr "Non foi posíbel gardar como «{}»."
 
 #: shell/src/document_view/io.rs:409
 msgid "Save As…"
 msgstr "Gardar como…"
 
 #: shell/src/document_view/io.rs:485
-#, fuzzy
 msgid "Draw a rectangle to insert a signature field"
-msgstr "Debuxa un rectángulo para inserir un campo de firma"
+msgstr "Debuxe un rectángulo para inserir un campo de firma"
 
 #: shell/src/document_view/io.rs:507
-#, fuzzy
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1913,7 +1880,6 @@ msgid "Select"
 msgstr "Seleccionar"
 
 #: shell/src/document_view/io.rs:600
-#, fuzzy
 msgid "A certificate is required to sign this document"
 msgstr "É necesario un certificado para asinar este documento"
 
@@ -1922,9 +1888,8 @@ msgid "Save Signed File"
 msgstr "Gardar ficheiro asinado"
 
 #: shell/src/document_view/io.rs:699
-#, fuzzy
 msgid "Please enter password for {}"
-msgstr "Introduza o contrasinal para {}"
+msgstr "Escriba o contrasinal para {}"
 
 #: shell/src/document_view/io.rs:715
 msgid "_Login"
@@ -1932,29 +1897,22 @@ msgstr "_Iniciar sesión"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
-#, fuzzy
-#| msgid "Printing job “%s”"
 msgid "Printing job “{}”"
-msgstr "Imprimindo o traballo «%s»"
+msgstr "Imprimindo o traballo «{}»"
 
 #: shell/src/document_view/print.rs:83
-#, fuzzy
-#| msgid "%d pending job in queue"
-#| msgid_plural "%d pending jobs in queue"
 msgid "No pending jobs in queue"
-msgstr "%d traballo pendente na cola"
+msgstr "Non hai traballos pendentes na cola"
 
 #: shell/src/document_view/signals.rs:226
 msgid "Unable to open external link"
 msgstr "Non foi posíbel abrir a ligazón externa"
 
 #: shell/src/document_view/signals.rs:254
-#, fuzzy
-#| msgid ""
-#| "Security alert: this document has been prevented from opening the file “%s”"
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
-msgstr "Alerta de seguranza: evitouse que este documento abrira o ficheiro «%s»"
+msgstr ""
+"Alerta de seguranza: evitouse que este documento abrira o ficheiro «{}»"
 
 #: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
@@ -1965,9 +1923,8 @@ msgstr "Páxina {}"
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
 #: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
-#, fuzzy
 msgid "({pagenum} of {totalpages})"
-msgstr "({Pagenum} de {TotalPages})"
+msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
 #: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
@@ -1975,14 +1932,11 @@ msgid "of {}"
 msgstr "de {}"
 
 #: shell/src/password_view.rs:145
-#, fuzzy
-#| msgid ""
-#| "The document “%s” is locked and requires a password before it can be opened."
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
-"O documento «%s» está bloqueado e require un contrasinal antes de que se poida "
-"abrir."
+"O documento «{}» está bloqueado e require un contrasinal antes de que se "
+"poida abrir"
 
 #: shell/src/properties_general.rs:50
 msgid "Copy to Clipboard"
@@ -2016,7 +1970,8 @@ msgstr "Contido"
 msgid "Date &amp; Time"
 msgstr "Data e hora"
 
-#: shell/src/properties_signatures.rs:138 shell/src/properties_signatures.rs:146
+#: shell/src/properties_signatures.rs:138
+#: shell/src/properties_signatures.rs:146
 msgid "Signed by"
 msgstr "Asinado por"
 
@@ -2029,17 +1984,12 @@ msgid "Signature is invalid."
 msgstr "A sinatura non é válida."
 
 #: shell/src/properties_signatures.rs:194
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Document view and handling"
 msgid "Document has been changed after signing."
-msgstr "Xestión e visualización de documentos"
+msgstr "O documento cambiou despois do seu asinado."
 
 #: shell/src/properties_signatures.rs:198
-#, fuzzy
-#| msgid "The image could not be saved."
 msgid "Signature could not be decoded."
-msgstr "Non foi posíbel gardar a imaxe."
+msgstr "Non se puido descodificar a sinatura."
 
 #: shell/src/properties_signatures.rs:202
 msgid "Signature verification error."
@@ -2050,31 +2000,26 @@ msgid "Signed with a certificate issued by trusted issuer."
 msgstr "Asinado cun certificado emitido por emisor de confianza."
 
 #: shell/src/properties_signatures.rs:220
-#, fuzzy
 msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Asinado cun certificado emitido polo emisor non fusionado."
+msgstr "Asinado con un certificado emitido polo emisor non fusionado."
 
 #: shell/src/properties_signatures.rs:226
-#, fuzzy
 msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Asinado cun certificado emitido por emisor descoñecido."
+msgstr "Asinado con un certificado emitido por emisor descoñecido."
 
 #: shell/src/properties_signatures.rs:231
 msgid "Signed with revoked certificate."
 msgstr "Asinado con certificado revogado."
 
 #: shell/src/properties_signatures.rs:235
-#, fuzzy
 msgid "Signed with expired certificate."
-msgstr "Asinado co certificado caducado."
+msgstr "Asinado con un certificado caducado."
 
 #: shell/src/properties_signatures.rs:239
-#, fuzzy
 msgid "Certificate verification error."
 msgstr "Erro de verificación do certificado."
 
 #: shell/src/properties_signatures.rs:243
-#, fuzzy
 msgid "Certificate has not been verified."
 msgstr "O certificado non se verificou."
 
@@ -2091,24 +2036,20 @@ msgid "Certificate Issuer"
 msgstr "Emisor do certificado"
 
 #: shell/src/properties_signatures.rs:287
-#, fuzzy
 msgid "Certificate Issuer's Email"
 msgstr "O correo electrónico do emisor do certificado"
 
 #: shell/src/properties_signatures.rs:298
-#, fuzzy
 msgid "Certificate Issuer's Organization"
 msgstr "Organización do emisor do certificado"
 
 #: shell/src/properties_signatures.rs:309
-#, fuzzy
 msgid "Certificate's Issuance Time"
-msgstr "Tempo de emisión do certificado"
+msgstr "Data de emisión do certificado"
 
 #: shell/src/properties_signatures.rs:321
-#, fuzzy
 msgid "Certificate's Expiration Time"
-msgstr "Tempo de caducidade do certificado"
+msgstr "Data de caducidade do certificado"
 
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
@@ -2153,8 +2094,8 @@ msgstr "Ocultar detalles…"
 #~ "Show a dialog to confirm that the user wants to activate the caret "
 #~ "navigation."
 #~ msgstr ""
-#~ "Mostrar un diálogo para confirmar que o usuario quere activar a navegación "
-#~ "cos cursores."
+#~ "Mostrar un diálogo para confirmar que o usuario quere activar a "
+#~ "navegación cos cursores."
 
 #, c-format
 #~ msgid "Failed to create a temporary directory: %s"
@@ -2439,8 +2380,8 @@ msgstr "Ocultar detalles…"
 #~ msgid_plural ""
 #~ "There are %d print jobs active. Wait until print finishes before closing?"
 #~ msgstr[0] ""
-#~ "Hai %d traballo de impresión activo. Quere agardar a que remate a impresión "
-#~ "antes de pechar?"
+#~ "Hai %d traballo de impresión activo. Quere agardar a que remate a "
+#~ "impresión antes de pechar?"
 #~ msgstr[1] ""
 #~ "Hai %d traballos de impresión activos. Quere agardar a que remate a "
 #~ "impresión antes de pechar?"
@@ -2456,12 +2397,12 @@ msgstr "Ocultar detalles…"
 
 #~ msgid ""
 #~ "Pressing F7 turns the caret navigation on or off. This feature places a "
-#~ "moveable cursor in text pages, allowing you to move around and select text "
-#~ "with your keyboard. Do you want to enable the caret navigation?"
+#~ "moveable cursor in text pages, allowing you to move around and select "
+#~ "text with your keyboard. Do you want to enable the caret navigation?"
 #~ msgstr ""
 #~ "Ao premer F7 cambia o modo de navegación por cursor entre activado e "
-#~ "desactivado. Esta característica posiciona un cursor movíbel nas páxinas de "
-#~ "texto, permitíndolle moverse co seu teclado. Desexa activar o modo de "
+#~ "desactivado. Esta característica posiciona un cursor movíbel nas páxinas "
+#~ "de texto, permitíndolle moverse co seu teclado. Desexa activar o modo de "
 #~ "navegación con cursor?"
 
 #~ msgid "Don’t show this message again"
