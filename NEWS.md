@@ -1,3 +1,38 @@
+Papers 49.0
+----------------
+* Bug fixes:
+  - Two use-after-free issues in libview (nibon7)
+
+* Translation updates for the 49.0 cycle:
+  - Basque (Asier Saratsua Garmendia)
+  - Brazilian Portuguese (Álvaro Burns, Juliano de Souza Camargo)
+  - British English (Bruce Cowan)
+  - Catalan (Jordi Mas, Jordi Mas i Hernandez)
+  - Chinese (China) (Luming Zh)
+  - Czech (Daniel Rusek)
+  - Danish (Alan Mortensen)
+  - Esperanto (Kristjan Schmidt)
+  - Finnish (Jiri Grönroos)
+  - Galician (Francisco Diéguez Souto)
+  - Georgian (Ekaterine Papava)
+  - Hebrew (Yaron Shahrabani)
+  - Hungarian (Balázs Úr)
+  - Italian (Davide Ferracin)
+  - Japanese (Makoto Sakaguchi)
+  - Korean (Seong-ho Cho)
+  - Lithuanian (Aurimas Černius)
+  - Occitan (Quentin Pagès)
+  - Persian (Danial Behzadi)
+  - Portuguese (Hugo Carvalho)
+  - Romanian (Antonio Marin)
+  - Russian (Artur S0)
+  - Slovak (Dušan Kazik)
+  - Slovenian (Martin)
+  - Spanish (Nahué Mantuani)
+  - Swedish (Anders Jonsson)
+  - Turkish (Sabri Ünal, Emin Tufan Çetin)
+  - Ukrainian (Yuri Chornoivan)
+
 Papers 49.rc
 ----------------
 * Some changes we can highlight:
