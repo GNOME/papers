@@ -105,15 +105,28 @@ mod imp {
                     #[weak(rename_to = obj)]
                     self,
                     move |context, page| {
-                        let has_result = context
+                        let n_results = context
                             .result_model()
-                            .map(|m| m.n_items() != 0)
+                            .map(|m| m.n_items())
                             .unwrap_or_default();
 
-                        if !has_result {
+                        if n_results == 0 {
                             obj.results_stack.set_visible_child_name("no-results");
+                            obj.obj().announce(
+                                &gettext("No results found."),
+                                gtk::AccessibleAnnouncementPriority::Medium,
+                            );
                         } else {
                             obj.results_stack.set_visible_child_name("results");
+                            obj.obj().announce(
+                                &ngettext_f(
+                                    "{} result found.",
+                                    "{} results found.",
+                                    n_results,
+                                    [n_results.to_string()],
+                                ),
+                                gtk::AccessibleAnnouncementPriority::Medium,
+                            );
                         }
 
                         if page != -1 {
