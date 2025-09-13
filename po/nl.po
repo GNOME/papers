@@ -15,14 +15,14 @@
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2012, 2013, 2014, 2016, 2021.
 # Reinout van Schouwen <reinouts@gnome.org>, 2015.
 # Justin van Steijn <jvs@fsfe.org>, 2015, 2016, 2017, 2018.
-# Nathan Follens <nfollens@gnome.org>, 2017, 2019-2024.
+# Nathan Follens <nfollens@gnome.org>, 2017, 2019-2025.
+# Dick Groskamp <dikgro@yahoo.co.uk>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Evince\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2024-10-15 19:21+0000\n"
-"PO-Revision-Date: 2024-10-28 22:51+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-09-02 09:49+0000\n"
+"PO-Revision-Date: 2025-09-13 22:53+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
@@ -30,32 +30,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:3
-#: data/org.gnome.Papers.metainfo.xml.in.in:23
-#: previewer/pps-previewer-window.c:491 shell/pps-document-view.c:1174
-#: shell/pps-document-view.ui:73 shell/pps-loader-view.ui:10
-#: shell-rs/src/application.rs:41 shell-rs/src/application.rs:64
-#: shell-rs/src/application.rs:288
-msgid "Papers"
-msgstr "Papers"
+#: data/org.gnome.Papers.desktop.in.in:2
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:359
+msgid "Document Viewer"
+msgstr "Documentweergave"
 
 # Dit is de tooltip die in het hoofdmenu bij het programma Evince verschijnt
 # multipagina-documenten. Vrij vertaald (Wouter Bolsterlee).
-#: data/org.gnome.Papers.desktop.in.in:4
+#: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
 msgstr "Geef documenten weer"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Papers.desktop.in.in:6
-msgid "pdf;ps;postscript;xps;djvu;tiff;document;presentation;viewer;papers;"
-msgstr ""
-"pdf;ps;postscript;xps;djvu;tiff;document;presentation;presentatie;viewer;"
-"weergave;papers;"
+#: data/org.gnome.Papers.desktop.in.in:5
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;document;presentation;viewer;papers;presentatie;weergave;documentweergave;papers;"
 
-#: data/org.gnome.Papers.desktop.in.in:21
+#: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
 msgstr "Nieuw venster"
 
@@ -91,32 +88,24 @@ msgstr ""
 "te slaan beperkt het maximale zoomniveau."
 
 #: data/org.gnome.Papers.gschema.xml:32
-msgid ""
-"Show a dialog to confirm that the user wants to activate the caret "
-"navigation."
-msgstr ""
-"Een dialoogvenster tonen om te bevestigen dat de gebruiker de "
-"cursornavigatie wil activeren."
-
-#: data/org.gnome.Papers.gschema.xml:36
 msgid "Allow links to change the zoom level."
 msgstr "Koppelingen toestaan om het zoomniveau te wijzigen."
 
-#: data/org.gnome.Papers.gschema.xml:44
+#: data/org.gnome.Papers.gschema.xml:43
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr ""
 "Controleer de spelling bij het schrijven van aantekeningen of het invullen "
 "van formulieren."
 
-#: data/org.gnome.Papers.gschema.xml:48
+#: data/org.gnome.Papers.gschema.xml:47
 msgid "Show a side bar next to the document to help navigate the document."
 msgstr "Toon een zijbalk naast het document als navigatiehulp."
 
-#: data/org.gnome.Papers.gschema.xml:61
+#: data/org.gnome.Papers.gschema.xml:60
 msgid "Set the default zoom level to display a document."
-msgstr "Stel het standaardzoomniveau waarmee documenten weergegeven worden in."
+msgstr "Stel het standaardzoomniveau in waarmee documenten weergegeven worden."
 
-#: data/org.gnome.Papers.gschema.xml:68
+#: data/org.gnome.Papers.gschema.xml:64
 msgid ""
 "Display the document as a continuous stream of pages instead of page at a "
 "time."
@@ -124,11 +113,11 @@ msgstr ""
 "Geef het document weer als een doorlopende stroom pagina’s in plaats van per "
 "pagina."
 
-#: data/org.gnome.Papers.gschema.xml:72
+#: data/org.gnome.Papers.gschema.xml:68
 msgid "Show two pages side by side."
-msgstr "Twee pagina's naast elkaar tonen."
+msgstr "Twee pagina’s naast elkaar tonen."
 
-#: data/org.gnome.Papers.gschema.xml:76
+#: data/org.gnome.Papers.gschema.xml:72
 msgid ""
 "Show the first page (odd page) on the left (when displaying two pages side "
 "by side)"
@@ -136,77 +125,77 @@ msgstr ""
 "Toon de eerste (oneven) pagina links (bij weergave van twee pagina’s naast "
 "elkaar)"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:24
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
 msgstr "Lees documenten"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:26
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
 msgid ""
 "A document viewer for the GNOME desktop. You can view, search or annotate "
 "documents in many different formats."
 msgstr ""
-"Weergave van documenten op het GNOME-bureaublad. U kunt documenten "
+"Weergave van documenten voor het GNOME-bureaublad. U kunt documenten "
 "weergeven, doorzoeken en annoteren in diverse formaten."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:27
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Papers supports documents in: PDF, PS, EPS, XPS, DjVu, TIFF, and Comic Books "
-"archives (CBR, CBT, CBZ, CB7)."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
 msgstr ""
-"Papers ondersteunt documenten in: PDF, PS, EPS, XPS, DjVu, TIFF, en "
-"stripboekarchieven (CBR, CBT, CBZ, CB7)."
+"Papers ondersteunt documenten in: PDF-, DjVu-, TIFF- en stripboekarchieven "
+"(CBR, CBT, CBZ, CB7)."
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:43
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
 msgid "A clear, simple, and modern UI"
 msgstr "Een duidelijke, gemakkelijke en moderne gebruikersinterface"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:47
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
 msgid "A mobile-friendly UI"
 msgstr "Een interface geschikt voor mobiele apparaten"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:51
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
 msgid "A modern and colorful annotation list"
 msgstr "Een moderne en kleurrijke lijst met aantekeningen"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:55
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
 msgid "Big thumbnails in the sidebar"
 msgstr "Grote voorbeelden in de zijbalk"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:59
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Alle zoekacties bevinden zich in de zijbalk"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:3
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Afdrukvoorbeeld"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:4
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Preview before printing"
 msgstr "Afdrukvoorbeeld"
 
-#: libdocument/backend/comics/comics-document.c:194
-#: libdocument/backend/comics/comics-document.c:263
+#: libdocument/backend/comics/comics-document.c:179
+#: libdocument/backend/comics/comics-document.c:248
 msgid "File is corrupted"
 msgstr "Bestand is beschadigd"
 
-#: libdocument/backend/comics/comics-document.c:253
+#: libdocument/backend/comics/comics-document.c:238
 msgid "Archive is encrypted"
 msgstr "Archief is versleuteld"
 
-#: libdocument/backend/comics/comics-document.c:258
+#: libdocument/backend/comics/comics-document.c:243
 msgid "No supported images in archive"
 msgstr "Geen ondersteunde afbeeldingen in archief"
 
-#: libdocument/backend/comics/comics-document.c:268
+#: libdocument/backend/comics/comics-document.c:253
 msgid "No files in archive"
 msgstr "Geen bestanden in archief"
 
-#: libdocument/backend/comics/comics-document.c:317
+#: libdocument/backend/comics/comics-document.c:302
 #, c-format
 msgid "Not a comic book MIME type: %s"
 msgstr "Geen stripboek-MIME-type: %s"
 
-#: libdocument/backend/comics/comics-document.c:324
+#: libdocument/backend/comics/comics-document.c:309
 msgid ""
 "libarchive lacks support for this comic book’s compression, please contact "
 "your distributor"
@@ -214,25 +203,25 @@ msgstr ""
 "libarchive biedt geen ondersteuning voor de manier waarop dit stripboek is "
 "gecomprimeerd, neem contact op met uw leverancier"
 
-#: libdocument/backend/comics/comics-document.c:361
+#: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
 msgstr "Kan lokaal pad voor archief niet ophalen"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Stripboeken"
 
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Voegt ondersteuning toe voor het lezen van stripboeken"
 
 # ongeldig/onjuist/foutief
-#: libdocument/backend/djvu/djvu-document.c:184
+#: libdocument/backend/djvu/djvu-document.c:173
 msgid "DjVu document has incorrect format"
 msgstr "DjVu-document heeft onjuiste indeling"
 
-#: libdocument/backend/djvu/djvu-document.c:271
+#: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
 "The document is composed of several files. One or more of these files cannot "
 "be accessed."
@@ -240,71 +229,71 @@ msgstr ""
 "Dit document bestaat uit meerdere bestanden. Een van deze bestanden kan niet "
 "benaderd worden."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "DjVu-documenten"
 
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Voegt ondersteuning toe voor het lezen van DjVu-documenten"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "PDF-documenten"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Voegt ondersteuning toe voor het lezen van PDF-documenten"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:723
-#: libdocument/backend/pdf/pps-poppler.c:729
-#: nautilus/pps-nautilus-extension.c:121 shell-rs/src/properties_general.rs:170
+#: libdocument/backend/pdf/pps-poppler.c:741
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:726
-#: libdocument/backend/pdf/pps-poppler.c:729
-#: nautilus/pps-nautilus-extension.c:123 shell-rs/src/properties_general.rs:171
+#: libdocument/backend/pdf/pps-poppler.c:744
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Nee"
 
-#: libdocument/backend/pdf/pps-poppler.c:837
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:839
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:841
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:843
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:845
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:847
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:849
+#: libdocument/backend/pdf/pps-poppler.c:869
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:851
+#: libdocument/backend/pdf/pps-poppler.c:871
 msgid "Unknown font type"
 msgstr "Onbekend soort lettertype"
 
-#: libdocument/backend/pdf/pps-poppler.c:895
+#: libdocument/backend/pdf/pps-poppler.c:915
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -315,12 +304,12 @@ msgstr ""
 "uitgekozen vervangende lettertypes niet hetzelfde zijn als de lettertypes "
 "waarmee dit document is gemaakt, kan de weergave afwijken."
 
-#: libdocument/backend/pdf/pps-poppler.c:900
+#: libdocument/backend/pdf/pps-poppler.c:920
 msgid "All fonts are either standard or embedded."
 msgstr "Alle lettertypes zijn ofwel standaard ofwel ingevoegd."
 
 # geen/naamloos/zonder naam/geen naam
-#: libdocument/backend/pdf/pps-poppler.c:931
+#: libdocument/backend/pdf/pps-poppler.c:956
 msgid "No name"
 msgstr "Naamloos"
 
@@ -329,22 +318,22 @@ msgstr "Naamloos"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#: libdocument/backend/pdf/pps-poppler.c:940 libview/pps-print-operation.c:1910
-#: shell-rs/src/properties_general.rs:82 shell-rs/src/properties_general.rs:199
+#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Geen"
 
 # deel/onderdeel
-#: libdocument/backend/pdf/pps-poppler.c:948
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Embedded subset"
 msgstr "Ingebed deel"
 
-#: libdocument/backend/pdf/pps-poppler.c:950
+#: libdocument/backend/pdf/pps-poppler.c:975
 msgid "Embedded"
 msgstr "Ingebed"
 
-#: libdocument/backend/pdf/pps-poppler.c:952
+#: libdocument/backend/pdf/pps-poppler.c:977
 msgid "Not embedded"
 msgstr "Niet ingebed"
 
@@ -353,7 +342,7 @@ msgstr "Niet ingebed"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:959
+#: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (een van de 14 standaard-lettertypes)"
 
@@ -362,7 +351,7 @@ msgstr " (een van de 14 standaard-lettertypes)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:966
+#: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (niet een van de 14 standaard-lettertypes)"
 
@@ -376,7 +365,7 @@ msgstr " (niet een van de 14 standaard-lettertypes)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:985
+#: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
 "%s%s\n"
@@ -400,7 +389,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1003
+#: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
 "%s%s\n"
@@ -411,80 +400,44 @@ msgstr ""
 "Encoding: %s\n"
 "%s"
 
-#: libdocument/backend/ps/papers-psdocument.metainfo.xml.in.in:5
-#: libdocument/backend/ps/psdocument.papers-backend.desktop.in.in:5
-msgid "PostScript Documents"
-msgstr "PostScript-documenten"
-
-#: libdocument/backend/ps/papers-psdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading PostScript documents"
-msgstr "Voegt ondersteuning toe voor het lezen van PostScript-documenten"
-
-# niet in staat/kon
-#: libdocument/backend/ps/pps-spectre.c:96
-#, c-format
-msgid "Failed to load document “%s”"
-msgstr "Openen van document ‘%s’ is mislukt"
-
-# niet in staat/kon
-#: libdocument/backend/ps/pps-spectre.c:129
-#, c-format
-msgid "Failed to save document “%s”"
-msgstr "Opslaan van document ‘%s’ is mislukt"
-
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "TIFF-documenten"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Voegt ondersteuning toe voor het lezen TIFF-documenten"
 
-#: libdocument/backend/tiff/tiff-document.c:109
+#: libdocument/backend/tiff/tiff-document.c:97
 msgid "Invalid document"
 msgstr "Ongeldig document"
 
-#: libdocument/backend/xps/papers-xpsdocument.metainfo.xml.in.in:5
-#: libdocument/backend/xps/xpsdocument.papers-backend.desktop.in.in:5
-msgid "XPS Documents"
-msgstr "XPS-documenten"
-
-#: libdocument/backend/xps/papers-xpsdocument.metainfo.xml.in.in:6
-msgid "Adds support for reading XPS documents"
-msgstr "Voegt ondersteuning toe voor het lezen van XPS-documenten"
-
-#: libdocument/pps-attachment.c:304 libdocument/pps-attachment.c:325
+#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "De bijlage ‘%s’ kon niet opgeslagen worden: %s"
 
-#: libdocument/pps-attachment.c:363
+#: libdocument/pps-attachment.c:349
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "De bijlage ‘%s’ kon niet geopend worden: %s"
 
-#: libdocument/pps-attachment.c:400
+#: libdocument/pps-attachment.c:386
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "De bijlage ‘%s’ kon niet geopend worden"
 
-#: libdocument/pps-document-factory.c:104
+#: libdocument/pps-document-factory.c:86
 #, c-format
 msgid "File type %s (%s) is not supported"
 msgstr "Bestandstype %s (%s) wordt niet ondersteund"
 
-#: libdocument/pps-document-factory.c:375 libdocument/pps-file-helpers.c:408
-#: libdocument/pps-file-helpers.c:454 libdocument/pps-file-helpers.c:463
-#: libdocument/pps-file-helpers.c:544 libdocument/pps-file-helpers.c:553
-msgid "Unknown MIME Type"
-msgstr "Onbekend MIME-type"
-
-#: libdocument/pps-document-factory.c:507
+#: libdocument/pps-document-factory.c:392
 msgid "All Documents"
 msgstr "Alle documenten"
 
-#: libdocument/pps-document-factory.c:535
+#: libdocument/pps-document-factory.c:420
 msgid "All Files"
 msgstr "Alle bestanden"
 
@@ -494,141 +447,145 @@ msgstr "Alle bestanden"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: libdocument/pps-document-info.c:212
+#: libdocument/pps-document-info.c:198
 msgid "default:mm"
 msgstr "default:mm"
 
-#: libdocument/pps-document-info.c:264
+#: libdocument/pps-document-info.c:250
 #, c-format
 msgid "%.0f × %.0f mm"
 msgstr "%.0f × %.0f mm"
 
-#: libdocument/pps-document-info.c:268
+#: libdocument/pps-document-info.c:254
 #, c-format
 msgid "%.2f × %.2f inch"
 msgstr "%.2f × %.2f inch"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:292
+#: libdocument/pps-document-info.c:278
 #, c-format
 msgid "%s, Portrait (%s)"
 msgstr "%s, staand (%s)"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:299
+#: libdocument/pps-document-info.c:285
 #, c-format
 msgid "%s, Landscape (%s)"
 msgstr "%s, liggend (%s)"
 
-#: libdocument/pps-file-helpers.c:148
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Aanmaken van een tijdelijk bestand is mislukt: %s"
 
-#: libdocument/pps-file-helpers.c:225
-#, c-format
-msgid "Failed to create a temporary directory: %s"
-msgstr "Aanmaken van een tijdelijke map is mislukt: %s"
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
+msgid "Unknown MIME Type"
+msgstr "Onbekend MIME-type"
 
-#: libdocument/pps-xmp.c:202
+#: libdocument/pps-xmp.c:188
 msgid "This work is in the Public Domain"
 msgstr "Dit werk is in het publieke domein"
 
-#: libview/context/pps-attachment-context.c:345
+#: libview/context/pps-attachment-context.c:349
+#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Bijlage opslaan"
 msgstr[1] "Bijlagen opslaan"
 
-#: libview/context/pps-history.c:488 previewer/pps-page-selector.c:194
-#: shell/pps-document-view.c:623 shell/pps-document-view.c:2714
-#: shell/pps-sidebar-bookmarks.c:339
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
 #, c-format
 msgid "Page %s"
 msgstr "Pagina %s"
 
+#: libview/pps-annotation-window.c:237
+msgid "Edit Note"
+msgstr "Notitie bewerken"
+
 # niet in staat/kon
-#: libview/pps-jobs.c:418
+#: libview/pps-jobs.c:399
 #, c-format
 msgid "Failed to render page %d: %s"
 msgstr "Laden van pagina %d is mislukt: %s"
 
 # niet in staat/kon
-#: libview/pps-jobs.c:425
+#: libview/pps-jobs.c:406
 #, c-format
 msgid "Failed to render page %d"
 msgstr "Laden van pagina %d is mislukt"
 
-#: libview/pps-jobs.c:643
+#: libview/pps-jobs.c:625
 #, c-format
 msgid "Failed to create thumbnail for page %d"
 msgstr "Aanmaken van een miniatuur voor pagina %d is mislukt"
 
 # niet in staat/kon
-#: libview/pps-jobs.c:1645
+#: libview/pps-jobs.c:1602
 #, c-format
 msgid "Failed to print page %d: %s"
 msgstr "Afdrukken van pagina %d is mislukt: %s"
 
 #. Initial state
-#: libview/pps-print-operation.c:344
+#: libview/pps-print-operation.c:331
 msgid "Preparing preview…"
 msgstr "Voorbeeld voorbereiden…"
 
-#: libview/pps-print-operation.c:346 libview/pps-print-operation.c:356
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
 msgid "Finishing…"
 msgstr "Afronden…"
 
-#: libview/pps-print-operation.c:348
+#: libview/pps-print-operation.c:335
 #, c-format
 msgid "Generating preview: page %d of %d"
 msgstr "Voorbeeld maken: pagina %d van %d"
 
 #. Initial state
-#: libview/pps-print-operation.c:354
+#: libview/pps-print-operation.c:341
 msgid "Preparing to print…"
 msgstr "Afdrukken voorbereiden…"
 
-#: libview/pps-print-operation.c:358
+#: libview/pps-print-operation.c:345
 #, c-format
 msgid "Printing page %d of %d…"
 msgstr "Pagina %d van %d afdrukken…"
 
-#: libview/pps-print-operation.c:1364
+#: libview/pps-print-operation.c:1334
 msgid "Invalid Page Selection"
 msgstr "Ongeldige paginaselectie"
 
-#: libview/pps-print-operation.c:1365
+#: libview/pps-print-operation.c:1335
 msgid "Your print range selection does not include any pages"
 msgstr "Het geselecteerde afdrukbereik bevat geen enkele pagina"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1366 previewer/pps-previewer-window.ui:91
-#: shell/pps-annotation-properties-dialog.ui:87 shell/pps-document-view.c:3681
-#: shell/pps-document-view.ui:630 shell/pps-window.ui:163
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Sluiten"
 
 #. translators: Title of the print dialog
-#: libview/pps-print-operation.c:1443
+#: libview/pps-print-operation.c:1413
 msgid "Print"
 msgstr "Afdrukken"
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1871
 msgid "Page Scaling:"
-msgstr "Schalen van pagina's:"
+msgstr "Schalen van pagina’s:"
 
-#: libview/pps-print-operation.c:1911
+#: libview/pps-print-operation.c:1879
 msgid "Shrink to Printable Area"
 msgstr "Verkleinen tot afdrukbaar gebied"
 
-#: libview/pps-print-operation.c:1912
+#: libview/pps-print-operation.c:1880
 msgid "Fit to Printable Area"
 msgstr "Schalen naar afdrukbaar gebied"
 
-#: libview/pps-print-operation.c:1915
+#: libview/pps-print-operation.c:1887
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of "
 "the following:\n"
@@ -641,1323 +598,1165 @@ msgid ""
 "• “Fit to Printable Area”: Document pages are enlarged or reduced as "
 "required to fit the printable area of the printer page.\n"
 msgstr ""
-"Documentpagina's schalen zodat deze op de printerpagina's passen. Kies een "
+"Schaal documentpagina’s zodat deze op de printerpagina’s passen. Kies een "
 "van de volgende opties:\n"
 "\n"
 "• ‘Geen’: pagina's worden niet geschaald.\n"
 "\n"
-"• ‘Verkleinen tot afdrukbaar gebied’: Documentpagina's groter dan het "
+"• ‘Verkleinen tot afdrukbaar gebied’: Documentpagina’s groter dan het "
 "afdrukbare gebied worden verkleind zodat deze op een printerpagina passen.\n"
 "\n"
-"• ‘Schalen naar afdrukbaar gebied’: Documentpagina's worden vergroot of "
+"• ‘Schalen naar afdrukbaar gebied’: Documentpagina’s worden vergroot of "
 "verkleind zodat deze op het afdrukbare gebied op een printerpagina passen.\n"
 
-#: libview/pps-print-operation.c:1926
+#: libview/pps-print-operation.c:1898
 msgid "Auto Rotate and Center"
 msgstr "Automatisch roteren en centreren"
 
-#: libview/pps-print-operation.c:1929
+#: libview/pps-print-operation.c:1901
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
 msgstr ""
-"Paginaoriëntatie van printer zo roteren dat deze overeenkomt met de "
-"paginaoriëntatie van documentpagina's. Documentpagina's zullen gecentreerd "
-"worden op de printerpagina."
+"Roteer de paginaoriëntatie van de printer zodat deze overeenkomt met de "
+"oriëntatie van elke pagina van het document. Documentpagina’s zullen "
+"gecentreerd worden op de printerpagina."
 
-#: libview/pps-print-operation.c:1933
+#: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
 msgstr "Paginagrootte kiezen aan de hand van de documentpaginagrootte"
 
-#: libview/pps-print-operation.c:1935
+#: libview/pps-print-operation.c:1907
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
 msgstr ""
 "Indien ingeschakeld zal iedere pagina afgedrukt worden op dezelfde "
-"paginagrootte als de documentpagina's."
+"paginagrootte als de documentpagina’s."
 
-#: libview/pps-print-operation.c:1939
+#: libview/pps-print-operation.c:1911
 msgid "Draw border around pages"
 msgstr "Een rand rond pagina's tekenen"
 
-#: libview/pps-print-operation.c:1941
+#: libview/pps-print-operation.c:1913
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Als dit is ingeschakeld, wordt er een rand rond elke pagina getekend."
 
 # betere vertaling?
-#: libview/pps-print-operation.c:2034
+#: libview/pps-print-operation.c:2006
 msgid "Page Handling"
 msgstr "Pagina-afhandeling"
 
-#: libview/pps-view-accessible.c:43
-msgid "Scroll Up"
-msgstr "Omhoog schuiven"
-
-#: libview/pps-view-accessible.c:44
-msgid "Scroll Down"
-msgstr "Omlaag schuiven"
-
-# Wat wordt hier precies bedoeld?
-#: libview/pps-view-accessible.c:50
-msgid "Scroll View Up"
-msgstr "Beeld omhoog schuiven"
-
-#: libview/pps-view-accessible.c:51
-msgid "Scroll View Down"
-msgstr "Beeld omlaag schuiven"
-
-#: libview/pps-view-accessible.c:132
-msgid "Document View"
-msgstr "Documentbeeld"
-
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2109
 msgid "Go to first page"
 msgstr "Ga naar de eerste pagina"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2111
 msgid "Go to previous page"
 msgstr "Ga naar de vorige pagina"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2113
 msgid "Go to next page"
 msgstr "Ga naar de volgende pagina"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2115
 msgid "Go to last page"
 msgstr "Ga naar de laatste pagina"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2117
 msgid "Go to page"
 msgstr "Ga naar pagina"
 
-#: libview/pps-view.c:2122
+#: libview/pps-view.c:2119
 msgid "Find"
 msgstr "Zoeken"
 
-#: libview/pps-view.c:2151
+#: libview/pps-view.c:2148
 #, c-format
 msgid "Go to page %s"
 msgstr "Ga naar pagina %s"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2154
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ga naar %s in bestand ‘%s’"
 
-#: libview/pps-view.c:2160
+#: libview/pps-view.c:2157
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ga naar bestand ‘%s’"
 
-#: libview/pps-view.c:2168
+#: libview/pps-view.c:2165
 #, c-format
 msgid "Launch %s"
 msgstr "%s opstarten"
 
-#: libview/pps-view.c:2175
+#: libview/pps-view.c:2172
 #, c-format
 msgid "Reset form"
 msgstr "Formulier opnieuw instellen"
 
 # Dit is de reden die opgegeven wordt voor het tijdelijk uitschakelen van de
 # schermbeveiliging (Wouter Bolsterlee)
-#: libview/pps-view-presentation.c:837
+#: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
 msgstr "Diapresentatie bezig"
 
-#: libview/pps-view-presentation.c:888
+#: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
-msgstr "Einde van presentatie. Druk op Esc of klik om af te sluiten."
+msgstr "Einde van de presentatie. Druk op Esc of klik om af te sluiten."
 
-#: libview/pps-view-presentation.ui:57
+#: libview/pps-view-presentation.blp:49
 msgid "Jump to page:"
 msgstr "Ga naar pagina:"
 
 # misschien beter: uit (ipv van): pagina 1 uit 5
-#: previewer/pps-page-selector.c:80 previewer/pps-page-selector.c:119
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
 #, c-format
 msgid "(%d of %d)"
 msgstr "(%d van %d)"
 
 # misschien beter: uit (ipv van): pagina 1 uit 5
-#: previewer/pps-page-selector.c:82 previewer/pps-page-selector.c:123
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
 #, c-format
 msgid "of %d"
 msgstr "van %d"
 
-#: previewer/pps-page-selector.ui:12 shell/pps-page-selector.ui:12
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
 msgid "Select page"
 msgstr "Pagina selecteren"
 
-#: previewer/pps-previewer.c:48
+#: previewer/pps-previewer.c:32
 msgid "Delete the temporary file"
 msgstr "Tijdelijk bestand wissen"
 
-#: previewer/pps-previewer.c:50
+#: previewer/pps-previewer.c:34
 msgid "File specifying print settings"
 msgstr "Bestand met instellingen voor afdrukken"
 
-#: previewer/pps-previewer.c:50
+#: previewer/pps-previewer.c:34
 msgid "FILE"
 msgstr "BESTAND"
 
-#: previewer/pps-previewer.c:52
+#: previewer/pps-previewer.c:36
 msgid "File descriptor of input file"
 msgstr "Bestandsbeschrijving van invoerbestand"
 
-#: previewer/pps-previewer.c:52 previewer/pps-previewer.c:56
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
 msgid "FD"
 msgstr "BB"
 
-#: previewer/pps-previewer.c:54
+#: previewer/pps-previewer.c:38
 msgid "MIME type of input file"
 msgstr "MIME-type van invoerbestand"
 
-#: previewer/pps-previewer.c:54
+#: previewer/pps-previewer.c:38
 msgid "TYPE"
 msgstr "TYPE"
 
-#: previewer/pps-previewer.c:56
+#: previewer/pps-previewer.c:40
 msgid "File descriptor of print settings file"
 msgstr "Bestandsbeschrijving van afdrukinstellingsbestand"
 
 # Misschien Evince documentenviewer
 # viewer is ook nederlands
-#: previewer/pps-previewer.c:257 previewer/pps-previewer.c:273
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
 msgid "GNOME Document Previewer"
 msgstr "GNOME-documentenvoorbeeldweergave"
 
-#: previewer/pps-previewer-window.c:189 previewer/pps-previewer-window.c:513
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Papers documentweergave"
 
-#: previewer/pps-previewer-window.c:227
+#: previewer/pps-previewer-window.c:209
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Kan de geselecteerde printer ‘%s’ niet vinden"
 
-#: previewer/pps-previewer-window.ui:22
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
+#: shell/src/document_view/io.rs:202
+msgid "Papers"
+msgstr "Papers"
+
+#: previewer/pps-previewer-window.blp:19
 msgid "Previous Page"
 msgstr "Vorige pagina"
 
-#: previewer/pps-previewer-window.ui:29
+#: previewer/pps-previewer-window.blp:25
 msgid "Next Page"
 msgstr "Volgende pagina"
 
-#: previewer/pps-previewer-window.ui:36 shell/pps-document-view.ui:224
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Aantal pagina’s"
 
-#: previewer/pps-previewer-window.ui:42
+#: previewer/pps-previewer-window.blp:36
 msgid "_Print"
 msgstr "_Afdrukken"
 
-#: previewer/pps-previewer-window.ui:43
+#: previewer/pps-previewer-window.blp:37
 msgid "Print This Document"
 msgstr "Dit document afdrukken"
 
-#: previewer/pps-previewer-window.ui:53 shell/pps-document-view.ui:306
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Uitzoomen"
 
-#: previewer/pps-previewer-window.ui:60
+#: previewer/pps-previewer-window.blp:55
 msgid "Normal Size"
 msgstr "Normale grootte"
 
-#: previewer/pps-previewer-window.ui:67 shell/pps-document-view.ui:293
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Inzoomen"
 
 # niet in staat/kon
-#: previewer/pps-previewer-window.ui:89 shell/pps-document-view.c:1954
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Afdrukken van het document is mislukt"
 
-#: nautilus/pps-nautilus-extension.c:125
-#: shell/pps-annotation-properties-dialog.ui:59
-#: shell-rs/src/properties_general.rs:172
+#: nautilus/pps-nautilus-extension.c:104
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: nautilus/pps-nautilus-extension.c:170
+#: nautilus/pps-nautilus-extension.c:149
 msgid "Document Properties"
 msgstr "Documenteigenschappen"
 
-#: nautilus/pps-nautilus-extension.h:59 shell-rs/src/properties_general.rs:142
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
 msgid "Title"
 msgstr "Titel"
 
-#: nautilus/pps-nautilus-extension.h:60
+#: nautilus/pps-nautilus-extension.h:46
 msgid "Location"
 msgstr "Locatie"
 
-#: nautilus/pps-nautilus-extension.h:61 shell-rs/src/properties_general.rs:143
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: nautilus/pps-nautilus-extension.h:62
-#: shell/pps-annotation-properties-dialog.ui:9
-#: shell-rs/src/properties_general.rs:144
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
 msgid "Author"
 msgstr "Auteur"
 
 # Sleutelwoorden/trefwoorden
-#: nautilus/pps-nautilus-extension.h:63 shell-rs/src/properties_general.rs:145
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
 msgid "Keywords"
 msgstr "Trefwoorden"
 
 # hier wordt het programma weergegeven waarmee het document
 # is gemaakt: dus bijv:
 # Programma: Acrobat distiller 6.0.1. for Macintosh
-#: nautilus/pps-nautilus-extension.h:64 shell-rs/src/properties_general.rs:146
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
 msgid "Producer"
 msgstr "Producent"
 
-#: nautilus/pps-nautilus-extension.h:65 shell-rs/src/properties_general.rs:147
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
 msgid "Creator"
 msgstr "Maker"
 
 # er komt te staan: Aangemaakt op: [datum]
-#: nautilus/pps-nautilus-extension.h:66 shell-rs/src/properties_general.rs:154
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
 msgstr "Aangemaakt"
 
 # gewijzigd/aangepast
 # Er komt te staan: Laatste wijziging: [datum]
-#: nautilus/pps-nautilus-extension.h:67 shell-rs/src/properties_general.rs:155
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
 msgstr "Gewijzigd"
 
-#: nautilus/pps-nautilus-extension.h:68 shell-rs/src/properties_general.rs:163
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
-msgstr "Aantal pagina's"
+msgstr "Aantal pagina’s"
 
-#: nautilus/pps-nautilus-extension.h:69 shell-rs/src/properties_general.rs:164
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
 msgstr "Geoptimaliseerd"
 
-#: nautilus/pps-nautilus-extension.h:70 shell-rs/src/properties_general.rs:160
-#: shell-rs/src/properties_general.rs:162
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
 msgid "Format"
 msgstr "Formaat"
 
 # er komt te staan: beveiliging: ja/nee
-#: nautilus/pps-nautilus-extension.h:71 shell-rs/src/properties_general.rs:165
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
 msgstr "Beveiliging"
 
-#: nautilus/pps-nautilus-extension.h:72 shell-rs/src/properties_general.rs:174
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
-msgstr "Bevat Javascript"
+msgstr "Bevat JavaScript"
 
-#: nautilus/pps-nautilus-extension.h:73 shell-rs/src/properties_general.rs:166
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
 msgstr "Papierformaat"
 
-#: nautilus/pps-nautilus-extension.h:74 shell-rs/src/properties_general.rs:132
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
 msgstr "Grootte"
 
-#: shell/help-overlay.ui:11
-msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Openen, sluiten, opslaan en afdrukken"
-
-#: shell/help-overlay.ui:14
-msgctxt "shortcut window"
-msgid "Open Document"
-msgstr "Document openen"
-
-#: shell/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Open Copy of Current Document"
-msgstr "Een kopie van het huidige document openen"
-
-#: shell/help-overlay.ui:26
-msgctxt "shortcut window"
-msgid "Open With…"
-msgstr "Openen met…"
-
-#: shell/help-overlay.ui:32
-msgctxt "shortcut window"
-msgid "Save Copy of Current Document"
-msgstr "Een kopie van het huidige document opslaan"
-
-#: shell/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Print Current Document"
-msgstr "Het huidige document afdrukken"
-
-# de pagina laten passen in het venster
-#: shell/help-overlay.ui:44
-msgctxt "shortcut window"
-msgid "Close Current Document Window"
-msgstr "Het huidige documentvenster sluiten"
-
-#: shell/help-overlay.ui:52
-msgctxt "shortcut window"
-msgid "Window"
-msgstr "Venster"
-
-# schermvullend
-# kde gebruikt: vollgedig scherm
-#: shell/help-overlay.ui:55
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "Volledig scherm"
-
-# Dit is de reden die opgegeven wordt voor het tijdelijk uitschakelen van de
-# schermbeveiliging (Wouter Bolsterlee)
-#: shell/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Enter Presentation Mode"
-msgstr "Presentatiemodus starten"
-
-#: shell/help-overlay.ui:67
-msgctxt "shortcut window"
-msgid "Side Pane"
-msgstr "Zijpaneel"
-
-#: shell/help-overlay.ui:73
-msgctxt "shortcut window"
-msgid "Caret Navigation"
-msgstr "Cursornavigatie"
-
-#: shell/help-overlay.ui:81
-msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Tekst selecteren en kopiëren"
-
-#: shell/help-overlay.ui:84
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "Kopiëren"
-
-#: shell/help-overlay.ui:90
-msgctxt "shortcut window"
-msgid "Select All"
-msgstr "Alles selecteren"
-
-#: shell/help-overlay.ui:98
-msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Draaien en zoomen"
-
-#: shell/help-overlay.ui:101
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Counter-Clockwise"
-msgstr "De pagina 90 graden tegen de klok in draaien"
-
-#: shell/help-overlay.ui:107
-msgctxt "shortcut window"
-msgid "Rotate Page 90 Degrees Clockwise"
-msgstr "De pagina 90 graden met de klok mee draaien"
-
-#: shell/help-overlay.ui:113 shell/help-overlay.ui:377
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Inzoomen"
-
-#: shell/help-overlay.ui:119 shell/help-overlay.ui:383
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Uitzoomen"
-
-#: shell/help-overlay.ui:125
-msgctxt "shortcut window"
-msgid "Normal Size"
-msgstr "Normale grootte"
-
-#: shell/help-overlay.ui:131
-msgctxt "shortcut window"
-msgid "Zoom In (Alternative)"
-msgstr "Inzoomen (alternatief)"
-
-#: shell/help-overlay.ui:137
-msgctxt "shortcut window"
-msgid "Fit Page"
-msgstr "Aanpassen aan pagina"
-
-# knoptekst?
-#: shell/help-overlay.ui:143
-msgctxt "shortcut window"
-msgid "Fit Width"
-msgstr "Aanpassen aan breedte"
-
-#: shell/help-overlay.ui:149
-msgctxt "shortcut window"
-msgid "Automatic Zoom"
-msgstr "Automatisch zoomen"
-
-#: shell/help-overlay.ui:157
-msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Door het document bladeren"
-
-#: shell/help-overlay.ui:160 shell/help-overlay.ui:166
-msgctxt "shortcut window"
-msgid "Move Around Page"
-msgstr "Door een pagina gaan"
-
-#: shell/help-overlay.ui:172
-msgctxt "shortcut window"
-msgid "Move Up/Down Page Several Lines"
-msgstr "Een pagina meerdere regels omhoog/omlaag bewegen"
-
-#: shell/help-overlay.ui:178 shell/help-overlay.ui:395
-msgctxt "shortcut window"
-msgid "Previous Page"
-msgstr "Vorige pagina"
-
-#: shell/help-overlay.ui:184 shell/help-overlay.ui:389
-msgctxt "shortcut window"
-msgid "Next Page"
-msgstr "Volgende pagina"
-
-#: shell/help-overlay.ui:190
-msgctxt "shortcut window"
-msgid "Go to Page Number"
-msgstr "Ga naar paginanummer"
-
-#: shell/help-overlay.ui:196
-msgctxt "shortcut window"
-msgid "Previous Page (Fast)"
-msgstr "Vorige pagina (snel)"
-
-#: shell/help-overlay.ui:202
-msgctxt "shortcut window"
-msgid "Next Page (Fast)"
-msgstr "Volgende pagina (snel)"
-
-#: shell/help-overlay.ui:208
-msgctxt "shortcut window"
-msgid "Previous Visited Page"
-msgstr "Vorige bezochte pagina"
-
-#: shell/help-overlay.ui:214
-msgctxt "shortcut window"
-msgid "Next Visited Page"
-msgstr "Volgende bezochte pagina"
-
-#: shell/help-overlay.ui:220
-msgctxt "shortcut window"
-msgid "Go to Page Beginning/End"
-msgstr "Naar begin/einde van pagina gaan"
-
-# Misschien Evince documentenviewer
-# viewer is ook nederlands
-#: shell/help-overlay.ui:226
-msgctxt "shortcut window"
-msgid "Go to Document Start"
-msgstr "Naar begin van document gaan"
-
-#: shell/help-overlay.ui:232
-msgctxt "shortcut window"
-msgid "Go to Document End"
-msgstr "Naar einde van document gaan"
-
-#: shell/help-overlay.ui:240
-msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Documentweergave en -verwerking"
-
-#: shell/help-overlay.ui:243
-msgctxt "shortcut window"
-msgid "Add Bookmark"
-msgstr "Bladwijzer toevoegen"
-
-#: shell/help-overlay.ui:249
-msgctxt "shortcut window"
-msgid "Remove Bookmark"
-msgstr "Bladwijzer verwijderen"
-
-#: shell/help-overlay.ui:255
-msgctxt "shortcut window"
-msgid "Night Mode"
-msgstr "Nachtmodus"
-
-#: shell/help-overlay.ui:261
-msgctxt "shortcut window"
-msgid "Continuous Scrolling"
-msgstr "Doorlopend scrollen"
-
-#: shell/help-overlay.ui:267
-msgctxt "shortcut window"
-msgid "Dual Page"
-msgstr "Dubbele pagina"
-
-#: shell/help-overlay.ui:273
-msgctxt "shortcut window"
-msgid "Odd Pages Left"
-msgstr "Oneven pagina’s links"
-
-#: shell/help-overlay.ui:279
-msgctxt "shortcut window"
-msgid "Document Properties"
-msgstr "Documenteigenschappen"
-
-#: shell/help-overlay.ui:285
-msgctxt "shortcut window"
-msgid "Add Text Annotation"
-msgstr "Tekstaantekening toevoegen"
-
-#: shell/help-overlay.ui:291
-msgctxt "shortcut window"
-msgid "Highlight Text"
-msgstr "Tekst markeren"
-
-#: shell/help-overlay.ui:299
-msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Tekst zoeken"
-
-#: shell/help-overlay.ui:302
-msgctxt "shortcut window"
-msgid "Find"
-msgstr "Zoeken"
-
-#: shell/help-overlay.ui:308
-msgctxt "shortcut window"
-msgid "Find Next"
-msgstr "Volgende zoeken"
-
-#: shell/help-overlay.ui:314
-msgctxt "shortcut window"
-msgid "Find Previous"
-msgstr "Vorige zoeken"
-
-#: shell/help-overlay.ui:322
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Algemeen"
-
-#: shell/help-overlay.ui:325
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "Hulp"
-
-#: shell/help-overlay.ui:331
-msgctxt "shortcut window"
-msgid "Menu"
-msgstr "Menu"
-
-#: shell/help-overlay.ui:337
-msgctxt "shortcut window"
-msgid "Keyboard Shortcuts"
-msgstr "Sneltoetsen"
-
-#: shell/help-overlay.ui:343
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Nieuw venster"
-
-#: shell/help-overlay.ui:349
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Venster sluiten"
-
-# Dit is de reden die opgegeven wordt voor het tijdelijk uitschakelen van de
-# schermbeveiliging (Wouter Bolsterlee)
-#: shell/help-overlay.ui:357
-msgctxt "shortcut window"
-msgid "Presentation Mode"
-msgstr "Presentatiemodus"
-
-# schermvullend
-# kde gebruikt: vollgedig scherm
-#: shell/help-overlay.ui:360
-msgctxt "shortcut window"
-msgid "Black Screen"
-msgstr "Zwart scherm"
-
-# schermvullend
-# kde gebruikt: vollgedig scherm
-#: shell/help-overlay.ui:366
-msgctxt "shortcut window"
-msgid "White Screen"
-msgstr "Wit scherm"
-
-#: shell/help-overlay.ui:374
-msgctxt "shortcut window"
-msgid "Touchpad Gestures"
-msgstr "Touchpadgebaren"
-
-#: shell/pps-annotation-properties-dialog.ui:4
-#: shell/pps-sidebar-annotations.ui:75
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "Aantekeningseigenschappen"
 
-#: shell/pps-annotation-properties-dialog.ui:14
-msgid "Color"
-msgstr "Kleur"
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+msgid "_Color"
+msgstr "_Kleur"
 
-#: shell/pps-annotation-properties-dialog.ui:26
-msgid "Opacity"
-msgstr "Dekking"
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+msgid "_Opacity"
+msgstr "_Dekking"
 
-#: shell/pps-annotation-properties-dialog.ui:40
-msgid "Initially Opened"
-msgstr "Initieel geopend"
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "_Icon"
+msgstr "P_ictogram"
 
-#: shell/pps-annotation-properties-dialog.ui:46
-msgid "Icon"
-msgstr "Pictogram"
-
-#: shell/pps-annotation-properties-dialog.ui:50
+#: shell/resources/pps-annotation-properties-dialog.blp:51
 msgid "Note"
 msgstr "Notitie"
 
-#: shell/pps-annotation-properties-dialog.ui:51
+#: shell/resources/pps-annotation-properties-dialog.blp:52
 msgid "Comment"
 msgstr "Opmerking"
 
-#: shell/pps-annotation-properties-dialog.ui:52
+#: shell/resources/pps-annotation-properties-dialog.blp:53
 msgid "Key"
 msgstr "Sleutel"
 
-#: shell/pps-annotation-properties-dialog.ui:53
+#: shell/resources/pps-annotation-properties-dialog.blp:54
 msgid "Help"
 msgstr "Hulp"
 
-#: shell/pps-annotation-properties-dialog.ui:54
+#: shell/resources/pps-annotation-properties-dialog.blp:55
 msgid "New Paragraph"
 msgstr "Nieuwe alinea"
 
-#: shell/pps-annotation-properties-dialog.ui:55
+#: shell/resources/pps-annotation-properties-dialog.blp:56
 msgid "Paragraph"
 msgstr "Alinea"
 
-#: shell/pps-annotation-properties-dialog.ui:56
+#: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Insert"
 msgstr "Toevoeging"
 
-#: shell/pps-annotation-properties-dialog.ui:57
+#: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Cross"
 msgstr "Kruis"
 
-#: shell/pps-annotation-properties-dialog.ui:58
+#: shell/resources/pps-annotation-properties-dialog.blp:59
 msgid "Circle"
 msgstr "Cirkel"
 
-#: shell/pps-annotation-properties-dialog.ui:69
-msgid "Markup Type"
-msgstr "Opmaaktype"
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+msgid "_Markup Type"
+msgstr "Op_maaktype"
 
-#: shell/pps-annotation-properties-dialog.ui:73
+#: shell/resources/pps-annotation-properties-dialog.blp:75
 msgid "Highlight"
 msgstr "Gemarkeerd"
 
-#: shell/pps-annotation-properties-dialog.ui:74
+#: shell/resources/pps-annotation-properties-dialog.blp:76
 msgid "Strike out"
 msgstr "Doorgehaald"
 
-#: shell/pps-annotation-properties-dialog.ui:75
+#: shell/resources/pps-annotation-properties-dialog.blp:77
 msgid "Underline"
 msgstr "Onderstreept"
 
-#: shell/pps-annotation-properties-dialog.ui:76
+#: shell/resources/pps-annotation-properties-dialog.blp:78
 msgid "Squiggly"
 msgstr "Kronkelig"
 
-#: shell/pps-annotation-properties-dialog.ui:88
-msgid "_Apply"
-msgstr "_Toepassen"
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+msgid "_Author"
+msgstr "_Auteur"
 
-#: shell/pps-document-view.c:496 shell-rs/src/window.rs:467
-msgid "View Details"
-msgstr "Details bekijken"
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+msgid "Auto-Reveal on _Scroll"
+msgstr "Automatisch onthullen bij _scrollen"
 
-#: shell/pps-document-view.c:1214
-msgid "Digital Signature is invalid!"
-msgstr "De digitale ondertekening is ongeldig!"
+# hele/gehele/complete document
+#: shell/resources/pps-annotation-properties-dialog.blp:96
+msgid "Pop up note while scrolling the document"
+msgstr "Pop-upnotitie tijdens scrollen door document"
 
-#: shell/pps-document-view.c:1217 shell/pps-document-view.ui:239
-msgid "Document has been digitally signed."
-msgstr "Het document is digitaal ondertekend."
-
-#: shell/pps-document-view.c:1248
-msgid "The document contains no pages"
-msgstr "Het document bevat geen pagina's"
-
-#: shell/pps-document-view.c:1251
-msgid "The document contains only empty pages"
-msgstr "Het document bevat slechts lege pagina's"
-
-#: shell/pps-document-view.c:1484
-msgid "File Saved"
-msgstr "Bestand opgeslagen"
-
-#: shell/pps-document-view.c:1494 shell/pps-document-view.c:1547
-#, c-format
-msgid "The file could not be saved as “%s”."
-msgstr "Het bestand kon niet worden opgeslagen als ‘%s’."
-
-#: shell/pps-document-view.c:1609
-msgid "Save As…"
-msgstr "Afbeelding op_slaan als…"
-
-#: shell/pps-document-view.c:1915
-#, c-format
-msgid "%d pending job in queue"
-msgid_plural "%d pending jobs in queue"
-msgstr[0] "Eén taak in de wachtrij"
-msgstr[1] "%d taken in de wachtrij"
-
-#: shell/pps-document-view.c:2008
-#, c-format
-msgid "Printing job “%s”"
-msgstr "Afdrukken van taak ‘%s’"
-
-#: shell/pps-document-view.c:2011 shell/pps-loader-view.ui:60
-msgid "C_ancel"
-msgstr "A_nnuleren"
-
-#: shell/pps-document-view.c:2200 shell-rs/src/window.rs:267
-msgid "Document contains form fields that have been filled out."
-msgstr "Het document bevat ingevulde formuliervelden."
-
-#: shell/pps-document-view.c:2203 shell-rs/src/window.rs:268
-msgid "Document contains new or modified annotations."
-msgstr "Het document bevat nieuwe of gewijzigde aantekeningen."
-
-#: shell/pps-document-view.c:2210
-msgid "Save Changes to a Copy?"
-msgstr "Wijzigingen opslaan als kopie?"
-
-#: shell/pps-document-view.c:2211
-msgid "If you don’t save a copy, changes will be permanently lost."
-msgstr ""
-"Als u geen kopie van het document opslaat, zullen wijzigingen definitief "
-"verloren gaan."
-
-#: shell/pps-document-view.c:2214
-msgid "Close _Without Saving"
-msgstr "Sluiten _zonder opslaan"
-
-#: shell/pps-document-view.c:2215 shell/pps-document-view.c:3438
-#: shell/pps-document-view.c:3574 shell/pps-document-view.c:3643
-#: shell/pps-document-view.ui:597 shell/pps-document-view.ui:622
-msgid "_Cancel"
-msgstr "_Annuleren"
-
-#: shell/pps-document-view.c:2216
-msgid "_Save a Copy"
-msgstr "Een kopie op_slaan"
-
-# invoeren hier met opzet weggelaten
-#: shell/pps-document-view.c:3435
-#, c-format
-msgid "Please enter password for %s"
-msgstr "Voer het wachtwoord in voor %s"
-
-#: shell/pps-document-view.c:3437 shell/pps-password-dialog.ui:4
-#: shell/pps-password-view.ui:10 shell/pps-password-view.ui:19
-msgid "Password Required"
-msgstr "Wachtwoord vereist"
-
-#: shell/pps-document-view.c:3439
-msgid "_Login"
-msgstr "Aanme_lden"
-
-#: shell/pps-document-view.c:3538
-msgid "Save Signed File"
-msgstr "Ondertekend bestand opslaan"
-
-#: shell/pps-document-view.c:3573
-msgid "Draw a rectangle to insert a signature field"
-msgstr "Teken een rechthoek om een handtekeningsveld in te voegen"
-
-#: shell/pps-document-view.c:3598
-#, c-format
-msgid ""
-"Digitally signed by %s\n"
-"Date: %s"
-msgstr ""
-"Digitaal ondertekend door %s\n"
-"Datum: %s"
-
-#: shell/pps-document-view.c:3634
-msgid "Certificate Required"
-msgstr "Certificaat vereist"
-
-#: shell/pps-document-view.c:3639
-msgid "Select signing certificate"
-msgstr "Selecteer het ondertekeningscertificaat"
-
-#: shell/pps-document-view.c:3640
-msgid "Select"
-msgstr "Selecteren"
-
-#: shell/pps-document-view.c:3679
-msgid "A certificate is required to sign this document"
-msgstr "Om dit document te ondertekenen is een certificaat vereist"
-
-#: shell/pps-document-view.c:3985
-#, c-format
-msgid ""
-"Security alert: this document has been prevented from opening the file “%s”"
-msgstr ""
-"Beveiligingswaarschuwing: dit document mocht het bestand ‘%s’ niet openen"
-
-# niet in staat/kon
-#: shell/pps-document-view.c:4046 shell-rs/src/window.rs:1137
-msgid "Unable to open external link"
-msgstr "De externe verwijzing kon niet geopend worden"
-
-#: shell/pps-document-view.c:4271
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Kon geen geschikt bestandstype voor opslaan van afbeelding vinden"
-
-#: shell/pps-document-view.c:4301
-msgid "The image could not be saved."
-msgstr "De afbeelding kon niet worden opgeslagen."
-
-#: shell/pps-document-view.c:4337
-msgid "Save Image"
-msgstr "Afbeelding opslaan"
-
-# niet in staat/kon
-#: shell/pps-document-view.c:4508
-msgid "Unable to open attachment"
-msgstr "De bijlage kon niet geopend worden"
-
-#: shell/pps-document-view.c:4527
-msgid "The attachment could not be saved."
-msgstr "De bijlage kon niet worden opgeslagen."
-
-#: shell/pps-document-view.ui:64
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Zoeken"
 
-#: shell/pps-document-view.ui:79 shell/pps-window.ui:36
+#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: shell/pps-document-view.ui:98
+#: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
 msgstr "Miniaturen"
 
-#: shell/pps-document-view.ui:111
+#: shell/resources/pps-document-view.blp:121
 msgid "Outline"
 msgstr "Inhoud"
 
-#: shell/pps-document-view.ui:126
+#: shell/resources/pps-document-view.blp:133
 msgid "Annotations"
 msgstr "Aantekeningen"
 
-#: shell/pps-document-view.ui:141
-msgid "Bookmarks"
-msgstr "Bladwijzers"
-
-#: shell/pps-document-view.ui:155
+#: shell/resources/pps-document-view.blp:151
 msgid "Attachments"
 msgstr "Bijlagen"
 
-#: shell/pps-document-view.ui:174
+#: shell/resources/pps-document-view.blp:167
 msgid "Layers"
 msgstr "Lagen"
 
-#: shell/pps-document-view.ui:211
+#: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
 msgstr "Zijbalk weergeven/verbergen"
 
-#: shell/pps-document-view.ui:217
+#: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
 msgstr "Documentmenu"
 
-#: shell/pps-document-view.ui:240
-msgid "View Details…"
-msgstr "Details bekijken…"
+#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+msgid "Document has been digitally signed."
+msgstr "Het document is digitaal ondertekend."
 
-#: shell/pps-document-view.ui:273
+#: shell/resources/pps-document-view.blp:224
+msgid "View Signature…"
+msgstr "Ondertekening bekijken…"
+
+#: shell/resources/pps-document-view.blp:257
 msgid "Fit Automatically"
 msgstr "Automatisch aanpassen"
 
-#: shell/pps-document-view.ui:588
-msgid "Enable Caret Navigation?"
-msgstr "Cursornavigatie inschakelen?"
-
-#: shell/pps-document-view.ui:589
-msgid ""
-"Pressing F7 turns the caret navigation on or off. This feature places a "
-"moveable cursor in text pages, allowing you to move around and select text "
-"with your keyboard."
-msgstr ""
-"F7 schakelt de cursornavigatie in of uit. Deze functie plaatst een "
-"verplaatsbare cursor in tekstpagina's, waardoor u kunt navigeren en tekst "
-"selecteren via het toetsenbord."
-
-#: shell/pps-document-view.ui:592
-msgid "Don’t show this message again"
-msgstr "Dit bericht niet meer tonen"
-
-#: shell/pps-document-view.ui:598
-msgid "_Enable"
-msgstr "I_nschakelen"
-
-#: shell/pps-document-view.ui:604
+#: shell/resources/pps-document-view.blp:529
 msgid "Selection too Small"
 msgstr "Selectie te klein"
 
-#: shell/pps-document-view.ui:605
+#: shell/resources/pps-document-view.blp:530
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
 msgstr ""
-"Een handtekening van deze grootte is mogelijk te klein om te lezen. Als u "
+"Een ondertekening van deze grootte is mogelijk te klein om te lezen. Als u "
 "een beter leesbare handtekening wil maken, selecteer dan ‘Opnieuw beginnen’ "
 "en teken een grotere rechthoek."
 
-#: shell/pps-document-view.ui:610
+#: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
 msgstr "_Opnieuw beginnen"
 
-#: shell/pps-document-view.ui:611
+#: shell/resources/pps-document-view.blp:538
 msgid "_Sign"
 msgstr "Onder_tekenen"
 
-#: shell/pps-document-view.ui:617
+#: shell/resources/pps-document-view.blp:545
 msgid "Abort Printing?"
 msgstr "Afdrukken annuleren?"
 
-#: shell/pps-document-view.ui:618
+#: shell/resources/pps-document-view.blp:546
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
 msgstr ""
-"Er zijn één of meerdere actieve afdruktaken. Als het venster gesloten wordt, "
+"Er zijn één of meer actieve afdruktaken. Als het venster gesloten wordt, "
 "zullen afdruktaken in de wachtrij niet meer uitgevoerd worden."
 
-#: shell/pps-document-view.ui:621
+#: shell/resources/pps-document-view.blp:550
 msgid "Abort _Print and Close"
 msgstr "Afdrukken annuleren en sl_uiten"
 
-#: shell/pps-document-view.ui:623
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
+#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
+#: shell/src/document_view/io.rs:714
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: shell/resources/pps-document-view.blp:552
 msgid "Close _After Printing"
 msgstr "Sluiten na _afdrukken"
 
-#: shell/pps-document-view.ui:637
+#: shell/resources/pps-document-view.blp:567
 msgid "Open…"
 msgstr "Openen…"
 
-#: shell/pps-document-view.ui:643
+#: shell/resources/pps-document-view.blp:574
 msgid "Ni_ght Mode"
 msgstr "_Nachtmodus"
 
-#: shell/pps-document-view.ui:649 shell/pps-window.ui:170
+#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Sneltoetsen"
 
-#: shell/pps-document-view.ui:653 shell/pps-window.ui:174
+#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Hulp"
 
-#: shell/pps-document-view.ui:657 shell/pps-window.ui:178
-msgid "_About Papers"
-msgstr "_Over Papers"
+# Misschien Evince documentenviewer
+# viewer is ook nederlands
+#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+msgid "_About Document Viewer"
+msgstr "_Over Documentweergave"
 
-#: shell/pps-document-view.ui:665
+#: shell/resources/pps-document-view.blp:600
 msgid "_Print…"
 msgstr "Af_drukken…"
 
 # schermvullend
 # kde gebruikt: vollgedig scherm
-#: shell/pps-document-view.ui:669
+#: shell/resources/pps-document-view.blp:605
 msgid "Fullscreen"
-msgstr "Volledig scherm"
+msgstr "Schermvullende modus"
 
-#: shell/pps-document-view.ui:673
+#: shell/resources/pps-document-view.blp:610
 msgid "Present as Slideshow"
 msgstr "Presenteren als diavoorstelling"
 
-#: shell/pps-document-view.ui:679
+#: shell/resources/pps-document-view.blp:617
 msgid "Sign D_igitally…"
 msgstr "D_igitaal ondertekenen…"
 
-#: shell/pps-document-view.ui:685
+#: shell/resources/pps-document-view.blp:624
 msgid "Open a C_opy"
-msgstr "Een _kopie openen"
+msgstr "Een k_opie openen"
 
-#: shell/pps-document-view.ui:689
+#: shell/resources/pps-document-view.blp:629
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Openen met…"
 
-#: shell/pps-document-view.ui:693
+#: shell/resources/pps-document-view.blp:634
 msgid "_Save As…"
 msgstr "Op_slaan als…"
 
-#: shell/pps-document-view.ui:699
+#: shell/resources/pps-document-view.blp:641
 msgid "_Continuous"
 msgstr "_Doorlopend"
 
 # Duaal is zo'n raar woord
-#: shell/pps-document-view.ui:703
+#: shell/resources/pps-document-view.blp:646
 msgid "_Dual"
 msgstr "_Dubbel"
 
-#: shell/pps-document-view.ui:707
+#: shell/resources/pps-document-view.blp:651
 msgid "_Odd Pages Left"
-msgstr "_Oneven pagina's links"
+msgstr "_Oneven pagina’s links"
 
-#: shell/pps-document-view.ui:711
+#: shell/resources/pps-document-view.blp:656
 msgid "Right to Left Document"
 msgstr "Document van rechts naar links"
 
 # Linksom/naar links
-#: shell/pps-document-view.ui:717
+#: shell/resources/pps-document-view.blp:663
 msgid "Ro_tate ⤵"
 msgstr "_Rechtsom draaien ⤵"
 
-#: shell/pps-document-view.ui:723
+#: shell/resources/pps-document-view.blp:670
 msgid "Document Prop_erties"
 msgstr "Document_eigenschappen"
 
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:708
+msgid "Highlight (h)"
+msgstr "Markeren (h)"
+
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:724
+msgid "Strikethrough (k)"
+msgstr "Doorstrepen (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:740
+msgid "Underline (u)"
+msgstr "Onderstrepen (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:756
+msgid "Squiggly (q)"
+msgstr "Kronkelig (q)"
+
 # link/verwijzing
-#: shell/pps-document-view.ui:732
+#: shell/resources/pps-document-view.blp:847
 msgid "_Open Link"
 msgstr "Verwijzing _openen"
 
 # verwijzing/verwijzingsadres/link-adres
-#: shell/pps-document-view.ui:737
+#: shell/resources/pps-document-view.blp:853
 msgid "_Copy Link Address"
 msgstr "Verwijzingsadres _kopiëren"
 
 # in overeenstemming met Nautilus: Ga naar
-#: shell/pps-document-view.ui:742
+#: shell/resources/pps-document-view.blp:859
 msgid "_Go To"
 msgstr "_Ga naar"
 
-#: shell/pps-document-view.ui:747
+#: shell/resources/pps-document-view.blp:865
 msgid "Open in New _Window"
 msgstr "In _nieuw venster openen"
 
-#: shell/pps-document-view.ui:754
-msgid "_Previous Page"
-msgstr "Vo_rige pagina"
-
-#: shell/pps-document-view.ui:758
-msgid "_Next Page"
-msgstr "V_olgende pagina"
-
-#: shell/pps-document-view.ui:764
+#: shell/resources/pps-document-view.blp:873
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: shell/pps-document-view.ui:768
+#: shell/resources/pps-document-view.blp:878
 msgid "Select _All"
 msgstr "_Alles selecteren"
 
-#: shell/pps-document-view.ui:774
+#: shell/resources/pps-document-view.blp:885
 msgid "_Save Image As…"
 msgstr "Afbeelding op_slaan als…"
 
-#: shell/pps-document-view.ui:779
+#: shell/resources/pps-document-view.blp:891
 msgid "Copy _Image"
 msgstr "_Afbeelding kopiëren"
 
-#: shell/pps-document-view.ui:786 shell/pps-document-view.ui:823
-#: shell/pps-sidebar-annotations.ui:85
+#: shell/resources/pps-document-view.blp:899
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "Bijlage _openen"
 
-#: shell/pps-document-view.ui:791 shell/pps-document-view.ui:827
-#: shell/pps-sidebar-annotations.ui:90
+#: shell/resources/pps-document-view.blp:905
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "Bijlage op_slaan als…"
 
-#: shell/pps-document-view.ui:798
+#: shell/resources/pps-document-view.blp:915
 msgid "Annotation _Properties…"
 msgstr "Aantekeningseigenscha_ppen…"
 
-#: shell/pps-document-view.ui:803
+#: shell/resources/pps-document-view.blp:921
 msgid "R_emove Annotation"
 msgstr "Aantekening v_erwijderen"
 
-#: shell/pps-document-view.ui:810
+#: shell/resources/pps-document-view.blp:929
 msgid "_Add Text Annotation"
 msgstr "Tekst_aantekening toevoegen"
 
-#: shell/pps-document-view.ui:815
-msgid "_Highlight Selected Text"
-msgstr "Geselecteerde tekst _markeren"
-
-#: shell/pps-find-sidebar.ui:69
+#: shell/resources/pps-find-sidebar.blp:60
 msgid "No Results Found"
 msgstr "Geen resultaten gevonden"
 
-#: shell/pps-find-sidebar.ui:70
+#: shell/resources/pps-find-sidebar.blp:61
 msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
 
-#: shell/pps-find-sidebar.ui:84
+#: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
 msgstr "Voer een zoekopdracht uit"
 
-#: shell/pps-find-sidebar.ui:85
+#: shell/resources/pps-find-sidebar.blp:75
 msgid "The search results will appear here"
 msgstr "De zoekresultaten zullen hier verschijnen"
 
-#: shell/pps-loader-view.ui:17
+#: shell/resources/pps-loader-view.blp:15
 msgid "Loading Document"
 msgstr "Document laden"
 
-#: shell/pps-password-dialog.ui:7
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+msgid "C_ancel"
+msgstr "A_nnuleren"
+
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+msgid "Password Required"
+msgstr "Wachtwoord vereist"
+
+#: shell/resources/pps-password-dialog.blp:9
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: shell/pps-password-dialog.ui:8
+#: shell/resources/pps-password-dialog.blp:10
 msgid "Unlock"
 msgstr "Ontgrendelen"
 
-#: shell/pps-password-dialog.ui:17
+#: shell/resources/pps-password-dialog.blp:19
 msgid "Password"
 msgstr "Wachtwoord"
 
 # invoeren hier met opzet weggelaten
-#: shell/pps-password-dialog.ui:32
+#: shell/resources/pps-password-dialog.blp:33
 msgid "Invalid password"
 msgstr "Ongeldig wachtwoord"
 
-#: shell/pps-password-dialog.ui:48
+#: shell/resources/pps-password-dialog.blp:48
 msgid "Forget password _immediately"
 msgstr "Wachtwoord direct _vergeten"
 
-#: shell/pps-password-dialog.ui:56
+#: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
 msgstr "Voor _altijd onthouden"
 
-#: shell/pps-password-view.ui:20
+#: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr ""
 "Het document is beveiligd en kan alleen gelezen worden door het juiste "
 "wachtwoord te geven"
 
-#: shell/pps-password-view.ui:25
+#: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
 msgstr "_Document vrijgeven"
 
-#: shell/pps-properties-license.ui:21
+#: shell/resources/pps-properties-license.blp:19
 msgid "Usage Terms"
 msgstr "Gebruiksvoorwaarden"
 
-#: shell/pps-properties-license.ui:56
+#: shell/resources/pps-properties-license.blp:52
 msgid "Text License"
-msgstr "Licentie-tekst"
+msgstr "Licentietekst"
 
-#: shell/pps-properties-license.ui:84
+#: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Meer informatie"
 
-#: shell/pps-properties-window.ui:4
+#: shell/resources/pps-properties-signatures.blp:32
+msgid "Signature Information"
+msgstr "Ondertekeningsinformatie"
+
+#: shell/resources/pps-properties-signatures.blp:48
+#: shell/src/properties_signatures.rs:405
+msgid "View Details…"
+msgstr "Details bekijken…"
+
+#: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
 msgstr "Eigenschappen"
 
-#: shell/pps-properties-window.ui:25
+#: shell/resources/pps-properties-window.blp:23
 msgid "_Document"
 msgstr "_Document"
 
-#: shell/pps-properties-window.ui:40
+#: shell/resources/pps-properties-window.blp:34
 msgid "_Fonts"
 msgstr "_Lettertypes"
 
-#: shell/pps-properties-window.ui:51
+#: shell/resources/pps-properties-window.blp:43
 msgid "License"
 msgstr "Licentie"
 
-#: shell/pps-search-box.ui:15
+#: shell/resources/pps-properties-window.blp:51
+msgid "_Signatures"
+msgstr "Onder_tekeningen"
+
+#: shell/resources/pps-search-box.blp:16
 msgid "Search in document"
 msgstr "Zoeken in document"
 
-#: shell/pps-search-box.ui:34
+#: shell/resources/pps-search-box.blp:38
 msgid "Search Options"
 msgstr "Zoekopties"
 
-#: shell/pps-search-box.ui:43
+#: shell/resources/pps-search-box.blp:46
 msgid "_Whole Words Only"
 msgstr "Alleen gehele _woorden"
 
-#: shell/pps-search-box.ui:47
+#: shell/resources/pps-search-box.blp:51
 msgid "C_ase Sensitive"
 msgstr "_Hoofdlettergevoelig"
 
-#: shell/pps-sidebar-annotations.ui:16
-msgid "No Annotations"
-msgstr "Geen aantekeningen"
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "File"
+msgstr "Bestand"
 
-#: shell/pps-sidebar-annotations.ui:80
-msgid "Remove Annotation"
-msgstr "Aantekening verwijderen"
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "Een document openen"
 
-#: shell/pps-sidebar-bookmarks.ui:63
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Een kopie van het huidige document openen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Openen met…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Een kopie van het huidige document opslaan"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Het huidige document afdrukken"
+
+# de pagina laten passen in het venster
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Het huidige documentvenster sluiten"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Venster"
+
+# schermvullend
+# kde gebruikt: vollgedig scherm
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Schermvullende modus"
+
+# Dit is de reden die opgegeven wordt voor het tijdelijk uitschakelen van de
+# schermbeveiliging (Wouter Bolsterlee)
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Presentatiemodus starten"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Zijpaneel"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Cursornavigatie"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Selectie"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Alles selecteren"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Zoom and Rotation"
+msgstr "Zoomen en draaien"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "De pagina 90 graden tegen de klok in draaien"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "De pagina 90 graden met de klok mee draaien"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Inzoomen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Uitzoomen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Normale grootte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Inzoomen (alternatief)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Aanpassen aan pagina"
+
+# knoptekst?
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Aanpassen aan breedte"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Automatisch zoomen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navigatie"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Door een pagina gaan"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Een pagina meerdere regels omhoog/omlaag bewegen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Vorige pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Volgende pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Ga naar paginanummer"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Vorige pagina (snel)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Volgende pagina (snel)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Vorige bezochte pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Volgende bezochte pagina"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Naar begin/einde van pagina gaan"
+
+# Misschien Evince documentenviewer
+# viewer is ook nederlands
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Naar begin van document gaan"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Naar einde van document gaan"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View"
+msgstr "Documentbeeld"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
 msgid "Add Bookmark"
 msgstr "Bladwijzer toevoegen"
 
-#: shell/pps-sidebar-bookmarks.ui:72
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
 msgid "Remove Bookmark"
 msgstr "Bladwijzer verwijderen"
 
-#: shell/pps-sidebar-bookmarks.ui:100
-msgid "_Open Bookmark"
-msgstr "Bladwijzer _openen"
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Nachtmodus"
 
-#: shell/pps-sidebar-bookmarks.ui:106
-msgid "_Rename Bookmark"
-msgstr "Bladwijzer _hernoemen"
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Doorlopend scrollen"
 
-#: shell/pps-sidebar-bookmarks.ui:110
-msgid "_Delete Bookmark"
-msgstr "Bladwijzer verwij_deren"
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Dubbele pagina"
 
-#: shell/pps-sidebar-links.ui:52
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Oneven pagina’s links"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Documenteigenschappen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Tekstaantekening toevoegen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Tekst markeren"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Tekst doorstrepen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Tekst kronkelig onderstrepen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Tekst onderstrepen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:255
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Zoeken"
+
+#: shell/resources/pps-shortcuts-dialog.blp:258
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Zoeken"
+
+#: shell/resources/pps-shortcuts-dialog.blp:263
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Volgende zoeken"
+
+#: shell/resources/pps-shortcuts-dialog.blp:268
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Vorige zoeken"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:277
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Hulp"
+
+#: shell/resources/pps-shortcuts-dialog.blp:282
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menu"
+
+#: shell/resources/pps-shortcuts-dialog.blp:287
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: shell/resources/pps-shortcuts-dialog.blp:292
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nieuw venster"
+
+#: shell/resources/pps-shortcuts-dialog.blp:297
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Venster sluiten"
+
+# Dit is de reden die opgegeven wordt voor het tijdelijk uitschakelen van de
+# schermbeveiliging (Wouter Bolsterlee)
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Presentatiemodus"
+
+# schermvullend
+# kde gebruikt: vollgedig scherm
+#: shell/resources/pps-shortcuts-dialog.blp:306
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Zwart scherm"
+
+# schermvullend
+# kde gebruikt: vollgedig scherm
+#: shell/resources/pps-shortcuts-dialog.blp:311
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Wit scherm"
+
+#: shell/resources/pps-sidebar-annotations.blp:13
+msgid "No Annotations"
+msgstr "Geen aantekeningen"
+
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Annotation Properties"
+msgstr "Aantekeningseigenschappen"
+
+#: shell/resources/pps-sidebar-annotations.blp:66
+msgid "Remove Annotation"
+msgstr "Aantekening verwijderen"
+
+#: shell/resources/pps-sidebar-links.blp:48
 msgid "Collapse all tree"
 msgstr "Alles inklappen"
 
-#: shell/pps-sidebar-links.ui:56
+#: shell/resources/pps-sidebar-links.blp:53
 msgid "Expand all tree"
 msgstr "Alles openklappen"
 
-#: shell/pps-sidebar-links.ui:60
+#: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
 msgstr "Alles onder dit element openklappen"
 
-#: shell/pps-sidebar-links.ui:66
+#: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
 msgstr "Dit deel afdrukken…"
 
-#: shell/pps-sidebar-thumbnails.ui:46
+#: shell/resources/pps-sidebar-thumbnails.blp:47
 msgid "Previews"
 msgstr "Voorbeelden"
 
-#: shell/pps-window.ui:46 shell/pps-window.ui:54
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
 msgid "Open a Document"
 msgstr "Open een document"
 
-#: shell/pps-window.ui:47
+#: shell/resources/pps-window.blp:44
 msgid "Drag and drop documents here"
 msgstr "Versleep documenten hiernaartoe"
 
-#: shell/pps-window.ui:52
+#: shell/resources/pps-window.blp:49
 msgid "_Open…"
 msgstr "_Openen…"
 
 # niet in staat/kon
-#: shell/pps-window.ui:78
+#: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
 msgstr "Kan document niet openen"
 
-#: shell/pps-window.ui:83
+#: shell/resources/pps-window.blp:76
 msgid "_Open Other File…"
 msgstr "Ander bestand _openen…"
 
 # makers/auteurs
-#: shell-rs/src/application.rs:199
-msgid "© 1996–2024 The Papers authors"
-msgstr "© 1996–2024 De auteurs van Papers"
+#: shell/src/application.rs:216
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 De auteurs van Papers"
 
-#: shell-rs/src/application.rs:200
+#: shell/src/application.rs:217
 msgid "translator-credits"
 msgstr ""
 "Tino Meinen\n"
@@ -1966,121 +1765,506 @@ msgstr ""
 "Hannie Dumoleyn\n"
 "Justin van Steijn\n"
 "Nathan Follens <nfollens@gnome.org>\n"
+"Dick Groskamp <dikgro@yahoo.co.uk>\n"
 "Meer info over GNOME-NL https://nl.gnome.org"
 
-#: shell-rs/src/application.rs:295
+#: shell/src/application.rs:366
 msgid "The page label of the document to display."
 msgstr "Het paginalabel van het weer te geven document."
 
-#: shell-rs/src/application.rs:296
+#: shell/src/application.rs:367
 msgid "PAGE"
 msgstr "PAGINA"
 
-#: shell-rs/src/application.rs:304
+#: shell/src/application.rs:375
 msgid "The page number of the document to display."
 msgstr "Het paginanummer van het weer te geven document."
 
-#: shell-rs/src/application.rs:305
+#: shell/src/application.rs:376
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: shell-rs/src/application.rs:313
+#: shell/src/application.rs:384
 msgid "Named destination to display."
 msgstr "Weer te geven doelnaam."
 
-#: shell-rs/src/application.rs:314
+#: shell/src/application.rs:385
 msgid "DEST"
 msgstr "DOEL"
 
-#: shell-rs/src/application.rs:322
+#: shell/src/application.rs:393
 msgid "Run papers in fullscreen mode."
-msgstr "Voer Papers uit in volledig scherm."
+msgstr "Voer Papers uit in schermvullende modus."
 
-#: shell-rs/src/application.rs:331
+#: shell/src/application.rs:402
 msgid "Run papers in presentation mode."
 msgstr "Voer Papers uit als diapresentatie."
 
-#: shell-rs/src/application.rs:340
+#: shell/src/application.rs:411
 msgid "Show the version of the program."
 msgstr "Toon de versie van het programma."
 
-#: shell-rs/src/application.rs:350
+#: shell/src/application.rs:421
 msgid "[FILE…]"
 msgstr "[BESTAND…]"
 
-#: shell-rs/src/page_selector.rs:77 shell-rs/src/sidebar_annotations_row.rs:82
-#| msgid "Page"
-msgid "Page {}"
-msgstr "Pagina {}"
+#: shell/src/document_view.rs:300
+msgid "View Details"
+msgstr "Details bekijken"
 
-# misschien beter: uit (ipv van): pagina 1 uit 5
-#: shell-rs/src/page_selector.rs:226 shell-rs/src/page_selector.rs:244
-#| msgid "(%d of %d)"
-msgid "({} of {})"
-msgstr "({} van {})"
-
-#: shell-rs/src/page_selector.rs:228 shell-rs/src/page_selector.rs:246
-msgid "of {}"
-msgstr "van {}"
-
-#: shell-rs/src/password_view.rs:145
-msgid ""
-"The document “{}” is locked and requires a password before it can be opened"
-msgstr ""
-"Het document ‘{}’ is beveiligd en vereist een wachtwoord voordat het geopend "
-"kan worden"
-
-#: shell-rs/src/properties_general.rs:73
-msgid "File"
-msgstr "Bestand"
-
-#: shell-rs/src/properties_general.rs:85
-msgid "Folder"
-msgstr "Map"
-
-#: shell-rs/src/properties_general.rs:140
-msgid "Content"
-msgstr "Inhoud"
-
-#: shell-rs/src/properties_general.rs:152
-msgid "Date &amp; Time"
-msgstr "Datum &amp; tijd"
-
-#: shell-rs/src/window.rs:266
+#: shell/src/document_view.rs:705
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "Het document bevat nieuwe of gewijzigde aantekeningen en formuliervelden."
 
-#: shell-rs/src/window.rs:278
-msgid "If you reload the document, changes will be permanently lost."
+#: shell/src/document_view.rs:706
+msgid "Document contains form fields that have been filled out."
+msgstr "Het document bevat ingevulde formuliervelden."
+
+#: shell/src/document_view.rs:707
+msgid "Document contains new or modified annotations."
+msgstr "Het document bevat nieuwe of gewijzigde aantekeningen."
+
+#: shell/src/document_view.rs:715
+msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
-"Als u het document opnieuw laadt, zullen wijzigingen definitief verloren "
-"gaan."
+"Als u geen kopie van het document opslaat, zullen wijzigingen definitief "
+"verloren gaan."
+
+#: shell/src/document_view.rs:716
+msgid "Save Changes to a Copy?"
+msgstr "Wijzigingen opslaan als kopie?"
+
+#: shell/src/document_view.rs:725
+msgid "Close _Without Saving"
+msgstr "Sluiten _zonder opslaan"
+
+#: shell/src/document_view.rs:727
+msgid "_Save a Copy"
+msgstr "Een kopie op_slaan"
+
+#: shell/src/document_view/actions.rs:844
+msgid "Save Image"
+msgstr "Afbeelding opslaan"
+
+#: shell/src/document_view/actions.rs:880
+msgid "Couldn’t find appropriate format to save image"
+msgstr "Kon geen geschikt bestandstype voor opslaan van afbeelding vinden"
+
+#: shell/src/document_view/actions.rs:897
+msgid "The image could not be saved."
+msgstr "De afbeelding kon niet worden opgeslagen."
+
+#: shell/src/document_view/actions.rs:969
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr ""
+"Cursornavigatiemodus is nu ingeschakeld, druk op F7 om uit te schakelen."
+
+#: shell/src/document_view/actions.rs:971
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+"Cursornavigatiemodus is nu uitgeschakeld, druk op F7 om in te schakelen."
 
 # niet in staat/kon
-#: shell-rs/src/window.rs:279
-msgid "File changed outside Papers. Reload document?"
-msgstr "Het bestand is buiten Papers gewijzigd. Document herladen?"
+#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+msgid "Unable to Open Attachment"
+msgstr "De bijlage kon niet geopend worden"
 
-#: shell-rs/src/window.rs:287
-msgid "_No"
-msgstr "_Nee"
+#: shell/src/document_view/actions.rs:1059
+msgid "The attachment could not be saved."
+msgstr "De bijlage kon niet opgeslagen worden."
 
-#: shell-rs/src/window.rs:287
-msgid "_Reload"
-msgstr "He_rladen"
+#: shell/src/document_view/io.rs:269
+msgid "Digital signature is invalid"
+msgstr "Digitale ondertekening is ongeldig"
+
+#: shell/src/document_view/io.rs:280
+msgid "The Document Contains No Pages"
+msgstr "Het document bevat geen pagina’s"
+
+#: shell/src/document_view/io.rs:282
+msgid "The Document Contains Only Empty Pages"
+msgstr "Het document bevat slechts lege pagina’s"
+
+#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
+msgid "The file could not be saved as “{}”."
+msgstr "Het bestand kon niet worden opgeslagen als ‘{}’."
+
+#: shell/src/document_view/io.rs:409
+msgid "Save As…"
+msgstr "Opslaan als…"
+
+#: shell/src/document_view/io.rs:485
+msgid "Draw a rectangle to insert a signature field"
+msgstr "Teken een rechthoek om een veld voor de ondertekening in te voegen"
+
+#: shell/src/document_view/io.rs:507
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"Digitaal ondertekend door {}\n"
+"Datum: {}"
+
+#: shell/src/document_view/io.rs:523
+msgid "Certificate Required"
+msgstr "Certificaat vereist"
+
+#: shell/src/document_view/io.rs:526
+msgid "Select signing certificate"
+msgstr "Selecteer het ondertekeningscertificaat"
+
+#: shell/src/document_view/io.rs:527
+msgid "Select"
+msgstr "Selecteren"
+
+#: shell/src/document_view/io.rs:600
+msgid "A certificate is required to sign this document"
+msgstr "Om dit document te ondertekenen is een certificaat vereist"
+
+#: shell/src/document_view/io.rs:669
+msgid "Save Signed File"
+msgstr "Ondertekend bestand opslaan"
+
+# invoeren hier met opzet weggelaten
+#: shell/src/document_view/io.rs:699
+msgid "Please enter password for {}"
+msgstr "Voer wachtwoord in voor {}"
+
+#: shell/src/document_view/io.rs:715
+msgid "_Login"
+msgstr "Aanme_lden"
+
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
+msgid "Printing job “{}”"
+msgstr "Afdruktaak ‘{}’"
+
+#: shell/src/document_view/print.rs:83
+msgid "No pending jobs in queue"
+msgstr "Geen openstaande taken in de wachtrij"
 
 # niet in staat/kon
-#: shell-rs/src/window.rs:569
-msgid "Failed to Load Remote File."
-msgstr "Kon bestand op afstand niet laden."
+#: shell/src/document_view/signals.rs:226
+msgid "Unable to open external link"
+msgstr "De externe verwijzing kon niet geopend worden"
+
+#: shell/src/document_view/signals.rs:254
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+"Beveiligingswaarschuwing: dit document heeft voorkomen dat het bestand ‘{}’ "
+"geopend werd"
+
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/sidebar_annotations_row.rs:82
+msgid "Page {}"
+msgstr "Pagina {}"
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} van {totalpages})"
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+msgid "of {}"
+msgstr "van {}"
+
+#: shell/src/password_view.rs:145
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr ""
+"Het document ‘{}’ is beveiligd en vereist een wachtwoord voordat het geopend "
+"kan worden"
+
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "Kopiëren naar klembord"
+
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr "Bestandslocatie openen"
+
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr "Bestand"
+
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr "Naam"
+
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr "Map"
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "Bestandspad"
+
+#: shell/src/properties_general.rs:298
+msgid "Content"
+msgstr "Inhoud"
+
+#: shell/src/properties_general.rs:314
+msgid "Date &amp; Time"
+msgstr "Datum &amp; tijd"
+
+#: shell/src/properties_signatures.rs:138
+#: shell/src/properties_signatures.rs:146
+msgid "Signed by"
+msgstr "Ondertekend door"
+
+#: shell/src/properties_signatures.rs:187
+msgid "Signature is valid."
+msgstr "Ondertekening is geldig."
+
+#: shell/src/properties_signatures.rs:190
+msgid "Signature is invalid."
+msgstr "Ondertekening is ongeldig."
+
+#: shell/src/properties_signatures.rs:194
+msgid "Document has been changed after signing."
+msgstr "Document is na ondertekenen gewijzigd."
+
+#: shell/src/properties_signatures.rs:198
+msgid "Signature could not be decoded."
+msgstr "Ondertekening kon niet gedecodeerd worden."
+
+#: shell/src/properties_signatures.rs:202
+msgid "Signature verification error."
+msgstr "Fout bij verifiëren van ondertekening."
+
+#: shell/src/properties_signatures.rs:214
+msgid "Signed with a certificate issued by trusted issuer."
+msgstr ""
+"Ondertekend met een certificaat dat is uitgegeven door een vertrouwde "
+"uitgever."
+
+#: shell/src/properties_signatures.rs:220
+msgid "Signed with a certificate issued by untrusted issuer."
+msgstr ""
+"Ondertekend met een certificaat dat is uitgegeven door een niet-vertrouwde "
+"uitgever."
+
+#: shell/src/properties_signatures.rs:226
+msgid "Signed with a certificate issued by unknown issuer."
+msgstr ""
+"Ondertekend met een certificaat dat is uitgegeven door een onbekende "
+"uitgever."
+
+#: shell/src/properties_signatures.rs:231
+msgid "Signed with revoked certificate."
+msgstr "Ondertekend met een ingetrokken certificaat."
+
+#: shell/src/properties_signatures.rs:235
+msgid "Signed with expired certificate."
+msgstr "Ondertekend met een verlopen certificaat."
+
+#: shell/src/properties_signatures.rs:239
+msgid "Certificate verification error."
+msgstr "Fout bij verifiëren van certificaat."
+
+#: shell/src/properties_signatures.rs:243
+msgid "Certificate has not been verified."
+msgstr "Certificaat is niet geverifieerd."
+
+#: shell/src/properties_signatures.rs:256
+msgid "Organization"
+msgstr "Organisatie"
+
+#: shell/src/properties_signatures.rs:265
+msgid "Date and Time"
+msgstr "Datum en tijd"
+
+#: shell/src/properties_signatures.rs:276
+msgid "Certificate Issuer"
+msgstr "Uitgever van certificaat"
+
+#: shell/src/properties_signatures.rs:287
+msgid "Certificate Issuer's Email"
+msgstr "E-mailadres van certificaatsuitgever"
+
+#: shell/src/properties_signatures.rs:298
+msgid "Certificate Issuer's Organization"
+msgstr "Organisatie van certificaatsuitgever"
+
+#: shell/src/properties_signatures.rs:309
+msgid "Certificate's Issuance Time"
+msgstr "Uitgiftedatum van certificaat"
+
+#: shell/src/properties_signatures.rs:321
+msgid "Certificate's Expiration Time"
+msgstr "Vervaldatum van certificaat"
+
+#: shell/src/properties_signatures.rs:403
+msgid "Hide Details…"
+msgstr "Details verbergen…"
+
+#~ msgid "Scroll Up"
+#~ msgstr "Omhoog schuiven"
+
+#~ msgid "Scroll Down"
+#~ msgstr "Omlaag schuiven"
+
+# Wat wordt hier precies bedoeld?
+#~ msgid "Scroll View Up"
+#~ msgstr "Beeld omhoog schuiven"
+
+#~ msgid "Scroll View Down"
+#~ msgstr "Beeld omlaag schuiven"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Opening, Closing, Saving and Printing"
+#~ msgstr "Openen, sluiten, opslaan en afdrukken"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Selecting and Copying Text"
+#~ msgstr "Tekst selecteren en kopiëren"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Rotating and Zooming"
+#~ msgstr "Draaien en zoomen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Moving Around Document"
+#~ msgstr "Door het document bladeren"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Document View and Handling"
+#~ msgstr "Documentweergave en -verwerking"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Finding Text"
+#~ msgstr "Tekst zoeken"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Touchpad Gestures"
+#~ msgstr "Touchpadgebaren"
+
+#~ msgid "Initially Opened"
+#~ msgstr "Initieel geopend"
+
+#~ msgid "_Apply"
+#~ msgstr "_Toepassen"
+
+#~ msgid "_About Papers"
+#~ msgstr "_Over Papers"
+
+#~ msgid "_Highlight Selected Text"
+#~ msgstr "Geselecteerde tekst _markeren"
+
+#~ msgid "{} pending job in queue"
+#~ msgid_plural "{} pending jobs in queue"
+#~ msgstr[0] "{} taak in de wachtrij"
+#~ msgstr[1] "{} taken in de wachtrij"
+
+#~ msgid ""
+#~ "Show a dialog to confirm that the user wants to activate the caret "
+#~ "navigation."
+#~ msgstr ""
+#~ "Een dialoogvenster tonen om te bevestigen dat de gebruiker de "
+#~ "cursornavigatie wil activeren."
+
+#~ msgid "PostScript Documents"
+#~ msgstr "PostScript-documenten"
+
+#~ msgid "Adds support for reading PostScript documents"
+#~ msgstr "Voegt ondersteuning toe voor het lezen van PostScript-documenten"
 
 # niet in staat/kon
-#: shell-rs/src/window.rs:732
-msgid "Failed to Reload Document."
-msgstr "Kon document niet herladen."
+#, c-format
+#~ msgid "Failed to load document “%s”"
+#~ msgstr "Openen van document ‘%s’ is mislukt"
+
+# niet in staat/kon
+#, c-format
+#~ msgid "Failed to save document “%s”"
+#~ msgstr "Opslaan van document ‘%s’ is mislukt"
+
+#~ msgid "XPS Documents"
+#~ msgstr "XPS-documenten"
+
+#~ msgid "Adds support for reading XPS documents"
+#~ msgstr "Voegt ondersteuning toe voor het lezen van XPS-documenten"
+
+#, c-format
+#~ msgid "Failed to create a temporary directory: %s"
+#~ msgstr "Aanmaken van een tijdelijke map is mislukt: %s"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bladwijzers"
+
+#~ msgid "Enable Caret Navigation?"
+#~ msgstr "Cursornavigatie inschakelen?"
+
+#~ msgid ""
+#~ "Pressing F7 turns the caret navigation on or off. This feature places a "
+#~ "moveable cursor in text pages, allowing you to move around and select "
+#~ "text with your keyboard."
+#~ msgstr ""
+#~ "F7 schakelt de cursornavigatie in of uit. Deze functie plaatst een "
+#~ "verplaatsbare cursor in tekstpagina's, waardoor u kunt navigeren en tekst "
+#~ "selecteren via het toetsenbord."
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Dit bericht niet meer tonen"
+
+#~ msgid "_Enable"
+#~ msgstr "I_nschakelen"
+
+#~ msgid "_Previous Page"
+#~ msgstr "Vo_rige pagina"
+
+#~ msgid "_Next Page"
+#~ msgstr "V_olgende pagina"
+
+#~ msgid "Add Bookmark"
+#~ msgstr "Bladwijzer toevoegen"
+
+#~ msgid "Remove Bookmark"
+#~ msgstr "Bladwijzer verwijderen"
+
+#~ msgid "_Open Bookmark"
+#~ msgstr "Bladwijzer _openen"
+
+#~ msgid "_Rename Bookmark"
+#~ msgstr "Bladwijzer _hernoemen"
+
+#~ msgid "_Delete Bookmark"
+#~ msgstr "Bladwijzer verwij_deren"
+
+# misschien beter: uit (ipv van): pagina 1 uit 5
+#~| msgid "(%d of %d)"
+#~ msgid "({} of {})"
+#~ msgstr "({} van {})"
+
+#~ msgid "If you reload the document, changes will be permanently lost."
+#~ msgstr ""
+#~ "Als u het document opnieuw laadt, zullen wijzigingen definitief verloren "
+#~ "gaan."
+
+# niet in staat/kon
+#~ msgid "File changed outside Papers. Reload document?"
+#~ msgstr "Het bestand is buiten Papers gewijzigd. Document herladen?"
+
+#~ msgid "_No"
+#~ msgstr "_Nee"
+
+#~ msgid "_Reload"
+#~ msgstr "He_rladen"
+
+# niet in staat/kon
+#~ msgid "Failed to Load Remote File."
+#~ msgstr "Kon bestand op afstand niet laden."
+
+# niet in staat/kon
+#~ msgid "Failed to Reload Document."
+#~ msgstr "Kon document niet herladen."
 
 # ongeldig/onjuist/foutief
 #~ msgid "DVI document has incorrect format"
@@ -2156,9 +2340,6 @@ msgstr "Kon document niet herladen."
 #~ msgid "Add highlight annotation"
 #~ msgstr "Markeerannotatie toevoegen"
 
-#~ msgid "Auto_scroll"
-#~ msgstr "Automatisch _schuiven"
-
 #~ msgid "Annotation _Properties"
 #~ msgstr "Annotatie-eigenscha_ppen"
 
@@ -2197,9 +2378,6 @@ msgstr "Kon document niet herladen."
 
 #~ msgid "Annotate document"
 #~ msgstr "Document annoteren"
-
-#~ msgid "File options"
-#~ msgstr "Bestandsopties"
 
 #~ msgid "Set zoom level"
 #~ msgstr "Het zoomniveau instellen"
@@ -2470,11 +2648,6 @@ msgstr "Kon document niet herladen."
 #~ msgid "Go to the beginning of the document"
 #~ msgstr "Naar het begin van het document gaan"
 
-# hele/gehele/complete document
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the end of the document"
-#~ msgstr "Naar het einde van het document gaan"
-
 #~ msgctxt "shortcut window"
 #~ msgid "Add bookmark"
 #~ msgstr "Bladwijzer toevoegen"
@@ -2526,11 +2699,6 @@ msgstr "Kon document niet herladen."
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
 #~ msgstr "Sneltoetsen"
-
-# Misschien Evince documentenviewer
-# viewer is ook nederlands
-#~ msgid "GNOME Document Viewer"
-#~ msgstr "Gnome documentweergave"
 
 #~ msgid "Open a new window."
 #~ msgstr "Open een nieuw venster."
