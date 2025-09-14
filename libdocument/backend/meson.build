@@ -66,6 +66,16 @@ foreach backend, backend_mime_types: backends
     install: true,
     install_dir: join_paths(pps_datadir, 'metainfo'),
   )
+
+  if get_option('tests')
+    if (appstreamcli.found())
+      test('validate-@0@-metainfo'.format(backend_id),
+           appstreamcli,
+           args: ['validate', '--no-net', '--explain', backend_metainfo],
+           workdir: meson.current_build_dir()
+          )
+    endif
+  endif
 endforeach
 
 backend_env = environment()
