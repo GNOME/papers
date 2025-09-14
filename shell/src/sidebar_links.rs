@@ -953,8 +953,8 @@ mod imp {
 
             let markup = item.markup();
 
-            outlines.set_tooltip_markup(markup.as_ref().map(|m| m.as_str()));
-            outlines.set_markup(&markup.unwrap_or_default());
+            outlines.set_tooltip_markup(markup.as_ref().map(|m| m.as_str().trim_end()));
+            outlines.set_markup(markup.unwrap_or_default().trim_end());
             page_label.set_label(&item.label().unwrap_or_default());
         }
 
