@@ -61,7 +61,6 @@ metainfo_file = i18n.merge_file(
 
 # Validate Appdata
 if get_option('tests')
-  appstreamcli = find_program('appstreamcli', required: true)
   if (appstreamcli.found())
     test('validate-appdata',
          appstreamcli,
