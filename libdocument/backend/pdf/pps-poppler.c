@@ -4104,19 +4104,21 @@ pdf_document_signatures_sign (PpsDocumentSignatures *document,
 	g_autoptr (PopplerCertificateInfo) cert_info = NULL;
 	g_autoptr (PpsCertificateInfo) cinfo = NULL;
 	g_autoptr (GTask) task = NULL;
+	g_autofree gchar *uuid = NULL;
 	PopplerRectangle signing_rect;
 	PpsRectangle *rect;
 	PpsPage *page;
 	PopplerColor color;
 	GdkRGBA rgba;
 
+	uuid = g_uuid_string_random ();
 	g_object_get (signature, "certificate-info", &cinfo, NULL);
 	cert_info = find_poppler_certificate_info (cinfo);
 	g_assert (cert_info);
 
 	poppler_signing_data_set_certificate_info (signing_data, cert_info);
 	poppler_signing_data_set_page (signing_data, pps_signature_get_page (signature));
-	poppler_signing_data_set_field_partial_name (signing_data, g_uuid_string_random ());
+	poppler_signing_data_set_field_partial_name (signing_data, uuid);
 	poppler_signing_data_set_destination_filename (signing_data, pps_signature_get_destination_file (signature));
 
 	if (pps_signature_get_password (signature))
