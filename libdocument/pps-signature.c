@@ -197,8 +197,6 @@ pps_signature_class_init (PpsSignatureClass *klass)
 	                                                      G_PARAM_READWRITE |
 	                                                          G_PARAM_CONSTRUCT_ONLY |
 	                                                          G_PARAM_STATIC_STRINGS));
-
-	g_object_class->finalize = pps_signature_finalize;
 }
 
 void
@@ -242,7 +240,7 @@ pps_signature_set_rect (PpsSignature *self,
 {
 	PpsSignaturePrivate *priv = GET_SIG_PRIVATE (self);
 
-	g_clear_object (&priv->rect);
+	g_clear_pointer (&priv->rect, g_free);
 	priv->rect = pps_rectangle_copy ((PpsRectangle *) rectangle);
 }
 
