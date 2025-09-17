@@ -320,7 +320,7 @@ pps_attachment_context_save_attachments_async (PpsAttachmentContext *context,
                                                GAsyncReadyCallback callback,
                                                gpointer user_data)
 {
-	GtkFileDialog *dialog;
+	g_autoptr (GtkFileDialog) dialog = NULL;
 	g_autoptr (GTask) task = NULL;
 	PpsAttachmentContextSaveData *save_data;
 	g_autoptr (PpsAttachment) first_attachment = NULL;
