@@ -230,6 +230,7 @@ free_save_data (PpsAttachmentContextSaveData *save_data)
 {
 	g_clear_object (&save_data->context);
 	g_clear_object (&save_data->attachments);
+	g_clear_pointer (&save_data, g_free);
 }
 
 static void
