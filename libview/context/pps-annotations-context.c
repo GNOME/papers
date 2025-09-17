@@ -733,6 +733,9 @@ PpsAnnotation *
 pps_annotations_context_get_annot_at_doc_point (PpsAnnotationsContext *self,
                                                 const PpsDocumentPoint *doc_point)
 {
+	g_return_val_if_fail (PPS_IS_ANNOTATIONS_CONTEXT (self), NULL);
+	g_return_val_if_fail (doc_point, NULL);
+
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (self);
 	PpsDocumentAnnotations *document = PPS_DOCUMENT_ANNOTATIONS (pps_document_model_get_document (priv->model));
 	GListModel *model = G_LIST_MODEL (priv->annots_model);

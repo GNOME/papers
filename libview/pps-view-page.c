@@ -704,6 +704,11 @@ annotation_drag_begin_cb (GtkGestureDrag *annotation_drag_gesture,
 	PpsDocumentPoint doc_point;
 	PpsRectangle annot_area;
 
+	if (!PPS_ANNOTATIONS_CONTEXT (priv->annots_context)) {
+		gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture), GTK_EVENT_SEQUENCE_DENIED);
+		return;
+	}
+
 	doc_point.page_index = priv->index;
 	doc_point.point_on_page = view_point_to_doc_point (page, x, y);
 
