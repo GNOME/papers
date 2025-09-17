@@ -285,8 +285,8 @@ pps_attachment_save (PpsAttachment *attachment,
                      GFile *file,
                      GError **error)
 {
-	GFileOutputStream *output_stream;
-	GError *ioerror = NULL;
+	g_autoptr (GFileOutputStream) output_stream = NULL;
+	g_autoptr (GError) ioerror = NULL;
 	gssize written_bytes;
 	PpsAttachmentPrivate *priv = GET_PRIVATE (attachment);
 
@@ -295,18 +295,13 @@ pps_attachment_save (PpsAttachment *attachment,
 
 	output_stream = g_file_replace (file, NULL, FALSE, 0, NULL, &ioerror);
 	if (output_stream == NULL) {
-		char *uri;
-
-		uri = g_file_get_uri (file);
+		g_autofree char *uri = g_file_get_uri (file);
 		g_set_error (error,
 		             PPS_ATTACHMENT_ERROR,
 		             ioerror->code,
 		             _ ("Couldn’t save attachment “%s”: %s"),
 		             uri,
 		             ioerror->message);
-
-		g_error_free (ioerror);
-		g_free (uri);
 
 		return FALSE;
 	}
@@ -316,9 +311,7 @@ pps_attachment_save (PpsAttachment *attachment,
 	                                       priv->size,
 	                                       NULL, &ioerror);
 	if (written_bytes == -1) {
-		char *uri;
-
-		uri = g_file_get_uri (file);
+		g_autofree char *uri = g_file_get_uri (file);
 		g_set_error (error,
 		             PPS_ATTACHMENT_ERROR,
 		             ioerror->code,
@@ -326,14 +319,8 @@ pps_attachment_save (PpsAttachment *attachment,
 		             uri,
 		             ioerror->message);
 
-		g_output_stream_close (G_OUTPUT_STREAM (output_stream), NULL, NULL);
-		g_error_free (ioerror);
-		g_free (uri);
-
 		return FALSE;
 	}
-
-	g_output_stream_close (G_OUTPUT_STREAM (output_stream), NULL, NULL);
 
 	return TRUE;
 }
