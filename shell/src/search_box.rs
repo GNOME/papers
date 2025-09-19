@@ -14,7 +14,7 @@ mod imp {
         pub(super) entry: TemplateChild<gtk::SearchEntry>,
         #[property(nullable, set = Self::set_context)]
         pub(super) context: RefCell<Option<SearchContext>>,
-        pub(super) search_term_handler: RefCell<Option<SignalHandlerId>>,
+        pub(super) search_changed_handler: RefCell<Option<SignalHandlerId>>,
         pub(super) context_signal_handlers: RefCell<Vec<SignalHandlerId>>,
     }
 
@@ -105,7 +105,7 @@ mod imp {
                 }
             ));
 
-            self.search_term_handler.replace(Some(id));
+            self.search_changed_handler.replace(Some(id));
         }
 
         fn dispose(&self) {
@@ -199,9 +199,10 @@ mod imp {
 
             if let Some(context) = self.context() {
                 let search_term = context.search_term();
-                let handler_bind = self.search_term_handler.borrow();
+                let handler_bind = self.search_changed_handler.borrow();
                 let handler = handler_bind.as_ref().unwrap();
 
+                // SearchEntry might emit "search-changed" synchronously
                 self.entry.block_signal(handler);
                 if Some(self.entry.text()) != search_term {
                     self.entry.set_text(
