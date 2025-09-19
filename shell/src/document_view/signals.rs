@@ -483,6 +483,8 @@ impl imp::PpsDocumentView {
         let mut markup_type = "none";
         let has_selection = self.view.has_selection();
 
+        self.annot.replace(annot.cloned());
+
         if let Some(annot) = annot {
             show_annot_props = annot.is::<papers_document::AnnotationMarkup>();
             is_annot_textmarkup = annot.is::<papers_document::AnnotationTextMarkup>();
@@ -532,8 +534,6 @@ impl imp::PpsDocumentView {
             self.set_action_state("annot-color", &glib::Variant::from(color.as_str()));
         };
         self.set_action_state("annot-textmarkup-type", &glib::Variant::from(markup_type));
-
-        self.annot.replace(annot.cloned());
     }
 
     #[template_callback]
