@@ -749,14 +749,7 @@ impl imp::PpsDocumentView {
         }
 
         let annot = self.annot.borrow().clone();
-        if let Some(annot) = annot {
-            if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
-                let markup_type = markup_type.expect("no markup_type, but an annot is set");
-                if annot.markup_type() != markup_type {
-                    annot.set_markup_type(markup_type);
-                }
-            }
-        } else if self.view.has_selection() {
+        if self.view.has_selection() {
             let selections = self.view.selections();
             for sel in selections.iter() {
                 let mut start_point = papers_document::Point::new();
@@ -775,6 +768,13 @@ impl imp::PpsDocumentView {
                     AddAnnotationData::TextMarkup(markup_type),
                 );
                 self.annot.replace(annot.as_ref().cloned());
+            }
+        } else if let Some(annot) = annot {
+            if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
+                let markup_type = markup_type.expect("no markup_type, but an annot is set");
+                if annot.markup_type() != markup_type {
+                    annot.set_markup_type(markup_type);
+                }
             }
         }
     }
