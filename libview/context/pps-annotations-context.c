@@ -657,12 +657,13 @@ pps_annotations_context_undo (PpsUndoHandler *self, gpointer data)
 	PpsAnnotationsContextUndoable *undoable = data;
 	PpsAnnotationsContext *context = PPS_ANNOTATIONS_CONTEXT (self);
 	PpsAnnotationsContextPrivate *priv = GET_PRIVATE (context);
+	GList *annots, *areas;
 
 	priv->next_squash_forbidden = TRUE;
 
 	switch (undoable->action) {
 	case PPS_ANNOTATIONS_MODIFIED:
-		GList *annots = undoable->annots;
+		annots = undoable->annots;
 		for (GList *c = undoable->modified.changes; c; c = g_list_next (c)) {
 			PpsAnnotationChangedProperty *data = (PpsAnnotationChangedProperty *) c->data;
 			g_debug ("Undoing %s", data->property);
@@ -671,7 +672,7 @@ pps_annotations_context_undo (PpsUndoHandler *self, gpointer data)
 		}
 		break;
 	case PPS_ANNOTATIONS_ADDED:
-		GList *areas = undoable->added.areas;
+		areas = undoable->added.areas;
 		for (GList *a = undoable->annots; a; a = g_list_next (a)) {
 			pps_annotations_context_remove_annotation (context, g_object_ref (a->data));
 			/* the area may be changed by poppler when the annotation
