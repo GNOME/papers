@@ -691,8 +691,12 @@ impl imp::PpsDocumentView {
             _ => panic!(),
         };
 
+        let show_zoom_fit_best = self.model.sizing_mode() != SizingMode::Automatic;
+        if self.zoom_fit_best_revealer.focus_child().is_some() && !show_zoom_fit_best {
+            self.view.grab_focus();
+        }
         self.zoom_fit_best_revealer
-            .set_reveal_child(self.model.sizing_mode() != SizingMode::Automatic);
+            .set_reveal_child(show_zoom_fit_best);
 
         action.change_state(&state.into());
 
