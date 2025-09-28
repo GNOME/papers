@@ -846,6 +846,10 @@ impl PpsDocumentView {
     pub fn error_message(&self, error: Option<&glib::Error>, msg: &str) {
         self.imp().error_message(error, msg);
     }
+
+    pub fn focus_view(&self) {
+        self.imp().view.grab_focus();
+    }
 }
 
 impl Default for PpsDocumentView {
