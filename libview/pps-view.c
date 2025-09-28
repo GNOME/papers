@@ -947,7 +947,7 @@ pps_interrupt_scroll_animation_cb (GtkAdjustment *adjustment, PpsView *view)
 	}
 }
 
-static void
+static gboolean
 pps_view_scroll (PpsView *view,
                  GtkScrollType scroll,
                  GtkOrientation orientation)
@@ -960,7 +960,7 @@ pps_view_scroll (PpsView *view,
 	AdwAnimation *animation;
 
 	if (priv->key_binding_handled || priv->caret_enabled)
-		return;
+		return FALSE;
 
 	if (pps_view_page_fits (view, orientation)) {
 		switch (scroll) {
@@ -981,7 +981,7 @@ pps_view_scroll (PpsView *view,
 		default:
 			break;
 		}
-		return;
+		return TRUE;
 	}
 
 	/* Assign values for increment and vertical adjustment */
@@ -1069,6 +1069,7 @@ pps_view_scroll (PpsView *view,
 	adw_timed_animation_set_value_from (ADW_TIMED_ANIMATION (animation), prev_value);
 	adw_timed_animation_set_value_to (ADW_TIMED_ANIMATION (animation), new_value);
 	adw_animation_play (animation);
+	return TRUE;
 }
 
 #define MARGIN 5

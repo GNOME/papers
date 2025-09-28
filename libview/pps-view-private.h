@@ -196,9 +196,9 @@ typedef struct _PpsViewPrivate {
 struct _PpsViewClass {
 	GtkWidgetClass parent_class;
 
-	void (*scroll) (PpsView *view,
-	                GtkScrollType scroll,
-	                GtkOrientation orientation);
+	gboolean (*scroll) (PpsView *view,
+	                    GtkScrollType scroll,
+	                    GtkOrientation orientation);
 	void (*handle_link) (PpsView *view,
 	                     gint old_page,
 	                     PpsLink *link);
