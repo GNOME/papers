@@ -797,6 +797,15 @@ mod imp {
                         obj.default_settings
                             .bind("window-maximized", &window, "maximized")
                             .build();
+                        // When the window is resized, the sidebar may incorrectly grab the focus
+                        glib::timeout_add_local_once(
+                            std::time::Duration::from_millis(100),
+                            glib::clone!(
+                                #[weak(rename_to = obj)]
+                                obj,
+                                move || obj.document_view.focus_view()
+                            ),
+                        );
                     }
                 ),
             );
