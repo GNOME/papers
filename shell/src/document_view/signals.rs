@@ -779,7 +779,7 @@ impl imp::PpsDocumentView {
     #[template_callback]
     fn signature_rect_too_small(&self, response: &str) {
         if response == "sign" {
-            self.create_certificate_selection();
+            self.certificate_save_as_dialog();
             return;
         }
 
@@ -841,6 +841,7 @@ impl imp::PpsDocumentView {
 
         self.signature_page.set(page);
         self.signature_bounding_box.replace(Some(*rect));
+        signature.set_rect(rect);
 
         // Calculate font size for main (right) signature text
         let Some(font_size) = Self::calculate_font_size(
@@ -865,8 +866,6 @@ impl imp::PpsDocumentView {
         };
 
         signature.set_left_font_size(font_size as i32);
-
-        signature.set_rect(rect);
 
         self.certificate_save_as_dialog();
     }
