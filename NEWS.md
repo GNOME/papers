@@ -1,3 +1,16 @@
+Papers 49.1
+----------------
+
+* Bug fixes:
+  - fix a crash in the previewer (nibon7)
+  - remove several memory leaks (nibon7)
+  - fix build with clang on macOS (nibon7)
+  - remove trailing new lines from section names (Maciej Wójcik)
+  - fix a selection issue in the search box (Roberto Vidal)
+  - several appstream fixes (Maximiliano)
+  - several focus fixes (lbaudin)
+  - fix keyboard annotation shortcuts only work once (lbaudin)
+
 Papers 49.0
 ----------------
 * Bug fixes:
