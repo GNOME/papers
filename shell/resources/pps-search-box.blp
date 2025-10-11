@@ -20,6 +20,13 @@ template $PpsSearchBox: Adw.Bin {
       previous-match => $entry_previous_matched() swapped;
       stop-search => $stopped_search() swapped;
 
+      ShortcutController {
+        Shortcut {
+          trigger: "<Shift>Return";
+          action: "action(doc.find-previous)";
+        }
+      }
+
       accessibility {
         labelled-by: [
           entry,
