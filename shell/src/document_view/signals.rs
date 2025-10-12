@@ -533,7 +533,7 @@ impl imp::PpsDocumentView {
         if let Some(annot) = annot.cloned() {
             let color = AnnotationColor::from(annot.rgba()).to_string();
             self.set_action_state("annot-color", &glib::Variant::from(color.as_str()));
-        };
+        }
         self.set_action_state("annot-textmarkup-type", &glib::Variant::from(markup_type));
     }
 

@@ -3679,6 +3679,12 @@ pps_view_do_popup_menu (PpsView *view,
 	PpsImage *image;
 	PpsAnnotation *annot;
 
+	/* Only set focused element if there's no active text selection.
+	 * This preserves the selection for annotation tools in the context menu
+	 * and ensures consistency between mouse and touch interactions. */
+	if (!pps_view_has_selection (view))
+		pps_view_set_focused_element_at_location (view, x, y);
+
 	image = pps_view_get_image_at_location (view, x, y);
 	if (image)
 		items = g_list_prepend (items, image);
@@ -3691,9 +3697,6 @@ pps_view_do_popup_menu (PpsView *view,
 	if (annot)
 		items = g_list_prepend (items, annot);
 
-	if (g_list_length (items) > 0 && pps_view_has_selection (view)) {
-		clear_selection (view);
-	}
 	g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, items, x, y);
 
 	g_list_free (items);
@@ -4106,7 +4109,6 @@ pps_view_button_press_event (GtkGestureClick *self,
 
 	if (gdk_event_triggers_context_menu (gtk_event_controller_get_current_event (controller))) {
 		pps_view_do_popup_menu (view, x, y);
-		pps_view_set_focused_element_at_location (view, x, y);
 		return;
 	}
 
@@ -4543,6 +4545,8 @@ pps_view_button_release_event (GtkGestureClick *self,
 	guint button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (self));
 	GdkModifierType state = gtk_event_controller_get_current_event_state (controller);
 
+	/* Clear selection on primary button clicks (context menu events are handled separately
+	 * in button_press and preserve selection for annotation tools) */
 	if (button == GDK_BUTTON_PRIMARY && !(state & GDK_SHIFT_MASK) && n_press == 1) {
 		clear_selection (view);
 	}
@@ -4591,7 +4595,8 @@ context_longpress_gesture_pressed_cb (GtkGestureLongPress *gesture,
                                       gdouble y,
                                       PpsView *view)
 {
-	pps_view_set_focused_element_at_location (view, x, y);
+	/* pps_view_do_popup_menu handles setting focused element based on selection state,
+	 * unifying the experience for touch and pointer input */
 	pps_view_do_popup_menu (view, x, y);
 }
 
