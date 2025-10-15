@@ -57,6 +57,12 @@ template $PpsSidebarAnnotations: $PpsSidebarPage {
 menu annotation-popup {
   section {
     item {
+      label: _("Edit Note");
+      action: "doc.edit-annot";
+      hidden-when: "action-disabled";
+    }
+
+    item {
       label: _("Annotation Properties");
       action: "doc.annot-properties";
       hidden-when: "action-disabled";

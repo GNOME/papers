@@ -112,6 +112,9 @@ PPS_PUBLIC
 void pps_view_focus_annotation (PpsView *view,
                                 PpsAnnotation *annot);
 PPS_PUBLIC
+void pps_view_open_annotation_editor (PpsView *view,
+                                      PpsAnnotation *annot);
+PPS_PUBLIC
 void pps_view_set_enable_spellchecking (PpsView *view,
                                         gboolean spellcheck);
 PPS_PUBLIC

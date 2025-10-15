@@ -850,6 +850,10 @@ impl PpsDocumentView {
     pub fn focus_view(&self) {
         self.imp().view.grab_focus();
     }
+
+    pub fn open_annotation_editor(&self, annot: &papers_document::Annotation) {
+        self.imp().view.open_annotation_editor(annot);
+    }
 }
 
 impl Default for PpsDocumentView {

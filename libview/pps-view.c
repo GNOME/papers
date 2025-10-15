@@ -2631,6 +2631,15 @@ get_annotation_mapping_at_location (PpsView *view,
 	return annotation_mapping;
 }
 
+static gboolean
+present_annotation_window_idle (gpointer user_data)
+{
+	GtkWindow *window = GTK_WINDOW (user_data);
+	gtk_window_present (window);
+	g_object_unref (window);
+	return G_SOURCE_REMOVE;
+}
+
 static void
 pps_view_handle_annotation (PpsView *view,
                             PpsAnnotation *annot,
@@ -2651,6 +2660,9 @@ pps_view_handle_annotation (PpsView *view,
 		if (!window)
 			window = pps_view_create_annotation_window (view, annot_markup);
 		pps_annotation_window_show (PPS_ANNOTATION_WINDOW (window));
+		/* Present the window in an idle callback to ensure it gets focus
+		 * even when opened from a popup menu that might grab focus when closing */
+		g_idle_add (present_annotation_window_idle, g_object_ref (window));
 	}
 
 	if (PPS_IS_ANNOTATION_ATTACHMENT (annot)) {
@@ -2675,6 +2687,19 @@ pps_view_handle_annotation (PpsView *view,
 			g_clear_object (&context);
 		}
 	}
+}
+
+void
+pps_view_open_annotation_editor (PpsView *view,
+                                 PpsAnnotation *annot)
+{
+	g_return_if_fail (PPS_IS_VIEW (view));
+	g_return_if_fail (PPS_IS_ANNOTATION (annot));
+
+	/* Reuse the existing annotation handling logic to open the editor
+	 * Pass placeholder coordinates (0, 0) and current time since they're not
+	 * needed for opening the annotation window */
+	pps_view_handle_annotation (view, annot, 0.0, 0.0, GDK_CURRENT_TIME);
 }
 
 void

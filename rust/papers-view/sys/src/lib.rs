@@ -1499,6 +1499,10 @@ extern "C" {
     pub fn pps_view_has_selection(view: *mut PpsView) -> gboolean;
     pub fn pps_view_is_caret_navigation_enabled(view: *mut PpsView) -> gboolean;
     pub fn pps_view_next_page(view: *mut PpsView) -> gboolean;
+    pub fn pps_view_open_annotation_editor(
+        view: *mut PpsView,
+        annot: *mut papers_document::PpsAnnotation,
+    );
     pub fn pps_view_previous_page(view: *mut PpsView) -> gboolean;
     pub fn pps_view_reload(view: *mut PpsView);
     pub fn pps_view_select_all(view: *mut PpsView);

@@ -506,6 +506,17 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
+            gio::ActionEntryBuilder::new("edit-annot")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        if let Some(annot) = obj.annot.borrow().as_ref() {
+                            obj.view.open_annotation_editor(annot);
+                        };
+                    }
+                ))
+                .build(),
             gio::ActionEntryBuilder::new("digital-signing")
                 .activate(glib::clone!(
                     #[weak(rename_to = obj)]

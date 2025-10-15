@@ -505,6 +505,7 @@ impl imp::PpsDocumentView {
             .unwrap_or_default()
             && annot.is_some();
 
+        self.set_action_enabled("edit-annot", show_annot_props);
         self.set_action_enabled("annot-properties", show_annot_props);
         self.set_action_enabled(
             "annot-textmarkup-type",

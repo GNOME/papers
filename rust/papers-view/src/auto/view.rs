@@ -163,6 +163,16 @@ impl View {
         unsafe { from_glib(ffi::pps_view_next_page(self.to_glib_none().0)) }
     }
 
+    #[doc(alias = "pps_view_open_annotation_editor")]
+    pub fn open_annotation_editor(&self, annot: &impl IsA<papers_document::Annotation>) {
+        unsafe {
+            ffi::pps_view_open_annotation_editor(
+                self.to_glib_none().0,
+                annot.as_ref().to_glib_none().0,
+            );
+        }
+    }
+
     #[doc(alias = "pps_view_previous_page")]
     pub fn previous_page(&self) -> bool {
         unsafe { from_glib(ffi::pps_view_previous_page(self.to_glib_none().0)) }
