@@ -993,22 +993,69 @@ mod imp {
                 #[weak(rename_to = obj)]
                 self,
                 async move {
-                    if path.is_none() {
+                    // Check if the file comes from a remote GVFS backend (like Google Drive, SMB, SFTP, etc.)
+                    // These usually need to be copied locally to avoid access or seek issues.
+                    let is_gvfs = file
+                        .uri_scheme()
+                        .map(|scheme| {
+                            // List of GVFS backends that should be copied locally:
+                            // - Network: smb, ftp, sftp, dav/davs, nfs
+                            // - Cloud: google-drive, onedrive
+                            // - Mobile: afc (ios), mtp (android)
+                            // - Other: afp (Apple Filing Protocol)
+                            matches!(
+                                scheme.as_str(),
+                                "afc"
+                                    | "afp"
+                                    | "dav"
+                                    | "davs"
+                                    | "ftp"
+                                    | "google-drive"
+                                    | "mtp"
+                                    | "nfs"
+                                    | "onedrive"
+                                    | "sftp"
+                                    | "smb"
+                            )
+                        })
+                        .unwrap_or(false);
+
+                    // If the file doesn't have a normal local path or if it's remote file,
+                    // then copy it locally before opening to avoid permission or access problems.
+                    if path.is_none() || is_gvfs {
                         obj.load_remote_file(file.as_ref()).await;
                     } else {
-                        // source_file is probably local, but make sure it's seekable
-                        // before loading it directly.
+                        // File appears to be local, but verify it's actually seekable.
+                        // Some FUSE-backed GVFS filesystems may provide paths but still have seekability issues
                         let result = file.read_future(glib::Priority::DEFAULT).await;
 
-                        if let Ok(stream) = result {
-                            if !stream.can_seek() {
-                                return obj.load_remote_file(file.as_ref()).await;
+                        match result {
+                            Ok(stream) => {
+                                // Check If the stream doesn’t support seeking at all, then treat it as remote.
+                                if !stream.can_seek() {
+                                    return obj.load_remote_file(file.as_ref()).await;
+                                }
+
+                                // Verify that G_SEEK_END works because
+                                // some GVFS backends claim to support seeking, but fail when using G_SEEK_END.
+                                let seekable = stream.upcast_ref::<gio::Seekable>();
+                                if seekable
+                                    .seek(0, glib::SeekType::End, gio::Cancellable::NONE)
+                                    .is_err()
+                                {
+                                    return obj.load_remote_file(file.as_ref()).await;
+                                }
+
+                                // If stream is properly seekable, load directly
+                                obj.loader_view.set_fraction(-1_f64);
+                                obj.set_mode(WindowRunMode::LoaderView);
+                                load_job.scheduler_push_job(papers_view::JobPriority::PriorityNone);
+                            }
+                            Err(_) => {
+                                // If it failed to open stream, try copying to local
+                                obj.load_remote_file(file.as_ref()).await;
                             }
                         }
-
-                        obj.loader_view.set_fraction(-1_f64);
-                        obj.set_mode(WindowRunMode::LoaderView);
-                        load_job.scheduler_push_job(papers_view::JobPriority::PriorityNone);
                     }
                 }
             ));
