@@ -2913,11 +2913,15 @@ create_pps_annot (PopplerAnnot *poppler_annot,
 		gsize n_paths;
 		PopplerPath **paths;
 		PpsPath **pps_paths;
+#ifdef POPPLER_HAS_HIGHLIGHT_INK
 		if (poppler_annot_ink_get_draw_below (POPPLER_ANNOT_INK (poppler_annot))) {
 			pps_annot = pps_annotation_ink_new_highlight (page);
 		} else {
 			pps_annot = pps_annotation_ink_new (page);
 		}
+#else
+		pps_annot = pps_annotation_ink_new (page);
+#endif
 		paths = poppler_annot_ink_get_ink_list (POPPLER_ANNOT_INK (poppler_annot), &n_paths);
 		pps_paths = g_new (PpsPath *, n_paths);
 		for (gsize i = 0; i < n_paths; i++) {
@@ -3744,8 +3748,12 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		poppler_annot = poppler_annot_ink_new (self->document, &poppler_rect);
 		if (pps_annotation_ink_get_highlight (PPS_ANNOTATION_INK (annot))) {
 			pps_annotation_get_rgba (annot, &color);
+#ifdef POPPLER_HAS_HIGHLIGHT_INK
 			poppler_annot_markup_set_opacity (POPPLER_ANNOT_MARKUP (poppler_annot), color.alpha);
 			poppler_annot_ink_set_draw_below (POPPLER_ANNOT_INK (poppler_annot), TRUE);
+#else
+			poppler_annot_markup_set_opacity (POPPLER_ANNOT_MARKUP (poppler_annot), MIN (0.5, color.alpha));
+#endif
 		}
 		poppler_annot_set_border_width (poppler_annot, pps_annotation_get_border_width (annot));
 		break;

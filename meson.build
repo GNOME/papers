@@ -277,7 +277,7 @@ elif get_option('djvu').auto()
 endif
 
 # *** PDF ***
-poppler_req_version = '>= 25.10.0'
+poppler_req_version = '>= 25.07.0'
 poppler_glib_dep = dependency('poppler-glib', version: poppler_req_version, required: get_option('pdf'))
 
 enable_pdf = poppler_glib_dep.found()
@@ -300,6 +300,10 @@ if enable_pdf
   if cc.has_function('poppler_page_render_transparent_selection', prefix: '#include <poppler.h>', dependencies: poppler_glib_dep)
     add_project_arguments ('-DHAVE_TRANSPARENT_SELECTION', language: 'c')
   endif
+  if cc.has_function('poppler_annot_ink_set_draw_below', prefix: '#include <poppler.h>', dependencies: poppler_glib_dep)
+    add_project_arguments('-DPOPPLER_HAS_HIGHLIGHT_INK', language: 'c')
+  endif
+
 elif get_option('pdf').auto()
   warning('PDF support is disabled since poppler-glib version ' + poppler_req_version + ' not found')
 endif
