@@ -46,12 +46,18 @@ widget_for_annot (PpsAnnotationWidgetFactory *factory, PpsAnnotation *annot)
 	PpsAnnotationWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
 	GtkWidget *annot_widget = NULL;
 
-	if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+	if (PPS_IS_ANNOTATION_FREE_TEXT (annot) || PPS_IS_ANNOTATION_STAMP (annot)) {
 		annot_widget = GTK_WIDGET (g_hash_table_lookup (priv->free_text_widgets, annot));
 		if (!annot_widget) {
-			annot_widget = pps_overlay_annotation_entry_new (annot,
-			                                                 priv->annots_context,
-			                                                 priv->model);
+			if (PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+				annot_widget = pps_overlay_annotation_entry_new (annot,
+				                                                 priv->annots_context,
+				                                                 priv->model);
+			} else {
+				annot_widget = pps_overlay_annotation_image_new (annot,
+				                                                 priv->annots_context,
+				                                                 priv->model);
+			}
 			g_hash_table_insert (priv->free_text_widgets, annot, g_object_ref_sink (annot_widget));
 		}
 	}
