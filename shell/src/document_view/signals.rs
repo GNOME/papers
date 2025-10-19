@@ -443,15 +443,13 @@ impl imp::PpsDocumentView {
         self.history.add_link(new_link.as_ref().unwrap_or(link));
     }
 
-    fn view_menu_link_popup(&self, link: Option<papers_document::Link>) {
+    fn view_menu_link_popup(&self, link: Option<&papers_document::Link>) {
         let mut show_external = false;
         let mut show_internal = false;
 
-        self.link.take();
+        self.link.replace(link.cloned());
 
         if let Some(link) = link {
-            self.link.replace(Some(link.clone()));
-
             if let Some(action) = link.action() {
                 match action.action_type() {
                     LinkActionType::GotoDest | LinkActionType::GotoRemote => show_internal = true,
@@ -467,10 +465,10 @@ impl imp::PpsDocumentView {
         self.set_action_enabled("open-link-new-window", show_internal);
     }
 
-    fn view_menu_image_popup(&self, image: Option<papers_document::Image>) {
+    fn view_menu_image_popup(&self, image: Option<&papers_document::Image>) {
         let show_image = image.is_some();
 
-        self.image.replace(image);
+        self.image.replace(image.cloned());
 
         self.set_action_enabled("save-image", show_image);
         self.set_action_enabled("copy-image", show_image);
@@ -537,20 +535,17 @@ impl imp::PpsDocumentView {
     }
 
     #[template_callback]
-    fn view_menu_popup(&self, items: glib::Pointer, x: f64, y: f64) {
+    fn view_menu_popup(&self, object: Option<glib::Object>, x: f64, y: f64) {
         let mut has_link = false;
         let mut has_image = false;
         let mut has_annot = false;
 
-        let items =
-            unsafe { glib::List::<glib::Object>::from_glib_none(items as *const glib::ffi::GList) };
-
-        for o in items {
+        if let Some(o) = object {
             if let Some(link) = o.downcast_ref::<papers_document::Link>() {
-                self.view_menu_link_popup(Some(link.clone()));
+                self.view_menu_link_popup(Some(link));
                 has_link = true;
             } else if let Some(image) = o.downcast_ref::<papers_document::Image>() {
-                self.view_menu_image_popup(Some(image.clone()));
+                self.view_menu_image_popup(Some(image));
                 has_image = true;
             } else if let Some(annot) = o.downcast_ref::<papers_document::Annotation>() {
                 self.view_menu_annot_popup(Some(annot));

@@ -3644,36 +3644,33 @@ pps_view_set_focused_element_at_location (PpsView *view,
 	_pps_view_set_focused_element (view, NULL, -1);
 }
 
-static gboolean
+static void
 pps_view_do_popup_menu (PpsView *view,
                         gdouble x,
                         gdouble y)
 {
-	GList *items = NULL;
 	PpsLink *link;
 	PpsImage *image;
 	PpsAnnotation *annot;
 
-	image = pps_view_get_image_at_location (view, x, y);
-	if (image)
-		items = g_list_prepend (items, image);
-
-	link = pps_view_get_link_at_location (view, x, y);
-	if (link)
-		items = g_list_prepend (items, link);
-
-	annot = get_annotation_at_location (view, x, y);
-	if (annot)
-		items = g_list_prepend (items, annot);
-
-	if (g_list_length (items) > 0 && pps_view_has_selection (view)) {
-		clear_selection (view);
+	if ((annot = get_annotation_at_location (view, x, y))) {
+		if (pps_view_has_selection (view))
+			clear_selection (view);
+		g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, annot, x, y);
+		return;
 	}
-	g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, items, x, y);
 
-	g_list_free (items);
+	if ((link = pps_view_get_link_at_location (view, x, y))) {
+		g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, link, x, y);
+		return;
+	}
 
-	return TRUE;
+	if ((image = pps_view_get_image_at_location (view, x, y))) {
+		g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, image, x, y);
+		return;
+	}
+
+	g_signal_emit (view, signals[SIGNAL_POPUP_MENU], 0, NULL, x, y);
 }
 
 static void
@@ -5822,9 +5819,9 @@ pps_view_class_init (PpsViewClass *class)
 	                                           G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 	                                           G_STRUCT_OFFSET (PpsViewClass, popup_menu),
 	                                           NULL, NULL,
-	                                           pps_view_marshal_VOID__POINTER_DOUBLE_DOUBLE,
+	                                           pps_view_marshal_VOID__OBJECT_DOUBLE_DOUBLE,
 	                                           G_TYPE_NONE, 3,
-	                                           G_TYPE_POINTER,
+	                                           G_TYPE_OBJECT,
 	                                           G_TYPE_DOUBLE,
 	                                           G_TYPE_DOUBLE);
 	signals[SIGNAL_SELECTION_CHANGED] = g_signal_new ("selection-changed",
