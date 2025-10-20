@@ -521,6 +521,11 @@ template $PpsDocumentView: Adw.BreakpointBin {
         trigger: "<Ctrl><Shift>z";
         action: "action(doc.redo)";
       }
+
+      Shortcut {
+        trigger: "<Ctrl><Alt>s";
+        action: "action(doc.digital-signing)";
+      }
     }
   };
 }
