@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
-"POT-Creation-Date: 2025-08-19 08:04+0000\n"
-"PO-Revision-Date: 2025-08-19 20:16+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-10-22 13:59+0000\n"
+"PO-Revision-Date: 2025-10-23 13:02+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
@@ -204,50 +204,50 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Apond la presa en carga de la lectura dels documents PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741 libdocument/backend/pdf/pps-poppler.c:747
+#: libdocument/backend/pdf/pps-poppler.c:737 libdocument/backend/pdf/pps-poppler.c:743
 #: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Òc"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744 libdocument/backend/pdf/pps-poppler.c:747
+#: libdocument/backend/pdf/pps-poppler.c:740 libdocument/backend/pdf/pps-poppler.c:743
 #: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Non"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:853
 msgid "Type 1"
 msgstr "Tipe 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:855
 msgid "Type 1C"
 msgstr "Tipe 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 3"
 msgstr "Tipe 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 1 (CID)"
 msgstr "Tipe 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "Type 1C (CID)"
 msgstr "Tipe 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "TrueType (CID)"
 msgstr "TrueTipe (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Unknown font type"
 msgstr "Tipe de polissa desconegut"
 
-#: libdocument/backend/pdf/pps-poppler.c:915
+#: libdocument/backend/pdf/pps-poppler.c:911
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard 14 fonts. If the substitute fonts "
 "selected by fontconfig are not the same as the fonts used to create the PDF, the rendering may not be correct."
@@ -256,11 +256,11 @@ msgstr ""
 "polissas de substitucion seleccionadas per « fontconfig » son pas las meteissas que las polissas utilizadas per "
 "crear lo PDF, lo rendut risca d'èsser incorrècte."
 
-#: libdocument/backend/pdf/pps-poppler.c:920
+#: libdocument/backend/pdf/pps-poppler.c:916
 msgid "All fonts are either standard or embedded."
 msgstr "Totas las polissas son siá estandards o integradas."
 
-#: libdocument/backend/pdf/pps-poppler.c:956
+#: libdocument/backend/pdf/pps-poppler.c:952
 msgid "No name"
 msgstr "Sens nom"
 
@@ -268,20 +268,20 @@ msgstr "Sens nom"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878 shell/src/properties_general.rs:85
+#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878 shell/src/properties_general.rs:85
 #: shell/src/properties_general.rs:235 shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Pas cap"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded subset"
 msgstr "Sosensemble integrat"
 
-#: libdocument/backend/pdf/pps-poppler.c:975
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Embedded"
 msgstr "Integrat"
 
-#: libdocument/backend/pdf/pps-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Not embedded"
 msgstr "Pas integrat"
 
@@ -290,7 +290,7 @@ msgstr "Pas integrat"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:980
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (una de las 14 polissas estandardas)"
 
@@ -299,7 +299,7 @@ msgstr " (una de las 14 polissas estandardas)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:987
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (pas una de las 14 polissas estandardas)"
 
@@ -313,7 +313,7 @@ msgstr " (pas una de las 14 polissas estandardas)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1010
+#: libdocument/backend/pdf/pps-poppler.c:1006
 #, c-format
 msgid ""
 "%s%s\n"
@@ -337,7 +337,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1028
+#: libdocument/backend/pdf/pps-poppler.c:1024
 #, c-format
 msgid ""
 "%s%s\n"
@@ -361,17 +361,17 @@ msgstr "Apond la presa en carga de la lectura dels documents TIFF"
 msgid "Invalid document"
 msgstr "Document invalid"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Impossible d'enregistrar la pèça junta « %s » : %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Impossible de dobrir la pèça junta « %s » : %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Impossible de dobrir la pèça junta « %s »"
@@ -437,7 +437,7 @@ msgstr "Tipe MIME desconegut"
 msgid "This work is in the Public Domain"
 msgstr "Aquesta òbra es dins lo domeni public"
 
-#: libview/context/pps-attachment-context.c:349 shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Enregistrar la pèça junta"
@@ -505,7 +505,7 @@ msgid "Your print range selection does not include any pages"
 msgstr "Vòstre interval d'impression inclutz pas cap de pagina"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81 shell/resources/pps-document-view.blp:560
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81 shell/resources/pps-document-view.blp:565
 #: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:602
 msgid "_Close"
 msgstr "_Tampar"
@@ -582,51 +582,51 @@ msgstr "S'es activat, un contorn serà present al torn de cada pagina."
 msgid "Page Handling"
 msgstr "Gestion de las paginas"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Anar a la primièra pagina"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Anar a la pagina precedenta"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Anar a la pagina seguenta"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Anar a la darrièra pagina"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Anar a la pagina"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Recercar"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Anar a la pagina %s"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Anar a %s sul fichièr « %s »"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Anar a la pagina « %s »"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Aviar %s"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Reïnicializar lo formulari"
@@ -949,11 +949,11 @@ msgstr "Afichar la signatura…"
 msgid "Fit Automatically"
 msgstr "_Adaptar automaticament"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:534
 msgid "Selection too Small"
 msgstr "Seleccion tròpa pichona"
 
-#: shell/resources/pps-document-view.blp:530
+#: shell/resources/pps-document-view.blp:535
 msgid ""
 "A signature of this size may be too small to read. If you would like to create a potentially more readable "
 "signature, press `Start over` and draw a bigger rectangle."
@@ -961,178 +961,178 @@ msgstr ""
 "Una signatura d'aquesta talha pòt èsser tròp pichona a legir. Se volètz crear una signatura potencialament mai "
 "legibla, quichatz sus « Recomençar « e dessenhatz un rectangle mai grand."
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:542
 msgid "Start _Over"
 msgstr "_Recomençar"
 
-#: shell/resources/pps-document-view.blp:538
+#: shell/resources/pps-document-view.blp:543
 msgid "_Sign"
 msgstr "_Signar"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:550
 msgid "Abort Printing?"
 msgstr "Interrompre l'impression ?"
 
-#: shell/resources/pps-document-view.blp:546
+#: shell/resources/pps-document-view.blp:551
 msgid "There is one or more active print jobs. If the window is closed, pending print jobs will not be printed."
 msgstr ""
 "I a un o mai d’un prètzfach d’impression actiu. Se tampatz la fenèstra, los prètzfaches en espèra d'impression "
 "seràn pas imprimits."
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:555
 msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726 shell/src/document_view/io.rs:486
+#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:726 shell/src/document_view/io.rs:486
 #: shell/src/document_view/io.rs:530 shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:557
 msgid "Close _After Printing"
 msgstr "Tampar _aprèp l'impression"
 
-#: shell/resources/pps-document-view.blp:567
+#: shell/resources/pps-document-view.blp:572
 msgid "Open…"
 msgstr "Dobrir…"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:579
 msgid "Ni_ght Mode"
 msgstr "Mòde n_uèch"
 
-#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Acorchis de clavièr"
 
-#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "Ajud_a"
 
-#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:596 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_A prepaus del Visionador de documents"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:605
 msgid "_Print…"
 msgstr "_Imprimir…"
 
-#: shell/resources/pps-document-view.blp:605
+#: shell/resources/pps-document-view.blp:610
 msgid "Fullscreen"
 msgstr "Ecran complèt"
 
-#: shell/resources/pps-document-view.blp:610
+#: shell/resources/pps-document-view.blp:615
 msgid "Present as Slideshow"
 msgstr "Presentar en diaporama"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:622
 msgid "Sign D_igitally…"
 msgstr "S_ignar electronicament…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:629
 msgid "Open a C_opy"
 msgstr "Dobrir una _còpia"
 
-#: shell/resources/pps-document-view.blp:629 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:634 shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Dobrir amb…"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:639
 msgid "_Save As…"
 msgstr "_Enregistrar jos…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:646
 msgid "_Continuous"
 msgstr "_Continú"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:651
 msgid "_Dual"
 msgstr "_Doble"
 
-#: shell/resources/pps-document-view.blp:651
+#: shell/resources/pps-document-view.blp:656
 msgid "_Odd Pages Left"
 msgstr "_Paginas imparas a esquèrra"
 
-#: shell/resources/pps-document-view.blp:656
+#: shell/resources/pps-document-view.blp:661
 msgid "Right to Left Document"
 msgstr "Document de drecha a esquèrra"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:668
 msgid "Ro_tate ⤵"
 msgstr "Pivo_tar ⤵"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:675
 msgid "Document Prop_erties"
 msgstr "Propri_etats del document"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:708
+#: shell/resources/pps-document-view.blp:713
 msgid "Highlight (h)"
 msgstr "Suslinhar (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:724
+#: shell/resources/pps-document-view.blp:729
 msgid "Strikethrough (k)"
 msgstr "Raiar (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:740
+#: shell/resources/pps-document-view.blp:745
 msgid "Underline (u)"
 msgstr "Soslinhar (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:756
+#: shell/resources/pps-document-view.blp:761
 msgid "Squiggly (q)"
 msgstr "Desformat (q)"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:852
 msgid "_Open Link"
 msgstr "_Dobrir lo ligam"
 
-#: shell/resources/pps-document-view.blp:853
+#: shell/resources/pps-document-view.blp:858
 msgid "_Copy Link Address"
 msgstr "_Copiar l'adreça del ligam"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:864
 msgid "_Go To"
 msgstr "A_nar a"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:870
 msgid "Open in New _Window"
 msgstr "Dobrir dins una _novèla fenèstra"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:878
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:883
 msgid "Select _All"
 msgstr "Seleccionar _tot"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:890
 msgid "_Save Image As…"
 msgstr "_Enregistrar l'imatge jos…"
 
-#: shell/resources/pps-document-view.blp:891
+#: shell/resources/pps-document-view.blp:896
 msgid "Copy _Image"
 msgstr "Copiar l'_imatge"
 
-#: shell/resources/pps-document-view.blp:899 shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Dobrir la pèça junta"
 
-#: shell/resources/pps-document-view.blp:905 shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Enregistrar la pèça junta jos…"
 
-#: shell/resources/pps-document-view.blp:915
+#: shell/resources/pps-document-view.blp:920
 msgid "Annotation _Properties…"
 msgstr "_Proprietats de l'anotacion…"
 
-#: shell/resources/pps-document-view.blp:921
+#: shell/resources/pps-document-view.blp:926
 msgid "R_emove Annotation"
 msgstr "L_evar las anotacions"
 
-#: shell/resources/pps-document-view.blp:929
+#: shell/resources/pps-document-view.blp:934
 msgid "_Add Text Annotation"
 msgstr "_Apondre una anotacion tèxte"
 
@@ -1241,15 +1241,15 @@ msgstr "_Signaturas"
 msgid "Search in document"
 msgstr "Recèrca dins lo document"
 
-#: shell/resources/pps-search-box.blp:38
+#: shell/resources/pps-search-box.blp:45
 msgid "Search Options"
 msgstr "Opcions de recèrca"
 
-#: shell/resources/pps-search-box.blp:46
+#: shell/resources/pps-search-box.blp:53
 msgid "_Whole Words Only"
 msgstr "_Mots entièrs"
 
-#: shell/resources/pps-search-box.blp:51
+#: shell/resources/pps-search-box.blp:58
 msgid "C_ase Sensitive"
 msgstr "Respectar la c_assa"
 
@@ -1508,67 +1508,72 @@ msgctxt "shortcut window"
 msgid "Underline Text"
 msgstr "Soslinhar lo tèxte"
 
-#: shell/resources/pps-shortcuts-dialog.blp:255
+#: shell/resources/pps-shortcuts-dialog.blp:254
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "Signatura electronica"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Recèrca"
 
-#: shell/resources/pps-shortcuts-dialog.blp:258
+#: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Recercar"
 
-#: shell/resources/pps-shortcuts-dialog.blp:263
+#: shell/resources/pps-shortcuts-dialog.blp:269
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Recercar lo seguent"
 
-#: shell/resources/pps-shortcuts-dialog.blp:268
+#: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Recercar lo precedent"
 
-#: shell/resources/pps-shortcuts-dialog.blp:274
+#: shell/resources/pps-shortcuts-dialog.blp:280
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: shell/resources/pps-shortcuts-dialog.blp:277
+#: shell/resources/pps-shortcuts-dialog.blp:283
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Ajuda"
 
-#: shell/resources/pps-shortcuts-dialog.blp:282
+#: shell/resources/pps-shortcuts-dialog.blp:288
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menú"
 
-#: shell/resources/pps-shortcuts-dialog.blp:287
+#: shell/resources/pps-shortcuts-dialog.blp:293
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Acorchis de clavièr"
 
-#: shell/resources/pps-shortcuts-dialog.blp:292
+#: shell/resources/pps-shortcuts-dialog.blp:298
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Fenèstra novèla"
 
-#: shell/resources/pps-shortcuts-dialog.blp:297
+#: shell/resources/pps-shortcuts-dialog.blp:303
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Tampar la fenèstra"
 
-#: shell/resources/pps-shortcuts-dialog.blp:303
+#: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Mòde presentacion"
 
-#: shell/resources/pps-shortcuts-dialog.blp:306
+#: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Ecran negre"
 
-#: shell/resources/pps-shortcuts-dialog.blp:311
+#: shell/resources/pps-shortcuts-dialog.blp:317
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Ecran blanc"
