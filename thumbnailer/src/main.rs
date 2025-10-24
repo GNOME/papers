@@ -7,6 +7,8 @@ use image::{ImageBuffer, ImageFormat, Rgb, Rgba};
 use papers_document::prelude::DocumentExt;
 use papers_document::RenderAnnotsFlags;
 
+use gettextrs::{setlocale, LocaleCategory};
+
 const USAGE: &str = "Usage:
   papers-thumbnailer [OPTION…] <input> <output> - GNOME Document Thumbnailer
 
@@ -60,6 +62,8 @@ impl Args {
 
 fn main() -> ExitCode {
     env_logger::builder().format_timestamp_millis().init();
+
+    setlocale(LocaleCategory::LcAll, "");
 
     let Some(args) = Args::new() else {
         println!("{}", USAGE);
