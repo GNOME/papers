@@ -34,6 +34,30 @@ impl AnnotationsContext {
             ))
         }
     }
+
+    #[doc(alias = "pps_annotations_context_register_ink_transformation")]
+    pub fn register_ink_transformation<P: Fn(&papers_document::Annotation) + 'static>(
+        transformation: P,
+    ) {
+        assert_initialized_main_thread!();
+        let transformation_data: Box_<P> = Box_::new(transformation);
+        unsafe extern "C" fn transformation_func<P: Fn(&papers_document::Annotation) + 'static>(
+            ink_annotation: *mut papers_document::ffi::PpsAnnotation,
+            user_data: glib::ffi::gpointer,
+        ) {
+            let ink_annotation = from_glib_borrow(ink_annotation);
+            let callback = &*(user_data as *mut P);
+            (*callback)(&ink_annotation)
+        }
+        let transformation = Some(transformation_func::<P> as _);
+        let super_callback0: Box_<P> = transformation_data;
+        unsafe {
+            ffi::pps_annotations_context_register_ink_transformation(
+                transformation,
+                Box_::into_raw(super_callback0) as *mut _,
+            );
+        }
+    }
 }
 
 pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {

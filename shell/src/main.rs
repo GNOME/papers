@@ -13,6 +13,7 @@ mod document_view;
 mod file_monitor;
 mod find_sidebar;
 mod i18n;
+mod ink_transformation;
 #[cfg(feature = "with-keyring")]
 mod keyring;
 mod loader_view;
@@ -53,6 +54,9 @@ fn main() -> glib::ExitCode {
     gettextrs::bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")
         .expect("Unable to bind the text domain codeset");
     gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
+
+    // Register an ink transformation function that should live in libdocument but uses various rust crates
+    ink_transformation::setup();
 
     PpsApplication::new().run()
 }
