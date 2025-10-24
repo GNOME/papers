@@ -77,4 +77,10 @@ PpsAnnotation *pps_annotations_context_get_annot_at_doc_point (PpsAnnotationsCon
 
 int
 pps_annotations_context_first_index_for_page (PpsAnnotationsContext *self, gint page);
+
+typedef void (*PpsInkTransformation) (PpsAnnotation *ink_annotation, gpointer user_data);
+
+PPS_PUBLIC
+void
+pps_annotations_context_register_ink_transformation (PpsInkTransformation transformation, gpointer user_data);
 G_END_DECLS

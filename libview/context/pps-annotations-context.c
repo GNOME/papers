@@ -98,6 +98,22 @@ static GParamSpec *props[NUM_PROPERTIES] = {
 	NULL,
 };
 
+static PpsInkTransformation ink_transformation = NULL;
+static gpointer ink_transformation_data;
+
+/**
+ * pps_annotations_context_register_ink_transformation:
+ * @transformation: (scope forever) (closure user_data): a #GCallback to call everytime a new ink annotation is created
+
+ * This is a hack to be able to call rust code from C.
+ */
+void
+pps_annotations_context_register_ink_transformation (PpsInkTransformation transformation, gpointer user_data)
+{
+	ink_transformation = transformation;
+	ink_transformation_data = user_data;
+}
+
 static void
 pps_annotations_context_clear_job (PpsAnnotationsContext *self)
 {
@@ -714,6 +730,8 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (annot), add_data->ink_list);
 		pps_annotation_ink_set_time_list (PPS_ANNOTATION_INK (annot), add_data->times);
 		pps_annotation_set_border_width (annot, add_data->line_width);
+		if (ink_transformation)
+			ink_transformation (annot, ink_transformation_data);
 		break;
 	}
 	default:

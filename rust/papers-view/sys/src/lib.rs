@@ -83,6 +83,10 @@ pub const PPS_PAGE_DATA_INCLUDE_FORMS: PpsJobPageDataFlags = 128;
 pub const PPS_PAGE_DATA_INCLUDE_MEDIA: PpsJobPageDataFlags = 256;
 pub const PPS_PAGE_DATA_INCLUDE_ALL: PpsJobPageDataFlags = 511;
 
+// Callbacks
+pub type PpsInkTransformation =
+    Option<unsafe extern "C" fn(*mut papers_document::PpsAnnotation, gpointer)>;
+
 // Records
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -1078,6 +1082,10 @@ extern "C" {
         model: *mut PpsDocumentModel,
         undo_context: *mut PpsUndoContext,
     ) -> *mut PpsAnnotationsContext;
+    pub fn pps_annotations_context_register_ink_transformation(
+        transformation: PpsInkTransformation,
+        user_data: gpointer,
+    );
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_annotations_context_add_annotation_sync(
