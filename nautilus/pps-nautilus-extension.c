@@ -160,10 +160,8 @@ pps_properties_get_models (NautilusPropertiesModelProvider *provider,
 		goto end;
 
 	pps_document_load (document, uri, &error);
-	if (error) {
-		g_error_free (error);
+	if (error)
 		goto end;
-	}
 
 	properties_group = nautilus_properties_model_new (_ ("Document Properties"), build_properties (document));
 
