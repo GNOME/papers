@@ -60,7 +60,6 @@ build_properties (PpsDocument *document)
 	GListStore *model = g_list_store_new (NAUTILUS_TYPE_PROPERTIES_ITEM);
 	const char *uri = pps_document_get_uri (document);
 	GDateTime *datetime = NULL;
-	char *text;
 
 #define SET_PROPERTY(p, value)                                                                                       \
 	do {                                                                                                         \
@@ -83,17 +82,15 @@ build_properties (PpsDocument *document)
 
 	datetime = pps_document_info_get_created_datetime (info);
 	if (datetime != NULL) {
-		text = pps_document_misc_format_datetime (datetime);
+		g_autofree char *text = pps_document_misc_format_datetime (datetime);
 		SET_PROPERTY (CREATION_DATE, text);
-		g_free (text);
 	} else {
 		SET_PROPERTY (CREATION_DATE, NULL);
 	}
 	datetime = pps_document_info_get_modified_datetime (info);
 	if (datetime != NULL) {
-		text = pps_document_misc_format_datetime (datetime);
+		g_autofree char *text = pps_document_misc_format_datetime (datetime);
 		SET_PROPERTY (MOD_DATE, text);
-		g_free (text);
 	} else {
 		SET_PROPERTY (MOD_DATE, NULL);
 	}
@@ -101,20 +98,19 @@ build_properties (PpsDocument *document)
 	FIELD_SET_PROPERTY (FORMAT, info->format);
 
 	if (info->fields_mask & PPS_DOCUMENT_INFO_N_PAGES) {
-		text = g_strdup_printf ("%d", info->n_pages);
+		g_autofree char *text = g_strdup_printf ("%d", info->n_pages);
 		SET_PROPERTY (N_PAGES, text);
-		g_free (text);
 	}
 	FIELD_SET_PROPERTY (LINEARIZED, info->linearized);
 	FIELD_SET_PROPERTY (SECURITY, info->security);
 
 	if (info->fields_mask & PPS_DOCUMENT_INFO_PAPER_SIZE) {
-		text = pps_document_info_regular_paper_size (info);
+		g_autofree char *text = pps_document_info_regular_paper_size (info);
 		SET_PROPERTY (PAPER_SIZE, text);
-		g_free (text);
 	}
 
 	if (info->fields_mask & PPS_DOCUMENT_INFO_CONTAINS_JS) {
+		const char *text;
 		if (info->contains_js == PPS_DOCUMENT_CONTAINS_JS_YES) {
 			text = _ ("Yes");
 		} else if (info->contains_js == PPS_DOCUMENT_CONTAINS_JS_NO) {
@@ -126,9 +122,8 @@ build_properties (PpsDocument *document)
 	}
 
 	if (pps_document_get_size (document)) {
-		text = g_format_size (pps_document_get_size (document));
+		g_autofree char *text = g_format_size (pps_document_get_size (document));
 		SET_PROPERTY (FILE_SIZE, text);
-		g_free (text);
 	}
 
 	return G_LIST_MODEL (model);
@@ -140,16 +135,15 @@ static GList *
 pps_properties_get_models (NautilusPropertiesModelProvider *provider,
                            GList *files)
 {
-	GError *error = NULL;
-	PpsDocument *document = NULL;
-	GList *models = NULL;
+	g_autoptr (GError) error = NULL;
+	g_autoptr (PpsDocument) document = NULL;
 	NautilusFileInfo *file;
-	gchar *uri = NULL;
+	g_autofree char *uri = NULL;
 	NautilusPropertiesModel *properties_group;
 
 	/* only add properties page if a single file is selected */
 	if (files == NULL || files->next != NULL)
-		goto end;
+		return NULL;
 	file = files->data;
 
 	/* okay, make the page */
@@ -157,21 +151,15 @@ pps_properties_get_models (NautilusPropertiesModelProvider *provider,
 
 	document = pps_document_factory_get_document (uri, &error);
 	if (!document)
-		goto end;
+		return NULL;
 
 	pps_document_load (document, uri, &error);
 	if (error)
-		goto end;
+		return NULL;
 
 	properties_group = nautilus_properties_model_new (_ ("Document Properties"), build_properties (document));
 
-	models = g_list_prepend (models, properties_group);
-end:
-	g_free (uri);
-	g_clear_pointer (&error, g_error_free);
-	g_clear_object (&document);
-
-	return models;
+	return g_list_prepend (NULL, properties_group);
 }
 
 static void
