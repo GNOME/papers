@@ -80,15 +80,16 @@ build_properties (PpsDocument *document)
 	FIELD_SET_PROPERTY (PRODUCER, info->producer);
 	FIELD_SET_PROPERTY (CREATOR, info->creator);
 
-	datetime = pps_document_info_get_created_datetime (info);
-	if (datetime != NULL) {
+	if (info->fields_mask & PPS_DOCUMENT_INFO_CREATION_DATETIME &&
+	    (datetime = pps_document_info_get_created_datetime (info))) {
 		g_autofree char *text = pps_document_misc_format_datetime (datetime);
 		SET_PROPERTY (CREATION_DATE, text);
 	} else {
 		SET_PROPERTY (CREATION_DATE, NULL);
 	}
-	datetime = pps_document_info_get_modified_datetime (info);
-	if (datetime != NULL) {
+
+	if (info->fields_mask & PPS_DOCUMENT_INFO_MOD_DATETIME &&
+	    (datetime = pps_document_info_get_modified_datetime (info))) {
 		g_autofree char *text = pps_document_misc_format_datetime (datetime);
 		SET_PROPERTY (MOD_DATE, text);
 	} else {
