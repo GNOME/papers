@@ -11,18 +11,6 @@ mod imp {
     pub struct PpsPropertiesSignatures {
         #[template_child]
         signatures_page: TemplateChild<adw::PreferencesPage>,
-        #[template_child]
-        status_group: TemplateChild<adw::PreferencesGroup>,
-        #[template_child]
-        details_group: TemplateChild<adw::PreferencesGroup>,
-        #[template_child]
-        status_listbox: TemplateChild<gtk::ListBox>,
-        #[template_child]
-        listbox: TemplateChild<gtk::ListBox>,
-        #[template_child]
-        signers_drop_down: TemplateChild<gtk::DropDown>,
-        #[template_child]
-        details_button: TemplateChild<gtk::ToggleButton>,
 
         signatures_job: RefCell<Option<JobSignatures>>,
         document: RefCell<Option<Document>>,
@@ -49,131 +37,85 @@ mod imp {
                         job.disconnect(id);
                     }
 
-                    obj.listbox.set_filter_func(glib::clone!(
-                        #[weak]
-                        obj,
-                        #[upgrade_or]
-                        true,
-                        move |row| {
-                            if obj.signers_drop_down.is_visible() {
-                                unsafe {
-                                    if let Some(signature_index_ptr) =
-                                        row.data::<usize>("signature-index")
-                                    {
-                                        let signature_index: usize = *signature_index_ptr.as_ptr();
-                                        if signature_index
-                                            != obj.signers_drop_down.selected().try_into().unwrap()
-                                        {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-
-                            if obj.details_button.is_active() {
-                                return true;
-                            }
-
-                            unsafe {
-                                if let Some(key) = row.data::<glib::GString>("key") {
-                                    let k = key.as_ref();
-
-                                    if k.as_str() == "certificate-issuer-common-name"
-                                        || k.as_str() == "certificate-issuer-email"
-                                        || k.as_str() == "certificate-issuer-organization"
-                                        || k.as_str() == "certificate-issuance-time"
-                                        || k.as_str() == "certificate-expiration-time"
-                                    {
-                                        return false;
-                                    }
-                                }
-                            }
-
-                            return true;
-                        }
-                    ));
-
-                    obj.status_listbox.set_filter_func(glib::clone!(
-                        #[weak]
-                        obj,
-                        #[upgrade_or]
-                        true,
-                        move |row| {
-                            if obj.signers_drop_down.is_visible() {
-                                unsafe {
-                                    if let Some(signature_index_ptr) =
-                                        row.data::<usize>("signature-index")
-                                    {
-                                        let signature_index: usize = *signature_index_ptr.as_ptr();
-                                        if signature_index
-                                            != obj.signers_drop_down.selected().try_into().unwrap()
-                                        {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-
-                            return true;
-                        }
-                    ));
-
                     if let Some(doc_signatures) =
                         job.document().and_dynamic_cast_ref::<DocumentSignatures>()
                     {
                         let signatures = doc_signatures.signatures();
-
-                        if signatures.len() == 1 {
-                            let signature = &signatures[0];
-
-                            obj.signers_drop_down.set_visible(false);
-
-                            let mut signer_text = glib::gformat!("");
-                            if let Some(ref certificate_info) = signature.certificate_info()
-                                && let Some(ref signer_name) =
-                                    certificate_info.subject_common_name()
-                            {
-                                signer_text = glib::gformat!(
-                                    "{} {}",
-                                    gettext("Signed by"),
-                                    signer_name.as_str()
-                                );
-                                if let Some(ref signer_email) = certificate_info.subject_email()
-                                    && !signer_email.is_empty()
-                                {
-                                    signer_text = glib::gformat!(
-                                        "{} {} <{}>",
-                                        gettext("Signed by"),
-                                        signer_name,
-                                        signer_email
-                                    );
-                                }
-                            }
-                            obj.status_group
-                                .set_title(glib::markup_escape_text(signer_text.as_str()).as_str());
-                        } else {
-                            let signers = gtk::StringList::new(&[]);
-
-                            for signature in signatures.iter() {
-                                let mut signer_text = glib::gformat!("");
-                                if let Some(ref certificate_info) = signature.certificate_info()
-                                    && let Some(ref signer_name) =
-                                        certificate_info.subject_common_name()
-                                {
-                                    signer_text = glib::gformat!("{}", signer_name.as_str());
-                                    if let Some(ref signer_email) = certificate_info.subject_email()
-                                        && !signer_email.is_empty()
-                                    {
-                                        signer_text =
-                                            glib::gformat!("{} <{}>", signer_name, signer_email);
-                                    }
-                                }
-                                signers.append(signer_text.as_str());
-                            }
-                            obj.signers_drop_down.set_model(Some(&signers));
-                        }
+                        let signature_count = signatures.len();
 
                         for (signature_index, signature) in signatures.iter().enumerate() {
+                            // Create a PreferencesGroup for each signature
+                            let signature_group = adw::PreferencesGroup::new();
+                            // Set the title with signer information
+                            let mut signer_text = String::new();
+                            if let Some(ref certificate_info) = signature.certificate_info() &&
+                               let Some(ref signer_name) = certificate_info.subject_common_name() {
+                                if signature_count > 1 {
+                                    signer_text = match certificate_info.subject_email() {
+                                        Some(ref signer_email) if !signer_email.is_empty() =>
+                                            formatx!(
+                                                // Translators: Do NOT translate the content between
+                                                // '{' and '}', they are variable names. Changing their
+                                                // order is possible. {current} and {total} are numbers,
+                                                // {name} and {email} are signer details
+                                                gettext("Signature {current} of {total} by {name} <{email}>"),
+                                                current = &(signature_index + 1).to_string(),
+                                                total = &signature_count.to_string(),
+                                                name = signer_name.as_str(),
+                                                email = signer_email.as_str(),
+                                            ).expect("Wrong format in translated string"),
+                                        _ =>
+                                            formatx!(
+                                                // Translators: Do NOT translate the content between
+                                                // '{' and '}', they are variable names. Changing their
+                                                // order is possible. {current} and {total} are numbers,
+                                                // {name} is the signer name
+                                                gettext("Signature {current} of {total} by {name}"),
+                                                current = &(signature_index + 1).to_string(),
+                                                total = &signature_count.to_string(),
+                                                name = signer_name.as_str(),
+                                            ).expect("Wrong format in translated string")
+
+                                    };
+                                } else {
+                                    signer_text = if let Some(ref signer_email) = certificate_info.subject_email() {
+                                        if !signer_email.is_empty() {
+                                            formatx!(
+                                                // Translators: Do NOT translate the content between
+                                                // '{' and '}', they are variable names. Changing their
+                                                // order is possible. {name} and {email} are signer details
+                                                gettext("Signed by {name} <{email}>"),
+                                                name = signer_name.as_str(),
+                                                email = signer_email.as_str(),
+                                            ).expect("Wrong format in translated string")
+                                        } else {
+                                            formatx!(
+                                                // Translators: Do NOT translate the content between
+                                                // '{' and '}', they are variable names. {name} is the signer name
+                                                gettext("Signed by {name}"),
+                                                name = signer_name.as_str(),
+                                            ).expect("Wrong format in translated string")
+                                        }
+                                    } else {
+                                        formatx!(
+                                            // Translators: Do NOT translate the content between
+                                            // '{' and '}', they are variable names. {name} is the signer name
+                                            gettext("Signed by {name}"),
+                                            name = signer_name.as_str(),
+                                        ).expect("Wrong format in translated string")
+                                    };
+                                }
+                            }
+                            signature_group.set_title(&glib::markup_escape_text(&signer_text));
+
+                            // Create status listbox for this signature
+                            let status_listbox = gtk::ListBox::builder()
+                                .selection_mode(gtk::SelectionMode::None)
+                                .can_focus(false)
+                                .hexpand(true)
+                                .vexpand(false)
+                                .css_classes(["content"])
+                                .build();
                             let (icon_name, text) = match signature.status() {
                                 SignatureStatus::Valid => {
                                     ("emblem-ok", gettext("Signature is valid."))
@@ -196,7 +138,7 @@ mod imp {
                                 _ => panic!("unknown signature status"),
                             };
 
-                            obj.add_status_row(signature_index, icon_name, &text);
+                            obj.add_status_row_to_listbox(&status_listbox, icon_name, &text);
 
                             if let Some(ref certificate_info) = signature.certificate_info() {
                                 let (icon_name, text) = match certificate_info.status() {
@@ -237,87 +179,111 @@ mod imp {
                                     _ => panic!("unknown certificate status"),
                                 };
 
-                                obj.add_status_row(signature_index, icon_name, &text);
+                                obj.add_status_row_to_listbox(&status_listbox, icon_name, &text);
+                            }
 
-                                if let Some(ref signer_organization) =
-                                    certificate_info.subject_organization()
-                                {
-                                    obj.add_row(
-                                        signature_index,
-                                        "organization",
-                                        &gettext("Organization"),
-                                        signer_organization,
-                                    );
-                                }
+                            signature_group.add(&status_listbox);
 
-                                if let Some(signature_time) = signature.signature_time() {
-                                    obj.add_row(
-                                        signature_index,
-                                        "signature-time",
-                                        &gettext("Date and Time"),
-                                        &Document::misc_format_datetime(&signature_time).unwrap(),
-                                    );
-                                }
+                            // Create details group for this signature
+                            let details_group = adw::PreferencesGroup::builder()
+                                .title("")
+                                .build();
 
+                            let details_listbox = gtk::ListBox::builder()
+                                .selection_mode(gtk::SelectionMode::None)
+                                .can_focus(false)
+                                .hexpand(true)
+                                .vexpand(false)
+                                .css_classes(["content"])
+                                .build();
+
+                            // Add always-visible important information
+                            if let Some(ref certificate_info) = signature.certificate_info() &&
+                               let Some(ref signer_organization) = certificate_info.subject_organization()
+                            {
+                                obj.add_property_to_listbox(
+                                    &details_listbox,
+                                    &gettext("Organization"),
+                                    signer_organization.as_str(),
+                                );
+                            }
+
+
+                            if let Some(signature_time) = signature.signature_time() {
+                                obj.add_property_to_listbox(
+                                    &details_listbox,
+                                    &gettext("Date and Time"),
+                                    Document::misc_format_datetime(&signature_time).unwrap().as_str(),
+                                );
+                            }
+
+                            // Add expandable row for additional details
+                            let expander_row = adw::ExpanderRow::builder()
+                                .title(gettext("Details"))
+                                .build();
+
+                            if let Some(ref certificate_info) = signature.certificate_info() {
                                 if let Some(ref certificate_issuer_common_name) =
                                     certificate_info.issuer_common_name()
                                 {
-                                    obj.add_row(
-                                        signature_index,
-                                        "certificate-issuer-common-name",
+                                    obj.add_property_to_expander_row(
+                                        &expander_row,
                                         &gettext("Certificate Issuer"),
-                                        certificate_issuer_common_name,
+                                        certificate_issuer_common_name.as_str()
                                     );
                                 }
 
                                 if let Some(ref certificate_issuer_email) =
                                     certificate_info.issuer_email()
                                 {
-                                    obj.add_row(
-                                        signature_index,
-                                        "certificate-issuer-email",
+                                    obj.add_property_to_expander_row(
+                                        &expander_row,
                                         &gettext("Certificate Issuer's Email"),
-                                        certificate_issuer_email,
+                                        certificate_issuer_email.as_str()
                                     );
                                 }
 
                                 if let Some(ref certificate_issuer_organization) =
                                     certificate_info.issuer_organization()
                                 {
-                                    obj.add_row(
-                                        signature_index,
-                                        "certificate-issuer-organization",
+                                    obj.add_property_to_expander_row(
+                                        &expander_row,
                                         &gettext("Certificate Issuer's Organization"),
-                                        certificate_issuer_organization,
+                                        certificate_issuer_organization.as_str()
                                     );
                                 }
 
                                 if let Some(certificate_issuance_time) =
                                     certificate_info.issuance_time()
                                 {
-                                    obj.add_row(
-                                        signature_index,
-                                        "certificate-issuance-time",
+                                    obj.add_property_to_expander_row(
+                                        &expander_row,
                                         &gettext("Certificate's Issuance Time"),
-                                        &Document::misc_format_datetime(&certificate_issuance_time)
-                                            .unwrap(),
+                                        Document::misc_format_datetime(
+                                            &certificate_issuance_time
+                                        ).unwrap().as_str(),
                                     );
                                 }
 
                                 if let Some(certificate_expiration_time) =
                                     certificate_info.expiration_time()
                                 {
-                                    obj.add_row(
-                                        signature_index,
-                                        "certificate-expiration-time",
+                                    obj.add_property_to_expander_row(
+                                        &expander_row,
                                         &gettext("Certificate's Expiration Time"),
-                                        &Document::misc_format_datetime(
+                                        Document::misc_format_datetime(
                                             &certificate_expiration_time,
-                                        )
-                                        .unwrap(),
+                                        ).unwrap().as_str(),
                                     );
                                 }
                             }
+
+                            details_listbox.append(&expander_row);
+                            details_group.add(&details_listbox);
+
+                            // Add both groups to the page
+                            obj.signatures_page.add(&signature_group);
+                            obj.signatures_page.add(&details_group);
                         }
                     }
                 }
@@ -330,29 +296,12 @@ mod imp {
             self.job_handler_id.replace(Some(job_handler_id));
         }
 
-        fn add_row(
+        fn add_status_row_to_listbox(
             &self,
-            signature_index: usize,
-            key: &str,
-            display_key: &str,
-            display_value: &str,
+            listbox: &gtk::ListBox,
+            icon_name: &str,
+            status_text: &str,
         ) {
-            if !display_value.is_empty() {
-                let row = adw::ActionRow::builder().css_classes(["property"]).build();
-
-                unsafe {
-                    row.set_data("key", glib::GString::from(key));
-                    row.set_data("signature-index", signature_index);
-                }
-
-                row.set_title(display_key);
-                row.set_subtitle(display_value);
-
-                self.listbox.insert(&row, -1);
-            }
-        }
-
-        fn add_status_row(&self, signature_index: usize, icon_name: &str, status_text: &str) {
             let row = adw::PreferencesRow::new();
             let hbox = gtk::Box::builder()
                 .orientation(gtk::Orientation::Horizontal)
@@ -363,45 +312,47 @@ mod imp {
                 .margin_end(12)
                 .build();
 
-            unsafe {
-                row.set_data("signature-index", signature_index);
-            }
-
             let icon = gtk::Image::new();
             icon.set_icon_name(Some(icon_name));
             hbox.append(&icon);
 
             let status_label = gtk::Label::builder()
                 .xalign(0.0)
-                .ellipsize(gtk::pango::EllipsizeMode::End)
+                .wrap(true)
                 .hexpand(true)
                 .build();
             status_label.set_label(status_text);
             hbox.append(&status_label);
 
             row.set_child(Some(&hbox));
-            self.status_listbox.insert(&row, -1);
+            listbox.insert(&row, -1);
         }
-    }
 
-    #[gtk::template_callbacks]
-    impl PpsPropertiesSignatures {
-        #[template_callback]
-        fn details_button_toggled(&self) {
-            self.listbox.invalidate_filter();
-            self.status_listbox.invalidate_filter();
-
-            if self.details_button.is_active() {
-                self.details_button.set_label(&gettext("Hide Details…"));
-            } else {
-                self.details_button.set_label(&gettext("View Details…"));
+        fn add_property_to_listbox(&self, listbox: &gtk::ListBox, title: &str, subtitle: &str) {
+            if !subtitle.is_empty() {
+                let row = adw::ActionRow::builder()
+                    .css_classes(["property"])
+                    .title(title)
+                    .subtitle(subtitle)
+                    .build();
+                listbox.append(&row);
             }
         }
 
-        #[template_callback]
-        fn signer_changed(&self) {
-            self.listbox.invalidate_filter();
-            self.status_listbox.invalidate_filter();
+        fn add_property_to_expander_row(
+            &self,
+            expander_row: &adw::ExpanderRow,
+            title: &str,
+            subtitle: &str,
+        ) {
+            if !subtitle.is_empty() {
+                let row = adw::ActionRow::builder()
+                    .css_classes(["property"])
+                    .title(title)
+                    .subtitle(subtitle)
+                    .build();
+                expander_row.add_row(&row);
+            }
         }
     }
 
@@ -413,7 +364,6 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
-            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &InitializingObject<Self>) {
