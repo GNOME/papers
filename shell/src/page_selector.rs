@@ -37,6 +37,17 @@ mod imp {
 
     #[glib::derived_properties]
     impl ObjectImpl for PpsPageSelector {
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            // Make sure page numbers are always left-to-right
+            self.entry.set_direction(gtk::TextDirection::Ltr);
+            self.entry
+                .first_child()
+                .unwrap()
+                .set_direction(gtk::TextDirection::Ltr);
+        }
+
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
