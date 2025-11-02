@@ -63,6 +63,13 @@ typedef struct {
 } PpsUndoAction;
 
 enum {
+	SIGNAL_STACKS_CHANGED,
+	N_SIGNALS
+};
+
+static guint signals[N_SIGNALS];
+
+enum {
 	PROP_0,
 	PROP_DOCUMENT_MODEL,
 	NUM_PROPERTIES
@@ -144,6 +151,22 @@ pps_undo_context_class_init (PpsUndoContextClass *klass)
 	                                                      "The document model associated with this undo context",
 	                                                      PPS_TYPE_DOCUMENT_MODEL,
 	                                                      G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
+
+	/**
+	 * PpsUndoContext::stacks-changed:
+	 * @context: the #PpsUndoContext
+	 * @handler: the #PpsUndoHandler that registered this action
+	 *
+	 * Emitted whenever the undo or redo stacks are modified.
+	 */
+	signals[SIGNAL_STACKS_CHANGED] =
+	    g_signal_new ("stacks-changed",
+	                  G_TYPE_FROM_CLASS (object_class),
+	                  G_SIGNAL_RUN_LAST,
+	                  0, NULL, NULL,
+	                  g_cclosure_marshal_VOID__OBJECT,
+	                  G_TYPE_NONE, 1,
+	                  PPS_TYPE_UNDO_HANDLER);
 }
 
 static void
@@ -193,6 +216,8 @@ pps_undo_context_add_action (PpsUndoContext *context, PpsUndoHandler *handler, g
 
 	g_debug ("Adding action to the undo/redo stack");
 	g_queue_push_head (queue, action);
+
+	g_signal_emit (context, signals[SIGNAL_STACKS_CHANGED], 0, handler);
 }
 
 /**

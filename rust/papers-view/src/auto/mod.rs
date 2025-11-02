@@ -63,6 +63,9 @@ pub use self::search_result::SearchResult;
 mod undo_context;
 pub use self::undo_context::UndoContext;
 
+mod undo_handler;
+pub use self::undo_handler::UndoHandler;
+
 mod view;
 pub use self::view::View;
 
@@ -96,4 +99,5 @@ pub(crate) mod traits {
     pub use super::job_thumbnail_texture::JobThumbnailTextureExt;
     pub use super::search_context::SearchContextExt;
     pub use super::search_result::SearchResultExt;
+    pub use super::undo_handler::UndoHandlerExt;
 }

@@ -23,6 +23,7 @@ external_libraries = [
 generate = [
     "PapersView.AnnotationsContext",
     "PapersView.UndoContext",
+    "PapersView.UndoHandler",
     "PapersView.AttachmentContext",
     "PapersView.DocumentModel",
     "PapersView.History",
@@ -30,7 +31,6 @@ generate = [
     "PapersView.SearchContext",
     "PapersView.SearchResult",
 
-    "PapersView.Job",
     "PapersView.JobAnnots",
     "PapersView.JobAttachments",
     "PapersView.JobFind",
@@ -42,6 +42,7 @@ generate = [
     "PapersView.JobSave",
     "PapersView.JobSignatures",
     "PapersView.JobThumbnailTexture",
+    "PapersView.Job",
     "PapersView.PageLayout",
     "PapersView.PrintOperation",
     "PapersView.SizingMode",

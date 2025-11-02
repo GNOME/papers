@@ -502,6 +502,35 @@ impl imp::PpsDocumentView {
                     move |_, _, _| {
                         if let Some(annot) = obj.annot.borrow().as_ref() {
                             obj.annots_context.remove_annotation(annot);
+
+                            // Show toast notification with undo button
+                            let toast = adw::Toast::builder()
+                                .title(gettext("Annotation deleted"))
+                                .button_label(gettext("_Undo"))
+                                .timeout(7)
+                                .build();
+
+                            toast.connect_button_clicked(glib::clone!(
+                                #[weak]
+                                obj,
+                                move |_| {
+                                    obj.undo_context.undo();
+                                }
+                            ));
+
+                            // Clear the stored reference when toast is dismissed
+                            toast.connect_dismissed(glib::clone!(
+                                #[weak]
+                                obj,
+                                move |_| {
+                                    obj.deletion_toast.replace(None);
+                                }
+                            ));
+
+                            // Store reference to dismiss later if needed
+                            obj.deletion_toast.replace(Some(toast.clone()));
+
+                            obj.toast_overlay.add_toast(toast);
                         };
                     }
                 ))

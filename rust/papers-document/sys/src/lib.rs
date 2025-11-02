@@ -188,6 +188,7 @@ pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
 pub const PPS_MAJOR_VERSION: c_int = 49;
+pub const PPS_MINOR_VERSION: c_int = 0;
 
 // Flags
 pub type PpsDocumentInfoFields = c_uint;
@@ -2445,7 +2446,7 @@ extern "C" {
     //=========================================================================
     pub fn pps_point_get_type() -> GType;
     pub fn pps_point_new() -> *mut PpsPoint;
-    pub fn pps_point_copy(point: *const PpsPoint) -> *mut PpsPoint;
+    pub fn pps_point_copy(point: *mut PpsPoint) -> *mut PpsPoint;
 
     //=========================================================================
     // PpsRectangle

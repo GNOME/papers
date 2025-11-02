@@ -154,6 +154,7 @@ mod imp {
         // Annotations
         #[template_child]
         pub(super) annots_context: TemplateChild<papers_view::AnnotationsContext>,
+        pub(super) deletion_toast: RefCell<Option<adw::Toast>>,
 
         // Signature
         #[template_child]
@@ -271,6 +272,19 @@ mod imp {
             self.find_sidebar.set_search_context(Some(&search_context));
             self.view.set_search_context(&search_context);
             self.search_context.replace(Some(search_context));
+
+            // Auto-dismiss deletion toast when any undoable action is added
+            self.undo_context.connect_stacks_changed(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_context, _handler| {
+                    // Dismiss any existing deletion toast when a new action is added
+                    let toast = obj.deletion_toast.borrow_mut().take();
+                    if let Some(toast) = toast {
+                        toast.dismiss();
+                    }
+                }
+            ));
         }
     }
 

@@ -3,8 +3,14 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel};
-use glib::{prelude::*, translate::*};
+use crate::{ffi, DocumentModel, UndoHandler};
+use glib::{
+    object::ObjectType as _,
+    prelude::*,
+    signal::{connect_raw, SignalHandlerId},
+    translate::*,
+};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "PpsUndoContext")]
@@ -23,7 +29,7 @@ impl UndoContext {
     }
 
     //#[doc(alias = "pps_undo_context_add_action")]
-    //pub fn add_action(&self, handler: /*Ignored*/&UndoHandler, data: /*Unimplemented*/Option<Basic: Pointer>) {
+    //pub fn add_action(&self, handler: &impl IsA<UndoHandler>, data: /*Unimplemented*/Option<Basic: Pointer>) {
     //    unsafe { TODO: call ffi:pps_undo_context_add_action() }
     //}
 
@@ -33,11 +39,15 @@ impl UndoContext {
     //    unsafe { TODO: call ffi:pps_undo_context_get_last_action() }
     //}
 
-    //#[doc(alias = "pps_undo_context_get_last_handler")]
-    //#[doc(alias = "get_last_handler")]
-    //pub fn last_handler(&self) -> /*Ignored*/Option<UndoHandler> {
-    //    unsafe { TODO: call ffi:pps_undo_context_get_last_handler() }
-    //}
+    #[doc(alias = "pps_undo_context_get_last_handler")]
+    #[doc(alias = "get_last_handler")]
+    pub fn last_handler(&self) -> Option<UndoHandler> {
+        unsafe {
+            from_glib_none(ffi::pps_undo_context_get_last_handler(
+                self.to_glib_none().0,
+            ))
+        }
+    }
 
     #[doc(alias = "pps_undo_context_redo")]
     pub fn redo(&self) {
@@ -56,5 +66,33 @@ impl UndoContext {
     #[doc(alias = "document-model")]
     pub fn document_model(&self) -> Option<DocumentModel> {
         ObjectExt::property(self, "document-model")
+    }
+
+    #[doc(alias = "stacks-changed")]
+    pub fn connect_stacks_changed<F: Fn(&Self, &UndoHandler) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        unsafe extern "C" fn stacks_changed_trampoline<
+            F: Fn(&UndoContext, &UndoHandler) + 'static,
+        >(
+            this: *mut ffi::PpsUndoContext,
+            handler: *mut ffi::PpsUndoHandler,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(&from_glib_borrow(this), &from_glib_borrow(handler))
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                c"stacks-changed".as_ptr() as *const _,
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
+                    stacks_changed_trampoline::<F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
     }
 }

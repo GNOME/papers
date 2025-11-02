@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel, UndoContext};
+use crate::{ffi, DocumentModel, UndoContext, UndoHandler};
 use glib::{
     object::ObjectType as _,
     prelude::*,
@@ -14,7 +14,7 @@ use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "PpsAnnotationsContext")]
-    pub struct AnnotationsContext(Object<ffi::PpsAnnotationsContext, ffi::PpsAnnotationsContextClass>);
+    pub struct AnnotationsContext(Object<ffi::PpsAnnotationsContext, ffi::PpsAnnotationsContextClass>) @implements UndoHandler;
 
     match fn {
         type_ => || ffi::pps_annotations_context_get_type(),

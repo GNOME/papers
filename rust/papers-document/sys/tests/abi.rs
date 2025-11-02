@@ -1046,6 +1046,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) PPS_LINK_DEST_TYPE_UNKNOWN", "8"),
     ("(gint) PPS_LINK_DEST_TYPE_XYZ", "1"),
     ("PPS_MAJOR_VERSION", "49"),
+    ("PPS_MINOR_VERSION", "0"),
     ("(guint) PPS_RENDER_ANNOTS_3D", "16777216"),
     ("(guint) PPS_RENDER_ANNOTS_ALL", "67108863"),
     ("(guint) PPS_RENDER_ANNOTS_CARET", "8192"),
