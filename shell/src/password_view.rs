@@ -153,7 +153,7 @@ mod imp {
             self.dialog.replace(Some(dialog));
 
             main.choose(
-                self.obj().as_ref(),
+                self.obj().as_ref().into(),
                 gio::Cancellable::NONE,
                 glib::clone![
                     #[weak(rename_to = obj)]
