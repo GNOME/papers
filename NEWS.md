@@ -1,3 +1,28 @@
+Papers 49.2
+----------------
+
+* Bug fixes:
+  - !680 Fixes for the nautilus plugin (Alessandro Astone)
+  - #551 papers-thumbnailer fails for comic book archives with unusual
+    filename encodings (Qiu Wenbo, Jürn)
+  - !670 shell: Fix signing when the rectangle is too small (Marek Kašík)
+  - !644 libdocument: fix weak page references (lbaudin)
+  - !677 shell: Fix opening PDFs from GVFS mounts like Google Drive (Malika Asman)
+
+* Translation updates:
+  - Catalan (Victor Dargallo)
+  - Uighur (Abduqadir Abliz)
+  - Norwegian Bokmål (Kjartan Maraas)
+  - Friulian (Fabio Tomat)
+  - Norwegian Nynorsk (Sunniva Løvstad)
+  - Spanish (Daniel Mustieles)
+  - Persian (Danial Behzadi)
+  - Greek (Efstathios Iosifidis)
+  - Serbian (Милош Поповић)
+  - Serbian (Latin) (Милош Поповић)
+  - Basque (Asier Saratsua Garmendia)
+  - Thai (Aefgh Threenine)
+
 Papers 49.1
 ----------------
 
