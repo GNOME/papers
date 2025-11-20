@@ -1511,6 +1511,7 @@ pps_print_operation_print_set_print_settings (PpsPrintOperation *op,
 {
 	PpsPrintOperationPrint *print = PPS_PRINT_OPERATION_PRINT (op);
 
+	print->autorotate = gtk_print_settings_has_key (print_settings, PPS_PRINT_SETTING_AUTOROTATE) ? gtk_print_settings_get_bool (print_settings, PPS_PRINT_SETTING_AUTOROTATE) : TRUE;
 	gtk_print_operation_set_print_settings (print->op, print_settings);
 }
 
