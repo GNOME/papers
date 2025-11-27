@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-22 13:59+0000\n"
-"PO-Revision-Date: 2025-10-23 13:02+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/\n"
+"POT-Creation-Date: 2025-11-27 16:43+0000\n"
+"PO-Revision-Date: 2025-11-27 18:03+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -205,13 +205,13 @@ msgstr "Apond la presa en carga de la lectura dels documents PDF"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:737 libdocument/backend/pdf/pps-poppler.c:743
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Òc"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:740 libdocument/backend/pdf/pps-poppler.c:743
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Non"
 
@@ -437,7 +437,7 @@ msgstr "Tipe MIME desconegut"
 msgid "This work is in the Public Domain"
 msgstr "Aquesta òbra es dins lo domeni public"
 
-#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1082
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Enregistrar la pèça junta"
@@ -448,7 +448,7 @@ msgstr[1] "Enregistrar las pèças juntas"
 msgid "Page %s"
 msgstr "Pagina %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:237 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Modificar la nòta"
 
@@ -742,12 +742,12 @@ msgstr "Zoom avant"
 msgid "Failed to Print Document"
 msgstr "L'impression del document a fracassat"
 
-#: nautilus/pps-nautilus-extension.c:104 shell/resources/pps-annotation-properties-dialog.blp:60
+#: nautilus/pps-nautilus-extension.c:97 shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Proprietats del document"
 
@@ -983,7 +983,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
-#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:726 shell/src/document_view/io.rs:486
+#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:740 shell/src/document_view/io.rs:486
 #: shell/src/document_view/io.rs:530 shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Anullar"
@@ -1116,11 +1116,11 @@ msgstr "_Enregistrar l'imatge jos…"
 msgid "Copy _Image"
 msgstr "Copiar l'_imatge"
 
-#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Dobrir la pèça junta"
 
-#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_Enregistrar la pèça junta jos…"
 
@@ -1582,11 +1582,11 @@ msgstr "Ecran blanc"
 msgid "No Annotations"
 msgstr "Cap d’annotacion"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "Proprietats de las anotacions"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "Levar las anotacions"
 
@@ -1678,63 +1678,71 @@ msgstr "Afichar la version del programa."
 msgid "[FILE…]"
 msgstr "[FICHIÈR…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:314
 msgid "View Details"
 msgstr "Veire los detalhs"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:719
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Lo document conten d’anotacions novèlas o modificadas e de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:720
 msgid "Document contains form fields that have been filled out."
 msgstr "Lo document conten de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:721
 msgid "Document contains new or modified annotations."
 msgstr "Lo document conten d'anotacions novèlas o modificadas."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:729
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Se enregistratz pas una còpia, las modificacions seràn perdudas definitivament."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:730
 msgid "Save Changes to a Copy?"
 msgstr "Enregistrar las modificacion dins una còpia ?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:739
 msgid "Close _Without Saving"
 msgstr "Tampar _sans enregistrar"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:741
 msgid "_Save a Copy"
 msgstr "_Enregistrar una còpia"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:508
+msgid "Annotation deleted"
+msgstr "Anotacion suprimida"
+
+#: shell/src/document_view/actions.rs:509
+msgid "_Undo"
+msgstr "_Desfar"
+
+#: shell/src/document_view/actions.rs:884
 msgid "Save Image"
 msgstr "Enregistrar l'imatge"
 
-#: shell/src/document_view/actions.rs:880
+#: shell/src/document_view/actions.rs:920
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Impossible de trobar lo format apropriat per enregistrar l'imatge"
 
-#: shell/src/document_view/actions.rs:897
+#: shell/src/document_view/actions.rs:937
 msgid "The image could not be saved."
 msgstr "L'imatge pòt pas èsser enregistrada."
 
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1009
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Lo mòde navegacion al cursor es ara activat, quichatz F7 per lo desactivar."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1011
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Lo mòde navegacion al cursor es ara desactivat, quichatz F7 per l’activar."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1066 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Impossible de dobrir la pèça junta"
 
-#: shell/src/document_view/actions.rs:1059
+#: shell/src/document_view/actions.rs:1099
 msgid "The attachment could not be saved."
 msgstr "La pèça junta pòt pas èsser enregistrada."
 
