@@ -1439,6 +1439,7 @@ pps_view_page_size_allocate (GtkWidget *widget,
 		if (PPS_IS_OVERLAY (child)) {
 			gdouble padding;
 			g_autofree PpsRectangle *doc_rect;
+			GdkRectangle minimum_area = { 0, 0, 0, 0 };
 
 			doc_rect = pps_overlay_get_area (PPS_OVERLAY (child), &padding);
 
@@ -1449,7 +1450,11 @@ pps_view_page_size_allocate (GtkWidget *widget,
 
 			gtk_widget_set_size_request (child, real_view_area.width, real_view_area.height);
 
-			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, real_view_area.height, NULL, NULL, NULL, NULL);
+			/* FIXME: we first allocate a widget its minimum size to force any text view to recompute its height */
+			gtk_widget_measure (child, GTK_ORIENTATION_HORIZONTAL, real_view_area.height, &minimum_area.width, NULL, NULL, NULL);
+			gtk_widget_measure (child, GTK_ORIENTATION_VERTICAL, real_view_area.width, &minimum_area.height, NULL, NULL, NULL);
+			gtk_widget_size_allocate (child, &minimum_area, baseline);
+
 			gtk_widget_size_allocate (child, &real_view_area, baseline);
 		} else if (PPS_IS_ANNOTATION_LAYER (child)) {
 			real_view_area.x = 0;
