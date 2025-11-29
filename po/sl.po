@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-20 16:31+0000\n"
-"PO-Revision-Date: 2025-10-20 19:00+0200\n"
+"POT-Creation-Date: 2025-11-28 15:57+0000\n"
+"PO-Revision-Date: 2025-11-29 17:54+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
@@ -205,13 +205,13 @@ msgstr "Doda podporo za branje datotek PDF"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:737 libdocument/backend/pdf/pps-poppler.c:743
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Da"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:740 libdocument/backend/pdf/pps-poppler.c:743
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Ne"
 
@@ -436,7 +436,7 @@ msgstr "Neznana MIME vrsta"
 msgid "This work is in the Public Domain"
 msgstr "Projekt je v javni domeni"
 
-#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1082
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Shrani priloge"
@@ -449,7 +449,7 @@ msgstr[3] "Shrani priloge"
 msgid "Page %s"
 msgstr "Stran %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:237 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Uredi opombo"
 
@@ -741,12 +741,12 @@ msgstr "Približaj"
 msgid "Failed to Print Document"
 msgstr "Tiskanje dokumenta ni uspelo"
 
-#: nautilus/pps-nautilus-extension.c:104 shell/resources/pps-annotation-properties-dialog.blp:60
+#: nautilus/pps-nautilus-extension.c:97 shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Neznano"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Lastnosti dokumenta"
 
@@ -982,7 +982,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Prekini _tiskanje in zapri okno"
 
-#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:726 shell/src/document_view/io.rs:486
+#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:740 shell/src/document_view/io.rs:486
 #: shell/src/document_view/io.rs:530 shell/src/document_view/io.rs:714
 msgid "_Cancel"
 msgstr "_Prekliči"
@@ -1115,11 +1115,11 @@ msgstr "S_hrani sliko kot …"
 msgid "Copy _Image"
 msgstr "Kopiraj _sliko"
 
-#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Odpri prilogo"
 
-#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "Shrani prilogo _kot …"
 
@@ -1581,11 +1581,11 @@ msgstr "Omogoči beli zaslon"
 msgid "No Annotations"
 msgstr "Brez opomb"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "Lastnosti pripombe"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "Odstrani pripombe"
 
@@ -1681,63 +1681,71 @@ msgstr "Pokaži različico programa."
 msgid "[FILE…]"
 msgstr "[DATOTEKA ...]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:314
 msgid "View Details"
 msgstr "Pokaži podrobnosti"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:719
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Dokument vsebuje nove ali spremenjene opombe in polja obrazcev, ki so izpolnjena."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:720
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokument vsebuje že izpolnjena polja obrazca."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:721
 msgid "Document contains new or modified annotations."
 msgstr "Dokument vsebuje nove ali spremenjene pripombe."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:729
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "V primeru, da kopije ne shranite, bodo spremembe trajno izgubljene."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:730
 msgid "Save Changes to a Copy?"
 msgstr "Ali želite shraniti spremembe v kopijo?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:739
 msgid "Close _Without Saving"
 msgstr "Zapri _brez shranjevanja"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:741
 msgid "_Save a Copy"
 msgstr "_Shrani kopijo"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:508
+msgid "Annotation deleted"
+msgstr "Pripomba izbrisana"
+
+#: shell/src/document_view/actions.rs:509
+msgid "_Undo"
+msgstr "_Razveljavi"
+
+#: shell/src/document_view/actions.rs:884
 msgid "Save Image"
 msgstr "Shrani sliko"
 
-#: shell/src/document_view/actions.rs:880
+#: shell/src/document_view/actions.rs:920
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Ni mogoče najti ustreznega zapisa za shranjevanje slike"
 
-#: shell/src/document_view/actions.rs:897
+#: shell/src/document_view/actions.rs:937
 msgid "The image could not be saved."
 msgstr "Slike ni mogoče shraniti."
 
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1009
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Način krmarjenja kazalke je zdaj omogočen, pritisnite F7, da ga onemogočite."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1011
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Način krmarjenja kazalke je zdaj onemogočen, pritisnite F7, da ga omogočite."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1066 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Ni mogoče odpreti priloge"
 
-#: shell/src/document_view/actions.rs:1059
+#: shell/src/document_view/actions.rs:1099
 msgid "The attachment could not be saved."
 msgstr "Ni mogoče shraniti priloge."
 
