@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-11-12 21:23+0000\n"
-"PO-Revision-Date: 2025-11-16 19:59+0300\n"
+"POT-Creation-Date: 2025-11-29 16:55+0000\n"
+"PO-Revision-Date: 2025-11-30 16:42+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -480,7 +480,7 @@ msgid "This work is in the Public Domain"
 msgstr "Эта работа находится в общественном домене"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
+#: shell/src/document_view/actions.rs:1082
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Сохранить вложение"
@@ -493,6 +493,7 @@ msgid "Page %s"
 msgstr "Страница %s"
 
 #: libview/pps-annotation-window.c:237
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Редактировать примечание"
 
@@ -1043,7 +1044,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Прервать _печать и закрыть"
 
-#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:726
+#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:740
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
@@ -1179,12 +1180,12 @@ msgid "Copy _Image"
 msgstr "Копировать _изображение"
 
 #: shell/resources/pps-document-view.blp:904
-#: shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Открыть вложение"
 
 #: shell/resources/pps-document-view.blp:910
-#: shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_Сохранить вложение как…"
 
@@ -1650,11 +1651,11 @@ msgstr "Белый экран"
 msgid "No Annotations"
 msgstr "Нет примечаний"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "Свойства примечания"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "Удалить примечание"
 
@@ -1750,11 +1751,11 @@ msgstr "Показать версию приложения."
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:314
 msgid "View Details"
 msgstr "Посмотреть подробности"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:719
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1762,57 +1763,65 @@ msgstr ""
 "Документ содержит новые или изменённые примечания и поля форм, которые были "
 "заполнены."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:720
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ содержит поля форм, которые были заполнены."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:721
 msgid "Document contains new or modified annotations."
 msgstr "Документ содержит новые или изменённые примечания."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:729
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Если вы не сохраните копию, изменения будут потеряны."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:730
 msgid "Save Changes to a Copy?"
 msgstr "Сохранить изменения в копию?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:739
 msgid "Close _Without Saving"
 msgstr "Закрыть _без сохранения"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:741
 msgid "_Save a Copy"
 msgstr "_Сохранить копию"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:508
+msgid "Annotation deleted"
+msgstr "Примечание удалено"
+
+#: shell/src/document_view/actions.rs:509
+msgid "_Undo"
+msgstr "_Отменить"
+
+#: shell/src/document_view/actions.rs:884
 msgid "Save Image"
 msgstr "Сохранить изображение"
 
-#: shell/src/document_view/actions.rs:880
+#: shell/src/document_view/actions.rs:920
 msgid "Couldn’t find appropriate format to save image"
 msgstr "Не удалось найти подходящий формат для сохранения изображения"
 
-#: shell/src/document_view/actions.rs:897
+#: shell/src/document_view/actions.rs:937
 msgid "The image could not be saved."
 msgstr "Не удалось сохранить изображение."
 
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1009
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Режим курсорной навигации сейчас включен, нажмите F7, чтобы отключить его."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1011
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Режим курсорной навигации сейчас выключен, нажмите F7, чтобы включить его."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1066 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
 msgstr "Не удалось открыть вложение"
 
-#: shell/src/document_view/actions.rs:1059
+#: shell/src/document_view/actions.rs:1099
 msgid "The attachment could not be saved."
 msgstr "Не удалось сохранить вложение."
 
