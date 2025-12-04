@@ -1,3 +1,5 @@
+use crate::window::WindowRunMode;
+
 use papers_document::{DocumentSignatures, SignatureStatus};
 use papers_view::{JobPriority, JobSignatures};
 
@@ -59,6 +61,7 @@ impl imp::PpsDocumentView {
         document: &Document,
         metadata: Option<&papers_view::Metadata>,
         dest: Option<&LinkDest>,
+        mode: WindowRunMode,
     ) {
         if self.model.document().is_some_and(|d| d == *document) {
             return;
@@ -72,6 +75,7 @@ impl imp::PpsDocumentView {
 
         self.setup_model_from_metadata();
         self.set_document(Some(document));
+        self.ensure_focus_if_needed(mode);
 
         self.setup_document();
         self.setup_view_from_metadata();
@@ -309,8 +313,6 @@ impl imp::PpsDocumentView {
                 move |name| obj.on_signature_password(name)
             ));
         }
-
-        self.view.grab_focus();
 
         self.update_title();
     }
@@ -748,5 +750,13 @@ impl imp::PpsDocumentView {
         let password = password.lock().unwrap().take();
 
         password
+    }
+
+    fn ensure_focus_if_needed(&self, mode: WindowRunMode) {
+        // Don't grab focus if we're opening in presentation mode,
+        // that uses a different view.
+        if mode != WindowRunMode::Presentation {
+            self.view.grab_focus();
+        }
     }
 }

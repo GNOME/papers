@@ -212,7 +212,8 @@ mod imp {
             let document = self.document_view.model().document().unwrap();
 
             imp.document_view.set_filenames(display_name, edit_name);
-            imp.document_view.open_document(&document, metadata, dest);
+            imp.document_view
+                .open_document(&document, metadata, dest, WindowRunMode::Normal);
             imp.set_mode(WindowRunMode::Normal);
 
             win.set_default_size(self.obj().width(), self.obj().height());
@@ -803,7 +804,11 @@ mod imp {
                             glib::clone!(
                                 #[weak(rename_to = obj)]
                                 obj,
-                                move || obj.document_view.focus_view()
+                                move || {
+                                    if obj.mode.get() != WindowRunMode::Presentation {
+                                        obj.document_view.focus_view()
+                                    }
+                                }
                             ),
                         );
                     }
@@ -889,6 +894,7 @@ mod imp {
                                 &document,
                                 obj.metadata.borrow().clone().as_ref(),
                                 dest.as_ref(),
+                                pending_mode,
                             );
 
                             obj.document_view
