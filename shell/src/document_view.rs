@@ -1,4 +1,5 @@
 use crate::deps::*;
+use crate::window::WindowRunMode;
 
 use std::cell::Cell;
 use std::collections::VecDeque;
@@ -835,8 +836,9 @@ impl PpsDocumentView {
         document: &Document,
         metadata: Option<&papers_view::Metadata>,
         dest: Option<&LinkDest>,
+        mode: WindowRunMode,
     ) {
-        self.imp().open_document(document, metadata, dest);
+        self.imp().open_document(document, metadata, dest, mode);
     }
 
     pub fn reload_document(&self, document: Option<&Document>) {
