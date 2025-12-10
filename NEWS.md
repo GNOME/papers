@@ -1,3 +1,19 @@
+Papers 49.3
+----------------
+* Bug fixes:
+  - !693 help: Update icon (Sabri Ünal)
+  - #343 Page number is not in the center of the number box (Malika Asman)
+  - #558 Keyboard input unresponsive in presentation mode, unable to exit with Esc (Lukáš Tyrychtr)
+  - #585 Segmentation fault in papers-thumbnailer for archive files (Lucas Baudin)
+
+* Translation updates:
+  - Bulgarian (twlvnn kraftwerk)
+  - Basque (Asier Saratsua Garmendia)
+  - German (Jürgen Benvenuti, Christian Kirbach)
+  - Indonesian (Andika Triwidada)
+  - Norwegian Bokmål (forteller)
+  - Occitan (Quentin PAGÈS)
+
 Papers 49.2
 ----------------
 
