@@ -538,7 +538,10 @@ impl imp::PpsDocumentView {
                 .css_classes(["content"])
                 .build();
 
-            let mut check_button_group = None;
+            // Create dummy button to group with
+            let check_button_group = Some(gtk::CheckButton::new());
+            let multi_certs = certs.len() > 1;
+            let mut first_cert = true;
 
             for cert in certs {
                 let row = adw::ActionRow::builder()
@@ -547,6 +550,7 @@ impl imp::PpsDocumentView {
                     .build();
 
                 let check_button = gtk::CheckButton::builder()
+                    .sensitive(multi_certs)
                     .valign(gtk::Align::Center)
                     .build();
 
@@ -577,12 +581,12 @@ impl imp::PpsDocumentView {
 
                 check_button.set_group(check_button_group.as_ref());
 
-                if check_button_group.is_none() {
+                if first_cert {
                     check_button.set_active(true);
-                    check_button_group = Some(check_button);
                 }
 
                 list_box.insert(&row, -1);
+                first_cert = false;
             }
 
             list_box.select_row(list_box.row_at_index(0).as_ref());
