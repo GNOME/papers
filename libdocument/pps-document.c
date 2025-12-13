@@ -98,10 +98,12 @@ pps_document_finalize (GObject *object)
 
 	g_clear_object (&priv->last_page);
 
-	for (int j = 0; j < n_pages; j++) {
-		g_weak_ref_clear (&priv->cached_pages[j]);
+	if (priv->cached_pages) {
+		for (int j = 0; j < n_pages; j++) {
+			g_weak_ref_clear (&priv->cached_pages[j]);
+		}
+		g_clear_pointer (&priv->cached_pages, g_free);
 	}
-	g_clear_pointer (&priv->cached_pages, g_free);
 
 	G_OBJECT_CLASS (pps_document_parent_class)->finalize (object);
 }
@@ -362,6 +364,7 @@ pps_document_load (PpsDocument *document,
 	} else {
 		priv->uri = g_strdup (uri);
 		priv->file_size = _pps_document_get_size (uri);
+		priv->n_pages = klass->get_n_pages (document);
 	}
 
 	return retval;
@@ -392,6 +395,7 @@ pps_document_load_fd (PpsDocument *document,
                       GError **error)
 {
 	PpsDocumentClass *klass;
+	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 	struct stat statbuf;
 	int fd_flags;
 
@@ -438,6 +442,8 @@ pps_document_load_fd (PpsDocument *document,
 
 	if (!klass->load_fd (document, fd, error))
 		return FALSE;
+
+	priv->n_pages = klass->get_n_pages (document);
 
 	return TRUE;
 }
@@ -526,10 +532,6 @@ pps_document_get_n_pages (PpsDocument *document)
 	g_return_val_if_fail (PPS_IS_DOCUMENT (document), 0);
 	PpsDocumentPrivate *priv = GET_PRIVATE (document);
 
-	if (priv->n_pages < 0) {
-		PpsDocumentClass *klass = PPS_DOCUMENT_GET_CLASS (document);
-		priv->n_pages = klass->get_n_pages (document);
-	}
 	return priv->n_pages;
 }
 
