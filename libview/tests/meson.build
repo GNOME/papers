@@ -1,9 +1,7 @@
-SRCDIR = meson.current_source_dir()
-
 cflags = [
   '-DG_LOG_DOMAIN="PapersViewTests"',
   '-DPAPERS_COMPILATION',
-  '-DSRCDIR="@0@"'.format(SRCDIR)
+  '-DTESTDATADIR="@0@"'.format(join_paths(source_root, 'test-data'))
 ]
 
 test_executable = executable(

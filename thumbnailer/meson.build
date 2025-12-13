@@ -64,7 +64,7 @@ if get_option('tests')
   test(
     'thumbnailer',
     files(thumbnailer_root / 'thumbnailer-test.sh'),
-    args: [meson.project_source_root() / 'libview' / 'tests' / 'utf16le-annot.pdf'],
+    args: [source_root / 'test-data' / 'utf16le-annot.pdf'],
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [copy],

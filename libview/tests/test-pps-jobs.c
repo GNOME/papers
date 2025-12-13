@@ -9,7 +9,7 @@ get_annots (void)
 {
 	PpsDocument *document;
 	PpsJob *job = pps_job_load_new ();
-	gchar *file_path = SRCDIR "/utf16le-annot.pdf";
+	gchar *file_path = TESTDATADIR "/utf16le-annot.pdf";
 	GFile *file = NULL;
 	gchar *uri = NULL;
 	gboolean hasBackend;
@@ -48,7 +48,7 @@ load_encrypted (void)
 {
 	PpsDocument *document;
 	PpsJob *job = pps_job_load_new ();
-	gchar *file_path = SRCDIR "/PasswordEncrypted.pdf";
+	gchar *file_path = TESTDATADIR "/PasswordEncrypted.pdf";
 	GFile *file = NULL;
 	gchar *uri = NULL;
 	gboolean hasBackend;
