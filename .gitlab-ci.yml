@@ -168,8 +168,13 @@ msrv:
         FLATPAK_MODULE: "papers"
         APP_ID: "org.gnome.Papers.Devel"
         BUNDLE: "org.gnome.Papers.Devel.flatpak"
+        GIT_SUBMODULE_STRATEGY: recursive
     retry: 2
     before_script:
+        -  git config --global --add safe.directory "${CI_PROJECT_DIR}"
+
+        - git submodule init
+        - git submodule update --checkout
         - "jq '. + { \"runtime-version\": \"master\" }' ${MANIFEST_PATH} > ${MANIFEST_PATH}.tmp"
         - mv ${MANIFEST_PATH}.tmp ${MANIFEST_PATH}
     rules:
@@ -195,7 +200,10 @@ build-release-tarball:
         when: always
         paths:
             - ${TARBALL_ARTIFACT_PATH}
+            - _build/meson-dist/*.tar.xz
     script:
+        - git submodule init test-data
+        - git submodule update --checkout test-data
         - meson setup "${MESON_BUILD_DIR}"
         - meson dist -C "${MESON_BUILD_DIR}" --include-subprojects
 
