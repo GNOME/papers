@@ -62,9 +62,17 @@ meson.add_devenv(meson_env)
 
 if get_option('tests')
   test(
-    'thumbnailer',
+    'thumbnailer pdf',
     files(thumbnailer_root / 'thumbnailer-test.sh'),
     args: [source_root / 'test-data' / 'utf16le-annot.pdf'],
+    env: test_env,
+    workdir: meson.current_build_dir(),
+    depends: [copy],
+  )
+  test(
+    'thumbnailer cbz',
+    files(thumbnailer_root / 'thumbnailer-test.sh'),
+    args: [source_root / 'test-data' / 'empty.cbz'],
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [copy],
