@@ -395,6 +395,7 @@ pps_overlay_annotation_constructed (GObject *obj)
 		g_signal_connect (gesture, "drag-end",
 		                  G_CALLBACK (pps_overlay_annotation_drag_end), overlay);
 		gtk_widget_add_controller (dot, GTK_EVENT_CONTROLLER (gesture));
+		gtk_widget_set_cursor_from_name (dot, "nwse-resize");
 	}
 
 	g_signal_connect_object (priv->annots_context, "annot-removed", G_CALLBACK (annot_removed), overlay, G_CONNECT_SWAPPED);
