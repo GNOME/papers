@@ -540,7 +540,6 @@ impl imp::PpsDocumentView {
 
             // Create dummy button to group with
             let check_button_group = Some(gtk::CheckButton::new());
-            let multi_certs = certs.len() > 1;
             let mut first_cert = true;
 
             for cert in certs {
