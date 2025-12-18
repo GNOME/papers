@@ -550,7 +550,6 @@ impl imp::PpsDocumentView {
                     .build();
 
                 let check_button = gtk::CheckButton::builder()
-                    .sensitive(multi_certs)
                     .valign(gtk::Align::Center)
                     .build();
 
@@ -558,9 +557,14 @@ impl imp::PpsDocumentView {
                 row.set_activatable_widget(Some(&check_button));
 
                 check_button.connect_toggled(glib::clone!(
+                    /* Keep a strong reference to check_button_group to avoid it being freed */
+                    #[strong(rename_to = group)]
+                    check_button_group,
                     #[weak(rename_to = obj)]
                     self,
                     move |button| {
+                        /* make sure the strong reference to group is not disposed */
+                        let _ = group.as_ref().unwrap();
                         if button.is_active() {
                             let row = button
                                 .ancestor(adw::ActionRow::static_type())
