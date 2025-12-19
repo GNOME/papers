@@ -4,20 +4,22 @@
 # Kjartan Maraas <kmaraas@gnome.org>, 2000-2025.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
+# Børge A. Roum <>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-16 12:37+0000\n"
-"PO-Revision-Date: 2025-10-16 17:42+0200\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
-"Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
+"POT-Creation-Date: 2025-12-10 21:59+0000\n"
+"PO-Revision-Date: 2025-12-16 00:42+0100\n"
+"Last-Translator: Børge A. Roum <>\n"
+"Language-Team: Norwegian Bokmål\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -84,26 +86,28 @@ msgid "Show a side bar next to the document to help navigate the document."
 msgstr ""
 
 #: data/org.gnome.Papers.gschema.xml:60
-#, fuzzy
-#| msgid "Select or set the zoom level of the document"
 msgid "Set the default zoom level to display a document."
-msgstr "Velg eller sett zoom-nivå for dokumentet"
+msgstr "Velg standard zoom-nivå for dokumenter."
 
 #: data/org.gnome.Papers.gschema.xml:64
 msgid ""
 "Display the document as a continuous stream of pages instead of page at a "
 "time."
 msgstr ""
+"Vis dokumentet som en sammenhengende strøm av sider, istedenfor én side om "
+"gangen."
 
 #: data/org.gnome.Papers.gschema.xml:68
 msgid "Show two pages side by side."
-msgstr ""
+msgstr "Vis to sider side om side"
 
 #: data/org.gnome.Papers.gschema.xml:72
 msgid ""
 "Show the first page (odd page) on the left (when displaying two pages side "
 "by side)"
 msgstr ""
+"Vis den første siden (oddetallsside) til venstre (når sidene vises side om "
+"side)"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
@@ -121,7 +125,9 @@ msgstr ""
 msgid ""
 "Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
 "(CBR, CBT, CBZ, CB7)."
-msgstr "Papers støtter følgende formater: PDF, DjVu, TIFF og Comic Books-arkiv (CBR, CBT, CBZ, CB7)."
+msgstr ""
+"Papers støtter følgende formater: PDF, DjVu, TIFF og Comic Books-arkiv (CBR, "
+"CBT, CBZ, CB7)."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:29
 msgid "A clear, simple, and modern UI"
@@ -129,7 +135,7 @@ msgstr "Et rent, enkelt og moderne brukergrensesnitt"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:33
 msgid "A mobile-friendly UI"
-msgstr ""
+msgstr "Et mobil-vennlig grensesnitt"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:37
 msgid "A modern and colorful annotation list"
@@ -141,7 +147,7 @@ msgstr ""
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
-msgstr ""
+msgstr "Alle handlinger som har med søk å gjøre foregår i sidefeltet"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -227,14 +233,14 @@ msgstr "Legger til støtte for å lese PDF-dokumenter"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Nei"
 
@@ -781,13 +787,13 @@ msgstr "Zoom inn"
 msgid "Failed to Print Document"
 msgstr "Klarte ikke å skrive ut dokumentet"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Egenskaper for dokument"
 
@@ -1000,6 +1006,9 @@ msgid ""
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
 msgstr ""
+"En så liten signatur kan være vanskelig å lese. Hvis du vil lage en signatur "
+"som kan være lettere å lese, trykk `Start på nytt` og tegn et større "
+"rektangel."
 
 #: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
@@ -1242,7 +1251,8 @@ msgstr "Husk _for alltid"
 #: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
-msgstr "Dette dokumentet er låst og kan kun leses etter å ha oppgitt korrekt passord"
+msgstr ""
+"Dette dokumentet er låst og kan kun leses etter å ha oppgitt korrekt passord"
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -1361,11 +1371,9 @@ msgid "Side Pane"
 msgstr "Sidefelt"
 
 #: shell/resources/pps-shortcuts-dialog.blp:58
-#, fuzzy
-#| msgid "Navigation"
 msgctxt "shortcut window"
 msgid "Caret Navigation"
-msgstr "Navigering"
+msgstr "Navigering med markør"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
@@ -1555,7 +1563,7 @@ msgstr "Gjennomstrek tekst"
 #: shell/resources/pps-shortcuts-dialog.blp:244
 msgctxt "shortcut window"
 msgid "Wavy/Squiggly Underline Text"
-msgstr ""
+msgstr "Bølgete understrekning"
 
 #: shell/resources/pps-shortcuts-dialog.blp:249
 msgctxt "shortcut window"
@@ -1737,7 +1745,9 @@ msgstr "Vis detaljer"
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
-msgstr "Dokumentet inneholder nye eller endrede anmerkninger og skjemafelt som er fylt ut."
+msgstr ""
+"Dokumentet inneholder nye eller endrede anmerkninger og skjemafelt som er "
+"fylt ut."
 
 #: shell/src/document_view.rs:706
 msgid "Document contains form fields that have been filled out."
@@ -1777,11 +1787,11 @@ msgstr "Klarte ikke å lagre bildet."
 
 #: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
-msgstr ""
+msgstr "Navigering med markør er slått på. Trykk F7 for å slå av."
 
 #: shell/src/document_view/actions.rs:971
 msgid "Caret navigation mode is now disabled, press F7 to enable."
-msgstr ""
+msgstr "Navigering med markør er slått av. Trykk F7 for å slå på."
 
 #: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
 msgid "Unable to Open Attachment"
@@ -1813,13 +1823,15 @@ msgstr "Lagre som …"
 
 #: shell/src/document_view/io.rs:485
 msgid "Draw a rectangle to insert a signature field"
-msgstr ""
+msgstr "Tegn et rektangel for å sette inn et felt for signatur"
 
 #: shell/src/document_view/io.rs:507
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
 msgstr ""
+"Digitalt signert av {}\n"
+"Dato: {}"
 
 #: shell/src/document_view/io.rs:523
 msgid "Certificate Required"
@@ -1835,19 +1847,19 @@ msgstr "Velg"
 
 #: shell/src/document_view/io.rs:600
 msgid "A certificate is required to sign this document"
-msgstr ""
+msgstr "Et sertifikat er påkrevd for å signere dette dokumentet"
 
 #: shell/src/document_view/io.rs:669
 msgid "Save Signed File"
-msgstr ""
+msgstr "Lagre Signert Fil"
 
 #: shell/src/document_view/io.rs:699
 msgid "Please enter password for {}"
-msgstr ""
+msgstr "Vennligst oppgi passord for {}"
 
 #: shell/src/document_view/io.rs:715
 msgid "_Login"
-msgstr ""
+msgstr "_Logg inn"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
@@ -1882,12 +1894,12 @@ msgstr "Side {}"
 #. order is possible
 #: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
 msgid "({pagenum} of {totalpages})"
-msgstr ""
+msgstr "({pagenum} av {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
 #: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
 msgid "of {}"
-msgstr ""
+msgstr "av {}"
 
 #: shell/src/password_view.rs:145
 #, fuzzy
@@ -1944,17 +1956,12 @@ msgid "Signature is invalid."
 msgstr "Signaturen er ugyldig."
 
 #: shell/src/properties_signatures.rs:194
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Document view and handling"
 msgid "Document has been changed after signing."
-msgstr "Dokumentvisning og håndtering"
+msgstr "Dokumentet har blitt endret etter signering."
 
 #: shell/src/properties_signatures.rs:198
-#, fuzzy
-#| msgid "The image could not be saved."
 msgid "Signature could not be decoded."
-msgstr "Klarte ikke å lagre bildet."
+msgstr "Signaturen kunne ikke bli dekodet."
 
 #: shell/src/properties_signatures.rs:202
 msgid "Signature verification error."
@@ -1970,23 +1977,23 @@ msgstr ""
 
 #: shell/src/properties_signatures.rs:226
 msgid "Signed with a certificate issued by unknown issuer."
-msgstr ""
+msgstr "Signert med et sertifikat fra en ukjent utsteder."
 
 #: shell/src/properties_signatures.rs:231
 msgid "Signed with revoked certificate."
-msgstr ""
+msgstr "Signert med et tilbakekalt sertifikat."
 
 #: shell/src/properties_signatures.rs:235
 msgid "Signed with expired certificate."
-msgstr ""
+msgstr "Signert med et sertifikat som er utgått på dato"
 
 #: shell/src/properties_signatures.rs:239
 msgid "Certificate verification error."
-msgstr ""
+msgstr "Feil i verifikasjonen av sertifikatet"
 
 #: shell/src/properties_signatures.rs:243
 msgid "Certificate has not been verified."
-msgstr ""
+msgstr "Sertifikatet har ikke blitt verifisert"
 
 #: shell/src/properties_signatures.rs:256
 msgid "Organization"
@@ -2002,11 +2009,11 @@ msgstr "Sertifikatutsteder"
 
 #: shell/src/properties_signatures.rs:287
 msgid "Certificate Issuer's Email"
-msgstr ""
+msgstr "Utsteders E-post"
 
 #: shell/src/properties_signatures.rs:298
 msgid "Certificate Issuer's Organization"
-msgstr ""
+msgstr "Utsteders Organisasjon"
 
 #: shell/src/properties_signatures.rs:309
 msgid "Certificate's Issuance Time"
