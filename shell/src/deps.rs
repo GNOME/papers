@@ -32,7 +32,7 @@ pub use std::cell::RefCell;
 pub use std::cmp::min;
 
 pub use formatx::formatx;
-pub use gettextrs::{gettext, ngettext};
+pub use gettextrs::{gettext, ngettext, pgettext};
 
 pub use std::sync::OnceLock;
 

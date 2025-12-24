@@ -1079,7 +1079,7 @@ impl imp::PpsDocumentView {
         self.reset_progress_cancellable();
 
         let dialog = gtk::FileDialog::builder()
-            .title(gettext("Save Attachment"))
+            .title(pgettext("This is an action", "Save Attachment"))
             .modal(true)
             .build();
 
