@@ -366,10 +366,11 @@ impl imp::PpsDocumentView {
                     if !e.matches(gio::IOErrorEnum::Cancelled) {
                         obj.error_message(
                             Some(&e),
-                            &gettext_f(
-                                "The file could not be saved as “{}”.",
-                                [dest.basename().unwrap_or_default().display().to_string()],
-                            ),
+                            &formatx!(
+                                gettext("The file could not be saved as “{}”."),
+                                dest.basename().unwrap_or_default().display(),
+                            )
+                            .expect("Wrong format in translated string"),
                         );
                     }
                 }
@@ -444,10 +445,11 @@ impl imp::PpsDocumentView {
                                         obj.close_after_save.set(false);
                                         obj.error_message(
                                             Some(&e),
-                                            &gettext_f(
-                                                "The file could not be saved as “{}”.",
-                                                [job.uri().unwrap_or_default()],
-                                            ),
+                                            &formatx!(
+                                                gettext("The file could not be saved as “{}”."),
+                                                job.uri().unwrap_or_default(),
+                                            )
+                                            .expect("Wrong format in translated string"),
                                         );
                                     }
                                     Ok(_) => {
@@ -505,10 +507,14 @@ impl imp::PpsDocumentView {
             .format_iso8601()
             .unwrap();
 
-        signature.set_signature(&gettext_f(
-            "Digitally signed by {}\nDate: {}",
-            [subject_common_name.as_str(), time.as_str()],
-        ));
+        signature.set_signature(
+            &formatx!(
+                gettext("Digitally signed by {}\nDate: {}"),
+                &subject_common_name,
+                time,
+            )
+            .expect("Wrong format in translated string"),
+        );
         signature.set_signature_left(&subject_common_name);
 
         self.signature.replace(Some(signature));
@@ -705,7 +711,8 @@ impl imp::PpsDocumentView {
 
         let password: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
 
-        let body = gettext_f("Please enter password for {}", [name]);
+        let body = formatx!(gettext("Please enter password for {}"), name)
+            .expect("Wrong format in translated string");
 
         let entry = gtk::Entry::builder()
             .activates_default(true)

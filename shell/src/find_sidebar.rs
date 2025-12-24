@@ -119,12 +119,11 @@ mod imp {
                         } else {
                             obj.results_stack.set_visible_child_name("results");
                             obj.obj().announce(
-                                &ngettext_f(
-                                    "{} result found.",
-                                    "{} results found.",
+                                &formatx!(
+                                    ngettext("{} result found.", "{} results found.", n_results),
                                     n_results,
-                                    [n_results.to_string()],
-                                ),
+                                )
+                                .expect("Wrong format in translated string"),
                                 gtk::AccessibleAnnouncementPriority::Medium,
                             );
                         }

@@ -79,7 +79,8 @@ mod imp {
                         .and_then(|document| document.page_label(page as i32))
                         .map(|gstr| gstr.to_string())
                         .unwrap_or(page.to_string());
-                    gettext_f("Page {}", [page_label])
+                    formatx!(gettext("Page {}"), page_label)
+                        .expect("Wrong format in translated string")
                 })
                 .unwrap_or_default();
             self.page_label.set_label(&author);

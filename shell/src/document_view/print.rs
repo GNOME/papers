@@ -43,7 +43,8 @@ impl imp::PpsDocumentView {
         if self.message_area().is_none() {
             let job_name = op.job_name().unwrap_or_default();
             // TRANSLATORS: In the context of "the job {} is being printed"
-            let text = gettext_f("Printing job “{}”", [job_name]);
+            let text = formatx!(gettext("Printing job “{}”"), job_name)
+                .expect("Wrong format in translated string");
 
             let area = PpsProgressMessageArea::new("document-print-symbolic", &text);
             area.add_button(&gettext("C_ancel"), gtk::ResponseType::Cancel);
@@ -82,12 +83,15 @@ impl imp::PpsDocumentView {
             }
             1 => area.set_secondary_text(gettext("No pending jobs in queue")),
             n => {
-                let text = ngettext_f(
-                    "{} pending job in queue",
-                    "{} pending jobs in queue",
-                    n as u32 - 1,
-                    [n.to_string()],
-                );
+                let text = formatx!(
+                    ngettext(
+                        "{} pending job in queue",
+                        "{} pending jobs in queue",
+                        n as u32 - 1
+                    ),
+                    n,
+                )
+                .expect("Wrong format in translated string");
                 area.set_secondary_text(text);
             }
         }

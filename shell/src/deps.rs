@@ -31,16 +31,14 @@ pub use std::cell::RefCell;
 
 pub use std::cmp::min;
 
-pub use gettextrs::gettext;
+pub use formatx::formatx;
+pub use gettextrs::{gettext, ngettext};
 
 pub use std::sync::OnceLock;
 
 pub use log::{debug, warn};
 
 pub use crate::config::*;
-pub use crate::i18n::gettext_f;
-pub use crate::i18n::gettext_fd;
-pub use crate::i18n::ngettext_f;
 pub use crate::window::WindowRunMode;
 
 // All widget types

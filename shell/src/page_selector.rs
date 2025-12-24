@@ -85,7 +85,8 @@ mod imp {
 
             let link_dest = papers_document::LinkDest::new_page_label(text.as_str());
             let link_action = papers_document::LinkAction::new_dest(&link_dest);
-            let link_text = gettext_f("Page {}", [text]);
+            let link_text =
+                formatx!(gettext("Page {}"), text).expect("Wrong format in translated string");
             let link = papers_document::Link::new(Some(&link_text), &link_action);
 
             self.obj().emit_by_name::<()>("activate-link", &[&link]);
@@ -234,19 +235,18 @@ mod imp {
                 let n_pages = document.n_pages();
 
                 let label_text = if self.show_page_number_in_pages_label(page) {
-                    gettext_fd(
+                    formatx!(
                         // Translators: Do NOT translate the content between
                         // '{' and '}' they are variable names. Changing their
                         // order is possible
-                        "({pagenum} of {totalpages})",
-                        &[
-                            ("pagenum", &(page + 1).to_string()),
-                            ("totalpages", &n_pages.to_string()),
-                        ],
+                        gettext("({pagenum} of {totalpages})"),
+                        pagenum = page + 1,
+                        totalpages = n_pages,
                     )
+                    .expect("Wrong format in translated string")
                 } else {
                     // Translators: the placeholder is the total amount of pages
-                    gettext_f("of {}", [n_pages.to_string()])
+                    formatx!(gettext("of {}"), n_pages).expect("Wrong format in translated string")
                 };
 
                 self.label.set_text(&label_text);
@@ -262,21 +262,22 @@ mod imp {
             let max_page_numeric_label = format!("{n_pages}").len() as i32;
 
             let max_label_len = if document.has_text_page_labels() {
-                gettext_fd(
+                formatx!(
                     // Translators: Do NOT translate the content between
                     // '{' and '}' they are variable names. Changing their
                     // order is possible
-                    "({pagenum} of {totalpages})",
-                    &[
-                        ("pagenum", &n_pages.to_string()),
-                        ("totalpages", &n_pages.to_string()),
-                    ],
+                    gettext("({pagenum} of {totalpages})"),
+                    pagenum = n_pages,
+                    totalpages = n_pages,
                 )
+                .expect("Wrong format in translated string")
                 .len()
                     - 2
             } else {
                 // Translators: the placeholder is the total amount of pages
-                gettext_f("of {}", [n_pages.to_string()]).len()
+                formatx!(gettext("of {}"), n_pages)
+                    .expect("Wrong format in translated string")
+                    .len()
             } as i32;
 
             self.label.set_width_chars(max_label_len);

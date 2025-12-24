@@ -250,10 +250,13 @@ impl imp::PpsDocumentView {
             .unwrap_or_default();
 
         if !is_pdf {
-            self.warning_message(&gettext_f(
-                "Security alert: this document has been prevented from opening the file “{}”",
-                [filename],
-            ));
+            self.warning_message(
+                &formatx!(
+                    gettext("Security alert: this document has been prevented from opening the file “{}”"),
+                    filename,
+                )
+                .expect("Wrong format in translated string"),
+            );
             return;
         }
 
@@ -430,7 +433,10 @@ impl imp::PpsDocumentView {
                 };
 
                 Some(papers_document::Link::new(
-                    Some(&gettext_f("Page {}", [page_label])),
+                    Some(
+                        &formatx!(gettext("Page {}"), page_label)
+                            .expect("Wrong format in translated string"),
+                    ),
                     &action,
                 ))
             }

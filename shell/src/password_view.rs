@@ -141,10 +141,13 @@ mod imp {
                 .main
                 .insert_action_group("password", Some(&self.action_group.get()));
 
-            let body = gettext_f(
-                "The document “{}” is locked and requires a password before it can be opened",
-                [self.filename.borrow().clone()],
-            );
+            let body = formatx!(
+                gettext(
+                    "The document “{}” is locked and requires a password before it can be opened",
+                ),
+                self.filename.borrow(),
+            )
+            .expect("Wrong format in translated string");
 
             dialog.main.set_body(&body);
 

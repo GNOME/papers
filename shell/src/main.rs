@@ -12,7 +12,6 @@ mod deps;
 mod document_view;
 mod file_monitor;
 mod find_sidebar;
-mod i18n;
 #[cfg(feature = "with-keyring")]
 mod keyring;
 mod loader_view;
