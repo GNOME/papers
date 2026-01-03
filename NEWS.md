@@ -1,3 +1,11 @@
+Papers 50.alpha
+---------------
+
+Some changes we can highlight:
+  - Improved UI for annotations (toast for deletions, new menu to edit from the sidebar) (Malika Asman)
+  - Various fixes already backported in the 49.x series (crashes, memory leaks, focus improvements, digital signature fixes) (nibon7, Lucas Baudin, Malika Asman, FineFindus, Marek Kašík, Alessandro Astone)
+  - Announcing search results to screen readers (Lukáš Tyrychtr)
+
 Papers 49.0
 ----------------
 * Bug fixes:
