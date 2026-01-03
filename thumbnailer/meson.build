@@ -68,6 +68,8 @@ if get_option('tests')
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [copy],
+    # this writes to thumbnail.png, like the next test, so they shouldn't be run in parallel
+    is_parallel: false,
   )
   test(
     'thumbnailer cbz',
@@ -76,5 +78,6 @@ if get_option('tests')
     env: test_env,
     workdir: meson.current_build_dir(),
     depends: [copy],
+    is_parallel: false,
   )
 endif
