@@ -478,7 +478,7 @@ pps_annotation_model_init (PpsAnnotationModel *model)
 	model->radius[TOOL_ERASER] = 5.0;
 	model->radius[TOOL_HIGHLIGHT] = 5.0;
 	model->radius[TOOL_PENCIL] = 1.0;
-	model->font_desc = pango_font_description_from_string ("Sans Regular 12");
+	model->font_desc = pango_font_description_from_string ("Adwaita Sans 12");
 	model->eraser_objects = TRUE;
 	gdk_rgba_parse (&model->color[TOOL_PENCIL], "#3584e4");
 	gdk_rgba_parse (&model->color[TOOL_HIGHLIGHT], "#f5c211");

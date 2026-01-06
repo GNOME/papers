@@ -2059,7 +2059,7 @@ pps_annotation_free_text_auto_resize (PpsAnnotationFreeText *annot, PangoContext
 	be increased by 4*border_width
 	+ 2 is necessary because poppler does not layout characters exactly as pango unfortunately */
 	border_width = pps_annotation_get_border_width (PPS_ANNOTATION (annot));
-	rect.x2 = rect.x1 + width / PANGO_SCALE * 0.75 + 4 * border_width + 2;
+	rect.x2 = rect.x1 + width * 1.05 / PANGO_SCALE * 0.75 + 4 * border_width + 2;
 	/* We add 1/4 of a line below so descending characters are shown.*/
 	rect.y2 = rect.y1 + height / PANGO_SCALE * 0.75 + 4 * border_width + 0.25 * font_size / PANGO_SCALE + 2;
 	pps_annotation_set_area (PPS_ANNOTATION (annot), &rect);
