@@ -25,7 +25,7 @@
 # Tim Sabsch <tim@sabsch.com>, 2019-2020, 2022.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2013, 2016-2018, 2021.
 # Philipp Kiemle <l10n@prly.mozmail.com>, 2021, 2023, 2025.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2023-2025.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2023-2026.
 # Elias Projahn <elias@johrpan.de>, 2024.
 # Konstantin Tutsch <mail@konstantintutsch.com>, 2024.
 #
@@ -33,9 +33,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-12-10 21:59+0000\n"
-"PO-Revision-Date: 2025-12-17 23:09+0100\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"POT-Creation-Date: 2026-01-04 02:56+0000\n"
+"PO-Revision-Date: 2026-01-04 21:34+0100\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -576,7 +576,7 @@ msgstr "Ihre Druckbereichsauswahl enthält keine Seiten"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:604
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -770,7 +770,6 @@ msgid "GNOME Document Previewer"
 msgstr "GNOME-Dokumentenvorschau"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Papers Dokumentenbetrachter"
 
@@ -779,8 +778,8 @@ msgstr "Papers Dokumentenbetrachter"
 msgid "The selected printer “%s” could not be found"
 msgstr "Der gewählte Drucker »%s« konnte nicht gefunden werden"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Papers"
 
@@ -1022,7 +1021,7 @@ msgstr "Seitenleiste ein-/ausblenden"
 msgid "Document Menu"
 msgstr "Dokumentenmenü"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "Dokument wurde digital signiert."
 
@@ -1072,9 +1071,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Drucken a_bbrechen und schließen"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
+#: shell/src/document_view/io.rs:716
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -1255,7 +1254,7 @@ msgstr "A_bbrechen"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
 msgid "Password Required"
 msgstr "Passwort erforderlich"
 
@@ -1788,11 +1787,11 @@ msgstr "Programmversion anzeigen."
 msgid "[FILE…]"
 msgstr "[DATEI …]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "Details anzeigen"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1800,42 +1799,34 @@ msgstr ""
 "Das Dokument enthält neue oder modifizierte Anmerkungen und Formularfelder, "
 "die ausgefüllt wurden."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "Das Dokument enthält Formularfelder, die ausgefüllt wurden."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "Das Dokument enthält neue oder veränderte Anmerkungen."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Wenn keine Kopie gespeichert wird, gehen die Einträge dauerhaft verloren."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "Änderungen als Kopie speichern?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "Schließen, _ohne zu speichern"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "Eine Kopie _speichern"
 
 #: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "Bild speichern"
-
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Es wurde kein geeignetes Format zum Speichern des Bildes gefunden"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "Das Bild konnte nicht gespeichert werden."
 
 #: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
@@ -1849,39 +1840,28 @@ msgstr ""
 "Der Eingabemarke-Navigationsmodus ist jetzt deaktiviert, drücken Sie F7 zum "
 "Aktivieren."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026
 msgid "Unable to Open Attachment"
 msgstr "Anlage konnte nicht geöffnet werden"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "Die Anlage konnte nicht gespeichert werden."
-
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "Digitale Signatur ist ungültig"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "Das Dokument enthält keine Seiten"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "Das Dokument enthält nur leere Seiten"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Die Datei konnte nicht als »{}« gespeichert werden."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:411
 msgid "Save As…"
 msgstr "Speichern unter …"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:487
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Ein Rechteck zeichnen, um ein Signaturfeld einzufügen"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:509
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1889,73 +1869,76 @@ msgstr ""
 "Digital signiert von {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:525
 msgid "Certificate Required"
 msgstr "Zertifikat erforderlich"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:528
 msgid "Select signing certificate"
 msgstr "Signaturzertifikat auswählen"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:529
 msgid "Select"
 msgstr "Auswählen"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:602
 msgid "A certificate is required to sign this document"
 msgstr "Zum Signieren dieses Dokuments ist ein Zertifikat erforderlich"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:671
 msgid "Save Signed File"
 msgstr "Signierte Datei speichern"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:701
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Bitte geben Sie das Passwort für {} ein"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:717
 msgid "_Login"
 msgstr "Anme_lden"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
-msgstr "Auftrag »%s« wird gedruckt"
+msgstr "Auftrag »{}« wird gedruckt"
 
 #: shell/src/document_view/print.rs:83
 msgid "No pending jobs in queue"
 msgstr "Keine ausstehenden Aufträge in der Warteschlange"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Externer Link konnte nicht geöffnet werden"
-
 # See https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/338 - pk
 #: shell/src/document_view/signals.rs:254
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Sicherheitswarnung: Dieses Dokument wurde daran gehindert, die Datei »{}« zu "
 "öffnen"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Seite {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} von {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#, rust-format
 msgid "of {}"
 msgstr "von {}"
 
 #: shell/src/password_view.rs:145
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
@@ -1994,96 +1977,93 @@ msgstr "Inhalt"
 msgid "Date &amp; Time"
 msgstr "Datum &amp; Uhrzeit"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Signiert von"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Signatur ist gültig."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Signatur ist ungültig."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "Dokument wurde nach dem Signieren geändert."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Signatur konnte nicht entschlüsselt werden."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Fehler bei der Signaturprüfung."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr ""
-"Signiert mit einem Zertifikat, das von einem vertrauenswürdigen Herausgeber "
-"ausgestellt wurde."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr ""
-"Signiert mit einem Zertifikat, das von einem nicht vertrauenswürdigen "
-"Herausgeber ausgestellt wurde."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr ""
-"Signiert mit einem Zertifikat, das von einem unbekannten Herausgeber "
-"ausgestellt wurde."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Mit widerrufenem Zertifikat signiert."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Mit abgelaufenem Zertifikat signiert."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Fehler bei der Zertifikatsprüfung."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "Zertifikat wurde nicht verifiziert."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Organisation"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Datum und Uhrzeit"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Herausgeber des Zertifikats"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "E-Mail des Herausgebers"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Organisation des Zertifikatherausgebers"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Ausstellungszeitpunkt des Zertifikats"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Ablaufdatum des Zertifikats"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Details ausblenden …"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "Es wurde kein geeignetes Format zum Speichern des Bildes gefunden"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "Das Bild konnte nicht gespeichert werden."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "Die Anlage konnte nicht gespeichert werden."
+
+#~ msgid "Digital signature is invalid"
+#~ msgstr "Digitale Signatur ist ungültig"
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "Die Datei konnte nicht als »{}« gespeichert werden."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "Externer Link konnte nicht geöffnet werden"
+
+#~ msgid "Signed by"
+#~ msgstr "Signiert von"
+
+#~ msgid "Signature is valid."
+#~ msgstr "Signatur ist gültig."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "Signatur ist ungültig."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "Dokument wurde nach dem Signieren geändert."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "Signatur konnte nicht entschlüsselt werden."
+
+#~ msgid "Signature verification error."
+#~ msgstr "Fehler bei der Signaturprüfung."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr ""
+#~ "Signiert mit einem Zertifikat, das von einem vertrauenswürdigen "
+#~ "Herausgeber ausgestellt wurde."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr ""
+#~ "Signiert mit einem Zertifikat, das von einem nicht vertrauenswürdigen "
+#~ "Herausgeber ausgestellt wurde."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr ""
+#~ "Signiert mit einem Zertifikat, das von einem unbekannten Herausgeber "
+#~ "ausgestellt wurde."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "Mit widerrufenem Zertifikat signiert."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "Mit abgelaufenem Zertifikat signiert."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "Fehler bei der Zertifikatsprüfung."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "Zertifikat wurde nicht verifiziert."
+
+#~ msgid "Organization"
+#~ msgstr "Organisation"
+
+#~ msgid "Date and Time"
+#~ msgstr "Datum und Uhrzeit"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "Herausgeber des Zertifikats"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "E-Mail des Herausgebers"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "Organisation des Zertifikatherausgebers"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "Ausstellungszeitpunkt des Zertifikats"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "Ablaufdatum des Zertifikats"
 
 #~ msgid "Scroll Up"
 #~ msgstr "Hinauf rollen"
