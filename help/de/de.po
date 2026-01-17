@@ -12,12 +12,12 @@
 # Gabor Karsay <gabor.karsay@gmx.at>, 2011.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2011, 2013.
 # Tim Sabsch <tim@sabsch.com>, 2021-2024.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2022-2024.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022-2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: evince manual\n"
-"POT-Creation-Date: 2024-11-27 13:42+0000\n"
-"PO-Revision-Date: 2024-12-17 20:11+0100\n"
+"POT-Creation-Date: 2026-01-08 18:46+0000\n"
+"PO-Revision-Date: 2026-01-08 22:12+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -38,7 +38,7 @@ msgstr ""
 "Gabor Karsay <gabor.karsay@gmx.at>, 2011\n"
 "Benjamin Steinwender <b@stbe.at>, 2015\n"
 "Tim Sabsch <tim@sabsch.com>, 2021-2024\n"
-"Jürgen Benvenuti <gastornis@posteo.org>, 2022-2024"
+"Jürgen Benvenuti <gastornis@posteo.org>, 2022-2024, 2026"
 
 #. (itstool) path: info/desc
 #: C/annotation-properties.page:7
@@ -74,14 +74,14 @@ msgstr "Tiffany Antopolski"
 #: C/commandline.page:20 C/forms.page:15 C/reload.page:18
 #: C/presentations.page:21 C/singlesided-17-20pages.page:16 C/develop.page:15
 #: C/printing.page:22 C/textselection.page:15 C/annotations-disabled.page:15
-#: C/default-settings.page:16 C/duplex-13pages.page:16 C/duplex-4pages.page:16
-#: C/duplex-7pages.page:16 C/duplex-16pages.page:16
-#: C/singlesided-npages.page:16 C/print-order.page:16 C/translate.page:19
-#: C/headerbar.page:18 C/annotations.page:21 C/print-select.page:15
-#: C/annotations-save.page:20 C/annotations-navigate.page:16
-#: C/print-booklet.page:16 C/noprint.page:18 C/documentation.page:14
-#: C/duplex-12pages.page:16 C/singlesided-5-8pages.page:16
-#: C/duplex-3pages.page:16 C/duplex-9pages.page:16 C/duplex-10pages.page:16
+#: C/duplex-13pages.page:16 C/duplex-4pages.page:16 C/duplex-7pages.page:16
+#: C/duplex-16pages.page:16 C/singlesided-npages.page:16 C/print-order.page:16
+#: C/translate.page:19 C/headerbar.page:18 C/annotations.page:21
+#: C/print-select.page:15 C/annotations-save.page:20
+#: C/annotations-navigate.page:16 C/print-booklet.page:16 C/noprint.page:18
+#: C/documentation.page:14 C/duplex-12pages.page:16
+#: C/singlesided-5-8pages.page:16 C/duplex-3pages.page:16
+#: C/duplex-9pages.page:16 C/duplex-10pages.page:16
 #: C/singlesided-13-16pages.page:16 C/openerror.page:17
 #: C/singlesided-3-4pages.page:16 C/forms-saving.page:23 C/formats.page:20
 #: C/duplex-14pages.page:16 C/bug-filing.page:15 C/duplex-5pages.page:16
@@ -857,10 +857,11 @@ msgstr "Lesezeichen"
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:31
-msgid "You can add, rename and delete bookmarks using <app>Papers</app>."
+msgid ""
+"You can add, rename and delete bookmarks using <app>Document Viewer</app>."
 msgstr ""
-"Sie können mithilfe von <app>Papers</app> Lesezeichen anlegen, umbenennen "
-"und entfernen."
+"Sie können mithilfe von <app>Dokumentenbetrachter</app> Lesezeichen anlegen, "
+"umbenennen und entfernen."
 
 #. (itstool) path: page/p
 #: C/bookmarks.page:38
@@ -1119,11 +1120,11 @@ msgstr "Portable Document Format (.pdf)"
 #. (itstool) path: page/p
 #: C/convertSVG.page:32
 msgid ""
-"This works by opening the file in <app>Papers</app> and \"printing\" the "
-"document as an SVG file."
+"This works by opening the file in <app>Document Viewer</app> and "
+"\"printing\" the document as an SVG file."
 msgstr ""
-"Dies funktioniert durch Öffnen der Datei in <app>Papers</app> und durch "
-"»Drucken« des Dokuments in eine SVG-Datei."
+"Dies funktioniert durch Öffnen der Datei in <app>Dokumentenbetrachter</app> "
+"und durch »Drucken« des Dokuments in eine SVG-Datei."
 
 #. (itstool) path: item/p
 #: C/convertSVG.page:37 C/printing.page:33
@@ -1228,12 +1229,13 @@ msgstr "Die Befehlszeile"
 #. (itstool) path: page/p
 #: C/commandline.page:25
 msgid ""
-"To start <app>Papers</app> from the command line, type <cmd>papers</cmd>. "
-"You can open a specific file by typing the filename after the papers command:"
+"To start <app>Document Viewer</app> from the command line, type <cmd>papers</"
+"cmd>. You can open a specific file by typing the filename after the papers "
+"command:"
 msgstr ""
-"Um <app>Papers</app> in einer Befehlszeile zu starten, geben Sie "
-"<cmd>papers</cmd> ein. Sie können durch Anfügen eines Dateinamens an den "
-"Papers-Befehl eine bestimmte Datei öffnen lassen:"
+"Um <app>Dokumentenbetrachter</app> in einer Befehlszeile zu starten, geben "
+"Sie <cmd>papers</cmd> ein. Sie können durch Anfügen eines Dateinamens an den "
+"papers-Befehl eine bestimmte Datei öffnen lassen:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:30
@@ -1259,13 +1261,13 @@ msgstr "papers Datei1.pdf Datei2.pdf"
 #. (itstool) path: page/p
 #: C/commandline.page:35
 msgid ""
-"<app>Papers</app> also supports the handling of files on the web. For "
-"example, after the papers command you can give the location of a file on the "
-"web:"
+"<app>Document Viewer</app> also supports the handling of files on the web. "
+"For example, after the papers command you can give the location of a file on "
+"the web:"
 msgstr ""
-"<app>Papers</app> unterstützt auch die Verarbeitung von Dateien im Netz. "
-"Beispielsweise können Sie nach dem »papers«-Befehl eine Adresse einer Datei "
-"im Web angeben:"
+"<app>Dokumentenbetrachter</app> unterstützt auch die Verarbeitung von "
+"Dateien im Netz. Beispielsweise können Sie nach dem »papers«-Befehl eine "
+"Adresse einer Datei im Web angeben:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:38
@@ -1298,10 +1300,10 @@ msgstr "papers --page-label=3 Datei.pdf"
 #: C/commandline.page:46
 msgid ""
 "The page label should be in the same format as the page number displayed in "
-"the <app>Papers</app> header bar."
+"the <app>Document Viewer</app> header bar."
 msgstr ""
 "Die Seitenbezeichnung sollte im gleichen Format sein wie die in der "
-"Titelleiste von <app>Papers</app> angezeigte Seitennummer."
+"Titelleiste von <app>Dokumentenbetrachter</app> angezeigte Seitennummer."
 
 #. (itstool) path: section/title
 #: C/commandline.page:52
@@ -1372,15 +1374,15 @@ msgid ""
 "There may be some parts of a form that you may need to fill out by hand "
 "<em>after</em> you print the form. For example, you might have to circle "
 "certain things, or sign the form in one or more places. If you wish to do "
-"this electronically, you may want to try <link href=\"http://www.g-loaded."
-"eu/2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/\">Xournal</"
+"this electronically, you may want to try <link href=\"http://www.g-loaded.eu/"
+"2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/\">Xournal</"
 "link>."
 msgstr ""
 "Eventuell enthalten Formulare Teile, die Sie <em>nach</em> dem Druck per "
 "Hand ausfüllen müssen. Zum Beispiel müssen Sie eventuell bestimmte Objekte "
 "einkreisen oder das Formular unterschreiben. Wenn Sie dies elektronisch tun "
-"möchten, so ist möglicherweise <link href=\"http://www.g-loaded."
-"eu/2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/\">Xournal</"
+"möchten, so ist möglicherweise <link href=\"http://www.g-loaded.eu/"
+"2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/\">Xournal</"
 "link> für Sie interessant."
 
 #. (itstool) path: info/desc
@@ -1400,13 +1402,14 @@ msgstr "Warum wird das Dokument ständig neu geladen?"
 #. (itstool) path: page/p
 #: C/reload.page:25
 msgid ""
-"If <app>Papers</app> detects that the document you have open has changed "
-"(perhaps because another program has modified it), it will automatically "
-"reload the document and display the most recent version for you."
+"If <app>Document Viewer</app> detects that the document you have open has "
+"changed (perhaps because another program has modified it), it will "
+"automatically reload the document and display the most recent version for "
+"you."
 msgstr ""
-"Wenn <app>Papers</app> erkennt, dass das geöffnete Dokument verändert wurde "
-"(eventuell durch ein anderes Programm), so wird es automatisch neu geladen "
-"und die neueste Version angezeigt."
+"Wenn <app>Dokumentenbetrachter</app> erkennt, dass das geöffnete Dokument "
+"verändert wurde (eventuell durch ein anderes Programm), so wird es "
+"automatisch neu geladen und die neueste Version angezeigt."
 
 #. (itstool) path: page/p
 #: C/reload.page:29
@@ -1579,8 +1582,8 @@ msgstr "Geben Sie die Seitenzahl in dieser Reihenfolge ein: <_:item-1/>"
 
 #. (itstool) path: info/desc
 #: C/develop.page:7
-msgid "Improve <app>Papers</app>."
-msgstr "<app>Papers</app> verbessern."
+msgid "Improve <app>Document Viewer</app>."
+msgstr "<app>Dokumentenbetrachter</app> verbessern."
 
 #. (itstool) path: credit/years
 #: C/develop.page:12 C/translate.page:12 C/documentation.page:11
@@ -1595,29 +1598,29 @@ msgstr "Bei der Entwicklung helfen"
 #. (itstool) path: page/p
 #: C/develop.page:20
 msgid ""
-"<app>Papers</app> is developed and maintained by a volunteer community. You "
-"are welcome to participate."
+"<app>Document Viewer</app> is developed and maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"<app>Papers</app> wird von einer Gemeinschaft aus Freiwilligen entwickelt. "
-"Sie sind herzlich eingeladen, sich daran zu beteiligen."
+"<app>Dokumentenbetrachter</app> wird von einer Gemeinschaft aus Freiwilligen "
+"entwickelt. Sie sind herzlich eingeladen, sich daran zu beteiligen."
 
 #. (itstool) path: page/p
 #: C/develop.page:23
 msgid ""
 "If you would like to <link href=\"https://wiki.gnome.org/Apps/Papers\">help "
-"develop</link> <app>Papers</app>, you can get in touch with the developers "
-"at <link href=\"https://matrix.to/#/#papers:gnome.org\">#papers:gnome.org</"
-"link> on <link xref=\"help:gnome-help/help-matrix\">Matrix</link> or <link "
-"href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> on irc."
-"libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
-"papers\">GNOME Discourse</link>."
+"develop</link> <app>Document Viewer</app>, you can get in touch with the "
+"developers at <link href=\"https://matrix.to/#/"
+"#papers:gnome.org\">#papers:gnome.org</link> on <link xref=\"help:gnome-help/"
+"help-matrix\">Matrix</link> or <link href=\"https://web.libera.chat/#gnome-"
+"papers\">#gnome-papers</link> on irc.libera.chat, or via <link "
+"href=\"https://discourse.gnome.org/tag/papers\">GNOME Discourse</link>."
 msgstr ""
-"Falls Sie bei der Entwicklung von <app>Papers</app> <link href=\"https://"
-"wiki.gnome.org/Apps/Papers\">helfen wollen</link>, nehmen Sie in <link "
-"href=\"https://matrix.to/#/#papers:gnome.org\">#papers:gnome.org</link> auf "
-"<link xref=\"help:gnome-help/help-matrix\">Matrix</link> oder <link "
-"href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> auf irc."
-"libera.chat oder über <link href=\"https://discourse.gnome.org/tag/"
+"Falls Sie bei der Entwicklung von <app>Dokumentenbetrachter</app> <link "
+"href=\"https://wiki.gnome.org/Apps/Papers\">helfen wollen</link>, nehmen Sie "
+"in <link href=\"https://matrix.to/#/#papers:gnome.org\">#papers:gnome.org</"
+"link> auf <link xref=\"help:gnome-help/help-matrix\">Matrix</link> oder "
+"<link href=\"https://web.libera.chat/#gnome-papers\">#gnome-papers</link> "
+"auf irc.libera.chat oder über <link href=\"https://discourse.gnome.org/tag/"
 "papers\">GNOME Discourse</link> Kontakt mit den Entwicklern auf."
 
 #. (itstool) path: info/desc
@@ -1746,16 +1749,16 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/textselection.page:23
 msgid ""
-"If you highlight and copy text from a document using <app>Papers</app> and "
-"then paste it into another application, the formatting may alter. It may "
-"also contain different characters than the original selection. This often "
-"happens when copying text from a PDF document with multiple columns."
+"If you highlight and copy text from a document using <app>Document Viewer</"
+"app> and then paste it into another application, the formatting may alter. "
+"It may also contain different characters than the original selection. This "
+"often happens when copying text from a PDF document with multiple columns."
 msgstr ""
-"Wenn Sie Text in einem Dokument mit <app>Papers</app> hervorheben und "
-"kopieren und ihn dann in eine andere Anwendung einfügen, so kann sich die "
-"Formatierung ändern. Es können auch andere Zeichen als in der ursprünglichen "
-"Auswahl enthalten sein. Dies passiert oft beim Kopieren von Text aus einem "
-"PDF-Dokument mit mehreren Spalten."
+"Wenn Sie Text in einem Dokument mit <app>Dokumentenbetrachter</app> "
+"hervorheben und kopieren und ihn dann in eine andere Anwendung einfügen, so "
+"kann sich die Formatierung ändern. Es können auch andere Zeichen als in der "
+"ursprünglichen Auswahl enthalten sein. Dies passiert oft beim Kopieren von "
+"Text aus einem PDF-Dokument mit mehreren Spalten."
 
 #. (itstool) path: page/p
 #: C/textselection.page:29
@@ -1798,55 +1801,6 @@ msgstr ""
 "Anmerkungen können nur zu PDF-Dateien hinzugefügt werden. Falls Ihre Datei "
 "in einem anderen als dem PDF-Format vorliegt, so wird die Option zum "
 "Hinzufügen ausgegraut (deaktiviert) sein."
-
-#. (itstool) path: info/desc
-#: C/default-settings.page:7
-msgid "Save current settings as default for new documents."
-msgstr "Die aktuellen Einstellungen als Vorgabe für neue Dokumente speichern."
-
-#. (itstool) path: credit/name
-#: C/default-settings.page:12
-msgid "Sindhu S"
-msgstr "Sindhu S"
-
-#. (itstool) path: page/title
-#: C/default-settings.page:21
-msgid "Change default settings"
-msgstr "Die Vorgabeeinstellungen ändern"
-
-#. (itstool) path: page/p
-#: C/default-settings.page:23
-msgid ""
-"When a document is opened for the first time, default settings, such as zoom "
-"and page view preferences, are applied. Any changes you make to these "
-"settings are saved for the document."
-msgstr ""
-"Wenn ein Dokument zum ersten Mal geöffnet wird, werden Vorgabeeinstellungen "
-"wie Vergrößerung und Ansichtsoptionen angewendet. Jede Änderung, die Sie an "
-"diesen Einstellungen vornehmen, wird für das Dokument gespeichert."
-
-#. (itstool) path: page/p
-#: C/default-settings.page:26
-msgid ""
-"You can save the settings which you are currently using as default for all "
-"new documents by pressing the menu button in the top-right corner of the "
-"window and selecting <gui style=\"menuitem\">Save Current Settings as "
-"Default</gui>."
-msgstr ""
-"Sie können die Einstellungen, die Sie aktuell verwenden, als Vorgabe für "
-"alle Dokumente speichern. Klicken Sie hierzu auf den Menüknopf in der oberen "
-"rechten Ecke des Fensters und wählen Sie <gui style=\"menuitem\">Momentane "
-"Einstellungen als Standard speichern</gui>."
-
-#. (itstool) path: note/p
-#: C/default-settings.page:31
-msgid ""
-"The new default settings do not override settings of previously opened "
-"documents, they are applied only to documents opened for the first time."
-msgstr ""
-"Die neuen Vorgabeeinstellungen gelten nicht für Dokumente, die zuvor bereits "
-"einmal geöffnet waren, sondern werden nur für Dokumente angewendet, die zum "
-"ersten Mal geöffnet werden."
 
 #. (itstool) path: info/desc
 #: C/duplex-13pages.page:8
@@ -2065,8 +2019,8 @@ msgid ""
 msgstr ""
 "Den vollständigen Text der Lizenz finden Sie auf der <link href=\"http://"
 "creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons-Webseite</"
-"link>. Oder Sie können den vollständigen <link href=\"http://creativecommons."
-"org/licenses/by-sa/3.0/\">Commons Deed</link> lesen."
+"link>. Oder Sie können den vollständigen <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/\">Commons Deed</link> lesen."
 
 #. (itstool) path: info/title
 #: C/duplex-4pages.page:7
@@ -2184,9 +2138,9 @@ msgstr "Kopien in der richtigen Reihenfolge drucken"
 #. (itstool) path: page/p
 #: C/print-order.page:22
 msgid ""
-"Please see <link xref=\"help:gnome-help/printing-order\" href=\"https://help."
-"gnome.org/users/gnome-help/stable/printing-order\">the GNOME Desktop Help</"
-"link>."
+"Please see <link xref=\"help:gnome-help/printing-order\" href=\"https://"
+"help.gnome.org/users/gnome-help/stable/printing-order\">the GNOME Desktop "
+"Help</link>."
 msgstr ""
 "Bitte lesen Sie <link xref=\"help:gnome-help/printing-order\" href=\"https://"
 "help.gnome.org/users/gnome-help/stable/printing-order\">den entsprechenden "
@@ -2194,8 +2148,8 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/translate.page:7
-msgid "Localize <app>Papers</app>."
-msgstr "<app>Papers</app> lokalisieren."
+msgid "Localize <app>Document Viewer</app>."
+msgstr "<app>Dokumentenbetrachter</app> lokalisieren."
 
 #. (itstool) path: credit/name
 #: C/translate.page:15
@@ -2210,12 +2164,13 @@ msgstr "Beim Übersetzen helfen"
 #. (itstool) path: page/p
 #: C/translate.page:24
 msgid ""
-"The <app>Papers</app> user interface and documentation is being translated "
-"by a world-wide volunteer community. You are welcome to participate."
+"The <app>Document Viewer</app> user interface and documentation is being "
+"translated by a world-wide volunteer community. You are welcome to "
+"participate."
 msgstr ""
-"Die Benutzeroberfläche und die Dokumentation von <app>Papers</app> werden "
-"von einer weltweiten Gemeinschaft aus Freiwilligen übersetzt. Sie sind "
-"herzlich eingeladen, sich daran zu beteiligen."
+"Die Benutzeroberfläche und die Dokumentation von <app>Dokumentenbetrachter</"
+"app> werden von einer weltweiten Gemeinschaft aus Freiwilligen übersetzt. "
+"Sie sind herzlich eingeladen, sich daran zu beteiligen."
 
 #. (itstool) path: page/p
 #: C/translate.page:27
@@ -2229,10 +2184,10 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/translate.page:30
 msgid ""
-"To start translating you will need to <link href=\"https://l10n.gnome."
-"org\">create an account</link> and join the <link href=\"https://l10n.gnome."
-"org/teams/\">translation team</link> for your language. This will give you "
-"the ability to upload new translations."
+"To start translating you will need to <link href=\"https://"
+"l10n.gnome.org\">create an account</link> and join the <link href=\"https://"
+"l10n.gnome.org/teams/\">translation team</link> for your language. This will "
+"give you the ability to upload new translations."
 msgstr ""
 "Um mit der Übersetzung zu beginnen, müssen Sie zunächst <link href=\"https://"
 "l10n.gnome.org\">ein Konto anlegen</link> und einem <link href=\"https://"
@@ -2249,11 +2204,11 @@ msgid ""
 "located worldwide, so you may not get an immediate response as a result of "
 "timezone differences."
 msgstr ""
-"Sie können mit GNOME-Übersetzern im <link href=\"https://cbe003.chat.mibbit."
-"com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">IRC</link> chatten. Die "
-"Teilnehmer in diesem Kanal sind über die ganze Welt verstreut, sodass Sie "
-"aufgrund der unterschiedlichen Zeitzonen nicht unbedingt sofort eine Antwort "
-"erhalten werden."
+"Sie können mit GNOME-Übersetzern im <link href=\"https://"
+"cbe003.chat.mibbit.com/?url=irc%3A%2F%2Firc.gnome.org%2Fi18n\">IRC</link> "
+"chatten. Die Teilnehmer in diesem Kanal sind über die ganze Welt verstreut, "
+"sodass Sie aufgrund der unterschiedlichen Zeitzonen nicht unbedingt sofort "
+"eine Antwort erhalten werden."
 
 #. (itstool) path: page/p
 #: C/translate.page:41
@@ -2345,10 +2300,10 @@ msgstr "Anmerkungen hinzufügen"
 #: C/annotations.page:27
 msgid ""
 "An annotation is a note or comment added to a PDF document. You can add "
-"annotations using <app>Papers</app>."
+"annotations using <app>Document Viewer</app>."
 msgstr ""
 "Eine Anmerkung ist eine Notiz oder ein Kommentar in einem PDF-Dokument. Sie "
-"können mit <app>Papers</app> solche Anmerkungen hinzufügen."
+"können mit <app>Dokumentenbetrachter</app> solche Anmerkungen hinzufügen."
 
 #. (itstool) path: page/p
 #: C/annotations.page:36
@@ -2517,11 +2472,12 @@ msgstr "Eine Kopie eines PDF mit Anmerkungen speichern"
 #: C/annotations-save.page:24
 msgid ""
 "To save a copy of your annotated PDF for future viewing using the "
-"<app>Papers</app> or any other PDF viewer <em>that supports annotations</em>:"
+"<app>Document Viewer</app> or any other PDF viewer <em>that supports "
+"annotations</em>:"
 msgstr ""
 "So speichern Sie eine Kopie Ihres PDF-Dokuments mit Anmerkungen für eine "
-"zukünftige Betrachtung in <app>Papers</app> oder einem anderen PDF-"
-"Anzeigeprogramm, <em>das Anmerkungen unterstützt</em>:"
+"zukünftige Betrachtung in <app>Dokumentenbetrachter</app> oder einem anderen "
+"PDF-Anzeigeprogramm, <em>das Anmerkungen unterstützt</em>:"
 
 #. (itstool) path: item/p
 #: C/annotations-save.page:31
@@ -2576,13 +2532,14 @@ msgstr ""
 msgid ""
 "To quickly navigate to the location of a particular annotation, click on the "
 "arrow to the left of the page number. You will see a list of annotations on "
-"that page. Click on the annotation you are interested in, and <app>Papers</"
-"app> will navigate to the location of the annotation in the document."
+"that page. Click on the annotation you are interested in, and <app>Document "
+"Viewer</app> will navigate to the location of the annotation in the document."
 msgstr ""
 "Um schnell an die Stelle einer Anmerkung zu springen, klicken Sie auf den "
 "Pfeil links der Seitenzahl. Die Liste der Anmerkungen auf dieser Seite wird "
 "nun eingeblendet. Klicken Sie auf die Anmerkung, die Sie interessiert, und "
-"<app>Papers</app> wird zum entsprechenden Ort im Dokument springen."
+"<app>Dokumentenbetrachter</app> wird zum entsprechenden Ort im Dokument "
+"springen."
 
 #. (itstool) path: page/media
 #. This is a reference to an external file such as an image or video. When
@@ -2730,9 +2687,10 @@ msgid ""
 "link>. You may also need to see your printer's manual to see what else you "
 "can do."
 msgstr ""
-"Wenn dies fehl schlägt, finden Sie möglicherweise in der <link href=\"help:"
-"gnome-help/printing\">Hilfe zum Drucken</link> weitere Informationen, oder "
-"lesen Sie bitte im Handbuch zu Ihrem Drucker, was Sie sonst noch tun können."
+"Wenn dies fehl schlägt, finden Sie möglicherweise in der <link "
+"href=\"help:gnome-help/printing\">Hilfe zum Drucken</link> weitere "
+"Informationen, oder lesen Sie bitte im Handbuch zu Ihrem Drucker, was Sie "
+"sonst noch tun können."
 
 #. (itstool) path: section/title
 #: C/noprint.page:74
@@ -2744,14 +2702,14 @@ msgstr "Druckbeschränkungen durch PDF"
 msgid ""
 "Some PDF documents have a setting which prevents you from printing them. "
 "Authors can set this printing restriction when they write a document. "
-"<app>Papers</app> overrides this restriction by default, but you may want to "
-"check that it hasn't been disabled:"
+"<app>Document Viewer</app> overrides this restriction by default, but you "
+"may want to check that it hasn't been disabled:"
 msgstr ""
 "Einige PDF-Dokumente haben Einstellungen hinterlegt, die ein Ausdrucken "
 "untersagen. Verfasser können Druckeinschränkungen beim Erstellen des "
-"Dokuments festlegen. <app>Papers</app> ignoriert diese Beschränkungen per "
-"Voreinstellung, aber eventuell wollen Sie prüfen, ob dies nicht deaktiviert "
-"wurde:"
+"Dokuments festlegen. <app>Dokumentenbetrachter</app> ignoriert diese "
+"Beschränkungen per Voreinstellung, aber eventuell wollen Sie prüfen, ob dies "
+"nicht deaktiviert wurde:"
 
 #. (itstool) path: note/p
 #: C/noprint.page:83
@@ -2801,10 +2759,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/noprint.page:108
-msgid "Go back to <app>Papers</app> and try to print the document again."
+msgid ""
+"Go back to <app>Document Viewer</app> and try to print the document again."
 msgstr ""
-"Kehren Sie zu <app>Papers</app> zurück und versuchen Sie erneut, das "
-"Dokument zu drucken."
+"Kehren Sie zu <app>Dokumentenbetrachter</app> zurück und versuchen Sie "
+"erneut, das Dokument zu drucken."
 
 #. (itstool) path: info/desc
 #: C/documentation.page:7
@@ -2819,11 +2778,12 @@ msgstr "Beim Schreiben der Dokumentation helfen"
 #. (itstool) path: page/p
 #: C/documentation.page:20
 msgid ""
-"The <app>Papers</app> documentation is maintained by a volunteer community. "
-"You are welcome to participate."
+"The <app>Document Viewer</app> documentation is maintained by a volunteer "
+"community. You are welcome to participate."
 msgstr ""
-"Die Dokumentation von <app>Papers</app> wird von einer Gemeinschaft aus "
-"Freiwilligen betreut. Sie sind herzlich eingeladen, sich daran zu beteiligen."
+"Die Dokumentation von <app>Dokumentenbetrachter</app> wird von einer "
+"Gemeinschaft aus Freiwilligen betreut. Sie sind herzlich eingeladen, sich "
+"daran zu beteiligen."
 
 #. (itstool) path: page/p
 #: C/documentation.page:23
@@ -2831,15 +2791,15 @@ msgid ""
 "To contribute to the Documentation Project, feel free to get in touch with "
 "us in <link href=\"https://matrix.to/#/#docs:gnome.org\">#docs:gnome.org</"
 "link> on <link xref=\"help:gnome-help/help-matrix\">Matrix</link> or <link "
-"href=\"https://web.libera.chat/#gnome-docs\">#gnome-docs</link> on irc."
-"libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
+"href=\"https://web.libera.chat/#gnome-docs\">#gnome-docs</link> on "
+"irc.libera.chat, or via <link href=\"https://discourse.gnome.org/tag/"
 "documentation\">GNOME Discourse</link>."
 msgstr ""
 "Falls Sie sich am Dokumentationsprojekt beteiligen wollen, nehmen Sie in "
 "<link href=\"https://matrix.to/#/#docs:gnome.org\">#docs:gnome.org</link> "
 "auf <link xref=\"help:gnome-help/help-matrix\">Matrix</link> oder <link "
-"href=\"https://web.libera.chat/#gnome-docs\">#gnome-docs</link> auf irc."
-"libera.chat oder über <link href=\"https://discourse.gnome.org/tag/"
+"href=\"https://web.libera.chat/#gnome-docs\">#gnome-docs</link> auf "
+"irc.libera.chat oder über <link href=\"https://discourse.gnome.org/tag/"
 "documentation\">GNOME Discourse</link> mit uns Kontakt auf."
 
 #. (itstool) path: page/p
@@ -2972,17 +2932,19 @@ msgstr "Papers-Dokumentenbetrachter"
 #. (itstool) path: info/desc
 #: C/index.page:24
 msgid ""
-"<app>Papers</app> is made for viewing PDF documents. Learn how to get "
-"started with <app>Papers</app> and its features."
+"<app>Document Viewer</app>, formally known as <app>Papers</app>, is made for "
+"viewing PDF documents. Learn how to get started with <app>Papers</app> and "
+"its features."
 msgstr ""
-"<app>Papers</app> ist zum Anzeigen von PDF-Dokumenten erstellt worden. "
-"Unternehmen Sie die ersten Schritte mit <app>Papers</app> und entdecken Sie "
-"seine Funktionen."
+"<app>Dokumentenbetrachter</app>, früher bekannt als <app>Papers</app>, ist "
+"zum Anzeigen von PDF-Dokumenten erstellt worden. Unternehmen Sie die ersten "
+"Schritte mit <app>Dokumentenbetrachter</app> und entdecken Sie seine "
+"Funktionen."
 
 #. (itstool) path: page/title
 #: C/index.page:30
-msgid "<_:media-1/> Papers Help"
-msgstr "<_:media-1/> Papers-Handbuch"
+msgid "<_:media-1/> Document Viewer Help"
+msgstr "<_:media-1/> Handbuch des Dokumentenbetrachters"
 
 #. (itstool) path: section/title
 #: C/index.page:36
@@ -3189,26 +3151,27 @@ msgstr ""
 #: C/opening.page:37
 msgid ""
 "Double clicking PDF, .djvu, and Comic Book Archive files opens them in "
-"<app>Papers</app> by default."
+"<app>Document Viewer</app> by default."
 msgstr ""
 "Ein Doppelklick öffnet PDF-, .djvu- und Comic-Book-Archivdateien in "
-"<app>Papers</app> per Voreinstellung."
+"<app>Dokumentenbetrachter</app> per Voreinstellung."
 
 #. (itstool) path: item/p
 #: C/opening.page:42
 msgid ""
 "Right-click on a file icon in <app>Files</app> and click <guiseq><gui>Open "
-"With</gui><gui>Papers</gui></guiseq>."
+"With</gui><gui>Document Viewer</gui></guiseq>."
 msgstr ""
 "Klicken Sie mit der rechten Maustaste auf ein Dateisymbol in <app>Dateien</"
-"app> und wählen Sie <guiseq><gui>Öffnen mit</gui><gui>Papers</gui></guiseq>."
+"app> und wählen Sie <guiseq><gui>Öffnen mit</gui><gui>Dokumentenbetrachter</"
+"gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/opening.page:47
-msgid "If an empty <app>Papers</app> window is already open you can:"
+msgid "If an empty <app>Document Viewer</app> window is already open you can:"
 msgstr ""
-"Wenn ein leeres Fenster von <app>Papers</app> bereits geöffnet ist, so "
-"können Sie:"
+"Wenn ein leeres Fenster von <app>Dokumentenbetrachter</app> bereits geöffnet "
+"ist, so können Sie:"
 
 #. (itstool) path: item/p
 #: C/opening.page:51
@@ -3233,10 +3196,12 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/opening.page:62
-msgid "If a document is already opened in a <app>Papers</app> window you can:"
+msgid ""
+"If a document is already opened in a <app>Document Viewer</app> window you "
+"can:"
 msgstr ""
-"Wenn im Fenster von <app>Papers</app> bereits ein Dokument geöffnet ist, so "
-"können Sie:"
+"Wenn im Fenster von <app>Dokumentenbetrachter</app> bereits ein Dokument "
+"geöffnet ist, so können Sie:"
 
 #. (itstool) path: item/p
 #: C/opening.page:66
@@ -3319,14 +3284,16 @@ msgstr "Warum kann ich eine Datei nicht öffnen?"
 #. (itstool) path: page/p
 #: C/openerror.page:24
 msgid ""
-"If you try to open a document of a format that <app>Papers</app> does not "
-"recognize, you will get an \"Unable to open document\" error message. Click "
-"<gui>Close</gui> to return to the <app>Papers</app> window."
+"If you try to open a document of a format that <app>Document Viewer</app> "
+"does not recognize, you will get an \"Unable to open document\" error "
+"message. Click <gui>Close</gui> to return to the <app>Document Viewer</app> "
+"window."
 msgstr ""
-"Sollten Sie versuchen, ein von <app>Papers</app> nicht unterstütztes "
-"Dokumentenformat zu öffnen, wird die Fehlermeldung »Das Dokument kann nicht "
-"geöffnet werden« angezeigt. Klicken Sie dann auf <gui>Schließen</gui>, um "
-"zum Fenster von <app>Papers</app> zurückzukehren."
+"Sollten Sie versuchen, ein von <app>Dokumentenbetrachter</app> nicht "
+"unterstütztes Dokumentenformat zu öffnen, wird die Fehlermeldung »Das "
+"Dokument kann nicht geöffnet werden« angezeigt. Klicken Sie dann auf "
+"<gui>Schließen</gui>, um zum Fenster von <app>Dokumentenbetrachter</app> "
+"zurückzukehren."
 
 #. (itstool) path: info/title
 #: C/singlesided-3-4pages.page:7
@@ -3462,8 +3429,8 @@ msgstr "Unterstützte Formate"
 
 #. (itstool) path: page/p
 #: C/formats.page:27
-msgid "<app>Papers</app> supports the following formats:"
-msgstr "<app>Papers</app> unterstützt die folgenden Formate:"
+msgid "<app>Document Viewer</app> supports the following formats:"
+msgstr "<app>Dokumentenbetrachter</app> unterstützt die folgenden Formate:"
 
 #. (itstool) path: item/p
 #: C/formats.page:31
@@ -3589,22 +3556,22 @@ msgstr "Wo Sie wie Probleme melden können."
 
 #. (itstool) path: page/title
 #: C/bug-filing.page:19
-msgid "File a bug against <app>Papers</app>"
-msgstr "Einen Fehlerbericht für <app>Papers</app> erstellen"
+msgid "File a bug against <app>Document Viewer</app>"
+msgstr "Einen Fehlerbericht für <app>Dokumentenbetrachter</app> erstellen"
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:20
 msgid ""
-"<app>Papers</app> is maintained by a volunteer community. You are welcome to "
-"participate. If you notice a problem you can file a <em>bug report</em>. To "
-"file a bug, go to <link href=\"https://gitlab.gnome.org/GNOME/Incubator/"
-"papers/issues/\"/>."
+"<app>Document Viewer</app> is maintained by a volunteer community. You are "
+"welcome to participate. If you notice a problem you can file a <em>bug "
+"report</em>. To file a bug, go to <link href=\"https://gitlab.gnome.org/"
+"GNOME/papers/issues/\"/>."
 msgstr ""
-"<app>Papers</app> wird von einer Gemeinschaft aus Freiwilligen entwickelt. "
-"Sie sind herzlich eingeladen, sich daran zu beteiligen. Falls Sie ein "
-"Problem entdecken, können Sie einen <em>Fehlerbericht erstellen</em>. "
-"Besuchen Sie hierzu <link href=\"https://gitlab.gnome.org/GNOME/Incubator/"
-"papers/issues/\"/>."
+"<app>Dokumentenbetrachter</app> wird von einer Gemeinschaft aus Freiwilligen "
+"entwickelt. Sie sind herzlich eingeladen, sich daran zu beteiligen. Falls "
+"Sie ein Problem entdecken, können Sie einen <em>Fehlerbericht erstellen</"
+"em>. Besuchen Sie hierzu <link href=\"https://gitlab.gnome.org/GNOME/papers/"
+"issues/\"/>."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:23
@@ -3636,15 +3603,16 @@ msgid ""
 "Once you have an account, log in, and click on <gui>New issue</gui>. Before "
 "reporting a bug, please read the <link href=\"https://wiki.gnome.org/"
 "GettingInTouch/BugReportingGuidelines\">bug writing guidelines</link>, and "
-"please <link href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues\">browse</link> for the bug to see if it already exists."
+"please <link href=\"https://gitlab.gnome.org/GNOME/papers/issues\">browse</"
+"link> for the bug to see if it already exists."
 msgstr ""
 "Sobald die Erstellung des Kontos abgeschlossen ist, klicken Sie auf "
 "<gui>Neues Ticket</gui>. Bevor Sie einen Fehler melden, lesen Sie bitte die "
 "<link href=\"https://wiki.gnome.org/GettingInTouch/"
 "BugReportingGuidelines\">Bug Reporting Guidelines</link> und <link "
-"href=\"https://gitlab.gnome.org/GNOME/Incubator/papers/issues\">schauen Sie "
-"bitte nach</link>, ob der Fehler vielleicht schon gemeldet wurde."
+"href=\"https://gitlab.gnome.org/GNOME/papers/issues\"><link href=\"https://"
+"gitlab.gnome.org/GNOME/papers/issues\">schauen Sie bitte nach</link>, ob der "
+"Fehler vielleicht schon gemeldet wurde."
 
 #. (itstool) path: page/p
 #: C/bug-filing.page:33
@@ -3704,24 +3672,26 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/editing.page:7
-msgid "You can't use <app>Papers</app> to edit files."
+msgid "You can't use <app>Document Viewer</app> to edit files."
 msgstr ""
-"Sie können <app>Papers</app> nicht zum Bearbeiten von Dateien verwenden."
+"Sie können <app>Dokumentenbetrachter</app> nicht zum Bearbeiten von Dateien "
+"verwenden."
 
 #. (itstool) path: page/title
 #: C/editing.page:21
-msgid "Can I edit documents in Papers?"
-msgstr "Kann ich Dokumente in Papers bearbeiten?"
+msgid "Can I edit documents in Document Viewer?"
+msgstr "Kann ich Dokumente in Dokumentenbetrachter bearbeiten?"
 
 #. (itstool) path: page/p
 #: C/editing.page:24
 msgid ""
-"<app>Papers</app> can't be used to make changes to documents. You need to "
-"use the appropriate editing application for the type of file you want to "
-"change."
+"<app>Document Viewer</app> can't be used to make changes to documents. You "
+"need to use the appropriate editing application for the type of file you "
+"want to change."
 msgstr ""
-"<app>Papers</app> kann nicht eingesetzt werden, um Dokumente zu verändern. "
-"Sie müssen dafür die für den Dateityp passende Anwendung verwenden."
+"<app>Dokumentenbetrachter</app> kann nicht eingesetzt werden, um Dokumente "
+"zu verändern. Sie müssen dafür die für den Dateityp passende Anwendung "
+"verwenden."
 
 #. (itstool) path: note/p
 #: C/editing.page:30
@@ -3736,6 +3706,45 @@ msgstr ""
 "<app>LibreOffice Draw</app> oder <app>Okular</app>. Weiterhin gibt es "
 "<app>pdfarranger</app>, womit Sie Seiten neu anordnen oder entfernen sowie "
 "Dateien zusammenführen können."
+
+#~ msgid "Save current settings as default for new documents."
+#~ msgstr ""
+#~ "Die aktuellen Einstellungen als Vorgabe für neue Dokumente speichern."
+
+#~ msgid "Sindhu S"
+#~ msgstr "Sindhu S"
+
+#~ msgid "Change default settings"
+#~ msgstr "Die Vorgabeeinstellungen ändern"
+
+#~ msgid ""
+#~ "When a document is opened for the first time, default settings, such as "
+#~ "zoom and page view preferences, are applied. Any changes you make to "
+#~ "these settings are saved for the document."
+#~ msgstr ""
+#~ "Wenn ein Dokument zum ersten Mal geöffnet wird, werden "
+#~ "Vorgabeeinstellungen wie Vergrößerung und Ansichtsoptionen angewendet. "
+#~ "Jede Änderung, die Sie an diesen Einstellungen vornehmen, wird für das "
+#~ "Dokument gespeichert."
+
+#~ msgid ""
+#~ "You can save the settings which you are currently using as default for "
+#~ "all new documents by pressing the menu button in the top-right corner of "
+#~ "the window and selecting <gui style=\"menuitem\">Save Current Settings as "
+#~ "Default</gui>."
+#~ msgstr ""
+#~ "Sie können die Einstellungen, die Sie aktuell verwenden, als Vorgabe für "
+#~ "alle Dokumente speichern. Klicken Sie hierzu auf den Menüknopf in der "
+#~ "oberen rechten Ecke des Fensters und wählen Sie <gui "
+#~ "style=\"menuitem\">Momentane Einstellungen als Standard speichern</gui>."
+
+#~ msgid ""
+#~ "The new default settings do not override settings of previously opened "
+#~ "documents, they are applied only to documents opened for the first time."
+#~ msgstr ""
+#~ "Die neuen Vorgabeeinstellungen gelten nicht für Dokumente, die zuvor "
+#~ "bereits einmal geöffnet waren, sondern werden nur für Dokumente "
+#~ "angewendet, die zum ersten Mal geöffnet werden."
 
 #~ msgid "You can convert a document to PostScript."
 #~ msgstr "Sie können ein Dokument in eine PostScript-Datei umwandeln."
@@ -3940,15 +3949,15 @@ msgstr ""
 #~ msgstr "Vim-latex"
 
 #~ msgid ""
-#~ "The <app>gedit</app> plugin contains a python script (<file>evince_dbus."
-#~ "py</file>) that can be used to get SyncTeX working with Vim. In order to "
-#~ "use vim-latex together with the <app>document viewer</app> you need to "
-#~ "follow the next steps:"
+#~ "The <app>gedit</app> plugin contains a python script "
+#~ "(<file>evince_dbus.py</file>) that can be used to get SyncTeX working "
+#~ "with Vim. In order to use vim-latex together with the <app>document "
+#~ "viewer</app> you need to follow the next steps:"
 #~ msgstr ""
-#~ "Das <app>gedit</app>-Plugin enthält ein Python-Skript (<file>evince_dbus."
-#~ "py</file>), das verwendet werden kann, damit SyncteX mit Vim arbeiten "
-#~ "kann. Um vim-latex zusammen mit dem <app>Dokumentenbetrachter</app> "
-#~ "einzusetzen, gehen Sie wie folgt vor:"
+#~ "Das <app>gedit</app>-Plugin enthält ein Python-Skript "
+#~ "(<file>evince_dbus.py</file>), das verwendet werden kann, damit SyncteX "
+#~ "mit Vim arbeiten kann. Um vim-latex zusammen mit dem "
+#~ "<app>Dokumentenbetrachter</app> einzusetzen, gehen Sie wie folgt vor:"
 
 #~ msgid ""
 #~ "Copy the <file>evince_dbus.py</file> to some directory in your path and "
