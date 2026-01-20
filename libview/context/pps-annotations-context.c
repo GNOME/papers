@@ -727,8 +727,8 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 			annot = pps_annotation_ink_new (page);
 		}
 
-		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (annot), add_data->ink_list);
-		pps_annotation_ink_set_time_list (PPS_ANNOTATION_INK (annot), add_data->times);
+		pps_annotation_ink_set_ink_list (PPS_ANNOTATION_INK (annot), pps_ink_list_copy (add_data->ink_list));
+		pps_annotation_ink_set_time_list (PPS_ANNOTATION_INK (annot), g_slist_copy_deep (add_data->times, (GCopyFunc) pps_ink_time_copy, NULL));
 		pps_annotation_set_border_width (annot, add_data->line_width);
 		if (ink_transformation)
 			ink_transformation (annot, ink_transformation_data);
