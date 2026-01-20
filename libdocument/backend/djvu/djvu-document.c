@@ -442,7 +442,7 @@ djvu_document_get_thumbnail (PpsDocument *document,
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document);
 	GdkPixbuf *pixbuf, *rotated_pixbuf;
-	gdouble page_width, page_height;
+	gdouble page_width = 0., page_height = 0.;
 	gint thumb_width, thumb_height;
 	guchar *pixels;
 
@@ -480,7 +480,7 @@ djvu_document_get_thumbnail_surface (PpsDocument *document,
 {
 	DjvuDocument *djvu_document = DJVU_DOCUMENT (document);
 	cairo_surface_t *surface, *rotated_surface;
-	gdouble page_width, page_height;
+	gdouble page_width = 0., page_height = 0.;
 	gint thumb_width, thumb_height;
 	gchar *pixels;
 	gint thumbnail_rendered;
