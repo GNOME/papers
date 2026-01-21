@@ -857,8 +857,20 @@ menu view-popup-menu {
     }
 
     item {
+      label: _("Send an Email");
+      action: "doc.send-email";
+      hidden-when: "action-disabled";
+    }
+
+    item {
       label: _("_Copy Link Address");
       action: "doc.copy-link-address";
+      hidden-when: "action-disabled";
+    }
+
+    item {
+      label: _("Copy Email Address");
+      action: "doc.copy-email-address";
       hidden-when: "action-disabled";
     }
 

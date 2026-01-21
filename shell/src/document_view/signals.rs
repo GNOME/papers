@@ -451,6 +451,7 @@ impl imp::PpsDocumentView {
 
     fn view_menu_link_popup(&self, link: Option<papers_document::Link>) {
         let mut show_external = false;
+        let mut show_email = false;
         let mut show_internal = false;
 
         self.link.take();
@@ -461,14 +462,26 @@ impl imp::PpsDocumentView {
             if let Some(action) = link.action() {
                 match action.action_type() {
                     LinkActionType::GotoDest | LinkActionType::GotoRemote => show_internal = true,
-                    LinkActionType::ExternalUri | LinkActionType::Launch => show_external = true,
+                    LinkActionType::ExternalUri | LinkActionType::Launch => {
+                        if let Some(uri) = action.uri() {
+                            if uri.starts_with("mailto:") {
+                                show_email = true;
+                            } else {
+                                show_external = true;
+                            }
+                        } else {
+                            show_external = true;
+                        }
+                    }
                     _ => (),
                 }
             }
         }
 
         self.set_action_enabled("open-link", show_external);
+        self.set_action_enabled("send-email", show_email);
         self.set_action_enabled("copy-link-address", show_external);
+        self.set_action_enabled("copy-email-address", show_email);
         self.set_action_enabled("go-to-link", show_internal);
         self.set_action_enabled("open-link-new-window", show_internal);
     }

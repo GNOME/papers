@@ -440,6 +440,15 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
+            gio::ActionEntryBuilder::new("send-email")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        obj.view.handle_link(obj.link.borrow().as_ref().unwrap());
+                    }
+                ))
+                .build(),
             gio::ActionEntryBuilder::new("go-to-link")
                 .activate(glib::clone!(
                     #[weak(rename_to = obj)]
@@ -473,6 +482,21 @@ impl imp::PpsDocumentView {
                     move |_, _, _| {
                         if let Some(action) = obj.link.borrow().as_ref().and_then(|l| l.action()) {
                             obj.view.copy_link_address(&action);
+                        };
+                    }
+                ))
+                .build(),
+            gio::ActionEntryBuilder::new("copy-email-address")
+                .activate(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, _, _| {
+                        if let Some(action) = obj.link.borrow().as_ref().and_then(|l| l.action()) {
+                            if let Some(uri) = action.uri() {
+                                if let Some(email) = uri.strip_prefix("mailto:") {
+                                    obj.obj().clipboard().set_text(email);
+                                }
+                            }
                         };
                     }
                 ))
