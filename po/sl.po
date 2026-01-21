@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-11-28 15:57+0000\n"
-"PO-Revision-Date: 2025-11-29 17:54+0100\n"
+"POT-Creation-Date: 2026-01-21 13:23+0000\n"
+"PO-Revision-Date: 2026-01-21 22:18+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:85 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/resources/pps-document-view.blp:87 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:359
 msgid "Document Viewer"
 msgstr "Pregledovalnik dokumentov"
@@ -436,7 +436,7 @@ msgstr "Neznana MIME vrsta"
 msgid "This work is in the Public Domain"
 msgstr "Projekt je v javni domeni"
 
-#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1082
+#: libview/context/pps-attachment-context.c:350
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Shrani priloge"
@@ -507,7 +507,7 @@ msgstr "Območje tiskanja ne vključuje nobene strani"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:565 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:602
+#: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -581,51 +581,51 @@ msgstr "Izbrana možnost določa, da bo okoli vsake strani izrisana obroba."
 msgid "Page Handling"
 msgstr "Upravljanje strani"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2111
 msgid "Go to first page"
 msgstr "Pojdi na prvo stran"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2113
 msgid "Go to previous page"
 msgstr "Pojdi na prejšnjo stran"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2115
 msgid "Go to next page"
 msgstr "Pojdi na naslednjo stran"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2117
 msgid "Go to last page"
 msgstr "Pojdi na zadnjo stran"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2119
 msgid "Go to page"
 msgstr "Pojdi na stran"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2121
 msgid "Find"
 msgstr "Poišči"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to page %s"
 msgstr "Pojdi na stran %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Pojdi na %s v datoteki »%s«"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2159
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Skoči na datoteko »%s«"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Launch %s"
 msgstr "Zaženi %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2174
 #, c-format
 msgid "Reset form"
 msgstr "Ponastavi obrazec"
@@ -692,7 +692,7 @@ msgstr "Opisnik datoteke s podatki nastavitev tiskana"
 msgid "GNOME Document Previewer"
 msgstr "Pregledovalnik dokumentov za GNOME"
 
-#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494 shell/src/application.rs:72
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
 msgid "Papers Document Viewer"
 msgstr "Pregledovalnik dokumentov"
 
@@ -701,7 +701,7 @@ msgstr "Pregledovalnik dokumentov"
 msgid "The selected printer “%s” could not be found"
 msgstr "Izbranega tiskalnika »%s« ni mogoče najti"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201 shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205 shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Dokumenti"
 
@@ -713,7 +713,7 @@ msgstr "Predhodna stran"
 msgid "Next Page"
 msgstr "Naslednja stran"
 
-#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:210
+#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Število strani"
 
@@ -725,7 +725,7 @@ msgstr "_Natisni"
 msgid "Print This Document"
 msgstr "Natisnite ta dokument"
 
-#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:287
+#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:289
 msgid "Zoom Out"
 msgstr "Oddalji"
 
@@ -733,11 +733,11 @@ msgstr "Oddalji"
 msgid "Normal Size"
 msgstr "Navadna velikost"
 
-#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:275
+#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:277
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Tiskanje dokumenta ni uspelo"
 
@@ -900,59 +900,59 @@ msgid "Pop up note while scrolling the document"
 msgstr "Pokaži pripombo med drsenjem po dokumentu"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:76
+#: shell/resources/pps-document-view.blp:78
 msgid "Search"
 msgstr "Išči"
 
-#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: shell/resources/pps-document-view.blp:110
+#: shell/resources/pps-document-view.blp:112
 msgid "Thumbnails"
 msgstr "Sličice"
 
-#: shell/resources/pps-document-view.blp:121
+#: shell/resources/pps-document-view.blp:123
 msgid "Outline"
 msgstr "Obris"
 
-#: shell/resources/pps-document-view.blp:133
+#: shell/resources/pps-document-view.blp:135
 msgid "Annotations"
 msgstr "Pripombe"
 
-#: shell/resources/pps-document-view.blp:151
+#: shell/resources/pps-document-view.blp:153
 msgid "Attachments"
 msgstr "Priloge"
 
-#: shell/resources/pps-document-view.blp:167
+#: shell/resources/pps-document-view.blp:169
 msgid "Layers"
 msgstr "Plasti"
 
-#: shell/resources/pps-document-view.blp:197
+#: shell/resources/pps-document-view.blp:199
 msgid "Toggle Sidebar"
 msgstr "Preklopi stransko okno"
 
-#: shell/resources/pps-document-view.blp:203
+#: shell/resources/pps-document-view.blp:205
 msgid "Document Menu"
 msgstr "Meni Dokument"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:225
 msgid "Document has been digitally signed."
 msgstr "Dokument je digitalno podpisan."
 
-#: shell/resources/pps-document-view.blp:224
+#: shell/resources/pps-document-view.blp:226
 msgid "View Signature…"
 msgstr "Pokaži podpis …"
 
-#: shell/resources/pps-document-view.blp:257
+#: shell/resources/pps-document-view.blp:259
 msgid "Fit Automatically"
 msgstr "Samodejno prilagodi"
 
-#: shell/resources/pps-document-view.blp:534
+#: shell/resources/pps-document-view.blp:536
 msgid "Selection too Small"
 msgstr "Izbor je premajhen"
 
-#: shell/resources/pps-document-view.blp:535
+#: shell/resources/pps-document-view.blp:537
 msgid ""
 "A signature of this size may be too small to read. If you would like to create a potentially more readable "
 "signature, press `Start over` and draw a bigger rectangle."
@@ -960,178 +960,186 @@ msgstr ""
 "Podpis te velikosti je lahko premajhen za branje. Če želite ustvariti bolj berljiv podpis, pritisnite »Začni "
 "znova« in narišite večji pravokotnik."
 
-#: shell/resources/pps-document-view.blp:542
+#: shell/resources/pps-document-view.blp:544
 msgid "Start _Over"
 msgstr "Začnite _znova"
 
-#: shell/resources/pps-document-view.blp:543
+#: shell/resources/pps-document-view.blp:545
 msgid "_Sign"
 msgstr "_Podpiši"
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:552
 msgid "Abort Printing?"
 msgstr "Prekinitev tiskanja?"
 
-#: shell/resources/pps-document-view.blp:551
+#: shell/resources/pps-document-view.blp:553
 msgid "There is one or more active print jobs. If the window is closed, pending print jobs will not be printed."
 msgstr ""
 "Obstaja eno ali več dejavnih opravil tiskanja. V primeru, da zaprete okno, čakajoči posli tiskanja ne bodo "
 "izvršeni."
 
-#: shell/resources/pps-document-view.blp:555
+#: shell/resources/pps-document-view.blp:557
 msgid "Abort _Print and Close"
 msgstr "Prekini _tiskanje in zapri okno"
 
-#: shell/resources/pps-document-view.blp:556 shell/src/document_view.rs:740 shell/src/document_view/io.rs:486
-#: shell/src/document_view/io.rs:530 shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741 shell/src/document_view/io.rs:490
+#: shell/src/document_view/io.rs:538 shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:559
 msgid "Close _After Printing"
 msgstr "Zapri _po tiskanju"
 
-#: shell/resources/pps-document-view.blp:572
+#: shell/resources/pps-document-view.blp:574
 msgid "Open…"
 msgstr "Odpri …"
 
-#: shell/resources/pps-document-view.blp:579
+#: shell/resources/pps-document-view.blp:581
 msgid "Ni_ght Mode"
 msgstr "_Nočni način prikaza"
 
-#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice‫"
 
-#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:593 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: shell/resources/pps-document-view.blp:596 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:598 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_O Pregledovalniku dokumentov"
 
-#: shell/resources/pps-document-view.blp:605
+#: shell/resources/pps-document-view.blp:607
 msgid "_Print…"
 msgstr "Na_tisni …"
 
-#: shell/resources/pps-document-view.blp:610
+#: shell/resources/pps-document-view.blp:612
 msgid "Fullscreen"
 msgstr "Celozaslonski način"
 
-#: shell/resources/pps-document-view.blp:615
+#: shell/resources/pps-document-view.blp:617
 msgid "Present as Slideshow"
 msgstr "Prikaži kot diapredstavitev"
 
-#: shell/resources/pps-document-view.blp:622
+#: shell/resources/pps-document-view.blp:624
 msgid "Sign D_igitally…"
 msgstr "Podpiši d_igitalno …"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:631
 msgid "Open a C_opy"
 msgstr "Odpri kopijo"
 
-#: shell/resources/pps-document-view.blp:634 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:636 shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Odpri z …"
 
-#: shell/resources/pps-document-view.blp:639
+#: shell/resources/pps-document-view.blp:641
 msgid "_Save As…"
 msgstr "S_hrani kot …"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:648
 msgid "_Continuous"
 msgstr "N_eprekinjeno premikanje"
 
-#: shell/resources/pps-document-view.blp:651
+#: shell/resources/pps-document-view.blp:653
 msgid "_Dual"
 msgstr "_Dvojni pogled strani"
 
-#: shell/resources/pps-document-view.blp:656
+#: shell/resources/pps-document-view.blp:658
 msgid "_Odd Pages Left"
 msgstr "_Preostale lihe strani"
 
-#: shell/resources/pps-document-view.blp:661
+#: shell/resources/pps-document-view.blp:663
 msgid "Right to Left Document"
 msgstr "Dokument z zapisom z desne proti levi"
 
-#: shell/resources/pps-document-view.blp:668
+#: shell/resources/pps-document-view.blp:670
 msgid "Ro_tate ⤵"
 msgstr "Zavrti _levo ⤵"
 
-#: shell/resources/pps-document-view.blp:675
+#: shell/resources/pps-document-view.blp:677
 msgid "Document Prop_erties"
 msgstr "Lastnosti do_kumenta"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:713
+#: shell/resources/pps-document-view.blp:715
 msgid "Highlight (h)"
 msgstr "Poudarek (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:729
+#: shell/resources/pps-document-view.blp:731
 msgid "Strikethrough (k)"
 msgstr "Prečrtano (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:745
+#: shell/resources/pps-document-view.blp:747
 msgid "Underline (u)"
 msgstr "Podčrtano (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:761
+#: shell/resources/pps-document-view.blp:763
 msgid "Squiggly (q)"
 msgstr "Čačka (q)"
 
-#: shell/resources/pps-document-view.blp:852
+#: shell/resources/pps-document-view.blp:854
 msgid "_Open Link"
 msgstr "_Odpri povezavo"
 
-#: shell/resources/pps-document-view.blp:858
+#: shell/resources/pps-document-view.blp:860
+msgid "Send an Email"
+msgstr "Pošlji e-sporočilo"
+
+#: shell/resources/pps-document-view.blp:866
 msgid "_Copy Link Address"
 msgstr "_Kopiraj naslov povezave"
 
-#: shell/resources/pps-document-view.blp:864
+#: shell/resources/pps-document-view.blp:872
+msgid "Copy Email Address"
+msgstr "Kopiraj elektronski naslov"
+
+#: shell/resources/pps-document-view.blp:878
 msgid "_Go To"
 msgstr "Sk_oči na"
 
-#: shell/resources/pps-document-view.blp:870
+#: shell/resources/pps-document-view.blp:884
 msgid "Open in New _Window"
 msgstr "Odpri v _novem oknu"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:892
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: shell/resources/pps-document-view.blp:883
+#: shell/resources/pps-document-view.blp:897
 msgid "Select _All"
 msgstr "Izberi _vse"
 
-#: shell/resources/pps-document-view.blp:890
+#: shell/resources/pps-document-view.blp:904
 msgid "_Save Image As…"
 msgstr "S_hrani sliko kot …"
 
-#: shell/resources/pps-document-view.blp:896
+#: shell/resources/pps-document-view.blp:910
 msgid "Copy _Image"
 msgstr "Kopiraj _sliko"
 
-#: shell/resources/pps-document-view.blp:904 shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:918 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Odpri prilogo"
 
-#: shell/resources/pps-document-view.blp:910 shell/resources/pps-sidebar-annotations.blp:84
+#: shell/resources/pps-document-view.blp:924 shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "Shrani prilogo _kot …"
 
-#: shell/resources/pps-document-view.blp:920
+#: shell/resources/pps-document-view.blp:934
 msgid "Annotation _Properties…"
 msgstr "Lastnosti _pripombe …"
 
-#: shell/resources/pps-document-view.blp:926
+#: shell/resources/pps-document-view.blp:940
 msgid "R_emove Annotation"
 msgstr "_Odstrani pripombo"
 
-#: shell/resources/pps-document-view.blp:934
+#: shell/resources/pps-document-view.blp:948
 msgid "_Add Text Annotation"
 msgstr "_Dodaj besedilno pripombo"
 
@@ -1155,12 +1163,12 @@ msgstr "Rezultati iskanja bodo prikazani tukaj"
 msgid "Loading Document"
 msgstr "Poteka nalaganje dokumenta"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "P_rekliči"
 
 #: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "Zahtevano geslo"
 
@@ -1681,99 +1689,77 @@ msgstr "Pokaži različico programa."
 msgid "[FILE…]"
 msgstr "[DATOTEKA ...]"
 
-#: shell/src/document_view.rs:314
+#: shell/src/document_view.rs:315
 msgid "View Details"
 msgstr "Pokaži podrobnosti"
 
-#: shell/src/document_view.rs:719
+#: shell/src/document_view.rs:720
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Dokument vsebuje nove ali spremenjene opombe in polja obrazcev, ki so izpolnjena."
 
-#: shell/src/document_view.rs:720
+#: shell/src/document_view.rs:721
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokument vsebuje že izpolnjena polja obrazca."
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:722
 msgid "Document contains new or modified annotations."
 msgstr "Dokument vsebuje nove ali spremenjene pripombe."
 
-#: shell/src/document_view.rs:729
+#: shell/src/document_view.rs:730
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "V primeru, da kopije ne shranite, bodo spremembe trajno izgubljene."
 
-#: shell/src/document_view.rs:730
+#: shell/src/document_view.rs:731
 msgid "Save Changes to a Copy?"
 msgstr "Ali želite shraniti spremembe v kopijo?"
 
-#: shell/src/document_view.rs:739
+#: shell/src/document_view.rs:740
 msgid "Close _Without Saving"
 msgstr "Zapri _brez shranjevanja"
 
-#: shell/src/document_view.rs:741
+#: shell/src/document_view.rs:742
 msgid "_Save a Copy"
 msgstr "_Shrani kopijo"
 
-#: shell/src/document_view/actions.rs:508
-msgid "Annotation deleted"
-msgstr "Pripomba izbrisana"
-
-#: shell/src/document_view/actions.rs:509
-msgid "_Undo"
-msgstr "_Razveljavi"
-
-#: shell/src/document_view/actions.rs:884
+#: shell/src/document_view/actions.rs:908
 msgid "Save Image"
 msgstr "Shrani sliko"
 
-#: shell/src/document_view/actions.rs:920
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Ni mogoče najti ustreznega zapisa za shranjevanje slike"
-
-#: shell/src/document_view/actions.rs:937
-msgid "The image could not be saved."
-msgstr "Slike ni mogoče shraniti."
-
-#: shell/src/document_view/actions.rs:1009
+#: shell/src/document_view/actions.rs:1033
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Način krmarjenja kazalke je zdaj omogočen, pritisnite F7, da ga onemogočite."
 
-#: shell/src/document_view/actions.rs:1011
+#: shell/src/document_view/actions.rs:1035
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Način krmarjenja kazalke je zdaj onemogočen, pritisnite F7, da ga omogočite."
 
-#: shell/src/document_view/actions.rs:1066 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1090
 msgid "Unable to Open Attachment"
 msgstr "Ni mogoče odpreti priloge"
 
-#: shell/src/document_view/actions.rs:1099
-msgid "The attachment could not be saved."
-msgstr "Ni mogoče shraniti priloge."
+#: shell/src/document_view/actions.rs:1106
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Shrani prilogo"
 
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "Digitalni podpis je neveljaven"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "Dokument ne vsebuje nobene strani"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokument vsebuje le prazne strani"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Ni mogoče shraniti datoteke kot »{}«."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "Shrani kot …"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Narišite pravokotnik za vstavljanje polja s podpisom"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:512
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1781,68 +1767,80 @@ msgstr ""
 "Digitalno podpisal/a {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "Potrebno je potrdilo"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "Izberite potrdilo za podpisovanje"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "Izberi"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "Za podpis tega dokumenta je potrebno potrdilo"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "Shrani podpisano datoteko"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:714
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Vnesite geslo za {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "_Prijava"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "Tiskanje »{}«"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "V čakalni vrsti ni čakajočih poslov"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Ni mogoče odpreti zunanje povezave"
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} čakajočih poslov v čakalni vrsti"
+msgstr[1] "{} čakajoč posel v čakalni vrsti"
+msgstr[2] "{} čakajoča posla v čakalni vrsti"
+msgstr[3] "{} čakajoči posli v čakalni vrsti"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/signals.rs:255
+#, rust-format
 msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Varnostno opozorilo: dokumentu je bilo onemogočeno odpiranje datoteke »{}«"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77 shell/src/sidebar_annotations_row.rs:82
+#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Stran {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} / {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#, rust-format
 msgid "of {}"
 msgstr "od {}"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
+#, rust-format
 msgid "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Dokument »{}« je zaklenjen in zahteva geslo, preden ga lahko odprete."
 
@@ -1877,86 +1875,6 @@ msgstr "Vsebina"
 #: shell/src/properties_general.rs:314
 msgid "Date &amp; Time"
 msgstr "Datum in čas"
-
-#: shell/src/properties_signatures.rs:138 shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Podpisal/a"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Podpis je veljaven."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Podpis je neveljaven."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "Dokument je bil po podpisu spremenjen."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Podpisa ni bilo mogoče dekodirati."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Napaka pri preverjanju podpisa."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Podpisano s potrdilom, ki ga je izdal zaupanja vreden izdajatelj."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Podpisano s potrdilom, ki ga je izdal zaupanja nevreden izdajatelj."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Podpisano s potrdilom, ki ga je izdal neznani izdajatelj."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Podpisano s preklicanim potrdilom."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Podpisano s poteklim potrdilom."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Napaka pri preverjanju potrdila."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "Potrdilo ni bilo preverjeno."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Organizacija"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Datum in čas"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Izdajatelj potrdila"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "E-poštni naslov izdajatelja potrdila"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Organizacija izdajatelja potrdila"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Čas izdaje potrdila"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Čas poteka potrdila"
 
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
