@@ -3,11 +3,11 @@
 # Copyright (C) 2010, 2011, 2013, 2014, 2016 Free Software Foundation, Inc.
 # Copyright (C) 2009, 2011, 2012, 2013 Krasimir Chonov <mk2616@abv.bg>.
 # Copyright (C) 2015 Krasimir Chonov <mk2616@abv.bg>.
-# Copyright (C) 2021, 2022, 2023 Alexander Shopov <ash@kambanaria.org>.
+# Copyright (C) 2021, 2022, 2023, 2026 Alexander Shopov <ash@kambanaria.org>.
 # This file is distributed under the same license as the evince package.
 # Rostislav "zbrox" Raykov <zbrox@i-space.org>, 2005.
 # Vladimir "kaladan" Petkov <kaladan@gmail.com>, 2005, 2006, 2007.
-# Alexander Shopov <ash@kambanaria.org>, 2006, 2007, 2008, 2009, 2011, 2015, 2016, 2021, 2022, 2023, 2025.
+# Alexander Shopov <ash@kambanaria.org>, 2006, 2007, 2008, 2009, 2011, 2015, 2016, 2021, 2022, 2023, 2025, 2026.
 # Krasimir Chonov <mk2616@abv.bg>, 2009, 2011, 2012, 2013.
 # Yavor Doganov <yavor@gnu.org>, 2008.
 # Ivaylo Valkov <ivaylo@e-valkov.org>, 2010, 2014.
@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-07-27 08:28+0000\n"
-"PO-Revision-Date: 2025-07-28 14:27+0200\n"
+"POT-Creation-Date: 2026-01-04 02:56+0000\n"
+"PO-Revision-Date: 2026-01-22 09:31+0100\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -204,12 +204,12 @@ msgstr ""
 msgid "Can not get local path for archive"
 msgstr "Локалният път до архива не може да бъде открит"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:3
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Комикси"
 
-#: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:6
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading comic books"
 msgstr "Добавя поддръжка за четене на комикси"
 
@@ -223,35 +223,35 @@ msgid ""
 "be accessed."
 msgstr "Документът е изграден от няколко файла. Някои от тях не са достъпни."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:3
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "Документи DjVu"
 
-#: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:6
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading DjVu documents"
 msgstr "Добавя поддръжка за четене на документи DjVu"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "Документи PDF"
 
-#: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:6
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading PDF Documents"
 msgstr "Добавя поддръжка за четене на документи PDF"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Да"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Не"
 
@@ -390,12 +390,12 @@ msgstr ""
 "Кодиране: %s\n"
 "%s"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "Документи TIFF"
 
-#: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:6
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
 msgid "Adds support for reading TIFF documents"
 msgstr "Добавя поддръжка за четене на документи TIFF"
 
@@ -403,17 +403,17 @@ msgstr "Добавя поддръжка за четене на документ�
 msgid "Invalid document"
 msgstr "Неправилен документ"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Неуспешно запазване на прикрепения файл „%s“: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Неуспешно отваряне на прикрепения файл „%s“: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Неуспешно отваряне на прикрепения файл „%s“"
@@ -465,14 +465,14 @@ msgstr "%s, вертикално (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, хоризонтално (%s)"
 
-#: libdocument/pps-file-helpers.c:135
+#: libdocument/pps-file-helpers.c:131
 #, c-format
 msgid "Failed to create a temporary file: %s"
 msgstr "Неуспешно създаване на временен файл: %s"
 
-#: libdocument/pps-file-helpers.c:356 libdocument/pps-file-helpers.c:402
-#: libdocument/pps-file-helpers.c:411 libdocument/pps-file-helpers.c:492
-#: libdocument/pps-file-helpers.c:501
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
 msgstr "Непознат вид MIME"
 
@@ -480,7 +480,7 @@ msgstr "Непознат вид MIME"
 msgid "This work is in the Public Domain"
 msgstr "Тази творба е обществено достояние"
 
-#: libview/context/pps-attachment-context.c:349
+#: libview/context/pps-attachment-context.c:350
 #: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
@@ -551,7 +551,7 @@ msgstr "Обхватът за печат не включва нито една �
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:604
 msgid "_Close"
 msgstr "_Затваряне"
 
@@ -631,51 +631,51 @@ msgstr "Когато е включено, около всяка страница
 msgid "Page Handling"
 msgstr "Управление на страниците"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2110
 msgid "Go to first page"
 msgstr "Към първата страница"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "Към предишната страница"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "Към следващата страница"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2116
 msgid "Go to last page"
 msgstr "Към последната страница"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "Към страница"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "Търсене"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "Към страница %s"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Към %s във файла „%s“"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Към файла „%s“"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "Стартиране на %s"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
 msgstr "Изчистване на формуляра"
@@ -744,7 +744,6 @@ msgid "GNOME Document Previewer"
 msgstr "Преглед на документи"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Преглед на документи"
 
@@ -753,8 +752,8 @@ msgstr "Преглед на документи"
 msgid "The selected printer “%s” could not be found"
 msgstr "Избраният принтер „%s“ не може да бъде открит"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Papers"
 
@@ -797,13 +796,13 @@ msgstr "Увеличаване"
 msgid "Failed to Print Document"
 msgstr "Документът не може да бъде отпечатан"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Непознато"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Свойства на документа"
 
@@ -994,7 +993,7 @@ msgstr "Страничен панел"
 msgid "Document Menu"
 msgstr "Меню на документа"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "Документът е електронно подписан."
 
@@ -1044,9 +1043,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "_Прекратяване на печатането и затваряне"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
+#: shell/src/document_view/io.rs:716
 msgid "_Cancel"
 msgstr "_Отмяна"
 
@@ -1227,7 +1226,7 @@ msgstr "_Отмяна"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
 msgid "Password Required"
 msgstr "Изисква се парола"
 
@@ -1325,8 +1324,8 @@ msgstr "Р_азлика между главни/малки букви"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "Opening, Closing, Saving and Printing"
-msgstr "Отваряне, затваряне, запазване и отпечатване"
+msgid "File"
+msgstr "Файл"
 
 #: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
@@ -1385,8 +1384,8 @@ msgstr "Придвижване"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
 msgctxt "shortcut window"
-msgid "Selecting and Copying Text"
-msgstr "Избор и копиране на текст"
+msgid "Selection"
+msgstr "Избор"
 
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
@@ -1400,8 +1399,8 @@ msgstr "Избор на всичко"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Rotating and Zooming"
-msgstr "Завъртане и мащабиране"
+msgid "Zoom and Rotation"
+msgstr "Мащабиране и завъртане"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1450,8 +1449,8 @@ msgstr "Автоматично мащабиране"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
 msgctxt "shortcut window"
-msgid "Moving Around Document"
-msgstr "Преместване в документа"
+msgid "Navigation"
+msgstr "Придвижване"
 
 #: shell/resources/pps-shortcuts-dialog.blp:130
 msgctxt "shortcut window"
@@ -1515,8 +1514,8 @@ msgstr "Към началото на документа"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
-msgid "Document View and Handling"
-msgstr "Преглед и обработка на документи"
+msgid "Document View"
+msgstr "Преглед на документи"
 
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
@@ -1580,8 +1579,8 @@ msgstr "Подчертаване на текст"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
 msgctxt "shortcut window"
-msgid "Finding Text"
-msgstr "Търсене на текст"
+msgid "Search"
+msgstr "Търсене"
 
 #: shell/resources/pps-shortcuts-dialog.blp:258
 msgctxt "shortcut window"
@@ -1655,19 +1654,19 @@ msgstr "Свойства на анотацията"
 msgid "Remove Annotation"
 msgstr "Премахване на анотацията"
 
-#: shell/resources/pps-sidebar-links.blp:47
+#: shell/resources/pps-sidebar-links.blp:48
 msgid "Collapse all tree"
 msgstr "Сгъване на цялото дърво"
 
-#: shell/resources/pps-sidebar-links.blp:52
+#: shell/resources/pps-sidebar-links.blp:53
 msgid "Expand all tree"
 msgstr "Разгъване на цялото дърво"
 
-#: shell/resources/pps-sidebar-links.blp:57
+#: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
 msgstr "Разгъване на всичко под този елемент"
 
-#: shell/resources/pps-sidebar-links.blp:64
+#: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
 msgstr "Печатане на този раздел…"
 
@@ -1765,11 +1764,11 @@ msgstr "Извеждане на версията на програмата."
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "Показване на подробностите"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1777,41 +1776,33 @@ msgstr ""
 "Документът съдържа нови или променени анотации и формуляри с попълнени "
 "полета."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "Документът съдържа формуляри с попълнени полета."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "Документът съдържа нови или променени анотации."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Ако не запазите копие, промените ще бъдат безвъзвратно загубени."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "Искате ли да запазите копие?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "Затваряне _без запазване"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "Запазване на _копие"
 
 #: shell/src/document_view/actions.rs:844
 msgid "Save Image"
 msgstr "Запазване на изображение"
-
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Неуспешно намиране на подходящ формат за запазване на изображението"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "Неуспешно запазване на изображението."
 
 #: shell/src/document_view/actions.rs:969
 msgid "Caret navigation mode is now enabled, press F7 to disable."
@@ -1821,76 +1812,67 @@ msgstr "Режимът за придвижване е включен, натис
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Режимът за придвижване е изключен, натиснете F7, за да го включите."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1026
 msgid "Unable to Open Attachment"
 msgstr "Прикрепеният файл не може да бъде отворен"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "Прикрепеният файл не може да бъде запазен."
-
-#: shell/src/document_view/io.rs:269
-msgid "Digital Signature is invalid!"
-msgstr "Неправилен електронен подпис!"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "Документът не съдържа страници"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "Документът съдържа само празни страници"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Файлът не може да бъде запазен като „{}“."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:411
 msgid "Save As…"
 msgstr "_Запазване като…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:487
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Изчертайте правоъгълник, за да вмъкнете поле за подпис"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:509
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
 msgstr ""
-"Електронно подписан от %s\n"
+"Електронно подписан от {}\n"
 "Дата: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:525
 msgid "Certificate Required"
 msgstr "Необходим е сертификат"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:528
 msgid "Select signing certificate"
 msgstr "Избор на сертификат за подпис"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:529
 msgid "Select"
 msgstr "Избор"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:602
 msgid "A certificate is required to sign this document"
 msgstr "За подписването на документа е необходим сертификат"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:671
 msgid "Save Signed File"
 msgstr "Запазване на подписан файл"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:701
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Въведете парола за „{}“"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:717
 msgid "_Login"
 msgstr "_Вписване"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "Отпечатване на задача „{}“"
 
@@ -1898,33 +1880,34 @@ msgstr "Отпечатване на задача „{}“"
 msgid "No pending jobs in queue"
 msgstr "Няма задачи в опашката"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Външната връзка не може да бъде отворена"
-
 #: shell/src/document_view/signals.rs:254
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "ВНИМАНИЕ ЗА СИГУРНОСТ: този документ не може да отвори файла „{}“"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Страница {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} от {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#, rust-format
 msgid "of {}"
 msgstr "от {}"
 
 #: shell/src/password_view.rs:145
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Документът „{}“ е заключен и изисква парола, за да бъде отворен"
@@ -1961,126 +1944,6 @@ msgstr "Съдържание"
 msgid "Date &amp; Time"
 msgstr "Дата и час"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Подписан от"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Подписът е валиден."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Подписът е невалиден."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "Документът е променен след подписването."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Подписът не може да се разчете."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Грешка при потвърждаване на подписа."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Подписан със сертификат от надежден издател."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Подписан със сертификат от ненадежден издател."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Подписан със сертификат от неизвестен издател."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Подписан с отменен сертификат."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Подписан с изтекъл сертификат."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Грешка при потвърждаване на сертификата."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "Сертификатът не е потвърден."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Организация"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Дата и час"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Издател на сертификата"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "Е-поща на издателя на сертификата"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Организация на издателя на сертификата"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Време на издаване на сертификата"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Срок на валидност на сертификата"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Скриване на подробностите…"
-
-#~ msgid "Scroll Up"
-#~ msgstr "Придвижване нагоре"
-
-#~ msgid "Scroll Down"
-#~ msgstr "Придвижване надолу"
-
-#~ msgid "Scroll View Up"
-#~ msgstr "Придвижване на изгледа нагоре"
-
-#~ msgid "Scroll View Down"
-#~ msgstr "Придвижване на изгледа надолу"
-
-#~ msgid "Document View"
-#~ msgstr "Преглед на документи"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Touchpad Gestures"
-#~ msgstr "Жестове за сензорен панел"
-
-#~ msgid "Initially Opened"
-#~ msgstr "Първоначално отворен"
-
-#~ msgid "_Apply"
-#~ msgstr "_Прилагане"
-
-#~ msgid "_About Papers"
-#~ msgstr "_Относно „Документи“"
-
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "{} задача в опашката"
-#~ msgstr[1] "{} задачи в опашката"
-
-#~ msgid "_Highlight Selected Text"
-#~ msgstr "О_цветяване на избрания текст"
-
-#~ msgid "Open With..."
-#~ msgstr "Отваряне с…"
