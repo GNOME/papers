@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-12-07 11:02+0000\n"
-"PO-Revision-Date: 2025-12-23 16:16+0100\n"
+"POT-Creation-Date: 2026-01-21 13:23+0000\n"
+"PO-Revision-Date: 2026-01-25 00:48+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -437,7 +437,7 @@ msgstr "Tipe MIME desconegut"
 msgid "This work is in the Public Domain"
 msgstr "Aquesta òbra es dins lo domeni public"
 
-#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1082
+#: libview/context/pps-attachment-context.c:350
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Enregistrar la pèça junta"
@@ -506,7 +506,7 @@ msgstr "Vòstre interval d'impression inclutz pas cap de pagina"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81 shell/resources/pps-document-view.blp:567
-#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:604
+#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Tampar"
 
@@ -738,7 +738,7 @@ msgstr "Talha normala"
 msgid "Zoom In"
 msgstr "Zoom avant"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "L'impression del document a fracassat"
 
@@ -983,8 +983,8 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
-#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741 shell/src/document_view/io.rs:488
-#: shell/src/document_view/io.rs:532 shell/src/document_view/io.rs:716
+#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741 shell/src/document_view/io.rs:490
+#: shell/src/document_view/io.rs:538 shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Anullar"
 
@@ -1089,50 +1089,58 @@ msgid "_Open Link"
 msgstr "_Dobrir lo ligam"
 
 #: shell/resources/pps-document-view.blp:860
+msgid "Send an Email"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:866
 msgid "_Copy Link Address"
 msgstr "_Copiar l'adreça del ligam"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:872
+msgid "Copy Email Address"
+msgstr "Copiar l’adreça electronica"
+
+#: shell/resources/pps-document-view.blp:878
 msgid "_Go To"
 msgstr "A_nar a"
 
-#: shell/resources/pps-document-view.blp:872
+#: shell/resources/pps-document-view.blp:884
 msgid "Open in New _Window"
 msgstr "Dobrir dins una _novèla fenèstra"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:892
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:897
 msgid "Select _All"
 msgstr "Seleccionar _tot"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:904
 msgid "_Save Image As…"
 msgstr "_Enregistrar l'imatge jos…"
 
-#: shell/resources/pps-document-view.blp:898
+#: shell/resources/pps-document-view.blp:910
 msgid "Copy _Image"
 msgstr "Copiar l'_imatge"
 
-#: shell/resources/pps-document-view.blp:906 shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:918 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Dobrir la pèça junta"
 
-#: shell/resources/pps-document-view.blp:912 shell/resources/pps-sidebar-annotations.blp:84
+#: shell/resources/pps-document-view.blp:924 shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_Enregistrar la pèça junta jos…"
 
-#: shell/resources/pps-document-view.blp:922
+#: shell/resources/pps-document-view.blp:934
 msgid "Annotation _Properties…"
 msgstr "_Proprietats de l'anotacion…"
 
-#: shell/resources/pps-document-view.blp:928
+#: shell/resources/pps-document-view.blp:940
 msgid "R_emove Annotation"
 msgstr "L_evar las anotacions"
 
-#: shell/resources/pps-document-view.blp:936
+#: shell/resources/pps-document-view.blp:948
 msgid "_Add Text Annotation"
 msgstr "_Apondre una anotacion tèxte"
 
@@ -1156,12 +1164,12 @@ msgstr "Los resultats de la recèrca s’apareisseràn aquí"
 msgid "Loading Document"
 msgstr "Cargament del document"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "An_ullar"
 
 #: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "Senhal requesit"
 
@@ -1710,21 +1718,26 @@ msgstr "Tampar _sans enregistrar"
 msgid "_Save a Copy"
 msgstr "_Enregistrar una còpia"
 
-#: shell/src/document_view/actions.rs:884
+#: shell/src/document_view/actions.rs:908
 msgid "Save Image"
 msgstr "Enregistrar l'imatge"
 
-#: shell/src/document_view/actions.rs:1009
+#: shell/src/document_view/actions.rs:1033
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Lo mòde navegacion al cursor es ara activat, quichatz F7 per lo desactivar."
 
-#: shell/src/document_view/actions.rs:1011
+#: shell/src/document_view/actions.rs:1035
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Lo mòde navegacion al cursor es ara desactivat, quichatz F7 per l’activar."
 
-#: shell/src/document_view/actions.rs:1066
+#: shell/src/document_view/actions.rs:1090
 msgid "Unable to Open Attachment"
 msgstr "Impossible de dobrir la pèça junta"
+
+#: shell/src/document_view/actions.rs:1106
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Enregistrar la pèça junta"
 
 #: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
@@ -1734,15 +1747,15 @@ msgstr "Lo document a pas cap de pagina"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Lo document conten pas que de paginas voidas"
 
-#: shell/src/document_view/io.rs:411
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "Enregistrar jos…"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Dessenhar un rectangle per inserir un camp de signatura"
 
-#: shell/src/document_view/io.rs:509
+#: shell/src/document_view/io.rs:512
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1751,32 +1764,32 @@ msgstr ""
 "Signat electronicament per {}\n"
 "Data : {}"
 
-#: shell/src/document_view/io.rs:525
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "Certificat requerit"
 
-#: shell/src/document_view/io.rs:528
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "Seleccionar lo certificat de signatura"
 
-#: shell/src/document_view/io.rs:529
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "Seleccionar"
 
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "Se requerís un certificat per signar aqueste document"
 
-#: shell/src/document_view/io.rs:671
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "Enregistrat fichièr signat"
 
-#: shell/src/document_view/io.rs:701
+#: shell/src/document_view/io.rs:714
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Mercés de picar lo senhal per {}"
 
-#: shell/src/document_view/io.rs:717
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "_Connexion"
 
@@ -1786,16 +1799,23 @@ msgstr "_Connexion"
 msgid "Printing job “{}”"
 msgstr "Impression del prètzfach « {} »"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "Cap de prètzfach en espèra dins la fila"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} prètzfach en espèra dins la fila"
+msgstr[1] "{} prètzfaches en espèra dins la fila"
+
+#: shell/src/document_view/signals.rs:255
 #, rust-format
 msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Alèrta de seguretat : avèm empachat aquesta document de dobrir lo fichièr « {} »"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88 shell/src/sidebar_annotations_row.rs:82
+#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:82
 #, rust-format
 msgid "Page {}"
 msgstr "Pagina {}"
@@ -1803,18 +1823,18 @@ msgstr "Pagina {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
 #, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
 #, rust-format
 msgid "of {}"
 msgstr "de {}"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
 #, rust-format
 msgid "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Lo document « {} » es verrolhat e se requerís un senhal abans de lo poder dobrir"
@@ -1987,11 +2007,6 @@ msgstr "Amagar los detalhs…"
 
 #~ msgid "_Apply"
 #~ msgstr "_Aplicar"
-
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "{} prètzfach en espèra dins la fila"
-#~ msgstr[1] "{} prètzfaches en espèra dins la fila"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "_Metre en susbrilhança lo tèxte seleccionat"
