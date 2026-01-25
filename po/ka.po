@@ -1,23 +1,22 @@
-# translation of Papers to Georgian
-# Copyright (C) 2024 Papers's authors
-# This file is distributed under the same license as the Papers package.
-# Vladimer Sichinava <alinux@siena.linux.it>, 2006.
-# Ekaterine Papava <papava.e@gtu.ge>, 2023-2025.
+# Georgian translation for papers.
+# Copyright (C) 2025 papers's authors
+# This file is distributed under the same license as the papers package.
+# Ekaterine Papava <papava.e@gtu.ge>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Papers\n"
+"Project-Id-Version: papers gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-15 11:56+0000\n"
-"PO-Revision-Date: 2025-08-16 13:20+0200\n"
+"POT-Creation-Date: 2025-10-12 08:33+0000\n"
+"PO-Revision-Date: 2025-10-13 04:38+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
-"Language-Team: Georgian <(nothing)>\n"
+"Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -35,7 +34,7 @@ msgstr "მრავალგვერდიანი დოკუმენტ�
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
-msgstr "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;document;presentation;viewer;papers;დოკუმენტები;დათვალიერება;"
 
 #: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
@@ -232,7 +231,7 @@ msgstr "PDF დოკუმენტების კითხვის მხა
 #: libdocument/backend/pdf/pps-poppler.c:747
 #: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
 msgid "Yes"
-msgstr "დიახ"
+msgstr "კი"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
@@ -300,7 +299,7 @@ msgstr "უსახელო"
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
-msgstr "არა"
+msgstr "არცერთი"
 
 #: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Embedded subset"
@@ -390,17 +389,17 @@ msgstr "TIFF დოკუმენტების კითხვის მხ�
 msgid "Invalid document"
 msgstr "არასწორი დოკუმენტი"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "მიმაგრებული ფაილის (%s) შენახვის შეცდომა: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "მიმაგრებული ფაილის (%s) გახსნის შეცდომა: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "მიმაგრებული ფაილის (%s) გახსნის შეცდომა"
@@ -467,7 +466,7 @@ msgstr "უცნობი MIME ტიპი"
 msgid "This work is in the Public Domain"
 msgstr "ეს ნამუშევარი საჯაროა"
 
-#: libview/context/pps-attachment-context.c:349
+#: libview/context/pps-attachment-context.c:350
 #: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
@@ -539,7 +538,7 @@ msgstr "დასაბეჭდი დიაპაზონი არც ერ
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:602
 msgid "_Close"
-msgstr "_დახურვა"
+msgstr "და_ხურვა"
 
 #. translators: Title of the print dialog
 #: libview/pps-print-operation.c:1413
@@ -619,54 +618,54 @@ msgstr "როცა ჩართულია, თითოეულ გვე�
 msgid "Page Handling"
 msgstr "გვერდის დამუშავება"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2110
 msgid "Go to first page"
-msgstr "პირველ გვერდზე"
+msgstr "გადასვლა პირველ გვერდზე"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2112
 msgid "Go to previous page"
 msgstr "წინა გვერდზე"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2114
 msgid "Go to next page"
 msgstr "შემდეგ გვერდზე გადასვლა"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2116
 msgid "Go to last page"
-msgstr "ბოლო გვერდზე"
+msgstr "გადასვლა ბოლო გვერდზე"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2118
 msgid "Go to page"
 msgstr "გვერდზე გადასვლა"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2120
 msgid "Find"
 msgstr "ძებნა"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2149
 #, c-format
 msgid "Go to page %s"
 msgstr "%s გვერდზე"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2155
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "%s-ზე გადასვლა “%s” ფაილში"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to file “%s”"
 msgstr "გადასვლა ფაილზე “%s”"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Launch %s"
 msgstr "%s-ის გაშვება"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Reset form"
-msgstr "ფორმის საწყის მდგომარეობაში დაბრუნება"
+msgstr "ფორმის ჩამოყრა"
 
 #: libview/pps-view-presentation.c:824
 msgid "Running in presentation mode"
@@ -680,7 +679,6 @@ msgstr "პრეზენტაციის დასასრული. გა
 msgid "Jump to page:"
 msgstr "გვერდზე გადასვლა:"
 
-#  (%d %d-დან)
 #: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
 #, c-format
 msgid "(%d of %d)"
@@ -705,7 +703,7 @@ msgstr "ბეჭდვის პარამეტრების ფაილ�
 
 #: previewer/pps-previewer.c:34
 msgid "FILE"
-msgstr "ფაილი"
+msgstr "FILE"
 
 #: previewer/pps-previewer.c:36
 msgid "File descriptor of input file"
@@ -761,7 +759,7 @@ msgstr "გვერდის რაოდენობა"
 
 #: previewer/pps-previewer-window.blp:36
 msgid "_Print"
-msgstr "_ბეჭდვა"
+msgstr "_დაბეჭდვა"
 
 #: previewer/pps-previewer-window.blp:37
 msgid "Print This Document"
@@ -825,11 +823,11 @@ msgstr "შემქმნელი"
 
 #: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
-msgstr "შექმნილია"
+msgstr "შექმნის თარიღი"
 
 #: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
 msgid "Modified"
-msgstr "შეცვლილია"
+msgstr "შეიცვალა"
 
 #: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
 msgid "Number of Pages"
@@ -846,7 +844,7 @@ msgstr "ფორმატი"
 
 #: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
 msgid "Security"
-msgstr "უსაფრთხოება"
+msgstr "ფასიანი ქაღალდი"
 
 #: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
 msgid "Contains Javascript"
@@ -854,7 +852,7 @@ msgstr "შეიცავს Javascript-ს"
 
 #: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
 msgid "Paper Size"
-msgstr "ფურცლის ზომა"
+msgstr "გვერდის ზომა"
 
 #: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
 msgid "Size"
@@ -903,7 +901,7 @@ msgstr "პარაგრაფი"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:57
 msgid "Insert"
-msgstr "ჩამატება"
+msgstr "ჩასმა"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:58
 msgid "Cross"
@@ -956,7 +954,7 @@ msgstr "მთავარი მენიუ"
 
 #: shell/resources/pps-document-view.blp:110
 msgid "Thumbnails"
-msgstr "ესკიზები"
+msgstr "მინატურები"
 
 #: shell/resources/pps-document-view.blp:121
 msgid "Outline"
@@ -976,7 +974,7 @@ msgstr "ფენები"
 
 #: shell/resources/pps-document-view.blp:197
 msgid "Toggle Sidebar"
-msgstr "გვერდითი პანელის ჩვენების ჩართ/გამორთ"
+msgstr "გვერდითი პანელის ჩვენების გადართვა"
 
 #: shell/resources/pps-document-view.blp:203
 msgid "Document Menu"
@@ -984,7 +982,7 @@ msgstr "დოკუმენტის მენიუ"
 
 #: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
 msgid "Document has been digitally signed."
-msgstr "დოკუმენტი ციფრულად არის ხელმოწერილი."
+msgstr "დოკუმენტი ციფრულად ხელმოწერილია."
 
 #: shell/resources/pps-document-view.blp:224
 msgid "View Signature…"
@@ -996,7 +994,7 @@ msgstr "ავტომატური ჩატევა"
 
 #: shell/resources/pps-document-view.blp:529
 msgid "Selection too Small"
-msgstr "მონიშნული ძალიან პატარაა"
+msgstr "მონიშნული მეტისმეტად პატარაა"
 
 #: shell/resources/pps-document-view.blp:530
 msgid ""
@@ -1036,7 +1034,7 @@ msgstr "_დაბეჭდვის გაუქმება და დახ�
 #: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
 #: shell/src/document_view/io.rs:714
 msgid "_Cancel"
-msgstr "_გაუქმება"
+msgstr "გაუ_ქმება"
 
 #: shell/resources/pps-document-view.blp:552
 msgid "Close _After Printing"
@@ -1052,7 +1050,7 @@ msgstr "_ღამის რეჟიმი"
 
 #: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
-msgstr "_კლავიატურის მალსახმობები"
+msgstr "კლავიატურის მალსახმობები"
 
 #: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
 msgid "_Help"
@@ -1068,7 +1066,7 @@ msgstr "ბეჭდვა…"
 
 #: shell/resources/pps-document-view.blp:605
 msgid "Fullscreen"
-msgstr "მთელს ეკრანზე"
+msgstr "სრულ ეკრანზე"
 
 #: shell/resources/pps-document-view.blp:610
 msgid "Present as Slideshow"
@@ -1093,7 +1091,7 @@ msgstr "_შენახვა, როგორც…"
 
 #: shell/resources/pps-document-view.blp:641
 msgid "_Continuous"
-msgstr "უწყვეტი"
+msgstr "_უწყევტი"
 
 #: shell/resources/pps-document-view.blp:646
 msgid "_Dual"
@@ -1128,7 +1126,7 @@ msgstr "გადახაზული (k)"
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:740
 msgid "Underline (u)"
-msgstr "ხაზგასმული (u)"
+msgstr "ხაზგასმა (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:756
@@ -1149,7 +1147,7 @@ msgstr "_გადასვლა"
 
 #: shell/resources/pps-document-view.blp:865
 msgid "Open in New _Window"
-msgstr "ახალ ფან_ჯარაში გახსნა"
+msgstr "ახალ _ფანჯარაში გახსნა"
 
 #: shell/resources/pps-document-view.blp:873
 msgid "_Copy"
@@ -1157,7 +1155,7 @@ msgstr "_კოპირება"
 
 #: shell/resources/pps-document-view.blp:878
 msgid "Select _All"
-msgstr "მონიშნე _ყველა"
+msgstr "ყველაფრის მონიშვნა"
 
 #: shell/resources/pps-document-view.blp:885
 msgid "_Save Image As…"
@@ -1195,7 +1193,7 @@ msgstr "შედეგების გარეშე"
 
 #: shell/resources/pps-find-sidebar.blp:61
 msgid "Try a different search"
-msgstr "სცადეთ, სხვანაირად მოძებნოთ"
+msgstr "სცადეთ სხვა ძებნა"
 
 #: shell/resources/pps-find-sidebar.blp:74
 msgid "Perform a Search"
@@ -1241,7 +1239,7 @@ msgstr "პაროლის _მყისვე დავიწყება"
 
 #: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
-msgstr "სამუდამოდ _დამახსოვრება"
+msgstr "სამუდამოდ დამახსოვრება"
 
 #: shell/resources/pps-password-view.blp:18
 msgid ""
@@ -1275,7 +1273,7 @@ msgstr "დეტალების ნახვა…"
 
 #: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
-msgstr "პარამეტრები"
+msgstr "თვისებები"
 
 #: shell/resources/pps-properties-window.blp:23
 msgid "_Document"
@@ -1377,12 +1375,12 @@ msgstr "მონიშნული"
 #: shell/resources/pps-shortcuts-dialog.blp:67
 msgctxt "shortcut window"
 msgid "Copy"
-msgstr "კოპირება"
+msgstr "ასლი"
 
 #: shell/resources/pps-shortcuts-dialog.blp:72
 msgctxt "shortcut window"
 msgid "Select All"
-msgstr "ყველაფრის მონიშვნა"
+msgstr "ყველას მონიშვნა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
@@ -1512,7 +1510,7 @@ msgstr "სანიშნეს დამატება"
 #: shell/resources/pps-shortcuts-dialog.blp:199
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
-msgstr "სანიშნეების წაშლა"
+msgstr "სანიშნეს წაშლა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:204
 msgctxt "shortcut window"
@@ -1522,7 +1520,7 @@ msgstr "ღამის რეჟიმი"
 #: shell/resources/pps-shortcuts-dialog.blp:209
 msgctxt "shortcut window"
 msgid "Continuous Scrolling"
-msgstr "უწყვეტი დაქაჩვა"
+msgstr "უწყვეტი გადახვევა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:214
 msgctxt "shortcut window"
@@ -1577,7 +1575,7 @@ msgstr "ძებნა"
 #: shell/resources/pps-shortcuts-dialog.blp:263
 msgctxt "shortcut window"
 msgid "Find Next"
-msgstr "მომდევნოს მოძებნა"
+msgstr "შემდეგის პოვნა"
 
 #: shell/resources/pps-shortcuts-dialog.blp:268
 msgctxt "shortcut window"
@@ -1587,7 +1585,7 @@ msgstr "წინას პოვნა"
 #: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
 msgid "General"
-msgstr "საერთო"
+msgstr "ზოგადი"
 
 #: shell/resources/pps-shortcuts-dialog.blp:277
 msgctxt "shortcut window"
@@ -1671,7 +1669,7 @@ msgstr "გადმოათრიეთ და დაყარეთ დოკ
 
 #: shell/resources/pps-window.blp:49
 msgid "_Open…"
-msgstr "გახსნა…"
+msgstr "_გახსნა…"
 
 #: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
@@ -1731,7 +1729,7 @@ msgstr "[ფაილი...]"
 
 #: shell/src/document_view.rs:300
 msgid "View Details"
-msgstr "დეტალების ნახვა"
+msgstr "ხედის დეტალები"
 
 #: shell/src/document_view.rs:705
 msgid ""
@@ -1837,11 +1835,11 @@ msgstr "აირჩიეთ ხელმოსაწერი სერტი�
 
 #: shell/src/document_view/io.rs:527
 msgid "Select"
-msgstr "მონიშვნა"
+msgstr "არჩევა"
 
 #: shell/src/document_view/io.rs:600
 msgid "A certificate is required to sign this document"
-msgstr "ამ დოკუმენტზე ხელმოწერისთვის საჭიროა სერტიფიკატი"
+msgstr "ამ დოკუმენტის ხელმოწერისთვის საჭიროა სერტიფიკატი"
 
 #: shell/src/document_view/io.rs:669
 msgid "Save Signed File"
@@ -1871,7 +1869,7 @@ msgstr "გარე ბმულის გახსნის შეცდომ
 #: shell/src/document_view/signals.rs:254
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
-msgstr "უსაფრთხოების გაფრთხილება: ამ დოკუმენტს აეკრძალა, გაეხსნა ფაილი \"{}\""
+msgstr "უსაფრთხოების გაფრთხილება: ამ დოკუმენტს აეკრძალა, გაეხსნა ფაილი '{}'"
 
 #: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
 #: shell/src/sidebar_annotations_row.rs:82
@@ -2013,935 +2011,3 @@ msgstr "სერტიფიკატის ვადის გასვლი�
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "დეტალების დამალვა…"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Opening, Closing, Saving and Printing"
-#~ msgstr "გახსნა, დახურვა, შენახვა და დაბეჭდვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Selecting and Copying Text"
-#~ msgstr "ტექსტის მონიშვნა და კოპირება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Rotating and Zooming"
-#~ msgstr "შემობრუნება და გადიდება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Moving Around Document"
-#~ msgstr "დოკუმენტში მოძრაობა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Document View and Handling"
-#~ msgstr "დოკუმენტის ნახვა და დამუშავება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Finding Text"
-#~ msgstr "ტექსტის ძებნა"
-
-#~ msgid "Scroll Up"
-#~ msgstr "ზემოთ"
-
-#~ msgid "Scroll Down"
-#~ msgstr "ქვემოთ"
-
-#~ msgid "Scroll View Up"
-#~ msgstr "ჩვენება ზემოთ"
-
-#~ msgid "Scroll View Down"
-#~ msgstr "ჩვენება ქვემოთ"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Touchpad Gestures"
-#~ msgstr "თაჩპედის ჟესტები"
-
-#~ msgid "Initially Opened"
-#~ msgstr "თავიდან გახსნილი"
-
-#~ msgid "_Apply"
-#~ msgstr "_გადატარება"
-
-#~ msgid "_About Papers"
-#~ msgstr "Papers-ის _შესახებ"
-
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "რიგში დარჩენილია {} დავალება"
-
-#~ msgid "_Highlight Selected Text"
-#~ msgstr "_მონიშნული ტექსტის გამოკვეთა"
-
-#~ msgid "Open With..."
-#~ msgstr "გამხსნელი პროგრამა…"
-
-#  (%d %d-დან)
-#~ msgid "({} of {})"
-#~ msgstr "({} / {}-დან)"
-
-#~ msgid "Trusted"
-#~ msgstr "სანდო"
-
-#~ msgid "Untrusted issuer"
-#~ msgstr "არასანდო გამომცემი"
-
-#~ msgid "Unknown issuer"
-#~ msgstr "უცნობი გამომცემელი"
-
-#~ msgid "Revoked"
-#~ msgstr "გაუქმებულია"
-
-#~ msgid "Expired"
-#~ msgstr "ვადაგასულია"
-
-#~ msgid "Not verified"
-#~ msgstr "შემოწმებული არა"
-
-#~ msgid "Generic error"
-#~ msgstr "ზოგადი შეცდომა"
-
-#~ msgid "Unknown status"
-#~ msgstr "უცნობი სტატუსი"
-
-#~ msgid "Valid"
-#~ msgstr "სწორი"
-
-#~ msgid "Invalid"
-#~ msgstr "არასწორი"
-
-#~ msgid "Digest mismatch"
-#~ msgstr "დაიჯესტი არ ემთხვევა"
-
-#~ msgid "Decoding error"
-#~ msgstr "დეკოდერის შეცდომა"
-
-#~ msgid "Bookmarks"
-#~ msgstr "სანიშნები"
-
-#~ msgid "Document Status"
-#~ msgstr "დოკუმენტის სტატუსი"
-
-#~ msgid "Signature Details"
-#~ msgstr "ხელმოწერის დეტალები"
-
-#~ msgid "Date"
-#~ msgstr "თარიღი"
-
-#~ msgid "Add Bookmark"
-#~ msgstr "სანიშნეს დამატება"
-
-#~ msgid "Remove Bookmark"
-#~ msgstr "სანიშნეების წაშლა"
-
-#~ msgid "_Open Bookmark"
-#~ msgstr "_სანიშნის გახსნა"
-
-#~ msgid "_Rename Bookmark"
-#~ msgstr "ს_ანიშნის სახელის გადარქმევა"
-
-#~ msgid "_Delete Bookmark"
-#~ msgstr "_სანიშის წაშლა"
-
-#~ msgid "If you reload the document, changes will be permanently lost."
-#~ msgstr "თუ დოკუმენტს თავიდან ჩატვირთავთ, ცვლილებები სამუდამოდ დაიკარგება."
-
-#~ msgid "File changed outside Papers. Reload document?"
-#~ msgstr "ფაილი Papers-ის გარეთ შეიცვალა. ჩავტვირთო დოკუმენტი თავიდან?"
-
-#~ msgid "_No"
-#~ msgstr "არა"
-
-#~ msgid "_Reload"
-#~ msgstr "_გადატვირთვა"
-
-#~ msgid "Failed to Load Remote File."
-#~ msgstr "დაშორებული ფაილის ჩატვირთვის შეცდომა."
-
-#~ msgid "Failed to Reload Document."
-#~ msgstr "დოკუმენტის თავიდან ჩატვირთვის შეცდომა."
-
-#~ msgid "PostScript Documents"
-#~ msgstr "PostScrip დოკუმენტები"
-
-#~ msgid "Adds support for reading PostScript documents"
-#~ msgstr "PostScript დოკუმენტების კითხვის მხარდაჭერის დამატება"
-
-#, c-format
-#~ msgid "Failed to load document “%s”"
-#~ msgstr "დოკუმენტი “%s” ვერ ჩაიტვირთა"
-
-#, c-format
-#~ msgid "Failed to save document “%s”"
-#~ msgstr "დოკუმენტის შენახვის შეცდომა: \"%s\""
-
-#~ msgid "XPS Documents"
-#~ msgstr "XPS დოკუმენტები"
-
-#~ msgid "Adds support for reading XPS documents"
-#~ msgstr "XPS დოკუმენტების კითხვის მხარდაჭერის დამატება"
-
-#, c-format
-#~ msgid "Failed to create a temporary directory: %s"
-#~ msgstr "დროებითი საქაღალდის შექმნის შეცდომა: %s"
-
-#~ msgid ""
-#~ "Show a dialog to confirm that the user wants to activate the caret "
-#~ "navigation."
-#~ msgstr ""
-#~ "ფანჯრის ჩვენება დასადასტურებლად, რომ მომხმარებელს კარეტით ნავიგაციის "
-#~ "გააქტიურება სურს."
-
-#~ msgid "Enable Caret Navigation?"
-#~ msgstr "ჩავრთო კარეტით ნავიგაცია?"
-
-#~ msgid ""
-#~ "Pressing F7 turns the caret navigation on or off. This feature places a "
-#~ "moveable cursor in text pages, allowing you to move around and select "
-#~ "text with your keyboard."
-#~ msgstr ""
-#~ "F7-ის დაწოლა ჩართავს ან გამორთავს კარეტით ნავიგაციას. ეს ფუნქცია ტექსტურ "
-#~ "გვერდებზე მოძრავ კურსორს სვამს, რითიც საშუალებას გაძლევთ, ვებგვერდზე "
-#~ "კლავიატურით იმოძრაოთ და ტექსტი მონიშნოთ."
-
-#~ msgid "Don’t show this message again"
-#~ msgstr "მეტჯერ აღარ მაჩვენო ეს გაფრთხილება"
-
-#~ msgid "_Enable"
-#~ msgstr "_ჩართვა"
-
-#~ msgid "_Previous Page"
-#~ msgstr "_წინა გვერდი"
-
-#~ msgid "_Next Page"
-#~ msgstr "_შემდეგი გვერდი"
-
-#~ msgid "No certificates found!"
-#~ msgstr "სერტიფიკატები აღმოჩენილი არაა!"
-
-#~ msgid "Open"
-#~ msgstr "გახსნა"
-
-#~ msgid "Loading…"
-#~ msgstr "ჩატვირთვა…"
-
-#~ msgid "Requested format is not supported by this printer."
-#~ msgstr "ამ პრინტერს მოთხოვნილი ფორმატის მხარდაჭერა არ გააჩნია."
-
-#~ msgid "Failed to print document"
-#~ msgstr "შეცდომა ბეჭდვისას"
-
-#~ msgid "Advanced highlighting and annotation"
-#~ msgstr "დამატებითი გამკვეთა და ანოტაცია"
-
-#, c-format
-#~ msgid "Password for document %s"
-#~ msgstr "“%s” დოკუმენტის პაროლი"
-
-#~ msgid "Remember password until you _log out"
-#~ msgstr "სესიის პაროლის დამახსოვრება"
-
-#~ msgid "Search Unavailable"
-#~ msgstr "ძებნა ხელმიუწვდომელია"
-
-#, c-format
-#~ msgid "Unable to open document “%s”."
-#~ msgstr "დოკუჯმენტის გახსნის შეცდომა: %s."
-
-#~ msgid "Document"
-#~ msgstr "დოკუმენტი"
-
-#, c-format
-#~ msgid "Page %d"
-#~ msgstr "%d გვერდი"
-
-#~ msgid "No Comment"
-#~ msgstr "კომენტარი არ არის"
-
-#~ msgid "DVI document has incorrect format"
-#~ msgstr "DVI დოკუმენტს არასწორი ფორმატი გააჩნია"
-
-#~ msgid "DVI Documents"
-#~ msgstr "DVI დოკუმენტები"
-
-#~ msgid "Adds support for reading DVI documents"
-#~ msgstr "DVI დოკუმენტების კითხვის მხარდაჭერის დამატება"
-
-#~ msgid "Automatically reload the document"
-#~ msgstr "დოკუმენტის ავტომატურად თავიდან ჩატვირთვა"
-
-#~ msgid "The document is automatically reloaded on file change."
-#~ msgstr "ფაილის ცვლილებისას დოკუმენტი ავტომატურად ჩაიტვირთება თავიდან."
-
-#~ msgid "Document viewer for popular document formats"
-#~ msgstr "დოკუმენტების პოპულარული ფორმატების გამხსნელი"
-
-#~ msgid "Not found, click to change search options"
-#~ msgstr "ნაპოვნი არაა. ძებნის მოსარგებად დააწკაპუნეთ"
-
-#~ msgid "Find previous occurrence of the search string"
-#~ msgstr "იპოვე საძიებო ნუსხის  წინა ვარიანტი"
-
-#~ msgid "Find next occurrence of the search string"
-#~ msgstr "იპოვე საძიებო ნუსხის  შემდეგი ვარიანტი"
-
-#~ msgid "Warning"
-#~ msgstr "გაფრთხილება"
-
-#~ msgid "Select page or search in the outline"
-#~ msgstr "აირჩიეთ გვერდი ან მოძებნეთ მონახაზში"
-
-#~ msgid "Evince Document Viewer"
-#~ msgstr "ევინსი დოკუმენტების დამთვალიერებელი"
-
-#~ msgid "Evince"
-#~ msgstr "Evince"
-
-#~ msgid "Enlarge the document"
-#~ msgstr "დოკუმენტის გადიდება"
-
-#~ msgid "Reset zoom and make the page fit in the window"
-#~ msgstr "გადიდების საწყის მნიშვნელობაზე დაბრუნება და ფანჯარაში ჩატევა"
-
-#~ msgid "Initial window state:"
-#~ msgstr "ფანჯრის საწყისი მდგომარეობა:"
-
-#~ msgid "Close"
-#~ msgstr "დახურვა"
-
-#~ msgid "Note text"
-#~ msgstr "შენიშვნის ტექსტი"
-
-#~ msgid "Add highlight annotation"
-#~ msgstr "გამოკვეთილი ანოტაციის დამატება"
-
-#~ msgid "Auto_scroll"
-#~ msgstr "ავტომატური _გადახვევა"
-
-#~ msgid "Annotation _Properties"
-#~ msgstr "ანოტაციის _თვისებები"
-
-#~ msgid "Open Containing _Folder"
-#~ msgstr "შემცველი _საქაღალდის გახსნა"
-
-#~ msgid "First Page"
-#~ msgstr "პირველი გვერდი"
-
-#~ msgid "History"
-#~ msgstr "ისტორია"
-
-#~ msgid "Back"
-#~ msgstr "უკან"
-
-#~ msgid "Forward"
-#~ msgstr "წინ"
-
-#~ msgid "Search in the outline…"
-#~ msgstr "მოხაზულობაში ძებნა…"
-
-#~ msgid "Font"
-#~ msgstr "შრიფტი"
-
-#~ msgid "Open an existing document"
-#~ msgstr "უკვე არსებული დოკუმენტის გახსნა"
-
-#~ msgid "Annotate the document"
-#~ msgstr "დოკუმენტის ანოტაცია"
-
-#~ msgid "Annotate document"
-#~ msgstr "დოკუმენტის ანოტაცია"
-
-#~ msgid "Set zoom level"
-#~ msgstr "გადიდების მაშტაბის დაყენება"
-
-#~ msgid "Send To…"
-#~ msgstr "გაგზავნა…"
-
-#~ msgid "New _Window"
-#~ msgstr "ახალი _ფანჯარა"
-
-#~ msgid "Prop_erties"
-#~ msgstr "_პარამეტრები"
-
-#~ msgid "Select or set the zoom level of the document"
-#~ msgstr "დოკუმენტის გადიდების მაშტაბის დაყენება"
-
-#~ msgid "Password required"
-#~ msgstr "პაროლი აუცილებელია"
-
-#~ msgid "General"
-#~ msgstr "საერთო"
-
-#~ msgid "Document License"
-#~ msgstr "დოკუმენტის ლიცენზია"
-
-#, c-format
-#~ msgid "Gathering font information… %3d%%"
-#~ msgstr "ფონტის შესახებ ინფორმაციის შეგროვება... %3d%%"
-
-#~ msgid "Document contains no annotations"
-#~ msgstr "დოკუმენტს  ანოტაციები არ გააჩნია"
-
-#, c-format
-#~ msgid "A file named “%s” already exists. Do you want to replace it?"
-#~ msgstr "ფაილი %s უკვე არსებობს. გნებავთ გადავაწერო?"
-
-#, c-format
-#~ msgid ""
-#~ "The file “%s” already exists. Replacing it will overwrite its contents."
-#~ msgstr ""
-#~ "ფაილი (%s) უკვე არსებობს. მისი ჩანაცვლება არსებულ შემცველობას წაშლის."
-
-#~ msgid "_Replace"
-#~ msgstr "_შეცვლა"
-
-#~ msgid "Find a word or phrase in the document"
-#~ msgstr "დოკუმენტში სიტყვის ან ფრაზის ძიება"
-
-#~ msgid "Search not available for this document"
-#~ msgstr "ამ დოკუმენტისთვის ძებნის ფუნქცია ხელმიუწვდომელია"
-
-#~ msgid "Supported Image Files"
-#~ msgstr "გამოსახულების მხარდაჭერილი ფაილები"
-
-#, c-format
-#~ msgid "Loading document from “%s”"
-#~ msgstr "დოკუმენტის ჩატვირთვა %s-დან"
-
-#, c-format
-#~ msgid "Downloading document (%d%%)"
-#~ msgstr "დოკუმენტის გადმოწერა (%d%%)"
-
-#, c-format
-#~ msgid "Reloading document from %s"
-#~ msgstr "დოკუმენტის %s-დან თავიდან ჩატვირთვა"
-
-#~ msgid "_Open"
-#~ msgstr "_გახსნა"
-
-#, c-format
-#~ msgid "Saving document to %s"
-#~ msgstr "დოკუმენტის %s-ში შენახვა"
-
-#, c-format
-#~ msgid "Saving attachment to %s"
-#~ msgstr "მიმაგრებული ფაილის %s-ში შენახვა"
-
-#, c-format
-#~ msgid "Saving image to %s"
-#~ msgstr "გამოსახულების %s-ში ჩაწერა"
-
-#, c-format
-#~ msgid "Uploading document (%d%%)"
-#~ msgstr "დოკუმენტის ატვირთვა (%d%%)"
-
-#, c-format
-#~ msgid "Uploading attachment (%d%%)"
-#~ msgstr "მიმაგრებული ფაილის ატვირთვა (%d%%)"
-
-#, c-format
-#~ msgid "Uploading image (%d%%)"
-#~ msgstr "გამოსახულების ატვირთვა (%d%%)"
-
-#~ msgid "_Save"
-#~ msgstr "_შენახვა"
-
-#~ msgid "Could not send current document"
-#~ msgstr "მიმდინარე დოკუმენტის გაგზავნის შეცდომა"
-
-#, c-format
-#~ msgid "Reload document “%s”?"
-#~ msgstr "ჩავტვირთო დოკუმენტი (%s) თავიდან?"
-
-#, c-format
-#~ msgid "Save a copy of document “%s” before closing?"
-#~ msgstr "შევინახო დოკუმენტის (%s) ასლი დახურვამდე?"
-
-#, c-format
-#~ msgid "Wait until print job “%s” finishes before closing?"
-#~ msgstr "დაველოდო სანამ ბეჭდვის დავალება %s დასრულდება?"
-
-#, c-format
-#~ msgid ""
-#~ "There is %d print job active. Wait until print finishes before closing?"
-#~ msgid_plural ""
-#~ "There are %d print jobs active. Wait until print finishes before closing?"
-#~ msgstr[0] "აქტიურია ბეჭდვის %d დავალება. დაველოდო დასრულებას?"
-
-#~ msgid "Evince is a simple document viewer for GNOME"
-#~ msgstr "Evinve GNOME-ის დოკუმენტების დამთვალიერებელი"
-
-#~ msgid "Recent Documents"
-#~ msgstr "ახლახანს გასნილი დოკუმენტები"
-
-#~ msgid "50%"
-#~ msgstr "50%"
-
-#~ msgid "70%"
-#~ msgstr "70%"
-
-#~ msgid "85%"
-#~ msgstr "85%"
-
-#~ msgid "100%"
-#~ msgstr "100%"
-
-#~ msgid "125%"
-#~ msgstr "125%"
-
-#~ msgid "150%"
-#~ msgstr "150%"
-
-#~ msgid "175%"
-#~ msgstr "175%"
-
-#~ msgid "200%"
-#~ msgstr "200%"
-
-#~ msgid "300%"
-#~ msgstr "300%"
-
-#~ msgid "400%"
-#~ msgstr "400%"
-
-#~ msgid "800%"
-#~ msgstr "800%"
-
-#~ msgid "1600%"
-#~ msgstr "1600%"
-
-#~ msgid "3200%"
-#~ msgstr "3200%"
-
-#~ msgid "6400%"
-#~ msgstr "6400%"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle fullscreen"
-#~ msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle caret navigation"
-#~ msgstr "კარეტის ნავიგაციის გადართვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Copy highlighted text"
-#~ msgstr "გამოკვეთილი ტექსტის კოპირება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Select all the text in a document"
-#~ msgstr "დოკუმენტში არსებული ტექსტის მონიშვნა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Zoom 1∶1"
-#~ msgstr "გადიდება 1:1"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Fit page"
-#~ msgstr "გვერდის ჩატევა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Fit width"
-#~ msgstr "სიგანეში ჩატევა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to previous page"
-#~ msgstr "წინა გვერდზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to next page"
-#~ msgstr "შემდეგ გვერდზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to previous page (fast)"
-#~ msgstr "წინა გვერდზე გადასვლა (სწრაფად)"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to next page (fast)"
-#~ msgstr "შემდეგ გვერდზე გადასვლა (სწრაფად)"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to previous page visited"
-#~ msgstr "წინა უკვე ნანახ გვერდზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to next page visited"
-#~ msgstr "შემდეგ უკვე ნანახ გვერდზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the beginning of the document"
-#~ msgstr "დოკუმენტის დასაწყისში გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Add bookmark"
-#~ msgstr "სანიშნის დამატება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Remove bookmark"
-#~ msgstr "სანიშნის წაშლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle night mode"
-#~ msgstr "ღამის რეჟიმის გადართვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle dual page"
-#~ msgstr "ორმაგი გვერდების გადართვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle odd pages left"
-#~ msgstr "კენტი გვერდები მარცხნივ-ის გადართვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Add a post-it like note"
-#~ msgstr "პოსტის მსგავსი შენიშვნის ჩამატება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Highlight text"
-#~ msgstr "ტექსტის გამოკვეთა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Show the search bar"
-#~ msgstr "ძებნის პანელის ძებნა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the next search result"
-#~ msgstr "ძებნის შემდეგ შედეგზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to the previous search result"
-#~ msgstr "ძებნის წინა შედეგზე გადასვლა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Show help"
-#~ msgstr "დახმარების ჩვენება"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Toggle primary menu"
-#~ msgstr "ძირითადი მენიუს ჩართ/გამორთ"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Keyboard shortcuts"
-#~ msgstr "კლავიატურის მალსახმობები"
-
-#~ msgid "Open a new window."
-#~ msgstr "ახალ ფანჯრის გახსნა."
-
-#~ msgid "Run evince as a previewer"
-#~ msgstr "ევინსის წინასწარ მნახველივით გაშვება"
-
-#~ msgid "The word or phrase to find in the document"
-#~ msgstr "დოკუმენტში სიტყვის ან ფრაზის ძიება"
-
-#~ msgid "STRING"
-#~ msgstr "სტრიქონი"
-
-#~ msgid "Save Current Settings as Defa_ult"
-#~ msgstr "_მიმდინარე პარამეტრების ნაგულისხმებად შენახვა"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Save current settings as default"
-#~ msgstr "მიმდინარე პარამეტრების ნაგულისხმებად შენახვა"
-
-#~ msgid "Annotation Properties…"
-#~ msgstr "ანოტაციის _თვისებები…"
-
-#, c-format
-#~ msgid "Unhandled MIME type: “%s”"
-#~ msgstr "უცნობი MIME ტიპი: “%s”"
-
-#~ msgid "Empty"
-#~ msgstr "ცარიელია"
-
-#, c-format
-#~ msgid "Show “_%s”"
-#~ msgstr "აჩვენე “_%s”"
-
-#~ msgid "_Move on Toolbar"
-#~ msgstr "გადატანა ინსტრუმენტების ველზე"
-
-#~ msgid "Move the selected item on the toolbar"
-#~ msgstr "გადაიტანე მონიშნული ელემენტი ინსტრუმენტთა ველზე"
-
-#~ msgid "Remove the selected item from the toolbar"
-#~ msgstr "ამოშალე მონიშნული ელემენტი ინსტრუმენტების ველიდან"
-
-#~ msgid "Remove the selected toolbar"
-#~ msgstr "ინსტრუმენტთა პანელის ამოშლა"
-
-#~ msgid "Separator"
-#~ msgstr "გამყოფი"
-
-#~ msgid "Best Fit"
-#~ msgstr "საუკეთესო მორგება"
-
-#~ msgid "Fit Page Width"
-#~ msgstr "გვერდის სიგანეში მორგება"
-
-#~ msgid "75%"
-#~ msgstr "75%"
-
-#~ msgid "Save password in keyring"
-#~ msgstr "პაროლის შენახვა აცმაში"
-
-#~ msgid "BBox"
-#~ msgstr "BBox"
-
-#~ msgid "Letter"
-#~ msgstr "წერილი"
-
-#~ msgid "Tabloid"
-#~ msgstr "Tabloid"
-
-#~ msgid "Ledger"
-#~ msgstr "Ledger"
-
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Statement"
-#~ msgstr "Statement"
-
-#~ msgid "Executive"
-#~ msgstr "Executive"
-
-#~ msgid "A0"
-#~ msgstr "A0"
-
-#~ msgid "A1"
-#~ msgstr "A1"
-
-#~ msgid "A2"
-#~ msgstr "A2"
-
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgid "A4"
-#~ msgstr "A4"
-
-#~ msgid "A5"
-#~ msgstr "A5"
-
-#~ msgid "B4"
-#~ msgstr "B4"
-
-#~ msgid "B5"
-#~ msgstr "B5"
-
-#~ msgid "Folio"
-#~ msgstr "Folio"
-
-#~ msgid "Quarto"
-#~ msgstr "Quarto"
-
-#~ msgid "10x14"
-#~ msgstr "10x14"
-
-#~ msgid "No document loaded."
-#~ msgstr "დოკუმენტი არ არის ჩატვირთული."
-
-#~ msgid "Broken pipe."
-#~ msgstr "დაზიანებული ნაკადი."
-
-#~ msgid "Interpreter failed."
-#~ msgstr "ინტერპრეტატორი ვერ შედგა."
-
-#, c-format
-#~ msgid "Error while decompressing file “%s”:\n"
-#~ msgstr "შეცდომა “%s” ფაილის დეკომპრესირებისას:\n"
-
-#, c-format
-#~ msgid "Cannot open file “%s”.\n"
-#~ msgstr "ფაილი “%s” ვერ გაიხსნა.\n"
-
-#~ msgid "File is not readable."
-#~ msgstr "ფაილი არ იკითხება."
-
-#~ msgid "Document loaded."
-#~ msgstr "დოკუმენტი ჩატვირთულია."
-
-#, c-format
-#~ msgid ""
-#~ "Failed to load document “%s”. Ghostscript interpreter was not found in "
-#~ "path"
-#~ msgstr ""
-#~ "დოკუმენტი “%s” ვერ ჩაიტვირთა. ვერ მოიძებნა Ghostscript-ინტერპრეტატორი"
-
-#~ msgid "Encapsulated PostScript"
-#~ msgstr "ჩადგმული PostScript"
-
-#~ msgid "PostScript"
-#~ msgstr "PostScript"
-
-#~ msgid "The name of the string to be found"
-#~ msgstr "საძიებელი სტრიქონის სახელი"
-
-#~ msgid "Case sensitive"
-#~ msgstr "რეგისტრისადმი მგძნობიარე"
-
-#~ msgid "TRUE for a case sensitive search"
-#~ msgstr "რეგისტრმგრძნობიარე ძიებისათვის - TRUE "
-
-#~ msgid "Color of highlight for all matches"
-#~ msgstr "ყველანაირი თანხვედრის ფერი"
-
-#~ msgid "Current color"
-#~ msgstr "მიმდინარე ფერი"
-
-#~ msgid "Color of highlight for the current match"
-#~ msgstr "ფერი - ემთხვევა"
-
-#~ msgid "Find:"
-#~ msgstr "ძებნა:"
-
-#~ msgid "Toggle case sensitive search"
-#~ msgstr "ჩართე ძიება რეგისტრის გათვალისწინებით"
-
-#~ msgid "Incorrect password"
-#~ msgstr "არასწორი პაროლი"
-
-#~ msgid "Print..."
-#~ msgstr "ბეჭდვა..."
-
-#~ msgid "Index"
-#~ msgstr "ინდექსი"
-
-#, c-format
-#~ msgid "%d found on this page"
-#~ msgstr "ამ გვერდზე ნაპოვნია %d"
-
-#, c-format
-#~ msgid "%3d%% remaining to search"
-#~ msgstr "ძიებისათვის საჭიროა %3d%%"
-
-#, c-format
-#~ msgid ""
-#~ "You were trying to print to a printer using the “%s” driver. This program "
-#~ "requires a PostScript printer driver."
-#~ msgstr ""
-#~ "“%s” დრაივერით ბეჭდვა შეუძლებელია. საჭიროა პოსტსკრიპტ-პრინტერის დრაივერი."
-
-#~ msgid "Toolbar Editor"
-#~ msgstr "ინსტრუმენტთა პანელის რედაქტორი"
-
-#, c-format
-#~ msgid ""
-#~ "PostScript and PDF File Viewer.\n"
-#~ "Using poppler %s (%s)"
-#~ msgstr ""
-#~ "PDF და პოსტსკრიპტ-ფაილების ნახვა.\n"
-#~ "გამოიყენება poppler ვერსია %s (%s)"
-
-#~ msgid ""
-#~ "Evince is free software; you can redistribute it and/or modify it under "
-#~ "the terms of the GNU General Public License as published by the Free "
-#~ "Software Foundation; either version 2 of the License, or (at your option) "
-#~ "any later version.\n"
-#~ msgstr ""
-#~ "Evince - ეს არის თავისუფალი პროგრამა. თქვენ შეგიძლიათ მისი გავრცელება ან/"
-#~ "და შეცვლა თავისუფალი პროგრამირების ფონდის მიერ გამოქვეყნებული ერთიანი "
-#~ "საზოგადოებრივი ლიცენზიის (GNU მე 2 ვერსია) ან უფრო გვიანდელი ვერსიის "
-#~ "პირობების შესაბამისად.\n"
-
-#~ msgid ""
-#~ "Evince is distributed in the hope that it will be useful, but WITHOUT ANY "
-#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-#~ "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
-#~ "details.\n"
-#~ msgstr ""
-#~ "პროგრამის გამავრცელებლები იმედოვნებენ, რომ ის სასარგებლო იქნება, მაგრამ "
-#~ "ვერ მოგცემენ რაიმე გარანტიას, განცხადებულს ან ნაგულისხმევს, მათ შორის "
-#~ "კომერციული სარგებლიანობისა თუ რაიმე კონკრეტული მიზნისათვის გამოსადეგობის "
-#~ "ჩათვლით, ან სხვა ნებისმიერი თვალსაზრისით. დაწვრილებითი ინფორმაციისათვის "
-#~ "იხილეთ ერთიანი საზოგადოებრივი ლიცენზია (GNU General Public License).\n"
-
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with Evince; if not, write to the Free Software Foundation, Inc., 59 "
-#~ "Temple Place, Fifth Floor, Boston, MA  02110-1301  USA\n"
-#~ msgstr ""
-#~ "ამ პროგრამასთან ერთად უნდა მიგეღოთ GNU ლიცენზია;თუ არ მიგიღიათ,მოგვწერეთ "
-#~ "თავისუფალი პროგრამების ფონდში. მისამართზე: 51 Franklin Street, Fifth "
-#~ "Floor, Boston, MA 02110-1301, USA\n"
-
-#~ msgid "_Edit"
-#~ msgstr "_დამუშავება"
-
-#~ msgid "_View"
-#~ msgstr "_ხედი"
-
-#~ msgid "_Go"
-#~ msgstr "_წინ"
-
-#~ msgid "_Save a Copy..."
-#~ msgstr "_კოპიის შენახვა..."
-
-#~ msgid "_Print..."
-#~ msgstr "_ბეჭდვა..."
-
-#~ msgid "P_roperties"
-#~ msgstr "პარამე_ტრები"
-
-#~ msgid "_Find..."
-#~ msgstr "_ბეჭდვა..."
-
-#~ msgid "T_oolbar"
-#~ msgstr "_ინსტრუმენტთა პანელი"
-
-#~ msgid "Rotate _Right"
-#~ msgstr "მარჯვნივ მოტრია_ლება"
-
-#~ msgid "Go to the first page"
-#~ msgstr "პირველ გვერდზე გადასვლა"
-
-#~ msgid "Go to the last page"
-#~ msgstr "ბოლო გვერდზე გადასვლა"
-
-#~ msgid "Leave fullscreen mode"
-#~ msgstr "მთელს ეკრანზე რეჟიმის დატოვება"
-
-#~ msgid "_Toolbar"
-#~ msgstr "ხ_ელსაწყოთა ველი"
-
-#~ msgid "Show or hide the side pane"
-#~ msgstr "გვერდითა პანელის დამალვა ან გამოჩენა"
-
-#~ msgid "Expand the window to fill the screen"
-#~ msgstr "ფანჯრის მთელი ეკრანის დაფარვამდე გადიდება"
-
-#~ msgid "_Best Fit"
-#~ msgstr "_საუკეთესო მორგება"
-
-#~ msgid "Fit Page _Width"
-#~ msgstr "გვერდი სიგანეში მორგება"
-
-#~ msgid "Make the current document fill the window width"
-#~ msgstr "მიმდინარე დოკუმენტი ავსებს ფანჯარას სიგანეში"
-
-#~ msgid "Zoom"
-#~ msgstr "გადიდება"
-
-#~ msgid "Next"
-#~ msgstr "შემდეგი"
-
-#, c-format
-#~ msgid "%s - Password Required"
-#~ msgstr "%s - პაროლი აუცილებელია"
-
-#~ msgid ""
-#~ "Boolean options available, true enables thumbnailing and false disables "
-#~ "the creation of new thumbnails"
-#~ msgstr ""
-#~ "ჩართულია ლოგიკური ოპერატორი, true გააქტიურებს ესკიზურ რეჟიმს, ხოლო false "
-#~ "ამორთავს ამ ფუნქციას."
-
-#~ msgid "Enable thumbnailing of PDF Documents"
-#~ msgstr "PDF დოკუმენტების დაესკიზების ჩართვა"
-
-#~ msgid "Thumbnail command for PDF Documents"
-#~ msgstr "PDF დოკუმენტების ესკიზების ბრძანება "
-
-#~ msgid ""
-#~ "Valid command plus arguments for the PDF Document thumbnailer. See "
-#~ "nautilus thumbnailer documentation for more information."
-#~ msgstr ""
-#~ "PDF დოკუმენტების ესკიზების დამატებითი ბრძანებების შესახებ ინფორმაცია "
-#~ "შეგიძლია იხილოთ Nautilus-ის ფაილ მენეჯერის დოკუმენტაციაში."
