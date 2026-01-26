@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-21 13:23+0000\n"
-"PO-Revision-Date: 2026-01-26 02:45+0200\n"
+"POT-Creation-Date: 2026-01-26 15:31+0000\n"
+"PO-Revision-Date: 2026-01-27 01:38+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:359
 msgid "Document Viewer"
-msgstr "Преглядач документів"
+msgstr "Переглядач документів"
 
 #: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
@@ -549,7 +549,7 @@ msgstr "Вибраний діапазон сторінок не містить �
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Закрити"
@@ -778,7 +778,7 @@ msgid "Print This Document"
 msgstr "Надрукувати цей документ"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:289
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Зменшити"
 
@@ -787,7 +787,7 @@ msgid "Normal Size"
 msgstr "Звичайний розмір"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:277
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Збільшити"
 
@@ -928,6 +928,7 @@ msgid "_Markup Type"
 msgstr "Тип _розмітки"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "Підсвічення"
 
@@ -1004,11 +1005,50 @@ msgstr "Переглянути підпис…"
 msgid "Fit Automatically"
 msgstr "Автоматичний розмір"
 
-#: shell/resources/pps-document-view.blp:536
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "Вибір кольору"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "Параметри шрифту"
+
+#: shell/resources/pps-document-view.blp:430
+#| msgid "Paper Size"
+msgid "Pencil Size"
+msgstr "Товщина олівця"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "Змінити радіус гумки"
+
+#: shell/resources/pps-document-view.blp:475
+#| msgid "Insert"
+msgid "Insert Text"
+msgstr "Вставити текст"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "Малювання"
+
+#: shell/resources/pps-document-view.blp:493
+#| msgid "Annotations"
+msgid "Erase Annotations"
+msgstr "Витирати примітки"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+#| msgid "Document"
+msgid "Edit Document"
+msgstr "Редагувати документ"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "Позначено надто мало"
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1018,19 +1058,19 @@ msgstr ""
 "потенційно придатніший для читання підпис, натисніть «Почати з початку» і "
 "намалюйте більший прямокутник."
 
-#: shell/resources/pps-document-view.blp:544
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "По_чати з початку"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "П_ідписати"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "Скасувати друкування?"
 
-#: shell/resources/pps-document-view.blp:553
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1038,173 +1078,245 @@ msgstr ""
 "Не завершено одне або декілька завдань з друку. Якщо ви закриєте вікно, "
 "завдання з черги друку не буде виконано."
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "Скасувати др_ук та закрити"
 
-#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
 #: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
 #: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: shell/resources/pps-document-view.blp:559
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "Закрити п_ісля друкування"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "Відкрити…"
 
-#: shell/resources/pps-document-view.blp:581
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "_Нічний режим"
 
-#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: shell/resources/pps-document-view.blp:593 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Довідка"
 
-#: shell/resources/pps-document-view.blp:598 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Про «Переглядач документів»"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "Над_рукувати…"
 
-#: shell/resources/pps-document-view.blp:612
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "На весь екран"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "Презентація у форматі слайдів"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "_Цифровий підпис…"
 
-#: shell/resources/pps-document-view.blp:631
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "Відкрити _копію"
 
-#: shell/resources/pps-document-view.blp:636
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Відкрити за допомогою…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "Зберегти _як…"
 
-#: shell/resources/pps-document-view.blp:648
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "Б_езперервно"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "_Дві сторінки"
 
-#: shell/resources/pps-document-view.blp:658
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "_Непарні сторінки зліва"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "Документ із писемністю справа ліворуч"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "По_вернути ⤵"
 
-#: shell/resources/pps-document-view.blp:677
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "В_ластивості документа"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "Чорний"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "Помаранчевий"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+#| msgid "Revoked"
+msgid "Red"
+msgstr "Червоний"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "Пурпуровий"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "Синій"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "Зелений"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "Жовтий"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "Тонкий"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "Середній"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "Товстий"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "Дуже товста"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "Витирати чорнило"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "Витирати мазки цілком"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:715
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "Підсвічення (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:731
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "Перекреслення (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:747
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "Підкреслення (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:763
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "Хвиляста (q}"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
-#: shell/resources/pps-document-view.blp:860
+#: shell/resources/pps-document-view.blp:1579
 msgid "Send an Email"
 msgstr "Надіслати електронною поштою"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: shell/resources/pps-document-view.blp:872
-#| msgid "_Copy Link Address"
+#: shell/resources/pps-document-view.blp:1591
 msgid "Copy Email Address"
 msgstr "Скопіювати адресу ел. пошти"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "Пере_йти до"
 
-#: shell/resources/pps-document-view.blp:884
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: shell/resources/pps-document-view.blp:897
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "Виділ_ити все"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "Зберегти зображення _як…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "Копіювати _зображення"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:1637
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Відкрити долучення"
 
-#: shell/resources/pps-document-view.blp:924
+#: shell/resources/pps-document-view.blp:1643
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "З_берегти долучення як…"
 
-#: shell/resources/pps-document-view.blp:934
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "Властивості при_мітки…"
 
-#: shell/resources/pps-document-view.blp:940
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "Ви_лучити примітку"
 
-#: shell/resources/pps-document-view.blp:948
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "_Додати текстову анотацію"
 
@@ -1756,60 +1868,63 @@ msgstr "Показати версію програми."
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
-#: shell/src/document_view.rs:315
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "Переглянути подробиці"
 
-#: shell/src/document_view.rs:720
+#: shell/src/document_view.rs:773
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "Документ містить нові або змінені анотації та поля форм, які заповнено."
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ містить поля форми, які заповнено."
 
-#: shell/src/document_view.rs:722
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "Документ містить нові або змінені примітки."
 
-#: shell/src/document_view.rs:730
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Якщо копію не збережено, зміни буде остаточно втрачено."
 
-#: shell/src/document_view.rs:731
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "Зберегти зміни до копії?"
 
-#: shell/src/document_view.rs:740
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "Закрити б_ез збереження"
 
-#: shell/src/document_view.rs:742
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "_Зберегти копію"
 
-#: shell/src/document_view/actions.rs:908
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "Зберегти зображення"
 
-#: shell/src/document_view/actions.rs:1033
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Режим навігації з курсором увімкнено, натисніть F7, щоб вимкнути."
 
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Режим навігації з курсором вимкнено, натисніть F7, щоб увімкнути."
 
-#: shell/src/document_view/actions.rs:1090
+#: shell/src/document_view/actions.rs:1193
+#| msgid "Close"
+msgid "Close Menu"
+msgstr "Закрити меню"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "Не вдалося відкрити долучення"
 
-#: shell/src/document_view/actions.rs:1106
-#| msgid "Save Attachment"
-#| msgid_plural "Save Attachments"
+#: shell/src/document_view/actions.rs:1286
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Зберегти долучення"
@@ -1886,13 +2001,13 @@ msgstr[0] "{} завдання у черзі"
 msgstr[1] "{} завдання у черзі"
 msgstr[2] "{} завдань у черзі"
 
-#: shell/src/document_view/signals.rs:255
+#: shell/src/document_view/signals.rs:257
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Попередження безпеки: програма запобігла відкриттю файла «{}»"
 
-#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 #, rust-format
 msgid "Page {}"
@@ -2097,9 +2212,6 @@ msgstr "Приховати подробиці…"
 #~ msgid "Unknown issuer"
 #~ msgstr "Невідомий видавець"
 
-#~ msgid "Revoked"
-#~ msgstr "Відкликаний"
-
 #~ msgid "Expired"
 #~ msgstr "Застарілий"
 
@@ -2263,9 +2375,6 @@ msgstr "Приховати подробиці…"
 #~ msgid "Unable to open document “%s”."
 #~ msgstr "Неможливо відкрити документ «%s»."
 
-#~ msgid "Document"
-#~ msgstr "Документ"
-
 #, c-format
 #~ msgid "Page %d"
 #~ msgstr "Сторінка %d"
@@ -2327,9 +2436,6 @@ msgstr "Приховати подробиці…"
 
 #~ msgid "Initial window state:"
 #~ msgstr "Початковий стан вікна:"
-
-#~ msgid "Close"
-#~ msgstr "Закрити"
 
 #~ msgid "Note text"
 #~ msgstr "Текстова примітка"
