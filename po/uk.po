@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-09 16:12+0000\n"
-"PO-Revision-Date: 2026-01-20 06:11+0200\n"
+"POT-Creation-Date: 2026-01-21 13:23+0000\n"
+"PO-Revision-Date: 2026-01-26 02:45+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -479,7 +479,6 @@ msgid "This work is in the Public Domain"
 msgstr "Ця праця є власністю спільнот"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1082
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Зберегти долучення"
@@ -551,7 +550,7 @@ msgstr "Вибраний діапазон сторінок не містить �
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
 #: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:611
+#: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Закрити"
 
@@ -792,7 +791,7 @@ msgstr "Звичайний розмір"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Не вдалося надрукувати документ"
 
@@ -1044,8 +1043,8 @@ msgid "Abort _Print and Close"
 msgstr "Скасувати др_ук та закрити"
 
 #: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741
-#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
-#: shell/src/document_view/io.rs:723
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -1151,52 +1150,61 @@ msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
 #: shell/resources/pps-document-view.blp:860
+msgid "Send an Email"
+msgstr "Надіслати електронною поштою"
+
+#: shell/resources/pps-document-view.blp:866
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:872
+#| msgid "_Copy Link Address"
+msgid "Copy Email Address"
+msgstr "Скопіювати адресу ел. пошти"
+
+#: shell/resources/pps-document-view.blp:878
 msgid "_Go To"
 msgstr "Пере_йти до"
 
-#: shell/resources/pps-document-view.blp:872
+#: shell/resources/pps-document-view.blp:884
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:892
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:897
 msgid "Select _All"
 msgstr "Виділ_ити все"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:904
 msgid "_Save Image As…"
 msgstr "Зберегти зображення _як…"
 
-#: shell/resources/pps-document-view.blp:898
+#: shell/resources/pps-document-view.blp:910
 msgid "Copy _Image"
 msgstr "Копіювати _зображення"
 
-#: shell/resources/pps-document-view.blp:906
+#: shell/resources/pps-document-view.blp:918
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Відкрити долучення"
 
-#: shell/resources/pps-document-view.blp:912
+#: shell/resources/pps-document-view.blp:924
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "З_берегти долучення як…"
 
-#: shell/resources/pps-document-view.blp:922
+#: shell/resources/pps-document-view.blp:934
 msgid "Annotation _Properties…"
 msgstr "Властивості при_мітки…"
 
-#: shell/resources/pps-document-view.blp:928
+#: shell/resources/pps-document-view.blp:940
 msgid "R_emove Annotation"
 msgstr "Ви_лучити примітку"
 
-#: shell/resources/pps-document-view.blp:936
+#: shell/resources/pps-document-view.blp:948
 msgid "_Add Text Annotation"
 msgstr "_Додати текстову анотацію"
 
@@ -1220,13 +1228,13 @@ msgstr "Тут буде показано результати пошуку"
 msgid "Loading Document"
 msgstr "Завантажуємо документ"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "_Скасувати"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:716
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "Потрібно пароль"
 
@@ -1577,7 +1585,6 @@ msgid "Underline Text"
 msgstr "Підкреслити текст"
 
 #: shell/resources/pps-shortcuts-dialog.blp:254
-#| msgid "Digital signature is invalid"
 msgctxt "shortcut window"
 msgid "Digital Signing"
 msgstr "Цифровий підпис"
@@ -1784,21 +1791,28 @@ msgstr "Закрити б_ез збереження"
 msgid "_Save a Copy"
 msgstr "_Зберегти копію"
 
-#: shell/src/document_view/actions.rs:884
+#: shell/src/document_view/actions.rs:908
 msgid "Save Image"
 msgstr "Зберегти зображення"
 
-#: shell/src/document_view/actions.rs:1009
+#: shell/src/document_view/actions.rs:1033
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Режим навігації з курсором увімкнено, натисніть F7, щоб вимкнути."
 
-#: shell/src/document_view/actions.rs:1011
+#: shell/src/document_view/actions.rs:1035
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Режим навігації з курсором вимкнено, натисніть F7, щоб увімкнути."
 
-#: shell/src/document_view/actions.rs:1066
+#: shell/src/document_view/actions.rs:1090
 msgid "Unable to Open Attachment"
 msgstr "Не вдалося відкрити долучення"
+
+#: shell/src/document_view/actions.rs:1106
+#| msgid "Save Attachment"
+#| msgid_plural "Save Attachments"
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Зберегти долучення"
 
 #: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
@@ -1808,15 +1822,15 @@ msgstr "Документ не містить сторінок"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Документ містить лише порожні сторінки"
 
-#: shell/src/document_view/io.rs:411
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "Зберегти як…"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Намалюйте прямокутник для вставлення поля підпису"
 
-#: shell/src/document_view/io.rs:509
+#: shell/src/document_view/io.rs:512
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1825,32 +1839,32 @@ msgstr ""
 "Цифровий підпис {}\n"
 "Дата: {}"
 
-#: shell/src/document_view/io.rs:525
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "Потрібен сертифікат"
 
-#: shell/src/document_view/io.rs:528
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "Виберіть сертифікат підписування"
 
-#: shell/src/document_view/io.rs:529
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "Вибрати"
 
-#: shell/src/document_view/io.rs:609
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "Для підписування цього документа потрібен сертифікат"
 
-#: shell/src/document_view/io.rs:678
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "Зберегти підписаний файл"
 
-#: shell/src/document_view/io.rs:708
+#: shell/src/document_view/io.rs:714
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Будь ласка, введіть пароль до {}"
 
-#: shell/src/document_view/io.rs:724
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "_Увійти"
 
@@ -1860,17 +1874,25 @@ msgstr "_Увійти"
 msgid "Printing job “{}”"
 msgstr "Друкування завдання «{}»"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "У черзі немає завдань"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} завдання у черзі"
+msgstr[1] "{} завдання у черзі"
+msgstr[2] "{} завдань у черзі"
+
+#: shell/src/document_view/signals.rs:255
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Попередження безпеки: програма запобігла відкриттю файла «{}»"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
+#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 #, rust-format
 msgid "Page {}"
@@ -1879,18 +1901,18 @@ msgstr "Сторінка {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
 #, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} з {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
 #, rust-format
 msgid "of {}"
 msgstr "з {}"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
 #, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
@@ -2056,12 +2078,6 @@ msgstr "Приховати подробиці…"
 
 #~ msgid "_Apply"
 #~ msgstr "З_астосувати"
-
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "{} завдання у черзі"
-#~ msgstr[1] "{} завдання у черзі"
-#~ msgstr[2] "{} завдань у черзі"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "_Підсвітити вибраний текст"
