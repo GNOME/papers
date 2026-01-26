@@ -1046,6 +1046,7 @@ extern "C" {
         model: *mut PpsAnnotationModel,
         font_desc: *const pango::PangoFontDescription,
     );
+    pub fn pps_annotation_model_set_font_size(model: *mut PpsAnnotationModel, font_size: c_double);
     pub fn pps_annotation_model_set_highlight_color(
         model: *mut PpsAnnotationModel,
         pen_color: *const gdk::GdkRGBA,
@@ -1086,6 +1087,10 @@ extern "C" {
         color: *const gdk::GdkRGBA,
         user_data: gpointer,
     ) -> *mut papers_document::PpsAnnotation;
+    pub fn pps_annotations_context_first_index_for_page(
+        self_: *mut PpsAnnotationsContext,
+        page: c_int,
+    ) -> c_int;
     #[cfg(feature = "v49")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
     pub fn pps_annotations_context_get_annot_at_doc_point(

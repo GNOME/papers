@@ -122,6 +122,13 @@ impl AnnotationModel {
     //    unsafe { TODO: call ffi:pps_annotation_model_set_font_desc() }
     //}
 
+    #[doc(alias = "pps_annotation_model_set_font_size")]
+    pub fn set_font_size(&self, font_size: f64) {
+        unsafe {
+            ffi::pps_annotation_model_set_font_size(self.to_glib_none().0, font_size);
+        }
+    }
+
     #[doc(alias = "pps_annotation_model_set_highlight_color")]
     #[doc(alias = "highlight-color")]
     pub fn set_highlight_color(&self, pen_color: &gdk::RGBA) {

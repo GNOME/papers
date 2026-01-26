@@ -44,6 +44,13 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
     //    unsafe { TODO: call ffi:pps_annotations_context_add_annotation_sync() }
     //}
 
+    #[doc(alias = "pps_annotations_context_first_index_for_page")]
+    fn first_index_for_page(&self, page: i32) -> i32 {
+        unsafe {
+            ffi::pps_annotations_context_first_index_for_page(self.as_ref().to_glib_none().0, page)
+        }
+    }
+
     #[cfg(feature = "v49")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v49")))]
     #[doc(alias = "pps_annotations_context_get_annot_at_doc_point")]

@@ -187,8 +187,7 @@ pub const PPS_TRANSITION_EFFECT_UNCOVER: PpsTransitionEffectType = 10;
 pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
-pub const PPS_MAJOR_VERSION: c_int = 49;
-pub const PPS_MINOR_VERSION: c_int = 0;
+pub const PPS_MAJOR_VERSION: c_int = 50;
 
 // Flags
 pub type PpsDocumentInfoFields = c_uint;
