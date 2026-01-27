@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-21 13:23+0000\n"
-"PO-Revision-Date: 2026-01-25 11:30+0100\n"
+"POT-Creation-Date: 2026-01-26 15:31+0000\n"
+"PO-Revision-Date: 2026-01-27 05:30+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -471,7 +471,7 @@ msgstr "ეს ნამუშევარი საჯაროა"
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "მიმაგრებული ფაილის შენახვა"
-msgstr[1] ""
+msgstr[1] "მიმაგრებული ფაილების შენახვა"
 
 #: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
 #, c-format
@@ -537,7 +537,7 @@ msgstr "დასაბეჭდი დიაპაზონი არც ერ
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_დახურვა"
@@ -768,7 +768,7 @@ msgid "Print This Document"
 msgstr "ამ დოკუმენტის დაბეჭდვა"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:289
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
@@ -777,7 +777,7 @@ msgid "Normal Size"
 msgstr "ნორმალური ზომა"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:277
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "გადიდება"
 
@@ -918,6 +918,7 @@ msgid "_Markup Type"
 msgstr "_მარქაფის ტიპი"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "გამოკვეთა"
 
@@ -994,11 +995,46 @@ msgstr "ხელმოწერის ნახვა…"
 msgid "Fit Automatically"
 msgstr "ავტომატური ჩატევა"
 
-#: shell/resources/pps-document-view.blp:536
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "აირჩიეთ ფერი"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "ფონტის პარამეტრები"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "ფანქრის ზომა"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "საშლელის რადიუსის შეცვლა"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "ტექსტის ჩასმა"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "ხატვა"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "ანოტაციების წაშლა"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "დოკუმენტის ჩასწორება"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "მონიშნული ძალიან პატარაა"
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1008,19 +1044,19 @@ msgstr ""
 "კითხვადი ხელმოწერა, დააწექით თავიდან დაწყებას და უფრო დიდი მართკუთხედი "
 "დახატეთ."
 
-#: shell/resources/pps-document-view.blp:544
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "თ_ავიდან დაწყება"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "_ხელმოწერა"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "გავაუქმო ბეჭდვა?"
 
-#: shell/resources/pps-document-view.blp:553
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1028,172 +1064,244 @@ msgstr ""
 "აღმოჩენილია ერთი ან მეტი აქტიური ბეჭდვის დავალება. თუ ფანჯარას დახურავთ, "
 "რიგში მყოფი ბეჭდვის დავალებები არ შესრულდება."
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "_დაბეჭდვის გაუქმება და დახურვა"
 
-#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
 #: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
 #: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_გაუქმება"
 
-#: shell/resources/pps-document-view.blp:559
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "_დახურვა დაბეჭდვის შემდეგ"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "გახსნა…"
 
-#: shell/resources/pps-document-view.blp:581
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "_ღამის რეჟიმი"
 
-#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_კლავიატურის მალსახმობები"
 
-#: shell/resources/pps-document-view.blp:593 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_დახმარება"
 
-#: shell/resources/pps-document-view.blp:598 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "დოკუმენტების დამთვალიერებლის შესახებ"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "ბეჭდვა…"
 
-#: shell/resources/pps-document-view.blp:612
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "მთელს ეკრანზე"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "სლაიდშოუს სახით ჩვენება"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "ც_იფრული ხელმოწერა…"
 
-#: shell/resources/pps-document-view.blp:631
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "_ასლის გახსნა"
 
-#: shell/resources/pps-document-view.blp:636
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "გამხსნელი პროგრამა…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "_შენახვა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:648
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "უწყვეტი"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "_ორმაგი"
 
-#: shell/resources/pps-document-view.blp:658
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "_კენტი გვერდები მარცხნივ"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "დოკუმენტი იწერება მარჯვნიდან მარცხნივ"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "_მობრუნება ⤵"
 
-#: shell/resources/pps-document-view.blp:677
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "_დოკუმენტის თვისებები"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "შავი"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "ნარინჯისფერი"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "წითელი"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "იისფერი"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "ლურჯი"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "მწვანე"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "ყვითელი"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "თხელი"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "საშუალო"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "სქელი"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "ძალიან სქელი"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "მელნის წაშლა"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "მთლიანი შტრიხების წაშლა"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:715
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "გამოკვეთა (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:731
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "გადახაზული (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:747
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "ხაზგასმული (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:763
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "ტალღებიანი (q)"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "_ბმულის გახსნა"
 
-#: shell/resources/pps-document-view.blp:860
+#: shell/resources/pps-document-view.blp:1579
 msgid "Send an Email"
 msgstr "ელფოსტის გაგზავნა"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "დაა_კოპირე ბმულის მისამართი"
 
-#: shell/resources/pps-document-view.blp:872
+#: shell/resources/pps-document-view.blp:1591
 msgid "Copy Email Address"
 msgstr "ელფოსტის მისამართის კოპირება"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "_გადასვლა"
 
-#: shell/resources/pps-document-view.blp:884
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "ახალ ფან_ჯარაში გახსნა"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "_კოპირება"
 
-#: shell/resources/pps-document-view.blp:897
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "მონიშნე _ყველა"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "_გამოსახულების შენახვა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "გამოსახულების _კოპირება"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:1637
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_მიმაგრებული ფაილის გახსნა"
 
-#: shell/resources/pps-document-view.blp:924
+#: shell/resources/pps-document-view.blp:1643
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_მიმაგრებული ფაილის გახსნა, როგორც…"
 
-#: shell/resources/pps-document-view.blp:934
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "ანოტაციის _თვისებები…"
 
-#: shell/resources/pps-document-view.blp:940
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "_ანოტაციის წაშლა"
 
-#: shell/resources/pps-document-view.blp:948
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "_ტექსტის ანოტაციის დამატება"
 
@@ -1742,11 +1850,11 @@ msgstr "პროგრამის ვერსიის ჩვენება.
 msgid "[FILE…]"
 msgstr "[ფაილი...]"
 
-#: shell/src/document_view.rs:315
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "დეტალების ნახვა"
 
-#: shell/src/document_view.rs:720
+#: shell/src/document_view.rs:773
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1754,49 +1862,53 @@ msgstr ""
 "დოკუმენტი შეიცავს ახალ ან შეცვლილ ანოტაციებს და ფორმის ველებს, რომლებიც "
 "შევსებულია."
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "დოკუმენტი შეიცავს შევსებულ ფორმის ველებს."
 
-#: shell/src/document_view.rs:722
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "დოკუმენტი ახალ ან შეცვლილ ანოტაციებს შეიცავს."
 
-#: shell/src/document_view.rs:730
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "თუ ასლს არ შეინახავთ, ცვლილებები სამუდამოდ დაიკარგება."
 
-#: shell/src/document_view.rs:731
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "შევინახო ცვლილებები ასლში?"
 
-#: shell/src/document_view.rs:740
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "დახურვა _შენახვის გარეშე"
 
-#: shell/src/document_view.rs:742
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "ა_სლის შენახვა"
 
-#: shell/src/document_view/actions.rs:908
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "გამოსახულების შენახვა"
 
-#: shell/src/document_view/actions.rs:1033
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "კარეტით ნავიგაციის რეჟიმი ახლა ჩართულია. გამოსართავად დააწექით ღილაკს F7."
 
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "კარეტით ნავიგაციის რეჟიმი ახლა გამორთულია. ჩასართავად დააწექით ღილაკს F7."
 
-#: shell/src/document_view/actions.rs:1090
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "მენიუს დახურვა"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "მიმაგრებული ფაილის გახსნა შეუძლებელია"
 
-#: shell/src/document_view/actions.rs:1106
+#: shell/src/document_view/actions.rs:1286
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "მიმაგრებული ფაილის შენახვა"
@@ -1872,13 +1984,13 @@ msgid_plural "{} pending jobs in queue"
 msgstr[0] "რიგში დარჩენილია {} დავალება"
 msgstr[1] "რიგში დარჩენილია {} დავალება"
 
-#: shell/src/document_view/signals.rs:255
+#: shell/src/document_view/signals.rs:257
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "უსაფრთხოების გაფრთხილება: ამ დოკუმენტს აეკრძალა, გაეხსნა ფაილი \"{}\""
 
-#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 #, rust-format
 msgid "Page {}"
@@ -2086,9 +2198,6 @@ msgstr "დეტალების დამალვა…"
 #~ msgid "Unknown issuer"
 #~ msgstr "უცნობი გამომცემელი"
 
-#~ msgid "Revoked"
-#~ msgstr "გაუქმებულია"
-
 #~ msgid "Expired"
 #~ msgstr "ვადაგასულია"
 
@@ -2245,9 +2354,6 @@ msgstr "დეტალების დამალვა…"
 #~ msgid "Unable to open document “%s”."
 #~ msgstr "დოკუჯმენტის გახსნის შეცდომა: %s."
 
-#~ msgid "Document"
-#~ msgstr "დოკუმენტი"
-
 #, c-format
 #~ msgid "Page %d"
 #~ msgstr "%d გვერდი"
@@ -2302,9 +2408,6 @@ msgstr "დეტალების დამალვა…"
 
 #~ msgid "Initial window state:"
 #~ msgstr "ფანჯრის საწყისი მდგომარეობა:"
-
-#~ msgid "Close"
-#~ msgstr "დახურვა"
 
 #~ msgid "Note text"
 #~ msgstr "შენიშვნის ტექსტი"
