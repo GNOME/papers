@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Mapping, Point};
+use crate::{Mapping, Point, ffi};
 use glib::translate::*;
 
 glib::wrapper! {

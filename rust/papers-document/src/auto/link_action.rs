@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Layer, LinkActionType, LinkDest};
+use crate::{Layer, LinkActionType, LinkDest, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

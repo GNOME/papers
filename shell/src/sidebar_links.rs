@@ -247,10 +247,10 @@ mod imp {
 
                 self.0.push(n);
 
-                if f(&outlines, self) {
-                    if let Some(ref children) = outlines.children() {
-                        self._iterate_outlines(f, children);
-                    }
+                if f(&outlines, self)
+                    && let Some(ref children) = outlines.children()
+                {
+                    self._iterate_outlines(f, children);
                 }
 
                 self.0.pop();
@@ -462,10 +462,12 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![Signal::builder("link-activated")
-                    .run_last()
-                    .param_types([Link::static_type()])
-                    .build()]
+                vec![
+                    Signal::builder("link-activated")
+                        .run_last()
+                        .param_types([Link::static_type()])
+                        .build(),
+                ]
             })
         }
     }
@@ -574,36 +576,36 @@ mod imp {
 
                 let current_path = self.current_path();
 
-                if Some(path) != current_path.as_ref() {
-                    if let Some(tree_model) = self.tree_model() {
-                        self.block_activate.set(true);
-                        self.block_row_expand.set(true);
+                if Some(path) != current_path.as_ref()
+                    && let Some(tree_model) = self.tree_model()
+                {
+                    self.block_activate.set(true);
+                    self.block_row_expand.set(true);
 
-                        self.sidebar_collapse(Some(path));
+                    self.sidebar_collapse(Some(path));
 
-                        if let Some(pos) = path.expand(&tree_model) {
-                            glib::idle_add_local_once(glib::clone!(
-                                #[weak(rename_to = obj)]
-                                self,
-                                move || {
-                                    obj.block_row_expand.set(true);
-                                    obj.block_activate.set(true);
+                    if let Some(pos) = path.expand(&tree_model) {
+                        glib::idle_add_local_once(glib::clone!(
+                            #[weak(rename_to = obj)]
+                            self,
+                            move || {
+                                obj.block_row_expand.set(true);
+                                obj.block_activate.set(true);
 
-                                    obj.list_view.scroll_to(
-                                        pos,
-                                        gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
-                                        None,
-                                    );
+                                obj.list_view.scroll_to(
+                                    pos,
+                                    gtk::ListScrollFlags::FOCUS | gtk::ListScrollFlags::SELECT,
+                                    None,
+                                );
 
-                                    obj.block_row_expand.set(false);
-                                    obj.block_activate.set(false);
-                                }
-                            ));
-                        }
-
-                        self.block_activate.set(false);
-                        self.block_row_expand.set(false);
+                                obj.block_row_expand.set(false);
+                                obj.block_activate.set(false);
+                            }
+                        ));
                     }
+
+                    self.block_activate.set(false);
+                    self.block_row_expand.set(false);
                 }
             }
         }
@@ -667,39 +669,39 @@ mod imp {
         }
 
         fn print_section(&self) {
-            if let Some(row) = self.selected_row.take() {
-                if let Some(outlines) = row.item().and_downcast::<Outlines>() {
-                    let Some(link) = outlines.link() else { return };
-                    let Some(document_links) = self.document_links() else {
-                        return;
-                    };
-                    let Some(document) = self.document() else {
-                        return;
-                    };
-                    let Some(model) = self.tree_model().map(|tree_model| tree_model.model()) else {
-                        return;
-                    };
+            if let Some(row) = self.selected_row.take()
+                && let Some(outlines) = row.item().and_downcast::<Outlines>()
+            {
+                let Some(link) = outlines.link() else { return };
+                let Some(document_links) = self.document_links() else {
+                    return;
+                };
+                let Some(document) = self.document() else {
+                    return;
+                };
+                let Some(model) = self.tree_model().map(|tree_model| tree_model.model()) else {
+                    return;
+                };
 
-                    let first_page = document_links.link_page(&link) + 1;
+                let first_page = document_links.link_page(&link) + 1;
 
-                    let last_page = TreePath::from_row(&row)
-                        .next()
-                        .item(&model)
-                        .and_then(|outlines| outlines.link())
-                        .map_or_else(
-                            || document.n_pages(),
-                            |link| document_links.link_page(&link),
-                        );
+                let last_page = TreePath::from_row(&row)
+                    .next()
+                    .item(&model)
+                    .and_then(|outlines| outlines.link())
+                    .map_or_else(
+                        || document.n_pages(),
+                        |link| document_links.link_page(&link),
+                    );
 
-                    let last_page = if last_page == -1 {
-                        document.n_pages()
-                    } else {
-                        last_page
-                    };
+                let last_page = if last_page == -1 {
+                    document.n_pages()
+                } else {
+                    last_page
+                };
 
-                    if let Some(window) = self.obj().native().and_downcast::<PpsWindow>() {
-                        window.print_range(first_page, last_page);
-                    }
+                if let Some(window) = self.obj().native().and_downcast::<PpsWindow>() {
+                    window.print_range(first_page, last_page);
                 }
             }
         }
@@ -767,15 +769,14 @@ mod imp {
                 .and_then(|o| o.downcast::<gtk::TreeListRow>().ok())
                 .and_then(|row| row.item())
                 .and_then(|item| item.downcast::<Outlines>().ok())
+                && let Some(link) = outlines.link()
             {
-                if let Some(link) = outlines.link() {
-                    debug!("link activated: `{}`", link.title().unwrap_or_default());
+                debug!("link activated: `{}`", link.title().unwrap_or_default());
 
-                    self.block_page_changed.set(true);
-                    self.obj().emit_by_name::<()>("link-activated", &[&link]);
-                    self.obj().navigate_to_view();
-                    self.block_page_changed.set(false);
-                }
+                self.block_page_changed.set(true);
+                self.obj().emit_by_name::<()>("link-activated", &[&link]);
+                self.obj().navigate_to_view();
+                self.block_page_changed.set(false);
             }
         }
 

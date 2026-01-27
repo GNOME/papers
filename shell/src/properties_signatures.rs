@@ -129,26 +129,24 @@ mod imp {
                             obj.signers_drop_down.set_visible(false);
 
                             let mut signer_text = glib::gformat!("");
-                            if let Some(ref certificate_info) = signature.certificate_info() {
-                                if let Some(ref signer_name) =
+                            if let Some(ref certificate_info) = signature.certificate_info()
+                                && let Some(ref signer_name) =
                                     certificate_info.subject_common_name()
+                            {
+                                signer_text = glib::gformat!(
+                                    "{} {}",
+                                    gettext("Signed by"),
+                                    signer_name.as_str()
+                                );
+                                if let Some(ref signer_email) = certificate_info.subject_email()
+                                    && !signer_email.is_empty()
                                 {
                                     signer_text = glib::gformat!(
-                                        "{} {}",
+                                        "{} {} <{}>",
                                         gettext("Signed by"),
-                                        signer_name.as_str()
+                                        signer_name,
+                                        signer_email
                                     );
-                                    if let Some(ref signer_email) = certificate_info.subject_email()
-                                    {
-                                        if !signer_email.is_empty() {
-                                            signer_text = glib::gformat!(
-                                                "{} {} <{}>",
-                                                gettext("Signed by"),
-                                                signer_name,
-                                                signer_email
-                                            );
-                                        }
-                                    }
                                 }
                             }
                             obj.status_group
@@ -158,22 +156,16 @@ mod imp {
 
                             for signature in signatures.iter() {
                                 let mut signer_text = glib::gformat!("");
-                                if let Some(ref certificate_info) = signature.certificate_info() {
-                                    if let Some(ref signer_name) =
+                                if let Some(ref certificate_info) = signature.certificate_info()
+                                    && let Some(ref signer_name) =
                                         certificate_info.subject_common_name()
+                                {
+                                    signer_text = glib::gformat!("{}", signer_name.as_str());
+                                    if let Some(ref signer_email) = certificate_info.subject_email()
+                                        && !signer_email.is_empty()
                                     {
-                                        signer_text = glib::gformat!("{}", signer_name.as_str());
-                                        if let Some(ref signer_email) =
-                                            certificate_info.subject_email()
-                                        {
-                                            if !signer_email.is_empty() {
-                                                signer_text = glib::gformat!(
-                                                    "{} <{}>",
-                                                    signer_name,
-                                                    signer_email
-                                                );
-                                            }
-                                        }
+                                        signer_text =
+                                            glib::gformat!("{} <{}>", signer_name, signer_email);
                                     }
                                 }
                                 signers.append(signer_text.as_str());

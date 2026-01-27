@@ -3,11 +3,11 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel, UndoContext, UndoHandler};
+use crate::{DocumentModel, UndoContext, UndoHandler, ffi};
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -45,9 +45,11 @@ impl AnnotationsContext {
             ink_annotation: *mut papers_document::ffi::PpsAnnotation,
             user_data: glib::ffi::gpointer,
         ) {
-            let ink_annotation = from_glib_borrow(ink_annotation);
-            let callback = &*(user_data as *mut P);
-            (*callback)(&ink_annotation)
+            unsafe {
+                let ink_annotation = from_glib_borrow(ink_annotation);
+                let callback = &*(user_data as *mut P);
+                (*callback)(&ink_annotation)
+            }
         }
         let transformation = Some(transformation_func::<P> as _);
         let super_callback0: Box_<P> = transformation_data;
@@ -134,17 +136,19 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
             object: *mut papers_document::ffi::PpsAnnotation,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(
-                AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref(),
-                &from_glib_borrow(object),
-            )
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(
+                    AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref(),
+                    &from_glib_borrow(object),
+                )
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"annot-added".as_ptr() as *const _,
+                c"annot-added".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annot_added_trampoline::<Self, F> as *const (),
                 )),
@@ -166,17 +170,19 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
             object: *mut papers_document::ffi::PpsAnnotation,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(
-                AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref(),
-                &from_glib_borrow(object),
-            )
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(
+                    AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref(),
+                    &from_glib_borrow(object),
+                )
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"annot-removed".as_ptr() as *const _,
+                c"annot-removed".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annot_removed_trampoline::<Self, F> as *const (),
                 )),
@@ -194,14 +200,16 @@ pub trait AnnotationsContextExt: IsA<AnnotationsContext> + 'static {
             this: *mut ffi::PpsAnnotationsContext,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(AnnotationsContext::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"annots-loaded".as_ptr() as *const _,
+                c"annots-loaded".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     annots_loaded_trampoline::<Self, F> as *const (),
                 )),

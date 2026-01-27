@@ -86,7 +86,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AnnotationTool {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -194,7 +194,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for JobPriority {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -294,7 +294,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PageLayout {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -398,7 +398,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SizingMode {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 

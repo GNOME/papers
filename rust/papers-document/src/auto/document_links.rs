@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Link, LinkDest, MappingList, Page};
+use crate::{Link, LinkDest, MappingList, Page, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

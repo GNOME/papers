@@ -110,10 +110,9 @@ mod imp {
             if let Some(description) = attachment
                 .description()
                 .map(|s| glib::gformat!("{}", glib::markup_escape_text(s.as_str())))
+                && !description.is_empty()
             {
-                if !description.is_empty() {
-                    box_.set_tooltip_text(Some(description.as_str()));
-                }
+                box_.set_tooltip_text(Some(description.as_str()));
             }
 
             if let Some(icon) = attachment

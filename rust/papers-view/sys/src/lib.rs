@@ -21,18 +21,18 @@ use gtk_sys as gtk;
 use pango_sys as pango;
 use papers_document_sys as papers_document;
 
+#[allow(unused_imports)]
+use libc::{FILE, intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t};
 #[cfg(unix)]
 #[allow(unused_imports)]
 use libc::{dev_t, gid_t, pid_t, socklen_t, uid_t};
-#[allow(unused_imports)]
-use libc::{intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE};
 #[allow(unused_imports)]
 use std::ffi::{
     c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
 };
 
 #[allow(unused_imports)]
-use glib::{gboolean, gconstpointer, gpointer, GType};
+use glib::{GType, gboolean, gconstpointer, gpointer};
 
 // Enums
 pub type PpsAnnotationTool = c_int;
@@ -981,7 +981,7 @@ impl ::std::fmt::Debug for PpsUndoHandler {
     }
 }
 
-extern "C" {
+unsafe extern "C" {
 
     //=========================================================================
     // PpsAnnotationTool
@@ -1043,7 +1043,7 @@ extern "C" {
     pub fn pps_annotation_model_get_pen_color(model: *mut PpsAnnotationModel) -> *mut gdk::GdkRGBA;
     pub fn pps_annotation_model_get_pen_radius(model: *mut PpsAnnotationModel) -> c_double;
     pub fn pps_annotation_model_get_text_color(model: *mut PpsAnnotationModel)
-        -> *mut gdk::GdkRGBA;
+    -> *mut gdk::GdkRGBA;
     #[cfg(feature = "v48")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
     pub fn pps_annotation_model_get_tool(model: *mut PpsAnnotationModel) -> PpsAnnotationTool;
@@ -1600,7 +1600,7 @@ extern "C" {
         action: *mut papers_document::PpsLinkAction,
     );
     pub fn pps_view_current_event_is_type(view: *mut PpsView, type_: gdk::GdkEventType)
-        -> gboolean;
+    -> gboolean;
     pub fn pps_view_focus_annotation(
         view: *mut PpsView,
         annot: *mut papers_document::PpsAnnotation,

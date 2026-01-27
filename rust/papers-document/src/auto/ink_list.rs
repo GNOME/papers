@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Path};
+use crate::{Path, ffi};
 use glib::translate::*;
 
 glib::wrapper! {

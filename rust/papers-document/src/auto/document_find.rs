@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, FindOptions, FindRectangle, Page};
+use crate::{FindOptions, FindRectangle, Page, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

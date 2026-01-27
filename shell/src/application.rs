@@ -141,10 +141,10 @@ mod imp {
             // We use the standard specified by RFC8118 for all document types.
             match frag.rsplit_once('=') {
                 Some(("page", page)) => {
-                    if let Ok(n) = page.parse::<u32>() {
-                        if n > 0 {
-                            return Some(LinkDest::new_page((n - 1) as i32));
-                        }
+                    if let Ok(n) = page.parse::<u32>()
+                        && n > 0
+                    {
+                        return Some(LinkDest::new_page((n - 1) as i32));
                     }
                 }
                 Some(("nameddest", named_dest)) => return Some(LinkDest::new_named(named_dest)),
@@ -256,14 +256,14 @@ mod imp {
                 std::env::var("XDG_CURRENT_DESKTOP").unwrap_or_else(|_| "Unknown".to_string());
 
             let mut backend_info_str = String::from("None");
-            if let Some(window) = self.obj().active_window().and_downcast::<PpsWindow>() {
-                if let Some(document) = window.document() {
-                    let mut info = papers_document::DocumentBackendInfo::new();
-                    if document.is_backend_info(&mut info) {
-                        if let (Some(name), Some(version)) = (info.name(), info.version()) {
-                            backend_info_str = format!("{name} {version}");
-                        }
-                    }
+            if let Some(window) = self.obj().active_window().and_downcast::<PpsWindow>()
+                && let Some(document) = window.document()
+            {
+                let mut info = papers_document::DocumentBackendInfo::new();
+                if document.is_backend_info(&mut info)
+                    && let (Some(name), Some(version)) = (info.name(), info.version())
+                {
+                    backend_info_str = format!("{name} {version}");
                 }
             }
 

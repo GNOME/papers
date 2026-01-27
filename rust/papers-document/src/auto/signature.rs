@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, CertificateInfo, Rectangle, SignatureStatus};
+use crate::{CertificateInfo, Rectangle, SignatureStatus, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

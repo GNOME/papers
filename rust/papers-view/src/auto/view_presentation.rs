@@ -7,7 +7,7 @@ use crate::ffi;
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -101,14 +101,16 @@ impl ViewPresentation {
             object: gtk::ffi::GtkScrollType,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this), from_glib(object))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this), from_glib(object))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"change-page".as_ptr() as *const _,
+                c"change-page".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     change_page_trampoline::<F> as *const (),
                 )),
@@ -133,14 +135,16 @@ impl ViewPresentation {
             object: *mut papers_document::ffi::PpsLinkAction,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this), &from_glib_borrow(object))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this), &from_glib_borrow(object))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"external-link".as_ptr() as *const _,
+                c"external-link".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     external_link_trampoline::<F> as *const (),
                 )),
@@ -159,14 +163,16 @@ impl ViewPresentation {
             this: *mut ffi::PpsViewPresentation,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"finished".as_ptr() as *const _,
+                c"finished".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
@@ -186,14 +192,16 @@ impl ViewPresentation {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::current-page".as_ptr() as *const _,
+                c"notify::current-page".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_current_page_trampoline::<F> as *const (),
                 )),
@@ -209,14 +217,16 @@ impl ViewPresentation {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::document".as_ptr() as *const _,
+                c"notify::document".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_document_trampoline::<F> as *const (),
                 )),
@@ -234,14 +244,16 @@ impl ViewPresentation {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::inverted-colors".as_ptr() as *const _,
+                c"notify::inverted-colors".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_inverted_colors_trampoline::<F> as *const (),
                 )),
@@ -257,14 +269,16 @@ impl ViewPresentation {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::rotation".as_ptr() as *const _,
+                c"notify::rotation".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rotation_trampoline::<F> as *const (),
                 )),

@@ -3,10 +3,10 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, TransitionEffectAlignment, TransitionEffectDirection, TransitionEffectType};
+use crate::{TransitionEffectAlignment, TransitionEffectDirection, TransitionEffectType, ffi};
 use glib::{
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -108,14 +108,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::alignment".as_ptr() as *const _,
+                c"notify::alignment".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_alignment_trampoline::<Self, F> as *const (),
                 )),
@@ -134,14 +136,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::angle".as_ptr() as *const _,
+                c"notify::angle".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_angle_trampoline::<Self, F> as *const (),
                 )),
@@ -160,14 +164,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::direction".as_ptr() as *const _,
+                c"notify::direction".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_direction_trampoline::<Self, F> as *const (),
                 )),
@@ -186,14 +192,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::duration".as_ptr() as *const _,
+                c"notify::duration".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_duration_trampoline::<Self, F> as *const (),
                 )),
@@ -212,14 +220,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::duration-real".as_ptr() as *const _,
+                c"notify::duration-real".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_duration_real_trampoline::<Self, F> as *const (),
                 )),
@@ -238,14 +248,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::rectangular".as_ptr() as *const _,
+                c"notify::rectangular".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rectangular_trampoline::<Self, F> as *const (),
                 )),
@@ -264,14 +276,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::scale".as_ptr() as *const _,
+                c"notify::scale".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_scale_trampoline::<Self, F> as *const (),
                 )),
@@ -290,14 +304,16 @@ pub trait TransitionEffectExt: IsA<TransitionEffect> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(TransitionEffect::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::type".as_ptr() as *const _,
+                c"notify::type".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_type_trampoline::<Self, F> as *const (),
                 )),

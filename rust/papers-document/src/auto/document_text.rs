@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Page, Rectangle};
+use crate::{Page, Rectangle, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Page, RenderAnnotsFlags};
+use crate::{Page, RenderAnnotsFlags, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

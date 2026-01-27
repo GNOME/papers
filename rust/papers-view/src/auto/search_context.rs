@@ -3,11 +3,11 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel, SearchResult};
+use crate::{DocumentModel, SearchResult, ffi};
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -169,14 +169,16 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             this: *mut ffi::PpsSearchContext,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"cleared".as_ptr() as *const _,
+                c"cleared".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cleared_trampoline::<Self, F> as *const (),
                 )),
@@ -195,17 +197,19 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             object: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(
-                SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
-                object,
-            )
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(
+                    SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
+                    object,
+                )
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"finished".as_ptr() as *const _,
+                c"finished".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<Self, F> as *const (),
                 )),
@@ -227,17 +231,19 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             object: *mut ffi::PpsSearchResult,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(
-                SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
-                &from_glib_borrow(object),
-            )
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(
+                    SearchContext::from_glib_borrow(this).unsafe_cast_ref(),
+                    &from_glib_borrow(object),
+                )
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"result-activated".as_ptr() as *const _,
+                c"result-activated".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     result_activated_trampoline::<Self, F> as *const (),
                 )),
@@ -252,14 +258,16 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             this: *mut ffi::PpsSearchContext,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"started".as_ptr() as *const _,
+                c"started".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     started_trampoline::<Self, F> as *const (),
                 )),
@@ -278,14 +286,16 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::active".as_ptr() as *const _,
+                c"notify::active".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_active_trampoline::<Self, F> as *const (),
                 )),
@@ -304,14 +314,16 @@ pub trait SearchContextExt: IsA<SearchContext> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(SearchContext::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::search-term".as_ptr() as *const _,
+                c"notify::search-term".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_search_term_trampoline::<Self, F> as *const (),
                 )),

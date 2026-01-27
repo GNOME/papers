@@ -51,10 +51,12 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![Signal::builder("activate-link")
-                    .param_types([papers_document::Link::static_type()])
-                    .run_last()
-                    .build()]
+                vec![
+                    Signal::builder("activate-link")
+                        .param_types([papers_document::Link::static_type()])
+                        .run_last()
+                        .build(),
+                ]
             })
         }
     }

@@ -447,10 +447,10 @@ mod imp {
         where
             F: FnOnce(papers_view::Metadata),
         {
-            if let Some(metadata) = self.metadata() {
-                if !self.is_empty() {
-                    f(metadata);
-                }
+            if let Some(metadata) = self.metadata()
+                && !self.is_empty()
+            {
+                f(metadata);
             }
         }
 
@@ -504,14 +504,13 @@ mod imp {
 
             // caret navigation mode
             if self.view.supports_caret_navigation() {
-                if let Some(caret_position) = metadata.string("caret-position") {
-                    if let Some((page, offset)) =
+                if let Some(caret_position) = metadata.string("caret-position")
+                    && let Some((page, offset)) =
                         Variant::parse(VariantTy::new("(uu)").ok(), &caret_position)
                             .ok()
                             .and_then(|v| v.get::<(u32, u32)>())
-                    {
-                        self.view.set_caret_cursor_position(page, offset);
-                    }
+                {
+                    self.view.set_caret_cursor_position(page, offset);
                 }
 
                 if let Some(caret_navigation) = metadata.boolean("caret-navigation") {
@@ -540,12 +539,12 @@ mod imp {
             }
 
             // Zoom
-            if self.model.sizing_mode() == SizingMode::Free {
-                if let Some(zoom) = metadata.double("zoom") {
-                    let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
-                    let zoom = zoom * dpi / 72.;
-                    self.model.set_scale(zoom);
-                }
+            if self.model.sizing_mode() == SizingMode::Free
+                && let Some(zoom) = metadata.double("zoom")
+            {
+                let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
+                let zoom = zoom * dpi / 72.;
+                self.model.set_scale(zoom);
             }
 
             // Rotation
@@ -788,8 +787,12 @@ mod imp {
                 .unwrap_or_default();
 
             let secondary_text = match (forms_modified, annots_modified) {
-                (true, true) => Some(gettext("Document contains new or modified annotations and form fields that have been filled out.")),
-                (true, false) => Some(gettext("Document contains form fields that have been filled out.")),
+                (true, true) => Some(gettext(
+                    "Document contains new or modified annotations and form fields that have been filled out.",
+                )),
+                (true, false) => Some(gettext(
+                    "Document contains form fields that have been filled out.",
+                )),
                 (false, true) => Some(gettext("Document contains new or modified annotations.")),
                 (false, false) => None,
             };

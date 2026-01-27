@@ -22,8 +22,8 @@
                     unsigned long: "%lu", \
                     long long: "%lld", \
                     unsigned long long: "%llu", \
-                    float: "%f", \
-                    double: "%f", \
+                    float: "%.6f", \
+                    double: "%.6f", \
                     long double: "%ld"), \
            CONSTANT_NAME); \
     printf("\n");
@@ -156,6 +156,7 @@ int main() {
     PRINT_CONSTANT((gint) PPS_LINK_DEST_TYPE_UNKNOWN);
     PRINT_CONSTANT((gint) PPS_LINK_DEST_TYPE_XYZ);
     PRINT_CONSTANT(PPS_MAJOR_VERSION);
+    PRINT_CONSTANT(PPS_MINOR_VERSION);
     PRINT_CONSTANT((guint) PPS_RENDER_ANNOTS_3D);
     PRINT_CONSTANT((guint) PPS_RENDER_ANNOTS_ALL);
     PRINT_CONSTANT((guint) PPS_RENDER_ANNOTS_CARET);

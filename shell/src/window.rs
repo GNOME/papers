@@ -3,11 +3,11 @@ use crate::deps::*;
 use std::cell::Cell;
 use std::path::PathBuf;
 
-use glib::closure_local;
 use glib::UserDirectory;
+use glib::closure_local;
 use gtk::TextDirection;
 
-use futures::{future::LocalBoxFuture, FutureExt};
+use futures::{FutureExt, future::LocalBoxFuture};
 use papers_document::{DocumentAnnotations, DocumentMode, LinkAction, LinkActionType, LinkDest};
 use papers_view::JobLoad;
 use papers_view::JobPriority;
@@ -233,8 +233,12 @@ mod imp {
                 .unwrap_or_default();
 
             match (forms_modified, annots_modified) {
-                (true, true) => Some(gettext("Document contains new or modified annotations and form fields that have been filled out.")),
-                (true, false) => Some(gettext("Document contains form fields that have been filled out.")),
+                (true, true) => Some(gettext(
+                    "Document contains new or modified annotations and form fields that have been filled out.",
+                )),
+                (true, false) => Some(gettext(
+                    "Document contains form fields that have been filled out.",
+                )),
                 (false, true) => Some(gettext("Document contains new or modified annotations.")),
                 (false, false) => None,
             }
@@ -285,10 +289,10 @@ mod imp {
                 return;
             };
 
-            if let Some(state) = self.obj().action_state("fullscreen") {
-                if state.get::<bool>().unwrap_or_default() {
-                    self.obj().change_action_state("fullscreen", &false.into());
-                }
+            if let Some(state) = self.obj().action_state("fullscreen")
+                && state.get::<bool>().unwrap_or_default()
+            {
+                self.obj().change_action_state("fullscreen", &false.into());
             }
 
             self.obj()
@@ -739,15 +743,14 @@ mod imp {
                     glib::Priority::DEFAULT,
                 )
                 .await
+                && let Some(time) = info.modification_date_time()
             {
-                if let Some(time) = info.modification_date_time() {
-                    let mtime = time.to_unix();
+                let mtime = time.to_unix();
 
-                    if self.uri_mtime.get() != mtime {
-                        // Remote file has changed
-                        self.uri_mtime.set(mtime);
-                        self.copy_and_reload_local(&remote).await;
-                    }
+                if self.uri_mtime.get() != mtime {
+                    // Remote file has changed
+                    self.uri_mtime.set(mtime);
+                    self.copy_and_reload_local(&remote).await;
                 }
             }
 
@@ -878,12 +881,11 @@ mod imp {
 
                             // Handle PDF page mode feature
                             let mut pending_mode = WindowRunMode::Normal;
-                            if let Some(info) = document.info() {
-                                if let Some(page_mode) = info.start_mode() {
-                                    if page_mode == DocumentMode::FullScreen {
-                                        pending_mode = WindowRunMode::Presentation;
-                                    }
-                                }
+                            if let Some(info) = document.info()
+                                && let Some(page_mode) = info.start_mode()
+                                && page_mode == DocumentMode::FullScreen
+                            {
+                                pending_mode = WindowRunMode::Presentation;
                             }
 
                             if let Some(m) = mode {

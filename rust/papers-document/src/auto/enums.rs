@@ -106,7 +106,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AnnotationTextIcon {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -210,7 +210,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AnnotationTextMarkupType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -326,7 +326,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AnnotationType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -430,7 +430,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AnnotationsOverMarkup {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -546,7 +546,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CertificateStatus {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -650,7 +650,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CompressionType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -750,7 +750,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentContainsJS {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -873,7 +873,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentError {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -981,7 +981,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentMode {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1097,7 +1097,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for LinkActionType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1221,7 +1221,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for LinkDestType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1321,7 +1321,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SelectionStyle {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1429,7 +1429,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SignatureStatus {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1525,7 +1525,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for TransitionEffectAlignment {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1621,7 +1621,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for TransitionEffectDirection {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 
@@ -1757,7 +1757,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for TransitionEffectType {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0)) }
     }
 }
 

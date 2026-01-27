@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, CertificateInfo, Signature};
+use crate::{CertificateInfo, Signature, ffi};
 use glib::{prelude::*, translate::*};
 use std::{boxed::Box as Box_, pin::Pin};
 
@@ -79,9 +79,11 @@ pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + 'static {
             text: *const std::ffi::c_char,
             user_data: glib::ffi::gpointer,
         ) -> *mut std::ffi::c_char {
-            let text: Borrowed<glib::GString> = from_glib_borrow(text);
-            let callback = &*(user_data as *mut P);
-            (*callback)(text.as_str()).to_glib_full()
+            unsafe {
+                let text: Borrowed<glib::GString> = from_glib_borrow(text);
+                let callback = &*(user_data as *mut P);
+                (*callback)(text.as_str()).to_glib_full()
+            }
         }
         let cb = Some(cb_func::<P> as _);
         let super_callback0: Box_<P> = cb_data;
@@ -118,17 +120,19 @@ pub trait DocumentSignaturesExt: IsA<DocumentSignatures> + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = std::ptr::null_mut();
-            ffi::pps_document_signatures_sign_finish(_source_object as *mut _, res, &mut error);
-            let result = if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            };
-            let callback: Box_<glib::thread_guard::ThreadGuard<P>> =
-                Box_::from_raw(user_data as *mut _);
-            let callback: P = callback.into_inner();
-            callback(result);
+            unsafe {
+                let mut error = std::ptr::null_mut();
+                ffi::pps_document_signatures_sign_finish(_source_object as *mut _, res, &mut error);
+                let result = if error.is_null() {
+                    Ok(())
+                } else {
+                    Err(from_glib_full(error))
+                };
+                let callback: Box_<glib::thread_guard::ThreadGuard<P>> =
+                    Box_::from_raw(user_data as *mut _);
+                let callback: P = callback.into_inner();
+                callback(result);
+            }
         }
         let callback = sign_trampoline::<P>;
         unsafe {

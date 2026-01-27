@@ -3,11 +3,11 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, JobPriority};
+use crate::{JobPriority, ffi};
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -128,14 +128,16 @@ pub trait JobExt: IsA<Job> + 'static {
             this: *mut ffi::PpsJob,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(Job::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(Job::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"cancelled".as_ptr() as *const _,
+                c"cancelled".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cancelled_trampoline::<Self, F> as *const (),
                 )),
@@ -150,14 +152,16 @@ pub trait JobExt: IsA<Job> + 'static {
             this: *mut ffi::PpsJob,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(Job::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(Job::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"finished".as_ptr() as *const _,
+                c"finished".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<Self, F> as *const (),
                 )),

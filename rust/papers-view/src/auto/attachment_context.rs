@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel};
+use crate::{DocumentModel, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

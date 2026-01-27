@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentContainsJS, DocumentLicense, DocumentMode, DocumentPermissions};
+use crate::{DocumentContainsJS, DocumentLicense, DocumentMode, DocumentPermissions, ffi};
 use glib::translate::*;
 
 glib::wrapper! {
@@ -164,11 +164,7 @@ impl DocumentInfo {
                 self.to_glib_none().0,
                 pages.as_mut_ptr(),
             ));
-            if ret {
-                Some(pages.assume_init())
-            } else {
-                None
-            }
+            if ret { Some(pages.assume_init()) } else { None }
         }
     }
 

@@ -98,7 +98,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentInfoFields {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0)) }
     }
 }
 
@@ -184,7 +184,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentLoadFlags {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0)) }
     }
 }
 
@@ -276,7 +276,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DocumentPermissions {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0)) }
     }
 }
 
@@ -364,7 +364,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for FindOptions {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0)) }
     }
 }
 
@@ -510,7 +510,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for RenderAnnotsFlags {
     #[inline]
     unsafe fn from_value(value: &'a glib::Value) -> Self {
         skip_assert_initialized!();
-        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
+        unsafe { from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0)) }
     }
 }
 

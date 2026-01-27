@@ -22,11 +22,11 @@ impl imp::PpsDocumentView {
         let info = document.info();
         let override_restrictions = self.settings.boolean(GS_OVERRIDE_RESTRICTIONS);
 
-        if let Some(permissions) = info.and_then(|info| info.permissions()) {
-            if !override_restrictions {
-                ok_to_print = permissions.contains(DocumentPermissions::OK_TO_PRINT);
-                ok_to_copy = permissions.contains(DocumentPermissions::OK_TO_COPY);
-            }
+        if let Some(permissions) = info.and_then(|info| info.permissions())
+            && !override_restrictions
+        {
+            ok_to_print = permissions.contains(DocumentPermissions::OK_TO_PRINT);
+            ok_to_copy = permissions.contains(DocumentPermissions::OK_TO_COPY);
         }
 
         if !papers_view::PrintOperation::exists_for_document(&document) {
@@ -330,7 +330,11 @@ impl imp::PpsDocumentView {
                 self.document_action_group.activate_action("save-as", None)
             }
             _ => {
-                glib::g_warning!("", "Unimplemented named action: {}, please post a bug report in Document Viewer Gitlab (https://gitlab.gnome.org/GNOME/papers/issues) with a testcase.", name);
+                glib::g_warning!(
+                    "",
+                    "Unimplemented named action: {}, please post a bug report in Document Viewer Gitlab (https://gitlab.gnome.org/GNOME/papers/issues) with a testcase.",
+                    name
+                );
             }
         }
     }
@@ -678,13 +682,14 @@ impl imp::PpsDocumentView {
         self.set_action_enabled("zoom-in", self.view.can_zoom_in());
         self.set_action_enabled("zoom-out", self.view.can_zoom_out());
 
-        if let Some(metadata) = self.metadata() {
-            if is_free && !self.is_empty() {
-                let zoom = model.scale();
-                let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
+        if let Some(metadata) = self.metadata()
+            && is_free
+            && !self.is_empty()
+        {
+            let zoom = model.scale();
+            let dpi = Document::misc_get_widget_dpi(self.obj().as_ref());
 
-                metadata.set_double("zoom", zoom * 72. / dpi);
-            }
+            metadata.set_double("zoom", zoom * 72. / dpi);
         }
     }
 

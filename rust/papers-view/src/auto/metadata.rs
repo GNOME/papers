@@ -50,11 +50,7 @@ impl Metadata {
                 key.to_glib_none().0,
                 value.as_mut_ptr(),
             ));
-            if ret {
-                Some(value.assume_init())
-            } else {
-                None
-            }
+            if ret { Some(value.assume_init()) } else { None }
         }
     }
 
@@ -68,11 +64,7 @@ impl Metadata {
                 key.to_glib_none().0,
                 value.as_mut_ptr(),
             ));
-            if ret {
-                Some(value.assume_init())
-            } else {
-                None
-            }
+            if ret { Some(value.assume_init()) } else { None }
         }
     }
 

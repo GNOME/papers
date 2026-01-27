@@ -4,7 +4,7 @@ codegen-units = 1
 panic = "abort"
 
 [workspace]
-resolver = "2"
+resolver = "3"
 
 members = [
   './rust/papers-view',
@@ -21,10 +21,10 @@ exclude = [
 
 [workspace.package]
 authors = ["The GNOME Project"]
-edition = "2021"
+edition = "2024"
 homepage = "https://apps.gnome.org/Papers/"
 repository = "https://gitlab.gnome.org/GNOME/papers"
-rust-version = "1.85"
+rust-version = "1.92"
 
 [workspace.dependencies]
 papers-document = { path = "rust/papers-document" }
@@ -32,21 +32,21 @@ papers-document-sys = { path = "rust/papers-document/sys" }
 papers-view = { path = "rust/papers-view" }
 papers-view-sys = { path = "rust/papers-view/sys" }
 
-gtk = { package = "gtk4", version = "0.10", features = ["gnome_46"] }
-gtk-sys = { package = "gtk4-sys", version = "0.10" }
-gdk = { package = "gdk4", version = "0.10" }
-gdk-sys = { package = "gdk4-sys", version = "0.10" }
-glib = "0.21"
-glib-sys = "0.21"
-gobject-sys = "0.21"
-gio = "0.21"
-gio-sys = "0.21"
-gdk-pixbuf = "0.21"
-gdk-pixbuf-sys = "0.21"
-pango = "0.21"
-pango-sys = "0.21"
-cairo-rs = "0.21"
-cairo-sys-rs = "0.21"
+gtk = { package = "gtk4", version = "0.11", features = ["gnome_46"] }
+gtk-sys = { package = "gtk4-sys", version = "0.11" }
+gdk = { package = "gdk4", version = "0.11" }
+gdk-sys = { package = "gdk4-sys", version = "0.11" }
+glib = "0.22"
+glib-sys = "0.22"
+gobject-sys = "0.22"
+gio = "0.22"
+gio-sys = "0.22"
+gdk-pixbuf = "0.22"
+gdk-pixbuf-sys = "0.22"
+pango = "0.22"
+pango-sys = "0.22"
+cairo-rs = "0.22"
+cairo-sys-rs = "0.22"
 env_logger = "0.11"
 log = "0.4"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }

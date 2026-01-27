@@ -6,17 +6,17 @@
 #[cfg(feature = "v48")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v48")))]
 use crate::Page;
-use crate::{ffi, Annotation, AnnotationMarkup};
+use crate::{Annotation, ffi};
 use glib::{
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "PpsAnnotationFreeText")]
-    pub struct AnnotationFreeText(Object<ffi::PpsAnnotationFreeText, ffi::PpsAnnotationFreeTextClass>) @extends AnnotationMarkup, Annotation;
+    pub struct AnnotationFreeText(Object<ffi::PpsAnnotationFreeText, ffi::PpsAnnotationFreeTextClass>) @extends Annotation;
 
     match fn {
         type_ => || ffi::pps_annotation_free_text_get_type(),
@@ -127,14 +127,16 @@ impl AnnotationFreeText {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::font-desc".as_ptr() as *const _,
+                c"notify::font-desc".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_font_desc_trampoline::<F> as *const (),
                 )),
@@ -150,14 +152,16 @@ impl AnnotationFreeText {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::font-rgba".as_ptr() as *const _,
+                c"notify::font-rgba".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_font_rgba_trampoline::<F> as *const (),
                 )),

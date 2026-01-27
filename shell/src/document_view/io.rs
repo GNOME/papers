@@ -49,10 +49,9 @@ impl imp::PpsDocumentView {
             .sidebar_stack
             .visible_child()
             .is_some_and(|child| child == *self.find_sidebar)
+            && let Some(search_context) = self.search_context.borrow().clone()
         {
-            if let Some(search_context) = self.search_context.borrow().clone() {
-                search_context.restart();
-            }
+            search_context.restart();
         }
     }
 
@@ -711,9 +710,7 @@ impl imp::PpsDocumentView {
         entry.grab_focus();
         lp.run();
 
-        let password = password.lock().unwrap().take();
-
-        password
+        password.lock().unwrap().take()
     }
 
     fn ensure_focus_if_needed(&self, mode: WindowRunMode) {

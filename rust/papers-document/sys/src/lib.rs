@@ -21,18 +21,18 @@ use gobject_sys as gobject;
 use gtk_sys as gtk;
 use pango_sys as pango;
 
+#[allow(unused_imports)]
+use libc::{FILE, intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t};
 #[cfg(unix)]
 #[allow(unused_imports)]
 use libc::{dev_t, gid_t, pid_t, socklen_t, uid_t};
-#[allow(unused_imports)]
-use libc::{intptr_t, off_t, size_t, ssize_t, time_t, uintptr_t, FILE};
 #[allow(unused_imports)]
 use std::ffi::{
     c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
 };
 
 #[allow(unused_imports)]
-use glib::{gboolean, gconstpointer, gpointer, GType};
+use glib::{GType, gboolean, gconstpointer, gpointer};
 
 // Aliases
 pub type PpsBackendPage = gpointer;
@@ -188,6 +188,7 @@ pub const PPS_TRANSITION_EFFECT_FADE: PpsTransitionEffectType = 11;
 
 // Constants
 pub const PPS_MAJOR_VERSION: c_int = 50;
+pub const PPS_MINOR_VERSION: c_int = 0;
 
 // Flags
 pub type PpsDocumentInfoFields = c_uint;
@@ -2136,7 +2137,7 @@ impl ::std::fmt::Debug for PpsSelection {
     }
 }
 
-extern "C" {
+unsafe extern "C" {
 
     //=========================================================================
     // PpsAnnotationTextIcon
@@ -2873,14 +2874,14 @@ extern "C" {
     //=========================================================================
     pub fn pps_form_field_button_get_type() -> GType;
     pub fn pps_form_field_button_new(id: c_int, type_: PpsFormFieldButtonType)
-        -> *mut PpsFormField;
+    -> *mut PpsFormField;
 
     //=========================================================================
     // PpsFormFieldChoice
     //=========================================================================
     pub fn pps_form_field_choice_get_type() -> GType;
     pub fn pps_form_field_choice_new(id: c_int, type_: PpsFormFieldChoiceType)
-        -> *mut PpsFormField;
+    -> *mut PpsFormField;
 
     //=========================================================================
     // PpsFormFieldSignature
@@ -3342,7 +3343,7 @@ extern "C" {
         document_links: *mut PpsDocumentLinks,
     ) -> *mut gio::GListModel;
     pub fn pps_document_links_has_document_links(document_links: *mut PpsDocumentLinks)
-        -> gboolean;
+    -> gboolean;
 
     //=========================================================================
     // PpsDocumentMedia

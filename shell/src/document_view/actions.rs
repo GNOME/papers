@@ -3,8 +3,8 @@ use super::*;
 use crate::document_view::enums::AnnotationColor;
 use gtk::gdk::gdk_pixbuf;
 use papers_document::{AnnotationTextMarkupType, DocumentImages, DocumentSignatures};
-use papers_view::annotations_context::AddAnnotationData;
 use papers_view::AnnotationTool;
+use papers_view::annotations_context::AddAnnotationData;
 
 fn gdk_pixbuf_format_by_extension(uri: &str) -> Option<gdk_pixbuf::PixbufFormat> {
     for format in gdk_pixbuf::Pixbuf::formats()
@@ -492,12 +492,11 @@ impl imp::PpsDocumentView {
                     #[weak(rename_to = obj)]
                     self,
                     move |_, _, _| {
-                        if let Some(action) = obj.link.borrow().as_ref().and_then(|l| l.action()) {
-                            if let Some(uri) = action.uri() {
-                                if let Some(email) = uri.strip_prefix("mailto:") {
-                                    obj.obj().clipboard().set_text(email);
-                                }
-                            }
+                        if let Some(action) = obj.link.borrow().as_ref().and_then(|l| l.action())
+                            && let Some(uri) = action.uri()
+                            && let Some(email) = uri.strip_prefix("mailto:")
+                        {
+                            obj.obj().clipboard().set_text(email);
                         };
                     }
                 ))
@@ -891,10 +890,10 @@ impl imp::PpsDocumentView {
         self.set_annot_textmarkup_icon_color(&rgba);
 
         let annot = self.annot.borrow().clone();
-        if let Some(annot) = annot {
-            if annot.rgba() != rgba {
-                annot.set_rgba(&rgba);
-            }
+        if let Some(annot) = annot
+            && annot.rgba() != rgba
+        {
+            annot.set_rgba(&rgba);
         }
     }
 
@@ -933,12 +932,12 @@ impl imp::PpsDocumentView {
                 );
                 self.annot.replace(annot.as_ref().cloned());
             }
-        } else if let Some(annot) = annot {
-            if let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>() {
-                let markup_type = markup_type.expect("no markup_type, but an annot is set");
-                if annot.markup_type() != markup_type {
-                    annot.set_markup_type(markup_type);
-                }
+        } else if let Some(annot) = annot
+            && let Some(annot) = annot.dynamic_cast_ref::<AnnotationTextMarkup>()
+        {
+            let markup_type = markup_type.expect("no markup_type, but an annot is set");
+            if annot.markup_type() != markup_type {
+                annot.set_markup_type(markup_type);
             }
         }
     }
@@ -1266,10 +1265,10 @@ impl imp::PpsDocumentView {
         };
         let context = self.obj().display().app_launch_context();
 
-        if let Err(e) = attachment.open(&context) {
-            if !e.matches(gtk::DialogError::Dismissed) {
-                self.error_message(Some(&e), &gettext("Unable to Open Attachment"));
-            }
+        if let Err(e) = attachment.open(&context)
+            && !e.matches(gtk::DialogError::Dismissed)
+        {
+            self.error_message(Some(&e), &gettext("Unable to Open Attachment"));
         }
     }
 

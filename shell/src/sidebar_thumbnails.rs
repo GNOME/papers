@@ -93,10 +93,11 @@ mod imp {
                     #[weak(rename_to = obj)]
                     self,
                     move |model| {
-                        if let Some(document) = model.document() {
-                            if document.n_pages() > 0 && document.check_dimensions() {
-                                obj.reload();
-                            }
+                        if let Some(document) = model.document()
+                            && document.n_pages() > 0
+                            && document.check_dimensions()
+                        {
+                            obj.reload();
                         }
                     }
                 ));
@@ -213,18 +214,18 @@ mod imp {
                 #[weak(rename_to = obj)]
                 self,
                 move |job| {
-                    if let Some(item) = obj.list_store.item(model_index as u32) {
-                        if let Ok(item) = item.downcast::<PpsThumbnailItem>() {
-                            // TODO: Take care of failed job code-path
-                            debug!("load thumbnail of page: {doc_page}");
+                    if let Some(item) = obj.list_store.item(model_index as u32)
+                        && let Ok(item) = item.downcast::<PpsThumbnailItem>()
+                    {
+                        // TODO: Take care of failed job code-path
+                        debug!("load thumbnail of page: {doc_page}");
 
-                            obj.lru
-                                .borrow_mut()
-                                .as_mut()
-                                .unwrap()
-                                .put(model_index as u32, item.clone());
-                            item.set_paintable(job.texture());
-                        }
+                        obj.lru
+                            .borrow_mut()
+                            .as_mut()
+                            .unwrap()
+                            .put(model_index as u32, item.clone());
+                        item.set_paintable(job.texture());
                     }
                 }
             ));
@@ -301,11 +302,11 @@ mod imp {
                 // HACK: GtkGridView.scroll_to with SELECT flag set will trigger
                 // an extra unbind/bind cycle. We don't need to remove and cancel
                 // the job in this situation.
-                if model_index != selected {
-                    if let Some(job) = item.job() {
-                        job.cancel();
-                        item.set_job(None::<JobThumbnailTexture>);
-                    }
+                if model_index != selected
+                    && let Some(job) = item.job()
+                {
+                    job.cancel();
+                    item.set_job(None::<JobThumbnailTexture>);
                 }
 
                 self.lru_evict();
@@ -375,12 +376,12 @@ mod imp {
             self.fill_list_store();
             self.lru.borrow_mut().as_mut().unwrap().clear();
 
-            if let Some(model) = self.obj().document_model() {
-                if let Some(document) = model.document() {
-                    if document.n_pages() > 0 && document.check_dimensions() {
-                        self.set_current_page(model.page());
-                    }
-                }
+            if let Some(model) = self.obj().document_model()
+                && let Some(document) = model.document()
+                && document.n_pages() > 0
+                && document.check_dimensions()
+            {
+                self.set_current_page(model.page());
             }
         }
 
@@ -471,23 +472,23 @@ mod imp {
 
         fn fill_list_store(&self) {
             self.list_store.remove_all();
-            if let Some(model) = self.obj().document_model() {
-                if let Some(document) = model.document() {
-                    let mut thumbnails = Vec::new();
+            if let Some(model) = self.obj().document_model()
+                && let Some(document) = model.document()
+            {
+                let mut thumbnails = Vec::new();
 
-                    if self.blank_head_mode() {
-                        thumbnails.push(PpsThumbnailItem::default());
-                    }
-
-                    for i in 0..document.n_pages() {
-                        let label = document.page_label(i);
-                        let item = PpsThumbnailItem::default();
-                        item.set_text(label);
-                        thumbnails.push(item);
-                    }
-
-                    self.list_store.splice(0, 0, &thumbnails);
+                if self.blank_head_mode() {
+                    thumbnails.push(PpsThumbnailItem::default());
                 }
+
+                for i in 0..document.n_pages() {
+                    let label = document.page_label(i);
+                    let item = PpsThumbnailItem::default();
+                    item.set_text(label);
+                    thumbnails.push(item);
+                }
+
+                self.list_store.splice(0, 0, &thumbnails);
             }
         }
 

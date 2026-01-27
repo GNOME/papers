@@ -3,11 +3,11 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, AnnotationEditingState, AnnotationModel, PageLayout, SizingMode};
+use crate::{AnnotationEditingState, AnnotationModel, PageLayout, SizingMode, ffi};
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -321,14 +321,16 @@ impl DocumentModel {
             p0: std::ffi::c_int,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this), object, p0)
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this), object, p0)
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"page-changed".as_ptr() as *const _,
+                c"page-changed".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     page_changed_trampoline::<F> as *const (),
                 )),
@@ -349,14 +351,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::annotation-editing-state".as_ptr() as *const _,
+                c"notify::annotation-editing-state".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_annotation_editing_state_trampoline::<F> as *const (),
                 )),
@@ -372,14 +376,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::continuous".as_ptr() as *const _,
+                c"notify::continuous".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_continuous_trampoline::<F> as *const (),
                 )),
@@ -395,14 +401,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::document".as_ptr() as *const _,
+                c"notify::document".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_document_trampoline::<F> as *const (),
                 )),
@@ -418,14 +426,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::dual-odd-left".as_ptr() as *const _,
+                c"notify::dual-odd-left".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_dual_odd_left_trampoline::<F> as *const (),
                 )),
@@ -441,14 +451,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::inverted-colors".as_ptr() as *const _,
+                c"notify::inverted-colors".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_inverted_colors_trampoline::<F> as *const (),
                 )),
@@ -464,14 +476,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::max-scale".as_ptr() as *const _,
+                c"notify::max-scale".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_max_scale_trampoline::<F> as *const (),
                 )),
@@ -487,14 +501,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::min-scale".as_ptr() as *const _,
+                c"notify::min-scale".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_min_scale_trampoline::<F> as *const (),
                 )),
@@ -510,14 +526,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::page".as_ptr() as *const _,
+                c"notify::page".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_page_trampoline::<F> as *const (),
                 )),
@@ -533,14 +551,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::page-layout".as_ptr() as *const _,
+                c"notify::page-layout".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_page_layout_trampoline::<F> as *const (),
                 )),
@@ -556,14 +576,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::rotation".as_ptr() as *const _,
+                c"notify::rotation".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rotation_trampoline::<F> as *const (),
                 )),
@@ -579,14 +601,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::rtl".as_ptr() as *const _,
+                c"notify::rtl".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rtl_trampoline::<F> as *const (),
                 )),
@@ -602,14 +626,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::scale".as_ptr() as *const _,
+                c"notify::scale".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_scale_trampoline::<F> as *const (),
                 )),
@@ -625,14 +651,16 @@ impl DocumentModel {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::sizing-mode".as_ptr() as *const _,
+                c"notify::sizing-mode".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_sizing_mode_trampoline::<F> as *const (),
                 )),

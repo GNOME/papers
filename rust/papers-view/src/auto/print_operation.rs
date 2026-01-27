@@ -7,7 +7,7 @@ use crate::ffi;
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -165,14 +165,16 @@ impl PrintOperation {
             this: *mut ffi::PpsPrintOperation,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"begin-print".as_ptr() as *const _,
+                c"begin-print".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     begin_print_trampoline::<F> as *const (),
                 )),
@@ -193,14 +195,16 @@ impl PrintOperation {
             object: gtk::ffi::GtkPrintOperationResult,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this), from_glib(object))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this), from_glib(object))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"done".as_ptr() as *const _,
+                c"done".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     done_trampoline::<F> as *const (),
                 )),
@@ -215,14 +219,16 @@ impl PrintOperation {
             this: *mut ffi::PpsPrintOperation,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"status-changed".as_ptr() as *const _,
+                c"status-changed".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     status_changed_trampoline::<F> as *const (),
                 )),

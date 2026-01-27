@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Page, Rectangle, RenderContext, SelectionStyle};
+use crate::{Page, Rectangle, RenderContext, SelectionStyle, ffi};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
@@ -57,7 +57,7 @@ pub trait SelectionExt: IsA<Selection> + 'static {
     }
 
     //#[doc(alias = "pps_selection_render_selection")]
-    //fn render_selection(&self, rc: &impl IsA<RenderContext>, surface: /*Ignored*/&mut cairo::Surface, points: &mut Rectangle, old_points: &mut Rectangle, style: SelectionStyle, text: &mut gdk::RGBA, base: &mut gdk::RGBA) {
+    //fn render_selection(&self, rc: &impl IsA<RenderContext>, surface: /*Ignored*/cairo::Surface, points: &mut Rectangle, old_points: &mut Rectangle, style: SelectionStyle, text: &mut gdk::RGBA, base: &mut gdk::RGBA) {
     //    unsafe { TODO: call ffi:pps_selection_render_selection() }
     //}
 }

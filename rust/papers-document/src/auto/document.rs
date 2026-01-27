@@ -3,10 +3,10 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentBackendInfo, DocumentInfo, Page, RenderContext};
+use crate::{DocumentBackendInfo, DocumentInfo, Page, RenderContext, ffi};
 use glib::{
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -405,14 +405,16 @@ pub trait DocumentExt: IsA<Document> + 'static {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(Document::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(Document::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::modified".as_ptr() as *const _,
+                c"notify::modified".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_modified_trampoline::<Self, F> as *const (),
                 )),

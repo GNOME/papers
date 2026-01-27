@@ -3,10 +3,10 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, Annotation, AnnotationMarkup, AnnotationTextIcon, Page};
+use crate::{Annotation, AnnotationMarkup, AnnotationTextIcon, Page, ffi};
 use glib::{
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -72,14 +72,16 @@ impl AnnotationText {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::icon".as_ptr() as *const _,
+                c"notify::icon".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_icon_trampoline::<F> as *const (),
                 )),
@@ -95,14 +97,16 @@ impl AnnotationText {
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(&from_glib_borrow(this))
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(&from_glib_borrow(this))
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"notify::is-open".as_ptr() as *const _,
+                c"notify::is-open".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_is_open_trampoline::<F> as *const (),
                 )),

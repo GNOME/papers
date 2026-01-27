@@ -3,11 +3,11 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentModel};
+use crate::{DocumentModel, ffi};
 use glib::{
     object::ObjectType as _,
     prelude::*,
-    signal::{connect_raw, SignalHandlerId},
+    signal::{SignalHandlerId, connect_raw},
     translate::*,
 };
 use std::boxed::Box as Box_;
@@ -136,17 +136,19 @@ pub trait HistoryExt: IsA<History> + 'static {
             object: *mut glib::gobject_ffi::GObject,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(
-                History::from_glib_borrow(this).unsafe_cast_ref(),
-                &from_glib_borrow(object),
-            )
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(
+                    History::from_glib_borrow(this).unsafe_cast_ref(),
+                    &from_glib_borrow(object),
+                )
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"activate-link".as_ptr() as *const _,
+                c"activate-link".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     activate_link_trampoline::<Self, F> as *const (),
                 )),
@@ -165,14 +167,16 @@ pub trait HistoryExt: IsA<History> + 'static {
             this: *mut ffi::PpsHistory,
             f: glib::ffi::gpointer,
         ) {
-            let f: &F = &*(f as *const F);
-            f(History::from_glib_borrow(this).unsafe_cast_ref())
+            unsafe {
+                let f: &F = &*(f as *const F);
+                f(History::from_glib_borrow(this).unsafe_cast_ref())
+            }
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
             connect_raw(
                 self.as_ptr() as *mut _,
-                c"changed".as_ptr() as *const _,
+                c"changed".as_ptr(),
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     changed_trampoline::<Self, F> as *const (),
                 )),

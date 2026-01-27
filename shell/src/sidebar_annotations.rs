@@ -47,11 +47,13 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: OnceLock<Vec<Signal>> = OnceLock::new();
             SIGNALS.get_or_init(|| {
-                vec![Signal::builder("annot-activated")
-                    .run_last()
-                    .action()
-                    .param_types([Annotation::static_type()])
-                    .build()]
+                vec![
+                    Signal::builder("annot-activated")
+                        .run_last()
+                        .action()
+                        .param_types([Annotation::static_type()])
+                        .build(),
+                ]
             })
         }
 

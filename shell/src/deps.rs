@@ -22,10 +22,10 @@ pub use gtk::gio;
 pub use gtk::glib;
 pub use gtk::graphene;
 
-pub use glib::subclass::InitializingObject;
-pub use glib::subclass::Signal;
 pub use glib::Properties;
 pub use glib::SignalHandlerId;
+pub use glib::subclass::InitializingObject;
+pub use glib::subclass::Signal;
 
 pub use std::cell::RefCell;
 

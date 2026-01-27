@@ -1,6 +1,6 @@
-use crate::ffi;
 use crate::Path;
 use crate::Point;
+use crate::ffi;
 
 use glib::translate::*;
 
