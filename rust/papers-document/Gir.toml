@@ -71,7 +71,6 @@ generate = [
     "PapersDocument.Page",
     "PapersDocument.RenderAnnotsFlags",
     "PapersDocument.RenderContext",
-    "PapersDocument.Selection",
     "PapersDocument.SelectionStyle",
     "PapersDocument.Signature",
     "PapersDocument.SignatureStatus",
@@ -101,6 +100,11 @@ manual = [
     "Pango.Context",
     "Pango.FontDescription",
 ]
+
+[[object]]
+name = "cairo.Surface"
+status = "manual"
+ref_mode = "ref"
 
 [[object]]
 name = "PapersDocument.DocumentBackendInfo"
@@ -148,8 +152,19 @@ name = "new_for_list"
 ignore = true
 
 [[object]]
+name="PapersDocument.AnnotationStamp"
+status = "generate"
+
+[[object]]
 name="PapersDocument.AnnotationInk"
 status = "generate"
 [[object.function]]
 name = "set_time_list"
+ignore = true
+
+[[object]]
+name = "PapersDocument.Selection"
+status = "generate"
+[[object.function]]
+name = "render_selection"
 ignore = true
