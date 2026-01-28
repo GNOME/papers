@@ -38,6 +38,7 @@ mod signature_image_processing;
 mod signature_manager;
 mod simple_color_swatch;
 mod thumbnail_item;
+mod visual_signature_chooser;
 mod window;
 
 use deps::*;
