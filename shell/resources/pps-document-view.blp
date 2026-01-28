@@ -848,6 +848,11 @@ menu document_menu {
       label: _("Sign D_igitally…");
       action: "doc.digital-signing";
     }
+
+    item {
+      label: _("_Manage Signatures…");
+      action: "doc.manual-signing";
+    }
   }
 
   section {
@@ -1402,6 +1407,11 @@ menu eraser-settings-menu {
   }
 }
 
+Box signature_menu_child {
+  orientation: vertical;
+  spacing: 4;
+}
+
 Box annot_menu_child {
   orientation: vertical;
 
@@ -1672,4 +1682,6 @@ menu view-popup-menu {
       hidden-when: "action-disabled";
     }
   }
+
+  section signature_menu {}
 }
