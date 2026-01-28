@@ -55,11 +55,6 @@ pub trait SelectionExt: IsA<Selection> + 'static {
             ))
         }
     }
-
-    //#[doc(alias = "pps_selection_render_selection")]
-    //fn render_selection(&self, rc: &impl IsA<RenderContext>, surface: /*Ignored*/cairo::Surface, points: &mut Rectangle, old_points: &mut Rectangle, style: SelectionStyle, text: &mut gdk::RGBA, base: &mut gdk::RGBA) {
-    //    unsafe { TODO: call ffi:pps_selection_render_selection() }
-    //}
 }
 
 impl<O: IsA<Selection>> SelectionExt for O {}

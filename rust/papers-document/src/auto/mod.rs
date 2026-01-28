@@ -18,6 +18,9 @@ pub use self::annotation_ink::AnnotationInk;
 mod annotation_markup;
 pub use self::annotation_markup::AnnotationMarkup;
 
+mod annotation_stamp;
+pub use self::annotation_stamp::AnnotationStamp;
+
 mod annotation_text;
 pub use self::annotation_text::AnnotationText;
 

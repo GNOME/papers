@@ -99,25 +99,53 @@ impl Document {
         unsafe { ffi::pps_document_misc_get_widget_dpi(widget.as_ref().to_glib_none().0) }
     }
 
-    //#[doc(alias = "pps_document_misc_pixbuf_from_surface")]
-    //pub fn misc_pixbuf_from_surface(surface: /*Ignored*/&mut cairo::Surface) -> Option<gdk_pixbuf::Pixbuf> {
-    //    unsafe { TODO: call ffi:pps_document_misc_pixbuf_from_surface() }
-    //}
+    #[doc(alias = "pps_document_misc_pixbuf_from_surface")]
+    pub fn misc_pixbuf_from_surface(surface: &cairo::Surface) -> Option<gdk_pixbuf::Pixbuf> {
+        assert_initialized_main_thread!();
+        unsafe {
+            from_glib_full(ffi::pps_document_misc_pixbuf_from_surface(
+                surface.to_glib_none().0,
+            ))
+        }
+    }
 
-    //#[doc(alias = "pps_document_misc_surface_from_pixbuf")]
-    //pub fn misc_surface_from_pixbuf(pixbuf: &gdk_pixbuf::Pixbuf) -> /*Ignored*/Option<cairo::Surface> {
-    //    unsafe { TODO: call ffi:pps_document_misc_surface_from_pixbuf() }
-    //}
+    #[doc(alias = "pps_document_misc_surface_from_pixbuf")]
+    pub fn misc_surface_from_pixbuf(pixbuf: &gdk_pixbuf::Pixbuf) -> Option<cairo::Surface> {
+        assert_initialized_main_thread!();
+        unsafe {
+            from_glib_full(ffi::pps_document_misc_surface_from_pixbuf(
+                pixbuf.to_glib_none().0,
+            ))
+        }
+    }
 
-    //#[doc(alias = "pps_document_misc_surface_rotate_and_scale")]
-    //pub fn misc_surface_rotate_and_scale(surface: /*Ignored*/&mut cairo::Surface, dest_width: i32, dest_height: i32, dest_rotation: i32) -> /*Ignored*/Option<cairo::Surface> {
-    //    unsafe { TODO: call ffi:pps_document_misc_surface_rotate_and_scale() }
-    //}
+    #[doc(alias = "pps_document_misc_surface_rotate_and_scale")]
+    pub fn misc_surface_rotate_and_scale(
+        surface: &cairo::Surface,
+        dest_width: i32,
+        dest_height: i32,
+        dest_rotation: i32,
+    ) -> Option<cairo::Surface> {
+        assert_initialized_main_thread!();
+        unsafe {
+            from_glib_full(ffi::pps_document_misc_surface_rotate_and_scale(
+                surface.to_glib_none().0,
+                dest_width,
+                dest_height,
+                dest_rotation,
+            ))
+        }
+    }
 
-    //#[doc(alias = "pps_document_misc_texture_from_surface")]
-    //pub fn misc_texture_from_surface(surface: /*Ignored*/&mut cairo::Surface) -> Option<gdk::Texture> {
-    //    unsafe { TODO: call ffi:pps_document_misc_texture_from_surface() }
-    //}
+    #[doc(alias = "pps_document_misc_texture_from_surface")]
+    pub fn misc_texture_from_surface(surface: &cairo::Surface) -> Option<gdk::Texture> {
+        assert_initialized_main_thread!();
+        unsafe {
+            from_glib_full(ffi::pps_document_misc_texture_from_surface(
+                surface.to_glib_none().0,
+            ))
+        }
+    }
 }
 
 pub trait DocumentExt: IsA<Document> + 'static {
@@ -290,11 +318,16 @@ pub trait DocumentExt: IsA<Document> + 'static {
         }
     }
 
-    //#[doc(alias = "pps_document_get_thumbnail_surface")]
-    //#[doc(alias = "get_thumbnail_surface")]
-    //fn thumbnail_surface(&self, rc: &impl IsA<RenderContext>) -> /*Ignored*/Option<cairo::Surface> {
-    //    unsafe { TODO: call ffi:pps_document_get_thumbnail_surface() }
-    //}
+    #[doc(alias = "pps_document_get_thumbnail_surface")]
+    #[doc(alias = "get_thumbnail_surface")]
+    fn thumbnail_surface(&self, rc: &impl IsA<RenderContext>) -> Option<cairo::Surface> {
+        unsafe {
+            from_glib_full(ffi::pps_document_get_thumbnail_surface(
+                self.as_ref().to_glib_none().0,
+                rc.as_ref().to_glib_none().0,
+            ))
+        }
+    }
 
     #[doc(alias = "pps_document_get_title")]
     #[doc(alias = "get_title")]
@@ -360,10 +393,15 @@ pub trait DocumentExt: IsA<Document> + 'static {
         }
     }
 
-    //#[doc(alias = "pps_document_render")]
-    //fn render(&self, rc: &impl IsA<RenderContext>) -> /*Ignored*/Option<cairo::Surface> {
-    //    unsafe { TODO: call ffi:pps_document_render() }
-    //}
+    #[doc(alias = "pps_document_render")]
+    fn render(&self, rc: &impl IsA<RenderContext>) -> Option<cairo::Surface> {
+        unsafe {
+            from_glib_full(ffi::pps_document_render(
+                self.as_ref().to_glib_none().0,
+                rc.as_ref().to_glib_none().0,
+            ))
+        }
+    }
 
     #[doc(alias = "pps_document_save")]
     fn save(&self, uri: &str) -> Result<(), glib::Error> {
