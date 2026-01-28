@@ -3,13 +3,64 @@ use ink_stroke_modeler_rs::{ModelerInput, ModelerInputEventType, ModelerParams, 
 use papers_document::{AnnotationInk, InkList, Path, Point};
 use papers_view::AnnotationsContext;
 
+// Smooths stroke points using ink-stroke-modeler.
+pub fn smooth_stroke_points(
+    points: Vec<(f64, f64)>,
+    timestamps: Option<Vec<f64>>,
+    params: ModelerParams,
+    pressure: f64,
+) -> Result<Vec<(f64, f64)>, String> {
+    if points.len() < 2 {
+        return Ok(points);
+    }
+
+    let mut modeler = StrokeModeler::new(params)
+        .map_err(|e| format!("Failed to create stroke modeler: {}", e))?;
+
+    // Build inputs, initially all set to Move
+    let mut input: Vec<ModelerInput> = points
+        .iter()
+        .enumerate()
+        .map(|(i, (x, y))| ModelerInput {
+            event_type: ModelerInputEventType::Move,
+            pos: (*x, *y),
+            time: timestamps
+                .as_ref()
+                .and_then(|ts| ts.get(i).copied())
+                .unwrap_or(i as f64 * 0.01),
+            pressure,
+        })
+        .collect();
+
+    // Set proper event types for first and last points
+    let n = input.len();
+    if let Some(first) = input.first_mut() {
+        first.event_type = ModelerInputEventType::Down;
+    }
+    if let Some(last) = input.get_mut(n - 1) {
+        last.event_type = ModelerInputEventType::Up;
+    }
+
+    // Process all inputs and collect smoothed points
+    let result_stroke: Vec<(f64, f64)> = input
+        .into_iter()
+        .filter_map(|i| modeler.update(i).ok())
+        .flatten()
+        .map(|r| r.pos)
+        .collect();
+
+    if result_stroke.is_empty() {
+        Ok(points)
+    } else {
+        Ok(result_stroke)
+    }
+}
+
 pub fn setup() {
     AnnotationsContext::register_ink_transformation(|a| {
         if let Ok(ink) = a.clone().downcast::<AnnotationInk>() {
             let mut p = ModelerParams::suggested();
             p.sampling_max_outputs_per_call = 200;
-
-            let mut modeler = StrokeModeler::new(p).expect("modeler");
 
             let time_list = ink.time_list();
             let t0 = if let Some(k) = time_list.first() {
@@ -17,39 +68,22 @@ pub fn setup() {
             } else {
                 return;
             };
-            let mut input: Vec<ModelerInput> = time_list
-                .into_iter()
-                .map(|t| ModelerInput {
-                    event_type: ModelerInputEventType::Move,
-                    pos: (t.x(), t.y()),
-                    time: ((t.time() as i32 - t0) as f64) / 1000.,
-                    pressure: 0.25,
-                })
+
+            // Extract points and timestamps from time_list
+            let points: Vec<(f64, f64)> = time_list.iter().map(|t| (t.x(), t.y())).collect();
+            let timestamps: Vec<f64> = time_list
+                .iter()
+                .map(|t| ((t.time() as i32 - t0) as f64) / 1000.)
                 .collect();
-            let n = input.len();
-            if let Some(k) = input.get_mut(n - 1) {
-                k.event_type = ModelerInputEventType::Up;
-            }
-            if let Some(k) = input.first_mut() {
-                k.event_type = ModelerInputEventType::Down;
-            }
 
-            let mut must_exit = false;
-
-            let result_stroke = input
-                .into_iter()
-                .filter_map(|i| {
-                    modeler
-                        .update(i)
-                        .map_err(|e| {
-                            must_exit = true;
-                            eprintln!("modeler updated, Err: {e:?}")
-                        })
-                        .ok()
-                })
-                .flatten()
-                .map(|r| r.pos)
-                .collect::<Vec<(f64, f64)>>();
+            // Smooth the stroke using the shared helper
+            let result_stroke = match smooth_stroke_points(points, Some(timestamps), p, 0.25) {
+                Ok(smoothed) => smoothed,
+                Err(e) => {
+                    eprintln!("modeler error: {e}");
+                    return;
+                }
+            };
             let area: (f64, f64, f64, f64) = result_stroke
                 .iter()
                 .fold(None, |a, p| {
@@ -88,9 +122,6 @@ pub fn setup() {
                 Path::for_array(&result_simplified)
             };
 
-            if must_exit {
-                return;
-            }
             let il = InkList::for_array(&[ip]);
             ink.set_ink_list(il);
         }

@@ -1,0 +1,127 @@
+using Gtk 4.0;
+
+template $PpsSignatureDrawingWidget: Box {
+  orientation: vertical;
+  spacing: 12;
+  // Canvas area (drawing only)
+  Box canvas_container {
+    orientation: vertical;
+    spacing: 0;
+
+    Frame {
+      styles [
+        "card",
+      ]
+
+      Overlay {
+        [overlay]
+        Label placeholder_label {
+          label: _("Draw your signature here");
+          halign: center;
+          valign: center;
+          opacity: 0.3;
+
+          styles [
+            "dim-label",
+          ]
+        }
+
+        DrawingArea drawing_area {
+          hexpand: true;
+          height-request: 200;
+        }
+      }
+    }
+  }
+
+  // Drawing controls
+  Box {
+    orientation: horizontal;
+    spacing: 6;
+    halign: center;
+    // Undo button
+    Button undo_button {
+      icon-name: "arrow-hook-left-horizontal2-symbolic";
+      tooltip-text: _("Undo");
+      sensitive: false;
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    // Redo button
+    Button redo_button {
+      icon-name: "arrow-turn-right-horizontal2-symbolic";
+      tooltip-text: _("Redo");
+      sensitive: false;
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    // Pen size small
+    ToggleButton pen_size_small {
+      tooltip-text: _("Small pen");
+      active: false;
+      label: "·";
+      group: pen_size_medium;
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    // Pen size medium
+    ToggleButton pen_size_medium {
+      tooltip-text: _("Medium pen");
+      active: true;
+      label: "•";
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    // Pen size large
+    ToggleButton pen_size_large {
+      tooltip-text: _("Large pen");
+      active: false;
+      label: "●";
+      group: pen_size_medium;
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    // Import button
+    Button import_button {
+      tooltip-text: _("Import signature image");
+      clicked => $on_choose_file_clicked() swapped;
+
+      styles [
+        "flat",
+      ]
+
+      Box {
+        orientation: horizontal;
+        spacing: 6;
+
+        Image {
+          icon-name: "document-open-symbolic";
+        }
+
+        Label {
+          label: _("Import");
+        }
+      }
+    }
+  }
+}

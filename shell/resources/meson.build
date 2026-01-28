@@ -23,6 +23,7 @@ blueprint_sources = [
   'pps-sidebar-links.blp',
   'pps-sidebar-thumbnails.blp',
   'pps-sidebar.blp',
+  'pps-signature-drawing-widget.blp',
   'pps-window.blp',
 ]
 
