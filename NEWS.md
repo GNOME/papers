@@ -1,3 +1,20 @@
+Papers 50.beta
+--------------
+
+* Potentially of interest to packaging and other downstreams might be:
+  - The MSRV is now bumped to 1.85
+
+* Some changes we can highlight:
+  - new editing tools (ink and free text annotations) (Lucas Baudin)
+  - better troubleshooting information (Adithya)
+  - add a "copy email address" menu item (Adithya)
+  - improved translation strings using formatx! and gettext (Maximiliano)
+  - stop using osd style for overlay buttons
+
+* Bug fixes:
+  - show a radio button for digital signing when there is a single certificate (Marek Kašík)
+  - fix sidebar not grabbing focus when it should (Roberto Vidal)
+  
 Papers 50.alpha
 ---------------
 
