@@ -3,7 +3,7 @@
 // from ../pps-girs
 // DO NOT EDIT
 
-use crate::{ffi, DocumentInfo, Page, RenderContext};
+use crate::{ffi, DocumentBackendInfo, DocumentInfo, Page, RenderContext};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -147,11 +147,16 @@ pub trait DocumentExt: IsA<Document> + 'static {
         }
     }
 
-    //#[doc(alias = "pps_document_get_backend_info")]
-    //#[doc(alias = "get_backend_info")]
-    //fn is_backend_info(&self, info: /*Ignored*/&mut DocumentBackendInfo) -> bool {
-    //    unsafe { TODO: call ffi:pps_document_get_backend_info() }
-    //}
+    #[doc(alias = "pps_document_get_backend_info")]
+    #[doc(alias = "get_backend_info")]
+    fn is_backend_info(&self, info: &mut DocumentBackendInfo) -> bool {
+        unsafe {
+            from_glib(ffi::pps_document_get_backend_info(
+                self.as_ref().to_glib_none().0,
+                info.to_glib_none_mut().0,
+            ))
+        }
+    }
 
     #[doc(alias = "pps_document_get_info")]
     #[doc(alias = "get_info")]

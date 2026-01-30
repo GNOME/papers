@@ -232,17 +232,54 @@ mod imp {
 
             const GIT_COMMIT_ID: &str = git_version!(fallback = VERSION);
 
+            let packaging_format = if std::env::var("FLATPAK_ID").is_ok() {
+                "Flatpak"
+            } else if std::env::var("SNAP_NAME").is_ok() {
+                "Snap"
+            } else {
+                "System"
+            };
+
+            let distribution = if let Ok(os_release) = std::fs::read_to_string("/etc/os-release") {
+                os_release
+                    .lines()
+                    .find(|line| line.starts_with("PRETTY_NAME="))
+                    .and_then(|line| line.split_once('='))
+                    .map(|(_, name)| name.trim_matches('"'))
+                    .unwrap_or("Unknown")
+                    .to_string()
+            } else {
+                "Unknown".to_string()
+            };
+
+            let desktop_env =
+                std::env::var("XDG_CURRENT_DESKTOP").unwrap_or_else(|_| "Unknown".to_string());
+
+            let mut backend_info_str = String::from("None");
+            if let Some(window) = self.obj().active_window().and_downcast::<PpsWindow>() {
+                if let Some(document) = window.document() {
+                    let mut info = papers_document::DocumentBackendInfo::new();
+                    if document.is_backend_info(&mut info) {
+                        if let (Some(name), Some(version)) = (info.name(), info.version()) {
+                            backend_info_str = format!("{} {}", name, version);
+                        }
+                    }
+                }
+            }
+
             let debug_info = format!(
                 "Document Viewer ({})\n\n\
-                *Flatpak: {}\n\
+                *Distribution: {}\n\
+                *Desktop: {}\n\
+                *Packaging: {}\n\
+                *Backend: {}\n\
                 *GTK: {}\n\
                 *Libadwaita: {}\n",
                 GIT_COMMIT_ID,
-                if std::env::var("FLATPAK_ID").is_ok() {
-                    "yes"
-                } else {
-                    "no"
-                },
+                distribution,
+                desktop_env,
+                packaging_format,
+                backend_info_str,
                 gtk_version,
                 adw_version,
             );

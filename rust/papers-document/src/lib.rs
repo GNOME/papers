@@ -15,6 +15,7 @@ pub mod prelude;
 #[allow(unused_imports)]
 mod auto;
 
+mod document_backend_info;
 mod document_point;
 mod inktime;
 mod path;

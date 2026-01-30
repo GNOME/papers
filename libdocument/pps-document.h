@@ -245,6 +245,16 @@ void pps_mapping_set_data (PpsMapping *pps_mapping, GObject *data);
 PPS_PUBLIC
 GObject *pps_mapping_get_data (const PpsMapping *pps_mapping);
 
+/* PpsDocumentBackendInfo */
+#define PPS_TYPE_DOCUMENT_BACKEND_INFO (pps_document_backend_info_get_type ())
+
+PPS_PUBLIC
+GType pps_document_backend_info_get_type (void);
+PPS_PUBLIC
+PpsDocumentBackendInfo *pps_document_backend_info_new (void);
+PPS_PUBLIC
+PpsDocumentBackendInfo *pps_document_backend_info_copy (PpsDocumentBackendInfo *info);
+
 /* backends shall implement this function to be able to be opened by Papers
  */
 PPS_PUBLIC

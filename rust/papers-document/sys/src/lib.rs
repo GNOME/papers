@@ -2280,6 +2280,15 @@ extern "C" {
     pub fn pps_render_annots_flags_get_type() -> GType;
 
     //=========================================================================
+    // PpsDocumentBackendInfo
+    //=========================================================================
+    pub fn pps_document_backend_info_get_type() -> GType;
+    pub fn pps_document_backend_info_new() -> *mut PpsDocumentBackendInfo;
+    pub fn pps_document_backend_info_copy(
+        info: *mut PpsDocumentBackendInfo,
+    ) -> *mut PpsDocumentBackendInfo;
+
+    //=========================================================================
     // PpsDocumentInfo
     //=========================================================================
     pub fn pps_document_info_get_type() -> GType;

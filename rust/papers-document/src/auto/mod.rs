@@ -105,6 +105,9 @@ pub use self::signature::Signature;
 mod transition_effect;
 pub use self::transition_effect::TransitionEffect;
 
+mod document_backend_info;
+pub use self::document_backend_info::DocumentBackendInfo;
+
 mod document_info;
 pub use self::document_info::DocumentInfo;
 

@@ -972,6 +972,28 @@ pps_mapping_free (PpsMapping *mapping)
 	g_free (mapping);
 }
 
+/* PpsDocumentBackendInfo */
+G_DEFINE_BOXED_TYPE (PpsDocumentBackendInfo, pps_document_backend_info, pps_document_backend_info_copy, g_free)
+
+PpsDocumentBackendInfo *
+pps_document_backend_info_new (void)
+{
+	return g_new0 (PpsDocumentBackendInfo, 1);
+}
+
+PpsDocumentBackendInfo *
+pps_document_backend_info_copy (PpsDocumentBackendInfo *info)
+{
+	PpsDocumentBackendInfo *new_info;
+
+	g_return_val_if_fail (info != NULL, NULL);
+
+	new_info = g_new (PpsDocumentBackendInfo, 1);
+	*new_info = *info;
+
+	return new_info;
+}
+
 /**
  * pps_mapping_set_area:
  * @pps_mapping:

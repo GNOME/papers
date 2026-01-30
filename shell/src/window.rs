@@ -1302,6 +1302,10 @@ impl PpsWindow {
         self.imp().open(file, dest, mode)
     }
 
+    pub fn document(&self) -> Option<papers_document::Document> {
+        self.imp().document_view.model().document()
+    }
+
     pub fn is_empty(&self) -> bool {
         self.imp().document_view.is_empty() && self.imp().load_job.borrow().is_none()
     }
