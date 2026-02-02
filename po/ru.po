@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-21 13:23+0000\n"
-"PO-Revision-Date: 2026-01-23 15:49+0300\n"
+"POT-Creation-Date: 2026-01-26 15:31+0000\n"
+"PO-Revision-Date: 2026-01-27 17:25+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -550,7 +550,7 @@ msgstr "Выбранный вами диапазон страниц не сод�
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
 #: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Закрыть"
@@ -778,7 +778,7 @@ msgid "Print This Document"
 msgstr "Распечатать документ"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:289
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
@@ -787,7 +787,7 @@ msgid "Normal Size"
 msgstr "Нормальный размер"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:277
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Увеличить"
 
@@ -928,6 +928,7 @@ msgid "_Markup Type"
 msgstr "Тип _разметки"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "Выделить"
 
@@ -1004,11 +1005,46 @@ msgstr "Посмотреть подпись…"
 msgid "Fit Automatically"
 msgstr "Подгонять автоматически"
 
-#: shell/resources/pps-document-view.blp:536
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "Выбрать цвет"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "Настройки шрифта"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "Размер карандаша"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "Изменить радиус ластика"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "Вставить текст"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "Рисовать"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "Стереть примечания"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "Редактировать документ"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "Выделенное слишком мало"
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1018,19 +1054,19 @@ msgstr ""
 "хотите создать потенциально более читаемую подпись, нажмите `Начать сначала` "
 "и нарисуйте прямоугольник большего размера."
 
-#: shell/resources/pps-document-view.blp:544
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "Начать с_начала"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "_Подписать"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "Прервать печать?"
 
-#: shell/resources/pps-document-view.blp:553
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1038,172 +1074,244 @@ msgstr ""
 "Имеется одно или несколько активных заданий на печать. Если окно закрыть, "
 "оставшиеся задания на печать не будут напечатаны."
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "Прервать _печать и закрыть"
 
-#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
 #: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
 #: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: shell/resources/pps-document-view.blp:559
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "Закрыть п_осле печати"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "Открыть…"
 
-#: shell/resources/pps-document-view.blp:581
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "_Ночной режим"
 
-#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: shell/resources/pps-document-view.blp:593 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Справка"
 
-#: shell/resources/pps-document-view.blp:598 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_О приложении"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "_Печать…"
 
-#: shell/resources/pps-document-view.blp:612
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "Полноэкранный режим"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "Показать как слайд-шоу"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "Цифровая подпись…"
 
-#: shell/resources/pps-document-view.blp:631
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "Открыть _копию"
 
-#: shell/resources/pps-document-view.blp:636
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Открыть с помощью…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "Сохранить _как…"
 
-#: shell/resources/pps-document-view.blp:648
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "_Непрерывно"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "_Две страницы"
 
-#: shell/resources/pps-document-view.blp:658
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "_Нечётные страницы слева"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "Документ справа на лево"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "Поверн_уть ⤵"
 
-#: shell/resources/pps-document-view.blp:677
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "Сво_йства документа"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "Черный"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "Красный"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "Фиолетовый"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "Синий"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "Зеленый"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "Желтый"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "Тонкий"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "Средний"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "Толстый"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "Очень толстый"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "Стереть чернила"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "Стереть все штрихи"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:715
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "Выделение (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:731
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "Зачеркивание (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:747
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "Подчеркивание (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:763
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "Искажение (q)"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "_Открыть ссылку"
 
-#: shell/resources/pps-document-view.blp:860
+#: shell/resources/pps-document-view.blp:1579
 msgid "Send an Email"
 msgstr "Отправить по эл. почте"
 
-#: shell/resources/pps-document-view.blp:866
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "_Копировать адрес ссылки"
 
-#: shell/resources/pps-document-view.blp:872
+#: shell/resources/pps-document-view.blp:1591
 msgid "Copy Email Address"
 msgstr "Копировать адрес эл. почты"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "_Перейти"
 
-#: shell/resources/pps-document-view.blp:884
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "Открыть в _новом окне"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "_Копировать"
 
-#: shell/resources/pps-document-view.blp:897
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "Выделить _всё"
 
-#: shell/resources/pps-document-view.blp:904
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "Сохранить изображение _как…"
 
-#: shell/resources/pps-document-view.blp:910
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "Копировать _изображение"
 
-#: shell/resources/pps-document-view.blp:918
+#: shell/resources/pps-document-view.blp:1637
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Открыть вложение"
 
-#: shell/resources/pps-document-view.blp:924
+#: shell/resources/pps-document-view.blp:1643
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_Сохранить вложение как…"
 
-#: shell/resources/pps-document-view.blp:934
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "Свойства п_римечания…"
 
-#: shell/resources/pps-document-view.blp:940
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "_Удалить примечание"
 
-#: shell/resources/pps-document-view.blp:948
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "_Добавить текстовое примечание"
 
@@ -1757,11 +1865,11 @@ msgstr "Показать версию приложения."
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
-#: shell/src/document_view.rs:315
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "Посмотреть подробности"
 
-#: shell/src/document_view.rs:720
+#: shell/src/document_view.rs:773
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1769,49 +1877,53 @@ msgstr ""
 "Документ содержит новые или изменённые примечания и поля форм, которые были "
 "заполнены."
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ содержит поля форм, которые были заполнены."
 
-#: shell/src/document_view.rs:722
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "Документ содержит новые или изменённые примечания."
 
-#: shell/src/document_view.rs:730
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Если вы не сохраните копию, изменения будут потеряны."
 
-#: shell/src/document_view.rs:731
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "Сохранить изменения в копию?"
 
-#: shell/src/document_view.rs:740
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "Закрыть _без сохранения"
 
-#: shell/src/document_view.rs:742
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "_Сохранить копию"
 
-#: shell/src/document_view/actions.rs:908
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "Сохранить изображение"
 
-#: shell/src/document_view/actions.rs:1033
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Режим курсорной навигации сейчас включен, нажмите F7, чтобы отключить его."
 
-#: shell/src/document_view/actions.rs:1035
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Режим курсорной навигации сейчас выключен, нажмите F7, чтобы включить его."
 
-#: shell/src/document_view/actions.rs:1090
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "Закрыть меню"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "Не удалось открыть вложение"
 
-#: shell/src/document_view/actions.rs:1106
+#: shell/src/document_view/actions.rs:1286
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Сохранить вложение"
@@ -1888,14 +2000,14 @@ msgstr[0] "{} задание ожидает в очереди"
 msgstr[1] "{} задания ожидают в очереди"
 msgstr[2] "{} заданий ожидают в очереди"
 
-#: shell/src/document_view/signals.rs:255
+#: shell/src/document_view/signals.rs:257
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Оповещение безопасности: в этом документе предотвращено открытие файла “{}”"
 
-#: shell/src/document_view/signals.rs:437 shell/src/page_selector.rs:89
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 #, rust-format
 msgid "Page {}"
@@ -2108,9 +2220,6 @@ msgstr "Скрыть подробности…"
 #~ msgid "Unknown issuer"
 #~ msgstr "Неизвестный эмитент"
 
-#~ msgid "Revoked"
-#~ msgstr "Отозвано"
-
 #~ msgid "Expired"
 #~ msgstr "Просрочено"
 
@@ -2280,9 +2389,6 @@ msgstr "Скрыть подробности…"
 #~ msgid "Unable to open document “%s”."
 #~ msgstr "Не удалось открыть документ «%s»."
 
-#~ msgid "Document"
-#~ msgstr "Документ"
-
 #, c-format
 #~ msgid "Page %d"
 #~ msgstr "Страница %d"
@@ -2325,9 +2431,6 @@ msgstr "Скрыть подробности…"
 
 #~ msgid "Initial window state:"
 #~ msgstr "Исходное состояние окна:"
-
-#~ msgid "Close"
-#~ msgstr "Закрыть"
 
 #~ msgid "The word or phrase to find in the document."
 #~ msgstr "Слово или фраза, которые надо найти в документе."
