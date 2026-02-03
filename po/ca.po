@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-26 17:25+0000\n"
-"PO-Revision-Date: 2025-10-30 15:17+0100\n"
+"POT-Creation-Date: 2026-01-26 15:31+0000\n"
+"PO-Revision-Date: 2026-01-27 17:34+0100\n"
 "Last-Translator: maite guix <maite.guix@me.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:359
 msgid "Document Viewer"
@@ -231,52 +231,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Permet la lectura de documents PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:737
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Sí"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "No"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:853
 msgid "Type 1"
 msgstr "Tipus 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:855
 msgid "Type 1C"
 msgstr "Tipus 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 3"
 msgstr "Tipus 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 1 (CID)"
 msgstr "Tipus 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "Type 1C (CID)"
 msgstr "Tipus 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Unknown font type"
 msgstr "Tipus de lletra desconegut"
 
-#: libdocument/backend/pdf/pps-poppler.c:915
+#: libdocument/backend/pdf/pps-poppler.c:911
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -287,11 +287,11 @@ msgstr ""
 "els tipus de lletra que seleccioni fontconfig no són iguals que els tipus de "
 "lletra amb què es va crear el PDF."
 
-#: libdocument/backend/pdf/pps-poppler.c:920
+#: libdocument/backend/pdf/pps-poppler.c:916
 msgid "All fonts are either standard or embedded."
 msgstr "Tots els tipus de lletra són o bé estàndards o bé encastats."
 
-#: libdocument/backend/pdf/pps-poppler.c:956
+#: libdocument/backend/pdf/pps-poppler.c:952
 msgid "No name"
 msgstr "Sense nom"
 
@@ -299,21 +299,21 @@ msgstr "Sense nom"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Cap"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded subset"
 msgstr "Subconjunt encastat"
 
-#: libdocument/backend/pdf/pps-poppler.c:975
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Embedded"
 msgstr "Encastat"
 
-#: libdocument/backend/pdf/pps-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Not embedded"
 msgstr "No encastat"
 
@@ -322,7 +322,7 @@ msgstr "No encastat"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:980
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (un dels 14 tipus de lletra estàndards)"
 
@@ -331,7 +331,7 @@ msgstr " (un dels 14 tipus de lletra estàndards)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:987
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr ""
 " (un tipus de lletra que no és dins dels 14 tipus de lletra estàndards)"
@@ -346,7 +346,7 @@ msgstr ""
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1010
+#: libdocument/backend/pdf/pps-poppler.c:1006
 #, c-format
 msgid ""
 "%s%s\n"
@@ -370,7 +370,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1028
+#: libdocument/backend/pdf/pps-poppler.c:1024
 #, c-format
 msgid ""
 "%s%s\n"
@@ -472,7 +472,6 @@ msgid "This work is in the Public Domain"
 msgstr "Aquest treball és de domini públic"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Desa l'adjunció"
@@ -484,6 +483,7 @@ msgid "Page %s"
 msgstr "Pàgina %s"
 
 #: libview/pps-annotation-window.c:237
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Edita la nota"
 
@@ -541,8 +541,8 @@ msgstr "No hi ha cap pàgina a l'interval d'impressió"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Tanca"
 
@@ -624,51 +624,51 @@ msgstr "Quan està habilitat, es dibuixarà una vora al voltant de cada pàgina.
 msgid "Page Handling"
 msgstr "Gestió de la pàgina"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2111
 msgid "Go to first page"
 msgstr "Ves a la primera pàgina"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2113
 msgid "Go to previous page"
 msgstr "Ves a la pàgina anterior"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2115
 msgid "Go to next page"
 msgstr "Ves a la pàgina següent"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2117
 msgid "Go to last page"
 msgstr "Ves a l'última pàgina"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2119
 msgid "Go to page"
 msgstr "Ves a la pàgina"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2121
 msgid "Find"
 msgstr "Cerca"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2150
 #, c-format
 msgid "Go to page %s"
 msgstr "Ves a la pàgina %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2156
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ves a %s en el fitxer «%s»"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2159
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ves al fitxer «%s»"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Launch %s"
 msgstr "Engega %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2174
 #, c-format
 msgid "Reset form"
 msgstr "Reinicialitza el formulari"
@@ -737,7 +737,6 @@ msgid "GNOME Document Previewer"
 msgstr "Visualitzador de documents del GNOME"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Visualitzador de documents Papers"
 
@@ -746,8 +745,8 @@ msgstr "Visualitzador de documents Papers"
 msgid "The selected printer “%s” could not be found"
 msgstr "No s'ha pogut trobar la impressora «%s»"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Papers"
 
@@ -760,7 +759,7 @@ msgid "Next Page"
 msgstr "Pàgina següent"
 
 #: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:210
+#: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Nombre de pàgines"
 
@@ -773,7 +772,7 @@ msgid "Print This Document"
 msgstr "Imprimeix el document"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:287
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Allunya"
 
@@ -782,21 +781,21 @@ msgid "Normal Size"
 msgstr "Mida normal"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:275
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Apropa"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "No s'ha pogut imprimir el document"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Propietats del document"
 
@@ -923,6 +922,7 @@ msgid "_Markup Type"
 msgstr "_Tipus d'etiquetatge"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "Realçat"
 
@@ -951,59 +951,94 @@ msgid "Pop up note while scrolling the document"
 msgstr "Nota emergent mentre es desplaça pel document"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:76
+#: shell/resources/pps-document-view.blp:78
 msgid "Search"
 msgstr "Cerca"
 
-#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: shell/resources/pps-document-view.blp:110
+#: shell/resources/pps-document-view.blp:112
 msgid "Thumbnails"
 msgstr "Miniatures"
 
-#: shell/resources/pps-document-view.blp:121
+#: shell/resources/pps-document-view.blp:123
 msgid "Outline"
 msgstr "Taula de continguts"
 
-#: shell/resources/pps-document-view.blp:133
+#: shell/resources/pps-document-view.blp:135
 msgid "Annotations"
 msgstr "Anotacions"
 
-#: shell/resources/pps-document-view.blp:151
+#: shell/resources/pps-document-view.blp:153
 msgid "Attachments"
 msgstr "Adjuncions"
 
-#: shell/resources/pps-document-view.blp:167
+#: shell/resources/pps-document-view.blp:169
 msgid "Layers"
 msgstr "Capes"
 
-#: shell/resources/pps-document-view.blp:197
+#: shell/resources/pps-document-view.blp:199
 msgid "Toggle Sidebar"
 msgstr "Commuta la barra lateral"
 
-#: shell/resources/pps-document-view.blp:203
+#: shell/resources/pps-document-view.blp:205
 msgid "Document Menu"
 msgstr "Menú del document"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:225
 msgid "Document has been digitally signed."
 msgstr "El document ha estat signat digitalment."
 
-#: shell/resources/pps-document-view.blp:224
+#: shell/resources/pps-document-view.blp:226
 msgid "View Signature…"
 msgstr "Mostra la signatura…"
 
-#: shell/resources/pps-document-view.blp:257
+#: shell/resources/pps-document-view.blp:259
 msgid "Fit Automatically"
 msgstr "Ajusta automàticament"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "Tria el color"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "Paràmetres del tipus de lletra"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "Mida del llapis"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "Canvia el radi d'esborrador"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "Insereix un text"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "Dibuixa"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "Elimina anotacions"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "Edita el document"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "La selecció és massa petita"
 
-#: shell/resources/pps-document-view.blp:530
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1013,19 +1048,19 @@ msgstr ""
 "crear un signatura potencialment més llegible, premeu «Torna a començar» i "
 "traceu un rectangle major."
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "T_orna a començar"
 
-#: shell/resources/pps-document-view.blp:538
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "_Signa"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "Voleu interrompre la impressió?"
 
-#: shell/resources/pps-document-view.blp:546
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1033,164 +1068,244 @@ msgstr ""
 "Hi ha un o més treballs d'impressió actius. Si tanqueu la finestra, els "
 "treballs d'impressió pendents no seran impresos."
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "Cancel·la la im_pressió i tanca"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "T_anca després d'imprimir"
 
-#: shell/resources/pps-document-view.blp:567
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "Obre…"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "_Mode nocturn"
 
-#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Dreceres de teclat"
 
-#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "A_juda"
 
-#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Quant al Visualitzador de documents"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "Im_primeix…"
 
-#: shell/resources/pps-document-view.blp:605
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: shell/resources/pps-document-view.blp:610
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "Presenta com a presentació de diapositives"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "Signa D_igitalment…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "Obre'n una _còpia"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Obre amb…"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "_Anomena i desa…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "C_ontinu"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "_Dual"
 
-#: shell/resources/pps-document-view.blp:651
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "Les pàgines _senars a l'esquerra"
 
-#: shell/resources/pps-document-view.blp:656
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "Document de dreta a esquerra"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "_Gira ⤵"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "Propi_etats del document"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "Negre"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "Taronja"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "Vermell"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "Porpra"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "Blau"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "Verd"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "Groc"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "Fi"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "Mitjà"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "Gruix"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "Molt gruix"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "Esborra la tinta"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "Esborra els traços sencers"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:708
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "Realçat (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:724
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "Barrat (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:740
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "Subratllat (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:756
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "Giragonses (q)"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "_Obre l'enllaç"
 
-#: shell/resources/pps-document-view.blp:853
+#: shell/resources/pps-document-view.blp:1579
+msgid "Send an Email"
+msgstr "Envia un correu electrònic"
+
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "_Copia l'adreça de l'enllaç"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:1591
+msgid "Copy Email Address"
+msgstr "_Copia l'adreça de correu electrònic"
+
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "Ve_s a"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "Obre en una _finestra nova"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "_Copia"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "Selecciona-ho _tot"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "_Anomena i desa la imatge…"
 
-#: shell/resources/pps-document-view.blp:891
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "Copia la _imatge"
 
-#: shell/resources/pps-document-view.blp:899
-#: shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:1637
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Obre l'adjunció"
 
-#: shell/resources/pps-document-view.blp:905
-#: shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:1643
+#: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "_Desa l'adjunció com a…"
 
-#: shell/resources/pps-document-view.blp:915
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "Pr_opietats de l'anotació…"
 
-#: shell/resources/pps-document-view.blp:921
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "S_uprimeix l'anotació"
 
-#: shell/resources/pps-document-view.blp:929
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "_Afegeix una anotació de text"
 
@@ -1214,13 +1329,13 @@ msgstr "Els resultats de la cerca apareixeran aquí"
 msgid "Loading Document"
 msgstr "S'està carregant el document"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "C_ancel·la"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "Cal una contrasenya"
 
@@ -1304,15 +1419,15 @@ msgstr "_Signatures"
 msgid "Search in document"
 msgstr "Cerca al document"
 
-#: shell/resources/pps-search-box.blp:38
+#: shell/resources/pps-search-box.blp:45
 msgid "Search Options"
 msgstr "Opcions de cerca"
 
-#: shell/resources/pps-search-box.blp:46
+#: shell/resources/pps-search-box.blp:53
 msgid "_Whole Words Only"
 msgstr "Només paraules _senceres"
 
-#: shell/resources/pps-search-box.blp:51
+#: shell/resources/pps-search-box.blp:58
 msgid "C_ase Sensitive"
 msgstr "_Distingeix entre majúscules i minúscules"
 
@@ -1572,68 +1687,73 @@ msgctxt "shortcut window"
 msgid "Underline Text"
 msgstr "Subratlla el text"
 
-#: shell/resources/pps-shortcuts-dialog.blp:255
+#: shell/resources/pps-shortcuts-dialog.blp:254
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "Signatura digital"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cerca"
 
-#: shell/resources/pps-shortcuts-dialog.blp:258
+#: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Cerca"
 
-#: shell/resources/pps-shortcuts-dialog.blp:263
+#: shell/resources/pps-shortcuts-dialog.blp:269
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Cerca el següent"
 
-#: shell/resources/pps-shortcuts-dialog.blp:268
+#: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Cerca l'anterior"
 
-#: shell/resources/pps-shortcuts-dialog.blp:274
+#: shell/resources/pps-shortcuts-dialog.blp:280
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: shell/resources/pps-shortcuts-dialog.blp:277
+#: shell/resources/pps-shortcuts-dialog.blp:283
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Ajuda"
 
-#: shell/resources/pps-shortcuts-dialog.blp:282
+#: shell/resources/pps-shortcuts-dialog.blp:288
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menú"
 
-#: shell/resources/pps-shortcuts-dialog.blp:287
+#: shell/resources/pps-shortcuts-dialog.blp:293
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Dreceres del teclat"
 
-#: shell/resources/pps-shortcuts-dialog.blp:292
+#: shell/resources/pps-shortcuts-dialog.blp:298
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: shell/resources/pps-shortcuts-dialog.blp:297
+#: shell/resources/pps-shortcuts-dialog.blp:303
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Tanca la finestra"
 
 # FIXME
-#: shell/resources/pps-shortcuts-dialog.blp:303
+#: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Mode de presentació"
 
-#: shell/resources/pps-shortcuts-dialog.blp:306
+#: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Pantalla en negre"
 
-#: shell/resources/pps-shortcuts-dialog.blp:311
+#: shell/resources/pps-shortcuts-dialog.blp:317
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Pantalla en blanc"
@@ -1642,11 +1762,11 @@ msgstr "Pantalla en blanc"
 msgid "No Annotations"
 msgstr "No hi ha anotacions"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "Propietats de l'anotació"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "Suprimeix l'anotació"
 
@@ -1743,11 +1863,11 @@ msgstr "Mostra la versió del programa."
 msgid "[FILE…]"
 msgstr "[FITXER…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "Mostra els detalls"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:773
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1755,87 +1875,76 @@ msgstr ""
 "El document conté anotacions noves o modificades i camps de formulari que "
 "s'han emplenat."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "El document conté camps de formulari que s'han emplenat."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "El document conté anotacions modificades o noves."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Si no en deseu una còpia, els canvis es perdran permanentment."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "Voleu desar els canvis en una còpia?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "_Tanca sense desar"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "De_sa'n una còpia"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "Desa la imatge"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "No s'ha trobat cap format adequat per a desar la imatge"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "No s'ha pogut desar la imatge."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "S'ha activat el mode de navegació per cursor («caret»); premeu F7 per "
 "desactivar-lo."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "El mode de navegació per cursor («caret») està ara desactivat; premeu F7 per "
 "activar-lo."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "Tanca el menú"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "No s'ha pogut obrir l'adjunció"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "No s'ha pogut desar l'adjunció."
+#: shell/src/document_view/actions.rs:1286
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Desa l'adjunció"
 
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "La signatura digital no és vàlida"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "El document no conté cap pàgina"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "El document només conté pàgines buides"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "No s'ha pogut desar el fitxer com a «{}»."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "Anomena i desa…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Traça un rectangle per inserir un camp de signatura"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:512
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1843,31 +1952,31 @@ msgstr ""
 "Signat digitalment per {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "Es requereix un certificat"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "Seleccioneu el certificat per signar"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "Selecciona"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "Fa falta un certificat per a signar aquest document"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "Desa el fitxer signat"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:714
 msgid "Please enter password for {}"
 msgstr "Introduïu la contrasenya de {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "_Inici de sessió"
 
@@ -1876,21 +1985,23 @@ msgstr "_Inici de sessió"
 msgid "Printing job “{}”"
 msgstr "S'està imprimint la tasca «{}»"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "No hi ha cap tasca pendent a la cua"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "No s'ha pogut obrir l'enllaç extern"
+#: shell/src/document_view/print.rs:88
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} tasca pendent a la cua"
+msgstr[1] "{} tasques pendents a la cua"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/signals.rs:257
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Alerta de seguretat: s'ha impedit que aquest document obri el fitxer «{}»"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Pàgina {}"
@@ -1898,16 +2009,16 @@ msgstr "Pàgina {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
 msgid "of {}"
 msgstr "de {}"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
@@ -1945,90 +2056,84 @@ msgstr "Contingut"
 msgid "Date &amp; Time"
 msgstr "Dia i hora"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Signat per"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "La signatura és vàlida."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "La signatura no és vàlida."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "El document ha canviat després de ser signat."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "La signatura no s'ha pogut descodificar."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Error en la verificació de la signatura."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Signat amb un certificat emès per un emissor de confiança."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Signat amb un certificat emès per un emissor en qui no es confia."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Signat amb un certificat emès per un emissor desconegut."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Signat amb un certificat revocat."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Signat amb un certificat expirat."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Error en la verificació del certificat."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "El certificat no ha estat verificat."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Organització"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Dia i hora"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Emissor del certificat"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "Adreça de correu de l'emissor del certificat"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Organització de l'emissor del certificat"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Data d'emissió del certificat"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Data de caducitat del certificat"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Amaga els detalls…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "No s'ha trobat cap format adequat per a desar la imatge"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "No s'ha pogut desar la imatge."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "No s'ha pogut desar l'adjunció."
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "No s'ha pogut desar el fitxer com a «{}»."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "No s'ha pogut obrir l'enllaç extern"
+
+#~ msgid "Signed by"
+#~ msgstr "Signat per"
+
+#~ msgid "Signature is valid."
+#~ msgstr "La signatura és vàlida."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "La signatura no és vàlida."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "El document ha canviat després de ser signat."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "La signatura no s'ha pogut descodificar."
+
+#~ msgid "Signature verification error."
+#~ msgstr "Error en la verificació de la signatura."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "Signat amb un certificat emès per un emissor de confiança."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "Signat amb un certificat emès per un emissor en qui no es confia."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "Signat amb un certificat emès per un emissor desconegut."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "Signat amb un certificat revocat."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "Signat amb un certificat expirat."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "Error en la verificació del certificat."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "El certificat no ha estat verificat."
+
+#~ msgid "Organization"
+#~ msgstr "Organització"
+
+#~ msgid "Date and Time"
+#~ msgstr "Dia i hora"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "Emissor del certificat"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "Adreça de correu de l'emissor del certificat"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "Organització de l'emissor del certificat"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "Data d'emissió del certificat"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "Data de caducitat del certificat"
 
 # N.T.: Títol en la finestra de dreceres
 #~ msgctxt "shortcut window"
@@ -2081,11 +2186,6 @@ msgstr "Amaga els detalls…"
 #~ msgid "_About Papers"
 #~ msgstr "Quant _al Papers"
 
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "{} tasca pendent a la cua"
-#~ msgstr[1] "{} tasques pendents a la cua"
-
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "R_essalta el text seleccionat"
 
@@ -2103,9 +2203,6 @@ msgstr "Amaga els detalls…"
 
 #~ msgid "Unknown issuer"
 #~ msgstr "L'emissor és desconegut"
-
-#~ msgid "Revoked"
-#~ msgstr "S'ha revocat"
 
 #~ msgid "Expired"
 #~ msgstr "Ha expirat"
@@ -2273,9 +2370,6 @@ msgstr "Amaga els detalls…"
 #~ msgid "Search Unavailable"
 #~ msgstr "La cerca no està disponible"
 
-#~ msgid "Document"
-#~ msgstr "Document"
-
 #, fuzzy
 #~ msgid "Set Automatic Sizing Mode"
 #~ msgstr "Ampliació automàtica"
@@ -2333,9 +2427,6 @@ msgstr "Amaga els detalls…"
 
 #~ msgid "Initial window state:"
 #~ msgstr "Estat inicial de la finestra:"
-
-#~ msgid "Close"
-#~ msgstr "Tanca"
 
 #~ msgid "Note text"
 #~ msgstr "Nota de text"
