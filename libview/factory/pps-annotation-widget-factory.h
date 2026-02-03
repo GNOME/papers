@@ -27,4 +27,7 @@ struct _PpsAnnotationWidgetFactoryClass {
 
 PpsElementWidgetFactory *pps_annotation_widget_factory_new (void);
 
+GtkWidget *pps_annotation_widget_factory_get_widget_for_annot (PpsAnnotationWidgetFactory *factory,
+                                                               PpsAnnotation *annot);
+
 G_END_DECLS

@@ -60,6 +60,12 @@ impl imp::PpsDocumentView {
     }
 
     #[template_callback]
+    pub(super) fn annotation_editing_state_changed(&self) {
+        let state = self.model.annotation_editing_state();
+        self.update_edit_toolbar_visibility(state != AnnotationEditingState::NONE);
+    }
+
+    #[template_callback]
     fn button_pressed(&self, _: i32, _: f64, _: f64, controller: &gtk::GestureClick) {
         let Some(event) = controller.current_event() else {
             return;

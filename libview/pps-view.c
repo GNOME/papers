@@ -38,6 +38,7 @@
 
 #include "factory/pps-annotation-widget-factory.h"
 #include "factory/pps-form-widget-factory.h"
+#include "pps-annotation-overlay.h"
 
 #if HAVE_LIBSPELLING
 #include <libspelling.h>
@@ -4150,7 +4151,9 @@ pps_view_button_press_event (GtkGestureClick *self,
 		PpsMedia *media;
 		gint page;
 
-		if (PPS_IS_SELECTION (document)) {
+		/* Don't do text selection if clicking on an annotation */
+		PpsAnnotation *annot_at_loc = get_annotation_at_location (view, x, y);
+		if (!annot_at_loc && PPS_IS_SELECTION (document)) {
 			/*
 			 * Do not “simplify” by removing SelectionInfo->style.
 			 * It is required for the double/triple tap and drag
@@ -4591,8 +4594,27 @@ pps_view_button_release_event (GtkGestureClick *self,
 
 	if (button == GDK_BUTTON_PRIMARY) {
 		PpsAnnotation *annot = get_annotation_at_location (view, x, y);
-		if (annot)
-			pps_view_handle_annotation (view, annot, x, y, time);
+
+		if (annot) {
+			/* Free text annotations require double-click to enter edit mode */
+			if (PPS_IS_ANNOTATION_FREE_TEXT (annot) && n_press == 2) {
+				PpsAnnotationWidgetFactory *factory;
+				GtkWidget *widget;
+
+				pps_document_model_set_annotation_editing_state (priv->model,
+				                                                 PPS_ANNOTATION_EDITING_STATE_TEXT);
+
+				/* Focus the annotation widget so user can start typing immediately */
+				factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
+				widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
+				if (widget) {
+					pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (widget), -1, -1);
+				}
+			} else {
+				/* Other annotations (sticky notes, attachments) work on single click */
+				pps_view_handle_annotation (view, annot, x, y, time);
+			}
+		}
 	}
 
 	if (priv->selection_info.selections) {

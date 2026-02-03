@@ -11,6 +11,7 @@ $PpsDocumentModel model {
   notify::page-layout => $page_layout_changed() swapped;
   notify::dual-odd-left => $dual_mode_odd_pages_left_changed() swapped;
   notify::rtl => $direction_changed() swapped;
+  notify::annotation-editing-state => $annotation_editing_state_changed() swapped;
 
   annotation-model: $PpsAnnotationModel annotation-model {};
 }

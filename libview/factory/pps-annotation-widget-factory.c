@@ -178,3 +178,15 @@ pps_annotation_widget_factory_new (void)
 {
 	return g_object_new (PPS_TYPE_ANNOTATION_WIDGET_FACTORY, NULL);
 }
+
+GtkWidget *
+pps_annotation_widget_factory_get_widget_for_annot (PpsAnnotationWidgetFactory *factory,
+                                                    PpsAnnotation *annot)
+{
+	g_return_val_if_fail (PPS_IS_ANNOTATION_WIDGET_FACTORY (factory), NULL);
+	g_return_val_if_fail (PPS_IS_ANNOTATION (annot), NULL);
+
+	PpsAnnotationWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
+
+	return GTK_WIDGET (g_hash_table_lookup (priv->free_text_widgets, annot));
+}

@@ -1179,8 +1179,8 @@ impl imp::PpsDocumentView {
         };
     }
 
-    pub fn cmd_toggle_edit_mode(&self) {
-        if self.model.annotation_editing_state() == papers_view::AnnotationEditingState::NONE {
+    pub(super) fn update_edit_toolbar_visibility(&self, visible: bool) {
+        if visible {
             self.draw_revealer.set_reveal_child(true);
             self.draw_revealer
                 .parent()
@@ -1191,13 +1191,6 @@ impl imp::PpsDocumentView {
             self.draw_button.set_icon_name("window-close-symbolic");
             self.draw_button
                 .set_tooltip_text(Some(&gettext("Close Menu")));
-            if self.model.annotation_model().unwrap().tool() == AnnotationTool::Text {
-                self.model
-                    .set_annotation_editing_state(papers_view::AnnotationEditingState::TEXT);
-            } else {
-                self.model
-                    .set_annotation_editing_state(papers_view::AnnotationEditingState::INK);
-            }
         } else {
             self.draw_revealer.set_reveal_child(false);
             self.draw_button.set_icon_name("document-edit-symbolic");
@@ -1209,6 +1202,20 @@ impl imp::PpsDocumentView {
                 .remove_css_class("expanded");
             self.draw_button
                 .set_tooltip_text(Some(&gettext("Edit Document")));
+        }
+    }
+
+    pub fn cmd_toggle_edit_mode(&self) {
+        // Just toggle the state - the notify signal will handle UI updates
+        if self.model.annotation_editing_state() == papers_view::AnnotationEditingState::NONE {
+            if self.model.annotation_model().unwrap().tool() == AnnotationTool::Text {
+                self.model
+                    .set_annotation_editing_state(papers_view::AnnotationEditingState::TEXT);
+            } else {
+                self.model
+                    .set_annotation_editing_state(papers_view::AnnotationEditingState::INK);
+            }
+        } else {
             self.model
                 .set_annotation_editing_state(papers_view::AnnotationEditingState::NONE);
         }
