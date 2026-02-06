@@ -1,3 +1,16 @@
+Papers 49.4
+----------------
+* Bug fixes:
+  - #576 Ctrl+F sometimes does not focus search box when query is blank (Roberto Vidal)
+
+* Translation updates:
+  - Greek (Efstathios Iosifidis)
+  - Czech (Daniel Rusek)
+  - Kazakh (Baurzhan Muftakhidinov)
+  - German (Jürgen Benvenuti)
+  - Bulgarian (Alexander Shopov)
+  - Georgian (Ekaterine Papava)
+
 Papers 49.3
 ----------------
 * Bug fixes:
