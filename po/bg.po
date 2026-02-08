@@ -1,884 +1,1843 @@
-# Bulgarian translation for gnome-maps.
-# Copyright (C) 2016 Free Software Foundation, Inc.
-# Copyright (C) 2021, 2022, 2023, 2026 Alexander Shopov.
-# Copyright (C) 2024, 2025 twlvnn kraftwerk.
-# This file is distributed under the same license as the gnome-maps package.
-# Ivailo Panamski <ipanamski@gmail.com>, 2016.
-# Alexander Shopov <ash@kambanaria.org>, 2021, 2022, 2023, 2026.
-# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024, 2025.
+# Bulgarian translation of papers po-file.
+# Copyright (C) 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+# Copyright (C) 2010, 2011, 2013, 2014, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2011, 2012, 2013 Krasimir Chonov <mk2616@abv.bg>.
+# Copyright (C) 2015 Krasimir Chonov <mk2616@abv.bg>.
+# Copyright (C) 2021, 2022, 2023, 2026 Alexander Shopov <ash@kambanaria.org>.
+# This file is distributed under the same license as the evince package.
+# Rostislav "zbrox" Raykov <zbrox@i-space.org>, 2005.
+# Vladimir "kaladan" Petkov <kaladan@gmail.com>, 2005, 2006, 2007.
+# Alexander Shopov <ash@kambanaria.org>, 2006, 2007, 2008, 2009, 2011, 2015, 2016, 2021, 2022, 2023, 2025, 2026.
+# Krasimir Chonov <mk2616@abv.bg>, 2009, 2011, 2012, 2013.
+# Yavor Doganov <yavor@gnu.org>, 2008.
+# Ivaylo Valkov <ivaylo@e-valkov.org>, 2010, 2014.
+# Damyan Ivanov <dam+gnome@ktnx.net>, 2010, 2011.
+# Lyubomir Vasilev <lyubomirv@abv.bg>, 2017.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024, 2025, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-01-14 21:26+0000\n"
-"PO-Revision-Date: 2026-01-22 09:45+0100\n"
+"Project-Id-Version: papers main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2026-02-01 21:56+0000\n"
+"PO-Revision-Date: 2026-02-08 18:10+0100\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
-"Language-Team: Bulgarian <dict@ludost.net>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
-#. Translators: This is the program name.
-#. for some reason, setting the title of the window through the .ui
-#. * template does not work anymore (maybe has something to do with
-#. * setting a custom title on the headerbar). Setting it programmatically
-#. * here works though. And yields a proper label in the gnome-shell
-#. * overview.
-#.
-#: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
-msgid "Maps"
-msgstr "Карти"
+#. Manually set name and icon
+#: data/org.gnome.Papers.desktop.in.in:2
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:87
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:396
+msgid "Document Viewer"
+msgstr "Преглед на документи"
 
-#: data/org.gnome.Maps.desktop.in.in:4
-msgid "A simple maps application"
-msgstr "Програма за преглед на карти"
+#: data/org.gnome.Papers.desktop.in.in:3
+msgid "View multi-page documents"
+msgstr "Преглед на документи с много страници"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in.in:13
-msgid "Maps;"
-msgstr "maps;карти;глобус;атлас;"
+#: data/org.gnome.Papers.desktop.in.in:5
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "документ;презентация;преглед;виждане;визуализация;показване;pdf;djvu;tiff;document;presentation;viewer;papers;"
 
-#: data/org.gnome.Maps.desktop.in.in:16
-msgid "Allows your location to be shown on the map."
-msgstr "Местоположението ви да се показва на картата."
+#: data/org.gnome.Papers.desktop.in.in:20
+msgid "New Window"
+msgstr "Нов прозорец"
 
-#: data/org.gnome.Maps.gschema.xml:16
-msgid "last viewed location"
-msgstr "последно прегледано местоположение"
+#: data/org.gnome.Papers.gschema.xml:14
+msgid "Override document restrictions"
+msgstr "Пренебрегване на ограниченията на документа"
 
-#: data/org.gnome.Maps.gschema.xml:17
-msgid "Coordinates of last viewed location."
-msgstr "Координати на последно прегледаното местоположение."
+#: data/org.gnome.Papers.gschema.xml:15
+msgid "Override document restrictions, like restriction to copy or to print."
+msgstr ""
+"Пренебрегване на ограниченията на документа, като ограничения за копиране и "
+"печат."
 
-#: data/org.gnome.Maps.gschema.xml:21
-msgid "zoom"
-msgstr "мащаб"
+#: data/org.gnome.Papers.gschema.xml:19
+msgid "The URI of the directory last used to open or save a document"
+msgstr "Адресът на последната папка, в която е отварян или запазван документ"
 
-#: data/org.gnome.Maps.gschema.xml:22
-msgid "Zoom level"
-msgstr "Мащаб"
+#: data/org.gnome.Papers.gschema.xml:23
+msgid "The URI of the directory last used to save a picture"
+msgstr "Адресът на последната папка, в която е запазвано изображение"
 
-#: data/org.gnome.Maps.gschema.xml:26
-msgid "rotation"
-msgstr "завъртане"
+#: data/org.gnome.Papers.gschema.xml:27
+msgid "Page cache size in MiB"
+msgstr "Размер на временна памет за страниците в MiB"
 
-#: data/org.gnome.Maps.gschema.xml:27
-msgid "Map rotation in radians"
-msgstr "Завъртане на картата в радиани"
-
-#: data/org.gnome.Maps.gschema.xml:31
-msgid "Map type"
-msgstr "Вид карта"
-
-#: data/org.gnome.Maps.gschema.xml:32
-msgid "The type of map to display (street, aerial, etc.)"
-msgstr "Вид карта за показване (улична, аерофотографска, др.)"
-
-#: data/org.gnome.Maps.gschema.xml:36
-msgid "Window size"
-msgstr "Размери на прозореца"
-
-#: data/org.gnome.Maps.gschema.xml:37
-msgid "Window size (width and height)."
-msgstr "Размери (широчина и дължина)."
-
-#: data/org.gnome.Maps.gschema.xml:41
-msgid "Window position"
-msgstr "Положение на прозореца"
-
-#: data/org.gnome.Maps.gschema.xml:42
-msgid "Window position (X and Y)."
-msgstr "Положение на прозореца (X и Y)."
-
-#: data/org.gnome.Maps.gschema.xml:46
-msgid "Window maximized"
-msgstr "Максимизиран прозорец"
-
-#: data/org.gnome.Maps.gschema.xml:47
-msgid "Window maximization state"
-msgstr "Дали прозорецът на програмата е максимизиран"
-
-#: data/org.gnome.Maps.gschema.xml:51
-msgid "Maximum number of search results"
-msgstr "Максимален брой на резултатите от търсене"
-
-#: data/org.gnome.Maps.gschema.xml:52
-msgid "Maximum number of search results from geocode search."
-msgstr "Максимален брой на резултати от търсенето по геокод."
-
-#: data/org.gnome.Maps.gschema.xml:56
-msgid "Number of recent places to store"
-msgstr "Брой на последните места за съхраняване"
-
-#: data/org.gnome.Maps.gschema.xml:57
-msgid "Number of recently visited places to store."
-msgstr "Брой на последно посетени места за съхраняване."
-
-#: data/org.gnome.Maps.gschema.xml:61
-msgid "Number of recent routes to store"
-msgstr "Брой на последни маршрути за съхраняване"
-
-#: data/org.gnome.Maps.gschema.xml:62
-msgid "Number of recently visited routes to store."
-msgstr "Брой на последно посетените маршрути за съхраняване."
-
-#: data/org.gnome.Maps.gschema.xml:66
-msgid "OpenStreetMap username or email address"
-msgstr "Потребителско име или е-поща за OpenStreetMap"
-
-#: data/org.gnome.Maps.gschema.xml:67
-msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr "Дали потребителят е влязъл, за да променя информация в OpenStreetMap."
-
-#: data/org.gnome.Maps.gschema.xml:71
-msgid "Last used transportation type for routing"
-msgstr "Последно ползван вид транспорт за маршрут"
-
-#: data/org.gnome.Maps.gschema.xml:75
-msgid "Show scale"
-msgstr "Мащаб"
-
-#: data/org.gnome.Maps.gschema.xml:76
-msgid "Whether to show the scale."
-msgstr "Дали мащабът да се показва."
-
-#: data/org.gnome.Maps.gschema.xml:80
-msgid "Map tile URL pattern"
-msgstr "Шаблон за адресите на фрагментите"
-
-#: data/org.gnome.Maps.gschema.xml:81
+#: data/org.gnome.Papers.gschema.xml:28
 msgid ""
-"The URL pattern for the vector tile source to use. Note that the map style "
-"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
-"Profile"
+"The maximum size that will be used to cache rendered pages, limits maximum "
+"zoom level."
 msgstr ""
-"Шаблон за адресите на векторните фрагменти. Стилът на картата разчита на "
-"наличието на допълнителни разширения спрямо стандартния профил на Planetiler "
-"OpenMapTiles"
+"Най-големият възможен размер на временната памет, която да се използва при "
+"изобразяване на страниците. Ограничава мащабирането."
 
-#: data/org.gnome.Maps.gschema.xml:85
-msgid "Units to show measurements in"
-msgstr "Мерни единици"
+#: data/org.gnome.Papers.gschema.xml:32
+msgid "Allow links to change the zoom level."
+msgstr "Разрешаване на промяната на мащаба от връзки в документа."
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Papers.gschema.xml:43
+msgid "Check spelling when writing annotation notes or filling text forms."
+msgstr ""
+"Проверка на правописа при писане на бележки за анотации или попълване на "
+"текстови формуляри."
+
+#: data/org.gnome.Papers.gschema.xml:47
+msgid "Show a side bar next to the document to help navigate the document."
+msgstr ""
+"Показване на страничен панел до документа, за да улесните навигацията в него."
+
+#: data/org.gnome.Papers.gschema.xml:60
+msgid "Set the default zoom level to display a document."
+msgstr "Задаване на стандартното ниво на увеличение за показване на документи."
+
+#: data/org.gnome.Papers.gschema.xml:64
 msgid ""
-"How to show measurements. ('system' uses default for system locale, 'metric' "
-"always show metric units, 'imperial' always show imperial units)."
+"Display the document as a continuous stream of pages instead of page at a "
+"time."
 msgstr ""
-"Как да се показват измерванията. („системни” използва единиците спрямо "
-"региона на системата, „метрични” винаги показва метрични единици, „имперски” "
-"винаги показва имперски единици)."
+"Показване на документа като непрекъснат поток от страници, а не страница по "
+"страница."
 
-#: data/org.gnome.Maps.gschema.xml:90
-msgid "Show location marker"
-msgstr "Отбелязване на местоположение"
+#: data/org.gnome.Papers.gschema.xml:68
+msgid "Show two pages side by side."
+msgstr "Показване на две страници една до друга."
 
-#: data/org.gnome.Maps.gschema.xml:91
-msgid "Whether to show the user location marker (when location is known)."
-msgstr "Дали местоположението да се отбелязва (когато то е известно)."
-
-#: data/org.gnome.Maps.metainfo.xml.in.in:7
-msgid "Find places around the world"
-msgstr "Търсене на места по света"
-
-#: data/org.gnome.Maps.metainfo.xml.in.in:9
+#: data/org.gnome.Papers.gschema.xml:72
 msgid ""
-"Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
+"Show the first page (odd page) on the left (when displaying two pages side "
+"by side)"
 msgstr ""
-"„Картите“ ви дават бърз достъп до места и карти по целия свят. Те ви "
-"позволяват бързо да намерите мястото, което търсите, независимо дали е град, "
-"улица или място на уречена среща."
+"Показване на първата страница (нечетната страница) отляво (при показване на "
+"две страници една до друга)"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:14
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
+msgid "Read documents"
+msgstr "Четене на документи"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
 msgid ""
-"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
-"thousands of people across the globe."
+"A document viewer for the GNOME desktop. You can view, search or annotate "
+"documents in many different formats."
 msgstr ""
-"Картите използват базите от данни на OpenStreetMap. Те са събрани от стотици "
-"хиляди хора от целия свят."
+"Програма за преглед на често срещани видове документи за графичната среда "
+"GNOME. Може да разглеждате, анотирате и търсите в документи в много различни "
+"формати."
 
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:623
-msgid "The GNOME Project"
-msgstr "Проектът GNOME"
-
-#: data/ui/context-menu.blp:6
-msgid "Route from Here"
-msgstr "Маршрут от тук"
-
-#: data/ui/context-menu.blp:11
-msgid "Add Intermediate Destination"
-msgstr "Добавяне на междинна цел"
-
-#: data/ui/context-menu.blp:16
-msgid "Route to Here"
-msgstr "Маршрут до тук"
-
-#: data/ui/context-menu.blp:21
-msgid "Clear Current Route"
-msgstr "Изчистване на маршрут"
-
-#: data/ui/context-menu.blp:28
-msgid "Copy Location"
-msgstr "Копиране на местоположението"
-
-#: data/ui/context-menu.blp:33
-msgid "Add to OpenStreetMap…"
-msgstr "Добавяне към OpenStreetMap…"
-
-#. Translators: This is the title of the dialog for expoting the map view content to an image file
-#: data/ui/export-view-dialog.blp:8
-msgid "Export View"
-msgstr "Изнасяне на изглед"
-
-#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
-#: data/ui/send-to-dialog.blp:15
-msgid "_Cancel"
-msgstr "_Отказ"
-
-#: data/ui/export-view-dialog.blp:29
-msgid "_Export"
-msgstr "_Изнасяне"
-
-#. Translators: This is a tooltip
-#: data/ui/favorite-list-row.blp:71
-msgid "Remove Favorite"
-msgstr "Премахване от любими"
-
-#: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Няма любими"
-
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Добавете местоположения в любимите си, за да ги видите тук"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Текущо местоположение"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
-msgid "Layers"
-msgstr "Слоеве"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "Любими"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Планиране на маршрут"
-
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Мащаб"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Отбелязване на местоположение"
-
-#. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
-msgid "Open Shape Layer…"
-msgstr "Отваряна на слой с очертания…"
-
-#: data/ui/main-window.blp:8
-msgid "_Set up OpenStreetMap Account…"
-msgstr "_Настройване на регистрация в OpenStreetMap…"
-
-#: data/ui/main-window.blp:13
-msgid "_Export as Image…"
-msgstr "_Изнасяне като изображение…"
-
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Мерни единици"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "Както _компютъра"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Метрични"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Имперски"
-
-#: data/ui/main-window.blp:49
-msgid "_Keyboard Shortcuts"
-msgstr "_Клавишни комбинации"
-
-#: data/ui/main-window.blp:55
-msgid "_About Maps"
-msgstr "_Относно „Карти“"
-
-#: data/ui/main-window.blp:125
-msgid "Main Menu"
-msgstr "Основно меню"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.blp:169
-msgid "View Place Information"
-msgstr "Допълнителна информация"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
-msgid "Print Route"
-msgstr "Отпечатване на маршрут"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
-msgid "Close Sidebar"
-msgstr "Затваряне на страничната лента"
-
-#: data/ui/osm-account-dialog.blp:5
-msgid "OpenStreetMap Account"
-msgstr "Регистрация в OpenStreetMap"
-
-#: data/ui/osm-account-dialog.blp:22
-msgid "Sign In To Edit Maps"
-msgstr "Впишете се, за да редактирате карти"
-
-#: data/ui/osm-account-dialog.blp:23
-msgid "Help to improve the map, using an OpenStreetMap account."
-msgstr ""
-"Помогнете да подобрим картите, като използвате регистрация в OpenStreetMap."
-
-#: data/ui/osm-account-dialog.blp:26
-msgid "_Sign In"
-msgstr "_Вписване"
-
-#: data/ui/osm-account-dialog.blp:43
-msgid "Verification"
-msgstr "Потвърждение"
-
-#: data/ui/osm-account-dialog.blp:44
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Copy the verification code shown when authorizing access in the browser."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
 msgstr ""
-"Копирайте кода за потвърждение, който се показва при позволяване на достъпа "
-"в браузъра."
+"Поддържат се следните видове документи: PDF, DjVu, TIFF и комикси (CBR, CBT, "
+"CBZ, CB7)."
 
-#: data/ui/osm-account-dialog.blp:51
-msgid "Verification Code"
-msgstr "Код за потвърждение"
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
+msgid "A clear, simple, and modern UI"
+msgstr "Опростен, интуитивен и модерен интерфейс"
 
-#: data/ui/osm-account-dialog.blp:55
-msgid "_Verify"
-msgstr "_Потвърждаване"
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
+msgid "A mobile-friendly UI"
+msgstr "Потребителски интерфейс за мобилни устройства"
 
-#: data/ui/osm-account-dialog.blp:81
-msgid "Signed In"
-msgstr "Вписани сте"
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
+msgid "A modern and colorful annotation list"
+msgstr "Модерен и цветен списък с анотации"
 
-#: data/ui/osm-account-dialog.blp:82
-msgid "Your OpenStreetMap account is active."
-msgstr "Регистрацията ви в OpenStreetMap е активна."
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
+msgid "Big thumbnails in the sidebar"
+msgstr "Големи миниатюри в страничната лента"
 
-#: data/ui/osm-account-dialog.blp:96
-msgid "_Sign Out"
-msgstr "_Изход"
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
+msgid "All search actions are contained in the sidebar"
+msgstr "Всички действия за търсене са в страничната лента"
 
-#: data/ui/osm-discard-dialog.blp:5
-msgid "Discard Changes?"
-msgstr "Отхвърляне на промените?"
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
+msgid "Print Preview"
+msgstr "Мостра на печата"
 
-#: data/ui/osm-discard-dialog.blp:6
-msgid "Your current changes to the map will be lost"
-msgstr "Текущите ви промени в картата ще бъдат изгубени"
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
+msgid "Preview before printing"
+msgstr "Преглед преди отпечатване"
 
-#: data/ui/osm-discard-dialog.blp:12
-msgid "_Discard"
-msgstr "_Отхвърляне"
+#: libdocument/backend/comics/comics-document.c:179
+#: libdocument/backend/comics/comics-document.c:248
+msgid "File is corrupted"
+msgstr "Файлът е повреден"
 
-#: data/ui/osm-edit-dialog.blp:5
-msgctxt "dialog title"
-msgid "Edit Location"
-msgstr "Редактиране на местоположението"
+#: libdocument/backend/comics/comics-document.c:238
+msgid "Archive is encrypted"
+msgstr "Архивът е шифриран"
 
-#: data/ui/osm-edit-dialog.blp:19
-msgid "Loading…"
-msgstr "Зареждане…"
+#: libdocument/backend/comics/comics-document.c:243
+msgid "No supported images in archive"
+msgstr "В архива няма поддържани файлове"
 
-#: data/ui/osm-edit-dialog.blp:26 data/ui/osm-edit-dialog.blp:37
-msgid "Edit Location"
-msgstr "Редактиране на местоположението"
+#: libdocument/backend/comics/comics-document.c:253
+msgid "No files in archive"
+msgstr "В архива няма файлове"
 
-#: data/ui/osm-edit-dialog.blp:38
-msgid "Edit an existing location in OpenStreetMap"
-msgstr "Редактиране на съществуващо местоположение в OpenStreetMap"
+#: libdocument/backend/comics/comics-document.c:302
+#, c-format
+msgid "Not a comic book MIME type: %s"
+msgstr "Видът на MIME не е на комикс: %s"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:340
-msgid "Continue"
-msgstr "Продължете"
-
-#: data/ui/osm-edit-dialog.blp:63
-msgid "Location Type"
-msgstr "Вид на местоположението"
-
-#. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.blp:172
-msgid "Search types"
-msgstr "Видове търсене"
-
-#: data/ui/osm-edit-dialog.blp:184
-msgid "Recently Used Types"
-msgstr "Скоро ползвани видове"
-
-#: data/ui/osm-edit-dialog.blp:195
-msgid "Edit Map"
-msgstr "Редактиране на картата"
-
-#: data/ui/osm-edit-dialog.blp:209
-msgid "Almost There!"
-msgstr "Почти стигнахте!"
-
-#: data/ui/osm-edit-dialog.blp:211
+#: libdocument/backend/comics/comics-document.c:309
 msgid ""
-"Describe your map changes. They will be visible on all maps that use "
-"OpenStreetMap data."
+"libarchive lacks support for this comic book’s compression, please contact "
+"your distributor"
 msgstr ""
-"Опишете промените в картата си. Те ще се виждат на всички карти, ползващи "
-"данни от OpenStreetMap."
+"libarchive не поддържа метода на компресия на този комикс. Свържете се с "
+"авторите на дистрибуцията ви"
 
-#: data/ui/osm-edit-dialog.blp:248
-msgid "Submit"
-msgstr "Изпращане"
+#: libdocument/backend/comics/comics-document.c:348
+msgid "Can not get local path for archive"
+msgstr "Локалният път до архива не може да бъде открит"
 
-#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238
-#: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
+msgid "Comic Books"
+msgstr "Комикси"
+
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading comic books"
+msgstr "Добавя поддръжка за четене на комикси"
+
+#: libdocument/backend/djvu/djvu-document.c:173
+msgid "DjVu document has incorrect format"
+msgstr "Документът DjVu е в неправилен формат"
+
+#: libdocument/backend/djvu/djvu-document.c:263
+msgid ""
+"The document is composed of several files. One or more of these files cannot "
+"be accessed."
+msgstr "Документът е изграден от няколко файла. Някои от тях не са достъпни."
+
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
+msgid "DjVu Documents"
+msgstr "Документи DjVu"
+
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading DjVu documents"
+msgstr "Добавя поддръжка за четене на документи DjVu"
+
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
+msgid "PDF Documents"
+msgstr "Документи PDF"
+
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading PDF Documents"
+msgstr "Добавя поддръжка за четене на документи PDF"
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:737
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
+msgid "Yes"
+msgstr "Да"
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
+msgid "No"
+msgstr "Не"
+
+#: libdocument/backend/pdf/pps-poppler.c:853
+msgid "Type 1"
+msgstr "Type 1"
+
+#: libdocument/backend/pdf/pps-poppler.c:855
+msgid "Type 1C"
+msgstr "Type 1C"
+
+#: libdocument/backend/pdf/pps-poppler.c:857
+msgid "Type 3"
+msgstr "Type 3"
+
+#: libdocument/backend/pdf/pps-poppler.c:859
+msgid "TrueType"
+msgstr "TrueType"
+
+#: libdocument/backend/pdf/pps-poppler.c:861
+msgid "Type 1 (CID)"
+msgstr "Type 1 (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:863
+msgid "Type 1C (CID)"
+msgstr "Type 1C (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:865
+msgid "TrueType (CID)"
+msgstr "TrueType (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:867
+msgid "Unknown font type"
+msgstr "Неизвестен вид шрифт"
+
+#: libdocument/backend/pdf/pps-poppler.c:911
+msgid ""
+"This document contains non-embedded fonts that are not from the PDF Standard "
+"14 fonts. If the substitute fonts selected by fontconfig are not the same as "
+"the fonts used to create the PDF, the rendering may not be correct."
+msgstr ""
+"Този документ съдържа шрифтове, които не са вградени и не са измежду 14-те "
+"стандартни за PDF. Възможно е fontconfig да избере различни от оригиналните "
+"шрифтове, което ще доведе до неточно показване на документа."
+
+#: libdocument/backend/pdf/pps-poppler.c:916
+msgid "All fonts are either standard or embedded."
+msgstr "Всички шрифтове са или стандартните, или са вградени."
+
+#: libdocument/backend/pdf/pps-poppler.c:952
+msgid "No name"
+msgstr "Без име"
+
+#. translators: When a font type does not have
+#. encoding information or it is unknown.  Example:
+#. Encoding: None
+#.
+#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Няма"
 
-#: data/ui/place-popover.blp:29 src/searchBar.js:69
-msgid "Explore Nearby Places"
-msgstr "Разглеждане на местата наоколо"
+#: libdocument/backend/pdf/pps-poppler.c:969
+msgid "Embedded subset"
+msgstr "Вградени подмножества"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
-msgid "No results found"
-msgstr "Няма резултат"
+#: libdocument/backend/pdf/pps-poppler.c:971
+msgid "Embedded"
+msgstr "Вградени"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
-msgid "An error has occurred"
-msgstr "Възникна грешка"
+#: libdocument/backend/pdf/pps-poppler.c:973
+msgid "Not embedded"
+msgstr "Не е вграден"
 
-#. Translators: This is a tooltip
-#: data/ui/route-entry.blp:12
-msgid "Change Route Order"
-msgstr "Промяна на последователността на маршрута"
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "Type 1 (One of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:980
+msgid " (One of the Standard 14 Fonts)"
+msgstr " (един от 14-те стандартни шрифта)"
 
-#. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
-#: data/ui/route-view.blp:15
-msgid "Walking"
-msgstr "Ходене"
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "TrueType (Not one of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:987
+msgid " (Not one of the Standard 14 Fonts)"
+msgstr " (не е от 14-те стандартни шрифта)"
 
-#. Translators: This is the tooltip text for the button selecting the cycling routing mode
-#: data/ui/route-view.blp:22
-msgid "Cycling"
-msgstr "Колоездене"
-
-#. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
-#: data/ui/route-view.blp:29
-msgid "Driving"
-msgstr "Шофиране"
-
-#. Translators: This is the tooltip text for the button selecting the public transit routing mode
-#: data/ui/route-view.blp:36
-msgid "Public Transit"
-msgstr "Обществен транспорт"
-
-#: data/ui/route-view.blp:154
-msgid "Route search by GraphHopper"
-msgstr "Търсене на маршрут с GraphHopper"
-
-#: data/ui/route-view.blp:172
-msgid "Itineraries provided by Transitous"
-msgstr "Разписанието е предоставено от Transitous"
-
-#: data/ui/route-view.blp:190
-msgid "More Information"
-msgstr "Допълнителна информация"
-
-#: data/ui/route-view.blp:221
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * Type 1 (One of the standard 14 Fonts)
+#. * Not embedded
+#. * Substituting with TeXGyreTermes-Regular
+#. * (/usr/share/textmf/.../texgyretermes-regular.otf)
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1006
+#, c-format
 msgid ""
-"Routing itineraries for public transit is provided by third-party\n"
-"services.\n"
-"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Note that some providers might not include all available modes of "
-"transportation,\n"
-"e.g. a national provider might not include airlines, and a local provider "
-"could\n"
-"miss regional trains.\n"
-"Names and brands shown are to be considered as registered trademarks when "
-"applicable."
+"%s%s\n"
+"Encoding: %s\n"
+"%s\n"
+"Substituting with <b>%s</b>\n"
+"(%s)"
 msgstr ""
-"Разписанията за обществения транспорт са предоставени от трети лица.\n"
-"GNOME не може да гарантира за истинността им, както и за разписанието.\n"
-"Някои доставчици на такива услуги не включват всички видове транспорт.\n"
-"Напр. националните доставчици може да не включват авиотранспорта, а\n"
-"местните — регионалния железопътен транспорт.\n"
-"Показваните имена да се считат за регистрирани търговски марки, когато\n"
-"това е приложимо."
+"%s%s\n"
+"Кодиране: %s\n"
+"%s\n"
+"Замества се със <b>%s</b>\n"
+"(%s)"
 
-#: data/ui/route-view.blp:239
-msgid "Back"
-msgstr "Назад"
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * TrueType (CID)
+#. * Encoding: Custom
+#. * Embedded subset
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1024
+#, c-format
+msgid ""
+"%s%s\n"
+"Encoding: %s\n"
+"%s"
+msgstr ""
+"%s%s\n"
+"Кодиране: %s\n"
+"%s"
 
-#: data/ui/send-to-dialog.blp:5
-msgid "Open Location"
-msgstr "Отваряне на местоположение"
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
+msgid "TIFF Documents"
+msgstr "Документи TIFF"
 
-#: data/ui/send-to-dialog.blp:62
-msgid "C_opy"
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading TIFF documents"
+msgstr "Добавя поддръжка за четене на документи TIFF"
+
+#: libdocument/backend/tiff/tiff-document.c:97
+msgid "Invalid document"
+msgstr "Неправилен документ"
+
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
+#, c-format
+msgid "Couldn’t save attachment “%s”: %s"
+msgstr "Неуспешно запазване на прикрепения файл „%s“: %s"
+
+#: libdocument/pps-attachment.c:336
+#, c-format
+msgid "Couldn’t open attachment “%s”: %s"
+msgstr "Неуспешно отваряне на прикрепения файл „%s“: %s"
+
+#: libdocument/pps-attachment.c:373
+#, c-format
+msgid "Couldn’t open attachment “%s”"
+msgstr "Неуспешно отваряне на прикрепения файл „%s“"
+
+#: libdocument/pps-document-factory.c:86
+#, c-format
+msgid "File type %s (%s) is not supported"
+msgstr "Не се поддържат файлове от вида %s (%s)"
+
+#: libdocument/pps-document-factory.c:392
+msgid "All Documents"
+msgstr "Всички документи"
+
+#: libdocument/pps-document-factory.c:420
+msgid "All Files"
+msgstr "Всички файлове"
+
+#. Translate to the default units to use for presenting
+#. * lengths to the user. Translate to default:inch if you
+#. * want inches, otherwise translate to default:mm.
+#. * Do *not* translate it to "predefinito:mm", if it
+#. * it isn't default:mm or default:inch it will not work
+#.
+#: libdocument/pps-document-info.c:198
+msgid "default:mm"
+msgstr "default:mm"
+
+#: libdocument/pps-document-info.c:250
+#, c-format
+msgid "%.0f × %.0f mm"
+msgstr "%.0f × %.0f mm"
+
+#: libdocument/pps-document-info.c:254
+#, c-format
+msgid "%.2f × %.2f inch"
+msgstr "%.2f × %.2f инча"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:278
+#, c-format
+msgid "%s, Portrait (%s)"
+msgstr "%s, вертикално (%s)"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:285
+#, c-format
+msgid "%s, Landscape (%s)"
+msgstr "%s, хоризонтално (%s)"
+
+#: libdocument/pps-file-helpers.c:131
+#, c-format
+msgid "Failed to create a temporary file: %s"
+msgstr "Неуспешно създаване на временен файл: %s"
+
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
+msgid "Unknown MIME Type"
+msgstr "Непознат вид MIME"
+
+#: libdocument/pps-xmp.c:188
+msgid "This work is in the Public Domain"
+msgstr "Тази творба е обществено достояние"
+
+#: libview/context/pps-attachment-context.c:350
+msgid "Save Attachment"
+msgid_plural "Save Attachments"
+msgstr[0] "Запазване на прикрепения файл"
+msgstr[1] "Запазване на прикрепените файлове"
+
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
+#, c-format
+msgid "Page %s"
+msgstr "Страница %s"
+
+#: libview/pps-annotation-window.c:237
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Edit Note"
+msgstr "Редактиране на бележката"
+
+#: libview/pps-jobs.c:399
+#, c-format
+msgid "Failed to render page %d: %s"
+msgstr "Страница № %d не може да бъде изобразена: %s"
+
+#: libview/pps-jobs.c:406
+#, c-format
+msgid "Failed to render page %d"
+msgstr "Страница № %d не може да бъде изобразена"
+
+#: libview/pps-jobs.c:625
+#, c-format
+msgid "Failed to create thumbnail for page %d"
+msgstr "Неуспешно създаване на миниатюра на страница № %d"
+
+#: libview/pps-jobs.c:1602
+#, c-format
+msgid "Failed to print page %d: %s"
+msgstr "Страница № %d не може да бъде отпечатана: %s"
+
+#. Initial state
+#: libview/pps-print-operation.c:331
+msgid "Preparing preview…"
+msgstr "Подготовка за преглед…"
+
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
+msgid "Finishing…"
+msgstr "Завършване…"
+
+#: libview/pps-print-operation.c:335
+#, c-format
+msgid "Generating preview: page %d of %d"
+msgstr "Създаване на преглед на страница № %d от общо %d"
+
+#. Initial state
+#: libview/pps-print-operation.c:341
+msgid "Preparing to print…"
+msgstr "Подготовка за печат…"
+
+#: libview/pps-print-operation.c:345
+#, c-format
+msgid "Printing page %d of %d…"
+msgstr "Печатане на страница № %d от общо %d…"
+
+#: libview/pps-print-operation.c:1334
+msgid "Invalid Page Selection"
+msgstr "Неправилен избор на страница"
+
+#: libview/pps-print-operation.c:1335
+msgid "Your print range selection does not include any pages"
+msgstr "Обхватът за печат не включва нито една страница"
+
+#. show close if the certificate is null, or if no cert is found
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:617
+msgid "_Close"
+msgstr "_Затваряне"
+
+#. translators: Title of the print dialog
+#: libview/pps-print-operation.c:1413
+msgid "Print"
+msgstr "Печат"
+
+#: libview/pps-print-operation.c:1871
+msgid "Page Scaling:"
+msgstr "Мащабиране на страница:"
+
+#: libview/pps-print-operation.c:1879
+msgid "Shrink to Printable Area"
+msgstr "Свиване към областта за печат"
+
+#: libview/pps-print-operation.c:1880
+msgid "Fit to Printable Area"
+msgstr "Напасване към областта за печат"
+
+#: libview/pps-print-operation.c:1887
+msgid ""
+"Scale document pages to fit the selected printer page. Select from one of "
+"the following:\n"
+"\n"
+"• “None”: No page scaling is performed.\n"
+"\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area "
+"are reduced to fit the printable area of the printer page.\n"
+"\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
+"required to fit the printable area of the printer page.\n"
+msgstr ""
+"Мащабиране на документите към избрания размер на листите. Изберете една от "
+"следните възможности:\n"
+"\n"
+"  ⁃ „Без“: не се извършва мащабиране;\n"
+"\n"
+"  ⁃ „Свиване към областта за печат“: страниците по-големи от областта за "
+"печат върху листите се свиват, за да се вместят в нея;\n"
+"\n"
+"  ⁃ „Напасване към областта за печат“: страниците се свиват или увеличават, "
+"за да напаснат към областта за печат върху листите.\n"
+
+#: libview/pps-print-operation.c:1898
+msgid "Auto Rotate and Center"
+msgstr "Автоматично завъртане и центриране"
+
+#: libview/pps-print-operation.c:1901
+msgid ""
+"Rotate printer page orientation of each page to match orientation of each "
+"document page. Document pages will be centered within the printer page."
+msgstr ""
+"Завъртане на всяка страница, за да съвпадне с ориентацията на листите на "
+"принтера. Страниците се центрират върху листите."
+
+#: libview/pps-print-operation.c:1905
+msgid "Select page size using document page size"
+msgstr "Избор на размер на листите според размера на страниците на документа"
+
+#: libview/pps-print-operation.c:1907
+msgid ""
+"When enabled, each page will be printed on the same size paper as the "
+"document page."
+msgstr ""
+"Когато е избрано, всяка страница се разпечатва на лист със същия размер."
+
+#: libview/pps-print-operation.c:1911
+msgid "Draw border around pages"
+msgstr "Изчертаване на граници по страницата"
+
+#: libview/pps-print-operation.c:1913
+msgid "When enabled, a border will be drawn around each page."
+msgstr "Когато е включено, около всяка страница се изчертава граница."
+
+#: libview/pps-print-operation.c:2006
+msgid "Page Handling"
+msgstr "Управление на страниците"
+
+#: libview/pps-view.c:2111
+msgid "Go to first page"
+msgstr "Първа страница"
+
+#: libview/pps-view.c:2113
+msgid "Go to previous page"
+msgstr "Предишна страница"
+
+#: libview/pps-view.c:2115
+msgid "Go to next page"
+msgstr "Следваща страница"
+
+#: libview/pps-view.c:2117
+msgid "Go to last page"
+msgstr "Последна страница"
+
+#: libview/pps-view.c:2119
+msgid "Go to page"
+msgstr "Към страница"
+
+#: libview/pps-view.c:2121
+msgid "Find"
+msgstr "Търсене"
+
+#: libview/pps-view.c:2150
+#, c-format
+msgid "Go to page %s"
+msgstr "Към страница %s"
+
+#: libview/pps-view.c:2156
+#, c-format
+msgid "Go to %s on file “%s”"
+msgstr "Към %s във файла „%s“"
+
+#: libview/pps-view.c:2159
+#, c-format
+msgid "Go to file “%s”"
+msgstr "Към файла „%s“"
+
+#: libview/pps-view.c:2167
+#, c-format
+msgid "Launch %s"
+msgstr "Стартиране на %s"
+
+#: libview/pps-view.c:2174
+#, c-format
+msgid "Reset form"
+msgstr "Изчистване на формуляра"
+
+#: libview/pps-view-presentation.c:824
+msgid "Running in presentation mode"
+msgstr "Работа в режим на презентация"
+
+#: libview/pps-view-presentation.c:875
+msgid "End of presentation. Press Esc or click to exit."
+msgstr ""
+"Край на презентацията. Натиснете Esc или бутон на мишката, за да излезете."
+
+#: libview/pps-view-presentation.blp:49
+msgid "Jump to page:"
+msgstr "Към страница:"
+
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
+#, c-format
+msgid "(%d of %d)"
+msgstr "(%d от %d)"
+
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
+#, c-format
+msgid "of %d"
+msgstr "от %d"
+
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
+msgid "Select page"
+msgstr "Избор на страница"
+
+#: previewer/pps-previewer.c:32
+msgid "Delete the temporary file"
+msgstr "Изтриване на временен файл"
+
+#: previewer/pps-previewer.c:34
+msgid "File specifying print settings"
+msgstr "Файл с настройките за печат"
+
+#: previewer/pps-previewer.c:34
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#: previewer/pps-previewer.c:36
+msgid "File descriptor of input file"
+msgstr "Дескриптор на входния файл"
+
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
+msgid "FD"
+msgstr "ФАЙЛОВ_ДЕСКРИПТОР"
+
+#: previewer/pps-previewer.c:38
+msgid "MIME type of input file"
+msgstr "Вид по MIME на входния файл"
+
+#: previewer/pps-previewer.c:38
+msgid "TYPE"
+msgstr "ВИД"
+
+#: previewer/pps-previewer.c:40
+msgid "File descriptor of print settings file"
+msgstr "Дескриптор на файла с настройките за печат"
+
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
+msgid "GNOME Document Previewer"
+msgstr "Преглед на документи"
+
+#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+msgid "Papers Document Viewer"
+msgstr "Преглед на документи"
+
+#: previewer/pps-previewer-window.c:209
+#, c-format
+msgid "The selected printer “%s” could not be found"
+msgstr "Избраният принтер „%s“ не може да бъде открит"
+
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
+msgid "Papers"
+msgstr "Papers"
+
+#: previewer/pps-previewer-window.blp:19
+msgid "Previous Page"
+msgstr "Предишна страница"
+
+#: previewer/pps-previewer-window.blp:25
+msgid "Next Page"
+msgstr "Следваща страница"
+
+#: previewer/pps-previewer-window.blp:31
+#: shell/resources/pps-document-view.blp:212
+msgid "Page Count"
+msgstr "Брой страници"
+
+#: previewer/pps-previewer-window.blp:36
+msgid "_Print"
+msgstr "_Печат"
+
+#: previewer/pps-previewer-window.blp:37
+msgid "Print This Document"
+msgstr "Печатане на този документ"
+
+#: previewer/pps-previewer-window.blp:48
+#: shell/resources/pps-document-view.blp:292
+msgid "Zoom Out"
+msgstr "Намаляване"
+
+#: previewer/pps-previewer-window.blp:55
+msgid "Normal Size"
+msgstr "Нормален размер"
+
+#: previewer/pps-previewer-window.blp:62
+#: shell/resources/pps-document-view.blp:279
+msgid "Zoom In"
+msgstr "Увеличаване"
+
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+msgid "Failed to Print Document"
+msgstr "Документът не може да бъде отпечатан"
+
+#: nautilus/pps-nautilus-extension.c:97
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/src/properties_general.rs:338
+msgid "Unknown"
+msgstr "Непознато"
+
+#: nautilus/pps-nautilus-extension.c:138
+msgid "Document Properties"
+msgstr "Свойства на документа"
+
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
+msgid "Title"
+msgstr "Заглавие"
+
+#: nautilus/pps-nautilus-extension.h:46
+msgid "Location"
+msgstr "Местоположение"
+
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
+msgid "Subject"
+msgstr "Тема"
+
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
+msgid "Author"
+msgstr "Автор"
+
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
+msgid "Keywords"
+msgstr "Ключови думи"
+
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
+msgid "Producer"
+msgstr "Производител"
+
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
+msgid "Creator"
+msgstr "Автор"
+
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
+msgid "Created"
+msgstr "Създаден"
+
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
+msgid "Modified"
+msgstr "Променян"
+
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
+msgid "Number of Pages"
+msgstr "Брой страници"
+
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
+msgid "Optimized"
+msgstr "Оптимизиран"
+
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
+msgid "Format"
+msgstr "Формат"
+
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
+msgid "Security"
+msgstr "Сигурност"
+
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
+msgid "Contains Javascript"
+msgstr "Съдържа Javascript"
+
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
+msgid "Paper Size"
+msgstr "Размер на хартията"
+
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
+msgid "Size"
+msgstr "Размер"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
+msgid "Annotation Properties"
+msgstr "Свойства на анотацията"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+msgid "_Color"
+msgstr "_Цвят"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+msgid "_Opacity"
+msgstr "_Непрозрачност"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "_Icon"
+msgstr "_Иконка"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:51
+msgid "Note"
+msgstr "Бележка"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:52
+msgid "Comment"
+msgstr "Коментар"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:53
+msgid "Key"
+msgstr "Ключ"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:54
+msgid "Help"
+msgstr "Помощ"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:55
+msgid "New Paragraph"
+msgstr "Нов абзац"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:56
+msgid "Paragraph"
+msgstr "Абзац"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:57
+msgid "Insert"
+msgstr "Вмъкване"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:58
+msgid "Cross"
+msgstr "Кръст"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:59
+msgid "Circle"
+msgstr "Кръг"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+msgid "_Markup Type"
+msgstr "_Вид маркиране"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
+msgid "Highlight"
+msgstr "Оцветяване"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:76
+msgid "Strike out"
+msgstr "Зачеркване"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:77
+msgid "Underline"
+msgstr "Подчертаване"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:78
+msgid "Squiggly"
+msgstr "Вълнообразно"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+msgid "_Author"
+msgstr "_Автор"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+msgid "Auto-Reveal on _Scroll"
+msgstr "_Автоматично показване при придвижване"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:96
+msgid "Pop up note while scrolling the document"
+msgstr "Бележка при придвижване по документа"
+
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:78
+msgid "Search"
+msgstr "Търсене"
+
+#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
+msgid "Main Menu"
+msgstr "Основно меню"
+
+#: shell/resources/pps-document-view.blp:112
+msgid "Thumbnails"
+msgstr "Миниатюри"
+
+#: shell/resources/pps-document-view.blp:123
+msgid "Outline"
+msgstr "Съдържание"
+
+#: shell/resources/pps-document-view.blp:135
+msgid "Annotations"
+msgstr "Анотации"
+
+#: shell/resources/pps-document-view.blp:153
+msgid "Attachments"
+msgstr "Прикачени файлове"
+
+#: shell/resources/pps-document-view.blp:169
+msgid "Layers"
+msgstr "Слоеве"
+
+#: shell/resources/pps-document-view.blp:199
+msgid "Toggle Sidebar"
+msgstr "Страничен панел"
+
+#: shell/resources/pps-document-view.blp:205
+msgid "Document Menu"
+msgstr "Меню на документа"
+
+#: shell/resources/pps-document-view.blp:225
+msgid "Document has been digitally signed."
+msgstr "Документът е подписан електронно."
+
+#: shell/resources/pps-document-view.blp:226
+msgid "View Signature…"
+msgstr "Показване на подписа…"
+
+#: shell/resources/pps-document-view.blp:259
+msgid "Fit Automatically"
+msgstr "Автоматично напасване"
+
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "Избор на цвят"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "Настройки на шрифта"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "Размер на молива"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "Промяна на радиуса на гумата"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "Вмъкване"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "Начертаване"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "Изтриване на анотациите"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "Редактиране на документа"
+
+#: shell/resources/pps-document-view.blp:757
+msgid "Selection too Small"
+msgstr "Избрано е прекалено малко"
+
+#: shell/resources/pps-document-view.blp:758
+msgid ""
+"A signature of this size may be too small to read. If you would like to "
+"create a potentially more readable signature, press `Start over` and draw a "
+"bigger rectangle."
+msgstr ""
+"Размерът на подписа е прекалено малък и няма да се чете лесно. За да "
+"създадете по-четим вариант, натиснете „Започване отново“ и изчертайте по-"
+"голям правоъгълник."
+
+#: shell/resources/pps-document-view.blp:765
+msgid "Start _Over"
+msgstr "Започване _отново"
+
+#: shell/resources/pps-document-view.blp:766
+msgid "_Sign"
+msgstr "_Подписване"
+
+#: shell/resources/pps-document-view.blp:773
+msgid "Abort Printing?"
+msgstr "Искате ли да прекратите печатането?"
+
+#: shell/resources/pps-document-view.blp:774
+msgid ""
+"There is one or more active print jobs. If the window is closed, pending "
+"print jobs will not be printed."
+msgstr ""
+"Има поне една активна задача за печат. Ако затворите прозореца, предстоящите "
+"задачи няма да бъдат отпечатани."
+
+#: shell/resources/pps-document-view.blp:778
+msgid "Abort _Print and Close"
+msgstr "_Прекратяване на печатането и затваряне"
+
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
+msgid "_Cancel"
+msgstr "_Отмяна"
+
+#: shell/resources/pps-document-view.blp:780
+msgid "Close _After Printing"
+msgstr "Затваряне _след отпечатване"
+
+#: shell/resources/pps-document-view.blp:795
+msgid "Open…"
+msgstr "Отваряне…"
+
+#: shell/resources/pps-document-view.blp:802
+msgid "Ni_ght Mode"
+msgstr "Но_щен режим"
+
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавишни комбинации"
+
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
+msgid "_Help"
+msgstr "Помо_щ"
+
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
+msgid "_About Document Viewer"
+msgstr "_Относно „Papers“"
+
+#: shell/resources/pps-document-view.blp:828
+msgid "_Print…"
+msgstr "_Печат…"
+
+#: shell/resources/pps-document-view.blp:833
+msgid "Fullscreen"
+msgstr "Цял екран"
+
+#: shell/resources/pps-document-view.blp:838
+msgid "Present as Slideshow"
+msgstr "Представяне като прожекция"
+
+#: shell/resources/pps-document-view.blp:845
+msgid "Sign D_igitally…"
+msgstr "_Електронен подпис…"
+
+#: shell/resources/pps-document-view.blp:852
+msgid "Open a C_opy"
+msgstr "Отваряне на _копие"
+
+#: shell/resources/pps-document-view.blp:857
+#: shell/src/properties_general.rs:137
+msgid "Open With…"
+msgstr "Отваряне с…"
+
+#: shell/resources/pps-document-view.blp:862
+msgid "_Save As…"
+msgstr "_Запазване на изображението като…"
+
+#: shell/resources/pps-document-view.blp:869
+msgid "_Continuous"
+msgstr "_Без прекъсване"
+
+#: shell/resources/pps-document-view.blp:874
+msgid "_Dual"
+msgstr "_Две страници"
+
+#: shell/resources/pps-document-view.blp:879
+msgid "_Odd Pages Left"
+msgstr "_Нечетните отляво"
+
+#: shell/resources/pps-document-view.blp:884
+msgid "Right to Left Document"
+msgstr "Документ от дясно на ляво"
+
+#: shell/resources/pps-document-view.blp:891
+msgid "Ro_tate ⤵"
+msgstr "Завъртане на_дясно"
+
+#: shell/resources/pps-document-view.blp:898
+msgid "Document Prop_erties"
+msgstr "_Свойства на документа"
+
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "Черно"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "Оранжево"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "Червено"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "Лилаво"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "Синьо"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "Зелено"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "Жълто"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "Тънък"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "Среден"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "Дебел"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "Много дебел"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "Изтриване на мастилото"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "Изтриване на цели щрихи"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1434
+msgid "Highlight (h)"
+msgstr "Оцветяване (h)"
+
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1450
+msgid "Strikethrough (k)"
+msgstr "Зачеркване (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1466
+msgid "Underline (u)"
+msgstr "Подчертаване (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1482
+msgid "Squiggly (q)"
+msgstr "Вълнообразно (q)"
+
+#: shell/resources/pps-document-view.blp:1573
+msgid "_Open Link"
+msgstr "_Отваряне на връзка"
+
+#: shell/resources/pps-document-view.blp:1579
+msgid "Send an Email"
+msgstr "Изпращане на е-писмо"
+
+#: shell/resources/pps-document-view.blp:1585
+msgid "_Copy Link Address"
+msgstr "_Копиране на адреса на връзката"
+
+#: shell/resources/pps-document-view.blp:1591
+msgid "Copy Email Address"
+msgstr "Копиране на адреса на е-пощата"
+
+#: shell/resources/pps-document-view.blp:1597
+msgid "_Go To"
+msgstr "_Към"
+
+#: shell/resources/pps-document-view.blp:1603
+msgid "Open in New _Window"
+msgstr "Отваряне в нов _прозорец"
+
+#: shell/resources/pps-document-view.blp:1611
+msgid "_Copy"
 msgstr "_Копиране"
 
-#: data/ui/send-to-dialog.blp:68
-msgid "_Send To…"
-msgstr "_Изпращане до…"
+#: shell/resources/pps-document-view.blp:1616
+msgid "Select _All"
+msgstr "Избор на _всичко"
 
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.blp:33
-msgid "Toggle visible"
-msgstr "Включване на видимост"
+#: shell/resources/pps-document-view.blp:1623
+msgid "_Save Image As…"
+msgstr "_Запазване на изображението като…"
 
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.blp:46
-msgid "Remove Shape Layer"
-msgstr "Премахване на слой с очертания"
+#: shell/resources/pps-document-view.blp:1629
+msgid "Copy _Image"
+msgstr "Копиране на _изображението"
 
-#: data/ui/shortcuts-dialog.blp:6
+#: shell/resources/pps-document-view.blp:1637
+#: shell/resources/pps-sidebar-annotations.blp:78
+msgid "_Open Attachment"
+msgstr "_Отваряне на прикрепения файл"
+
+#: shell/resources/pps-document-view.blp:1643
+#: shell/resources/pps-sidebar-annotations.blp:84
+msgid "_Save Attachment As…"
+msgstr "_Запазване на прикрепения файл като…"
+
+#: shell/resources/pps-document-view.blp:1653
+msgid "Annotation _Properties…"
+msgstr "_Свойства на анотацията…"
+
+#: shell/resources/pps-document-view.blp:1659
+msgid "R_emove Annotation"
+msgstr "_Премахване на анотацията"
+
+#: shell/resources/pps-document-view.blp:1667
+msgid "_Add Text Annotation"
+msgstr "_Добавяне на текстова анотация"
+
+#: shell/resources/pps-find-sidebar.blp:60
+msgid "No Results Found"
+msgstr "Няма намерени резултати"
+
+#: shell/resources/pps-find-sidebar.blp:61
+msgid "Try a different search"
+msgstr "Oпитайте различно търсене"
+
+#: shell/resources/pps-find-sidebar.blp:74
+msgid "Perform a Search"
+msgstr "Извършвайте търсене"
+
+#: shell/resources/pps-find-sidebar.blp:75
+msgid "The search results will appear here"
+msgstr "Резултатите от търсенето ще се появят тук"
+
+#: shell/resources/pps-loader-view.blp:15
+msgid "Loading Document"
+msgstr "Зареждане на документ"
+
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
+msgid "C_ancel"
+msgstr "_Отмяна"
+
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+msgid "Password Required"
+msgstr "Изисква се парола"
+
+#: shell/resources/pps-password-dialog.blp:9
+msgid "Cancel"
+msgstr "Отмяна"
+
+#: shell/resources/pps-password-dialog.blp:10
+msgid "Unlock"
+msgstr "Отключване"
+
+#: shell/resources/pps-password-dialog.blp:19
+msgid "Password"
+msgstr "Парола"
+
+#: shell/resources/pps-password-dialog.blp:33
+msgid "Invalid password"
+msgstr "Неправилна парола"
+
+#: shell/resources/pps-password-dialog.blp:48
+msgid "Forget password _immediately"
+msgstr "_Незабавно забравяне на паролата"
+
+#: shell/resources/pps-password-dialog.blp:55
+msgid "Remember _forever"
+msgstr "_Запомняне завинаги"
+
+#: shell/resources/pps-password-view.blp:18
+msgid ""
+"This document is locked and can only be read by entering the correct password"
+msgstr ""
+"Този документ е заключен и може да бъде прочетен, само ако се подаде вярната "
+"парола"
+
+#: shell/resources/pps-password-view.blp:23
+msgid "_Unlock Document"
+msgstr "_Отключване на документа"
+
+#: shell/resources/pps-properties-license.blp:19
+msgid "Usage Terms"
+msgstr "Условия за ползване"
+
+#: shell/resources/pps-properties-license.blp:52
+msgid "Text License"
+msgstr "Текст на лиценза"
+
+#: shell/resources/pps-properties-license.blp:79
+msgid "Further Information"
+msgstr "Допълнителна информация"
+
+#: shell/resources/pps-properties-signatures.blp:32
+msgid "Signature Information"
+msgstr "Информация за подписа"
+
+#: shell/resources/pps-properties-signatures.blp:48
+#: shell/src/properties_signatures.rs:405
+msgid "View Details…"
+msgstr "Показване на подробностите…"
+
+#: shell/resources/pps-properties-window.blp:5
+msgid "Properties"
+msgstr "Свойства"
+
+#: shell/resources/pps-properties-window.blp:23
+msgid "_Document"
+msgstr "_Документ"
+
+#: shell/resources/pps-properties-window.blp:34
+msgid "_Fonts"
+msgstr "_Шрифтове"
+
+#: shell/resources/pps-properties-window.blp:43
+msgid "License"
+msgstr "Лиценз"
+
+#: shell/resources/pps-properties-window.blp:51
+msgid "_Signatures"
+msgstr "_Подписи"
+
+#: shell/resources/pps-search-box.blp:16
+msgid "Search in document"
+msgstr "Търсене в документа"
+
+#: shell/resources/pps-search-box.blp:45
+msgid "Search Options"
+msgstr "Настройки на търсенето"
+
+#: shell/resources/pps-search-box.blp:53
+msgid "_Whole Words Only"
+msgstr "Само _цели думи"
+
+#: shell/resources/pps-search-box.blp:58
+msgid "C_ase Sensitive"
+msgstr "Р_азлика между главни/малки букви"
+
+#: shell/resources/pps-shortcuts-dialog.blp:6
 msgctxt "shortcut window"
-msgid "General"
-msgstr "Общи"
+msgid "File"
+msgstr "Файл"
 
-#: data/ui/shortcuts-dialog.blp:9
+#: shell/resources/pps-shortcuts-dialog.blp:9
 msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Показване на клавишните комбинации"
+msgid "Open Document"
+msgstr "Отваряне на документ"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Отваряне на копие на текущия документ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Отваряне с…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Запазване на копие на текущия документ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Отпечатване на този документ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Затваряне на прозореца с текущия документ"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Прозорец"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Цял екран"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Режим на презентация"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Страничен панел"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Придвижване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Избор"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Копиране"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Избор на всичко"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Zoom and Rotation"
+msgstr "Мащабиране и завъртане"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Завъртане на страницата 90° наляво"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Завъртане на страницата 90° надясно"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Увеличаване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Намаляване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Нормален размер"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Увеличаване (алтернативно)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Напасване по страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Напасване по широчина"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Автоматично мащабиране"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Придвижване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr "Преместване по страницата"
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr "Придвижване няколко реда нагоре/надолу по страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Предишна страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Следваща страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Към страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Предишна страница (бързо)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Следваща страница (бързо)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Предишна посетена страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Следваща посетена страница"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Към началото/края"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Към края на документа"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Към началото на документа"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View"
+msgstr "Преглед на документи"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Добавяне на отметка"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Премахване на отметка"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Нощен режим"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Непрекъснато придвижване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "Двустранен"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Нечетните отляво"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Свойства на документа"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Добавяне на текстова анотация"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Оцветяване"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Зачеркване на текст"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Вълнообразно подчертаване на текст"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Подчертаване на текст"
+
+#: shell/resources/pps-shortcuts-dialog.blp:254
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "Цифров подпис"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Търсене"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "Разглеждане на забележителности"
+msgid "Find"
+msgstr "Търсене"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: shell/resources/pps-shortcuts-dialog.blp:269
 msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "Показване на последните резултати от търсенето"
+msgid "Find Next"
+msgstr "Намери следващата"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
-msgid "Show route planner"
-msgstr "Показване на планирането на маршрут"
+msgid "Find Previous"
+msgstr "Намери предишната"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: shell/resources/pps-shortcuts-dialog.blp:280
 msgctxt "shortcut window"
-msgid "Print route"
-msgstr "Отпечатване на маршрут"
+msgid "General"
+msgstr "Основни"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: shell/resources/pps-shortcuts-dialog.blp:283
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Спиране на програмата"
+msgid "Help"
+msgstr "Помощ"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: shell/resources/pps-shortcuts-dialog.blp:288
 msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "Отваряне на основното меню"
+msgid "Menu"
+msgstr "Меню"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: shell/resources/pps-shortcuts-dialog.blp:293
 msgctxt "shortcut window"
-msgid "Map View"
-msgstr "Изглед карти"
+msgid "Keyboard Shortcuts"
+msgstr "Клавишни комбинации"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: shell/resources/pps-shortcuts-dialog.blp:298
 msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "По-едър мащаб"
+msgid "New Window"
+msgstr "Нов прозорец"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: shell/resources/pps-shortcuts-dialog.blp:303
 msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "По-дребен мащаб"
+msgid "Close Window"
+msgstr "Затваряне на прозореца"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Завъртане по часовниковата стрелка"
+msgid "Presentation Mode"
+msgstr "Режим на презентация"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "Завъртане обратно по часовниковата стрелка"
+msgid "Black Screen"
+msgstr "Черен екран"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: shell/resources/pps-shortcuts-dialog.blp:317
 msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Отмяна на завъртането"
+msgid "White Screen"
+msgstr "Бял екран"
 
-#: data/ui/shortcuts-dialog.blp:78
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Превключване на ска̀лата"
+#: shell/resources/pps-sidebar-annotations.blp:13
+msgid "No Annotations"
+msgstr "Няма анотации"
 
-#: data/ui/shortcuts-dialog.blp:83
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "Към текущото местоположение"
+#: shell/resources/pps-sidebar-annotations.blp:66
+msgid "Annotation Properties"
+msgstr "Свойства на анотацията"
 
-#: data/ui/shortcuts-dialog.blp:88
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "Отваряна на слой с очертания"
+#: shell/resources/pps-sidebar-annotations.blp:72
+msgid "Remove Annotation"
+msgstr "Премахване на анотацията"
 
-#: data/ui/shortcuts-dialog.blp:93
-msgctxt "shortcut window"
-msgid "Toggle location marker"
-msgstr "Превключване на отбелязването на местоположението"
+#: shell/resources/pps-sidebar-links.blp:48
+msgid "Collapse all tree"
+msgstr "Сгъване на цялото дърво"
 
-#. Translators: Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.blp:18
-msgid "Leave Now"
-msgstr "Тръгване сега"
+#: shell/resources/pps-sidebar-links.blp:53
+msgid "Expand all tree"
+msgstr "Разгъване на цялото дърво"
 
-#. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.blp:20
-msgid "Leave By"
-msgstr "Тръгване на"
+#: shell/resources/pps-sidebar-links.blp:58
+msgid "Expand all under this element"
+msgstr "Разгъване на всичко под този елемент"
 
-#. Translators: Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.blp:22
-msgid "Arrive By"
-msgstr "Пристигане на"
+#: shell/resources/pps-sidebar-links.blp:65
+msgid "Print this section…"
+msgstr "Печатане на този раздел…"
 
-#: data/ui/transit-options-panel.blp:61
-msgid "View More"
-msgstr "Още"
+#: shell/resources/pps-sidebar-thumbnails.blp:47
+msgid "Previews"
+msgstr "Предварителни прегледи"
 
-#: data/ui/transit-options-panel.blp:123
-msgid "AM"
-msgstr "пр.об."
+#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
+msgid "Open a Document"
+msgstr "Отваряне на документ"
 
-#: data/ui/transit-options-panel.blp:128
-msgid "PM"
-msgstr "сл.об."
+#: shell/resources/pps-window.blp:44
+msgid "Drag and drop documents here"
+msgstr "Изтеглете и пуснете документи тук"
 
-#. Translators: Header indicating selected modes of transit
-#: data/ui/transit-options-panel.blp:149
-msgid "Show"
-msgstr "Видове"
+#: shell/resources/pps-window.blp:49
+msgid "_Open…"
+msgstr "_Отваряне…"
 
-#: data/ui/transit-options-panel.blp:159
-msgid "_Buses"
-msgstr "_Автобуси"
+#: shell/resources/pps-window.blp:71
+msgid "Unable to Open Document"
+msgstr "Документът не може да бъде отворен"
 
-#: data/ui/transit-options-panel.blp:165
-msgid "_Trams"
-msgstr "_Трамваи"
+#: shell/resources/pps-window.blp:76
+msgid "_Open Other File…"
+msgstr "_Отваряне на друг файл…"
 
-#: data/ui/transit-options-panel.blp:171
-msgid "T_rains"
-msgstr "_Влакове"
+#: shell/src/application.rs:216
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996-2025 Авторите на „Документи“"
 
-#: data/ui/transit-options-panel.blp:177
-msgid "_Subway"
-msgstr "_Метро"
-
-#: data/ui/transit-options-panel.blp:183
-msgid "_Ferries"
-msgstr "_Фериботи"
-
-#: data/ui/transit-options-panel.blp:189
-msgid "_Airplanes"
-msgstr "_Самолети"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:12
-msgid "Add to new route"
-msgstr "Добавяне към нов маршрут"
-
-#. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.blp:17
-msgid "_Directions"
-msgstr "_Направления"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:30
-msgid "Share Location"
-msgstr "Споделяне на местоположение"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:39
-msgid "Mark as Favorite"
-msgstr "Отбелязване като любимо"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:51
-msgid "Edit on OpenStreetMap"
-msgstr "Редактиране в OpenStreetMap"
-
-#. Translators: This is a tooltip
-#: data/ui/place-view.blp:64
-msgid "Share location"
-msgstr "Споделяне на местоположение"
-
-#: data/ui/poi-category-goback-row.blp:23
-msgid "Back to Main Categories"
-msgstr "Назад към основните категории"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:19
-msgid "Reset Rotation"
-msgstr "Отмяна на завъртането"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
-msgid "Zoom Out"
-msgstr "По-дребен мащаб"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1319
-msgid "Zoom In"
-msgstr "По-едър мащаб"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "Структурата на фрагмента не може да се открие в папка"
-
-#: lib/maps-osm.c:56
-msgid "Failed to parse XML document"
-msgstr "Документът не може да бъде анализиран като XML"
-
-#: lib/maps-osm.c:250 lib/maps-osm.c:403
-msgid "Missing required attributes"
-msgstr "Липсват задължителни атрибути"
-
-#: lib/maps-osm.c:451
-msgid "Could not find OSM element"
-msgstr "Не може да се открие елемент на OpenStreetMap"
-
-#: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "Път към локалната папка със структури"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Размер на локалната папка с фрагменти"
-
-#: src/application.js:84
-msgid "Show the version of the program"
-msgstr "Извеждане на версията"
-
-#: src/application.js:90
-msgid "Search for places"
-msgstr "Търсене на места"
-
-#: src/application.js:101 src/application.js:102
-msgid "[FILE…|URI]"
-msgstr "[ФАЙЛ…|АДРЕС]"
-
-#: src/application.js:301
-#, javascript-format
-msgid "Invalid maps: URI: %s"
-msgstr "Неправилни карти — адрес: %s"
-
-#. Translators: This is a format string for a PNG filename for an
-#. * exported image with coordinates. The .png extension should be kept
-#. * intact in the translated string.
-#.
-#: src/exportViewDialog.js:70
-#, javascript-format
-msgid "Maps at %f, %f.png"
-msgstr "Карта около %f, %f.png"
-
-#: src/exportViewDialog.js:81
-msgid "PNG"
-msgstr "PNG"
-
-#: src/exportViewDialog.js:132
-msgid "Unable to export view"
-msgstr "Изгледът не може да бъде изнесен"
-
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Премахнато от любими"
-
-#: src/favoriteListRow.js:43
-msgid "_Undo"
-msgstr "_Отмяна"
-
-#: src/geoJSONSource.js:73
-msgid "invalid coordinate"
-msgstr "грешни координати"
-
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
-msgid "parse error"
-msgstr "грешка при анализ"
-
-#: src/geoJSONSource.js:160
-msgid "unknown geometry"
-msgstr "неизвестна геометрия"
-
-#: src/graphHopper.js:116 src/transitPlan.js:168
-msgid "Route request failed."
-msgstr "Неуспешна заявка за маршрут."
-
-#: src/graphHopper.js:123 src/transitPlan.js:164
-msgid "No route found."
-msgstr "Не е намерен маршрут."
-
-#: src/graphHopper.js:210
-msgid "Start!"
-msgstr "Старт!"
-
-#: src/mainWindow.js:531
-msgid "Failed to connect to location service"
-msgstr "Грешка при свързването с услуги за местоположение"
-
-#: src/mainWindow.js:536
-msgid "Turn on location services"
-msgstr "Включване на услуги за местоположение"
-
-#: src/mainWindow.js:537
-msgid "Location Settings"
-msgstr "Настройки на местоположението"
-
-#: src/mainWindow.js:657
-msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
-msgstr ""
-"Авторски права © 2011 – 2025 Red Hat, Inc. и авторите на „Карти за GNOME“"
-
-#: src/mainWindow.js:658
+#: shell/src/application.rs:217
 msgid "translator-credits"
 msgstr ""
-"Ивайло Панамски &lt;<a "
-"href='mailto:ipanamski@gmail.com'>ipanamski@gmail.com</a>&gt;\n"
+"Владимир „Kaladan“ Петков &lt;<a "
+"href='mailto:kaladan@gmail.com'>kaladan@gmail.com</a>&gt;\n"
+"Ростислав „zbrox“ Райков &lt;<a href='mailto:zbrox@i-space.org'>zbrox@i-"
+"space.org</a>&gt;\n"
 "Александър Шопов &lt;<a href='mailto:ash@kambanaria.org'>ash@kambanaria.org</"
 "a>&gt;\n"
-"\n"
+"Красимир „bfaf“ Чонов &lt;<a href='mailto:mk2616@abv.bg'>mk2616@abv.bg</"
+"a>&gt;\n"
+"Дамян Иванов &lt;<a href='mailto:dam+gnome@ktnx.net'>dam+gnome@ktnx.net</"
+"a>&gt;\n"
+"Ивайло Вълков &lt;<a href='mailto:ivaylo@e-valkov.org'>ivaylo@e-valkov.org</"
+"a>&gt;\n"
+"Любомир Василев &lt;<a href='mailto:lyubomirv@abv.bg'>lyubomirv@abv.bg</"
+"a>&gt;\n"
+"Twlvnn Kraftwerk &lt;<a "
+"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
 "\n"
 "Проектът за превод на GNOME има нужда от подкрепа.\n"
 "Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
@@ -886,1512 +1845,244 @@ msgstr ""
 "Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
 "newticket'>съответния раздел</a>."
 
-#: src/mainWindow.js:665
-#, javascript-format
-msgid "Map data by %s and contributors"
-msgstr "Картографски данни от %s и сътрудници"
+#: shell/src/application.rs:403
+msgid "The page label of the document to display."
+msgstr "Текст за страница."
 
-#: src/mainWindow.js:666
-msgid "Map Data Provider"
-msgstr "Доставчик на данни за карти"
+#: shell/src/application.rs:404
+msgid "PAGE"
+msgstr "СТРАНИЦА"
 
-#: src/mainWindow.js:669
-msgid "Map Tile Provider"
-msgstr "Доставчик на фрагменти за карти"
+#: shell/src/application.rs:412
+msgid "The page number of the document to display."
+msgstr "Текст за номер на страница."
 
-#. Translators: this is an attribution string giving credit to the
-#. * tile provider where the %s placeholder is replaced by either
-#. * the bare name of the tile provider, or a linkified URL if one
-#. * is available
-#.
-#: src/mainWindow.js:677
-#, javascript-format
-msgid "Map tiles provided by %s"
-msgstr "Фрагментите за карти са предоставени от %s"
+#: shell/src/application.rs:413
+msgid "NUMBER"
+msgstr "НОМЕР"
 
-#: src/mainWindow.js:706
-msgid "Search Provider"
-msgstr "Доставчик на търсене"
+#: shell/src/application.rs:421
+msgid "Named destination to display."
+msgstr "Отваряне на документ при препратка."
 
-#: src/mainWindow.js:709
-#, javascript-format
-msgid "Search provided by %s using %s"
-msgstr "Търсенето е предоставено от %s чрез %s"
+#: shell/src/application.rs:422
+msgid "DEST"
+msgstr "ПРЕПРАТКА"
 
-#: src/mainWindow.js:718
-msgid "All Layer Files"
-msgstr "Всички файлове със слоеве"
+#: shell/src/application.rs:430
+msgid "Run papers in fullscreen mode."
+msgstr "Стартиране на „Документи“ в режим цял екран."
 
-#: src/mainWindow.js:731
-msgid "Open Shape Layers"
-msgstr "Отваряна на слой с очертания"
+#: shell/src/application.rs:439
+msgid "Run papers in presentation mode."
+msgstr "Стартиране на „Документи“ в режим на презентация."
 
-#: src/mapView.js:706 src/mapView.js:768
-msgid "Failed to open layer"
-msgstr "Слоят не може да се отвори"
+#: shell/src/application.rs:448
+msgid "Show the version of the program."
+msgstr "Извеждане на версията на програмата."
 
-#: src/mapView.js:723
-msgid "Do you want to continue?"
-msgstr "Искате ли да продължите?"
+#: shell/src/application.rs:458
+msgid "[FILE…]"
+msgstr "[ФАЙЛ…]"
 
-#: src/mapView.js:724
-#, javascript-format
+#: shell/src/document_view.rs:354
+msgid "View Details"
+msgstr "Показване на подробностите"
+
+#: shell/src/document_view.rs:773
 msgid ""
-"You are about to open files with a total size of %s MB. This could take some "
-"time to load"
-msgstr "Ще отворите файлове с общ размер %s MB. Това може да отнеме време"
+"Document contains new or modified annotations and form fields that have been "
+"filled out."
+msgstr ""
+"Документът съдържа нови или променени анотации и формуляри с попълнени "
+"полета."
 
-#: src/mapView.js:730
-msgid "Cancel"
-msgstr "Отказ"
+#: shell/src/document_view.rs:774
+msgid "Document contains form fields that have been filled out."
+msgstr "Документът съдържа формуляри с попълнени полета."
 
-#: src/mapView.js:762
-msgid "File type is not supported"
-msgstr "Този вид файлове не се поддържат"
+#: shell/src/document_view.rs:775
+msgid "Document contains new or modified annotations."
+msgstr "Документът съдържа нови или променени анотации."
 
-#: src/mapView.js:801
-msgid "Failed to open GeoURI"
-msgstr "Геоадресът не може да бъде отворен"
+#: shell/src/document_view.rs:783
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr "Ако не запазите копие, промените ще бъдат безвъзвратно загубени."
 
-#: src/mapView.js:1318
-msgid "Zoom in to add location"
-msgstr "Увеличете, за да добавите местоположение"
+#: shell/src/document_view.rs:784
+msgid "Save Changes to a Copy?"
+msgstr "Искате ли да запазите копие?"
 
-#: src/mapView.js:1336
-msgid "Location was added in OpenStreetMap"
-msgstr "Местоположението е добавено в OpenStreetMap"
+#: shell/src/document_view.rs:793
+msgid "Close _Without Saving"
+msgstr "Затваряне _без запазване"
 
-#: src/motis.js:303 src/transit.js:33 src/transit.js:85
-msgid "Start"
-msgstr "Начало"
+#: shell/src/document_view.rs:795
+msgid "_Save a Copy"
+msgstr "Запазване на _копие"
 
-#: src/motis.js:322 src/transit.js:41 src/transit.js:71
-msgid "Arrive"
-msgstr "Пристигане"
+#: shell/src/document_view/actions.rs:1008
+msgid "Save Image"
+msgstr "Запазване на изображение"
 
-#: src/motis.js:334
-#, javascript-format
-msgid "Take the stairs to level %s"
-msgstr "Вземете стълбите до ниво %s"
+#: shell/src/document_view/actions.rs:1133
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr ""
+"Режимът за придвижване с курсора е включен, натиснете F7, за да го изключите."
 
-#: src/motis.js:335
-msgid "Take the stairs"
-msgstr "Качете се по стълбите"
+#: shell/src/document_view/actions.rs:1135
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+"Режимът за придвижване с курсора е изключен, натиснете F7, за да го включите."
 
-#: src/motis.js:339
-#, javascript-format
-msgid "Continue on %s"
-msgstr "Продължете по %s"
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "Затваряне на прозореца"
 
-#: src/motis.js:344
-#, javascript-format
-msgid "Turn left on %s"
-msgstr "Завийте наляво по %s"
+#: shell/src/document_view/actions.rs:1270
+msgid "Unable to Open Attachment"
+msgstr "Неуспешно отваряне на прикрепения файл"
 
-#: src/motis.js:345
-msgid "Turn left"
-msgstr "Завийте наляво"
+#: shell/src/document_view/actions.rs:1286
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Запазване на прикрепения файл"
 
-#: src/motis.js:349
-#, javascript-format
-msgid "Turn slightly left on %s"
-msgstr "Завийте леко наляво по %s"
+#: shell/src/document_view/io.rs:284
+msgid "The Document Contains No Pages"
+msgstr "Документът не съдържа страници"
 
-#: src/motis.js:350
-msgid "Turn slightly left"
-msgstr "Завийте леко наляво"
+#: shell/src/document_view/io.rs:286
+msgid "The Document Contains Only Empty Pages"
+msgstr "Документът съдържа само празни страници"
 
-#: src/motis.js:354
-#, javascript-format
-msgid "Turn sharp left on %s"
-msgstr "Завийте рязко наляво по %s"
+#: shell/src/document_view/io.rs:412
+msgid "Save As…"
+msgstr "_Запазване като…"
 
-#: src/motis.js:355
-msgid "Turn sharp left"
-msgstr "Завийте рязко наляво"
+#: shell/src/document_view/io.rs:489
+msgid "Draw a rectangle to insert a signature field"
+msgstr "Начертайте правоъгълник, за да вмъкнете поле за подпис"
 
-#: src/motis.js:359
-#, javascript-format
-msgid "Turn right on %s"
-msgstr "Завийте надясно по %s"
+#: shell/src/document_view/io.rs:512
+#, rust-format
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"Електронно подписан от {}\n"
+"Дата: {}"
 
-#: src/motis.js:360
-msgid "Turn right"
-msgstr "Завийте надясно"
+#: shell/src/document_view/io.rs:531
+msgid "Certificate Required"
+msgstr "Необходим е сертификат"
 
-#: src/motis.js:364
-#, javascript-format
-msgid "Turn slightly right on %s"
-msgstr "Завийте леко надясно по %s"
+#: shell/src/document_view/io.rs:534
+msgid "Select signing certificate"
+msgstr "Избор на сертификат за подпис"
 
-#: src/motis.js:365
-msgid "Turn slightly right"
-msgstr "Завийте леко надясно"
+#: shell/src/document_view/io.rs:535
+msgid "Select"
+msgstr "Избор"
 
-#: src/motis.js:369
-#, javascript-format
-msgid "Turn sharp right on %s"
-msgstr "Завийте рязко надясно по %s"
+#: shell/src/document_view/io.rs:615
+msgid "A certificate is required to sign this document"
+msgstr "За подписването на документа е необходим сертификат"
 
-#: src/motis.js:370
-msgid "Turn sharp right"
-msgstr "Завийте рязко надясно"
+#: shell/src/document_view/io.rs:684
+msgid "Save Signed File"
+msgstr "Запазване на подписания файл"
 
-#: src/motis.js:377
-#, javascript-format
-msgid "At the roundabout, take exit %s"
-msgstr "Излезте от кръговото от изход %s"
+#: shell/src/document_view/io.rs:714
+#, rust-format
+msgid "Please enter password for {}"
+msgstr "Въведете парола за „{}“"
 
-#: src/motis.js:380
-#, javascript-format
-msgid "At the roundabout, take exit to %s"
-msgstr "Излезте от кръговото в посока към %s"
+#: shell/src/document_view/io.rs:731
+msgid "_Login"
+msgstr "_Вписване"
 
-#: src/motis.js:382
-msgid "Take the roundabout"
-msgstr "Влезте в кръговото"
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
+#, rust-format
+msgid "Printing job “{}”"
+msgstr "Отпечатване на задача „{}“"
 
-#: src/motis.js:390
-#, javascript-format
-msgid "Take the elevator and get off at %s"
-msgstr "Качете се на асансьор и слезте на %s"
+#: shell/src/document_view/print.rs:84
+msgid "No pending jobs in queue"
+msgstr "Няма задачи в опашката"
 
-#: src/motis.js:391
-msgid "Take the elevator"
-msgstr "Качете се на асансьор"
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} задача в опашката"
+msgstr[1] "{} задачи в опашката"
 
-#: src/motis.js:395
-#, javascript-format
-msgid "Make a left u-turn onto %s"
-msgstr "Завийте обратно наляво по %s"
+#: shell/src/document_view/signals.rs:257
+#, rust-format
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr "ВНИМАНИЕ ЗА СИГУРНОСТ: този документ не може да отвори файла „{}“"
 
-#: src/motis.js:396
-msgid "Make a left u-turn"
-msgstr "Завийте обратно наляво"
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
+#: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
+msgid "Page {}"
+msgstr "Страница {}"
 
-#: src/motis.js:400
-#, javascript-format
-msgid "Make a right u-turn onto %s"
-msgstr "Завийте обратно надясно по %s"
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#, rust-format
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} от {totalpages})"
 
-#: src/motis.js:401
-msgid "Make a right u-turn"
-msgstr "Завийте обратно надясно"
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#, rust-format
+msgid "of {}"
+msgstr "от {}"
 
-#. switch back to the sign-in view, and show a toast indicating
-#. that verification failed
-#: src/osmAccountDialog.js:187
-msgid "The verification code didn’t match, please try again."
-msgstr "Кодът за потвърждение не съвпада, опитайте отново."
+#: shell/src/password_view.rs:146
+#, rust-format
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr "Документът „{}“ е заключен и изисква парола, за да бъде отворен"
 
-#. setting the status in session.cancel_message still seems
-#. to always give status IO_ERROR
-#: src/osmConnection.js:376
-msgid "Incorrect user name or password"
-msgstr "Грешно потребителско име или парола"
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "Копиране в буфера за обмен"
 
-#: src/osmConnection.js:378
-msgid "Success"
-msgstr "Успех"
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr "Отваряне на местоположение"
 
-#: src/osmConnection.js:380
-msgid "Bad request"
-msgstr "Лоша заявка"
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr "Файл"
 
-#: src/osmConnection.js:382
-msgid "Object not found"
-msgstr "Обектът не е намерен"
-
-#: src/osmConnection.js:384
-msgid "Conflict, someone else has just modified the object"
-msgstr "Възникна проблем, някой друг тъкмо промени обекта"
-
-#: src/osmConnection.js:386
-msgid "Object has been deleted"
-msgstr "Обектът беше изтрит"
-
-#: src/osmConnection.js:388
-msgid "Way or relation refers to non-existing children"
-msgstr "Пътят или връзката се отнася към несъществуващ обект"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Общи"
-
-#: src/osmEditDialog.js:113
+#: shell/src/properties_general.rs:202
 msgid "Name"
 msgstr "Име"
 
-#: src/osmEditDialog.js:118
-msgid "Type"
-msgstr "Вид"
-
-#: src/osmEditDialog.js:123 src/osmEditDialog.js:764
-msgid "Address"
-msgstr "Адрес"
-
-#: src/osmEditDialog.js:136
-msgid "Contact"
-msgstr "Контакти"
-
-#: src/osmEditDialog.js:139
-msgid "Opening Hours"
-msgstr "Работно време"
-
-#: src/osmEditDialog.js:145
-msgid "Phone"
-msgstr "Телефон"
-
-#: src/osmEditDialog.js:151 src/placeView.js:396
-msgid "Email"
-msgstr "Е-поща"
-
-#: src/osmEditDialog.js:158 src/placeView.js:363
-msgid "Website"
-msgstr "Сайт"
-
-#: src/osmEditDialog.js:166
-msgid "Accessibility"
-msgstr "Достъпност"
-
-#: src/osmEditDialog.js:169
-msgid "Wheelchair Access"
-msgstr "Инвалидни колички"
-
-#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:219
-msgid "Yes"
-msgstr "Да"
-
-#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:220
-msgid "No"
-msgstr "Не"
-
-#: src/osmEditDialog.js:174
-msgid "Limited"
-msgstr "Непълно"
-
-#: src/osmEditDialog.js:175
-msgid "Designated"
-msgstr "Обозначено"
-
-#: src/osmEditDialog.js:178
-msgid "Internet Access"
-msgstr "Достъп до Интернет"
-
-#: src/osmEditDialog.js:183
-msgid "Wi-Fi"
-msgstr "Безжичен"
-
-#: src/osmEditDialog.js:184
-msgid "Wired"
-msgstr "Жичен"
-
-#: src/osmEditDialog.js:185
-msgid "Terminal"
-msgstr "Техни компютри"
-
-#: src/osmEditDialog.js:186
-msgid "Service"
-msgstr "Обслужване"
-
-#. Translators: This is the title for a section of POI fields not
-#. * belonging to the previous sections ("General", "Contact", "Accessibility").
-#.
-#: src/osmEditDialog.js:194
-msgid "Miscellaneous"
-msgstr "Разни"
-
-#. Translators: This is the text for the "Wikipedia" link at the end
-#. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:69
-msgid "Wikipedia"
-msgstr "Уикипедия"
-
-#. TODO: this is a bit of a work-around to re-interpret the population,
-#. * stored as a string into an integer to convert back to a locale-
-#. * formatted string. Ideally it should be kept as an integer value
-#. * in the Place class. But this will also need to be handled by the
-#. * PlaceStore, possible in a backwards-compatible way
-#.
-#: src/osmEditDialog.js:204 src/placeView.js:597
-msgid "Population"
-msgstr "Население"
-
-#: src/osmEditDialog.js:209 src/placeView.js:626
-msgid "Altitude"
-msgstr "Надморска височина"
-
-#: src/osmEditDialog.js:210
-msgid "Elevation above sea level, in meters"
-msgstr "Надморска височина на местоположението в метри"
-
-#: src/osmEditDialog.js:216
-msgid "Takeout"
-msgstr "Вземане за вкъщи"
-
-#: src/osmEditDialog.js:221
-msgid "Only"
-msgstr "Само"
-
-#: src/osmEditDialog.js:224
-msgid "Religion"
-msgstr "Религия"
-
-#: src/osmEditDialog.js:227 src/translations.js:286
-msgid "Animism"
-msgstr "Анимизъм"
-
-#: src/osmEditDialog.js:228
-msgid "Bahá’í"
-msgstr "Бахайство"
-
-#: src/osmEditDialog.js:229 src/translations.js:288
-msgid "Buddhism"
-msgstr "Будизъм"
-
-#: src/osmEditDialog.js:230 src/translations.js:289
-msgid "Caodaism"
-msgstr "Каодаизъм"
-
-#: src/osmEditDialog.js:231 src/translations.js:290
-msgid "Christianity"
-msgstr "Християнство"
-
-#: src/osmEditDialog.js:232 src/translations.js:291
-msgid "Confucianism"
-msgstr "Конфуцианство"
-
-#: src/osmEditDialog.js:233 src/translations.js:292
-msgid "Hinduism"
-msgstr "Хиндуизъм"
-
-#: src/osmEditDialog.js:234 src/translations.js:293
-msgid "Jainism"
-msgstr "Джайнизъм"
-
-#: src/osmEditDialog.js:235 src/translations.js:294
-msgid "Judaism"
-msgstr "Юдаизъм"
-
-#: src/osmEditDialog.js:236 src/translations.js:295
-msgid "Islam"
-msgstr "Ислям"
-
-#: src/osmEditDialog.js:237 src/translations.js:296
-msgid "Multiple Religions"
-msgstr "Множество религии"
-
-#: src/osmEditDialog.js:239 src/translations.js:298
-msgid "Paganism"
-msgstr "Паганизъм"
-
-#: src/osmEditDialog.js:240 src/translations.js:299
-msgid "Pastafarianism"
-msgstr "Пастафарианство"
-
-#: src/osmEditDialog.js:241 src/translations.js:300
-msgid "Scientology"
-msgstr "Сциентология"
-
-#: src/osmEditDialog.js:242 src/translations.js:301
-msgid "Shinto"
-msgstr "Шинтоизъм"
-
-#: src/osmEditDialog.js:243 src/translations.js:302
-msgid "Sikhism"
-msgstr "Сикхизъм"
-
-#: src/osmEditDialog.js:244 src/translations.js:303
-msgid "Spiritualism"
-msgstr "Спиритуализъм"
-
-#: src/osmEditDialog.js:245 src/translations.js:304
-msgid "Taoism"
-msgstr "Даоизъм"
-
-#: src/osmEditDialog.js:246 src/translations.js:305
-msgid "Unitarian Universalism"
-msgstr "Унитариански универсализъм"
-
-#: src/osmEditDialog.js:247 src/translations.js:306
-msgid "Voodoo"
-msgstr "Вуду"
-
-#: src/osmEditDialog.js:248 src/translations.js:307
-msgid "Yazidism"
-msgstr "Езидизъм"
-
-#: src/osmEditDialog.js:249 src/translations.js:308
-msgid "Zoroastrianism"
-msgstr "Зороастризъм"
-
-#: src/osmEditDialog.js:252
-msgid "Note"
-msgstr "Бележка"
-
-#. set the title and description for adding a POI
-#: src/osmEditDialog.js:320
-msgctxt "dialog heading"
-msgid "Add Location"
-msgstr "Добавяне на местоположение"
-
-#: src/osmEditDialog.js:321
-msgid "Add a new location to OpenStreetMap"
-msgstr "Добавяне на ново местоположение в OpenStreetMap"
-
-#: src/osmEditDialog.js:413
-msgid "Changes successfully submitted"
-msgstr "Промените бяха успешно подадени"
-
-#. Translators: This is the title for a combo box row selected when a
-#. * value is not assigned to one in a list of allowed values.
-#.
-#: src/osmEditDialog.js:708
-msgid "Unspecified value"
-msgstr "Незададена стойност"
-
-#: src/osmEditDialog.js:770
-msgid "Street Name"
-msgstr "Име на улицата"
-
-#: src/osmEditDialog.js:771
-msgid "House Number"
-msgstr "№"
-
-#: src/osmEditDialog.js:772
-msgid "ZIP Code"
-msgstr "Пощенски код"
-
-#: src/osmEditDialog.js:773
-msgid "City"
-msgstr "Град"
-
-#: src/osmEditDialog.js:805
-msgid "Wikipedia Article"
-msgstr "Статия в Уикипедия"
-
-#: src/osmEditDialog.js:809
-msgid "Wikidata Tag"
-msgstr "Етикет на Wikidata"
-
-#: src/osmEditDialog.js:814
-msgid "Load Wikidata tag from article name"
-msgstr "Зареждане на етикета на Wikidata от името на статията"
-
-#: src/osmEditDialog.js:870
-msgid "Couldn't find Wikidata tag for article"
-msgstr "Етикетът на Wikidata за статията липсва"
-
-#. Translators: This represents the title for places tagged with the
-#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
-#.
-#: src/osmTypes.js:45
-msgid "Aerialway"
-msgstr "Въжен транспорт"
-
-#. Translators: This represents the title for places tagged with the
-#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
-#.
-#: src/osmTypes.js:49
-msgid "Aeroway"
-msgstr "Летищна инфраструктура"
-
-#. Translators: This represents the title for places tagged with the
-#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
-#.
-#: src/osmTypes.js:53
-msgid "Amenity"
-msgstr "Удобства"
-
-#. Translators: This represents the title for places tagged with the
-#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
-#.
-#: src/osmTypes.js:57
-msgid "Barrier"
-msgstr "Бариера"
-
-#. Translators: This represents the title for places tagged with the
-#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
-#.
-#: src/osmTypes.js:61
-msgid "Road"
-msgstr "Магистрала"
-
-#. Translators: This represents the title for places tagged with the
-#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
-#.
-#: src/osmTypes.js:65
-msgid "Historic"
-msgstr "Исторически"
-
-# Може би “развлечения/е”?
-#. Translators: This represents the title for places tagged with the
-#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
-#.
-#: src/osmTypes.js:69
-msgid "Leisure"
-msgstr "Отдих и забавления"
-
-#. Translators: This represents the title for places tagged with the
-#. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
-#.
-#: src/osmTypes.js:73
-msgid "Office"
-msgstr "Офис"
-
-#. Translators: This represents the title for places tagged with the
-#. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
-#.
-#: src/osmTypes.js:77
-msgid "Place"
-msgstr "Място"
-
-#. Translators: This represents the title for places tagged with the
-#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
-#.
-#: src/osmTypes.js:81
-msgid "Railway"
-msgstr "Железопътна линия"
-
-#. Translators: This represents the title for places tagged with the
-#. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
-#.
-#: src/osmTypes.js:85
-msgid "Shop"
-msgstr "Магазин"
-
-#. Translators: This represents the title for places tagged with the
-#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
-#.
-#: src/osmTypes.js:89 src/poiCategories.js:474
-msgid "Tourism"
-msgstr "Туризъм"
-
-#. Translators: "Other" refers to points-of-interest where we don't have
-#. * a known title corresponding to the raw OpenStreetMap tag
-#.
-#: src/osmTypes.js:101
-msgid "Other"
-msgstr "Друго"
-
-#: src/osmTypes.js:209
-msgid "Funicular station"
-msgstr "Станция за фуникулер"
-
-#: src/osmTypes.js:211
-msgid "Light rail stop"
-msgstr "Спирка на метротрамвай"
-
-#: src/osmTypes.js:213
-msgid "Monorail station"
-msgstr "Монорелсова гара"
-
-#: src/osmTypes.js:215 src/osmTypes.js:225
-msgid "Railway station"
-msgstr "Железопътна гара"
-
-#: src/osmTypes.js:217
-msgid "Subway station"
-msgstr "Метростанция"
-
-#: src/osmTypes.js:221
-msgid "Railway halt"
-msgstr "Железопътна спирка"
-
-#: src/osmTypes.js:223
-msgid "Tram stop"
-msgstr "Трамвайна спирка"
-
-#: src/photonUtils.js:118 src/placeListRow.js:71
-msgid "Unnamed place"
-msgstr "Място без име"
-
-#: src/placeEntry.js:148
-msgid "Clear Entry"
-msgstr "Изчистване на запис"
-
-#: src/placeEntry.js:319
-msgid "Failed to parse Geo URI"
-msgstr "Геоадресът не може да бъде анализиран"
-
-#: src/placeEntry.js:332
-msgid "Failed to parse Maps URI"
-msgstr "Адресът за карти не може да се анализира"
-
-#: src/placeFormatter.js:57 src/placeView.js:223 src/placeView.js:349
-msgid "Coordinates"
-msgstr "Координати"
-
-#. 300 ft (300 * 12 * 0.0254 m)
-#.
-#. * Translators: This a format string for showing a distance to a place
-#. * is lower than a "quite short" distance.
-#. * The "less than" symbol can be substituded with an appropriate one, if
-#. * needed (e.g. using the correct direction, or alternative symbol).
-#. * The %s should be kept, and is substituted with a label representing the
-#. * short distance. The \u2009 (thin space) could also be adjusted if needed
-#: src/placeListRow.js:48
-#, javascript-format
-msgctxt "short distance format string"
-msgid "< %s"
-msgstr "< %s"
-
-#: src/placeView.js:355
-msgid "Accuracy"
-msgstr "Прецизност"
-
-#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:358
-#, javascript-format
-msgid "Accuracy: %s"
-msgstr "Прецизност: %s"
-
-#. since the phone numbers are typically always rendered
-#. * left-to-right, insert an explicit LRM char to avoid issues
-#. * with phone numbers in international format starting with a +
-#. * which is considered a "weak" character to determine Unicode
-#. * text direction
-#.
-#: src/placeView.js:377
-msgid "Phone number"
-msgstr "Тел. номер"
-
-#. If a reference to a named floor (named or symbolic) exists
-#. * refer to it directly.
-#.
-#. Translators:
-#. * This is a reference to named building floor, using a label
-#. * or a code, as "displayed in the elevator"
-#.
-#: src/placeView.js:411 src/placeView.js:450
-msgid "Floor"
-msgstr "Етаж"
-
-#: src/placeView.js:413
-#, javascript-format
-msgid "Floor %s"
-msgstr "Етаж %s"
-
-#: src/placeView.js:425
-msgid "At ground level"
-msgstr "На нивото на улицата"
-
-#. Translators:
-#. * This is a reference to a number of floors above
-#. * ground level.
-#. * The %s placeholder is the integer relative number of floors
-#.
-#: src/placeView.js:434
-#, javascript-format
-msgid "%s floor above ground level"
-msgid_plural "%s floors above ground level"
-msgstr[0] "%s етаж над нивото на улицата"
-msgstr[1] "%s етажа над нивото на улицата"
-
-#. Translators:
-#. * This is a reference to a number of floors below
-#. * ground level.
-#. * The %s placeholder is the integer relative number of floors
-#.
-#: src/placeView.js:445
-#, javascript-format
-msgid "%s floor below ground level"
-msgid_plural "%s floors below ground level"
-msgstr[0] "%s етаж под нивото на улицата"
-msgstr[1] "%s етажа под нивото на улицата"
-
-#. Translators:
-#. * The establishment offers customers to purchase meals
-#. * (or similar) to be consumed elsewhere
-#.
-#: src/placeView.js:463
-msgid "Offers takeout"
-msgstr "Предлага вземане за вкъщи"
-
-#. Translators:
-#. * The establishment only offers customers to purchase
-#. * meals (or similar) to be consumed on-premise.
-#.
-#: src/placeView.js:471
-msgid "Does not offer takeout"
-msgstr "Не предлага вземане за вкъщи"
-
-#. Translators:
-#. * The establishment only offers customers to purchase
-#. * meals (or similar) to be consumed elsewhere. E.g.
-#. * there is no seating on-premise for eating/drinking
-#.
-#: src/placeView.js:480
-msgid "Only offers takeout"
-msgstr "Предлага само вземане за вкъщи"
-
-#: src/placeView.js:487
-msgid "Opening hours"
-msgstr "Работно време"
-
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: src/placeView.js:497
-msgid "Public internet access"
-msgstr "Публичен достъп до Интернет"
-
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: src/placeView.js:506
-msgid "No internet access"
-msgstr "Няма достъп до Интернет"
-
-#. Translators:
-#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
-#.
-#: src/placeView.js:514
-msgid "Public Wi-Fi"
-msgstr "Публична безжична мрежа"
-
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: src/placeView.js:522
-msgid "Wired internet access"
-msgstr "Жична връзка до Интернет"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: src/placeView.js:530
-msgid "Computers available for use"
-msgstr "Има налични компютри"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: src/placeView.js:538
-msgid "Internet assistance available"
-msgstr "Има помощ при проблеми с Интернет"
-
-#: src/placeView.js:544
-msgid "No toilets available"
-msgstr "Няма тоалетни"
-
-#: src/placeView.js:547
-msgid "Toilets available"
-msgstr "Налични тоалетни"
-
-#. Translators:
-#. * This means wheelchairs have full unrestricted access.
-#.
-#: src/placeView.js:556
-msgid "Wheelchair accessible"
-msgstr "Достъп за инвалидни колички"
-
-#. Translators:
-#. * This means wheelchairs have partial access (e.g some areas
-#. * can be accessed and others not, areas requiring assistance
-#. * by someone pushing up a steep gradient).
-#.
-#: src/placeView.js:566
-msgid "Limited wheelchair accessibility"
-msgstr "Ограничен достъп за инвалидни колички"
-
-#. Translators:
-#. * This means wheelchairs have no unrestricted access
-#. * (e.g. stair only access).
-#.
-#: src/placeView.js:575
-msgid "Not wheelchair accessible"
-msgstr "Без достъп за инвалидни колички"
-
-#. Translators:
-#. * This means that the way or area is designated or purpose built
-#. * for wheelchairs (e.g. elevators designed for wheelchair access
-#. * only). This is rarely used.
-#.
-#: src/placeView.js:585
-msgid "Designated for wheelchair users"
-msgstr "Предназначено за инвалидни колички"
-
-#. *
-#. * Translators: this is a label indicating an altitude below
-#. * sea level, where the %s placeholder is the altitude relative
-#. * to mean sea level in the "negative direction"
-#.
-#: src/placeView.js:616
-#, javascript-format
-msgid "%s below sea level"
-msgstr "%s под морското равнище"
-
-#. *
-#. * Translators: this indicates a place is located at (or very
-#. * close to) mean sea level
-#.
-#: src/placeView.js:623
-msgid "At sea level"
-msgstr "На морското равнище"
-
-#: src/placeView.js:635
-msgid "Religion:"
-msgstr "Религия:"
-
-#. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:640
-#, javascript-format
-msgid "Exit %s"
-msgstr "Изход %s"
-
-#. Translators: this is a format template string for a pair of raw
-#. * coordinates, the comma can be adapted to local conventions if needed.
-#.
-#: src/place.js:299
-#, javascript-format
-msgctxt "coordinates"
-msgid "%s, %s"
-msgstr "%s, %s"
-
-#: src/place.js:664
-msgid "Place not found in OpenStreetMap"
-msgstr "Местоположението липсва в OpenStreetMap"
-
-#: src/place.js:671
-msgid "Coordinates in URL are not valid"
-msgstr "Неправилни координати в адреса за Интернет"
-
-#: src/place.js:680
-msgid "URL is not supported"
-msgstr "Този вид адреси не се поддържат"
-
-#: src/poiCategories.js:132
-msgid "Amenities"
-msgstr "Удобства"
-
-#: src/poiCategories.js:135
-msgid "ATMs"
-msgstr "Банкомати"
-
-#: src/poiCategories.js:141
-msgid "Post Boxes"
-msgstr "Пощенски кутии"
-
-#: src/poiCategories.js:147
-msgid "Post Offices"
-msgstr "Пощенски станции"
-
-#: src/poiCategories.js:153
-msgid "Police"
-msgstr "Полиция"
-
-#: src/poiCategories.js:159
-msgid "Libraries"
-msgstr "Библиотеки"
-
-#: src/poiCategories.js:165
-msgid "Pharmacies"
-msgstr "Аптеки"
-
-#: src/poiCategories.js:171
-msgid "Recycling"
-msgstr "Рециклиране"
-
-#: src/poiCategories.js:176
-msgid "Toilets"
-msgstr "Тоалетни"
-
-#: src/poiCategories.js:182
-msgid "Wheelchair-accessible Toilets"
-msgstr "Тоалетни с достъп за инвалидни колички"
-
-#: src/poiCategories.js:188
-msgid "Baggage Lockers"
-msgstr "Шкафчета за багаж"
-
-#: src/poiCategories.js:196
-msgid "Eating & Drinking"
-msgstr "Ядене и пиене"
-
-#: src/poiCategories.js:200
-msgid "Restaurants"
-msgstr "Ресторанти"
-
-#: src/poiCategories.js:205
-msgid "Vegan & Vegetarian Restaurants"
-msgstr "Вегански и вегетариански ресторанти"
-
-#: src/poiCategories.js:212
-msgid "Fast Food"
-msgstr "Бързо хранене"
-
-#: src/poiCategories.js:217
-msgid "Food Courts"
-msgstr "Заведения за хранене"
-
-#: src/poiCategories.js:222
-msgid "Pubs"
-msgstr "Кръчми"
-
-#: src/poiCategories.js:228
-msgid "Bars"
-msgstr "Барове"
-
-#: src/poiCategories.js:233
-msgid "Cafes"
-msgstr "Кафенета"
-
-#: src/poiCategories.js:238
-msgid "Ice Cream"
-msgstr "Сладолед"
-
-#: src/poiCategories.js:243
-msgid "Food, Snacks, and Beverage Machines"
-msgstr "Автомати за храни, закуски и напитки"
-
-#: src/poiCategories.js:251
-msgid "Shopping"
-msgstr "Пазаруване"
-
-#: src/poiCategories.js:255
-msgid "Supermarkets"
-msgstr "Супермаркети"
-
-#: src/poiCategories.js:261
-msgid "Convenience Stores"
-msgstr "Хранителни магазини"
-
-#: src/poiCategories.js:266
-msgid "Shopping Malls"
-msgstr "Молове"
-
-#: src/poiCategories.js:272
-msgid "Clothes"
-msgstr "Дрехи"
-
-#: src/poiCategories.js:278
-msgid "Shoes"
-msgstr "Обувки"
-
-#: src/poiCategories.js:283
-msgid "Electronics"
-msgstr "Електроника"
-
-#: src/poiCategories.js:289
-msgid "Alcohol"
-msgstr "Алкохол"
-
-#: src/poiCategories.js:295
-msgid "Bakeries"
-msgstr "Пекарни"
-
-#: src/poiCategories.js:301
-msgid "Flowers"
-msgstr "Цветя"
-
-#: src/poiCategories.js:306
-msgid "Gifts"
-msgstr "Подаръци"
-
-#: src/poiCategories.js:314
-msgid "Transportation"
-msgstr "Транспорт"
-
-#: src/poiCategories.js:318
-msgid "Bus & Tram Stops"
-msgstr "Спирки за автобуси и трамваи"
-
-#: src/poiCategories.js:326
-msgid "Train & Subway Stations"
-msgstr "Спирки на влакове и метро"
-
-#: src/poiCategories.js:334
-msgid "Tickets"
-msgstr "Билети"
-
-#: src/poiCategories.js:342
-msgid "Parking"
-msgstr "Паркинг"
-
-#: src/poiCategories.js:347
-msgid "Bicycle Parking"
-msgstr "Паркинг за велосипеди"
-
-#: src/poiCategories.js:352
-msgid "Bicycle Rental"
-msgstr "Велосипеди под наем"
-
-#: src/poiCategories.js:357
-msgid "Car Rental"
-msgstr "Коли под наем"
-
-#: src/poiCategories.js:362
-msgid "Fuel"
-msgstr "Гориво"
-
-#: src/poiCategories.js:367
-msgid "EV Charging"
-msgstr "Зареждане на ел. коли"
-
-#: src/poiCategories.js:375
-msgid "Healthcare"
-msgstr "Здравеопазване"
-
-#: src/poiCategories.js:379
-msgid "Clinics"
-msgstr "Клиники"
-
-#: src/poiCategories.js:385
-msgid "Hospitals"
-msgstr "Болници"
-
-#: src/poiCategories.js:391
-msgid "Dentists"
-msgstr "Зъболекари"
-
-#: src/poiCategories.js:399
-msgid "Accommodation"
-msgstr "Настаняване"
-
-#: src/poiCategories.js:403
-msgid "Hotels"
-msgstr "Хотели"
-
-#: src/poiCategories.js:408
-msgid "Hostels"
-msgstr "Хостели"
-
-#: src/poiCategories.js:413
-msgid "Bed & Breakfast"
-msgstr "Нощувка и закуска"
-
-#: src/poiCategories.js:418
-msgid "Campings"
-msgstr "Лагери"
-
-#: src/poiCategories.js:425
-msgid "Recreation"
-msgstr "Отдих"
-
-#: src/poiCategories.js:429
-msgid "Parks"
-msgstr "Паркове"
-
-#: src/poiCategories.js:434
-msgid "Playgrounds"
-msgstr "Игрища"
-
-#: src/poiCategories.js:439
-msgid "Beaches"
-msgstr "Плажове"
-
-#: src/poiCategories.js:444
-msgid "Nature Reserves"
-msgstr "Природни резервати"
-
-#: src/poiCategories.js:450
-msgid "Theme Parks"
-msgstr "Увеселителен парк"
-
-#: src/poiCategories.js:455
-msgid "Theaters"
-msgstr "Театри"
-
-#: src/poiCategories.js:461
-msgid "Movie Theaters"
-msgstr "Киносалони"
-
-#: src/poiCategories.js:467
-msgid "Night Clubs"
-msgstr "Нощни клубове"
-
-#: src/poiCategories.js:478
-msgid "Museums"
-msgstr "Музеи"
-
-#: src/poiCategories.js:484
-msgid "Attractions"
-msgstr "Забавления"
-
-#: src/poiCategories.js:489
-msgid "Artworks"
-msgstr "Произведения на изкуството"
-
-#: src/poiCategories.js:494
-msgid "Tourist Information"
-msgstr "Информация за туристи"
-
-#: src/poiCategories.js:501
-msgid "Sports"
-msgstr "Спортове"
-
-#: src/poiCategories.js:505
-msgid "Gyms"
-msgstr "Фитнес зали"
-
-#: src/poiCategories.js:511
-msgid "Outdoor Gyms"
-msgstr "Фитнес зали на открито"
-
-#: src/poiCategories.js:517
-msgid "Golf Courses"
-msgstr "Голф игрища"
-
-#: src/printLayout.js:222
-#, javascript-format
-msgid "From %s to %s"
-msgstr "От %s до %s"
-
-#: src/printOperation.js:46
-msgid "Loading map tiles for printing"
-msgstr "Зареждане на фрагментите на картата за печат"
-
-#: src/printOperation.js:47
-msgid "You can abort printing if this takes too long"
-msgstr "Може да откажете печата, ако това е твърде бавно"
-
-#: src/printOperation.js:50
-msgid "Abort printing"
-msgstr "Относно печата"
-
-#. Translators: this is add via location tooltip
-#: src/routeEntry.js:60
-msgid "Add via location"
-msgstr "Добавяне чрез местоположението"
-
-#: src/routeEntry.js:61
-msgid "From"
-msgstr "От"
-
-#. Translators: this is remove via location tooltip
-#: src/routeEntry.js:71
-msgid "Remove via location"
-msgstr "Премахване чрез местоположението"
-
-#: src/routeEntry.js:72
-msgid "Via"
-msgstr "През"
-
-#. Translators: this is reverse route tooltip
-#: src/routeEntry.js:78
-msgid "Reverse route"
-msgstr "Обратен маршрут"
-
-#: src/routeEntry.js:79
-msgid "To"
-msgstr "До"
-
-#. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/routeView.js:341
-#, javascript-format
-msgid "Estimated time: %s"
-msgstr "Очаквано време: %s"
-
-#: src/searchBar.js:42
-msgid "Search"
-msgstr "Търсене"
-
-#. Translators: The first string is the name of the city, the
-#. second string is the name of the app to add it to
-#: src/sendToDialog.js:83
-#, javascript-format
-msgid "Add %s to %s"
-msgstr "Добавяне на %s към %s"
-
-#: src/sendToDialog.js:182
-msgid "Failed to open URI"
-msgstr "Адресът не може да се зареди"
-
-#: src/sendToDialog.js:247
-#, javascript-format
-msgid "Open with %s"
-msgstr "Отваряне с %s"
-
-#: src/shapeLayer.js:109
-msgid "failed to load file"
-msgstr "файлът не може да се зареди"
-
-#. Translators: this is a format string indicating walking a certain
-#. * distance, with the distance expression being the %s placeholder
-#.
-#: src/transit.js:55
-#, javascript-format
-msgid "Walk %s"
-msgstr "Вървене %s"
-
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transit.js:69
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "Пристигане в %s"
-
-#. Translators: this a format string indicating departing from the
-#. * destination of journey with the departure address and transit
-#. * stop as the format parameter
-#: src/transit.js:83
-#, javascript-format
-msgid "Start at %s"
-msgstr "Начало в %s"
-
-#: src/transitLegHeader.js:93
-msgid "Hide intermediate stops and information"
-msgstr "Скриване на междинните спирки и допълнителната информация"
-
-#: src/transitLegHeader.js:94
-msgid "Hide walking instructions"
-msgstr "Скриване на инструкциите за ходене пеш"
-
-#: src/transitLegHeader.js:96
-msgid "Show intermediate stops and information"
-msgstr "Показване на междинните спирки и допълнителната информация"
-
-#: src/transitLegHeader.js:97
-msgid "Show walking instructions"
-msgstr "Показване на инструкциите за ходене пеш"
-
-#: src/transitMoreRow.js:37
-msgid "Load earlier alternatives"
-msgstr "Зареждане на варианти по-рано"
-
-#: src/transitMoreRow.js:39
-msgid "Load later alternatives"
-msgstr "Зареждане на варианти по-късно"
-
-#: src/transitMoreRow.js:52
-msgid "No earlier alternatives found."
-msgstr "Няма варианти по-рано."
-
-#: src/transitMoreRow.js:54
-msgid "No later alternatives found."
-msgstr "Няма други варианти."
-
-#.
-#. * Translators: this is a format string giving the equivalent to
-#. * "may 29" according to the current locale's convensions.
-#.
-#: src/transitOptionsPanel.js:208
-msgctxt "month-day-date"
-msgid "%b %e"
-msgstr "%e %b"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:240
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s — %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:266
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s мин."
-msgstr[1] "%s мин."
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:278
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s час"
-msgstr[1] "%s часа"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:286
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s часа"
-msgstr[1] "%s:%s часа"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:599
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s—%s"
-
-#: src/translations.js:55
-msgid "Around the clock"
-msgstr "Денонощно"
-
-#: src/translations.js:57
-msgid "From sunrise to sunset"
-msgstr "От изгрев до залез"
-
-#. Translators:
-#. * This represents a format string consisting of two day interval
-#. * specifications.
-#. * For example:
-#. * Mo-Fr,Sa
-#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
-#. * place holder.
-#. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate.
-#: src/translations.js:123
-#, javascript-format
-msgctxt "day interval list"
-msgid "%s,%s"
-msgstr "%s, %s"
-
-#. Translators:
-#. * This represents a format string consisting of three day interval
-#. * specifications.
-#. * For example:
-#. * Mo-We,Fr,Su
-#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
-#. * %s place holder.
-#. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate.
-#: src/translations.js:137
-#, javascript-format
-msgctxt "day interval list"
-msgid "%s,%s,%s"
-msgstr "%s, %s, %s"
-
-#: src/translations.js:156
-msgid "Every day"
-msgstr "Всеки ден"
-
-#. Translators:
-#. * This represents a range of days with a starting and ending day.
-#.
-#: src/translations.js:168
-#, javascript-format
-msgctxt "day range"
-msgid "%s-%s"
-msgstr "%s—%s"
-
-#: src/translations.js:179
-msgid "Public holidays"
-msgstr "Почивни дни"
-
-#: src/translations.js:181
-msgid "School holidays"
-msgstr "Учебни ваканции"
-
-#. Translators:
-#. * This is a list with two time intervals, such as:
-#. * 09:00-12:00, 13:00-14:00
-#. * The intervals are represented by the %s place holders and
-#. * appropriate white space or connected phrase could be modified by
-#. * the translation. The order of the arguments can be rearranged
-#. * using the %n$s syntax.
-#.
-#: src/translations.js:221
-#, javascript-format
-msgctxt "time interval list"
-msgid "%s, %s"
-msgstr "%s, %s"
-
-#: src/translations.js:235
-msgid "not open"
-msgstr "не е отворено"
-
-#. Translators:
-#. * This is a time interval with a starting and an ending time.
-#. * The time values are represented by the %s place holders and
-#. * appropriate white spacing or connecting phrases can be set by the
-#. * translation as needed. The order of the arguments can be rearranged
-#. * using the %n$s syntax.
-#.
-#: src/translations.js:250
-#, javascript-format
-msgctxt "time interval"
-msgid "%s-%s"
-msgstr "%s-%s"
-
-#: src/translations.js:287
-msgid "Bahá'í"
-msgstr "Бахайство"
-
-#. Translators: Accuracy of user location information
-#: src/utils.js:253
-msgid "Unknown"
-msgstr "Неизвестно"
-
-#. Translators: Accuracy of user location information
-#: src/utils.js:256
-msgid "Exact"
-msgstr "Точно"
-
-#. Translators: this is a duration with only hours, using
-#. * an abbreviation for hours, corresponding to 'h' in English
-#.
-#: src/utils.js:312
-#, javascript-format
-msgid "%s h"
-msgstr "%s ч."
-
-#. Translators: this is a duration with hours and minutes parts
-#. * using abbreviations for hours and minutes, corresponding to 'h'
-#. * and 'min' in English. The minutes has appropriate plural variations
-#.
-#: src/utils.js:318
-#, javascript-format
-msgid "%s h %s min"
-msgid_plural "%s h %s min"
-msgstr[0] "%s ч. %s мин."
-msgstr[1] "%s ч. %s мин."
-
-#. Translators: this is a duration with minutes part
-#. * using abbreviation for minutes, corresponding to 'min' in English
-#. * with appropriate plural variations
-#.
-#: src/utils.js:325
-#, javascript-format
-msgid "%s min"
-msgid_plural "%s min"
-msgstr[0] "%s мин."
-msgstr[1] "%s мин."
-
-#. Translators: this is a duration of less than one minute
-#. * with seconds using an abbreviation for seconds, corresponding to
-#. * 's' in English with appropriate plural forms
-#.
-#: src/utils.js:331
-#, javascript-format
-msgid "%s s"
-msgid_plural "%s s"
-msgstr[0] "%s сек."
-msgstr[1] "%s сек."
-
-#. Translators: This is a distance measured in miles
-#: src/utils.js:343
-#, javascript-format
-msgid "%s mi"
-msgstr "%s мили"
-
-#. Translators: This is a distance measured in feet
-#: src/utils.js:346
-#, javascript-format
-msgid "%s ft"
-msgstr "%s фута"
-
-#. Translators: This is a distance measured in kilometers
-#: src/utils.js:354
-#, javascript-format
-msgid "%s km"
-msgstr "%s км."
-
-#. Translators: This is a distance measured in meters
-#: src/utils.js:357
-#, javascript-format
-msgid "%s m"
-msgstr "%s м."
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr "Папка"
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "Път до файл"
+
+#: shell/src/properties_general.rs:298
+msgid "Content"
+msgstr "Съдържание"
+
+#: shell/src/properties_general.rs:314
+msgid "Date &amp; Time"
+msgstr "Дата и час"
+
+#: shell/src/properties_signatures.rs:403
+msgid "Hide Details…"
+msgstr "Скриване на подробностите…"
