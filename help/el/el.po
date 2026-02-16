@@ -701,19 +701,14 @@ msgstr "Αντιστροφή χρωμάτων σε μια σελίδα"
 
 #. (itstool) path: page/p
 #: C/invert-colors.page:32
-#, fuzzy
-#| msgid ""
-#| "To swap black for white, white for black, and so on, click the <gui>View "
-#| "options</gui> button in the top-right corner and select <gui>Inverted "
-#| "Colors</gui>."
 msgid ""
 "To swap black for white, white for black, and so on, press the menu button "
 "in the top-right corner of the window and select <gui "
 "style=\"menuitem\">Night Mode</gui>."
 msgstr ""
-"Για εναλλαγή σε λευκό, λευκό για μαύρο κ.ο.κ. κάντε κλικ στο κουμπί "
-"<gui>Εμφάνιση επιλογών</gui> στην πάνω δεξιά γωνία και επιλέξτε "
-"<gui>Αντεστραμμένα χρώματα</gui>."
+"Για να αντιστρέψετε το μαύρο με το λευκό, το λευκό με το μαύρο κ.ο.κ., "
+"πατήστε το κουμπί μενού στην πάνω δεξιά γωνία του παραθύρου και επιλέξτε "
+"<gui style=\"menuitem\">Νυχτερινή λειτουργία</gui>."
 
 #. (itstool) path: note/p
 #: C/invert-colors.page:37
@@ -721,8 +716,8 @@ msgid ""
 "Doing this can make it easier to read text, especially in the case of "
 "certain kinds of visual impairment."
 msgstr ""
-"Με αυτό μπορεί να είναι ευκολότερη η ανάγνωση κειμένου, ειδικά σε ορισμένες "
-"περιπτώσεις προβλημάτων όρασης."
+"Αυτή η ενέργεια μπορεί να διευκολύνει την ανάγνωση κειμένου, ειδικά σε "
+"περιπτώσεις ορισμένων προβλημάτων όρασης."
 
 #. (itstool) path: info/title
 #: C/commandline.page:7
@@ -732,16 +727,12 @@ msgstr "Γραμμή εντολών"
 
 #. (itstool) path: info/desc
 #: C/commandline.page:8
-#, fuzzy
-#| msgid ""
-#| "The <cmd>evince</cmd> command can open any number of files, at specific "
-#| "pages and in various modes."
 msgid ""
 "The <cmd>papers</cmd> command can open any number of files, at specific "
 "pages and in various modes."
 msgstr ""
-"Η εντολή <cmd>evince</cmd> μπορεί να ανοίξει οποιοδήποτε αριθμό αρχείων, σε "
-"συγκεκριμένες σελίδες σε ποικίλες καταστάσεις."
+"Η εντολή <cmd>papers</cmd> μπορεί να ανοίξει οποιονδήποτε αριθμό αρχείων, σε "
+"συγκεκριμένες σελίδες και σε ποικίλες λειτουργίες."
 
 #. (itstool) path: page/title
 #: C/commandline.page:24
@@ -750,69 +741,52 @@ msgstr "Η γραμμή εντολών"
 
 #. (itstool) path: page/p
 #: C/commandline.page:25
-#, fuzzy
-#| msgid ""
-#| "To start the <app>Document Viewer</app> from the command line, type "
-#| "<cmd>evince</cmd>. You can open a specific file by typing the filename "
-#| "after the evince command:"
 msgid ""
 "To start <app>Document Viewer</app> from the command line, type <cmd>papers</"
 "cmd>. You can open a specific file by typing the filename after the papers "
 "command:"
 msgstr ""
 "Για να εκκινήσετε την <app>Προβολή εγγράφων</app> από τη γραμμή εντολών, "
-"πληκτρολογήστε <cmd>evince</cmd>. Μπορείτε να ανοίξετε ένα συγκεκριμένο "
-"αρχείο πληκτρολογώντας το όνομά του μετά την εντολή evince:"
+"πληκτρολογήστε <cmd>papers</cmd>. Μπορείτε να ανοίξετε ένα συγκεκριμένο "
+"αρχείο πληκτρολογώντας το όνομα του αρχείου μετά την εντολή papers:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:30
-#, fuzzy, no-wrap
-#| msgid "evince file.pdf"
+#, no-wrap
 msgid "papers file.pdf"
-msgstr "evince file.pdf"
+msgstr "papers file.pdf"
 
 #. (itstool) path: page/p
 #: C/commandline.page:31
-#, fuzzy
-#| msgid ""
-#| "You can open multiple files by typing the filenames after the evince "
-#| "command, separating the filenames by a space:"
 msgid ""
 "You can open multiple files by typing the filenames after the papers "
 "command, separating the filenames by a space:"
 msgstr ""
-"Μπορείτε να ανοίξετε πολλαπλά αρχεία πληκτρολογώντας τα ονόματά τους μετά "
-"την εντολή evince, διαχωρίζοντάς τα με ένα κενό διάστημα:"
+"Μπορείτε να ανοίξετε πολλαπλά αρχεία πληκτρολογώντας τα ονόματα των αρχείων "
+"μετά την εντολή papers, διαχωρίζοντάς τα με ένα κενό διάστημα:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:34
-#, fuzzy, no-wrap
-#| msgid "evince file1.pdf file2.pdf"
+#, no-wrap
 msgid "papers file1.pdf file2.pdf"
-msgstr "evince file1.pdf file2.pdf"
+msgstr "papers file1.pdf file2.pdf"
 
 #. (itstool) path: page/p
 #: C/commandline.page:35
-#, fuzzy
-#| msgid ""
-#| "The <app>document viewer</app> also supports the handling of files on the "
-#| "web. For example, after the evince command you can give the location of a "
-#| "file on the web:"
 msgid ""
 "<app>Document Viewer</app> also supports the handling of files on the web. "
 "For example, after the papers command you can give the location of a file on "
 "the web:"
 msgstr ""
-"Η <app>προβολή εγγράφων</app> υποστηρίζει επίσης το χειρισμό αρχείων στον "
-"ιστό. Για παράδειγμα, μετά την εντολή evince μπορείτε να δώσετε την "
+"Η <app>Προβολή εγγράφων</app> υποστηρίζει επίσης τον χειρισμό αρχείων στον "
+"ιστό. Για παράδειγμα, μετά την εντολή papers μπορείτε να δώσετε την "
 "τοποθεσία ενός αρχείου στον ιστό:"
 
 #. (itstool) path: page/screen
 #: C/commandline.page:38
-#, fuzzy, no-wrap
-#| msgid "evince http://www.claymath.org/millennium/P_vs_NP/pvsnp.pdf"
+#, no-wrap
 msgid "papers http://www.claymath.org/millennium/P_vs_NP/pvsnp.pdf"
-msgstr "evince http://www.claymath.org/millennium/P_vs_NP/pvsnp.pdf"
+msgstr "papers http://www.claymath.org/millennium/P_vs_NP/pvsnp.pdf"
 
 #. (itstool) path: section/title
 #: C/commandline.page:40
@@ -831,59 +805,51 @@ msgstr ""
 
 #. (itstool) path: section/screen
 #: C/commandline.page:45
-#, fuzzy, no-wrap
-#| msgid "evince --page-label=3 file.pdf"
+#, no-wrap
 msgid "papers --page-label=3 file.pdf"
-msgstr "evince --page-label=3 file.pdf"
+msgstr "papers --page-label=3 file.pdf"
 
 #. (itstool) path: section/p
 #: C/commandline.page:46
-#, fuzzy
-#| msgid ""
-#| "The page label should be in the same format as the page number displayed "
-#| "in the <app>Document Viewer</app> toolbar."
 msgid ""
 "The page label should be in the same format as the page number displayed in "
 "the <app>Document Viewer</app> header bar."
 msgstr ""
-"Η ετικέτα σελίδας θα πρέπει να είναι της ίδιας μορφής με τον εμφανιζόμενο "
-"αριθμό σελίδας στην εργαλειοθήκη της <app>Προβολής εγγράφων</app>."
+"Η ετικέτα σελίδας θα πρέπει να είναι στην ίδια μορφή με τον αριθμό σελίδας "
+"που εμφανίζεται στη γραμμή τίτλου της <app>Προβολής εγγράφων</app>."
 
 #. (itstool) path: section/title
 #: C/commandline.page:52
 msgid "Opening a document in fullscreen mode"
-msgstr "Άνοιγμα εγγράφου σε κατάσταση πλήρους οθόνης"
+msgstr "Άνοιγμα εγγράφου σε λειτουργία πλήρους οθόνης"
 
 #. (itstool) path: section/screen
 #: C/commandline.page:53
-#, fuzzy, no-wrap
-#| msgid "evince --fullscreen file.pdf"
+#, no-wrap
 msgid "papers --fullscreen file.pdf"
-msgstr "evince --fullscreen file.pdf"
+msgstr "papers --fullscreen file.pdf"
 
 #. (itstool) path: section/title
 #: C/commandline.page:56
 msgid "Opening a document in presentation mode"
-msgstr "Άνοιγμα εγγράφου σε κατάσταση παρουσίασης"
+msgstr "Άνοιγμα εγγράφου σε λειτουργία παρουσίασης"
 
 #. (itstool) path: section/screen
 #: C/commandline.page:57
-#, fuzzy, no-wrap
-#| msgid "evince --presentation file.pdf"
+#, no-wrap
 msgid "papers --presentation file.pdf"
-msgstr "evince --presentation file.pdf"
+msgstr "papers --presentation file.pdf"
 
 #. (itstool) path: section/title
 #: C/commandline.page:60
 msgid "Opening a document in preview mode"
-msgstr "Άνοιγμα εγγράφου σε κατάσταση προεπισκόπησης"
+msgstr "Άνοιγμα εγγράφου σε λειτουργία προεπισκόπησης"
 
 #. (itstool) path: section/screen
 #: C/commandline.page:61
-#, fuzzy, no-wrap
-#| msgid "evince --preview file.pdf"
+#, no-wrap
 msgid "papers --preview file.pdf"
-msgstr "evince --preview file.pdf"
+msgstr "papers --preview file.pdf"
 
 #. (itstool) path: info/desc
 #: C/forms.page:7
@@ -949,12 +915,6 @@ msgstr "Γιατί το έγγραφο επαναφορτώνεται συνέχ
 
 #. (itstool) path: page/p
 #: C/reload.page:25
-#, fuzzy
-#| msgid ""
-#| "If the <app>Document Viewer</app> detects that the document you have open "
-#| "has changed (perhaps because another program has modified it), it will "
-#| "automatically reload the document and display the most recent version for "
-#| "you."
 msgid ""
 "If <app>Document Viewer</app> detects that the document you have open has "
 "changed (perhaps because another program has modified it), it will "
@@ -963,8 +923,8 @@ msgid ""
 msgstr ""
 "Αν η <app>Προβολή εγγράφων</app> ανιχνεύσει ότι το έγγραφο που έχετε ανοιχτό "
 "έχει αλλάξει (ίσως επειδή κάποιο άλλο πρόγραμμα το έχει τροποποιήσει), θα "
-"επαναφορτώσει αυτόματα το έγγραφο και θα σας εμφανίσει την πιο πρόσφατη "
-"έκδοση."
+"επαναφορτώσει αυτόματα το έγγραφο και θα εμφανίσει την πιο πρόσφατη έκδοση "
+"για εσάς."
 
 #. (itstool) path: page/p
 #: C/reload.page:29
@@ -972,7 +932,7 @@ msgid ""
 "If the document is deleted while you are still viewing it, it will still "
 "remain open."
 msgstr ""
-"Αν το έγγραφο διαγραφεί ενώ ακόμα το βλέπετε, θα παραμείνει ακόμα ανοιχτό."
+"Αν το έγγραφο διαγραφεί ενώ το προβάλλετε, αυτό θα παραμείνει ανοιχτό."
 
 #. (itstool) path: info/desc
 #: C/presentations.page:7
@@ -1001,21 +961,18 @@ msgstr "<link xref=\"opening\">Άνοιγμα ενός αρχείου</link>"
 
 #. (itstool) path: item/p
 #: C/presentations.page:35
-#, fuzzy
-#| msgid ""
-#| "Click the <gui>View options</gui> button in the top-right corner and "
-#| "select <gui>Presentation</gui> (or press <key>F5</key>)."
 msgid ""
 "Press the menu button in the top-right corner of the window and select <gui "
 "style=\"menuitem\">Present as Slideshow</gui> (or press <key>F5</key>)."
 msgstr ""
-"Κάντε κλικ στο κουμπί <gui>Εμφάνιση επιλογών</gui> στην πάνω δεξιά γωνία και "
-"επιλέξτε <gui>Παρουσίαση</gui> (ή πατήστε <key>F5</key>)."
+"Πατήστε το κουμπί μενού στην πάνω δεξιά γωνία του παραθύρου και επιλέξτε "
+"<gui style=\"menuitem\">Παρουσίαση ως προβολή διαφανειών</gui> (ή πατήστε "
+"<key>F5</key>)."
 
 #. (itstool) path: item/p
 #: C/presentations.page:37
 msgid "The presentation will be displayed full screen."
-msgstr "Η παρουσίαση θα εμφανισθεί σε πλήρη οθόνη."
+msgstr "Η παρουσίαση θα προβληθεί σε πλήρη οθόνη."
 
 #. (itstool) path: section/title
 #: C/presentations.page:44
@@ -1057,33 +1014,25 @@ msgstr "Χρησιμοποιήστε το <key>Esc</key> για έξοδο απ�
 #. (itstool) path: section/title
 #: C/presentations.page:64
 msgid "Showing a blank screen"
-msgstr ""
+msgstr "Εμφάνιση κενής οθόνης"
 
 #. (itstool) path: section/p
 #: C/presentations.page:65
-#, fuzzy
-#| msgid "Press <key>F11</key> or <key>Escape</key>"
 msgid "Press <key>B</key> or <key>.</key> to show a black screen."
-msgstr "Πατήστε το <key>F11</key> ή το <key>Escape</key>"
+msgstr "Πατήστε το <key>B</key> ή το <key>.</key> για να εμφανίσετε μια μαύρη οθόνη."
 
 #. (itstool) path: section/p
 #: C/presentations.page:66
-#, fuzzy
-#| msgid "Use <key>Esc</key> to exit the presentation."
 msgid "Press <key>W</key> to show a white screen."
-msgstr "Χρησιμοποιήστε το <key>Esc</key> για έξοδο από την παρουσίαση."
+msgstr "Πατήστε το <key>W</key> για να εμφανίσετε μια λευκή οθόνη."
 
 #. (itstool) path: section/p
 #: C/presentations.page:67
-#, fuzzy
-#| msgid ""
-#| "Press <keyseq><key>Alt</key><key>F2</key></keyseq> to open the Run "
-#| "Application window."
 msgid ""
 "Press <key>B</key>, <key>.</key>, or <key>W</key> again to show the slide."
 msgstr ""
-"Πατήστε <keyseq><key>Alt</key><key>F2</key></keyseq> για να ανοίξετε το "
-"παράθυρο εκτέλεση εφαρμογής."
+"Πατήστε ξανά το <key>B</key>, το <key>.</key> ή το <key>W</key> για να "
+"εμφανίσετε τη διαφάνεια."
 
 #. (itstool) path: section/title
 #: C/presentations.page:72
