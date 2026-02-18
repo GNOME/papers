@@ -14,6 +14,17 @@ pps_selection_default_init (PpsSelectionInterface *klass)
 {
 }
 
+/**
+ * pps_selection_render_selection:
+ * @selection: a #PpsSelection
+ * @rc: a #PpsRenderContext
+ * @surface: (out): a surface, created if it is NULL, otherwise reused
+ * @points: current selection points
+ * @old_points: old selection points
+ * @style: a #PpsSelectionStyle
+ * @text: foreground text color
+ * @base: base color
+ **/
 void
 pps_selection_render_selection (PpsSelection *selection,
                                 PpsRenderContext *rc,
