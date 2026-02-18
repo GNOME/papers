@@ -234,7 +234,9 @@ pps_annotation_window_constructor (GType type,
 	gtk_window_set_transient_for (GTK_WINDOW (window), window->parent);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (window), FALSE);
 
-	label = _ ("Edit Note");
+	label = pps_annotation_markup_get_label (markup);
+	if (label == NULL || *label == '\0')
+		label = _ ("Edit Note");
 	window->is_open = pps_annotation_markup_get_popup_is_open (markup);
 	pps_annotation_markup_get_rectangle (markup, &rect);
 

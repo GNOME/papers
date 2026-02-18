@@ -23,6 +23,7 @@
 #endif
 
 #include <papers-view.h>
+#include <time.h>
 
 #define ANNOT_POPUP_WINDOW_DEFAULT_WIDTH 200
 #define ANNOT_POPUP_WINDOW_DEFAULT_HEIGHT 150
@@ -753,6 +754,8 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		              "label", g_get_real_name (),
 		              NULL);
 	}
+
+	pps_annotation_set_modified_from_time_t (annot, time (NULL));
 
 	add_annotation (self, annot);
 

@@ -3890,26 +3890,58 @@ pps_view_query_tooltip (GtkWidget *widget,
 	annot = get_annotation_at_location (view, x, y);
 	if (annot) {
 		const gchar *contents;
+		const gchar *label = NULL;
+		const gchar *modified;
+		GdkRectangle view_area;
+		guint page_index;
+		PpsRectangle annot_area;
+		g_autofree gchar *tooltip_text = NULL;
+		g_autofree gchar *escaped_label = NULL;
+		g_autofree gchar *escaped_contents = NULL;
 
 		get_scroll_offset (view, &scroll_x, &scroll_y);
 
 		contents = pps_annotation_get_contents (annot);
-		if (contents && *contents != '\0') {
-			GdkRectangle view_area;
-			guint page_index = pps_annotation_get_page_index (annot);
-			PpsRectangle annot_area;
+		modified = pps_annotation_get_modified (annot);
+		if (PPS_IS_ANNOTATION_MARKUP (annot))
+			label = pps_annotation_markup_get_label (PPS_ANNOTATION_MARKUP (annot));
 
-			pps_annotation_get_area (annot, &annot_area);
-			_pps_view_transform_doc_rect_to_view_rect (view,
-			                                           page_index,
-			                                           &annot_area,
-			                                           &view_area);
-			view_area.x -= scroll_x;
-			view_area.y -= scroll_y;
+		page_index = pps_annotation_get_page_index (annot);
+		pps_annotation_get_area (annot, &annot_area);
+		_pps_view_transform_doc_rect_to_view_rect (view,
+		                                           page_index,
+		                                           &annot_area,
+		                                           &view_area);
+		view_area.x -= scroll_x;
+		view_area.y -= scroll_y;
 
-			gtk_tooltip_set_text (tooltip, contents);
+		if (label && *label != '\0')
+			escaped_label = g_markup_escape_text (label, -1);
+		if (contents && *contents != '\0')
+			escaped_contents = g_markup_escape_text (contents, -1);
+
+		/* Build rich tooltip with author, date, and contents */
+		if (escaped_label || modified || escaped_contents) {
+			GString *markup = g_string_new (NULL);
+
+			if (escaped_label)
+				g_string_append_printf (markup, "<b>%s</b>", escaped_label);
+
+			if (modified && *modified != '\0') {
+				if (markup->len > 0)
+					g_string_append_c (markup, '\n');
+				g_string_append (markup, modified);
+			}
+
+			if (escaped_contents) {
+				if (markup->len > 0)
+					g_string_append_c (markup, '\n');
+				g_string_append (markup, escaped_contents);
+			}
+
+			tooltip_text = g_string_free (markup, FALSE);
+			gtk_tooltip_set_markup (tooltip, tooltip_text);
 			gtk_tooltip_set_tip_area (tooltip, &view_area);
-
 			return TRUE;
 		}
 	}
