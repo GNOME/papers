@@ -187,11 +187,12 @@ pps_overlay_annotation_drag_begin (GtkGestureDrag *annotation_drag_gesture,
                                    PpsOverlayAnnotation *overlay)
 {
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
+	GtkWidget *child;
 
 	/* We claim this if we are not above a child widget or if drag_only_on_border is not set */
 
 	if (PPS_OVERLAY_ANNOTATION_GET_CLASS (overlay)->drag_only_on_border) {
-		GtkWidget *child = gtk_widget_get_first_child (GTK_WIDGET (priv->box));
+		child = gtk_widget_get_first_child (GTK_WIDGET (priv->box));
 		for (; child != NULL;
 		     child = gtk_widget_get_next_sibling (child)) {
 			graphene_point_t point = { offset_x, offset_y };
@@ -202,16 +203,16 @@ pps_overlay_annotation_drag_begin (GtkGestureDrag *annotation_drag_gesture,
 				return;
 			}
 		}
-		child = gtk_widget_get_next_sibling (GTK_WIDGET (priv->box));
-		for (; child != NULL;
-		     child = gtk_widget_get_next_sibling (child)) {
-			graphene_point_t point = { offset_x, offset_y };
-			graphene_point_t widget_point;
-			g_assert (gtk_widget_compute_point (GTK_WIDGET (overlay), child, &point, &widget_point));
-			if (gtk_widget_contains (child, widget_point.x, widget_point.y)) {
-				gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture), GTK_EVENT_SEQUENCE_DENIED);
-				return;
-			}
+	}
+	child = gtk_widget_get_next_sibling (GTK_WIDGET (priv->box));
+	for (; child != NULL;
+	     child = gtk_widget_get_next_sibling (child)) {
+		graphene_point_t point = { offset_x, offset_y };
+		graphene_point_t widget_point;
+		g_assert (gtk_widget_compute_point (GTK_WIDGET (overlay), child, &point, &widget_point));
+		if (gtk_widget_contains (child, widget_point.x, widget_point.y)) {
+			gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture), GTK_EVENT_SEQUENCE_DENIED);
+			return;
 		}
 	}
 
