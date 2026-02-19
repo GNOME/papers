@@ -711,6 +711,7 @@ add_job_if_needed (PpsPixbufCache *pixbuf_cache,
 
 	if (job_info->texture &&
 	    job_info->device_scale == device_scale &&
+	    job_info->annot_flags == annot_flags &&
 	    gdk_texture_get_width (job_info->texture) == width * device_scale &&
 	    gdk_texture_get_height (job_info->texture) == height * device_scale &&
 	    (!job_info->points_set || !job_info->selection_stale))
