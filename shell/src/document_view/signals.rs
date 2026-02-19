@@ -62,7 +62,9 @@ impl imp::PpsDocumentView {
     #[template_callback]
     pub(super) fn annotation_editing_state_changed(&self) {
         let state = self.model.annotation_editing_state();
-        self.update_edit_toolbar_visibility(state != AnnotationEditingState::NONE && state != AnnotationEditingState::STAMP);
+        self.update_edit_toolbar_visibility(
+            state != AnnotationEditingState::NONE && state != AnnotationEditingState::STAMP,
+        );
     }
 
     #[template_callback]
