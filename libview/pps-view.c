@@ -2848,7 +2848,7 @@ pps_view_editing_state_changed (PpsDocumentModel *model,
                                 GParamSpec *pspec,
                                 PpsView *view)
 {
-	pps_view_reload (view);
+	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
 static void
