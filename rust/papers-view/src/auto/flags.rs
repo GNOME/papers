@@ -16,6 +16,8 @@ bitflags! {
         const INK = ffi::PPS_ANNOTATION_EDITING_STATE_INK as _;
         #[doc(alias = "PPS_ANNOTATION_EDITING_STATE_TEXT")]
         const TEXT = ffi::PPS_ANNOTATION_EDITING_STATE_TEXT as _;
+        #[doc(alias = "PPS_ANNOTATION_EDITING_STATE_STAMP")]
+        const STAMP = ffi::PPS_ANNOTATION_EDITING_STATE_STAMP as _;
     }
 }
 

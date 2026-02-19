@@ -320,7 +320,9 @@ pps_overlay_annotation_update_visibility_from_state (PpsOverlay *self, PpsRender
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
 	if (state & PPS_RENDER_ANNOTS_INK && PPS_IS_ANNOTATION_INK (priv->annotation)) {
 		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
-	} else if (state & PPS_RENDER_ANNOTS_FREETEXT && (PPS_IS_ANNOTATION_FREE_TEXT (priv->annotation) || PPS_IS_ANNOTATION_STAMP (priv->annotation))) {
+	} else if (state & PPS_RENDER_ANNOTS_FREETEXT && PPS_IS_ANNOTATION_FREE_TEXT (priv->annotation)) {
+		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
+	} else if (state & PPS_RENDER_ANNOTS_STAMP && PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
 		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
 	} else {
 		gtk_widget_set_visible (GTK_WIDGET (self), TRUE);

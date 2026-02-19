@@ -1206,8 +1206,11 @@ impl imp::PpsDocumentView {
     }
 
     pub fn cmd_toggle_edit_mode(&self) {
+        let editing_state = self.model.annotation_editing_state();
         // Just toggle the state - the notify signal will handle UI updates
-        if self.model.annotation_editing_state() == papers_view::AnnotationEditingState::NONE {
+        if editing_state == papers_view::AnnotationEditingState::NONE
+            || editing_state == papers_view::AnnotationEditingState::STAMP
+        {
             if self.model.annotation_model().unwrap().tool() == AnnotationTool::Text {
                 self.model
                     .set_annotation_editing_state(papers_view::AnnotationEditingState::TEXT);

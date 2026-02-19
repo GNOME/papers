@@ -2735,7 +2735,10 @@ pps_view_rerender_annotation (PpsView *view,
 	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
 
 	/* it is not necessary to render again if the annotation is hidden */
-	if (state & PPS_ANNOTATION_EDITING_STATE_TEXT && (PPS_IS_ANNOTATION_FREE_TEXT (annot) || PPS_IS_ANNOTATION_STAMP (annot))) {
+	if (state & PPS_ANNOTATION_EDITING_STATE_TEXT && PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
+		return;
+	}
+	if (state & PPS_ANNOTATION_EDITING_STATE_STAMP && PPS_IS_ANNOTATION_STAMP (annot)) {
 		return;
 	}
 	if (state & PPS_ANNOTATION_EDITING_STATE_INK && PPS_IS_ANNOTATION_INK (annot)) {
@@ -4116,7 +4119,7 @@ pps_view_button_press_event (GtkGestureClick *self,
 	if (!document || pps_document_get_n_pages (document) <= 0)
 		return;
 
-	if (pps_document_model_get_annotation_editing_state (priv->model) != PPS_ANNOTATION_EDITING_STATE_NONE) {
+	if (pps_document_model_get_annotation_editing_state (priv->model) & (PPS_ANNOTATION_EDITING_STATE_INK | PPS_ANNOTATION_EDITING_STATE_TEXT)) {
 		gtk_gesture_set_state (GTK_GESTURE (self), GTK_EVENT_SEQUENCE_DENIED);
 		return;
 	}
@@ -4610,10 +4613,25 @@ pps_view_button_release_event (GtkGestureClick *self,
 				if (widget) {
 					pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (widget), -1, -1);
 				}
+			} else if (PPS_IS_ANNOTATION_STAMP (annot)) {
+				PpsAnnotationWidgetFactory *factory;
+				GtkWidget *widget;
+
+				pps_document_model_set_annotation_editing_state (priv->model,
+				                                                 PPS_ANNOTATION_EDITING_STATE_STAMP);
+
+				/* Focus the annotation widget so user can start typing immediately */
+				factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
+				widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
+				if (widget) {
+					pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (widget), -1, -1);
+				}
 			} else {
 				/* Other annotations (sticky notes, attachments) work on single click */
 				pps_view_handle_annotation (view, annot, x, y, time);
 			}
+		} else if (pps_document_model_get_annotation_editing_state (priv->model) & PPS_ANNOTATION_EDITING_STATE_STAMP) {
+			pps_document_model_set_annotation_editing_state (priv->model, pps_document_model_get_annotation_editing_state (priv->model) & ~PPS_ANNOTATION_EDITING_STATE_STAMP);
 		}
 	}
 
