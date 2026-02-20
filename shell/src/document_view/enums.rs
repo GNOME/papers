@@ -7,7 +7,7 @@ pub enum AnnotationColor {
     Purple,
     Blue,
     Green,
-    Unknown,
+    Custom { color: gdk::RGBA },
 }
 
 impl From<&str> for AnnotationColor {
@@ -19,7 +19,9 @@ impl From<&str> for AnnotationColor {
             "purple" => AnnotationColor::Purple,
             "blue" => AnnotationColor::Blue,
             "green" => AnnotationColor::Green,
-            _ => AnnotationColor::Unknown,
+            s => AnnotationColor::Custom {
+                color: gdk::RGBA::parse(s).unwrap_or(gdk::RGBA::parse("#f5c211").unwrap()),
+            },
         }
     }
 }
@@ -33,7 +35,7 @@ impl std::fmt::Display for AnnotationColor {
             AnnotationColor::Purple => write!(f, "purple"),
             AnnotationColor::Blue => write!(f, "blue"),
             AnnotationColor::Green => write!(f, "green"),
-            AnnotationColor::Unknown => write!(f, "unknown"),
+            AnnotationColor::Custom { color } => write!(f, "{}", gdk::RGBA::to_string(color)),
         }
     }
 }
@@ -58,7 +60,7 @@ impl From<gdk::RGBA> for AnnotationColor {
         if color == AnnotationColor::Green.to_rgba() {
             return AnnotationColor::Green;
         }
-        AnnotationColor::Unknown
+        AnnotationColor::Custom { color }
     }
 }
 
@@ -71,8 +73,7 @@ impl AnnotationColor {
             AnnotationColor::Purple => gdk::RGBA::parse("#c061cb").unwrap(),
             AnnotationColor::Blue => gdk::RGBA::parse("#3584e4").unwrap(),
             AnnotationColor::Green => gdk::RGBA::parse("#33d17a").unwrap(),
-            // TODO: Does yellow here makes sense?
-            AnnotationColor::Unknown => gdk::RGBA::parse("#f5c211").unwrap(),
+            AnnotationColor::Custom { color } => *color,
         }
     }
 }
