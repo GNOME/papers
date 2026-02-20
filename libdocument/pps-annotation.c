@@ -104,7 +104,7 @@ struct _PpsAnnotationFreeText {
 
 G_DEFINE_TYPE_WITH_CODE (PpsAnnotationFreeText,
                          pps_annotation_free_text,
-                         PPS_TYPE_ANNOTATION_MARKUP,
+                         PPS_TYPE_ANNOTATION,
                          G_ADD_PRIVATE (PpsAnnotationFreeText));
 #define GET_ANNOT_FREE_TEXT_PRIVATE(o) pps_annotation_free_text_get_instance_private (o)
 
@@ -1826,10 +1826,8 @@ static void
 pps_annotation_free_text_init (PpsAnnotationFreeText *annot)
 {
 	PpsAnnotationPrivate *priv = GET_ANNOT_PRIVATE (PPS_ANNOTATION (annot));
-	PpsAnnotationMarkupPrivate *markup_priv = GET_ANNOT_MARKUP_PRIVATE (PPS_ANNOTATION_MARKUP (annot));
 
 	priv->type = PPS_ANNOTATION_TYPE_FREE_TEXT;
-	markup_priv->can_have_popup = FALSE;
 }
 
 static void
