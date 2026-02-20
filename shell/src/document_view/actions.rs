@@ -1231,7 +1231,7 @@ impl imp::PpsDocumentView {
     pub fn cmd_pen_color_state(&self, action: &gio::SimpleAction, state: &glib::Variant) {
         let annotation_model = self.model.annotation_model().unwrap();
         let color = state.get::<String>().unwrap();
-        let rgba = match color.as_str() {
+        let mut rgba = match color.as_str() {
             "yellow" => gdk::RGBA::parse("#f5c211").unwrap(),
             "black" => gdk::RGBA::parse("#000000").unwrap(),
             "orange" => gdk::RGBA::parse("#ff7800").unwrap(),
@@ -1245,6 +1245,7 @@ impl imp::PpsDocumentView {
         match annotation_model.tool() {
             AnnotationTool::Pencil => annotation_model.set_pen_color(&rgba),
             AnnotationTool::Highlight => {
+                rgba.set_alpha(0.7);
                 annotation_model.set_highlight_color(&rgba);
             }
             AnnotationTool::Eraser => {
