@@ -823,6 +823,8 @@ mod imp {
         }
 
         pub(super) fn close_handled(&self) -> glib::Propagation {
+            self.save_settings();
+
             if let Some(id) = self.modified_handler_id.take() {
                 self.document().unwrap().disconnect(id);
             }
@@ -834,8 +836,6 @@ mod imp {
             if self.check_print_queue() {
                 return glib::Propagation::Stop;
             }
-
-            self.save_settings();
 
             glib::Propagation::Proceed
         }
