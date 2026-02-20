@@ -1119,7 +1119,7 @@ Popover highlight_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-0-symbolic";
-      action-name: "doc.set-highlight-width";
+      action-name: "doc.highlight-stroke";
       action-target: "1.";
       tooltip-text: _("Thin");
 
@@ -1131,7 +1131,7 @@ Popover highlight_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-1-symbolic";
-      action-name: "doc.set-highlight-width";
+      action-name: "doc.highlight-stroke";
       action-target: "3.";
       tooltip-text: _("Medium");
 
@@ -1143,7 +1143,7 @@ Popover highlight_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-2-symbolic";
-      action-name: "doc.set-highlight-width";
+      action-name: "doc.highlight-stroke";
       action-target: "5.";
       tooltip-text: _("Thick");
 
@@ -1155,7 +1155,7 @@ Popover highlight_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-3-symbolic";
-      action-name: "doc.set-highlight-width";
+      action-name: "doc.highlight-stroke";
       action-target: "10.";
       tooltip-text: _("Very Thick");
 
@@ -1276,7 +1276,7 @@ Popover pencil_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-0-symbolic";
-      action-name: "doc.set-pen-width";
+      action-name: "doc.pen-stroke";
       action-target: "0.5";
       tooltip-text: _("Thin");
 
@@ -1288,7 +1288,7 @@ Popover pencil_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-1-symbolic";
-      action-name: "doc.set-pen-width";
+      action-name: "doc.pen-stroke";
       action-target: "1.";
       active: true;
       tooltip-text: _("Medium");
@@ -1301,7 +1301,7 @@ Popover pencil_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-2-symbolic";
-      action-name: "doc.set-pen-width";
+      action-name: "doc.pen-stroke";
       action-target: "3.";
       tooltip-text: _("Thick");
 
@@ -1313,7 +1313,7 @@ Popover pencil_stroke_popover {
 
     ToggleButton {
       icon-name: "stroke-3-symbolic";
-      action-name: "doc.set-pen-width";
+      action-name: "doc.pen-stroke";
       action-target: "10.";
       tooltip-text: _("Very Thick");
 
@@ -1335,7 +1335,7 @@ Popover eraser_radius_popover {
 
     ToggleButton {
       icon-name: "stroke-0-symbolic";
-      action-name: "doc.set-eraser-width";
+      action-name: "doc.eraser-radius";
       action-target: "1.";
       tooltip-text: _("Thin");
 
@@ -1347,7 +1347,7 @@ Popover eraser_radius_popover {
 
     ToggleButton {
       icon-name: "stroke-1-symbolic";
-      action-name: "doc.set-eraser-width";
+      action-name: "doc.eraser-radius";
       action-target: "3.";
       tooltip-text: _("Medium");
 
@@ -1359,7 +1359,7 @@ Popover eraser_radius_popover {
 
     ToggleButton {
       icon-name: "stroke-2-symbolic";
-      action-name: "doc.set-eraser-width";
+      action-name: "doc.eraser-radius";
       action-target: "5.";
       tooltip-text: _("Thick");
 
@@ -1371,7 +1371,7 @@ Popover eraser_radius_popover {
 
     ToggleButton {
       icon-name: "stroke-3-symbolic";
-      action-name: "doc.set-eraser-width";
+      action-name: "doc.eraser-radius";
       action-target: "10.";
       tooltip-text: _("Very Thick");
 
@@ -1387,13 +1387,13 @@ menu eraser-settings-menu {
   section {
     item {
       label: _("Erase Ink");
-      action: "doc.set-eraser-objects";
+      action: "doc.eraser-mode-objects";
       target: "false";
     }
 
     item {
       label: _("Erase Whole Strokes");
-      action: "doc.set-eraser-objects";
+      action: "doc.eraser-mode-objects";
       target: "true";
     }
   }

@@ -598,7 +598,7 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
-            gio::ActionEntryBuilder::new("set-eraser-width")
+            gio::ActionEntryBuilder::new("eraser-radius")
                 .parameter_type(Some(glib::VariantTy::DOUBLE))
                 .state((5.).into())
                 .change_state(glib::clone!(
@@ -610,7 +610,7 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
-            gio::ActionEntryBuilder::new("set-pen-width")
+            gio::ActionEntryBuilder::new("pen-stroke")
                 .parameter_type(Some(glib::VariantTy::DOUBLE))
                 .state((1.).into())
                 .change_state(glib::clone!(
@@ -622,7 +622,7 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
-            gio::ActionEntryBuilder::new("set-highlight-width")
+            gio::ActionEntryBuilder::new("highlight-stroke")
                 .parameter_type(Some(glib::VariantTy::DOUBLE))
                 .state((5.).into())
                 .change_state(glib::clone!(
@@ -634,7 +634,7 @@ impl imp::PpsDocumentView {
                     }
                 ))
                 .build(),
-            gio::ActionEntryBuilder::new("set-eraser-objects")
+            gio::ActionEntryBuilder::new("eraser-mode-objects")
                 // blueprint does not support non-string target, see https://gitlab.gnome.org/GNOME/blueprint-compiler/-/issues/137, so using string instead of bool for now
                 .parameter_type(Some(glib::VariantTy::STRING))
                 .state("true".into())
@@ -656,7 +656,7 @@ impl imp::PpsDocumentView {
                     #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
-                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.cmd_pen_color_state(action, AnnotationTool::Pencil, state.unwrap());
                         obj.pencil_color_popover.popdown();
                     }
                 ))
@@ -668,7 +668,7 @@ impl imp::PpsDocumentView {
                     #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
-                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.cmd_pen_color_state(action, AnnotationTool::Highlight, state.unwrap());
                         obj.highlight_color_popover.popdown();
                     }
                 ))
@@ -680,7 +680,7 @@ impl imp::PpsDocumentView {
                     #[weak(rename_to = obj)]
                     self,
                     move |_, action, state| {
-                        obj.cmd_pen_color_state(action, state.unwrap());
+                        obj.cmd_pen_color_state(action, AnnotationTool::Text, state.unwrap());
                         obj.text_color_popover.popdown();
                     }
                 ))
@@ -1228,7 +1228,12 @@ impl imp::PpsDocumentView {
         action.set_state(state);
     }
 
-    pub fn cmd_pen_color_state(&self, action: &gio::SimpleAction, state: &glib::Variant) {
+    pub fn cmd_pen_color_state(
+        &self,
+        action: &gio::SimpleAction,
+        tool: AnnotationTool,
+        state: &glib::Variant,
+    ) {
         let annotation_model = self.model.annotation_model().unwrap();
         let color = state.get::<String>().unwrap();
         let mut rgba = match color.as_str() {
@@ -1242,7 +1247,7 @@ impl imp::PpsDocumentView {
             _ => panic!("Unexpected color"),
         };
 
-        match annotation_model.tool() {
+        match tool {
             AnnotationTool::Pencil => annotation_model.set_pen_color(&rgba),
             AnnotationTool::Highlight => {
                 rgba.set_alpha(0.7);

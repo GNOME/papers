@@ -413,14 +413,21 @@ mod imp {
                 .default_settings
                 .set_boolean("show-sidebar", self.split_view.shows_sidebar());
 
-            let annot_color = self
-                .document_action_group
-                .action_state("annot-color")
-                .unwrap();
+            let annot_keys = vec![
+                "annot-color",
+                "pen-color",
+                "pen-stroke",
+                "highlight-stroke",
+                "highlight-color",
+                "text-color",
+                "eraser-mode-objects",
+            ];
 
-            let _ = self
-                .default_settings
-                .set_string("annot-color", annot_color.str().unwrap_or_default());
+            for key in annot_keys {
+                let action_value = self.document_action_group.action_state(key).unwrap();
+
+                let _ = self.default_settings.set_value(key, &action_value);
+            }
 
             if cfg!(feature = "spell-check") {
                 let _ = self
@@ -678,10 +685,21 @@ mod imp {
                 self.document_action_group
                     .change_action_state("show-sidebar", &show_sidebar.into());
             }
+            let annot_keys = vec![
+                "annot-color",
+                "pen-color",
+                "pen-stroke",
+                "highlight-stroke",
+                "highlight-color",
+                "text-color",
+                "eraser-mode-objects",
+            ];
 
-            let annot_color = settings.string("annot-color");
-            self.document_action_group
-                .change_action_state("annot-color", &annot_color.as_str().into());
+            for key in annot_keys {
+                let setting_value = settings.value(key);
+                self.document_action_group
+                    .change_action_state(key, &setting_value);
+            }
 
             // document model
             self.model.set_continuous(settings.boolean("continuous"));
