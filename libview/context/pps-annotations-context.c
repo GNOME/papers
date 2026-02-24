@@ -696,21 +696,26 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 	case PPS_ANNOTATION_TYPE_FREE_TEXT: {
 		GdkRGBA transparent = { 0, 0, 0, 0. };
 		g_autoptr (PangoFontDescription) font;
-
-		doc_rect.x1 = start->x;
-		doc_rect.y1 = start->y;
-		doc_rect.x2 = start->x + 100;
-		doc_rect.y2 = start->y + 12 * 1.5;
-
-		annot = pps_annotation_free_text_new (page);
+		gdouble font_size = 12.;
 
 		if (!user_data) {
 			font = pango_font_description_new ();
 			pango_font_description_set_family (font, "Liberation Sans");
-			pango_font_description_set_size (font, 12 * PANGO_SCALE);
+			pango_font_description_set_size (font, font_size * PANGO_SCALE);
 		} else {
 			font = pango_font_description_copy ((PangoFontDescription *) user_data);
+			font_size = (double) pango_font_description_get_size (font) / PANGO_SCALE;
 		}
+
+		doc_rect.x1 = start->x;
+		doc_rect.y1 = start->y;
+		doc_rect.x2 = start->x + 2;
+		/* Ideally we should call pps_annotation_free_text_autoresize but
+		we don't have a PangoContext here */
+		doc_rect.y2 = start->y + font_size * 1.4;
+
+		annot = pps_annotation_free_text_new (page);
+
 		pps_annotation_free_text_set_font_description (PPS_ANNOTATION_FREE_TEXT (annot), font);
 
 		pps_annotation_free_text_set_font_rgba (PPS_ANNOTATION_FREE_TEXT (annot), color);

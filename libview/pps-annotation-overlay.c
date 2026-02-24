@@ -754,7 +754,6 @@ pps_overlay_annotation_entry_constructor (GType type,
 	}
 
 	g_signal_connect (buffer, "changed", G_CALLBACK (pps_overlay_annotation_entry_text_changed), entry);
-	pps_overlay_annotation_entry_resize (annot, NULL, entry); // perform an initial autoresize (useful if the free text annot was edited with another software)
 
 	return object;
 }
