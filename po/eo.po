@@ -14,30 +14,30 @@
 # Baptiste DARTHENAY <baptiste+ecrevisse@darthenay.fr>, 2014.
 # Daniel PUENTES <blatberk@openmailbox.org>, 2015.
 # Carmen Bianca BAKKER <carmen@carmenbianca.eu>, 2018-2020.
-# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010-2025.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-09-15 12:00+0000\n"
-"PO-Revision-Date: 2025-09-17 20:34+0200\n"
+"POT-Creation-Date: 2026-02-20 23:15+0000\n"
+"PO-Revision-Date: 2026-02-26 21:36+0100\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:396
 msgid "Document Viewer"
 msgstr "Dokumentmontrilo"
 
@@ -242,52 +242,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Aldonas subtenon por legi PDF-dokumentojn"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:737
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Jes"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Ne"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:853
 msgid "Type 1"
 msgstr "Tipo 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:855
 msgid "Type 1C"
 msgstr "Tipo 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 3"
 msgstr "Tipo 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "TrueType"
 msgstr "Trutajpa"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 1 (CID)"
 msgstr "Tipo 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "Type 1C (CID)"
 msgstr "Tipo 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "TrueType (CID)"
 msgstr "Trutajpa (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Unknown font type"
 msgstr "Nekonata tipo de tiparo"
 
-#: libdocument/backend/pdf/pps-poppler.c:915
+#: libdocument/backend/pdf/pps-poppler.c:911
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -298,11 +298,11 @@ msgstr ""
 "sama kiel la tiparoj uzitaj por krei na PDF, tiam la bildigo eble ne estas "
 "ĝusta."
 
-#: libdocument/backend/pdf/pps-poppler.c:920
+#: libdocument/backend/pdf/pps-poppler.c:916
 msgid "All fonts are either standard or embedded."
 msgstr "Ĉiuj tiparoj estas normaj aŭ enkorpigitaj."
 
-#: libdocument/backend/pdf/pps-poppler.c:956
+#: libdocument/backend/pdf/pps-poppler.c:952
 msgid "No name"
 msgstr "Neniu nomo"
 
@@ -310,21 +310,21 @@ msgstr "Neniu nomo"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Neniu"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded subset"
 msgstr "Enkorpigita subaro"
 
-#: libdocument/backend/pdf/pps-poppler.c:975
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Embedded"
 msgstr "Enkorpigite"
 
-#: libdocument/backend/pdf/pps-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Not embedded"
 msgstr "Ne enkorpigite"
 
@@ -333,7 +333,7 @@ msgstr "Ne enkorpigite"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:980
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Unu el la Normaj 14 Tiparoj)"
 
@@ -342,7 +342,7 @@ msgstr " (Unu el la Normaj 14 Tiparoj)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:987
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ne unu el la Normaj 14 Tiparoj)"
 
@@ -356,7 +356,7 @@ msgstr " (Ne unu el la Normaj 14 Tiparoj)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1010
+#: libdocument/backend/pdf/pps-poppler.c:1006
 #, c-format
 msgid ""
 "%s%s\n"
@@ -380,7 +380,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1028
+#: libdocument/backend/pdf/pps-poppler.c:1024
 #, c-format
 msgid ""
 "%s%s\n"
@@ -404,17 +404,17 @@ msgstr "Aldonas subtenon por legi TIFF-dokumentojn"
 msgid "Invalid document"
 msgstr "Nevalida dokumento"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Ne eblis konservi aldonaĵon “%s”: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Ne eblis malfermi aldonaĵon “%s”: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Ne eblis malfermi aldonaĵon “%s”"
@@ -481,8 +481,7 @@ msgstr "Nekonata MIME-tipo"
 msgid "This work is in the Public Domain"
 msgstr "Tiu ĉi verko estas publika havaĵo"
 
-#: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Konservi aldonaĵon"
@@ -493,7 +492,8 @@ msgstr[1] "Konservi aldonaĵojn"
 msgid "Page %s"
 msgstr "Paĝo %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:239
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Redakti noton"
 
@@ -551,8 +551,8 @@ msgstr "Via elektita prestasko ne enhavas paĝojn"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "_Fermi"
 
@@ -633,51 +633,51 @@ msgstr "Se ĝi estas ebligita, rando estos desegnita ĉirkaŭ ĉiu paĝo."
 msgid "Page Handling"
 msgstr "Paĝtraktado"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2119
 msgid "Go to first page"
 msgstr "Iri al la unua paĝo"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2121
 msgid "Go to previous page"
 msgstr "Iri al la antaŭa paĝo"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2123
 msgid "Go to next page"
 msgstr "Iri al la sekva paĝo"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2125
 msgid "Go to last page"
 msgstr "Iri al la lasta paĝo"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2127
 msgid "Go to page"
 msgstr "Iri al paĝo"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2129
 msgid "Find"
 msgstr "Serĉi"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to page %s"
 msgstr "Iri al paĝo %s"
 
-#: libview/pps-view.c:2154
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Iri al %s en dosiero “%s”"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Iri al dosiero “%s”"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Launch %s"
 msgstr "Lanĉi %s"
 
-#: libview/pps-view.c:2172
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Reset form"
 msgstr "Restarigi formularon"
@@ -745,7 +745,6 @@ msgid "GNOME Document Previewer"
 msgstr "Dokument-antaŭrigardilo de GNOMEo"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Paperoj Dokumentmontrilo"
 
@@ -754,8 +753,8 @@ msgstr "Paperoj Dokumentmontrilo"
 msgid "The selected printer “%s” could not be found"
 msgstr "La elektita presilo “%s” ne povas esti trovita"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Paperoj"
 
@@ -768,7 +767,7 @@ msgid "Next Page"
 msgstr "Sekva paĝo"
 
 #: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:210
+#: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Paĝnombro"
 
@@ -781,7 +780,7 @@ msgid "Print This Document"
 msgstr "Presi ĉi tiun dokumenton"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:287
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Malzomi"
 
@@ -790,21 +789,21 @@ msgid "Normal Size"
 msgstr "Normala grando"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:275
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Zomi"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Malsukcesis presi dokumenton"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Nekonate"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Ecoj de dokumento"
 
@@ -931,6 +930,7 @@ msgid "_Markup Type"
 msgstr "_Markada tipo"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "Emfazi"
 
@@ -959,59 +959,99 @@ msgid "Pop up note while scrolling the document"
 msgstr "Ŝprucigi noton dum rulumado de la dokumento"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:76
+#: shell/resources/pps-document-view.blp:78
 msgid "Search"
 msgstr "Serĉi"
 
-#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Ĉefa menuo"
 
-#: shell/resources/pps-document-view.blp:110
+#: shell/resources/pps-document-view.blp:112
 msgid "Thumbnails"
 msgstr "Miniaturoj"
 
-#: shell/resources/pps-document-view.blp:121
+#: shell/resources/pps-document-view.blp:123
 msgid "Outline"
 msgstr "Enhavo"
 
-#: shell/resources/pps-document-view.blp:133
+#: shell/resources/pps-document-view.blp:135
 msgid "Annotations"
 msgstr "Notoj"
 
-#: shell/resources/pps-document-view.blp:151
+#: shell/resources/pps-document-view.blp:153
 msgid "Attachments"
 msgstr "Aldonaĵoj"
 
-#: shell/resources/pps-document-view.blp:167
+#: shell/resources/pps-document-view.blp:169
 msgid "Layers"
 msgstr "Tavoloj"
 
-#: shell/resources/pps-document-view.blp:197
+#: shell/resources/pps-document-view.blp:199
 msgid "Toggle Sidebar"
 msgstr "Baskuligi flankan breton"
 
-#: shell/resources/pps-document-view.blp:203
+#: shell/resources/pps-document-view.blp:205
 msgid "Document Menu"
 msgstr "Dokumentmenuo"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:225
 msgid "Document has been digitally signed."
 msgstr "La dokumento estas cifere subskribita."
 
-#: shell/resources/pps-document-view.blp:224
+#: shell/resources/pps-document-view.blp:226
 msgid "View Signature…"
 msgstr "Vidi subskribon…"
 
-#: shell/resources/pps-document-view.blp:257
+#: shell/resources/pps-document-view.blp:259
 msgid "Fit Automatically"
 msgstr "Adapti aŭtomate"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "Elekti koloron"
+
+#: shell/resources/pps-document-view.blp:362
+#| msgid "Print settings file"
+msgid "Font Settings"
+msgstr "Agordoj de tiparo"
+
+#: shell/resources/pps-document-view.blp:430
+#| msgid "Paper Size"
+msgid "Pencil Size"
+msgstr "Grandeco de krajono"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "Ŝanĝi radinon de la gumo"
+
+#: shell/resources/pps-document-view.blp:475
+#| msgid "Insert"
+msgid "Insert Text"
+msgstr "Enmeti tekston"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "Desegni"
+
+#: shell/resources/pps-document-view.blp:493
+#| msgid "Annotations"
+msgid "Erase Annotations"
+msgstr "Forviŝi notojn"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+#| msgid "Loading Document"
+msgid "Edit Document"
+msgstr "Redakti dokumenton"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "Elekto tro malgranda"
 
-#: shell/resources/pps-document-view.blp:530
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1021,19 +1061,19 @@ msgstr ""
 "krei potencial pli legeblan subskribon, premu `Rekomenci` kaj desegnu pli "
 "grandan rektangulon."
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "Rekomenci"
 
-#: shell/resources/pps-document-view.blp:538
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "_Subskribi"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "Ĉu ĉesigi presadon?"
 
-#: shell/resources/pps-document-view.blp:546
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1041,164 +1081,246 @@ msgstr ""
 "Estas unu aŭ pli da aktivaj presadtaskoj. Se la fenestro estos fermita, "
 "okazontaj presadtaskoj ne estos presotaj."
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "Ĉesigi _presadon kaj fermi"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Nuligi"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "Fermi _post presado"
 
-#: shell/resources/pps-document-view.blp:567
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "Malfermi…"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "No_kta reĝimo"
 
-#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavkombinoj"
 
-#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Helpo"
 
-#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Pri Dokumentmontrilo"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "_Presi…"
 
-#: shell/resources/pps-document-view.blp:605
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "Tutekrana reĝimo"
 
-#: shell/resources/pps-document-view.blp:610
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "Prezenti kiel lumbildan prezenton"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "Subskribi _cifere…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "Malfermi _kopion"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Malfermi per…"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "Kon_servi kiel…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "_Kontinue"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "_Duale"
 
-#: shell/resources/pps-document-view.blp:651
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "_Malpara paĝoj maldekstre"
 
-#: shell/resources/pps-document-view.blp:656
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "De dekstre maldekstren-dokumento"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "_Turni ⤵"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "Ecoj de dokum_ento"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "Nigra"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "Oranĝa"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+#| msgid "Reload"
+msgid "Red"
+msgstr "Ruĝa"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "Purpura"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "Blua"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "Verda"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "Flava"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "Maldika"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "Meza"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "Dika"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "Tre dika"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "Forviŝi inkon"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "Forviŝi tutajn streketojn"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:708
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "Emfazi (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:724
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "Trastreki (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:740
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "Substreki (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:756
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "Zigzageta (q)"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "Malfermi la ligil_on"
 
-#: shell/resources/pps-document-view.blp:853
+#: shell/resources/pps-document-view.blp:1579
+msgid "Send an Email"
+msgstr "Sendi retpoŝton"
+
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "_Kopii la ligiladreson"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:1591
+#| msgid "_Copy Link Address"
+msgid "Copy Email Address"
+msgstr "Kopii retpoŝtadreson"
+
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "_Iri al"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "Malfermi en nova _fenestro"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "_Kopii"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "_Elekti ĉiujn"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "Kon_servi la bildon kiel…"
 
-#: shell/resources/pps-document-view.blp:891
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "Kopii la _bildon"
 
-#: shell/resources/pps-document-view.blp:899
-#: shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:1637
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Malfermi aldonaĵon"
 
-#: shell/resources/pps-document-view.blp:905
-#: shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:1643
+#: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "Kon_servi aldonaĵon kiel…"
 
-#: shell/resources/pps-document-view.blp:915
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "Notaj e_coj…"
 
-#: shell/resources/pps-document-view.blp:921
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "F_origi noton"
 
-#: shell/resources/pps-document-view.blp:929
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "_Aldoni tekstnoton"
 
@@ -1222,13 +1344,13 @@ msgstr "La serĉrezultoj aperos ĉi tie"
 msgid "Loading Document"
 msgstr "Ŝargante dokumenton"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "N_uligi"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "Pasvorto necesas"
 
@@ -1311,15 +1433,15 @@ msgstr "_Subskriboj"
 msgid "Search in document"
 msgstr "Serĉi en dokumento"
 
-#: shell/resources/pps-search-box.blp:38
+#: shell/resources/pps-search-box.blp:45
 msgid "Search Options"
 msgstr "Serĉaj opcioj"
 
-#: shell/resources/pps-search-box.blp:46
+#: shell/resources/pps-search-box.blp:53
 msgid "_Whole Words Only"
 msgstr "_Tutaj vortoj sole"
 
-#: shell/resources/pps-search-box.blp:51
+#: shell/resources/pps-search-box.blp:58
 msgid "C_ase Sensitive"
 msgstr "Us_klecodistinga"
 
@@ -1578,67 +1700,73 @@ msgctxt "shortcut window"
 msgid "Underline Text"
 msgstr "Substreki tekston"
 
-#: shell/resources/pps-shortcuts-dialog.blp:255
+#: shell/resources/pps-shortcuts-dialog.blp:254
+#| msgid "Digital signature is invalid"
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "Cifereca subskribo"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Serĉo"
 
-#: shell/resources/pps-shortcuts-dialog.blp:258
+#: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Trovi"
 
-#: shell/resources/pps-shortcuts-dialog.blp:263
+#: shell/resources/pps-shortcuts-dialog.blp:269
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "Trovi sekvan"
 
-#: shell/resources/pps-shortcuts-dialog.blp:268
+#: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "Trovi antaŭan"
 
-#: shell/resources/pps-shortcuts-dialog.blp:274
+#: shell/resources/pps-shortcuts-dialog.blp:280
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Ĝenerala"
 
-#: shell/resources/pps-shortcuts-dialog.blp:277
+#: shell/resources/pps-shortcuts-dialog.blp:283
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "Helpo"
 
-#: shell/resources/pps-shortcuts-dialog.blp:282
+#: shell/resources/pps-shortcuts-dialog.blp:288
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "Menuo"
 
-#: shell/resources/pps-shortcuts-dialog.blp:287
+#: shell/resources/pps-shortcuts-dialog.blp:293
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Klavkombinoj"
 
-#: shell/resources/pps-shortcuts-dialog.blp:292
+#: shell/resources/pps-shortcuts-dialog.blp:298
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nova fenestro"
 
-#: shell/resources/pps-shortcuts-dialog.blp:297
+#: shell/resources/pps-shortcuts-dialog.blp:303
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Fermi la fenestron"
 
-#: shell/resources/pps-shortcuts-dialog.blp:303
+#: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "Prezenta reĝimo"
 
-#: shell/resources/pps-shortcuts-dialog.blp:306
+#: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "Nigra ekrano"
 
-#: shell/resources/pps-shortcuts-dialog.blp:311
+#: shell/resources/pps-shortcuts-dialog.blp:317
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "Blanka ekrano"
@@ -1647,11 +1775,11 @@ msgstr "Blanka ekrano"
 msgid "No Annotations"
 msgstr "Neniuj notoj"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "Notaj ecoj"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "Forigi noton"
 
@@ -1716,131 +1844,127 @@ msgstr ""
 "William THEAKER\n"
 "Carmen Bianca BAKKER <carmen@carmenbianca.eu>"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:403
 msgid "The page label of the document to display."
 msgstr "La montrenda paĝetikedo de la dokumento."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:404
 msgid "PAGE"
 msgstr "PAĜO"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:412
 msgid "The page number of the document to display."
 msgstr "La montrenda paĝnumero de la dokumento."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:413
 msgid "NUMBER"
 msgstr "NUMERO"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:421
 msgid "Named destination to display."
 msgstr "Nomo de montrenda celloko."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:422
 msgid "DEST"
 msgstr "CELLOKO"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:430
 msgid "Run papers in fullscreen mode."
 msgstr "Ruli Paperojn tutekrane."
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:439
 msgid "Run papers in presentation mode."
 msgstr "Ruli Paperojn en prezenta reĝimo."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:448
 msgid "Show the version of the program."
 msgstr "Montri la version de la programo."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:458
 msgid "[FILE…]"
 msgstr "[DOSIERO…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "Montri detalojn"
 
-#: shell/src/document_view.rs:705
-msgid "Document contains new or modified annotations and form fields that have been filled out."
-msgstr "La dokumento enhavas novajn aŭ modifitajn notojn kaj plenigitajn formularajn kampojn."
+#: shell/src/document_view.rs:773
+msgid ""
+"Document contains new or modified annotations and form fields that have been "
+"filled out."
+msgstr ""
+"La dokumento enhavas novajn aŭ modifitajn notojn kaj plenigitajn formularajn "
+"kampojn."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumento enhavas formularajn plenigitajn kampojn."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "Dokomento enhavas novajn aŭ modifitajn notojn."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Se vi ne konservas kopion, ŝanĝoj daŭre perdiĝos."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "Ĉu konservi la ŝanĝojn en kopio?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "Fermi _sen konservi"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "_Konservi kopion"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "Konservi la bildon"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Ne eblas trovi taŭgan aranĝon per kiu konservi la bildon"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "Ne eblas konservi la bildon."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Kursor-navigada reĝimo nun estas enŝaltita, premu F7 por malŝalti."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Kursor-navigada reĝimo nun estas malŝaltita, premu F7 por enŝalti."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1193
+#| msgid "Close"
+msgid "Close Menu"
+msgstr "Fermi menuon"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "Malsukcesis malfermi la aldonaĵon"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "Ne eblis konservi la aldonaĵon."
+#: shell/src/document_view/actions.rs:1286
+#| msgid "Save Attachment"
+#| msgid_plural "Save Attachments"
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Konservi aldonaĵon"
 
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "Cifereca subskribo estas malvalida"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "La dokumento ne enhavas paĝojn"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "La dokumento enhavas nur malplenajn paĝojn"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Ne eblas konservi la dosieron kiel “{}”."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "Konservi kiel…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Desegni rektangulon por enmeti subskriban kampon"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:512
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1848,31 +1972,31 @@ msgstr ""
 "Ciferece subskribita de {}\n"
 "Dato: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "Atestilo bezonata"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "Elekti subskriban atestilon"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "Elekti"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "Atestilo estas bezonata por subskribi ĉi tiun dokumenton"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "Konservi subskribitan dosieron"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:714
 msgid "Please enter password for {}"
 msgstr "Bonvolu enigi la pasvorton por {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "_Ensaluti"
 
@@ -1881,19 +2005,25 @@ msgstr "_Ensaluti"
 msgid "Printing job “{}”"
 msgstr "Prestasko “{}”"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "Neniuj taskoj en la atendovico"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Malsukcesis malfermi eksteran ligilon"
+#: shell/src/document_view/print.rs:88
+#| msgid "No pending jobs in queue"
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} atendanta tasko en la atendovico"
+msgstr[1] "{} atendantaj taskoj en la atendovico"
 
-#: shell/src/document_view/signals.rs:254
-msgid "Security alert: this document has been prevented from opening the file “{}”"
-msgstr "Sekureca atentigo: ĉi tiu dokumento estis malhelpita malfermi la dosieron “{}”"
+#: shell/src/document_view/signals.rs:257
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+"Sekureca atentigo: ĉi tiu dokumento estis malhelpita malfermi la dosieron "
+"“{}”"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Paĝo {}"
@@ -1901,18 +2031,21 @@ msgstr "Paĝo {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} el {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
 msgid "of {}"
 msgstr "el {}"
 
-#: shell/src/password_view.rs:145
-msgid "The document “{}” is locked and requires a password before it can be opened"
-msgstr "La dokumento “{}” estas ŝlosita kaj bezonas pasvorton antaŭ ol ĝi povas esti malfermita"
+#: shell/src/password_view.rs:146
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr ""
+"La dokumento “{}” estas ŝlosita kaj bezonas pasvorton antaŭ ol ĝi povas esti "
+"malfermita"
 
 #: shell/src/properties_general.rs:50
 msgid "Copy to Clipboard"
@@ -1946,90 +2079,84 @@ msgstr "Enhavo"
 msgid "Date &amp; Time"
 msgstr "Dato &amp; horo"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Subskribita de"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Subskribo estas valida."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Subskribo estas malvalida."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "La dokumento estis ŝanĝita post subskribo."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Ne eblas malkodi la subskribon."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Eraro pri subskriboverifado."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Subskribita per atestilo eldonita de fidinda eldonanto."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Subskribita per atestilo eldonita de nefidinda eldonanto."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Subskribita per atestilo eldonita de nekonata eldonanto."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Subskribita per revokita atestilo."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Subskribita per eksvalidiĝinta atestilo."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Eraro pri atestiloverifado."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "Atestilo ne estis kontrolita."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Organizaĵo"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Dato kaj horo"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Atestila eldonanto"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "Retpoŝto de atestila eldonanto"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Organizo de atestila eldonanto"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Eldona tempo de atestilo"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Eksvalidiĝa tempo de atestilo"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Kaŝi detalojn…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "Ne eblas trovi taŭgan aranĝon per kiu konservi la bildon"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "Ne eblas konservi la bildon."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "Ne eblis konservi la aldonaĵon."
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "Ne eblas konservi la dosieron kiel “{}”."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "Malsukcesis malfermi eksteran ligilon"
+
+#~ msgid "Signed by"
+#~ msgstr "Subskribita de"
+
+#~ msgid "Signature is valid."
+#~ msgstr "Subskribo estas valida."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "Subskribo estas malvalida."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "La dokumento estis ŝanĝita post subskribo."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "Ne eblas malkodi la subskribon."
+
+#~ msgid "Signature verification error."
+#~ msgstr "Eraro pri subskriboverifado."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "Subskribita per atestilo eldonita de fidinda eldonanto."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "Subskribita per atestilo eldonita de nefidinda eldonanto."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "Subskribita per atestilo eldonita de nekonata eldonanto."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "Subskribita per revokita atestilo."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "Subskribita per eksvalidiĝinta atestilo."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "Eraro pri atestiloverifado."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "Atestilo ne estis kontrolita."
+
+#~ msgid "Organization"
+#~ msgstr "Organizaĵo"
+
+#~ msgid "Date and Time"
+#~ msgstr "Dato kaj horo"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "Atestila eldonanto"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "Retpoŝto de atestila eldonanto"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "Organizo de atestila eldonanto"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "Eldona tempo de atestilo"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "Eksvalidiĝa tempo de atestilo"
 
 #~ msgid "DVI document has incorrect format"
 #~ msgstr "La DVI-dokumento havas nekorektan strukturon"
@@ -2136,9 +2263,6 @@ msgstr "Kaŝi detalojn…"
 
 #~ msgid "Open"
 #~ msgstr "Malfermi"
-
-#~ msgid "Close"
-#~ msgstr "Fermi"
 
 #~ msgid "Note text"
 #~ msgstr "Nota teksto"
@@ -2631,9 +2755,6 @@ msgstr "Kaŝi detalojn…"
 #~ msgid "Select Page"
 #~ msgstr "Elekti paĝon"
 
-#~ msgid "Reload"
-#~ msgstr "Reŝargi"
-
 #~ msgid "_About"
 #~ msgstr "_Pri"
 
@@ -2666,9 +2787,6 @@ msgstr "Kaŝi detalojn…"
 
 #~ msgid "Substituting with"
 #~ msgstr "Anstataŭigi per"
-
-#~ msgid "Print settings file"
-#~ msgstr "Dosiero de la presagordoj"
 
 #~ msgid "Find options"
 #~ msgstr "Serĉaj opcioj"
