@@ -1313,7 +1313,7 @@ pps_pixbuf_cache_rendered_state (PpsPixbufCache *pixbuf_cache, gint page)
 
 	job_info = find_job_cache (pixbuf_cache, page);
 	if (job_info == NULL)
-		return PPS_ANNOTATION_EDITING_STATE_NONE;
+		return PPS_RENDER_ANNOTS_NONE;
 
 	return job_info->annot_flags;
 }
