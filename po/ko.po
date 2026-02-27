@@ -8,7 +8,7 @@
 #
 # This translation is derivered from the evince documentation viewer.
 #
-# Seong-ho Cho <shcho@gnome.org>, 2024, 2025.
+# Seong-ho Cho <shcho@gnome.org>, 2024-2026.
 #
 # 새로 번역하시는 분은 아래 translator-credits에 추가해 주세요.
 #
@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-09-05 20:35+0000\n"
-"PO-Revision-Date: 2025-09-07 18:19+0900\n"
+"POT-Creation-Date: 2026-02-20 23:15+0000\n"
+"PO-Revision-Date: 2026-02-25 01:11+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -38,9 +38,9 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:85
+#: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:396
 msgid "Document Viewer"
 msgstr "문서 보기"
 
@@ -240,52 +240,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "PDF 문서를 읽는 기능을 추가합니다"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:737
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "예"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:743
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "아니요"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:853
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:855
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:857
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:859
 msgid "TrueType"
 msgstr "트루타입"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:861
 msgid "Type 1 (CID)"
 msgstr "Type 1(CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:863
 msgid "Type 1C (CID)"
 msgstr "Type 1C(CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:869
+#: libdocument/backend/pdf/pps-poppler.c:865
 msgid "TrueType (CID)"
 msgstr "트루타입(CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:871
+#: libdocument/backend/pdf/pps-poppler.c:867
 msgid "Unknown font type"
 msgstr "알 수 없는 글꼴 형식"
 
-#: libdocument/backend/pdf/pps-poppler.c:915
+#: libdocument/backend/pdf/pps-poppler.c:911
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -294,11 +294,11 @@ msgstr ""
 "PDF 표준 글꼴 14개가 아닌 외부 글꼴이 들어 있습니다. fontconfig에서 선택한 대"
 "체 글꼴이 PDF를 만들 때 사용한 글꼴과 다르면 렌더링이 틀릴 수도 있습니다."
 
-#: libdocument/backend/pdf/pps-poppler.c:920
+#: libdocument/backend/pdf/pps-poppler.c:916
 msgid "All fonts are either standard or embedded."
 msgstr "모든 글꼴이 표준 글꼴이거나 내장입니다."
 
-#: libdocument/backend/pdf/pps-poppler.c:956
+#: libdocument/backend/pdf/pps-poppler.c:952
 msgid "No name"
 msgstr "이름 없음"
 
@@ -306,21 +306,21 @@ msgstr "이름 없음"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
+#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "없음"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded subset"
 msgstr "포함된 서브셋"
 
-#: libdocument/backend/pdf/pps-poppler.c:975
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Embedded"
 msgstr "포함됨"
 
-#: libdocument/backend/pdf/pps-poppler.c:977
+#: libdocument/backend/pdf/pps-poppler.c:973
 msgid "Not embedded"
 msgstr "포함되지 않음"
 
@@ -329,7 +329,7 @@ msgstr "포함되지 않음"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:984
+#: libdocument/backend/pdf/pps-poppler.c:980
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (표준 글꼴 14개 중 하나)"
 
@@ -338,7 +338,7 @@ msgstr " (표준 글꼴 14개 중 하나)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:991
+#: libdocument/backend/pdf/pps-poppler.c:987
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (표준 글꼴 14개 중 하나가 아님)"
 
@@ -352,7 +352,7 @@ msgstr " (표준 글꼴 14개 중 하나가 아님)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1010
+#: libdocument/backend/pdf/pps-poppler.c:1006
 #, c-format
 msgid ""
 "%s%s\n"
@@ -376,7 +376,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1028
+#: libdocument/backend/pdf/pps-poppler.c:1024
 #, c-format
 msgid ""
 "%s%s\n"
@@ -400,17 +400,17 @@ msgstr "TIFF 문서를 읽는 기능을 추가합니다"
 msgid "Invalid document"
 msgstr "잘못된 문서"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "“%s” 첨부를 저장할 수 없습니다: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "“%s” 첨부를 열 수 없습니다: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "“%s” 첨부를 열 수 없습니다"
@@ -477,8 +477,7 @@ msgstr "알 수 없는 MIME 형식"
 msgid "This work is in the Public Domain"
 msgstr "이 문서는 퍼블릭 도메인입니다"
 
-#: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "첨부 저장"
@@ -488,7 +487,8 @@ msgstr[0] "첨부 저장"
 msgid "Page %s"
 msgstr "페이지 %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:239
+#: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "메모 편집"
 
@@ -546,8 +546,8 @@ msgstr "인쇄 범위 선택 안에 아무 페이지도 없습니다"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "닫기(_C)"
 
@@ -626,51 +626,51 @@ msgstr "참이면, 각 페이지 주위에 테두리를 그립니다."
 msgid "Page Handling"
 msgstr "페이지 처리"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2119
 msgid "Go to first page"
 msgstr "첫 페이지로 이동합니다"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2121
 msgid "Go to previous page"
 msgstr "이전 페이지로 이동합니다"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2123
 msgid "Go to next page"
 msgstr "다음 페이지로 이동합니다"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2125
 msgid "Go to last page"
 msgstr "마지막 페이지로 이동합니다"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2127
 msgid "Go to page"
 msgstr "지정한 페이지로 이동"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2129
 msgid "Find"
 msgstr "찾기"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to page %s"
 msgstr "%s 페이지로 이동"
 
-#: libview/pps-view.c:2154
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "“%2$s” 파일의 %1$s(으)로 이동"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Go to file “%s”"
 msgstr "“%s” 파일로 이동"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Launch %s"
 msgstr "%s 실행"
 
-#: libview/pps-view.c:2172
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Reset form"
 msgstr "양식 다시 설정"
@@ -741,7 +741,6 @@ msgid "GNOME Document Previewer"
 msgstr "그놈 문서 미리 보기"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "페이퍼 문서 보기"
 
@@ -750,8 +749,8 @@ msgstr "페이퍼 문서 보기"
 msgid "The selected printer “%s” could not be found"
 msgstr "선택한 “%s” 프린터가 없습니다"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "페이퍼"
 
@@ -764,7 +763,7 @@ msgid "Next Page"
 msgstr "다음 페이지"
 
 #: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:210
+#: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "페이지 수"
 
@@ -777,7 +776,7 @@ msgid "Print This Document"
 msgstr "이 문서 인쇄"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:287
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "축소"
 
@@ -786,21 +785,21 @@ msgid "Normal Size"
 msgstr "일반 크기"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:275
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "확대"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "문서 인쇄에 실패했습니다"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "문서 속성"
 
@@ -927,6 +926,7 @@ msgid "_Markup Type"
 msgstr "마크업 종류(_M)"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "강조"
 
@@ -956,59 +956,94 @@ msgid "Pop up note while scrolling the document"
 msgstr "문서를 스크롤 하면 메모 표시"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:76
+#: shell/resources/pps-document-view.blp:78
 msgid "Search"
 msgstr "검색"
 
-#: shell/resources/pps-document-view.blp:91 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "주 메뉴"
 
-#: shell/resources/pps-document-view.blp:110
+#: shell/resources/pps-document-view.blp:112
 msgid "Thumbnails"
 msgstr "미리 보기"
 
-#: shell/resources/pps-document-view.blp:121
+#: shell/resources/pps-document-view.blp:123
 msgid "Outline"
 msgstr "문서요약"
 
-#: shell/resources/pps-document-view.blp:133
+#: shell/resources/pps-document-view.blp:135
 msgid "Annotations"
 msgstr "주석"
 
-#: shell/resources/pps-document-view.blp:151
+#: shell/resources/pps-document-view.blp:153
 msgid "Attachments"
 msgstr "첨부"
 
-#: shell/resources/pps-document-view.blp:167
+#: shell/resources/pps-document-view.blp:169
 msgid "Layers"
 msgstr "레이어"
 
-#: shell/resources/pps-document-view.blp:197
+#: shell/resources/pps-document-view.blp:199
 msgid "Toggle Sidebar"
 msgstr "가장 자리 창 표시 전환"
 
-#: shell/resources/pps-document-view.blp:203
+#: shell/resources/pps-document-view.blp:205
 msgid "Document Menu"
 msgstr "문서 메뉴"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:225
 msgid "Document has been digitally signed."
 msgstr "문서를 디지털 서명했습니다."
 
-#: shell/resources/pps-document-view.blp:224
+#: shell/resources/pps-document-view.blp:226
 msgid "View Signature…"
 msgstr "서명 보기…"
 
-#: shell/resources/pps-document-view.blp:257
+#: shell/resources/pps-document-view.blp:259
 msgid "Fit Automatically"
 msgstr "자동으로 맞춤"
 
-#: shell/resources/pps-document-view.blp:529
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "색상 선택"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "글꼴 설정"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "연필 굵기"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "지우개 반경 변경"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "텍스트 입력"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "그리기"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "주석 제거"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "문서 편집"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "선택 영역이 너무 작습니다"
 
-#: shell/resources/pps-document-view.blp:530
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1017,19 +1052,19 @@ msgstr ""
 "이 크기의 서명은 너무 작아서 읽기 힘듧니다. 더 읽기 쉬운 서명을 만들려면, `시"
 "작하기`를 누른 후 더 큰 사각형을 그려넣으십시오."
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "시작하기(_O)"
 
-#: shell/resources/pps-document-view.blp:538
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "서명(_S)"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "인쇄를 취소하시겠습니까?"
 
-#: shell/resources/pps-document-view.blp:546
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1037,164 +1072,244 @@ msgstr ""
 "하나 이상의 활성 인쇄 작업이 있습니다. 창을 닫으면, 대기 중이 인쇄 작업은 처"
 "리하지 않습니다."
 
-#: shell/resources/pps-document-view.blp:550
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "인쇄 취소 및 닫기(_P)"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "인쇄 후 닫기(_A)"
 
-#: shell/resources/pps-document-view.blp:567
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "열기…"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "야간 모드(_G)"
 
-#: shell/resources/pps-document-view.blp:581 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: shell/resources/pps-document-view.blp:586 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "문서 보기 정보(_A)"
 
-#: shell/resources/pps-document-view.blp:600
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "인쇄(_P)…"
 
-#: shell/resources/pps-document-view.blp:605
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "전체 화면"
 
-#: shell/resources/pps-document-view.blp:610
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "슬라이드 쇼로 나타내기"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "디지털 서명(_I)…"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "복사물 열기(_O)"
 
-#: shell/resources/pps-document-view.blp:629
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "다음으로 열기…"
 
-#: shell/resources/pps-document-view.blp:634
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "다른 이름으로 저장(_S)…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "연속(_C)"
 
-#: shell/resources/pps-document-view.blp:646
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "두 페이지씩(_D)"
 
-#: shell/resources/pps-document-view.blp:651
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "홀수 페이지를 왼쪽에(_O)"
 
-#: shell/resources/pps-document-view.blp:656
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "오른쪽에서 왼쪽으로 넘기기"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "⤵ 회전(_T)"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "문서 속성(_E)"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "검정"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "주황"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "빨강"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "자주"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "파랑"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "녹색"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "노랑"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "얇게"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "중간"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "두껍게"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "매우 두껍게"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "잉크 지우기"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "전체 선그림 지우기"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:708
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "강조 (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:724
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "취소선 (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:740
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "밑줄 (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:756
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "구불구불 (q)"
 
-#: shell/resources/pps-document-view.blp:847
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "링크 열기(_O)"
 
-#: shell/resources/pps-document-view.blp:853
+#: shell/resources/pps-document-view.blp:1579
+msgid "Send an Email"
+msgstr "전자메일 보내기"
+
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "링크 주소 복사(_C)"
 
-#: shell/resources/pps-document-view.blp:859
+#: shell/resources/pps-document-view.blp:1591
+msgid "Copy Email Address"
+msgstr "전자메일 주소 복사"
+
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "이동(_G)"
 
-#: shell/resources/pps-document-view.blp:865
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "새 창에서 열기(_W)"
 
-#: shell/resources/pps-document-view.blp:873
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "복사(_C)"
 
-#: shell/resources/pps-document-view.blp:878
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "모두 선택(_A)"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "다른 이름으로 그림 저장(_S)…"
 
-#: shell/resources/pps-document-view.blp:891
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "그림 복사(_I)"
 
-#: shell/resources/pps-document-view.blp:899
-#: shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:1637
+#: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "첨부 열기(_O)"
 
-#: shell/resources/pps-document-view.blp:905
-#: shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:1643
+#: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "다른 이름으로 첨부 저장(_S)…"
 
-#: shell/resources/pps-document-view.blp:915
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "주석 속성(_P)…"
 
-#: shell/resources/pps-document-view.blp:921
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "주석 제거(_E)"
 
-#: shell/resources/pps-document-view.blp:929
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "텍스트 주석 추가(_A)"
 
@@ -1218,13 +1333,13 @@ msgstr "검색 결과는 여기에 나타납니다"
 msgid "Loading Document"
 msgstr "문서 불러오는 중"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "취소(_A)"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "암호 필요"
 
@@ -1306,15 +1421,15 @@ msgstr "서명(_S)"
 msgid "Search in document"
 msgstr "문서에서 검색"
 
-#: shell/resources/pps-search-box.blp:38
+#: shell/resources/pps-search-box.blp:45
 msgid "Search Options"
 msgstr "검색 옵션"
 
-#: shell/resources/pps-search-box.blp:46
+#: shell/resources/pps-search-box.blp:53
 msgid "_Whole Words Only"
 msgstr "전체 단어 일치(_W)"
 
-#: shell/resources/pps-search-box.blp:51
+#: shell/resources/pps-search-box.blp:58
 msgid "C_ase Sensitive"
 msgstr "대소문자 구별(_A)"
 
@@ -1573,67 +1688,72 @@ msgctxt "shortcut window"
 msgid "Underline Text"
 msgstr "밑줄 문자"
 
-#: shell/resources/pps-shortcuts-dialog.blp:255
+#: shell/resources/pps-shortcuts-dialog.blp:254
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "디지털 서명"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "검색"
 
-#: shell/resources/pps-shortcuts-dialog.blp:258
+#: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "찾기"
 
-#: shell/resources/pps-shortcuts-dialog.blp:263
+#: shell/resources/pps-shortcuts-dialog.blp:269
 msgctxt "shortcut window"
 msgid "Find Next"
 msgstr "다음 찾기"
 
-#: shell/resources/pps-shortcuts-dialog.blp:268
+#: shell/resources/pps-shortcuts-dialog.blp:274
 msgctxt "shortcut window"
 msgid "Find Previous"
 msgstr "이전 찾기"
 
-#: shell/resources/pps-shortcuts-dialog.blp:274
+#: shell/resources/pps-shortcuts-dialog.blp:280
 msgctxt "shortcut window"
 msgid "General"
 msgstr "일반"
 
-#: shell/resources/pps-shortcuts-dialog.blp:277
+#: shell/resources/pps-shortcuts-dialog.blp:283
 msgctxt "shortcut window"
 msgid "Help"
 msgstr "도움말"
 
-#: shell/resources/pps-shortcuts-dialog.blp:282
+#: shell/resources/pps-shortcuts-dialog.blp:288
 msgctxt "shortcut window"
 msgid "Menu"
 msgstr "메뉴"
 
-#: shell/resources/pps-shortcuts-dialog.blp:287
+#: shell/resources/pps-shortcuts-dialog.blp:293
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키"
 
-#: shell/resources/pps-shortcuts-dialog.blp:292
+#: shell/resources/pps-shortcuts-dialog.blp:298
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "새 창"
 
-#: shell/resources/pps-shortcuts-dialog.blp:297
+#: shell/resources/pps-shortcuts-dialog.blp:303
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "창 닫기"
 
-#: shell/resources/pps-shortcuts-dialog.blp:303
+#: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
 msgid "Presentation Mode"
 msgstr "프리젠테이션 모드"
 
-#: shell/resources/pps-shortcuts-dialog.blp:306
+#: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
 msgid "Black Screen"
 msgstr "빈 화면 토글"
 
-#: shell/resources/pps-shortcuts-dialog.blp:311
+#: shell/resources/pps-shortcuts-dialog.blp:317
 msgctxt "shortcut window"
 msgid "White Screen"
 msgstr "흰 화면 토글"
@@ -1642,11 +1762,11 @@ msgstr "흰 화면 토글"
 msgid "No Annotations"
 msgstr "주석 없음"
 
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
 msgstr "주석 속성"
 
-#: shell/resources/pps-sidebar-annotations.blp:66
+#: shell/resources/pps-sidebar-annotations.blp:72
 msgid "Remove Annotation"
 msgstr "주석 제거"
 
@@ -1700,53 +1820,54 @@ msgstr ""
 "차영호 <ganadist@mizi.com>\n"
 "류창우 <cwryu@debian.org>\n"
 "조성호 <shcho@gnome.org>\n"
-"김경곤 <1942kg@gmail.com>"
+"김경곤 <1942kg@gmail.com>\n"
+"양홍민 <hongminy@naver.com>"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:403
 msgid "The page label of the document to display."
 msgstr "표시할 문서의 페이지 레이블."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:404
 msgid "PAGE"
 msgstr "<페이지>"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:412
 msgid "The page number of the document to display."
 msgstr "표시할 문서의 페이지 번호."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:413
 msgid "NUMBER"
 msgstr "<번호>"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:421
 msgid "Named destination to display."
 msgstr "표시할 대상 위치의 이름."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:422
 msgid "DEST"
 msgstr "<대상>"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:430
 msgid "Run papers in fullscreen mode."
 msgstr "페이퍼를 전체 화면 모드로 실행합니다."
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:439
 msgid "Run papers in presentation mode."
 msgstr "페이퍼를 프리젠테이션 모드로 실행합니다."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:448
 msgid "Show the version of the program."
 msgstr "프로그램의 버전을 표시합니다."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:458
 msgid "[FILE…]"
 msgstr "[파일...]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "자세한 내용 보기"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:773
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1754,83 +1875,73 @@ msgstr ""
 "문서에 새로 또는 내용을 수정한 주석과 내용을 채워 넣은 양식 입력 칸이 있습니"
 "다."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:774
 msgid "Document contains form fields that have been filled out."
 msgstr "문서에 내용을 채워 넣은 양식 입력 칸이 있습니다."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:775
 msgid "Document contains new or modified annotations."
 msgstr "문서에 새 주석 또는 수정한 주석이 있습니다."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:783
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "사본을 저장하지 않으면, 바뀐 내용을 잃어버립니다."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:784
 msgid "Save Changes to a Copy?"
 msgstr "바뀐 내용을 사본으로 저장하시겠습니까?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:793
 msgid "Close _Without Saving"
 msgstr "저장하지 않고 닫기(_W)"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:795
 msgid "_Save a Copy"
 msgstr "사본 저장(_C)"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "그림 저장"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "그림을 저장할 적당한 형식을 찾을 수 없습니다"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "그림을 저장할 수 없습니다."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "캐럿 탐색 모드를 켭니다. 모드를 끄려면 F7키를 누르십시오."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "캐럿 탐색 모드를 끕니다. 모드를 켜려면 F7키를 누르십시오."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "메뉴 닫기"
+
+#: shell/src/document_view/actions.rs:1270
 msgid "Unable to Open Attachment"
 msgstr "첨부를 열 수 없습니다"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "첨부를 저장할 수 없습니다."
+#: shell/src/document_view/actions.rs:1286
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "첨부 저장"
 
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "디지털 서명이 올바르지 않습니다"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "문서에 페이지가 없습니다"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "문서에 빈 페이지만 들어 있습니다"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "“{}” 이름으로 파일을 저장할 수 없습니다."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "다른 이름으로 저장…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "서명란을 넣으려면 사각형을 그려넣으십시오"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:512
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1838,70 +1949,79 @@ msgstr ""
 "디지털 서명자: {}\n"
 "서명일자: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "인증서가 필요합니다"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "서명 인증서를 선택하십시오"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "선택"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "이 문서에 서명하려면 인증서가 필요합니다"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "서명한 파일 저장"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:714
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "{} 암호를 입력하십시오"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "로그인(_L)"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "인쇄 작업 “{}”"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "큐에 밀린 인쇄 작업이 없습니다"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "외부 링크를 열 수 없습니다"
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "큐에 밀린 작업 {}건"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/signals.rs:257
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "보안 경고: 이 문서는 “{}” 파일 열기를 막았습니다."
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "{} 페이지"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum}/{totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#, rust-format
 msgid "of {}"
 msgstr "{} 중"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "“{}” 문서가 잠겨있으며 열려면 암호가 필요합니다"
@@ -1938,90 +2058,84 @@ msgstr "내용"
 msgid "Date &amp; Time"
 msgstr "날짜 및 시간"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "서명자"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "서명이 올바릅니다."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "서명이 올바르지 않습니다."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "서명 후 문서 내용이 바뀌었습니다."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "서명을 해독할 수 없습니다."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "서명 검증에 오류가 있습니다."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "신뢰할 수 있는 발급자가 발급한 인증서로 서명했습니다."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "신뢰할 수 없는 발급자가 발급한 인증서로 서명했습니다."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "알 수 없는 발급자가 발급한 인증서로 서명했습니다."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "철회한 인증서로 서명했습니다."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "기한이 지난 인증서로 서명했습니다."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "인증서 검증에 오류가 있습니다."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "인증서를 검증하지 않았습니다."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "기관"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "날짜 및 시간"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "인증서 발급자"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "인증서 발급자 전자메일"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "인증서 발급자 기관"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "인증서 발급 일시"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "인증서 경과 일시"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "자세한 내용 숨김…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "그림을 저장할 적당한 형식을 찾을 수 없습니다"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "그림을 저장할 수 없습니다."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "첨부를 저장할 수 없습니다."
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "“{}” 이름으로 파일을 저장할 수 없습니다."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "외부 링크를 열 수 없습니다"
+
+#~ msgid "Signed by"
+#~ msgstr "서명자"
+
+#~ msgid "Signature is valid."
+#~ msgstr "서명이 올바릅니다."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "서명이 올바르지 않습니다."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "서명 후 문서 내용이 바뀌었습니다."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "서명을 해독할 수 없습니다."
+
+#~ msgid "Signature verification error."
+#~ msgstr "서명 검증에 오류가 있습니다."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "신뢰할 수 있는 발급자가 발급한 인증서로 서명했습니다."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "신뢰할 수 없는 발급자가 발급한 인증서로 서명했습니다."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "알 수 없는 발급자가 발급한 인증서로 서명했습니다."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "철회한 인증서로 서명했습니다."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "기한이 지난 인증서로 서명했습니다."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "인증서 검증에 오류가 있습니다."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "인증서를 검증하지 않았습니다."
+
+#~ msgid "Organization"
+#~ msgstr "기관"
+
+#~ msgid "Date and Time"
+#~ msgstr "날짜 및 시간"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "인증서 발급자"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "인증서 발급자 전자메일"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "인증서 발급자 기관"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "인증서 발급 일시"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "인증서 경과 일시"
 
 #~ msgid ""
 #~ "Show a dialog to confirm that the user wants to activate the caret "
@@ -2170,9 +2284,6 @@ msgstr "자세한 내용 숨김…"
 #~ msgid "_No"
 #~ msgstr "아니요(_N)"
 
-#~ msgid "_Reload"
-#~ msgstr "다시 읽어들이기(_R)"
-
 #~ msgid "Failed to Load Remote File."
 #~ msgstr "원격 파일을 읽어들이는데 실패했습니다."
 
@@ -2231,9 +2342,6 @@ msgstr "자세한 내용 숨김…"
 
 #~ msgid "Initial window state:"
 #~ msgstr "최초 창 상태:"
-
-#~ msgid "Close"
-#~ msgstr "닫기"
 
 #~ msgid "Note text"
 #~ msgstr "메모 텍스트"
