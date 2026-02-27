@@ -753,15 +753,12 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 	if (type != PPS_ANNOTATION_TYPE_INK) {
 		/* Coordinates of an ink annotation are in its ink_list, setting the area results in a rescaling */
 		pps_annotation_set_area (annot, &doc_rect);
-		g_object_set (annot,
-		              "label", g_get_real_name (),
-		              NULL);
 	}
 
 	if (PPS_IS_ANNOTATION_MARKUP (annot)) {
-		g_object_set (annot,
-		              "opacity", 1.0,
-		              "popup-is-open", FALSE, NULL);
+		pps_annotation_markup_set_label (PPS_ANNOTATION_MARKUP (annot), g_get_real_name ());
+		pps_annotation_markup_set_popup_is_open (PPS_ANNOTATION_MARKUP (annot), FALSE);
+		pps_annotation_markup_set_opacity (PPS_ANNOTATION_MARKUP (annot), 1.0);
 	}
 
 	pps_annotation_set_modified_from_time_t (annot, time (NULL));
