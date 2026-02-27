@@ -497,22 +497,14 @@ static void
 pps_view_adjustment_to_page_position (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GdkRectangle page_area, visible_area;
+	GdkRectangle page_area;
 	gdouble x, y;
 
 	pps_view_get_page_extents (view, priv->current_page, &page_area);
 	x = MAX (0, page_area.x - priv->spacing);
 	y = MAX (0, page_area.y - priv->spacing);
 
-	visible_area.height = gtk_widget_get_height (GTK_WIDGET (view));
-	visible_area.width = gtk_widget_get_width (GTK_WIDGET (view));
-	visible_area.y = gtk_adjustment_get_value (priv->vadjustment);
-	visible_area.x = gtk_adjustment_get_value (priv->hadjustment);
-
-	if (!priv->keep_scroll_of_current_page || !gdk_rectangle_intersect (&page_area, &visible_area, NULL)) {
-		scroll_to_view_point (view, x, y);
-	}
-	priv->keep_scroll_of_current_page = FALSE;
+	scroll_to_view_point (view, x, y);
 }
 
 static void
@@ -577,7 +569,7 @@ pps_view_update_adjustment_value (PpsView *view,
 
 	switch (priv->pending_scroll) {
 	case SCROLL_TO_KEEP_POSITION:
-		if (adw_animation_get_state (priv->scroll_animation_vertical) != ADW_ANIMATION_PLAYING && adw_animation_get_state (priv->scroll_animation_horizontal) != ADW_ANIMATION_PLAYING && !priv->keep_scroll_of_current_page) {
+		if (adw_animation_get_state (priv->scroll_animation_vertical) != ADW_ANIMATION_PLAYING && adw_animation_get_state (priv->scroll_animation_horizontal) != ADW_ANIMATION_PLAYING) {
 			new_value = CLAMP (upper * factor, 0, upper - page_size);
 		} else {
 			new_value = value;
@@ -6227,7 +6219,6 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 		                     priv->pixbuf_cache);
 	}
 
-	priv->keep_scroll_of_current_page = TRUE;
 	pps_view_scroll_to_page (view, pps_document_model_get_page (model));
 
 	view_update_scale_limits (view);
