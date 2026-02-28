@@ -1,3 +1,11 @@
+Papers 50.rc
+--------------
+* Some changes we can highlight:
+  - selection of annotation color is now remembered (Lucas Baudin)
+
+* Bug fixes:
+  - #626 Right clicking highlighted text changes its highlight colour (Lucas Baudin)
+
 Papers 50.beta
 --------------
 
@@ -14,7 +22,7 @@ Papers 50.beta
 * Bug fixes:
   - show a radio button for digital signing when there is a single certificate (Marek Kašík)
   - fix sidebar not grabbing focus when it should (Roberto Vidal)
-  
+
 Papers 50.alpha
 ---------------
 
