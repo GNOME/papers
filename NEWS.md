@@ -1,3 +1,11 @@
+Papers 49.5
+----------------
+* Bug fixes:
+  - #626 Right clicking highlighted text changes its highlight colour (Lucas Baudin)
+
+* Translation updates:
+  - Kazakh (Baurzhan Muftakhidinov)
+
 Papers 49.4
 ----------------
 * Bug fixes:
