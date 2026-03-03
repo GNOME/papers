@@ -1,3 +1,51 @@
+Papers 50
+--------------
+* Bug fixes:
+  - #517 Saved image files are empty (Lucas Baudin)
+  - #536 Print dialog says "Manage Custom Sizes" for Paper Size every time (Prasun Gera)
+
+* Translation updates for the 50.0 cycle:
+  - Basque (Asier Saratsua Garmendia)
+  - Brazilian Portuguese (Álvaro Burns)
+  - British English (Bruce Cowan)
+  - Bulgarian (Alexander Alexandrov Shopov, twlvnn kraftwerk)
+  - Catalan (Jordi Mas i Hernandez, Victor Dargallo)
+  - Chinese (China) (Luming Zh)
+  - Chinese (Taiwan) (Cheng-Chia Tseng)
+  - Czech (Daniel Rusek)
+  - Danish (Alan Mortensen)
+  - Esperanto (Kristjan Schmidt)
+  - Finnish (Jiri Grönroos)
+  - French (Lucien Ouoba, Malo Billoré)
+  - Friulian (Fabio Tomat)
+  - Galician (Fran Diéguez)
+  - Georgian (Ekaterine Papava)
+  - German (Jürgen Benvenuti)
+  - Greek (Efstathios Iosifidis)
+  - Hebrew (Yaron Shahrabani)
+  - Hungarian (Balázs Úr)
+  - Indonesian (Andika Triwidada)
+  - Italian (Davide Ferracin)
+  - Japanese (Makoto Sakaguchi, Oyamada Jun)
+  - Kazakh (Baurzhan Muftakhidinov)
+  - Korean (Seong-ho Cho)
+  - Lithuanian (Aurimas Černius)
+  - Norwegian Nynorsk (Sunniva Løvstad)
+  - Occitan (Quentin PAGÈS)
+  - Persian (Danial Behzadi)
+  - Portuguese (Hugo Carvalho)
+  - Romanian (Antonio Marin)
+  - Russian (Artur S0)
+  - Serbian (Милош Поповић)
+  - Serbian (Latin) (Милош Поповић)
+  - Slovenian (Martin)
+  - Spanish (Daniel Mustieles, Nahué Mantuani)
+  - Swedish (Anders Jonsson)
+  - Thai (Aefgh Threenine)
+  - Turkish (Sabri Ünal, Emin Tufan Çetin)
+  - Uighur (Abduqadir Abliz)
+  - Ukrainian (Yuri Chornoivan)
+
 Papers 50.rc
 --------------
 * Some changes we can highlight:
