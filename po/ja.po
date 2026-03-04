@@ -1,6 +1,6 @@
 # Japanese messages catalogue for papers - PS/PDF viewer for GNOME
 # Copyright (C) 2005-2016, 2019-2020, 2022 evince's COPYRIGHT HOLDER
-# Copyright (C) 2025 papers's COPYRIGHT HOLDER
+# Copyright (C) 2025-2026 papers's COPYRIGHT HOLDER
 # This file is distributed under the same license as the papers package.
 # Satoru SATOH <ss@gnome.gr.jp>, 2005-2006.
 # Takeshi AIHANA <takshi.aihana@gmail.com>, 2005-2009.
@@ -14,28 +14,28 @@
 # OKANO Takayoshi <>, 2013.
 # sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
 # Makoto Sakaguchi <ycco34vx@gmail.com>, 2025.
+# 小山田 純 <oyamadajun@outlook.jp>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: papers main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-12-10 22:00+0000\n"
-"PO-Revision-Date: 2025-12-18 10:58+0900\n"
-"Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
+"POT-Creation-Date: 2026-03-04 02:15+0000\n"
+"PO-Revision-Date: 2026-03-04 22:56+0900\n"
+"Last-Translator: 小山田 純 <oyamadajun@outlook.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "ドキュメントビューアー"
 
@@ -478,7 +478,6 @@ msgid "This work is in the Public Domain"
 msgstr "この作品はパブリックドメインです"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1082
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "添付ファイルを保存"
@@ -488,7 +487,7 @@ msgstr[0] "添付ファイルを保存"
 msgid "Page %s"
 msgstr "%s ページ"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:239
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "ノートを編集"
@@ -547,8 +546,8 @@ msgstr "選択された印刷範囲にページが含まれていません"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:567 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:604
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:617
 msgid "_Close"
 msgstr "閉じる(_C)"
 
@@ -629,51 +628,51 @@ msgstr "有効にすると、各ページの周囲に枠線が描画されます
 msgid "Page Handling"
 msgstr "ページ処理"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2119
 msgid "Go to first page"
 msgstr "先頭ページへ移動する"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2121
 msgid "Go to previous page"
 msgstr "前のページへ移動する"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2123
 msgid "Go to next page"
 msgstr "次のページへ移動する"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2125
 msgid "Go to last page"
 msgstr "最後のページへ移動する"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2127
 msgid "Go to page"
 msgstr "指定したページへ移動する"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2129
 msgid "Find"
 msgstr "検索"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to page %s"
 msgstr "%s ページへ移動する"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "ファイル“%2$s”の %1$s へ移動する"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Go to file “%s”"
 msgstr "ファイル“%s”へ移動する"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Launch %s"
 msgstr "%s を起動"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Reset form"
 msgstr "フォームをリセット"
@@ -741,7 +740,6 @@ msgid "GNOME Document Previewer"
 msgstr "GNOME ドキュメントプレビューアー"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Papers ドキュメントビューアー"
 
@@ -777,7 +775,7 @@ msgid "Print This Document"
 msgstr "このドキュメントを印刷する"
 
 #: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:289
+#: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "縮小"
 
@@ -786,11 +784,11 @@ msgid "Normal Size"
 msgstr "標準サイズ"
 
 #: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:277
+#: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "拡大"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "ドキュメントの印刷に失敗しました"
 
@@ -930,6 +928,7 @@ msgid "_Markup Type"
 msgstr "マークアップの種類(_M)"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:487
 msgid "Highlight"
 msgstr "ハイライト"
 
@@ -994,7 +993,7 @@ msgstr "サイドバーを切り替える"
 msgid "Document Menu"
 msgstr "ドキュメントメニュー"
 
-#: shell/resources/pps-document-view.blp:225 shell/src/document_view/io.rs:269
+#: shell/resources/pps-document-view.blp:225
 msgid "Document has been digitally signed."
 msgstr "ドキュメントはデジタル署名されています。"
 
@@ -1006,11 +1005,46 @@ msgstr "署名を表示…"
 msgid "Fit Automatically"
 msgstr "自動調整"
 
-#: shell/resources/pps-document-view.blp:536
+#: shell/resources/pps-document-view.blp:342
+#: shell/resources/pps-document-view.blp:384
+#: shell/resources/pps-document-view.blp:415
+msgid "Choose Color"
+msgstr "色を選択"
+
+#: shell/resources/pps-document-view.blp:362
+msgid "Font Settings"
+msgstr "フォント設定"
+
+#: shell/resources/pps-document-view.blp:430
+msgid "Pencil Size"
+msgstr "ペンの太さ"
+
+#: shell/resources/pps-document-view.blp:457
+msgid "Change Eraser Radius"
+msgstr "消しゴムの大きさを変更"
+
+#: shell/resources/pps-document-view.blp:475
+msgid "Insert Text"
+msgstr "テキストを挿入"
+
+#: shell/resources/pps-document-view.blp:481
+msgid "Draw"
+msgstr "描画"
+
+#: shell/resources/pps-document-view.blp:493
+msgid "Erase Annotations"
+msgstr "消しゴム"
+
+#: shell/resources/pps-document-view.blp:510
+#: shell/src/document_view/actions.rs:1211
+msgid "Edit Document"
+msgstr "ドキュメントを編集"
+
+#: shell/resources/pps-document-view.blp:757
 msgid "Selection too Small"
 msgstr "選択範囲が小さすぎます"
 
-#: shell/resources/pps-document-view.blp:537
+#: shell/resources/pps-document-view.blp:758
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
@@ -1019,19 +1053,19 @@ msgstr ""
 "このサイズの署名は小さすぎて読めない可能性があります。より読みやすい署名を作"
 "成したい場合は、`やり直し` を押してより大きな四角形を描いてください。"
 
-#: shell/resources/pps-document-view.blp:544
+#: shell/resources/pps-document-view.blp:765
 msgid "Start _Over"
 msgstr "やり直し(_O)"
 
-#: shell/resources/pps-document-view.blp:545
+#: shell/resources/pps-document-view.blp:766
 msgid "_Sign"
 msgstr "署名(_S)"
 
-#: shell/resources/pps-document-view.blp:552
+#: shell/resources/pps-document-view.blp:773
 msgid "Abort Printing?"
 msgstr "印刷を中止しますか?"
 
-#: shell/resources/pps-document-view.blp:553
+#: shell/resources/pps-document-view.blp:774
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
@@ -1039,164 +1073,245 @@ msgstr ""
 "1 件以上のアクティブな印刷ジョブがあります。ウィンドウを閉じると、保留中の印"
 "刷ジョブは印刷されません。"
 
-#: shell/resources/pps-document-view.blp:557
+#: shell/resources/pps-document-view.blp:778
 msgid "Abort _Print and Close"
 msgstr "印刷を中止して閉じる(_P)"
 
-#: shell/resources/pps-document-view.blp:558 shell/src/document_view.rs:741
-#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
-#: shell/src/document_view/io.rs:716
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
+#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
+#: shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: shell/resources/pps-document-view.blp:559
+#: shell/resources/pps-document-view.blp:780
 msgid "Close _After Printing"
 msgstr "印刷後に閉じる(_A)"
 
-#: shell/resources/pps-document-view.blp:574
+#: shell/resources/pps-document-view.blp:795
 msgid "Open…"
 msgstr "開く…"
 
-#: shell/resources/pps-document-view.blp:581
+#: shell/resources/pps-document-view.blp:802
 msgid "Ni_ght Mode"
 msgstr "ナイトモード(_G)"
 
-#: shell/resources/pps-document-view.blp:588 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
 
-#: shell/resources/pps-document-view.blp:593 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: shell/resources/pps-document-view.blp:598 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "ドキュメントビューアーについて(_A)"
 
-#: shell/resources/pps-document-view.blp:607
+#: shell/resources/pps-document-view.blp:828
 msgid "_Print…"
 msgstr "印刷(_P)…"
 
-#: shell/resources/pps-document-view.blp:612
+#: shell/resources/pps-document-view.blp:833
 msgid "Fullscreen"
 msgstr "全画面表示"
 
-#: shell/resources/pps-document-view.blp:617
+#: shell/resources/pps-document-view.blp:838
 msgid "Present as Slideshow"
 msgstr "スライドショーとして表示"
 
-#: shell/resources/pps-document-view.blp:624
+#: shell/resources/pps-document-view.blp:845
 msgid "Sign D_igitally…"
 msgstr "デジタル署名(_I)…"
 
-#: shell/resources/pps-document-view.blp:631
+#: shell/resources/pps-document-view.blp:852
 msgid "Open a C_opy"
 msgstr "コピーを開く(_O)"
 
-#: shell/resources/pps-document-view.blp:636
+#: shell/resources/pps-document-view.blp:857
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
-msgstr "次で開く…"
+msgstr "別のアプリで開く…"
 
-#: shell/resources/pps-document-view.blp:641
+#: shell/resources/pps-document-view.blp:862
 msgid "_Save As…"
 msgstr "名前を付けて保存(_S)…"
 
-#: shell/resources/pps-document-view.blp:648
+#: shell/resources/pps-document-view.blp:869
 msgid "_Continuous"
 msgstr "連続表示(_C)"
 
-#: shell/resources/pps-document-view.blp:653
+#: shell/resources/pps-document-view.blp:874
 msgid "_Dual"
 msgstr "見開き(_D)"
 
-#: shell/resources/pps-document-view.blp:658
+#: shell/resources/pps-document-view.blp:879
 msgid "_Odd Pages Left"
 msgstr "奇数ページを左に(_O)"
 
-#: shell/resources/pps-document-view.blp:663
+#: shell/resources/pps-document-view.blp:884
 msgid "Right to Left Document"
 msgstr "右から左に読むドキュメント"
 
-#: shell/resources/pps-document-view.blp:670
+#: shell/resources/pps-document-view.blp:891
 msgid "Ro_tate ⤵"
 msgstr "回転 ⤵(_T)"
 
-#: shell/resources/pps-document-view.blp:677
+#: shell/resources/pps-document-view.blp:898
 msgid "Document Prop_erties"
 msgstr "ドキュメントのプロパティ(_E)"
 
+#: shell/resources/pps-document-view.blp:951
+#: shell/resources/pps-document-view.blp:1259
+msgid "Black"
+msgstr "黒"
+
+#: shell/resources/pps-document-view.blp:963
+#: shell/resources/pps-document-view.blp:1050
+#: shell/resources/pps-document-view.blp:1199
+msgid "Orange"
+msgstr "オレンジ"
+
+#: shell/resources/pps-document-view.blp:975
+#: shell/resources/pps-document-view.blp:1063
+#: shell/resources/pps-document-view.blp:1211
+msgid "Red"
+msgstr "赤"
+
+#: shell/resources/pps-document-view.blp:987
+#: shell/resources/pps-document-view.blp:1076
+#: shell/resources/pps-document-view.blp:1223
+msgid "Purple"
+msgstr "紫"
+
+#: shell/resources/pps-document-view.blp:999
+#: shell/resources/pps-document-view.blp:1089
+#: shell/resources/pps-document-view.blp:1235
+msgid "Blue"
+msgstr "青"
+
+#: shell/resources/pps-document-view.blp:1011
+#: shell/resources/pps-document-view.blp:1102
+#: shell/resources/pps-document-view.blp:1247
+msgid "Green"
+msgstr "緑"
+
+#: shell/resources/pps-document-view.blp:1037
+#: shell/resources/pps-document-view.blp:1187
+msgid "Yellow"
+msgstr "黄"
+
+#: shell/resources/pps-document-view.blp:1124
+#: shell/resources/pps-document-view.blp:1281
+#: shell/resources/pps-document-view.blp:1340
+msgid "Thin"
+msgstr "細"
+
+#: shell/resources/pps-document-view.blp:1136
+#: shell/resources/pps-document-view.blp:1294
+#: shell/resources/pps-document-view.blp:1352
+msgid "Medium"
+msgstr "中"
+
+#: shell/resources/pps-document-view.blp:1148
+#: shell/resources/pps-document-view.blp:1306
+#: shell/resources/pps-document-view.blp:1364
+msgid "Thick"
+msgstr "太"
+
+#: shell/resources/pps-document-view.blp:1160
+#: shell/resources/pps-document-view.blp:1318
+#: shell/resources/pps-document-view.blp:1376
+msgid "Very Thick"
+msgstr "極太"
+
+#: shell/resources/pps-document-view.blp:1389
+msgid "Erase Ink"
+msgstr "擦った場所を消す"
+
+#: shell/resources/pps-document-view.blp:1395
+msgid "Erase Whole Strokes"
+msgstr "線全体を消す"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:715
+#: shell/resources/pps-document-view.blp:1434
 msgid "Highlight (h)"
 msgstr "ハイライト (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:731
+#: shell/resources/pps-document-view.blp:1450
 msgid "Strikethrough (k)"
 msgstr "取り消し線 (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:747
+#: shell/resources/pps-document-view.blp:1466
 msgid "Underline (u)"
 msgstr "下線 (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:763
+#: shell/resources/pps-document-view.blp:1482
 msgid "Squiggly (q)"
 msgstr "波線 (q)"
 
-#: shell/resources/pps-document-view.blp:854
+#: shell/resources/pps-document-view.blp:1573
 msgid "_Open Link"
 msgstr "リンクを開く(_O)"
 
-#: shell/resources/pps-document-view.blp:860
+#: shell/resources/pps-document-view.blp:1579
+msgid "Send an Email"
+msgstr "メールを送信"
+
+#: shell/resources/pps-document-view.blp:1585
 msgid "_Copy Link Address"
 msgstr "リンクのアドレスをコピー(_C)"
 
-#: shell/resources/pps-document-view.blp:866
+# PDF内のメールアドレスを右クリックしたときのコンテキストメニュー
+#: shell/resources/pps-document-view.blp:1591
+msgid "Copy Email Address"
+msgstr "メールアドレスをコピー"
+
+#: shell/resources/pps-document-view.blp:1597
 msgid "_Go To"
 msgstr "移動(_G)"
 
-#: shell/resources/pps-document-view.blp:872
+#: shell/resources/pps-document-view.blp:1603
 msgid "Open in New _Window"
 msgstr "新しいウィンドウで開く(_W)"
 
-#: shell/resources/pps-document-view.blp:880
+#: shell/resources/pps-document-view.blp:1611
 msgid "_Copy"
 msgstr "コピー(_C)"
 
-#: shell/resources/pps-document-view.blp:885
+#: shell/resources/pps-document-view.blp:1616
 msgid "Select _All"
 msgstr "すべて選択(_A)"
 
-#: shell/resources/pps-document-view.blp:892
+#: shell/resources/pps-document-view.blp:1623
 msgid "_Save Image As…"
 msgstr "名前を付けて画像を保存(_S)…"
 
-#: shell/resources/pps-document-view.blp:898
+#: shell/resources/pps-document-view.blp:1629
 msgid "Copy _Image"
 msgstr "画像をコピー(_I)"
 
-#: shell/resources/pps-document-view.blp:906
+#: shell/resources/pps-document-view.blp:1637
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "添付ファイルを開く(_O)"
 
-#: shell/resources/pps-document-view.blp:912
+#: shell/resources/pps-document-view.blp:1643
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "名前を付けて添付ファイルを保存(_S)…"
 
-#: shell/resources/pps-document-view.blp:922
+#: shell/resources/pps-document-view.blp:1653
 msgid "Annotation _Properties…"
 msgstr "注釈のプロパティ(_P)…"
 
-#: shell/resources/pps-document-view.blp:928
+#: shell/resources/pps-document-view.blp:1659
 msgid "R_emove Annotation"
 msgstr "注釈を削除(_E)"
 
-#: shell/resources/pps-document-view.blp:936
+#: shell/resources/pps-document-view.blp:1667
 msgid "_Add Text Annotation"
 msgstr "テキスト注釈を追加(_A)"
 
@@ -1220,13 +1335,13 @@ msgstr "検索結果がここに表示されます"
 msgid "Loading Document"
 msgstr "ドキュメントを読み込み中"
 
-#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:49
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
 msgid "C_ancel"
 msgstr "キャンセル(_A)"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
 msgid "Password Required"
 msgstr "パスワードが必要です"
 
@@ -1719,51 +1834,51 @@ msgstr ""
 "sicklylife <translation@sicklylife.jp>\n"
 "Makoto Sakaguchi <ycco34vx@gmail.com>"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "表示するドキュメントのページラベル。"
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PAGE"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "表示するドキュメントのページ番号。"
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "表示する名前付きリンク先。"
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "papers をフルスクリーンモードで実行する。"
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "プレゼンテーションモードで実行する。"
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "プログラムのバージョンを表示する。"
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[ファイル…]"
 
-#: shell/src/document_view.rs:315
+#: shell/src/document_view.rs:354
 msgid "View Details"
 msgstr "詳細を表示"
 
-#: shell/src/document_view.rs:720
+#: shell/src/document_view.rs:791
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1771,73 +1886,58 @@ msgstr ""
 "ドキュメントには新規または変更された注釈と、入力済みのフォームフィールドが含"
 "まれています。"
 
-#: shell/src/document_view.rs:721
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "ドキュメントには入力済みのフォームフィールドが含まれています。"
 
-#: shell/src/document_view.rs:722
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "ドキュメントには新規または変更された注釈が含まれています。"
 
-#: shell/src/document_view.rs:730
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "コピーを保存しない場合、変更は完全に失われます。"
 
-#: shell/src/document_view.rs:731
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "変更内容をコピーとして保存しますか?"
 
-#: shell/src/document_view.rs:740
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "保存せずに閉じる(_W)"
 
-#: shell/src/document_view.rs:742
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "コピーを保存(_S)"
 
-#: shell/src/document_view/actions.rs:508
-msgid "Annotation deleted"
-msgstr "注釈を削除しました"
-
-#: shell/src/document_view/actions.rs:509
-msgid "_Undo"
-msgstr "元に戻す(_U)"
-
-#: shell/src/document_view/actions.rs:884
+#: shell/src/document_view/actions.rs:1008
 msgid "Save Image"
 msgstr "画像を保存"
 
-#: shell/src/document_view/actions.rs:920
-msgid "Couldn’t find appropriate format to save image"
-msgstr "画像を保存する適切な形式が見つかりませんでした"
-
-#: shell/src/document_view/actions.rs:937
-msgid "The image could not be saved."
-msgstr "画像を保存できませんでした。"
-
-#: shell/src/document_view/actions.rs:1009
+#: shell/src/document_view/actions.rs:1133
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "キャレットナビゲーションモードが有効になりました。無効にするには F7 キーを押"
 "してください。"
 
-#: shell/src/document_view/actions.rs:1011
+#: shell/src/document_view/actions.rs:1135
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "キャレットナビゲーションモードが無効になりました。有効にするには F7 キーを押"
 "してください。"
 
-#: shell/src/document_view/actions.rs:1066 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1193
+msgid "Close Menu"
+msgstr "メニューを閉じる"
+
+#: shell/src/document_view/actions.rs:1276
 msgid "Unable to Open Attachment"
 msgstr "添付ファイルを開けません"
 
-#: shell/src/document_view/actions.rs:1099
-msgid "The attachment could not be saved."
-msgstr "添付ファイルを保存できませんでした。"
-
-#: shell/src/document_view/io.rs:273
-msgid "Digital signature is invalid"
-msgstr "デジタル署名が無効です"
+#: shell/src/document_view/actions.rs:1292
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "添付ファイルを保存"
 
 #: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
@@ -1847,19 +1947,16 @@ msgstr "ドキュメントにページがありません"
 msgid "The Document Contains Only Empty Pages"
 msgstr "ドキュメントには空白のページのみが含まれています"
 
-#: shell/src/document_view/io.rs:370 shell/src/document_view/io.rs:448
-msgid "The file could not be saved as “{}”."
-msgstr "ファイルを “{}” として保存できませんでした。"
-
-#: shell/src/document_view/io.rs:411
+#: shell/src/document_view/io.rs:412
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:489
 msgid "Draw a rectangle to insert a signature field"
 msgstr "署名欄を挿入するため長方形を描いてください"
 
-#: shell/src/document_view/io.rs:509
+#: shell/src/document_view/io.rs:512
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1867,71 +1964,80 @@ msgstr ""
 "デジタル署名者: {}\n"
 "日付: {}"
 
-#: shell/src/document_view/io.rs:525
+#: shell/src/document_view/io.rs:531
 msgid "Certificate Required"
 msgstr "証明書が必要です"
 
-#: shell/src/document_view/io.rs:528
+#: shell/src/document_view/io.rs:534
 msgid "Select signing certificate"
 msgstr "デジタル署名証明書を選択してください"
 
-#: shell/src/document_view/io.rs:529
+#: shell/src/document_view/io.rs:535
 msgid "Select"
 msgstr "選択"
 
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:615
 msgid "A certificate is required to sign this document"
 msgstr "この文書に署名するには証明書が必要です"
 
-#: shell/src/document_view/io.rs:671
+#: shell/src/document_view/io.rs:684
 msgid "Save Signed File"
 msgstr "署名済みファイルを保存"
 
-#: shell/src/document_view/io.rs:701
+#: shell/src/document_view/io.rs:714
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "{}のパスワードを入力してください"
 
-#: shell/src/document_view/io.rs:717
+#: shell/src/document_view/io.rs:731
 msgid "_Login"
 msgstr "ログイン(_L)"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "\"{}\" を印刷中"
 
-#: shell/src/document_view/print.rs:83
+#: shell/src/document_view/print.rs:84
 msgid "No pending jobs in queue"
 msgstr "待機中の印刷はありません"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "外部リンクを開けません"
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "{} 件の印刷が待機中です"
 
-#: shell/src/document_view/signals.rs:254
+#: shell/src/document_view/signals.rs:257
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "セキュリティ警告: このドキュメントからファイル “{}” を開くことを防止しました"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "{} ページ"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} / {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#, rust-format
 msgid "of {}"
 msgstr "/ {}"
 
-#: shell/src/password_view.rs:145
+#: shell/src/password_view.rs:146
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "ドキュメント “{}” はロックされており、開くにはパスワードが必要です"
@@ -1968,90 +2074,93 @@ msgstr "内容"
 msgid "Date &amp; Time"
 msgstr "日時"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "署名者"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "署名は有効です。"
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "署名は無効です。"
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "ドキュメントは署名後に変更されています。"
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "署名を解析できませんでした。"
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "署名の検証に失敗しました。"
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "信頼された発行者が発行した証明書で署名されています。"
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "信頼されていない発行者によって発行された証明書で署名されています。"
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "不明な発行者によって発行された証明書で署名されています。"
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "失効した証明書で署名されています。"
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "期限切れの証明書で署名されています。"
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "証明書の検証に失敗しました。"
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "証明書が検証されていません。"
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "組織"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "日時"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "証明書発行者"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "証明書発行者のメールアドレス"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "証明書発行者の組織"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "証明書の発行時刻"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "証明書の有効期限"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "詳細を非表示…"
+
+#~ msgid "Annotation deleted"
+#~ msgstr "注釈を削除しました"
+
+#~ msgid "_Undo"
+#~ msgstr "元に戻す(_U)"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "画像を保存する適切な形式が見つかりませんでした"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "画像を保存できませんでした。"
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "添付ファイルを保存できませんでした。"
+
+#~ msgid "Digital signature is invalid"
+#~ msgstr "デジタル署名が無効です"
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "ファイルを “{}” として保存できませんでした。"
+
+#~ msgid "Unable to open external link"
+#~ msgstr "外部リンクを開けません"
+
+#~ msgid "Signed by"
+#~ msgstr "署名者"
+
+#~ msgid "Signature is valid."
+#~ msgstr "署名は有効です。"
+
+#~ msgid "Signature is invalid."
+#~ msgstr "署名は無効です。"
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "ドキュメントは署名後に変更されています。"
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "署名を解析できませんでした。"
+
+#~ msgid "Signature verification error."
+#~ msgstr "署名の検証に失敗しました。"
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "信頼された発行者が発行した証明書で署名されています。"
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "信頼されていない発行者によって発行された証明書で署名されています。"
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "不明な発行者によって発行された証明書で署名されています。"
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "失効した証明書で署名されています。"
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "期限切れの証明書で署名されています。"
+
+#~ msgid "Certificate verification error."
+#~ msgstr "証明書の検証に失敗しました。"
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "証明書が検証されていません。"
+
+#~ msgid "Organization"
+#~ msgstr "組織"
+
+#~ msgid "Date and Time"
+#~ msgstr "日時"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "証明書発行者"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "証明書発行者のメールアドレス"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "証明書発行者の組織"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "証明書の発行時刻"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "証明書の有効期限"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Opening, Closing, Saving and Printing"
@@ -2106,10 +2215,6 @@ msgstr "詳細を非表示…"
 
 #~ msgid "_About Papers"
 #~ msgstr "Papers について(_A)"
-
-#~ msgid "{} pending job in queue"
-#~ msgid_plural "{} pending jobs in queue"
-#~ msgstr[0] "{} 件の印刷が待機中です"
 
 #~ msgid "DVI document has incorrect format"
 #~ msgstr "DVI ドキュメントの書式が壊れています"
@@ -2202,9 +2307,6 @@ msgstr "詳細を非表示…"
 #~ msgid "Open"
 #~ msgstr "開く"
 
-#~ msgid "Close"
-#~ msgstr "閉じる"
-
 #~ msgid "Note text"
 #~ msgstr "テキストをメモ"
 
@@ -2234,9 +2336,6 @@ msgstr "詳細を非表示…"
 
 #~ msgid "_Next Page"
 #~ msgstr "次のページ(_N)"
-
-#~ msgid "_Reload"
-#~ msgstr "再読み込み(_R)"
 
 #~ msgid "_Highlight Selected Text"
 #~ msgstr "選択したテキストをハイライト(_H)"
@@ -2646,9 +2745,6 @@ msgstr "詳細を非表示…"
 
 #~ msgid "Substituting with"
 #~ msgstr "代替フォントは"
-
-#~ msgid "Print settings file"
-#~ msgstr "プリンター設定ファイル"
 
 #~ msgid "Make the current document fill the window"
 #~ msgstr "このドキュメント全体がウィンドウに収まるように表示します"
