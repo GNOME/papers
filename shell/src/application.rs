@@ -261,27 +261,20 @@ mod imp {
                     let mut info = papers_document::DocumentBackendInfo::new();
                     if document.is_backend_info(&mut info) {
                         if let (Some(name), Some(version)) = (info.name(), info.version()) {
-                            backend_info_str = format!("{} {}", name, version);
+                            backend_info_str = format!("{name} {version}");
                         }
                     }
                 }
             }
 
             let debug_info = format!(
-                "Document Viewer ({})\n\n\
-                *Distribution: {}\n\
-                *Desktop: {}\n\
-                *Packaging: {}\n\
-                *Backend: {}\n\
-                *GTK: {}\n\
-                *Libadwaita: {}\n",
-                GIT_COMMIT_ID,
-                distribution,
-                desktop_env,
-                packaging_format,
-                backend_info_str,
-                gtk_version,
-                adw_version,
+                "Document Viewer ({GIT_COMMIT_ID})\n\n\
+                *Distribution: {distribution}\n\
+                *Desktop: {desktop_env}\n\
+                *Packaging: {packaging_format}\n\
+                *Backend: {backend_info_str}\n\
+                *GTK: {gtk_version}\n\
+                *Libadwaita: {adw_version}\n",
             );
 
             about.set_debug_info(&debug_info);
