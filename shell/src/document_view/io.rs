@@ -329,56 +329,6 @@ impl imp::PpsDocumentView {
         self.update_title();
     }
 
-    pub(super) fn save_file<F>(&self, dest: &gio::File, f: F) -> Result<(), glib::Error>
-    where
-        F: FnOnce(&gio::File) -> Result<(), glib::Error>,
-    {
-        if dest.is_native() {
-            f(dest)?;
-        } else {
-            let temp = papers_document::mkstemp_file("savefile.XXXXXX")?;
-
-            f(&temp)?;
-            self.save_remote(&temp, dest);
-        }
-
-        Ok(())
-    }
-
-    fn save_remote(&self, src: &gio::File, dest: &gio::File) {
-        self.reset_progress_cancellable();
-
-        glib::spawn_future_local(glib::clone!(
-            #[weak(rename_to = obj)]
-            self,
-            #[strong]
-            src,
-            #[strong]
-            dest,
-            async move {
-                let (result, _) = src.copy_future(
-                    &dest,
-                    gio::FileCopyFlags::OVERWRITE,
-                    glib::Priority::DEFAULT,
-                );
-
-                if let Err(e) = result.await {
-                    if !e.matches(gio::IOErrorEnum::Cancelled) {
-                        obj.error_message(
-                            Some(&e),
-                            &formatx!(
-                                gettext("The file could not be saved as “{}”."),
-                                dest.basename().unwrap_or_default().display(),
-                            )
-                            .expect("Wrong format in translated string"),
-                        );
-                    }
-                }
-                papers_document::tmp_file_unlink(&src);
-            }
-        ));
-    }
-
     // save as
     fn default_save_directory(&self) -> PathBuf {
         let default_dir = glib::user_special_dir(UserDirectory::Documents)
