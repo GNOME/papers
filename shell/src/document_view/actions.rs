@@ -815,18 +815,6 @@ impl imp::PpsDocumentView {
         self.save_as();
     }
 
-    fn create_file_from_uri_for_format(uri: &str, format: &gdk_pixbuf::PixbufFormat) -> gio::File {
-        let extensions = format.extensions();
-
-        for ext in extensions.iter() {
-            if uri.ends_with(ext.as_str()) {
-                return gio::File::for_uri(uri);
-            }
-        }
-
-        gio::File::for_uri(&format!("{}.{}", uri, extensions[0]))
-    }
-
     fn cmd_save_image_as(&self) {
         let Some(image) = self.image.borrow().clone() else {
             return;
@@ -858,8 +846,7 @@ impl imp::PpsDocumentView {
 
                 obj.file_dialog_save_folder(Some(&file), UserDirectory::Pictures);
 
-                let uri = file.uri();
-                let mut format = gdk_pixbuf_format_by_extension(&uri);
+                let mut format = gdk_pixbuf_format_by_extension(&file.uri());
 
                 if format.is_none()
                     && file
@@ -882,8 +869,6 @@ impl imp::PpsDocumentView {
                     return;
                 };
 
-                let target_file = Self::create_file_from_uri_for_format(&uri, &format);
-
                 let pixbuf = obj
                     .document()
                     .and_dynamic_cast::<DocumentImages>()
@@ -891,9 +876,19 @@ impl imp::PpsDocumentView {
                     .and_then(|d| d.image(&image))
                     .unwrap();
 
-                if let Err(e) = obj.save_file(&target_file, |target| {
-                    pixbuf.savev(target.path().unwrap(), &format.name().unwrap(), &[])
-                }) {
+                if let Err(e) = pixbuf.save_to_streamv(
+                    &file
+                        .replace(
+                            None,
+                            false,
+                            gio::FileCreateFlags::REPLACE_DESTINATION,
+                            gio::Cancellable::NONE,
+                        )
+                        .unwrap(),
+                    &format.name().unwrap(),
+                    &[],
+                    gio::Cancellable::NONE,
+                ) {
                     obj.error_message(Some(&e), &gettext("The image could not be saved."));
                     return;
                 }
