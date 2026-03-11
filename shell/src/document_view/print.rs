@@ -194,7 +194,7 @@ impl imp::PpsDocumentView {
             .lockdown_settings
             .borrow()
             .clone()
-            .map(|s| s.boolean(GS_LOCKDOWN_PRINT_SETUP))
+            .map(|s| !s.boolean(GS_LOCKDOWN_PRINT_SETUP))
             .unwrap_or(true);
         operation.set_embed_page_setup(embed_page_setup);
 
