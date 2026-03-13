@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-26 15:31+0000\n"
-"PO-Revision-Date: 2026-01-29 12:49+0100\n"
+"POT-Creation-Date: 2026-03-11 09:19+0000\n"
+"PO-Revision-Date: 2026-03-13 19:30+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Visionador de documents"
 
@@ -448,7 +448,7 @@ msgstr[1] "Enregistrar las pèças juntas"
 msgid "Page %s"
 msgstr "Pagina %s"
 
-#: libview/pps-annotation-window.c:237 shell/resources/pps-sidebar-annotations.blp:60
+#: libview/pps-annotation-window.c:239 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Modificar la nòta"
 
@@ -582,51 +582,51 @@ msgstr "S'es activat, un contorn serà present al torn de cada pagina."
 msgid "Page Handling"
 msgstr "Gestion de las paginas"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2119
 msgid "Go to first page"
 msgstr "Anar a la primièra pagina"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2121
 msgid "Go to previous page"
 msgstr "Anar a la pagina precedenta"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2123
 msgid "Go to next page"
 msgstr "Anar a la pagina seguenta"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2125
 msgid "Go to last page"
 msgstr "Anar a la darrièra pagina"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2127
 msgid "Go to page"
 msgstr "Anar a la pagina"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2129
 msgid "Find"
 msgstr "Recercar"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2158
 #, c-format
 msgid "Go to page %s"
 msgstr "Anar a la pagina %s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Anar a %s sul fichièr « %s »"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2167
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Anar a la pagina « %s »"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Launch %s"
 msgstr "Aviar %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Reset form"
 msgstr "Reïnicializar lo formulari"
@@ -947,7 +947,7 @@ msgstr "Afichar la signatura…"
 
 #: shell/resources/pps-document-view.blp:259
 msgid "Fit Automatically"
-msgstr "_Adaptar automaticament"
+msgstr "Adaptar automaticament"
 
 #: shell/resources/pps-document-view.blp:342 shell/resources/pps-document-view.blp:384
 #: shell/resources/pps-document-view.blp:415
@@ -1016,7 +1016,7 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794 shell/src/document_view/io.rs:490
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812 shell/src/document_view/io.rs:490
 #: shell/src/document_view/io.rs:538 shell/src/document_view/io.rs:730
 msgid "_Cancel"
 msgstr "_Anullar"
@@ -1039,7 +1039,7 @@ msgstr "_Acorchis de clavièr"
 
 #: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
 msgid "_Help"
-msgstr "Ajud_a"
+msgstr "_Ajuda"
 
 #: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
@@ -1285,7 +1285,7 @@ msgstr "Senhal incorrècte"
 
 #: shell/resources/pps-password-dialog.blp:48
 msgid "Forget password _immediately"
-msgstr "D_oblidar lo senhal immediatament"
+msgstr "Oblidar lo senhal _immediatament"
 
 #: shell/resources/pps-password-dialog.blp:55
 msgid "Remember _forever"
@@ -1740,43 +1740,43 @@ msgstr "© 1996-2025 Los autors del visionador de documents Papers"
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "L'etiqueta de la pagina del document d'afichar."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PAGINA"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "Lo numèro de la pagina del document d'afichar."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NUMÈRO"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Destinacion nomenada d'afichar."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Executar papers en mòde ecran complèt."
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Executar papers en mòde presentacion."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Afichar la version del programa."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FICHIÈR…]"
 
@@ -1784,31 +1784,31 @@ msgstr "[FICHIÈR…]"
 msgid "View Details"
 msgstr "Veire los detalhs"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Lo document conten d’anotacions novèlas o modificadas e de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "Lo document conten de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "Lo document conten d'anotacions novèlas o modificadas."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Se enregistratz pas una còpia, las modificacions seràn perdudas definitivament."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Enregistrar las modificacion dins una còpia ?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "Tampar _sans enregistrar"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "_Enregistrar una còpia"
 
@@ -1828,11 +1828,11 @@ msgstr "Lo mòde navegacion al cursor es ara desactivat, quichatz F7 per l’act
 msgid "Close Menu"
 msgstr "Tampar lo menú"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1276
 msgid "Unable to Open Attachment"
 msgstr "Impossible de dobrir la pèça junta"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1292
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Enregistrar la pèça junta"
