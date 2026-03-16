@@ -129,7 +129,7 @@ mod imp {
             // Create buttons box with linked style
             let button_box = gtk::Box::builder()
                 .orientation(gtk::Orientation::Horizontal)
-                .css_classes(["linked"])
+                .spacing(6)
                 .build();
 
             // Open With button
