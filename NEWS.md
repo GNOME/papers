@@ -1,3 +1,10 @@
+Papers 49.6
+----------------
+* Bug fixes:
+  - #517 Saved image files are empty (Lucas Baudin)
+  - #536 Print dialog says "Manage Custom Sizes" for Paper Size every time (Prasun Gera)
+  - !718 libview: Correct zoom in odd left dual page mode (Colin Kinloch)
+
 Papers 49.5
 ----------------
 * Bug fixes:
