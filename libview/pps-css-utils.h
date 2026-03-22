@@ -9,3 +9,5 @@
 
 gchar *
 dzl_pango_font_description_to_css (const PangoFontDescription *font_desc);
+char *
+css_utils_filter_class_chars (const char *str);
