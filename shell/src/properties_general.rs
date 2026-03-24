@@ -301,8 +301,8 @@ mod imp {
             has_field |= insert_string_field!(group, gettext("Subject"), subject);
             has_field |= insert_string_field!(group, gettext("Author"), author);
             has_field |= insert_string_field!(group, gettext("Keywords"), keywords);
-            has_field |= insert_string_field!(group, gettext("Producer"), producer);
-            has_field |= insert_string_field!(group, gettext("Creator"), creator);
+            has_field |= insert_string_field!(group, gettext("Document produced with"), producer);
+            has_field |= insert_string_field!(group, gettext("Source file created with"), creator);
 
             if has_field {
                 page.add(&group);
