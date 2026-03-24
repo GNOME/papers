@@ -7580,3 +7580,47 @@ pps_view_stop_signature_rect (PpsView *view)
 	g_signal_emit (view, signals[SIGNAL_SIGNATURE_RECT], 0, selection_page, &rect);
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
+
+/**
+ * pps_filter_css_chars:
+ * @str: input string
+ *
+ * Returns @str as a new string removing any character which
+ * is not allowed in a css class name.
+ *
+ * Css class names should only contain following characters:
+ *   - a–z A–Z 0–9 - _
+ *   - any Unicode character ≥ U+00A0
+ *
+ * Returns: (transfer full) (not nullable): newly allocated string
+ */
+char *
+pps_filter_css_chars (const char *str)
+{
+	const char *p;
+	gboolean keep;
+	gunichar ch;
+
+	if (!str)
+		return g_strdup ("(null)");
+
+	GString *result = g_string_sized_new (strlen (str));
+
+	for (p = str; *p; p = g_utf8_next_char (p)) {
+		ch = g_utf8_get_char (p);
+		keep = FALSE;
+
+		if (ch <= 0x7F) { /* ASCII fast path */
+			if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') ||
+			    (ch >= '0' && ch <= '9') || ch == '-' || ch == '_') {
+				keep = TRUE;
+			}
+		} else if (ch >= 0x00A0) { /* Unicode ≥ U+00A0 → keep */
+			keep = TRUE;
+		}
+
+		if (keep)
+			g_string_append_unichar (result, ch);
+	}
+	return g_string_free (result, FALSE);
+}

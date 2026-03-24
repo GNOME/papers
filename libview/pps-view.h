@@ -142,4 +142,8 @@ void pps_view_start_signature_rect (PpsView *view);
 PPS_PUBLIC
 void pps_view_cancel_signature_rect (PpsView *view);
 
+/* Misc utils */
+PPS_PUBLIC
+char *pps_filter_css_chars (const char *str);
+
 G_END_DECLS
