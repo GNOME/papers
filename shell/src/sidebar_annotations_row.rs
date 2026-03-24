@@ -4,6 +4,7 @@ use papers_document::AnnotationMarkup;
 use papers_document::AnnotationTextMarkup;
 use papers_document::AnnotationTextMarkupType;
 use papers_document::AnnotationType;
+use papers_view::css_utils_filter_class_chars;
 
 mod imp {
     use super::*;
@@ -134,6 +135,7 @@ mod imp {
                 .unwrap_or("rgb(100 0 0 / 100%)".to_string());
             let name = annot
                 .and_then(|annot| annot.name())
+                .and_then(|gstr| css_utils_filter_class_chars(gstr.as_str()))
                 .map(|gstr| gstr.as_str().to_string())
                 .unwrap_or("default".to_string());
             let page_index = annot.map(|annot| annot.page_index() as i32).unwrap_or(-1);
