@@ -105,8 +105,9 @@ pps_overlay_form_field_button_create_widget (PpsOverlayForm *view,
                                              PpsFormField *field)
 {
 	GtkWidget *button;
+	PpsFormFieldButton *field_button = PPS_FORM_FIELD_BUTTON (field);
 
-	if (field->activation_link) {
+	if (field_button->type == PPS_FORM_FIELD_BUTTON_PUSH) {
 		button = gtk_button_new ();
 		g_signal_connect (button, "clicked", G_CALLBACK (on_link_clicked), view);
 	} else {
