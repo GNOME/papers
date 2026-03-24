@@ -15,6 +15,7 @@
 #include <pps-document-annotations.h>
 
 #include "pps-annotation-window.h"
+#include "pps-css-utils.h"
 #include "pps-document-misc.h"
 
 #if HAVE_LIBSPELLING
@@ -76,14 +77,16 @@ pps_annotation_window_set_color (PpsAnnotationWindow *window,
 	g_autofree char *rgba_str = gdk_rgba_to_string (color);
 	g_autofree char *css_data = NULL;
 	g_autofree char *annotation_id_class = NULL;
+	g_autofree char *filtered_annot_name = NULL;
 	GdkDisplay *display = gdk_display_get_default ();
 
 	if (display == NULL)
 		return;
 
+	filtered_annot_name = pps_css_utils_filter_class_chars (pps_annotation_get_name (window->annotation));
 	annotation_id_class = g_strdup_printf ("annotation-%i-%s",
 	                                       pps_annotation_get_page_index (window->annotation),
-	                                       pps_annotation_get_name (window->annotation));
+	                                       filtered_annot_name);
 
 	css_data = g_strdup_printf (".%s { --annotation-color: %s; }",
 	                            annotation_id_class,
