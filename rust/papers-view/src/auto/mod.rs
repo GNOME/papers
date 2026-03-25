@@ -87,6 +87,8 @@ pub use self::enums::SizingMode;
 mod flags;
 pub use self::flags::AnnotationEditingState;
 
+pub(crate) mod functions;
+
 pub(crate) mod traits {
     pub use super::annotations_context::AnnotationsContextExt;
     pub use super::attachment_context::AttachmentContextExt;

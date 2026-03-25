@@ -1670,4 +1670,9 @@ unsafe extern "C" {
     pub fn pps_undo_handler_free_action(self_: *mut PpsUndoHandler, data: gpointer);
     pub fn pps_undo_handler_undo(self_: *mut PpsUndoHandler, data: gpointer);
 
+    //=========================================================================
+    // Other functions
+    //=========================================================================
+    pub fn pps_filter_css_chars(str: *const c_char) -> *mut c_char;
+
 }
