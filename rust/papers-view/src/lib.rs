@@ -13,6 +13,7 @@ macro_rules! assert_initialized_main_thread {
 pub use papers_view_sys as ffi;
 
 pub use auto::*;
+pub use auto::functions::*;
 pub mod annotations_context;
 mod attachment_context;
 
