@@ -26,6 +26,7 @@ factory_headers = files (
 )
 
 headers = files(
+  'pps-css-utils.h',
   'pps-job-scheduler.h',
   'pps-job.h',
   'pps-jobs.h',
