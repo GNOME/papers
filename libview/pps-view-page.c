@@ -631,7 +631,7 @@ display_annotation_layers (PpsViewPage *page)
 	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
 	PpsAnnotationLayer *layer = NULL;
 
-	if (state != PPS_ANNOTATION_EDITING_STATE_TEXT && priv->layers[LAYER_OBJECTS]) {
+	if (!(state & PPS_ANNOTATION_EDITING_STATE_TEXT) && priv->layers[LAYER_OBJECTS]) {
 		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_OBJECTS]), FALSE);
 	}
 

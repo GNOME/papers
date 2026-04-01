@@ -1206,8 +1206,10 @@ impl imp::PpsDocumentView {
             || editing_state == papers_view::AnnotationEditingState::STAMP
         {
             if self.model.annotation_model().unwrap().tool() == AnnotationTool::Text {
-                self.model
-                    .set_annotation_editing_state(papers_view::AnnotationEditingState::TEXT);
+                self.model.set_annotation_editing_state(
+                    papers_view::AnnotationEditingState::INSERT_TEXT
+                        .union(papers_view::AnnotationEditingState::TEXT),
+                );
             } else {
                 self.model
                     .set_annotation_editing_state(papers_view::AnnotationEditingState::INK);

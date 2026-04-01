@@ -615,16 +615,15 @@ pps_pixbuf_cache_clear_job_sizes (PpsPixbufCache *pixbuf_cache,
 static PpsRenderAnnotsFlags
 pps_pixbuf_cache_get_annot_flags (PpsPixbufCache *pixbuf_cache)
 {
-	switch (pps_document_model_get_annotation_editing_state (pixbuf_cache->model)) {
-	case PPS_ANNOTATION_EDITING_STATE_INK:
-		return PPS_RENDER_ANNOTS_ALL & ~(PPS_RENDER_ANNOTS_INK);
-	case PPS_ANNOTATION_EDITING_STATE_TEXT:
-		return PPS_RENDER_ANNOTS_ALL & ~(PPS_RENDER_ANNOTS_FREETEXT);
-	case PPS_ANNOTATION_EDITING_STATE_STAMP:
-		return PPS_RENDER_ANNOTS_ALL & ~(PPS_RENDER_ANNOTS_STAMP);
-	default:
-		return PPS_RENDER_ANNOTS_ALL;
-	}
+	PpsRenderAnnotsFlags flags = PPS_RENDER_ANNOTS_ALL;
+	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (pixbuf_cache->model);
+	if (state & PPS_ANNOTATION_EDITING_STATE_INK)
+		flags &= ~(PPS_RENDER_ANNOTS_INK);
+	if (state & PPS_ANNOTATION_EDITING_STATE_TEXT)
+		flags &= ~(PPS_RENDER_ANNOTS_FREETEXT);
+	if (state & PPS_ANNOTATION_EDITING_STATE_STAMP)
+		flags &= ~(PPS_RENDER_ANNOTS_STAMP);
+	return flags;
 }
 
 static void

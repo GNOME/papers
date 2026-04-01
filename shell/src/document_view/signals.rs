@@ -63,7 +63,8 @@ impl imp::PpsDocumentView {
     pub(super) fn annotation_editing_state_changed(&self) {
         let state = self.model.annotation_editing_state();
         self.update_edit_toolbar_visibility(
-            state != AnnotationEditingState::NONE && state != AnnotationEditingState::STAMP,
+            state.contains(AnnotationEditingState::INSERT_TEXT)
+                || state.contains(AnnotationEditingState::INK),
         );
     }
 
@@ -922,7 +923,7 @@ impl imp::PpsDocumentView {
 
     #[template_callback(function, name = "is_text")]
     fn is_text(a: AnnotationEditingState) -> bool {
-        a == AnnotationEditingState::TEXT
+        a.contains(AnnotationEditingState::INSERT_TEXT)
     }
 
     #[template_callback(function, name = "not_bool")]
