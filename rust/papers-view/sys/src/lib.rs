@@ -70,6 +70,7 @@ pub const PPS_ANNOTATION_EDITING_STATE_NONE: PpsAnnotationEditingState = 0;
 pub const PPS_ANNOTATION_EDITING_STATE_INK: PpsAnnotationEditingState = 1;
 pub const PPS_ANNOTATION_EDITING_STATE_TEXT: PpsAnnotationEditingState = 2;
 pub const PPS_ANNOTATION_EDITING_STATE_STAMP: PpsAnnotationEditingState = 4;
+pub const PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT: PpsAnnotationEditingState = 8;
 
 pub type PpsJobPageDataFlags = c_uint;
 pub const PPS_PAGE_DATA_INCLUDE_NONE: PpsJobPageDataFlags = 0;
