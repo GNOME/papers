@@ -11,6 +11,7 @@
 typedef struct
 {
 	PpsDocumentModel *model;
+	/* annotations context, may be NULL (e.g. in the previewer or 3rd party app) */
 	PpsAnnotationsContext *annots_context;
 	GHashTable *free_text_widgets;
 } PpsAnnotationWidgetFactoryPrivate;
@@ -66,6 +67,10 @@ pps_annotation_widget_factory_widgets_for_page (PpsElementWidgetFactory *factory
 	PpsAnnotationWidgetFactoryPrivate *priv = GET_PRIVATE (annot_factory);
 	GListModel *all_annots;
 	GList *widgets = NULL;
+
+	if (!priv->annots_context) {
+		return NULL;
+	}
 
 	all_annots = pps_annotations_context_get_annots_model (priv->annots_context);
 
@@ -137,15 +142,17 @@ pps_annotation_widget_factory_setup (PpsElementWidgetFactory *element_factory,
 	g_set_object (&priv->model, model);
 	g_set_object (&priv->annots_context, annots_context);
 
-	g_signal_connect_object (priv->annots_context, "annots-loaded",
-	                         G_CALLBACK (pps_annotation_widget_factory_annots_loaded),
-	                         factory, G_CONNECT_DEFAULT);
-	g_signal_connect_object (priv->annots_context, "annot-added",
-	                         G_CALLBACK (pps_annotation_widget_factory_annots_added),
-	                         factory, G_CONNECT_SWAPPED);
-	g_signal_connect_object (priv->annots_context, "annot-removed",
-	                         G_CALLBACK (pps_annotation_widget_factory_annots_removed),
-	                         factory, G_CONNECT_SWAPPED);
+	if (priv->annots_context) {
+		g_signal_connect_object (priv->annots_context, "annots-loaded",
+		                         G_CALLBACK (pps_annotation_widget_factory_annots_loaded),
+		                         factory, G_CONNECT_DEFAULT);
+		g_signal_connect_object (priv->annots_context, "annot-added",
+		                         G_CALLBACK (pps_annotation_widget_factory_annots_added),
+		                         factory, G_CONNECT_SWAPPED);
+		g_signal_connect_object (priv->annots_context, "annot-removed",
+		                         G_CALLBACK (pps_annotation_widget_factory_annots_removed),
+		                         factory, G_CONNECT_SWAPPED);
+	}
 }
 
 static gboolean
