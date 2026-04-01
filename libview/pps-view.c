@@ -2317,14 +2317,6 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 			pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
 	} else if ((annot = get_annotation_at_location (view, x, y))) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
-
-		if (PPS_IS_ANNOTATION_STAMP (annot)) {
-			PpsAnnotationWidgetFactory *factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
-			GtkWidget *widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
-
-			if (widget && !gtk_widget_get_visible (widget))
-				gtk_widget_set_visible (widget, TRUE);
-		}
 	} else if (location_in_text (view, x, y)) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 	} else {
@@ -2755,9 +2747,12 @@ pps_view_rerender_annotation (PpsView *view,
 		return;
 	}
 	if (PPS_IS_ANNOTATION_STAMP (annot)) {
-		PpsAnnotationWidgetFactory *factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
-		GtkWidget *widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
-		if (widget && gtk_widget_get_visible (widget))
+		/* Skip re-render while the overlay is in image mode (page already renders
+		 * without the stamp). Re-rendering on every drag position update would
+		 * cause visible flicker. */
+		PpsRenderAnnotsFlags rendered = pps_pixbuf_cache_rendered_state (priv->pixbuf_cache,
+		                                                                 (gint) pps_annotation_get_page_index (annot));
+		if (!(rendered & PPS_RENDER_ANNOTS_STAMP))
 			return;
 	}
 	if (state & PPS_ANNOTATION_EDITING_STATE_INK && PPS_IS_ANNOTATION_INK (annot)) {
@@ -2866,14 +2861,6 @@ pps_view_editing_state_changed (PpsDocumentModel *model,
 	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
-static gboolean
-grab_focus_overlay_idle (gpointer data)
-{
-	pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (data), -1, -1);
-	g_object_unref (data);
-	return G_SOURCE_REMOVE;
-}
-
 static void
 pps_view_annot_added_cb (PpsView *view,
                          gpointer *user_data)
@@ -2889,19 +2876,6 @@ pps_view_annot_added_cb (PpsView *view,
 	if (PPS_IS_ANNOTATION_TEXT (annot)) {
 		GtkWidget *window = pps_view_create_annotation_window (view, PPS_ANNOTATION_MARKUP (annot));
 		pps_annotation_window_show (PPS_ANNOTATION_WINDOW (window));
-	}
-
-	if (PPS_IS_ANNOTATION_STAMP (annot)) {
-		PpsViewPrivate *priv = GET_PRIVATE (view);
-		PpsAnnotationWidgetFactory *factory;
-		GtkWidget *widget;
-
-		pps_document_model_set_annotation_editing_state (priv->model,
-		                                                 PPS_ANNOTATION_EDITING_STATE_STAMP);
-		factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
-		widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
-		if (widget)
-			g_idle_add (grab_focus_overlay_idle, g_object_ref (widget));
 	}
 }
 
@@ -4191,7 +4165,7 @@ pps_view_button_press_event (GtkGestureClick *self,
 	if (!document || pps_document_get_n_pages (document) <= 0)
 		return;
 
-	if (pps_document_model_get_annotation_editing_state (priv->model) & (PPS_ANNOTATION_EDITING_STATE_INK | PPS_ANNOTATION_EDITING_STATE_TEXT)) {
+	if (pps_document_model_get_annotation_editing_state (priv->model) & (PPS_ANNOTATION_EDITING_STATE_INK | PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT)) {
 		gtk_gesture_set_state (GTK_GESTURE (self), GTK_EVENT_SEQUENCE_DENIED);
 		return;
 	}
@@ -4685,25 +4659,10 @@ pps_view_button_release_event (GtkGestureClick *self,
 				if (widget) {
 					pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (widget), -1, -1);
 				}
-			} else if (PPS_IS_ANNOTATION_STAMP (annot)) {
-				PpsAnnotationWidgetFactory *factory;
-				GtkWidget *widget;
-
-				pps_document_model_set_annotation_editing_state (priv->model,
-				                                                 PPS_ANNOTATION_EDITING_STATE_STAMP);
-
-				/* Focus the annotation widget so user can start moving/resizing immediately */
-				factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
-				widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
-				if (widget) {
-					pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (widget), -1, -1);
-				}
 			} else {
 				/* Other annotations (sticky notes, attachments) work on single click */
 				pps_view_handle_annotation (view, annot, x, y, time);
 			}
-		} else if (pps_document_model_get_annotation_editing_state (priv->model) & PPS_ANNOTATION_EDITING_STATE_STAMP) {
-			pps_document_model_set_annotation_editing_state (priv->model, pps_document_model_get_annotation_editing_state (priv->model) & ~PPS_ANNOTATION_EDITING_STATE_STAMP);
 		}
 	}
 

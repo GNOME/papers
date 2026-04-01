@@ -209,7 +209,7 @@ pps_document_model_update_editing_state (GObject *annotation_model, GParamSpec *
 	}
 	switch (pps_annotation_model_get_tool (model->annotation_model)) {
 	case TOOL_TEXT:
-		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_TEXT);
+		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT | PPS_ANNOTATION_EDITING_STATE_TEXT);
 		break;
 	default:
 		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_INK);

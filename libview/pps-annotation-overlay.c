@@ -60,6 +60,7 @@ typedef struct {
 	GtkTextView *text_view;
 
 	gboolean ignore_content_changed;
+	PpsAnnotationEditingState previous_editing_state;
 } PpsOverlayAnnotationEntryPrivate;
 
 struct _PpsOverlayAnnotationEntry {
@@ -76,6 +77,11 @@ pps_overlay_annotation_drag_end (GtkGestureDrag *annotation_drag_gesture,
                                  gdouble offset_y,
                                  PpsOverlayAnnotation *overlay)
 {
+	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
+	if (PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
+		PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
+		pps_document_model_set_annotation_editing_state (priv->model, state & ~PPS_ANNOTATION_EDITING_STATE_STAMP);
+	}
 	gtk_gesture_set_state (GTK_GESTURE (annotation_drag_gesture), GTK_EVENT_SEQUENCE_CLAIMED);
 }
 
@@ -128,8 +134,13 @@ pps_overlay_annotation_resize_begin (GtkGestureDrag *annotation_drag_gesture,
                                      PpsOverlayAnnotation *overlay)
 {
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
-
 	PpsRectangle rect;
+
+	if (PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
+		PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
+		pps_document_model_set_annotation_editing_state (priv->model, state | PPS_ANNOTATION_EDITING_STATE_STAMP);
+	}
+
 	pps_annotation_get_area (priv->annotation, &rect);
 	priv->initial_proportion = (rect.x2 - rect.x1) / (rect.y2 - rect.y1);
 
@@ -188,6 +199,11 @@ pps_overlay_annotation_drag_begin (GtkGestureDrag *annotation_drag_gesture,
 {
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
 	GtkWidget *child;
+
+	if (PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
+		PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
+		pps_document_model_set_annotation_editing_state (priv->model, state | PPS_ANNOTATION_EDITING_STATE_STAMP);
+	}
 
 	/* We claim this if we are not above a child widget or if drag_only_on_border is not set */
 
@@ -318,14 +334,18 @@ pps_overlay_annotation_update_visibility_from_state (PpsOverlay *self, PpsRender
 {
 	PpsOverlayAnnotation *overlay = PPS_OVERLAY_ANNOTATION (self);
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
-	if (state & PPS_RENDER_ANNOTS_INK && PPS_IS_ANNOTATION_INK (priv->annotation)) {
-		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
-	} else if (state & PPS_RENDER_ANNOTS_FREETEXT && PPS_IS_ANNOTATION_FREE_TEXT (priv->annotation)) {
-		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
-	} else if (state & PPS_RENDER_ANNOTS_STAMP && PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
-		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
-	} else {
-		gtk_widget_set_visible (GTK_WIDGET (self), TRUE);
+	if (PPS_IS_ANNOTATION_FREE_TEXT (priv->annotation)) {
+		PpsOverlayAnnotationEntryPrivate *entry_priv = ENTRY_GET_PRIVATE (PPS_OVERLAY_ANNOTATION_ENTRY (self));
+		if (state & PPS_RENDER_ANNOTS_FREETEXT) {
+			entry_priv->previous_editing_state = entry_priv->previous_editing_state & ~PPS_ANNOTATION_EDITING_STATE_TEXT & ~PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT;
+		}
+		gtk_widget_set_visible (GTK_WIDGET (entry_priv->text_view), !(state & PPS_RENDER_ANNOTS_FREETEXT));
+
+	} else if (PPS_IS_ANNOTATION_STAMP (priv->annotation)) {
+		PpsOverlayAnnotationImagePrivate *img_priv = IMAGE_GET_PRIVATE (PPS_OVERLAY_ANNOTATION_IMAGE (self));
+		/* Outline mode: page is drawing the stamp; hide the overlay image
+		 * to avoid showing the stamp twice. The border remains visible. */
+		gtk_widget_set_visible (GTK_WIDGET (img_priv->image), !(state & PPS_RENDER_ANNOTS_STAMP));
 	}
 }
 
@@ -583,29 +603,6 @@ gdk_texture_new_for_surface (cairo_surface_t *surface)
 	return texture;
 }
 
-static gboolean
-stamp_overlay_hide_idle (gpointer data)
-{
-	PpsOverlayAnnotationImage *self = PPS_OVERLAY_ANNOTATION_IMAGE (data);
-	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (self);
-
-	if (!(pps_document_model_get_annotation_editing_state (priv->model) & PPS_ANNOTATION_EDITING_STATE_STAMP)) {
-		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
-		/* Trigger a PDF re-render so the stamp's updated position is shown */
-		g_object_notify (G_OBJECT (priv->annotation), "area");
-	}
-
-	g_object_unref (self);
-	return G_SOURCE_REMOVE;
-}
-
-static void
-stamp_overlay_leave_cb (GtkEventControllerMotion *controller,
-                        PpsOverlayAnnotationImage *self)
-{
-	g_idle_add (stamp_overlay_hide_idle, g_object_ref (self));
-}
-
 static GObject *
 pps_overlay_annotation_image_constructor (GType type,
                                           guint n_construct_properties,
@@ -617,7 +614,6 @@ pps_overlay_annotation_image_constructor (GType type,
 	PpsOverlayAnnotationImage *ov_image;
 	cairo_surface_t *surface;
 	GdkTexture *texture;
-	GtkEventController *motion;
 
 	object = G_OBJECT_CLASS (pps_overlay_annotation_image_parent_class)
 	             ->constructor (type, n_construct_properties, construct_params);
@@ -637,10 +633,6 @@ pps_overlay_annotation_image_constructor (GType type,
 		gtk_widget_set_sensitive (GTK_WIDGET (object), FALSE);
 	}
 
-	motion = gtk_event_controller_motion_new ();
-	g_signal_connect (motion, "leave", G_CALLBACK (stamp_overlay_leave_cb), object);
-	gtk_widget_add_controller (GTK_WIDGET (object), motion);
-
 	return object;
 }
 
@@ -650,7 +642,7 @@ pps_overlay_annotation_image_init (PpsOverlayAnnotationImage *ov_image)
 	PpsOverlayAnnotationImagePrivate *priv = IMAGE_GET_PRIVATE (ov_image);
 	PpsOverlayAnnotationPrivate *priv_overlay = OVERLAY_GET_PRIVATE (ov_image);
 	priv->image = GTK_PICTURE (gtk_picture_new ());
-	gtk_widget_set_focusable (GTK_WIDGET (priv->image), TRUE);
+	gtk_widget_set_focusable (GTK_WIDGET (ov_image), TRUE);
 	gtk_picture_set_content_fit (priv->image, GTK_CONTENT_FIT_CONTAIN);
 
 	gtk_widget_set_vexpand (GTK_WIDGET (priv->image), TRUE);
@@ -664,9 +656,7 @@ pps_overlay_annotation_image_init (PpsOverlayAnnotationImage *ov_image)
 static void
 pps_overlay_annotation_image_grab_focus (PpsOverlayAnnotation *overlay, int x, int y)
 {
-	PpsOverlayAnnotationImagePrivate *priv = IMAGE_GET_PRIVATE (PPS_OVERLAY_ANNOTATION_IMAGE (overlay));
-
-	gtk_widget_grab_focus (GTK_WIDGET (priv->image));
+	gtk_widget_grab_focus (GTK_WIDGET (overlay));
 }
 
 static void
@@ -757,6 +747,9 @@ pps_overlay_annotation_entry_focus_out (GtkTextView *text_view, PpsOverlayAnnota
 {
 	PpsOverlayAnnotation *overlay = PPS_OVERLAY_ANNOTATION (entry);
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
+	PpsOverlayAnnotationEntryPrivate *priv_entry = ENTRY_GET_PRIVATE (entry);
+
+	pps_document_model_set_annotation_editing_state (priv->model, priv_entry->previous_editing_state);
 
 	if (!priv->annot_removed) {
 		if (!g_strcmp0 (pps_annotation_get_contents (PPS_ANNOTATION (priv->annotation)), "")) {
@@ -821,9 +814,13 @@ pps_overlay_annotation_entry_focus_in (GtkTextView *text_view, PpsOverlayAnnotat
 {
 	PpsOverlayAnnotation *overlay = PPS_OVERLAY_ANNOTATION (entry);
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
-
+	PpsOverlayAnnotationEntryPrivate *priv_entry = ENTRY_GET_PRIVATE (entry);
 	PpsAnnotationModel *annot_model = pps_document_model_get_annotation_model (priv->model);
+	PpsAnnotationEditingState state = pps_document_model_get_annotation_editing_state (priv->model);
 	g_autoptr (GdkRGBA) color = pps_annotation_free_text_get_font_rgba (PPS_ANNOTATION_FREE_TEXT (priv->annotation));
+
+	priv_entry->previous_editing_state = state;
+	pps_document_model_set_annotation_editing_state (priv->model, state | PPS_ANNOTATION_EDITING_STATE_TEXT);
 	pps_annotation_model_set_text_color (annot_model, color);
 }
 
@@ -894,7 +891,7 @@ pps_overlay_annotation_entry_init (PpsOverlayAnnotationEntry *entry)
 	gtk_box_append (priv_overlay->box, widget);
 
 	focus = gtk_event_controller_focus_new ();
-	gtk_widget_add_controller (widget, focus);
+	gtk_widget_add_controller (GTK_WIDGET (priv->text_view), focus);
 	g_signal_connect (focus, "enter", G_CALLBACK (pps_overlay_annotation_entry_focus_in), entry);
 	g_signal_connect (focus, "leave", G_CALLBACK (pps_overlay_annotation_entry_focus_out), entry);
 }
