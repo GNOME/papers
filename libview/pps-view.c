@@ -2754,8 +2754,11 @@ pps_view_rerender_annotation (PpsView *view,
 	if (state & PPS_ANNOTATION_EDITING_STATE_TEXT && PPS_IS_ANNOTATION_FREE_TEXT (annot)) {
 		return;
 	}
-	if (state & PPS_ANNOTATION_EDITING_STATE_STAMP && PPS_IS_ANNOTATION_STAMP (annot)) {
-		return;
+	if (PPS_IS_ANNOTATION_STAMP (annot)) {
+		PpsAnnotationWidgetFactory *factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
+		GtkWidget *widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
+		if (widget && gtk_widget_get_visible (widget))
+			return;
 	}
 	if (state & PPS_ANNOTATION_EDITING_STATE_INK && PPS_IS_ANNOTATION_INK (annot)) {
 		return;
@@ -2863,6 +2866,14 @@ pps_view_editing_state_changed (PpsDocumentModel *model,
 	gtk_widget_queue_allocate (GTK_WIDGET (view));
 }
 
+static gboolean
+grab_focus_overlay_idle (gpointer data)
+{
+	pps_overlay_annotation_grab_focus (PPS_OVERLAY_ANNOTATION (data), -1, -1);
+	g_object_unref (data);
+	return G_SOURCE_REMOVE;
+}
+
 static void
 pps_view_annot_added_cb (PpsView *view,
                          gpointer *user_data)
@@ -2878,6 +2889,19 @@ pps_view_annot_added_cb (PpsView *view,
 	if (PPS_IS_ANNOTATION_TEXT (annot)) {
 		GtkWidget *window = pps_view_create_annotation_window (view, PPS_ANNOTATION_MARKUP (annot));
 		pps_annotation_window_show (PPS_ANNOTATION_WINDOW (window));
+	}
+
+	if (PPS_IS_ANNOTATION_STAMP (annot)) {
+		PpsViewPrivate *priv = GET_PRIVATE (view);
+		PpsAnnotationWidgetFactory *factory;
+		GtkWidget *widget;
+
+		pps_document_model_set_annotation_editing_state (priv->model,
+		                                                 PPS_ANNOTATION_EDITING_STATE_STAMP);
+		factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
+		widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
+		if (widget)
+			g_idle_add (grab_focus_overlay_idle, g_object_ref (widget));
 	}
 }
 
@@ -4668,7 +4692,7 @@ pps_view_button_release_event (GtkGestureClick *self,
 				pps_document_model_set_annotation_editing_state (priv->model,
 				                                                 PPS_ANNOTATION_EDITING_STATE_STAMP);
 
-				/* Focus the annotation widget so user can start typing immediately */
+				/* Focus the annotation widget so user can start moving/resizing immediately */
 				factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
 				widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
 				if (widget) {
