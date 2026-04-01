@@ -583,6 +583,29 @@ gdk_texture_new_for_surface (cairo_surface_t *surface)
 	return texture;
 }
 
+static gboolean
+stamp_overlay_hide_idle (gpointer data)
+{
+	PpsOverlayAnnotationImage *self = PPS_OVERLAY_ANNOTATION_IMAGE (data);
+	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (self);
+
+	if (!(pps_document_model_get_annotation_editing_state (priv->model) & PPS_ANNOTATION_EDITING_STATE_STAMP)) {
+		gtk_widget_set_visible (GTK_WIDGET (self), FALSE);
+		/* Trigger a PDF re-render so the stamp's updated position is shown */
+		g_object_notify (G_OBJECT (priv->annotation), "area");
+	}
+
+	g_object_unref (self);
+	return G_SOURCE_REMOVE;
+}
+
+static void
+stamp_overlay_leave_cb (GtkEventControllerMotion *controller,
+                        PpsOverlayAnnotationImage *self)
+{
+	g_idle_add (stamp_overlay_hide_idle, g_object_ref (self));
+}
+
 static GObject *
 pps_overlay_annotation_image_constructor (GType type,
                                           guint n_construct_properties,
@@ -594,6 +617,7 @@ pps_overlay_annotation_image_constructor (GType type,
 	PpsOverlayAnnotationImage *ov_image;
 	cairo_surface_t *surface;
 	GdkTexture *texture;
+	GtkEventController *motion;
 
 	object = G_OBJECT_CLASS (pps_overlay_annotation_image_parent_class)
 	             ->constructor (type, n_construct_properties, construct_params);
@@ -612,6 +636,10 @@ pps_overlay_annotation_image_constructor (GType type,
 		g_debug ("Annotation not editable, could not retrieve the texture.");
 		gtk_widget_set_sensitive (GTK_WIDGET (object), FALSE);
 	}
+
+	motion = gtk_event_controller_motion_new ();
+	g_signal_connect (motion, "leave", G_CALLBACK (stamp_overlay_leave_cb), object);
+	gtk_widget_add_controller (GTK_WIDGET (object), motion);
 
 	return object;
 }

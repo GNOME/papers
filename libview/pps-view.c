@@ -2317,6 +2317,14 @@ pps_view_handle_cursor_over_xy (PpsView *view, gint x, gint y)
 			pps_view_set_cursor (view, PPS_VIEW_CURSOR_NORMAL);
 	} else if ((annot = get_annotation_at_location (view, x, y))) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_LINK);
+
+		if (PPS_IS_ANNOTATION_STAMP (annot)) {
+			PpsAnnotationWidgetFactory *factory = PPS_ANNOTATION_WIDGET_FACTORY (priv->widget_factories[ANNOT_FACTORY]);
+			GtkWidget *widget = pps_annotation_widget_factory_get_widget_for_annot (factory, annot);
+
+			if (widget && !gtk_widget_get_visible (widget))
+				gtk_widget_set_visible (widget, TRUE);
+		}
 	} else if (location_in_text (view, x, y)) {
 		pps_view_set_cursor (view, PPS_VIEW_CURSOR_IBEAM);
 	} else {
