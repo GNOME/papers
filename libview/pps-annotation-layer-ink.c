@@ -528,6 +528,7 @@ update_cursor (PpsAnnotationLayerInk *draw)
 	gdouble radius = get_current_tool_radius (draw);
 	GdkRGBA *color = get_current_tool_color (draw);
 	int circle_radius = MAX (radius * scale, 2);
+	int icon_width, icon_height;
 	cairo_surface_t *icon_surface, *surface = NULL;
 	cairo_t *cr;
 	g_autoptr (GdkPixbuf) combined_pixbuf = NULL;
@@ -562,11 +563,16 @@ update_cursor (PpsAnnotationLayerInk *draw)
 		icon_surface = priv->highlight_pixbuf;
 		break;
 	}
-	surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 2 * circle_radius + cairo_image_surface_get_width (icon_surface), 2 * circle_radius + cairo_image_surface_get_height (icon_surface));
+	icon_width = cairo_image_surface_get_width (icon_surface);
+	icon_height = cairo_image_surface_get_height (icon_surface);
+	surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 2 * circle_radius + icon_width, 2 * circle_radius + icon_height);
+
+	int hotspot_x = circle_radius;
+	int hotspot_y = icon_height + circle_radius;
 
 	cr = cairo_create (surface);
-	cairo_move_to (cr, 2 * circle_radius, circle_radius);
-	cairo_arc (cr, circle_radius, circle_radius, circle_radius, 0., 2 * M_PI);
+	cairo_translate (cr, hotspot_x, hotspot_y);
+	cairo_arc (cr, 0, 0, circle_radius, 0., 2 * M_PI);
 	if (color) {
 		cairo_set_source_rgb (cr, color->red, color->green, color->blue);
 	} else {
@@ -574,8 +580,7 @@ update_cursor (PpsAnnotationLayerInk *draw)
 	}
 	cairo_fill (cr);
 
-	/* 1.7 ~ 1 + sqrt(2)/2 */
-	cairo_translate (cr, floor (1.7 * circle_radius), floor (1.7 * circle_radius));
+	cairo_translate (cr, circle_radius, -circle_radius - icon_height);
 	cairo_set_source_surface (cr, icon_surface, 0, 0);
 	cairo_paint (cr);
 	cairo_surface_flush (surface);
@@ -586,7 +591,7 @@ update_cursor (PpsAnnotationLayerInk *draw)
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	texture = gdk_texture_new_for_pixbuf (combined_pixbuf);
 	G_GNUC_END_IGNORE_DEPRECATIONS
-	cursor = gdk_cursor_new_from_texture (texture, radius * scale, radius * scale, NULL);
+	cursor = gdk_cursor_new_from_texture (texture, hotspot_x, hotspot_y, NULL);
 	gtk_widget_set_cursor (GTK_WIDGET (draw), cursor);
 }
 
