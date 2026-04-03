@@ -35,6 +35,7 @@
       <default>false</default>
     </key>
     <child name="default" schema="org.gnome.Papers.Default"/>
+    <child name="previewer" schema="org.gnome.Papers.Previewer"/>
   </schema>
 
   <schema id="org.gnome.Papers.Default" path="/org/gnome/papers/default/" gettext-domain="papers">
@@ -103,6 +104,21 @@
     </key>
     <key name="text-color" type="s">
       <default>'blue'</default>
+    </key>
+  </schema>
+
+  <schema id="org.gnome.Papers.Previewer" path="/org/gnome/papers/previewer/" gettext-domain="papers">
+    <key name="window-height" type="i">
+      <default>1000</default>
+      <summary>Previewer window height</summary>
+    </key>
+    <key name="window-width" type="i">
+      <default>800</default>
+      <summary>Previewer window width</summary>
+    </key>
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Previewer window maximized state</summary>
     </key>
   </schema>
 

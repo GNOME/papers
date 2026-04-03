@@ -26,6 +26,7 @@ typedef struct _PpsPreviewerWindowPrivate {
 	PpsView *view;
 	GtkWidget *page_selector;
 	AdwAlertDialog *dialog;
+	GSettings *settings;
 
 	/* Printing */
 	GtkPrintSettings *print_settings;
@@ -340,6 +341,7 @@ pps_previewer_window_dispose (GObject *object)
 	g_clear_object (&priv->document);
 	g_clear_object (&priv->print_settings);
 	g_clear_object (&priv->print_page_setup);
+	g_clear_object (&priv->settings);
 #if GTKUNIXPRINT_ENABLED
 	g_clear_object (&priv->printer);
 #endif
@@ -387,6 +389,22 @@ pps_previewer_window_constructed (GObject *object)
 	pps_document_model_set_sizing_mode (priv->model, PPS_SIZING_AUTOMATIC);
 
 	view_sizing_mode_changed (priv->model, NULL, window);
+	priv->settings = g_settings_new ("org.gnome.Papers.Previewer");
+
+	g_settings_bind (priv->settings,
+	                 "window-width",
+	                 window, "default-width",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_GET_NO_CHANGES | G_SETTINGS_BIND_SET);
+
+	g_settings_bind (priv->settings,
+	                 "window-height",
+	                 window, "default-height",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_GET_NO_CHANGES | G_SETTINGS_BIND_SET);
+
+	g_settings_bind (priv->settings,
+	                 "window-maximized",
+	                 window, "maximized",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_GET_NO_CHANGES | G_SETTINGS_BIND_SET);
 
 	g_signal_connect (priv->page_selector,
 	                  "activate-link",
