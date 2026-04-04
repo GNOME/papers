@@ -687,7 +687,7 @@ mod imp {
             let job = JobLoad::new();
             job.set_uri(&uri);
 
-            job.connect_finished(glib::clone!(
+            let id = job.connect_finished(glib::clone!(
                 #[weak(rename_to = obj)]
                 self,
                 move |job| {
@@ -705,7 +705,9 @@ mod imp {
                 }
             ));
 
-            job.scheduler_push_job(JobPriority::PriorityNone)
+            job.scheduler_push_job(JobPriority::PriorityNone);
+            self.reload_job.replace(Some(job));
+            self.reload_job_handler.replace(Some(id));
         }
 
         async fn copy_and_reload_local(&self, remote: &gio::File) {
