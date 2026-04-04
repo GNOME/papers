@@ -5,7 +5,7 @@
     <property name="focusable">True</property>
     <child>
       <object class="GtkEventControllerScroll">
-        <property name="flags">vertical</property>
+        <property name="flags">vertical|discrete</property>
         <signal name="scroll" handler="pps_view_presentation_scroll_event" />
       </object>
     </child>
