@@ -5,7 +5,7 @@ template $PpsViewPresentation: Widget {
   focusable: true;
 
   EventControllerScroll {
-    flags: vertical;
+    flags: vertical | discrete;
     scroll => $pps_view_presentation_scroll_event();
   }
 
