@@ -991,13 +991,32 @@ pps_interrupt_scroll_animation_cb (GtkAdjustment *adjustment, PpsView *view)
 	}
 }
 
+static void
+pps_view_cancel_kinetic_scrolling_deceleration (PpsView *view)
+{
+	/* Workaround for GTK issue https://gitlab.gnome.org/GNOME/gtk/-/issues/187:
+	 * If we update the view (zoom/scale) while scrolling is still active we'd see
+	 * a sudden jump of scroll position due to kinetic deceleration still using
+	 * previous/outdated value.
+	 * Unfortunately gtk_scrolled_window_cancel_deceleration is private so we need
+	 * to workaround that by using public gtk_scrolled_window_set_kinetic_scrolling
+	 * which calls gtk_scrolled_window_cancel_deceleration for us.
+	 */
+	GtkWidget *parent_window = gtk_widget_get_parent (GTK_WIDGET (view));
+
+	if (GTK_IS_SCROLLED_WINDOW (parent_window) &&
+	    gtk_scrolled_window_get_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window))) {
+		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), FALSE);
+		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), TRUE);
+	}
+}
+
 static gboolean
 pps_view_scroll (PpsView *view,
                  GtkScrollType scroll,
                  GtkOrientation orientation)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	GtkWidget *parent_window = gtk_widget_get_parent (GTK_WIDGET (view));
 	GtkAdjustment *adjustment;
 	gdouble increment, upper, lower, page_size, step_increment, prev_value, new_value;
 	gboolean first_page = FALSE, last_page = FALSE;
@@ -1101,10 +1120,7 @@ pps_view_scroll (PpsView *view,
 
 	new_value = CLAMP (new_value, lower, upper - page_size);
 
-	if (GTK_IS_SCROLLED_WINDOW (parent_window)) {
-		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), FALSE);
-		gtk_scrolled_window_set_kinetic_scrolling (GTK_SCROLLED_WINDOW (parent_window), TRUE);
-	}
+	pps_view_cancel_kinetic_scrolling_deceleration (view);
 
 	if (adw_animation_get_state (animation) == ADW_ANIMATION_PLAYING) {
 		new_value += adw_timed_animation_get_value_to (ADW_TIMED_ANIMATION (animation)) - prev_value;
@@ -6522,6 +6538,8 @@ pps_view_zoom (PpsView *view, gdouble factor)
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	g_return_if_fail (pps_document_model_get_sizing_mode (priv->model) == PPS_SIZING_FREE);
+
+	pps_view_cancel_kinetic_scrolling_deceleration (view);
 
 	priv->pending_scroll = SCROLL_TO_CENTER;
 	scale = pps_document_model_get_scale (priv->model) * factor;
