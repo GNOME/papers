@@ -708,11 +708,11 @@ pps_annotations_context_add_annotation_sync (PpsAnnotationsContext *self,
 		}
 
 		doc_rect.x1 = start->x;
-		doc_rect.y1 = start->y;
 		doc_rect.x2 = start->x + 2;
 		/* Ideally we should call pps_annotation_free_text_autoresize but
 		we don't have a PangoContext here */
-		doc_rect.y2 = start->y + font_size * 1.4;
+		doc_rect.y1 = start->y - font_size / 2 * 1.4;
+		doc_rect.y2 = start->y + font_size / 2 * 1.4;
 
 		annot = pps_annotation_free_text_new (page);
 
