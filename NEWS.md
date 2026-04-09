@@ -1,3 +1,18 @@
+Papers 51.1
+-----------
+
+* Bug fixes:
+  - improve accessibility of the password dialog (Lukáš Tyrychtr)
+  - exclude internal resources from GIR (Markus Göllnitz)
+
+* Translation updates:
+  - Basque (Asier Saratsua Garmendia)
+  - German (Christian Kirbach, Jürgen Benvenuti)
+  - Greek (Hazel L, Efstathios Iosifidis)
+  - Norwegian Bokmål (Kjartan Maraas)
+  - Norwegian Nynorsk (Roy-Magne Mo)
+  - Occitan (Quentin PAGÈS)
+
 Papers 51.0
 ------------
 
