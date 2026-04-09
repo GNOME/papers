@@ -1,3 +1,22 @@
+Papers 50.1
+--------------
+* Bug fixes:
+  - !739 shell: Fix crash when navigating empty search results (Lennard Hofmann)
+  - !718 libview: Correct zoom in odd left dual page mode (Colin Kinloch)
+  - #655 text annotation displayed in wrong colors (Nelson Ben)
+  - #632 Scrolling in presentation mode skips pages (Qiu Wenbo)
+  - !747 libview: Fix tool not pointing towards the ink in annotation cursor (Alessandro Astone)
+  - !748 shell: save load job and handler id when reloading (Lucas Baudin)
+  - !746 fix several criticals for the previewer (Lucas Baudin)
+  - #669 libview: fix free text annotations position on insertion (Lucas Baudin)
+  - #656 libview: fix detection of some form checkboxes (Lucas Baudin)
+
+* Translation updates:
+  - Serbian (Марко М. Костић)
+  - Polish (Victoria Niedzielska)
+  - Slovak (Jose Riha)
+  - Indonesian (Andika Triwidada)
+
 Papers 50
 --------------
 * Bug fixes:
