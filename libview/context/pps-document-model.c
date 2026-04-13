@@ -24,6 +24,8 @@
 #include "pps-view-marshal.h"
 #include "pps-view-type-builtins.h"
 
+#define EPSILON 0.000001
+
 struct _PpsDocumentModel {
 	GObject base;
 
@@ -481,7 +483,7 @@ pps_document_model_set_scale (PpsDocumentModel *model,
 	scale = CLAMP (scale,
 	               model->sizing_mode == PPS_SIZING_FREE ? model->min_scale : 0, model->max_scale);
 
-	if (scale == model->scale)
+	if (G_APPROX_VALUE (scale, model->scale, EPSILON))
 		return;
 
 	model->scale = scale;
@@ -503,7 +505,7 @@ pps_document_model_set_max_scale (PpsDocumentModel *model,
 {
 	g_return_if_fail (PPS_IS_DOCUMENT_MODEL (model));
 
-	if (max_scale == model->max_scale)
+	if (G_APPROX_VALUE (max_scale, model->max_scale, EPSILON))
 		return;
 
 	model->max_scale = max_scale;
@@ -528,7 +530,7 @@ pps_document_model_set_min_scale (PpsDocumentModel *model,
 {
 	g_return_if_fail (PPS_IS_DOCUMENT_MODEL (model));
 
-	if (min_scale == model->min_scale)
+	if (G_APPROX_VALUE (min_scale, model->min_scale, EPSILON))
 		return;
 
 	model->min_scale = min_scale;
