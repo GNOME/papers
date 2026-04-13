@@ -1868,7 +1868,6 @@ static void
 goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
 	PpsDocumentPoint doc_point;
 	gdouble top;
 	gboolean change_top;
@@ -1879,19 +1878,8 @@ goto_fith_dest (PpsView *view, PpsLinkDest *dest)
 	doc_point.point_on_page.x = 0;
 	doc_point.point_on_page.y = change_top ? top : 0;
 
-	if (priv->allow_links_change_zoom) {
-		gdouble doc_width;
-		gdouble zoom;
-
-		pps_document_get_page_size (document, doc_point.page_index, &doc_width, NULL);
-
-		zoom = zoom_for_size_fit_width (doc_width, top,
-		                                gtk_widget_get_width (GTK_WIDGET (view)),
-		                                gtk_widget_get_height (GTK_WIDGET (view)));
-
+	if (priv->allow_links_change_zoom)
 		pps_document_model_set_sizing_mode (priv->model, PPS_SIZING_FIT_WIDTH);
-		pps_document_model_set_scale (priv->model, zoom);
-	}
 
 	pps_view_scroll_to_doc_point (view, &doc_point);
 }
@@ -1900,24 +1888,12 @@ static void
 goto_fit_dest (PpsView *view, PpsLinkDest *dest)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-	PpsDocument *document = pps_document_model_get_document (priv->model);
 	int page;
 
 	page = pps_link_dest_get_page (dest);
 
-	if (priv->allow_links_change_zoom) {
-		double zoom;
-		gdouble doc_width, doc_height;
-
-		pps_document_get_page_size (document, page, &doc_width, &doc_height);
-
-		zoom = zoom_for_size_fit_page (doc_width, doc_height,
-		                               gtk_widget_get_width (GTK_WIDGET (view)),
-		                               gtk_widget_get_height (GTK_WIDGET (view)));
-
+	if (priv->allow_links_change_zoom)
 		pps_document_model_set_sizing_mode (priv->model, PPS_SIZING_FIT_PAGE);
-		pps_document_model_set_scale (priv->model, zoom);
-	}
 
 	pps_view_scroll_to_page (view, page);
 }
