@@ -6088,7 +6088,7 @@ pps_view_init (PpsView *view)
 	priv->pixbuf_cache_size = DEFAULT_PIXBUF_CACHE_SIZE;
 	priv->caret_enabled = FALSE;
 	priv->cursor_page = 0;
-	priv->allow_links_change_zoom = TRUE;
+	priv->allow_links_change_zoom = FALSE;
 	priv->zoom_center_x = -1;
 	priv->zoom_center_y = -1;
 	priv->scroll_animation_vertical = adw_timed_animation_new (GTK_WIDGET (view), 0, 0, 200, adw_callback_animation_target_new ((AdwAnimationTargetFunc) pps_scroll_vertical_animation_cb, view, NULL));
