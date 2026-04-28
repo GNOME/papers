@@ -407,6 +407,9 @@ pps_overlay_annotation_constructed (GObject *obj)
 	PpsOverlayAnnotation *overlay = PPS_OVERLAY_ANNOTATION (obj);
 	PpsOverlayAnnotationPrivate *priv = OVERLAY_GET_PRIVATE (overlay);
 	GtkWidget *remove_button = gtk_button_new_from_icon_name ("cross-large-circle-filled-symbolic");
+
+	G_OBJECT_CLASS (pps_overlay_annotation_parent_class)->constructed (obj);
+
 	gtk_widget_add_css_class (remove_button, "annot-remove-button");
 	gtk_widget_set_valign (remove_button, GTK_ALIGN_START);
 	gtk_widget_set_halign (remove_button, GTK_ALIGN_END);
