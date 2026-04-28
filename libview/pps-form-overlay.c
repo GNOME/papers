@@ -561,6 +561,8 @@ pps_overlay_form_constructed (GObject *obj)
 	PpsFormField *field = priv->field;
 	GtkWidget *field_widget = NULL;
 
+	G_OBJECT_CLASS (pps_overlay_form_parent_class)->constructed (obj);
+
 	if (field->is_read_only)
 		return;
 
