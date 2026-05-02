@@ -1948,6 +1948,10 @@ pps_print_operation_print_finalize (GObject *object)
 	PpsPrintOperationPrint *print = PPS_PRINT_OPERATION_PRINT (object);
 	GApplication *application;
 
+	g_signal_handlers_disconnect_by_func (print->op,
+	                                      pps_print_operation_print_status_changed,
+	                                      print);
+
 	g_clear_object (&print->op);
 	g_clear_pointer (&print->job_name, g_free);
 
