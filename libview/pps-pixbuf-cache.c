@@ -333,8 +333,8 @@ check_job_size_and_unref (PpsPixbufCache *pixbuf_cache,
 		                                       scale,
 		                                       PPS_JOB_RENDER_TEXTURE (job_info->job)->rotation,
 		                                       &width, &height);
-		if (width * device_scale == PPS_JOB_RENDER_TEXTURE (job_info->job)->target_width &&
-		    height * device_scale == PPS_JOB_RENDER_TEXTURE (job_info->job)->target_height)
+		if ((gint) ceil (width * device_scale) == PPS_JOB_RENDER_TEXTURE (job_info->job)->target_width &&
+		    (gint) ceil (height * device_scale) == PPS_JOB_RENDER_TEXTURE (job_info->job)->target_height)
 			return;
 	}
 
@@ -713,8 +713,8 @@ add_job_if_needed (PpsPixbufCache *pixbuf_cache,
 	if (job_info->texture &&
 	    job_info->device_scale == device_scale &&
 	    job_info->annot_flags == annot_flags &&
-	    gdk_texture_get_width (job_info->texture) == width * device_scale &&
-	    gdk_texture_get_height (job_info->texture) == height * device_scale &&
+	    gdk_texture_get_width (job_info->texture) == (gint) ceil (width * device_scale) &&
+	    gdk_texture_get_height (job_info->texture) == (gint) ceil (height * device_scale) &&
 	    (!job_info->points_set || !job_info->selection_stale))
 		return;
 
