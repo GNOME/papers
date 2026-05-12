@@ -529,6 +529,8 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	gdouble scale;
 	GtkNative *native = gtk_widget_get_native (widget);
 	gdouble fractional_scale = gdk_surface_get_scale (gtk_native_get_surface (native));
+	graphene_point_t origin;
+	gdouble delta_x = 0, delta_y = 0;
 
 	if (priv->model == NULL || priv->index < 0)
 		return;
@@ -545,14 +547,19 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	area_rect.width = width;
 	area_rect.height = height;
 
-	/* snap the texture to a physical pixel so it is not blurred */
-	/* FIXME: it is not clear why a translation of 1 - ceil(fractional_scale) / fractional_scale
-	is necessary, but it seems to be so in practice. It looks like it is important to have
-	a translation of a number in the interval (0, 1) (if fractional_scale is not an integer)
-	so that there is no (widget) pixel on the boundary of two physical pixels. In the future,
-	snapping API in GTK should provide a cleaner solution. */
-	area = GRAPHENE_RECT_INIT (1 - ceil (fractional_scale) / fractional_scale,
-	                           1 - ceil (fractional_scale) / fractional_scale,
+	/* Snap the texture to a physical pixel so it is not blurred.
+	 * Compute residual sub-pixel offset of the widget origin in physical
+	 * pixel space and then pre-translate the texture by that amount so
+	 * it lands on the nearest physical (integer) pixel.
+	 * In the future, snapping API in GTK should provide a cleaner solution. */
+	if (gtk_widget_compute_point (widget, GTK_WIDGET (native),
+	                              &GRAPHENE_POINT_INIT_ZERO, &origin)) {
+		gdouble origin_phys_x = origin.x * fractional_scale;
+		gdouble origin_phys_y = origin.y * fractional_scale;
+		delta_x = round (origin_phys_x) - origin_phys_x;
+		delta_y = round (origin_phys_y) - origin_phys_y;
+	}
+	area = GRAPHENE_RECT_INIT (delta_x, delta_y,
 	                           ceil (width * fractional_scale),
 	                           ceil (height * fractional_scale));
 	gtk_snapshot_save (snapshot);
