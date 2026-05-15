@@ -427,7 +427,12 @@ pub fn spawn(file: Option<&gio::File>, dest: Option<&LinkDest>, mode: Option<Win
                 match dest.dest_type() {
                     LinkDestType::PageLabel => {
                         cmd.push_str(" --page-label=");
-                        cmd.push_str(&dest.page_label().unwrap_or_default());
+                        cmd.push_str(
+                            glib::shell_quote(dest.page_label().unwrap_or_default())
+                                .as_os_str()
+                                .to_str()
+                                .unwrap_or_default(),
+                        );
                     }
                     LinkDestType::Page
                     | LinkDestType::Xyz
@@ -439,7 +444,12 @@ pub fn spawn(file: Option<&gio::File>, dest: Option<&LinkDest>, mode: Option<Win
                     }
                     LinkDestType::Named => {
                         cmd.push_str(" --named-dest=");
-                        cmd.push_str(&dest.named_dest().unwrap_or_default())
+                        cmd.push_str(
+                            glib::shell_quote(dest.named_dest().unwrap_or_default())
+                                .as_os_str()
+                                .to_str()
+                                .unwrap_or_default(),
+                        );
                     }
                     _ => (),
                 }
