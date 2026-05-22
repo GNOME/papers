@@ -11,7 +11,6 @@
 #include <string.h>
 
 #include <adwaita.h>
-#include <gdk/gdkkeysyms.h>
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
