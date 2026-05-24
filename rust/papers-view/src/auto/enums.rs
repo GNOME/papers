@@ -18,6 +18,14 @@ pub enum AnnotationTool {
     Eraser,
     #[doc(alias = "TOOL_TEXT")]
     Text,
+    #[doc(alias = "TOOL_LINE")]
+    Line,
+    #[doc(alias = "TOOL_RECTANGLE")]
+    Rectangle,
+    #[doc(alias = "TOOL_CIRCLE")]
+    Circle,
+    #[doc(alias = "TOOL_ARROW")]
+    Arrow,
     #[doc(alias = "TOOL_MAX")]
     Max,
     #[doc(hidden)]
@@ -35,6 +43,10 @@ impl IntoGlib for AnnotationTool {
             Self::Highlight => ffi::TOOL_HIGHLIGHT,
             Self::Eraser => ffi::TOOL_ERASER,
             Self::Text => ffi::TOOL_TEXT,
+            Self::Line => ffi::TOOL_LINE,
+            Self::Rectangle => ffi::TOOL_RECTANGLE,
+            Self::Circle => ffi::TOOL_CIRCLE,
+            Self::Arrow => ffi::TOOL_ARROW,
             Self::Max => ffi::TOOL_MAX,
             Self::__Unknown(value) => value,
         }
@@ -52,6 +64,10 @@ impl FromGlib<ffi::PpsAnnotationTool> for AnnotationTool {
             ffi::TOOL_HIGHLIGHT => Self::Highlight,
             ffi::TOOL_ERASER => Self::Eraser,
             ffi::TOOL_TEXT => Self::Text,
+            ffi::TOOL_LINE => Self::Line,
+            ffi::TOOL_RECTANGLE => Self::Rectangle,
+            ffi::TOOL_CIRCLE => Self::Circle,
+            ffi::TOOL_ARROW => Self::Arrow,
             ffi::TOOL_MAX => Self::Max,
             value => Self::__Unknown(value),
         }

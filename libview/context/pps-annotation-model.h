@@ -16,11 +16,27 @@
 
 G_BEGIN_DECLS
 
+/**
+ * PpsAnnotationTool:
+ * @TOOL_PENCIL: Pencil tool
+ * @TOOL_HIGHLIGHT: Highlight tool
+ * @TOOL_ERASER: Eraser tool
+ * @TOOL_TEXT: Text tool
+ * @TOOL_LINE: Line tool
+ * @TOOL_RECTANGLE: Rectangle tool
+ * @TOOL_CIRCLE: Circle tool
+ * @TOOL_ARROW: Arrow tool
+ * @TOOL_MAX: Maximum number of tools
+ */
 typedef enum {
 	TOOL_PENCIL,
 	TOOL_HIGHLIGHT,
 	TOOL_ERASER,
 	TOOL_TEXT,
+	TOOL_LINE,
+	TOOL_RECTANGLE,
+	TOOL_CIRCLE,
+	TOOL_ARROW,
 	TOOL_MAX
 } PpsAnnotationTool;
 

@@ -248,8 +248,16 @@ pps_annotation_model_set_property (GObject *object,
 			pps_annotation_model_set_tool (model, TOOL_HIGHLIGHT);
 		} else if (!g_strcmp0 (tool, "eraser")) {
 			pps_annotation_model_set_tool (model, TOOL_ERASER);
+		} else if (!g_strcmp0 (tool, "line")) {
+			pps_annotation_model_set_tool (model, TOOL_LINE);
+		} else if (!g_strcmp0 (tool, "rectangle")) {
+			pps_annotation_model_set_tool (model, TOOL_RECTANGLE);
+		} else if (!g_strcmp0 (tool, "circle")) {
+			pps_annotation_model_set_tool (model, TOOL_CIRCLE);
+		} else if (!g_strcmp0 (tool, "arrow")) {
+			pps_annotation_model_set_tool (model, TOOL_ARROW);
 		} else {
-			g_critical ("unkonwn tool");
+			g_critical ("unknown tool: %s", tool);
 		}
 		break;
 	}
@@ -318,8 +326,20 @@ pps_annotation_model_get_property (GObject *object,
 		case TOOL_ERASER:
 			g_value_set_string (value, "eraser");
 			break;
+		case TOOL_LINE:
+			g_value_set_string (value, "line");
+			break;
+		case TOOL_RECTANGLE:
+			g_value_set_string (value, "rectangle");
+			break;
+		case TOOL_CIRCLE:
+			g_value_set_string (value, "circle");
+			break;
+		case TOOL_ARROW:
+			g_value_set_string (value, "arrow");
+			break;
 		default:
-			g_critical ("unknown tool");
+			g_critical ("unknown tool: %d", model->tool);
 			break;
 		}
 		break;

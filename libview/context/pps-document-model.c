@@ -211,6 +211,12 @@ pps_document_model_update_editing_state (GObject *annotation_model, GParamSpec *
 	case TOOL_TEXT:
 		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT | PPS_ANNOTATION_EDITING_STATE_TEXT);
 		break;
+	case TOOL_LINE:
+	case TOOL_RECTANGLE:
+	case TOOL_CIRCLE:
+	case TOOL_ARROW:
+		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_SHAPE);
+		break;
 	default:
 		pps_document_model_set_annotation_editing_state (model, PPS_ANNOTATION_EDITING_STATE_INK);
 		break;

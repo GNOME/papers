@@ -402,7 +402,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
                     }
 
                     MenuButton {
-                      visible: bind $is_pencil((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+                      visible: bind $is_pencil_or_shape((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
 
                       styles [
                         "circular",
@@ -420,7 +420,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
                     }
 
                     MenuButton {
-                      visible: bind $is_pencil((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
+                      visible: bind $is_pencil_or_shape((model.annotation-model as <$PpsAnnotationModel>).tool) as <bool>;
 
                       styles [
                         "circular",
@@ -429,7 +429,7 @@ template $PpsDocumentView: Adw.BreakpointBin {
 
                       icon-name: "stroke-2-symbolic";
                       direction: up;
-                      tooltip-text: _("Pencil Size");
+                      tooltip-text: _("Stroke Size");
                       popover: pencil_stroke_popover;
                     }
 
@@ -495,6 +495,30 @@ template $PpsDocumentView: Adw.BreakpointBin {
                         icon-name: "eraser4-symbolic";
                         tooltip: _("Erase Annotations");
                         name: "eraser";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "draw-line-symbolic";
+                        tooltip: _("Draw Line");
+                        name: "line";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "draw-rectangle-symbolic";
+                        tooltip: _("Draw Rectangle");
+                        name: "rectangle";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "draw-circle-symbolic";
+                        tooltip: _("Draw Circle / Ellipse");
+                        name: "circle";
+                      }
+
+                      Adw.Toggle {
+                        icon-name: "draw-arrow-symbolic";
+                        tooltip: _("Draw Arrow");
+                        name: "arrow";
                       }
                     }
                   }

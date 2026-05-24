@@ -325,6 +325,21 @@ mod imp {
             self.highlight_color_popover.set_offset(0, -8);
             self.text_font_popover.set_offset(0, -8);
             self.text_color_popover.set_offset(0, -8);
+
+            // When the tool changes while in edit mode, update the editing state
+            // so the correct annotation layer (ink/shape/text) is shown.
+            if let Some(annotation_model) = self.model.annotation_model() {
+                annotation_model.connect_notify_local(
+                    Some("tool"),
+                    glib::clone!(
+                        #[weak(rename_to = obj)]
+                        self,
+                        move |_, _| {
+                            obj.on_annotation_tool_changed();
+                        }
+                    ),
+                );
+            }
         }
     }
 

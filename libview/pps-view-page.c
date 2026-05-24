@@ -16,6 +16,7 @@
 
 #include "pps-annotation-layer-ink.h"
 #include "pps-annotation-layer-objects.h"
+#include "pps-annotation-layer-shape.h"
 #include "pps-colors.h"
 #include "pps-debug.h"
 #include "pps-overlay.h"
@@ -37,6 +38,7 @@ typedef struct
 enum {
 	LAYER_INK,
 	LAYER_OBJECTS,
+	LAYER_SHAPE,
 	LAYER_COUNT
 };
 
@@ -646,6 +648,10 @@ display_annotation_layers (PpsViewPage *page)
 		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_INK]), FALSE);
 	}
 
+	if (state != PPS_ANNOTATION_EDITING_STATE_SHAPE && priv->layers[LAYER_SHAPE]) {
+		gtk_widget_set_visible (GTK_WIDGET (priv->layers[LAYER_SHAPE]), FALSE);
+	}
+
 	if (state & PPS_ANNOTATION_EDITING_STATE_INSERT_TEXT) {
 		if (!priv->layers[LAYER_OBJECTS]) {
 			priv->layers[LAYER_OBJECTS] = PPS_ANNOTATION_LAYER (pps_annotation_layer_objects_new (pps_document_model_get_document (priv->model), priv->model, priv->annots_context));
@@ -658,6 +664,12 @@ display_annotation_layers (PpsViewPage *page)
 			gtk_widget_insert_before (GTK_WIDGET (priv->layers[LAYER_INK]), GTK_WIDGET (page), NULL);
 		}
 		layer = priv->layers[LAYER_INK];
+	} else if (state == PPS_ANNOTATION_EDITING_STATE_SHAPE) {
+		if (!priv->layers[LAYER_SHAPE]) {
+			priv->layers[LAYER_SHAPE] = PPS_ANNOTATION_LAYER (pps_annotation_layer_shape_new (pps_document_model_get_document (priv->model), priv->model, priv->annots_context));
+			gtk_widget_insert_before (GTK_WIDGET (priv->layers[LAYER_SHAPE]), GTK_WIDGET (page), NULL);
+		}
+		layer = priv->layers[LAYER_SHAPE];
 	}
 
 	if (layer) {

@@ -64,7 +64,8 @@ impl imp::PpsDocumentView {
         let state = self.model.annotation_editing_state();
         self.update_edit_toolbar_visibility(
             state.contains(AnnotationEditingState::INSERT_TEXT)
-                || state.contains(AnnotationEditingState::INK),
+                || state.contains(AnnotationEditingState::INK)
+                || state.contains(AnnotationEditingState::SHAPE),
         );
     }
 
@@ -929,5 +930,35 @@ impl imp::PpsDocumentView {
     #[template_callback(function, name = "not_bool")]
     fn not_bool(a: bool) -> bool {
         !a
+    }
+
+    #[template_callback(function, name = "is_line")]
+    fn is_line(a: i32) -> bool {
+        a == AnnotationTool::Line.into_glib()
+    }
+
+    #[template_callback(function, name = "is_rectangle")]
+    fn is_rectangle(a: i32) -> bool {
+        a == AnnotationTool::Rectangle.into_glib()
+    }
+
+    #[template_callback(function, name = "is_circle")]
+    fn is_circle(a: i32) -> bool {
+        a == AnnotationTool::Circle.into_glib()
+    }
+
+    #[template_callback(function, name = "is_arrow")]
+    fn is_arrow(a: i32) -> bool {
+        a == AnnotationTool::Arrow.into_glib()
+    }
+
+    #[template_callback(function, name = "is_shape")]
+    fn is_shape(a: i32) -> bool {
+        Self::is_line(a) || Self::is_rectangle(a) || Self::is_circle(a) || Self::is_arrow(a)
+    }
+
+    #[template_callback(function, name = "is_pencil_or_shape")]
+    fn is_pencil_or_shape(a: i32) -> bool {
+        Self::is_pencil(a) || Self::is_shape(a)
     }
 }

@@ -211,7 +211,16 @@ create_path_data (PpsAnnotationLayerInk *draw, PpsAnnotationInk *ink, InkPathDra
 				} else {
 					graphene_point_t po = { p->x * scale, (page_height - p->y) * scale };
 					graphene_rect_expand (&bounds, &po, &bounds);
-					gsk_path_builder_line_to (builder, p->x * scale, (page_height - p->y) * scale);
+					/* When the last point of a path equals the first, close the
+					 * contour so the junction gets a miter join rather than two
+					 * butt caps (which would leave a visible gap at that corner). */
+					if (j == path->n_points - 1 &&
+					    path->points[0].x == p->x &&
+					    path->points[0].y == p->y) {
+						gsk_path_builder_close (builder);
+					} else {
+						gsk_path_builder_line_to (builder, p->x * scale, (page_height - p->y) * scale);
+					}
 				}
 			}
 		}
