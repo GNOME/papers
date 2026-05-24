@@ -1,3 +1,25 @@
+Papers 50.2
+--------------
+* Bug fixes:
+  - #610 PDF link jumps are off target for some files (Nelson Ben)
+  - #597 Scrolling stalls image loading for image-heavy PDFs and CBZs with fractional scaling enabled (balooii)
+  - #340 Pinch to zoom sometimes causes huge page jumps (balooii)
+  - #642 Text jitter on fractional scaling (balooii)
+  - #685 Pencil size icons look broken (balooii)
+  - !764 shell: escape link arguments before spawning a new process, related to CVE-2026-46529 of Evince (Lucas Baudin)
+  - !766 build: Include gdk.h instead of gdkkeysyms.h (Jordan Petridis)
+  - !760 Fix null pointer dereference in PpsPrintOperationPrint (Casey)
+  - !754 Chain up constructed vfuncs (Maximiliano)
+
+* Translation updates:
+  - Belarusian (Vasil Pupkin)
+  - Norwegian Bokmål (Kjartan Maraas)
+  - German (Christian Kirbach)
+  - Persian (Danial Behzadi)
+  - Dutch (Nathan Follens)
+  - Thai (Aefgh Threenine)
+  - Slovak (Jose Riha)
+
 Papers 50.1
 --------------
 * Bug fixes:
