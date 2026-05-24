@@ -8,7 +8,9 @@ information about Papers and how to get started, please visit
 This is the fork of https://github.com/GNOME/papers/ . I added annotation tools:
 draw, shapes and text! Which are missing in the original while I needed them very much.
 
-![Annotation Tools Screenshot](data/screenshots/annotation-tools.png)
+<div align="center">
+  <img src="data/screenshots/annotation-tools.png" alt="Annotation Tools Screenshot" style="border: 2px solid #ccc; border-radius: 8px; padding: 2px;">
+</div>
 
 ## Installation
 
