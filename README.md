@@ -1,4 +1,4 @@
-# ![papers-logo] Document Viewer
+# Document Viewer
 
 Papers is a document viewer capable of displaying multiple and single
 page document formats like PDF and DejaVu.  For more general
@@ -7,6 +7,8 @@ information about Papers and how to get started, please visit
 
 This is the fork of https://github.com/GNOME/papers/ . I added annotation tools:
 draw, shapes and text! Which are missing in the original while I needed them very much.
+
+![Annotation Tools Screenshot](data/screenshots/annotation-tools.png)
 
 ## Installation
 
