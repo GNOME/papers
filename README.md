@@ -24,7 +24,7 @@ sudo ninja -C build install
 
 ## License
 
-Papers is licensed under the [GPLv2][license].
+Papers is licensed under the [GPLv2](COPYING).
 
 ## Contribute
 
