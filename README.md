@@ -10,6 +10,21 @@ draw, shapes and text! Which are missing in the original while I needed them ver
 
 ## Installation
 
+To build
+```
+ninja -C build
+```
+
+To install
+```
+sudo ninja -C build install
+```
+
+## License
+
 Papers is licensed under the [GPLv2][license].
 
+## Contribute
+
 When interacting with the project, the [GNOME Code Of Conduct](https://conduct.gnome.org/) applies.
+
