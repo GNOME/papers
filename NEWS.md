@@ -1,3 +1,20 @@
+Papers 49.7
+--------------
+* Bug fixes:
+  - !766 build: Include gdk.h instead of gdkkeysyms.h (Jordan Petridis)
+  - !760 Fix null pointer dereference in PpsPrintOperationPrint (Casey)
+  - #642 Text jitter on fractional scaling (balooii)
+  - !764 shell: escape link arguments before spawning a new process, related to CVE-2026-46529 of Evince (Lucas Baudin)
+  - #597 Scrolling stalls image loading for image-heavy PDFs and CBZs with fractional scaling enabled (balooii)
+  - #340 Pinch to zoom sometimes causes huge page jumps (balooii)
+  - #610 PDF link jumps are off target for some files (Nelson Ben)
+  - #656 libview: fix detection of some form checkboxes (Lucas Baudin)
+  - #632 Scrolling in presentation mode skips pages (Qiu Wenbo)
+  - !746 fix several criticals for the previewer (Lucas Baudin)
+
+* Translation updates:
+  - Serbian (Марко Костић)
+
 Papers 49.6
 ----------------
 * Bug fixes:
