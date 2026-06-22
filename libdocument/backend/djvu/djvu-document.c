@@ -631,6 +631,25 @@ djvu_document_class_init (DjvuDocumentClass *klass)
 	pps_document_class->get_info = djvu_document_get_info;
 }
 
+static gboolean
+djvu_pagetext_usable (miniexp_t page_text)
+{
+	const char *name;
+
+	if (page_text == miniexp_nil || page_text == miniexp_dummy)
+		return FALSE;
+
+	if (!miniexp_consp (page_text) || !miniexp_symbolp (miniexp_car (page_text)))
+		return FALSE;
+
+	name = miniexp_to_name (miniexp_car (page_text));
+	if (name != NULL &&
+	    (g_str_equal (name, "failed") || g_str_equal (name, "stopped")))
+		return FALSE;
+
+	return TRUE;
+}
+
 static gchar *
 djvu_text_copy (DjvuDocument *djvu_document,
                 gint page_num,
@@ -644,13 +663,15 @@ djvu_text_copy (DjvuDocument *djvu_document,
 	                                         page_num, "char")) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
-	if (page_text != miniexp_nil) {
+	if (djvu_pagetext_usable (page_text)) {
 		DjvuTextPage *page = djvu_text_page_new (page_text);
 
 		text = djvu_text_page_copy (page, rectangle);
 		djvu_text_page_free (page);
-		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	if (page_text != miniexp_nil)
+		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 
 	return text;
 }
@@ -684,13 +705,15 @@ djvu_selection_get_selection_rects (DjvuDocument *djvu_document,
 	                                                 page, "char")) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
-	if (page_text != miniexp_nil) {
+	if (djvu_pagetext_usable (page_text)) {
 		DjvuTextPage *tpage = djvu_text_page_new (page_text);
 
 		rects = djvu_text_page_get_selection_region (tpage, &rectangle);
 		djvu_text_page_free (tpage);
-		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	if (page_text != miniexp_nil)
+		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 
 	return rects;
 }
@@ -827,15 +850,17 @@ djvu_document_text_get_text (PpsDocumentText *selection,
 	                                                 "char")) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
-	if (page_text != miniexp_nil) {
+	if (djvu_pagetext_usable (page_text)) {
 		DjvuTextPage *tpage = djvu_text_page_new (page_text);
 
 		djvu_text_page_index_text (tpage, TRUE);
 		text = tpage->text;
 		tpage->text = NULL;
 		djvu_text_page_free (tpage);
-		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	if (page_text != miniexp_nil)
+		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 
 	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
@@ -961,7 +986,7 @@ djvu_document_find_find_text (PpsDocumentFind *document,
 	                                                 "char")) == miniexp_dummy)
 		djvu_handle_events (djvu_document, TRUE, NULL);
 
-	if (page_text != miniexp_nil) {
+	if (djvu_pagetext_usable (page_text)) {
 		DjvuTextPage *tpage = djvu_text_page_new (page_text);
 
 		djvu_text_page_index_text (tpage, case_sensitive);
@@ -976,8 +1001,10 @@ djvu_document_find_find_text (PpsDocumentFind *document,
 			matches = tpage->results;
 		}
 		djvu_text_page_free (tpage);
-		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 	}
+
+	if (page_text != miniexp_nil)
+		ddjvu_miniexp_release (djvu_document->d_document, page_text);
 
 	g_rw_lock_reader_unlock (&djvu_document->rwlock);
 
