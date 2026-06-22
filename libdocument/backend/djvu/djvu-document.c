@@ -867,11 +867,46 @@ djvu_document_text_get_text (PpsDocumentText *selection,
 	return text;
 }
 
+static gboolean
+djvu_document_text_get_text_layout (PpsDocumentText *document_text,
+                                    PpsPage *page,
+                                    PpsRectangle **areas,
+                                    guint *n_areas)
+{
+	DjvuDocument *djvu_document = DJVU_DOCUMENT (document_text);
+	miniexp_t page_text;
+	gboolean result = FALSE;
+	gdouble height, dpi;
+
+	g_rw_lock_reader_lock (&djvu_document->rwlock);
+
+	while ((page_text = ddjvu_document_get_pagetext (djvu_document->d_document,
+	                                                 page->index,
+	                                                 "char")) == miniexp_dummy)
+		djvu_handle_events (djvu_document, TRUE, NULL);
+
+	if (djvu_pagetext_usable (page_text)) {
+		DjvuTextPage *tpage = djvu_text_page_new (page_text);
+
+		document_get_page_size (djvu_document, page->index, NULL, &height, &dpi);
+		result = djvu_text_page_get_text_layout (tpage, height, dpi, areas, n_areas);
+		djvu_text_page_free (tpage);
+	}
+
+	if (page_text != miniexp_nil)
+		ddjvu_miniexp_release (djvu_document->d_document, page_text);
+
+	g_rw_lock_reader_unlock (&djvu_document->rwlock);
+
+	return result;
+}
+
 static void
 djvu_document_text_iface_init (PpsDocumentTextInterface *iface)
 {
 	iface->get_text_mapping = djvu_document_text_get_text_mapping;
 	iface->get_text = djvu_document_text_get_text;
+	iface->get_text_layout = djvu_document_text_get_text_layout;
 }
 
 /* PpsFileExporterIface */
@@ -1014,19 +1049,9 @@ djvu_document_find_find_text (PpsDocumentFind *document,
 	document_get_page_size (djvu_document, page->index, &width, &height, &dpi);
 	for (l = matches; l && l->data; l = g_list_next (l)) {
 		g_autofree PpsRectangle *r = (PpsRectangle *) l->data;
-		gdouble tmp = r->y1;
-
-		r->x1 *= 72.0 / dpi;
-		r->x2 *= 72.0 / dpi;
-
-		r->y1 = height - r->y2 * 72.0 / dpi;
-		r->y2 = height - tmp * 72.0 / dpi;
-
 		PpsFindRectangle *pps_rect = pps_find_rectangle_new ();
-		pps_rect->x1 = r->x1;
-		pps_rect->x2 = r->x2;
-		pps_rect->y1 = r->y1;
-		pps_rect->y2 = r->y2;
+
+		djvu_doc_to_page_rect ((PpsRectangle *) pps_rect, r, height, dpi);
 
 		l->data = pps_rect;
 	}
