@@ -3750,7 +3750,7 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 
 		gdk_rgba_to_poppler_color (font_rgba, &poppler_color);
 		poppler_annot_free_text_set_font_color (POPPLER_ANNOT_FREE_TEXT (poppler_annot), &poppler_color);
-		flags = poppler_annot_get_flags (poppler_annot) & POPPLER_ANNOT_FLAG_PRINT;
+		flags = poppler_annot_get_flags (poppler_annot) | POPPLER_ANNOT_FLAG_PRINT;
 		poppler_annot_set_flags (poppler_annot, flags);
 	} break;
 	case PPS_ANNOTATION_TYPE_INK: {
@@ -3806,7 +3806,7 @@ pdf_document_annotations_add_annotation (PpsDocumentAnnotations *document_annota
 		PopplerAnnotFlag flags;
 		poppler_annot = poppler_annot_stamp_new (self->document, &poppler_rect);
 		poppler_annot_stamp_set_custom_image (POPPLER_ANNOT_STAMP (poppler_annot), pps_annotation_stamp_get_surface (PPS_ANNOTATION_STAMP (annot)), NULL);
-		flags = poppler_annot_get_flags (poppler_annot) & POPPLER_ANNOT_FLAG_PRINT;
+		flags = poppler_annot_get_flags (poppler_annot) | POPPLER_ANNOT_FLAG_PRINT;
 		poppler_annot_set_flags (poppler_annot, flags);
 		break;
 	}
