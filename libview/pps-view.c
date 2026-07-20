@@ -709,6 +709,8 @@ view_update_range_and_current_page (PpsView *view)
 			if (best_current_page >= 0 && priv->current_page != best_current_page) {
 				priv->current_page = best_current_page;
 				pps_document_model_set_page (priv->model, best_current_page);
+				if (!priv->caret_enabled)
+					priv->cursor_page = best_current_page;
 			}
 		}
 	} else if (is_dual_page (view, &odd_left)) {
@@ -5784,9 +5786,6 @@ pps_view_focus (GtkWidget *widget,
 		if (has_focus) {
 			if (!cursor_go_to_next_page (view))
 				return FALSE;
-		} else {
-			if (!cursor_go_to_document_start (view))
-				return FALSE;
 		}
 		break;
 	case GTK_DIR_TAB_BACKWARD:
@@ -5794,12 +5793,9 @@ pps_view_focus (GtkWidget *widget,
 		if (has_focus) {
 			if (!cursor_go_to_previous_page (view))
 				return FALSE;
-		} else {
-			if (!cursor_go_to_document_end (view))
-				return FALSE;
-		}
 
-		cursor_go_to_page_start (view);
+			cursor_go_to_page_start (view);
+		}
 		break;
 	default:
 		g_assert_not_reached ();
