@@ -2546,7 +2546,7 @@ pps_view_create_annotation_window (PpsView *view,
 	window = pps_annotation_window_new (annot, parent);
 	g_object_set_data_full (G_OBJECT (annot), "popup",
 	                        g_object_ref_sink (window),
-	                        NULL);
+	                        g_object_unref);
 
 	pps_annotation_window_set_enable_spellchecking (PPS_ANNOTATION_WINDOW (window),
 	                                                priv->enable_spellchecking);
@@ -5542,6 +5542,8 @@ pps_view_dispose (GObject *object)
 		g_clear_object (&priv->widget_factories[i]);
 	}
 
+	g_clear_object (&priv->annots_context);
+	g_clear_object (&priv->search_context);
 	g_clear_object (&priv->pixbuf_cache);
 	g_clear_object (&priv->page_cache);
 	g_clear_object (&priv->scroll_animation_vertical);
