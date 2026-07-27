@@ -591,7 +591,6 @@ pdf_document_get_info (PpsDocument *document)
 	GDateTime *modified_datetime = NULL;
 	gboolean has_javascript;
 	gint n_pages;
-	double paper_width = 0, paper_height = 0;
 
 	info = pps_document_info_new ();
 
@@ -617,11 +616,17 @@ pdf_document_get_info (PpsDocument *document)
 	n_pages = poppler_document_get_n_pages (PDF_DOCUMENT (document)->document);
 	has_javascript = poppler_document_has_javascript (PDF_DOCUMENT (document)->document);
 
-	if (n_pages > 0) {
-		PopplerPage *poppler_page = poppler_document_get_page (PDF_DOCUMENT (document)->document, 0);
-		poppler_page_get_size (poppler_page, &paper_width, &paper_height);
+	info->page_sizes = g_malloc (sizeof (PpsDocumentPageSize) * n_pages);
+	for (size_t i = 0; i < n_pages; i++) {
+		double height, width;
+		PopplerPage *poppler_page = poppler_document_get_page (PDF_DOCUMENT (document)->document, i);
+		poppler_page_get_size (poppler_page, &width, &height);
 		g_object_unref (poppler_page);
+		// convert to mm
+		(info->page_sizes[i]).width = width / 72.0f * 25.4f;
+		(info->page_sizes[i]).height = height / 72.0f * 25.4f;
 	}
+	info->n_pages = n_pages;
 
 	// Process all the data outside the lock
 	info->fields_mask |= PPS_DOCUMENT_INFO_LAYOUT |
@@ -654,14 +659,6 @@ pdf_document_get_info (PpsDocument *document)
 	if (metadata != NULL) {
 		pps_document_info_set_from_xmp (info, metadata, -1);
 		g_free (metadata);
-	}
-
-	info->n_pages = n_pages;
-
-	if (n_pages > 0) {
-		// Convert to mm.
-		info->paper_width = paper_width / 72.0f * 25.4f;
-		info->paper_height = paper_height / 72.0f * 25.4f;
 	}
 
 	switch (layout) {
