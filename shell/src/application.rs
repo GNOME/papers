@@ -487,7 +487,7 @@ pub fn spawn(file: Option<&gio::File>, dest: Option<&LinkDest>, mode: Option<Win
 
     match env::current_exe() {
         Ok(path) => {
-            cmd.push_str(&format!(" {}", &path.to_string_lossy()));
+            cmd.push_str(&format!(" {}", path.to_string_lossy()));
 
             // Page label
             if let Some(dest) = dest {
