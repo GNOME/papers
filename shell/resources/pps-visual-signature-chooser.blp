@@ -5,44 +5,40 @@ template $PpsVisualSignatureChooser: Box {
   orientation: vertical;
   spacing: 0;
 
-  Stack signatures_stack {
-    vhomogeneous: false;
-    // add a widget with 0 height, otherwise the dialog is automatically resized to
-    // the status page height, which is too big
-    Box {}
+  ScrolledWindow {
+    propagate-natural-height: true;
+    hscrollbar-policy: never;
 
-    // Empty state - shown when no signatures exist
-    Adw.StatusPage empty_state {
-      icon-name: "signature-symbolic";
-      title: _("No Signatures");
-      description: _("Create a signature by drawing or opening an image");
-      vexpand: false;
-      height-request: 350;
-      width-request: 450;
+    child: Stack signatures_stack {
+      vhomogeneous: false;
+      // add a widget with 0 height, otherwise the dialog is automatically resized to
+      // the status page height, which is too big
+      Box {}
 
-      styles [
-        "compact",
-      ]
-
-      child: Button empty_add_button {
-        label: _("Add Signature");
-        halign: center;
-        action-name: "navigation.push";
-        action-target: "'new-signature'";
+      // Empty state - shown when no signatures exist
+      Adw.StatusPage empty_state {
+        icon-name: "signature-symbolic";
+        title: _("No Signatures");
+        description: _("Create a signature by drawing or opening an image");
+        vexpand: false;
+        height-request: 350;
 
         styles [
-          "pill",
-          "suggested-action",
+          "compact",
         ]
-      };
-    }
 
-    // List view - shown when signatures exist
-    // Scrollable area for signatures (unlimited)
-    ScrolledWindow list_container {
-      hscrollbar-policy: never;
-      vscrollbar-policy: automatic;
-      vexpand: true;
+        child: Button empty_add_button {
+          label: _("Add Signature");
+          halign: center;
+          action-name: "navigation.push";
+          action-target: "'new-signature'";
+
+          styles [
+            "pill",
+            "suggested-action",
+          ]
+        };
+      }
 
       ListBox signatures_listbox {
         selection-mode: none;
@@ -63,6 +59,6 @@ template $PpsVisualSignatureChooser: Box {
           action-target: "'new-signature'";
         }
       }
-    }
+    };
   }
 }

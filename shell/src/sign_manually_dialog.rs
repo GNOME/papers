@@ -1,7 +1,10 @@
 use crate::deps::*;
+use crate::signature_manager::PpsSignatureManager;
 use std::cell::RefCell;
 
 mod imp {
+    use std::cell::OnceCell;
+
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
@@ -24,6 +27,8 @@ mod imp {
         // State
         pub(super) editing_signature_id: RefCell<Option<String>>,
         pub(super) auto_save_timeout_id: RefCell<Option<glib::SourceId>>,
+
+        height_animation: OnceCell<adw::SpringAnimation>,
     }
 
     #[glib::object_subclass]
@@ -56,7 +61,6 @@ mod imp {
 
         fn constructed(&self) {
             self.parent_constructed();
-
             // Insert button: save current drawing then emit signal and close
             self.signature_drawing_widget
                 .insert_button()
@@ -71,6 +75,13 @@ mod imp {
                             imp.obj().close();
                         }
                     }
+                ));
+
+            self.navigation_view
+                .connect_visible_page_notify(glib::clone!(
+                    #[weak(rename_to=imp)]
+                    self,
+                    move |_| imp.resize()
                 ));
 
             // Reset form / update insert button when navigating to edit page
@@ -346,6 +357,53 @@ mod imp {
                 }
             ));
         }
+        fn resize(&self) {
+            // We don't animate the first resize as there is nothing to animate from.
+            // Note that signatures are loaded asynchronously so right after the constructed
+            // call, the widget may still be in an unfinished state.
+            let (_, nat, _, _) = self
+                .navigation_view
+                .visible_page()
+                .unwrap()
+                .measure(gtk::Orientation::Vertical, self.navigation_view.width());
+            if let Some(height_animation) = self.height_animation.get() {
+                height_animation.pause();
+                height_animation.set_value_from(self.obj().content_height() as f64);
+                height_animation.set_value_to(nat as f64);
+                height_animation.play();
+            } else {
+                self.obj().set_content_height(nat);
+                self.height_animation
+                    .set(adw::SpringAnimation::new(
+                        &self.obj().clone(),
+                        0.,
+                        1.,
+                        adw::SpringParams::new(1., 1., 1000.),
+                        adw::PropertyAnimationTarget::new(&self.obj().clone(), "content-height"),
+                    ))
+                    .expect("cell already set");
+            }
+        }
+
+        pub fn setup_signature_manager(&self, signature_manager: &PpsSignatureManager) {
+            self.signature_chooser
+                .set_signature_manager(Some(signature_manager.clone()));
+
+            self.signature_chooser.connect_local(
+                "signature-list-built",
+                true,
+                glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    #[upgrade_or]
+                    None,
+                    move |_| {
+                        obj.resize();
+                        None
+                    }
+                ),
+            );
+        }
     }
 }
 
@@ -356,14 +414,9 @@ glib::wrapper! {
 }
 
 impl PpsSignManuallyDialog {
-    pub fn new(signature_manager: &crate::signature_manager::PpsSignatureManager) -> Self {
+    pub fn new(signature_manager: &PpsSignatureManager) -> Self {
         let dialog: Self = glib::Object::builder().build();
-
-        dialog
-            .imp()
-            .signature_chooser
-            .set_signature_manager(Some(signature_manager.clone()));
-
+        dialog.imp().setup_signature_manager(signature_manager);
         dialog
     }
 

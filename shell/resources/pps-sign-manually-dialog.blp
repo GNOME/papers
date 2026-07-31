@@ -4,7 +4,6 @@ using Adw 1;
 template $PpsSignManuallyDialog: Adw.Dialog {
   title: _("Manage Signatures");
   content-width: 400;
-  content-height: 320;
 
   child: Adw.NavigationView navigation_view {
     // PAGE 1: Signature Chooser
@@ -45,9 +44,14 @@ template $PpsSignManuallyDialog: Adw.Dialog {
           margin-end: 12;
           valign: center;
 
-          $PpsSignatureDrawingWidget signature_drawing_widget {
-            hexpand: true;
-            valign: center;
+          ScrolledWindow {
+            propagate-natural-height: true;
+            hscrollbar-policy: never;
+
+            child: $PpsSignatureDrawingWidget signature_drawing_widget {
+              hexpand: true;
+              valign: center;
+            };
           }
         };
       };

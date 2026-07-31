@@ -18,8 +18,6 @@ mod imp {
         #[template_child]
         pub(super) empty_state: TemplateChild<adw::StatusPage>,
         #[template_child]
-        pub(super) list_container: TemplateChild<gtk::ScrolledWindow>,
-        #[template_child]
         pub(super) signatures_listbox: TemplateChild<gtk::ListBox>,
         #[template_child]
         pub(super) add_signature_row: TemplateChild<adw::ButtonRow>,
@@ -43,7 +41,6 @@ mod imp {
             Self {
                 signatures_stack: Default::default(),
                 empty_state: Default::default(),
-                list_container: Default::default(),
                 signatures_listbox: Default::default(),
                 add_signature_row: Default::default(),
                 signature_manager: Default::default(),
@@ -79,6 +76,7 @@ mod imp {
                     glib::subclass::Signal::builder("selection-changed")
                         .param_types([Option::<String>::static_type()])
                         .build(),
+                    glib::subclass::Signal::builder("signature-list-built").build(),
                     glib::subclass::Signal::builder("edit-signature")
                         .param_types([String::static_type()])
                         .build(),
@@ -190,7 +188,8 @@ mod imp {
                         obj.notify("selected-signature");
                         obj.emit_by_name::<()>("selection-changed", &[&Option::<String>::None]);
                     } else {
-                        imp.signatures_stack.set_visible_child(&*imp.list_container);
+                        imp.signatures_stack
+                            .set_visible_child(&*imp.signatures_listbox);
 
                         for (index, sig) in signatures.iter().enumerate() {
                             let pixbuf = manager.get_signature_pixbuf(&sig.id);
@@ -205,6 +204,7 @@ mod imp {
                             imp.tick_radio_for_signature(id);
                         }
                     }
+                    obj.emit_by_name::<()>("signature-list-built", &[]);
                 }
             ));
         }
