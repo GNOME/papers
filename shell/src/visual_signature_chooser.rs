@@ -294,7 +294,7 @@ impl PpsVisualSignatureChooser {
             .icon_name("document-edit-symbolic")
             .valign(gtk::Align::Center)
             .css_classes(vec!["flat", "circular"])
-            .tooltip_text("Edit signature")
+            .tooltip_text(gettext("Edit signature"))
             .build();
 
         let signature_id = sig.id.clone();
@@ -320,7 +320,7 @@ impl PpsVisualSignatureChooser {
             .icon_name("user-trash-symbolic")
             .valign(gtk::Align::Center)
             .css_classes(vec!["flat", "circular"])
-            .tooltip_text("Remove signature")
+            .tooltip_text(gettext("Remove signature"))
             .build();
 
         let signature_id = sig.id.clone();
@@ -396,8 +396,11 @@ impl PpsVisualSignatureChooser {
         manager: &PpsSignatureManager,
     ) {
         let toast = adw::Toast::builder()
-            .title(format!("Removed \"{}\"", signature_name))
-            .button_label("Undo")
+            .title(
+                formatx!(&gettext("Removed \"{}\""), signature_name)
+                    .expect("Wrong format in translated string"),
+            )
+            .button_label(&gettext("Undo"))
             .timeout(5)
             .build();
 
