@@ -1,3 +1,4 @@
+use crate::sign_manually_dialog::PpsSignManuallyDialog;
 use crate::window::WindowRunMode;
 
 use papers_document::{DocumentSignatures, SignatureStatus};
@@ -577,7 +578,7 @@ impl imp::PpsDocumentView {
         dialog.present(Some(self.obj().as_ref()));
     }
 
-    pub(crate) fn open_sign_manually_dialog(&self) {
+    pub(crate) fn open_sign_manually_dialog(&self) -> PpsSignManuallyDialog {
         let dialog = crate::sign_manually_dialog::PpsSignManuallyDialog::new(
             self.signature_manager
                 .get_or_init(crate::signature_manager::PpsSignatureManager::new),
@@ -600,6 +601,7 @@ impl imp::PpsDocumentView {
         );
 
         dialog.present(Some(self.obj().as_ref()));
+        dialog
     }
 
     pub(crate) fn apply_signature_to_document(

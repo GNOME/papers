@@ -310,6 +310,10 @@ mod imp {
                 dialog.present(Some(&parent));
             }
         }
+
+        pub fn navigate_to_new_signature(&self) {
+            self.navigation_view.push_by_tag("new-signature");
+        }
     }
 }
 
@@ -350,5 +354,9 @@ impl PpsSignManuallyDialog {
             }
             imp.navigation_view.push_by_tag("new-signature");
         });
+    }
+
+    pub fn navigate_to_new_signature(&self) {
+        self.imp().navigate_to_new_signature();
     }
 }

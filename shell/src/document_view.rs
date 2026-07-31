@@ -66,6 +66,12 @@ mod imp {
         #[template_child]
         pub(super) signature_menu_child: TemplateChild<gtk::Box>,
         #[template_child]
+        pub(super) signature_menu_manage_child: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub(super) signature_menu_no_signature: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub(super) manage_signatures_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub(super) annot_toolbar: TemplateChild<gtk::Box>,
         #[template_child]
         pub(super) zoom_toolbar: TemplateChild<gtk::Box>,
