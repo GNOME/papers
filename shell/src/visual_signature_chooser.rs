@@ -378,53 +378,56 @@ impl PpsVisualSignatureChooser {
         signature_id: &str,
         manager: &PpsSignatureManager,
     ) {
+        let toast_duration = 5;
         let toast = adw::Toast::builder()
             .title(
                 formatx!(&gettext("Removed \"{}\""), signature_name)
                     .expect("Wrong format in translated string"),
             )
             .button_label(&gettext("Undo"))
-            .timeout(5)
+            .timeout(toast_duration)
             .build();
 
         let id_for_undo = signature_id.to_string();
         let id_for_delete = signature_id.to_string();
-        let undo_clicked = std::rc::Rc::new(std::cell::Cell::new(false));
+
+        let rm_timeout = glib::timeout_add_seconds_local_once(
+            toast_duration,
+            glib::clone!(
+                #[weak]
+                manager,
+                move || {
+                    log::info!("Toast dismissed - permanently deleting: {}", id_for_delete);
+                    let id = id_for_delete.clone();
+                    glib::spawn_future_local(glib::clone!(
+                        #[weak]
+                        manager,
+                        async move {
+                            if let Err(e) = manager.permanently_delete(&id).await {
+                                log::error!("Failed to permanently delete signature: {}", e);
+                            }
+                        }
+                    ));
+                }
+            ),
+        )
+        .as_raw();
 
         toast.connect_button_clicked(glib::clone!(
             #[weak]
             manager,
-            #[strong]
-            undo_clicked,
             move |_| {
                 log::info!("Undo clicked - restoring signature: {}", id_for_undo);
-                undo_clicked.set(true);
-                let manager = manager.clone();
                 let id = id_for_undo.clone();
+                unsafe {
+                    let src_id: glib::SourceId = glib::translate::from_glib(rm_timeout);
+                    src_id.remove();
+                }
                 glib::spawn_future_local(async move {
                     if let Err(e) = manager.restore_from_deletion(&id).await {
                         log::error!("Failed to restore signature: {}", e);
                     }
                 });
-            }
-        ));
-
-        toast.connect_dismissed(glib::clone!(
-            #[weak]
-            manager,
-            #[strong]
-            undo_clicked,
-            move |_| {
-                if !undo_clicked.get() {
-                    log::info!("Toast dismissed - permanently deleting: {}", id_for_delete);
-                    let manager = manager.clone();
-                    let id = id_for_delete.clone();
-                    glib::spawn_future_local(async move {
-                        if let Err(e) = manager.permanently_delete(&id).await {
-                            log::error!("Failed to permanently delete signature: {}", e);
-                        }
-                    });
-                }
             }
         ));
 
