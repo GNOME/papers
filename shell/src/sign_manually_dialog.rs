@@ -15,8 +15,6 @@ mod imp {
         #[template_child]
         pub(super) signature_chooser:
             TemplateChild<crate::visual_signature_chooser::PpsVisualSignatureChooser>,
-        #[template_child]
-        pub(super) insert_button: TemplateChild<gtk::Button>,
 
         // PAGE 2: Drawing widget
         #[template_child]
@@ -60,18 +58,20 @@ mod imp {
             self.parent_constructed();
 
             // Insert button: save current drawing then emit signal and close
-            self.insert_button.connect_clicked(glib::clone!(
-                #[weak(rename_to = imp)]
-                self,
-                move |_| {
-                    imp.cancel_auto_save_timeout();
-                    imp.auto_save_signature();
-                    if let Some(sig_id) = imp.editing_signature_id.borrow().clone() {
-                        imp.obj().emit_by_name::<()>("insert-signature", &[&sig_id]);
-                        imp.obj().close();
+            self.signature_drawing_widget
+                .insert_button()
+                .connect_clicked(glib::clone!(
+                    #[weak(rename_to = imp)]
+                    self,
+                    move |_| {
+                        imp.cancel_auto_save_timeout();
+                        imp.auto_save_signature();
+                        if let Some(sig_id) = imp.editing_signature_id.borrow().clone() {
+                            imp.obj().emit_by_name::<()>("insert-signature", &[&sig_id]);
+                            imp.obj().close();
+                        }
                     }
-                }
-            ));
+                ));
 
             // Reset form / update insert button when navigating to edit page
             self.navigation_view.connect_pushed(glib::clone!(
@@ -81,7 +81,8 @@ mod imp {
                     if let Some(page) = nav_view.visible_page()
                         && page.tag().as_deref() == Some("new-signature")
                     {
-                        imp.insert_button
+                        imp.signature_drawing_widget
+                            .insert_button()
                             .set_sensitive(imp.editing_signature_id.borrow().is_some());
 
                         if imp.editing_signature_id.borrow().is_none() {
@@ -96,7 +97,9 @@ mod imp {
                 self,
                 move |_nav_view, page| {
                     if page.tag().as_deref() == Some("new-signature") {
-                        imp.insert_button.set_sensitive(false);
+                        imp.signature_drawing_widget
+                            .insert_button()
+                            .set_sensitive(false);
                         imp.cancel_auto_save_timeout();
                         imp.auto_save_signature();
 
@@ -120,7 +123,9 @@ mod imp {
                     #[upgrade_or]
                     None,
                     move |_values| {
-                        imp.insert_button.set_sensitive(true);
+                        imp.signature_drawing_widget
+                            .insert_button()
+                            .set_sensitive(true);
                         imp.schedule_auto_save();
                         None
                     }
@@ -137,7 +142,9 @@ mod imp {
                     #[upgrade_or]
                     None,
                     move |_values| {
-                        imp.insert_button.set_sensitive(true);
+                        imp.signature_drawing_widget
+                            .insert_button()
+                            .set_sensitive(true);
                         imp.cancel_auto_save_timeout();
                         imp.auto_save_signature();
                         None

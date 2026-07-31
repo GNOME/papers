@@ -33,10 +33,14 @@ mod imp {
         #[template_child]
         pub(super) pen_size_large: TemplateChild<gtk::ToggleButton>,
         #[template_child]
+        pub(super) insert_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub(super) import_button: TemplateChild<gtk::Button>,
 
         // State: strokes drawn by the user
         pub(super) strokes: RefCell<Vec<Stroke>>,
+        // Guards against concurrent imports racing on background_pixbuf
+        pub(super) importing: Cell<bool>,
         // Background pixbuf in light-mode colors (black strokes on transparent)
         pub(super) background_pixbuf: RefCell<Option<gdk_pixbuf::Pixbuf>>,
         // Inverted copy for display in dark mode (white strokes on transparent)
@@ -103,7 +107,13 @@ mod imp {
     #[gtk::template_callbacks]
     impl PpsSignatureDrawingWidget {
         #[template_callback]
-        fn on_choose_file_clicked(&self) {
+        pub(crate) fn on_choose_file_clicked(&self) {
+            if self.importing.get() {
+                log::debug!("Import already in progress, ignoring");
+                return;
+            }
+            self.importing.set(true);
+
             log::debug!("Choose file clicked");
 
             let dialog = gtk::FileDialog::builder()
@@ -136,9 +146,7 @@ mod imp {
                 ),
             );
         }
-    }
 
-    impl PpsSignatureDrawingWidget {
         // Set up the drawing area with event handlers
         fn setup_drawing_area(&self) {
             let drawing_area = self.drawing_area.get();
@@ -520,6 +528,7 @@ mod imp {
                     let Some(path) = file.path() else {
                         log::error!("File has no path");
                         self.show_error("Failed to get file path");
+                        self.importing.set(false);
                         return;
                     };
 
@@ -528,6 +537,7 @@ mod imp {
                         Err(e) => {
                             log::error!("Failed to load image: {}", e);
                             self.show_error(&format!("Failed to load image: {}", e));
+                            self.importing.set(false);
                             return;
                         }
                     };
@@ -553,8 +563,6 @@ mod imp {
 
                     let raw_data = signature_image_processing::RawImageData::from_pixbuf(&pixbuf);
 
-                    self.import_button.set_sensitive(false);
-
                     let widget = self.obj().clone();
                     glib::spawn_future_local(async move {
                         let result =
@@ -562,7 +570,7 @@ mod imp {
 
                         let imp = widget.imp();
 
-                        imp.import_button.set_sensitive(true);
+                        imp.importing.set(false);
 
                         match result {
                             Ok(Ok(raw_signature_image)) => {
@@ -592,6 +600,7 @@ mod imp {
                 }
                 Err(e) => {
                     log::debug!("File dialog cancelled or error: {}", e);
+                    self.importing.set(false);
                 }
             }
         }
@@ -821,5 +830,9 @@ impl PpsSignatureDrawingWidget {
 
     pub fn has_signature(&self) -> bool {
         self.imp().has_signature()
+    }
+
+    pub fn insert_button(&self) -> gtk::Button {
+        self.imp().insert_button.get()
     }
 }

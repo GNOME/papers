@@ -36,17 +36,6 @@ template $PpsSignManuallyDialog: Adw.Dialog {
         [top]
         Adw.HeaderBar {
           show-title: true;
-
-          [end]
-          Button insert_button {
-            label: _("_Insert");
-            use-underline: true;
-            sensitive: false;
-
-            styles [
-              "suggested-action",
-            ]
-          }
         }
 
         content: Adw.Bin draw_page {

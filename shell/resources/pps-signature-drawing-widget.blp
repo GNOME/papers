@@ -35,73 +35,82 @@ template $PpsSignatureDrawingWidget: Box {
   }
 
   // Drawing controls
-  Box {
-    orientation: horizontal;
-    spacing: 6;
-    halign: center;
-    // Undo button
-    Button undo_button {
-      icon-name: "arrow-hook-left-horizontal2-symbolic";
-      tooltip-text: _("Undo");
-      sensitive: false;
+  CenterBox {
 
-      styles [
-        "flat",
-        "circular",
-      ]
+    [start]
+    Box {
+      orientation: horizontal;
+      spacing: 6;
+      valign: center;
+
+      Button undo_button {
+        icon-name: "arrow-hook-left-horizontal2-symbolic";
+        tooltip-text: _("Undo");
+        sensitive: false;
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
+
+      Button redo_button {
+        icon-name: "arrow-turn-right-horizontal2-symbolic";
+        tooltip-text: _("Redo");
+        sensitive: false;
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
     }
 
-    // Redo button
-    Button redo_button {
-      icon-name: "arrow-turn-right-horizontal2-symbolic";
-      tooltip-text: _("Redo");
-      sensitive: false;
 
-      styles [
-        "flat",
-        "circular",
-      ]
+    [end]
+    Box {
+      orientation: horizontal;
+      spacing: 6;
+      valign: center;
+      visible: false;
+
+      ToggleButton pen_size_small {
+        tooltip-text: _("Small pen");
+        active: false;
+        label: "·";
+        group: pen_size_medium;
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
+
+      ToggleButton pen_size_medium {
+        tooltip-text: _("Medium pen");
+        active: true;
+        label: "•";
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
+
+      ToggleButton pen_size_large {
+        tooltip-text: _("Large pen");
+        active: false;
+        label: "●";
+        group: pen_size_medium;
+
+        styles [
+          "flat",
+          "circular",
+        ]
+      }
     }
 
-    // Pen size small
-    ToggleButton pen_size_small {
-      tooltip-text: _("Small pen");
-      active: false;
-      label: "·";
-      group: pen_size_medium;
-
-      styles [
-        "flat",
-        "circular",
-      ]
-    }
-
-    // Pen size medium
-    ToggleButton pen_size_medium {
-      tooltip-text: _("Medium pen");
-      active: true;
-      label: "•";
-
-      styles [
-        "flat",
-        "circular",
-      ]
-    }
-
-    // Pen size large
-    ToggleButton pen_size_large {
-      tooltip-text: _("Large pen");
-      active: false;
-      label: "●";
-      group: pen_size_medium;
-
-      styles [
-        "flat",
-        "circular",
-      ]
-    }
-
-    // Import button
+    [end]
     Button import_button {
       tooltip-text: _("Import signature image");
       clicked => $on_choose_file_clicked() swapped;
@@ -123,5 +132,21 @@ template $PpsSignatureDrawingWidget: Box {
         }
       }
     }
+
+    [center]
+    Button insert_button {
+      label: _("_Insert");
+      use-underline: true;
+      halign: center;
+      hexpand: true;
+      height-request: 32;
+      sensitive: false;
+
+      styles [
+        "suggested-action",
+        "pill",
+      ]
+    }
+
   }
 }
