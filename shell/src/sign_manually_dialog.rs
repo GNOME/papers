@@ -246,37 +246,40 @@ mod imp {
             };
 
             let editing_id = self.editing_signature_id.borrow().clone();
-            let obj_weak = self.obj().downgrade();
-            glib::spawn_future_local(async move {
-                let result: Result<(), String> = if let Some(ref editing_id) = editing_id {
-                    manager
-                        .update_signature(editing_id, &name, &pixbuf)
-                        .await
-                        .map(|_| {
-                            log::info!("Auto-save: Updated signature: {} ({})", name, editing_id);
-                        })
-                        .map_err(|e| format!("Failed to update signature: {}", e))
-                } else {
-                    manager
-                        .add_signature(&name, &pixbuf)
-                        .await
-                        .map(|id| {
-                            log::info!("Auto-save: Saved signature: {} ({})", name, id);
-                            if let Some(obj) = obj_weak.upgrade() {
-                                *obj.imp().editing_signature_id.borrow_mut() = Some(id);
-                            }
-                        })
-                        .map_err(|e| format!("Failed to save signature: {}", e))
-                };
+            glib::spawn_future_local(glib::clone!(
+                #[weak(rename_to=obj)]
+                self,
+                async move {
+                    let result: Result<(), String> = if let Some(ref editing_id) = editing_id {
+                        manager
+                            .update_signature(editing_id, &name, &pixbuf)
+                            .await
+                            .map(|_| {
+                                log::info!(
+                                    "Auto-save: Updated signature: {} ({})",
+                                    name,
+                                    editing_id
+                                );
+                            })
+                            .map_err(|e| format!("Failed to update signature: {}", e))
+                    } else {
+                        manager
+                            .add_signature(&name, &pixbuf)
+                            .await
+                            .map(|id| {
+                                log::info!("Auto-save: Saved signature: {} ({})", name, id);
+                                *obj.editing_signature_id.borrow_mut() = Some(id);
+                            })
+                            .map_err(|e| format!("Failed to save signature: {}", e))
+                    };
 
-                if let Err(ref e) = result {
-                    log::error!("Auto-save failed: {}", e);
-                    if let Some(obj) = obj_weak.upgrade() {
+                    if let Err(ref e) = result {
+                        log::error!("Auto-save failed: {}", e);
                         let toast = adw::Toast::new(e);
-                        obj.imp().toast_overlay.add_toast(toast);
+                        obj.toast_overlay.add_toast(toast);
                     }
                 }
-            });
+            ));
         }
 
         fn reset_new_signature_form(&self) {
@@ -343,24 +346,23 @@ impl PpsSignManuallyDialog {
     }
 
     pub fn navigate_to_edit_signature(&self, signature_id: &str) {
-        let imp = self.imp();
-        *imp.editing_signature_id.borrow_mut() = Some(signature_id.to_string());
+        *self.imp().editing_signature_id.borrow_mut() = Some(signature_id.to_string());
 
         let sig_id = signature_id.to_string();
-        let obj_weak = self.downgrade();
-        glib::spawn_future_local(async move {
-            let Some(obj) = obj_weak.upgrade() else {
-                return;
-            };
-            let imp = obj.imp();
-            if let Err(e) = imp.load_signature_for_editing(&sig_id).await {
-                log::error!("Failed to load signature for editing: {}", e);
-                imp.show_error(&format!("Failed to load signature: {}", e));
-                *imp.editing_signature_id.borrow_mut() = None;
-                return;
+        glib::spawn_future_local(glib::clone!(
+            #[weak(rename_to=obj)]
+            self,
+            async move {
+                if let Err(e) = obj.imp().load_signature_for_editing(&sig_id).await {
+                    log::error!("Failed to load signature for editing: {}", e);
+                    obj.imp()
+                        .show_error(&format!("Failed to load signature: {}", e));
+                    *obj.imp().editing_signature_id.borrow_mut() = None;
+                    return;
+                }
+                obj.imp().navigation_view.push_by_tag("new-signature");
             }
-            imp.navigation_view.push_by_tag("new-signature");
-        });
+        ));
     }
 
     pub fn navigate_to_new_signature(&self) {

@@ -177,45 +177,36 @@ mod imp {
                 }
             }
 
-            let obj_weak = self.obj().downgrade();
-            glib::spawn_future_local(async move {
-                let signatures = manager.list_signatures().await;
+            glib::spawn_future_local(glib::clone!(
+                #[weak(rename_to=imp)]
+                self,
+                async move {
+                    let signatures = manager.list_signatures().await;
+                    let obj = imp.obj();
 
-                let Some(obj) = obj_weak.upgrade() else {
-                    return;
-                };
-                let imp = obj.imp();
+                    if signatures.is_empty() {
+                        imp.signatures_stack.set_visible_child(&*imp.empty_state);
+                        *imp.selected_signature.borrow_mut() = None;
+                        obj.notify("selected-signature");
+                        obj.emit_by_name::<()>("selection-changed", &[&Option::<String>::None]);
+                    } else {
+                        imp.signatures_stack.set_visible_child(&*imp.list_container);
 
-                if signatures.is_empty() {
-                    imp.signatures_stack.set_visible_child(&*imp.empty_state);
-                    *imp.selected_signature.borrow_mut() = None;
-                    obj.notify("selected-signature");
-                    obj.emit_by_name::<()>("selection-changed", &[&Option::<String>::None]);
-                } else {
-                    imp.signatures_stack.set_visible_child(&*imp.list_container);
+                        for (index, sig) in signatures.iter().enumerate() {
+                            let pixbuf = manager.get_signature_pixbuf(&sig.id);
 
-                    for (index, sig) in signatures.iter().enumerate() {
-                        let pixbuf = manager.get_signature_pixbuf(&sig.id);
+                            let row = obj.create_signature_row(sig, pixbuf);
+                            imp.signatures_listbox.insert(&row, index as i32);
+                        }
 
-                        let Some(obj) = obj_weak.upgrade() else {
-                            return;
-                        };
-                        let imp = obj.imp();
-                        let row = obj.create_signature_row(sig, pixbuf);
-                        imp.signatures_listbox.insert(&row, index as i32);
-                    }
-
-                    // Restore selection if we have a previously selected signature
-                    let Some(obj) = obj_weak.upgrade() else {
-                        return;
-                    };
-                    let imp = obj.imp();
-                    let maybe_selected = imp.selected_signature.borrow().clone();
-                    if let Some(ref id) = maybe_selected {
-                        imp.tick_radio_for_signature(id);
+                        // Restore selection if we have a previously selected signature
+                        let maybe_selected = imp.selected_signature.borrow().clone();
+                        if let Some(ref id) = maybe_selected {
+                            imp.tick_radio_for_signature(id);
+                        }
                     }
                 }
-            });
+            ));
         }
     }
 }
@@ -357,35 +348,27 @@ impl PpsVisualSignatureChooser {
 
     // Remove a signature with undo support
     fn remove_signature_with_undo(&self, signature_id: &str) {
-        let manager = {
-            let borrow = self.imp().signature_manager.borrow();
-            let Some(m) = borrow.as_ref() else { return };
-            m.clone()
-        };
         let sig_id = signature_id.to_string();
-        let obj_weak = self.downgrade();
+        glib::spawn_future_local(glib::clone!(
+            #[weak(rename_to=obj)]
+            self,
+            async move {
+                let manager = obj.signature_manager().unwrap();
+                let signature_name = manager
+                    .get_signature(&sig_id)
+                    .await
+                    .map(|sig| sig.name.clone())
+                    .unwrap_or_else(|| "Signature".to_string());
 
-        glib::spawn_future_local(async move {
-            let signature_name = manager
-                .get_signature(&sig_id)
-                .await
-                .map(|sig| sig.name.clone())
-                .unwrap_or_else(|| "Signature".to_string());
-
-            if let Err(e) = manager.mark_for_deletion(&sig_id).await {
-                log::error!("Failed to mark signature for deletion: {}", e);
-                if let Some(obj) = obj_weak.upgrade() {
+                if let Err(e) = manager.mark_for_deletion(&sig_id).await {
+                    log::error!("Failed to mark signature for deletion: {}", e);
                     obj.show_error_dialog("Failed to remove signature", &e.to_string());
+                } else {
+                    log::info!("Signature '{}' marked for deletion", signature_name);
+                    obj.show_undo_toast(&signature_name, &sig_id, &manager);
                 }
-                return;
             }
-
-            log::info!("Signature '{}' marked for deletion", signature_name);
-
-            if let Some(obj) = obj_weak.upgrade() {
-                obj.show_undo_toast(&signature_name, &sig_id, &manager);
-            }
-        });
+        ));
     }
 
     /// Build an undo toast and emit it via signal so the parent can display it
