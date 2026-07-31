@@ -157,13 +157,13 @@ mod imp {
                 "edit-signature",
                 false,
                 glib::clone!(
-                    #[weak(rename_to = imp)]
+                    #[weak(rename_to = obj)]
                     self,
                     #[upgrade_or]
                     None,
                     move |values| {
                         let sig_id = values[1].get::<String>().unwrap();
-                        imp.obj().navigate_to_edit_signature(&sig_id);
+                        obj.navigate_to_edit_signature(&sig_id);
                         None
                     }
                 ),
@@ -287,7 +287,7 @@ mod imp {
             *self.editing_signature_id.borrow_mut() = None;
         }
 
-        pub(super) async fn load_signature_for_editing(&self, id: &str) -> Result<(), String> {
+        async fn load_signature_for_editing(&self, id: &str) -> Result<(), String> {
             let manager = self
                 .signature_chooser
                 .signature_manager()
@@ -307,7 +307,7 @@ mod imp {
             Ok(())
         }
 
-        pub(super) fn show_error(&self, message: &str) {
+        fn show_error(&self, message: &str) {
             let dialog = adw::AlertDialog::builder()
                 .heading("Error")
                 .body(message)
@@ -323,6 +323,28 @@ mod imp {
 
         pub fn navigate_to_new_signature(&self) {
             self.navigation_view.push_by_tag("new-signature");
+        }
+
+        fn navigate_to_edit_signature(&self, signature_id: &str) {
+            *self.editing_signature_id.borrow_mut() = Some(signature_id.to_string());
+
+            let sig_id = signature_id.to_string();
+            glib::spawn_future_local(glib::clone!(
+                #[weak(rename_to=obj)]
+                self,
+                async move {
+                    if let Err(e) = obj.load_signature_for_editing(&sig_id).await {
+                        log::error!("Failed to load signature for editing: {}", e);
+                        obj.show_error(
+                            &formatx!(&gettext("Failed to load signature: {}"), e)
+                                .expect("Wrong format in translated string"),
+                        );
+                        *obj.editing_signature_id.borrow_mut() = None;
+                        return;
+                    }
+                    obj.navigation_view.push_by_tag("new-signature");
+                }
+            ));
         }
     }
 }
@@ -343,26 +365,6 @@ impl PpsSignManuallyDialog {
             .set_signature_manager(Some(signature_manager.clone()));
 
         dialog
-    }
-
-    pub fn navigate_to_edit_signature(&self, signature_id: &str) {
-        *self.imp().editing_signature_id.borrow_mut() = Some(signature_id.to_string());
-
-        let sig_id = signature_id.to_string();
-        glib::spawn_future_local(glib::clone!(
-            #[weak(rename_to=obj)]
-            self,
-            async move {
-                if let Err(e) = obj.imp().load_signature_for_editing(&sig_id).await {
-                    log::error!("Failed to load signature for editing: {}", e);
-                    obj.imp()
-                        .show_error(&format!("Failed to load signature: {}", e));
-                    *obj.imp().editing_signature_id.borrow_mut() = None;
-                    return;
-                }
-                obj.imp().navigation_view.push_by_tag("new-signature");
-            }
-        ));
     }
 
     pub fn navigate_to_new_signature(&self) {
