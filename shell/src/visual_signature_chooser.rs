@@ -354,37 +354,24 @@ impl PpsVisualSignatureChooser {
             self,
             async move {
                 let manager = obj.signature_manager().unwrap();
-                let signature_name = manager
-                    .get_signature(&sig_id)
-                    .await
-                    .map(|sig| sig.name.clone())
-                    .unwrap_or_else(|| "Signature".to_string());
 
                 if let Err(e) = manager.mark_for_deletion(&sig_id).await {
                     log::error!("Failed to mark signature for deletion: {}", e);
                     obj.show_error_dialog("Failed to remove signature", &e.to_string());
                 } else {
-                    log::info!("Signature '{}' marked for deletion", signature_name);
-                    obj.show_undo_toast(&signature_name, &sig_id, &manager);
+                    log::info!("Signature marked for deletion");
+                    obj.show_undo_toast(&sig_id, &manager);
                 }
             }
         ));
     }
 
     /// Build an undo toast and emit it via signal so the parent can display it
-    fn show_undo_toast(
-        &self,
-        signature_name: &str,
-        signature_id: &str,
-        manager: &PpsSignatureManager,
-    ) {
+    fn show_undo_toast(&self, signature_id: &str, manager: &PpsSignatureManager) {
         let toast_duration = 5;
         let toast = adw::Toast::builder()
-            .title(
-                formatx!(&gettext("Removed \"{}\""), signature_name)
-                    .expect("Wrong format in translated string"),
-            )
-            .button_label(&gettext("Undo"))
+            .title(gettext("Signature Deleted"))
+            .button_label(gettext("Undo"))
             .timeout(toast_duration)
             .build();
 
