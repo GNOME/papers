@@ -104,17 +104,14 @@ pub fn setup() {
                 Path::for_array(&[p1, p2])
             } else {
                 let result_simplified = {
-                    use geo::Simplify;
-                    use geo_types::LineString;
-                    let result_string: LineString = result_stroke.into();
-                    let simplified = result_string.simplify(&0.05);
+                    let simplified = simplify(result_stroke, 0.05);
 
                     simplified
-                        .points()
+                        .into_iter()
                         .map(|r| {
                             let mut p = Point::new();
-                            p.set_x(r.x());
-                            p.set_y(r.y());
+                            p.set_x(r.0);
+                            p.set_y(r.1);
                             p
                         })
                         .collect::<Vec<Point>>()
@@ -126,4 +123,42 @@ pub fn setup() {
             ink.set_ink_list(il);
         }
     });
+}
+
+// Ramer–Douglas-Peucker line decimation algorithm
+fn simplify(line: Vec<(f64, f64)>, epsilon: f64) -> Vec<(f64, f64)> {
+    let [first, .., last] = line[..] else {
+        return line;
+    };
+
+    let (maxi, maxd) = line
+        .iter()
+        .enumerate()
+        .take(line.len() - 1)
+        .skip(1)
+        .map(|(i, p)| (i, euclidean_dist(*p, first, last)))
+        .reduce(|acc, other| if other.1 > acc.1 { other } else { acc })
+        .unwrap_or((0, 0.));
+
+    if maxd > epsilon {
+        let mut res1 = simplify(line[0..=maxi].to_vec(), epsilon);
+        let res2 = simplify(line[maxi..line.len()].to_vec(), epsilon);
+
+        res1.pop();
+        res1.extend(res2);
+        res1
+    } else {
+        vec![first, last]
+    }
+}
+
+// Distance between point p and 2 point line (start, end)
+fn euclidean_dist(p: (f64, f64), start: (f64, f64), end: (f64, f64)) -> f64 {
+    ((end.1 - start.1) * p.0 - (end.0 - start.1) * p.1 + end.0 * start.1 - end.1 * start.0).abs()
+        / dist(start, end)
+}
+
+// Distance between two points
+fn dist(p1: (f64, f64), p2: (f64, f64)) -> f64 {
+    ((p1.0 - p2.0).powf(2.) + (p1.0 - p2.0).powf(2.)).sqrt()
 }
