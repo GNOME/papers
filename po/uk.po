@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-07-30 21:52+0000\n"
-"PO-Revision-Date: 2026-07-31 08:38+0300\n"
+"POT-Creation-Date: 2026-08-01 10:26+0000\n"
+"PO-Revision-Date: 2026-08-01 17:14+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -126,7 +126,6 @@ msgstr ""
 "Ідентифікатор підпису, який було використано останнім для підписування вручну"
 
 #: data/org.gnome.Papers.gschema.xml:115
-#| msgid "Last used signature ID"
 msgid "Last placed signature scale"
 msgstr "Масштаб останнього доданого підпису"
 
@@ -739,7 +738,7 @@ msgstr "Вибраний діапазон сторінок не містить �
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:573
+#: shell/src/document_view/io.rs:574
 msgid "_Close"
 msgstr "_Закрити"
 
@@ -940,8 +939,8 @@ msgstr "Переглядач документів «Папери»"
 msgid "The selected printer “%s” could not be found"
 msgstr "Неможливо знайти вибраний принтер «%s»"
 
-#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:211
-#: shell/src/document_view/io.rs:212
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212
+#: shell/src/document_view/io.rs:213
 msgid "Papers"
 msgstr "Папери"
 
@@ -1233,7 +1232,7 @@ msgid "Erase Annotations"
 msgstr "Витирати примітки"
 
 #: shell/resources/pps-document-view.blp:513
-#: shell/src/document_view/actions.rs:1350
+#: shell/src/document_view/actions.rs:1359
 msgid "Edit Document"
 msgstr "Редагувати документ"
 
@@ -1275,9 +1274,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Скасувати др_ук та закрити"
 
-#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:827
-#: shell/src/document_view/io.rs:446 shell/src/document_view/io.rs:494
-#: shell/src/document_view/io.rs:870
+#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
+#: shell/src/document_view/io.rs:447 shell/src/document_view/io.rs:495
+#: shell/src/document_view/io.rs:872
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -1322,8 +1321,6 @@ msgid "Sign D_igitally…"
 msgstr "_Цифровий підпис…"
 
 #: shell/resources/pps-document-view.blp:853
-#: shell/src/document_view/actions.rs:1236
-#| msgid "View Signature…"
 msgid "_Manage Signatures…"
 msgstr "_Керування підписами…"
 
@@ -1436,85 +1433,100 @@ msgstr "Витирати чорнило"
 msgid "Erase Whole Strokes"
 msgstr "Витирати мазки цілком"
 
+#: shell/resources/pps-document-view.blp:1432
+#| msgid "_Manage Signatures…"
+msgid "Manage Signatures…"
+msgstr "Керування підписами…"
+
+#: shell/resources/pps-document-view.blp:1451
+#| msgid "No signatures yet"
+msgid "No Signatures Yet"
+msgstr "Ще немає підписів"
+
+#: shell/resources/pps-document-view.blp:1461
+#| msgid "Add _Manual Signature"
+msgid "Add Signature"
+msgstr "Додати підпис"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1447
+#: shell/resources/pps-document-view.blp:1509
 msgid "Highlight (h)"
 msgstr "Підсвічення (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1463
+#: shell/resources/pps-document-view.blp:1525
 msgid "Strikethrough (k)"
 msgstr "Перекреслення (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1479
+#: shell/resources/pps-document-view.blp:1541
 msgid "Underline (u)"
 msgstr "Підкреслення (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1495
+#: shell/resources/pps-document-view.blp:1557
 msgid "Squiggly (q)"
 msgstr "Хвиляста (q}"
 
-#: shell/resources/pps-document-view.blp:1586
+#: shell/resources/pps-document-view.blp:1648
 msgid "_Open Link"
 msgstr "_Відкрити посилання"
 
-#: shell/resources/pps-document-view.blp:1592
+#: shell/resources/pps-document-view.blp:1654
 msgid "Send an Email"
 msgstr "Надіслати електронною поштою"
 
-#: shell/resources/pps-document-view.blp:1598
+#: shell/resources/pps-document-view.blp:1660
 msgid "_Copy Link Address"
 msgstr "_Копіювати адресу посилання"
 
-#: shell/resources/pps-document-view.blp:1604
+#: shell/resources/pps-document-view.blp:1666
 msgid "Copy Email Address"
 msgstr "Скопіювати адресу ел. пошти"
 
-#: shell/resources/pps-document-view.blp:1610
+#: shell/resources/pps-document-view.blp:1672
 msgid "_Go To"
 msgstr "Пере_йти до"
 
-#: shell/resources/pps-document-view.blp:1616
+#: shell/resources/pps-document-view.blp:1678
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: shell/resources/pps-document-view.blp:1624
+#: shell/resources/pps-document-view.blp:1686
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: shell/resources/pps-document-view.blp:1629
+#: shell/resources/pps-document-view.blp:1691
 msgid "Select _All"
 msgstr "Виділ_ити все"
 
-#: shell/resources/pps-document-view.blp:1636
+#: shell/resources/pps-document-view.blp:1698
 msgid "_Save Image As…"
 msgstr "Зберегти зображення _як…"
 
-#: shell/resources/pps-document-view.blp:1642
+#: shell/resources/pps-document-view.blp:1704
 msgid "Copy _Image"
 msgstr "Копіювати _зображення"
 
-#: shell/resources/pps-document-view.blp:1650
+#: shell/resources/pps-document-view.blp:1712
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Відкрити долучення"
 
-#: shell/resources/pps-document-view.blp:1656
+#: shell/resources/pps-document-view.blp:1718
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "З_берегти долучення як…"
 
-#: shell/resources/pps-document-view.blp:1666
+#: shell/resources/pps-document-view.blp:1728
 msgid "Annotation _Properties…"
 msgstr "Властивості при_мітки…"
 
-#: shell/resources/pps-document-view.blp:1672
+#: shell/resources/pps-document-view.blp:1734
 msgid "R_emove Annotation"
 msgstr "Ви_лучити примітку"
 
-#: shell/resources/pps-document-view.blp:1680
+#: shell/resources/pps-document-view.blp:1742
 msgid "_Add Text Annotation"
 msgstr "_Додати текстову анотацію"
 
@@ -1544,7 +1556,7 @@ msgstr "_Скасувати"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:863
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
 msgid "Password Required"
 msgstr "Потрібно пароль"
 
@@ -2062,93 +2074,88 @@ msgstr "Показати версію програми."
 msgid "[FILE…]"
 msgstr "[ФАЙЛ…]"
 
-#: shell/src/document_view.rs:366
+#: shell/src/document_view.rs:372
 msgid "View Details"
 msgstr "Переглянути подробиці"
 
-#: shell/src/document_view.rs:803
+#: shell/src/document_view.rs:809
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "Документ містить нові або змінені анотації та поля форм, які заповнено."
 
-#: shell/src/document_view.rs:806
+#: shell/src/document_view.rs:812
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ містить поля форми, які заповнено."
 
-#: shell/src/document_view.rs:808
+#: shell/src/document_view.rs:814
 msgid "Document contains new or modified annotations."
 msgstr "Документ містить нові або змінені примітки."
 
-#: shell/src/document_view.rs:816
+#: shell/src/document_view.rs:822
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Якщо копію не збережено, зміни буде остаточно втрачено."
 
-#: shell/src/document_view.rs:817
+#: shell/src/document_view.rs:823
 msgid "Save Changes to a Copy?"
 msgstr "Зберегти зміни до копії?"
 
-#: shell/src/document_view.rs:826
+#: shell/src/document_view.rs:832
 msgid "Close _Without Saving"
 msgstr "Закрити б_ез збереження"
 
-#: shell/src/document_view.rs:828
+#: shell/src/document_view.rs:834
 msgid "_Save a Copy"
 msgstr "_Зберегти копію"
 
-#: shell/src/document_view/actions.rs:1022
+#: shell/src/document_view/actions.rs:1033
 msgid "Save Image"
 msgstr "Зберегти зображення"
 
-#: shell/src/document_view/actions.rs:1154
+#: shell/src/document_view/actions.rs:1165
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Режим навігації з курсором увімкнено, натисніть F7, щоб вимкнути."
 
-#: shell/src/document_view/actions.rs:1156
+#: shell/src/document_view/actions.rs:1167
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Режим навігації з курсором вимкнено, натисніть F7, щоб увімкнути."
 
-#: shell/src/document_view/actions.rs:1242
-#| msgid "_Signatures"
-msgid "Add _Manual Signature"
-msgstr "Додати підпис _вручну"
+#: shell/src/document_view/actions.rs:1255
+#| msgid "Add _Manual Signature"
+msgid "Add _Visual Signature"
+msgstr "Додати _візуальний підпис"
 
-#: shell/src/document_view/actions.rs:1282
-#| msgid "Signature Details"
-msgid "No signatures yet"
-msgstr "Ще немає підписів"
-
-#: shell/src/document_view/actions.rs:1339
+#: shell/src/document_view/actions.rs:1348
 msgid "Close Menu"
 msgstr "Закрити меню"
 
-#: shell/src/document_view/actions.rs:1435
+#: shell/src/document_view/actions.rs:1444
 msgid "Unable to Open Attachment"
 msgstr "Не вдалося відкрити долучення"
 
-#: shell/src/document_view/actions.rs:1450
+#: shell/src/document_view/actions.rs:1459
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Зберегти долучення"
 
-#: shell/src/document_view/io.rs:290
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains No Pages"
 msgstr "Документ не містить сторінок"
 
-#: shell/src/document_view/io.rs:292
+#: shell/src/document_view/io.rs:293
 msgid "The Document Contains Only Empty Pages"
 msgstr "Документ містить лише порожні сторінки"
 
-#: shell/src/document_view/io.rs:368
+#: shell/src/document_view/io.rs:369
 msgid "Save As…"
 msgstr "Зберегти як…"
 
-#: shell/src/document_view/io.rs:445
+#: shell/src/document_view/io.rs:446
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Намалюйте прямокутник для вставлення поля підпису"
 
-#: shell/src/document_view/io.rs:468
+#: shell/src/document_view/io.rs:469
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -2157,32 +2164,32 @@ msgstr ""
 "Цифровий підпис {}\n"
 "Дата: {}"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:488
 msgid "Certificate Required"
 msgstr "Потрібен сертифікат"
 
-#: shell/src/document_view/io.rs:490
+#: shell/src/document_view/io.rs:491
 msgid "Select signing certificate"
 msgstr "Виберіть сертифікат підписування"
 
-#: shell/src/document_view/io.rs:491
+#: shell/src/document_view/io.rs:492
 msgid "Select"
 msgstr "Вибрати"
 
-#: shell/src/document_view/io.rs:571
+#: shell/src/document_view/io.rs:572
 msgid "A certificate is required to sign this document"
 msgstr "Для підписування цього документа потрібен сертифікат"
 
-#: shell/src/document_view/io.rs:824
+#: shell/src/document_view/io.rs:826
 msgid "Save Signed File"
 msgstr "Зберегти підписаний файл"
 
-#: shell/src/document_view/io.rs:854
+#: shell/src/document_view/io.rs:856
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Будь ласка, введіть пароль до {}"
 
-#: shell/src/document_view/io.rs:871
+#: shell/src/document_view/io.rs:873
 msgid "_Login"
 msgstr "_Увійти"
 
