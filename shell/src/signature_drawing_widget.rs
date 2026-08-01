@@ -27,12 +27,6 @@ mod imp {
         #[template_child]
         pub(super) redo_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub(super) pen_size_small: TemplateChild<gtk::ToggleButton>,
-        #[template_child]
-        pub(super) pen_size_medium: TemplateChild<gtk::ToggleButton>,
-        #[template_child]
-        pub(super) pen_size_large: TemplateChild<gtk::ToggleButton>,
-        #[template_child]
         pub(super) insert_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) import_button: TemplateChild<gtk::Button>,
@@ -93,7 +87,6 @@ mod imp {
             self.pen_width.set(4.0);
 
             self.setup_drawing_area();
-            self.setup_pen_size_controls();
             self.setup_undo_redo_buttons();
             self.setup_keyboard_shortcuts();
             self.setup_theme_change_handler();
@@ -187,27 +180,6 @@ mod imp {
             ));
 
             drawing_area.add_controller(gesture);
-        }
-
-        // Set up pen size controls
-        fn setup_pen_size_controls(&self) {
-            // Helper to connect pen size button
-            let connect_pen_size = |button: &gtk::ToggleButton, width: f64| {
-                button.connect_toggled(glib::clone!(
-                    #[weak(rename_to = imp)]
-                    self,
-                    move |button| {
-                        if button.is_active() {
-                            imp.pen_width.set(width);
-                        }
-                    }
-                ));
-            };
-
-            // Connect all pen size buttons (thinnest removed, values shifted up)
-            connect_pen_size(&self.pen_size_small, 2.5);
-            connect_pen_size(&self.pen_size_medium, 4.0);
-            connect_pen_size(&self.pen_size_large, 6.0);
         }
 
         // Set up undo/redo buttons
@@ -761,10 +733,6 @@ mod imp {
             self.update_placeholder_visibility();
 
             self.drawing_area.queue_draw();
-
-            self.pen_size_small.set_active(false);
-            self.pen_size_medium.set_active(true);
-            self.pen_size_large.set_active(false);
         }
 
         // Load existing signature for editing (sets background pixbuf, preserves strokes)

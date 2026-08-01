@@ -36,7 +36,6 @@ template $PpsSignatureDrawingWidget: Box {
 
   // Drawing controls
   CenterBox {
-
     [start]
     Box {
       orientation: horizontal;
@@ -58,50 +57,6 @@ template $PpsSignatureDrawingWidget: Box {
         icon-name: "arrow-turn-right-horizontal2-symbolic";
         tooltip-text: _("Redo");
         sensitive: false;
-
-        styles [
-          "flat",
-          "circular",
-        ]
-      }
-    }
-
-
-    [end]
-    Box {
-      orientation: horizontal;
-      spacing: 6;
-      valign: center;
-      visible: false;
-
-      ToggleButton pen_size_small {
-        tooltip-text: _("Small pen");
-        active: false;
-        label: "·";
-        group: pen_size_medium;
-
-        styles [
-          "flat",
-          "circular",
-        ]
-      }
-
-      ToggleButton pen_size_medium {
-        tooltip-text: _("Medium pen");
-        active: true;
-        label: "•";
-
-        styles [
-          "flat",
-          "circular",
-        ]
-      }
-
-      ToggleButton pen_size_large {
-        tooltip-text: _("Large pen");
-        active: false;
-        label: "●";
-        group: pen_size_medium;
 
         styles [
           "flat",
@@ -147,6 +102,5 @@ template $PpsSignatureDrawingWidget: Box {
         "pill",
       ]
     }
-
   }
 }
