@@ -81,6 +81,12 @@ enum {
 	WIDGET_FACTORY_COUNT
 };
 
+typedef enum {
+	SCROLL_MODE_DISCRETE,
+	SCROLL_MODE_CONTINUOUS_WAITING,
+	SCROLL_MODE_CONTINUOUS_USED_ONCE,
+} PpsScrollOnceMode;
+
 typedef struct _PpsViewPrivate {
 	/* Find */
 	PpsSearchContext *search_context;
@@ -169,6 +175,7 @@ typedef struct _PpsViewPrivate {
 	gdouble prev_zoom_gesture_scale;
 	gdouble page_scroll_delta_x;
 	gdouble page_scroll_delta_y;
+	PpsScrollOnceMode page_scroll_mode;
 
 	/* Current zoom center */
 	gdouble zoom_center_x;

@@ -78,6 +78,8 @@ template $PpsView: Widget {
     propagation-phase: capture;
     flags: kinetic | both_axes;
     scroll => $page_scroll_cb();
+    scroll-begin => $page_scroll_begin_cb();
+    scroll-end => $page_scroll_end_cb();
   }
 
   GestureLongPress {
