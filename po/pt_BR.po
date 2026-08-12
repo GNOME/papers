@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of Papers.
-# Copyright (C) 2025 the Papers authors.
+# Copyright (C) 2026 the Papers authors.
 # This file is distributed under the same license as the papers package.
 # Raphael Higino <In Memoriam>, 2004-2005, 2007.
 # Licio Fernando <liciofernando@gmail.com>, ?.
@@ -21,37 +21,39 @@
 # Ricardo Silva Veloso <ricvelozo@gmail.com>, 2018.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
 # Daniel Dias Rodrigues <danieldiasr@gmail.com>, 2025.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
 # Álvaro Burns <>, 2025-2026.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-30 10:08+0000\n"
-"PO-Revision-Date: 2026-02-01 08:49-0300\n"
-"Last-Translator: Álvaro Burns <>\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-12 20:57-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
-"X-DL-Module: evince\n"
-"X-DL-Branch: main\n"
+"X-DL-Module: papers\n"
+"X-DL-Branch: gnome-50\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/papers\n"
+"X-DL-Lang: pt_BR\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Visualizador de documentos"
 
@@ -177,6 +179,10 @@ msgstr "Grande miniaturas na barra lateral"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Todas as ações de busca são contidas na barra lateral"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "O Projeto GNOME"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -512,7 +518,7 @@ msgstr[1] "Salvar anexos"
 msgid "Page %s"
 msgstr "Página %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:242
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Editar nota"
@@ -570,9 +576,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "A sua seleção de intervalo de impressão não inclui página alguma"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:617
+#: shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -652,55 +658,55 @@ msgstr "Desenhar uma borda em volta das páginas"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Quando habilitado, uma borda será desenhada em volta de cada página."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Manuseio de página"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Vai para a primeira página"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Vai para a página anterior"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Vai para a próxima página"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Vai para a última página"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Vai para a página"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Localizar"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Vai para a página %s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Vai para %s no arquivo “%s”"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Vai para o arquivo “%s”"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Inicia %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Redefinir formulário"
@@ -782,42 +788,42 @@ msgstr "Não foi possível localizar a impressora selecionada “%s”"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Página anterior"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Próxima página"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Contagem de páginas"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Imprimir"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Imprimir este documento"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Reduzir"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Tamanho normal"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Falha ao imprimir o documento"
 
@@ -1064,7 +1070,7 @@ msgid "Erase Annotations"
 msgstr "Apagar anotações"
 
 #: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1211
+#: shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Editar documento"
 
@@ -1106,9 +1112,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Abortar _imprimir e fechar"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
-#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
-#: shell/src/document_view/io.rs:730
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
+#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1372,7 +1378,7 @@ msgstr "C_ancelar"
 #  Título da janela principal
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Senha necessária"
 
@@ -1880,44 +1886,44 @@ msgstr ""
 "Juliano de Souza Camargo <julianosc@pm.com>\n"
 "Daniel Dias Rodrigues <danieldiasr@gmail.com>"
 
-#: shell/src/application.rs:403
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "O nome da página do documento a ser exibida."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PÁGINA"
 
-#: shell/src/application.rs:412
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "O número da página do documento a ser exibida."
 
-#: shell/src/application.rs:413
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NÚMERO"
 
 #  O que é um destino nomeado?
-#: shell/src/application.rs:421
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Destino nomeado a ser exibido."
 
-#: shell/src/application.rs:422
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:430
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Execute o Papers em modo de tela cheia."
 
-#: shell/src/application.rs:439
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Execute o Papers em modo de apresentação."
 
-#: shell/src/application.rs:448
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Mostrar a versão do programa."
 
-#: shell/src/application.rs:458
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
@@ -1925,7 +1931,7 @@ msgstr "[FILE…]"
 msgid "View Details"
 msgstr "Opções de visualização"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1933,58 +1939,58 @@ msgstr ""
 "O documento contém anotações novas ou modificadas e campos de formulário que "
 "foram preenchidos."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "O documento contém campos de formulário que foram preenchidos."
 
 #  O espaço para a barra lateral é limitado
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "O documento contém anotações novas ou modificadas."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Se você não salvar uma cópia, as alterações serão permanentemente perdidas."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Salvar alterações em uma cópia?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "F_echar sem salvar"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "_Salvar uma cópia"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Salvar imagem"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Modo de navegação por cursor está agora ativo, pressione F7 para o "
 "desabilitar."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Modo de navegação por cursor está agora desativado, pressione F7 para o "
 "habilitar."
 
 #  Contexto: Estado inicial da janela
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Fechar menu"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "Não foi possível abrir o anexo"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Salvar anexo"
@@ -1997,15 +2003,15 @@ msgstr "O documento não contém páginas"
 msgid "The Document Contains Only Empty Pages"
 msgstr "O documento contém apenas páginas vazias"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Salvar como…"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Desenhe um retângulo para inserir um campo de assinatura"
 
-#: shell/src/document_view/io.rs:512
+#: shell/src/document_view/io.rs:462
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -2014,32 +2020,32 @@ msgstr ""
 "Digitalmente assinado por {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Certificado requerido"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Selecionar certificado de assinatura"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Selecionar"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "Um certificado é necessário para assinar este documento"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Salvar arquivo assinado"
 
-#: shell/src/document_view/io.rs:714
+#: shell/src/document_view/io.rs:664
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Por favor, entre com a senha para {}"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "_Autenticação"
 
@@ -2068,7 +2074,7 @@ msgstr ""
 "Alerta de segurança: este documento foi impedido de abrir o arquivo “{}”"
 
 #: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
-#: shell/src/sidebar_annotations_row.rs:82
+#: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
 msgstr "Página {}"
