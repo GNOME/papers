@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-26 15:31+0000\n"
-"PO-Revision-Date: 2026-01-26 22:28+0100\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-12 21:40+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -26,7 +26,7 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Pregledovalnik dokumentov"
 
@@ -129,6 +129,10 @@ msgstr "Velike sličice v stranski vrstici"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Vsa dejanja iskanja so vsebovana v stranski vrstici"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -449,7 +453,7 @@ msgstr[3] "Shrani priloge"
 msgid "Page %s"
 msgstr "Stran %s"
 
-#: libview/pps-annotation-window.c:237 shell/resources/pps-sidebar-annotations.blp:60
+#: libview/pps-annotation-window.c:242 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Uredi opombo"
 
@@ -506,8 +510,8 @@ msgid "Your print range selection does not include any pages"
 msgstr "Območje tiskanja ne vključuje nobene strani"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
-#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:617
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
+#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -577,55 +581,55 @@ msgstr "Nariši obrobo okoli strani"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Izbrana možnost določa, da bo okoli vsake strani izrisana obroba."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Upravljanje strani"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Pojdi na prvo stran"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Pojdi na prejšnjo stran"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Pojdi na naslednjo stran"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Pojdi na zadnjo stran"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Pojdi na stran"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Poišči"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Pojdi na stran %s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Pojdi na %s v datoteki »%s«"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Skoči na datoteko »%s«"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Zaženi %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Ponastavi obrazec"
@@ -705,39 +709,39 @@ msgstr "Izbranega tiskalnika »%s« ni mogoče najti"
 msgid "Papers"
 msgstr "Dokumenti"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Predhodna stran"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Naslednja stran"
 
-#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:212
+#: previewer/pps-previewer-window.blp:33 shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Število strani"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Natisni"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Natisnite ta dokument"
 
-#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:292
+#: previewer/pps-previewer-window.blp:50 shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Oddalji"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Navadna velikost"
 
-#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:279
+#: previewer/pps-previewer-window.blp:64 shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Približaj"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Tiskanje dokumenta ni uspelo"
 
@@ -977,7 +981,7 @@ msgstr "Riši"
 msgid "Erase Annotations"
 msgstr "Izbriši pripombe"
 
-#: shell/resources/pps-document-view.blp:510 shell/src/document_view/actions.rs:1211
+#: shell/resources/pps-document-view.blp:510 shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Uredi dokument"
 
@@ -1015,8 +1019,8 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Prekini _tiskanje in zapri okno"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794 shell/src/document_view/io.rs:490
-#: shell/src/document_view/io.rs:538 shell/src/document_view/io.rs:730
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812 shell/src/document_view/io.rs:440
+#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Prekliči"
 
@@ -1262,7 +1266,7 @@ msgid "C_ancel"
 msgstr "P_rekliči"
 
 #: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Zahtevano geslo"
 
@@ -1743,43 +1747,43 @@ msgstr ""
 "Matic Žgur\n"
 "Matjaž Horvat"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "Naziv strani dokumenta za prikaz."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "STRAN"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "Številka strani dokumenta, ki naj se pokaže."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "ŠTEVILKA"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Poimenovan cilj za prikaz."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "CILJ"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Zaženi program v celozaslonskem načinu"
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Zaženi program v predstavitvenem načinu."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Pokaži različico programa."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[DATOTEKA ...]"
 
@@ -1787,55 +1791,55 @@ msgstr "[DATOTEKA ...]"
 msgid "View Details"
 msgstr "Pokaži podrobnosti"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Dokument vsebuje nove ali spremenjene opombe in polja obrazcev, ki so izpolnjena."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokument vsebuje že izpolnjena polja obrazca."
 
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "Dokument vsebuje nove ali spremenjene pripombe."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "V primeru, da kopije ne shranite, bodo spremembe trajno izgubljene."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Ali želite shraniti spremembe v kopijo?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "Zapri _brez shranjevanja"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "_Shrani kopijo"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Shrani sliko"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Način krmarjenja kazalke je zdaj omogočen, pritisnite F7, da ga onemogočite."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Način krmarjenja kazalke je zdaj onemogočen, pritisnite F7, da ga omogočite."
 
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Zapre meni"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "Ni mogoče odpreti priloge"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Shrani prilogo"
@@ -1848,15 +1852,15 @@ msgstr "Dokument ne vsebuje nobene strani"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokument vsebuje le prazne strani"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Shrani kot …"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Narišite pravokotnik za vstavljanje polja s podpisom"
 
-#: shell/src/document_view/io.rs:512
+#: shell/src/document_view/io.rs:462
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1865,32 +1869,32 @@ msgstr ""
 "Digitalno podpisal/a {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Potrebno je potrdilo"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Izberite potrdilo za podpisovanje"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Izberi"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "Za podpis tega dokumenta je potrebno potrdilo"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Shrani podpisano datoteko"
 
-#: shell/src/document_view/io.rs:714
+#: shell/src/document_view/io.rs:664
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Vnesite geslo za {}"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "_Prijava"
 
@@ -1918,7 +1922,7 @@ msgstr[3] "{} čakajoči posli v čakalni vrsti"
 msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Varnostno opozorilo: dokumentu je bilo onemogočeno odpiranje datoteke »{}«"
 
-#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:82
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
 msgstr "Stran {}"
