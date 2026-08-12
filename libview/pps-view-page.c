@@ -1077,6 +1077,33 @@ pps_view_page_accessible_text_get_caret_position (GtkAccessibleText *text)
 }
 
 static gboolean
+pps_view_page_accessible_text_set_caret_position (GtkAccessibleText *text,
+                                                   unsigned int offset)
+{
+	PpsViewPage *self = PPS_VIEW_PAGE (text);
+	PpsViewPagePrivate *priv = GET_PRIVATE (self);
+	PpsView *view = PPS_VIEW (gtk_widget_get_parent (GTK_WIDGET (self)));
+	const gchar *page_text;
+
+	/* Do not change the UI's caret navigation mode as a side effect of
+	 * an accessibility request; if it is off, the caret position isn't
+	 * meaningfully observable anyway (see get_caret_position() above). */
+	if (!pps_view_is_caret_navigation_enabled (view))
+		return FALSE;
+
+	if (!priv->page_cache)
+		return FALSE;
+
+	page_text = pps_page_cache_get_text (priv->page_cache, priv->index);
+	if (!page_text || offset > g_utf8_strlen (page_text, -1))
+		return FALSE;
+
+	pps_view_set_caret_cursor_position (view, priv->index, offset);
+
+	return TRUE;
+}
+
+static gboolean
 get_selection_bounds (PpsViewPage *self,
                       gint *start_offset,
                       gint *end_offset)
@@ -1138,6 +1165,53 @@ pps_view_page_accessible_text_get_selection (GtkAccessibleText *text,
 	}
 
 	return FALSE;
+}
+
+static gboolean
+pps_view_page_accessible_text_set_selection (GtkAccessibleText *text,
+                                              gsize i,
+                                              GtkAccessibleTextRange *range)
+{
+	PpsViewPage *self = PPS_VIEW_PAGE (text);
+	PpsViewPagePrivate *priv = GET_PRIVATE (self);
+	PpsView *view = PPS_VIEW (gtk_widget_get_parent (GTK_WIDGET (self)));
+	PpsRectangle *areas = NULL;
+	guint n_areas = 0;
+	unsigned int start, end;
+	GdkRectangle start_rect, end_rect;
+
+	/* Only a single selection range is supported. */
+	if (i != 0)
+		return FALSE;
+
+	if (!priv->page_cache)
+		return FALSE;
+
+	pps_page_cache_get_text_layout (priv->page_cache, priv->index, &areas, &n_areas);
+	if (!areas || n_areas == 0)
+		return FALSE;
+
+	/* range->start/length are boundary offsets (like a caret position),
+	 * not array indices: the characters actually covered by the range
+	 * are the indices [start, start + length - 1] into `areas`. See the
+	 * discussion of _pps_view_get_caret_cursor_offset_at_doc_point(),
+	 * which is what produces the offsets returned by get_selection()
+	 * above by iterating over this same `areas` array. */
+	start = range->start;
+	if (range->length == 0 || range->length > G_MAXUINT - start)
+		return FALSE;
+	end = start + range->length;
+	if (start >= n_areas || end > n_areas)
+		return FALSE;
+
+	_pps_view_transform_doc_rect_to_view_rect (view, priv->index, &areas[start], &start_rect);
+	_pps_view_transform_doc_rect_to_view_rect (view, priv->index, &areas[end - 1], &end_rect);
+
+	_pps_view_set_selection (view,
+	                         start_rect.x, start_rect.y + start_rect.height / 2,
+	                         end_rect.x + end_rect.width, end_rect.y + end_rect.height / 2);
+
+	return TRUE;
 }
 
 static void
@@ -1382,6 +1456,8 @@ pps_view_page_accessible_text_init (GtkAccessibleTextInterface *iface)
 	iface->get_default_attributes = pps_view_page_accessible_text_get_default_attributes;
 	iface->get_extents = pps_view_page_accessible_text_get_extents;
 	iface->get_offset = pps_view_page_accessible_text_get_offset;
+	iface->set_caret_position = pps_view_page_accessible_text_set_caret_position;
+	iface->set_selection = pps_view_page_accessible_text_set_selection;
 }
 
 static void
