@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-19 07:53+0000\n"
-"PO-Revision-Date: 2025-10-19 19:59+0330\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-08-13 02:00+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -139,6 +139,10 @@ msgstr "بندانگشتی‌های بزرگ در نوار کناری"
 msgid "All search actions are contained in the sidebar"
 msgstr "همهٔ کنش‌های جست‌وجو در نوار کناریند"
 
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "پروژهٔ گنوم"
+
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "پیش‌نمایش چاپ"
@@ -221,14 +225,14 @@ msgstr "پشتیبانی از خواندن سندهای PDF را اضافه می
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:100
+#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:93
 #: shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "بله"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:102
+#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:95
 #: shell/src/properties_general.rs:337
 msgid "No"
 msgstr "خیر"
@@ -459,7 +463,7 @@ msgid "This work is in the Public Domain"
 msgstr "این کار در دامنهٔ عمومی است"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "ذخیرهٔ پیوست"
@@ -527,9 +531,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "محدوده انتخاب شدهٔ شما جهت چاپ هیچ صفحه‌ای را در بر نمی‌گیرد"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "_بستن"
 
@@ -605,55 +609,55 @@ msgstr "رسم لبه دور صفحه‌ها"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "هنگام به کار افتادن، دور هر صفحه، لبه‌ای رسم خواهد شد."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "دست‌گرفتن صفحه"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "رفتن به صفحهٔ نخست"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "رفتن به صفحهٔ پیشین"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "رفتن به صفحهٔ بعدی"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "رفتن به صفحهٔ پایانی"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "رفتن به صفحه"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "یافتن"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "رفتن به صفحهٔ %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "برو به %s در پروندهٔ «%s»"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "رفتن به پروندهٔ «%s»"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "راه‌اندازی %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "بازنشانی فرم"
@@ -721,7 +725,6 @@ msgid "GNOME Document Previewer"
 msgstr "پیش‌نمایش‌گر سند گنوم"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "نمایشگر سند کاغذها"
 
@@ -730,54 +733,54 @@ msgstr "نمایشگر سند کاغذها"
 msgid "The selected printer “%s” could not be found"
 msgstr "چاپگر انتخاب شده «%s» پیدا نشد"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "کاغذها"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "صفحهٔ پیش"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "صفحهٔ بعد"
 
-#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:210
+#: previewer/pps-previewer-window.blp:33 shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "شمارش صفحه"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_چاپ"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "چاپ این سند"
 
-#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:287
+#: previewer/pps-previewer-window.blp:50 shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "کوچک‌نمایی"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "اندازهٔ عادی"
 
-#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:275
+#: previewer/pps-previewer-window.blp:64 shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "شکست در چاپ سند"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "ویژگی‌های سند"
 
@@ -968,7 +971,7 @@ msgstr "تغییر وضعیت نوار کناری"
 msgid "Document Menu"
 msgstr "فهرست سند"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "سند به صورت رقمی امضا شده."
 
@@ -1017,9 +1020,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "خاتمهٔ _چاپ و بستن"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "_لغو"
 
@@ -1199,7 +1202,7 @@ msgstr "_لغو"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "گذرواژه لازم است"
 
@@ -1719,95 +1722,76 @@ msgstr "نمایش نگارش برنامه."
 msgid "[FILE…]"
 msgstr "[FILE…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "نمایش جزییات"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
 "سند دارای زمینه‌های فرم یا حاشیه نویسی‌های جدید یا تغییریافته  است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "سند دارای زمینه‌های فرمی است که پُر شده‌اند."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "سند دارای حاشیه‌نویسی‌های جدید یا تغییر یافته است."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "اگر یک رونوشت از سند را ذخیره نکنید، تغییرات برای همیشه از بین خواهند رفت."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "ذخیرهٔ دگرگونی‌ها در یک رونوشت؟"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "بستن _بدون ذخیره"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "_ذخیرهٔ یک رونوشت"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "ذخیرهٔ تصویر"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "قالب مناسب برای ذخیرهٔ عکس پیدا نشد"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "تصویر ذخیره نشد."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "حالت پیمایش مکان‌نما اکنون به کار افتاده. برای از کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "حالت پیمایش مکان‌نما اکنون از کار افتاده. برای به کار انداختن F7 را بزنید."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "ناتوان در گشودن پیوست"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "پیوست ذخیره نشد."
-
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "امضای رقمی نامعتبر است"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "سند هیچ صفحه‌ای ندارد"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "سند تنها صفحه‌های خالی دارد"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "پرونده نتوانست با نام «{}» ذخیره شود."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "ذخیرهٔ به نام…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "رسم چهارگوشی برای درج زمینهٔ امضا"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:460
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1815,36 +1799,38 @@ msgstr ""
 "امضای رقمی به دست {}\n"
 "تاریخ: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "نیازمند گواهی"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "گزینش گواهی امضا"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "گزینش"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "امضای این سند نیازمند گواهی است"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "ذخیرهٔ پروندهٔ امضا شده"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:652
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "ورود گذرواژه برای {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "_ورود"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "چاپ کردن کار «{}»"
 
@@ -1852,33 +1838,34 @@ msgstr "چاپ کردن کار «{}»"
 msgid "No pending jobs in queue"
 msgstr "هیچ کاری در صف منتظر نیست"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "گشودن پیوند خارجی ممکن نیست"
-
 #: shell/src/document_view/signals.rs:254
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "هشدار امنیتی: این سند از گشودن پروندهٔ «{}» باز داشته شد"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "صفحهٔ {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} از {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#, rust-format
 msgid "of {}"
 msgstr "از {}"
 
 #: shell/src/password_view.rs:145
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "سند {} قفل شده است و پیش از گشودن نیازمند گذرواژه است"
@@ -1915,89 +1902,87 @@ msgstr "محتوا"
 msgid "Date &amp; Time"
 msgstr "تاریخ و زمان"
 
-#: shell/src/properties_signatures.rs:138 shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "امضا شده به دست"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "امضا معتبر است."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "امضا معتبر نیست."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "سند پس از امضا شدن تغییر کرده."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "امضا نتوانست کدگشایی شود."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "خطای تأیید امضا."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ مطمئن."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ نامطمئن."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ ناشناخته."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "امضا شده با گواهی باطل شده."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "امضا شده با گواهی منقضی."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "خطای تأیید گواهی."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "گواهی تأیید نشد."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "سازمان"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "تاریخ و زمان"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "صادر کنندهٔ گواهی"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "رایانامهٔ صادر کنندهٔ گواهی"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "سازمان صادر کنندهٔ گواهی"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "زمان صدور گواهی"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "زمان انقضای گواهی"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "نهفتن جزییات…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "قالب مناسب برای ذخیرهٔ عکس پیدا نشد"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "تصویر ذخیره نشد."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "پیوست ذخیره نشد."
+
+#~ msgid "Digital signature is invalid"
+#~ msgstr "امضای رقمی نامعتبر است"
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "پرونده نتوانست با نام «{}» ذخیره شود."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "گشودن پیوند خارجی ممکن نیست"
+
+#~ msgid "Signed by"
+#~ msgstr "امضا شده به دست"
+
+#~ msgid "Signature is valid."
+#~ msgstr "امضا معتبر است."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "امضا معتبر نیست."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "سند پس از امضا شدن تغییر کرده."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "امضا نتوانست کدگشایی شود."
+
+#~ msgid "Signature verification error."
+#~ msgstr "خطای تأیید امضا."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ مطمئن."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ نامطمئن."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "امضا شده با گواهی صادر شده از سوی صادر کنندهٔ ناشناخته."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "امضا شده با گواهی باطل شده."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "امضا شده با گواهی منقضی."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "خطای تأیید گواهی."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "گواهی تأیید نشد."
+
+#~ msgid "Organization"
+#~ msgstr "سازمان"
+
+#~ msgid "Date and Time"
+#~ msgstr "تاریخ و زمان"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "صادر کنندهٔ گواهی"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "رایانامهٔ صادر کنندهٔ گواهی"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "سازمان صادر کنندهٔ گواهی"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "زمان صدور گواهی"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "زمان انقضای گواهی"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Opening, Closing, Saving and Printing"
