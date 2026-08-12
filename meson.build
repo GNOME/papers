@@ -130,7 +130,7 @@ po_dir = join_paths(source_root, 'po')
 top_inc = include_directories('.')
 
 glib_req_version = '>= 2.75.0'
-gtk_req_version = '>= 4.17.1'
+gtk_req_version = '>= 4.22'
 libaw_req_version = '>= 1.8.alpha'
 exempi_req_version = '>= 2.0'
 
