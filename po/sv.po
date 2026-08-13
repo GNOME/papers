@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-26 15:31+0000\n"
-"PO-Revision-Date: 2026-01-26 22:29+0100\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-12 20:36+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -23,14 +23,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Dokumentvisare"
 
@@ -156,6 +156,10 @@ msgstr "Stora miniatyrbilder i sidopanelen"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Alla sökåtgärder finns i sidopanelen"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -490,7 +494,7 @@ msgstr[1] "Spara bilagor"
 msgid "Page %s"
 msgstr "Sida %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:242
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Redigera notering"
@@ -548,9 +552,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Ditt val av utskriftsintervall inkluderar inte några sidor"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:617
+#: shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "S_täng"
 
@@ -629,55 +633,55 @@ msgstr "Rita ram runt sidor"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "När aktiverat kommer en ram ritas runt varje sida."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Sidhantering"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Gå till första sidan"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Gå till föregående sida"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Gå till nästa sida"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Gå till sista sidan"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Gå till sidan"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Sök"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Gå till sida %s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Gå till %s i filen ”%s”"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Gå till filen ”%s”"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Starta %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Återställ formulär"
@@ -760,42 +764,42 @@ msgstr "Den valda skrivaren ”%s” kunde inte hittas"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Föregående sida"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Nästa sida"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Sidantal"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "S_kriv ut"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Skriv ut detta dokument"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Normal storlek"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Misslyckades med att skriva ut dokument"
 
@@ -1041,7 +1045,7 @@ msgid "Erase Annotations"
 msgstr "Radera kommentarer"
 
 #: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1211
+#: shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Redigera dokument"
 
@@ -1083,9 +1087,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Avbryt _utskrift och stäng"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
-#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
-#: shell/src/document_view/io.rs:730
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
+#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -1346,7 +1350,7 @@ msgstr "_Avbryt"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Lösenord krävs"
 
@@ -1833,43 +1837,43 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "Sidetiketten i dokumentet att visa."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "SIDA"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "Sidnumret i dokumentet att visa."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Namngivet mål att visa."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "MÅL"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Kör papers i helskärmsläge."
 
-#: shell/src/application.rs:402
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Kör papers i presentationsläge."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Visa programmets version."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FIL…]"
 
@@ -1877,7 +1881,7 @@ msgstr "[FIL…]"
 msgid "View Details"
 msgstr "Visa detaljer"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1885,52 +1889,52 @@ msgstr ""
 "Dokumentet innehåller nya eller ändrade kommentarer och formulärfält som har "
 "fyllts i."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumentet innehåller formulärfält som har fyllts i."
 
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "Dokumentet innehåller nya eller ändrade kommentarer."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Om du inte sparar en kopia så kommer ändringarna att förloras permanent."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Spara ändringar till en kopia?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "Stäng _utan att spara"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "_Spara en kopia"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Spara bild"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Markörnavigeringsläge är nu aktiverat, tryck F7 för att inaktivera."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Markörnavigeringsläge är nu inaktiverat, tryck F7 för att aktivera."
 
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Stäng meny"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "Kunde inte öppna bilaga"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Spara bilaga"
@@ -1943,15 +1947,16 @@ msgstr "Dokumentet innehåller inga sidor"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumentet innehåller endast tomma sidor"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Spara som…"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Rita en rektangel för att infoga ett signaturfält"
 
-#: shell/src/document_view/io.rs:512
+#: shell/src/document_view/io.rs:462
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1959,36 +1964,38 @@ msgstr ""
 "Digitalt signerad av {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Certifikat krävs"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Välj signeringscertifikat"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Välj"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "Ett certifikat krävs för att signera detta dokument"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Spara signerad fil"
 
-#: shell/src/document_view/io.rs:714
+#: shell/src/document_view/io.rs:664
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Ange lösenord för {}"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "_Logga in"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "Skriver ut jobbet ”{}”"
 
@@ -1997,19 +2004,22 @@ msgid "No pending jobs in queue"
 msgstr "Inga väntande jobb i kö"
 
 #: shell/src/document_view/print.rs:88
+#, rust-format
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} väntande jobb i kö"
 msgstr[1] "{} väntande jobb i kö"
 
 #: shell/src/document_view/signals.rs:257
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Säkerhetsvarning: detta dokument har hindrats från att öppna filen ”{}”"
 
 #: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
-#: shell/src/sidebar_annotations_row.rs:82
+#: shell/src/sidebar_annotations_row.rs:83
+#, rust-format
 msgid "Page {}"
 msgstr "Sida {}"
 
@@ -2017,15 +2027,18 @@ msgstr "Sida {}"
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
 #: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} av {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
 #: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#, rust-format
 msgid "of {}"
 msgstr "av {}"
 
 #: shell/src/password_view.rs:146
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Dokumentet ”{}” är låst och kräver ett lösenord för att öppnas"
