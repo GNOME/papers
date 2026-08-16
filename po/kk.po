@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-04 02:56+0000\n"
-"PO-Revision-Date: 2026-01-08 23:44+0500\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-08-16 07:54+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -31,8 +31,7 @@ msgstr "Құжаттарды көрсету қолданбасы"
 msgid "View multi-page documents"
 msgstr "Көппарақты құжаттарды қарау"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr "pdf;djvu;tiff;құжат;презентация;қарау құралы;papers;"
@@ -88,7 +87,8 @@ msgstr "Құжатты көрсету үшін бастапқы масштабт
 
 #: data/org.gnome.Papers.gschema.xml:64
 msgid ""
-"Display the document as a continuous stream of pages instead of page at a time."
+"Display the document as a continuous stream of pages instead of page at a "
+"time."
 msgstr "Құжатты бір уақытта Бір бет емес, үздіксіз бет ағыны ретінде көрсету."
 
 #: data/org.gnome.Papers.gschema.xml:68
@@ -97,8 +97,8 @@ msgstr "Екі парақты қатарынан көрсету."
 
 #: data/org.gnome.Papers.gschema.xml:72
 msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side by "
-"side)"
+"Show the first page (odd page) on the left (when displaying two pages side "
+"by side)"
 msgstr ""
 "Бірінші бетті сол жақта (тақ бетті) көрсету (екі бетті қатар көрсету кезінде)"
 
@@ -116,8 +116,8 @@ msgstr ""
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, "
-"CBT, CBZ, CB7)."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
 msgstr ""
 "Papers келесі пішімдегі құжаттарды қолдайды: PDF, DjVu, TIFF және комикстер "
 "архивтері (CBR, CBT, CBZ, CB7)."
@@ -141,6 +141,10 @@ msgstr "Бүйірлік панельдегі үлкен көріністер"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Барлық іздеу әрекеттері бүйірлік панельде орналасқан"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "GNOME жобасы"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -224,15 +228,15 @@ msgstr "PDF құжаттарын оқу мүмкіндігін қосады"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:93
-#: shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Иә"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747 nautilus/pps-nautilus-extension.c:95
-#: shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Жоқ"
 
@@ -290,6 +294,7 @@ msgstr "Аты жоқ"
 #. translators: When a font type does not have
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
+#.
 #: libdocument/backend/pdf/pps-poppler.c:965 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
@@ -312,6 +317,7 @@ msgstr "Енгізілген емес"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
+#.
 #: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (Стандартты 14 қаріптің біреуі)"
@@ -320,6 +326,7 @@ msgstr " (Стандартты 14 қаріптің біреуі)"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
+#.
 #: libdocument/backend/pdf/pps-poppler.c:991
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Стандартты 14 қаріптің біреуі емес)"
@@ -333,6 +340,7 @@ msgstr " (Стандартты 14 қаріптің біреуі емес)"
 #. * Not embedded
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
+#.
 #: libdocument/backend/pdf/pps-poppler.c:1010
 #, c-format
 msgid ""
@@ -356,6 +364,7 @@ msgstr ""
 #. * TrueType (CID)
 #. * Encoding: Custom
 #. * Embedded subset
+#.
 #: libdocument/backend/pdf/pps-poppler.c:1028
 #, c-format
 msgid ""
@@ -413,6 +422,7 @@ msgstr "Барлық файлдар"
 #. * want inches, otherwise translate to default:mm.
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
+#.
 #: libdocument/pps-document-info.c:198
 msgid "default:mm"
 msgstr "default:mm"
@@ -457,7 +467,7 @@ msgid "This work is in the Public Domain"
 msgstr "Бұл жұмыс еркін (Public Domain)"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Салынымды сақтау"
@@ -524,9 +534,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Сіздің баспаға шығару парақтар аралығында бірде-бір парақ жоқ"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:604
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "_Жабу"
 
@@ -549,16 +559,16 @@ msgstr "Баспаға шығарылатын аймаққа сыйдыру"
 
 #: libview/pps-print-operation.c:1887
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of the "
-"following:\n"
+"Scale document pages to fit the selected printer page. Select from one of "
+"the following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
 "• “Shrink to Printable Area”: Document pages larger than the printable area "
 "are reduced to fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as required "
-"to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
+"required to fit the printable area of the printer page.\n"
 msgstr ""
 "Ерекшеленген принтер парағына сыю үшін парақтарды масштабтау. Келесі "
 "нұсқалардың біреуін таңдаңыз:\n"
@@ -580,8 +590,8 @@ msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
 msgstr ""
-"Принтер мен құжат парақтарының бағдары сәйкес болу үшін әр парақты айналдыру. "
-"Құжат парақтары принтер парағы ортасымен тураланады."
+"Принтер мен құжат парақтарының бағдары сәйкес болу үшін әр парақты "
+"айналдыру. Құжат парақтары принтер парағы ортасымен тураланады."
 
 #: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
@@ -589,10 +599,11 @@ msgstr "Құжат парағының өлшемн қолданып, парақ 
 
 #: libview/pps-print-operation.c:1907
 msgid ""
-"When enabled, each page will be printed on the same size paper as the document "
-"page."
+"When enabled, each page will be printed on the same size paper as the "
+"document page."
 msgstr ""
-"Іске қосулы тұрса, әр парақ құжаттағы параққа сәйкес өлшемді қағазға басылады."
+"Іске қосулы тұрса, әр парақ құжаттағы параққа сәйкес өлшемді қағазға "
+"басылады."
 
 #: libview/pps-print-operation.c:1911
 msgid "Draw border around pages"
@@ -602,55 +613,55 @@ msgstr "Беттердің айналасына шекара салу"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Іске қосылған кезде әр беттің айналасына шекара салынады."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Парақтарды өндеу"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "Бірінші параққа өту"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "Алдыңғы параққа өту"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "Келесі параққа өту"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "Соңғы параққа өту"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "Параққа өту"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "Табу"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "%s парағына өту"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "%s жеріне өту, \"%s\" файлында"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "\"%s\" файлына өту"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "%s жөнелту"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "Форманы тастау"
@@ -731,42 +742,42 @@ msgstr "Ерекшеленген \"%s\" принтері табылмады"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Алдыңғы парақ"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Келесі парақ"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Беттер саны"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "Бас_паға шығару"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Бұл құжатты басып шығару"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Кішірейту"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Қалыпты өлшемі"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Үлкейту"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Құжатты басып шығару сәтсіз аяқталды"
 
@@ -930,8 +941,7 @@ msgstr "Айналдыру кезінде автоматты түрде көр_�
 msgid "Pop up note while scrolling the document"
 msgstr "Құжатты айналдыру кезінде қалқымалы ескертпені көрсету"
 
-#. Translators: Translators: This is an action (a verb in English) that opens
-#. the sidebar to start a search
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:76
 msgid "Search"
 msgstr "Іздеу"
@@ -986,9 +996,9 @@ msgstr "Таңдалған аймақ тым кішкентай"
 
 #: shell/resources/pps-document-view.blp:530
 msgid ""
-"A signature of this size may be too small to read. If you would like to create "
-"a potentially more readable signature, press `Start over` and draw a bigger "
-"rectangle."
+"A signature of this size may be too small to read. If you would like to "
+"create a potentially more readable signature, press `Start over` and draw a "
+"bigger rectangle."
 msgstr ""
 "Бұл өлшемдегі қолтаңбаны оқу қиын болуы мүмкін. Егер сіз оқылатын қолтаңба "
 "жасағыңыз келсе, `Қайтадан бастау` батырмасын басып, үлкенірек тіктөртбұрыш "
@@ -1008,19 +1018,19 @@ msgstr "Басып шығаруды тоқтату керек пе?"
 
 #: shell/resources/pps-document-view.blp:546
 msgid ""
-"There is one or more active print jobs. If the window is closed, pending print "
-"jobs will not be printed."
+"There is one or more active print jobs. If the window is closed, pending "
+"print jobs will not be printed."
 msgstr ""
-"Бір немесе бірнеше белсенді басып шығару тапсырмасы бар. Егер терезе жабылса, "
-"кезектегі басып шығару тапсырмалары орындалмайды."
+"Бір немесе бірнеше белсенді басып шығару тапсырмасы бар. Егер терезе "
+"жабылса, кезектегі басып шығару тапсырмалары орындалмайды."
 
 #: shell/resources/pps-document-view.blp:550
 msgid "Abort _Print and Close"
 msgstr "Басы_п шығаруды тоқтату және жабу"
 
 #: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
-#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
-#: shell/src/document_view/io.rs:716
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "_Бас тарту"
 
@@ -1068,7 +1078,8 @@ msgstr "Цифрлық қол қо_ю…"
 msgid "Open a C_opy"
 msgstr "Кө_шірмесін ашу"
 
-#: shell/resources/pps-document-view.blp:629 shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:629
+#: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Көмегімен ашу…"
 
@@ -1100,33 +1111,22 @@ msgstr "Бұ_ру ⤵"
 msgid "Document Prop_erties"
 msgstr "Құжат қас_иеттері"
 
-#. Translators: As a noun, this is describing the type of text marking
-#. annotation, as are squiggly, strikethrough, and underline. An adjective
-#. could also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:708
 msgid "Highlight (h)"
 msgstr "Ерекшелеу (h)"
 
-#. Translators: As a noun or adjective, this is describing the type of text
-#. marking annotation, as are highlight, squiggly, and underline. The letter
-#. in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:724
 msgid "Strikethrough (k)"
 msgstr "Сызып тастау (k)"
 
-#. Translators: As a noun, this is describing the type of text marking
-#. annotation, as are highlight, squiggly, and strikethrough. An adjective
-#. could also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:740
 msgid "Underline (u)"
 msgstr "Астын сызу (u)"
 
-#. Translators: As an adjective, this is describing the type of text marking
-#. annotation, as are highlight, strikethrough, and underline. A noun could
-#. also make sense as a translation. The letter in parenthesis marks the
-#. keyboard shortcut and should not be translated.
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:756
 msgid "Squiggly (q)"
 msgstr "Ирек сызық (q)"
@@ -1211,7 +1211,7 @@ msgstr "Б_ас тарту"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "Пароль керек"
 
@@ -1735,7 +1735,8 @@ msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
 msgstr ""
-"Құжатта жаңа немесе өзгертілген аңдатпалар мен толтырылған форма өрістері бар."
+"Құжатта жаңа немесе өзгертілген аңдатпалар мен толтырылған форма өрістері "
+"бар."
 
 #: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
@@ -1761,21 +1762,21 @@ msgstr "Сақтаус_ыз жабу"
 msgid "_Save a Copy"
 msgstr "Көшірмесін _сақтау"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "Суретті сақтау"
 
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Меңзермен навигация режимі іске қосылды, сөндіру үшін F7 пернесін басыңыз."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Меңзермен навигация режимі сөндірілді, іске қосу үшін F7 пернесін басыңыз."
 
-#: shell/src/document_view/actions.rs:1026
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "Салынымды ашу мүмкін емес"
 
@@ -1787,15 +1788,15 @@ msgstr "Құжатта беттер жоқ"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Құжатта тек бос беттер бар"
 
-#: shell/src/document_view/io.rs:411
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Қалайша сақтау…"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Қолтаңба өрісін кірістіру үшін тіктөртбұрыш салыңыз"
 
-#: shell/src/document_view/io.rs:509
+#: shell/src/document_view/io.rs:460
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1804,32 +1805,32 @@ msgstr ""
 "Цифрлық қол қойған: {}\n"
 "Күні: {}"
 
-#: shell/src/document_view/io.rs:525
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "Сертификат қажет"
 
-#: shell/src/document_view/io.rs:528
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "Қол қою сертификатын таңдаңыз"
 
-#: shell/src/document_view/io.rs:529
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "Таңдау"
 
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "Бұл құжатқа қол қою үшін сертификат қажет"
 
-#: shell/src/document_view/io.rs:671
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "Қол қойылған файлды сақтау"
 
-#: shell/src/document_view/io.rs:701
+#: shell/src/document_view/io.rs:652
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "{} үшін парольді енгізіңіз"
 
-#: shell/src/document_view/io.rs:717
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "_Кіру"
 
@@ -2268,13 +2269,13 @@ msgstr "Ақпаратты жасыру…"
 
 #~ msgid ""
 #~ "Pressing F7 turns the caret navigation on or off. This feature places a "
-#~ "moveable cursor in text pages, allowing you to move around and select text "
-#~ "with your keyboard. Do you want to enable the caret navigation?"
+#~ "moveable cursor in text pages, allowing you to move around and select "
+#~ "text with your keyboard. Do you want to enable the caret navigation?"
 #~ msgstr ""
-#~ "F7 пернесін басу мәтіндік курсор навигациясын іске қосады не сөндіреді. Бұл "
-#~ "мүмкіндік мәтіндік беттерде жылжытылатын курсорды орналастырады, оны "
-#~ "пернетақта көмегімен жылжытып, мәтінді ерекшелеуге болады. Мәтіндік курсор "
-#~ "навигациясын іске қосуды қалайсыз ба?"
+#~ "F7 пернесін басу мәтіндік курсор навигациясын іске қосады не сөндіреді. "
+#~ "Бұл мүмкіндік мәтіндік беттерде жылжытылатын курсорды орналастырады, оны "
+#~ "пернетақта көмегімен жылжытып, мәтінді ерекшелеуге болады. Мәтіндік "
+#~ "курсор навигациясын іске қосуды қалайсыз ба?"
 
 #~ msgid "Don’t show this message again"
 #~ msgstr "Бұл хабарламаны келесіде көрсетпеу"
@@ -2568,10 +2569,10 @@ msgstr "Ақпаратты жасыру…"
 #~ msgstr "Оңғ_а бұру"
 
 #~ msgid ""
-#~ "Evince is free software; you can redistribute it and/or modify it under the "
-#~ "terms of the GNU General Public License as published by the Free Software "
-#~ "Foundation; either version 2 of the License, or (at your option) any later "
-#~ "version.\n"
+#~ "Evince is free software; you can redistribute it and/or modify it under "
+#~ "the terms of the GNU General Public License as published by the Free "
+#~ "Software Foundation; either version 2 of the License, or (at your option) "
+#~ "any later version.\n"
 #~ msgstr ""
 #~ "Evince еркін бағдарлама; сіз оны Free Software Foundation шығарған GNU "
 #~ "General Public License аясында еркін тарата не/және өзгерте аласыз; "
@@ -2859,11 +2860,11 @@ msgstr "Ақпаратты жасыру…"
 #~ msgstr "Регистрге тәуелді іздеуді қосу/сөндіру"
 
 #~ msgid ""
-#~ "Boolean options available: true enables thumbnailing and false disables the "
-#~ "creation of new thumbnails"
+#~ "Boolean options available: true enables thumbnailing and false disables "
+#~ "the creation of new thumbnails"
 #~ msgstr ""
-#~ "Логикалық опциялар қолдануда: true үлгілерді жасауды іске қосады, ал false "
-#~ "сөндіреді."
+#~ "Логикалық опциялар қолдануда: true үлгілерді жасауды іске қосады, ал "
+#~ "false сөндіреді."
 
 #~ msgid "Enable thumbnailing of PDF Documents"
 #~ msgstr "PDF құжаттарын алдын-ала қарау үлгілерін жасауды іске қосу"
@@ -2872,11 +2873,12 @@ msgstr "Ақпаратты жасыру…"
 #~ msgstr "PDF құжаттарын алдын-ала қарау үлгілерін жасау командасы"
 
 #~ msgid ""
-#~ "Valid command plus arguments for the PDF Document thumbnailer. See Nautilus "
-#~ "thumbnailer documentation for more information."
+#~ "Valid command plus arguments for the PDF Document thumbnailer. See "
+#~ "Nautilus thumbnailer documentation for more information."
 #~ msgstr ""
-#~ "PDF құжаттарын алдын-ала қарау үлгілерін жасау үшін керек команда мен оның "
-#~ "аргументтері. Көбірек білу үшін Nautilus thumbnailer құжаттамасын қараңыз."
+#~ "PDF құжаттарын алдын-ала қарау үлгілерін жасау үшін керек команда мен "
+#~ "оның аргументтері. Көбірек білу үшін Nautilus thumbnailer құжаттамасын "
+#~ "қараңыз."
 
 #~ msgid "Converting %s"
 #~ msgstr "Түрлендірілуде %s"
@@ -2886,7 +2888,8 @@ msgstr "Ақпаратты жасыру…"
 
 #~ msgid ""
 #~ "The metadata format used by Evince has changed, and hence it needs to be "
-#~ "migrated. If the migration is cancelled the metadata storage will not work."
+#~ "migrated. If the migration is cancelled the metadata storage will not "
+#~ "work."
 #~ msgstr ""
 #~ "Evince қолданатын метаақпарат пішімі өзгертілген, сол үшін оны түрлендіру "
 #~ "керек. Егер одан бас тартылса, метаақпарат қоры жұмыс істемейді."
