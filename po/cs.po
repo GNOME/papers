@@ -15,21 +15,22 @@
 # Adam Matoušek <adydas95@gmail.com>, 2012
 # Marek Černocký <marek@manet.cz>, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Daniel Rusek <mail@asciiwolf.com>, 2024.
+# Patrik Sivek <patriksivek@gnome.org>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-04 02:56+0000\n"
-"PO-Revision-Date: 2026-01-07 01:56+0100\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-08-17 11:53+0200\n"
+"Last-Translator: Patrik Sivek <patriksivek@gnome.org>\n"
+"Language-Team: Czech\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Gtranslator 50.0\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. Manually set name and icon
@@ -162,6 +163,10 @@ msgstr "Velké miniatury v postranním panelu"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Všechny akce hledání jsou obsaženy v postranním panelu"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -485,7 +490,7 @@ msgid "This work is in the Public Domain"
 msgstr "Toto je volné dílo (Public Domain)"
 
 #: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Uložit přílohu"
@@ -554,9 +559,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Snažíte se vytisknout výběr, který nezahrnuje žádné stránky"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:604
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -634,55 +639,55 @@ msgstr "Vykreslovat ohraničení stránek"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Když je zapnuto, bude okolo každé stránky vykreslené ohraničení."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Nastavení stránky"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "Přejít na první stránku"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "Přejít na následující stránku"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "Přejít na poslední stránku"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "Přejít na stránku"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "Najít"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "Přejít na stránku %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Přejít na %s v souboru „%s“"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Přejít na soubor “%s”"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "Spustit %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "Čistý formulář"
@@ -763,42 +768,42 @@ msgstr "Vybraná tiskárna „%s“ nebyla nalezena"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Předchozí stránka"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Následující stránka"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Počet stránek"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Tisk"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Vytisknout tento dokument"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Normální velikost"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Nepodařilo se vytisknout dokument"
 
@@ -1051,8 +1056,8 @@ msgid "Abort _Print and Close"
 msgstr "Přerušit _tisk a zavřít"
 
 #: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
-#: shell/src/document_view/io.rs:488 shell/src/document_view/io.rs:532
-#: shell/src/document_view/io.rs:716
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -1233,7 +1238,7 @@ msgstr "_Zrušit"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:709
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "Je vyžadováno heslo"
 
@@ -1794,23 +1799,23 @@ msgstr "Zavřít _bez uložení"
 msgid "_Save a Copy"
 msgstr "Uložit _kopii"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "Uložit obrázek"
 
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "Režim kurzorové navigace je nyní povolen, stisknutím klávesy F7 jej "
 "deaktivujete."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "Režim kurzorové navigace je nyní deaktivován, stisknutím klávesy F7 jej "
 "povolíte."
 
-#: shell/src/document_view/actions.rs:1026
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "Nepodařilo se otevřít přílohu"
 
@@ -1822,15 +1827,15 @@ msgstr "Dokument neobsahuje žádné stránky"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokument obsahuje pouze prázdné stránky"
 
-#: shell/src/document_view/io.rs:411
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Uložení jako…"
 
-#: shell/src/document_view/io.rs:487
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Nakreslete obdélník pro vložení pole podpisu"
 
-#: shell/src/document_view/io.rs:509
+#: shell/src/document_view/io.rs:460
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1839,32 +1844,32 @@ msgstr ""
 "Digitální podpis od {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:525
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "Je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:528
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "Vyberte podpisový certifikát"
 
-#: shell/src/document_view/io.rs:529
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "Vybrat"
 
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "K podepsání tohoto dokumentu je vyžadován certifikát"
 
-#: shell/src/document_view/io.rs:671
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "Uložit podepsaný soubor"
 
-#: shell/src/document_view/io.rs:701
+#: shell/src/document_view/io.rs:652
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Zadejte prosím heslo pro {}"
 
-#: shell/src/document_view/io.rs:717
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "Přih_lásit"
 
