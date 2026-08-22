@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-02-01 21:56+0000\n"
-"PO-Revision-Date: 2026-02-14 14:38+0200\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-22 16:41+0300\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
@@ -29,7 +29,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Dokumentų peržiūros programa"
 
@@ -150,6 +150,10 @@ msgstr "Didelės miniatiūros šoninėje juostoje"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Visi paieškos veiksmai yra šoninėje juostoje"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "GNOME projektas"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -483,7 +487,7 @@ msgstr[2] "Įrašyti priedus"
 msgid "Page %s"
 msgstr "Puslapis %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:242
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Keisti pastabą"
@@ -541,9 +545,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Pasirinktame spausdinimo rėžyje nėra nė vieno puslapio"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:617
+#: shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -623,55 +627,55 @@ msgstr "Piešti rėmelį apie puslapius"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Kai įjungta, aplink kiekvieną puslapį bus piešiamas rėmelis."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Puslapių apdorojimas"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Eiti į pirmą puslapį"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Eiti į ankstesnį puslapį"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Eiti į kitą puslapį"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Eiti į paskutinį puslapį"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Eiti į puslapį"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Ieškoti"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Eiti į %s puslapį"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Eiti į %s faile „%s“"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Eiti į failą „%s“"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Paleisti %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Atstatyti formą"
@@ -752,42 +756,42 @@ msgstr "Pasirinktas spausdintuvas „%s“ nerastas"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Ankstesnis puslapis"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Kitas puslapis"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Puslapių skaičius"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "S_pausdinti"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Spausdinti šį dokumentą"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Atitolinti"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Įprastinis dydis"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Priartinti"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Nepavyko atspausdinti dokumento"
 
@@ -1032,7 +1036,7 @@ msgid "Erase Annotations"
 msgstr "Ištrinti anotacijas"
 
 #: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1211
+#: shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Keisti dokumentą"
 
@@ -1074,9 +1078,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Nutraukti s_pausdinimą ir užverti"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
-#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
-#: shell/src/document_view/io.rs:730
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
+#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -1337,7 +1341,7 @@ msgstr "_Atsisakyti"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Reikalingas slaptažodis"
 
@@ -1821,43 +1825,43 @@ msgstr ""
 "Justina Klingaitė <justina.klingaite@gmail.com>\n"
 "Aurimas Černius <aurimas.cernius@mailo.com>"
 
-#: shell/src/application.rs:403
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "Rodytina dokumento puslapio etiketė."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PUSLAPIS"
 
-#: shell/src/application.rs:412
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "Rodytino dokumento puslapio numeris."
 
-#: shell/src/application.rs:413
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NUMERIS"
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Rodytina įvardinta vieta."
 
-#: shell/src/application.rs:422
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "PASKIRTIS"
 
-#: shell/src/application.rs:430
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Paleisti Papers viso ekrano veiksenoje."
 
-#: shell/src/application.rs:439
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Paleisti Papers pateikčių veiksenoje."
 
-#: shell/src/application.rs:448
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Rodyti programos versiją."
 
-#: shell/src/application.rs:458
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FAILAS…]"
 
@@ -1865,7 +1869,7 @@ msgstr "[FAILAS…]"
 msgid "View Details"
 msgstr "Rodyti detales"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1873,51 +1877,51 @@ msgstr ""
 "Dokumente yra naujų ar pakeistų anotacijų bei formos laukų, kurie buvo "
 "užpildyti."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumente yra formos laukų, kurie buvo užpildyti."
 
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "Šiame dokumente yra naujų arba pakeistų anotacijų."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Jei neįrašysite kopijos, pakeitimai bus negrįžtamai prarasti."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Įrašyti pakeitimus į kopiją?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "Užverti _neįrašant"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "Į_rašyti kopiją"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Įrašyti paveikslėlį"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Judėjimas žymikliu dabar yra įjungtas, išjunkite paspaudę F7."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Judėjimas žymikliu dabar išjungtas, įjunkite paspaudę F7."
 
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Užverti meniu"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "Nepavyko atverti priedo"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Įrašyti priedą"
@@ -1930,15 +1934,15 @@ msgstr "Dokumente nėra nė vieno puslapio"
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumente yra tik tušti puslapiai"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Įrašyti taip…"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Pieškite stačiakampį parašo laukui įterpti"
 
-#: shell/src/document_view/io.rs:512
+#: shell/src/document_view/io.rs:462
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1947,32 +1951,32 @@ msgstr ""
 "Pasirašyta skaitmeniniu {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Būtinas liudijimas"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Pasirinkite pasirašymo liudijimą"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Pasirinkite"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "Norint pasirašyti dokumentą būtinas liudijimas"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Įrašyti pasirašytą failą"
 
-#: shell/src/document_view/io.rs:714
+#: shell/src/document_view/io.rs:664
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Įveskite {} slaptažodį"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "Prisi_jungti"
 
@@ -2001,7 +2005,7 @@ msgid ""
 msgstr "Saugumo įspėjimas: šiam dokumentui neleista atverti failo „{}“"
 
 #: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
-#: shell/src/sidebar_annotations_row.rs:82
+#: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
 msgstr "Puslapis {}"
