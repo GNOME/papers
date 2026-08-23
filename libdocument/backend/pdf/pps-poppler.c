@@ -10,6 +10,7 @@
 #include "pps-outlines.h"
 
 #include <gtk/gtk.h>
+#include <math.h>
 #include <poppler.h>
 #include <string.h>
 #ifdef HAVE_CAIRO_PDF
@@ -428,6 +429,38 @@ pdf_page_render (PopplerPage *page,
 	pps_render_context_compute_scales (rc, page_width, page_height, &xscale, &yscale);
 	cairo_scale (cr, xscale, yscale);
 	cairo_rotate (cr, rc->rotation * G_PI / 180.0);
+
+	/* 96–120 DPI: subpixel + slight hinting (ClearType-ish) when the
+	 * blit is an integer pixel scale so GSK will not smear RGB coverage.
+	 * Fractional 1.25/1.5 stays gray. ≥2× drops hinting. Never BEST
+	 * (that is a shape filter; fonts can go MONO). */
+	{
+		cairo_font_options_t *opts = cairo_font_options_create ();
+		double sppt = MIN (xscale, yscale);
+		gboolean integer_px = fabs (xscale - round (xscale)) < 0.02 &&
+		                      fabs (yscale - round (yscale)) < 0.02;
+
+		cairo_get_font_options (cr, opts);
+		cairo_font_options_set_subpixel_order (opts, CAIRO_SUBPIXEL_ORDER_RGB);
+#ifdef CAIRO_LCD_FILTER_DEFAULT
+		cairo_font_options_set_lcd_filter (opts, CAIRO_LCD_FILTER_DEFAULT);
+#endif
+		if (integer_px)
+			cairo_font_options_set_antialias (opts, CAIRO_ANTIALIAS_SUBPIXEL);
+		else
+			cairo_font_options_set_antialias (opts, CAIRO_ANTIALIAS_GRAY);
+
+		if (sppt >= 2.0) {
+			cairo_font_options_set_hint_style (opts, CAIRO_HINT_STYLE_NONE);
+			cairo_font_options_set_hint_metrics (opts, CAIRO_HINT_METRICS_OFF);
+		} else {
+			cairo_font_options_set_hint_style (opts, CAIRO_HINT_STYLE_SLIGHT);
+			cairo_font_options_set_hint_metrics (opts, CAIRO_HINT_METRICS_ON);
+		}
+		cairo_set_font_options (cr, opts);
+		cairo_font_options_destroy (opts);
+	}
+
 	poppler_page_render_full (page, cr, FALSE, (PopplerRenderAnnotsFlags) rc->annot_flags);
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
