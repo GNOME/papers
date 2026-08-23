@@ -74,6 +74,7 @@ sources = files(
   'pps-page-cache.c',
   'pps-pixbuf-cache.c',
   'pps-print-operation.c',
+  'pps-snapshot-utils.c',
   'pps-view.c',
   'pps-view-cursor.c',
   'pps-view-page.c',

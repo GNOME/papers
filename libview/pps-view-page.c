@@ -19,6 +19,7 @@
 #include "pps-colors.h"
 #include "pps-debug.h"
 #include "pps-overlay.h"
+#include "pps-snapshot-utils.h"
 #include "pps-view-private.h"
 #include "pps-view.h"
 #include <gdk/gdk.h>
@@ -487,44 +488,6 @@ highlight_find_results (GtkSnapshot *snapshot,
 }
 
 static void
-draw_surface (GtkSnapshot *snapshot,
-              GdkTexture *texture,
-              const graphene_rect_t *area,
-              gboolean inverted)
-{
-	gboolean snap_texture = gdk_texture_get_height (texture) == floor (area->size.height);
-	gtk_snapshot_save (snapshot);
-
-	if (inverted) {
-		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_COLOR);
-		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_DIFFERENCE);
-		gtk_snapshot_append_color (snapshot, &(GdkRGBA) { 1., 1., 1., 1. }, area);
-		gtk_snapshot_pop (snapshot);
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_pop (snapshot);
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-		gtk_snapshot_pop (snapshot);
-	} else {
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-	}
-
-	gtk_snapshot_restore (snapshot);
-}
-
-static void
 pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 {
 	PpsViewPage *page = PPS_VIEW_PAGE (widget);
@@ -587,7 +550,7 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 #endif
 	gtk_snapshot_scale (snapshot, 1 / fractional_scale, 1 / fractional_scale);
 
-	draw_surface (snapshot, page_texture, &area, inverted);
+	pps_snapshot_append_page_texture (snapshot, page_texture, &area, inverted);
 
 	/* Get the selection pixbuf iff we have something to draw */
 	selection_texture = pps_pixbuf_cache_get_selection_texture (priv->pixbuf_cache,
@@ -595,7 +558,7 @@ pps_view_page_snapshot (GtkWidget *widget, GtkSnapshot *snapshot)
 	                                                            scale);
 
 	if (selection_texture) {
-		draw_surface (snapshot, selection_texture, &area, false);
+		pps_snapshot_append_page_texture (snapshot, selection_texture, &area, false);
 		// Restore fractional scaling
 		gtk_snapshot_restore (snapshot);
 	} else {

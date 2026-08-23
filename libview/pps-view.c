@@ -23,6 +23,7 @@
 #include "pps-mapping-list.h"
 
 #include "pps-overlay.h"
+#include "pps-snapshot-utils.h"
 #include "pps-view-private.h"
 #include "pps-view.h"
 
@@ -5473,37 +5474,9 @@ draw_surface (GtkSnapshot *snapshot,
               const graphene_rect_t *area,
               gboolean inverted)
 {
-	gboolean snap_texture = gdk_texture_get_height (texture) == floor (area->size.height);
-
 	gtk_snapshot_save (snapshot);
 	gtk_snapshot_translate (snapshot, point);
-
-	if (inverted) {
-		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_COLOR);
-		gtk_snapshot_push_blend (snapshot, GSK_BLEND_MODE_DIFFERENCE);
-		gtk_snapshot_append_color (snapshot, &(GdkRGBA) { 1., 1., 1., 1. }, area);
-		gtk_snapshot_pop (snapshot);
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-		gtk_snapshot_pop (snapshot);
-		gtk_snapshot_pop (snapshot);
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-		gtk_snapshot_pop (snapshot);
-	} else {
-		if (snap_texture) {
-			gtk_snapshot_append_scaled_texture (snapshot, texture, GSK_SCALING_FILTER_NEAREST, area);
-		} else {
-			gtk_snapshot_append_texture (snapshot, texture, area);
-		}
-	}
-
+	pps_snapshot_append_page_texture (snapshot, texture, area, inverted);
 	gtk_snapshot_restore (snapshot);
 }
 

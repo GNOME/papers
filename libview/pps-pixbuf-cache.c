@@ -245,7 +245,22 @@ pps_pixbuf_cache_set_max_size (PpsPixbufCache *pixbuf_cache,
 static double
 get_device_scale (PpsPixbufCache *pixbuf_cache)
 {
-	return gdk_surface_get_scale (gtk_native_get_surface (gtk_widget_get_native (pixbuf_cache->view)));
+	GtkNative *native;
+	GdkSurface *surface;
+
+	if (pixbuf_cache->view == NULL)
+		return 1.0;
+
+	native = gtk_widget_get_native (pixbuf_cache->view);
+	if (native == NULL)
+		return MAX (1.0, gtk_widget_get_scale_factor (pixbuf_cache->view));
+
+	surface = gtk_native_get_surface (native);
+	if (surface == NULL)
+		return MAX (1.0, gtk_widget_get_scale_factor (pixbuf_cache->view));
+
+	/* Must match pps_view_page_snapshot()'s gdk_surface_get_scale(). */
+	return gdk_surface_get_scale (surface);
 }
 
 static void
