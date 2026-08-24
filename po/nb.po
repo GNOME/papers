@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers 50\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-04-10 11:58+0000\n"
-"PO-Revision-Date: 2026-05-06 11:53+0200\n"
+"POT-Creation-Date: 2026-08-02 11:32+0000\n"
+"PO-Revision-Date: 2026-08-24 20:53+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:87
+#: shell/resources/pps-document-view.blp:88
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:389
 msgid "Document Viewer"
@@ -75,32 +75,58 @@ msgstr ""
 msgid "Allow links to change the zoom level."
 msgstr "La lenker endre zoom-nivå."
 
-#: data/org.gnome.Papers.gschema.xml:43
+#: data/org.gnome.Papers.gschema.xml:44
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr ""
 
-#: data/org.gnome.Papers.gschema.xml:47
+#: data/org.gnome.Papers.gschema.xml:48
 msgid "Show a side bar next to the document to help navigate the document."
 msgstr ""
 
-#: data/org.gnome.Papers.gschema.xml:60
+#: data/org.gnome.Papers.gschema.xml:61
 msgid "Set the default zoom level to display a document."
 msgstr "Sett forvalgt zoom-nivå for visning av et dokument."
 
-#: data/org.gnome.Papers.gschema.xml:64
+#: data/org.gnome.Papers.gschema.xml:65
 msgid ""
 "Display the document as a continuous stream of pages instead of page at a "
 "time."
 msgstr ""
 
-#: data/org.gnome.Papers.gschema.xml:68
+#: data/org.gnome.Papers.gschema.xml:69
 msgid "Show two pages side by side."
 msgstr ""
 
-#: data/org.gnome.Papers.gschema.xml:72
+#: data/org.gnome.Papers.gschema.xml:73
 msgid ""
 "Show the first page (odd page) on the left (when displaying two pages side "
 "by side)"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:110
+msgid "Last used signature ID"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:111
+msgid "ID of the signature most recently used for manual signing"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:115
+msgid "Last placed signature scale"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:122
+#, fuzzy
+#| msgid "Preview before printing"
+msgid "Previewer window height"
+msgstr "Forhåndsvis før utskrift"
+
+#: data/org.gnome.Papers.gschema.xml:126
+msgid "Previewer window width"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:130
+msgid "Previewer window maximized state"
 msgstr ""
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:10
@@ -119,27 +145,157 @@ msgstr ""
 msgid ""
 "Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
 "(CBR, CBT, CBZ, CB7)."
-msgstr "Dokumenter støtter følgende formater: PDF, DjVu, TIFF og Comic Books-arkiv (CBR, CBT, CBZ, CB7)."
+msgstr ""
+"Dokumenter støtter følgende formater: PDF, DjVu, TIFF og Comic Books-arkiv "
+"(CBR, CBT, CBZ, CB7)."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:18
+msgid "PDF"
+msgstr "PDF"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:19
+msgid "comics"
+msgstr "tegneserier"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:20
+msgid "DjVu"
+msgstr "DjVu"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:21
+msgid "TIFF"
+msgstr "TIFF"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:22
+msgid "reader"
+msgstr "leser"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:23
+msgid "editor"
+msgstr "redigerer"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:24
+msgid "editing"
+msgstr "redigering"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:25
+msgid "forms"
+msgstr "skjema"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:26
+msgid "annotate"
+msgstr "kommenter"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:27
+msgid "annotations"
+msgstr "kommentarer"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:28
+msgid "annotating"
+msgstr "kommenterer"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:29
+msgid "digital signing"
+msgstr "digital signering"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:30
+msgid "digital signatures"
+msgstr "digitale signaturer"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:31
+msgid "handwriting"
+msgstr "håndskrift"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:32
+msgid "handwritten"
+msgstr "håndskrevet"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
+msgid "ink"
+msgstr "blekk"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:34
+msgid "freehand"
+msgstr "frihånd"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:35
+msgid "drawing"
+msgstr "tegning"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:36
+msgid "calligraphy"
+msgstr "kalligrafi"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
+msgid "notes"
+msgstr "notater"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:38
+msgid "highlighting"
+msgstr "utheving"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:39
+msgid "underline"
+msgstr "understrek"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:40
+msgid "underlining"
+msgstr "understreking"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
+msgid "strikethrough"
+msgstr "gjennomstrek"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:42
+msgid "printing"
+msgstr "utskrift"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:43
+msgid "night mode"
+msgstr "nattmodus"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:44
+msgid "dark mode"
+msgstr "mørk modus"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
+msgid "presentation mode"
+msgstr "presentasjonsmodus"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:46
+msgid "presenter mode"
+msgstr "presentasjonsmodus"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:47
+msgid "slideshows"
+msgstr "lysbildefremvisning"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:48
+msgid "bookmarks"
+msgstr "bokmerker"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:65
 msgid "A clear, simple, and modern UI"
 msgstr "Et rent, enkelt og moderne brukergrensesnitt"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:33
+#: data/org.gnome.Papers.metainfo.xml.in.in:69
 msgid "A mobile-friendly UI"
 msgstr "Et mobilvennlig brukergrensesnitt"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:37
+#: data/org.gnome.Papers.metainfo.xml.in.in:73
 msgid "A modern and colorful annotation list"
 msgstr "En moderne og fargerik anmerkningsliste"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:41
+#: data/org.gnome.Papers.metainfo.xml.in.in:77
 msgid "Big thumbnails in the sidebar"
 msgstr "Store miniatyrer i sidelinjen"
 
-#: data/org.gnome.Papers.metainfo.xml.in.in:45
+#: data/org.gnome.Papers.metainfo.xml.in.in:81
 msgid "All search actions are contained in the sidebar"
 msgstr "Alle søkehandlinger vises i sidefeltet"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:96
+msgid "The GNOME Project"
+msgstr "GNOME prosjektet"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -223,52 +379,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Legger til støtte for å lese PDF-dokumenter"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:737
-#: libdocument/backend/pdf/pps-poppler.c:743
+#: libdocument/backend/pdf/pps-poppler.c:734
+#: libdocument/backend/pdf/pps-poppler.c:740
 #: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Ja"
 
 #. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:737
 #: libdocument/backend/pdf/pps-poppler.c:740
-#: libdocument/backend/pdf/pps-poppler.c:743
 #: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Nei"
 
-#: libdocument/backend/pdf/pps-poppler.c:853
+#: libdocument/backend/pdf/pps-poppler.c:850
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:855
+#: libdocument/backend/pdf/pps-poppler.c:852
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:857
+#: libdocument/backend/pdf/pps-poppler.c:854
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:859
+#: libdocument/backend/pdf/pps-poppler.c:856
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:861
+#: libdocument/backend/pdf/pps-poppler.c:858
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:863
+#: libdocument/backend/pdf/pps-poppler.c:860
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:865
+#: libdocument/backend/pdf/pps-poppler.c:862
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:867
+#: libdocument/backend/pdf/pps-poppler.c:864
 msgid "Unknown font type"
 msgstr "Ukjent skrifttype"
 
-#: libdocument/backend/pdf/pps-poppler.c:911
+#: libdocument/backend/pdf/pps-poppler.c:908
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -279,11 +435,11 @@ msgstr ""
 "skriftene som ble brukt til å lage PDF'en vil dokumentet kanskje ikke vises "
 "korrekt."
 
-#: libdocument/backend/pdf/pps-poppler.c:916
+#: libdocument/backend/pdf/pps-poppler.c:913
 msgid "All fonts are either standard or embedded."
 msgstr "Alle skrifter er enten standard eller innebygget."
 
-#: libdocument/backend/pdf/pps-poppler.c:952
+#: libdocument/backend/pdf/pps-poppler.c:949
 msgid "No name"
 msgstr "Uten navn"
 
@@ -291,21 +447,21 @@ msgstr "Uten navn"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:961 libview/pps-print-operation.c:1878
+#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1878
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Ingen"
 
-#: libdocument/backend/pdf/pps-poppler.c:969
+#: libdocument/backend/pdf/pps-poppler.c:966
 msgid "Embedded subset"
 msgstr "Innebygd subsett"
 
-#: libdocument/backend/pdf/pps-poppler.c:971
+#: libdocument/backend/pdf/pps-poppler.c:968
 msgid "Embedded"
 msgstr "Innebygd"
 
-#: libdocument/backend/pdf/pps-poppler.c:973
+#: libdocument/backend/pdf/pps-poppler.c:970
 msgid "Not embedded"
 msgstr "Ikke innebygd"
 
@@ -314,7 +470,7 @@ msgstr "Ikke innebygd"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:980
+#: libdocument/backend/pdf/pps-poppler.c:977
 msgid " (One of the Standard 14 Fonts)"
 msgstr "(En av de 14 standardskriftene)"
 
@@ -323,7 +479,7 @@ msgstr "(En av de 14 standardskriftene)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:987
+#: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ikke en av de 14 standardskriftene)"
 
@@ -337,7 +493,7 @@ msgstr " (Ikke en av de 14 standardskriftene)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1006
+#: libdocument/backend/pdf/pps-poppler.c:1003
 #, c-format
 msgid ""
 "%s%s\n"
@@ -361,7 +517,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1024
+#: libdocument/backend/pdf/pps-poppler.c:1021
 #, c-format
 msgid ""
 "%s%s\n"
@@ -419,33 +575,67 @@ msgstr "Alle filer"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: libdocument/pps-document-info.c:198
+#: libdocument/pps-document-info.c:200
 msgid "default:mm"
 msgstr "default:mm"
 
-#: libdocument/pps-document-info.c:250
+#. Note to translators: this string makes a range of pages that have a certain size,
+#. * the first and the second placeholders %i are the start and the end of this range
+#. * (e.g. 1-5), and the minus sign separates them
+#: libdocument/pps-document-info.c:258
+#, c-format
+msgid "%i-%i"
+msgstr "%i-%i"
+
+#. Note to translators: this is a separator that separates two or more page ranges,
+#. * or individual page numbers (e.g. 1, 3-7, 9, 11-12)
+#: libdocument/pps-document-info.c:264
+msgid ", "
+msgstr ", "
+
+#. Note to translators: first placeholder is the paper width
+#. * in mm, second placeholder is the paper height in mm,
+#. * both do not have a decimal point (e.g. 297 x 210 mm)
+#: libdocument/pps-document-info.c:327
 #, c-format
 msgid "%.0f × %.0f mm"
 msgstr "%.0f x %.0f mm"
 
-#: libdocument/pps-document-info.c:254
+#. Note to translators: first placeholder is the paper width
+#. * in inches, second placeholder is the paper height in inches,
+#. * both with 2 decimal places (e.g. 8.50 × 11.00 inch)
+#: libdocument/pps-document-info.c:334
 #, c-format
 msgid "%.2f × %.2f inch"
 msgstr "%.2f x %.2f tomme"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:278
+#: libdocument/pps-document-info.c:356
 #, c-format
 msgid "%s, Portrait (%s)"
 msgstr "%s, portrett (%s)"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
-#: libdocument/pps-document-info.c:285
+#: libdocument/pps-document-info.c:363
 #, c-format
 msgid "%s, Landscape (%s)"
 msgstr "%s, landskap (%s)"
+
+#. Note to translators: the first placeholder %s is the singular or plural form of the word "Page",
+#. * the second placeholder is a page number or range(e.g. "1, 5-12"),
+#. * the third placeholder is the page format (e.g. US Letter, Portrait (8.50 × 11.00 inch))
+#: libdocument/pps-document-info.c:397
+#, c-format
+msgid "%s %s: %s"
+msgstr "%s %s: %s"
+
+#: libdocument/pps-document-info.c:397
+msgid "Page"
+msgid_plural "Pages"
+msgstr[0] "Side"
+msgstr[1] "Sider"
 
 #: libdocument/pps-file-helpers.c:131
 #, c-format
@@ -532,8 +722,8 @@ msgstr "Ingen sider i området som er valgt for utskrift"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
-#: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:567
+#: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:574
 msgid "_Close"
 msgstr "_Lukk"
 
@@ -610,55 +800,55 @@ msgstr "Tegn en kant rundt sider"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Hvis dette slås på vil en kant tegnes rundt hver side."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Sidehåndtering"
 
-#: libview/pps-view.c:2143
+#: libview/pps-view.c:2140
 msgid "Go to first page"
 msgstr "Gå til første side"
 
-#: libview/pps-view.c:2145
+#: libview/pps-view.c:2142
 msgid "Go to previous page"
 msgstr "Gå til forrige side"
 
-#: libview/pps-view.c:2147
+#: libview/pps-view.c:2144
 msgid "Go to next page"
 msgstr "Gå til neste side"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2146
 msgid "Go to last page"
 msgstr "Gå til siste side"
 
-#: libview/pps-view.c:2151
+#: libview/pps-view.c:2148
 msgid "Go to page"
 msgstr "Gå til side"
 
-#: libview/pps-view.c:2153
+#: libview/pps-view.c:2150
 msgid "Find"
 msgstr "Søk"
 
-#: libview/pps-view.c:2182
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to page %s"
 msgstr "Gå til side %s"
 
-#: libview/pps-view.c:2188
+#: libview/pps-view.c:2185
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Gå til %s i fil «%s»"
 
-#: libview/pps-view.c:2191
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Gå til fil «%s»"
 
-#: libview/pps-view.c:2199
+#: libview/pps-view.c:2196
 #, c-format
 msgid "Launch %s"
 msgstr "Start %s"
 
-#: libview/pps-view.c:2206
+#: libview/pps-view.c:2203
 #, c-format
 msgid "Reset form"
 msgstr "Nullstill skjema"
@@ -725,17 +915,17 @@ msgstr "Fildeskriptor for filen for utskriftsinnstillinger"
 msgid "GNOME Document Previewer"
 msgstr "GNOME dokumentvisning"
 
-#: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
+#: previewer/pps-previewer-window.c:172 previewer/pps-previewer-window.c:512
 msgid "Papers Document Viewer"
 msgstr "Dokumentvisning"
 
-#: previewer/pps-previewer-window.c:209
+#: previewer/pps-previewer-window.c:210
 #, c-format
 msgid "The selected printer “%s” could not be found"
 msgstr "Valgt skriver «%s» ble ikke funnet"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
-#: shell/src/document_view/io.rs:206
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212
+#: shell/src/document_view/io.rs:213
 msgid "Papers"
 msgstr "Dokumenter"
 
@@ -748,7 +938,7 @@ msgid "Next Page"
 msgstr "Neste side"
 
 #: previewer/pps-previewer-window.blp:33
-#: shell/resources/pps-document-view.blp:212
+#: shell/resources/pps-document-view.blp:213
 msgid "Page Count"
 msgstr "Sideantall"
 
@@ -761,7 +951,7 @@ msgid "Print This Document"
 msgstr "Skriv ut dette dokumentet"
 
 #: previewer/pps-previewer-window.blp:50
-#: shell/resources/pps-document-view.blp:292
+#: shell/resources/pps-document-view.blp:293
 msgid "Zoom Out"
 msgstr "Zoom ut"
 
@@ -770,7 +960,7 @@ msgid "Normal Size"
 msgstr "Normal størrelse"
 
 #: previewer/pps-previewer-window.blp:64
-#: shell/resources/pps-document-view.blp:279
+#: shell/resources/pps-document-view.blp:280
 msgid "Zoom In"
 msgstr "Zoom inn"
 
@@ -809,12 +999,12 @@ msgid "Keywords"
 msgstr "Nøkkelord"
 
 #: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
-msgid "Producer"
-msgstr "Produsert av"
+msgid "Document produced with"
+msgstr "Dokument laget med"
 
 #: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
-msgid "Creator"
-msgstr "Opprettet av"
+msgid "Source file created with"
+msgstr "Kildefil laget med"
 
 #: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
 msgid "Created"
@@ -911,7 +1101,7 @@ msgid "_Markup Type"
 msgstr "Type _merking"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:75
-#: shell/resources/pps-document-view.blp:487
+#: shell/resources/pps-document-view.blp:490
 msgid "Highlight"
 msgstr "Uthev"
 
@@ -940,356 +1130,387 @@ msgid "Pop up note while scrolling the document"
 msgstr "Vis notis under rulling i dokumentet"
 
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
-#: shell/resources/pps-document-view.blp:78
+#: shell/resources/pps-document-view.blp:79
 msgid "Search"
 msgstr "Søk"
 
-#: shell/resources/pps-document-view.blp:93 shell/resources/pps-window.blp:35
+#: shell/resources/pps-document-view.blp:94 shell/resources/pps-window.blp:35
 msgid "Main Menu"
 msgstr "Hovedmeny"
 
-#: shell/resources/pps-document-view.blp:112
+#: shell/resources/pps-document-view.blp:113
 msgid "Thumbnails"
 msgstr "Miniatyrer"
 
-#: shell/resources/pps-document-view.blp:123
+#: shell/resources/pps-document-view.blp:124
 msgid "Outline"
 msgstr "Omriss"
 
-#: shell/resources/pps-document-view.blp:135
+#: shell/resources/pps-document-view.blp:136
 msgid "Annotations"
 msgstr "Notater"
 
-#: shell/resources/pps-document-view.blp:153
+#: shell/resources/pps-document-view.blp:154
 msgid "Attachments"
 msgstr "Vedlegg"
 
-#: shell/resources/pps-document-view.blp:169
+#: shell/resources/pps-document-view.blp:170
 msgid "Layers"
 msgstr "Lag"
 
-#: shell/resources/pps-document-view.blp:199
+#: shell/resources/pps-document-view.blp:200
 msgid "Toggle Sidebar"
 msgstr "Slå av/på sidefelt"
 
-#: shell/resources/pps-document-view.blp:205
+#: shell/resources/pps-document-view.blp:206
 msgid "Document Menu"
 msgstr "Dokumentvisning"
 
-#: shell/resources/pps-document-view.blp:225
+#: shell/resources/pps-document-view.blp:226
 msgid "Document has been digitally signed."
 msgstr "Dokumentet er signert digitalt."
 
-#: shell/resources/pps-document-view.blp:226
+#: shell/resources/pps-document-view.blp:227
 msgid "View Signature…"
 msgstr "Vis signatur …"
 
-#: shell/resources/pps-document-view.blp:259
+#: shell/resources/pps-document-view.blp:260
 msgid "Fit Automatically"
 msgstr "Tilpass automatisk"
 
-#: shell/resources/pps-document-view.blp:342
-#: shell/resources/pps-document-view.blp:384
-#: shell/resources/pps-document-view.blp:415
+#: shell/resources/pps-document-view.blp:343
+#: shell/resources/pps-document-view.blp:385
+#: shell/resources/pps-document-view.blp:417
 msgid "Choose Color"
 msgstr "Velg farge"
 
-#: shell/resources/pps-document-view.blp:362
+#: shell/resources/pps-document-view.blp:363
 msgid "Font Settings"
 msgstr "Innstillinger for skrift"
 
-#: shell/resources/pps-document-view.blp:430
+#: shell/resources/pps-document-view.blp:399
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Highlight Text"
+msgid "Highlight Stroke Size"
+msgstr "Uthev tekst"
+
+#: shell/resources/pps-document-view.blp:432
 msgid "Pencil Size"
 msgstr "Størrelse på blyant"
 
-#: shell/resources/pps-document-view.blp:457
+#: shell/resources/pps-document-view.blp:444
+msgid "Eraser Settings"
+msgstr "Instillinger for viskelær"
+
+#: shell/resources/pps-document-view.blp:460
 msgid "Change Eraser Radius"
 msgstr "Endre radius for viskelær"
 
-#: shell/resources/pps-document-view.blp:475
+#: shell/resources/pps-document-view.blp:478
 msgid "Insert Text"
 msgstr "Sett inn tekst"
 
-#: shell/resources/pps-document-view.blp:481
+#: shell/resources/pps-document-view.blp:484
 msgid "Draw"
 msgstr "Tegn"
 
-#: shell/resources/pps-document-view.blp:493
+#: shell/resources/pps-document-view.blp:496
 msgid "Erase Annotations"
 msgstr "Slett notater"
 
-#: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1206
+#: shell/resources/pps-document-view.blp:513
+#: shell/src/document_view/actions.rs:1359
 msgid "Edit Document"
 msgstr "Rediger dokument"
 
-#: shell/resources/pps-document-view.blp:757
+#: shell/resources/pps-document-view.blp:760
 msgid "Selection too Small"
 msgstr "Utvalget er for lite"
 
-#: shell/resources/pps-document-view.blp:758
+#: shell/resources/pps-document-view.blp:761
 msgid ""
 "A signature of this size may be too small to read. If you would like to "
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
-msgstr "En signatur på denne størrelsen kan være for liten å lese. Trykk «Start på nytt» og tegn et større rektangel hvis du vil lage en mer lesbar signatur."
+msgstr ""
+"En signatur på denne størrelsen kan være for liten å lese. Trykk «Start på "
+"nytt» og tegn et større rektangel hvis du vil lage en mer lesbar signatur."
 
-#: shell/resources/pps-document-view.blp:765
+#: shell/resources/pps-document-view.blp:768
 msgid "Start _Over"
 msgstr "Start på _nytt"
 
-#: shell/resources/pps-document-view.blp:766
+#: shell/resources/pps-document-view.blp:769
 msgid "_Sign"
 msgstr "_Signer"
 
-#: shell/resources/pps-document-view.blp:773
+#: shell/resources/pps-document-view.blp:776
 msgid "Abort Printing?"
 msgstr "Avbryt utskrift?"
 
-#: shell/resources/pps-document-view.blp:774
+#: shell/resources/pps-document-view.blp:777
 msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
-msgstr "En eller flere utskriftsjobber er aktive. Hvis du lukker vinduet vil utestående utskriftsjobber ikke bli fullført."
+msgstr ""
+"En eller flere utskriftsjobber er aktive. Hvis du lukker vinduet vil "
+"utestående utskriftsjobber ikke bli fullført."
 
-#: shell/resources/pps-document-view.blp:778
+#: shell/resources/pps-document-view.blp:781
 msgid "Abort _Print and Close"
 msgstr "Avbryt _utskrift og lukk"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
-#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
-#: shell/src/document_view/io.rs:680
+#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
+#: shell/src/document_view/io.rs:447 shell/src/document_view/io.rs:495
+#: shell/src/document_view/io.rs:872
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: shell/resources/pps-document-view.blp:780
+#: shell/resources/pps-document-view.blp:783
 msgid "Close _After Printing"
 msgstr "Lukk etter ut_skrift"
 
-#: shell/resources/pps-document-view.blp:795
+#: shell/resources/pps-document-view.blp:798
 msgid "Open…"
 msgstr "Åpne …"
 
-#: shell/resources/pps-document-view.blp:802
+#: shell/resources/pps-document-view.blp:805
 msgid "Ni_ght Mode"
 msgstr "Natt_modus"
 
-#: shell/resources/pps-document-view.blp:809 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:812 shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: shell/resources/pps-document-view.blp:814 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:817 shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: shell/resources/pps-document-view.blp:819 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:822 shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Om Dokumentvisning"
 
-#: shell/resources/pps-document-view.blp:828
+#: shell/resources/pps-document-view.blp:831
 msgid "_Print…"
 msgstr "_Skriv ut …"
 
-#: shell/resources/pps-document-view.blp:833
+#: shell/resources/pps-document-view.blp:836
 msgid "Fullscreen"
 msgstr "Fullskjerm"
 
-#: shell/resources/pps-document-view.blp:838
+#: shell/resources/pps-document-view.blp:841
 msgid "Present as Slideshow"
 msgstr "Vis som lysbildefremvisning"
 
-#: shell/resources/pps-document-view.blp:845
+#: shell/resources/pps-document-view.blp:848
 msgid "Sign D_igitally…"
 msgstr "Signer d_igitalt …"
 
-#: shell/resources/pps-document-view.blp:852
+#: shell/resources/pps-document-view.blp:853
+msgid "_Manage Signatures…"
+msgstr "_Håndter signaturer …"
+
+#: shell/resources/pps-document-view.blp:860
 msgid "Open a C_opy"
 msgstr "Åpne en k_opi"
 
-#: shell/resources/pps-document-view.blp:857
+#: shell/resources/pps-document-view.blp:865
 #: shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Åpne med …"
 
-#: shell/resources/pps-document-view.blp:862
+#: shell/resources/pps-document-view.blp:870
 msgid "_Save As…"
 msgstr "Lagre _som …"
 
-#: shell/resources/pps-document-view.blp:869
+#: shell/resources/pps-document-view.blp:877
 msgid "_Continuous"
 msgstr "_Sammenhengende"
 
-#: shell/resources/pps-document-view.blp:874
+#: shell/resources/pps-document-view.blp:882
 msgid "_Dual"
 msgstr "_Dobbel"
 
-#: shell/resources/pps-document-view.blp:879
+#: shell/resources/pps-document-view.blp:887
 msgid "_Odd Pages Left"
 msgstr "_Oddetallssider til venstre"
 
-#: shell/resources/pps-document-view.blp:884
+#: shell/resources/pps-document-view.blp:892
 msgid "Right to Left Document"
 msgstr "Høyre til venstre dokumenter"
 
-#: shell/resources/pps-document-view.blp:891
+#: shell/resources/pps-document-view.blp:899
 msgid "Ro_tate ⤵"
 msgstr "Roter ⤵"
 
-#: shell/resources/pps-document-view.blp:898
+#: shell/resources/pps-document-view.blp:906
 msgid "Document Prop_erties"
 msgstr "_Egenskaper for dokument"
 
-#: shell/resources/pps-document-view.blp:951
-#: shell/resources/pps-document-view.blp:1259
+#: shell/resources/pps-document-view.blp:959
+#: shell/resources/pps-document-view.blp:1267
 msgid "Black"
 msgstr "Sort"
 
-#: shell/resources/pps-document-view.blp:963
-#: shell/resources/pps-document-view.blp:1050
-#: shell/resources/pps-document-view.blp:1199
+#: shell/resources/pps-document-view.blp:971
+#: shell/resources/pps-document-view.blp:1058
+#: shell/resources/pps-document-view.blp:1207
 msgid "Orange"
 msgstr "Oransje"
 
-#: shell/resources/pps-document-view.blp:975
-#: shell/resources/pps-document-view.blp:1063
-#: shell/resources/pps-document-view.blp:1211
+#: shell/resources/pps-document-view.blp:983
+#: shell/resources/pps-document-view.blp:1071
+#: shell/resources/pps-document-view.blp:1219
 msgid "Red"
 msgstr "Rød"
 
-#: shell/resources/pps-document-view.blp:987
-#: shell/resources/pps-document-view.blp:1076
-#: shell/resources/pps-document-view.blp:1223
+#: shell/resources/pps-document-view.blp:995
+#: shell/resources/pps-document-view.blp:1084
+#: shell/resources/pps-document-view.blp:1231
 msgid "Purple"
 msgstr "Lilla"
 
-#: shell/resources/pps-document-view.blp:999
-#: shell/resources/pps-document-view.blp:1089
-#: shell/resources/pps-document-view.blp:1235
+#: shell/resources/pps-document-view.blp:1007
+#: shell/resources/pps-document-view.blp:1097
+#: shell/resources/pps-document-view.blp:1243
 msgid "Blue"
 msgstr "Blå"
 
-#: shell/resources/pps-document-view.blp:1011
-#: shell/resources/pps-document-view.blp:1102
-#: shell/resources/pps-document-view.blp:1247
+#: shell/resources/pps-document-view.blp:1019
+#: shell/resources/pps-document-view.blp:1110
+#: shell/resources/pps-document-view.blp:1255
 msgid "Green"
 msgstr "Grønn"
 
-#: shell/resources/pps-document-view.blp:1037
-#: shell/resources/pps-document-view.blp:1187
+#: shell/resources/pps-document-view.blp:1045
+#: shell/resources/pps-document-view.blp:1195
 msgid "Yellow"
 msgstr "Gul"
 
-#: shell/resources/pps-document-view.blp:1124
-#: shell/resources/pps-document-view.blp:1281
-#: shell/resources/pps-document-view.blp:1340
+#: shell/resources/pps-document-view.blp:1132
+#: shell/resources/pps-document-view.blp:1289
+#: shell/resources/pps-document-view.blp:1348
 msgid "Thin"
 msgstr "Tynn"
 
-#: shell/resources/pps-document-view.blp:1136
-#: shell/resources/pps-document-view.blp:1294
-#: shell/resources/pps-document-view.blp:1352
+#: shell/resources/pps-document-view.blp:1144
+#: shell/resources/pps-document-view.blp:1302
+#: shell/resources/pps-document-view.blp:1360
 msgid "Medium"
 msgstr "Middels"
 
-#: shell/resources/pps-document-view.blp:1148
-#: shell/resources/pps-document-view.blp:1306
-#: shell/resources/pps-document-view.blp:1364
+#: shell/resources/pps-document-view.blp:1156
+#: shell/resources/pps-document-view.blp:1314
+#: shell/resources/pps-document-view.blp:1372
 msgid "Thick"
 msgstr "Tykk"
 
-#: shell/resources/pps-document-view.blp:1160
-#: shell/resources/pps-document-view.blp:1318
-#: shell/resources/pps-document-view.blp:1376
+#: shell/resources/pps-document-view.blp:1168
+#: shell/resources/pps-document-view.blp:1326
+#: shell/resources/pps-document-view.blp:1384
 msgid "Very Thick"
 msgstr "Meget tykk"
 
-#: shell/resources/pps-document-view.blp:1389
+#: shell/resources/pps-document-view.blp:1397
 msgid "Erase Ink"
 msgstr "Slett blekk"
 
-#: shell/resources/pps-document-view.blp:1395
+#: shell/resources/pps-document-view.blp:1403
 msgid "Erase Whole Strokes"
 msgstr "Slett hele strøk"
 
+#: shell/resources/pps-document-view.blp:1432
+msgid "Manage Signatures…"
+msgstr "Håndter signaturer …"
+
+#: shell/resources/pps-document-view.blp:1451
+msgid "No Signatures Yet"
+msgstr "Ingen signaturer ennå"
+
+#: shell/resources/pps-document-view.blp:1461
+msgid "Add Signature"
+msgstr "Legg til signatur"
+
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1434
+#: shell/resources/pps-document-view.blp:1509
 msgid "Highlight (h)"
 msgstr "Uthev (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1450
+#: shell/resources/pps-document-view.blp:1525
 msgid "Strikethrough (k)"
 msgstr "Gjennomstrek (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1466
+#: shell/resources/pps-document-view.blp:1541
 msgid "Underline (u)"
 msgstr "Understrek (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
-#: shell/resources/pps-document-view.blp:1482
+#: shell/resources/pps-document-view.blp:1557
 msgid "Squiggly (q)"
 msgstr "Snirklete (q)"
 
-#: shell/resources/pps-document-view.blp:1573
+#: shell/resources/pps-document-view.blp:1648
 msgid "_Open Link"
 msgstr "_Åpne lenke"
 
-#: shell/resources/pps-document-view.blp:1579
+#: shell/resources/pps-document-view.blp:1654
 msgid "Send an Email"
 msgstr "Send e-post"
 
-#: shell/resources/pps-document-view.blp:1585
+#: shell/resources/pps-document-view.blp:1660
 msgid "_Copy Link Address"
 msgstr "_Kopier lenkeadressen"
 
-#: shell/resources/pps-document-view.blp:1591
+#: shell/resources/pps-document-view.blp:1666
 msgid "Copy Email Address"
 msgstr "Kopier e-postadressen"
 
-#: shell/resources/pps-document-view.blp:1597
+#: shell/resources/pps-document-view.blp:1672
 msgid "_Go To"
 msgstr "_Gå til"
 
-#: shell/resources/pps-document-view.blp:1603
+#: shell/resources/pps-document-view.blp:1678
 msgid "Open in New _Window"
 msgstr "Åpne i nytt _vindu"
 
-#: shell/resources/pps-document-view.blp:1611
+#: shell/resources/pps-document-view.blp:1686
 msgid "_Copy"
 msgstr "_Kopier"
 
-#: shell/resources/pps-document-view.blp:1616
+#: shell/resources/pps-document-view.blp:1691
 msgid "Select _All"
 msgstr "Velg _alt"
 
-#: shell/resources/pps-document-view.blp:1623
+#: shell/resources/pps-document-view.blp:1698
 msgid "_Save Image As…"
 msgstr "Lagre bilde _som …"
 
-#: shell/resources/pps-document-view.blp:1629
+#: shell/resources/pps-document-view.blp:1704
 msgid "Copy _Image"
 msgstr "Kopier b_ilde"
 
-#: shell/resources/pps-document-view.blp:1637
+#: shell/resources/pps-document-view.blp:1712
 #: shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Open Attachment"
 msgstr "_Åpne vedlegg"
 
-#: shell/resources/pps-document-view.blp:1643
+#: shell/resources/pps-document-view.blp:1718
 #: shell/resources/pps-sidebar-annotations.blp:84
 msgid "_Save Attachment As…"
 msgstr "Lagre vedlegg _som …"
 
-#: shell/resources/pps-document-view.blp:1653
+#: shell/resources/pps-document-view.blp:1728
 msgid "Annotation _Properties…"
 msgstr "Egenskaper for anmerkninger …"
 
-#: shell/resources/pps-document-view.blp:1659
+#: shell/resources/pps-document-view.blp:1734
 msgid "R_emove Annotation"
 msgstr "Fj_ern anmerking"
 
-#: shell/resources/pps-document-view.blp:1667
+#: shell/resources/pps-document-view.blp:1742
 msgid "_Add Text Annotation"
 msgstr "_Legg til tekstanmerkning"
 
@@ -1319,7 +1540,7 @@ msgstr "A_vbryt"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
 msgid "Password Required"
 msgstr "Du må oppgi passord for å gjøre dette"
 
@@ -1350,7 +1571,8 @@ msgstr "Husk _for alltid"
 #: shell/resources/pps-password-view.blp:18
 msgid ""
 "This document is locked and can only be read by entering the correct password"
-msgstr "Dette dokumentet er låst og kan kun leses etter å ha oppgitt korrekt passord"
+msgstr ""
+"Dette dokumentet er låst og kan kun leses etter å ha oppgitt korrekt passord"
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -1367,15 +1589,6 @@ msgstr "Tekstlisens"
 #: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
 msgstr "Videre informasjon"
-
-#: shell/resources/pps-properties-signatures.blp:32
-msgid "Signature Information"
-msgstr "Informasjon om signatur"
-
-#: shell/resources/pps-properties-signatures.blp:48
-#: shell/src/properties_signatures.rs:405
-msgid "View Details…"
-msgstr "Vis detaljer …"
 
 #: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
@@ -1770,7 +1983,7 @@ msgstr "Skriv ut denne delen …"
 msgid "Previews"
 msgstr "Forhåndsvisninger"
 
-#: shell/resources/pps-window.blp:43 shell/resources/pps-window.blp:51
+#: shell/resources/pps-window.blp:43
 msgid "Open a Document"
 msgstr "Åpne et dokument"
 
@@ -1781,6 +1994,11 @@ msgstr "Dra og slipp dokumenter her"
 #: shell/resources/pps-window.blp:49
 msgid "_Open…"
 msgstr "_Åpne …"
+
+#: shell/resources/pps-window.blp:51
+msgctxt "tooltip"
+msgid "Open a Document"
+msgstr "Åpne et dokument"
 
 #: shell/resources/pps-window.blp:71
 msgid "Unable to Open Document"
@@ -1840,82 +2058,87 @@ msgstr "Vis versjonen av programmet."
 msgid "[FILE…]"
 msgstr "[FIL …]"
 
-#: shell/src/document_view.rs:354
+#: shell/src/document_view.rs:372
 msgid "View Details"
 msgstr "Vis detaljer"
 
-#: shell/src/document_view.rs:791
+#: shell/src/document_view.rs:809
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
-msgstr "Dokumentet inneholder endrede anmerkninger og skjemafelter som er fylt ut."
+msgstr ""
+"Dokumentet inneholder endrede anmerkninger og skjemafelter som er fylt ut."
 
-#: shell/src/document_view.rs:792
+#: shell/src/document_view.rs:812
 msgid "Document contains form fields that have been filled out."
 msgstr "Dokumentet inneholder skjemafelter som er fylt ut."
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:814
 msgid "Document contains new or modified annotations."
 msgstr "Dokumentet inneholder nye eller endrede notater."
 
-#: shell/src/document_view.rs:801
+#: shell/src/document_view.rs:822
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Hvis du ikke lagrer en kopi vil disse endringene gå tapt."
 
-#: shell/src/document_view.rs:802
+#: shell/src/document_view.rs:823
 msgid "Save Changes to a Copy?"
 msgstr "Lagre endringer i en kopi?"
 
-#: shell/src/document_view.rs:811
+#: shell/src/document_view.rs:832
 msgid "Close _Without Saving"
 msgstr "Lukk _uten å lagre"
 
-#: shell/src/document_view.rs:813
+#: shell/src/document_view.rs:834
 msgid "_Save a Copy"
 msgstr "Lagre en _kopi"
 
-#: shell/src/document_view/actions.rs:996
+#: shell/src/document_view/actions.rs:1033
 msgid "Save Image"
 msgstr "Lagre bilde"
 
-#: shell/src/document_view/actions.rs:1128
+#: shell/src/document_view/actions.rs:1165
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Markørnavigering er slått på. Trykk F7 for å slå av."
 
-#: shell/src/document_view/actions.rs:1130
+#: shell/src/document_view/actions.rs:1167
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Markørnavigering er nå slått av. Trykk F7 for å aktivere."
 
-#: shell/src/document_view/actions.rs:1188
+#: shell/src/document_view/actions.rs:1255
+msgid "Add _Visual Signature"
+msgstr "Legg til _visuell signatur"
+
+#: shell/src/document_view/actions.rs:1348
 msgid "Close Menu"
 msgstr "Lukk meny"
 
-#: shell/src/document_view/actions.rs:1271
+#: shell/src/document_view/actions.rs:1444
 msgid "Unable to Open Attachment"
 msgstr "Kan ikke åpne vedlegg"
 
-#: shell/src/document_view/actions.rs:1287
+#: shell/src/document_view/actions.rs:1459
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Lagre vedlegg"
 
-#: shell/src/document_view/io.rs:284
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains No Pages"
 msgstr "Dokumentet inneholder ingen sider"
 
-#: shell/src/document_view/io.rs:286
+#: shell/src/document_view/io.rs:293
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumentet inneholder kun tomme sider"
 
-#: shell/src/document_view/io.rs:362
+#: shell/src/document_view/io.rs:369
 msgid "Save As…"
 msgstr "Lagre som …"
 
-#: shell/src/document_view/io.rs:439
+#: shell/src/document_view/io.rs:446
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Tegn et rektangel for å sette inn et signaturfelt"
 
-#: shell/src/document_view/io.rs:462
+#: shell/src/document_view/io.rs:469
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -1924,32 +2147,32 @@ msgstr ""
 "Digitalt signert av {}\n"
 "Dato: {}"
 
-#: shell/src/document_view/io.rs:481
+#: shell/src/document_view/io.rs:488
 msgid "Certificate Required"
 msgstr "Sertifikat kreves"
 
-#: shell/src/document_view/io.rs:484
+#: shell/src/document_view/io.rs:491
 msgid "Select signing certificate"
 msgstr "Velg sertifikat for signering"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:492
 msgid "Select"
 msgstr "Velg"
 
-#: shell/src/document_view/io.rs:565
+#: shell/src/document_view/io.rs:572
 msgid "A certificate is required to sign this document"
 msgstr "Et sertifikat kreves for å signere dette dokumentet"
 
-#: shell/src/document_view/io.rs:634
+#: shell/src/document_view/io.rs:826
 msgid "Save Signed File"
 msgstr "Lagre signert fil"
 
-#: shell/src/document_view/io.rs:664
+#: shell/src/document_view/io.rs:856
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Oppgi et passord for {}"
 
-#: shell/src/document_view/io.rs:681
+#: shell/src/document_view/io.rs:873
 msgid "_Login"
 msgstr "_Logg inn"
 
@@ -1970,13 +2193,14 @@ msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} utestående jobb i køen"
 msgstr[1] "{} utestående jobber i køen"
 
-#: shell/src/document_view/signals.rs:257
+#: shell/src/document_view/signals.rs:266
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
-msgstr "Sikkerhetsvarsel: dette dokumentet har blitt hindret fra å åpne filen {}"
+msgstr ""
+"Sikkerhetsvarsel: dette dokumentet har blitt hindret fra å åpne filen {}"
 
-#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
+#: shell/src/document_view/signals.rs:452 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
@@ -1985,13 +2209,13 @@ msgstr "Side {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
+#: shell/src/page_selector.rs:244 shell/src/page_selector.rs:271
 #, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} av {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
+#: shell/src/page_selector.rs:251 shell/src/page_selector.rs:280
 #, rust-format
 msgid "of {}"
 msgstr "av {}"
@@ -2033,7 +2257,3 @@ msgstr "Innhold"
 #: shell/src/properties_general.rs:314
 msgid "Date &amp; Time"
 msgstr "Dato og klokkeslett"
-
-#: shell/src/properties_signatures.rs:403
-msgid "Hide Details…"
-msgstr "Skjul detaljer …"
