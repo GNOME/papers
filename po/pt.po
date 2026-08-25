@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-02-28 14:02+0000\n"
-"PO-Revision-Date: 2026-03-03 14:41+0000\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-25 17:28+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
@@ -23,14 +23,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Visualizador de documentos"
 
@@ -156,6 +156,10 @@ msgstr "Miniaturas grandes na barra lateral"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Todas as ações de pesquisa estão contidas na barra lateral"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "O Projeto GNOME"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -491,7 +495,7 @@ msgstr[1] "Guardar anexos"
 msgid "Page %s"
 msgstr "Página %s"
 
-#: libview/pps-annotation-window.c:239
+#: libview/pps-annotation-window.c:242
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Editar nota"
@@ -549,9 +553,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "A seleção de intervalo de impressão não inclui qualquer página"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:617
+#: shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "Fe_char"
 
@@ -631,55 +635,55 @@ msgstr "Desenhar margem em torno das páginas"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Quando ativado, uma margem será desenhada à volta de cada página."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Gestão de páginas"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Ir para a primeira página"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Ir para a página anterior"
 
-#: libview/pps-view.c:2123
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Ir para a página seguinte"
 
-#: libview/pps-view.c:2125
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Ir para a última página"
 
-#: libview/pps-view.c:2127
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Ir para a página"
 
-#: libview/pps-view.c:2129
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Localizar"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Ir para a página %s"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ir para %s no ficheiro “%s”"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ir para o ficheiro “%s”"
 
-#: libview/pps-view.c:2175
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Iniciar %s"
 
-#: libview/pps-view.c:2182
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Restabelecer a partir de"
@@ -760,42 +764,42 @@ msgstr "Não foi possível localizar a impressora \"%s\" selecionada"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Página anterior"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Página seguinte"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Número de páginas"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "Im_primir"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Imprimir este documento"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Reduzir"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Tamanho normal"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Falha ao imprimir o documento"
 
@@ -1040,7 +1044,7 @@ msgid "Erase Annotations"
 msgstr "Apagar anotações"
 
 #: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1211
+#: shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Editar documento"
 
@@ -1083,8 +1087,8 @@ msgid "Abort _Print and Close"
 msgstr "Abortar _imprimir e fechar"
 
 #: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
-#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
-#: shell/src/document_view/io.rs:730
+#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1345,7 +1349,7 @@ msgstr "C_ancelar"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Palavra-passe obrigatória"
 
@@ -1829,43 +1833,43 @@ msgstr "© 1996–2025 Os autores do Papers"
 msgid "translator-credits"
 msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: shell/src/application.rs:403
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "A etiqueta de página do documento a mostrar."
 
-#: shell/src/application.rs:404
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PÁGINA"
 
-#: shell/src/application.rs:412
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "O número da página do documento a mostrar."
 
-#: shell/src/application.rs:413
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NÚMERO"
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Designação do destino a mostrar."
 
-#: shell/src/application.rs:422
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:430
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Execute o papers em modo de ecrã inteiro."
 
-#: shell/src/application.rs:439
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Execute o papers em modo de apresentação."
 
-#: shell/src/application.rs:448
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Mostrar a versão do programa."
 
-#: shell/src/application.rs:458
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FICHEIRO…]"
 
@@ -1906,29 +1910,29 @@ msgstr "Fechar _sem guardar"
 msgid "_Save a Copy"
 msgstr "_Guardar uma cópia"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Guardar a imagem"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "O modo de navegação com cursor agora está ativado, prima F7 para o desativar."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "O modo de navegação com cursor agora está ativado, prima F7 para o ativar."
 
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Fechar menu"
 
-#: shell/src/document_view/actions.rs:1276
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "Não é possível abrir o anexo"
 
-#: shell/src/document_view/actions.rs:1292
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Guardar anexo"
@@ -1941,16 +1945,15 @@ msgstr "O documento não contém quaisquer páginas"
 msgid "The Document Contains Only Empty Pages"
 msgstr "O documento apenas contém páginas vazias"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Guardar como…"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Desenhe um retângulo para inserir um campo de assinatura"
 
-#: shell/src/document_view/io.rs:512
-#, rust-format
+#: shell/src/document_view/io.rs:462
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1958,38 +1961,36 @@ msgstr ""
 "Assinado digitalmente por {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Certificado obrigatório"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Selecionar certificado de assinatura"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Selecionar"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "É necessário um certificado para assinar este documento"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Guardar ficheiro assinado"
 
-#: shell/src/document_view/io.rs:714
-#, rust-format
+#: shell/src/document_view/io.rs:664
 msgid "Please enter password for {}"
 msgstr "Introduza a palavra-passe para {}"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "_Iniciar sessão"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
-#, rust-format
 msgid "Printing job “{}”"
 msgstr "A imprimir o trabalho “{}”"
 
@@ -1998,22 +1999,19 @@ msgid "No pending jobs in queue"
 msgstr "Nenhum trabalho pendente em fila de espera"
 
 #: shell/src/document_view/print.rs:88
-#, rust-format
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} trabalho pendente em fila de espera"
 msgstr[1] "{} trabalhos pendentes em fila de espera"
 
 #: shell/src/document_view/signals.rs:257
-#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Alerta de segurança: este documento foi impedido de abrir o ficheiro “{}”"
 
 #: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
-#: shell/src/sidebar_annotations_row.rs:82
-#, rust-format
+#: shell/src/sidebar_annotations_row.rs:83
 msgid "Page {}"
 msgstr "Página {}"
 
@@ -2021,18 +2019,15 @@ msgstr "Página {}"
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
 #: shell/src/page_selector.rs:242 shell/src/page_selector.rs:269
-#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
 #: shell/src/page_selector.rs:249 shell/src/page_selector.rs:278
-#, rust-format
 msgid "of {}"
 msgstr "de {}"
 
 #: shell/src/password_view.rs:146
-#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
