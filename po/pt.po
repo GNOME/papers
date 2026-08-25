@@ -13,10 +13,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.8\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/"
-"issues/\n"
-"POT-Creation-Date: 2025-08-25 08:07+0000\n"
-"PO-Revision-Date: 2025-08-25 15:01+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-08-25 16:35+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
@@ -24,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -158,6 +157,10 @@ msgstr "Miniaturas grandes na barra lateral"
 msgid "All search actions are contained in the sidebar"
 msgstr "Todas as ações de pesquisa estão contidas na barra lateral"
 
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "O Projeto GNOME"
+
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Visualizar impressão"
@@ -242,14 +245,14 @@ msgstr "Adiciona suporte para ler documentos PDF"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Sim"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Não"
 
@@ -402,17 +405,17 @@ msgstr "Adiciona suporte para ler documentos TIFF"
 msgid "Invalid document"
 msgstr "Documento inválido"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Não foi possível guardar o anexo “%s”: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Não foi possível abrir o anexo “%s”: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Não foi possível abrir o anexo “%s”"
@@ -481,8 +484,8 @@ msgstr "Tipo de MIME desconhecido"
 msgid "This work is in the Public Domain"
 msgstr "Este trabalho está em Domínio Público"
 
-#: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Guardar anexo"
@@ -550,9 +553,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "A seleção de intervalo de impressão não inclui qualquer página"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "Fe_char"
 
@@ -632,55 +635,55 @@ msgstr "Desenhar margem em torno das páginas"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Quando ativado, uma margem será desenhada à volta de cada página."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Gestão de páginas"
 
-#: libview/pps-view.c:2107
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "Ir para a primeira página"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "Ir para a página anterior"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "Ir para a página seguinte"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "Ir para a última página"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "Ir para a página"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "Localizar"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "Ir para a página %s"
 
-#: libview/pps-view.c:2152
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ir para %s no ficheiro “%s”"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ir para o ficheiro “%s”"
 
-#: libview/pps-view.c:2163
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "Iniciar %s"
 
-#: libview/pps-view.c:2170
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "Restabelecer a partir de"
@@ -748,7 +751,6 @@ msgid "GNOME Document Previewer"
 msgstr "Antevisão de documentos do GNOME"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Visualizador de documentos Papers"
 
@@ -757,57 +759,57 @@ msgstr "Visualizador de documentos Papers"
 msgid "The selected printer “%s” could not be found"
 msgstr "Não foi possível localizar a impressora \"%s\" selecionada"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Página anterior"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Página seguinte"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Número de páginas"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "Im_primir"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Imprimir este documento"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Reduzir"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Tamanho normal"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Falha ao imprimir o documento"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Propriedades do documento"
 
@@ -998,7 +1000,7 @@ msgstr "Ativar/desativar barra lateral"
 msgid "Document Menu"
 msgstr "Menu de documentos"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "O documento foi assinado digitalmente."
 
@@ -1048,9 +1050,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Abortar _imprimir e fechar"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1231,7 +1233,7 @@ msgstr "C_ancelar"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "Palavra-passe obrigatória"
 
@@ -1750,11 +1752,11 @@ msgstr "Mostrar a versão do programa."
 msgid "[FILE…]"
 msgstr "[FICHEIRO…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "Ver detalhes"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1762,86 +1764,66 @@ msgstr ""
 "O documento contém anotações novas ou modificadas e campos de formulário que "
 "foram preenchidos."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "O documento contém campos de formulário que foram preenchidos."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "O documento contém anotações novas ou modificadas."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr ""
 "Se não guardar uma cópia, as alterações serão definitivamente perdidas."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "Guardar alterações numa cópia?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "Fechar _sem guardar"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "_Guardar uma cópia"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "Guardar a imagem"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Não foi possível encontrar o formato apropriado para guardar a imagem"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "Não foi possível guardar a imagem."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "O modo de navegação com cursor agora está ativado, prima F7 para o desativar."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "O modo de navegação com cursor agora está ativado, prima F7 para o ativar."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "Não é possível abrir o anexo"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "Não foi possível guardar o anexo."
-
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "A assinatura digital é inválida"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "O documento não contém quaisquer páginas"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "O documento apenas contém páginas vazias"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Não foi possível guardar o ficheiro como “{}”."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Guardar como…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Desenhe um retângulo para inserir um campo de assinatura"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:460
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1849,31 +1831,31 @@ msgstr ""
 "Assinado digitalmente por {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "Certificado obrigatório"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "Selecionar certificado de assinatura"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "Selecionar"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "É necessário um certificado para assinar este documento"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "Guardar ficheiro assinado"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:652
 msgid "Please enter password for {}"
 msgstr "Introduza a palavra-passe para {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "_Iniciar sessão"
 
@@ -1886,17 +1868,13 @@ msgstr "A imprimir o trabalho “{}”"
 msgid "No pending jobs in queue"
 msgstr "Nenhum trabalho pendente em fila de espera"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Não é possível abrir uma ligação externa"
-
 #: shell/src/document_view/signals.rs:254
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Alerta de segurança: este documento foi impedido de abrir o ficheiro “{}”"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
 msgid "Page {}"
 msgstr "Página {}"
@@ -1904,12 +1882,12 @@ msgstr "Página {}"
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
 msgid "of {}"
 msgstr "de {}"
 
@@ -1952,90 +1930,88 @@ msgstr "Conteúdo"
 msgid "Date &amp; Time"
 msgstr "Data e Hora"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Assinado por"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "A assinatura é inválida."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "A assinatura é inválida."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "O documento foi alterado após a assinatura."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Não foi possível descodificar a assinatura."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Erro de verificação de assinatura."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Assinado com um certificado emitido por um emissor fiável."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Assinado com um certificado emitido por um emissor não fiável."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Assinado com um certificado emitido por um emissor desconhecido."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Assinado com certificado revogado."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Assinado com certificado expirado."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Erro de verificação de certificado."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "O certificado não foi verificado."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Organização"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Data e Hora"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Emissor do certificado"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "E-mail do emissor do certificado"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Organização do emissor do certificado"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Hora de emissão do certificado"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Prazo de validade do certificado"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Ocultar detalhes…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr ""
+#~ "Não foi possível encontrar o formato apropriado para guardar a imagem"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "Não foi possível guardar a imagem."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "Não foi possível guardar o anexo."
+
+#~ msgid "Digital signature is invalid"
+#~ msgstr "A assinatura digital é inválida"
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "Não foi possível guardar o ficheiro como “{}”."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "Não é possível abrir uma ligação externa"
+
+#~ msgid "Signed by"
+#~ msgstr "Assinado por"
+
+#~ msgid "Signature is valid."
+#~ msgstr "A assinatura é inválida."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "A assinatura é inválida."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "O documento foi alterado após a assinatura."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "Não foi possível descodificar a assinatura."
+
+#~ msgid "Signature verification error."
+#~ msgstr "Erro de verificação de assinatura."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "Assinado com um certificado emitido por um emissor fiável."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "Assinado com um certificado emitido por um emissor não fiável."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "Assinado com um certificado emitido por um emissor desconhecido."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "Assinado com certificado revogado."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "Assinado com certificado expirado."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "Erro de verificação de certificado."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "O certificado não foi verificado."
+
+#~ msgid "Organization"
+#~ msgstr "Organização"
+
+#~ msgid "Date and Time"
+#~ msgstr "Data e Hora"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "Emissor do certificado"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "E-mail do emissor do certificado"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "Organização do emissor do certificado"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "Hora de emissão do certificado"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "Prazo de validade do certificado"
 
 #~ msgid "Scroll Up"
 #~ msgstr "Rolar para cima"
