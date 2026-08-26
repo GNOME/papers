@@ -70,11 +70,8 @@ impl RawImageData {
             for x in 0..self.width {
                 let idx = (y as usize * self.rowstride) + (x as usize * self.n_channels);
                 let alpha = if has_alpha { self.data[idx + 3] } else { 255 };
-                if alpha < ALPHA_OPAQUE_THRESHOLD {
-                    continue;
-                }
                 let intensity = thresholded.get_pixel(x, y)[0];
-                if intensity < INK_INTENSITY_THRESHOLD {
+                if alpha >= ALPHA_OPAQUE_THRESHOLD && intensity < INK_INTENSITY_THRESHOLD {
                     dark_count += 1;
                 } else {
                     light_count += 1;
