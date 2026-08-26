@@ -3,7 +3,7 @@ use crate::signature_manager::PpsSignatureManager;
 use std::cell::Cell;
 
 // Preview dimensions for signature list items
-const SIGNATURE_PREVIEW_MAX_WIDTH: f64 = 120.0;
+const SIGNATURE_PREVIEW_MAX_WIDTH: f64 = 250.0;
 const SIGNATURE_PREVIEW_MAX_HEIGHT: f64 = 60.0;
 
 mod imp {
