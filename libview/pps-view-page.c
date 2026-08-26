@@ -1078,7 +1078,7 @@ pps_view_page_accessible_text_get_caret_position (GtkAccessibleText *text)
 
 static gboolean
 pps_view_page_accessible_text_set_caret_position (GtkAccessibleText *text,
-                                                   unsigned int offset)
+                                                  unsigned int offset)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
@@ -1169,8 +1169,8 @@ pps_view_page_accessible_text_get_selection (GtkAccessibleText *text,
 
 static gboolean
 pps_view_page_accessible_text_set_selection (GtkAccessibleText *text,
-                                              gsize i,
-                                              GtkAccessibleTextRange *range)
+                                             gsize i,
+                                             GtkAccessibleTextRange *range)
 {
 	PpsViewPage *self = PPS_VIEW_PAGE (text);
 	PpsViewPagePrivate *priv = GET_PRIVATE (self);
