@@ -10,8 +10,6 @@ use cairo as cairo_rs;
 
 // Constants for manual signature placement
 const SIGNATURE_MARGIN: f64 = 50.0;
-const SIGNATURE_MAX_WIDTH: f64 = 150.0;
-const SIGNATURE_MAX_HEIGHT: f64 = 50.0;
 
 impl imp::PpsDocumentView {
     pub(crate) fn message_area(&self) -> Option<PpsProgressMessageArea> {
@@ -634,20 +632,22 @@ impl imp::PpsDocumentView {
                         let (page_width, page_height) = document.page_size(page);
 
                         // Use last placed size if available, clamped to page; else scale from MAX
-                        let last_scale = imp.default_settings.double("signature-last-placed-scale");
-                        let last_scale = if last_scale > 0.0 { last_scale } else { 1.0 };
-                        let (scaled_width, scaled_height) = if last_scale > 0.0 {
-                            let natural_w = sig.width as f64 * last_scale;
-                            let natural_h = sig.height as f64 * last_scale;
-                            let max_w = page_width - 2.0 * SIGNATURE_MARGIN;
-                            let max_h = page_height - 2.0 * SIGNATURE_MARGIN;
-                            let clamp = (max_w / natural_w).min(max_h / natural_h).min(1.0_f64);
-                            (natural_w * clamp, natural_h * clamp)
-                        } else {
-                            let scale = (SIGNATURE_MAX_WIDTH / sig.width as f64)
-                                .min(SIGNATURE_MAX_HEIGHT / sig.height as f64);
-                            (sig.width as f64 * scale, sig.height as f64 * scale)
-                        };
+                        let mut last_scale = imp.default_settings.double("signature-scale");
+
+                        if last_scale == 0. {
+                            if sig.width != 0 {
+                                last_scale = 150. / (sig.width as f64);
+                            } else {
+                                last_scale = 1.;
+                            }
+                        }
+
+                        let natural_w = sig.width as f64 * last_scale;
+                        let natural_h = sig.height as f64 * last_scale;
+                        let max_w = page_width - 2.0 * SIGNATURE_MARGIN;
+                        let max_h = page_height - 2.0 * SIGNATURE_MARGIN;
+                        let clamp = (max_w / natural_w).min(max_h / natural_h).min(1.0_f64);
+                        let (scaled_width, scaled_height) = (natural_w * clamp, natural_h * clamp);
 
                         // Position: centered on click point, or bottom-right fallback
                         let (x, y) = if let Some(pt) = center {
@@ -756,8 +756,7 @@ impl imp::PpsDocumentView {
                 let new_w = area.x2() - area.x1();
                 let new_h = area.y2() - area.y1();
                 if (new_w - placed_width).abs() > 0.5 || (new_h - placed_height).abs() > 0.5 {
-                    let _ =
-                        settings.set_double("signature-last-placed-scale", new_w / sig_width_px);
+                    let _ = settings.set_double("signature-scale", new_w / sig_width_px);
                 }
             }
         ));
