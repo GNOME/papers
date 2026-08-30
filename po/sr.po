@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-03-14 07:44+0000\n"
-"PO-Revision-Date: 2026-03-17 10:06+0100\n"
-"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-30 10:52+0200\n"
+"Last-Translator: Марко Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <Serbian <gnome-sr@googlegroups.com>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,8 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9 shell/resources/pps-document-view.blp:87 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47 shell/src/application.rs:389
+#: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9 shell/resources/pps-document-view.blp:87 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Прегледач докумената"
 
@@ -124,6 +125,10 @@ msgstr "Велике сличице у бочној површи"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Све радње за претрагу се налазе у бочној површи"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "Пројекат Гном"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -237,8 +242,12 @@ msgid "Unknown font type"
 msgstr "Непозната врста фонта"
 
 #: libdocument/backend/pdf/pps-poppler.c:911
-msgid "This document contains non-embedded fonts that are not from the PDF Standard 14 fonts. If the substitute fonts selected by fontconfig are not the same as the fonts used to create the PDF, the rendering may not be correct."
-msgstr "Овај документ садржи неугњеждене фонтове који нису из 14 стандардних ПДФ фонтова. Ако заменски фонтови које изабере „fontconfig“ нису исти као они који су коришћени за стварање ПДФ-а, исцртавање можда неће бити исправно."
+msgid ""
+"This document contains non-embedded fonts that are not from the PDF Standard 14 fonts. If the substitute fonts selected by fontconfig are not the same as the fonts used to create the PDF, "
+"the rendering may not be correct."
+msgstr ""
+"Овај документ садржи неугњеждене фонтове који нису из 14 стандардних ПДФ фонтова. Ако заменски фонтови које изабере „fontconfig“ нису исти као они који су коришћени за стварање ПДФ-а, "
+"исцртавање можда неће бити исправно."
 
 #: libdocument/backend/pdf/pps-poppler.c:916
 msgid "All fonts are either standard or embedded."
@@ -432,7 +441,7 @@ msgstr[3] "Сачувај прилог"
 msgid "Page %s"
 msgstr "Страница %s"
 
-#: libview/pps-annotation-window.c:239 shell/resources/pps-sidebar-annotations.blp:60
+#: libview/pps-annotation-window.c:242 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Уреди белешку"
 
@@ -489,7 +498,7 @@ msgid "Your print range selection does not include any pages"
 msgstr "Задати опсег за штампу не садржи ни једну страницу"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81 shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:567
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83 shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "_Затвори"
 
@@ -552,55 +561,55 @@ msgstr "Црта ивицу око страница"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Када је укључено, ивица ће бити исцртана око сваке странице."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Рад са страницама"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Иди на прву страницу"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Иди на претходну страницу"
 
-#: libview/pps-view.c:2123
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Иди на следећу страницу"
 
-#: libview/pps-view.c:2125
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Иди на последњу страницу"
 
-#: libview/pps-view.c:2127
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Иди на страницу"
 
-#: libview/pps-view.c:2129
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Нађи"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Иди на страницу %s"
 
-#: libview/pps-view.c:2164
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Иди на %s датотеке „%s“"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Иди на датотеку „%s“"
 
-#: libview/pps-view.c:2175
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Покрени %s"
 
-#: libview/pps-view.c:2182
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Поврати образац"
@@ -680,39 +689,39 @@ msgstr "Не могу да пронађем штампач „%s“"
 msgid "Papers"
 msgstr "Папири"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Претходна страница"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Следећа страница"
 
-#: previewer/pps-previewer-window.blp:31 shell/resources/pps-document-view.blp:212
+#: previewer/pps-previewer-window.blp:33 shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Број страница"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Штампај"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Штампај овај документ"
 
-#: previewer/pps-previewer-window.blp:48 shell/resources/pps-document-view.blp:292
+#: previewer/pps-previewer-window.blp:50 shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Умањи"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Уобичајена величина"
 
-#: previewer/pps-previewer-window.blp:62 shell/resources/pps-document-view.blp:279
+#: previewer/pps-previewer-window.blp:64 shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Увећај"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "Не могу да одштампам документ"
 
@@ -1878,7 +1887,7 @@ msgstr[3] "{} посао на чекању у реду"
 msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Безбедносно упозорење: овом документу није дозвољено да отвори датотеку „{}“"
 
-#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:82
+#: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89 shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
 msgstr "Страница {}"
