@@ -11,25 +11,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-10-18 19:47+0000\n"
-"PO-Revision-Date: 2025-10-18 22:57+0200\n"
-"Last-Translator: Милош Поповић <gpopac@gmail.com>\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-08-30 10:25+0200\n"
+"Last-Translator: Марко Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <Serbian <gnome-sr@googlegroups.com>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:2
-#: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:85
-#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:85 shell/resources/pps-loader-view.blp:10
+#: shell/src/application.rs:47 shell/src/application.rs:359
 msgid "Document Viewer"
 msgstr "Прегледач докумената"
 
@@ -55,13 +53,11 @@ msgstr "Превазилази ограничења документа"
 #: data/org.gnome.Papers.gschema.xml:15
 msgid "Override document restrictions, like restriction to copy or to print."
 msgstr ""
-"Превазилази ограничења која документ садржи, као што је забрана умножавања "
-"или штампања."
+"Превазилази ограничења која документ садржи, као што је забрана умножавања или штампања."
 
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
-msgstr ""
-"Путања последњег директоријума коришћеног за отварање или чување докуманта"
+msgstr "Путања последњег директоријума коришћеног за отварање или чување докуманта"
 
 #: data/org.gnome.Papers.gschema.xml:23
 msgid "The URI of the directory last used to save a picture"
@@ -72,12 +68,10 @@ msgid "Page cache size in MiB"
 msgstr "Величина оставе странице у MiB"
 
 #: data/org.gnome.Papers.gschema.xml:28
-msgid ""
-"The maximum size that will be used to cache rendered pages, limits maximum "
-"zoom level."
+msgid "The maximum size that will be used to cache rendered pages, limits maximum zoom level."
 msgstr ""
-"Највећа величина која ће бити коришћена за смештај исцртаних страница, "
-"ограничавајући највећи ниво увеличања."
+"Највећа величина која ће бити коришћена за смештај исцртаних страница, ограничавајући највећи "
+"ниво увеличања."
 
 #: data/org.gnome.Papers.gschema.xml:32
 msgid "Allow links to change the zoom level."
@@ -96,24 +90,16 @@ msgid "Set the default zoom level to display a document."
 msgstr "Подесите подразумевани ниво увеличања за приказ докумената."
 
 #: data/org.gnome.Papers.gschema.xml:64
-msgid ""
-"Display the document as a continuous stream of pages instead of page at a "
-"time."
-msgstr ""
-"Прикажи документ као непрекинут низ страница уместо приказа по једне "
-"странице."
+msgid "Display the document as a continuous stream of pages instead of page at a time."
+msgstr "Прикажи документ као непрекинут низ страница уместо приказа по једне странице."
 
 #: data/org.gnome.Papers.gschema.xml:68
 msgid "Show two pages side by side."
 msgstr "Прикажите две странице једну поред друге."
 
 #: data/org.gnome.Papers.gschema.xml:72
-msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side "
-"by side)"
-msgstr ""
-"Прикажи прву (непарну) страницу лево (када се приказују две странице једна "
-"поред друге)"
+msgid "Show the first page (odd page) on the left (when displaying two pages side by side)"
+msgstr "Прикажи прву (непарну) страницу лево (када се приказују две странице једна поред друге)"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
@@ -121,19 +107,18 @@ msgstr "Читајте документе"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:12
 msgid ""
-"A document viewer for the GNOME desktop. You can view, search or annotate "
-"documents in many different formats."
+"A document viewer for the GNOME desktop. You can view, search or annotate documents in many "
+"different formats."
 msgstr ""
-"Прегледач докумената за Гномову површ. Можете гледати, претраживати или "
-"обележавати садржај докумената разних формата."
+"Прегледач докумената за Гномову површ. Можете гледати, претраживати или обележавати садржај "
+"докумената разних формата."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
-"(CBR, CBT, CBZ, CB7)."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, CBT, CBZ, CB7)."
 msgstr ""
-"Чланци подржавају документе у форматима ПДФ, ДјВу, ТИФФ и архиве стрипова "
-"(CBR, CBT, CBZ, CB7)."
+"Чланци подржавају документе у форматима ПДФ, ДјВу, ТИФФ и архиве стрипова (CBR, CBT, CBZ, "
+"CB7)."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:29
 msgid "A clear, simple, and modern UI"
@@ -154,6 +139,10 @@ msgstr "Умањени прикази у бочној површи"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Све доступне претраге су унутар бочне површи"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "Пројекат Гном"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -187,11 +176,10 @@ msgstr "Ово није МИМЕ врста стрипа: %s"
 
 #: libdocument/backend/comics/comics-document.c:309
 msgid ""
-"libarchive lacks support for this comic book’s compression, please contact "
-"your distributor"
+"libarchive lacks support for this comic book’s compression, please contact your distributor"
 msgstr ""
-"Библиотеци „libarchive“ недостаје подршка за сажимање овог стрипа, обратите "
-"се вашем достављачу"
+"Библиотеци „libarchive“ недостаје подршка за сажимање овог стрипа, обратите се вашем "
+"достављачу"
 
 #: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
@@ -212,11 +200,10 @@ msgstr "ДјВу документ има неисправан облик"
 
 #: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
-"The document is composed of several files. One or more of these files cannot "
-"be accessed."
+"The document is composed of several files. One or more of these files cannot be accessed."
 msgstr ""
-"Документ је састављен из неколико датотека. Не могу да приступим једној или "
-"више од ових датотека."
+"Документ је састављен из неколико датотека. Не могу да приступим једној или више од ових "
+"датотека."
 
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
@@ -237,16 +224,14 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Додајте подршку за читање ПДФ докумената"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:741
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: libdocument/backend/pdf/pps-poppler.c:741 libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Да"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:744
-#: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: libdocument/backend/pdf/pps-poppler.c:744 libdocument/backend/pdf/pps-poppler.c:747
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Не"
 
@@ -284,14 +269,13 @@ msgstr "Непозната врста словног лика"
 
 #: libdocument/backend/pdf/pps-poppler.c:915
 msgid ""
-"This document contains non-embedded fonts that are not from the PDF Standard "
-"14 fonts. If the substitute fonts selected by fontconfig are not the same as "
-"the fonts used to create the PDF, the rendering may not be correct."
+"This document contains non-embedded fonts that are not from the PDF Standard 14 fonts. If the "
+"substitute fonts selected by fontconfig are not the same as the fonts used to create the PDF, "
+"the rendering may not be correct."
 msgstr ""
-"Овај документ садржи неугњеждене словне ликове који нису из словних ликова "
-"ПДФ стандарда 14. Ако заменски словни ликови које изабере подешавач словних "
-"ликова (fontconfig) нису исти као словни ликови који су коришћени за "
-"стварање ПДФ-а, исписивање може бити погрешно."
+"Овај документ садржи неугњеждене словне ликове који нису из словних ликова ПДФ стандарда 14. "
+"Ако заменски словни ликови које изабере подешавач словних ликова (fontconfig) нису исти као "
+"словни ликови који су коришћени за стварање ПДФ-а, исписивање може бити погрешно."
 
 #: libdocument/backend/pdf/pps-poppler.c:920
 msgid "All fonts are either standard or embedded."
@@ -477,8 +461,7 @@ msgstr "Непозната МИМЕ врста"
 msgid "This work is in the Public Domain"
 msgstr "Овај рад је у јавном домену"
 
-#: libview/context/pps-attachment-context.c:350
-#: shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350 shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Сачувај прилог"
@@ -548,9 +531,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "Задати опсег за штампу не садржи ни једну страницу"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "_Затвори"
 
@@ -573,27 +556,26 @@ msgstr "Уклопи у област за штампу"
 
 #: libview/pps-print-operation.c:1887
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of "
-"the following:\n"
+"Scale document pages to fit the selected printer page. Select from one of the following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
-"• “Shrink to Printable Area”: Document pages larger than the printable area "
-"are reduced to fit the printable area of the printer page.\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area are reduced to "
+"fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
-"required to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as required to fit the "
+"printable area of the printer page.\n"
 msgstr ""
-"Развлачи странице документа тако да се уклопе у изабрану страницу штампача. "
-"Изаберите једно од приложених:\n"
+"Развлачи странице документа тако да се уклопе у изабрану страницу штампача. Изаберите једно "
+"од приложених:\n"
 "\n"
 "• „Ништа“: Не развлачи странице документа.\n"
 "\n"
-"• „Умањи на област за штампу“: Умањује странице документа које су веће од "
-"области за штампу тако да се уклопе на папир штампача.\n"
+"• „Умањи на област за штампу“: Умањује странице документа које су веће од области за штампу "
+"тако да се уклопе на папир штампача.\n"
 "\n"
-"• „Уклопи у област за штампу“: Смањује или повећава странице документа тако "
-"да се уклопе на папир штампача.\n"
+"• „Уклопи у област за штампу“: Смањује или повећава странице документа тако да се уклопе на "
+"папир штампача.\n"
 
 #: libview/pps-print-operation.c:1898
 msgid "Auto Rotate and Center"
@@ -601,22 +583,19 @@ msgstr "Сам ротирај и центрирај"
 
 #: libview/pps-print-operation.c:1901
 msgid ""
-"Rotate printer page orientation of each page to match orientation of each "
-"document page. Document pages will be centered within the printer page."
+"Rotate printer page orientation of each page to match orientation of each document page. "
+"Document pages will be centered within the printer page."
 msgstr ""
-"Окрените сваку страницу штампача, тако да буде иста оној унутар документа и "
-"поставља странице документа на средину папира за штампу."
+"Окрените сваку страницу штампача, тако да буде иста оној унутар документа и поставља странице "
+"документа на средину папира за штампу."
 
 #: libview/pps-print-operation.c:1905
 msgid "Select page size using document page size"
 msgstr "Одреди величину странице на основу документа"
 
 #: libview/pps-print-operation.c:1907
-msgid ""
-"When enabled, each page will be printed on the same size paper as the "
-"document page."
-msgstr ""
-"Поставља величину сваке одштампане странице на величину странице у документу."
+msgid "When enabled, each page will be printed on the same size paper as the document page."
+msgstr "Поставља величину сваке одштампане странице на величину странице у документу."
 
 #: libview/pps-print-operation.c:1911
 msgid "Draw border around pages"
@@ -626,55 +605,55 @@ msgstr "Црта ивицу око страница"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Када је укључено, ивица ће бити исцртана око сваке странице."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Рад са страницама"
 
-#: libview/pps-view.c:2110
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "Идите на прву страну"
 
-#: libview/pps-view.c:2112
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "Идите на претходну страну"
 
-#: libview/pps-view.c:2114
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "Идите на следећу страну"
 
-#: libview/pps-view.c:2116
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "Идите на последњу страну"
 
-#: libview/pps-view.c:2118
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "Идите на страну"
 
-#: libview/pps-view.c:2120
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "Тражи"
 
-#: libview/pps-view.c:2149
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "Иди на страну %s"
 
-#: libview/pps-view.c:2155
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Иди на %s датотеке „%s“"
 
-#: libview/pps-view.c:2158
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Иди на датотеку „%s“"
 
-#: libview/pps-view.c:2166
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "Покрени %s"
 
-#: libview/pps-view.c:2173
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "Поврати образац"
@@ -742,7 +721,6 @@ msgid "GNOME Document Previewer"
 msgstr "Гномов прегледач докумената"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Програм Чланци за преглед докумената"
 
@@ -751,57 +729,53 @@ msgstr "Програм Чланци за преглед докумената"
 msgid "The selected printer “%s” could not be found"
 msgstr "Не могу да пронађем штампач „%s“"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Чланци"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Претходна страница"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Следећа страница"
 
-#: previewer/pps-previewer-window.blp:31
-#: shell/resources/pps-document-view.blp:210
+#: previewer/pps-previewer-window.blp:33 shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Број страница"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "Штам_пај"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Одштампај овај документ"
 
-#: previewer/pps-previewer-window.blp:48
-#: shell/resources/pps-document-view.blp:287
+#: previewer/pps-previewer-window.blp:50 shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Умањи"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Уобичајена величина"
 
-#: previewer/pps-previewer-window.blp:62
-#: shell/resources/pps-document-view.blp:275
+#: previewer/pps-previewer-window.blp:64 shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Увећај"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Не могу да одштампам документ"
 
-#: nautilus/pps-nautilus-extension.c:104
-#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: nautilus/pps-nautilus-extension.c:97 shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Непознато"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Особине документа"
 
@@ -992,7 +966,7 @@ msgstr "Приказ бочне површи"
 msgid "Document Menu"
 msgstr "Мени документа"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "Документ је дигитално потписан."
 
@@ -1010,12 +984,11 @@ msgstr "Избор је премали"
 
 #: shell/resources/pps-document-view.blp:530
 msgid ""
-"A signature of this size may be too small to read. If you would like to "
-"create a potentially more readable signature, press `Start over` and draw a "
-"bigger rectangle."
+"A signature of this size may be too small to read. If you would like to create a potentially "
+"more readable signature, press `Start over` and draw a bigger rectangle."
 msgstr ""
-"Потпис ове величине је можда премали за читање. Уколико желите да направите "
-"читљивији потпис, притисните „Понови“ и нацртајте већи правоугаоник."
+"Потпис ове величине је можда премали за читање. Уколико желите да направите читљивији потпис, "
+"притисните „Понови“ и нацртајте већи правоугаоник."
 
 #: shell/resources/pps-document-view.blp:537
 msgid "Start _Over"
@@ -1031,19 +1004,19 @@ msgstr "Да откажем штампање?"
 
 #: shell/resources/pps-document-view.blp:546
 msgid ""
-"There is one or more active print jobs. If the window is closed, pending "
-"print jobs will not be printed."
+"There is one or more active print jobs. If the window is closed, pending print jobs will not "
+"be printed."
 msgstr ""
-"Постоје задаци за штампање. Уколико затворите прозор, задаци који су на "
-"чекању неће бити одштампани."
+"Постоје задаци за штампање. Уколико затворите прозор, задаци који су на чекању неће бити "
+"одштампани."
 
 #: shell/resources/pps-document-view.blp:550
 msgid "Abort _Print and Close"
 msgstr "Прекини штампу и _затвори"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "От_кажи"
 
@@ -1091,8 +1064,7 @@ msgstr "_Дигитално потпиши…"
 msgid "Open a C_opy"
 msgstr "Отвори к_опију"
 
-#: shell/resources/pps-document-view.blp:629
-#: shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:629 shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Отвори са…"
 
@@ -1176,13 +1148,11 @@ msgstr "Сачувај слику _као…"
 msgid "Copy _Image"
 msgstr "Копирај _слику"
 
-#: shell/resources/pps-document-view.blp:899
-#: shell/resources/pps-sidebar-annotations.blp:72
+#: shell/resources/pps-document-view.blp:899 shell/resources/pps-sidebar-annotations.blp:72
 msgid "_Open Attachment"
 msgstr "_Отвори прилог"
 
-#: shell/resources/pps-document-view.blp:905
-#: shell/resources/pps-sidebar-annotations.blp:78
+#: shell/resources/pps-document-view.blp:905 shell/resources/pps-sidebar-annotations.blp:78
 msgid "_Save Attachment As…"
 msgstr "_Сачувај прилог као…"
 
@@ -1222,9 +1192,8 @@ msgstr "Учитавам документ"
 msgid "C_ancel"
 msgstr "О_ткажи"
 
-#: shell/resources/pps-password-dialog.blp:5
-#: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "Потребна је лозинка"
 
@@ -1253,11 +1222,8 @@ msgid "Remember _forever"
 msgstr "Запамти _заувек"
 
 #: shell/resources/pps-password-view.blp:18
-msgid ""
-"This document is locked and can only be read by entering the correct password"
-msgstr ""
-"Овај документ је закључан и можете га отворити само ако унесете исправну "
-"лозинку."
+msgid "This document is locked and can only be read by entering the correct password"
+msgstr "Овај документ је закључан и можете га отворити само ако унесете исправну лозинку."
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -1279,8 +1245,7 @@ msgstr "Још података"
 msgid "Signature Information"
 msgstr "Подаци о потпису"
 
-#: shell/resources/pps-properties-signatures.blp:48
-#: shell/src/properties_signatures.rs:405
+#: shell/resources/pps-properties-signatures.blp:48 shell/src/properties_signatures.rs:405
 msgid "View Details…"
 msgstr "Прикажи више података…"
 
@@ -1748,95 +1713,72 @@ msgstr "Исписује верзију програма."
 msgid "[FILE…]"
 msgstr "[ДАТОТЕКА…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "Прикажи више података"
 
-#: shell/src/document_view.rs:705
-msgid ""
-"Document contains new or modified annotations and form fields that have been "
-"filled out."
-msgstr ""
-"Документ садржи нове или измењене забелешке и обрасце који још увек нису "
-"попуњени."
-
 #: shell/src/document_view.rs:706
+msgid "Document contains new or modified annotations and form fields that have been filled out."
+msgstr "Документ садржи нове или измењене забелешке и обрасце који још увек нису попуњени."
+
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "Документ садржи образац са пољима која су попуњена."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "Документ садржи нове или измењене забелешке."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Уколико не сачувате копију, измене ће бити трајно изгубљене."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "Да сачувам промене као копију?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "Затвори _без чувања"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "_Сачувајте копију"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "Сачувај слику"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Не могу да пронађем пригодан формат за чување слике"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "Нисам могао да сачувам слику."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr "Кретање курсором је омогућено, притисните F7 да га онемогућите."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr "Кретање курсором је онемогућено, притисните F7 да га омогућите."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "Не могу да отворим прилог"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "Не могу да сачувам прилог."
-
-#: shell/src/document_view/io.rs:269
-msgid "Digital signature is invalid"
-msgstr "Дигитални потпис није исправан"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "Документ не садржи странице"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "Документ садржи само празне странице"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "Не могу да сачуван датотеку као „{}“."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Сачувај као…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Нацртајте правоугаоник да уметнете дигитални потпис"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:460
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1844,36 +1786,38 @@ msgstr ""
 "Дигитално потписао {}\n"
 "Датум: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "Потребно је уверење"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "Изаберите уверење за потписивање"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "Изабери"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "Потребно је уверење за потписивање овог документа"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "Сачувај потписану датотеку"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:652
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Унесите лозинку за {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "_Пријава"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "Штампам задатак „{}“"
 
@@ -1881,36 +1825,34 @@ msgstr "Штампам задатак „{}“"
 msgid "No pending jobs in queue"
 msgstr "Нема заказаних задатака за штампу"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Не могу да отворим спољну везу"
-
 #: shell/src/document_view/signals.rs:254
-msgid ""
-"Security alert: this document has been prevented from opening the file “{}”"
-msgstr ""
-"Безбедносно упозорење: овај документ је спречен да не отвори датотеку „{}“"
+#, rust-format
+msgid "Security alert: this document has been prevented from opening the file “{}”"
+msgstr "Безбедносно упозорење: овај документ је спречен да не отвори датотеку „{}“"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Страница {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} од {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#, rust-format
 msgid "of {}"
 msgstr "од {}"
 
 #: shell/src/password_view.rs:145
-msgid ""
-"The document “{}” is locked and requires a password before it can be opened"
+#, rust-format
+msgid "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Документ „{}“ је закључан и потребна је лозинка да бисте га отворили."
 
 #: shell/src/properties_general.rs:50
@@ -1945,90 +1887,87 @@ msgstr "Садржај"
 msgid "Date &amp; Time"
 msgstr "Датум и време"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Потписао"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Потпис је исправан."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Потпис није исправан."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "Документ је промењен након потписивања."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Не могу да отворим потпис."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Није успела провера потписа."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Потписано уверењем издавача од поверења."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Потписано уверењем издавача који није од поверења."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Потписано уверењем непознатог издавача."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Потписано уверењем које је повучено."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Потписано уверењем које је истекло."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Грешка приликом провере уверења."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "Уверење није проверено."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Организација"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Датум и време"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Издавач уверења"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "Е-пошта издавача уверења"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Организација издавача уверења"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Време издавања уверења"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Време истека важења уверења"
-
 #: shell/src/properties_signatures.rs:403
 msgid "Hide Details…"
 msgstr "Сакрих додатне податке…"
+
+#~ msgid "Couldn’t find appropriate format to save image"
+#~ msgstr "Не могу да пронађем пригодан формат за чување слике"
+
+#~ msgid "The image could not be saved."
+#~ msgstr "Нисам могао да сачувам слику."
+
+#~ msgid "The attachment could not be saved."
+#~ msgstr "Не могу да сачувам прилог."
+
+#~ msgid "Digital signature is invalid"
+#~ msgstr "Дигитални потпис није исправан"
+
+#~ msgid "The file could not be saved as “{}”."
+#~ msgstr "Не могу да сачуван датотеку као „{}“."
+
+#~ msgid "Unable to open external link"
+#~ msgstr "Не могу да отворим спољну везу"
+
+#~ msgid "Signed by"
+#~ msgstr "Потписао"
+
+#~ msgid "Signature is valid."
+#~ msgstr "Потпис је исправан."
+
+#~ msgid "Signature is invalid."
+#~ msgstr "Потпис није исправан."
+
+#~ msgid "Document has been changed after signing."
+#~ msgstr "Документ је промењен након потписивања."
+
+#~ msgid "Signature could not be decoded."
+#~ msgstr "Не могу да отворим потпис."
+
+#~ msgid "Signature verification error."
+#~ msgstr "Није успела провера потписа."
+
+#~ msgid "Signed with a certificate issued by trusted issuer."
+#~ msgstr "Потписано уверењем издавача од поверења."
+
+#~ msgid "Signed with a certificate issued by untrusted issuer."
+#~ msgstr "Потписано уверењем издавача који није од поверења."
+
+#~ msgid "Signed with a certificate issued by unknown issuer."
+#~ msgstr "Потписано уверењем непознатог издавача."
+
+#~ msgid "Signed with revoked certificate."
+#~ msgstr "Потписано уверењем које је повучено."
+
+#~ msgid "Signed with expired certificate."
+#~ msgstr "Потписано уверењем које је истекло."
+
+#~ msgid "Certificate verification error."
+#~ msgstr "Грешка приликом провере уверења."
+
+#~ msgid "Certificate has not been verified."
+#~ msgstr "Уверење није проверено."
+
+#~ msgid "Organization"
+#~ msgstr "Организација"
+
+#~ msgid "Date and Time"
+#~ msgstr "Датум и време"
+
+#~ msgid "Certificate Issuer"
+#~ msgstr "Издавач уверења"
+
+#~ msgid "Certificate Issuer's Email"
+#~ msgstr "Е-пошта издавача уверења"
+
+#~ msgid "Certificate Issuer's Organization"
+#~ msgstr "Организација издавача уверења"
+
+#~ msgid "Certificate's Issuance Time"
+#~ msgstr "Време издавања уверења"
+
+#~ msgid "Certificate's Expiration Time"
+#~ msgstr "Време истека важења уверења"
 
 #~ msgid "DVI document has incorrect format"
 #~ msgstr "ДВИ документ има неисправан облик"
@@ -2065,12 +2004,8 @@ msgstr "Сакрих додатне податке…"
 #~ msgid "The document is automatically reloaded on file change."
 #~ msgstr "Документ бива сам поново учитан приликом измене датотеке."
 
-#~ msgid ""
-#~ "Show a dialog to confirm that the user wants to activate the caret "
-#~ "navigation."
-#~ msgstr ""
-#~ "Приказује прозорче за потврђивање да корисник жели да покрене кретање "
-#~ "уметком."
+#~ msgid "Show a dialog to confirm that the user wants to activate the caret navigation."
+#~ msgstr "Приказује прозорче за потврђивање да корисник жели да покрене кретање уметком."
 
 #, c-format
 #~ msgid "Failed to create a temporary directory: %s"
@@ -2125,8 +2060,7 @@ msgstr "Сакрих додатне податке…"
 #~ msgstr "Умањите документ"
 
 #~ msgid "Reset zoom and make the page fit in the window"
-#~ msgstr ""
-#~ "Врати подразумевано стање увећаности и рашири страницу унутар прозора"
+#~ msgstr "Врати подразумевано стање увећаности и рашири страницу унутар прозора"
 
 #~ msgid "_Apply"
 #~ msgstr "При_мени"
@@ -2235,14 +2169,11 @@ msgstr "Сакрих додатне податке…"
 
 #, c-format
 #~ msgid "A file named “%s” already exists. Do you want to replace it?"
-#~ msgstr ""
-#~ "Датотека под називом „%s“ већ постоји.  Да ли желите да је замените?"
+#~ msgstr "Датотека под називом „%s“ већ постоји.  Да ли желите да је замените?"
 
 #, c-format
-#~ msgid ""
-#~ "The file “%s” already exists. Replacing it will overwrite its contents."
-#~ msgstr ""
-#~ "Датотека већ постоји у „%s“.  Уколико је замените преписаћете њен садржај."
+#~ msgid "The file “%s” already exists. Replacing it will overwrite its contents."
+#~ msgstr "Датотека већ постоји у „%s“.  Уколико је замените преписаћете њен садржај."
 
 #~ msgid "_Replace"
 #~ msgstr "_Замени"
@@ -2354,22 +2285,16 @@ msgstr "Сакрих додатне податке…"
 #~ msgstr "Да сачекам док се не одштампа задужење „%s“ пре затварања?"
 
 #, c-format
-#~ msgid ""
-#~ "There is %d print job active. Wait until print finishes before closing?"
-#~ msgid_plural ""
-#~ "There are %d print jobs active. Wait until print finishes before closing?"
+#~ msgid "There is %d print job active. Wait until print finishes before closing?"
+#~ msgid_plural "There are %d print jobs active. Wait until print finishes before closing?"
 #~ msgstr[0] ""
-#~ "Имате %d активно задужење за штампу. Да сачекам док се не заврши штампање "
-#~ "пре затварања?"
+#~ "Имате %d активно задужење за штампу. Да сачекам док се не заврши штампање пре затварања?"
 #~ msgstr[1] ""
-#~ "Имате %d активна задужења за штампу. Да сачекам док се не заврше штампања "
-#~ "пре затварања?"
+#~ "Имате %d активна задужења за штампу. Да сачекам док се не заврше штампања пре затварања?"
 #~ msgstr[2] ""
-#~ "Имате %d активних задужења за штампу. Да сачекам док се не заврше "
-#~ "штампања пре затварања?"
+#~ "Имате %d активних задужења за штампу. Да сачекам док се не заврше штампања пре затварања?"
 #~ msgstr[3] ""
-#~ "Имате једно активно задужење за штампу. Да сачекам док се не заврши "
-#~ "штампање пре затварања?"
+#~ "Имате једно активно задужење за штампу. Да сачекам док се не заврши штампање пре затварања?"
 
 #~ msgid "Evince is a simple document viewer for GNOME"
 #~ msgstr "Евинс је једноставан прегледач докумената за Гном"
@@ -2381,13 +2306,13 @@ msgstr "Сакрих додатне податке…"
 #~ msgstr "_Укључи"
 
 #~ msgid ""
-#~ "Pressing F7 turns the caret navigation on or off. This feature places a "
-#~ "moveable cursor in text pages, allowing you to move around and select "
-#~ "text with your keyboard. Do you want to enable the caret navigation?"
+#~ "Pressing F7 turns the caret navigation on or off. This feature places a moveable cursor in "
+#~ "text pages, allowing you to move around and select text with your keyboard. Do you want to "
+#~ "enable the caret navigation?"
 #~ msgstr ""
-#~ "Притисак тастера F7 ће укључити/искључити преглед уметком. Ова могућност "
-#~ "поставља курсор унутар Интернет страница и омогућава вам да листате "
-#~ "садржај помоћу тастатуре. Да ли желите да укључите преглед са уметком?"
+#~ "Притисак тастера F7 ће укључити/искључити преглед уметком. Ова могућност поставља курсор "
+#~ "унутар Интернет страница и омогућава вам да листате садржај помоћу тастатуре. Да ли желите "
+#~ "да укључите преглед са уметком?"
 
 #~ msgid "Don’t show this message again"
 #~ msgstr "Не приказуј више ову поруку"
@@ -2662,35 +2587,31 @@ msgstr "Сакрих додатне податке…"
 #~ msgstr "Окрени на _десно"
 
 #~ msgid ""
-#~ "Evince is free software; you can redistribute it and/or modify it under "
-#~ "the terms of the GNU General Public License as published by the Free "
-#~ "Software Foundation; either version 2 of the License, or (at your option) "
-#~ "any later version.\n"
+#~ "Evince is free software; you can redistribute it and/or modify it under the terms of the "
+#~ "GNU General Public License as published by the Free Software Foundation; either version 2 "
+#~ "of the License, or (at your option) any later version.\n"
 #~ msgstr ""
-#~ "Евинс је слободан софтвер; можете га расподељивати и/или мењати под "
-#~ "условима Гну-ове Опште јавне лиценце, коју је објавила Задужбина "
-#~ "слободног софтвера; било верзије 2 те Лиценце, или (по вашем мишљењу) "
-#~ "неке новије верзије.\n"
+#~ "Евинс је слободан софтвер; можете га расподељивати и/или мењати под условима Гну-ове Опште "
+#~ "јавне лиценце, коју је објавила Задужбина слободног софтвера; било верзије 2 те Лиценце, "
+#~ "или (по вашем мишљењу) неке новије верзије.\n"
 
 #~ msgid ""
-#~ "Evince is distributed in the hope that it will be useful, but WITHOUT ANY "
-#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-#~ "FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
-#~ "details.\n"
+#~ "Evince is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; "
+#~ "without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  "
+#~ "See the GNU General Public License for more details.\n"
 #~ msgstr ""
-#~ "Евинс се расподељује у нади да ће бити користан, али БЕЗ ИКАКВЕ "
-#~ "ГАРАНЦИЈЕ; чак и без примењене гаранције ТРЖИШНЕ ВРЕДНОСТИ или "
-#~ "ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.  Погледајте ГНУ Општу јавну лиценцу за "
-#~ "више детаља.\n"
+#~ "Евинс се расподељује у нади да ће бити користан, али БЕЗ ИКАКВЕ ГАРАНЦИЈЕ; чак и без "
+#~ "примењене гаранције ТРЖИШНЕ ВРЕДНОСТИ или ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.  Погледајте ГНУ "
+#~ "Општу јавну лиценцу за више детаља.\n"
 
 #~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with Evince; if not, write to the Free Software Foundation, Inc., 51 "
-#~ "Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA\n"
+#~ "You should have received a copy of the GNU General Public License along with Evince; if "
+#~ "not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, "
+#~ "MA 02110-1301  USA\n"
 #~ msgstr ""
-#~ "Требали сте да добијете примерак Опште јавне лиценце уз Евинс; ако нисте, "
-#~ "пишите Задужбини слободног софтвера на адресу: „Free Software Foundation, "
-#~ "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA“\n"
+#~ "Требали сте да добијете примерак Опште јавне лиценце уз Евинс; ако нисте, пишите Задужбини "
+#~ "слободног софтвера на адресу: „Free Software Foundation, Inc., 51 Franklin Street, Fifth "
+#~ "Floor, Boston, MA 02110-1301  USA“\n"
 
 #~ msgid "Add"
 #~ msgstr "Додај"
@@ -2701,8 +2622,7 @@ msgstr "Сакрих додатне податке…"
 #~ msgid "_Save a Copy…"
 #~ msgstr "_Сачувај умножак…"
 
-#~ msgid ""
-#~ "Error launching the command “%s” in order to decompress the comic book: %s"
+#~ msgid "Error launching the command “%s” in order to decompress the comic book: %s"
 #~ msgstr "Грешка покретања наредбе „%s“ за распаковање стрипа: %s"
 
 #~ msgid "The command “%s” failed at decompressing the comic book."
@@ -2711,10 +2631,8 @@ msgstr "Сакрих додатне податке…"
 #~ msgid "The command “%s” did not end normally."
 #~ msgstr "Наредба „%s“ није нормално окончана."
 
-#~| msgid ""
-#~| "Can't find an appropriate command to decompress this type of comic book"
-#~ msgid ""
-#~ "Can’t find an appropriate command to decompress this type of comic book"
+#~| msgid "Can't find an appropriate command to decompress this type of comic book"
+#~ msgid "Can’t find an appropriate command to decompress this type of comic book"
 #~ msgstr "Не могу да нађем наредбу за распаковање ове врсте стрипа"
 
 #~ msgid "No images found in archive %s"
