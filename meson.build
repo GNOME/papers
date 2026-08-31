@@ -1,6 +1,6 @@
 project(
   'papers', ['c'],
-  version: '51.beta',
+  version: '51.rc',
   license: 'GPL-2.0-or-later',
   meson_version: '>= 1.8.0',
   default_options: [

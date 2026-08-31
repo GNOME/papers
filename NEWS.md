@@ -1,3 +1,9 @@
+Papers 51.rc
+------------
+
+* Some changes we can highlight:
+  - In non-continuous mode, page switching on scrolling (Markus Göllnitz)
+
 Papers 51.beta
 --------------
 
