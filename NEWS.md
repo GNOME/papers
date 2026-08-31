@@ -1,3 +1,46 @@
+Papers 51.0
+------------
+
+* Some changes we can highlight:
+  - In non-continuous mode, page switching on scrolling (Markus Göllnitz)
+
+* Translation updates for the 51.0 release cycle:
+  - British English (Bruce Cowan)
+  - Basque (Asier Saratsua Garmendia)
+  - Belarusian (Vasil Pupkin)
+  - Bulgarian (Alexander Alexandrov Shopov)
+  - Catalan (Xavi Ivars)
+  - Czech (Daniel Rusek)
+  - Danish (Alan Mortensen)
+  - Dutch (Nathan Follens)
+  - Finnish (Jiri Grönroos)
+  - French (Irenee THIRION)
+  - Galician (Francisco Diéguez Souto)
+  - Georgian (Ekaterine Papava)
+  - Hebrew (Yaron Shahrabani)
+  - Hungarian (Balázs Úr)
+  - Indonesian (Andika Triwidada)
+  - Italian (Davide Ferracin)
+  - Japanese (Ryo Nakano)
+  - Kazakh (Baurzhan Muftakhidinov)
+  - Korean (Seong-ho Cho)
+  - Lithuanian (Aurimas Černius)
+  - Norwegian Bokmål (Kjartan Maraas)
+  - Occitan (Quentin PAGÈS)
+  - Persian (Danial Behzadi)
+  - Polish (Victoria Niedzielska, Daniel)
+  - Romanian (Antonio Marin)
+  - Russian (Artur S0)
+  - Serbian (Марко Костић)
+  - Slovenian (Martin)
+  - Spanish (Daniel Mustieles)
+  - Swedish (Anders Jonsson)
+  - Turkish (Emin Tufan Çetin)
+  - Uighur (Abduqadir Abliz)
+  - Ukrainian (Yuri Chornoivan)
+  - Vietnamese (Cas Pascal)
+
+
 Papers 51.beta
 --------------
 
