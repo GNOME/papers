@@ -4128,15 +4128,10 @@ position_caret_cursor_at_location (PpsView *view,
 static gboolean
 position_caret_cursor_for_event (PpsView *view,
                                  gdouble x,
-                                 gdouble y,
-                                 gboolean redraw)
+                                 gdouble y)
 {
 	GdkRectangle area;
-	GdkRectangle prev_area = { 0, 0, 0, 0 };
 	PpsViewPrivate *priv = GET_PRIVATE (view);
-
-	if (redraw)
-		get_caret_cursor_area (view, priv->cursor_page, priv->cursor_offset, &prev_area);
 
 	if (!position_caret_cursor_at_location (view, x, y))
 		return FALSE;
@@ -4147,10 +4142,6 @@ position_caret_cursor_for_event (PpsView *view,
 	priv->cursor_line_offset = area.x;
 
 	g_signal_emit (view, signals[SIGNAL_CURSOR_MOVED], 0, priv->cursor_page, priv->cursor_offset);
-
-	if (redraw) {
-		gtk_widget_queue_draw (GTK_WIDGET (view));
-	}
 
 	return TRUE;
 }
@@ -4248,7 +4239,7 @@ pps_view_button_press_event (GtkGestureClick *self,
 		} else {
 			_pps_view_set_focused_element (view, NULL, -1);
 
-			if (position_caret_cursor_for_event (view, x, y, TRUE)) {
+			if (position_caret_cursor_for_event (view, x, y)) {
 				priv->cursor_blink_time = 0;
 				pps_view_pend_cursor_blink (view);
 			}
@@ -4682,7 +4673,7 @@ pps_view_button_release_event (GtkGestureClick *self,
 		g_clear_object (&priv->link_selected);
 		pps_view_update_primary_selection (view);
 
-		position_caret_cursor_for_event (view, x, y, FALSE);
+		position_caret_cursor_for_event (view, x, y);
 	} else if (link) {
 		if (button == GDK_BUTTON_MIDDLE) {
 			PpsLinkAction *action;
@@ -5245,7 +5236,6 @@ pps_view_move_cursor (PpsView *view,
 		} else if (prev_page > priv->cursor_page) {
 			pps_view_previous_page (view);
 			cursor_go_to_page_end (view);
-			_pps_view_ensure_rectangle_is_visible (view, priv->cursor_page, &rect);
 			changed_page = TRUE;
 		}
 
