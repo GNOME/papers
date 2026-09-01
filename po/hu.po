@@ -1,17 +1,16 @@
 # Hungarian translation for papers.
-# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the papers package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2015, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2021, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: papers master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/papers/issues/"
-"\n"
-"POT-Creation-Date: 2024-09-14 21:48+0000\n"
-"PO-Revision-Date: 2024-09-16 01:23+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2025-03-10 00:46+0000\n"
+"PO-Revision-Date: 2026-09-01 22:31+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -19,29 +18,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:3
+#: data/org.gnome.Papers.desktop.in.in:2
 #: data/org.gnome.Papers.metainfo.xml.in.in:23
 #: previewer/pps-previewer-window.c:477 shell/pps-document-view.c:1218
 #: shell/pps-document-view.ui:73 shell/pps-loader-view.ui:10
-#: shell-rs/src/application.rs:41 shell-rs/src/application.rs:64
-#: shell-rs/src/application.rs:288
+#: shell-rs/src/application.rs:41 shell-rs/src/application.rs:295
 msgid "Papers"
 msgstr "Papírok"
 
-#: data/org.gnome.Papers.desktop.in.in:4
+#: data/org.gnome.Papers.desktop.in.in:3
 msgid "View multi-page documents"
 msgstr "Többoldalas dokumentumok megtekintése"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Papers.desktop.in.in:6
+#: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;ps;postscript;xps;djvu;tiff;document;presentation;viewer;papers;"
 msgstr ""
 "pdf;ps;postscript;xps;djvu;tiff;dokumentum;prezentáció;nézegető;papírok;"
 
-#: data/org.gnome.Papers.desktop.in.in:21
+#: data/org.gnome.Papers.desktop.in.in:20
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -148,7 +146,6 @@ msgstr ""
 "DjVu, TIFF, valamint képregény-archívumok (CBR, CBT, CBZ, CB7)."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:43
-#| msgid "A clear, simple UI"
 msgid "A clear, simple, and modern UI"
 msgstr "Letisztult, egyszerű és modern felhasználói felület"
 
@@ -168,11 +165,15 @@ msgstr "Nagy bélyegképek az oldalsávon"
 msgid "All search actions are contained in the sidebar"
 msgstr "Az összes keresési művelet megtalálható az oldalsávon"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:3
+#: data/org.gnome.Papers.metainfo.xml.in.in:74
+msgid "The GNOME Project"
+msgstr "A GNOME projekt"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Nyomtatási kép"
 
-#: data/org.gnome.Papers-previewer.desktop.in.in:4
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
 msgid "Preview before printing"
 msgstr "Előnézet nyomtatás előtt"
 
@@ -210,7 +211,7 @@ msgstr ""
 msgid "Can not get local path for archive"
 msgstr "Nem lehet lekérni a helyi útvonalat az archívumhoz"
 
-#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/comics/comicsdocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/comics/papers-comicsdocument.metainfo.xml.in.in:5
 msgid "Comic Books"
 msgstr "Képregények"
@@ -229,7 +230,7 @@ msgid ""
 "be accessed."
 msgstr "A dokumentum több fájlból áll. Legalább az egyik fájl nem érhető el."
 
-#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/djvu/djvudocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/papers-djvudocument.metainfo.xml.in.in:5
 msgid "DjVu Documents"
 msgstr "DjVu-dokumentumok"
@@ -239,7 +240,7 @@ msgid "Adds support for reading DjVu documents"
 msgstr "Támogatást nyújt DjVu-dokumentumok olvasásához"
 
 #: libdocument/backend/pdf/papers-pdfdocument.metainfo.xml.in.in:5
-#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/pdf/pdfdocument.papers-backend.desktop.in.in:4
 msgid "PDF Documents"
 msgstr "PDF-dokumentumok"
 
@@ -248,52 +249,52 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Támogatást nyújt PDF-dokumentumok olvasásához"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:721
-#: libdocument/backend/pdf/pps-poppler.c:727
+#: libdocument/backend/pdf/pps-poppler.c:742
+#: libdocument/backend/pdf/pps-poppler.c:748
 #: nautilus/pps-nautilus-extension.c:121 shell-rs/src/properties_general.rs:170
 msgid "Yes"
 msgstr "Igen"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:724
-#: libdocument/backend/pdf/pps-poppler.c:727
+#: libdocument/backend/pdf/pps-poppler.c:745
+#: libdocument/backend/pdf/pps-poppler.c:748
 #: nautilus/pps-nautilus-extension.c:123 shell-rs/src/properties_general.rs:171
 msgid "No"
 msgstr "Nem"
 
-#: libdocument/backend/pdf/pps-poppler.c:835
+#: libdocument/backend/pdf/pps-poppler.c:856
 msgid "Type 1"
 msgstr "Type 1"
 
-#: libdocument/backend/pdf/pps-poppler.c:837
+#: libdocument/backend/pdf/pps-poppler.c:858
 msgid "Type 1C"
 msgstr "Type 1C"
 
-#: libdocument/backend/pdf/pps-poppler.c:839
+#: libdocument/backend/pdf/pps-poppler.c:860
 msgid "Type 3"
 msgstr "Type 3"
 
-#: libdocument/backend/pdf/pps-poppler.c:841
+#: libdocument/backend/pdf/pps-poppler.c:862
 msgid "TrueType"
 msgstr "TrueType"
 
-#: libdocument/backend/pdf/pps-poppler.c:843
+#: libdocument/backend/pdf/pps-poppler.c:864
 msgid "Type 1 (CID)"
 msgstr "Type 1 (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:845
+#: libdocument/backend/pdf/pps-poppler.c:866
 msgid "Type 1C (CID)"
 msgstr "Type 1C (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:847
+#: libdocument/backend/pdf/pps-poppler.c:868
 msgid "TrueType (CID)"
 msgstr "TrueType (CID)"
 
-#: libdocument/backend/pdf/pps-poppler.c:849
+#: libdocument/backend/pdf/pps-poppler.c:870
 msgid "Unknown font type"
 msgstr "Ismeretlen betűkészlet-típus"
 
-#: libdocument/backend/pdf/pps-poppler.c:893
+#: libdocument/backend/pdf/pps-poppler.c:914
 msgid ""
 "This document contains non-embedded fonts that are not from the PDF Standard "
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
@@ -304,11 +305,11 @@ msgstr ""
 "helyettesítő betűkészletek nem azonosak a PDF előállításához használtakkal, "
 "akkor a dokumentum hibásan jelenhet meg."
 
-#: libdocument/backend/pdf/pps-poppler.c:898
+#: libdocument/backend/pdf/pps-poppler.c:919
 msgid "All fonts are either standard or embedded."
 msgstr "Az összes betűkészlet szabványos vagy beágyazott."
 
-#: libdocument/backend/pdf/pps-poppler.c:929
+#: libdocument/backend/pdf/pps-poppler.c:950
 msgid "No name"
 msgstr "Nincs név"
 
@@ -317,20 +318,20 @@ msgstr "Nincs név"
 #. Encoding: None
 #.
 #. translators: Value for 'Page Scaling:' to not scale the document pages on printing
-#: libdocument/backend/pdf/pps-poppler.c:938 libview/pps-print-operation.c:2643
+#: libdocument/backend/pdf/pps-poppler.c:959 libview/pps-print-operation.c:2643
 #: shell-rs/src/properties_general.rs:82 shell-rs/src/properties_general.rs:199
 msgid "None"
 msgstr "Nincs"
 
-#: libdocument/backend/pdf/pps-poppler.c:946
+#: libdocument/backend/pdf/pps-poppler.c:967
 msgid "Embedded subset"
 msgstr "Beágyazott részhalmaz"
 
-#: libdocument/backend/pdf/pps-poppler.c:948
+#: libdocument/backend/pdf/pps-poppler.c:969
 msgid "Embedded"
 msgstr "Beágyazott"
 
-#: libdocument/backend/pdf/pps-poppler.c:950
+#: libdocument/backend/pdf/pps-poppler.c:971
 msgid "Not embedded"
 msgstr "Nem beágyazott"
 
@@ -339,7 +340,7 @@ msgstr "Nem beágyazott"
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:957
+#: libdocument/backend/pdf/pps-poppler.c:978
 msgid " (One of the Standard 14 Fonts)"
 msgstr " (a 14 szabványos betűkészlet egyike)"
 
@@ -348,7 +349,7 @@ msgstr " (a 14 szabványos betűkészlet egyike)"
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
 #.
-#: libdocument/backend/pdf/pps-poppler.c:964
+#: libdocument/backend/pdf/pps-poppler.c:985
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (nem a 14 szabványos betűkészlet egyike)"
 
@@ -362,7 +363,7 @@ msgstr " (nem a 14 szabványos betűkészlet egyike)"
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
 #.
-#: libdocument/backend/pdf/pps-poppler.c:983
+#: libdocument/backend/pdf/pps-poppler.c:1004
 #, c-format
 msgid ""
 "%s%s\n"
@@ -386,7 +387,7 @@ msgstr ""
 #. * Encoding: Custom
 #. * Embedded subset
 #.
-#: libdocument/backend/pdf/pps-poppler.c:1001
+#: libdocument/backend/pdf/pps-poppler.c:1022
 #, c-format
 msgid ""
 "%s%s\n"
@@ -398,7 +399,7 @@ msgstr ""
 "%s"
 
 #: libdocument/backend/ps/papers-psdocument.metainfo.xml.in.in:5
-#: libdocument/backend/ps/psdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/ps/psdocument.papers-backend.desktop.in.in:4
 msgid "PostScript Documents"
 msgstr "PostScript-dokumentumok"
 
@@ -417,7 +418,7 @@ msgid "Failed to save document “%s”"
 msgstr "Nem sikerült elmenteni a(z) „%s” dokumentumot"
 
 #: libdocument/backend/tiff/papers-tiffdocument.metainfo.xml.in.in:5
-#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:4
+#: libdocument/backend/tiff/tiffdocument.papers-backend.desktop.in.in:3
 msgid "TIFF Documents"
 msgstr "TIFF-dokumentumok"
 
@@ -430,7 +431,7 @@ msgid "Invalid document"
 msgstr "Érvénytelen dokumentum"
 
 #: libdocument/backend/xps/papers-xpsdocument.metainfo.xml.in.in:5
-#: libdocument/backend/xps/xpsdocument.papers-backend.desktop.in.in:5
+#: libdocument/backend/xps/xpsdocument.papers-backend.desktop.in.in:4
 msgid "XPS Documents"
 msgstr "XPS-dokumentumok"
 
@@ -520,7 +521,7 @@ msgstr "Nem sikerült létrehozni egy átmeneti könyvtárat: %s"
 msgid "This work is in the Public Domain"
 msgstr "Ez a munka közkincs"
 
-#: libview/context/pps-attachment-context.c:345
+#: libview/context/pps-attachment-context.c:346
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Melléklet mentése"
@@ -696,51 +697,51 @@ msgstr "Nézet görgetése lefelé"
 msgid "Document View"
 msgstr "Dokumentumnézet"
 
-#: libview/pps-view.c:2126
+#: libview/pps-view.c:2127
 msgid "Go to first page"
 msgstr "Ugrás az első oldalra"
 
-#: libview/pps-view.c:2128
+#: libview/pps-view.c:2129
 msgid "Go to previous page"
 msgstr "Ugrás az előző oldalra"
 
-#: libview/pps-view.c:2130
+#: libview/pps-view.c:2131
 msgid "Go to next page"
 msgstr "Ugrás a következő oldalra"
 
-#: libview/pps-view.c:2132
+#: libview/pps-view.c:2133
 msgid "Go to last page"
 msgstr "Ugrás az utolsó oldalra"
 
-#: libview/pps-view.c:2134
+#: libview/pps-view.c:2135
 msgid "Go to page"
 msgstr "Ugrás az oldalra"
 
-#: libview/pps-view.c:2136
+#: libview/pps-view.c:2137
 msgid "Find"
 msgstr "Keresés"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2166
 #, c-format
 msgid "Go to page %s"
 msgstr "Ugrás a(z) %s oldalra"
 
-#: libview/pps-view.c:2171
+#: libview/pps-view.c:2172
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ugrás erre: %s a következő fájlban: „%s”"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2175
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ugrás a(z) „%s” fájlra"
 
-#: libview/pps-view.c:2182
+#: libview/pps-view.c:2183
 #, c-format
 msgid "Launch %s"
 msgstr "%s indítása"
 
-#: libview/pps-view.c:2189
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Reset form"
 msgstr "Űrlap visszaállítása"
@@ -1322,7 +1323,7 @@ msgstr "Hullámos"
 msgid "_Apply"
 msgstr "_Alkalmaz"
 
-#: shell/pps-document-view.c:497 shell-rs/src/window.rs:468
+#: shell/pps-document-view.c:497 shell-rs/src/window.rs:486
 msgid "View Details"
 msgstr "Részletek megtekintése"
 
@@ -1730,19 +1731,19 @@ msgstr "Szöveges jegyzet _hozzáadása"
 msgid "_Highlight Selected Text"
 msgstr "_Kijelölt szöveg kiemelése"
 
-#: shell/pps-find-sidebar.ui:69
+#: shell/pps-find-sidebar.ui:70
 msgid "No Results Found"
 msgstr "Nincsenek találatok"
 
-#: shell/pps-find-sidebar.ui:70
+#: shell/pps-find-sidebar.ui:71
 msgid "Try a different search"
 msgstr "Próbáljon egy másik keresést"
 
-#: shell/pps-find-sidebar.ui:84
+#: shell/pps-find-sidebar.ui:85
 msgid "Perform a Search"
 msgstr "Keresés végrehajtása"
 
-#: shell/pps-find-sidebar.ui:85
+#: shell/pps-find-sidebar.ui:86
 msgid "The search results will appear here"
 msgstr "A keresési eredmények itt jelennek meg"
 
@@ -1904,59 +1905,63 @@ msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
 "Úr Balázs <ur.balazs at fsf dot hu>"
 
-#: shell-rs/src/application.rs:295
+#: shell-rs/src/application.rs:302
 msgid "The page label of the document to display."
 msgstr "A megjelenítendő dokumentum oldalcímkéje."
 
-#: shell-rs/src/application.rs:296
+#: shell-rs/src/application.rs:303
 msgid "PAGE"
 msgstr "OLDAL"
 
-#: shell-rs/src/application.rs:304
+#: shell-rs/src/application.rs:311
 msgid "The page number of the document to display."
 msgstr "A megjelenítendő dokumentum oldalszáma."
 
-#: shell-rs/src/application.rs:305
+#: shell-rs/src/application.rs:312
 msgid "NUMBER"
 msgstr "SZÁM"
 
-#: shell-rs/src/application.rs:313
+#: shell-rs/src/application.rs:320
 msgid "Named destination to display."
 msgstr "A megjelenítendő megnevezett cél."
 
-#: shell-rs/src/application.rs:314
+#: shell-rs/src/application.rs:321
 msgid "DEST"
 msgstr "CÉL"
 
-#: shell-rs/src/application.rs:322
+#: shell-rs/src/application.rs:329
 msgid "Run papers in fullscreen mode."
 msgstr "A Papírok futtatása teljes képernyős módban."
 
-#: shell-rs/src/application.rs:331
+#: shell-rs/src/application.rs:338
 msgid "Run papers in presentation mode."
 msgstr "A Papírok futtatása bemutató módban."
 
-#: shell-rs/src/application.rs:340
+#: shell-rs/src/application.rs:347
 msgid "Show the version of the program."
 msgstr "A program verziószámának megjelenítése."
 
-#: shell-rs/src/application.rs:350
+#: shell-rs/src/application.rs:357
 msgid "[FILE…]"
 msgstr "[FÁJL…]"
 
 #: shell-rs/src/page_selector.rs:77 shell-rs/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Oldal: {}"
 
 #: shell-rs/src/page_selector.rs:226 shell-rs/src/page_selector.rs:244
+#, rust-format
 msgid "({} of {})"
 msgstr "({} / {})"
 
 #: shell-rs/src/page_selector.rs:228 shell-rs/src/page_selector.rs:246
+#, rust-format
 msgid "of {}"
 msgstr "/ {}"
 
 #: shell-rs/src/password_view.rs:145
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
@@ -2004,10 +2009,10 @@ msgstr "_Nem"
 msgid "_Reload"
 msgstr "Új_ratöltés"
 
-#: shell-rs/src/window.rs:570
+#: shell-rs/src/window.rs:588
 msgid "Failed to Load Remote File."
 msgstr "Nem sikerült betölteni a távoli fájlt."
 
-#: shell-rs/src/window.rs:733
+#: shell-rs/src/window.rs:751
 msgid "Failed to Reload Document."
 msgstr "Nem sikerült újratölteni a dokumentumot."
