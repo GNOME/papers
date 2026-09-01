@@ -3576,21 +3576,18 @@ scroll_to_zoom_cb (GtkEventControllerScroll *self, gdouble dx, gdouble dy, GtkWi
 	return FALSE;
 }
 
-/* This is based on the deprecated function gtk_draw_insertion_cursor. */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 static void
 draw_caret_cursor (PpsView *view,
                    GtkSnapshot *snapshot)
 {
 	GdkRectangle view_rect;
 	GdkRGBA cursor_color;
-	GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (view));
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (!get_caret_cursor_area (view, priv->cursor_page, priv->cursor_offset, &view_rect))
 		return;
 
-	gtk_style_context_get_color (context, &cursor_color);
+	gtk_widget_get_color (GTK_WIDGET (view), &cursor_color);
 
 	gtk_snapshot_save (snapshot);
 
@@ -3603,7 +3600,6 @@ draw_caret_cursor (PpsView *view,
 
 	gtk_snapshot_restore (snapshot);
 }
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 static gboolean
 should_draw_caret_cursor (PpsView *view)
