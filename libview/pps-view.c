@@ -709,8 +709,6 @@ view_update_range_and_current_page (PpsView *view)
 			if (best_current_page >= 0 && priv->current_page != best_current_page) {
 				priv->current_page = best_current_page;
 				pps_document_model_set_page (priv->model, best_current_page);
-				if (!priv->caret_enabled)
-					priv->cursor_page = best_current_page;
 			}
 		}
 	} else if (is_dual_page (view, &odd_left)) {
@@ -3040,11 +3038,10 @@ get_caret_cursor_area (PpsView *view,
 	gint stem_width;
 	guint scroll_x, scroll_y;
 
-	if (!priv->caret_enabled || pps_document_model_get_rotation (priv->model) != 0)
+	if (pps_document_model_get_rotation (priv->model) != 0)
 		return FALSE;
 
-	if (!priv->page_cache)
-		return FALSE;
+	g_return_val_if_fail (priv->page_cache, FALSE);
 
 	pps_page_cache_get_text_layout (priv->page_cache, page, &areas, &n_areas);
 	if (!areas)
@@ -4114,11 +4111,10 @@ position_caret_cursor_at_location (PpsView *view,
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	g_autofree PpsDocumentPoint *doc_point = NULL;
 
-	if (!priv->caret_enabled || pps_document_model_get_rotation (priv->model) != 0)
+	if (pps_document_model_get_rotation (priv->model) != 0)
 		return FALSE;
 
-	if (!priv->page_cache)
-		return FALSE;
+	g_return_val_if_fail (priv->page_cache, FALSE);
 
 	doc_point = pps_view_get_document_point_for_view_point (view, x, y);
 	if (!doc_point)
@@ -7037,7 +7033,7 @@ jump_to_find_result (PpsView *view, guint page, GList *rect_list)
 	_pps_view_transform_doc_rect_to_view_rect (view, page,
 	                                           &rect, &view_rect);
 	_pps_view_ensure_rectangle_is_visible (view, page, &view_rect);
-	if (priv->caret_enabled && pps_document_model_get_rotation (priv->model) == 0)
+	if (pps_document_model_get_rotation (priv->model) == 0)
 		position_caret_cursor_at_doc_point (view, page,
 		                                    find_rect->x1, find_rect->y1);
 }
