@@ -1,16 +1,16 @@
 # Hungarian translation for papers.
-# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the papers package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2015, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2021, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: papers master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2025-08-31 11:20+0000\n"
-"PO-Revision-Date: 2025-09-01 15:20+0200\n"
+"POT-Creation-Date: 2026-05-25 11:03+0000\n"
+"PO-Revision-Date: 2026-09-01 22:35+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -26,7 +26,6 @@ msgstr ""
 #: shell/resources/pps-document-view.blp:85
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
 #: shell/src/application.rs:359
-#| msgid "Document View"
 msgid "Document Viewer"
 msgstr "Dokumentummegjelenítő"
 
@@ -157,6 +156,10 @@ msgstr "Nagy bélyegképek az oldalsávon"
 msgid "All search actions are contained in the sidebar"
 msgstr "Az összes keresési művelet megtalálható az oldalsávon"
 
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "A GNOME projekt"
+
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
 msgstr "Nyomtatási kép"
@@ -239,14 +242,14 @@ msgstr "Támogatást nyújt PDF-dokumentumok olvasásához"
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:741
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:100 shell/src/properties_general.rs:336
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Igen"
 
 #. translators: this is the document security state
 #: libdocument/backend/pdf/pps-poppler.c:744
 #: libdocument/backend/pdf/pps-poppler.c:747
-#: nautilus/pps-nautilus-extension.c:102 shell/src/properties_general.rs:337
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Nem"
 
@@ -399,17 +402,17 @@ msgstr "Támogatást nyújt TIFF-dokumentumok olvasásához"
 msgid "Invalid document"
 msgstr "Érvénytelen dokumentum"
 
-#: libdocument/pps-attachment.c:291 libdocument/pps-attachment.c:312
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
 #, c-format
 msgid "Couldn’t save attachment “%s”: %s"
 msgstr "Nem sikerült elmenteni a(z) „%s” mellékletet: %s"
 
-#: libdocument/pps-attachment.c:349
+#: libdocument/pps-attachment.c:336
 #, c-format
 msgid "Couldn’t open attachment “%s”: %s"
 msgstr "Nem sikerült megnyitni a(z) „%s” mellékletet: %s"
 
-#: libdocument/pps-attachment.c:386
+#: libdocument/pps-attachment.c:373
 #, c-format
 msgid "Couldn’t open attachment “%s”"
 msgstr "Nem sikerült megnyitni a(z) „%s” mellékletet"
@@ -476,8 +479,8 @@ msgstr "Ismeretlen MIME-típus"
 msgid "This work is in the Public Domain"
 msgstr "Ez a munka közkincs"
 
-#: libview/context/pps-attachment-context.c:349
-#: shell/src/document_view/actions.rs:1042
+#: libview/context/pps-attachment-context.c:350
+#: shell/src/document_view/actions.rs:1037
 msgid "Save Attachment"
 msgid_plural "Save Attachments"
 msgstr[0] "Melléklet mentése"
@@ -545,9 +548,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "A kiválasztott nyomtatási tartomány nem tartalmaz oldalakat"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:560 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:602
+#: shell/src/document_view/io.rs:555
 msgid "_Close"
 msgstr "_Bezárás"
 
@@ -627,55 +630,55 @@ msgstr "Keret rajzolása az oldalak köré"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Ha engedélyezve van, akkor keret lesz rajzolva az oldalak köré."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Oldalkezelés"
 
-#: libview/pps-view.c:2109
+#: libview/pps-view.c:2125
 msgid "Go to first page"
 msgstr "Ugrás az első oldalra"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2127
 msgid "Go to previous page"
 msgstr "Ugrás az előző oldalra"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2129
 msgid "Go to next page"
 msgstr "Ugrás a következő oldalra"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2131
 msgid "Go to last page"
 msgstr "Ugrás az utolsó oldalra"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2133
 msgid "Go to page"
 msgstr "Ugrás az oldalra"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2135
 msgid "Find"
 msgstr "Keresés"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2164
 #, c-format
 msgid "Go to page %s"
 msgstr "Ugrás a(z) %s oldalra"
 
-#: libview/pps-view.c:2154
+#: libview/pps-view.c:2170
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ugrás erre: %s a következő fájlban: „%s”"
 
-#: libview/pps-view.c:2157
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ugrás a(z) „%s” fájlra"
 
-#: libview/pps-view.c:2165
+#: libview/pps-view.c:2181
 #, c-format
 msgid "Launch %s"
 msgstr "%s indítása"
 
-#: libview/pps-view.c:2172
+#: libview/pps-view.c:2188
 #, c-format
 msgid "Reset form"
 msgstr "Űrlap visszaállítása"
@@ -745,7 +748,6 @@ msgid "GNOME Document Previewer"
 msgstr "GNOME dokumentumelőnézet-készítő"
 
 #: previewer/pps-previewer-window.c:171 previewer/pps-previewer-window.c:494
-#: shell/src/application.rs:72
 msgid "Papers Document Viewer"
 msgstr "Papírok dokumentummegjelenítő"
 
@@ -754,57 +756,57 @@ msgstr "Papírok dokumentummegjelenítő"
 msgid "The selected printer “%s” could not be found"
 msgstr "A kiválasztott nyomtató („%s”) nem található"
 
-#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:201
-#: shell/src/document_view/io.rs:202
+#: previewer/pps-previewer-window.c:472 shell/src/document_view/io.rs:205
+#: shell/src/document_view/io.rs:206
 msgid "Papers"
 msgstr "Papírok"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Előző oldal"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Következő oldal"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:210
 msgid "Page Count"
 msgstr "Oldalak száma"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Nyomtatás"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "A dokumentum nyomtatása"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:287
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Normál méret"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:275
 msgid "Zoom In"
 msgstr "Nagyítás"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:110
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:110
 msgid "Failed to Print Document"
 msgstr "Nem sikerült kinyomtatni a dokumentumot"
 
-#: nautilus/pps-nautilus-extension.c:104
+#: nautilus/pps-nautilus-extension.c:97
 #: shell/resources/pps-annotation-properties-dialog.blp:60
 #: shell/src/properties_general.rs:338
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: nautilus/pps-nautilus-extension.c:149
+#: nautilus/pps-nautilus-extension.c:138
 msgid "Document Properties"
 msgstr "Dokumentumtulajdonságok"
 
@@ -874,23 +876,19 @@ msgid "Size"
 msgstr "Méret"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:5
-#| msgid "Annotation Properties"
 msgctxt "Title of the dialog shown to edit properties of a given annotation."
 msgid "Annotation Properties"
 msgstr "Jegyzettulajdonságok"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:15
-#| msgid "Color"
 msgid "_Color"
 msgstr "_Szín"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:30
-#| msgid "Opacity"
 msgid "_Opacity"
 msgstr "Át_látszatlanság"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:46
-#| msgid "Icon"
 msgid "_Icon"
 msgstr "_Ikon"
 
@@ -931,7 +929,6 @@ msgid "Circle"
 msgstr "Kör"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:70
-#| msgid "Markup Type"
 msgid "_Markup Type"
 msgstr "_Jelölőkód típusa"
 
@@ -952,7 +949,6 @@ msgid "Squiggly"
 msgstr "Hullámos"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:87
-#| msgid "Author"
 msgid "_Author"
 msgstr "_Szerző"
 
@@ -1001,7 +997,7 @@ msgstr "Oldalsáv be- vagy kikapcsolása"
 msgid "Document Menu"
 msgstr "Dokumentum menü"
 
-#: shell/resources/pps-document-view.blp:223 shell/src/document_view/io.rs:265
+#: shell/resources/pps-document-view.blp:223
 msgid "Document has been digitally signed."
 msgstr "A dokumentum digitálisan alá lett írva."
 
@@ -1051,9 +1047,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "_Nyomtatás megszakítása és bezárás"
 
-#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:726
-#: shell/src/document_view/io.rs:486 shell/src/document_view/io.rs:530
-#: shell/src/document_view/io.rs:714
+#: shell/resources/pps-document-view.blp:551 shell/src/document_view.rs:727
+#: shell/src/document_view/io.rs:439 shell/src/document_view/io.rs:483
+#: shell/src/document_view/io.rs:667
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -1078,7 +1074,6 @@ msgid "_Help"
 msgstr "_Súgó"
 
 #: shell/resources/pps-document-view.blp:591 shell/resources/pps-window.blp:155
-#| msgid "Document View"
 msgid "_About Document Viewer"
 msgstr "A dokumentummegjelenítő _névjegye"
 
@@ -1137,25 +1132,21 @@ msgstr "Dokum_entumtulajdonságok"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:708
-#| msgid "Highlight"
 msgid "Highlight (h)"
 msgstr "Kiemelés (h)"
 
 #. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:724
-#| msgid "Strikethrough"
 msgid "Strikethrough (k)"
 msgstr "Áthúzott (k)"
 
 #. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:740
-#| msgid "Underline"
 msgid "Underline (u)"
 msgstr "Aláhúzott (u)"
 
 #. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:756
-#| msgid "Squiggly"
 msgid "Squiggly (q)"
 msgstr "Hullámos (q)"
 
@@ -1239,7 +1230,7 @@ msgstr "Mé_gse"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:707
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:660
 msgid "Password Required"
 msgstr "Jelszó szükséges"
 
@@ -1336,7 +1327,6 @@ msgid "C_ase Sensitive"
 msgstr "_Kis- és nagybetűk megkülönböztetése"
 
 #: shell/resources/pps-shortcuts-dialog.blp:6
-#| msgid "File"
 msgctxt "shortcut window"
 msgid "File"
 msgstr "Fájl"
@@ -1397,7 +1387,6 @@ msgid "Caret Navigation"
 msgstr "Kurzoros navigáció"
 
 #: shell/resources/pps-shortcuts-dialog.blp:64
-#| msgid "Select"
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Kijelölés"
@@ -1413,7 +1402,6 @@ msgid "Select All"
 msgstr "Összes kijelölése"
 
 #: shell/resources/pps-shortcuts-dialog.blp:78
-#| msgid "No Annotations"
 msgctxt "shortcut window"
 msgid "Zoom and Rotation"
 msgstr "Nagyítás és forgatás"
@@ -1464,8 +1452,6 @@ msgid "Automatic Zoom"
 msgstr "Automatikus nagyítás"
 
 #: shell/resources/pps-shortcuts-dialog.blp:127
-#| msgctxt "shortcut window"
-#| msgid "Caret Navigation"
 msgctxt "shortcut window"
 msgid "Navigation"
 msgstr "Navigáció"
@@ -1531,7 +1517,6 @@ msgid "Go to Document End"
 msgstr "Ugrás a dokumentum végére"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
-#| msgid "Document View"
 msgctxt "shortcut window"
 msgid "Document View"
 msgstr "Dokumentumnézet"
@@ -1582,7 +1567,6 @@ msgid "Highlight Text"
 msgstr "Szöveg kiemelése"
 
 #: shell/resources/pps-shortcuts-dialog.blp:239
-#| msgid "Strikethrough"
 msgctxt "shortcut window"
 msgid "Strikethrough Text"
 msgstr "Áthúzott szöveg"
@@ -1593,13 +1577,11 @@ msgid "Wavy/Squiggly Underline Text"
 msgstr "Hullámos aláhúzott szöveg"
 
 #: shell/resources/pps-shortcuts-dialog.blp:249
-#| msgid "Underline"
 msgctxt "shortcut window"
 msgid "Underline Text"
 msgstr "Aláhúzott szöveg"
 
 #: shell/resources/pps-shortcuts-dialog.blp:255
-#| msgid "Search"
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Keresés"
@@ -1767,11 +1749,11 @@ msgstr "A program verziószámának megjelenítése."
 msgid "[FILE…]"
 msgstr "[FÁJL…]"
 
-#: shell/src/document_view.rs:300
+#: shell/src/document_view.rs:301
 msgid "View Details"
 msgstr "Részletek megtekintése"
 
-#: shell/src/document_view.rs:705
+#: shell/src/document_view.rs:706
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1779,88 +1761,68 @@ msgstr ""
 "A dokumentum új vagy módosított jegyzeteket és olyan űrlapmezőket tartalmaz, "
 "amelyek ki lettek töltve."
 
-#: shell/src/document_view.rs:706
+#: shell/src/document_view.rs:707
 msgid "Document contains form fields that have been filled out."
 msgstr "A dokumentum olyan űrlapmezőket tartalmaz, amelyek ki lettek töltve."
 
-#: shell/src/document_view.rs:707
+#: shell/src/document_view.rs:708
 msgid "Document contains new or modified annotations."
 msgstr "A dokumentum új vagy módosított jegyzeteket tartalmaz."
 
-#: shell/src/document_view.rs:715
+#: shell/src/document_view.rs:716
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Ha nem ment másolatot, akkor a változtatások véglegesen elvesznek."
 
-#: shell/src/document_view.rs:716
+#: shell/src/document_view.rs:717
 msgid "Save Changes to a Copy?"
 msgstr "Elmenti a változtatásokat egy másolatba?"
 
-#: shell/src/document_view.rs:725
+#: shell/src/document_view.rs:726
 msgid "Close _Without Saving"
 msgstr "Bezárás mentés _nélkül"
 
-#: shell/src/document_view.rs:727
+#: shell/src/document_view.rs:728
 msgid "_Save a Copy"
 msgstr "_Másolat mentése"
 
-#: shell/src/document_view/actions.rs:844
+#: shell/src/document_view/actions.rs:832
 msgid "Save Image"
 msgstr "Kép mentése"
 
-#: shell/src/document_view/actions.rs:880
-msgid "Couldn’t find appropriate format to save image"
-msgstr "Nem található megfelelő formátum a kép mentéséhez"
-
-#: shell/src/document_view/actions.rs:897
-msgid "The image could not be saved."
-msgstr "A képet nem sikerült elmenteni."
-
-#: shell/src/document_view/actions.rs:969
+#: shell/src/document_view/actions.rs:964
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "A kurzornavigációs mód most engedélyezve van, nyomja meg az F7 billentyűt a "
 "letiltáshoz."
 
-#: shell/src/document_view/actions.rs:971
+#: shell/src/document_view/actions.rs:966
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "A kurzornavigációs mód most le van tiltva, nyomja meg az F7 billentyűt az "
 "engedélyezéshez."
 
-#: shell/src/document_view/actions.rs:1026 shell/src/sidebar_attachments.rs:286
+#: shell/src/document_view/actions.rs:1021
 msgid "Unable to Open Attachment"
 msgstr "Nem lehet megnyitni a mellékletet"
 
-#: shell/src/document_view/actions.rs:1059
-msgid "The attachment could not be saved."
-msgstr "A mellékletet nem sikerült elmenteni."
-
-#: shell/src/document_view/io.rs:269
-#| msgid "Digital Signature is invalid!"
-msgid "Digital signature is invalid"
-msgstr "A digitális aláírás érvénytelen"
-
-#: shell/src/document_view/io.rs:280
+#: shell/src/document_view/io.rs:284
 msgid "The Document Contains No Pages"
 msgstr "A dokumentum nem tartalmaz oldalakat"
 
-#: shell/src/document_view/io.rs:282
+#: shell/src/document_view/io.rs:286
 msgid "The Document Contains Only Empty Pages"
 msgstr "A dokumentum csak üres oldalakat tartalmaz"
 
-#: shell/src/document_view/io.rs:368 shell/src/document_view/io.rs:446
-msgid "The file could not be saved as “{}”."
-msgstr "A fájlt nem sikerült elmenteni „{}” néven."
-
-#: shell/src/document_view/io.rs:409
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Mentés másként…"
 
-#: shell/src/document_view/io.rs:485
+#: shell/src/document_view/io.rs:438
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Rajzoljon egy téglalapot az aláírási mező beszúrásához"
 
-#: shell/src/document_view/io.rs:507
+#: shell/src/document_view/io.rs:460
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1868,36 +1830,38 @@ msgstr ""
 "Digitálisan aláírta: {}\n"
 "Dátum: {}"
 
-#: shell/src/document_view/io.rs:523
+#: shell/src/document_view/io.rs:476
 msgid "Certificate Required"
 msgstr "Tanúsítvány szükséges"
 
-#: shell/src/document_view/io.rs:526
+#: shell/src/document_view/io.rs:479
 msgid "Select signing certificate"
 msgstr "Aláíró tanúsítvány kiválasztása"
 
-#: shell/src/document_view/io.rs:527
+#: shell/src/document_view/io.rs:480
 msgid "Select"
 msgstr "Kiválasztás"
 
-#: shell/src/document_view/io.rs:600
+#: shell/src/document_view/io.rs:553
 msgid "A certificate is required to sign this document"
 msgstr "Tanúsítvány szükséges a dokumentum aláírásához"
 
-#: shell/src/document_view/io.rs:669
+#: shell/src/document_view/io.rs:622
 msgid "Save Signed File"
 msgstr "Aláírt fájl mentése"
 
-#: shell/src/document_view/io.rs:699
+#: shell/src/document_view/io.rs:652
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Adja meg a következő jelszavát: {}"
 
-#: shell/src/document_view/io.rs:715
+#: shell/src/document_view/io.rs:668
 msgid "_Login"
 msgstr "_Bejelentkezés"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "A(z) „{}” feladat nyomtatása"
 
@@ -1905,35 +1869,36 @@ msgstr "A(z) „{}” feladat nyomtatása"
 msgid "No pending jobs in queue"
 msgstr "Nincs várakozó feladat a sorban"
 
-#: shell/src/document_view/signals.rs:226
-msgid "Unable to open external link"
-msgstr "Nem lehet megnyitni a külső hivatkozást"
-
 #: shell/src/document_view/signals.rs:254
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Biztonsági riasztás: megakadályozásra került, hogy ez a dokumentum megnyissa "
 "a(z) „{}” fájlt"
 
-#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:77
+#: shell/src/document_view/signals.rs:433 shell/src/page_selector.rs:88
 #: shell/src/sidebar_annotations_row.rs:82
+#, rust-format
 msgid "Page {}"
 msgstr "Oldal: {}"
 
 #. Translators: Do NOT translate the content between
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
-#: shell/src/page_selector.rs:230 shell/src/page_selector.rs:258
+#: shell/src/page_selector.rs:241 shell/src/page_selector.rs:269
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} / {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
-#: shell/src/page_selector.rs:238 shell/src/page_selector.rs:268
+#: shell/src/page_selector.rs:249 shell/src/page_selector.rs:279
+#, rust-format
 msgid "of {}"
 msgstr "/ {}"
 
 #: shell/src/password_view.rs:145
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr "A(z) „{}” dokumentum zárolva van, és a megnyitásához jelszó szükséges"
@@ -1943,7 +1908,6 @@ msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
 #: shell/src/properties_general.rs:152
-#| msgid "Location"
 msgid "Open File Location"
 msgstr "Fájl helyének megnyitása"
 
@@ -1960,7 +1924,6 @@ msgid "Folder"
 msgstr "Mappa"
 
 #: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
-#| msgid "File"
 msgid "File Path"
 msgstr "Fájlútvonal"
 
@@ -1972,88 +1935,6 @@ msgstr "Tartalom"
 msgid "Date &amp; Time"
 msgstr "Dátum és idő"
 
-#: shell/src/properties_signatures.rs:138
-#: shell/src/properties_signatures.rs:146
-msgid "Signed by"
-msgstr "Aláírta:"
-
-#: shell/src/properties_signatures.rs:187
-msgid "Signature is valid."
-msgstr "Az aláírás érvényes."
-
-#: shell/src/properties_signatures.rs:190
-msgid "Signature is invalid."
-msgstr "Az aláírás érvénytelen."
-
-#: shell/src/properties_signatures.rs:194
-msgid "Document has been changed after signing."
-msgstr "A dokumentum megváltozott az aláírás után."
-
-#: shell/src/properties_signatures.rs:198
-msgid "Signature could not be decoded."
-msgstr "Az aláírást nem sikerült visszafejteni."
-
-#: shell/src/properties_signatures.rs:202
-msgid "Signature verification error."
-msgstr "Aláírás-ellenőrzési hiba."
-
-#: shell/src/properties_signatures.rs:214
-msgid "Signed with a certificate issued by trusted issuer."
-msgstr "Megbízható kibocsátó által kiállított tanúsítvánnyal aláírva."
-
-#: shell/src/properties_signatures.rs:220
-msgid "Signed with a certificate issued by untrusted issuer."
-msgstr "Nem megbízható kibocsátó által kiállított tanúsítvánnyal aláírva."
-
-#: shell/src/properties_signatures.rs:226
-msgid "Signed with a certificate issued by unknown issuer."
-msgstr "Ismeretlen kibocsátó által kiállított tanúsítvánnyal aláírva."
-
-#: shell/src/properties_signatures.rs:231
-msgid "Signed with revoked certificate."
-msgstr "Visszavont tanúsítvánnyal aláírva."
-
-#: shell/src/properties_signatures.rs:235
-msgid "Signed with expired certificate."
-msgstr "Lejárt tanúsítvánnyal aláírva."
-
-#: shell/src/properties_signatures.rs:239
-msgid "Certificate verification error."
-msgstr "Tanúsítvány-ellenőrzési hiba."
-
-#: shell/src/properties_signatures.rs:243
-msgid "Certificate has not been verified."
-msgstr "A tanúsítvány nem volt ellenőrizve."
-
-#: shell/src/properties_signatures.rs:256
-msgid "Organization"
-msgstr "Szervezet"
-
-#: shell/src/properties_signatures.rs:265
-msgid "Date and Time"
-msgstr "Dátum és idő"
-
-#: shell/src/properties_signatures.rs:276
-msgid "Certificate Issuer"
-msgstr "Tanúsítvány kibocsátója"
-
-#: shell/src/properties_signatures.rs:287
-msgid "Certificate Issuer's Email"
-msgstr "Tanúsítványkibocsátó e-mail-címe"
-
-#: shell/src/properties_signatures.rs:298
-msgid "Certificate Issuer's Organization"
-msgstr "Tanúsítványkibocsátó szervezete"
-
-#: shell/src/properties_signatures.rs:309
-msgid "Certificate's Issuance Time"
-msgstr "Tanúsítvány kiállítási ideje"
-
-#: shell/src/properties_signatures.rs:321
-msgid "Certificate's Expiration Time"
-msgstr "Tanúsítvány lejárati ideje"
-
 #: shell/src/properties_signatures.rs:403
-#| msgid "View Details…"
 msgid "Hide Details…"
 msgstr "Részletek elrejtése…"
