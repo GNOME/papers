@@ -2978,16 +2978,24 @@ cursor_is_in_visible_page (PpsView *view)
 	         priv->cursor_page <= priv->end_page));
 }
 
+static inline gboolean
+cursor_is_displayed (PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+	GtkWidget *focus = gtk_window_get_focus (GTK_WINDOW (gtk_widget_get_root (GTK_WIDGET (view))));
+	return priv->caret_enabled &&
+	       focus && gtk_widget_get_parent (focus) == GTK_WIDGET (view) &&
+	       cursor_is_in_visible_page (view);
+}
+
 static gboolean
 cursor_should_blink (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
 
-	if (priv->caret_enabled &&
+	if (cursor_is_displayed (view) &&
 	    pps_document_model_get_rotation (priv->model) == 0 &&
-	    cursor_is_in_visible_page (view) &&
-	    gtk_widget_has_focus (GTK_WIDGET (view)) &&
 	    priv->pixbuf_cache &&
 	    !pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache, priv->cursor_page, scale)) {
 		GtkSettings *settings;
@@ -3091,7 +3099,6 @@ static void
 show_cursor (PpsView *view)
 {
 	GtkWidget *widget;
-	GdkRectangle view_rect;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (priv->cursor_visible)
@@ -3099,8 +3106,7 @@ show_cursor (PpsView *view)
 
 	widget = GTK_WIDGET (view);
 	priv->cursor_visible = TRUE;
-	if (gtk_widget_has_focus (widget) &&
-	    get_caret_cursor_area (view, priv->cursor_page, priv->cursor_offset, &view_rect)) {
+	if (cursor_is_displayed (view)) {
 		gtk_widget_queue_draw (widget);
 	}
 }
@@ -3109,7 +3115,6 @@ static void
 hide_cursor (PpsView *view)
 {
 	GtkWidget *widget;
-	GdkRectangle view_rect;
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 
 	if (!priv->cursor_visible)
@@ -3117,8 +3122,7 @@ hide_cursor (PpsView *view)
 
 	widget = GTK_WIDGET (view);
 	priv->cursor_visible = FALSE;
-	if (gtk_widget_has_focus (widget) &&
-	    get_caret_cursor_area (view, priv->cursor_page, priv->cursor_offset, &view_rect)) {
+	if (cursor_is_displayed (view)) {
 		gtk_widget_queue_draw (widget);
 	}
 }
@@ -3170,7 +3174,7 @@ pps_view_check_cursor_blink (PpsView *view)
 
 	g_clear_handle_id (&priv->cursor_blink_timeout_id, g_source_remove);
 
-	priv->cursor_visible = TRUE;
+	priv->cursor_visible = priv->caret_enabled;
 	priv->cursor_blink_time = 0;
 }
 
@@ -3603,11 +3607,8 @@ should_draw_caret_cursor (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	gdouble scale = pps_document_model_get_scale (priv->model);
-	GtkWidget *focus = gtk_window_get_focus (GTK_WINDOW (gtk_widget_get_root (GTK_WIDGET (view))));
 
-	return (priv->caret_enabled &&
-	        priv->cursor_visible &&
-	        focus && gtk_widget_get_parent (focus) == GTK_WIDGET (view) &&
+	return (cursor_is_displayed (view) && priv->cursor_visible &&
 	        !pps_pixbuf_cache_get_selection_region (priv->pixbuf_cache, priv->cursor_page, scale));
 }
 
