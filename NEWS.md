@@ -1,3 +1,24 @@
+Papers 49.8
+--------------
+* Bug fixes:
+  - #705 Make font names valid UTF-8 string (Qiu Wenbo)
+  - #700 Fix text search in DJVU documents (Qiu Wenbo)
+
+* Translation updates:
+  - Hungarian (Balázs Úr)
+  - Serbian (Марко Костић)
+  - Portuguese (Hugo Carvalho)
+  - Chinese (China) (Zeqian Sun)
+  - Lithuanian (Aurimas Černius)
+  - Czech (Patrik Sivek)
+  - Kazakh (Baurzhan Muftakhidinov)
+  - Swedish (Anders Jonsson)
+  - Georgian (Ekaterine Papava)
+  - Brazilian Portuguese (Rafael Fontenelle)
+  - Persian (Danial Behzadi)
+  - Slovenian (Martin)
+  - Ukrainian (Yuri Chornoivan)
+
 Papers 49.7
 --------------
 * Bug fixes:
