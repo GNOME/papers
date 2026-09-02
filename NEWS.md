@@ -1,3 +1,28 @@
+Papers 50.3
+--------------
+* Bug fixes:
+  - #705 Make font names valid UTF-8 string (Qiu Wenbo)
+  - #700 Fix text search in DJVU documents (Qiu Wenbo)
+  - !780 Make free text and stamp annotations printable by default (Lucas Baudin)
+
+* Translation updates:
+  - Hungarian (Balázs Úr)
+  - Serbian (Марко Костић)
+  - Portuguese (Hugo Carvalho)
+  - Chinese (China) (Zeqian Sun)
+  - Lithuanian (Aurimas Černius)
+  - Czech (Patrik Sivek)
+  - Occitan (Quentin PAGÈS)
+  - Kazakh (Baurzhan Muftakhidinov)
+  - Swedish (Anders Jonsson)
+  - Georgian (Ekaterine Papava)
+  - Brazilian Portuguese (Rafael Fontenelle)
+  - Persian (Danial Behzadi)
+  - Slovenian (Martin)
+  - Ukrainian (Yuri Chornoivan)
+  - French (Guillaume Bernard)
+  - German (Christian Kirbach)
+
 Papers 50.2
 --------------
 * Bug fixes:
