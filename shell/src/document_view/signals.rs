@@ -216,11 +216,13 @@ impl imp::PpsDocumentView {
             // Not a valid uri, assume https if it starts with www
             format!("https://{uri}")
         } else {
+            let relative_path = glib::Uri::unescape_string(&uri, None).unwrap();
+
             let path = self
                 .file()
                 .and_then(|f| f.path())
                 .unwrap()
-                .with_file_name(uri);
+                .with_file_name(relative_path);
 
             glib::filename_to_uri(path, None).unwrap().to_string()
         };
