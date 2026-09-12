@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: evince\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-01-26 15:31+0000\n"
-"PO-Revision-Date: 2026-02-13 17:34+0100\n"
+"POT-Creation-Date: 2026-05-25 11:00+0000\n"
+"PO-Revision-Date: 2026-08-31 19:35+0200\n"
 "Last-Translator: maite guix <maite.guix@me.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:87
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:359
+#: shell/src/application.rs:389
 msgid "Document Viewer"
 msgstr "Visualitzador de documents"
 
@@ -148,6 +148,10 @@ msgstr "Miniatures grans a la barra lateral"
 #: data/org.gnome.Papers.metainfo.xml.in.in:45
 msgid "All search actions are contained in the sidebar"
 msgstr "Totes les accions de cerca es troben a la barra lateral"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:60
+msgid "The GNOME Project"
+msgstr "El projecte GNOME"
 
 #: data/org.gnome.Papers-previewer.desktop.in.in:2
 msgid "Print Preview"
@@ -482,7 +486,7 @@ msgstr[1] "Desa les adjuncions"
 msgid "Page %s"
 msgstr "Pàgina %s"
 
-#: libview/pps-annotation-window.c:237
+#: libview/pps-annotation-window.c:242
 #: shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Edita la nota"
@@ -540,9 +544,9 @@ msgid "Your print range selection does not include any pages"
 msgstr "No hi ha cap pàgina a l'interval d'impressió"
 
 #. show close if the certificate is null, or if no cert is found
-#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:81
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:788 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:617
+#: shell/src/document_view/io.rs:567
 msgid "_Close"
 msgstr "_Tanca"
 
@@ -620,55 +624,55 @@ msgstr "Dibuixa una vora al voltant de les pàgines"
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Quan està habilitat, es dibuixarà una vora al voltant de cada pàgina."
 
-#: libview/pps-print-operation.c:2006
+#: libview/pps-print-operation.c:2010
 msgid "Page Handling"
 msgstr "Gestió de la pàgina"
 
-#: libview/pps-view.c:2111
+#: libview/pps-view.c:2134
 msgid "Go to first page"
 msgstr "Ves a la primera pàgina"
 
-#: libview/pps-view.c:2113
+#: libview/pps-view.c:2136
 msgid "Go to previous page"
 msgstr "Ves a la pàgina anterior"
 
-#: libview/pps-view.c:2115
+#: libview/pps-view.c:2138
 msgid "Go to next page"
 msgstr "Ves a la pàgina següent"
 
-#: libview/pps-view.c:2117
+#: libview/pps-view.c:2140
 msgid "Go to last page"
 msgstr "Ves a l'última pàgina"
 
-#: libview/pps-view.c:2119
+#: libview/pps-view.c:2142
 msgid "Go to page"
 msgstr "Ves a la pàgina"
 
-#: libview/pps-view.c:2121
+#: libview/pps-view.c:2144
 msgid "Find"
 msgstr "Cerca"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2173
 #, c-format
 msgid "Go to page %s"
 msgstr "Ves a la pàgina %s"
 
-#: libview/pps-view.c:2156
+#: libview/pps-view.c:2179
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Ves a %s en el fitxer «%s»"
 
-#: libview/pps-view.c:2159
+#: libview/pps-view.c:2182
 #, c-format
 msgid "Go to file “%s”"
 msgstr "Ves al fitxer «%s»"
 
-#: libview/pps-view.c:2167
+#: libview/pps-view.c:2190
 #, c-format
 msgid "Launch %s"
 msgstr "Engega %s"
 
-#: libview/pps-view.c:2174
+#: libview/pps-view.c:2197
 #, c-format
 msgid "Reset form"
 msgstr "Reinicialitza el formulari"
@@ -750,42 +754,42 @@ msgstr "No s'ha pogut trobar la impressora «%s»"
 msgid "Papers"
 msgstr "Papers"
 
-#: previewer/pps-previewer-window.blp:19
+#: previewer/pps-previewer-window.blp:21
 msgid "Previous Page"
 msgstr "Pàgina anterior"
 
-#: previewer/pps-previewer-window.blp:25
+#: previewer/pps-previewer-window.blp:27
 msgid "Next Page"
 msgstr "Pàgina següent"
 
-#: previewer/pps-previewer-window.blp:31
+#: previewer/pps-previewer-window.blp:33
 #: shell/resources/pps-document-view.blp:212
 msgid "Page Count"
 msgstr "Nombre de pàgines"
 
-#: previewer/pps-previewer-window.blp:36
+#: previewer/pps-previewer-window.blp:38
 msgid "_Print"
 msgstr "_Imprimeix"
 
-#: previewer/pps-previewer-window.blp:37
+#: previewer/pps-previewer-window.blp:39
 msgid "Print This Document"
 msgstr "Imprimeix el document"
 
-#: previewer/pps-previewer-window.blp:48
+#: previewer/pps-previewer-window.blp:50
 #: shell/resources/pps-document-view.blp:292
 msgid "Zoom Out"
 msgstr "Allunya"
 
-#: previewer/pps-previewer-window.blp:55
+#: previewer/pps-previewer-window.blp:57
 msgid "Normal Size"
 msgstr "Mida normal"
 
-#: previewer/pps-previewer-window.blp:62
+#: previewer/pps-previewer-window.blp:64
 #: shell/resources/pps-document-view.blp:279
 msgid "Zoom In"
 msgstr "Apropa"
 
-#: previewer/pps-previewer-window.blp:78 shell/src/document_view/print.rs:114
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
 msgid "Failed to Print Document"
 msgstr "No s'ha pogut imprimir el document"
 
@@ -1030,7 +1034,7 @@ msgid "Erase Annotations"
 msgstr "Elimina anotacions"
 
 #: shell/resources/pps-document-view.blp:510
-#: shell/src/document_view/actions.rs:1211
+#: shell/src/document_view/actions.rs:1206
 msgid "Edit Document"
 msgstr "Edita el document"
 
@@ -1072,9 +1076,9 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Cancel·la la im_pressió i tanca"
 
-#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:794
-#: shell/src/document_view/io.rs:490 shell/src/document_view/io.rs:538
-#: shell/src/document_view/io.rs:730
+#: shell/resources/pps-document-view.blp:779 shell/src/document_view.rs:812
+#: shell/src/document_view/io.rs:440 shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:680
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
@@ -1335,7 +1339,7 @@ msgstr "C_ancel·la"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:723
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:673
 msgid "Password Required"
 msgstr "Cal una contrasenya"
 
@@ -1822,44 +1826,44 @@ msgstr ""
 "Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail.com>\n"
 "Victor Dargallo <victordargallo@disroot.org>"
 
-#: shell/src/application.rs:366
+#: shell/src/application.rs:396
 msgid "The page label of the document to display."
 msgstr "L'etiqueta de la pàgina del document a mostrar."
 
-#: shell/src/application.rs:367
+#: shell/src/application.rs:397
 msgid "PAGE"
 msgstr "PÀGINA"
 
-#: shell/src/application.rs:375
+#: shell/src/application.rs:405
 msgid "The page number of the document to display."
 msgstr "El número de pàgina del document a mostrar."
 
-#: shell/src/application.rs:376
+#: shell/src/application.rs:406
 msgid "NUMBER"
 msgstr "NÚMERO"
 
-#: shell/src/application.rs:384
+#: shell/src/application.rs:414
 msgid "Named destination to display."
 msgstr "Destinació amb nom a mostrar."
 
-#: shell/src/application.rs:385
+#: shell/src/application.rs:415
 msgid "DEST"
 msgstr "DESTINACIÓ"
 
-#: shell/src/application.rs:393
+#: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
 msgstr "Executa el Papers en mode de pantalla completa."
 
 # FIXME
-#: shell/src/application.rs:402
+#: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
 msgstr "Executa el Papers en mode de presentació."
 
-#: shell/src/application.rs:411
+#: shell/src/application.rs:441
 msgid "Show the version of the program."
 msgstr "Mostra la versió del programa."
 
-#: shell/src/application.rs:421
+#: shell/src/application.rs:451
 msgid "[FILE…]"
 msgstr "[FITXER…]"
 
@@ -1867,7 +1871,7 @@ msgstr "[FITXER…]"
 msgid "View Details"
 msgstr "Mostra els detalls"
 
-#: shell/src/document_view.rs:773
+#: shell/src/document_view.rs:791
 msgid ""
 "Document contains new or modified annotations and form fields that have been "
 "filled out."
@@ -1875,55 +1879,55 @@ msgstr ""
 "El document conté anotacions noves o modificades i camps de formulari que "
 "s'han emplenat."
 
-#: shell/src/document_view.rs:774
+#: shell/src/document_view.rs:792
 msgid "Document contains form fields that have been filled out."
 msgstr "El document conté camps de formulari que s'han emplenat."
 
-#: shell/src/document_view.rs:775
+#: shell/src/document_view.rs:793
 msgid "Document contains new or modified annotations."
 msgstr "El document conté anotacions modificades o noves."
 
-#: shell/src/document_view.rs:783
+#: shell/src/document_view.rs:801
 msgid "If you don’t save a copy, changes will be permanently lost."
 msgstr "Si no en deseu una còpia, els canvis es perdran permanentment."
 
-#: shell/src/document_view.rs:784
+#: shell/src/document_view.rs:802
 msgid "Save Changes to a Copy?"
 msgstr "Voleu desar els canvis en una còpia?"
 
-#: shell/src/document_view.rs:793
+#: shell/src/document_view.rs:811
 msgid "Close _Without Saving"
 msgstr "_Tanca sense desar"
 
-#: shell/src/document_view.rs:795
+#: shell/src/document_view.rs:813
 msgid "_Save a Copy"
 msgstr "De_sa'n una còpia"
 
-#: shell/src/document_view/actions.rs:1008
+#: shell/src/document_view/actions.rs:996
 msgid "Save Image"
 msgstr "Desa la imatge"
 
-#: shell/src/document_view/actions.rs:1133
+#: shell/src/document_view/actions.rs:1128
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
 "S'ha activat el mode de navegació per cursor («caret»); premeu F7 per "
 "desactivar-lo."
 
-#: shell/src/document_view/actions.rs:1135
+#: shell/src/document_view/actions.rs:1130
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
 "El mode de navegació per cursor («caret») està ara desactivat; premeu F7 per "
 "activar-lo."
 
-#: shell/src/document_view/actions.rs:1193
+#: shell/src/document_view/actions.rs:1188
 msgid "Close Menu"
 msgstr "Tanca el menú"
 
-#: shell/src/document_view/actions.rs:1270
+#: shell/src/document_view/actions.rs:1271
 msgid "Unable to Open Attachment"
 msgstr "No s'ha pogut obrir l'adjunció"
 
-#: shell/src/document_view/actions.rs:1286
+#: shell/src/document_view/actions.rs:1287
 msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Desa l'adjunció"
@@ -1936,15 +1940,15 @@ msgstr "El document no conté cap pàgina"
 msgid "The Document Contains Only Empty Pages"
 msgstr "El document només conté pàgines buides"
 
-#: shell/src/document_view/io.rs:412
+#: shell/src/document_view/io.rs:362
 msgid "Save As…"
 msgstr "Anomena i desa…"
 
-#: shell/src/document_view/io.rs:489
+#: shell/src/document_view/io.rs:439
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Traça un rectangle per inserir un camp de signatura"
 
-#: shell/src/document_view/io.rs:512
+#: shell/src/document_view/io.rs:462
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -1952,31 +1956,31 @@ msgstr ""
 "Signat digitalment per {}\n"
 "Data: {}"
 
-#: shell/src/document_view/io.rs:531
+#: shell/src/document_view/io.rs:481
 msgid "Certificate Required"
 msgstr "Es requereix un certificat"
 
-#: shell/src/document_view/io.rs:534
+#: shell/src/document_view/io.rs:484
 msgid "Select signing certificate"
 msgstr "Seleccioneu el certificat per signar"
 
-#: shell/src/document_view/io.rs:535
+#: shell/src/document_view/io.rs:485
 msgid "Select"
 msgstr "Selecciona"
 
-#: shell/src/document_view/io.rs:615
+#: shell/src/document_view/io.rs:565
 msgid "A certificate is required to sign this document"
 msgstr "Fa falta un certificat per a signar aquest document"
 
-#: shell/src/document_view/io.rs:684
+#: shell/src/document_view/io.rs:634
 msgid "Save Signed File"
 msgstr "Desa el fitxer signat"
 
-#: shell/src/document_view/io.rs:714
+#: shell/src/document_view/io.rs:664
 msgid "Please enter password for {}"
 msgstr "Introduïu la contrasenya de {}"
 
-#: shell/src/document_view/io.rs:731
+#: shell/src/document_view/io.rs:681
 msgid "_Login"
 msgstr "_Inici de sessió"
 
@@ -2002,7 +2006,7 @@ msgstr ""
 "Alerta de seguretat: s'ha impedit que aquest document obri el fitxer «{}»"
 
 #: shell/src/document_view/signals.rs:439 shell/src/page_selector.rs:89
-#: shell/src/sidebar_annotations_row.rs:82
+#: shell/src/sidebar_annotations_row.rs:83
 msgid "Page {}"
 msgstr "Pàgina {}"
 
