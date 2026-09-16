@@ -11,8 +11,8 @@ files=$(grep -lR --include='*.c' '\(gettext\|[^I_)]_\) \?(' $cdirs)
 # find Rust files that contain gettext keywords
 files="$files "$(grep -lR --include='*.rs' 'gettext\(_f\)\?(' $rsdirs/)
 
-# find ui files that contain translatable string
-files="$files "$(grep -lRi --include='*.ui' 'translatable="[ty1]' $uidirs)
+# find blp files that contain translatable string
+files="$files "$(grep -lRi --include='*.blp' '_("' $uidirs)"
 
 # find .desktop files
 files="$files "$(find $desktopdirs -name '*.desktop*')
