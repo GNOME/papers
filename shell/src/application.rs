@@ -240,20 +240,13 @@ mod imp {
                 "System"
             };
 
-            let distribution = if let Ok(os_release) = std::fs::read_to_string("/etc/os-release") {
-                os_release
-                    .lines()
-                    .find(|line| line.starts_with("PRETTY_NAME="))
-                    .and_then(|line| line.split_once('='))
-                    .map(|(_, name)| name.trim_matches('"'))
-                    .unwrap_or("Unknown")
-                    .to_string()
-            } else {
-                "Unknown".to_string()
-            };
+            let distribution = glib::os_info("PRETTY_NAME")
+                .or_else(|| glib::os_info("NAME"))
+                .unwrap_or_else(|| "Unknown".into());
 
-            let desktop_env =
-                std::env::var("XDG_CURRENT_DESKTOP").unwrap_or_else(|_| "Unknown".to_string());
+            let desktop_env = detect_desktop_environment::DesktopEnvironment::detect()
+                .map(|d| d.to_string())
+                .unwrap_or_else(|| "Unknown".into());
 
             let mut backend_info_str = String::from("None");
             if let Some(window) = self.obj().active_window().and_downcast::<PpsWindow>()

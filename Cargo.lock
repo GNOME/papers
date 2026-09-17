@@ -696,6 +696,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "detect-desktop-environment"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64eafefc26270510306f258e5223cc405d606dec7c8305bd4370832f90541484"
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2077,6 +2083,7 @@ version = "0.1.0"
 dependencies = [
  "cairo-rs",
  "chrono",
+ "detect-desktop-environment",
  "env_logger",
  "formatx",
  "futures",
