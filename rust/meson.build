@@ -20,10 +20,15 @@ configure_file(
   configuration: config_h,
 )
 
+# Shared cargo target directory for shell, thumbnailer, and other Rust targets
+# so workspace dependency crates are compiled once.
+cargo_target_dir = build_root / 'cargo-target'
+
 # Common environment variables for all rust build targets
 cargo_common_env = environment()
 # it seems that flatpak can't access network during install stage.
 cargo_common_env.set('CARGO_HOME', build_root / 'cargo-home')
+cargo_common_env.set('CARGO_TARGET_DIR', cargo_target_dir)
 cargo_common_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
 # override library lookup, we should not use the system library.
 cargo_common_env.set('SYSTEM_DEPS_PAPERS_VIEW_4_0_NO_PKG_CONFIG', '1')

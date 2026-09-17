@@ -1,7 +1,7 @@
 cargo = find_program('cargo', required: true)
 
 cargo_options = [ '--manifest-path', shell_rs_root / 'Cargo.toml' ]
-cargo_options += [ '--target-dir', meson.current_build_dir() ]
+cargo_options += [ '--target-dir', cargo_target_dir ]
 
 if rust_target == 'release'
   cargo_options += [ '--release' ]
@@ -48,7 +48,7 @@ custom_target(
   output: meson.project_name(),
   command: [
     'cp',
-    meson.current_build_dir() / rust_target / meson.project_name(),
+    cargo_target_dir / rust_target / meson.project_name(),
     '@OUTPUT@',
   ],
 )

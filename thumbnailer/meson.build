@@ -12,7 +12,7 @@ cargo = find_program('cargo', required: true)
 
 thumbnailer_root = meson.current_source_dir()
 cargo_options = ['--manifest-path', thumbnailer_root / 'Cargo.toml']
-cargo_options += ['--target-dir', meson.current_build_dir()]
+cargo_options += ['--target-dir', cargo_target_dir ]
 
 if rust_target == 'release'
   cargo_options += [ '--release' ]
@@ -44,7 +44,7 @@ copy = custom_target(
   output: meson.project_name() + '-thumbnailer',
   command: [
     'cp',
-    meson.current_build_dir() / rust_target / meson.project_name()
+    cargo_target_dir / rust_target / meson.project_name()
     + '-thumbnailer',
     '@OUTPUT@',
   ],
