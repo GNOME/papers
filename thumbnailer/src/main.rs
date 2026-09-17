@@ -63,7 +63,9 @@ impl Args {
 fn main() -> ExitCode {
     env_logger::builder().format_timestamp_millis().init();
 
-    setlocale(LocaleCategory::LcAll, "");
+    unsafe {
+        setlocale(LocaleCategory::LcAll, "");
+    }
 
     let Some(args) = Args::new() else {
         println!("{}", USAGE);
