@@ -8,7 +8,7 @@ fn attributes_for_uri(uri: &str) -> HashMap<&str, &str> {
     HashMap::from([("type", "document_password"), ("uri", uri)])
 }
 
-pub async fn lookup_password(uri: &str) -> oo7::Result<Option<String>> {
+pub async fn lookup_password(uri: &str) -> Result<Option<String>, Box<oo7::Error>> {
     let items = Keyring::new()
         .await?
         .search_items(&attributes_for_uri(uri))
@@ -19,14 +19,19 @@ pub async fn lookup_password(uri: &str) -> oo7::Result<Option<String>> {
             return item
                 .secret()
                 .await
-                .map(|p| Some(String::from_utf8_lossy(p.as_ref()).to_string()));
+                .map(|p| Some(String::from_utf8_lossy(p.as_ref()).to_string()))
+                .map_err(Box::new);
         }
     }
 
     Ok(None)
 }
 
-pub async fn save_password(uri: &str, password: &str, flags: gio::PasswordSave) -> oo7::Result<()> {
+pub async fn save_password(
+    uri: &str,
+    password: &str,
+    flags: gio::PasswordSave,
+) -> Result<(), Box<oo7::Error>> {
     if matches!(flags, gio::PasswordSave::Never) {
         return Ok(());
     }
@@ -40,4 +45,5 @@ pub async fn save_password(uri: &str, password: &str, flags: gio::PasswordSave) 
             true,
         )
         .await
+        .map_err(Box::new)
 }
