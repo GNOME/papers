@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-08-01 10:26+0000\n"
-"PO-Revision-Date: 2026-08-01 13:54+0200\n"
+"POT-Creation-Date: 2026-09-19 02:01+0000\n"
+"PO-Revision-Date: 2026-09-19 11:24+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:88 shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:389
+#: shell/src/application.rs:382
 msgid "Document Viewer"
 msgstr "Visionador de documents"
 
@@ -165,7 +165,7 @@ msgstr "formularis"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:26
 msgid "annotate"
-msgstr "Anotar"
+msgstr "anotar"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:27
 msgid "annotations"
@@ -306,7 +306,7 @@ msgstr "Pas cap de fichièr dins l'archiu"
 #: libdocument/backend/comics/comics-document.c:302
 #, c-format
 msgid "Not a comic book MIME type: %s"
-msgstr "Marrit tipe MIME benda dessenhada : %s"
+msgstr "Marrit tipe MIME benda dessenhada : %s"
 
 #: libdocument/backend/comics/comics-document.c:309
 msgid "libarchive lacks support for this comic book’s compression, please contact your distributor"
@@ -586,7 +586,7 @@ msgstr "%.2f × %.2f poces"
 #: libdocument/pps-document-info.c:356
 #, c-format
 msgid "%s, Portrait (%s)"
-msgstr "%s, retrait (%s)"
+msgstr "%s, retrach (%s)"
 
 #. Note to translators: first placeholder is the paper name (eg.
 #. * A4), second placeholder is the paper size (eg. 297x210 mm)
@@ -675,7 +675,7 @@ msgstr "Generacion de l'apercebut : pagina %d de %d"
 #. Initial state
 #: libview/pps-print-operation.c:341
 msgid "Preparing to print…"
-msgstr "Preparacion de l'impression…"
+msgstr "Preparacion a imprimir…"
 
 #: libview/pps-print-operation.c:345
 #, c-format
@@ -692,7 +692,7 @@ msgstr "Vòstre interval d'impression inclutz pas cap de pagina"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83 shell/resources/pps-document-view.blp:791
-#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:574
+#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:572
 msgid "_Close"
 msgstr "_Tampar"
 
@@ -730,10 +730,10 @@ msgstr ""
 "\n"
 "• Pas cap : las paginas son pas redimensionadas.\n"
 "\n"
-"• Reduire segon la zòna imprimibla : las paginas mai grandas que la zòna imprimibla son reduitas per correspondre "
+"• Reduire segon la zòna imprimibla : las paginas mai grandas que la zòna imprimibla son reduchas per correspondre "
 "a la zòna imprimibla de l'imprimenta.\n"
 "\n"
-"• Ajustar segon la zòna imprimibla : las paginas son reduitas o agrandidas per fin de correspondre al pus juste a "
+"• Ajustar segon la zòna imprimibla : las paginas son reduchas o agrandidas per fin de correspondre al pus juste a "
 "la zòna imprimibla de l'imprimenta.\n"
 
 #: libview/pps-print-operation.c:1898
@@ -888,7 +888,7 @@ msgstr "Visionador de documents Papers"
 msgid "The selected printer “%s” could not be found"
 msgstr "L'imprimenta seleccionada « %s » pòt pas èsser trobada"
 
-#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212 shell/src/document_view/io.rs:213
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:210 shell/src/document_view/io.rs:211
 msgid "Papers"
 msgstr "Papers"
 
@@ -1210,8 +1210,8 @@ msgstr ""
 msgid "Abort _Print and Close"
 msgstr "Anullar l'_impression e tampar"
 
-#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833 shell/src/document_view/io.rs:447
-#: shell/src/document_view/io.rs:495 shell/src/document_view/io.rs:872
+#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833 shell/src/document_view/io.rs:445
+#: shell/src/document_view/io.rs:493 shell/src/document_view/io.rs:871
 msgid "_Cancel"
 msgstr "_Anullar"
 
@@ -1473,7 +1473,7 @@ msgid "C_ancel"
 msgstr "An_ullar"
 
 #: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
 msgid "Password Required"
 msgstr "Senhal requesit"
 
@@ -1947,43 +1947,43 @@ msgstr "© 1996-2025 Los autors del visionador de documents Papers"
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "The page label of the document to display."
 msgstr "L'etiqueta de la pagina del document d'afichar."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:390
 msgid "PAGE"
 msgstr "PAGINA"
 
-#: shell/src/application.rs:405
+#: shell/src/application.rs:398
 msgid "The page number of the document to display."
 msgstr "Lo numèro de la pagina del document d'afichar."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:399
 msgid "NUMBER"
 msgstr "NUMÈRO"
 
-#: shell/src/application.rs:414
+#: shell/src/application.rs:407
 msgid "Named destination to display."
 msgstr "Destinacion nomenada d'afichar."
 
-#: shell/src/application.rs:415
+#: shell/src/application.rs:408
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:423
+#: shell/src/application.rs:416
 msgid "Run papers in fullscreen mode."
 msgstr "Executar papers en mòde ecran complèt."
 
-#: shell/src/application.rs:432
+#: shell/src/application.rs:425
 msgid "Run papers in presentation mode."
 msgstr "Executar papers en mòde presentacion."
 
-#: shell/src/application.rs:441
+#: shell/src/application.rs:434
 msgid "Show the version of the program."
 msgstr "Afichar la version del programa."
 
-#: shell/src/application.rs:451
+#: shell/src/application.rs:444
 msgid "[FILE…]"
 msgstr "[FICHIÈR…]"
 
@@ -2048,57 +2048,57 @@ msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Enregistrar la pèça junta"
 
-#: shell/src/document_view/io.rs:291
+#: shell/src/document_view/io.rs:289
 msgid "The Document Contains No Pages"
 msgstr "Lo document a pas cap de pagina"
 
-#: shell/src/document_view/io.rs:293
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains Only Empty Pages"
 msgstr "Lo document conten pas que de paginas voidas"
 
-#: shell/src/document_view/io.rs:369
+#: shell/src/document_view/io.rs:367
 msgid "Save As…"
 msgstr "Enregistrar jos…"
 
-#: shell/src/document_view/io.rs:446
+#: shell/src/document_view/io.rs:444
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Dessenhar un rectangle per inserir un camp de signatura"
 
-#: shell/src/document_view/io.rs:469
+#: shell/src/document_view/io.rs:467
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
 msgstr ""
 "Signat electronicament per {}\n"
-"Data : {}"
+"Data : {}"
 
-#: shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:486
 msgid "Certificate Required"
 msgstr "Certificat requerit"
 
-#: shell/src/document_view/io.rs:491
+#: shell/src/document_view/io.rs:489
 msgid "Select signing certificate"
 msgstr "Seleccionar lo certificat de signatura"
 
-#: shell/src/document_view/io.rs:492
+#: shell/src/document_view/io.rs:490
 msgid "Select"
 msgstr "Seleccionar"
 
-#: shell/src/document_view/io.rs:572
+#: shell/src/document_view/io.rs:570
 msgid "A certificate is required to sign this document"
 msgstr "Se requerís un certificat per signar aqueste document"
 
-#: shell/src/document_view/io.rs:826
+#: shell/src/document_view/io.rs:825
 msgid "Save Signed File"
 msgstr "Enregistrat fichièr signat"
 
-#: shell/src/document_view/io.rs:856
+#: shell/src/document_view/io.rs:855
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Mercés de picar lo senhal per {}"
 
-#: shell/src/document_view/io.rs:873
+#: shell/src/document_view/io.rs:872
 msgid "_Login"
 msgstr "_Connexion"
 
@@ -2119,12 +2119,12 @@ msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} prètzfach en espèra dins la fila"
 msgstr[1] "{} prètzfaches en espèra dins la fila"
 
-#: shell/src/document_view/signals.rs:266
+#: shell/src/document_view/signals.rs:268
 #, rust-format
 msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr "Alèrta de seguretat : avèm empachat aquesta document de dobrir lo fichièr « {} »"
 
-#: shell/src/document_view/signals.rs:452 shell/src/page_selector.rs:91 shell/src/sidebar_annotations_row.rs:83
+#: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91 shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
 msgstr "Pagina {}"
