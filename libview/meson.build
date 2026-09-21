@@ -150,7 +150,7 @@ blueprints = custom_target(
   ],
 )
 
-sources += gnome.compile_resources(
+resource_sources = gnome.compile_resources(
   'pps-view-resources',
   'libview.gresource.xml',
   source_dir: data_dir,
@@ -162,7 +162,7 @@ sources += gnome.compile_resources(
 libppsview = shared_library(
   'ppsview-' + pps_api_version,
   version: pps_view_version,
-  sources: sources + marshal_sources + enum_sources,
+  sources: sources + resource_sources + marshal_sources + enum_sources,
   include_directories: [top_inc, context_inc, factory_inc],
   dependencies: libview_deps,
   c_args: cflags,
