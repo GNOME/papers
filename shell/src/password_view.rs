@@ -44,6 +44,7 @@ mod imp {
 
             if error {
                 password_entry.add_css_class("error");
+                password_entry.update_state(&[gtk::accessible::State::Invalid(gtk::AccessibleInvalidState::True)]);
 
                 builder
                     .object::<gtk::Label>("error_message")
