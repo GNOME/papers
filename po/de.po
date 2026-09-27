@@ -33,9 +33,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-08-26 14:36+0000\n"
-"PO-Revision-Date: 2026-09-07 22:32+0200\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"POT-Creation-Date: 2026-09-22 09:50+0000\n"
+"PO-Revision-Date: 2026-09-25 20:35+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:88
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:389
+#: shell/src/application.rs:382
 msgid "Document Viewer"
 msgstr "Dokumentenbetrachter"
 
@@ -151,7 +151,7 @@ msgstr ""
 
 #: data/org.gnome.Papers.gschema.xml:115
 msgid "Last placed signature scale"
-msgstr ""
+msgstr "Skalierung der zuletzt platzierten Unterschrift"
 
 #: data/org.gnome.Papers.gschema.xml:122
 msgid "Previewer window height"
@@ -763,7 +763,7 @@ msgstr "Ihre Druckbereichsauswahl enthält keine Seiten"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:574
+#: shell/src/document_view/io.rs:572
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -965,8 +965,8 @@ msgstr "Papers Dokumentenbetrachter"
 msgid "The selected printer “%s” could not be found"
 msgstr "Der gewählte Drucker »%s« konnte nicht gefunden werden"
 
-#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212
-#: shell/src/document_view/io.rs:213
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:210
+#: shell/src/document_view/io.rs:211
 msgid "Papers"
 msgstr "Papers"
 
@@ -1301,8 +1301,8 @@ msgid "Abort _Print and Close"
 msgstr "Drucken a_bbrechen und schließen"
 
 #: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
-#: shell/src/document_view/io.rs:447 shell/src/document_view/io.rs:495
-#: shell/src/document_view/io.rs:872
+#: shell/src/document_view/io.rs:445 shell/src/document_view/io.rs:493
+#: shell/src/document_view/io.rs:871
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -1579,7 +1579,7 @@ msgstr "A_bbrechen"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
 msgid "Password Required"
 msgstr "Passwort erforderlich"
 
@@ -2073,43 +2073,43 @@ msgstr ""
 "Elias Projahn <elias@johrpan.de>\n"
 "Konstantin Tutsch <mail@konstantintutsch.com>"
 
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "The page label of the document to display."
 msgstr "Die anzuzeigende Seitenbezeichnung des Dokuments."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:390
 msgid "PAGE"
 msgstr "SEITE"
 
-#: shell/src/application.rs:405
+#: shell/src/application.rs:398
 msgid "The page number of the document to display."
 msgstr "Die anzuzeigende Seitennummer des Dokuments."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:399
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: shell/src/application.rs:414
+#: shell/src/application.rs:407
 msgid "Named destination to display."
 msgstr "Name des anzuzeigenden Ziels."
 
-#: shell/src/application.rs:415
+#: shell/src/application.rs:408
 msgid "DEST"
 msgstr "DEST"
 
-#: shell/src/application.rs:423
+#: shell/src/application.rs:416
 msgid "Run papers in fullscreen mode."
 msgstr "Papers im Vollbildmodus starten."
 
-#: shell/src/application.rs:432
+#: shell/src/application.rs:425
 msgid "Run papers in presentation mode."
 msgstr "Papers im Präsentationsmodus starten."
 
-#: shell/src/application.rs:441
+#: shell/src/application.rs:434
 msgid "Show the version of the program."
 msgstr "Programmversion anzeigen."
 
-#: shell/src/application.rs:451
+#: shell/src/application.rs:444
 msgid "[FILE…]"
 msgstr "[DATEI …]"
 
@@ -2183,23 +2183,23 @@ msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Anlage speichern"
 
-#: shell/src/document_view/io.rs:291
+#: shell/src/document_view/io.rs:289
 msgid "The Document Contains No Pages"
 msgstr "Das Dokument enthält keine Seiten"
 
-#: shell/src/document_view/io.rs:293
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains Only Empty Pages"
 msgstr "Das Dokument enthält nur leere Seiten"
 
-#: shell/src/document_view/io.rs:369
+#: shell/src/document_view/io.rs:367
 msgid "Save As…"
 msgstr "Speichern unter …"
 
-#: shell/src/document_view/io.rs:446
+#: shell/src/document_view/io.rs:444
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Ein Rechteck zeichnen, um ein Signaturfeld einzufügen"
 
-#: shell/src/document_view/io.rs:469
+#: shell/src/document_view/io.rs:467
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -2208,32 +2208,32 @@ msgstr ""
 "Digital signiert von {}\n"
 "Datum: {}"
 
-#: shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:486
 msgid "Certificate Required"
 msgstr "Zertifikat erforderlich"
 
-#: shell/src/document_view/io.rs:491
+#: shell/src/document_view/io.rs:489
 msgid "Select signing certificate"
 msgstr "Signaturzertifikat auswählen"
 
-#: shell/src/document_view/io.rs:492
+#: shell/src/document_view/io.rs:490
 msgid "Select"
 msgstr "Auswählen"
 
-#: shell/src/document_view/io.rs:572
+#: shell/src/document_view/io.rs:570
 msgid "A certificate is required to sign this document"
 msgstr "Zum Signieren dieses Dokuments ist ein Zertifikat erforderlich"
 
-#: shell/src/document_view/io.rs:826
+#: shell/src/document_view/io.rs:825
 msgid "Save Signed File"
 msgstr "Signierte Datei speichern"
 
-#: shell/src/document_view/io.rs:856
+#: shell/src/document_view/io.rs:855
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Bitte geben Sie das Passwort für {} ein"
 
-#: shell/src/document_view/io.rs:873
+#: shell/src/document_view/io.rs:872
 msgid "_Login"
 msgstr "Anme_lden"
 
@@ -2256,7 +2256,7 @@ msgstr[0] "{} ausstehender Auftrag in der Warteschlange"
 msgstr[1] "{} ausstehende Aufträge in der Warteschlange"
 
 # See https://gitlab.gnome.org/GNOME/Incubator/papers/-/issues/338 - pk
-#: shell/src/document_view/signals.rs:266
+#: shell/src/document_view/signals.rs:268
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
@@ -2264,7 +2264,7 @@ msgstr ""
 "Sicherheitswarnung: Dieses Dokument wurde daran gehindert, die Datei »{}« zu "
 "öffnen"
 
-#: shell/src/document_view/signals.rs:452 shell/src/page_selector.rs:91
+#: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
