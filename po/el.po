@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-09-11 14:33+0000\n"
-"PO-Revision-Date: 2026-09-15 15:16+0300\n"
-"Last-Translator: Fountoukia (Hazel) Leventi <hazeltwink@gmail.com>\n"
+"POT-Creation-Date: 2026-09-27 17:21+0000\n"
+"PO-Revision-Date: 2026-10-03 14:19+0300\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gmail.com>\n"
 "Language-Team: Greek <Greek>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,9 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Manually set name and icon
-#: data/org.gnome.Papers.desktop.in.in:2
-#: data/org.gnome.Papers.metainfo.xml.in.in:9
-#: shell/resources/pps-document-view.blp:88
-#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:389
+#: data/org.gnome.Papers.desktop.in.in:2 data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:88 shell/resources/pps-loader-view.blp:10
+#: shell/src/application.rs:47 shell/src/application.rs:382
 msgid "Document Viewer"
 msgstr "Προβολέας Εγγράφων"
 
@@ -46,19 +44,16 @@ msgstr "Παράκαμψη περιορισμών εγγράφου"
 
 #: data/org.gnome.Papers.gschema.xml:15
 msgid "Override document restrictions, like restriction to copy or to print."
-msgstr ""
-"Παράκαμψη περιορισμών εγγράφου, όπως ο περιορισμός αντιγραφής ή εκτύπωσης."
+msgstr "Παράκαμψη περιορισμών εγγράφου, όπως ο περιορισμός αντιγραφής ή εκτύπωσης."
 
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
 msgstr ""
-"Το URI του καταλόγου που χρησιμοποιήθηκε τελευταία για άνοιγμα ή αποθήκευση "
-"εγγράφου"
+"Το URI του καταλόγου που χρησιμοποιήθηκε τελευταία για άνοιγμα ή αποθήκευση εγγράφου"
 
 #: data/org.gnome.Papers.gschema.xml:23
 msgid "The URI of the directory last used to save a picture"
-msgstr ""
-"Το URI του καταλόγου που χρησιμοποιήθηκε τελευταία για αποθήκευση εικόνας"
+msgstr "Το URI του καταλόγου που χρησιμοποιήθηκε τελευταία για αποθήκευση εικόνας"
 
 #: data/org.gnome.Papers.gschema.xml:27
 msgid "Page cache size in MiB"
@@ -66,11 +61,10 @@ msgstr "Μέγεθος προσωρινής μνήμης σελίδας σε MiB
 
 #: data/org.gnome.Papers.gschema.xml:28
 msgid ""
-"The maximum size that will be used to cache rendered pages, limits maximum "
-"zoom level."
+"The maximum size that will be used to cache rendered pages, limits maximum zoom level."
 msgstr ""
-"Το μέγιστο μέγεθος που θα χρησιμοποιηθεί για την προσωρινή μνήμη των "
-"απεικονιζόμενων σελίδων, περιορίζει το μέγιστο επίπεδο εστίασης."
+"Το μέγιστο μέγεθος που θα χρησιμοποιηθεί για την προσωρινή μνήμη των απεικονιζόμενων "
+"σελίδων, περιορίζει το μέγιστο επίπεδο εστίασης."
 
 #: data/org.gnome.Papers.gschema.xml:32
 msgid "Allow links to change the zoom level."
@@ -79,23 +73,19 @@ msgstr "Να επιτρέπονται οι σύνδεσμοι να αλλάζο�
 #: data/org.gnome.Papers.gschema.xml:44
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr ""
-"Έλεγχος ορθογραφίας κατά τη σύνταξη σημειώσεων σχολιασμού ή συμπλήρωση "
-"μορφών κειμένου."
+"Έλεγχος ορθογραφίας κατά τη σύνταξη σημειώσεων σχολιασμού ή συμπλήρωση μορφών "
+"κειμένου."
 
 #: data/org.gnome.Papers.gschema.xml:48
 msgid "Show a side bar next to the document to help navigate the document."
-msgstr ""
-"Εμφάνιση πλαϊνής γραμμής δίπλα στο έγγραφο για διευκόλυνση της πλοήγησης."
+msgstr "Εμφάνιση πλαϊνής γραμμής δίπλα στο έγγραφο για διευκόλυνση της πλοήγησης."
 
 #: data/org.gnome.Papers.gschema.xml:61
 msgid "Set the default zoom level to display a document."
-msgstr ""
-"Ορισμός του προεπιλεγμένου επιπέδου εστίασης για την εμφάνιση εγγράφου."
+msgstr "Ορισμός του προεπιλεγμένου επιπέδου εστίασης για την εμφάνιση εγγράφου."
 
 #: data/org.gnome.Papers.gschema.xml:65
-msgid ""
-"Display the document as a continuous stream of pages instead of page at a "
-"time."
+msgid "Display the document as a continuous stream of pages instead of page at a time."
 msgstr "Εμφάνιση του εγγράφου ως συνεχής ροή σελίδων αντί μία σελίδα τη φορά."
 
 #: data/org.gnome.Papers.gschema.xml:69
@@ -104,21 +94,18 @@ msgstr "Εμφάνιση δύο σελίδων δίπλα-δίπλα."
 
 #: data/org.gnome.Papers.gschema.xml:73
 msgid ""
-"Show the first page (odd page) on the left (when displaying two pages side "
-"by side)"
+"Show the first page (odd page) on the left (when displaying two pages side by side)"
 msgstr ""
-"Εμφάνιση της πρώτης σελίδας (μονής σελίδας) στα αριστερά (όταν εμφανίζονται "
-"δύο σελίδες δίπλα-δίπλα)"
+"Εμφάνιση της πρώτης σελίδας (μονής σελίδας) στα αριστερά (όταν εμφανίζονται δύο "
+"σελίδες δίπλα-δίπλα)"
 
 #: data/org.gnome.Papers.gschema.xml:110
 msgid "Last used signature ID"
 msgstr "ID της υπογραφής που χρησιμοποιήθηκε τελευταία"
 
 #: data/org.gnome.Papers.gschema.xml:111
-#, fuzzy
 msgid "ID of the signature most recently used for manual signing"
-msgstr ""
-"Το ID της υπογραφής που χρησιμοποιήθηκε πιο πρόσφατα για χειροκίνητη υπογραφή"
+msgstr "Το ID της υπογραφής που χρησιμοποιήθηκε πιο πρόσφατα για χειροκίνητη υπογραφή"
 
 #: data/org.gnome.Papers.gschema.xml:115
 msgid "Last placed signature scale"
@@ -142,20 +129,19 @@ msgstr "Ανάγνωση εγγράφων"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:12
 msgid ""
-"A document viewer for the GNOME desktop. You can view, search or annotate "
-"documents in many different formats."
+"A document viewer for the GNOME desktop. You can view, search or annotate documents "
+"in many different formats."
 msgstr ""
-"Ένας προβολέας εγγράφων για την επιφάνεια εργασίας GNOME. Μπορείτε να "
-"προβάλλετε, να αναζητάτε ή να σχολιάζετε έγγραφα σε πολλές διαφορετικές "
-"μορφές."
+"Ένας προβολέας εγγράφων για την επιφάνεια εργασίας GNOME. Μπορείτε να προβάλλετε, να "
+"αναζητάτε ή να σχολιάζετε έγγραφα σε πολλές διαφορετικές μορφές."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
-"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
-"(CBR, CBT, CBZ, CB7)."
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives (CBR, CBT, "
+"CBZ, CB7)."
 msgstr ""
-"Το Papers υποστηρίζει έγγραφα σε: PDF, DjVu, TIFF και αρχεία Comic Books "
-"(CBR, CBT, CBZ, CB7)."
+"Το Papers υποστηρίζει έγγραφα σε: PDF, DjVu, TIFF και αρχεία Comic Books (CBR, CBT, "
+"CBZ, CB7)."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:18
 msgid "PDF"
@@ -337,11 +323,11 @@ msgstr "Δεν είναι MIME τύπος comic book: %s"
 
 #: libdocument/backend/comics/comics-document.c:309
 msgid ""
-"libarchive lacks support for this comic book’s compression, please contact "
-"your distributor"
+"libarchive lacks support for this comic book’s compression, please contact your "
+"distributor"
 msgstr ""
-"Το libarchive δεν υποστηρίζει τη συμπίεση αυτού του κόμικ, παρακαλούμε "
-"επικοινωνήστε με τον διανομέα σας"
+"Το libarchive δεν υποστηρίζει τη συμπίεση αυτού του κόμικ, παρακαλούμε επικοινωνήστε "
+"με τον διανομέα σας"
 
 #: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
@@ -362,11 +348,11 @@ msgstr "Το έγγραφο DjVu έχει εσφαλμένη μορφή"
 
 #: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
-"The document is composed of several files. One or more of these files cannot "
-"be accessed."
+"The document is composed of several files. One or more of these files cannot be "
+"accessed."
 msgstr ""
-"Το έγγραφο αποτελείται από πολλά αρχεία. Ένα ή περισσότερα από αυτά τα "
-"αρχεία δεν είναι προσβάσιμα."
+"Το έγγραφο αποτελείται από πολλά αρχεία. Ένα ή περισσότερα από αυτά τα αρχεία δεν "
+"είναι προσβάσιμα."
 
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
@@ -387,15 +373,13 @@ msgid "Adds support for reading PDF Documents"
 msgstr "Προσθέτει υποστήριξη για ανάγνωση εγγράφων PDF"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:734
-#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:734 libdocument/backend/pdf/pps-poppler.c:740
 #: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
 msgid "Yes"
 msgstr "Ναι"
 
 #. translators: this is the document security state
-#: libdocument/backend/pdf/pps-poppler.c:737
-#: libdocument/backend/pdf/pps-poppler.c:740
+#: libdocument/backend/pdf/pps-poppler.c:737 libdocument/backend/pdf/pps-poppler.c:740
 #: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
 msgid "No"
 msgstr "Όχι"
@@ -434,14 +418,14 @@ msgstr "Άγνωστος τύπος γραμματοσειράς"
 
 #: libdocument/backend/pdf/pps-poppler.c:908
 msgid ""
-"This document contains non-embedded fonts that are not from the PDF Standard "
-"14 fonts. If the substitute fonts selected by fontconfig are not the same as "
-"the fonts used to create the PDF, the rendering may not be correct."
+"This document contains non-embedded fonts that are not from the PDF Standard 14 "
+"fonts. If the substitute fonts selected by fontconfig are not the same as the fonts "
+"used to create the PDF, the rendering may not be correct."
 msgstr ""
-"Αυτό το έγγραφο περιέχει μη ενσωματωμένες γραμματοσειρές που δεν ανήκουν "
-"στις τυπικές 14 γραμματοσειρές PDF. Εάν οι γραμματοσειρές αντικατάστασης που "
-"επιλέγονται από το fontconfig δεν είναι ίδιες με αυτές που χρησιμοποιήθηκαν "
-"για τη δημιουργία του PDF, η απόδοση μπορεί να μην είναι σωστή."
+"Αυτό το έγγραφο περιέχει μη ενσωματωμένες γραμματοσειρές που δεν ανήκουν στις τυπικές "
+"14 γραμματοσειρές PDF. Εάν οι γραμματοσειρές αντικατάστασης που επιλέγονται από το "
+"fontconfig δεν είναι ίδιες με αυτές που χρησιμοποιήθηκαν για τη δημιουργία του PDF, η "
+"απόδοση μπορεί να μην είναι σωστή."
 
 #: libdocument/backend/pdf/pps-poppler.c:913
 msgid "All fonts are either standard or embedded."
@@ -455,7 +439,7 @@ msgstr "Χωρίς όνομα"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1878
+#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1879
 #: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
 #: shell/src/properties_general.rs:370
 msgid "None"
@@ -671,8 +655,7 @@ msgstr[1] "Αποθήκευση συνημμένων"
 msgid "Page %s"
 msgstr "Σελίδα %s"
 
-#: libview/pps-annotation-window.c:242
-#: shell/resources/pps-sidebar-annotations.blp:60
+#: libview/pps-annotation-window.c:242 shell/resources/pps-sidebar-annotations.blp:60
 msgid "Edit Note"
 msgstr "Επεξεργασία σημείωσης"
 
@@ -740,79 +723,77 @@ msgstr "_Κλείσιμο"
 msgid "Print"
 msgstr "Εκτύπωση"
 
-#: libview/pps-print-operation.c:1871
+#: libview/pps-print-operation.c:1872
 msgid "Page Scaling:"
 msgstr "Κλίμακα σελίδας:"
 
-#: libview/pps-print-operation.c:1879
+#: libview/pps-print-operation.c:1880
 msgid "Shrink to Printable Area"
 msgstr "Συρρίκνωση στην εκτυπώσιμη περιοχή"
 
-#: libview/pps-print-operation.c:1880
+#: libview/pps-print-operation.c:1881
 msgid "Fit to Printable Area"
 msgstr "Προσαρμογή στην εκτυπώσιμη περιοχή"
 
-#: libview/pps-print-operation.c:1887
+#: libview/pps-print-operation.c:1888
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of "
-"the following:\n"
+"Scale document pages to fit the selected printer page. Select from one of the "
+"following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
-"• “Shrink to Printable Area”: Document pages larger than the printable area "
-"are reduced to fit the printable area of the printer page.\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area are "
+"reduced to fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
-"required to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as required to fit "
+"the printable area of the printer page.\n"
 msgstr ""
-"Κλιμάκωση των σελίδων του εγγράφου για να ταιριάζουν στην επιλεγμένη σελίδα "
-"εκτυπωτή. Επιλέξτε από τα ακόλουθα:\n"
+"Κλιμάκωση των σελίδων του εγγράφου για να ταιριάζουν στην επιλεγμένη σελίδα εκτυπωτή. "
+"Επιλέξτε από τα ακόλουθα:\n"
 "\n"
 "• «Καμία»: Δεν πραγματοποιείται κλιμάκωση σελίδας.\n"
 "\n"
-"• «Συρρίκνωση στην εκτυπώσιμη περιοχή»: Οι σελίδες εγγράφου που είναι "
-"μεγαλύτερες από την εκτυπώσιμη περιοχή μειώνονται για να ταιριάζουν στην "
-"εκτυπώσιμη περιοχή της σελίδας του εκτυπωτή.\n"
-"\n"
-"• «Προσαρμογή στην εκτυπώσιμη περιοχή»: Οι σελίδες του εγγράφου μεγεθύνονται "
-"ή μικραίνουν όπως απαιτείται για να ταιριάζουν στην εκτυπώσιμη περιοχή της "
+"• «Συρρίκνωση στην εκτυπώσιμη περιοχή»: Οι σελίδες εγγράφου που είναι μεγαλύτερες από "
+"την εκτυπώσιμη περιοχή μειώνονται για να ταιριάζουν στην εκτυπώσιμη περιοχή της "
 "σελίδας του εκτυπωτή.\n"
+"\n"
+"• «Προσαρμογή στην εκτυπώσιμη περιοχή»: Οι σελίδες του εγγράφου μεγεθύνονται ή "
+"μικραίνουν όπως απαιτείται για να ταιριάζουν στην εκτυπώσιμη περιοχή της σελίδας του "
+"εκτυπωτή.\n"
 
-#: libview/pps-print-operation.c:1898
+#: libview/pps-print-operation.c:1899
 msgid "Auto Rotate and Center"
 msgstr "Αυτόματη Περιστροφή και Κεντράρισμα"
 
-#: libview/pps-print-operation.c:1901
+#: libview/pps-print-operation.c:1902
 msgid ""
-"Rotate printer page orientation of each page to match orientation of each "
-"document page. Document pages will be centered within the printer page."
+"Rotate printer page orientation of each page to match orientation of each document "
+"page. Document pages will be centered within the printer page."
 msgstr ""
-"Περιστροφή προσανατολισμού σελίδας εκτυπωτή για κάθε σελίδα για να ταιριάζει "
-"με τον προσανατολισμό κάθε σελίδας εγγράφου. Οι σελίδες του εγγράφου θα "
-"κεντραριστούν μέσα στη σελίδα του εκτυπωτή."
+"Περιστροφή προσανατολισμού σελίδας εκτυπωτή για κάθε σελίδα για να ταιριάζει με τον "
+"προσανατολισμό κάθε σελίδας εγγράφου. Οι σελίδες του εγγράφου θα κεντραριστούν μέσα "
+"στη σελίδα του εκτυπωτή."
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1906
 msgid "Select page size using document page size"
 msgstr "Επιλογή μεγέθους σελίδας χρησιμοποιώντας το μέγεθος σελίδας εγγράφου"
 
-#: libview/pps-print-operation.c:1907
+#: libview/pps-print-operation.c:1908
 msgid ""
-"When enabled, each page will be printed on the same size paper as the "
-"document page."
+"When enabled, each page will be printed on the same size paper as the document page."
 msgstr ""
-"Όταν είναι ενεργοποιημένο, κάθε σελίδα θα εκτυπώνεται σε χαρτί του ίδιου "
-"μεγέθους με τη σελίδα του εγγράφου."
+"Όταν είναι ενεργοποιημένο, κάθε σελίδα θα εκτυπώνεται σε χαρτί του ίδιου μεγέθους με "
+"τη σελίδα του εγγράφου."
 
-#: libview/pps-print-operation.c:1911
+#: libview/pps-print-operation.c:1912
 msgid "Draw border around pages"
 msgstr "Σχεδίαση περιγράμματος γύρω από τις σελίδες"
 
-#: libview/pps-print-operation.c:1913
+#: libview/pps-print-operation.c:1914
 msgid "When enabled, a border will be drawn around each page."
-msgstr ""
-"Όταν είναι ενεργοποιημένο, θα σχεδιάζεται περίγραμμα γύρω από κάθε σελίδα."
+msgstr "Όταν είναι ενεργοποιημένο, θα σχεδιάζεται περίγραμμα γύρω από κάθε σελίδα."
 
-#: libview/pps-print-operation.c:2010
+#: libview/pps-print-operation.c:2011
 msgid "Page Handling"
 msgstr "Χειρισμός Σελίδας"
 
@@ -949,8 +930,7 @@ msgstr "Προηγούμενη σελίδα"
 msgid "Next Page"
 msgstr "Επόμενη σελίδα"
 
-#: previewer/pps-previewer-window.blp:33
-#: shell/resources/pps-document-view.blp:213
+#: previewer/pps-previewer-window.blp:33 shell/resources/pps-document-view.blp:213
 msgid "Page Count"
 msgstr "Αριθμός σελίδων"
 
@@ -962,8 +942,7 @@ msgstr "_Εκτύπωση"
 msgid "Print This Document"
 msgstr "Εκτύπωση αυτού του εγγράφου"
 
-#: previewer/pps-previewer-window.blp:50
-#: shell/resources/pps-document-view.blp:293
+#: previewer/pps-previewer-window.blp:50 shell/resources/pps-document-view.blp:293
 msgid "Zoom Out"
 msgstr "Σμίκρυνση"
 
@@ -971,8 +950,7 @@ msgstr "Σμίκρυνση"
 msgid "Normal Size"
 msgstr "Κανονικό μέγεθος"
 
-#: previewer/pps-previewer-window.blp:64
-#: shell/resources/pps-document-view.blp:280
+#: previewer/pps-previewer-window.blp:64 shell/resources/pps-document-view.blp:280
 msgid "Zoom In"
 msgstr "Μεγέθυνση"
 
@@ -1190,8 +1168,7 @@ msgstr "Προβολή υπογραφής…"
 msgid "Fit Automatically"
 msgstr "Αυτόματη προσαρμογή"
 
-#: shell/resources/pps-document-view.blp:343
-#: shell/resources/pps-document-view.blp:385
+#: shell/resources/pps-document-view.blp:343 shell/resources/pps-document-view.blp:385
 #: shell/resources/pps-document-view.blp:417
 msgid "Choose Color"
 msgstr "Επιλέξτε χρώμα"
@@ -1228,8 +1205,7 @@ msgstr "Σχεδίαση"
 msgid "Erase Annotations"
 msgstr "Διαγραφή σχολίων"
 
-#: shell/resources/pps-document-view.blp:513
-#: shell/src/document_view/actions.rs:1359
+#: shell/resources/pps-document-view.blp:513 shell/src/document_view/actions.rs:1359
 msgid "Edit Document"
 msgstr "Επεξεργασία εγγράφου"
 
@@ -1239,13 +1215,12 @@ msgstr "Η επιλογή είναι πολύ μικρή"
 
 #: shell/resources/pps-document-view.blp:761
 msgid ""
-"A signature of this size may be too small to read. If you would like to "
-"create a potentially more readable signature, press `Start over` and draw a "
-"bigger rectangle."
+"A signature of this size may be too small to read. If you would like to create a "
+"potentially more readable signature, press `Start over` and draw a bigger rectangle."
 msgstr ""
-"Μια υπογραφή αυτού του μεγέθους μπορεί να είναι πολύ μικρή για ανάγνωση. Εάν "
-"θέλετε να δημιουργήσετε μια πιθανώς πιο ευανάγνωστη υπογραφή, πατήστε "
-"«Επανεκκίνηση» και σχεδιάστε ένα μεγαλύτερο ορθογώνιο."
+"Μια υπογραφή αυτού του μεγέθους μπορεί να είναι πολύ μικρή για ανάγνωση. Εάν θέλετε "
+"να δημιουργήσετε μια πιθανώς πιο ευανάγνωστη υπογραφή, πατήστε «Επανεκκίνηση» και "
+"σχεδιάστε ένα μεγαλύτερο ορθογώνιο."
 
 #: shell/resources/pps-document-view.blp:768
 msgid "Start _Over"
@@ -1261,11 +1236,11 @@ msgstr "Ακύρωση εκτύπωσης;"
 
 #: shell/resources/pps-document-view.blp:777
 msgid ""
-"There is one or more active print jobs. If the window is closed, pending "
-"print jobs will not be printed."
+"There is one or more active print jobs. If the window is closed, pending print jobs "
+"will not be printed."
 msgstr ""
-"Υπάρχει μία ή περισσότερες ενεργές εργασίες εκτύπωσης. Εάν κλείσει το "
-"παράθυρο, οι εκκρεμείς εργασίες εκτύπωσης δεν θα εκτυπωθούν."
+"Υπάρχει μία ή περισσότερες ενεργές εργασίες εκτύπωσης. Εάν κλείσει το παράθυρο, οι "
+"εκκρεμείς εργασίες εκτύπωσης δεν θα εκτυπωθούν."
 
 #: shell/resources/pps-document-view.blp:781
 msgid "Abort _Print and Close"
@@ -1325,8 +1300,7 @@ msgstr "_Διαχείριση Υπογραφών…"
 msgid "Open a C_opy"
 msgstr "Άνοιγμα _αντιγράφου"
 
-#: shell/resources/pps-document-view.blp:865
-#: shell/src/properties_general.rs:137
+#: shell/resources/pps-document-view.blp:865 shell/src/properties_general.rs:137
 msgid "Open With…"
 msgstr "Άνοιγμα με…"
 
@@ -1358,66 +1332,55 @@ msgstr "_Περιστροφή ⤵"
 msgid "Document Prop_erties"
 msgstr "_Ιδιότητες εγγράφου"
 
-#: shell/resources/pps-document-view.blp:959
-#: shell/resources/pps-document-view.blp:1267
+#: shell/resources/pps-document-view.blp:959 shell/resources/pps-document-view.blp:1267
 msgid "Black"
 msgstr "Μαύρο"
 
-#: shell/resources/pps-document-view.blp:971
-#: shell/resources/pps-document-view.blp:1058
+#: shell/resources/pps-document-view.blp:971 shell/resources/pps-document-view.blp:1058
 #: shell/resources/pps-document-view.blp:1207
 msgid "Orange"
 msgstr "Πορτοκαλί"
 
-#: shell/resources/pps-document-view.blp:983
-#: shell/resources/pps-document-view.blp:1071
+#: shell/resources/pps-document-view.blp:983 shell/resources/pps-document-view.blp:1071
 #: shell/resources/pps-document-view.blp:1219
 msgid "Red"
 msgstr "Κόκκινο"
 
-#: shell/resources/pps-document-view.blp:995
-#: shell/resources/pps-document-view.blp:1084
+#: shell/resources/pps-document-view.blp:995 shell/resources/pps-document-view.blp:1084
 #: shell/resources/pps-document-view.blp:1231
 msgid "Purple"
 msgstr "Μωβ"
 
-#: shell/resources/pps-document-view.blp:1007
-#: shell/resources/pps-document-view.blp:1097
+#: shell/resources/pps-document-view.blp:1007 shell/resources/pps-document-view.blp:1097
 #: shell/resources/pps-document-view.blp:1243
 msgid "Blue"
 msgstr "Μπλέ"
 
-#: shell/resources/pps-document-view.blp:1019
-#: shell/resources/pps-document-view.blp:1110
+#: shell/resources/pps-document-view.blp:1019 shell/resources/pps-document-view.blp:1110
 #: shell/resources/pps-document-view.blp:1255
 msgid "Green"
 msgstr "Πράσινο"
 
-#: shell/resources/pps-document-view.blp:1045
-#: shell/resources/pps-document-view.blp:1195
+#: shell/resources/pps-document-view.blp:1045 shell/resources/pps-document-view.blp:1195
 msgid "Yellow"
 msgstr "Κίτρινο"
 
-#: shell/resources/pps-document-view.blp:1132
-#: shell/resources/pps-document-view.blp:1289
+#: shell/resources/pps-document-view.blp:1132 shell/resources/pps-document-view.blp:1289
 #: shell/resources/pps-document-view.blp:1348
 msgid "Thin"
 msgstr "Λεπτό"
 
-#: shell/resources/pps-document-view.blp:1144
-#: shell/resources/pps-document-view.blp:1302
+#: shell/resources/pps-document-view.blp:1144 shell/resources/pps-document-view.blp:1302
 #: shell/resources/pps-document-view.blp:1360
 msgid "Medium"
 msgstr "Μεσαίο"
 
-#: shell/resources/pps-document-view.blp:1156
-#: shell/resources/pps-document-view.blp:1314
+#: shell/resources/pps-document-view.blp:1156 shell/resources/pps-document-view.blp:1314
 #: shell/resources/pps-document-view.blp:1372
 msgid "Thick"
 msgstr "Παχύ"
 
-#: shell/resources/pps-document-view.blp:1168
-#: shell/resources/pps-document-view.blp:1326
+#: shell/resources/pps-document-view.blp:1168 shell/resources/pps-document-view.blp:1326
 #: shell/resources/pps-document-view.blp:1384
 msgid "Very Thick"
 msgstr "Πολύ παχύ"
@@ -1548,8 +1511,7 @@ msgstr "Φόρτωση εγγράφου"
 msgid "C_ancel"
 msgstr "Α_κύρωση"
 
-#: shell/resources/pps-password-dialog.blp:5
-#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-dialog.blp:5 shell/resources/pps-password-view.blp:11
 #: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
 msgid "Password Required"
 msgstr "Απαιτείται κωδικός πρόσβασης"
@@ -1562,28 +1524,27 @@ msgstr "Ακύρωση"
 msgid "Unlock"
 msgstr "Ξεκλείδωμα"
 
-#: shell/resources/pps-password-dialog.blp:19
+#: shell/resources/pps-password-dialog.blp:24
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: shell/resources/pps-password-dialog.blp:33
+#: shell/resources/pps-password-dialog.blp:38
 msgid "Invalid password"
 msgstr "Μη έγκυρος κωδικός πρόσβασης"
 
-#: shell/resources/pps-password-dialog.blp:48
+#: shell/resources/pps-password-dialog.blp:53
 msgid "Forget password _immediately"
 msgstr "Αμέσως _επίληση κωδικού πρόσβασης"
 
-#: shell/resources/pps-password-dialog.blp:55
+#: shell/resources/pps-password-dialog.blp:60
 msgid "Remember _forever"
 msgstr "Απομνημόνευση για _πάντα"
 
 #: shell/resources/pps-password-view.blp:18
-msgid ""
-"This document is locked and can only be read by entering the correct password"
+msgid "This document is locked and can only be read by entering the correct password"
 msgstr ""
-"Αυτό το έγγραφο είναι κλειδωμένο και μπορεί να διαβαστεί μόνο εισάγοντας τον "
-"σωστό κωδικό πρόσβασης"
+"Αυτό το έγγραφο είναι κλειδωμένο και μπορεί να διαβαστεί μόνο εισάγοντας τον σωστό "
+"κωδικό πρόσβασης"
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -2029,43 +1990,43 @@ msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
 " Φουντουκιά (Hazel) Λεβέντη <hazeltwink@gmail.com>"
 
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "The page label of the document to display."
 msgstr "Η ετικέτα σελίδας του εγγράφου προς εμφάνιση."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:390
 msgid "PAGE"
 msgstr "ΣΕΛΙΔΑ"
 
-#: shell/src/application.rs:405
+#: shell/src/application.rs:398
 msgid "The page number of the document to display."
 msgstr "Ο αριθμός σελίδας του εγγράφου προς εμφάνιση."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:399
 msgid "NUMBER"
 msgstr "ΑΡΙΘΜΟΣ"
 
-#: shell/src/application.rs:414
+#: shell/src/application.rs:407
 msgid "Named destination to display."
 msgstr "Ονομασμένος προορισμός προς εμφάνιση."
 
-#: shell/src/application.rs:415
+#: shell/src/application.rs:408
 msgid "DEST"
 msgstr "ΠΡΟΟΡΙΣΜΟΣ"
 
-#: shell/src/application.rs:423
+#: shell/src/application.rs:416
 msgid "Run papers in fullscreen mode."
 msgstr "Εκτέλεση του papers σε λειτουργία πλήρους οθόνης."
 
-#: shell/src/application.rs:432
+#: shell/src/application.rs:425
 msgid "Run papers in presentation mode."
 msgstr "Εκτέλεση του papers σε λειτουργία παρουσίασης."
 
-#: shell/src/application.rs:441
+#: shell/src/application.rs:434
 msgid "Show the version of the program."
 msgstr "Εμφάνιση της έκδοσης του προγράμματος."
 
-#: shell/src/application.rs:451
+#: shell/src/application.rs:444
 msgid "[FILE…]"
 msgstr "[ΑΡΧΕΙΟ…]"
 
@@ -2075,11 +2036,11 @@ msgstr "Προβολή λεπτομερειών"
 
 #: shell/src/document_view.rs:809
 msgid ""
-"Document contains new or modified annotations and form fields that have been "
-"filled out."
+"Document contains new or modified annotations and form fields that have been filled "
+"out."
 msgstr ""
-"Το έγγραφο περιέχει νέους ή τροποποιημένους σχολιασμούς και πεδία φόρμας που "
-"έχουν συμπληρωθεί."
+"Το έγγραφο περιέχει νέους ή τροποποιημένους σχολιασμούς και πεδία φόρμας που έχουν "
+"συμπληρωθεί."
 
 #: shell/src/document_view.rs:812
 msgid "Document contains form fields that have been filled out."
@@ -2118,8 +2079,8 @@ msgstr ""
 #: shell/src/document_view/actions.rs:1167
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
-"Η λειτουργία πλοήγησης με δρομέα είναι πλέον απενεργοποιημένη, πατήστε F7 "
-"για ενεργοποίηση."
+"Η λειτουργία πλοήγησης με δρομέα είναι πλέον απενεργοποιημένη, πατήστε F7 για "
+"ενεργοποίηση."
 
 #: shell/src/document_view/actions.rs:1255
 msgid "Add _Visual Signature"
@@ -2211,11 +2172,9 @@ msgstr[1] "{} εκκρεμής εργασίες στην ουρά"
 
 #: shell/src/document_view/signals.rs:268
 #, rust-format
-msgid ""
-"Security alert: this document has been prevented from opening the file “{}”"
+msgid "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
-"Ειδοποίηση ασφαλείας: αυτό το έγγραφο εμποδίστηκε από το άνοιγμα του αρχείου "
-"\"{}\""
+"Ειδοποίηση ασφαλείας: αυτό το έγγραφο εμποδίστηκε από το άνοιγμα του αρχείου \"{}\""
 
 #: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
@@ -2237,13 +2196,10 @@ msgstr "({pagenum} από {totalpages})"
 msgid "of {}"
 msgstr "από {}"
 
-#: shell/src/password_view.rs:146
+#: shell/src/password_view.rs:149
 #, rust-format
-msgid ""
-"The document “{}” is locked and requires a password before it can be opened"
-msgstr ""
-"Το έγγραφο \"{}\" είναι κλειδωμένο και απαιτεί συνθηματικό πριν από το "
-"άνοιγμα"
+msgid "The document “{}” is locked and requires a password before it can be opened"
+msgstr "Το έγγραφο \"{}\" είναι κλειδωμένο και απαιτεί συνθηματικό πριν από το άνοιγμα"
 
 #: shell/src/properties_general.rs:50
 msgid "Copy to Clipboard"
@@ -2329,8 +2285,7 @@ msgstr "Ημερομηνία &amp; ώρα"
 #~ msgstr "Υπογεγραμμένο με πιστοποιητικό που εκδόθηκε από αξιόπιστο εκδότη."
 
 #~ msgid "Signed with a certificate issued by untrusted issuer."
-#~ msgstr ""
-#~ "Υπογεγραμμένο με πιστοποιητικό που εκδόθηκε από μη αξιόπιστο εκδότη."
+#~ msgstr "Υπογεγραμμένο με πιστοποιητικό που εκδόθηκε από μη αξιόπιστο εκδότη."
 
 #~ msgid "Signed with a certificate issued by unknown issuer."
 #~ msgstr "Υπογεγραμμένο με πιστοποιητικό που εκδόθηκε από άγνωστο εκδότη."
