@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: papers 50\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-08-26 14:36+0000\n"
-"PO-Revision-Date: 2026-09-09 10:16+0200\n"
+"POT-Creation-Date: 2026-09-27 17:21+0000\n"
+"PO-Revision-Date: 2026-10-08 17:21+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/org.gnome.Papers.metainfo.xml.in.in:9
 #: shell/resources/pps-document-view.blp:88
 #: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
-#: shell/src/application.rs:389
+#: shell/src/application.rs:382
 msgid "Document Viewer"
 msgstr "Dokumentvisning"
 
@@ -32,7 +32,8 @@ msgstr "Dokumentvisning"
 msgid "View multi-page documents"
 msgstr "Vis dokumenter med mange sider"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Papers.desktop.in.in:5
 msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
 msgstr "pdf;djvu;tiff;dokument;presentasjon;visning;papers;"
@@ -48,8 +49,8 @@ msgstr "Overstyr begrensninger satt i dokumentet"
 #: data/org.gnome.Papers.gschema.xml:15
 msgid "Override document restrictions, like restriction to copy or to print."
 msgstr ""
-"Overstyr dokumentbegrensninger som f.eks mulighet til å kopiere eller skrive "
-"ut."
+"Overstyr dokumentbegrensninger som f.eks mulighet til å kopiere eller skrive"
+" ut."
 
 #: data/org.gnome.Papers.gschema.xml:19
 msgid "The URI of the directory last used to open or save a document"
@@ -78,10 +79,14 @@ msgstr "La lenker endre zoom-nivå."
 #: data/org.gnome.Papers.gschema.xml:44
 msgid "Check spelling when writing annotation notes or filling text forms."
 msgstr ""
+"Kontroller stavefeil når du skriver annoteringsnotater eller fyller ut "
+"tekstskjemaer."
 
 #: data/org.gnome.Papers.gschema.xml:48
 msgid "Show a side bar next to the document to help navigate the document."
 msgstr ""
+"Vis en sidefelt ved siden av dokumentet for å hjelpe med å navigere i "
+"dokumentet."
 
 #: data/org.gnome.Papers.gschema.xml:61
 msgid "Set the default zoom level to display a document."
@@ -92,28 +97,32 @@ msgid ""
 "Display the document as a continuous stream of pages instead of page at a "
 "time."
 msgstr ""
+"Vis dokumentet som en kontinuerlig strøm av sider i stedet for én side om "
+"gangen."
 
 #: data/org.gnome.Papers.gschema.xml:69
 msgid "Show two pages side by side."
-msgstr ""
+msgstr "Vis to sider ved siden av hverandre."
 
 #: data/org.gnome.Papers.gschema.xml:73
 msgid ""
 "Show the first page (odd page) on the left (when displaying two pages side "
 "by side)"
 msgstr ""
+"Vis den første siden (oddetallsside) til venstre (når to sider vises ved "
+"siden av hverandre)"
 
 #: data/org.gnome.Papers.gschema.xml:110
 msgid "Last used signature ID"
-msgstr ""
+msgstr "Sist brukte signatur-ID"
 
 #: data/org.gnome.Papers.gschema.xml:111
 msgid "ID of the signature most recently used for manual signing"
-msgstr ""
+msgstr "ID-en til signaturen som sist ble brukt til manuell signering"
 
 #: data/org.gnome.Papers.gschema.xml:115
 msgid "Last placed signature scale"
-msgstr ""
+msgstr "Siste plasserte signaturskala"
 
 #: data/org.gnome.Papers.gschema.xml:122
 msgid "Previewer window height"
@@ -125,7 +134,7 @@ msgstr "Vindubredde for forhåndsvisning"
 
 #: data/org.gnome.Papers.gschema.xml:130
 msgid "Previewer window maximized state"
-msgstr ""
+msgstr "Forhåndsvisningsvindu maksimert tilstand"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
@@ -136,8 +145,8 @@ msgid ""
 "A document viewer for the GNOME desktop. You can view, search or annotate "
 "documents in many different formats."
 msgstr ""
-"Et dokumentvisningsprogram for GNOME skrivebordet. Du kan vise, søke i eller "
-"notere i dokumenter i mange forskjellige formater."
+"Et dokumentvisningsprogram for GNOME skrivebordet. Du kan vise, søke i eller"
+" notere i dokumenter i mange forskjellige formater."
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:13
 msgid ""
@@ -352,8 +361,8 @@ msgstr "DjVu-dokumentet har feil format"
 
 #: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
-"The document is composed of several files. One or more of these files cannot "
-"be accessed."
+"The document is composed of several files. One or more of these files cannot"
+" be accessed."
 msgstr ""
 "Dette dokumentet består av flere filer. Dokumentviseren mangler tilgang til "
 "én eller flere av disse filene."
@@ -424,14 +433,14 @@ msgstr "Ukjent skrifttype"
 
 #: libdocument/backend/pdf/pps-poppler.c:908
 msgid ""
-"This document contains non-embedded fonts that are not from the PDF Standard "
-"14 fonts. If the substitute fonts selected by fontconfig are not the same as "
-"the fonts used to create the PDF, the rendering may not be correct."
+"This document contains non-embedded fonts that are not from the PDF Standard"
+" 14 fonts. If the substitute fonts selected by fontconfig are not the same "
+"as the fonts used to create the PDF, the rendering may not be correct."
 msgstr ""
-"Dette dokumentet inneholder eksterne skrifter som ikke inngår i PDF-standard "
-"14. Hvis erstatningsskriftene som velges av fontconfig ikke er de samme som "
-"skriftene som ble brukt til å lage PDF'en vil dokumentet kanskje ikke vises "
-"korrekt."
+"Dette dokumentet inneholder eksterne skrifter som ikke inngår i PDF-standard"
+" 14. Hvis erstatningsskriftene som velges av fontconfig ikke er de samme som"
+" skriftene som ble brukt til å lage PDF'en vil dokumentet kanskje ikke vises"
+" korrekt."
 
 #: libdocument/backend/pdf/pps-poppler.c:913
 msgid "All fonts are either standard or embedded."
@@ -444,10 +453,9 @@ msgstr "Uten navn"
 #. translators: When a font type does not have
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
-#.
-#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1878
-#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
-#: shell/src/properties_general.rs:370
+#: libdocument/backend/pdf/pps-poppler.c:958
+#: libview/pps-print-operation.c:1879 shell/src/properties_general.rs:85
+#: shell/src/properties_general.rs:235 shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Ingen"
 
@@ -467,7 +475,6 @@ msgstr "Ikke innebygd"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "Type 1 (One of the Standard 14 Fonts)"
-#.
 #: libdocument/backend/pdf/pps-poppler.c:977
 msgid " (One of the Standard 14 Fonts)"
 msgstr "(En av de 14 standardskriftene)"
@@ -476,7 +483,6 @@ msgstr "(En av de 14 standardskriftene)"
 #. * because it is directly appended to the font
 #. * type. Example:
 #. * "TrueType (Not one of the Standard 14 Fonts)"
-#.
 #: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (Not one of the Standard 14 Fonts)"
 msgstr " (Ikke en av de 14 standardskriftene)"
@@ -490,7 +496,6 @@ msgstr " (Ikke en av de 14 standardskriftene)"
 #. * Not embedded
 #. * Substituting with TeXGyreTermes-Regular
 #. * (/usr/share/textmf/.../texgyretermes-regular.otf)
-#.
 #: libdocument/backend/pdf/pps-poppler.c:1003
 #, c-format
 msgid ""
@@ -514,7 +519,6 @@ msgstr ""
 #. * TrueType (CID)
 #. * Encoding: Custom
 #. * Embedded subset
-#.
 #: libdocument/backend/pdf/pps-poppler.c:1021
 #, c-format
 msgid ""
@@ -572,24 +576,26 @@ msgstr "Alle filer"
 #. * want inches, otherwise translate to default:mm.
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
-#.
 #: libdocument/pps-document-info.c:200
 msgid "default:mm"
 msgstr "default:mm"
 
-#. Note to translators: this string makes a range of pages that have a certain size,
-#. * the first and the second placeholders %i are the start and the end of this range
+#. Note to translators: this string makes a range of pages that have a certain
+#. size,
+#. * the first and the second placeholders %i are the start and the end of
+#. this range
 #. * (e.g. 1-5), and the minus sign separates them
 #: libdocument/pps-document-info.c:258
 #, c-format
 msgid "%i-%i"
 msgstr "%i-%i"
 
-#. Note to translators: this is a separator that separates two or more page ranges,
+#. Note to translators: this is a separator that separates two or more page
+#. ranges,
 #. * or individual page numbers (e.g. 1, 3-7, 9, 11-12)
 #: libdocument/pps-document-info.c:264
 msgid ", "
-msgstr ", "
+msgstr ","
 
 #. Note to translators: first placeholder is the paper width
 #. * in mm, second placeholder is the paper height in mm,
@@ -621,9 +627,11 @@ msgstr "%s, portrett (%s)"
 msgid "%s, Landscape (%s)"
 msgstr "%s, landskap (%s)"
 
-#. Note to translators: the first placeholder %s is the singular or plural form of the word "Page",
+#. Note to translators: the first placeholder %s is the singular or plural
+#. form of the word "Page",
 #. * the second placeholder is a page number or range(e.g. "1, 5-12"),
-#. * the third placeholder is the page format (e.g. US Letter, Portrait (8.50 × 11.00 inch))
+#. * the third placeholder is the page format (e.g. US Letter, Portrait (8.50
+#. × 11.00 inch))
 #: libdocument/pps-document-info.c:397
 #, c-format
 msgid "%s %s: %s"
@@ -720,8 +728,8 @@ msgstr "Ingen sider i området som er valgt for utskrift"
 
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
-#: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:574
+#: shell/resources/pps-document-view.blp:791
+#: shell/resources/pps-window.blp:138 shell/src/document_view/io.rs:572
 msgid "_Close"
 msgstr "_Lukk"
 
@@ -730,47 +738,41 @@ msgstr "_Lukk"
 msgid "Print"
 msgstr "Skriv ut"
 
-#: libview/pps-print-operation.c:1871
+#: libview/pps-print-operation.c:1872
 msgid "Page Scaling:"
 msgstr "Skalering av side:"
 
-#: libview/pps-print-operation.c:1879
+#: libview/pps-print-operation.c:1880
 msgid "Shrink to Printable Area"
 msgstr "Krymp til utskriftsområde"
 
-#: libview/pps-print-operation.c:1880
+#: libview/pps-print-operation.c:1881
 msgid "Fit to Printable Area"
 msgstr "Tilpass utskriftsområde"
 
-#: libview/pps-print-operation.c:1887
+#: libview/pps-print-operation.c:1888
 msgid ""
-"Scale document pages to fit the selected printer page. Select from one of "
-"the following:\n"
+"Scale document pages to fit the selected printer page. Select from one of the following:\n"
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
-"• “Shrink to Printable Area”: Document pages larger than the printable area "
-"are reduced to fit the printable area of the printer page.\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area are reduced to fit the printable area of the printer page.\n"
 "\n"
-"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
-"required to fit the printable area of the printer page.\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as required to fit the printable area of the printer page.\n"
 msgstr ""
-"Skaler dokumentets sider til å passe til skriverens sidestørrelse. Velg fra "
-"en av følgende:\n"
+"Skaler dokumentets sider til å passe til skriverens sidestørrelse. Velg fra en av følgende:\n"
 "\n"
 "• «None»: Ingen skalering av sidene utføres.\n"
 "\n"
-"• «Shrink to Printable Area»: Dokumentsider som er større enn "
-"utskriftsområdet reduseres til å passe til skriverens utskriftsområde.\n"
+"• «Shrink to Printable Area»: Dokumentsider som er større enn utskriftsområdet reduseres til å passe til skriverens utskriftsområde.\n"
 "\n"
-"• «Fit to Printable Area»: Dokumentets sider forstørres eller forminskes til "
-"å passe utskriftsområdet for skriveren etter behov.\n"
+"• «Fit to Printable Area»: Dokumentets sider forstørres eller forminskes til å passe utskriftsområdet for skriveren etter behov.\n"
 
-#: libview/pps-print-operation.c:1898
+#: libview/pps-print-operation.c:1899
 msgid "Auto Rotate and Center"
 msgstr "Roter og sentrer automatisk"
 
-#: libview/pps-print-operation.c:1901
+#: libview/pps-print-operation.c:1902
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each "
 "document page. Document pages will be centered within the printer page."
@@ -778,11 +780,11 @@ msgstr ""
 "Roter skriverens sideorientering for hver side til å passe orientering i "
 "dokumentet. Dokumentets sider vil bli sentrert innenfor utskriftsområdet."
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1906
 msgid "Select page size using document page size"
 msgstr "Velg sidestørrelse ved bruk av dokumentets sidestørrelse"
 
-#: libview/pps-print-operation.c:1907
+#: libview/pps-print-operation.c:1908
 msgid ""
 "When enabled, each page will be printed on the same size paper as the "
 "document page."
@@ -790,15 +792,15 @@ msgstr ""
 "Hver side vil bli skrevet ut på samme papirstørrelse som dokumentets "
 "sidestørrelse hvis dette slås på."
 
-#: libview/pps-print-operation.c:1911
+#: libview/pps-print-operation.c:1912
 msgid "Draw border around pages"
 msgstr "Tegn en kant rundt sider"
 
-#: libview/pps-print-operation.c:1913
+#: libview/pps-print-operation.c:1914
 msgid "When enabled, a border will be drawn around each page."
 msgstr "Hvis dette slås på vil en kant tegnes rundt hver side."
 
-#: libview/pps-print-operation.c:2010
+#: libview/pps-print-operation.c:2011
 msgid "Page Handling"
 msgstr "Sidehåndtering"
 
@@ -922,8 +924,8 @@ msgstr "Dokumentvisning"
 msgid "The selected printer “%s” could not be found"
 msgstr "Valgt skriver «%s» ble ikke funnet"
 
-#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212
-#: shell/src/document_view/io.rs:213
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:210
+#: shell/src/document_view/io.rs:211
 msgid "Papers"
 msgstr "Dokumenter"
 
@@ -1127,7 +1129,8 @@ msgstr "Vis automati_sk ved rulling"
 msgid "Pop up note while scrolling the document"
 msgstr "Vis notis under rulling i dokumentet"
 
-#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#. Translators: Translators: This is an action (a verb in English) that opens
+#. the sidebar to start a search
 #: shell/resources/pps-document-view.blp:79
 msgid "Search"
 msgstr "Søk"
@@ -1257,8 +1260,8 @@ msgid "Abort _Print and Close"
 msgstr "Avbryt _utskrift og lukk"
 
 #: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
-#: shell/src/document_view/io.rs:447 shell/src/document_view/io.rs:495
-#: shell/src/document_view/io.rs:872
+#: shell/src/document_view/io.rs:445 shell/src/document_view/io.rs:493
+#: shell/src/document_view/io.rs:871
 msgid "_Cancel"
 msgstr "A_vbryt"
 
@@ -1274,15 +1277,18 @@ msgstr "Åpne …"
 msgid "Ni_ght Mode"
 msgstr "Natt_modus"
 
-#: shell/resources/pps-document-view.blp:812 shell/resources/pps-window.blp:145
+#: shell/resources/pps-document-view.blp:812
+#: shell/resources/pps-window.blp:145
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: shell/resources/pps-document-view.blp:817 shell/resources/pps-window.blp:150
+#: shell/resources/pps-document-view.blp:817
+#: shell/resources/pps-window.blp:150
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: shell/resources/pps-document-view.blp:822 shell/resources/pps-window.blp:155
+#: shell/resources/pps-document-view.blp:822
+#: shell/resources/pps-window.blp:155
 msgid "_About Document Viewer"
 msgstr "_Om Dokumentvisning"
 
@@ -1427,22 +1433,33 @@ msgstr "Ingen signaturer ennå"
 msgid "Add Signature"
 msgstr "Legg til signatur"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking
+#. annotation, as are squiggly, strikethrough, and underline. An adjective
+#. could also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:1509
 msgid "Highlight (h)"
 msgstr "Uthev (h)"
 
-#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As a noun or adjective, this is describing the type of text
+#. marking annotation, as are highlight, squiggly, and underline. The letter
+#. in parenthesis marks the keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:1525
 msgid "Strikethrough (k)"
 msgstr "Gjennomstrek (k)"
 
-#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As a noun, this is describing the type of text marking
+#. annotation, as are highlight, squiggly, and strikethrough. An adjective
+#. could also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:1541
 msgid "Underline (u)"
 msgstr "Understrek (u)"
 
-#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#. Translators: As an adjective, this is describing the type of text marking
+#. annotation, as are highlight, strikethrough, and underline. A noun could
+#. also make sense as a translation. The letter in parenthesis marks the
+#. keyboard shortcut and should not be translated.
 #: shell/resources/pps-document-view.blp:1557
 msgid "Squiggly (q)"
 msgstr "Snirklete (q)"
@@ -1535,7 +1552,7 @@ msgstr "A_vbryt"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
 msgid "Password Required"
 msgstr "Du må oppgi passord for å gjøre dette"
 
@@ -1547,25 +1564,26 @@ msgstr "Avbryt"
 msgid "Unlock"
 msgstr "Lås opp"
 
-#: shell/resources/pps-password-dialog.blp:19
+#: shell/resources/pps-password-dialog.blp:24
 msgid "Password"
 msgstr "Passord"
 
-#: shell/resources/pps-password-dialog.blp:33
+#: shell/resources/pps-password-dialog.blp:38
 msgid "Invalid password"
 msgstr "Ugyldig passord"
 
-#: shell/resources/pps-password-dialog.blp:48
+#: shell/resources/pps-password-dialog.blp:53
 msgid "Forget password _immediately"
 msgstr "Glem passordet _med en gang"
 
-#: shell/resources/pps-password-dialog.blp:55
+#: shell/resources/pps-password-dialog.blp:60
 msgid "Remember _forever"
 msgstr "Husk _for alltid"
 
 #: shell/resources/pps-password-view.blp:18
 msgid ""
-"This document is locked and can only be read by entering the correct password"
+"This document is locked and can only be read by entering the correct "
+"password"
 msgstr ""
 "Dette dokumentet er låst og kan kun leses etter å ha oppgitt korrekt passord"
 
@@ -2013,43 +2031,43 @@ msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Torstein Adolf Winterseth <kvikende@fsfe.org>"
 
-#: shell/src/application.rs:396
+#: shell/src/application.rs:389
 msgid "The page label of the document to display."
 msgstr "Sideetiketten i dokumentet som skal vises."
 
-#: shell/src/application.rs:397
+#: shell/src/application.rs:390
 msgid "PAGE"
 msgstr "SIDE"
 
-#: shell/src/application.rs:405
+#: shell/src/application.rs:398
 msgid "The page number of the document to display."
 msgstr "Nummer på siden i dokumentet som skal vises."
 
-#: shell/src/application.rs:406
+#: shell/src/application.rs:399
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: shell/src/application.rs:414
+#: shell/src/application.rs:407
 msgid "Named destination to display."
 msgstr "Navngitt mål som skal vises."
 
-#: shell/src/application.rs:415
+#: shell/src/application.rs:408
 msgid "DEST"
 msgstr "MÅL"
 
-#: shell/src/application.rs:423
+#: shell/src/application.rs:416
 msgid "Run papers in fullscreen mode."
 msgstr "Kjør Dokumenter i fullskjerm-modus."
 
-#: shell/src/application.rs:432
+#: shell/src/application.rs:425
 msgid "Run papers in presentation mode."
 msgstr "Kjør Dokumenter i presentasjonsmodus."
 
-#: shell/src/application.rs:441
+#: shell/src/application.rs:434
 msgid "Show the version of the program."
 msgstr "Vis versjonen av programmet."
 
-#: shell/src/application.rs:451
+#: shell/src/application.rs:444
 msgid "[FILE…]"
 msgstr "[FIL …]"
 
@@ -2059,8 +2077,8 @@ msgstr "Vis detaljer"
 
 #: shell/src/document_view.rs:809
 msgid ""
-"Document contains new or modified annotations and form fields that have been "
-"filled out."
+"Document contains new or modified annotations and form fields that have been"
+" filled out."
 msgstr ""
 "Dokumentet inneholder endrede anmerkninger og skjemafelter som er fylt ut."
 
@@ -2117,23 +2135,23 @@ msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Lagre vedlegg"
 
-#: shell/src/document_view/io.rs:291
+#: shell/src/document_view/io.rs:289
 msgid "The Document Contains No Pages"
 msgstr "Dokumentet inneholder ingen sider"
 
-#: shell/src/document_view/io.rs:293
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumentet inneholder kun tomme sider"
 
-#: shell/src/document_view/io.rs:369
+#: shell/src/document_view/io.rs:367
 msgid "Save As…"
 msgstr "Lagre som …"
 
-#: shell/src/document_view/io.rs:446
+#: shell/src/document_view/io.rs:444
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Tegn et rektangel for å sette inn et signaturfelt"
 
-#: shell/src/document_view/io.rs:469
+#: shell/src/document_view/io.rs:467
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -2142,32 +2160,32 @@ msgstr ""
 "Digitalt signert av {}\n"
 "Dato: {}"
 
-#: shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:486
 msgid "Certificate Required"
 msgstr "Sertifikat kreves"
 
-#: shell/src/document_view/io.rs:491
+#: shell/src/document_view/io.rs:489
 msgid "Select signing certificate"
 msgstr "Velg sertifikat for signering"
 
-#: shell/src/document_view/io.rs:492
+#: shell/src/document_view/io.rs:490
 msgid "Select"
 msgstr "Velg"
 
-#: shell/src/document_view/io.rs:572
+#: shell/src/document_view/io.rs:570
 msgid "A certificate is required to sign this document"
 msgstr "Et sertifikat kreves for å signere dette dokumentet"
 
-#: shell/src/document_view/io.rs:826
+#: shell/src/document_view/io.rs:825
 msgid "Save Signed File"
 msgstr "Lagre signert fil"
 
-#: shell/src/document_view/io.rs:856
+#: shell/src/document_view/io.rs:855
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Oppgi et passord for {}"
 
-#: shell/src/document_view/io.rs:873
+#: shell/src/document_view/io.rs:872
 msgid "_Login"
 msgstr "_Logg inn"
 
@@ -2188,14 +2206,14 @@ msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} utestående jobb i køen"
 msgstr[1] "{} utestående jobber i køen"
 
-#: shell/src/document_view/signals.rs:266
+#: shell/src/document_view/signals.rs:268
 #, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
 "Sikkerhetsvarsel: dette dokumentet har blitt hindret fra å åpne filen {}"
 
-#: shell/src/document_view/signals.rs:452 shell/src/page_selector.rs:91
+#: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
@@ -2215,7 +2233,7 @@ msgstr "({pagenum} av {totalpages})"
 msgid "of {}"
 msgstr "av {}"
 
-#: shell/src/password_view.rs:146
+#: shell/src/password_view.rs:149
 #, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
