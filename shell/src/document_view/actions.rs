@@ -58,7 +58,7 @@ impl imp::PpsDocumentView {
             .dynamic_cast_ref::<DocumentAnnotations>()
             .is_some_and(|d| d.can_add_annotation());
 
-        if can_add_annotation {
+        if can_add_annotation && self.annot_menu.n_items() == 0 {
             let item = gio::MenuItem::new(None, None);
 
             item.set_attribute_value("custom", Some(&"palette".into()));
@@ -66,7 +66,7 @@ impl imp::PpsDocumentView {
 
             self.view_popup
                 .add_child(&self.annot_menu_child.get(), "palette");
-        } else {
+        } else if !can_add_annotation {
             self.set_action_enabled("add-text-annotation", false);
             self.set_action_enabled("annot-textmarkup-type", false);
         }
