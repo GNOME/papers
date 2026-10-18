@@ -10,20 +10,21 @@
 # Juliano de Souza Camargo <julianosc@protonmail.com>, 2020.
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 #
+# SPDX-FileCopyrightText: 2026 Cátia Silva <catias89@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
 "POT-Creation-Date: 2026-10-09 13:11+0000\n"
-"PO-Revision-Date: 2026-10-13 16:03+0100\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
-"Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
+"PO-Revision-Date: 2026-10-18 12:13+0100\n"
+"Last-Translator: Cátia Silva <catias89@gmail.com>\n"
+"Language-Team: Portuguese <li@pt.corg>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -80,7 +81,7 @@ msgstr ""
 
 #: data/org.gnome.Papers.gschema.xml:32
 msgid "Allow links to change the zoom level."
-msgstr "Permitir que ligações alterem o nível de ampliação."
+msgstr "Permitir que as ligações alterem o nível de ampliação."
 
 #: data/org.gnome.Papers.gschema.xml:44
 msgid "Check spelling when writing annotation notes or filling text forms."
@@ -91,7 +92,7 @@ msgstr ""
 #: data/org.gnome.Papers.gschema.xml:48
 msgid "Show a side bar next to the document to help navigate the document."
 msgstr ""
-"Mostrar uma barra lateral ao lado do documento para ajudar na navegação."
+"Apresentar uma barra lateral ao lado do documento para auxiliar na navegação."
 
 #: data/org.gnome.Papers.gschema.xml:61
 msgid "Set the default zoom level to display a document."
@@ -107,27 +108,30 @@ msgstr ""
 
 #: data/org.gnome.Papers.gschema.xml:69
 msgid "Show two pages side by side."
-msgstr "Mostrar duas páginas lado a lado."
+msgstr "Apresentar duas páginas lado a lado."
 
 #: data/org.gnome.Papers.gschema.xml:73
 msgid ""
 "Show the first page (odd page) on the left (when displaying two pages side "
 "by side)"
 msgstr ""
-"Mostra a primeira página (página ímpar) à esquerda (quando são apresentadas "
+"Apresenta a primeira página (página ímpar) à esquerda (quando são"
+" apresentadas "
 "duas páginas lado a lado)"
 
 #: data/org.gnome.Papers.gschema.xml:110
 msgid "Last used signature ID"
-msgstr "ID da última assinatura utilizada"
+msgstr "Identificador da última assinatura utilizada"
 
 #: data/org.gnome.Papers.gschema.xml:111
 msgid "ID of the signature most recently used for manual signing"
-msgstr "ID da assinatura utilizada mais recentemente para a assinatura manual"
+msgstr ""
+"Identificador da assinatura utilizada mais recentemente para a assinatura"
+" manual"
 
 #: data/org.gnome.Papers.gschema.xml:115
 msgid "Last placed signature scale"
-msgstr "Escala de assinaturas em último lugar"
+msgstr "Escala da última assinatura inserida"
 
 #: data/org.gnome.Papers.gschema.xml:122
 msgid "Previewer window height"
@@ -255,7 +259,7 @@ msgstr "sublinhado"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:41
 msgid "strikethrough"
-msgstr "riscado"
+msgstr "rasurado"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:42
 msgid "printing"
@@ -307,7 +311,7 @@ msgstr "Miniaturas grandes na barra lateral"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:81
 msgid "All search actions are contained in the sidebar"
-msgstr "Todas as ações de pesquisa estão contidas na barra lateral"
+msgstr "Todas as ações de pesquisa encontram-se contidas na barra lateral"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:96
 msgid "The GNOME Project"
@@ -324,11 +328,11 @@ msgstr "Visualize antes de imprimir"
 #: libdocument/backend/comics/comics-document.c:179
 #: libdocument/backend/comics/comics-document.c:248
 msgid "File is corrupted"
-msgstr "O ficheiro está corrompido"
+msgstr "O ficheiro encontra-se corrompido"
 
 #: libdocument/backend/comics/comics-document.c:238
 msgid "Archive is encrypted"
-msgstr "O arquivo está encriptado"
+msgstr "O arquivo encontra-se encriptado"
 
 #: libdocument/backend/comics/comics-document.c:243
 msgid "No supported images in archive"
@@ -341,7 +345,7 @@ msgstr "Nenhum ficheiro no arquivo"
 #: libdocument/backend/comics/comics-document.c:302
 #, c-format
 msgid "Not a comic book MIME type: %s"
-msgstr "Não é um tipo de MIME de um livro de banda desenhada: %s"
+msgstr "Não é um tipo MIME de um livro de banda desenhada: %s"
 
 #: libdocument/backend/comics/comics-document.c:309
 msgid ""
@@ -349,7 +353,7 @@ msgid ""
 "your distributor"
 msgstr ""
 "o libarchive não suporta compressão para este livro de banda desenhada; "
-"contacte com o distribuidor"
+"contacte o distribuidor"
 
 #: libdocument/backend/comics/comics-document.c:348
 msgid "Can not get local path for archive"
@@ -366,7 +370,7 @@ msgstr "Adiciona suporte para ler livros de banda desenhada"
 
 #: libdocument/backend/djvu/djvu-document.c:173
 msgid "DjVu document has incorrect format"
-msgstr "Documento DjVu tem formato incorreto"
+msgstr "O documento DjVu tem formato incorreto"
 
 #: libdocument/backend/djvu/djvu-document.c:263
 msgid ""
@@ -374,7 +378,7 @@ msgid ""
 "be accessed."
 msgstr ""
 "O documento é composto por vários ficheiros. Um ou mais desses ficheiros não "
-"está acessível."
+"se encontra acessível."
 
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
@@ -438,7 +442,7 @@ msgstr "TrueType (CID)"
 
 #: libdocument/backend/pdf/pps-poppler.c:864
 msgid "Unknown font type"
-msgstr "Tipo de fonte desconhecido"
+msgstr "Tipo de letra desconhecido"
 
 #: libdocument/backend/pdf/pps-poppler.c:908
 msgid ""
@@ -446,14 +450,16 @@ msgid ""
 "14 fonts. If the substitute fonts selected by fontconfig are not the same as "
 "the fonts used to create the PDF, the rendering may not be correct."
 msgstr ""
-"Este documento contém fontes não embutidas que não fazem parte das 14 fontes "
-"padrão do PDF. Se as fontes de substituição selecionadas pelo fontconfig não "
-"forem as mesmas que as utilizadas para criar o PDF, o aspeto poderá não ser "
+"Este documento contém tipos de letra não embutidas que não fazem parte dos 14"
+" tipos de letra "
+"padrão do PDF. Se os tipos de letra de substituição selecionadas pelo"
+" fontconfig não "
+"forem os mesmos que os utilizados para criar o PDF, o aspeto poderá não ser "
 "o correto."
 
 #: libdocument/backend/pdf/pps-poppler.c:913
 msgid "All fonts are either standard or embedded."
-msgstr "Todas as fontes são ou padrão ou embutidas."
+msgstr "Todos os tipos de letra são ou padrão ou embutidas."
 
 #: libdocument/backend/pdf/pps-poppler.c:949
 msgid "No name"
@@ -488,7 +494,7 @@ msgstr "Não embutido"
 #.
 #: libdocument/backend/pdf/pps-poppler.c:977
 msgid " (One of the Standard 14 Fonts)"
-msgstr " (Uma das 14 fontes padrão)"
+msgstr " (Um doa 14 tipos de letra padrão)"
 
 #. Translators: string starting with a space
 #. * because it is directly appended to the font
@@ -497,7 +503,7 @@ msgstr " (Uma das 14 fontes padrão)"
 #.
 #: libdocument/backend/pdf/pps-poppler.c:984
 msgid " (Not one of the Standard 14 Fonts)"
-msgstr " (não é uma das 14 fontes padrão)"
+msgstr " (não é um dos 14 tipos de letra padrão)"
 
 #. Translators: string is a concatenation of previous
 #. * translated strings to indicate the fonts properties
@@ -664,11 +670,11 @@ msgstr "Falha ao criar um ficheiro temporário: %s"
 #: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
 #: libdocument/pps-file-helpers.c:470
 msgid "Unknown MIME Type"
-msgstr "Tipo de MIME desconhecido"
+msgstr "Tipo MIME desconhecido"
 
 #: libdocument/pps-xmp.c:188
 msgid "This work is in the Public Domain"
-msgstr "Este trabalho está em Domínio Público"
+msgstr "Este trabalho encontra-se em Domínio Público"
 
 #: libview/context/pps-attachment-context.c:350
 msgid "Save Attachment"
@@ -819,7 +825,7 @@ msgstr "Desenhar margem em torno das páginas"
 
 #: libview/pps-print-operation.c:1913
 msgid "When enabled, a border will be drawn around each page."
-msgstr "Quando ativado, uma margem será desenhada à volta de cada página."
+msgstr "Quando ativado, será desenhada uma margem à volta de cada página."
 
 #: libview/pps-print-operation.c:2010
 msgid "Page Handling"
@@ -922,7 +928,7 @@ msgstr "FD"
 
 #: previewer/pps-previewer.c:38
 msgid "MIME type of input file"
-msgstr "Tipo de MIME do ficheiro de entrada"
+msgstr "Tipo MIME do ficheiro de entrada"
 
 #: previewer/pps-previewer.c:38
 msgid "TYPE"
@@ -1041,7 +1047,7 @@ msgstr "Número de páginas"
 
 #: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
 msgid "Optimized"
-msgstr "Optimizado"
+msgstr "Otimizado"
 
 #: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
 #: shell/src/properties_general.rs:328
@@ -1144,7 +1150,7 @@ msgstr "_Autor"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:94
 msgid "Auto-Reveal on _Scroll"
-msgstr "_Revelação automática ao rolar"
+msgstr "_Revelação automática ao deslocar"
 
 #: shell/resources/pps-annotation-properties-dialog.blp:96
 msgid "Pop up note while scrolling the document"
@@ -1153,7 +1159,7 @@ msgstr "Nota de aviso ao percorrer o documento"
 #. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
 #: shell/resources/pps-document-view.blp:79
 msgid "Search"
-msgstr "Pesquisar"
+msgstr "Procurar"
 
 #: shell/resources/pps-document-view.blp:94 shell/resources/pps-window.blp:35
 msgid "Main Menu"
@@ -1203,7 +1209,7 @@ msgstr "Ajustar automaticamente"
 #: shell/resources/pps-document-view.blp:385
 #: shell/resources/pps-document-view.blp:417
 msgid "Choose Color"
-msgstr "Escolha a cor"
+msgstr "Escolher a cor"
 
 #: shell/resources/pps-document-view.blp:363
 msgid "Font Settings"
@@ -1211,7 +1217,7 @@ msgstr "Definições do tipo de letra"
 
 #: shell/resources/pps-document-view.blp:399
 msgid "Highlight Stroke Size"
-msgstr "Destaque o tamanho do traço"
+msgstr "Espessura do traço de destaque"
 
 #: shell/resources/pps-document-view.blp:432
 msgid "Pencil Size"
@@ -1219,7 +1225,7 @@ msgstr "Tamanho do lápis"
 
 #: shell/resources/pps-document-view.blp:444
 msgid "Eraser Settings"
-msgstr "Definições do apagador"
+msgstr "Definições da borracha"
 
 #: shell/resources/pps-document-view.blp:460
 msgid "Change Eraser Radius"
@@ -1252,8 +1258,8 @@ msgid ""
 "create a potentially more readable signature, press `Start over` and draw a "
 "bigger rectangle."
 msgstr ""
-"Uma assinatura deste tamanho pode ser demasiado pequena para ser lida. Se "
-"pretender criar uma assinatura potencialmente mais legível, prima `Iniciar "
+"Uma assinatura deste tamanho pode ser demasiado pequena para ser lida. Caso"
+" pretenda criar uma assinatura potencialmente mais legível, prima `Iniciar "
 "de novo` e desenhe um retângulo maior."
 
 #: shell/resources/pps-document-view.blp:768
@@ -1262,7 +1268,7 @@ msgstr "Iniciar de _novo"
 
 #: shell/resources/pps-document-view.blp:769
 msgid "_Sign"
-msgstr "_Assinar"
+msgstr "A_ssinar"
 
 #: shell/resources/pps-document-view.blp:776
 msgid "Abort Printing?"
@@ -1273,12 +1279,12 @@ msgid ""
 "There is one or more active print jobs. If the window is closed, pending "
 "print jobs will not be printed."
 msgstr ""
-"Existe uma ou mais tarefas de impressão ativas. Se a janela for fechada, as "
+"Existem uma ou mais tarefas de impressão ativas. Se a janela for fechada, as "
 "tarefas de impressão pendentes não serão impressas."
 
 #: shell/resources/pps-document-view.blp:781
 msgid "Abort _Print and Close"
-msgstr "Abortar _imprimir e fechar"
+msgstr "Abortar im_primir e fechar"
 
 #: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
 #: shell/src/document_view/io.rs:445 shell/src/document_view/io.rs:493
@@ -1341,7 +1347,7 @@ msgstr "Abrir com…"
 
 #: shell/resources/pps-document-view.blp:870
 msgid "_Save As…"
-msgstr "Guardar a im_agem como…"
+msgstr "_Guardar como…"
 
 #: shell/resources/pps-document-view.blp:877
 msgid "_Continuous"
@@ -1591,8 +1597,9 @@ msgstr "Recordar para _sempre"
 msgid ""
 "This document is locked and can only be read by entering the correct password"
 msgstr ""
-"Este documento está bloqueado e só pode ser lido com a introdução da palavra-"
-"passe correcta"
+"Este documento encontra-se bloqueado e só pode ser lido com a introdução da"
+" palavra-"
+"passe correta"
 
 #: shell/resources/pps-password-view.blp:23
 msgid "_Unlock Document"
@@ -1640,7 +1647,7 @@ msgstr "Opções de pesquisa"
 
 #: shell/resources/pps-search-box.blp:53
 msgid "_Whole Words Only"
-msgstr "Só palavras _completas"
+msgstr "Apenas palavras _completas"
 
 #: shell/resources/pps-search-box.blp:58
 msgid "C_ase Sensitive"
@@ -1724,7 +1731,7 @@ msgstr "Selecionar tudo"
 #: shell/resources/pps-shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Zoom and Rotation"
-msgstr "Zoom e rotação"
+msgstr "Ampliação e Rotação"
 
 #: shell/resources/pps-shortcuts-dialog.blp:81
 msgctxt "shortcut window"
@@ -1825,7 +1832,7 @@ msgstr "Página seguinte visitada"
 #: shell/resources/pps-shortcuts-dialog.blp:175
 msgctxt "shortcut window"
 msgid "Go to Page Beginning/End"
-msgstr "Vai para o início/final da página"
+msgstr "Vai para o início/fim da página"
 
 #: shell/resources/pps-shortcuts-dialog.blp:180
 msgctxt "shortcut window"
@@ -1835,7 +1842,7 @@ msgstr "Ir para o início do documento"
 #: shell/resources/pps-shortcuts-dialog.blp:185
 msgctxt "shortcut window"
 msgid "Go to Document End"
-msgstr "Ir para o final do documento"
+msgstr "Ir para o fim do documento"
 
 #: shell/resources/pps-shortcuts-dialog.blp:191
 msgctxt "shortcut window"
@@ -1845,12 +1852,12 @@ msgstr "Visualização do documento"
 #: shell/resources/pps-shortcuts-dialog.blp:194
 msgctxt "shortcut window"
 msgid "Add Bookmark"
-msgstr "Adiciona marcador"
+msgstr "Adicionar marcador"
 
 #: shell/resources/pps-shortcuts-dialog.blp:199
 msgctxt "shortcut window"
 msgid "Remove Bookmark"
-msgstr "Remove marcador"
+msgstr "Remover marcador"
 
 #: shell/resources/pps-shortcuts-dialog.blp:204
 msgctxt "shortcut window"
@@ -1910,7 +1917,7 @@ msgstr "Assinatura digital"
 #: shell/resources/pps-shortcuts-dialog.blp:261
 msgctxt "shortcut window"
 msgid "Search"
-msgstr "Pesquisar"
+msgstr "Procurar"
 
 #: shell/resources/pps-shortcuts-dialog.blp:264
 msgctxt "shortcut window"
@@ -1962,7 +1969,7 @@ msgstr "Fechar janela"
 #: shell/resources/pps-shortcuts-dialog.blp:309
 msgctxt "shortcut window"
 msgid "Presentation Mode"
-msgstr "Modo de Apresentação"
+msgstr "Modo de apresentação"
 
 #: shell/resources/pps-shortcuts-dialog.blp:312
 msgctxt "shortcut window"
@@ -2037,11 +2044,13 @@ msgstr "© 1996–2025 Os autores do Papers"
 
 #: shell/src/application.rs:217
 msgid "translator-credits"
-msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
+msgstr ""
+"Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Cátia Silva <catias89@gmail.com>"
 
 #: shell/src/application.rs:396
 msgid "The page label of the document to display."
-msgstr "A etiqueta de página do documento a mostrar."
+msgstr "A etiqueta de página do documento a apresentar."
 
 #: shell/src/application.rs:397
 msgid "PAGE"
@@ -2049,7 +2058,7 @@ msgstr "PÁGINA"
 
 #: shell/src/application.rs:405
 msgid "The page number of the document to display."
-msgstr "O número da página do documento a mostrar."
+msgstr "O número da página do documento a apresentar."
 
 #: shell/src/application.rs:406
 msgid "NUMBER"
@@ -2057,7 +2066,7 @@ msgstr "NÚMERO"
 
 #: shell/src/application.rs:414
 msgid "Named destination to display."
-msgstr "Designação do destino a mostrar."
+msgstr "Designação do destino a apresentar."
 
 #: shell/src/application.rs:415
 msgid "DEST"
@@ -2065,15 +2074,15 @@ msgstr "DEST"
 
 #: shell/src/application.rs:423
 msgid "Run papers in fullscreen mode."
-msgstr "Execute o papers em modo de ecrã inteiro."
+msgstr "Execute o Papers em modo de ecrã inteiro."
 
 #: shell/src/application.rs:432
 msgid "Run papers in presentation mode."
-msgstr "Execute o papers em modo de apresentação."
+msgstr "Execute o Papers em modo de apresentação."
 
 #: shell/src/application.rs:441
 msgid "Show the version of the program."
-msgstr "Mostrar a versão do programa."
+msgstr "Apresentar a versão do programa."
 
 #: shell/src/application.rs:451
 msgid "[FILE…]"
@@ -2123,12 +2132,14 @@ msgstr "Guardar a imagem"
 #: shell/src/document_view/actions.rs:1165
 msgid "Caret navigation mode is now enabled, press F7 to disable."
 msgstr ""
-"O modo de navegação com cursor agora está ativado, prima F7 para o desativar."
+"O modo de navegação com cursor encontra-se agora ativo, prima F7 para o"
+" desativar."
 
 #: shell/src/document_view/actions.rs:1167
 msgid "Caret navigation mode is now disabled, press F7 to enable."
 msgstr ""
-"O modo de navegação com cursor agora está ativado, prima F7 para o ativar."
+"O modo de navegação com cursor encontra-se agora ativo, prima F7 para o"
+" ativar."
 
 #: shell/src/document_view/actions.rs:1255
 msgid "Add _Visual Signature"
@@ -2164,6 +2175,7 @@ msgid "Draw a rectangle to insert a signature field"
 msgstr "Desenhe um retângulo para inserir um campo de assinatura"
 
 #: shell/src/document_view/io.rs:467
+#, rust-format
 msgid ""
 "Digitally signed by {}\n"
 "Date: {}"
@@ -2192,6 +2204,7 @@ msgid "Save Signed File"
 msgstr "Guardar ficheiro assinado"
 
 #: shell/src/document_view/io.rs:855
+#, rust-format
 msgid "Please enter password for {}"
 msgstr "Introduza a palavra-passe para {}"
 
@@ -2201,6 +2214,7 @@ msgstr "_Iniciar sessão"
 
 #. TRANSLATORS: In the context of "the job {} is being printed"
 #: shell/src/document_view/print.rs:46
+#, rust-format
 msgid "Printing job “{}”"
 msgstr "A imprimir o trabalho “{}”"
 
@@ -2209,12 +2223,14 @@ msgid "No pending jobs in queue"
 msgstr "Nenhum trabalho pendente em fila de espera"
 
 #: shell/src/document_view/print.rs:88
+#, rust-format
 msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} trabalho pendente em fila de espera"
 msgstr[1] "{} trabalhos pendentes em fila de espera"
 
 #: shell/src/document_view/signals.rs:268
+#, rust-format
 msgid ""
 "Security alert: this document has been prevented from opening the file “{}”"
 msgstr ""
@@ -2222,6 +2238,7 @@ msgstr ""
 
 #: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
+#, rust-format
 msgid "Page {}"
 msgstr "Página {}"
 
@@ -2229,19 +2246,23 @@ msgstr "Página {}"
 #. '{' and '}' they are variable names. Changing their
 #. order is possible
 #: shell/src/page_selector.rs:244 shell/src/page_selector.rs:271
+#, rust-format
 msgid "({pagenum} of {totalpages})"
 msgstr "({pagenum} de {totalpages})"
 
 #. Translators: the placeholder is the total amount of pages
 #: shell/src/page_selector.rs:251 shell/src/page_selector.rs:280
+#, rust-format
 msgid "of {}"
 msgstr "de {}"
 
 #: shell/src/password_view.rs:149
+#, rust-format
 msgid ""
 "The document “{}” is locked and requires a password before it can be opened"
 msgstr ""
-"O documento “{}” está bloqueado e requer uma palavra-passe para poder ser "
+"O documento “{}” encontra-se bloqueado e requer uma palavra-passe para poder"
+" ser "
 "aberto"
 
 #: shell/src/properties_general.rs:50
@@ -2262,7 +2283,7 @@ msgstr "Nome"
 
 #: shell/src/properties_general.rs:244
 msgid "Folder"
-msgstr "Pasta"
+msgstr "Diretório"
 
 #: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
 msgid "File Path"
@@ -3185,3 +3206,4 @@ msgstr "Data e Hora"
 
 #~ msgid "Leave fullscreen mode"
 #~ msgstr "Deixar o modo de _ecrã completo"
+
