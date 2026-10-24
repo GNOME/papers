@@ -68,6 +68,7 @@ enum {
 	PROP_ANNOTATIONS_CONTEXT,
 	PROP_MODEL,
 	PROP_SEARCH_CONTEXT,
+	PROP_IS_LOADING,
 };
 
 static guint signals[N_SIGNALS];
@@ -642,6 +643,51 @@ pps_view_update_adjustment_values (PpsView *view)
 }
 
 static void
+pps_view_set_is_loading (PpsView *view,
+                         gboolean is_loading)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	if (priv->is_loading == is_loading)
+		return;
+
+	priv->is_loading = is_loading;
+	g_object_notify (G_OBJECT (view), "is-loading");
+}
+
+static void
+view_update_is_loading (PpsView *view)
+{
+	PpsViewPrivate *priv = GET_PRIVATE (view);
+
+	if (priv->pixbuf_cache == NULL) {
+		pps_view_set_is_loading (view, FALSE);
+		return;
+	}
+
+	/* The visible range is not known until the first allocation */
+	if (priv->start_page < 0 || priv->end_page < 0)
+		return;
+
+	for (gint i = priv->start_page; i <= priv->end_page; i++) {
+		if (pps_pixbuf_cache_is_page_loading (priv->pixbuf_cache, i)) {
+			pps_view_set_is_loading (view, TRUE);
+			return;
+		}
+	}
+
+	pps_view_set_is_loading (view, FALSE);
+}
+
+static void
+pixbuf_cache_job_done_cb (PpsPixbufCache *pixbuf_cache,
+                          gint page,
+                          PpsView *view)
+{
+	view_update_is_loading (view);
+}
+
+static void
 view_update_range_and_current_page (PpsView *view)
 {
 	PpsViewPrivate *priv = GET_PRIVATE (view);
@@ -789,6 +835,8 @@ view_update_range_and_current_page (PpsView *view)
 			pps_view_page_set_page (page, page_index);
 		}
 	}
+
+	view_update_is_loading (view);
 
 	/* make sure the correct page keeps focus */
 	if (gtk_widget_is_focus (GTK_WIDGET (view)) || gtk_widget_get_focus_child (GTK_WIDGET (view))) {
@@ -5590,6 +5638,9 @@ pps_view_get_property (GObject *object,
 	case PROP_SEARCH_CONTEXT:
 		g_value_set_object (value, priv->search_context);
 		break;
+	case PROP_IS_LOADING:
+		g_value_set_boolean (value, priv->is_loading);
+		break;
 	case PROP_HADJUSTMENT:
 		g_value_set_object (value, priv->hadjustment);
 		break;
@@ -6095,6 +6146,23 @@ pps_view_class_init (PpsViewClass *class)
 	                                                      G_PARAM_READWRITE |
 	                                                          G_PARAM_STATIC_STRINGS));
 
+	/**
+	 * PpsView:is-loading:
+	 *
+	 * Whether any of the visible pages is still being rendered and has
+	 * nothing to show yet. Pages that fail to render don't count.
+	 *
+	 * Since: 52.0
+	 */
+	g_object_class_install_property (object_class,
+	                                 PROP_IS_LOADING,
+	                                 g_param_spec_boolean ("is-loading",
+	                                                       "Is Loading",
+	                                                       "Whether visible pages are still being rendered",
+	                                                       FALSE,
+	                                                       G_PARAM_READABLE |
+	                                                           G_PARAM_STATIC_STRINGS));
+
 	/* Scrollable interface */
 	g_object_class_override_property (object_class, PROP_HADJUSTMENT, "hadjustment");
 	g_object_class_override_property (object_class, PROP_VADJUSTMENT, "vadjustment");
@@ -6341,6 +6409,11 @@ setup_caches (PpsView *view)
 	PpsViewPrivate *priv = GET_PRIVATE (view);
 	priv->height_to_page_cache = pps_view_get_height_to_page_cache (view);
 	priv->pixbuf_cache = pps_pixbuf_cache_new (GTK_WIDGET (view), priv->model, priv->pixbuf_cache_size);
+	g_signal_connect (priv->pixbuf_cache, "job-finished",
+	                  G_CALLBACK (pixbuf_cache_job_done_cb), view);
+	g_signal_connect (priv->pixbuf_cache, "job-failed",
+	                  G_CALLBACK (pixbuf_cache_job_done_cb), view);
+	pps_view_set_is_loading (view, TRUE);
 	priv->page_cache = pps_page_cache_new (pps_document_model_get_document (priv->model));
 
 	pps_page_cache_set_flags (priv->page_cache,
@@ -6407,6 +6480,7 @@ pps_view_document_changed_cb (PpsDocumentModel *model,
 
 	pps_view_remove_all (view);
 	clear_caches (view);
+	pps_view_set_is_loading (view, FALSE);
 
 	if (document == NULL)
 		return;

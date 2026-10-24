@@ -131,6 +131,7 @@ typedef struct _PpsViewPrivate {
 	gboolean can_zoom_in;
 	gboolean can_zoom_out;
 	gboolean allow_links_change_zoom;
+	gboolean is_loading;
 
 	/* Key bindings propagation */
 	gboolean key_binding_handled;

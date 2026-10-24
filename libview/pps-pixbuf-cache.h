@@ -40,6 +40,8 @@ void pps_pixbuf_cache_set_page_range (PpsPixbufCache *pixbuf_cache,
                                       GList *selection_list);
 GdkTexture *pps_pixbuf_cache_get_texture (PpsPixbufCache *pixbuf_cache,
                                           gint page);
+gboolean pps_pixbuf_cache_is_page_loading (PpsPixbufCache *pixbuf_cache,
+                                           gint page);
 void pps_pixbuf_cache_clear (PpsPixbufCache *pixbuf_cache);
 void pps_pixbuf_cache_style_changed (PpsPixbufCache *pixbuf_cache);
 void pps_pixbuf_cache_reload_page (PpsPixbufCache *pixbuf_cache,

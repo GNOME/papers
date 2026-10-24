@@ -74,6 +74,7 @@ struct _PpsPixbufCacheClass {
 
 enum {
 	JOB_FINISHED,
+	JOB_FAILED,
 	N_SIGNALS,
 };
 
@@ -128,6 +129,16 @@ pps_pixbuf_cache_class_init (PpsPixbufCacheClass *class)
 	                  G_OBJECT_CLASS_TYPE (object_class),
 	                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 	                  G_STRUCT_OFFSET (PpsPixbufCacheClass, job_finished),
+	                  NULL, NULL,
+	                  g_cclosure_marshal_VOID__INT,
+	                  G_TYPE_NONE, 1,
+	                  G_TYPE_INT);
+
+	signals[JOB_FAILED] =
+	    g_signal_new ("job-failed",
+	                  G_OBJECT_CLASS_TYPE (object_class),
+	                  G_SIGNAL_RUN_LAST,
+	                  0,
 	                  NULL, NULL,
 	                  g_cclosure_marshal_VOID__INT,
 	                  G_TYPE_NONE, 1,
@@ -297,6 +308,7 @@ job_finished_cb (PpsJob *job,
 
 	if (!pps_job_is_succeeded (job, NULL)) {
 		g_clear_object (&job_info->job);
+		g_signal_emit (pixbuf_cache, signals[JOB_FAILED], 0, job_render->page);
 		return;
 	}
 
@@ -872,6 +884,21 @@ pps_pixbuf_cache_get_texture (PpsPixbufCache *pixbuf_cache,
 	}
 
 	return job_info->texture;
+}
+
+/* Unlike pps_pixbuf_cache_get_texture() this doesn't pick up finished jobs,
+ * so it has no side effects. */
+gboolean
+pps_pixbuf_cache_is_page_loading (PpsPixbufCache *pixbuf_cache,
+                                  gint page)
+{
+	CacheJobInfo *job_info;
+
+	job_info = find_job_cache (pixbuf_cache, page);
+	if (job_info == NULL)
+		return FALSE;
+
+	return job_info->texture == NULL && job_info->job != NULL;
 }
 
 static gboolean
