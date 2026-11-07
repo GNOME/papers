@@ -1,0 +1,2235 @@
+# Azerbaijani translation for papers.
+# Copyright (C) 2026 papers's COPYRIGHT HOLDER
+# This file is distributed under the same license as the papers package.
+# Nicat Xalid <nicat.m@pm.me>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: papers main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
+"POT-Creation-Date: 2026-11-01 20:54+0000\n"
+"PO-Revision-Date: 2026-11-05 15:52+0400\n"
+"Last-Translator: \n"
+"Language-Team: Azerbaijani <Azerbaijani>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.10\n"
+
+#. Manually set name and icon
+#: data/org.gnome.Papers.desktop.in.in:2
+#: data/org.gnome.Papers.metainfo.xml.in.in:9
+#: shell/resources/pps-document-view.blp:88
+#: shell/resources/pps-loader-view.blp:10 shell/src/application.rs:47
+#: shell/src/application.rs:382
+msgid "Document Viewer"
+msgstr "Sənəd görüntüləyicisi"
+
+#: data/org.gnome.Papers.desktop.in.in:3
+msgid "View multi-page documents"
+msgstr "Çox səhifəli sənədlərə bax"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Papers.desktop.in.in:5
+msgid "pdf;djvu;tiff;document;presentation;viewer;papers;"
+msgstr "pdf;djvu;tiff;sənəd;prezentasiya;baxıcı;kağızlar;papers;viewer;"
+
+#: data/org.gnome.Papers.desktop.in.in:20
+msgid "New Window"
+msgstr "Yeni pəncərə"
+
+#: data/org.gnome.Papers.gschema.xml:14
+msgid "Override document restrictions"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:15
+msgid "Override document restrictions, like restriction to copy or to print."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:19
+msgid "The URI of the directory last used to open or save a document"
+msgstr ""
+"Sənədi açmaq və ya yadda saxlamaq üçün sonuncu dəfə istifadə edilən "
+"kataloqun URI-ı"
+
+#: data/org.gnome.Papers.gschema.xml:23
+msgid "The URI of the directory last used to save a picture"
+msgstr "Şəkli yadda saxlamaq üçün sonuncu dəfə istifadə edilən kataloqun URI-ı"
+
+#: data/org.gnome.Papers.gschema.xml:27
+msgid "Page cache size in MiB"
+msgstr "Səhifənin keş ölçüsü MiB ilə"
+
+#: data/org.gnome.Papers.gschema.xml:28
+msgid ""
+"The maximum size that will be used to cache rendered pages, limits maximum "
+"zoom level."
+msgstr ""
+"Görüntülənmiş səhifələri keşləmək üçün istifadə ediləcək maksimum ölçü "
+"maksimum miqyas səviyyəsini məhdudlaşdırır."
+
+#: data/org.gnome.Papers.gschema.xml:32
+msgid "Allow links to change the zoom level."
+msgstr "Miqyas səviyyəsini dəyişdirmək üçün keçidlərə icazə verin."
+
+#: data/org.gnome.Papers.gschema.xml:44
+msgid "Check spelling when writing annotation notes or filling text forms."
+msgstr ""
+"Açıqlama yazarkən və ya mətn formalarını doldurarkən orfoqrafiyanı yoxla."
+
+#: data/org.gnome.Papers.gschema.xml:48
+msgid "Show a side bar next to the document to help navigate the document."
+msgstr ""
+"Sənəddə naviqasiyaya kömək etmək üçün sənədin qarşısında yan çubuğu göstər."
+
+#: data/org.gnome.Papers.gschema.xml:61
+msgid "Set the default zoom level to display a document."
+msgstr "Sənədi göstərmək üçün varsayılan miqyas səviyyəsini təyin et."
+
+#: data/org.gnome.Papers.gschema.xml:65
+msgid ""
+"Display the document as a continuous stream of pages instead of page at a "
+"time."
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:69
+msgid "Show two pages side by side."
+msgstr "İki səhifəni yan-yana göstər."
+
+#: data/org.gnome.Papers.gschema.xml:73
+msgid ""
+"Show the first page (odd page) on the left (when displaying two pages side "
+"by side)"
+msgstr ""
+"Solda birinci səhifəni (tək səhifə) göstər (iki səhifə yan-yana "
+"göstərildikdə)"
+
+#: data/org.gnome.Papers.gschema.xml:110
+msgid "Last used signature ID"
+msgstr "Son istifadə olunmuş imza ID nömrəsi"
+
+#: data/org.gnome.Papers.gschema.xml:111
+msgid "ID of the signature most recently used for manual signing"
+msgstr ""
+
+#: data/org.gnome.Papers.gschema.xml:115
+msgid "Last placed signature scale"
+msgstr "Son yerləşdirilmiş imza miqyası"
+
+#: data/org.gnome.Papers.gschema.xml:122
+msgid "Previewer window height"
+msgstr "Önbaxış pəncərəsinin hündürlüyü"
+
+#: data/org.gnome.Papers.gschema.xml:126
+msgid "Previewer window width"
+msgstr "Önbaxış pəncərəsinin eni"
+
+#: data/org.gnome.Papers.gschema.xml:130
+msgid "Previewer window maximized state"
+msgstr "Önbaxış pəncərəsinin böyüdülmüş vəziyyəti"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:10
+msgid "Read documents"
+msgstr "Sənəd oxu"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:12
+msgid ""
+"A document viewer for the GNOME desktop. You can view, search or annotate "
+"documents in many different formats."
+msgstr ""
+"GNOME masaüstü üçün sənəd görüntüləyicisi. Sənədlərə müxtəlif formatlarda "
+"baxa, axtara və ya onlara qeydlər əlavə edə bilərsiniz."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:13
+msgid ""
+"Papers supports documents in: PDF, DjVu, TIFF, and Comic Books archives "
+"(CBR, CBT, CBZ, CB7)."
+msgstr ""
+"\"Kağızlar\" bu sənəd növlərini dəstəkləyir: PDF, DjVu, TIFF və kimoks "
+"arxivləri (CBR, CBT, CBZ, CB7)."
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:18
+msgid "PDF"
+msgstr "PDF"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:19
+msgid "comics"
+msgstr "komikslər"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:20
+msgid "DjVu"
+msgstr "DjVu"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:21
+msgid "TIFF"
+msgstr "TIFF"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:22
+msgid "reader"
+msgstr "oxucu"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:23
+msgid "editor"
+msgstr "redaktor"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:24
+msgid "editing"
+msgstr "redaktə edilir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:25
+msgid "forms"
+msgstr "forma"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:26
+msgid "annotate"
+msgstr "qeyd əlavə et"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:27
+msgid "annotations"
+msgstr "açıqlamalar"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:28
+msgid "annotating"
+msgstr "qeyd əlavə edilir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:29
+msgid "digital signing"
+msgstr "rəqəmsal imzalama"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:30
+msgid "digital signatures"
+msgstr "rəqəmsal imzalar"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:31
+msgid "handwriting"
+msgstr "əl yazısı"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:32
+msgid "handwritten"
+msgstr "əlyazma"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:33
+msgid "ink"
+msgstr "mürəkkəb"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:34
+msgid "freehand"
+msgstr "sərbəst əl"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:35
+msgid "drawing"
+msgstr "çəkilir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:36
+msgid "calligraphy"
+msgstr "xəttatlıq"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:37
+msgid "notes"
+msgstr "qeydlər"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:38
+msgid "highlighting"
+msgstr "vurğulama"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:39
+msgid "underline"
+msgstr "altdan xətt"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:40
+msgid "underlining"
+msgstr "altından xətt çəkilir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:41
+msgid "strikethrough"
+msgstr "üzərindən xətt"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:42
+msgid "printing"
+msgstr "çap edilir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:43
+msgid "night mode"
+msgstr "gecə rejimi"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:44
+msgid "dark mode"
+msgstr "qaranlıq rejim"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:45
+msgid "presentation mode"
+msgstr "təqdimat rejimi"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:46
+msgid "presenter mode"
+msgstr "təqdimatçı rejimi"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:47
+msgid "slideshows"
+msgstr "slayd şoular"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:48
+msgid "bookmarks"
+msgstr "əlfəcinlər"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:65
+msgid "A clear, simple, and modern UI"
+msgstr "Təmiz, sadə və çağdaş istifadəçi araüzü"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:69
+msgid "A mobile-friendly UI"
+msgstr "Mobil dostu istifadəçi araüzü"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:73
+msgid "A modern and colorful annotation list"
+msgstr "Çağdaş və rəngli açıqlama siyahısı"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:77
+msgid "Big thumbnails in the sidebar"
+msgstr ""
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:81
+msgid "All search actions are contained in the sidebar"
+msgstr "Bütün axtarış əməliyyatları yan çubuqda yerləşir"
+
+#: data/org.gnome.Papers.metainfo.xml.in.in:96
+msgid "The GNOME Project"
+msgstr "GNOME layihəsi"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:2
+msgid "Print Preview"
+msgstr "Önbaxışı çap et"
+
+#: data/org.gnome.Papers-previewer.desktop.in.in:3
+msgid "Preview before printing"
+msgstr "Çap etməzdən öncə bax"
+
+#: libdocument/backend/comics/comics-document.c:179
+#: libdocument/backend/comics/comics-document.c:248
+msgid "File is corrupted"
+msgstr "Fayl korlanıb"
+
+#: libdocument/backend/comics/comics-document.c:238
+msgid "Archive is encrypted"
+msgstr "Arxiv şifrələnib"
+
+#: libdocument/backend/comics/comics-document.c:243
+msgid "No supported images in archive"
+msgstr "Arxivdə dəstəklənən təsvir yoxdur"
+
+#: libdocument/backend/comics/comics-document.c:253
+msgid "No files in archive"
+msgstr "Arxivdə fayl yoxdur"
+
+#: libdocument/backend/comics/comics-document.c:302
+#, c-format
+msgid "Not a comic book MIME type: %s"
+msgstr "Komks kitabı MIME növü deyil: %s"
+
+#: libdocument/backend/comics/comics-document.c:309
+msgid ""
+"libarchive lacks support for this comic book’s compression, please contact "
+"your distributor"
+msgstr ""
+
+#: libdocument/backend/comics/comics-document.c:348
+msgid "Can not get local path for archive"
+msgstr "Arxiv üçün yerli yol əldə edilə bilmir"
+
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:5
+msgid "Comic Books"
+msgstr "Komiks kitabları"
+
+#: libdocument/backend/comics/org.gnome.Papers.ComicsDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading comic books"
+msgstr "Komiks kitablarını oxuma dəstəyi əlavə edir"
+
+#: libdocument/backend/djvu/djvu-document.c:173
+msgid "DjVu document has incorrect format"
+msgstr "DjVu sənədi uyğun olmayan formatdadır"
+
+#: libdocument/backend/djvu/djvu-document.c:263
+msgid ""
+"The document is composed of several files. One or more of these files cannot "
+"be accessed."
+msgstr ""
+"Sənəd bir neçə fayldan ibarətdir. Bu fayllardan bir və ya bir neçəsi əlçatan "
+"deyil."
+
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:5
+msgid "DjVu Documents"
+msgstr "DjVu sənədləri"
+
+#: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading DjVu documents"
+msgstr "DjVu sənədlərini oxuma dəstəyi əlavə edir"
+
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:5
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.papers-backend.desktop.in.in:4
+msgid "PDF Documents"
+msgstr "PDF sənədləri"
+
+#: libdocument/backend/pdf/org.gnome.Papers.PdfDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading PDF Documents"
+msgstr "PDF sənədlərini oxuma dəstəyi əlavə edir"
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:734
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: nautilus/pps-nautilus-extension.c:93 shell/src/properties_general.rs:336
+msgid "Yes"
+msgstr "Hə"
+
+#. translators: this is the document security state
+#: libdocument/backend/pdf/pps-poppler.c:737
+#: libdocument/backend/pdf/pps-poppler.c:740
+#: nautilus/pps-nautilus-extension.c:95 shell/src/properties_general.rs:337
+msgid "No"
+msgstr "Yox"
+
+#: libdocument/backend/pdf/pps-poppler.c:850
+msgid "Type 1"
+msgstr "Type 1"
+
+#: libdocument/backend/pdf/pps-poppler.c:852
+msgid "Type 1C"
+msgstr "Type 1C"
+
+#: libdocument/backend/pdf/pps-poppler.c:854
+msgid "Type 3"
+msgstr "Type 3"
+
+#: libdocument/backend/pdf/pps-poppler.c:856
+msgid "TrueType"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:858
+msgid "Type 1 (CID)"
+msgstr "Type 1 (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:860
+msgid "Type 1C (CID)"
+msgstr "Type 1C (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:862
+msgid "TrueType (CID)"
+msgstr "TrueType (CID)"
+
+#: libdocument/backend/pdf/pps-poppler.c:864
+msgid "Unknown font type"
+msgstr "Naməlum şrift növü"
+
+#: libdocument/backend/pdf/pps-poppler.c:908
+msgid ""
+"This document contains non-embedded fonts that are not from the PDF Standard "
+"14 fonts. If the substitute fonts selected by fontconfig are not the same as "
+"the fonts used to create the PDF, the rendering may not be correct."
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:913
+msgid "All fonts are either standard or embedded."
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:949
+msgid "No name"
+msgstr "Adsız"
+
+#. translators: When a font type does not have
+#. encoding information or it is unknown.  Example:
+#. Encoding: None
+#.
+#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1879
+#: shell/src/properties_general.rs:85 shell/src/properties_general.rs:235
+#: shell/src/properties_general.rs:370
+msgid "None"
+msgstr "Heç biri"
+
+#: libdocument/backend/pdf/pps-poppler.c:966
+msgid "Embedded subset"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:968
+msgid "Embedded"
+msgstr ""
+
+#: libdocument/backend/pdf/pps-poppler.c:970
+msgid "Not embedded"
+msgstr ""
+
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "Type 1 (One of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:977
+msgid " (One of the Standard 14 Fonts)"
+msgstr " (Standart 14 şriftdən biridir)"
+
+#. Translators: string starting with a space
+#. * because it is directly appended to the font
+#. * type. Example:
+#. * "TrueType (Not one of the Standard 14 Fonts)"
+#.
+#: libdocument/backend/pdf/pps-poppler.c:984
+msgid " (Not one of the Standard 14 Fonts)"
+msgstr " (Standart 14 şriftdən biri deyil)"
+
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * Type 1 (One of the standard 14 Fonts)
+#. * Not embedded
+#. * Substituting with TeXGyreTermes-Regular
+#. * (/usr/share/textmf/.../texgyretermes-regular.otf)
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1003
+#, c-format
+msgid ""
+"%s%s\n"
+"Encoding: %s\n"
+"%s\n"
+"Substituting with <b>%s</b>\n"
+"(%s)"
+msgstr ""
+
+#. Translators: string is a concatenation of previous
+#. * translated strings to indicate the fonts properties
+#. * in a PDF document.
+#. *
+#. * Example:
+#. * TrueType (CID)
+#. * Encoding: Custom
+#. * Embedded subset
+#.
+#: libdocument/backend/pdf/pps-poppler.c:1021
+#, c-format
+msgid ""
+"%s%s\n"
+"Encoding: %s\n"
+"%s"
+msgstr ""
+"%s%s\r\n"
+"Kodlaşdırma: %s\r\n"
+"%s"
+
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:5
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.papers-backend.desktop.in.in:3
+msgid "TIFF Documents"
+msgstr "TIFF sənədlər"
+
+#: libdocument/backend/tiff/org.gnome.Papers.TiffDocument.metainfo.xml.in.in:6
+msgid "Adds support for reading TIFF documents"
+msgstr "TIFF sənədlərini oxuma dəstəyi əlavə edir"
+
+#: libdocument/backend/tiff/tiff-document.c:97
+msgid "Invalid document"
+msgstr "Etibarsız sənəd"
+
+#: libdocument/pps-attachment.c:289 libdocument/pps-attachment.c:305
+#, c-format
+msgid "Couldn’t save attachment “%s”: %s"
+msgstr "\"%s\" qoşması saxlanıla bilmədi: %s"
+
+#: libdocument/pps-attachment.c:336
+#, c-format
+msgid "Couldn’t open attachment “%s”: %s"
+msgstr "\"%s\" qoşması açıla bilmədi: %s"
+
+#: libdocument/pps-attachment.c:373
+#, c-format
+msgid "Couldn’t open attachment “%s”"
+msgstr "\"%s\" qoşması açıla bilmədi"
+
+#: libdocument/pps-document-factory.c:86
+#, c-format
+msgid "File type %s (%s) is not supported"
+msgstr "%s (%s) fayl növü dəstəklənmir"
+
+#: libdocument/pps-document-factory.c:392
+msgid "All Documents"
+msgstr "Bütün sənədlər"
+
+#: libdocument/pps-document-factory.c:420
+msgid "All Files"
+msgstr "Bütün fayllar"
+
+#. Translate to the default units to use for presenting
+#. * lengths to the user. Translate to default:inch if you
+#. * want inches, otherwise translate to default:mm.
+#. * Do *not* translate it to "predefinito:mm", if it
+#. * it isn't default:mm or default:inch it will not work
+#.
+#: libdocument/pps-document-info.c:200
+msgid "default:mm"
+msgstr "varsayılan:mm"
+
+#. Note to translators: this string makes a range of pages that have a certain size,
+#. * the first and the second placeholders %i are the start and the end of this range
+#. * (e.g. 1-5), and the minus sign separates them
+#: libdocument/pps-document-info.c:258
+#, c-format
+msgid "%i-%i"
+msgstr "%i-%i"
+
+#. Note to translators: this is a separator that separates two or more page ranges,
+#. * or individual page numbers (e.g. 1, 3-7, 9, 11-12)
+#: libdocument/pps-document-info.c:264
+msgid ", "
+msgstr ", "
+
+#. Note to translators: first placeholder is the paper width
+#. * in mm, second placeholder is the paper height in mm,
+#. * both do not have a decimal point (e.g. 297 x 210 mm)
+#: libdocument/pps-document-info.c:327
+#, c-format
+msgid "%.0f × %.0f mm"
+msgstr "%.0f × %.0f mm"
+
+#. Note to translators: first placeholder is the paper width
+#. * in inches, second placeholder is the paper height in inches,
+#. * both with 2 decimal places (e.g. 8.50 × 11.00 inch)
+#: libdocument/pps-document-info.c:334
+#, c-format
+msgid "%.2f × %.2f inch"
+msgstr "%.2f × %.2f inç"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:356
+#, c-format
+msgid "%s, Portrait (%s)"
+msgstr "%s, Portrait (%s)"
+
+#. Note to translators: first placeholder is the paper name (eg.
+#. * A4), second placeholder is the paper size (eg. 297x210 mm)
+#: libdocument/pps-document-info.c:363
+#, c-format
+msgid "%s, Landscape (%s)"
+msgstr "%s, Üfüqi (%s)"
+
+#. Note to translators: the first placeholder %s is the singular or plural form of the word "Page",
+#. * the second placeholder is a page number or range(e.g. "1, 5-12"),
+#. * the third placeholder is the page format (e.g. US Letter, Portrait (8.50 × 11.00 inch))
+#: libdocument/pps-document-info.c:397
+#, c-format
+msgid "%s %s: %s"
+msgstr "%s %s: %s"
+
+#: libdocument/pps-document-info.c:397
+msgid "Page"
+msgid_plural "Pages"
+msgstr[0] "Səhifə"
+msgstr[1] "Səhifə"
+
+#: libdocument/pps-file-helpers.c:131
+#, c-format
+msgid "Failed to create a temporary file: %s"
+msgstr "Müvəqqəti fayl yaradıla bilmədi: %s"
+
+#: libdocument/pps-file-helpers.c:337 libdocument/pps-file-helpers.c:374
+#: libdocument/pps-file-helpers.c:381 libdocument/pps-file-helpers.c:463
+#: libdocument/pps-file-helpers.c:470
+msgid "Unknown MIME Type"
+msgstr "Naməlum MIME növü"
+
+#: libdocument/pps-xmp.c:188
+msgid "This work is in the Public Domain"
+msgstr "Bu əsər ictimai mülkiyyətdədir"
+
+#: libview/context/pps-attachment-context.c:350
+msgid "Save Attachment"
+msgid_plural "Save Attachments"
+msgstr[0] "Qoşmanı saxla"
+msgstr[1] "Qoşmaları saxla"
+
+#: libview/context/pps-history.c:473 previewer/pps-page-selector.c:179
+#, c-format
+msgid "Page %s"
+msgstr "%s. səhifə"
+
+#: libview/pps-annotation-window.c:242
+#: shell/resources/pps-sidebar-annotations.blp:60
+msgid "Edit Note"
+msgstr "Qeydi redaktə et"
+
+#: libview/pps-jobs.c:399
+#, c-format
+msgid "Failed to render page %d: %s"
+msgstr ""
+
+#: libview/pps-jobs.c:406
+#, c-format
+msgid "Failed to render page %d"
+msgstr ""
+
+#: libview/pps-jobs.c:625
+#, c-format
+msgid "Failed to create thumbnail for page %d"
+msgstr ""
+
+#: libview/pps-jobs.c:1602
+#, c-format
+msgid "Failed to print page %d: %s"
+msgstr "%d səhifəsi çap oluna bilmədi: %s"
+
+#. Initial state
+#: libview/pps-print-operation.c:331
+msgid "Preparing preview…"
+msgstr "Önbaxış hazırlanır…"
+
+#: libview/pps-print-operation.c:333 libview/pps-print-operation.c:343
+msgid "Finishing…"
+msgstr "Tamamlanır…"
+
+#: libview/pps-print-operation.c:335
+#, c-format
+msgid "Generating preview: page %d of %d"
+msgstr "Önbaxış yaradılır: səhifə %d / %d"
+
+#. Initial state
+#: libview/pps-print-operation.c:341
+msgid "Preparing to print…"
+msgstr "Çap üçün hazırlanır…"
+
+#: libview/pps-print-operation.c:345
+#, c-format
+msgid "Printing page %d of %d…"
+msgstr "Çap edilən səhifə: %d / %d…"
+
+#: libview/pps-print-operation.c:1334
+msgid "Invalid Page Selection"
+msgstr "Etibarsız sənəd seçimi"
+
+#: libview/pps-print-operation.c:1335
+msgid "Your print range selection does not include any pages"
+msgstr "Çap aralığı seçiminə heç bir səhifə daxil deyil"
+
+#. show close if the certificate is null, or if no cert is found
+#: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
+#: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
+#: shell/src/document_view/io.rs:572
+msgid "_Close"
+msgstr "_Bağla"
+
+#. translators: Title of the print dialog
+#: libview/pps-print-operation.c:1413
+msgid "Print"
+msgstr "Çap et"
+
+#: libview/pps-print-operation.c:1872
+msgid "Page Scaling:"
+msgstr "Səhifə miqyası:"
+
+#: libview/pps-print-operation.c:1880
+msgid "Shrink to Printable Area"
+msgstr ""
+
+#: libview/pps-print-operation.c:1881
+msgid "Fit to Printable Area"
+msgstr "Çap olunabilən əraziyə uyğunlaşdır"
+
+#: libview/pps-print-operation.c:1888
+msgid ""
+"Scale document pages to fit the selected printer page. Select from one of "
+"the following:\n"
+"\n"
+"• “None”: No page scaling is performed.\n"
+"\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable area "
+"are reduced to fit the printable area of the printer page.\n"
+"\n"
+"• “Fit to Printable Area”: Document pages are enlarged or reduced as "
+"required to fit the printable area of the printer page.\n"
+msgstr ""
+
+#: libview/pps-print-operation.c:1899
+msgid "Auto Rotate and Center"
+msgstr "Avtomatik fırlat və mərkəzlə"
+
+#: libview/pps-print-operation.c:1902
+msgid ""
+"Rotate printer page orientation of each page to match orientation of each "
+"document page. Document pages will be centered within the printer page."
+msgstr ""
+
+#: libview/pps-print-operation.c:1906
+msgid "Select page size using document page size"
+msgstr "Sənəd səhifə ölçüsündən istifadə edərək səhifə ölçüsünü seç"
+
+#: libview/pps-print-operation.c:1908
+msgid ""
+"When enabled, each page will be printed on the same size paper as the "
+"document page."
+msgstr ""
+"Aktiv edildikdə hər səhifə sənəd səhifəsi ilə eyni ölçüdə kağızda çap "
+"ediləcək."
+
+#: libview/pps-print-operation.c:1912
+msgid "Draw border around pages"
+msgstr "Səhifələr ətrafında sərhəd çəkin"
+
+#: libview/pps-print-operation.c:1914
+msgid "When enabled, a border will be drawn around each page."
+msgstr "Aktiv edildikdə hər səhifənin ətrafında haşiyə çəkiləcək."
+
+#: libview/pps-print-operation.c:2011
+msgid "Page Handling"
+msgstr ""
+
+#: libview/pps-view.c:2140
+msgid "Go to first page"
+msgstr "İlk səhifəyə get"
+
+#: libview/pps-view.c:2142
+msgid "Go to previous page"
+msgstr "Öncəki səhifəyə get"
+
+#: libview/pps-view.c:2144
+msgid "Go to next page"
+msgstr "Növbəti səhifəyə get"
+
+#: libview/pps-view.c:2146
+msgid "Go to last page"
+msgstr "Son səhifəyə get"
+
+#: libview/pps-view.c:2148
+msgid "Go to page"
+msgstr "Səhifəyə get"
+
+#: libview/pps-view.c:2150
+msgid "Find"
+msgstr "Tap"
+
+#: libview/pps-view.c:2179
+#, c-format
+msgid "Go to page %s"
+msgstr "%s. səhifəyə get"
+
+#: libview/pps-view.c:2185
+#, c-format
+msgid "Go to %s on file “%s”"
+msgstr "\"%2$s\" faylındakı %1$s ünvanına get"
+
+#: libview/pps-view.c:2188
+#, c-format
+msgid "Go to file “%s”"
+msgstr "\"%s\" faylına get"
+
+#: libview/pps-view.c:2196
+#, c-format
+msgid "Launch %s"
+msgstr "%s başlat"
+
+#: libview/pps-view.c:2203
+#, c-format
+msgid "Reset form"
+msgstr "Formanı sıfırla"
+
+#: libview/pps-view-presentation.c:824
+msgid "Running in presentation mode"
+msgstr "Təqdimat rejimində çalışır"
+
+#: libview/pps-view-presentation.c:875
+msgid "End of presentation. Press Esc or click to exit."
+msgstr ""
+
+#: libview/pps-view-presentation.blp:49
+msgid "Jump to page:"
+msgstr "Səhifəyə keç:"
+
+#: previewer/pps-page-selector.c:65 previewer/pps-page-selector.c:104
+#, c-format
+msgid "(%d of %d)"
+msgstr "(%d / %d)"
+
+#: previewer/pps-page-selector.c:67 previewer/pps-page-selector.c:108
+#, c-format
+msgid "of %d"
+msgstr "/ %d"
+
+#: previewer/pps-page-selector.blp:13 shell/resources/pps-page-selector.blp:13
+msgid "Select page"
+msgstr "Səhifə seç"
+
+#: previewer/pps-previewer.c:32
+msgid "Delete the temporary file"
+msgstr "Müvəqqəti faylı sil"
+
+#: previewer/pps-previewer.c:34
+msgid "File specifying print settings"
+msgstr ""
+
+#: previewer/pps-previewer.c:34
+msgid "FILE"
+msgstr "FAYL"
+
+#: previewer/pps-previewer.c:36
+msgid "File descriptor of input file"
+msgstr ""
+
+#: previewer/pps-previewer.c:36 previewer/pps-previewer.c:40
+msgid "FD"
+msgstr ""
+
+#: previewer/pps-previewer.c:38
+msgid "MIME type of input file"
+msgstr "Giriş faylının MIME növü"
+
+#: previewer/pps-previewer.c:38
+msgid "TYPE"
+msgstr "NÖV"
+
+#: previewer/pps-previewer.c:40
+msgid "File descriptor of print settings file"
+msgstr ""
+
+#: previewer/pps-previewer.c:263 previewer/pps-previewer.c:279
+msgid "GNOME Document Previewer"
+msgstr "GNOME Sənəd görüntüləyicisi"
+
+#: previewer/pps-previewer-window.c:172 previewer/pps-previewer-window.c:512
+msgid "Papers Document Viewer"
+msgstr "\"Kağızlar\" sənəd görüntüləyicisi"
+
+#: previewer/pps-previewer-window.c:210
+#, c-format
+msgid "The selected printer “%s” could not be found"
+msgstr "Seçilmiş \"%s\" çap maşını tapılmadı"
+
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:210
+#: shell/src/document_view/io.rs:211
+msgid "Papers"
+msgstr "Kağızlar"
+
+#: previewer/pps-previewer-window.blp:21
+msgid "Previous Page"
+msgstr "Öncəki səhifə"
+
+#: previewer/pps-previewer-window.blp:27
+msgid "Next Page"
+msgstr "Növbəti səhifə"
+
+#: previewer/pps-previewer-window.blp:33
+#: shell/resources/pps-document-view.blp:213
+msgid "Page Count"
+msgstr "Səhifə sayı"
+
+#: previewer/pps-previewer-window.blp:38
+msgid "_Print"
+msgstr "_Çap et"
+
+#: previewer/pps-previewer-window.blp:39
+msgid "Print This Document"
+msgstr "Bu sənədi çap et"
+
+#: previewer/pps-previewer-window.blp:50
+#: shell/resources/pps-document-view.blp:293
+msgid "Zoom Out"
+msgstr "Uzaqlaşdır"
+
+#: previewer/pps-previewer-window.blp:57
+msgid "Normal Size"
+msgstr "Normal ölçü"
+
+#: previewer/pps-previewer-window.blp:64
+#: shell/resources/pps-document-view.blp:280
+msgid "Zoom In"
+msgstr "Yaxınlaşdır"
+
+#: previewer/pps-previewer-window.blp:80 shell/src/document_view/print.rs:114
+msgid "Failed to Print Document"
+msgstr "Sənəd çap oluna bilmədi"
+
+#: nautilus/pps-nautilus-extension.c:97
+#: shell/resources/pps-annotation-properties-dialog.blp:60
+#: shell/src/properties_general.rs:338
+msgid "Unknown"
+msgstr "Naməlum"
+
+#: nautilus/pps-nautilus-extension.c:138
+msgid "Document Properties"
+msgstr "Sənəd özəllikləri"
+
+#: nautilus/pps-nautilus-extension.h:45 shell/src/properties_general.rs:300
+msgid "Title"
+msgstr "Başlıq"
+
+#: nautilus/pps-nautilus-extension.h:46
+msgid "Location"
+msgstr "Məkan"
+
+#: nautilus/pps-nautilus-extension.h:47 shell/src/properties_general.rs:301
+msgid "Subject"
+msgstr "Başlıq"
+
+#: nautilus/pps-nautilus-extension.h:48 shell/src/properties_general.rs:302
+msgid "Author"
+msgstr "Müəllif"
+
+#: nautilus/pps-nautilus-extension.h:49 shell/src/properties_general.rs:303
+msgid "Keywords"
+msgstr "Açar sözlər"
+
+#: nautilus/pps-nautilus-extension.h:50 shell/src/properties_general.rs:304
+msgid "Document produced with"
+msgstr "Sənəd bununla yaradıldı:"
+
+#: nautilus/pps-nautilus-extension.h:51 shell/src/properties_general.rs:305
+msgid "Source file created with"
+msgstr "Mənbə faylı bununla yaradılıb:"
+
+#: nautilus/pps-nautilus-extension.h:52 shell/src/properties_general.rs:316
+msgid "Created"
+msgstr "Yaradıldı"
+
+#: nautilus/pps-nautilus-extension.h:53 shell/src/properties_general.rs:317
+msgid "Modified"
+msgstr "Redaktə olunma"
+
+#: nautilus/pps-nautilus-extension.h:54 shell/src/properties_general.rs:329
+msgid "Number of Pages"
+msgstr "Səhifə sayı"
+
+#: nautilus/pps-nautilus-extension.h:55 shell/src/properties_general.rs:330
+msgid "Optimized"
+msgstr "Optimallaşdırılıb"
+
+#: nautilus/pps-nautilus-extension.h:56 shell/src/properties_general.rs:326
+#: shell/src/properties_general.rs:328
+msgid "Format"
+msgstr "Format"
+
+#: nautilus/pps-nautilus-extension.h:57 shell/src/properties_general.rs:331
+msgid "Security"
+msgstr "Təhlükəsizlik"
+
+#: nautilus/pps-nautilus-extension.h:58 shell/src/properties_general.rs:340
+msgid "Contains Javascript"
+msgstr "Javascript ehtiva edir"
+
+#: nautilus/pps-nautilus-extension.h:59 shell/src/properties_general.rs:332
+msgid "Paper Size"
+msgstr "Kağız ölçüsü"
+
+#: nautilus/pps-nautilus-extension.h:60 shell/src/properties_general.rs:289
+msgid "Size"
+msgstr "Ölçü"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:5
+msgctxt "Title of the dialog shown to edit properties of a given annotation."
+msgid "Annotation Properties"
+msgstr "Açıqlama özəllikləri"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:15
+msgid "_Color"
+msgstr "_Rəng"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:30
+msgid "_Opacity"
+msgstr "_Matlıq"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:46
+msgid "_Icon"
+msgstr "_İkon"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:51
+msgid "Note"
+msgstr "Qeyd"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:52
+msgid "Comment"
+msgstr "Şərh"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:53
+msgid "Key"
+msgstr "Açar"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:54
+msgid "Help"
+msgstr "Yardım"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:55
+msgid "New Paragraph"
+msgstr "Yeni paraqraf"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:56
+msgid "Paragraph"
+msgstr "Paraqraf"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:57
+msgid "Insert"
+msgstr "Daxil et"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:58
+msgid "Cross"
+msgstr "Çarpaz"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:59
+msgid "Circle"
+msgstr "Çevrə"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:70
+msgid "_Markup Type"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:75
+#: shell/resources/pps-document-view.blp:490
+msgid "Highlight"
+msgstr "Vurğula"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:76
+msgid "Strike out"
+msgstr ""
+
+#: shell/resources/pps-annotation-properties-dialog.blp:77
+msgid "Underline"
+msgstr "Altdan xətt"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:78
+msgid "Squiggly"
+msgstr "Dalğalı"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:87
+msgid "_Author"
+msgstr "_Müəllif"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:94
+msgid "Auto-Reveal on _Scroll"
+msgstr "_Sürüşdürmə zamanı avtomatik üzə çıxart"
+
+#: shell/resources/pps-annotation-properties-dialog.blp:96
+msgid "Pop up note while scrolling the document"
+msgstr ""
+
+#. Translators: Translators: This is an action (a verb in English) that opens the sidebar to start a search
+#: shell/resources/pps-document-view.blp:79
+msgid "Search"
+msgstr "Axtar"
+
+#: shell/resources/pps-document-view.blp:94 shell/resources/pps-window.blp:35
+msgid "Main Menu"
+msgstr "Əsas menyu"
+
+#: shell/resources/pps-document-view.blp:113
+msgid "Thumbnails"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:124
+msgid "Outline"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:136
+msgid "Annotations"
+msgstr "Açıqlamalar"
+
+#: shell/resources/pps-document-view.blp:154
+msgid "Attachments"
+msgstr "Qoşmalar"
+
+#: shell/resources/pps-document-view.blp:170
+msgid "Layers"
+msgstr "Qatlar"
+
+#: shell/resources/pps-document-view.blp:200
+msgid "Toggle Sidebar"
+msgstr "Yan çubuğu aç-bağla"
+
+#: shell/resources/pps-document-view.blp:206
+msgid "Document Menu"
+msgstr "Sənəd menyusu"
+
+#: shell/resources/pps-document-view.blp:226
+msgid "Document has been digitally signed."
+msgstr "Sənəd rəqəmsal olaraq imzalanıb."
+
+#: shell/resources/pps-document-view.blp:227
+msgid "View Signature…"
+msgstr "İmzaya bax…"
+
+#: shell/resources/pps-document-view.blp:260
+msgid "Fit Automatically"
+msgstr "Avtomatik uyğunlaşdır"
+
+#: shell/resources/pps-document-view.blp:343
+#: shell/resources/pps-document-view.blp:385
+#: shell/resources/pps-document-view.blp:417
+msgid "Choose Color"
+msgstr "Rəng seç"
+
+#: shell/resources/pps-document-view.blp:363
+msgid "Font Settings"
+msgstr "Şrift ayarları"
+
+#: shell/resources/pps-document-view.blp:399
+msgid "Highlight Stroke Size"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:432
+msgid "Pencil Size"
+msgstr "Sadə qələm ölçüsü"
+
+#: shell/resources/pps-document-view.blp:444
+msgid "Eraser Settings"
+msgstr "Pozan ayarları"
+
+#: shell/resources/pps-document-view.blp:460
+msgid "Change Eraser Radius"
+msgstr "Pozanın radiusunu dəyiş"
+
+#: shell/resources/pps-document-view.blp:478
+msgid "Insert Text"
+msgstr "Mətn daxil et"
+
+#: shell/resources/pps-document-view.blp:484
+msgid "Draw"
+msgstr "Çək"
+
+#: shell/resources/pps-document-view.blp:496
+msgid "Erase Annotations"
+msgstr "Açıqlamaları sil"
+
+#: shell/resources/pps-document-view.blp:513
+#: shell/src/document_view/actions.rs:1359
+msgid "Edit Document"
+msgstr "Sənədi redaktə et"
+
+#: shell/resources/pps-document-view.blp:760
+msgid "Selection too Small"
+msgstr "Seçim çox kiçikdir"
+
+#: shell/resources/pps-document-view.blp:761
+msgid ""
+"A signature of this size may be too small to read. If you would like to "
+"create a potentially more readable signature, press `Start over` and draw a "
+"bigger rectangle."
+msgstr ""
+"Bu ölçüdə imza oxumaq üçün çox kiçik ola bilər. Potensial olaraq daha "
+"oxunaqlı imza yaratmaq istəyirsinizsə, \"Yenidən başla\" düyməsinə basın və "
+"daha böyük düzbucaqlı çəkin."
+
+#: shell/resources/pps-document-view.blp:768
+msgid "Start _Over"
+msgstr "_Başdan başla"
+
+#: shell/resources/pps-document-view.blp:769
+msgid "_Sign"
+msgstr "_İmzala"
+
+#: shell/resources/pps-document-view.blp:776
+msgid "Abort Printing?"
+msgstr "Çap dayandırılsın?"
+
+#: shell/resources/pps-document-view.blp:777
+msgid ""
+"There is one or more active print jobs. If the window is closed, pending "
+"print jobs will not be printed."
+msgstr ""
+"Bir və ya daha çox aktiv çap işi var. Pəncərə bağlanarsa, gözlənilən çap "
+"tapşırıqları çap edilməyəcək."
+
+#: shell/resources/pps-document-view.blp:781
+msgid "Abort _Print and Close"
+msgstr "_Çapı dayandır və bağla"
+
+#: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
+#: shell/src/document_view/io.rs:445 shell/src/document_view/io.rs:493
+#: shell/src/document_view/io.rs:871
+msgid "_Cancel"
+msgstr "_İmtina"
+
+#: shell/resources/pps-document-view.blp:783
+msgid "Close _After Printing"
+msgstr "Çap edəndən _sonra bağla"
+
+#: shell/resources/pps-document-view.blp:798
+msgid "Open…"
+msgstr "Aç…"
+
+#: shell/resources/pps-document-view.blp:805
+msgid "Ni_ght Mode"
+msgstr "_Gecə rejimi"
+
+#: shell/resources/pps-document-view.blp:812 shell/resources/pps-window.blp:145
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatura qısayolları"
+
+#: shell/resources/pps-document-view.blp:817 shell/resources/pps-window.blp:150
+msgid "_Help"
+msgstr "_Yardım"
+
+#: shell/resources/pps-document-view.blp:822 shell/resources/pps-window.blp:155
+msgid "_About Document Viewer"
+msgstr "Sənəd görüntüləyicisi _haqqında"
+
+#: shell/resources/pps-document-view.blp:831
+msgid "_Print…"
+msgstr "_Çap et…"
+
+#: shell/resources/pps-document-view.blp:836
+msgid "Fullscreen"
+msgstr "Tam ekran"
+
+#: shell/resources/pps-document-view.blp:841
+msgid "Present as Slideshow"
+msgstr "Slayd şou təqdim et"
+
+#: shell/resources/pps-document-view.blp:848
+msgid "Sign D_igitally…"
+msgstr "_Rəqəmsal olaraq imzala…"
+
+#: shell/resources/pps-document-view.blp:853
+msgid "_Manage Signatures…"
+msgstr "İmzaları _idarə et…"
+
+#: shell/resources/pps-document-view.blp:860
+msgid "Open a C_opy"
+msgstr "_Nüsxə aç"
+
+#: shell/resources/pps-document-view.blp:865
+#: shell/src/properties_general.rs:137
+msgid "Open With…"
+msgstr "Bununla aç…"
+
+#: shell/resources/pps-document-view.blp:870
+msgid "_Save As…"
+msgstr "_Fərqli saxla…"
+
+#: shell/resources/pps-document-view.blp:877
+msgid "_Continuous"
+msgstr "_Davamlı"
+
+#: shell/resources/pps-document-view.blp:882
+msgid "_Dual"
+msgstr "_İkili"
+
+#: shell/resources/pps-document-view.blp:887
+msgid "_Odd Pages Left"
+msgstr "_Tək səhifələr solda"
+
+#: shell/resources/pps-document-view.blp:892
+msgid "Right to Left Document"
+msgstr "Sağdan sola sənəd"
+
+#: shell/resources/pps-document-view.blp:899
+msgid "Ro_tate ⤵"
+msgstr "_Fırlat ⤵"
+
+#: shell/resources/pps-document-view.blp:906
+msgid "Document Prop_erties"
+msgstr "Sənəd ö_zəllikləri"
+
+#: shell/resources/pps-document-view.blp:959
+#: shell/resources/pps-document-view.blp:1267
+msgid "Black"
+msgstr "Qara"
+
+#: shell/resources/pps-document-view.blp:971
+#: shell/resources/pps-document-view.blp:1058
+#: shell/resources/pps-document-view.blp:1207
+msgid "Orange"
+msgstr "Narıncı"
+
+#: shell/resources/pps-document-view.blp:983
+#: shell/resources/pps-document-view.blp:1071
+#: shell/resources/pps-document-view.blp:1219
+msgid "Red"
+msgstr "Qırmızı"
+
+#: shell/resources/pps-document-view.blp:995
+#: shell/resources/pps-document-view.blp:1084
+#: shell/resources/pps-document-view.blp:1231
+msgid "Purple"
+msgstr "Bənövşəyi"
+
+#: shell/resources/pps-document-view.blp:1007
+#: shell/resources/pps-document-view.blp:1097
+#: shell/resources/pps-document-view.blp:1243
+msgid "Blue"
+msgstr "Göy"
+
+#: shell/resources/pps-document-view.blp:1019
+#: shell/resources/pps-document-view.blp:1110
+#: shell/resources/pps-document-view.blp:1255
+msgid "Green"
+msgstr "Yaşıl"
+
+#: shell/resources/pps-document-view.blp:1045
+#: shell/resources/pps-document-view.blp:1195
+msgid "Yellow"
+msgstr "Yaşıl"
+
+#: shell/resources/pps-document-view.blp:1132
+#: shell/resources/pps-document-view.blp:1289
+#: shell/resources/pps-document-view.blp:1348
+msgid "Thin"
+msgstr "İncə"
+
+#: shell/resources/pps-document-view.blp:1144
+#: shell/resources/pps-document-view.blp:1302
+#: shell/resources/pps-document-view.blp:1360
+msgid "Medium"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:1156
+#: shell/resources/pps-document-view.blp:1314
+#: shell/resources/pps-document-view.blp:1372
+msgid "Thick"
+msgstr "Qalın"
+
+#: shell/resources/pps-document-view.blp:1168
+#: shell/resources/pps-document-view.blp:1326
+#: shell/resources/pps-document-view.blp:1384
+msgid "Very Thick"
+msgstr "Çox qalın"
+
+#: shell/resources/pps-document-view.blp:1397
+msgid "Erase Ink"
+msgstr "Mürəkkəbi sil"
+
+#: shell/resources/pps-document-view.blp:1403
+msgid "Erase Whole Strokes"
+msgstr ""
+
+#: shell/resources/pps-document-view.blp:1432
+msgid "Manage Signatures…"
+msgstr "İmzaları idarə et…"
+
+#: shell/resources/pps-document-view.blp:1451
+msgid "No Signatures Yet"
+msgstr "Hələ imza yoxdur"
+
+#: shell/resources/pps-document-view.blp:1461
+msgid "Add Signature"
+msgstr "İmza əlavə et"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are squiggly, strikethrough, and underline. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1509
+msgid "Highlight (h)"
+msgstr "Vurğula (h)"
+
+#. Translators: As a noun or adjective, this is describing the type of text marking annotation, as are highlight, squiggly, and underline. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1525
+msgid "Strikethrough (k)"
+msgstr "Üzərindən xətt (k)"
+
+#. Translators: As a noun, this is describing the type of text marking annotation, as are highlight, squiggly, and strikethrough. An adjective could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1541
+msgid "Underline (u)"
+msgstr "Altdan xətt (u)"
+
+#. Translators: As an adjective, this is describing the type of text marking annotation, as are highlight, strikethrough, and underline. A noun could also make sense as a translation. The letter in parenthesis marks the keyboard shortcut and should not be translated.
+#: shell/resources/pps-document-view.blp:1557
+msgid "Squiggly (q)"
+msgstr "Dalğalı (q)"
+
+#: shell/resources/pps-document-view.blp:1648
+msgid "_Open Link"
+msgstr "Keçid _aç"
+
+#: shell/resources/pps-document-view.blp:1654
+msgid "Send an Email"
+msgstr "E-poçt göndər"
+
+#: shell/resources/pps-document-view.blp:1660
+msgid "_Copy Link Address"
+msgstr "Keçid ünvanını _köçür"
+
+#: shell/resources/pps-document-view.blp:1666
+msgid "Copy Email Address"
+msgstr "E-poçt ünvanını köçür"
+
+#: shell/resources/pps-document-view.blp:1672
+msgid "_Go To"
+msgstr "_Get"
+
+#: shell/resources/pps-document-view.blp:1678
+msgid "Open in New _Window"
+msgstr "Yeni _pəncərə aç"
+
+#: shell/resources/pps-document-view.blp:1686
+msgid "_Copy"
+msgstr "_Köçür"
+
+#: shell/resources/pps-document-view.blp:1691
+msgid "Select _All"
+msgstr "_Hamısını seç"
+
+#: shell/resources/pps-document-view.blp:1698
+msgid "_Save Image As…"
+msgstr "Təsviri fərqli _saxla…"
+
+#: shell/resources/pps-document-view.blp:1704
+msgid "Copy _Image"
+msgstr "_Təsviti köçür"
+
+#: shell/resources/pps-document-view.blp:1712
+#: shell/resources/pps-sidebar-annotations.blp:78
+msgid "_Open Attachment"
+msgstr "Qoşma _aç"
+
+#: shell/resources/pps-document-view.blp:1718
+#: shell/resources/pps-sidebar-annotations.blp:84
+msgid "_Save Attachment As…"
+msgstr "Qoşmanı fərqli _saxla…"
+
+#: shell/resources/pps-document-view.blp:1728
+msgid "Annotation _Properties…"
+msgstr "Açıqlama _özəllikləri…"
+
+#: shell/resources/pps-document-view.blp:1734
+msgid "R_emove Annotation"
+msgstr "Açıqlamanı _yığışdır"
+
+#: shell/resources/pps-document-view.blp:1742
+msgid "_Add Text Annotation"
+msgstr "Mətn açıqlaması _əlavə et"
+
+#: shell/resources/pps-find-sidebar.blp:60
+msgid "No Results Found"
+msgstr "Nəticə tapılmadı"
+
+#: shell/resources/pps-find-sidebar.blp:61
+msgid "Try a different search"
+msgstr "Fərqli axtarış yoxla"
+
+#: shell/resources/pps-find-sidebar.blp:74
+msgid "Perform a Search"
+msgstr "Axtarış icra et"
+
+#: shell/resources/pps-find-sidebar.blp:75
+msgid "The search results will appear here"
+msgstr "Axtarış nəticələri burada görünəcəklər"
+
+#: shell/resources/pps-loader-view.blp:15
+msgid "Loading Document"
+msgstr "Sənəd yüklənir"
+
+#: shell/resources/pps-loader-view.blp:48 shell/src/document_view/print.rs:50
+msgid "C_ancel"
+msgstr "İ_mtina"
+
+#: shell/resources/pps-password-dialog.blp:5
+#: shell/resources/pps-password-view.blp:11
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
+msgid "Password Required"
+msgstr "Şifrə tələb olunur"
+
+#: shell/resources/pps-password-dialog.blp:9
+msgid "Cancel"
+msgstr "İmtina"
+
+#: shell/resources/pps-password-dialog.blp:10
+msgid "Unlock"
+msgstr "Kilidi aç"
+
+#: shell/resources/pps-password-dialog.blp:24
+msgid "Password"
+msgstr "Şifrə"
+
+#: shell/resources/pps-password-dialog.blp:38
+msgid "Invalid password"
+msgstr "Etibarsız şifrə"
+
+#: shell/resources/pps-password-dialog.blp:53
+msgid "Forget password _immediately"
+msgstr "Şifrəni _dərhal unut"
+
+#: shell/resources/pps-password-dialog.blp:60
+msgid "Remember _forever"
+msgstr "_Həmişəlik xatırla"
+
+#: shell/resources/pps-password-view.blp:18
+msgid ""
+"This document is locked and can only be read by entering the correct password"
+msgstr "Bu sənəd kilidlənib və yalnız düzgün şifrəni daxil etməklə oxuna bilər"
+
+#: shell/resources/pps-password-view.blp:23
+msgid "_Unlock Document"
+msgstr "Sənədin _kilidini aç"
+
+#: shell/resources/pps-properties-license.blp:19
+msgid "Usage Terms"
+msgstr "İstifadə şərtləri"
+
+#: shell/resources/pps-properties-license.blp:52
+msgid "Text License"
+msgstr "Mətn lisenziyası"
+
+#: shell/resources/pps-properties-license.blp:79
+msgid "Further Information"
+msgstr "Əlavə məlumat"
+
+#: shell/resources/pps-properties-window.blp:5
+msgid "Properties"
+msgstr "Özəlliklər"
+
+#: shell/resources/pps-properties-window.blp:23
+msgid "_Document"
+msgstr "_Sənəd"
+
+#: shell/resources/pps-properties-window.blp:34
+msgid "_Fonts"
+msgstr "_Şriftlər"
+
+#: shell/resources/pps-properties-window.blp:43
+msgid "License"
+msgstr "Lisenziya"
+
+#: shell/resources/pps-properties-window.blp:51
+msgid "_Signatures"
+msgstr "_İmzalar"
+
+#: shell/resources/pps-search-box.blp:16
+msgid "Search in document"
+msgstr "Sənəddə axtar"
+
+#: shell/resources/pps-search-box.blp:45
+msgid "Search Options"
+msgstr "Axtarış seçimləri"
+
+#: shell/resources/pps-search-box.blp:53
+msgid "_Whole Words Only"
+msgstr "Yalnız _bütöv sözlər"
+
+#: shell/resources/pps-search-box.blp:58
+msgid "C_ase Sensitive"
+msgstr "_Böyük-kiçik hərflərə həssas"
+
+#: shell/resources/pps-shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "File"
+msgstr "Fayl"
+
+#: shell/resources/pps-shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Open Document"
+msgstr "Sənəd aç"
+
+#: shell/resources/pps-shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Open Copy of Current Document"
+msgstr "Hazırki sənədin nüsxəsini aç"
+
+#: shell/resources/pps-shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Open With…"
+msgstr "Bununla aç…"
+
+#: shell/resources/pps-shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Save Copy of Current Document"
+msgstr "Hazırki sənədin nüsxəsini saxla"
+
+#: shell/resources/pps-shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Print Current Document"
+msgstr "Hazırki sənədi çap et"
+
+#: shell/resources/pps-shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Close Current Document Window"
+msgstr "Hazırki sənəd pəncərəsini bağla"
+
+#: shell/resources/pps-shortcuts-dialog.blp:40
+msgctxt "shortcut window"
+msgid "Window"
+msgstr "Pəncərə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:43
+msgctxt "shortcut window"
+msgid "Fullscreen"
+msgstr "Tam ekran"
+
+#: shell/resources/pps-shortcuts-dialog.blp:48
+msgctxt "shortcut window"
+msgid "Enter Presentation Mode"
+msgstr "Təqdimat rejiminə daxil ol"
+
+#: shell/resources/pps-shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Side Pane"
+msgstr "Yan panel"
+
+#: shell/resources/pps-shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Caret Navigation"
+msgstr "Kursor naviqasiyası"
+
+#: shell/resources/pps-shortcuts-dialog.blp:64
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Seçim"
+
+#: shell/resources/pps-shortcuts-dialog.blp:67
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Köçür"
+
+#: shell/resources/pps-shortcuts-dialog.blp:72
+msgctxt "shortcut window"
+msgid "Select All"
+msgstr "Hamısını seç"
+
+#: shell/resources/pps-shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Zoom and Rotation"
+msgstr "Miqyas və fırlatma"
+
+#: shell/resources/pps-shortcuts-dialog.blp:81
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Counter-Clockwise"
+msgstr "Saat əqrəbinin əksi istiqamətində 90 dərəcə fırlat"
+
+#: shell/resources/pps-shortcuts-dialog.blp:86
+msgctxt "shortcut window"
+msgid "Rotate Page 90 Degrees Clockwise"
+msgstr "Saat əqrəbi istiqamətində 90 dərəcə fırlat"
+
+#: shell/resources/pps-shortcuts-dialog.blp:91
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Yaxınlaşdır"
+
+#: shell/resources/pps-shortcuts-dialog.blp:96
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Uzaqlaşdır"
+
+#: shell/resources/pps-shortcuts-dialog.blp:101
+msgctxt "shortcut window"
+msgid "Normal Size"
+msgstr "Normal ölçü"
+
+#: shell/resources/pps-shortcuts-dialog.blp:106
+msgctxt "shortcut window"
+msgid "Zoom In (Alternative)"
+msgstr "Yaxınlaşdır (Alternativ)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:111
+msgctxt "shortcut window"
+msgid "Fit Page"
+msgstr "Səhifəni uyğunlaşdır"
+
+#: shell/resources/pps-shortcuts-dialog.blp:116
+msgctxt "shortcut window"
+msgid "Fit Width"
+msgstr "Eni uyğunlaşdır"
+
+#: shell/resources/pps-shortcuts-dialog.blp:121
+msgctxt "shortcut window"
+msgid "Automatic Zoom"
+msgstr "Avtomatik miqyaslama"
+
+#: shell/resources/pps-shortcuts-dialog.blp:127
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Naviqasiya"
+
+#: shell/resources/pps-shortcuts-dialog.blp:130
+msgctxt "shortcut window"
+msgid "Move Around Page"
+msgstr ""
+
+#: shell/resources/pps-shortcuts-dialog.blp:135
+msgctxt "shortcut window"
+msgid "Move Up/Down Page Several Lines"
+msgstr ""
+
+#: shell/resources/pps-shortcuts-dialog.blp:140
+msgctxt "shortcut window"
+msgid "Previous Page"
+msgstr "Öncəki səhifə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:145
+msgctxt "shortcut window"
+msgid "Next Page"
+msgstr "Növbəti səhifə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:150
+msgctxt "shortcut window"
+msgid "Go to Page Number"
+msgstr "Səhifə nömrəsinə get"
+
+#: shell/resources/pps-shortcuts-dialog.blp:155
+msgctxt "shortcut window"
+msgid "Previous Page (Fast)"
+msgstr "Öncəki səhifə (sürətli)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:160
+msgctxt "shortcut window"
+msgid "Next Page (Fast)"
+msgstr "Növbəti səhifə (sürətli)"
+
+#: shell/resources/pps-shortcuts-dialog.blp:165
+msgctxt "shortcut window"
+msgid "Previous Visited Page"
+msgstr "Öncəki ziyarət edilmiş səhifə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:170
+msgctxt "shortcut window"
+msgid "Next Visited Page"
+msgstr "Növbəti ziyarət edilmiş səhifə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:175
+msgctxt "shortcut window"
+msgid "Go to Page Beginning/End"
+msgstr "Səhifənin başına/sonuna get"
+
+#: shell/resources/pps-shortcuts-dialog.blp:180
+msgctxt "shortcut window"
+msgid "Go to Document Start"
+msgstr "Sənədin əvvəlinə get"
+
+#: shell/resources/pps-shortcuts-dialog.blp:185
+msgctxt "shortcut window"
+msgid "Go to Document End"
+msgstr "Sənədin sonuna get"
+
+#: shell/resources/pps-shortcuts-dialog.blp:191
+msgctxt "shortcut window"
+msgid "Document View"
+msgstr "Sənəd görünüşü"
+
+#: shell/resources/pps-shortcuts-dialog.blp:194
+msgctxt "shortcut window"
+msgid "Add Bookmark"
+msgstr "Əlfəcin əlavə et"
+
+#: shell/resources/pps-shortcuts-dialog.blp:199
+msgctxt "shortcut window"
+msgid "Remove Bookmark"
+msgstr "Əlfəcini yığışdır"
+
+#: shell/resources/pps-shortcuts-dialog.blp:204
+msgctxt "shortcut window"
+msgid "Night Mode"
+msgstr "Gecə rejimi"
+
+#: shell/resources/pps-shortcuts-dialog.blp:209
+msgctxt "shortcut window"
+msgid "Continuous Scrolling"
+msgstr "Davamlı sürüşdürmə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:214
+msgctxt "shortcut window"
+msgid "Dual Page"
+msgstr "İkili səhifə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:219
+msgctxt "shortcut window"
+msgid "Odd Pages Left"
+msgstr "Tək səhifələr solda"
+
+#: shell/resources/pps-shortcuts-dialog.blp:224
+msgctxt "shortcut window"
+msgid "Document Properties"
+msgstr "Sənəd özəllikləri"
+
+#: shell/resources/pps-shortcuts-dialog.blp:229
+msgctxt "shortcut window"
+msgid "Add Text Annotation"
+msgstr "Mətn açıqlaması əlavə et"
+
+#: shell/resources/pps-shortcuts-dialog.blp:234
+msgctxt "shortcut window"
+msgid "Highlight Text"
+msgstr "Vurğulama mətni"
+
+#: shell/resources/pps-shortcuts-dialog.blp:239
+msgctxt "shortcut window"
+msgid "Strikethrough Text"
+msgstr "Mətnin üzərindən xətt çək"
+
+#: shell/resources/pps-shortcuts-dialog.blp:244
+msgctxt "shortcut window"
+msgid "Wavy/Squiggly Underline Text"
+msgstr "Mətnin altından dalğalı xətt çək"
+
+#: shell/resources/pps-shortcuts-dialog.blp:249
+msgctxt "shortcut window"
+msgid "Underline Text"
+msgstr "Mətnin altından xətt çək"
+
+#: shell/resources/pps-shortcuts-dialog.blp:254
+msgctxt "shortcut window"
+msgid "Digital Signing"
+msgstr "Rəqəmsal imzalama"
+
+#: shell/resources/pps-shortcuts-dialog.blp:261
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Axtar"
+
+#: shell/resources/pps-shortcuts-dialog.blp:264
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Tap"
+
+#: shell/resources/pps-shortcuts-dialog.blp:269
+msgctxt "shortcut window"
+msgid "Find Next"
+msgstr "Növbətini tap"
+
+#: shell/resources/pps-shortcuts-dialog.blp:274
+msgctxt "shortcut window"
+msgid "Find Previous"
+msgstr "Öncəkini tap"
+
+#: shell/resources/pps-shortcuts-dialog.blp:280
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ümumi"
+
+#: shell/resources/pps-shortcuts-dialog.blp:283
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Yardım"
+
+#: shell/resources/pps-shortcuts-dialog.blp:288
+msgctxt "shortcut window"
+msgid "Menu"
+msgstr "Menyu"
+
+#: shell/resources/pps-shortcuts-dialog.blp:293
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Klaviatura qısayolları"
+
+#: shell/resources/pps-shortcuts-dialog.blp:298
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Yeni pəncərə"
+
+#: shell/resources/pps-shortcuts-dialog.blp:303
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Pəncərəni bağla"
+
+#: shell/resources/pps-shortcuts-dialog.blp:309
+msgctxt "shortcut window"
+msgid "Presentation Mode"
+msgstr "Təqdimat rejimi"
+
+#: shell/resources/pps-shortcuts-dialog.blp:312
+msgctxt "shortcut window"
+msgid "Black Screen"
+msgstr "Qara ekran"
+
+#: shell/resources/pps-shortcuts-dialog.blp:317
+msgctxt "shortcut window"
+msgid "White Screen"
+msgstr "Ağ ekran"
+
+#: shell/resources/pps-sidebar-annotations.blp:13
+msgid "No Annotations"
+msgstr "Heç bir açıqlama yoxdur"
+
+#: shell/resources/pps-sidebar-annotations.blp:66
+msgid "Annotation Properties"
+msgstr "Açıqlama özəllikləri"
+
+#: shell/resources/pps-sidebar-annotations.blp:72
+msgid "Remove Annotation"
+msgstr "Açıqlamanı yığışdır"
+
+#: shell/resources/pps-sidebar-links.blp:48
+msgid "Collapse all tree"
+msgstr "Bütün ağacı yığ"
+
+#: shell/resources/pps-sidebar-links.blp:53
+msgid "Expand all tree"
+msgstr "Bütün ağacı aç"
+
+#: shell/resources/pps-sidebar-links.blp:58
+msgid "Expand all under this element"
+msgstr "Bu element altında olan hər şeyi aç"
+
+#: shell/resources/pps-sidebar-links.blp:65
+msgid "Print this section…"
+msgstr "Bu bölməni çap et…"
+
+#: shell/resources/pps-sidebar-thumbnails.blp:47
+msgid "Previews"
+msgstr "Öncəki"
+
+#: shell/resources/pps-window.blp:43
+msgid "Open a Document"
+msgstr "Sənəd aç"
+
+#: shell/resources/pps-window.blp:44
+msgid "Drag and drop documents here"
+msgstr "Sənədləri bura sürükləyib buraxın"
+
+#: shell/resources/pps-window.blp:49
+msgid "_Open…"
+msgstr "_Aç…"
+
+#: shell/resources/pps-window.blp:51
+msgctxt "tooltip"
+msgid "Open a Document"
+msgstr "Sənəd aç"
+
+#: shell/resources/pps-window.blp:71
+msgid "Unable to Open Document"
+msgstr "Sənəd açıla bilmir"
+
+#: shell/resources/pps-window.blp:76
+msgid "_Open Other File…"
+msgstr "Başqa fayl _aç…"
+
+#: shell/src/application.rs:216
+msgid "© 1996–2025 The Papers authors"
+msgstr "© 1996–2025 \"Kağızlar\" müəllifləri"
+
+#: shell/src/application.rs:217
+msgid "translator-credits"
+msgstr ""
+"translator-credits\n"
+"Nicat Xalid <nicat.m@pm.me>"
+
+#: shell/src/application.rs:389
+msgid "The page label of the document to display."
+msgstr "Göstəriləcək sənədin səhifə etiketi."
+
+#: shell/src/application.rs:390
+msgid "PAGE"
+msgstr "SƏHİFƏ"
+
+#: shell/src/application.rs:398
+msgid "The page number of the document to display."
+msgstr "Göstəriləcək sənədin səhifə nömrəsi."
+
+#: shell/src/application.rs:399
+msgid "NUMBER"
+msgstr "NÖMRƏ"
+
+#: shell/src/application.rs:407
+msgid "Named destination to display."
+msgstr "Göstəriləcək adlandırılmış təyinat."
+
+#: shell/src/application.rs:408
+msgid "DEST"
+msgstr "TƏYİNAT"
+
+#: shell/src/application.rs:416
+msgid "Run papers in fullscreen mode."
+msgstr "\"Kağızlar\"ı tam ekran rejimində işə sal."
+
+#: shell/src/application.rs:425
+msgid "Run papers in presentation mode."
+msgstr "\"Kağızlar\"ı təqdimat rejimində işə sal."
+
+#: shell/src/application.rs:434
+msgid "Show the version of the program."
+msgstr "Proqramın versiyasını göstər."
+
+#: shell/src/application.rs:444
+msgid "[FILE…]"
+msgstr "[FAYL…]"
+
+#: shell/src/document_view.rs:372
+msgid "View Details"
+msgstr "Təfərrüatlara bax"
+
+#: shell/src/document_view.rs:809
+msgid ""
+"Document contains new or modified annotations and form fields that have been "
+"filled out."
+msgstr ""
+
+#: shell/src/document_view.rs:812
+msgid "Document contains form fields that have been filled out."
+msgstr "Sənəddə doldurulmamış sahələri olan forma mövcuddur."
+
+#: shell/src/document_view.rs:814
+msgid "Document contains new or modified annotations."
+msgstr "Sənəddə yeni və ya redaktə olunmuş açıqlamalar var."
+
+#: shell/src/document_view.rs:822
+msgid "If you don’t save a copy, changes will be permanently lost."
+msgstr ""
+
+#: shell/src/document_view.rs:823
+msgid "Save Changes to a Copy?"
+msgstr "Dəyişikliklər nüsxədə saxlanılsın?"
+
+#: shell/src/document_view.rs:832
+msgid "Close _Without Saving"
+msgstr "Saxla_madan bağla"
+
+#: shell/src/document_view.rs:834
+msgid "_Save a Copy"
+msgstr "Nüsxəni _saxla"
+
+#: shell/src/document_view/actions.rs:1033
+msgid "Save Image"
+msgstr "Təsviri saxla"
+
+#: shell/src/document_view/actions.rs:1165
+msgid "Caret navigation mode is now enabled, press F7 to disable."
+msgstr ""
+"Kursor naviqasiyası rejimi indi açıqdır. Söndürmək üçün F7 düyməsini sıxın."
+
+#: shell/src/document_view/actions.rs:1167
+msgid "Caret navigation mode is now disabled, press F7 to enable."
+msgstr ""
+"Kursor naviqasiyası rejimi indi sönülüdür. Açmaq üçün F7 düyməsini sıxın."
+
+#: shell/src/document_view/actions.rs:1255
+msgid "Add _Visual Signature"
+msgstr "_Vizual imza əlavə et"
+
+#: shell/src/document_view/actions.rs:1348
+msgid "Close Menu"
+msgstr "Menyunu bağla"
+
+#: shell/src/document_view/actions.rs:1444
+msgid "Unable to Open Attachment"
+msgstr "Qoşma açıla bilmir"
+
+#: shell/src/document_view/actions.rs:1459
+msgctxt "This is an action"
+msgid "Save Attachment"
+msgstr "Qoşmanı saxla"
+
+#: shell/src/document_view/io.rs:289
+msgid "The Document Contains No Pages"
+msgstr "Sənəddə heç bir səhifə yoxdur"
+
+#: shell/src/document_view/io.rs:291
+msgid "The Document Contains Only Empty Pages"
+msgstr "Sənəddə yalnış boş səhifələr mövcuddur"
+
+#: shell/src/document_view/io.rs:367
+msgid "Save As…"
+msgstr "Fərqli saxla…"
+
+#: shell/src/document_view/io.rs:444
+msgid "Draw a rectangle to insert a signature field"
+msgstr "İmza sahəsini daxil etmək üçün düzbucaqlı çəkin"
+
+#: shell/src/document_view/io.rs:467
+#, rust-format
+msgid ""
+"Digitally signed by {}\n"
+"Date: {}"
+msgstr ""
+"{} tərəfindən rəqəmsal olaraq imzalanıb\r\n"
+"Tarix: {}"
+
+#: shell/src/document_view/io.rs:486
+msgid "Certificate Required"
+msgstr "Sertifikat tələb olunur"
+
+#: shell/src/document_view/io.rs:489
+msgid "Select signing certificate"
+msgstr "İmzalanan sertifikatı seç"
+
+#: shell/src/document_view/io.rs:490
+msgid "Select"
+msgstr "Seç"
+
+#: shell/src/document_view/io.rs:570
+msgid "A certificate is required to sign this document"
+msgstr "Bu sənədi imzalamaq üçün sertifikat tələb olunur"
+
+#: shell/src/document_view/io.rs:825
+msgid "Save Signed File"
+msgstr "İmzalanmış faylı saxla"
+
+#: shell/src/document_view/io.rs:855
+#, rust-format
+msgid "Please enter password for {}"
+msgstr "Zəhmət olmasa, {} üçün şifrə daxil edin"
+
+#: shell/src/document_view/io.rs:872
+msgid "_Login"
+msgstr "_Daxil ol"
+
+#. TRANSLATORS: In the context of "the job {} is being printed"
+#: shell/src/document_view/print.rs:46
+#, rust-format
+msgid "Printing job “{}”"
+msgstr "\"{}\" tapşırığı çap edilir"
+
+#: shell/src/document_view/print.rs:84
+msgid "No pending jobs in queue"
+msgstr "Növbədə gözləyən tapşırıq yoxdur"
+
+#: shell/src/document_view/print.rs:88
+#, rust-format
+msgid "{} pending job in queue"
+msgid_plural "{} pending jobs in queue"
+msgstr[0] "Növbətə gözləyən {} tapşırıq var"
+msgstr[1] "Növbətə gözləyən {} tapşırıq var"
+
+#: shell/src/document_view/signals.rs:268
+#, rust-format
+msgid ""
+"Security alert: this document has been prevented from opening the file “{}”"
+msgstr ""
+"Təhlükəsizlik siqnalı: bu sənədin \"{}\" faylını açmasının qarşısı alınıb"
+
+#: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
+#: shell/src/sidebar_annotations_row.rs:83
+#, rust-format
+msgid "Page {}"
+msgstr "{}. səhifə"
+
+#. Translators: Do NOT translate the content between
+#. '{' and '}' they are variable names. Changing their
+#. order is possible
+#: shell/src/page_selector.rs:244 shell/src/page_selector.rs:271
+#, rust-format
+msgid "({pagenum} of {totalpages})"
+msgstr "({pagenum} / {totalpages})"
+
+#. Translators: the placeholder is the total amount of pages
+#: shell/src/page_selector.rs:251 shell/src/page_selector.rs:280
+#, rust-format
+msgid "of {}"
+msgstr "/ {}"
+
+#: shell/src/password_view.rs:149
+#, rust-format
+msgid ""
+"The document “{}” is locked and requires a password before it can be opened"
+msgstr "\"{}\" sənədi kilidlənib və  açmaq üçün şifrə tələb olunur"
+
+#: shell/src/properties_general.rs:50
+msgid "Copy to Clipboard"
+msgstr "Mübadilə buferinə köçür"
+
+#: shell/src/properties_general.rs:152
+msgid "Open File Location"
+msgstr "Fayl yerləşməsi aç"
+
+#: shell/src/properties_general.rs:193
+msgid "File"
+msgstr "Fayl"
+
+#: shell/src/properties_general.rs:202
+msgid "Name"
+msgstr "Ad"
+
+#: shell/src/properties_general.rs:244
+msgid "Folder"
+msgstr "Qovluq"
+
+#: shell/src/properties_general.rs:268 shell/src/properties_general.rs:278
+msgid "File Path"
+msgstr "Fayl yolu"
+
+#: shell/src/properties_general.rs:298
+msgid "Content"
+msgstr "Məzmun"
+
+#: shell/src/properties_general.rs:314
+msgid "Date &amp; Time"
+msgstr "Tarix və vaxt"
