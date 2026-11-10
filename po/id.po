@@ -8,20 +8,21 @@
 # Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2016.
 # Zamani Karmana <zamani.karmana@gmail.com>, 2015.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2022.
+# herpiko <herpiko@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: papers gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-08-02 11:32+0000\n"
-"PO-Revision-Date: 2026-08-11 18:09+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2026-10-09 13:11+0000\n"
+"PO-Revision-Date: 2026-11-09 10:38+0000\n"
+"Last-Translator: herpiko <herpiko@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Pelokalan\n"
 
 #. Manually set name and icon
 #: data/org.gnome.Papers.desktop.in.in:2
@@ -223,11 +224,11 @@ msgstr "tinta"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:34
 msgid "freehand"
-msgstr ""
+msgstr "bebas"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:35
 msgid "drawing"
-msgstr ""
+msgstr "gambar"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:36
 msgid "calligraphy"
@@ -728,7 +729,7 @@ msgstr "Pemilihan jangkauan cetak Anda tidak menyertakan halaman apapun"
 #. show close if the certificate is null, or if no cert is found
 #: libview/pps-print-operation.c:1336 previewer/pps-previewer-window.blp:83
 #: shell/resources/pps-document-view.blp:791 shell/resources/pps-window.blp:138
-#: shell/src/document_view/io.rs:574
+#: shell/src/document_view/io.rs:572
 msgid "_Close"
 msgstr "_Tutup"
 
@@ -756,8 +757,8 @@ msgid ""
 "\n"
 "• “None”: No page scaling is performed.\n"
 "\n"
-"• “Shrink to Printable Area”: Document pages larger than the printable area "
-"are reduced to fit the printable area of the printer page.\n"
+"• “Shrink to Printable Area”: Document pages larger than the printable "
+"area are reduced to fit the printable area of the printer page.\n"
 "\n"
 "• “Fit to Printable Area”: Document pages are enlarged or reduced as "
 "required to fit the printable area of the printer page.\n"
@@ -767,9 +768,9 @@ msgstr ""
 "\n"
 "• \"Nihil\": Tidak dilakukan penskalaan halaman.\n"
 "\n"
-"• \"Perkecil ke Area yang Dapat Dicetak\": Halaman dokumen yang lebih besar "
-"dari area yang dapat dicetak akan diperkecil hingga pas dengan area yang "
-"dapat dicetak dari halaman pencetak.\n"
+"• \"Perkecil ke Area yang Dapat Dicetak\": Halaman dokumen yang lebih "
+"besar dari area yang dapat dicetak akan diperkecil hingga pas dengan area "
+"yang dapat dicetak dari halaman pencetak.\n"
 "\n"
 "• \"Paskan ke Area yang Dapat Dicetak\": Halaman dokumen diperbesar atau "
 "diperkecil seperlunya agar pas dengan area yang dapat dicetak dari halaman "
@@ -932,8 +933,8 @@ msgstr "Penampil Dokumen Papers"
 msgid "The selected printer “%s” could not be found"
 msgstr "Pencetak '%s' yang dipilih tidak ditemukan"
 
-#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:212
-#: shell/src/document_view/io.rs:213
+#: previewer/pps-previewer-window.c:490 shell/src/document_view/io.rs:210
+#: shell/src/document_view/io.rs:211
 msgid "Papers"
 msgstr "Papers"
 
@@ -1268,8 +1269,8 @@ msgid "Abort _Print and Close"
 msgstr "Batal _Mencetak dan Keluar"
 
 #: shell/resources/pps-document-view.blp:782 shell/src/document_view.rs:833
-#: shell/src/document_view/io.rs:447 shell/src/document_view/io.rs:495
-#: shell/src/document_view/io.rs:872
+#: shell/src/document_view/io.rs:445 shell/src/document_view/io.rs:493
+#: shell/src/document_view/io.rs:871
 msgid "_Cancel"
 msgstr "_Batal"
 
@@ -1546,7 +1547,7 @@ msgstr "B_atal"
 
 #: shell/resources/pps-password-dialog.blp:5
 #: shell/resources/pps-password-view.blp:11
-#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:865
+#: shell/resources/pps-password-view.blp:17 shell/src/document_view/io.rs:864
 msgid "Password Required"
 msgstr "Perlu Sandi"
 
@@ -1558,19 +1559,19 @@ msgstr "Batal"
 msgid "Unlock"
 msgstr "Buka Kunci"
 
-#: shell/resources/pps-password-dialog.blp:19
+#: shell/resources/pps-password-dialog.blp:24
 msgid "Password"
 msgstr "Kata Sandi"
 
-#: shell/resources/pps-password-dialog.blp:33
+#: shell/resources/pps-password-dialog.blp:38
 msgid "Invalid password"
 msgstr "Kata sandi tidak valid"
 
-#: shell/resources/pps-password-dialog.blp:48
+#: shell/resources/pps-password-dialog.blp:53
 msgid "Forget password _immediately"
 msgstr "Lupakan sandi seket_ika"
 
-#: shell/resources/pps-password-dialog.blp:55
+#: shell/resources/pps-password-dialog.blp:60
 msgid "Remember _forever"
 msgstr "Ingat _selamanya"
 
@@ -2136,23 +2137,23 @@ msgctxt "This is an action"
 msgid "Save Attachment"
 msgstr "Simpan Lampiran"
 
-#: shell/src/document_view/io.rs:291
+#: shell/src/document_view/io.rs:289
 msgid "The Document Contains No Pages"
 msgstr "Dokumen Tidak Memuat Halaman"
 
-#: shell/src/document_view/io.rs:293
+#: shell/src/document_view/io.rs:291
 msgid "The Document Contains Only Empty Pages"
 msgstr "Dokumen Hanya Memuat Halaman Kosong"
 
-#: shell/src/document_view/io.rs:369
+#: shell/src/document_view/io.rs:367
 msgid "Save As…"
 msgstr "Simpan Sebagai…"
 
-#: shell/src/document_view/io.rs:446
+#: shell/src/document_view/io.rs:444
 msgid "Draw a rectangle to insert a signature field"
 msgstr "Gambarlah sebuah persegi panjang untuk menyisipkan bidang tanda tangan"
 
-#: shell/src/document_view/io.rs:469
+#: shell/src/document_view/io.rs:467
 #, rust-format
 msgid ""
 "Digitally signed by {}\n"
@@ -2161,32 +2162,32 @@ msgstr ""
 "Ditandatangani secara digital oleh {}\n"
 "Tanggal: {}"
 
-#: shell/src/document_view/io.rs:488
+#: shell/src/document_view/io.rs:486
 msgid "Certificate Required"
 msgstr "Diperlukan Sertifikat"
 
-#: shell/src/document_view/io.rs:491
+#: shell/src/document_view/io.rs:489
 msgid "Select signing certificate"
 msgstr "Pilih sertifikat penandatanganan"
 
-#: shell/src/document_view/io.rs:492
+#: shell/src/document_view/io.rs:490
 msgid "Select"
 msgstr "Pilih"
 
-#: shell/src/document_view/io.rs:572
+#: shell/src/document_view/io.rs:570
 msgid "A certificate is required to sign this document"
 msgstr "Sertifikat diperlukan untuk menandatangani dokumen ini"
 
-#: shell/src/document_view/io.rs:826
+#: shell/src/document_view/io.rs:825
 msgid "Save Signed File"
 msgstr "Simpan Berkas yang Ditandatangani"
 
-#: shell/src/document_view/io.rs:856
+#: shell/src/document_view/io.rs:855
 #, rust-format
 msgid "Please enter password for {}"
 msgstr "Masukkan kata sandi untuk {}"
 
-#: shell/src/document_view/io.rs:873
+#: shell/src/document_view/io.rs:872
 msgid "_Login"
 msgstr "_Log masuk"
 
@@ -2206,14 +2207,15 @@ msgid "{} pending job in queue"
 msgid_plural "{} pending jobs in queue"
 msgstr[0] "{} pekerjaan tertunda dalam antrian"
 
-#: shell/src/document_view/signals.rs:266
+#: shell/src/document_view/signals.rs:268
 #, rust-format
 msgid ""
-"Security alert: this document has been prevented from opening the file “{}”"
+"Security alert: this document has been prevented from opening the file "
+"“{}”"
 msgstr ""
 "Peringatan keamanan: dokumen ini telah dicegah untuk membuka berkas \"{}\""
 
-#: shell/src/document_view/signals.rs:452 shell/src/page_selector.rs:91
+#: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91
 #: shell/src/sidebar_annotations_row.rs:83
 #, rust-format
 msgid "Page {}"
@@ -2233,10 +2235,11 @@ msgstr "({pagenum} dari {totalpages})"
 msgid "of {}"
 msgstr "dari {}"
 
-#: shell/src/password_view.rs:146
+#: shell/src/password_view.rs:149
 #, rust-format
 msgid ""
-"The document “{}” is locked and requires a password before it can be opened"
+"The document “{}” is locked and requires a password before it can be "
+"opened"
 msgstr ""
 "Dokumen \"{}\" terkunci dan memerlukan suatu kata sandi sebelum dapat dibuka"
 
