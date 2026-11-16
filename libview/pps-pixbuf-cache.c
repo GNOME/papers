@@ -446,7 +446,7 @@ pps_pixbuf_cache_get_preload_size (PpsPixbufCache *pixbuf_cache,
 		return new_preload_cache_size;
 
 	i = 1;
-	while (((start_page - i > 0) || (end_page + i < n_pages)) &&
+	while (((start_page - i >= 0) || (end_page + i < n_pages)) &&
 	       new_preload_cache_size < MAX_PRELOADED_PAGES) {
 		gsize page_size;
 		gboolean updated = FALSE;
@@ -463,7 +463,7 @@ pps_pixbuf_cache_get_preload_size (PpsPixbufCache *pixbuf_cache,
 			}
 		}
 
-		if (start_page - i > 0) {
+		if (start_page - i >= 0) {
 			page_size = pps_pixbuf_cache_get_page_size (pixbuf_cache, start_page - i,
 			                                            scale, rotation);
 			if (page_size + range_size <= pixbuf_cache->max_size) {
