@@ -93,7 +93,7 @@ blueprint-compiler-format:
 
 pot-files:
     stage: lint
-    image: alpine:3.21
+    extends: '.fdo.distribution-image@fedora'
     script:
         - ./.gitlab-ci/check-potfiles.sh
 
