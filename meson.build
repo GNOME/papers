@@ -322,6 +322,10 @@ mime_types_conf = configuration_data()
 mime_types_conf.set('PAPERS_MIME_TYPES', ';'.join(papers_mime_types))
 mime_types_conf.set('PACKAGE_ICON_NAME', app_id)
 
+enable_previewer = get_option('previewer')
+enable_shell = get_option('shell')
+enable_thumbnailer = get_option('thumbnailer')
+
 subdir('libdocument')
 subdir('libview')
 subdir('nautilus')
@@ -329,7 +333,6 @@ subdir('nautilus')
 subdir('rust')
 
 # Print Previewer
-enable_previewer = get_option('previewer')
 if enable_previewer
   subdir('previewer')
 endif
@@ -337,7 +340,6 @@ endif
 subdir('data')
 
 # *** Papers ***
-enable_shell = get_option('shell')
 if enable_shell
   subdir('shell')
 endif
@@ -346,7 +348,6 @@ subdir('po')
 subdir('help')
 
 # *** Thumbnailer ***
-enable_thumbnailer = get_option('thumbnailer')
 if enable_thumbnailer
   subdir('thumbnailer')
 endif
