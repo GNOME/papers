@@ -330,7 +330,10 @@ subdir('libdocument')
 subdir('libview')
 subdir('nautilus')
 
-subdir('rust')
+rust_target='None'
+if enable_shell or enable_thumbnailer
+  subdir('rust')
+endif
 
 # Print Previewer
 if enable_previewer
