@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Evince HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/papers/issues/\n"
-"POT-Creation-Date: 2026-09-19 02:01+0000\n"
-"PO-Revision-Date: 2026-09-19 11:24+0200\n"
+"POT-Creation-Date: 2026-11-25 21:24+0000\n"
+"PO-Revision-Date: 2026-11-28 12:04+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 "X-Project-Style: gnome\n"
 
 #. Manually set name and icon
@@ -116,7 +116,7 @@ msgstr "La largor de la fenèstra d’apercebut"
 
 #: data/org.gnome.Papers.gschema.xml:130
 msgid "Previewer window maximized state"
-msgstr "La talha maximala de la fenèstra d’apercebut"
+msgstr "L'estat maximizat de la fenèstra d’apercebut"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:10
 msgid "Read documents"
@@ -181,7 +181,7 @@ msgstr "signatura electronica"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:30
 msgid "digital signatures"
-msgstr "signatura electronicas"
+msgstr "signaturas electronicas"
 
 #: data/org.gnome.Papers.metainfo.xml.in.in:31
 msgid "handwriting"
@@ -334,7 +334,7 @@ msgstr "Lo document DjVu a un format incorrècte"
 #: libdocument/backend/djvu/djvu-document.c:263
 msgid "The document is composed of several files. One or more of these files cannot be accessed."
 msgstr ""
-"Lo document es compausat de mantun fichièr. Un o mai d'un d'aquestes\n"
+"Lo document es compausat de mantun fichièr. Un o mai d'un d'aquestes"
 "fichièrs son pas accessibles."
 
 #: libdocument/backend/djvu/org.gnome.Papers.DjvuDocument.papers-backend.desktop.in.in:3
@@ -410,7 +410,7 @@ msgstr ""
 
 #: libdocument/backend/pdf/pps-poppler.c:913
 msgid "All fonts are either standard or embedded."
-msgstr "Totas las polissas son siá estandards o integradas."
+msgstr "Totas las polissas son siá estandardas o integradas."
 
 #: libdocument/backend/pdf/pps-poppler.c:949
 msgid "No name"
@@ -420,7 +420,7 @@ msgstr "Sens nom"
 #. encoding information or it is unknown.  Example:
 #. Encoding: None
 #.
-#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1878 shell/src/properties_general.rs:85
+#: libdocument/backend/pdf/pps-poppler.c:958 libview/pps-print-operation.c:1879 shell/src/properties_general.rs:85
 #: shell/src/properties_general.rs:235 shell/src/properties_general.rs:370
 msgid "None"
 msgstr "Pas cap"
@@ -651,7 +651,7 @@ msgstr "Fracàs del rendut de la pagina %d"
 #: libview/pps-jobs.c:625
 #, c-format
 msgid "Failed to create thumbnail for page %d"
-msgstr "Impossible de crear una miniatura per la pagina %d"
+msgstr "Impossible de crear una vinheta per la pagina %d"
 
 #: libview/pps-jobs.c:1602
 #, c-format
@@ -701,19 +701,19 @@ msgstr "_Tampar"
 msgid "Print"
 msgstr "Imprimir"
 
-#: libview/pps-print-operation.c:1871
+#: libview/pps-print-operation.c:1872
 msgid "Page Scaling:"
 msgstr "Ajustement de las paginas :"
 
-#: libview/pps-print-operation.c:1879
+#: libview/pps-print-operation.c:1880
 msgid "Shrink to Printable Area"
 msgstr "Reduire segon la zòna imprimibla"
 
-#: libview/pps-print-operation.c:1880
+#: libview/pps-print-operation.c:1881
 msgid "Fit to Printable Area"
 msgstr "Ajustar segon la zòna imprimibla"
 
-#: libview/pps-print-operation.c:1887
+#: libview/pps-print-operation.c:1888
 msgid ""
 "Scale document pages to fit the selected printer page. Select from one of the following:\n"
 "\n"
@@ -736,11 +736,11 @@ msgstr ""
 "• Ajustar segon la zòna imprimibla : las paginas son reduchas o agrandidas per fin de correspondre al pus juste a "
 "la zòna imprimibla de l'imprimenta.\n"
 
-#: libview/pps-print-operation.c:1898
+#: libview/pps-print-operation.c:1899
 msgid "Auto Rotate and Center"
 msgstr "Pivotar e centrar automaticament"
 
-#: libview/pps-print-operation.c:1901
+#: libview/pps-print-operation.c:1902
 msgid ""
 "Rotate printer page orientation of each page to match orientation of each document page. Document pages will be "
 "centered within the printer page."
@@ -748,71 +748,71 @@ msgstr ""
 "Fa pivotar las paginas a l'impression segon l'orientacion de cada pagina del document imprimit. Las paginas son "
 "centradas dins la zòna d'impression de l'imprimenta."
 
-#: libview/pps-print-operation.c:1905
+#: libview/pps-print-operation.c:1906
 msgid "Select page size using document page size"
 msgstr "Causir la talha del papièr en foncion de la de las paginas del document"
 
-#: libview/pps-print-operation.c:1907
+#: libview/pps-print-operation.c:1908
 msgid "When enabled, each page will be printed on the same size paper as the document page."
 msgstr "Se activat, cada pagina es imprimida segon la talha de papièr indicada dins lo document."
 
-#: libview/pps-print-operation.c:1911
+#: libview/pps-print-operation.c:1912
 msgid "Draw border around pages"
 msgstr "Dessenhar una bordadura a l'entorn de las paginas"
 
-#: libview/pps-print-operation.c:1913
+#: libview/pps-print-operation.c:1914
 msgid "When enabled, a border will be drawn around each page."
 msgstr "S'es activat, un contorn serà present al torn de cada pagina."
 
-#: libview/pps-print-operation.c:2010
+#: libview/pps-print-operation.c:2011
 msgid "Page Handling"
 msgstr "Gestion de las paginas"
 
-#: libview/pps-view.c:2140
+#: libview/pps-view.c:2188
 msgid "Go to first page"
 msgstr "Anar a la primièra pagina"
 
-#: libview/pps-view.c:2142
+#: libview/pps-view.c:2190
 msgid "Go to previous page"
 msgstr "Anar a la pagina precedenta"
 
-#: libview/pps-view.c:2144
+#: libview/pps-view.c:2192
 msgid "Go to next page"
 msgstr "Anar a la pagina seguenta"
 
-#: libview/pps-view.c:2146
+#: libview/pps-view.c:2194
 msgid "Go to last page"
 msgstr "Anar a la darrièra pagina"
 
-#: libview/pps-view.c:2148
+#: libview/pps-view.c:2196
 msgid "Go to page"
 msgstr "Anar a la pagina"
 
-#: libview/pps-view.c:2150
+#: libview/pps-view.c:2198
 msgid "Find"
 msgstr "Recercar"
 
-#: libview/pps-view.c:2179
+#: libview/pps-view.c:2227
 #, c-format
 msgid "Go to page %s"
 msgstr "Anar a la pagina %s"
 
-#: libview/pps-view.c:2185
+#: libview/pps-view.c:2233
 #, c-format
 msgid "Go to %s on file “%s”"
 msgstr "Anar a %s sul fichièr « %s »"
 
-#: libview/pps-view.c:2188
+#: libview/pps-view.c:2236
 #, c-format
 msgid "Go to file “%s”"
-msgstr "Anar a la pagina « %s »"
+msgstr "Anar al fichièr « %s »"
 
-#: libview/pps-view.c:2196
+#: libview/pps-view.c:2244
 #, c-format
 msgid "Launch %s"
 msgstr "Aviar %s"
 
-#: libview/pps-view.c:2203
+#: libview/pps-view.c:2251
 #, c-format
 msgid "Reset form"
 msgstr "Reïnicializar lo formulari"
@@ -823,7 +823,7 @@ msgstr "Execucion en mòde presentacion"
 
 #: libview/pps-view-presentation.c:875
 msgid "End of presentation. Press Esc or click to exit."
-msgstr "Fin de la presentacion. Quichat Esc o clicatz per sortir."
+msgstr "Fin de la presentacion. Quichatz Esc o clicatz per sortir."
 
 #: libview/pps-view-presentation.blp:49
 msgid "Jump to page:"
@@ -1146,7 +1146,7 @@ msgstr "Paramètres de la polissa"
 
 #: shell/resources/pps-document-view.blp:399
 msgid "Highlight Stroke Size"
-msgstr "Talha del suslinhament tèxte"
+msgstr "Talha del trach del suslinhament"
 
 #: shell/resources/pps-document-view.blp:432
 msgid "Pencil Size"
@@ -1174,11 +1174,11 @@ msgstr "Escafar las anotacions"
 
 #: shell/resources/pps-document-view.blp:513 shell/src/document_view/actions.rs:1359
 msgid "Edit Document"
-msgstr "Editar lo document"
+msgstr "Modificar lo document"
 
 #: shell/resources/pps-document-view.blp:760
 msgid "Selection too Small"
-msgstr "Seleccion tròpa pichona"
+msgstr "Seleccion tròp pichona"
 
 #: shell/resources/pps-document-view.blp:761
 msgid ""
@@ -1186,7 +1186,7 @@ msgid ""
 "signature, press `Start over` and draw a bigger rectangle."
 msgstr ""
 "Una signatura d'aquesta talha pòt èsser tròp pichona a legir. Se volètz crear una signatura potencialament mai "
-"legibla, quichatz sus « Recomençar « e dessenhatz un rectangle mai grand."
+"legibla, quichatz sus « Recomençar » e dessenhatz un rectangle mai grand."
 
 #: shell/resources/pps-document-view.blp:768
 msgid "Start _Over"
@@ -1364,7 +1364,8 @@ msgstr "Gestion de las signaturas…"
 msgid "No Signatures Yet"
 msgstr "Cap de signatura pel moment"
 
-#: shell/resources/pps-document-view.blp:1461
+#: shell/resources/pps-document-view.blp:1461 shell/resources/pps-visual-signature-chooser.blp:31
+#: shell/resources/pps-visual-signature-chooser.blp:56
 msgid "Add Signature"
 msgstr "Apondre una signatura"
 
@@ -1410,7 +1411,7 @@ msgstr "A_nar a"
 
 #: shell/resources/pps-document-view.blp:1678
 msgid "Open in New _Window"
-msgstr "Dobrir dins una _novèla fenèstra"
+msgstr "Dobrir dins una fenèstra _novèla"
 
 #: shell/resources/pps-document-view.blp:1686
 msgid "_Copy"
@@ -1485,19 +1486,19 @@ msgstr "Anullar"
 msgid "Unlock"
 msgstr "Desverrolhar"
 
-#: shell/resources/pps-password-dialog.blp:19
+#: shell/resources/pps-password-dialog.blp:24
 msgid "Password"
 msgstr "Senhal"
 
-#: shell/resources/pps-password-dialog.blp:33
+#: shell/resources/pps-password-dialog.blp:38
 msgid "Invalid password"
 msgstr "Senhal incorrècte"
 
-#: shell/resources/pps-password-dialog.blp:48
+#: shell/resources/pps-password-dialog.blp:53
 msgid "Forget password _immediately"
 msgstr "Oblidar lo senhal _immediatament"
 
-#: shell/resources/pps-password-dialog.blp:55
+#: shell/resources/pps-password-dialog.blp:60
 msgid "Remember _forever"
 msgstr "Se remembrar del senhal _indefinidament"
 
@@ -1519,7 +1520,7 @@ msgstr "Tèxte de la licéncia"
 
 #: shell/resources/pps-properties-license.blp:79
 msgid "Further Information"
-msgstr "Informacions complémentaires"
+msgstr "Informacions complementàrias"
 
 #: shell/resources/pps-properties-window.blp:5
 msgid "Properties"
@@ -1590,7 +1591,7 @@ msgstr "Imprimir lo document actual"
 #: shell/resources/pps-shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Close Current Document Window"
-msgstr "Tampar lo document actual de la fenèstra"
+msgstr "Tampar la fenèstra del document actual"
 
 #: shell/resources/pps-shortcuts-dialog.blp:40
 msgctxt "shortcut window"
@@ -1675,7 +1676,7 @@ msgstr "Adaptar a la pagina"
 #: shell/resources/pps-shortcuts-dialog.blp:116
 msgctxt "shortcut window"
 msgid "Fit Width"
-msgstr "Adaptar a la longor"
+msgstr "Adaptar a la largor"
 
 #: shell/resources/pps-shortcuts-dialog.blp:121
 msgctxt "shortcut window"
@@ -1884,7 +1885,7 @@ msgstr "Ecran blanc"
 
 #: shell/resources/pps-sidebar-annotations.blp:13
 msgid "No Annotations"
-msgstr "Cap d’annotacion"
+msgstr "Cap d’anotacion"
 
 #: shell/resources/pps-sidebar-annotations.blp:66
 msgid "Annotation Properties"
@@ -1904,7 +1905,7 @@ msgstr "Desplegar totas las arborescéncias"
 
 #: shell/resources/pps-sidebar-links.blp:58
 msgid "Expand all under this element"
-msgstr "O desplegar tot jos aqueste element"
+msgstr "Desplegar tot jos aqueste element"
 
 #: shell/resources/pps-sidebar-links.blp:65
 msgid "Print this section…"
@@ -1913,6 +1914,46 @@ msgstr "Imprimir aquesta seccion…"
 #: shell/resources/pps-sidebar-thumbnails.blp:47
 msgid "Previews"
 msgstr "Apercebuts"
+
+#: shell/resources/pps-signature-drawing-widget.blp:19
+msgid "Draw your signature here"
+msgstr "Dessenhatz vòstra signatura aicí"
+
+#: shell/resources/pps-signature-drawing-widget.blp:47 shell/src/visual_signature_chooser.rs:374
+msgid "Undo"
+msgstr "Desfar"
+
+#: shell/resources/pps-signature-drawing-widget.blp:58
+msgid "Redo"
+msgstr "Refar"
+
+#: shell/resources/pps-signature-drawing-widget.blp:70
+msgid "Import signature image"
+msgstr "Importar un imatge de signatura"
+
+#: shell/resources/pps-signature-drawing-widget.blp:86
+msgid "Import"
+msgstr "Importar"
+
+#: shell/resources/pps-signature-drawing-widget.blp:93
+msgid "_Insert"
+msgstr "_Inserir"
+
+#: shell/resources/pps-sign-manually-dialog.blp:5 shell/resources/pps-sign-manually-dialog.blp:12
+msgid "Manage Signatures"
+msgstr "Gestion de las signaturas"
+
+#: shell/resources/pps-sign-manually-dialog.blp:32
+msgid "Edit Signature"
+msgstr "Modificar la signatura"
+
+#: shell/resources/pps-visual-signature-chooser.blp:21
+msgid "No Signatures"
+msgstr "Cap de signatura"
+
+#: shell/resources/pps-visual-signature-chooser.blp:22
+msgid "Create a signature by drawing or opening an image"
+msgstr "Crear una signatura en dessenhant o en dobrissent una imatge"
 
 #: shell/resources/pps-window.blp:43
 msgid "Open a Document"
@@ -1987,19 +2028,19 @@ msgstr "Afichar la version del programa."
 msgid "[FILE…]"
 msgstr "[FICHIÈR…]"
 
-#: shell/src/document_view.rs:372
+#: shell/src/document_view.rs:372 shell/src/window.rs:457
 msgid "View Details"
 msgstr "Veire los detalhs"
 
-#: shell/src/document_view.rs:809
+#: shell/src/document_view.rs:809 shell/src/window.rs:237
 msgid "Document contains new or modified annotations and form fields that have been filled out."
 msgstr "Lo document conten d’anotacions novèlas o modificadas e de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:812
+#: shell/src/document_view.rs:812 shell/src/window.rs:240
 msgid "Document contains form fields that have been filled out."
 msgstr "Lo document conten de camps de formulari que son estats garnits."
 
-#: shell/src/document_view.rs:814
+#: shell/src/document_view.rs:814 shell/src/window.rs:242
 msgid "Document contains new or modified annotations."
 msgstr "Lo document conten d'anotacions novèlas o modificadas."
 
@@ -2009,7 +2050,7 @@ msgstr "Se enregistratz pas una còpia, las modificacions seràn perdudas defini
 
 #: shell/src/document_view.rs:823
 msgid "Save Changes to a Copy?"
-msgstr "Enregistrar las modificacion dins una còpia ?"
+msgstr "Enregistrar las modificacions dins una còpia ?"
 
 #: shell/src/document_view.rs:832
 msgid "Close _Without Saving"
@@ -2091,7 +2132,7 @@ msgstr "Se requerís un certificat per signar aqueste document"
 
 #: shell/src/document_view/io.rs:825
 msgid "Save Signed File"
-msgstr "Enregistrat fichièr signat"
+msgstr "Enregistrar fichièr signat"
 
 #: shell/src/document_view/io.rs:855
 #, rust-format
@@ -2122,7 +2163,7 @@ msgstr[1] "{} prètzfaches en espèra dins la fila"
 #: shell/src/document_view/signals.rs:268
 #, rust-format
 msgid "Security alert: this document has been prevented from opening the file “{}”"
-msgstr "Alèrta de seguretat : avèm empachat aquesta document de dobrir lo fichièr « {} »"
+msgstr "Alèrta de seguretat : avèm empachat aqueste document de dobrir lo fichièr « {} »"
 
 #: shell/src/document_view/signals.rs:454 shell/src/page_selector.rs:91 shell/src/sidebar_annotations_row.rs:83
 #, rust-format
@@ -2143,7 +2184,7 @@ msgstr "({pagenum} de {totalpages})"
 msgid "of {}"
 msgstr "de {}"
 
-#: shell/src/password_view.rs:146
+#: shell/src/password_view.rs:149
 #, rust-format
 msgid "The document “{}” is locked and requires a password before it can be opened"
 msgstr "Lo document « {} » es verrolhat e se requerís un senhal abans de lo poder dobrir"
@@ -2154,7 +2195,7 @@ msgstr "Copiar al quichapapièrs"
 
 #: shell/src/properties_general.rs:152
 msgid "Open File Location"
-msgstr "Dobrir un l’emplaçament"
+msgstr "Dobrir l’emplaçament del fichièr"
 
 #: shell/src/properties_general.rs:193
 msgid "File"
@@ -2180,6 +2221,50 @@ msgstr "Contengut"
 msgid "Date &amp; Time"
 msgstr "Data e ora"
 
+#: shell/src/signature_drawing_widget.rs:113
+msgid "Choose Signature Image"
+msgstr "Causir un imatge de signatura"
+
+#: shell/src/signature_drawing_widget.rs:121
+msgid "Images"
+msgstr "Imatges"
+
+#: shell/src/visual_signature_chooser.rs:288
+msgid "Edit signature"
+msgstr "Modificar la signatura"
+
+#: shell/src/visual_signature_chooser.rs:314
+msgid "Remove signature"
+msgstr "Suprimir la signatura"
+
+#: shell/src/visual_signature_chooser.rs:373
+msgid "Signature Deleted"
+msgstr "Signatura suprimida"
+
+#: shell/src/window.rs:252
+msgid "If you reload the document, changes will be permanently lost."
+msgstr "Se recargatz lo document, las modificacions seràn definitivament perdudas."
+
+#: shell/src/window.rs:253
+msgid "File changed outside Document Viewer. Reload document?"
+msgstr "Fichièr modificat fòra del visionador de Document. Recargar lo document ?"
+
+#: shell/src/window.rs:261
+msgid "_No"
+msgstr "_Non"
+
+#: shell/src/window.rs:261
+msgid "_Reload"
+msgstr "_Recargar"
+
+#: shell/src/window.rs:559
+msgid "Failed to Load Remote File."
+msgstr "Impossible de cargar lo fichièr distant."
+
+#: shell/src/window.rs:728
+msgid "Failed to Reload Document."
+msgstr "Lo recargament del document a fracassat."
+
 #~ msgid "Producer"
 #~ msgstr "Productor"
 
@@ -2197,9 +2282,6 @@ msgstr "Data e ora"
 
 #~ msgid "Annotation deleted"
 #~ msgstr "Anotacion suprimida"
-
-#~ msgid "_Undo"
-#~ msgstr "_Desfar"
 
 #~ msgid "Couldn’t find appropriate format to save image"
 #~ msgstr "Impossible de trobar lo format apropriat per enregistrar l'imatge"
@@ -2387,24 +2469,6 @@ msgstr "Data e ora"
 
 #~ msgid "_Delete Bookmark"
 #~ msgstr "_Suprimir lo signet"
-
-#~ msgid "If you reload the document, changes will be permanently lost."
-#~ msgstr "Se recargatz lo document, las modificacions seràn definitivament perdudas."
-
-#~ msgid "File changed outside Papers. Reload document?"
-#~ msgstr "Fichièr modificat fòra de Papers. Recargar lo document ?"
-
-#~ msgid "_No"
-#~ msgstr "_Non"
-
-#~ msgid "_Reload"
-#~ msgstr "_Recargar"
-
-#~ msgid "Failed to Load Remote File."
-#~ msgstr "Impossible de cargar lo fichièr distant."
-
-#~ msgid "Failed to Reload Document."
-#~ msgstr "Lo recargament del document a fracassat."
 
 #~ msgid "PostScript Documents"
 #~ msgstr "Documents PostScript"
