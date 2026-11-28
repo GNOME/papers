@@ -51,8 +51,12 @@ pps_form_widget_factory_dispose (GObject *object)
 	PpsFormWidgetFactory *factory = PPS_FORM_WIDGET_FACTORY (object);
 	PpsFormWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
 
+	if (priv->page_cache != NULL)
+		g_signal_handlers_disconnect_by_data (priv->page_cache, factory);
+
 	g_clear_object (&priv->model);
 	g_clear_object (&priv->page_cache);
+	g_clear_object (&priv->pixbuf_cache);
 	g_clear_object (&priv->provider);
 
 	g_hash_table_destroy (priv->form_widgets);
@@ -102,9 +106,6 @@ pps_form_widget_factory_setup (PpsElementWidgetFactory *element_factory,
 {
 	PpsFormWidgetFactory *factory = PPS_FORM_WIDGET_FACTORY (element_factory);
 	PpsFormWidgetFactoryPrivate *priv = GET_PRIVATE (factory);
-
-	if (priv->model != NULL)
-		g_signal_handlers_disconnect_by_data (priv->model, factory);
 
 	if (priv->page_cache != NULL)
 		g_signal_handlers_disconnect_by_data (priv->page_cache, factory);
