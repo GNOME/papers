@@ -6,10 +6,6 @@ use imageproc::contrast::{ThresholdType, otsu_level, threshold};
 // Pixels below this are treated as transparent background.
 const ALPHA_OPAQUE_THRESHOLD: u8 = 128;
 
-// After Otsu + ToZero thresholding, pixels below this intensity
-// are classified as "dark" (potential ink on a light background).
-const INK_INTENSITY_THRESHOLD: u8 = 5;
-
 // Raw image data that can be sent across threads
 pub struct RawImageData {
     pub data: Vec<u8>,
@@ -41,7 +37,7 @@ impl RawImageData {
         let has_alpha = self.n_channels >= 4;
 
         // Build a grayscale image only from opaque pixels for threshold computation.
-        // Transparent pixels are excluded so they don't skew the Otsu threshold.
+        // Transparent pixels are converted to white.
         let gray_image = GrayImage::from_fn(self.width, self.height, |x, y| {
             let idx = (y as usize * self.rowstride) + (x as usize * self.n_channels);
             let alpha = if has_alpha { self.data[idx + 3] } else { 255 };
@@ -59,48 +55,26 @@ impl RawImageData {
 
         // Compute Otsu threshold and apply
         let threshold_value = otsu_level(&gray_image);
-        let thresholded = threshold(&gray_image, threshold_value, ThresholdType::ToZero);
+        let thresholded = threshold(&gray_image, threshold_value, ThresholdType::Binary);
 
-        // After To zero: dark pixels (below threshold), light pixels → kept.
-        // Count opaque pixels in each group to determine which is ink vs background.
-        // The ink (signature strokes) always covers less area than the background.
-        let mut dark_count: u64 = 0;
-        let mut light_count: u64 = 0;
+        // Check that there is indeed a white background by counting dark pixels
+        let mut dark_count: u32 = 0;
         for y in 0..self.height {
             for x in 0..self.width {
-                let idx = (y as usize * self.rowstride) + (x as usize * self.n_channels);
-                let alpha = if has_alpha { self.data[idx + 3] } else { 255 };
-                let intensity = thresholded.get_pixel(x, y)[0];
-                if alpha >= ALPHA_OPAQUE_THRESHOLD && intensity < INK_INTENSITY_THRESHOLD {
+                if thresholded.get_pixel(x, y)[0] == 0 {
                     dark_count += 1;
-                } else {
-                    light_count += 1;
                 }
             }
         }
 
         // If dark pixels outnumber light pixels, the image has light ink on dark background
         // (like a screenshot from dark mode). In that case, the ink is the light group.
-        let ink_is_dark = dark_count <= light_count;
+        let ink_is_dark = dark_count <= (self.height * self.width) / 2;
 
         let rgba_image = RgbaImage::from_fn(self.width, self.height, |x, y| {
-            let idx = (y as usize * self.rowstride) + (x as usize * self.n_channels);
-            let orig_alpha = if has_alpha { self.data[idx + 3] } else { 255 };
+            let intensity = thresholded.get_pixel(x, y)[0];
 
-            if orig_alpha < ALPHA_OPAQUE_THRESHOLD {
-                return Rgba([0, 0, 0, 0]);
-            }
-
-            let pixel = thresholded.get_pixel(x, y);
-            let intensity = pixel[0];
-
-            let is_ink = if ink_is_dark {
-                intensity < INK_INTENSITY_THRESHOLD
-            } else {
-                intensity >= INK_INTENSITY_THRESHOLD
-            };
-
-            if is_ink {
+            if (ink_is_dark && intensity == 0) || (!ink_is_dark && intensity == 255) {
                 Rgba([0, 0, 0, 255])
             } else {
                 Rgba([0, 0, 0, 0])
